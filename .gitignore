@@ -1,0 +1,7 @@
+.enyocache
+dist/
+lib/
+builds/
+config.json
+config.js
+*~

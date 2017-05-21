@@ -1,0 +1,11 @@
+{
+  "name": "enyo27test",
+  "main": "index.js",
+  "assets": [
+    "config.json",
+    "config.js"
+  ],
+  "styles": [],
+  "devAssets": [],
+  "moduleDir": "src"
+}

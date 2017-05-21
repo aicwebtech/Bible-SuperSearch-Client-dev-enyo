@@ -1,0 +1,6 @@
+{
+    "target":"biblesupersearch_container",
+    "die":"happy",
+    "apiUrl": "http://lv.bss.lh2/api",
+    "useJSONP": false
+}

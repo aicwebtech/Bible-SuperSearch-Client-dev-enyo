@@ -1,0 +1,2 @@
+enyo pack --production -d ./builds/standalone --no-inline-css --no-inline-js
+cp index.html builds/standalone/index.html
