@@ -3,9 +3,12 @@
   "main": "index.js",
   "assets": [
     "config.json",
-    "config.js"
+    "config.js",
+    "assets/images/*.gif"
   ],
-  "styles": [],
+  "styles": [
+    "assets/css/*.css"
+  ],
   "devAssets": [],
   "moduleDir": "src"
 }

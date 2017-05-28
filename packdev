@@ -1,1 +1,2 @@
 enyo pack
+cp dev.html builds/dev/index.html

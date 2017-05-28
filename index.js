@@ -5,7 +5,6 @@ var ready = require('enyo/ready');
 var App = require('./src/app');
 
 ready(function () {
-    //new App().renderInto(document.getElementById('biblesupersearch_container'));
     new App();
 });
     

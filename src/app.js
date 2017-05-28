@@ -2,12 +2,17 @@ var kind = require('enyo/kind');
 var Button = require('enyo/Button');
 var Application = require('enyo/Application');
 var options = require('enyo/options');
+var Image = require('enyo/Image');
 var Ajax = require('enyo/Ajax');
 var defaultConfig = require('./config/default');
 var buildConfig = require('./config/build');
 var systemConfig = require('./config/system');
 var utils = require('enyo/utils');
 //console.log('default', defaultConfig);
+
+
+
+// Include application kinds!
 
 var HelloWidget = kind({
     name: "HelloWidget",
@@ -23,6 +28,20 @@ var HelloWidget = kind({
     }
 });
 
+var ImageWidget = kind({
+    name: "Imageidget",
+    style: 'margin: 20px',
+    components: [
+        {kind: Image, src: systemConfig.rootDir + '/assets/images/nb.gif'},
+        {kind: Button, content: "Poke my image", ontap: "helloTap"}
+    ],
+    helloTap: function() {
+        this.$.hello.applyStyle("color", "red");
+        this.bubble('onHelloTap');
+        this.app.trigger('cranky');
+    }
+});
+
 var MyView = kind({
     name: "MyView",
 
@@ -33,7 +52,8 @@ var MyView = kind({
     components: [
         {kind: HelloWidget, name: 'top'},
         {kind: HelloWidget, name: 'middle'},
-        {kind: HelloWidget, name: 'bottom'}
+        {kind: HelloWidget, name: 'bottom'},
+        {kind: ImageWidget, name: 'thinky'}
     ],
 
     helloTap: function(inSender, inEvent, wkh) {
@@ -44,18 +64,22 @@ var MyView = kind({
 });
 
 var MyApp = Application.kind({
+    name: 'BibleSuperSearch',
+
     view: MyView,
     //renderTarget: 'biblesupersearch_container',
     configs: {},
     build: {},
     system: {},
     renderOnStart: false, // We need to load configs first
+    rootDir: null,
 
     create: function() {
         this.inherited(arguments);
         this.configs = defaultConfig;
         this.build = buildConfig;
         this.system = systemConfig;
+        this.rootDir = (typeof biblesupersearch_root_directory == 'string') ? biblesupersearch_root_directory : '/biblesupersearch';
 
         // If user provided a config path, use it.
         var config_path = (typeof biblesupersearch_config_path == 'string') ? biblesupersearch_config_path + '/config.json' : 'config.json';
@@ -76,10 +100,11 @@ var MyApp = Application.kind({
         loader.error(this, 'handleConfigError');
     },
     handleConfigError: function() {
-        this.log('a load error has occurred');
+        alert('Error: Failed to load application data.  Error code 1');
         this.handleConfigFinal();
     },
     handleConfigLoad: function(inSender, inResponse) {
+        this.log();
         utils.mixin(this.configs, inResponse);
         this.handleConfigFinal();
     },
@@ -108,7 +133,7 @@ var MyApp = Application.kind({
 
         ajax.error(this, function(inSender, inResponse) {
             //this.$.LoadingDialog.setShowing(false);
-            alert('Error: Failed to load application data');
+            alert('Error: Failed to load application data.  Error code 2');
         });    
     },
 
