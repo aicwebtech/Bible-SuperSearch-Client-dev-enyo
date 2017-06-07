@@ -2,9 +2,11 @@
   "name": "enyo27test",
   "main": "index.js",
   "assets": [
+    "config.json-example",
     "config.json",
     "config.js",
-    "assets/images/*.gif"
+    "assets/images/*.gif",
+    "assets/css/*.css"
   ],
   "styles": [
     "assets/css/*.css"

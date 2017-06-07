@@ -36,11 +36,77 @@ var ImageWidget = kind({
         {kind: Button, content: "Poke my image", ontap: "helloTap"}
     ],
     helloTap: function() {
-        this.$.hello.applyStyle("color", "red");
+        var bacon = {test: 'five'};
+        this.log('utils', utils);
+
         this.bubble('onHelloTap');
         this.app.trigger('cranky');
     }
 });
+
+var RandomVerse = kind({
+    name: 'RandomVerse',
+    classes: 'random_verse_widget',
+    bible: 'kjv',
+    label: 'Random Verse',
+    components: [
+        {name: 'Label', tag:'h2'},
+        {kind: Button, content: "Fetch", ontap: "fetch"},
+        {name: 'Container'}
+    ],
+    create: function() {
+        this.inherited(arguments);
+        this.$.Label.setContent(this.label);
+    },
+    fetch: function(inSender, inEvent) {
+        var formData = {
+            'reference': 'Random Verse',
+            'bible': this.bible
+        };
+
+        var ajax = new Ajax({
+            url: this.app.configs.apiUrl,
+            method: 'GET'
+        });
+
+        ajax.go(formData); // for GET
+        ajax.response(this, 'handleResponse');
+        ajax.error(this, 'handleError');
+    },
+    handleResponse: function(inSender, inResponse) {
+        this.showResults(inResponse.results);
+    },
+    handleError: function(inSender, inResponse) {
+        var response = JSON.parse(inSender.xhrResponse.body);
+
+        if(response.error_level == 5) {
+            this.$.Container.setContent('An error has occurred');
+        }
+        else {
+            this.showResults(response.results);
+        }
+    },
+    showResults: function(results) {
+        this.log(results);
+        var text = results[0].book_name + ' ' + results[0].chapter_verse;
+        
+        for(chapter in results[0].verse_index) {
+            this.log(chapter);
+            
+            results[0].verse_index[chapter].forEach(function(verse) {
+                this.log('verse', verse);
+                var module = this.bible;
+
+                if(results[0].verses[module] && results[0].verses[module][chapter] && results[0].verses[module][chapter][verse]) {
+                    this.log(results[0].verses[module][chapter][verse]);
+                    text += ' ' + results[0].verses[module][chapter][verse].text;
+                }
+            }, this);
+        }
+
+        this.$.Container.setContent(text);
+    }
+ });
 
 var MyView = kind({
     name: "MyView",
@@ -50,6 +116,8 @@ var MyView = kind({
     },
 
     components: [
+        {kind: RandomVerse},
+        {kind: RandomVerse, bible: 'rvg', label: 'Random Verse - Spanish'},
         {kind: HelloWidget, name: 'top'},
         {kind: HelloWidget, name: 'middle'},
         {kind: HelloWidget, name: 'bottom'},
@@ -73,6 +141,7 @@ var MyApp = Application.kind({
     system: {},
     renderOnStart: false, // We need to load configs first
     rootDir: null,
+    testing: false, // Indicates unit tests are running
 
     create: function() {
         this.inherited(arguments);
@@ -82,13 +151,11 @@ var MyApp = Application.kind({
         this.rootDir = (typeof biblesupersearch_root_directory == 'string') ? biblesupersearch_root_directory : '/biblesupersearch';
 
         // If user provided a config path, use it.
-        var config_path = (typeof biblesupersearch_config_path == 'string') ? biblesupersearch_config_path + '/config.json' : 'config.json';
+        var config_path = (typeof biblesupersearch_config_path == 'string') ? biblesupersearch_config_path + '/config.json' : this.rootDir + '/config.json';
 
         if(this.build.dynamicConfig == true) {
             config_path = this.build.dynamicConfigUrl;
         }
-
-        this.log('config_path', config_path);
 
         var loader = new Ajax({
             url: config_path,
@@ -127,6 +194,7 @@ var MyApp = Application.kind({
         ajax.response(this, function(inSender, inResponse) {
             //this.$.LoadingDialog.setShowing(false);
             this.log(inResponse);
+            this.test();
             
             this.waterfall('onBiblesLoaded');
         });    
@@ -139,6 +207,25 @@ var MyApp = Application.kind({
 
     trigger: function(name) {
         this.log(name + ' is triggered');
+    },
+    /*  Used to run unit tests within app */
+    test: function() {
+        if(!this.testing || !QUnit) {
+            return;
+        }
+
+        this.log();
+        var t = this;
+
+        //QUnit && QUnit.module("Basic Tests");
+
+        QUnit.test( "Post Rendering", function( assert ) {
+            assert.ok( t.viewReady, "The view should be rendered by the time we get here" );
+        });
+
+        // Test form stuff
+
+        // Test AJAX calls
     }
 });
 

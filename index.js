@@ -3,8 +3,19 @@
 
 var ready = require('enyo/ready');
 var App = require('./src/app');
+var BSS = null;
 
 ready(function () {
-    new App();
+    BSS = new App();
+
+    if(typeof QUnit == 'object') {    
+        QUnit.module("Basic Tests");
+        QUnit.test("App instantiation", function( assert ) {
+            assert.ok( BSS, "We expect the app instance to be truthy" );
+        });
+
+        BSS.set('testing', true);
+    }
+
 });
     

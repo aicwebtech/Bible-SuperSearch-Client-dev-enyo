@@ -1,2 +1,4 @@
 enyo pack
-cp dev.html builds/dev/index.html
+cp assets/html/dev_site.html builds/dev/biblesupersearch.html
+cp assets/html/dev_test.html builds/dev/biblesupersearch/test.html
+cp assets/html/dev.html builds/dev/biblesupersearch/index.html

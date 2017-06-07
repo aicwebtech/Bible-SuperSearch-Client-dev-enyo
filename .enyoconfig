@@ -24,7 +24,7 @@
   "skip": [],
   "library": false,
   "wip": false,
-  "outDir": "builds/dev",
+  "outDir": "builds/dev/biblesupersearch",
   "outFile": "index.html",
   "lessPlugins": [],
   "assetRoots": [],
