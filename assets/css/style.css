@@ -2,7 +2,7 @@
     border-radius: 8px;
     padding: 5px;
     margin: 5px;
-    width: 20vw;
+    width: 400px;
     margin-right: auto;
     margin-left: auto;
     background-color: orange;
@@ -10,22 +10,23 @@
 
 .random_verse_widget div {
     width: 100%;
-    height: 5vh;
+    height: 60px;
     overflow-y: auto;
     text-align: justify;
+    padding: 3px;
     margin-top: 5px;
-    font-size: 2vh;
+    font-size: .9em;
 }
 
 .random_verse_widget h2 {
     text-align: center;
-    font-size: 3vh;
+    font-size: 1em;
 }
 
 .random_verse_widget button {
     margin-right: auto;
     margin-left: auto;
     text-align: center;
-    font-size: 2.5vh;
+    font-size: .7em;
     display: block;
 }

@@ -1,0 +1,20 @@
+div.biblesupersearch_container {
+    background-color: #222222;
+    height: 800px;
+    width: 1500px;
+}
+
+div.biblesupersearch_left_menu {
+    background-color: green;
+    height: 500px;
+    width: 200px;
+    position: absolute;
+}
+
+div.biblesupersearch_top_menu {
+    background-color: orange;
+}
+
+div.biblesupersearch_content {
+    background-color: #D1D1D1;
+}

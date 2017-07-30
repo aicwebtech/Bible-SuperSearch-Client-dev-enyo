@@ -3,13 +3,16 @@
   "libDir": "lib",
   "paths": [],
   "libraries": [
-    "enyo"
+    "enyo",
+    "layout"
   ],
   "sources": {
-    "enyo": "https://github.com/enyojs/enyo.git"
+    "enyo": "https://github.com/enyojs/enyo.git",
+    "layout": "https://github.com/enyojs/layout.git"
   },
   "targets": {
-    "enyo": "master"
+    "enyo": "master",
+    "layout": "master"
   },
   "production": false,
   "devMode": true,

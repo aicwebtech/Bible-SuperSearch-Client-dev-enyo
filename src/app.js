@@ -1,142 +1,29 @@
 var kind = require('enyo/kind');
-var Button = require('enyo/Button');
+//var Button = require('enyo/Button');
 var Application = require('enyo/Application');
 var options = require('enyo/options');
-var Image = require('enyo/Image');
 var Ajax = require('enyo/Ajax');
 var defaultConfig = require('./config/default');
 var buildConfig = require('./config/build');
 var systemConfig = require('./config/system');
 var utils = require('enyo/utils');
+var MainView = require('./view/MainView');
+//var MainView = require('./view/Content');
 //console.log('default', defaultConfig);
 
+// If the global enyo.Signals is available, use it. This is needed to allow 
+// bi-directional communitation with Apps of older Enyo versions
+var Signal = require('enyo/Signals');
+var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 
-
-// Include application kinds!
-
-var HelloWidget = kind({
-    name: "HelloWidget",
-    style: 'margin: 20px',
-    components: [
-        {name: "hello", content: "Hello From Enyo"},
-        {kind: Button, content: "Click Me!", ontap: "helloTap"}
-    ],
-    helloTap: function() {
-        this.$.hello.applyStyle("color", "red");
-        this.bubble('onHelloTap');
-        this.app.trigger('bob');
-    }
-});
-
-var ImageWidget = kind({
-    name: "Imageidget",
-    style: 'margin: 20px',
-    components: [
-        {kind: Image, src: systemConfig.rootDir + '/assets/images/nb.gif'},
-        {kind: Button, content: "Poke my image", ontap: "helloTap"}
-    ],
-    helloTap: function() {
-        var bacon = {test: 'five'};
-        this.log('utils', utils);
-
-        this.bubble('onHelloTap');
-        this.app.trigger('cranky');
-    }
-});
-
-var RandomVerse = kind({
-    name: 'RandomVerse',
-    classes: 'random_verse_widget',
-    bible: 'kjv',
-    label: 'Random Verse',
-    components: [
-        {name: 'Label', tag:'h2'},
-        {kind: Button, content: "Fetch", ontap: "fetch"},
-        {name: 'Container'}
-    ],
-    create: function() {
-        this.inherited(arguments);
-        this.$.Label.setContent(this.label);
-    },
-    fetch: function(inSender, inEvent) {
-        var formData = {
-            'reference': 'Random Verse',
-            'bible': this.bible
-        };
-
-        var ajax = new Ajax({
-            url: this.app.configs.apiUrl,
-            method: 'GET'
-        });
-
-        ajax.go(formData); // for GET
-        ajax.response(this, 'handleResponse');
-        ajax.error(this, 'handleError');
-    },
-    handleResponse: function(inSender, inResponse) {
-        this.showResults(inResponse.results);
-    },
-    handleError: function(inSender, inResponse) {
-        var response = JSON.parse(inSender.xhrResponse.body);
-
-        if(response.error_level == 5) {
-            this.$.Container.setContent('An error has occurred');
-        }
-        else {
-            this.showResults(response.results);
-        }
-    },
-    showResults: function(results) {
-        this.log(results);
-        var text = results[0].book_name + ' ' + results[0].chapter_verse;
-        
-        for(chapter in results[0].verse_index) {
-            this.log(chapter);
-            
-            results[0].verse_index[chapter].forEach(function(verse) {
-                this.log('verse', verse);
-                var module = this.bible;
-
-                if(results[0].verses[module] && results[0].verses[module][chapter] && results[0].verses[module][chapter][verse]) {
-                    this.log(results[0].verses[module][chapter][verse]);
-                    text += ' ' + results[0].verses[module][chapter][verse].text;
-                }
-            }, this);
-        }
-
-        this.$.Container.setContent(text);
-    }
- });
-
-var MyView = kind({
-    name: "MyView",
-
-    handlers: {
-        'onHelloTap' : 'helloTap'
-    },
-
-    components: [
-        {kind: RandomVerse},
-        {kind: RandomVerse, bible: 'rvg', label: 'Random Verse - Spanish'},
-        {kind: HelloWidget, name: 'top'},
-        {kind: HelloWidget, name: 'middle'},
-        {kind: HelloWidget, name: 'bottom'},
-        {kind: ImageWidget, name: 'thinky'}
-    ],
-
-    helloTap: function(inSender, inEvent, wkh) {
-        //this.log(inSender);
-        //this.log(inEvent);
-        //this.log(wkh);
-    }
-});
-
-var MyApp = Application.kind({
+var App = Application.kind({
     name: 'BibleSuperSearch',
 
-    view: MyView,
+    view: MainView,
     //renderTarget: 'biblesupersearch_container',
-    configs: {},
+    configs: {
+        "apiUrl": "https://api.biblesupersearch.com/api",
+    },
     build: {},
     system: {},
     renderOnStart: false, // We need to load configs first
@@ -145,6 +32,8 @@ var MyApp = Application.kind({
 
     create: function() {
         this.inherited(arguments);
+        this.log(this.configs);
+        this.log(defaultConfig);
         this.configs = defaultConfig;
         this.build = buildConfig;
         this.system = systemConfig;
@@ -204,10 +93,6 @@ var MyApp = Application.kind({
             alert('Error: Failed to load application data.  Error code 2');
         });    
     },
-
-    trigger: function(name) {
-        this.log(name + ' is triggered');
-    },
     /*  Used to run unit tests within app */
     test: function() {
         if(!this.testing || !QUnit) {
@@ -229,4 +114,4 @@ var MyApp = Application.kind({
     }
 });
 
-module.exports = MyApp;
+module.exports = App;

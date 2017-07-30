@@ -2,6 +2,7 @@
 dist/
 lib/
 builds/
+node_modules/
 config.json
 config.js
 *~
