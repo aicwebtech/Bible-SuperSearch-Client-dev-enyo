@@ -1,28 +1,27 @@
 var Ajax = require('enyo/Ajax');
 var kind = require('enyo/kind');
 var Button = require('enyo/Button');
-//var RandomVerse = require('./widgets/RandomVerse');
 var TopMenu = require('./TopMenu');
 var Middle = require('./Middle');
+var FittableRows = require('layout/FittableRows');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
 var Signal = require('enyo/Signals');
 var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 
-var MainView = kind({
+module.exports = kind({
     name: "MainView",
+    //kind: FittableRows,
+    fit: true,
     classes: 'biblesupersearch_container',
     handlers: [
         {'onTapMenu': 'tapMenu'}
     ],
     components: [
+        //{content: 'bob'},
         {name: 'TopMenu', kind: TopMenu},
-        {name: 'Middle', kind: Middle},
-        //{kind: RandomVerse},
-        //{kind: RandomVerse, bible: 'rvg', label: 'Random Verse - Spanish'},
-        //{kind: RandomVerse, bible: 'epee', label: 'Random Verse - Frence'},
-        //{kind: Button, content: 'Send Smoke Signal!', ontap: 'sendSignal'},
+        {name: 'Middle', kind: Middle, fit: true},
         {kind: Signal, onSignalBibleSuperSearch: 'handleBssSignal'}
     ],
     tapMenu: function(inSender, inEvent) {
@@ -49,5 +48,3 @@ var MainView = kind({
         Signal.send('onSignalBibleSuperSearch', sig2);
     }
 });
-
-module.exports = MainView;

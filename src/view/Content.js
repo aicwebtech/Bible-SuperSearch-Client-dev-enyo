@@ -1,14 +1,82 @@
 var kind = require('enyo/kind');
-var RandomVerse = require('./widgets/RandomVerse');
+var FormController = require('./FormController');
+var Simple = require('../forms/Simple');
+var Advanced = require('../forms/Advanced');
+var Search = require('../forms/Search');
+var Passage = require('../forms/Passage');
+var ResultsView = require('./ResultsView');
 
-var Content = kind({
+var forms = {
+    Simple: Simple,
+    Search: Search,
+    Advanced: Advanced,
+    Passage: Passage
+};
+
+module.exports = kind({
     name: 'Content',
     classes: 'biblesupersearch_content',
-    components: [
-        {kind: RandomVerse},
-        {kind: RandomVerse, bible: 'rvg', label: 'Random Verse - Spanish'},
-        {kind: RandomVerse, bible: 'epee', label: 'Random Verse - Frence'},
-    ]
-});
+    forms: forms,
 
-module.exports = Content;
+    published: {
+        formView: 'Simple'
+    },
+
+    handlers: {
+        onFormResponseSuccess: 'handleFormResponse',
+        onFormResponseError: 'handleFormError'
+    },
+
+    components: [
+        {content: 'content view'},
+        { components: [
+            {name: 'FormController', kind: FormController, view: Simple},
+        ]},
+        {name: 'ResultsContainer'},
+        {content: 'what'}
+    ],
+
+    create: function() {
+        this.inherited(arguments);
+        this.formViewProcess(this.formView);
+    },
+    formViewProcess: function(formView) {
+        this.log('formView', formView);
+        //return;
+
+        if(this.forms && this.forms[formView]) {
+            this.$.FormController.set('view', this.forms[formView]);
+        }
+    },
+    formViewChanged: function(was, is) {
+        this.formViewProcess(is);
+        this.$.FormController && this.$.FormController.render();
+    },
+    handleFormResponse: function(inSender, inEvent) {
+        this.log(inEvent);
+        //return;
+        this.$.ResultsContainer.destroyComponents();
+        //this.log(results);
+
+        inEvent.results.forEach(function(passage) {
+            this.$.ResultsContainer.createComponent({
+                kind: ResultsView,
+                passageData: passage,
+                bibleCount: 1,
+                formData: inEvent.formData,
+            });
+        }, this);
+
+        //this.$.ResultsContainer.setShowing(true);
+        //this.$.Errors.setShowing(false);
+        this.$.ResultsContainer.render();
+
+
+/*        this.$.ResultsContainer.set('formData', inEvent.formData);
+        this.$.ResultsContainer.set('passageData', inEvent.results);
+        this.$.ResultsContainer.renderResults();*/
+    },
+    handleFormError: function(inSender, inEvent) {
+
+    }
+});

@@ -16,6 +16,4 @@ ready(function () {
 
         BSS.set('testing', true);
     }
-
-});
-    
+}); 

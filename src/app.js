@@ -32,8 +32,8 @@ var App = Application.kind({
 
     create: function() {
         this.inherited(arguments);
-        this.log(this.configs);
-        this.log(defaultConfig);
+        this.log('configs', this.configs);
+        this.log('defaultConfig', defaultConfig);
         this.configs = defaultConfig;
         this.build = buildConfig;
         this.system = systemConfig;

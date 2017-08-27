@@ -1,21 +1,23 @@
 var kind = require('enyo/kind');
 var LeftMenu = require('./LeftMenu');
 var Content = require('./Content');
-//var FittableColumns = require('layout/FittableColumns');
+var ContentController = require('./ContentController');
+var FittableColumns = require('layout/FittableColumns');
 //var GridList =        require('moonstone/DataList');
 
-var Middle = kind({
+module.exports = kind({
     name: 'Middle',
-    //kind: FittableColumns,
-    //fit: true,
+    kind: FittableColumns,
+    fit: true,
 
     components: [
         {name: 'LeftMenu', kind: LeftMenu},
-        {name: 'Content', kind: Content, fit: true}
+        {fit: true, components: [
+            {name: 'ContentController', kind: ContentController}
+        ]}
     ],
     toggleMenu: function() {
-        this.$.LeftMenu.setShowing(!this.$.LeftMenu.get('showing'));
+        //this.$.LeftMenu.setShowing(!this.$.LeftMenu.get('showing'));
+        this.$.LeftMenu.setOpen(!this.$.LeftMenu.get('open')); // Use 'open' with drawer
     }
 });
-
-module.exports = Middle;
