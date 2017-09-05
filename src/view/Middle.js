@@ -9,10 +9,11 @@ module.exports = kind({
     name: 'Middle',
     kind: FittableColumns,
     fit: true,
+    classes: 'biblesupersearch_results_overflow',
 
     components: [
         {name: 'LeftMenu', kind: LeftMenu},
-        {fit: true, components: [
+        {fit: true, classes: 'biblesupersearch_results_overflow', components: [
             {name: 'ContentController', kind: ContentController}
         ]}
     ],

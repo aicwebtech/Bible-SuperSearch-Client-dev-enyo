@@ -7,7 +7,7 @@ var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 
 module.exports = kind({
     name: 'LeftMenu',
-    style: 'position:absolute;', // Inline needed because Drawer kind is overriding position coming from CSS class
+    //style: 'position:absolute;', // Inline needed because Drawer kind is overriding position coming from CSS class
     kind: Drawer,
     orient: 'h',
     //showing: false,

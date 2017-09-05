@@ -2,9 +2,10 @@
 
 div.biblesupersearch_container {
     background-color: #222222;
-    max-height: 500px;
+    min-height: 100px;
+    max-height: 700px;
     max-width: 1000px;
-    position: relative;
+    /*position: relative;*/
     /*min-height: 100vh;*/
     /*min-width: 100vw;*/
 }
@@ -14,18 +15,22 @@ div.biblesupersearch_left_menu {
     width: 120px;
 /*    max-width: 200px;
     min-width: 120px;*/
-    position: absolute;
+/*    position: absolute;*/
 }
 
 div.biblesupersearch_top_menu {
     background-color: tan;
+    height: 20px;
 }
 
 div.biblesupersearch_content {
     background-color: #D1D1D1;
+    position: relative;
+    height: 100%;
     /*min-height: 300px;*/
-    text-align: center;
+/*    text-align: center;*/
     overflow-y: scroll;
+    min-width: 100px;
 }
 
 .biblesupersearch_layout_button {
@@ -34,4 +39,10 @@ div.biblesupersearch_content {
 
 .biblesupersearch_top_label {
     text-align: center;
+}
+
+.biblesupersearch_results_overflow {
+    /*position: relative;*/
+    /*height: calc(100% + 20px);*/
+    height: 100%;
 }

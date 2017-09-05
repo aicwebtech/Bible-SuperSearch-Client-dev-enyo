@@ -58,6 +58,11 @@ module.exports = kind({
         this.$.ResultsContainer.destroyComponents();
         //this.log(results);
 
+        if(inEvent.results.error_level == 4) {
+            alert(inEvent.results.errors.join('<br><br>'));
+            return;
+        }
+
         inEvent.results.forEach(function(passage) {
             this.$.ResultsContainer.createComponent({
                 kind: ResultsView,

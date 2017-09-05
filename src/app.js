@@ -29,6 +29,7 @@ var App = Application.kind({
     renderOnStart: false, // We need to load configs first
     rootDir: null,
     testing: false, // Indicates unit tests are running
+    statics: {},
 
     create: function() {
         this.inherited(arguments);
@@ -56,7 +57,7 @@ var App = Application.kind({
         loader.error(this, 'handleConfigError');
     },
     handleConfigError: function() {
-        alert('Error: Failed to load application data.  Error code 1');
+        alert('Error: Failed to load application config data.  Error code 1');
         this.handleConfigFinal();
     },
     handleConfigLoad: function(inSender, inResponse) {
@@ -69,7 +70,7 @@ var App = Application.kind({
             this.renderTarget = this.configs.target;
         }
 
-        this.render();
+        // this.render();
         this.log(this.configs);
 
         // Load Static Data (Bibles, Books, ect)
@@ -84,13 +85,14 @@ var App = Application.kind({
             //this.$.LoadingDialog.setShowing(false);
             this.log(inResponse);
             this.test();
-            
-            this.waterfall('onBiblesLoaded');
+            this.set('statics', inResponse.results);
+            this.waterfall('onStaticsLoaded');
+            this.render();
         });    
 
         ajax.error(this, function(inSender, inResponse) {
             //this.$.LoadingDialog.setShowing(false);
-            alert('Error: Failed to load application data.  Error code 2');
+            alert('Error: Failed to load application static data.  Error code 2');
         });    
     },
     /*  Used to run unit tests within app */
