@@ -11,6 +11,11 @@ module.exports = kind({
         {content: 'form base'}
     ],
 
+    create: function() {
+        this.inherited(arguments);
+        // this.formData.bible = [this.app.configs.defaultBible];
+    },
+
     submitForm: function() {
         return this._submitFormHelper(utils.clone(this.get('formData')));
     },
@@ -29,11 +34,15 @@ module.exports = kind({
     },
     // Override to add defaults to formData, ect
     beforeSubmitForm: function(formData) {
-        formData.bible = (formData.bible && formData.bible != '0') ? formData.bible : ['kjv'];
+        this.log(this.app.configs);
+        var defaultBible = this.app.configs.defaultBible;
+        formData.bible = (formData.bible && formData.bible != '0' && formData.bible != [] && formData.bible.length != 0) ? formData.bible : [defaultBible];
+        
         if(!Array.isArray(formData.bible)) {
             formData.bible = [formData.bible];
         }
-        // formData.bible = ['kjv'];
+
+        formData.bible = JSON.stringify(formData.bible);
         return formData;
     },
     handleResponse: function(inSender, inResponse) {
@@ -42,8 +51,6 @@ module.exports = kind({
     },
     handleError: function(inSender, inResponse) {
         var response = JSON.parse(inSender.xhrResponse.body);
-        // this.log(inSender);
-        // this.log(inResponse);
 
         if(response.error_level == 5) {
             this.$.Container.setContent('An error has occurred');

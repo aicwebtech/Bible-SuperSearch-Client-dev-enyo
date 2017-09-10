@@ -5,6 +5,7 @@ module.exports = kind({
     name: 'SingleSelect',
     kind: Sel,
     parallelNumber: 0,
+    classes: 'biblesupersearch_bible_selector',
 
     create: function() {
         this.inherited(arguments);
@@ -31,5 +32,14 @@ module.exports = kind({
                 value: bibles[i].module
             });
         }
+
+        if(this.parallelNumber == 1) {
+            this.log('setting myself to default');
+            this.set('value', this.app.configs.defaultBible);
+        }
+    },
+    valueChanged: function(was, is) {
+        this.inherited(arguments);
+        this.log(was, is);
     }
 });

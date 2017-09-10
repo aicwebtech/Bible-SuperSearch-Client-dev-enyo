@@ -1,7 +1,8 @@
 var defaultConfig = {
     'target': 'biblesupersearch_container',
     "hank": "frank",
-    "apiUrl": "https://api.biblesupersearch.com/api"
+    "apiUrl": "https://api.biblesupersearch.com/api",
+    "defaultBible": "kjv"
 };
 
 module.exports = defaultConfig;

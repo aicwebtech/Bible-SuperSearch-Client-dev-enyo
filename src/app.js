@@ -21,9 +21,7 @@ var App = Application.kind({
 
     view: MainView,
     //renderTarget: 'biblesupersearch_container',
-    configs: {
-        "apiUrl": "https://api.biblesupersearch.com/api",
-    },
+    configs: {},
     build: {},
     system: {},
     renderOnStart: false, // We need to load configs first
@@ -33,7 +31,6 @@ var App = Application.kind({
 
     create: function() {
         this.inherited(arguments);
-        this.log('configs', this.configs);
         this.log('defaultConfig', defaultConfig);
         this.configs = defaultConfig;
         this.build = buildConfig;
@@ -61,8 +58,8 @@ var App = Application.kind({
         this.handleConfigFinal();
     },
     handleConfigLoad: function(inSender, inResponse) {
-        this.log();
         utils.mixin(this.configs, inResponse);
+        this.log('configs - loaded', this.configs);
         this.handleConfigFinal();
     },
     handleConfigFinal: function() {

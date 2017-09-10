@@ -24,12 +24,16 @@ module.exports = kind({
     create: function() {
         this.inherited(arguments);
         // this.log(this.formData);
+        if(!Array.isArray(this.formData.bible)) {
+            this.formData.bible = JSON.parse(this.formData.bible);
+        }
+        
         this.bibleCount = this.formData.bible.length;
         //this.log(this.passageData);
         //this.log(this.formData);
         this.$.Container.destroyClientControls();
         var pd = this.passageData;
-        this.log(pd.book_name + ' ' + pd.chapter_verse);
+        // this.log(pd.book_name + ' ' + pd.chapter_verse);
         //this.bibleCount = Object.keys(pd.verses).length;
         var multiBibles = (this.bibleCount > 1) ? true : false;
         //this.log('par', multiBibles);
@@ -52,7 +56,6 @@ module.exports = kind({
     // Single verse, single Bible
     createSingleSingle: function() {
         var pd = this.passageData;
-        this.log();
         this.$.Container.createComponent({
             name: 'VerseRow',
             tag: 'tr'
@@ -125,7 +128,8 @@ module.exports = kind({
         if(haveText) {            
             for(i in this.formData.bible) {
                 var module = this.formData.bible[i];
-                var bible_info = AICWS.BibleSuperSearch.Bibles[module];
+                // var bible_info = AICWS.BibleSuperSearch.Bibles[module];
+                var bible_info = this.app.statics.bibles[module];
                 
                 this.$.Container.$.ReferenceRow.createComponent({
                     tag: 'th',
@@ -203,7 +207,9 @@ module.exports = kind({
 
         for(i in this.formData.bible) {
             var module = this.formData.bible[i];
-            var bible_info = AICWS.BibleSuperSearch.Bibles[module];
+            // var bible_info = AICWS.BibleSuperSearch.Bibles[module];
+            var bible_info = this.app.statics.bibles[module];
+            this.log(this.app.statics.bibles);
 
             this.$.Container.$.BibleRow.createComponent({
                 tag: 'th',

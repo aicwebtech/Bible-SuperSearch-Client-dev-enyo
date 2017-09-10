@@ -19,7 +19,7 @@ module.exports = kind({
     forms: forms,
 
     published: {
-        formView: 'Simple'
+        formView: null
     },
 
     handlers: {
@@ -30,19 +30,17 @@ module.exports = kind({
     components: [
         {content: 'content view'},
         { components: [
-            {name: 'FormController', kind: FormController, view: Simple},
+            {name: 'FormController', kind: FormController, view: null},
         ]},
-        {name: 'ResultsContainer'},
-        {content: 'what'}
+        {name: 'ResultsContainer'}
     ],
 
     create: function() {
         this.inherited(arguments);
-        this.formViewProcess(this.formView);
+        // this.formViewProcess(this.formView);
     },
     formViewProcess: function(formView) {
         this.log('formView', formView);
-        //return;
 
         if(this.forms && this.forms[formView]) {
             this.$.FormController.set('view', this.forms[formView]);
