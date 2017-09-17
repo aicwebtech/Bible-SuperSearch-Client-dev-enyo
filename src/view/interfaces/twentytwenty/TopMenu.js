@@ -1,6 +1,6 @@
 var kind = require('enyo/kind');
 var FittableColumns = require('layout/FittableColumns');
-var MenuButton = require('../components/buttons/MenuButton');
+var MenuButton = require('../../../components/buttons/MenuButton');
 
 module.exports = kind({
     name: 'TopMenu',

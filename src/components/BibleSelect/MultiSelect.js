@@ -4,8 +4,10 @@ var Single = require('./SingleSelect');
 
 module.exports = kind({
     name: 'MultiSelect',
-    parallelNumber: 0,
-    parallelLimit: 6,
+    parallelNumber: 0,  // Number of currently showing parallel Bibles
+    parallelLimit: 6,   // Maximum number of parallel Bibles that can be displayed
+    parallelStart: 1,   // Number of parallel Bibles to display initially
+    selectorWidth: 0,   // Pixels, 0 means automatic
 
     components: [
         {name: 'Container', tag: 'span'},
@@ -18,7 +20,11 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
-        this._addSelectorHelper();
+        var num = (this.parallelStart >= 1) ? this.parallelStart : 1;
+
+        for(var i = 1; i <= num; i++) {
+            this._addSelectorHelper();
+        }
     },
     addSelector: function() {
         this._addSelectorHelper();
@@ -26,9 +32,14 @@ module.exports = kind({
     },
     _addSelectorHelper: function() {
         this.parallelNumber ++;
+        var width = (this.selectorWidth) ? this.selectorWidth : 0;
         
         if(this.parallelNumber >= this.parallelLimit) {
             this.$.Add.set('showing', false);
+        }
+
+        if(this.selectorWidth != 0) {
+            style += 'width:' + this.selectorWidth.toString() + ';';
         }
 
         if(this.parallelNumber <= this.parallelLimit) {        
@@ -38,6 +49,7 @@ module.exports = kind({
                 parallelNumber: this.parallelNumber,
                 onchange: 'selectorChanged',
                 classes: 'biblesupersearch_bible_selector_multi',
+                width: width,
                 // value: (this.parallelNumber == 1) ? this.app.configs.defaultBible : null,
                 owner: this
             });
@@ -63,6 +75,7 @@ module.exports = kind({
     },
     valueChanged: function(was, is) {
         this.log(was, is);
+        return;
 
         if(!Array.isArray(is)) {
             this.value = [is];

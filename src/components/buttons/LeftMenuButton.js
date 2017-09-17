@@ -5,7 +5,7 @@ var MenuButton = require('./MenuButton');
 module.exports = kind({
     tag: 'div',
     name: 'LeftMenuButton',
-    kind: 'MenuButton',
+    kind: MenuButton,
     classes: 'biblesupersearch_layout_button',
     label: '',
     image: '',

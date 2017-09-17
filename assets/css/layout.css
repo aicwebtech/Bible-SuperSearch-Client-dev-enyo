@@ -54,3 +54,8 @@ div.biblesupersearch_content {
 .biblesupersearch_bible_selector_multi {
     margin-right: 5px;
 }
+
+.biblesupersearch_center_element {
+    margin-right: auto;
+    margin-left: auto;
+}

@@ -29,9 +29,9 @@ module.exports = kind({
     ], 
 
     bindings: [
-        {from: '$.search.value', to: 'formData.search', oneWay: false},
-        {from: '$.reference.value', to: 'formData.reference', oneWay: false},
-        {from: '$.bible.value', to: 'formData.bible', oneWay: false, transform: function(value, dir) {
+        {to: '$.search.value', from: 'formData.search', oneWay: false},
+        {to: '$.reference.value', from: 'formData.reference', oneWay: false},
+        {to: '$.bible.value', from: 'formData.bible', oneWay: false, transform: function(value, dir) {
             this.log('bible', value, dir);
             return value || null;
         }}

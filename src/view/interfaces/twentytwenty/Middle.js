@@ -1,7 +1,7 @@
 var kind = require('enyo/kind');
 var LeftMenu = require('./LeftMenu');
-var Content = require('./Content');
-var ContentController = require('./ContentController');
+var Content = require('./../../Content');
+var ContentController = require('./../../ContentController');
 var FittableColumns = require('layout/FittableColumns');
 //var GridList =        require('moonstone/DataList');
 

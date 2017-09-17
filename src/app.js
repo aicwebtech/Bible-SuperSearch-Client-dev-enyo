@@ -7,9 +7,10 @@ var defaultConfig = require('./config/default');
 var buildConfig = require('./config/build');
 var systemConfig = require('./config/system');
 var utils = require('enyo/utils');
-var MainView = require('./view/MainView');
+var DefaultInterface = require('./view/interfaces/twentytwenty/TwentyTwenty');
+var Interfaces = require('./view/Interfaces');
+
 //var MainView = require('./view/Content');
-//console.log('default', defaultConfig);
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -19,7 +20,7 @@ var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 var App = Application.kind({
     name: 'BibleSuperSearch',
 
-    view: MainView,
+    view: DefaultInterface,
     //renderTarget: 'biblesupersearch_container',
     configs: {},
     build: {},
@@ -28,6 +29,9 @@ var App = Application.kind({
     rootDir: null,
     testing: false, // Indicates unit tests are running
     statics: {},
+    maximumBiblesDisplayed: 8, // This holds the absolute maximum number of parallel bibles that can be possibly displayed
+    bibleDisplayLimit: 8, // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
+    resetView: true,
 
     create: function() {
         this.inherited(arguments);
@@ -59,7 +63,7 @@ var App = Application.kind({
     },
     handleConfigLoad: function(inSender, inResponse) {
         utils.mixin(this.configs, inResponse);
-        this.log('configs - loaded', this.configs);
+        this.log('configs - loaded', utils.clone(this.configs));
         this.handleConfigFinal();
     },
     handleConfigFinal: function() {
@@ -69,6 +73,21 @@ var App = Application.kind({
 
         // this.render();
         this.log(this.configs);
+        var view = null;
+
+        if(this.configs.interface) {
+            this.log('Interface ', this.configs.interface);
+
+            if(Interfaces[this.configs.interface]) {
+                this.log('secondary view found');
+                // this.set('view', Interfaces[this.configs.interface]);
+                view = Interfaces[this.configs.interface];
+            }
+            else {
+                this.log('Config error: interface \'' + this.configs.interface + '\' not found, using default interface');
+            }
+        }
+
 
         // Load Static Data (Bibles, Books, ect)
         var ajax = new Ajax({
@@ -77,13 +96,21 @@ var App = Application.kind({
         });
 
         //this.$.LoadingDialog.setShowing(true);
+        this.log('loading statics');
         ajax.go();
         ajax.response(this, function(inSender, inResponse) {
             //this.$.LoadingDialog.setShowing(false);
             this.log(inResponse);
             this.test();
+            this.log('statics loaded');
             this.set('statics', inResponse.results);
             this.waterfall('onStaticsLoaded');
+
+            if(view && view != null) {
+                this.log('view set');
+                this.set('view', view);
+            }
+            
             this.render();
         });    
 

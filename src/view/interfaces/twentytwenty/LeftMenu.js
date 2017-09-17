@@ -1,7 +1,7 @@
 var kind = require('enyo/kind');
 var Drawer = require('enyo/Drawer');
 var easing = require('layout/easing');
-var MenuButton = require('../components/buttons/LeftMenuButton');
+var MenuButton = require('../../../components/buttons/LeftMenuButton');
 var Signal = require('enyo/Signals');
 var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 

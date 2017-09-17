@@ -27,14 +27,14 @@ module.exports = kind({
 
     _bindings: [
         {from: 'formData.reference', to: '$.reference.value', oneWay: false, transform: function(value, dir) { return value || null; }},
-        {from: 'formData.bible', to: '$.bible.value',  oneWay: false, transform: function(value, dir) {
-            this.log('bible', value, dir);
-            return value || null;
-        }}
+        // {from: 'formData.bible', to: '$.bible.value',  oneWay: false, transform: function(value, dir) {
+        //     this.log('bible', value, dir);
+        //     return value || null;
+        // }}
     ],
 
     create: function() {
-        this.formData.bible = [this.app.configs.defaultBible];
+        // this.formData.bible = [this.app.configs.defaultBible];
         // this.formData.bible = ['kjv', 'asv', 'niv'];
         this.log(this.formData);
         this.inherited(arguments);

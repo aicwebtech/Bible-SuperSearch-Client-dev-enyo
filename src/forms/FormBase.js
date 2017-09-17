@@ -13,6 +13,7 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+        this.log();
         // this.formData.bible = [this.app.configs.defaultBible];
     },
 
