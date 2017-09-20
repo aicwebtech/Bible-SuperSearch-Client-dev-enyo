@@ -1,5 +1,5 @@
 var kind = require('enyo/kind');
-var Sel = require('enyo/Select');
+var Sel = require('../Select');
 
 module.exports = kind({
     name: 'SingleSelect',

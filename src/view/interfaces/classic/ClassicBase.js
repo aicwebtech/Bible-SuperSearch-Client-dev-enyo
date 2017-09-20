@@ -1,6 +1,7 @@
 var kind = require('enyo/kind');
 var ViewController = require('enyo/ViewController');
 var formView = require('../../../forms/ClassicUserFriendly2');
+var ContentView = require('../../Results');
 
 module.exports = kind({
     name: 'ClassicBase',
@@ -10,7 +11,8 @@ module.exports = kind({
         {components: [
             {name: 'Form', kind: ViewController, resetView: true, view: formView}
             // {name: 'Form', kind: formView}
-        ]}
+        ]},
+        {name: 'Content', kind: ContentView}
     ],
     create: function() {
         this.inherited(arguments);

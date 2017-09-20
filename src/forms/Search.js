@@ -27,11 +27,10 @@ module.exports = kind({
             ]}
         ]}
     ], 
-
     bindings: [
-        {to: '$.search.value', from: 'formData.search', oneWay: false},
-        {to: '$.reference.value', from: 'formData.reference', oneWay: false},
-        {to: '$.bible.value', from: 'formData.bible', oneWay: false, transform: function(value, dir) {
+        {from: 'formData.search', to: '$.search.value', oneWay: false},
+        {from: 'formData.reference', to: '$.reference.value', oneWay: false},
+        {from: 'formData.bible', to: '$.bible.value', oneWay: false, transform: function(value, dir) {
             this.log('bible', value, dir);
             return value || null;
         }}

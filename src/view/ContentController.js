@@ -1,3 +1,4 @@
+// This is specific to twentytwenty and needs to be moved
 var kind = require('enyo/kind');
 var ViewController = require('enyo/ViewController');
 var ContentView = require('./Content');

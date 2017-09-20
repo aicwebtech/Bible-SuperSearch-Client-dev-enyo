@@ -2,7 +2,7 @@
 
 /* Body of form */
 
-.classic_form {
+.biblesupersearch_classic_form {
     margin-left:auto;
     margin-right:auto; 
     padding:5px; 
@@ -11,9 +11,12 @@
 }
 
 /* Title - appears at TOP of page, ie Bible SuperSearch */
-.classic_title {
+.biblesupersearch_classic_title {
     font-size:18.0pt; 
-    color:darkorange; 
-    text-align:center;
+    color: darkorange; 
+    text-align: center;
 }
 
+.biblesupersearch_center_element {
+    text-align: center;
+}

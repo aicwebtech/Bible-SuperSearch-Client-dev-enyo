@@ -1,3 +1,4 @@
+// This renders individual passages
 var kind = require('enyo/kind');
 
 module.exports = kind({
