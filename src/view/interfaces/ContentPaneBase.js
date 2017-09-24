@@ -5,9 +5,10 @@
 var kind = require('enyo/kind');
 var FormController = require('./FormController');
 var GridView = require('../results/GridView');
+var FormatButtons = require('./FormatButtonsBase');
 
 var forms = {
-    // populate forms in child kind
+    // populate forms in child kinds
 };
 
 module.exports = kind({
@@ -15,6 +16,7 @@ module.exports = kind({
     classes: 'biblesupersearch_content',
     forms: forms,
     displayFormOnCreate: false,
+    formatButtonsView: FormatButtons,
 
     published: {
         formView: null // This is a string representing a kind reference in this.forms
@@ -61,6 +63,11 @@ module.exports = kind({
             alert(inEvent.results.errors.join('<br><br>'));
             return;
         }
+
+        this.$.ResultsContainer.createComponent({
+            kind: this.formatButtonsView,
+            name: 'FormatButtons'
+        });
 
         inEvent.results.forEach(function(passage) {
             this.$.ResultsContainer.createComponent({

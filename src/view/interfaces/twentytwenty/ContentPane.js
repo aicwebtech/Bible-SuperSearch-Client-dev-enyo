@@ -4,6 +4,7 @@ var Advanced = require('../../../forms/Advanced');
 var Search = require('../../../forms/Search');
 var Passage = require('../../../forms/Passage');
 var ContentBase = require('../ContentPaneBase');
+var FormatButtons = require('./FormatButtons');
 
 var forms = {
     Simple: Simple,
@@ -17,6 +18,7 @@ module.exports = kind({
     kind: ContentBase,
     classes: 'biblesupersearch_content',
     forms: forms,
+    formatButtonsView: FormatButtons,
 
     create: function() {
         this.inherited(arguments);

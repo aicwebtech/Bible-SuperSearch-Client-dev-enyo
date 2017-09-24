@@ -2,6 +2,7 @@ var kind = require('enyo/kind');
 var Advanced = require('../../../forms/ClassicAdvanced');
 var Form = require('../../../forms/ClassicUserFriendly2');
 var ContentBase = require('../ContentPaneBase');
+var FormatButtons = require('./FormatButtons');
 
 var forms = {
     Form: Form,
@@ -12,6 +13,7 @@ module.exports = kind({
     name: 'Content',
     kind: ContentBase,
     classes: 'biblesupersearch_content',
+    formatButtonsView: FormatButtons,
     forms: forms,
 
     create: function() {
