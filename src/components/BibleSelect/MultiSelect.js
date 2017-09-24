@@ -8,6 +8,7 @@ module.exports = kind({
     parallelLimit: 6,   // Maximum number of parallel Bibles that can be displayed
     parallelStart: 1,   // Number of parallel Bibles to display initially
     selectorWidth: 0,   // Pixels, 0 means automatic
+    selectorClasses: '',
 
     components: [
         {name: 'Container', tag: 'span'},
@@ -33,13 +34,15 @@ module.exports = kind({
     _addSelectorHelper: function() {
         this.parallelNumber ++;
         var width = (this.selectorWidth) ? this.selectorWidth : 0;
+        var classes = (this.selectorClasses && typeof this.selectorClasses == 'string') ? this.selectorClasses : '';
+        var style = '';
         
         if(this.parallelNumber >= this.parallelLimit) {
             this.$.Add.set('showing', false);
         }
 
-        if(this.selectorWidth != 0) {
-            style += 'width:' + this.selectorWidth.toString() + ';';
+        if(width != 0) {
+            style += 'width:' + width.toString() + 'px;';
         }
 
         if(this.parallelNumber <= this.parallelLimit) {        
@@ -48,7 +51,7 @@ module.exports = kind({
                 name: 'Select_' + this.parallelNumber,
                 parallelNumber: this.parallelNumber,
                 onchange: 'selectorChanged',
-                classes: 'biblesupersearch_bible_selector_multi',
+                classes: 'biblesupersearch_bible_selector_multi ' + classes,
                 width: width,
                 // value: (this.parallelNumber == 1) ? this.app.configs.defaultBible : null,
                 owner: this

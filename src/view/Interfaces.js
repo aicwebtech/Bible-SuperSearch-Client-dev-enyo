@@ -2,7 +2,5 @@
 module.exports = {
     'TwentyTwenty': require('./interfaces/twentytwenty/TwentyTwenty'),
     'Classic': require('./interfaces/classic/ClassicBase'),
-    'ClassicUserFriendly2': require('./interfaces/classic/UserFriendly2'),
-    'Swapper': require('./Swapper'),
-    'Random': require('./SettingsView')
+    'ClassicUserFriendly2': require('./interfaces/classic/UserFriendly2')
 };

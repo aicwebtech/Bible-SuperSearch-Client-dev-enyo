@@ -49,7 +49,7 @@ module.exports = kind({
     },
     handleResponse: function(inSender, inResponse) {
         //this.showResults(inResponse.results);
-        Signal.send('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: inResponse.results});
+        // Signal.send('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: inResponse.results});
         this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: inResponse.results});
     },
     handleError: function(inSender, inResponse) {
@@ -57,12 +57,12 @@ module.exports = kind({
 
         if(response.error_level == 5) {
             this.$.Container.setContent('An error has occurred');
-            Signal.send('onFormResponseError', {formData: this._formDataAsSubmitted});
+            // Signal.send('onFormResponseError', {formData: this._formDataAsSubmitted});
             this.bubble('onFormResponseError', {formData: this._formDataAsSubmitted});
         }
         else {
             this.log(response.results);
-            Signal.send('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: response.results});
+            // Signal.send('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: response.results});
             this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: response.results});
         }
     },

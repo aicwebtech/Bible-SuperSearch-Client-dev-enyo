@@ -1,5 +1,5 @@
 var kind = require('enyo/kind');
-var RandomVerse = require('./widgets/RandomVerse');
+var RandomVerse = require('../../widgets/RandomVerse');
 
 module.exports = kind({
     name: 'SettingsView',

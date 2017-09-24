@@ -52,7 +52,8 @@ div.biblesupersearch_content {
 }
 
 .biblesupersearch_bible_selector_multi {
-    margin-right: 5px;
+    margin-right: 2px;
+    margin-left:  2px;
 }
 
 .biblesupersearch_center_element {

@@ -4,6 +4,7 @@ var Button = require('enyo/Button');
 var TopMenu = require('./TopMenu');
 var Middle = require('./Middle');
 var FittableRows = require('layout/FittableRows');
+var InterfaceBase = require('../InterfaceBase');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -13,13 +14,13 @@ var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 module.exports = kind({
     name: "MainView",
     //kind: FittableRows,
+    kind: InterfaceBase,
     fit: true,
     classes: 'biblesupersearch_container',
     handlers: [
         {'onTapMenu': 'tapMenu'}
     ],
     components: [
-        //{content: 'bob'},
         {name: 'TopMenu', kind: TopMenu},
         {name: 'Middle', kind: Middle, fit: true},
         {kind: Signal, onSignalBibleSuperSearch: 'handleBssSignal'}

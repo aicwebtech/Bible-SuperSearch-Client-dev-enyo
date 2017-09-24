@@ -1,3 +1,5 @@
+// This will become the renderer for grid-style rendering
+
 // This renders individual passages
 var kind = require('enyo/kind');
 
@@ -5,6 +7,7 @@ module.exports = kind({
     name: 'ResultsView',
     passageData: {},
     formData: {},
+    bibles: [],
     bibleCount: 0,
     tag: 'table',
 
@@ -24,20 +27,31 @@ module.exports = kind({
     //renderResults: function() {
     create: function() {
         this.inherited(arguments);
+        this.bibles = [];
         // this.log(this.formData);
         if(!Array.isArray(this.formData.bible)) {
             this.formData.bible = JSON.parse(this.formData.bible);
         }
         
-        this.bibleCount = this.formData.bible.length;
-        //this.log(this.passageData);
-        //this.log(this.formData);
+        for(i in this.formData.bible) {
+            var module = this.formData.bible[i];
+
+            if(typeof this.app.statics.bibles[module] == 'undefined') {
+                continue;
+            }
+
+            this.bibles.push(module);
+        }
+
+        // this.log(this.bibles);
+        this.bibleCount = this.bibles.length;
+        var multiBibles = (this.bibleCount > 1) ? true : false;
         this.$.Container.destroyClientControls();
+        
         var pd = this.passageData;
         // this.log(pd.book_name + ' ' + pd.chapter_verse);
         //this.bibleCount = Object.keys(pd.verses).length;
-        var multiBibles = (this.bibleCount > 1) ? true : false;
-        //this.log('par', multiBibles);
+        // this.log('multibibles', multiBibles);
 
         if(pd.single_verse && multiBibles) {
             this.createSingleParallel();
@@ -65,8 +79,8 @@ module.exports = kind({
         for(chapter in pd.verse_index) {
             pd.verse_index[chapter].forEach(function(verse) {
                 //for(module in pd.verses) {
-                for(i in this.formData.bible) {
-                    var module = this.formData.bible[i];
+                for(i in this.bibles) {
+                    var module = this.bibles[i];
                     var content = '';
 
                     if(pd.verses[module] && pd.verses[module][chapter] && pd.verses[module][chapter][verse]) {
@@ -107,8 +121,8 @@ module.exports = kind({
 
         for(chapter in pd.verse_index) {
             pd.verse_index[chapter].forEach(function(verse) {
-                for(i in this.formData.bible) {
-                    var module = this.formData.bible[i];
+                for(i in this.bibles) {
+                    var module = this.bibles[i];
                     var content = '';
 
                     if(pd.verses[module] && pd.verses[module][chapter]) {
@@ -127,8 +141,8 @@ module.exports = kind({
         }
 
         if(haveText) {            
-            for(i in this.formData.bible) {
-                var module = this.formData.bible[i];
+            for(i in this.bibles) {
+                var module = this.bibles[i];
                 // var bible_info = AICWS.BibleSuperSearch.Bibles[module];
                 var bible_info = this.app.statics.bibles[module];
                 
@@ -164,8 +178,8 @@ module.exports = kind({
             pd.verse_index[chapter].forEach(function(verse) {
                 var components = [];
 
-                for(i in this.formData.bible) {
-                    var module = this.formData.bible[i];
+                for(i in this.bibles) {
+                    var module = this.bibles[i];
                     var content = '';
 
                     if(pd.verses[module][chapter][verse]) {
@@ -206,9 +220,14 @@ module.exports = kind({
         });
 
 
-        for(i in this.formData.bible) {
-            var module = this.formData.bible[i];
+        for(i in this.bibles) {
+            var module = this.bibles[i];
             // var bible_info = AICWS.BibleSuperSearch.Bibles[module];
+
+            if(typeof this.app.statics.bibles[module] == 'undefined') {
+                continue;
+            }
+            
             var bible_info = this.app.statics.bibles[module];
             this.log(this.app.statics.bibles);
 
@@ -222,9 +241,13 @@ module.exports = kind({
             pd.verse_index[chapter].forEach(function(verse) {
                 var components = [];
 
-                for(i in this.formData.bible) {
-                    var module = this.formData.bible[i];
+                for(i in this.bibles) {
+                    var module = this.bibles[i];
                     var content = '';
+
+                    if(typeof this.app.statics.bibles[module] == 'undefined') {
+                        continue;
+                    }
 
                     if(pd.verses[module] && pd.verses[module][chapter] && pd.verses[module][chapter][verse]) {
                         var content = verse + '. ' + pd.verses[module][chapter][verse].text;

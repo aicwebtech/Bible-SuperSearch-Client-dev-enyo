@@ -8,6 +8,5 @@ module.exports = kind({
     formView: formView,
     create: function() {
         this.inherited(arguments);
-        this.log();
     }
 });

@@ -1,6 +1,6 @@
 var kind = require('enyo/kind');
-var ResultsView = require('./ResultsView');
-var Signal = require('../components/Signal');
+var GridView = require('./GridView');
+var Signal = require('../../components/Signal');
 
 module.exports = kind({
     name: 'Results',
@@ -16,7 +16,7 @@ module.exports = kind({
     },
 
     components: [
-        {content: 'formatting buttons'},
+        {content: 'formatting buttons go here'},
         {name: 'ResultsContainer'},
         {kind: Signal, onFormResponseSuccess: 'handleFormResponse', onFormResponseError: 'handleFormError'}
     ],
@@ -38,7 +38,7 @@ module.exports = kind({
 
         inEvent.results.forEach(function(passage) {
             this.$.ResultsContainer.createComponent({
-                kind: ResultsView,
+                kind: GridView,
                 passageData: passage,
                 bibleCount: 1,
                 formData: inEvent.formData,

@@ -9,7 +9,6 @@ module.exports = kind({
         this.inherited(arguments);
 
         if(typeof this.setSelectedByValue == 'undefined') {
-            this.log('what on earth?');
             this.setSelectedByValue = function(value) {
                 var value = value || 0
                     controls = this.getClientControls();
@@ -17,9 +16,12 @@ module.exports = kind({
                 for(i in controls) {
                     if(controls[i].get('value') == value) {
                         this.setSelected(i);
+                        return true;
                         break;
                     }
                 }
+
+                return false;
             };
         }
     },

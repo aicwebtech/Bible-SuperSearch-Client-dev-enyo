@@ -1,7 +1,7 @@
 // This is specific to twentytwenty and needs to be moved
 var kind = require('enyo/kind');
 var ViewController = require('enyo/ViewController');
-var ContentView = require('./Content');
+var ContentView = require('./ContentPane');
 var SettingsView = require('./SettingsView');
 var Signal = require('enyo/Signals');
 var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;

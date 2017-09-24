@@ -5,6 +5,7 @@ module.exports = kind({
     name: 'Shortcuts',
     kind: Sel,
     noSelectLabel: 'Entire Bible',
+    selectedPassagesLabel: 'Passages Selected Above',
 
     create: function() {
         this.inherited(arguments);
@@ -16,6 +17,11 @@ module.exports = kind({
         this.createComponent({
             content: this.noSelectLabel,
             value: '0'
+        });        
+
+        this.createComponent({
+            content: this.selectedPassagesLabel,
+            value: '1'
         });
 
         for(i in shortcuts) {

@@ -1,25 +1,23 @@
+// ContentPane displays a form with results in a 'standard' manner
+// That is, a form on top, and if applicable, results rendered below
+// WARNING: This Base kind is NOT intended to be used directly, and should be extended
+
 var kind = require('enyo/kind');
 var FormController = require('./FormController');
-var Simple = require('../forms/Simple');
-var Advanced = require('../forms/Advanced');
-var Search = require('../forms/Search');
-var Passage = require('../forms/Passage');
-var ResultsView = require('./ResultsView');
+var GridView = require('../results/GridView');
 
 var forms = {
-    Simple: Simple,
-    Search: Search,
-    Advanced: Advanced,
-    Passage: Passage
+    // populate forms in child kind
 };
 
 module.exports = kind({
-    name: 'Content',
+    name: 'ContentPaneBase',
     classes: 'biblesupersearch_content',
     forms: forms,
+    displayFormOnCreate: false,
 
     published: {
-        formView: null
+        formView: null // This is a string representing a kind reference in this.forms
     },
 
     handlers: {
@@ -37,7 +35,10 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
-        // this.formViewProcess(this.formView);
+        
+        if(this.displayFormOnCreate) {
+            this.formViewProcess(this.formView);
+        }
     },
     formViewProcess: function(formView) {
         this.log('formView', formView);
@@ -63,7 +64,7 @@ module.exports = kind({
 
         inEvent.results.forEach(function(passage) {
             this.$.ResultsContainer.createComponent({
-                kind: ResultsView,
+                kind: GridView,
                 passageData: passage,
                 bibleCount: 1,
                 formData: inEvent.formData,

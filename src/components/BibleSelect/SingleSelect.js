@@ -38,7 +38,7 @@ module.exports = kind({
         }
 
         if(this.width && this.width != 0) {
-            this.style = 'width:' + this.width.toString();
+            this.style = 'width:' + this.width.toString() + 'px';
         }
 
         this.resetValue();
@@ -51,7 +51,7 @@ module.exports = kind({
         window.select = this;
 
         if(this.parallelNumber == 0 || this.parallelNumber == 1) {
-            this.log('setting myself to default');
+            // this.log('setting myself to default');
             this.setSelectedValue(this.app.configs.defaultBible);
             // this.set('value', this.app.configs.defaultBible);
         }
