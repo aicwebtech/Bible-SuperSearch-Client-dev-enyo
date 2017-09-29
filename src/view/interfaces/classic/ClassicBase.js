@@ -9,8 +9,8 @@ module.exports = kind({
     name: 'ClassicBase',
     kind: InterfaceBase,
     formView: formView,
+    classes: 'interface_classic',
     components: [
-        {content: 'classic base'}
         /*{components: [
             {name: 'Form', kind: ViewController, resetView: true, view: formView}
             // {name: 'Form', kind: formView}

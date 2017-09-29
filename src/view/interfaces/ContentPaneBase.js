@@ -5,6 +5,7 @@
 var kind = require('enyo/kind');
 var FormController = require('./FormController');
 var GridView = require('../results/GridView');
+var ErrorView = require('../results/ErrorView');
 var FormatButtons = require('./FormatButtonsBase');
 
 var forms = {
@@ -32,7 +33,8 @@ module.exports = kind({
         { components: [
             {name: 'FormController', kind: FormController, view: null},
         ]},
-        {name: 'ResultsContainer'}
+        {name: 'ResultsContainer'},
+        {name: 'ErrorsContainer', showing: false, kind: ErrorView}
     ],
 
     create: function() {
@@ -54,14 +56,12 @@ module.exports = kind({
         this.$.FormController && this.$.FormController.render();
     },
     handleFormResponse: function(inSender, inEvent) {
-        this.log(inEvent);
-        //return;
+        this.$.ErrorsContainer.set('showing', false);
         this.$.ResultsContainer.destroyComponents();
         //this.log(results);
 
         if(inEvent.results.error_level == 4) {
-            alert(inEvent.results.errors.join('<br><br>'));
-            return;
+            return this.handleFormError(inSender, inEvent);
         }
 
         this.$.ResultsContainer.createComponent({
@@ -81,6 +81,7 @@ module.exports = kind({
         //this.$.ResultsContainer.setShowing(true);
         //this.$.Errors.setShowing(false);
         this.$.ResultsContainer.render();
+        this.$.ResultsContainer.set('showing', true);
 
 
 /*        this.$.ResultsContainer.set('formData', inEvent.formData);
@@ -88,6 +89,15 @@ module.exports = kind({
         this.$.ResultsContainer.renderResults();*/
     },
     handleFormError: function(inSender, inEvent) {
+        this.log('error');
+        this.log(inEvent);
 
+        this.$.ResultsContainer.set('showing', false);
+        
+        this.$.ErrorsContainer.set('content', 
+            inEvent.response.errors.join('<br><br>')
+        );
+        
+        this.$.ErrorsContainer.set('showing', true);
     }
 });

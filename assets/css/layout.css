@@ -60,3 +60,12 @@ div.biblesupersearch_content {
     margin-right: auto;
     margin-left: auto;
 }
+
+.biblesupersearch_error_view {
+    padding: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    min-width: 100px;
+    max-width: 600px;
+}

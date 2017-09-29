@@ -55,13 +55,11 @@ module.exports = kind({
     handleError: function(inSender, inResponse) {
         var response = JSON.parse(inSender.xhrResponse.body);
 
-        if(response.error_level == 5) {
-            this.$.Container.setContent('An error has occurred');
+        if(response.error_level == 4) {
             // Signal.send('onFormResponseError', {formData: this._formDataAsSubmitted});
-            this.bubble('onFormResponseError', {formData: this._formDataAsSubmitted});
+            this.bubble('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
         }
         else {
-            this.log(response.results);
             // Signal.send('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: response.results});
             this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: response.results});
         }

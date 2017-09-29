@@ -44,3 +44,7 @@
 .biblesupersearch_classic_form select.biblesupersearch_bible_selector_multi {
     
 }
+
+.biblesupersearch_container.interface_classic .biblesupersearch_error_view {
+    max-width: 800px;
+}

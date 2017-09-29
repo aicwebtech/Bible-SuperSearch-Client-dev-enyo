@@ -16,7 +16,7 @@ module.exports = kind({
     //kind: FittableRows,
     kind: InterfaceBase,
     fit: true,
-    classes: 'biblesupersearch_container',
+    classes: 'interface_twentytwenty',
     handlers: [
         {'onTapMenu': 'tapMenu'}
     ],
