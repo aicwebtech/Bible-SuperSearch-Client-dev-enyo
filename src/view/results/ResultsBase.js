@@ -3,11 +3,12 @@ var GridView = require('./GridView');
 var Signal = require('../../components/Signal');
 
 module.exports = kind({
-    name: 'Results',
-    classes: 'biblesupersearch_content',
+    name: 'ResultsBase',
+    classes: '',
 
     published: {
-        formView: null
+        resultsData: null,
+        formData: null
     },
 
     handlers: {
@@ -25,18 +26,20 @@ module.exports = kind({
         this.inherited(arguments);
         // this.formViewProcess(this.formView);
     },
-    handleFormResponse: function(inSender, inEvent) {
+    formDataChanged: function(was, is) {
+
+    },
+    resultsDataChanged: function(was, is) {
+
+    },
+    renderResults: function() {
         this.log(inEvent);
         //return;
         this.$.ResultsContainer.destroyComponents();
         //this.log(results);
+        this.renderHeader();
 
-        if(inEvent.results.error_level == 4) {
-            alert(inEvent.results.errors.join('<br><br>'));
-            return;
-        }
-
-        inEvent.results.forEach(function(passage) {
+        is.forEach(function(passage) {
             this.$.ResultsContainer.createComponent({
                 kind: GridView,
                 passageData: passage,
@@ -45,16 +48,30 @@ module.exports = kind({
             });
         }, this);
 
+        this.renderFooter();
         //this.$.ResultsContainer.setShowing(true);
-        //this.$.Errors.setShowing(false);
         this.$.ResultsContainer.render();
-
-
-/*        this.$.ResultsContainer.set('formData', inEvent.formData);
-        this.$.ResultsContainer.set('passageData', inEvent.results);
-        this.$.ResultsContainer.renderResults();*/
     },
-    handleFormError: function(inSender, inEvent) {
+    renderPassage: function(passage) {
 
+    },
+
+    renderHeader: function() {
+
+    },
+    renderFooter: function() {
+
+    },
+    processText: function(verse) {
+        return verse.text;
+    },
+    processPassageReference: function(passage) {
+
+    },
+    processVerseReference: function(verse) {
+
+    },
+    processVerseVerse: function(verse) {
+        return verse.verse;
     }
 });

@@ -1,7 +1,6 @@
 var kind = require('enyo/kind');
 var ViewController = require('enyo/ViewController');
 var formView = require('../../../forms/ClassicUserFriendly2');
-var ContentView = require('../../results/Results');
 var InterfaceBase = require('../InterfaceBase');
 var ContentPane = require('./ContentPane');
 
