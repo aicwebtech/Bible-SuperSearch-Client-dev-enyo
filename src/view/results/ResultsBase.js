@@ -5,6 +5,9 @@ var Signal = require('../../components/Signal');
 module.exports = kind({
     name: 'ResultsBase',
     classes: '',
+    bibles: [],
+    multiBibles: false,
+    bibleCount: 1,
 
     published: {
         resultsData: null,
@@ -17,9 +20,9 @@ module.exports = kind({
     },
 
     components: [
-        {content: 'formatting buttons go here'},
-        {name: 'ResultsContainer'},
-        {kind: Signal, onFormResponseSuccess: 'handleFormResponse', onFormResponseError: 'handleFormError'}
+        // {content: 'formatting buttons go here'},
+        // {name: 'ResultsContainer'},
+        {kind: Signal, onFormResponseSuccess: 'handleFormResponse', onFormResponseError: 'handleFormError', isChrome: true}
     ],
 
     create: function() {
@@ -27,41 +30,70 @@ module.exports = kind({
         // this.formViewProcess(this.formView);
     },
     formDataChanged: function(was, is) {
+        this.bibles = [];
 
+        for(i in this.formData.bible) {
+            var module = this.formData.bible[i];
+
+            if(typeof this.app.statics.bibles[module] == 'undefined') {
+                continue;
+            }
+
+            this.bibles.push(module);
+        }
+
+        // this.log(this.bibles);
+        this.bibleCount = this.bibles.length;
+        this.multiBibles = (this.bibleCount > 1) ? true : false;
     },
     resultsDataChanged: function(was, is) {
 
     },
     renderResults: function() {
-        this.log(inEvent);
-        //return;
-        this.$.ResultsContainer.destroyComponents();
+        // this.$.ResultsContainer.destroyComponents();
+        this.destroyClientControls();
         //this.log(results);
         this.renderHeader();
 
-        is.forEach(function(passage) {
-            this.$.ResultsContainer.createComponent({
-                kind: GridView,
-                passageData: passage,
-                bibleCount: 1,
-                formData: inEvent.formData,
-            });
+        var resultsData = this.get('resultsData'),
+            formData = this.get('formData');
+
+        if(!Array.isArray(resultsData)) {
+            this.log('Error: results are not an array');
+            return;
+        }
+
+        resultsData.forEach(function(passage) {
+            this.renderPassage(passage);
         }, this);
 
         this.renderFooter();
-        //this.$.ResultsContainer.setShowing(true);
-        this.$.ResultsContainer.render();
+        // this.$.ResultsContainer.render();
+        this.render();
     },
-    renderPassage: function(passage) {
-
+    renderPassage: function(passage) {        
+        if(passage.single_verse && this.multiBibles) {
+            this.renderSingleVerseParallelBible(passage);
+        }
+        else if(passage.single_verse && !this.multiBibles) {
+            this.renderSingleVerseSingleBible(passage);
+        }
+        else if(!passage.single_verse && !this.multiBibles) {
+            this.renderPassageSingleBible(passage);
+        }
+        else {
+            this.renderPassageParallelBible(passage);
+        }
     },
 
-    renderHeader: function() {
+    renderSingleVerseSingleBible: function(passage) {},     // Must implement on child kind
+    renderSingleVerseParallelBible: function(passage) {},   // Must implement on child kind
+    renderPassageParallelBible: function(passage) {},       // Must implement on child kind
+    renderPassageSingleBible: function(passage) {},        // Must implement on child kind
 
-    },
-    renderFooter: function() {
-
-    },
+    renderHeader: function() {}, // Called before results are rendered, not required
+    renderFooter: function() {}, // Called after results are rendered, not required
+    
     processText: function(verse) {
         return verse.text;
     },
@@ -73,5 +105,11 @@ module.exports = kind({
     },
     processVerseVerse: function(verse) {
         return verse.verse;
+    },
+    _createContainer: function() {
+        return this.createComponent({
+            tag: 'table',
+            classes: 'biblesupersearch_render_table'
+        });
     }
 });

@@ -28,14 +28,14 @@ module.exports = kind({
         });
 
         this.beforeSubmitForm(formData);
-        this._formDataAsSubmitted = utils.clone(formData);
+        this.processDefaults(formData);
         this.log('formData', formData);
         ajax.go(formData); // for GET
         ajax.response(this, 'handleResponse');
         ajax.error(this, 'handleError');
     },
-    // Override to add defaults to formData, ect
-    beforeSubmitForm: function(formData) {
+    
+    processDefaults: function(formData) {
         this.log(this.app.configs);
         var defaultBible = this.app.configs.defaultBible;
         formData.bible = (formData.bible && formData.bible != '0' && formData.bible != [] && formData.bible.length != 0) ? formData.bible : [defaultBible];
@@ -44,7 +44,13 @@ module.exports = kind({
             formData.bible = [formData.bible];
         }
 
+        this._formDataAsSubmitted = utils.clone(formData);
         formData.bible = JSON.stringify(formData.bible);
+        return formData;
+    },
+
+    // Override to add defaults to formData, ect
+    beforeSubmitForm: function(formData) {
         return formData;
     },
     handleResponse: function(inSender, inResponse) {

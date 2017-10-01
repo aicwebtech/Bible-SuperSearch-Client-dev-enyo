@@ -1,4 +1,4 @@
-// This will become the renderer for grid-style rendering
+// Obsolete test code
 
 // This renders individual passages
 var kind = require('enyo/kind');

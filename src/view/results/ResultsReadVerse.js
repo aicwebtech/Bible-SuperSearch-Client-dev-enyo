@@ -3,5 +3,7 @@ var ResultsBase = require('./ResultsReadBase');
 
 module.exports = kind({
     name: 'ResultsReadVerse',
-    kind: ResultsBase
+    kind: ResultsBase,
+
+    
 });

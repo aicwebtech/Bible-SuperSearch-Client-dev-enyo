@@ -69,3 +69,25 @@ div.biblesupersearch_content {
     min-width: 100px;
     max-width: 600px;
 }
+
+table.biblesupersearch_render_table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.biblesupersearch_copy_pane {
+
+}
+
+.biblesupersearch_copy_pane button {
+    display: block;
+    max-width: 100px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.biblesupersearch_copy_pane textarea {
+    width: 98%;
+    min-height: 100px;
+    max-height: 300px;
+}

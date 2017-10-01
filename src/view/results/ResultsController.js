@@ -19,5 +19,25 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+    },
+    renderResults: function() {
+        var paragraph = this.app.UserConfig.get('paragraph'),
+            copy = this.app.UserConfig.get('copy'),
+            view = ReadVerse;
+
+        if(paragraph && copy) {
+            view = CopyParagraph;
+        }
+        else if(copy) {
+            view = CopyVerse;
+        }
+        else if(paragraph) {
+            view = ReadParagraph;
+        }
+
+        this.set('view', view);
+        this.view.set('formData', this.get('formData'));
+        this.view.set('resultsData', this.get('resultsData'));
+        this.view.renderResults();
     }
 });

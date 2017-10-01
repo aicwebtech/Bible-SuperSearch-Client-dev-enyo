@@ -71,6 +71,7 @@ module.exports = kind({
 
         this.$.ResultsController.set('resultsData', inEvent.results);
         this.$.ResultsController.set('formData', inEvent.formData);
+        this.$.ResultsController.renderResults();
         //  ==>> this.$.ResultsController.view.render(); // ??
 
         // this.$.ResultsContainer.destroyComponents();

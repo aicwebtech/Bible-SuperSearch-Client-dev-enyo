@@ -9,6 +9,7 @@ var systemConfig = require('./config/system');
 var utils = require('enyo/utils');
 var DefaultInterface = require('./view/interfaces/twentytwenty/TwentyTwenty');
 var Interfaces = require('./view/Interfaces');
+var UserConfigController = require('./data/controllers/UserConfig');
 
 //var MainView = require('./view/Content');
 
@@ -32,6 +33,10 @@ var App = Application.kind({
     maximumBiblesDisplayed: 8, // This holds the absolute maximum number of parallel bibles that can be possibly displayed
     bibleDisplayLimit: 8, // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
     resetView: true,
+
+    components: [
+        {name: 'UserConfig', kind: UserConfigController, publish: true}
+    ],
 
     create: function() {
         this.inherited(arguments);
@@ -74,12 +79,16 @@ var App = Application.kind({
         // this.render();
         this.log(this.configs);
         var view = null;
+        this.UserConfig.newModel(0);
+        this.log('USER', this.UserConfig.model);
+        this.log(this.UserConfig.get('something'));
+        this.log(this.UserConfig.get('mmm'));
 
         if(this.configs.interface) {
             this.log('Interface ', this.configs.interface);
 
             if(Interfaces[this.configs.interface]) {
-                this.log('secondary view found');
+                // this.log('secondary view found');
                 // this.set('view', Interfaces[this.configs.interface]);
                 view = Interfaces[this.configs.interface];
             }
