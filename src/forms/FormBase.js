@@ -46,6 +46,7 @@ module.exports = kind({
 
         this._formDataAsSubmitted = utils.clone(formData);
         formData.bible = JSON.stringify(formData.bible);
+        formData.highlight = true;
         return formData;
     },
 
@@ -55,19 +56,16 @@ module.exports = kind({
     },
     handleResponse: function(inSender, inResponse) {
         //this.showResults(inResponse.results);
-        // Signal.send('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: inResponse.results});
-        this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: inResponse.results});
+        this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: inResponse});
     },
     handleError: function(inSender, inResponse) {
         var response = JSON.parse(inSender.xhrResponse.body);
 
         if(response.error_level == 4) {
-            // Signal.send('onFormResponseError', {formData: this._formDataAsSubmitted});
             this.bubble('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
         }
         else {
-            // Signal.send('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: response.results});
-            this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: response.results});
+            this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: response});
         }
     },
     submitRandom: function(inSender, inEvent) {

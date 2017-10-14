@@ -58,12 +58,12 @@ module.exports = kind({
         var resultsData = this.get('resultsData'),
             formData = this.get('formData');
 
-        if(!Array.isArray(resultsData)) {
+        if(!Array.isArray(resultsData.results)) {
             this.log('Error: results are not an array');
             return;
         }
 
-        resultsData.forEach(function(passage) {
+        resultsData.results.forEach(function(passage) {
             this.renderPassage(passage);
         }, this);
 
@@ -86,10 +86,10 @@ module.exports = kind({
         }
     },
 
-    renderSingleVerseSingleBible: function(passage) {},     // Must implement on child kind
-    renderSingleVerseParallelBible: function(passage) {},   // Must implement on child kind
-    renderPassageParallelBible: function(passage) {},       // Must implement on child kind
-    renderPassageSingleBible: function(passage) {},        // Must implement on child kind
+    renderSingleVerseSingleBible: function(passage) {},     // Must implement on child kind!
+    renderSingleVerseParallelBible: function(passage) {},   // Must implement on child kind!
+    renderPassageParallelBible: function(passage) {},       // Must implement on child kind!
+    renderPassageSingleBible: function(passage) {},         // Must implement on child kind!
 
     renderHeader: function() {}, // Called before results are rendered, not required
     renderFooter: function() {}, // Called after results are rendered, not required
@@ -105,6 +105,19 @@ module.exports = kind({
     },
     processVerseVerse: function(verse) {
         return verse.verse;
+    },
+    processSingleVerseContent: function(passage, verse) {
+        // passage.book_name + ' ' + passage.chapter_verse + '  ' + verse.text;
+    },   
+    processPassageVerseContent: function(passage, verse) {
+
+    },
+    isNewParagraph: function(verse) {
+        if(verse.italics && verse.italics.indexOf('#') === 0) {
+            return true; // Ugly 3.0 format, should be changed in 4.0
+        }
+
+        return false;
     },
     _createContainer: function() {
         return this.createComponent({

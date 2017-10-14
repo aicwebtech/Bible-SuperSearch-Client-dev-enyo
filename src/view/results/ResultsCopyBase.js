@@ -50,7 +50,7 @@ module.exports = kind({
                     var content = '';
 
                     if(passage.verses[module] && passage.verses[module][chapter] && passage.verses[module][chapter][verse]) {
-                        var content = passage.book_name + ' ' + passage.chapter_verse + '  ' + passage.verses[module][chapter][verse].text + this.newLine;
+                        var content = passage.book_name + ' ' + passage.chapter_verse + '  ' + passage.verses[module][chapter][verse].text + this.newLine + this.newLine;
                         this._appendBibleComponent(content, i);
                     }
                 }
@@ -62,8 +62,7 @@ module.exports = kind({
         
         for(i in this.bibles) {
             this._appendBibleComponent(passage.book_name + ' ' + passage.chapter_verse + this.newLine + this.newLine, i);
-        }        
-
+        }
 
         for(chapter in passage.verse_index) {
             passage.verse_index[chapter].forEach(function(verse) {
