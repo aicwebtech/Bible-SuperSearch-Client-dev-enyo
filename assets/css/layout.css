@@ -94,3 +94,50 @@ table.biblesupersearch_render_table {
     border: 2px inset #adadad;
     overflow-y: auto;
 }
+
+.biblesupersearch_render_table td {
+    vertical-align: top;
+}
+
+.biblesupersearch_render_table sup.ver {
+    width: 20px;
+    /*max-width: 20px;*/
+    /*min-width: 15px;*/
+    text-align: right;
+    display: inline-block;
+    /*vertical-align: top;*/
+    margin-right: 3px;
+    font-size: .80em;
+    float: left;
+}
+
+.biblesupersearch_render_table span.txt {
+    display: inline-block;
+    float: left;
+}
+
+.biblesupersearch_render_table td table {
+    table-layout: fixed;
+    padding: 0;
+    border-spacing: 0 0;
+}
+
+.biblesupersearch_render_table td table td {
+    padding: 0 2px;
+}
+
+.biblesupersearch_render_table td.txt {
+    text-align: justify;
+}
+
+.biblesupersearch_render_table td table td.ver {
+    width: 15px;
+    text-align: right;
+    vertical-align: top;
+    font-size: .70em;
+    font-weight: bold;
+}
+
+.biblesupersearch_render_table td table td.txt {
+
+}

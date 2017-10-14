@@ -4,11 +4,12 @@ var Signal = require('../../components/Signal');
 
 module.exports = kind({
     name: 'ResultsBase',
-    classes: '',
+    classes: 'results',
     bibles: [],
     multiBibles: false,
     bibleCount: 1,
     isParagraphView: false,  // Indicates if render is a parargraph view
+    newLine: '<br />',
 
     published: {
         resultsData: null,
@@ -149,6 +150,7 @@ module.exports = kind({
     _createContainer: function() {
         return this.createComponent({
             tag: 'table',
+            // attributes:{border: 1},
             classes: 'biblesupersearch_render_table'
         });
     }

@@ -111,7 +111,7 @@ module.exports = kind({
             processed += '  ';
 
             if(this.isNewParagraph(verse)) {
-                processed = this.newLine + processed;
+                processed = this.newLine + this.newLine + processed;
             }
         }
         else {

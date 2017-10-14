@@ -12,7 +12,7 @@ module.exports = kind({
     attributes: {
         id: null,
         paragraph: true,
-        copy: true,
+        copy: false,
         something: 'else',
         mmm: 'bacon'
     },
