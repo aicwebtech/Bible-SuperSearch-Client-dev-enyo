@@ -3,5 +3,6 @@ var ResultsBase = require('./ResultsReadBase');
 
 module.exports = kind({
     name: 'ResultsReadParagraph',
-    kind: ResultsBase
+    kind: ResultsBase,
+    isParagraphView: true
 });

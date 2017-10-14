@@ -50,7 +50,8 @@ module.exports = kind({
                     var content = '';
 
                     if(passage.verses[module] && passage.verses[module][chapter] && passage.verses[module][chapter][verse]) {
-                        var content = passage.book_name + ' ' + passage.chapter_verse + '  ' + passage.verses[module][chapter][verse].text + this.newLine + this.newLine;
+                        var content  = this.processSingleVerseContent(passage, passage.verses[module][chapter][verse]);
+                        // var content = passage.book_name + ' ' + passage.chapter_verse + '  ' + passage.verses[module][chapter][verse].text + this.newLine + this.newLine;
                         this._appendBibleComponent(content, i);
                     }
                 }
@@ -74,7 +75,8 @@ module.exports = kind({
                     var content = '';
 
                     if(passage.verses[module] && passage.verses[module][chapter] && passage.verses[module][chapter][verse]) {
-                        var content = verse + '. ' + passage.verses[module][chapter][verse].text + this.newLine;
+                        var content = this.processPassageVerseContent(passage, passage.verses[module][chapter][verse]);
+                        // var content = verse + '. ' + passage.verses[module][chapter][verse].text + this.newLine;
                         this._appendBibleComponent(content, i);
                     }
                 }
@@ -95,5 +97,27 @@ module.exports = kind({
     _appendBibleComponent: function(content, index) {
         var compName = this._getBibleComponentName(index);
         this.container.$[compName].appendText(content);    
-    }
+    },
+    processAssembleVerse: function(reference, verse) {
+        return reference + '  ' + this.processText(verse.text);
+    },
+    processAssembleSingleVerse: function(reference, verse) {
+        return this.processAssembleVerse(reference, verse)  + this.newLine + this.newLine;
+    },
+    processAssemblePassageVerse: function(reference, verse) {
+        var processed = this.processAssembleVerse(reference, verse);
+
+        if(this.isParagraphView) {
+            processed += '  ';
+
+            if(this.isNewParagraph(verse)) {
+                processed = this.newLine + processed;
+            }
+        }
+        else {
+            processed += this.newLine;
+        }
+
+        return processed;
+    },
 });

@@ -8,6 +8,7 @@ module.exports = kind({
     bibles: [],
     multiBibles: false,
     bibleCount: 1,
+    isParagraphView: false,  // Indicates if render is a parargraph view
 
     published: {
         resultsData: null,
@@ -101,18 +102,44 @@ module.exports = kind({
 
     },
     processVerseReference: function(verse) {
-
+        // Is this needed??
     },
     processVerseVerse: function(verse) {
         return verse.verse;
     },
     processSingleVerseContent: function(passage, verse) {
         // passage.book_name + ' ' + passage.chapter_verse + '  ' + verse.text;
-    },   
+        var ref = this.proccessSingleVerseReference(passage, verse);
+        return this.processAssembleSingleVerse(ref, verse);
+    },
+    proccessSingleVerseReference: function(passage, verse) {
+        return passage.book_name + ' ' + passage.chapter_verse;
+    },    
     processPassageVerseContent: function(passage, verse) {
-
+        var ref = this.proccessPassageVerseReference(passage, verse);
+        return this.processAssemblePassageVerse(ref, verse);
+    },
+    proccessPassageVerseReference: function(passage, verse) {
+        return verse.verse;
+    },
+    processAssembleSingleVerse: function(reference, verse) {
+        return this.processAssembleVerse(reference, verse);
+    },
+    processAssemblePassageVerse: function(reference, verse) {
+        return this.processAssembleVerse(reference, verse);
+    },
+    processAssembleVerse: function(reference, verse) {
+        return reference + ' ' + this.processText(verse.text);
+    },
+    // Adds highlighting / strongs / italics / red letter when nessessary
+    processText: function(text) {
+        return text;
     },
     isNewParagraph: function(verse) {
+        if(!this.isParagraphView) {
+            return false;
+        }
+
         if(verse.italics && verse.italics.indexOf('#') === 0) {
             return true; // Ugly 3.0 format, should be changed in 4.0
         }

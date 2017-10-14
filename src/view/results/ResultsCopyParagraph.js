@@ -3,5 +3,6 @@ var ResultsBase = require('./ResultsCopyBase');
 
 module.exports = kind({
     name: 'ResultsCopyParagraph',
-    kind: ResultsBase
+    kind: ResultsBase,
+    isParagraphView: true
 });
