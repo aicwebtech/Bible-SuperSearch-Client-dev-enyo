@@ -2,7 +2,8 @@ var kind = require('enyo/kind');
 var Advanced = require('../../../forms/ClassicAdvanced');
 var Form = require('../../../forms/ClassicUserFriendly2');
 var ContentBase = require('../ContentPaneBase');
-var FormatButtons = require('./FormatButtons');
+// var FormatButtons = require('./FormatButtons');
+var FormatButtons = require('../../../components/FormatButtons/classic/FormatButtonsClassic');
 
 var forms = {
     Form: Form,

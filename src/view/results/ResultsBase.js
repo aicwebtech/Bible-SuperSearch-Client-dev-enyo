@@ -27,6 +27,23 @@ module.exports = kind({
         {kind: Signal, onFormResponseSuccess: 'handleFormResponse', onFormResponseError: 'handleFormError', isChrome: true}
     ],
 
+    // observers: [
+    //     // {method: 'watchRenderable', path: ['app.UserConfig.copy', 'app.UserConfig.paragraph']}
+    //     {method: 'watchRenderable', path: ['app.UserConfig.copy']}
+    // ],
+
+    // // observers not working?  why?
+    // bindings: [
+    //     {from: 'app.UserConfig.copy', to: 'uc.copy', transform: function(value, dir) {
+    //         console.log('the here');
+    //         this.renderResults();
+    //     }},
+    //     {from: 'app.UserConfig.paragraph', to: 'uc.paragraph', transform: function(value, dir) {
+    //         console.log('the par');
+    //         this.renderResults();
+    //     }}
+    // ],
+
     create: function() {
         this.inherited(arguments);
         // this.formViewProcess(this.formView);
@@ -52,18 +69,21 @@ module.exports = kind({
 
     },
     renderResults: function() {
-        // this.$.ResultsContainer.destroyComponents();
         this.destroyClientControls();
-        //this.log(results);
-        this.renderHeader();
 
         var resultsData = this.get('resultsData'),
             formData = this.get('formData');
+
+        if(!resultsData) {
+            return;
+        }
 
         if(!Array.isArray(resultsData.results)) {
             this.log('Error: results are not an array');
             return;
         }
+        
+        this.renderHeader();
 
         resultsData.results.forEach(function(passage) {
             this.renderPassage(passage);
@@ -153,5 +173,14 @@ module.exports = kind({
             // attributes:{border: 1},
             classes: 'biblesupersearch_render_table'
         });
+    },
+
+    watchRenderable: function(pre, cur, prop) {
+        this.log(pre, cur, prop);
+        this.renderResults();
+    },
+    watchFormatable: function(pre, cur, prop) {
+
     }
+
 });

@@ -3,6 +3,7 @@ var ViewController = require('enyo/ViewController');
 var formView = require('../../../forms/ClassicUserFriendly2');
 var InterfaceBase = require('../InterfaceBase');
 var ContentPane = require('./ContentPane');
+var FormatButtons = require('../../../components/FormatButtons/classic/FormatButtonsClassic');
 
 module.exports = kind({
     name: 'ClassicBase',
@@ -25,7 +26,12 @@ module.exports = kind({
             kind: ContentPane,
             formView: this.formView,
             displayFormOnCreate: true
-        });
+        });        
+
+        // this.createComponent({
+        //     name: 'Format',
+        //     kind: FormatButtons
+        // });
 
         // this.$.Form.render();
     },    

@@ -7,7 +7,8 @@ var FormController = require('./FormController');
 var GridView = require('../results/GridView');
 var ErrorView = require('../results/ErrorView');
 var ResultsController = require('../results/ResultsController');
-var FormatButtons = require('./FormatButtonsBase');
+// var FormatButtons = require('./FormatButtonsBase');
+
 
 var forms = {
     // populate forms in child kinds
@@ -18,7 +19,8 @@ module.exports = kind({
     classes: 'biblesupersearch_content',
     forms: forms,
     displayFormOnCreate: false,
-    formatButtonsView: FormatButtons,
+    // formatButtonsView: FormatButtons,
+    formatButtonsView: null,
 
     published: {
         formView: null // This is a string representing a kind reference in this.forms
@@ -30,9 +32,11 @@ module.exports = kind({
     },
 
     components: [
-        {content: 'content view'},
         { components: [
             {name: 'FormController', kind: FormController, view: null},
+        ]},        
+        { name: 'FormatButtonContainer', showing: false, components: [
+            {name: 'FormatButtonController', kind: FormController, view: null},
         ]},        
         { name: 'ResultsContainer', components: [
             {name: 'ResultsController', kind: ResultsController, view: null},
@@ -44,7 +48,7 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
-        
+
         if(this.displayFormOnCreate) {
             this.formViewProcess(this.formView);
         }
@@ -54,6 +58,11 @@ module.exports = kind({
 
         if(this.forms && this.forms[formView]) {
             this.$.FormController.set('view', this.forms[formView]);
+            
+            if(this.formatButtonsView) {    
+                this.$.FormatButtonController.set('view', this.formatButtonsView);
+                this.$.FormatButtonContainer.set('showing', true);
+            }
         }
     },
     formViewChanged: function(was, is) {
@@ -72,25 +81,6 @@ module.exports = kind({
         this.$.ResultsController.set('resultsData', inEvent.results);
         this.$.ResultsController.set('formData', inEvent.formData);
         this.$.ResultsController.renderResults();
-        //  ==>> this.$.ResultsController.view.render(); // ??
-
-        // this.$.ResultsContainer.destroyComponents();
-        // this.$.ResultsContainer.createComponent({
-        //     kind: this.formatButtonsView,
-        //     name: 'FormatButtons'
-        // });
-
-        // inEvent.results.forEach(function(passage) {
-        //     this.$.ResultsContainer.createComponent({
-        //         kind: GridView,
-        //         passageData: passage,
-        //         bibleCount: 1,
-        //         formData: inEvent.formData,
-        //     });
-        // }, this);
-
-        //this.$.ResultsContainer.setShowing(true);
-        //this.$.Errors.setShowing(false);
         this.$.ResultsContainer.set('showing', true);
     },
     handleFormError: function(inSender, inEvent) {

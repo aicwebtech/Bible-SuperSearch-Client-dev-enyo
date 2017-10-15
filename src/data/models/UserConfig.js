@@ -11,7 +11,7 @@ module.exports = kind({
     
     attributes: {
         id: null,
-        paragraph: true,
+        paragraph: false,
         copy: false,
         something: 'else',
         mmm: 'bacon'

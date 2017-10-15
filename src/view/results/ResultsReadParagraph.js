@@ -15,7 +15,7 @@ module.exports = kind({
         return reference + '  ' + this.processText(verse.text);
     },
     processAssemblePassageVerse: function(reference, verse) {
-        var processed = '<sup>' + reference + '</sup> ' + this.processText(verse.text) + '  ';
+        var processed = '<sup>' + reference + '</sup>' + this.processText(verse.text) + '  ';
 
         if(this.isNewParagraph(verse)) {
             processed = this.newLine + this.newLine + processed;
@@ -70,7 +70,7 @@ module.exports = kind({
         }
 
         for(chapter in pd.verse_index) {
-            this.log(pd.verse_index[chapter]);
+            // this.log(pd.verse_index[chapter]);
 
             pd.verse_index[chapter].forEach(function(verse) {
                 for(i in this.bibles) {
@@ -86,7 +86,7 @@ module.exports = kind({
             }, this);
         }
 
-        var html = '<td>' + bibleHtml.join('</td><td>') + '</td>';
+        var html = '<td class=\'txt\'>' + bibleHtml.join('</td><td class=\'txt\'>') + '</td>';
 
         Container.createComponent({
             tag: 'tr',

@@ -5,7 +5,8 @@
     "config.json-example",
     "config.json",
     "config.js",
-    "assets/images/*.gif",
+    "assets/images/*.jpg",
+    "assets/images/classic/formatting/*.jpg",
     "assets/css/*.css"
   ],
   "styles": [

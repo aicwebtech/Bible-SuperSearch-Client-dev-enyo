@@ -1,4 +1,4 @@
-enyo pack --production -d ./builds/prod/biblesupersearch --no-inline-css --no-inline-js
+enyo pack --production -d ./builds/prod/biblesupersearch --no-inline-css --no-inline-js --clean
 cp assets/html/prod_site.html builds/prod/biblesupersearch.html
 cp assets/html/prod_test.html builds/prod/biblesupersearch/test.html
 cp assets/html/prod.html builds/prod/biblesupersearch/index.html

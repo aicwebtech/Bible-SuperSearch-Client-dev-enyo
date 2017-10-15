@@ -121,7 +121,7 @@ module.exports = kind({
         });
 
         for(chapter in pd.verse_index) {
-            this.log(pd.verse_index[chapter]);
+            // this.log(pd.verse_index[chapter]);
 
             pd.verse_index[chapter].forEach(function(verse) {
                 // var components = [];

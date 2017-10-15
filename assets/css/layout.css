@@ -130,12 +130,16 @@ table.biblesupersearch_render_table {
     text-align: justify;
 }
 
+.biblesupersearch_render_table sup {
+    text-align: justify;
+    font-size: .70em;
+    font-weight: bold;
+}
+
 .biblesupersearch_render_table td table td.ver {
     width: 15px;
     text-align: right;
     vertical-align: top;
-    font-size: .70em;
-    font-weight: bold;
 }
 
 .biblesupersearch_render_table td table td.txt {
