@@ -6,7 +6,8 @@ module.exports = kind({
     name: 'ResultsCopyBase',
     kind: ResultsBase,
     container: null,
-    newLine: '\n',
+    // newLine: '\n',
+    newLine: '<br />',
 
     renderHeader: function() {
         this.container = this._createContainer();
@@ -18,10 +19,12 @@ module.exports = kind({
             var bible_info = this.app.statics.bibles[module];
             var name = this._getBibleComponentName(i);
 
-            headerComponents.push({
-                tag: 'th',
-                content: bible_info.name
-            });
+            if(this.multiBibles) {            
+                headerComponents.push({
+                    tag: 'th',
+                    content: bible_info.name
+                });
+            }
 
             copyComponents.push({
                 kind: CopyPane,
@@ -30,7 +33,7 @@ module.exports = kind({
             });
         }
 
-        this.container.createComponent({tag: 'tr', components: headerComponents});
+        this.multiBibles && this.container.createComponent({tag: 'tr', components: headerComponents});
         this.container.createComponent({tag: 'tr', components: copyComponents});
     },
     renderFooter: function() {

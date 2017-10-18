@@ -1,6 +1,7 @@
 var kind = require('enyo/kind');
 var GridView = require('./GridView');
 var Signal = require('../../components/Signal');
+var Pager = require('../../components/SimplePager');
 
 module.exports = kind({
     name: 'ResultsBase',
@@ -10,6 +11,8 @@ module.exports = kind({
     bibleCount: 1,
     isParagraphView: false,  // Indicates if render is a parargraph view
     newLine: '<br />',
+    hasPaging: false,
+    paging: null,
 
     published: {
         resultsData: null,
@@ -66,7 +69,13 @@ module.exports = kind({
         this.multiBibles = (this.bibleCount > 1) ? true : false;
     },
     resultsDataChanged: function(was, is) {
+        this.hasPaging = false;
+        this.paging = null;
 
+        if(is && is.paging && is.paging.last_page && is.paging.last_page > 1) {
+            this.hasPaging = true;
+            this.paging = is.paging;
+        }
     },
     renderResults: function() {
         this.destroyClientControls();
@@ -83,6 +92,8 @@ module.exports = kind({
             return;
         }
         
+        this.log('Rendering Results!');
+        this.renderPager();
         this.renderHeader();
 
         resultsData.results.forEach(function(passage) {
@@ -90,6 +101,7 @@ module.exports = kind({
         }, this);
 
         this.renderFooter();
+        this.renderPager();
         // this.$.ResultsContainer.render();
         this.render();
     },
@@ -181,6 +193,19 @@ module.exports = kind({
     },
     watchFormatable: function(pre, cur, prop) {
 
+    },
+    renderPager: function() {
+        if(!this.hasPaging) {
+            return;
+        }
+
+        this.createComponent({
+            kind: Pager,
+            currentPage: this.paging.current_page,
+            lastPage: this.paging.last_page,
+            perPage: this.paging.per_page,
+            totalResults: this.paging.total
+        });
     }
 
 });

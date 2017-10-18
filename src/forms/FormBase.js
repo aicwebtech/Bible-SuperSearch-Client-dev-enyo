@@ -7,17 +7,19 @@ module.exports = kind({
     name: 'FormBase',
     formData: {},
     _formDataAsSubmitted: {},
+    page: 1,
+    maxPage: null,
 
-    components: [
-        {content: 'form base'}
-    ],
+    handlers: {
+        onPageChange: 'handlePageChange'
+    },
 
     create: function() {
         this.inherited(arguments);
+        this.createComponent({kind: Signal, onPageChange: 'handlePageChange'});
         this.log();
         // this.formData.bible = [this.app.configs.defaultBible];
     },
-
     submitForm: function() {
         return this._submitFormHelper(utils.clone(this.get('formData')));
     },
@@ -47,6 +49,7 @@ module.exports = kind({
         this._formDataAsSubmitted = utils.clone(formData);
         formData.bible = JSON.stringify(formData.bible);
         formData.highlight = true;
+        formData.page = this.get('page');
         return formData;
     },
 
@@ -56,7 +59,9 @@ module.exports = kind({
     },
     handleResponse: function(inSender, inResponse) {
         //this.showResults(inResponse.results);
+
         this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: inResponse});
+        this.maxPage = (inResponse.paging && inResponse.paging.last_page) ? inResponse.paging.last_page : null;
     },
     handleError: function(inSender, inResponse) {
         var response = JSON.parse(inSender.xhrResponse.body);
@@ -65,13 +70,24 @@ module.exports = kind({
             this.bubble('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
         }
         else {
-            this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: response});
+            this.handleResponse(inSender, response);
+            // this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: response});
         }
     },
     submitRandom: function(inSender, inEvent) {
         var randomType = inSender.random_type || null
         var formData = utils.clone(this.get('formData'));
-        formData.reference = randomType;
-        return this._submitFormHelper(formData);
+        
+        var submitData = {
+            bible: formData.bible,
+            reference: randomType
+        };
+
+        return this._submitFormHelper(submitData);
+    },
+    handlePageChange: function(inSender, inEvent) {
+        this.log();
+        this.set('page', inEvent.page);
+        this.submitForm();
     }
 });

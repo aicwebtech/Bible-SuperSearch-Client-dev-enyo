@@ -145,3 +145,9 @@ table.biblesupersearch_render_table {
 .biblesupersearch_render_table td table td.txt {
 
 }
+
+.biblesupersearch_pager {
+    margin-right: auto;
+    margin-left: auto;
+    width: 200px;
+}
