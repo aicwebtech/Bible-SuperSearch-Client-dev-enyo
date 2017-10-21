@@ -10,6 +10,7 @@ var utils = require('enyo/utils');
 var DefaultInterface = require('./view/interfaces/twentytwenty/TwentyTwenty');
 var Interfaces = require('./view/Interfaces');
 var UserConfigController = require('./data/controllers/UserConfig');
+var Router = require('enyo/Router');
 
 //var MainView = require('./view/Content');
 
@@ -33,9 +34,21 @@ var App = Application.kind({
     maximumBiblesDisplayed: 8, // This holds the absolute maximum number of parallel bibles that can be possibly displayed
     bibleDisplayLimit: 8, // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
     resetView: true,
+    appLoaded: false,
 
     components: [
-        {name: 'UserConfig', kind: UserConfigController, publish: true}
+        {name: 'UserConfig', kind: UserConfigController, publish: true},
+        {
+            name: 'Router',
+            kind: Router,
+            triggerOnStart: true,
+            routes: [
+                // {path: 'c/:hash/:page', handler: 'handleCacheHash'},
+                // {path: 'c/:hash', handler: 'handleCacheHash'},
+                // {path: 'p/:content', handler: 'handlePassageHash'},
+                {_path: 'p/:content', handler: 'handleHashGeneric', default: true}
+            ]
+        }
     ],
 
     create: function() {
@@ -97,7 +110,6 @@ var App = Application.kind({
             }
         }
 
-
         // Load Static Data (Bibles, Books, ect)
         var ajax = new Ajax({
             url: this.configs.apiUrl + '/statics',
@@ -121,6 +133,8 @@ var App = Application.kind({
             }
             
             this.render();
+            this.appLoaded = true;
+            this.$.Router.trigger();
         });    
 
         ajax.error(this, function(inSender, inResponse) {
@@ -146,6 +160,82 @@ var App = Application.kind({
         // Test form stuff
 
         // Test AJAX calls
+    },
+    handleHashGeneric: function(hash) {
+        if(!this.appLoaded) {
+            return;
+        }
+
+        this.log('hash', hash);
+
+        if(hash && hash != '') {
+            var parts = hash.split('/');
+            var mode  = parts.shift();
+
+            if(mode == '') {
+                var mode = parts.shift();
+            }
+
+            this.log('mode', mode);
+            this.log('parts', parts);
+
+            switch(mode) {
+                case 'c':
+                    return this._hashCache(parts);
+                    break;
+                case 'p' :
+                    return this._hashPassage(parts);
+                    break;
+            }
+        }
+        else {
+            this.log('no hash');
+        }
+
+        this.log('done hash');
+    },    
+    _hashCache: function(parts) {
+        this.log();
+        var hash = parts[0] || null;
+        var page = parts[1] || null;
+        this.waterfall('onCacheChange', {cacheHash: hash, page: page});
+
+        if(page) { // temp
+            this.waterfall('onPageChange', {page: page});
+        }
+    },
+    _hashPassage: function(parts) {
+        var bible = parts[0] || null;
+        var book  = parts[1] || null;
+        var chap  = parts[2] || null;
+        var verse = parts[3] || null;
+
+        var ref = book;
+
+        if(chap) {
+            ref += ' ' + chap;
+
+            if(verse) {
+                ref += ':' + verse;
+            }
+        }
+
+        var formData = {
+            bible: bible ? bible.split('.') : null,
+            reference: ref
+        };
+
+        this.log(formData);
+    },
+    handleCacheHash: function(inSender, inEvent) {
+        this.log(arguments);
+        this.log(inSender);
+        this.log(inEvent);
+    },    
+    handlePassageHash: function(inSender, inEvent) {
+        this.log(arguments);
+        this.log(inSender);
+        this.log(inEvent);
     }
 });
 

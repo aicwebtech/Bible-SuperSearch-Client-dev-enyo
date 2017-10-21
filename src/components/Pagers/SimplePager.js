@@ -1,6 +1,6 @@
 var kind = require('enyo/kind');
 var Button = require('enyo/Button');
-var Signal = require('./Signal');
+var Signal = require('../Signal');
 
 module.exports = kind({
     name: 'SimplePager',

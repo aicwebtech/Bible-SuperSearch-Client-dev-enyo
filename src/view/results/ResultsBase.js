@@ -1,7 +1,7 @@
 var kind = require('enyo/kind');
 var GridView = require('./GridView');
 var Signal = require('../../components/Signal');
-var Pager = require('../../components/SimplePager');
+var Pager = require('../../components/Pagers/ClassicPager');
 
 module.exports = kind({
     name: 'ResultsBase',
@@ -204,7 +204,8 @@ module.exports = kind({
             currentPage: this.paging.current_page,
             lastPage: this.paging.last_page,
             perPage: this.paging.per_page,
-            totalResults: this.paging.total
+            totalResults: this.paging.total,
+            cacheHash: this.resultsData.hash
         });
     }
 

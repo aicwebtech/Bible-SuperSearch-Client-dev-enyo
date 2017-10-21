@@ -49,3 +49,16 @@
 .biblesupersearch_container.interface_classic .biblesupersearch_error_view {
     max-width: 800px;
 }
+
+.biblesupersearch_pager {
+    margin: 15px auto;
+}
+
+.interface_classic .biblesupersearch_pager a {
+    margin: 0 4px;
+    text-decoration: none;
+}
+
+.interface_classic .biblesupersearch_pager a.current_page {
+    font-weight: bold;
+}
