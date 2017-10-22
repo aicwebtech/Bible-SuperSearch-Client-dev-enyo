@@ -7,7 +7,7 @@ module.exports = kind({
     name: 'SimplePager',
     classes: 'biblesupersearch_pager',
     lastPage: null, // Total number of pages
-    cacheHash: 'aerouv234', //null,
+    cacheHash: 'abcde12345', //null,
     currentPage: 1,
     perPage: 30,
     totalResults: null,

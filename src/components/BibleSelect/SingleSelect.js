@@ -72,7 +72,7 @@ module.exports = kind({
     _lastLang: null,
     valueChanged: function(was, is) {
         this.inherited(arguments);
-        this.log(was, is);
+        // this.log(was, is);
     },
     setSelectedValue: function(value) {
         var value = value || 0

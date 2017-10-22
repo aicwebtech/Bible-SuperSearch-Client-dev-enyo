@@ -77,8 +77,7 @@ module.exports = kind({
         this.set('value', value);
     },
     valueChanged: function(was, is) {
-        this.log(was, is);
-        return;
+        // this.log(was, is);
 
         if(!Array.isArray(is)) {
             this.value = [is];
@@ -89,9 +88,10 @@ module.exports = kind({
                 name = 'Select_' + p.toString(),
                 value = this.value[i];
 
-            this.log('single value', value);
+            // this.log('biblesel single value', value);
+            
             if(!this.$[name]) {
-                this.log('does not exist', name);
+                // this.log('biblesel bible does not exist', name);
             }
 
             this.$[name] && this.$[name].set('value', value);

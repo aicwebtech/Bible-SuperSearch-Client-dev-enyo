@@ -25,7 +25,7 @@ module.exports = kind({
             name: 'ImgFalse',
             kind: Image,
             relSrc: this.falseImage,
-            attributes: {title: this.falseAlt},
+            // attributes: {title: this.falseAlt},
             alt: this.falseAlt,
             // ontap: this.toggleValue,
             showing: !this.value
@@ -35,7 +35,7 @@ module.exports = kind({
             name: 'ImgTrue',
             kind: Image,
             relSrc: this.trueImage,
-            attributes: {title: this.trueAlt},
+            // attributes: {title: this.trueAlt},
             alt: this.trueAlt,
             // ontap: this.toggleValue,
             showing: this.value

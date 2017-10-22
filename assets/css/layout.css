@@ -146,8 +146,28 @@ table.biblesupersearch_render_table {
 
 }
 
+.biblesupersearch_container .format_buttons {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .biblesupersearch_pager {
     margin-right: auto;
     margin-left: auto;
     text-align: center;
 }
+
+/* Standard text formatting */
+.biblesupersearch_container .results.font_serif {
+    font-family: serif;
+}
+
+.biblesupersearch_container .results.font_san_serif {
+    font-family: sans-serif;
+}
+
+.biblesupersearch_container .results.font_monospace {
+    font-family: monospace;
+}
+

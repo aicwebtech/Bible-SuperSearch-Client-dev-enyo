@@ -62,3 +62,11 @@
 .interface_classic .biblesupersearch_pager a.current_page {
     font-weight: bold;
 }
+
+.interface_classic .format_buttons {
+    margin-bottom: 10px;
+}
+
+.interface_classic .format_buttons img {
+    margin: 0 1px;
+}
