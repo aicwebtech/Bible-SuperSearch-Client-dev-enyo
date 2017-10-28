@@ -6,6 +6,7 @@ var Checkbox = require('enyo/Checkbox');
 var Base = require('../FormatButtonsBase');
 var Toggle = require('../../Toggle');
 var Image = require('../../Image');
+var Help = require('../../dialogs/Help');
 
 module.exports = kind({
     name: 'FormatButtonsClassic',
@@ -98,7 +99,11 @@ module.exports = kind({
             falseImage: 'classic/formatting/advanced.jpg',
             trueAlt: 'Basic',
             falseAlt: 'Advanced'
-        }
+        },
+
+        {name: 'Dialogs', components: [
+            {name: 'HelpDialog', kind: Help, showing: false}
+        ]}
     ],
 
     bindings: [

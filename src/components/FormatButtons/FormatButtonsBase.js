@@ -41,5 +41,14 @@ module.exports = kind({
     handleHelp: function(inSender, inEvent) {
         this.log(inSender);
         this.log(inEvent);
+
+        // this.$.HelpDialog && this.$.HelpDialog.set('showing', true);
+        // Todo - reformat user guild, redesign help based on context, needs to work on phones, ect
+        // Temporary!
+        window.open(
+            'http://www.biblesupersearch.com/wp-content/plugins/bible_supersearch/bible_supersearch_user_guide.html', 
+            'helpDialog',
+            'menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes,height=800,width=600'
+        );
     },
 });

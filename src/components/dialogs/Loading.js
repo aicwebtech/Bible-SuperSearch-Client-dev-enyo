@@ -9,7 +9,7 @@ module.exports = kind({
     width: '200px',
     height: '130px',
 
-    dialogComponents: [
+    bodyComponents: [
         {
             classes: 'biblesupersearch_center_element', style: 'width:78px',
             components: [
