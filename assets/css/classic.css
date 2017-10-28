@@ -1,6 +1,11 @@
 /* Styles for classic apparence */
 
 /* Body of form */
+.biblesupersearch_container.interface_classic {
+    min-height: 100px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
 
 .biblesupersearch_classic_form {
     margin-left:auto;

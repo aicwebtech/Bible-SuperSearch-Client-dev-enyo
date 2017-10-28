@@ -43,6 +43,7 @@ module.exports = kind({
             method: 'GET'
         });
 
+        this.app.set('ajaxLoading', true);
         this.requestPending = true;
         this.beforeSubmitForm(formData);
         this.processDefaults(formData);
@@ -73,14 +74,15 @@ module.exports = kind({
         return formData;
     },
     handleResponse: function(inSender, inResponse) {
-        //this.showResults(inResponse.results);
-        this.set('cacheHash', inResponse.hash);
+        this.app.set('ajaxLoading', false);
         this.requestPending = false;
+        this.set('cacheHash', inResponse.hash);
 
         this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: inResponse});
         this.maxPage = (inResponse.paging && inResponse.paging.last_page) ? inResponse.paging.last_page : null;
     },
     handleError: function(inSender, inResponse) {
+        this.app.set('ajaxLoading', false);
         this.requestPending = false;
         var response = JSON.parse(inSender.xhrResponse.body);
 

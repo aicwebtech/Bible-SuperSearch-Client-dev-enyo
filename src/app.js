@@ -36,6 +36,10 @@ var App = Application.kind({
     resetView: true,
     appLoaded: false,
 
+    published: {
+        ajaxLoading: false,
+    },
+
     components: [
         {name: 'UserConfig', kind: UserConfigController, publish: true},
         {
@@ -236,6 +240,14 @@ var App = Application.kind({
         this.log(arguments);
         this.log(inSender);
         this.log(inEvent);
+    },
+    ajaxLoadingChanged: function(was, is) {
+        this.log(is);
+
+        if(this.view && this.view.set) {
+            this.log('setting');
+            this.view.set('ajaxLoading', is);
+        }
     }
 });
 
