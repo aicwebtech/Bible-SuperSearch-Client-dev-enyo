@@ -2,6 +2,7 @@ var kind = require('enyo/kind');
 var GridView = require('./GridView');
 var Signal = require('../../components/Signal');
 var Pager = require('../../components/Pagers/ClassicPager');
+var LinkBuilder = require('../../components/Link/LinkBuilder');
 
 module.exports = kind({
     name: 'ResultsBase',
@@ -13,6 +14,7 @@ module.exports = kind({
     newLine: '<br />',
     hasPaging: false,
     paging: null,
+    linkBuilder: LinkBuilder,
 
     published: {
         resultsData: null,
@@ -146,7 +148,9 @@ module.exports = kind({
         return this.processAssembleSingleVerse(ref, verse);
     },
     proccessSingleVerseReference: function(passage, verse) {
-        return passage.book_name + ' ' + passage.chapter_verse;
+        var chapterLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, passage.book_name, verse.chapter);
+        var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, passage.book_name, verse.chapter, verse.verse);
+        return '<a href="' + chapterLink + '">' + passage.book_name + ' ' + verse.chapter + '</a>:<a href="' + contextLink + '">' + verse.verse + '</a>';
     },    
     processPassageVerseContent: function(passage, verse) {
         var ref = this.proccessPassageVerseReference(passage, verse);

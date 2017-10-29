@@ -10,12 +10,12 @@ module.exports = kind({
 
     // NOTA Single verse, single Bible
     renderSingleVerseSingleBible: function(pd) {
-        this.log();
+        // this.log();
         this.renderSingleVerseParallelBible(pd);
     },
     // Single verse, multi Bible
     renderSingleVerseParallelBible: function(pd) {
-        this.log();
+        // this.log();
         var Container = this._createContainer();
 
         // Container.createComponent({
@@ -81,12 +81,12 @@ module.exports = kind({
     },
     // NOTA Multi verse, single Bible
     renderPassageSingleBible: function(pd) {
-        this.log();
+        // this.log();
         this.renderPassageParallelBible(pd);
     },
     // Multi verse, single Bible
     renderPassageParallelBible: function(pd) {
-        this.log();
+        // this.log();
         var Container = this._createContainer();
 
         Container.createComponent({
@@ -100,6 +100,10 @@ module.exports = kind({
                 }
             ]
         });
+
+        if(typeof pd.navigation == 'object') {
+            // Todo - add browsing buttons!
+        }
 
         if(this.multiBibles) {            
             Container.createComponent({

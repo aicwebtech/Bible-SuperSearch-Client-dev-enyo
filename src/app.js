@@ -189,6 +189,9 @@ var App = Application.kind({
                     break;
                 case 'p' :
                     return this._hashPassage(parts);
+                    break;                
+                case 'context' :
+                    return this._hashContext(parts);
                     break;
             }
         }
@@ -205,31 +208,59 @@ var App = Application.kind({
         this.waterfall('onCacheChange', {cacheHash: hash, page: page});
 
         if(page) { // temp
-            this.waterfall('onPageChange', {page: page});
+            // this.waterfall('onPageChange', {page: page});
         }
     },
     _hashPassage: function(parts) {
-        var bible = parts[0] || null;
-        var book  = parts[1] || null;
-        var chap  = parts[2] || null;
-        var verse = parts[3] || null;
+        var partsObj = this._explodeHashPassage(parts);
+        var formData = this._assembleHashPassage(partsObj);
+        this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
+    },
+    _hashContext: function(parts) {
+        var partsObj = this._explodeHashPassage(parts);
 
-        var ref = book;
+        if(!partsObj.chap || !partsObj.verse || partsObj.chap.indexOf('-') != -1 || partsObj.verse.indexOf('-') != -1) {
+            this.log('invalid context');
+            return;
+        }
 
-        if(chap) {
-            ref += ' ' + chap;
+        var formData = this._assembleHashPassage(partsObj);
+        formData.context = true;
+        this.waterfall('onHashRunForm', {formData: formData, newTab: true});
+    },
+    
+    _explodeHashPassage: function(parts) {
+        var exploded = {
+            bible : parts[0] || null,
+            book  : parts[1] || null,
+            chap  : parts[2] || null,
+            verse : parts[3] || null
+        }
 
-            if(verse) {
-                ref += ':' + verse;
+        return exploded;
+    },
+    _assembleHashPassage: function(partsObj) {
+        if(!partsObj.book) {
+            return {};
+        }
+
+        var ref = partsObj.book;
+
+        if(partsObj.chap) {
+            ref += ' ' + partsObj.chap;
+
+            if(partsObj.verse && partsObj.chap.indexOf('-') == -1) {
+                ref += ':' + partsObj.verse;
             }
         }
 
         var formData = {
-            bible: bible ? bible.split('.') : null,
+            bible: partsObj.bible ? partsObj.bible.split(',') : null,
             reference: ref
         };
 
         this.log(formData);
+        return formData;
     },
     handleCacheHash: function(inSender, inEvent) {
         this.log(arguments);

@@ -15,7 +15,8 @@ module.exports = kind({
 
     handlers: {
         onPageChange: 'handlePageChange',
-        onCacheChange: 'handleCacheChange'
+        onCacheChange: 'handleCacheChange',
+        onHashRunForm: 'handleHashRunForm'
     },
 
     create: function() {
@@ -23,6 +24,9 @@ module.exports = kind({
         this.createComponent({kind: Signal, onPageChange: 'handlePageChange'});
         this.log();
         // this.formData.bible = [this.app.configs.defaultBible];
+    },
+    clearForm: function() {
+        this.set('formData', {});
     },
     submitForm: function() {
         return this._submitFormHelper(utils.clone(this.get('formData')));
@@ -166,6 +170,12 @@ module.exports = kind({
             this.submitFormWith(extra);
         }
 
+        return true; // Don't propagage, will cause issues with subforms, if any
+    },
+    handleHashRunForm: function(inSender, inEvent) {
+        this._submitFormHelper(inEvent.formData);
+        this.clearForm();
+        
         return true; // Don't propagage, will cause issues with subforms, if any
     }
 });
