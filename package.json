@@ -7,6 +7,7 @@
     "config.js",
     "assets/images/*",
     "assets/images/classic/formatting/*.jpg",
+    "assets/images/classic/prevnext/square/*.gif",
     "assets/css/*.css"
   ],
   "styles": [

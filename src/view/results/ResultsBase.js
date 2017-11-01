@@ -3,6 +3,7 @@ var GridView = require('./GridView');
 var Signal = require('../../components/Signal');
 var Pager = require('../../components/Pagers/ClassicPager');
 var LinkBuilder = require('../../components/Link/LinkBuilder');
+var Nav = require('../../components/NavButtons/NavClassic');
 
 module.exports = kind({
     name: 'ResultsBase',

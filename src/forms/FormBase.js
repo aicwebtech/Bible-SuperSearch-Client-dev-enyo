@@ -69,6 +69,7 @@ module.exports = kind({
         this._formDataAsSubmitted = utils.clone(formData);
         formData.bible = JSON.stringify(formData.bible);
         formData.highlight = true;
+        formData.data_format = 'lite';
         // formData.page = this.get('page');
         return formData;
     },

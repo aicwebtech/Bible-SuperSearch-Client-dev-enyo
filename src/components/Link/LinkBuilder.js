@@ -3,7 +3,7 @@
 // Generic JavaScript object, not an enyo kind
 module.exports = {
     buildReferenceLink: function() {
-        console.log(arguments);
+        // console.log(arguments);
 
         var mode  = arguments[0] || 'p';
         var bible = arguments[1] || null;
