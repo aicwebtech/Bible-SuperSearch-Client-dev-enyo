@@ -46,12 +46,7 @@ var App = Application.kind({
             name: 'Router',
             kind: Router,
             triggerOnStart: true,
-            routes: [
-                // {path: 'c/:hash/:page', handler: 'handleCacheHash'},
-                // {path: 'c/:hash', handler: 'handleCacheHash'},
-                // {path: 'p/:content', handler: 'handlePassageHash'},
-                {_path: 'p/:content', handler: 'handleHashGeneric', default: true}
-            ]
+            routes: [ {handler: 'handleHashGeneric', default: true} ]
         }
     ],
 
@@ -170,8 +165,6 @@ var App = Application.kind({
             return;
         }
 
-        this.log('hash', hash);
-
         if(hash && hash != '') {
             var parts = hash.split('/');
             var mode  = parts.shift();
@@ -179,9 +172,6 @@ var App = Application.kind({
             if(mode == '') {
                 var mode = parts.shift();
             }
-
-            this.log('mode', mode);
-            this.log('parts', parts);
 
             switch(mode) {
                 case 'c':
@@ -198,18 +188,12 @@ var App = Application.kind({
         else {
             this.log('no hash');
         }
-
-        this.log('done hash');
     },    
     _hashCache: function(parts) {
         this.log();
         var hash = parts[0] || null;
         var page = parts[1] || null;
         this.waterfall('onCacheChange', {cacheHash: hash, page: page});
-
-        if(page) { // temp
-            // this.waterfall('onPageChange', {page: page});
-        }
     },
     _hashPassage: function(parts) {
         var partsObj = this._explodeHashPassage(parts);
@@ -279,6 +263,17 @@ var App = Application.kind({
             this.log('setting');
             this.view.set('ajaxLoading', is);
         }
+    },
+    getSubControl: function(name) {
+        var varName = name + 'Control';
+        return this.getViewProp(varName);
+    },
+    getViewProp: function(prop) {
+        var val = (this.view && this.view.get) ? this.view.get(prop) : null;
+        return val || null;
+    },
+    getBook: function(id) {
+        return this.statics.books[id - 1] || null;
     }
 });
 

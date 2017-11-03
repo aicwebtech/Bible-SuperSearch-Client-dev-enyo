@@ -5,27 +5,29 @@ var LinkBuilder = require('../Link/LinkBuilder');
 module.exports = kind({
     name: 'NavBase',
     linkBuilder: LinkBuilder,
+    classes: 'biblesupersearch_nav_buttons',
     nav: {}, // navigation data
+    bibles: [],
     iconDir: '',
     prevBook: 'pb.gif',
     prevBookDisabled: 'pb_nl.gif',
     nextBook: 'nb.gif',
-    nextBookDisabled: 'nb_ln.gif',    
+    nextBookDisabled: 'nb_nl.gif',    
     prevChapter: 'pc.gif',
     prevChapterDisabled: 'pc_nl.gif',
     nextChapter: 'nc.gif',
-    nextChapterDisabled: 'nc_ln.gif',
+    nextChapterDisabled: 'nc_nl.gif',
     currentChapter: 'sc.gif',
-    currnetChapterDisabled: 'sc_nl.gif',
+    currentChapterDisabled: 'sc_nl.gif',
 
     create: function() {
         this.inherited(arguments);
 
-        var pb_icon = this.prevBookDisabled,
-            nb_icon = this.nextBookDisabled,
-            nc_icon = this.nextChapterDisabled,
-            pc_icon = this.prevChapterDisabled,
-            cc_icon = this.currnetChapterDisabled,
+        var pb_icon = this.iconDir + this.prevBookDisabled,
+            nb_icon = this.iconDir + this.nextBookDisabled,
+            nc_icon = this.iconDir + this.nextChapterDisabled,
+            pc_icon = this.iconDir + this.prevChapterDisabled,
+            cc_icon = this.iconDir + this.currentChapterDisabled,
             pb_link = null,
             nb_link = null,
             nc_link = null,
@@ -36,37 +38,41 @@ module.exports = kind({
             nc_text = null,
             pc_text = null,
             cc_text = null,
-            bible = '';
+            bible = (this.bibles) ? this.bibles : '';
 
-        if(typeof this.nav.nb != 'undefined') {
+        // this.log('books', this.app.statics.books);
+        // this.log('nav', this.nav);
+        // return;
+
+        if(typeof this.nav.nb != 'undefined' && this.nav.nb != null) {
             var nbook = this.app.statics.books[this.nav.nb - 1];
             nb_link = this.linkBuilder.buildReferenceLink('p', bible, nbook.name);
             nb_icon = this.iconDir + this.nextBook;
             nb_text = nbook.name;
         }         
 
-        if(typeof this.nav.pb != 'undefined') {
+        if(typeof this.nav.pb != 'undefined' && this.nav.pb != null) {
             var pbook = this.app.statics.books[this.nav.pb - 1];
             pb_link = this.linkBuilder.buildReferenceLink('p', bible, pbook.name);
             pb_icon = this.iconDir + this.prevBook;
-            nb_text = pbook.name
+            pb_text = pbook.name
         }         
 
-        if(typeof this.nav.pcc != 'undefined') {
+        if(typeof this.nav.pcc != 'undefined' && this.nav.pcc != null) {
             var pcbook = this.app.statics.books[this.nav.pcb - 1];
             pc_link = this.linkBuilder.buildReferenceLink('p', bible, pcbook.name, this.nav.pcc);
             pc_icon = this.iconDir + this.prevChapter;
             pc_text = pcbook.name + ' ' + this.nav.pcc;
         }         
 
-        if(typeof this.nav.ncc != 'undefined') {
+        if(typeof this.nav.ncc != 'undefined' && this.nav.ncc != null) {
             var ncbook = this.app.statics.books[this.nav.ncb - 1];
             nc_link = this.linkBuilder.buildReferenceLink('p', bible, ncbook.name, this.nav.ncc);
             nc_icon = this.iconDir + this.nextChapter;
             nc_text = ncbook.name + ' ' + this.nav.ncc;
         }         
 
-        if(typeof this.nav.ccc != 'undefined') {
+        if(typeof this.nav.ccc != 'undefined' && this.nav.ccc != null) {
             var ccbook = this.app.statics.books[this.nav.ccb - 1];
             cc_link = this.linkBuilder.buildReferenceLink('p', bible, ccbook.name, this.nav.ccc);
             cc_icon = this.iconDir + this.currentChapter;

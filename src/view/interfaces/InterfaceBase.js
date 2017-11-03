@@ -1,11 +1,15 @@
 var kind = require('enyo/kind');
 var ViewController = require('enyo/ViewController');
 var LoadingDialog = require('../../components/dialogs/Loading');
+var NavButtons = require('../../components/NavButtons/NavClassic');
 
 // Base kind for all Application views
 module.exports = kind({
     name: 'InterfaceBase',
     classes: 'biblesupersearch_container',
+    
+    // Variable Sub Components, to be overridden by child interface kinds
+    NavButtonsControl: NavButtons,
 
     published: {
         ajaxLoading: false,

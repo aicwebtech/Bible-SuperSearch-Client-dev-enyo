@@ -149,9 +149,8 @@ module.exports = kind({
         return this.processAssembleSingleVerse(ref, verse);
     },
     proccessSingleVerseReference: function(passage, verse) {
-        var chapterLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, passage.book_name, verse.chapter);
-        var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, passage.book_name, verse.chapter, verse.verse);
-        return '<a href="' + chapterLink + '">' + passage.book_name + ' ' + verse.chapter + '</a>:<a href="' + contextLink + '">' + verse.verse + '</a>';
+        var book = this.app.getBook(passage.book_id);
+        return book.name + ' ' + verse.chapter + ':' + verse.verse;
     },    
     processPassageVerseContent: function(passage, verse) {
         var ref = this.proccessPassageVerseReference(passage, verse);

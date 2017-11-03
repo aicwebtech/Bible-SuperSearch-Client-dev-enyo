@@ -101,9 +101,7 @@ module.exports = kind({
             ]
         });
 
-        if(typeof pd.navigation == 'object') {
-            // Todo - add browsing buttons!
-        }
+        this._addNavButtons(Container, pd);
 
         if(this.multiBibles) {            
             Container.createComponent({
@@ -157,6 +155,8 @@ module.exports = kind({
                 });
             }, this);
         }
+
+        this._addNavButtons(Container, pd);
     },
     processAssembleVerse: function(reference, verse) {
         return reference + '  ' + this.processText(verse.text);
@@ -180,4 +180,28 @@ module.exports = kind({
 
         return processed;
     },
+    proccessSingleVerseReference: function(passage, verse) {
+        var book = this.app.getBook(passage.book_id);
+        var chapterLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, book.name, verse.chapter);
+        var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, book.name, verse.chapter, verse.verse);
+        return '<a href="' + chapterLink + '">' + book.name + ' ' + verse.chapter + '</a>:<a href="' + contextLink + '">' + verse.verse + '</a>';
+    },   
+    _addNavButtons: function(Container, passage) {
+        if(typeof passage.nav == 'object') {
+            // Todo - add browsing buttons!
+            var NavButtons = this.app.getSubControl('NavButtons');
+
+            if(NavButtons) {
+                Container.createComponent({
+                    tag: 'tr', 
+                    components: [
+                        {tag: 'td', attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
+                        components: [
+                            { nav: passage.nav, kind: NavButtons, bibles: this.bibles }
+                        ]}
+                    ]
+                });
+            }
+        }
+    }
 });

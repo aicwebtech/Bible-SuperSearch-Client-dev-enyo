@@ -106,7 +106,7 @@ module.exports = kind({
     },
     processAssembleSingleVerse: function(reference, verse) {
         return this.processAssembleVerse(reference, verse)  + this.newLine + this.newLine;
-    },
+    }, 
     processAssemblePassageVerse: function(reference, verse) {
         var processed = this.processAssembleVerse(reference, verse);
 
@@ -122,5 +122,5 @@ module.exports = kind({
         }
 
         return processed;
-    },
+    }
 });

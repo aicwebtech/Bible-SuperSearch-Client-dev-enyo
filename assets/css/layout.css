@@ -184,3 +184,9 @@ div.biblesupersearch_dialog {
     /*padding-top: calc(10px + 10vh);*/
     /*padding-bottom: 0;*/
 }
+
+.biblesupersearch_nav_buttons {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}

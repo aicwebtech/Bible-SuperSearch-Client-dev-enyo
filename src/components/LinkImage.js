@@ -4,7 +4,7 @@ var Anchor = require('enyo/Anchor');
 
 module.exports = kind({
     name: 'LinkImage',
-    tag: 'span',
+    kind: Anchor,
     src: null,          // Image that displays when disabled = false,
     disabledSrc: null,  // Image that displays when disabled = true
     trueAlt: '',
