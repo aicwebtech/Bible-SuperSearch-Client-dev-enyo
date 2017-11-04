@@ -2,6 +2,7 @@ var kind = require('enyo/kind');
 var Ajax = require('enyo/Ajax');
 var utils = require('enyo/utils');
 var Signal = require('../components/Signal');
+var Bindings = require('./FormBindings');
 
 module.exports = kind({
     name: 'FormBase',
@@ -13,6 +14,10 @@ module.exports = kind({
     cacheHash: null,
     requestPending: false,
     manualRequest: false, // Indicates if current query was caused by the user clicking a button on the form
+    bindings: [],
+    autoApplyStandardBindings: true,
+    standardBindings: Bindings,
+    subForm: false,
 
     handlers: {
         onCacheChange: 'handleCacheChange',
@@ -24,12 +29,17 @@ module.exports = kind({
         this.createComponent({kind: Signal, onPageChange: 'handlePageChange'});
         this.log();
         // this.formData.bible = [this.app.configs.defaultBible];
+
+        if(this.autoApplyStandardBindings) {
+            this.applyStandardBindings();
+        }
     },
     clearForm: function() {
         this.set('formData', {});
     },
     submitForm: function() {
-        return this._submitFormHelper(utils.clone(this.get('formData')), true);
+        this._submitFormHelper(utils.clone(this.get('formData')), true);
+        return true;
     },    
     submitFormAuto: function() {
         return this._submitFormHelper(utils.clone(this.get('formData')), false);
@@ -47,6 +57,8 @@ module.exports = kind({
             return;
         }
 
+        this.log('submitting form: ' + this.name);
+
         var ajax = new Ajax({
             url: this.app.configs.apiUrl,
             method: 'GET'
@@ -54,7 +66,7 @@ module.exports = kind({
 
         this.app.set('ajaxLoading', true);
         this.requestPending = true;
-        this.beforeSubmitForm(formData);
+        var formData = this.beforeSubmitForm(formData);
         this.processDefaults(formData);
         this.log('formData', formData);
         ajax.go(formData); // for GET
@@ -190,5 +202,35 @@ module.exports = kind({
         }
 
         window.location.hash = hash;
+    },
+    applyStandardBindings: function() {
+        this.log('form name: ' + this.name);
+
+        for(i in this.standardBindings) {
+            if(this.$[i]) {
+                this.$[i] && this.bindings.push(this.standardBindings[i]);
+            }
+            else {
+                this.log('bind target not found:' + i);
+            }
+        }
+    },
+    referenceTyped: function(inSender, inEvent) {
+        var value = inSender.get('value') || null;
+        this._referenceChangeHelper(value);
+    },
+    _referenceChangeHelper: function(value) {
+        if(!this.$.shortcut) {
+            return;
+        }
+
+        if(value && value != '0' && value != '') {
+            if(!this.$.shortcut.setSelectedByValue(value)) {
+                this.$.shortcut.set('selected', 1);
+            }
+        }
+        else {
+            this.$.shortcut.set('selected', 0);
+        }
     }
 });

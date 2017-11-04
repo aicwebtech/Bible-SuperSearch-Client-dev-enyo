@@ -85,87 +85,8 @@ module.exports = kind({
             ]
         }
     ],
-
-    bindings: [
-        {from: 'formData.whole_words', to: '$.whole_words.checked', oneWay: false, transform: function(value, dir) {
-            // this.log('whole_words', value, dir);
-
-            // if(dir == 1) {
-                return (value && value != 0 && value != false) ? true : false;
-            // }
-            // return value || null;
-        }},        
-        // reference binding MUST be before the shortcut binding!
-        {from: 'formData.reference', to: '$.reference.value', oneWay: false, transform: function(value, dir) {
-            this.log('reference', value, dir);
-            // if(dir === 2) {
-            //     if(value && value != '0' && value != '') {
-            //         this.$.shortcut.set('selected', 1);
-            //     }
-            //     else {
-            //         this.$.shortcut.set('selected', 0);
-            //     }
-            // }
-
-            this._referenceChangeHelper(value || null);
-
-            return value || null;
-        }},
-        {from: 'formData.shortcut', to: '$.shortcut.value', oneWay: false, transform: function(value, dir) {
-            // this.log('shortcut', value, dir);
-
-            if(dir === 1) {
-                if(value) {
-                    this.$.shortcut.setSelectedByValue(value);
-                }
-                else {
-                    this.$.shortcut.setSelected(0);
-                }
-            }
-            else {
-                if(value && value != '0' && value != '1') {
-                    this.$.reference.set('value', value);
-                }
-                else if (value != '1') {
-                    this.$.reference.set('value', null);
-                }
-            }
-
-            return value || null;
-        }},           
-        {from: 'formData.search_type', to: '$.search_type.value', oneWay: false, transform: function(value, dir) {
-            // this.log('search_type', value, dir);
-            if(dir == 1) {
-                this.$.search_type.setSelectedByValue(value);
-            }
-
-            return value || null;
-        }},        
-        {from: 'formData.search', to: '$.search.value', oneWay: false, transform: function(value, dir) {
-            // this.log('search', value, dir);
-            return value || null;
-        }},
-        {from: 'formData.bible', to: '$.bible.value', oneWay: false, transform: function(value, dir) {
-            // this.log('biblesel', value, dir);
-            return value || null;
-        }}
-    ],
     create: function() {
         this.inherited(arguments);
         this.log();
-    },
-    referenceTyped: function(inSender, inEvent) {
-        var value = inSender.get('value') || null;
-        this._referenceChangeHelper(value);
-    },
-    _referenceChangeHelper: function(value) {
-        if(value && value != '0' && value != '') {
-            if(!this.$.shortcut.setSelectedByValue(value)) {
-                this.$.shortcut.set('selected', 1);
-            }
-        }
-        else {
-            this.$.shortcut.set('selected', 0);
-        }
     }
 });
