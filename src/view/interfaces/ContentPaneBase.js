@@ -21,6 +21,8 @@ module.exports = kind({
     displayFormOnCreate: false,
     // formatButtonsView: FormatButtons,
     formatButtonsView: null,
+    formatButtonsShowing: false,
+    uc: {},
 
     published: {
         formView: null // This is a string representing a kind reference in this.forms
@@ -46,6 +48,15 @@ module.exports = kind({
         {name: 'ErrorsContainer', showing: false, kind: ErrorView}
     ],
 
+    observers: [
+        {method: 'watchAdvancedToggle', path: ['uc.advanced_toggle']}
+    ],
+    bindings: [
+        {from: 'app.UserConfig', to: 'uc', transform: function(value, dir) {
+            this.log('results controller user config', value, dir);
+            return value;
+        }}
+    ],
     create: function() {
         this.inherited(arguments);
 
@@ -59,9 +70,10 @@ module.exports = kind({
         if(this.forms && this.forms[formView]) {
             this.$.FormController.set('view', this.forms[formView]);
             
-            if(this.formatButtonsView) {    
+            if(this.formatButtonsView && !this.formatButtonsShowing) {    
                 this.$.FormatButtonController.set('view', this.formatButtonsView);
                 this.$.FormatButtonContainer.set('showing', true);
+                this.formatButtonsShowing = true;
             }
         }
     },
@@ -71,8 +83,6 @@ module.exports = kind({
     },
     handleFormResponse: function(inSender, inEvent) {
         this.$.ErrorsContainer.set('showing', false);
-        //this.log(results);
-        this.log(inEvent);
 
         if(inEvent.results.error_level == 4) {
             return this.handleFormError(inSender, inEvent);
@@ -94,5 +104,15 @@ module.exports = kind({
         );
         
         this.$.ErrorsContainer.set('showing', true);
+    },
+    watchAdvancedToggle: function(pre, cur, prop) {
+        this.log(pre, cur, prop);
+
+        if(cur) {
+            this.set('formView', 'Advanced');
+        }
+        else {
+            this.set('formView', 'Form');
+        }
     }
 });

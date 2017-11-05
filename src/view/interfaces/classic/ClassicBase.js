@@ -4,19 +4,15 @@ var formView = require('../../../forms/ClassicUserFriendly2');
 var InterfaceBase = require('../InterfaceBase');
 var ContentPane = require('./ContentPane');
 var FormatButtons = require('../../../components/FormatButtons/classic/FormatButtonsClassic');
+var advancedFormView = require('../../../forms/ClassicAdvanced');
 
 module.exports = kind({
     name: 'ClassicBase',
     kind: InterfaceBase,
     formView: formView,
+    advancedFormView: advancedFormView,
     classes: 'interface_classic',
-    components: [
-        /*{components: [
-            {name: 'Form', kind: ViewController, resetView: true, view: formView}
-            // {name: 'Form', kind: formView}
-        ]},
-        {name: 'Content', kind: ContentView}*/
-    ],
+
     create: function() {
         this.inherited(arguments);
         this.log();
@@ -27,13 +23,6 @@ module.exports = kind({
             formView: this.formView,
             displayFormOnCreate: true
         });        
-
-        // this.createComponent({
-        //     name: 'Format',
-        //     kind: FormatButtons
-        // });
-
-        // this.$.Form.render();
     },    
     _create: function() {
         this.inherited(arguments);

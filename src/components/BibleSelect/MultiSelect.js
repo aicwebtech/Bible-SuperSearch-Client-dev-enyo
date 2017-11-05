@@ -42,7 +42,7 @@ module.exports = kind({
         }
 
         if(width != 0) {
-            style += 'width:' + width.toString() + 'px;';
+            style += 'max-width:' + width.toString() + 'px;';
         }
 
         if(this.parallelNumber <= this.parallelLimit) {        

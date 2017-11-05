@@ -174,13 +174,16 @@ var App = Application.kind({
             }
 
             switch(mode) {
-                case 'c':
+                case 'c':   // Cache uuid (hash) 
                     return this._hashCache(parts);
                     break;
-                case 'p' :
+                case 'p':   // Passage
                     return this._hashPassage(parts);
                     break;                
-                case 'context' :
+                case 'context': // Contextual lookup
+                    return this._hashContext(parts);
+                    break;
+                case 'f': // JSON-endoded form data
                     return this._hashContext(parts);
                     break;
             }
@@ -212,7 +215,10 @@ var App = Application.kind({
         formData.context = true;
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },
-    
+    _hashForm: function(parts) {
+        var formData = (parts[0]) ? JSON.parse(parts[0]) : {};
+        this.waterfall('onHashRunForm', {formData: formData, newTab: true});
+    },
     _explodeHashPassage: function(parts) {
         var exploded = {
             bible : parts[0] || null,

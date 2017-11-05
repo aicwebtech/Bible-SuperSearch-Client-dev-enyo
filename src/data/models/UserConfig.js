@@ -15,7 +15,7 @@ module.exports = kind({
         paragraph: false,       //  - Paragraph render on or off
         copy: false,            //  - Render mode: copy if true, read if fals
         text_size: 0,           //  - Text size: translated to ...
-        font: 'sans-serif',          //  - Font: serif, sans-serif, or monospace
+        font: 'sans-serif',     //  - Font: serif, sans-serif, or monospace
         advanced_toggle: false, //  - (Classic interfaces): indicates if the advanced form is toggled to display
         something: 'else',
         mmm: 'bacon'

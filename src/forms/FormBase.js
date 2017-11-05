@@ -18,6 +18,7 @@ module.exports = kind({
     autoApplyStandardBindings: true,
     standardBindings: Bindings,
     subForm: false,
+    formContainer: false,
 
     handlers: {
         onCacheChange: 'handleCacheChange',
@@ -33,11 +34,18 @@ module.exports = kind({
         if(this.autoApplyStandardBindings) {
             this.applyStandardBindings();
         }
+
+        // Break references to formData on other forms?
+        this.clearForm(); 
     },
     clearForm: function() {
         this.set('formData', {});
     },
     submitForm: function() {
+        if(this.formContainer) {
+            return;
+        }
+
         this._submitFormHelper(utils.clone(this.get('formData')), true);
         return true;
     },    
@@ -172,6 +180,13 @@ module.exports = kind({
     // Lots of problems will need to be solved with page / cache change handling so subforms (advanced search) will work correct
     handleCacheChange: function(inSender, inEvent) {
         this.log('hashcache', inEvent);
+        this.log('cur hash', this.get('cacheHash'));
+        this.log('cur page', this.get('page'));
+
+        if(this.subForm) {
+            this.log('subform, returning');
+            return;
+        }
 
         var extra = {
             page: inEvent.page || 1
@@ -187,10 +202,16 @@ module.exports = kind({
         return true; // Don't propagage, will cause issues with subforms, if any
     },
     handleHashRunForm: function(inSender, inEvent) {
-        // this._submitFormHelper(inEvent.formData);
-        this.set('formData', utils.clone(inEvent.formData));
-        this.submitFormAuto();
+        if(this.subForm) {
+            return;
+        }
+
+        this.log(inEvent);
         // this.clearForm();
+        this.set('formData', {});
+        this.set('formData', utils.clone(inEvent.formData));
+        this.log('just set form data, about to submit form');
+        this.submitFormAuto();
         
         return true; // Don't propagage, will cause issues with subforms, if any
     },
@@ -201,7 +222,8 @@ module.exports = kind({
             hash += '/' + this.page.toString();
         }
 
-        window.location.hash = hash;
+        history.replaceState(null, null, document.location.pathname + hash);
+        // window.location.hash = hash;
     },
     applyStandardBindings: function() {
         this.log('form name: ' + this.name);

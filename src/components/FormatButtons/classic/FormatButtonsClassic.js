@@ -121,6 +121,11 @@ module.exports = kind({
             console.log('copy_toggle', value, dir);
             return value;
             // return (value && value != 0 && value != false) ? true : false;
+        }},             
+        {from: 'app.UserConfig.advanced_toggle', to: '$.advanced_toggle.value', oneWay: false, transform: function(value, dir) {
+            console.log('advanced_toggle', value, dir);
+            return value;
+            // return (value && value != 0 && value != false) ? true : false;
         }},     
         // {from: 'app.UserConfig.copy', to: '$.copy.checked', oneWay: false, transform: function(value, dir) {
         //     console.log('copy', value, dir);

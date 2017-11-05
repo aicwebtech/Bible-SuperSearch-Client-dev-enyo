@@ -38,7 +38,7 @@ module.exports = kind({
         }
 
         if(this.width && this.width != 0) {
-            this.style = 'width:' + this.width.toString() + 'px';
+            this.style = 'max-width:' + this.width.toString() + 'px';
         }
 
         this.resetValue();

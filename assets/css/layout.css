@@ -190,3 +190,11 @@ div.biblesupersearch_dialog {
     margin-left: auto;
     text-align: center;
 }
+
+.biblesupersearch_container label.left_label {
+    display: inline-block;
+    margin-right: 5px;
+    text-align: right;
+    min-width: 100px;
+}
+

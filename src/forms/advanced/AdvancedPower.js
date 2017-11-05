@@ -19,17 +19,22 @@ module.exports = kind({
         {tag: 'br'},
         {
             components: [
-                {tag: 'span', allowHtml: true, content: 'Boolean Search:'},
-                {kind: TextArea, name: 'search'}
+                {allowHtml: true, content: 'Boolean Search:'},
+                {kind: TextArea, name: 'search', style: 'width: 98%; height: 50px;'}
             ]
         },
         {
             components: [
-                {tag: 'span', allowHtml: true, content: 'Passage Limitation:'},
-                {kind: TextArea, name: 'reference'}
+                {allowHtml: true, content: 'Passage Retrieval:'},
+                {kind: TextArea, name: 'reference', style: 'width: 98%; height: 50px;'}
             ]
         },
         {tag: 'br'},
-        {kind: Button, content: 'Power Search', ontap: 'submitForm'}
+        {
+            classes: 'biblesupersearch_center_element',
+            components: [
+                {kind: Button, content: 'Power Search', ontap: 'submitForm'}
+            ]
+        }
     ]
 });

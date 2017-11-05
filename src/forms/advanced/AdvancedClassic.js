@@ -7,6 +7,8 @@ var AdvPower = require('./AdvancedPower');
 module.exports = kind({
     name: 'Advanced',
     kind: FormBase,
+    autoApplyStandardBindings: false,
+    formContainer: true,
 
     components: [
         {
