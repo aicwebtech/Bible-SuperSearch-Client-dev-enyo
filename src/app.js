@@ -61,6 +61,12 @@ var App = Application.kind({
         // If user provided a config path, use it.
         var config_path = (typeof biblesupersearch_config_path == 'string') ? biblesupersearch_config_path + '/config.json' : this.rootDir + '/config.json';
 
+        if(typeof biblesupersearch_config_options == 'object') {
+            utils.mixin(this.configs, biblesupersearch_config_options);
+            this.log('configs - preloaded');
+            this.handleConfigFinal();
+        }
+
         if(this.build.dynamicConfig == true) {
             config_path = this.build.dynamicConfigUrl;
         }
