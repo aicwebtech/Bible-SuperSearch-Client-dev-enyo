@@ -65,6 +65,7 @@ var App = Application.kind({
             utils.mixin(this.configs, biblesupersearch_config_options);
             this.log('configs - preloaded');
             this.handleConfigFinal();
+            return;
         }
 
         if(this.build.dynamicConfig == true) {

@@ -28,7 +28,7 @@ module.exports = kind({
 
         if(Array.isArray(enabled) && enabled.length) {
             for(i in enabled) {
-                this._addBibleHelper(bibles[enabled[i]]);
+                bibles[enabled[i]] && this._addBibleHelper(bibles[enabled[i]]);
             }
         }
         else {        
