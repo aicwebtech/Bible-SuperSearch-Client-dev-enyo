@@ -40,12 +40,12 @@ module.exports = kind({
         { name: 'FormatButtonContainer', showing: false, components: [
             {name: 'FormatButtonController', kind: FormController, view: null},
         ]},        
+        {name: 'ErrorsContainer', showing: false, kind: ErrorView},
         { name: 'ResultsContainer', components: [
             {name: 'ResultsController', kind: ResultsController, view: null},
-        ]},
+        ]}
         
         // {name: 'ResultsContainer', ind: ResultsView}, // need a ViewController here!
-        {name: 'ErrorsContainer', showing: false, kind: ErrorView}
     ],
 
     observers: [
@@ -86,6 +86,15 @@ module.exports = kind({
 
         if(inEvent.results.error_level == 4) {
             return this.handleFormError(inSender, inEvent);
+        }        
+
+        // Non-fatal errors
+        if(inEvent.results.error_level > 0) {
+            this.$.ErrorsContainer.set('content', 
+                inEvent.results.errors.join('<br><br>')
+            );
+            
+            this.$.ErrorsContainer.set('showing', true);
         }
 
         this.$.ResultsController.set('resultsData', inEvent.results);

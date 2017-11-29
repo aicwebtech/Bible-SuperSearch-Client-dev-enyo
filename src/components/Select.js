@@ -21,6 +21,7 @@ module.exports = kind({
                     }
                 }
 
+                this.setSelected(0);
                 return false;
             };
         }
