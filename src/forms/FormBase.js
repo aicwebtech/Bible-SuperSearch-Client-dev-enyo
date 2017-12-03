@@ -22,7 +22,8 @@ module.exports = kind({
 
     handlers: {
         onCacheChange: 'handleCacheChange',
-        onHashRunForm: 'handleHashRunForm'
+        onHashRunForm: 'handleHashRunForm',
+        onkeypress: 'keyPress'
     },
 
     create: function() {
@@ -123,6 +124,8 @@ module.exports = kind({
         var response = JSON.parse(inSender.xhrResponse.body);
 
         if(response.error_level == 4) {
+            this.set('cacheHash', response.hash);
+            this.updateHash();
             this.bubble('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
             this.manualRequest = false;
         }
@@ -168,6 +171,7 @@ module.exports = kind({
         this.requestPending = false;
         var formData = inResponse.results.form_data;
         formData.bible = JSON.parse(formData.bible);
+        formData.shortcut = formData.shortcut || 0;
         this.set('formData', utils.clone(formData));
         this.submitFormWith(this._extraFormData);
     },
@@ -208,8 +212,10 @@ module.exports = kind({
 
         this.log(inEvent);
         // this.clearForm();
+        var fd = utils.clone(inEvent.formData);
+        fd.shortcut = fd.shortcut || 0;
         this.set('formData', {});
-        this.set('formData', utils.clone(inEvent.formData));
+        this.set('formData', fd);
         this.log('just set form data, about to submit form');
         this.submitFormAuto();
         
@@ -222,7 +228,8 @@ module.exports = kind({
             hash += '/' + this.page.toString();
         }
 
-        history.replaceState(null, null, document.location.pathname + hash);
+        history.pushState(null, null, document.location.pathname + hash);
+        // history.replaceState(null, null, document.location.pathname + hash);
         // window.location.hash = hash;
     },
     applyStandardBindings: function() {
@@ -247,12 +254,17 @@ module.exports = kind({
         }
 
         if(value && value != '0' && value != '') {
-            if(!this.$.shortcut.setSelectedByValue(value)) {
-                this.$.shortcut.set('selected', 1);
+            if(!this.$.shortcut.setSelectedByValue(value, 1)) {
+                // this.$.shortcut.set('selected', 1);
             }
         }
         else {
             this.$.shortcut.set('selected', 0);
+        }
+    },
+    keyPress: function(inSender, inEvent) {
+        if(inEvent.keyCode == 13) {
+            this.submitForm(); // Submit form if user presses 'enter'
         }
     }
 });

@@ -29,7 +29,7 @@ module.exports = kind({
                     },
                     {tag: 'br'},
                     {content: 'Enter passage(s):'},
-                    {name: 'reference', kind: Input, style: 'width: 300px', onblur: 'referenceTyped'},
+                    {name: 'reference', kind: Input, style: 'width: 100%; max-width: 300px', onblur: 'referenceTyped'},
                     { components: [
                         {tag: 'small', content: 'Example: John 4; Rom 5:8;'},
                     ]},
@@ -55,7 +55,7 @@ module.exports = kind({
                     ]},
                     {tag: 'br'},
                     {content: 'Enter word(s), phrase(s) or expression(s):'},
-                    {name: 'search', kind: Input, style: 'width: 300px'},
+                    {name: 'search', kind: Input, style: 'width: 100%; max-width: 300px'},
                     {tag: 'br'},
                     {tag: 'br'},
                     {components: [

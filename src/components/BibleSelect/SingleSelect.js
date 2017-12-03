@@ -5,8 +5,10 @@ module.exports = kind({
     name: 'SingleSelect',
     kind: Sel,
     width: 0,
+    shortWidthThreshold: 300, // viewport width (pixels) at which menu displays short names
     parallelNumber: 0,
     classes: 'biblesupersearch_bible_selector',
+
 
     create: function() {
         this.inherited(arguments);
@@ -38,7 +40,10 @@ module.exports = kind({
         }
 
         if(this.width && this.width != 0) {
-            this.style = 'max-width:' + this.width.toString() + 'px';
+            this.style = 'width:100%; max-width:' + this.width.toString() + 'px';
+        }
+        else {
+            this.style = 'width:100%';
         }
 
         this.resetValue();
@@ -62,7 +67,9 @@ module.exports = kind({
         }
 
         this._lastLang = bible.lang;
-        var content = bible.name + ' (' + bible.lang + ')';
+
+        var narrow = (this.shortWidthThreshold <= window.innerWidth) ? true : false;
+        var content = narrow ? bible.name + ' (' + bible.lang + ')' : bible.shortname + ' (' + bible.lang + ')';
 
         this.createComponent({
             content: content,

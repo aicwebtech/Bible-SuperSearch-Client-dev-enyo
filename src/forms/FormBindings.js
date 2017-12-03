@@ -7,6 +7,10 @@ module.exports = {
         // }
         // return value || null;
     }},        
+    request: {from: 'formData.request', to: '$.request.value', oneWay: false, transform: function(value, dir) {
+        this.log('request', value, dir);
+        return value || null;
+    }},
     // reference binding MUST be before the shortcut binding!
     reference: {from: 'formData.reference', to: '$.reference.value', oneWay: false, transform: function(value, dir) {
         this.log('reference', value, dir);
@@ -24,11 +28,11 @@ module.exports = {
         return value || null;
     }},
     shortcut: {from: 'formData.shortcut', to: '$.shortcut.value', oneWay: false, transform: function(value, dir) {
-        // this.log('shortcut', value, dir);
+        this.log('shortcut', value, dir);
 
         if(dir === 1) {
-            if(value) {
-                this.$.shortcut.setSelectedByValue(value);
+            if(value || value === 0) {
+                this.$.shortcut.setSelectedByValue(value, 0);
             }
             else {
                 this.$.shortcut.setSelected(0);
@@ -41,6 +45,10 @@ module.exports = {
             else if (value != '1') {
                 this.$.reference.set('value', null);
             }
+            
+            if(!value || value == '') {
+                this.$.shortcut.setSelected(0); // Hack to prevent selector from showing 'blank'
+            }
         }
 
         return value || null;
@@ -48,7 +56,7 @@ module.exports = {
     search_type: {from: 'formData.search_type', to: '$.search_type.value', oneWay: false, transform: function(value, dir) {
         // this.log('search_type', value, dir);
         if(dir == 1) {
-            this.$.search_type.setSelectedByValue(value);
+            this.$.search_type.setSelectedByValue(value, 0);
         }
 
         return value || null;
@@ -56,7 +64,7 @@ module.exports = {
     proximity_limit: {from: 'formData.proximity_limit', to: '$.proximity_limit.value', oneWay: false, transform: function(value, dir) {
         // this.log('proximity_limit', value, dir);
         if(dir == 1) {
-            this.$.proximity_limit.setSelectedByValue(value);
+            this.$.proximity_limit.setSelectedByValue(value, 0);
         }
 
         return value || null;
