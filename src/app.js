@@ -35,9 +35,11 @@ var App = Application.kind({
     bibleDisplayLimit: 8, // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
     resetView: true,
     appLoaded: false,
+    ajaxLoadingDelayTimer: null,
 
     published: {
         ajaxLoading: false,
+        ajaxLoadingDelay: false
     },
 
     components: [
@@ -275,6 +277,21 @@ var App = Application.kind({
         if(this.view && this.view.set) {
             this.log('setting');
             this.view.set('ajaxLoading', is);
+        }
+    },
+    ajaxLoadingDelayChanged: function(was, is) {
+        var delay = is || false,
+            t = this;
+
+        if(!delay) {
+            this.ajaxLoadingDelay = false;
+            window.clearTimeout(this.ajaxLoadingDelayTimer);
+            this.set('ajaxLoading', false);
+        }
+        else {
+            this.ajaxLoadingDelayTimer = window.setTimeout(function() {
+                t.set('ajaxLoading', true);
+            }, delay);
         }
     },
     getSubControl: function(name) {

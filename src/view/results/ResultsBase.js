@@ -75,7 +75,8 @@ module.exports = kind({
         this.hasPaging = false;
         this.paging = null;
 
-        if(is && is.paging && is.paging.last_page && is.paging.last_page > 1) {
+        // if(is && is.paging && is.paging.last_page && is.paging.last_page > 1) {
+        if(is && is.paging && is.paging.last_page) {
             this.hasPaging = true;
             this.paging = is.paging;
         }
@@ -96,7 +97,7 @@ module.exports = kind({
         }
         
         this.log('Rendering Results!');
-        this.renderPager();
+        this.renderPager(true);
         this.renderHeader();
 
         resultsData.results.forEach(function(passage) {
@@ -104,7 +105,7 @@ module.exports = kind({
         }, this);
 
         this.renderFooter();
-        this.renderPager();
+        this.renderPager(false);
         // this.$.ResultsContainer.render();
         this.render();
     },
@@ -198,10 +199,12 @@ module.exports = kind({
     watchFormatable: function(pre, cur, prop) {
 
     },
-    renderPager: function() {
+    renderPager: function(includeTotals) {
         if(!this.hasPaging) {
             return;
         }
+
+        includeTotals = includeTotals || false;
 
         this.createComponent({
             kind: Pager,
@@ -209,7 +212,8 @@ module.exports = kind({
             lastPage: this.paging.last_page,
             perPage: this.paging.per_page,
             totalResults: this.paging.total,
-            cacheHash: this.resultsData.hash
+            cacheHash: this.resultsData.hash,
+            includeTotals: includeTotals
         });
     }
 

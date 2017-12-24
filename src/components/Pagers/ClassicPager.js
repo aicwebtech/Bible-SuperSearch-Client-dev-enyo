@@ -4,14 +4,15 @@ var Signal = require('../Signal');
 var Link = require('../Link/Link');
 
 module.exports = kind({
-    name: 'SimplePager',
+    name: 'ClassicPager',
     classes: 'biblesupersearch_pager',
     lastPage: null, // Total number of pages
     cacheHash: 'abcde12345', //null,
     currentPage: 1,
     perPage: 30,
     totalResults: null,
-    numPageLinks: 10, // maximum number of individual page links to display at once
+    numPageLinks: 10, // maximum number of individual page links to display at once,
+    includeTotals: false,
 
     events: {
         onPageChange: ''
@@ -36,9 +37,29 @@ module.exports = kind({
         this.destroyClientControls();
         var cache = this.get('cacheHash');
         var page  = this.get('currentPage');
-
         var prevPage = (page == 1) ? 1 : page - 1;
         var nextPage = (page == this.lastPage) ? this.lastPage : page + 1;
+        var displayRangeSt = (page - 1) * this.perPage + 1;
+        var displayRangeEn = page * this.perPage;
+        var showing = (this.lastPage > 1) ? true : false;
+
+        displayRangeEn = (displayRangeEn > this.totalResults) ? this.totalResults : displayRangeEn;
+
+        if(this.includeTotals) {
+            var msg = 'Your search produced ' + this.totalResults + ' results. &nbsp;';
+            msg += 'Showing results ' + displayRangeSt + ' to ' + displayRangeEn + '.<br /><br />';
+            showing = true;
+
+            this.createComponent({
+                content: msg,
+                allowHtml: true
+            });
+        }
+
+        if(this.lastPage == 1) {
+            this.set('showing', showing);
+            return;
+        }
         
         if(this.lastPage) {        
             this.createComponent({
@@ -94,6 +115,8 @@ module.exports = kind({
                 href: '#/c/' + cache + '/' + this.lastPage.toString()
             });
         }
+
+        this.set('showing', showing);
     },
     currentPageChanged: function(was, is) {
         if(this.lastPage && is > this.lastPage) {

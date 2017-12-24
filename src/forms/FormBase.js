@@ -73,7 +73,8 @@ module.exports = kind({
             method: 'GET'
         });
 
-        this.app.set('ajaxLoading', true);
+        // this.app.set('ajaxLoading', true);
+        this.app.set('ajaxLoadingDelay', 100);
         this.requestPending = true;
         var formData = this.beforeSubmitForm(formData);
         this.processDefaults(formData);
@@ -105,7 +106,8 @@ module.exports = kind({
         return formData;
     },
     handleResponse: function(inSender, inResponse) {
-        this.app.set('ajaxLoading', false);
+        // this.app.set('ajaxLoading', false);
+        this.app.set('ajaxLoadingDelay', false);
         this.requestPending = false;
         this.set('cacheHash', inResponse.hash);
         this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: inResponse});
@@ -119,7 +121,8 @@ module.exports = kind({
         this.manualRequest = false;
     },
     handleError: function(inSender, inResponse) {
-        this.app.set('ajaxLoading', false);
+        // this.app.set('ajaxLoading', false);
+        this.app.set('ajaxLoadingDelay', false);
         this.requestPending = false;
         var response = JSON.parse(inSender.xhrResponse.body);
 
