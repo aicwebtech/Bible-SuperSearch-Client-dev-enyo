@@ -1,3 +1,4 @@
+mkdir -p builds/dev/biblesupersearch
 enyo pack
 cp assets/html/dev_site.html builds/dev/biblesupersearch.html
 cp assets/html/dev_test.html builds/dev/biblesupersearch/test.html

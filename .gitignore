@@ -1,6 +1,5 @@
 .enyocache
 dist/
-lib/
 builds/
 node_modules/
 config.json
