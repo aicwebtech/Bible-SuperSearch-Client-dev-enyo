@@ -64,15 +64,17 @@ module.exports = kind({
         if(this.lastPage) {        
             this.createComponent({
                 kind: Link,
-                content: '|<=',
-                href: '#/c/' + cache + '/1'
+                content: '<<<',
+                href: '#/c/' + cache + '/1',
+                title: 'First Page'
             });        
         }
 
         this.createComponent({
             kind: Link,
             href: '#/c/' + cache + '/' + prevPage.toString(),
-            content: '<='
+            content: '<<',
+            title: 'Previous Page'
         });
 
         if(this.lastPage) {
@@ -105,14 +107,16 @@ module.exports = kind({
         this.createComponent({
             kind: Link,
             href: '#/c/' + cache + '/' + nextPage.toString(),
-            content: '=>'
+            content: '>>',
+            title: 'Next Page'
         });        
 
         if(this.lastPage) {        
             this.createComponent({
                 kind: Link,
-                content: '=>|',
-                href: '#/c/' + cache + '/' + this.lastPage.toString()
+                content: '>>>',
+                href: '#/c/' + cache + '/' + this.lastPage.toString(),
+                title: 'Last Page'
             });
         }
 

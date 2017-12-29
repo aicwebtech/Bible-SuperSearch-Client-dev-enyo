@@ -60,11 +60,11 @@ module.exports = kind({
                     {tag: 'br'},
                     {components: [
                         {tag: 'span', content: 'Search for: '},
-                        {kind: SearchType, name: 'search_type'}
+                        {kind: SearchType, name: 'search_type', style: 'width: 100%; max-width: 200px'}
                     ]},
                     {components: [
                         {tag: 'span', content: 'Limit search to: '},
-                        {kind: Shortcuts, name: 'shortcut'}
+                        {kind: Shortcuts, name: 'shortcut', style: 'width: 100%; max-width: 200px'}
                     ]},
                     {components: [
                         {kind: Checkbox, name: 'whole_words', id: 'whole_words'},

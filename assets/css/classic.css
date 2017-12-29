@@ -59,13 +59,36 @@
     margin: 15px auto;
 }
 
+.interface_classic a:link, .interface_classic a:visited {
+    color: #0000F1;
+    text-decoration: none;
+}
+
+.interface_classic a:hover {
+    text-decoration: underline overline;
+}
+
 .interface_classic .biblesupersearch_pager a {
-    margin: 0 4px;
+    margin: 0 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+.interface_classic .biblesupersearch_pager a:hover {
+    background-color: #0000F1;
+    color: darkorange;
     text-decoration: none;
 }
 
 .interface_classic .biblesupersearch_pager a.current_page {
     font-weight: bold;
+    color: darkorange;
+    background-color: transparent;
+}
+
+.interface_classic .biblesupersearch_pager a:link, .interface_classic .biblesupersearch_pager a:visited {
+
 }
 
 .interface_classic .format_buttons {
@@ -75,3 +98,4 @@
 .interface_classic .format_buttons img {
     margin: 0 1px;
 }
+

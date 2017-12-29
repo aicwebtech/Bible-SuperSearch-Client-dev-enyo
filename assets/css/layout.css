@@ -73,6 +73,7 @@ div.biblesupersearch_content {
 table.biblesupersearch_render_table {
     table-layout: fixed;
     width: 100%;
+    margin-bottom: 5px;
 }
 
 .biblesupersearch_copy_pane {
