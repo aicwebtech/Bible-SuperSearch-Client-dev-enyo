@@ -4,20 +4,27 @@ var Sel = require('../Select');
 module.exports = kind({
     name: 'SingleSelect',
     kind: Sel,
-    width: 0,
-    shortWidthThreshold: 300, // viewport width (pixels) at which menu displays short names
+    width: 270,
+    shortWidthThreshold: 250, // viewport width (pixels) at which menu displays short names
+    shortWidthWidth: 160,
+    isShort: false,
     parallelNumber: 0,
     classes: 'biblesupersearch_bible_selector',
 
+    handlers: {
+        resize: 'handleResize',
+    },
 
     create: function() {
         this.inherited(arguments);
+        this.isShort = (this.shortWidthThreshold <= window.innerWidth) ? false : true;
 
         var statics = this.app.get('statics'),
             bibles = statics.bibles,
             configs = this.app.get('configs'),
             enabled = configs.enabledBibles,
-            noSelectLabel = 'Select a Bible';
+            noSelectLabel = 'Select a Bible',
+            width = (this.isShort) ? this.shortWidthWidth : this.width;
 
         if(this.parallelNumber && this.parallelNumber != 0) {
             var noSelectLabel = 'Paralell Bible #' + this.parallelNumber.toString();
@@ -39,11 +46,13 @@ module.exports = kind({
             }
         }
 
-        if(this.width && this.width != 0) {
-            this.style = 'width:100%; max-width:' + this.width.toString() + 'px';
+        if(width && width != 0) {
+            this.addStyles('width:100%; max-width:' + this.width.toString() + 'px');
+            // this.style = 'width:100%; max-width:' + this.width.toString() + 'px';
         }
         else {
-            this.style = 'width:100%';
+            this.addStyles('width:100%');
+            // this.style = 'width:100%';
         }
 
         this.resetValue();
@@ -68,12 +77,16 @@ module.exports = kind({
 
         this._lastLang = bible.lang;
 
-        var narrow = (this.shortWidthThreshold <= window.innerWidth) ? true : false;
-        var content = narrow ? bible.name + ' (' + bible.lang + ')' : bible.shortname + ' (' + bible.lang + ')';
+        var narrow = this.isShort,
+            contentShort = bible.shortname + ' (' + bible.lang + ')',
+            contentLong = bible.name + ' (' + bible.lang + ')',
+            content = narrow ? contentShort : contentLong;
 
         this.createComponent({
             content: content,
-            value: bible.module
+            value: bible.module,
+            contentShort: contentShort,
+            contentLong: contentLong
         });
     },
     _lastLang: null,
@@ -96,5 +109,27 @@ module.exports = kind({
                 break;
             }
         }
+    },
+    isShortChanged: function(was, is) {
+        var width = (is) ? this.shortWidthWidth : this.width;
+        var comp = this.getClientControls();
+
+        comp.forEach(function(option) {
+            var content = (is) ? option.contentShort : option.contentLong;
+            content && option.set('content', content);
+        }, this);
+
+        this.log('width', width);
+
+        if(width && width != 0) {
+            this.log('applying max-width');
+            this.applyStyle('max-width', width.toString() + 'px' );
+            this.render();
+        }
+    },
+    handleResize: function(inSender, inEvent) {
+        var isShort = (this.shortWidthThreshold <= window.innerWidth) ? false : true;
+        this.set('isShort', isShort);
+        // this.log('isShort', isShort);
     }
 });

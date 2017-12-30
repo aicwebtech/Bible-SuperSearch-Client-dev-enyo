@@ -14,7 +14,8 @@ module.exports = kind({
             kind: BibleSelect, 
             parallelLimit: 8, 
             parallelStart: 1, 
-            selectorWidth: 200
+            selectorWidth: 270,
+            classes: 'biblesupersearch_center_element'
         },
         {tag: 'br'},
         {

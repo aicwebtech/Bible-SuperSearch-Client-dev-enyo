@@ -77,7 +77,7 @@ module.exports = kind({
         this.app.set('ajaxLoadingDelay', 100);
         this.requestPending = true;
         var formData = this.beforeSubmitForm(formData);
-        this.processDefaults(formData);
+        formData = this.processDefaults(formData);
         this.log('formData', formData);
         ajax.go(formData); // for GET
         ajax.response(this, 'handleResponse');
@@ -97,6 +97,13 @@ module.exports = kind({
         formData.bible = JSON.stringify(formData.bible);
         formData.highlight = true;
         formData.data_format = 'lite';
+
+        this.log('st', formData.search_type);
+        
+        if(!formData.search_type || formData.search_type == '') {
+            formData.search_type = 'and';
+        }
+
         // formData.page = this.get('page');
         return formData;
     },

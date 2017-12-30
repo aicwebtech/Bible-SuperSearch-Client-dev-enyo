@@ -18,15 +18,17 @@ module.exports = kind({
             kind: BibleSelect, 
             parallelLimit: 8, 
             parallelStart: 1, 
-            selectorWidth: 200
+            selectorWidth: 270,
+            classes: 'biblesupersearch_center_element'
         },
         {tag: 'br'},
         {
             components: [
                 {kind: Input, name: 'search', style: 'width: 98%'},
                 {tag: 'br'},
-                {tag: 'label', allowHtml: true, content: 'Find words within '},
-                {kind: ProximitySelect, name: 'proximity_limit'}
+                {tag: 'br'},
+                {tag: 'label', allowHtml: true, classes: 'resp_left_label resp_left_label_165', content: 'Find words within:'},
+                {kind: ProximitySelect, classes: 'resp_input resp_input_100', name: 'proximity_limit', style: 'max-width: 100px'}
             ]
         },
         {tag: 'br'},

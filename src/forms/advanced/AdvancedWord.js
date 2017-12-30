@@ -18,45 +18,47 @@ module.exports = kind({
             kind: BibleSelect, 
             parallelLimit: 8, 
             parallelStart: 1, 
-            selectorWidth: 200
+            selectorWidth: 270,
+            classes: 'biblesupersearch_center_element'
         },
         {tag: 'br'},
         {content: 'Find verses containing:'},
+        {tag: 'br'},
         {
             components: [
-                {tag: 'label', classes: 'left_label', allowHtml: true, style: 'width: 44%; max-width: 200px', content: '<b>All</b> of the words:'},
-                {kind: Input, style: 'width: 55%; max-width: 150px', name: 'search_all'}
+                {tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>All</b> of the words:'},
+                {kind: Input, classes: 'resp_input resp_input_200', name: 'search_all'}
             ]
         },
         {
             components: [
-                {tag: 'label', classes: 'left_label', allowHtml: true, style: 'width: 44%; max-width: 200px', content: '<b>Any</b> of the words:'},
-                {kind: Input, style: 'width: 55%; max-width: 150px', name: 'search_any'}
+                {tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>Any</b> of the words:'},
+                {kind: Input, classes: 'resp_input resp_input_200', name: 'search_any'}
             ]
         },
         {
             components: [
-                {tag: 'label', classes: 'left_label', allowHtml: true, style: 'width: 44%; max-width: 200px', content: '<b>Only one</b> of the words:'},
-                {kind: Input, style: 'width: 55%; max-width: 150px', name: 'search_one'}
+                {tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>Only one</b> of the words:'},
+                {kind: Input, classes: 'resp_input resp_input_200', name: 'search_one'}
             ]
         },
         {
             components: [
-                {tag: 'label', classes: 'left_label', allowHtml: true, style: 'width: 44%; max-width: 200px', content: '<b>None</b> of the words:'},
-                {kind: Input, style: 'width: 55%; max-width: 150px', name: 'search_none'}
+                {tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>None</b> of the words:'},
+                {kind: Input, classes: 'resp_input resp_input_200', name: 'search_none'}
             ]
         },
         {
             components: [
-                {tag: 'label', classes: 'left_label', allowHtml: true, style: 'width: 44%; max-width: 200px', content: 'The <b>exact phrase</b>:'},
-                {kind: Input, style: 'width: 55%; max-width: 150px', name: 'search_phrase'}
+                {tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: 'The <b>exact phrase</b>:'},
+                {kind: Input, classes: 'resp_input resp_input_200', name: 'search_phrase'}
             ]
         },
         {tag: 'br'},
         {
             components: [
-                {tag: 'label', classes: 'left_label', allowHtml: true, style: 'width: 44%; max-width: 200px', content: 'Restrict Search to:'},
-                {kind: SearchType, style: 'width: 55%; max-width: 155px', name: 'search_type'}
+                {tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: 'Restrict Search to:'},
+                {kind: SearchType, classes: 'resp_input resp_input_200', name: 'search_type', style: 'max-width: 200px'}
             ]
         },
         {tag: 'br'},

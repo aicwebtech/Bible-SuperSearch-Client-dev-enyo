@@ -8,10 +8,11 @@ module.exports = kind({
     parallelLimit: 6,   // Maximum number of parallel Bibles that can be displayed
     parallelStart: 1,   // Number of parallel Bibles to display initially
     selectorWidth: 0,   // Pixels, 0 means automatic
+    selectorShortWidth: 0,
     selectorClasses: '',
 
     components: [
-        {name: 'Container', tag: 'span'},
+        {name: 'Container', tag: 'div'},
         {name: 'Add', kind: Button, content: 'Add Bible', ontap: 'addSelector'}
     ],
 
@@ -33,7 +34,8 @@ module.exports = kind({
     },
     _addSelectorHelper: function() {
         this.parallelNumber ++;
-        var width = (this.selectorWidth) ? this.selectorWidth : 0;
+        var width = (this.selectorWidth) ? this.selectorWidth : 270;
+        var shortWidth = (this.selectorShortWidth) ? this.selectorShortWidth : 160;
         var classes = (this.selectorClasses && typeof this.selectorClasses == 'string') ? this.selectorClasses : '';
         var style = '';
         
@@ -46,16 +48,25 @@ module.exports = kind({
         }
 
         if(this.parallelNumber <= this.parallelLimit) {        
-            this.$.Container.createComponent({
+            var comp = this.$.Container.createComponent({
                 kind: Single,
                 name: 'Select_' + this.parallelNumber,
                 parallelNumber: this.parallelNumber,
                 onchange: 'selectorChanged',
                 classes: 'biblesupersearch_bible_selector_multi ' + classes,
                 width: width,
+                shortWidthWidth: shortWidth,
                 // value: (this.parallelNumber == 1) ? this.app.configs.defaultBible : null,
                 owner: this
             });
+
+            // if(width && width != 0) {
+            //     comp.set('width', width);
+            // }
+            
+            // if(shortWidth && shortWidth != 0) {
+            //     comp.set('shortWidthWidth', shortWidth);
+            // }
 
             // if(this.parallelNumber == 1) {
             //     this.log('setting first default');

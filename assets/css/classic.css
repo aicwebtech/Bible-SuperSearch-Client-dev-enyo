@@ -60,7 +60,7 @@
 }
 
 .interface_classic a:link, .interface_classic a:visited {
-    color: #0000F1;
+    color: #0000ee;
     text-decoration: none;
 }
 
@@ -69,14 +69,14 @@
 }
 
 .interface_classic .biblesupersearch_pager a {
-    margin: 0 6px;
+    margin: 0 5px;
     text-decoration: none;
     font-weight: bold;
 }
 
 
 .interface_classic .biblesupersearch_pager a:hover {
-    background-color: #0000F1;
+    background-color: #0000ee;
     color: darkorange;
     text-decoration: none;
 }
