@@ -196,6 +196,10 @@ div.biblesupersearch_dialog {
     margin: 0 2px 0;
 }
 
+.biblesupersearch_container label {
+    display: inline;
+}
+
 .biblesupersearch_container label.left_label {
     display: inline-block;
     margin-right: 5px;

@@ -36,6 +36,7 @@ var App = Application.kind({
     resetView: true,
     appLoaded: false,
     ajaxLoadingDelayTimer: null,
+    baseTitle: null,
 
     published: {
         ajaxLoading: false,
@@ -59,6 +60,7 @@ var App = Application.kind({
         this.build = buildConfig;
         this.system = systemConfig;
         this.rootDir = (typeof biblesupersearch_root_directory == 'string') ? biblesupersearch_root_directory : '/biblesupersearch';
+        this.set('baseTitle', document.title);
 
         // If user provided a config path, use it.
         var config_path = (typeof biblesupersearch_config_path == 'string') ? biblesupersearch_config_path + '/config.json' : this.rootDir + '/config.json';

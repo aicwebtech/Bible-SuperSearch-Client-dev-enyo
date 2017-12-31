@@ -70,6 +70,7 @@ module.exports = kind({
                         {kind: Checkbox, name: 'whole_words', id: 'whole_words'},
                         {tag: 'label', content: ' Whole words only', attributes: {for: 'whole_words'}}
                     ]},
+                    {tag: 'br'},
                     {kind: Button, content: 'Search the Bible', ontap: 'submitForm'},
                     {tag: 'br'},
                     {tag: 'br'},

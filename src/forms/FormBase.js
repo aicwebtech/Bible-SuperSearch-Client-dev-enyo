@@ -85,7 +85,6 @@ module.exports = kind({
     },
     
     processDefaults: function(formData) {
-        this.log(this.app.configs);
         var defaultBible = this.app.configs.defaultBible;
         formData.bible = (formData.bible && formData.bible != '0' && formData.bible != [] && formData.bible.length != 0) ? formData.bible : [defaultBible];
         
@@ -97,8 +96,6 @@ module.exports = kind({
         formData.bible = JSON.stringify(formData.bible);
         formData.highlight = true;
         formData.data_format = 'lite';
-
-        this.log('st', formData.search_type);
         
         if(!formData.search_type || formData.search_type == '') {
             formData.search_type = 'and';
@@ -125,6 +122,7 @@ module.exports = kind({
             this.updateHash();
         }
 
+        this.updateTitle();
         this.manualRequest = false;
     },
     handleError: function(inSender, inResponse) {
@@ -135,7 +133,12 @@ module.exports = kind({
 
         if(response.error_level == 4) {
             this.set('cacheHash', response.hash);
-            this.updateHash();
+            
+            if(this.manualRequest) {
+                this.updateHash();
+            }
+            
+            this.updateTitle();
             this.bubble('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
             this.manualRequest = false;
         }
@@ -160,7 +163,7 @@ module.exports = kind({
         var url = this.app.configs.apiUrl + '/readcache?hash=' + hash;
 
         if(this.requestPending) {
-            this.log('pendign request');
+            this.log('pending cache request, skipping');
             return;
         }
 
@@ -169,6 +172,7 @@ module.exports = kind({
             method: 'GET'
         });
 
+        this.log('Loading cache...');
         this.requestPending = true;
         // ajax.response(this, 'handleCacheResponse');
         ajax.response(utils.bind(this, this.handleCacheResponse));
@@ -176,12 +180,14 @@ module.exports = kind({
         ajax.go(); // for GET
     },
     handleCacheResponse: function(inSender, inResponse) {
+        this.log();
         //this.showResults(inResponse.results);
         this.set('cacheHash', inResponse.results.hash);
         this.requestPending = false;
-        var formData = inResponse.results.form_data;
+        var formData = utils.clone(inResponse.results.form_data);
         formData.bible = JSON.parse(formData.bible);
         formData.shortcut = formData.shortcut || 0;
+        this.set('formData', {});
         this.set('formData', utils.clone(formData));
         this.submitFormWith(this._extraFormData);
     },
@@ -239,18 +245,43 @@ module.exports = kind({
         }
 
         history.pushState(null, null, document.location.pathname + hash);
-        // history.replaceState(null, null, document.location.pathname + hash);
-        // window.location.hash = hash;
+    },
+    updateTitle: function() {
+        var mainSep = ' - ',
+            baseTitle = this.app.get('baseTitle'),
+            baseFirst = false,
+            formData = this.get('_formDataAsSubmitted'),
+            fields = Array('request','reference','search','search_all','search_any','search_one','search_none','search_phrase'),
+            values = Array();
+
+        fields.forEach(function(field) {
+            if(formData[field] && formData[field] != '') {
+                values.push(formData[field]);
+            }
+        }, this);
+
+        if(baseFirst) {
+            var newTitle = baseTitle + mainSep + values.join(' | ');
+        }
+        else {
+            var newTitle = values.join(' | ') + mainSep + baseTitle;
+        }
+
+        document.title = newTitle;
+    },
+    formDataChanged: function(was, is) {
+        // this.log('was', was);
+        // this.log('is', is);
     },
     applyStandardBindings: function() {
-        this.log('form name: ' + this.name);
+        // this.log('form name: ' + this.name);
 
         for(i in this.standardBindings) {
             if(this.$[i]) {
                 this.$[i] && this.bindings.push(this.standardBindings[i]);
             }
             else {
-                this.log('bind target not found:' + i);
+                // this.log('bind target not found:' + i);
             }
         }
     },

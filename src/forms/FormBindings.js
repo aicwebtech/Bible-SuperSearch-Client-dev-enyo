@@ -8,12 +8,12 @@ module.exports = {
         // return value || null;
     }},        
     request: {from: 'formData.request', to: '$.request.value', oneWay: false, transform: function(value, dir) {
-        this.log('request', value, dir);
+        // this.log('request', value, dir);
         return value || null;
     }},
     // reference binding MUST be before the shortcut binding!
     reference: {from: 'formData.reference', to: '$.reference.value', oneWay: false, transform: function(value, dir) {
-        this.log('reference', value, dir);
+        // this.log('reference', value, dir);
         // if(dir === 2) {
         //     if(value && value != '0' && value != '') {
         //         this.$.shortcut.set('selected', 1);
@@ -28,7 +28,7 @@ module.exports = {
         return value || null;
     }},
     shortcut: {from: 'formData.shortcut', to: '$.shortcut.value', oneWay: false, transform: function(value, dir) {
-        this.log('shortcut', value, dir);
+        // this.log('shortcut', value, dir);
 
         if(dir === 1) {
             if(value || value === 0) {
