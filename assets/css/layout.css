@@ -121,6 +121,7 @@ table.biblesupersearch_render_table {
     table-layout: fixed;
     padding: 0;
     border-spacing: 0 0;
+    margin: 0;
 }
 
 .biblesupersearch_render_table td table td {
