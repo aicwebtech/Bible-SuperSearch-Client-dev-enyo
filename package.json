@@ -4,7 +4,7 @@
   "assets": [
     "config.json-example",
     "config.json",
-    "config.js",
+    "config-example.js",
     "assets/images/*",
     "assets/images/classic/formatting/*.jpg",
     "assets/images/classic/prevnext/square/*.gif",
