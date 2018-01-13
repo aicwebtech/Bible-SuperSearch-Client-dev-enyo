@@ -11,6 +11,7 @@ var DefaultInterface = require('./view/interfaces/twentytwenty/TwentyTwenty');
 var Interfaces = require('./view/Interfaces');
 var UserConfigController = require('./data/controllers/UserConfig');
 var Router = require('enyo/Router');
+var Loading = require('./components/LoadingInline');
 
 //var MainView = require('./view/Content');
 
@@ -22,11 +23,12 @@ var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 var App = Application.kind({
     name: 'BibleSuperSearch',
 
-    view: DefaultInterface,
+    defaultView: DefaultInterface,
     //renderTarget: 'biblesupersearch_container',
     configs: {},
     build: {},
     system: {},
+    // view: Loading, // Loading will be replaced with actual UI
     renderOnStart: false, // We need to load configs first
     rootDir: null,
     testing: false, // Indicates unit tests are running
@@ -61,6 +63,23 @@ var App = Application.kind({
         this.system = systemConfig;
         this.rootDir = (typeof biblesupersearch_root_directory == 'string') ? biblesupersearch_root_directory : '/biblesupersearch';
         this.set('baseTitle', document.title);
+        this.log('rootDir', this.rootDir);
+
+        // Experimental code for determining root dir from script
+        // Appears to be working, commenting out for current release
+        //
+        // if(typeof biblesupersearch_root_directory == 'string') {
+        //     this.rootDir = biblesupersearch_root_directory;
+        // }
+        // else {        
+        //     var path = document.querySelector('script[src*="biblesupersearch.js"]').getAttribute('src');
+        //     var dirParts = path.split('/'); 
+        //     var name = dirParts.pop();
+        //     var dir = dirParts.join('/') || window.location.href;
+        //     // dir = dir.replace('/'+name,"");
+        //     this.log('bss script dir', dir, window.location.href);
+        //     this.rootDir = dir;
+        // }
 
         // If user provided a config path, use it.
         var config_path = (typeof biblesupersearch_config_path == 'string') ? biblesupersearch_config_path + '/config.json' : this.rootDir + '/config.json';
@@ -86,7 +105,7 @@ var App = Application.kind({
         loader.error(this, 'handleConfigError');
     },
     handleConfigError: function() {
-        alert('Error: Failed to load application config data.  Error code 1');
+        alert('Error: Failed to load application configuration.  Error code 1');
         this.handleConfigFinal();
     },
     handleConfigLoad: function(inSender, inResponse) {
@@ -98,6 +117,7 @@ var App = Application.kind({
         if(this.configs.target) {
             this.renderTarget = this.configs.target;
         }
+
 
         // this.render();
         this.log(this.configs);
@@ -111,14 +131,22 @@ var App = Application.kind({
             this.log('Interface ', this.configs.interface);
 
             if(Interfaces[this.configs.interface]) {
-                // this.log('secondary view found');
-                // this.set('view', Interfaces[this.configs.interface]);
+                this.log('secondary view found', this.configs.interface);
                 view = Interfaces[this.configs.interface];
             }
             else {
                 this.log('Config error: interface \'' + this.configs.interface + '\' not found, using default interface');
+                view = this.defaultView;
             }
         }
+
+        // Render 'Loading' view
+        // Todo - set css style based on selected interface
+        this.set('view', Loading);
+        // var ViewObject = new view;
+        // this.log('ViewObject', ViewObject);
+        // this.view.addClass(view.getClass);
+        this.render();
 
         // Load Static Data (Bibles, Books, ect)
         var ajax = new Ajax({
@@ -126,11 +154,20 @@ var App = Application.kind({
             method: 'GET'
         });
 
-        //this.$.LoadingDialog.setShowing(true);
+        // Experimental
+        // if(view && view != null) {
+        //     this.log('view set');
+        //     this.set('view', view);
+        // }
+        
+        // this.render();
+        // this.set('ajaxLoading', true);
+        // Experimental
+
         this.log('loading statics');
         ajax.go();
         ajax.response(this, function(inSender, inResponse) {
-            //this.$.LoadingDialog.setShowing(false);
+            // this.set('ajaxLoading', false);
             this.log(inResponse);
             this.test();
             this.log('statics loaded');
@@ -143,12 +180,13 @@ var App = Application.kind({
             }
             
             this.render();
+
             this.appLoaded = true;
             this.$.Router.trigger();
         });    
 
         ajax.error(this, function(inSender, inResponse) {
-            //this.$.LoadingDialog.setShowing(false);
+            // this.set('ajaxLoading', false);
             alert('Error: Failed to load application static data.  Error code 2');
         });    
     },

@@ -9,6 +9,10 @@ div.biblesupersearch_container {
     /*min-width: 100vw;*/
 }
 
+div.biblesupersearch_loading_inline {
+    background-color: transparent;
+}
+
 div.biblesupersearch_left_menu {
     background-color: green;
     width: 120px;

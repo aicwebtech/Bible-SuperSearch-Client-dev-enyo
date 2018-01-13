@@ -2,9 +2,10 @@
   "name": "enyo27test",
   "main": "index.js",
   "assets": [
-    "config.json-example",
-    "config.json",
+    "NOT_USED-config.json-example",
+    "NOT_USED-config.json",
     "config-example.js",
+    "config.js",
     "assets/images/*",
     "assets/images/classic/formatting/*.jpg",
     "assets/images/classic/prevnext/square/*.gif",
