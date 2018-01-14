@@ -13,6 +13,10 @@ git submodule init
 git submodule update
 ```
 
+## Configuration
+Rename config-example.js to config.js
+Edit as desired
+
 ## Generating Production Code
 Run ./packprod to generate packed, production code
 Point a virtual host to builds/prod to view and test

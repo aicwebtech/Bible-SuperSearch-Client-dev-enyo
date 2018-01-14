@@ -23,6 +23,8 @@ module.exports = kind({
     create: function() {
         this.inherited(arguments);
         var num = (this.parallelStart >= 1) ? this.parallelStart : 1;
+        var bibleCount = this.app.getNumberOfEnabledBibles();
+        this.parallelLimit = (bibleCount < this.parallelLimit) ? bibleCount : this.parallelLimit;
 
         for(var i = 1; i <= num; i++) {
             this._addSelectorHelper();

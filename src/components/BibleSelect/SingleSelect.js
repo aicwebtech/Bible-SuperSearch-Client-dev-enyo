@@ -30,10 +30,12 @@ module.exports = kind({
             var noSelectLabel = 'Paralell Bible #' + this.parallelNumber.toString();
         }
 
-        this.createComponent({
-            content: noSelectLabel,
-            value: '0'
-        });
+        if(!this.app.singleBibleEnabled()) {        
+            this.createComponent({
+                content: noSelectLabel,
+                value: '0'
+            });
+        }
 
         if(Array.isArray(enabled) && enabled.length) {
             for(i in enabled) {

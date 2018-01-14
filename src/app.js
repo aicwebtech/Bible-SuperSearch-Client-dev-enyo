@@ -344,6 +344,37 @@ var App = Application.kind({
     },
     getBook: function(id) {
         return this.statics.books[id - 1] || null;
+    },
+    getNumberOfEnabledBibles: function() {
+        if(this.numberOfEnabledBibles) {
+            return this.numberOfEnabledBibles;
+        }
+
+        var bibleCount = 0;
+
+        if(this.configs.enabledBibles) {
+            bibleCount = this.configs.enabledBibles.length;
+        }
+
+        if(bibleCount == 0) {        
+            bibleCount = this.getNumberOfAvailableBibles();
+        }
+
+        this.log('bibleCount', bibleCount);
+        this.numberOfEnabledBibles = bibleCount;
+        return bibleCount;
+    },
+    getNumberOfAvailableBibles: function() {
+        var bibleCount = 0;
+
+        for(i in this.statics.bibles) {
+            bibleCount ++;
+        }
+
+        return bibleCount;
+    },
+    singleBibleEnabled: function() {
+        return (this.getNumberOfEnabledBibles() == 1) ? true : false;
     }
 });
 
