@@ -20,6 +20,8 @@ var biblesupersearch_config_options = {
     
     
     // Bible SuperSearch skin / interface   (string)
+    //      For a complete list, please see our demo page
+    //          http://www.biblesupersearch.com/skins/
     
     "interface": "Classic",                             
     
