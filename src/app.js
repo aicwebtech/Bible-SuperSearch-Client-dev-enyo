@@ -61,25 +61,27 @@ var App = Application.kind({
         this.configs = defaultConfig;
         this.build = buildConfig;
         this.system = systemConfig;
-        this.rootDir = (typeof biblesupersearch_root_directory == 'string') ? biblesupersearch_root_directory : '/biblesupersearch';
         this.set('baseTitle', document.title);
+        
+        // Older rootDir code, retaining for now
+        this.rootDir = (typeof biblesupersearch_root_directory == 'string') ? biblesupersearch_root_directory : '/biblesupersearch';
         this.log('rootDir', this.rootDir);
 
         // Experimental code for determining root dir from script
-        // Appears to be working, commenting out for current release
-        //
-        // if(typeof biblesupersearch_root_directory == 'string') {
-        //     this.rootDir = biblesupersearch_root_directory;
-        // }
-        // else {        
-        //     var path = document.querySelector('script[src*="biblesupersearch.js"]').getAttribute('src');
-        //     var dirParts = path.split('/'); 
-        //     var name = dirParts.pop();
-        //     var dir = dirParts.join('/') || window.location.href;
-        //     // dir = dir.replace('/'+name,"");
-        //     this.log('bss script dir', dir, window.location.href);
-        //     this.rootDir = dir;
-        // }
+        // Appears to be working
+        // Set biblesupersearch_root_directory for best performance
+        if(typeof biblesupersearch_root_directory == 'string') {
+            this.rootDir = biblesupersearch_root_directory;
+        }
+        else {        
+            var path = document.querySelector('script[src*="biblesupersearch.js"]').getAttribute('src');
+            var dirParts = path.split('/'); 
+            var name = dirParts.pop();
+            var dir = dirParts.join('/') || window.location.href;
+            // dir = dir.replace('/'+name,"");
+            this.log('bss script dir', dir, window.location.href);
+            this.rootDir = dir;
+        }
 
         // If user provided a config path, use it.
         var config_path = (typeof biblesupersearch_config_path == 'string') ? biblesupersearch_config_path + '/config.json' : this.rootDir + '/config.json';
