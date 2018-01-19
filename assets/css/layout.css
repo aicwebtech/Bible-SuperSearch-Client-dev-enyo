@@ -136,6 +136,14 @@ table.biblesupersearch_render_table {
     text-align: justify;
 }
 
+.biblesupersearch_render_table td.rtl, p.rtl {
+    direction: rtl;
+}
+
+.biblesupersearch_render_table td table.rtl {
+    margin-left: auto;
+}
+
 .biblesupersearch_render_table sup {
     text-align: justify;
     font-size: .70em;
@@ -143,7 +151,7 @@ table.biblesupersearch_render_table {
 }
 
 .biblesupersearch_render_table td table td.ver {
-    width: 15px;
+    width: 20px;
     text-align: right;
     vertical-align: top;
 }

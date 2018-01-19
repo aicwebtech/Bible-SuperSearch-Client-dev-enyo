@@ -42,6 +42,11 @@ module.exports = kind({
                 for(i in this.bibles) {
                     var module = this.bibles[i];
                     var content = '';
+                    var bible_info = this.selectBible(module);
+
+                    if(!bible_info) {
+                        continue;
+                    }
 
                     if(pd.verses[module] && pd.verses[module][chapter] && pd.verses[module][chapter][verse]) {
                         content = pd.verses[module][chapter][verse].text || '';
@@ -53,7 +58,8 @@ module.exports = kind({
                         tag: 'td',
                         content: content,
                         attributes: {valign: 'top'},
-                        allowHtml: true
+                        allowHtml: true,
+                        classes: (this.selectedBible.rtl) ? 'rtl' : null
                     });
                 }
             }, this);
@@ -133,13 +139,13 @@ module.exports = kind({
                 for(i in this.bibles) {
                     var module = this.bibles[i];
                     var content = '';
+                    var bible_info = this.selectBible(module);
 
-                    if(typeof this.app.statics.bibles[module] == 'undefined') {
+                    if(!bible_info) {
                         continue;
                     }
 
                     if(pd.verses[module] && pd.verses[module][chapter] && pd.verses[module][chapter][verse]) {
-                        // var content = verse + '. ' + pd.verses[module][chapter][verse].text;
                         var processed = this.processPassageVerseContent(pd, pd.verses[module][chapter][verse]);
                         html += processed;
                     }
@@ -159,7 +165,12 @@ module.exports = kind({
         this._addNavButtons(Container, pd);
     },
     processAssembleVerse: function(reference, verse) {
-        return reference + '  ' + this.processText(verse.text);
+        if(this.selectedBible.rtl) {
+            return this.processText(verse.text) + ' ' + reference;
+        }
+        else {
+            return reference + '  ' + this.processText(verse.text);
+        }
     },
     processAssembleSingleVerse: function(reference, verse) {
         return reference + '<br />' + this.processText(verse.text);

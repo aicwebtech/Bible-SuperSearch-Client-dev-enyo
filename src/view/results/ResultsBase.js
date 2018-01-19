@@ -16,6 +16,7 @@ module.exports = kind({
     hasPaging: false,
     paging: null,
     linkBuilder: LinkBuilder,
+    selectedBible: null, // Bible we're currently processing
 
     published: {
         resultsData: null,
@@ -215,6 +216,10 @@ module.exports = kind({
             cacheHash: this.resultsData.hash,
             includeTotals: includeTotals
         });
+    },
+    selectBible: function(module) {
+        this.selectedBible = (typeof this.app.statics.bibles[module] == 'undefined') ? null : this.app.statics.bibles[module];
+        return this.selectedBible;
     }
 
 });

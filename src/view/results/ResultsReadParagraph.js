@@ -12,9 +12,11 @@ module.exports = kind({
         return '<td>' + reference + '</td><td>' + this.processText(verse.text) + '</td>';
     },
     processAssembleVerse: function(reference, verse) {
+        // No special RTL formatting needed - direction: rtl will display it correctly!
         return reference + '  ' + this.processText(verse.text);
     },
     processAssemblePassageVerse: function(reference, verse) {
+        // No special RTL formatting needed - direction: rtl will display it correctly!
         var processed = '<sup>' + reference + '</sup>' + this.processText(verse.text) + '  ';
 
         if(this.isNewParagraph(verse)) {
@@ -54,12 +56,11 @@ module.exports = kind({
 
             for(i in this.bibles) {
                 var module = this.bibles[i];
+                var bible_info = this.selectBible(module);
 
-                if(typeof this.app.statics.bibles[module] == 'undefined') {
+                if(!bible_info) {
                     continue;
                 }
-                
-                var bible_info = this.app.statics.bibles[module];
 
                 Container.$.BibleRow.createComponent({
                     tag: 'th',
@@ -76,6 +77,11 @@ module.exports = kind({
                 for(i in this.bibles) {
                     var module = this.bibles[i];
                     var content = '';
+                    var bible_info = this.selectBible(module);
+
+                    if(!bible_info) {
+                        continue;
+                    }
 
                     if(pd.verses[module][chapter][verse]) {
                         var processed = this.processPassageVerseContent(pd, pd.verses[module][chapter][verse]);
@@ -86,7 +92,21 @@ module.exports = kind({
             }, this);
         }
 
-        var html = '<td class=\'txt\'>' + bibleHtml.join('</td><td class=\'txt\'>') + '</td>';
+        var html = '';
+
+        bibleHtml.forEach(function(bhtml, idx) {
+            var module = this.bibles[idx];
+            var bible_info = this.selectBible(module);
+
+            if(this.selectedBible.rtl) {
+                html += '<td class=\'txt rtl\'>' + bhtml + '</td>';
+            }
+            else {
+                html += '<td class=\'txt\'>' + bhtml + '</td>';
+            }
+        }, this);
+
+        // var html = '<td class=\'txt\'>' + bibleHtml.join('</td><td class=\'txt\'>') + '</td>';
 
         Container.createComponent({
             tag: 'tr',

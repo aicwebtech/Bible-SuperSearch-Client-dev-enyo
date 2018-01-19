@@ -16,7 +16,12 @@ module.exports = kind({
 
         for(i in this.bibles) {
             var module = this.bibles[i];
-            var bible_info = this.app.statics.bibles[module];
+            var bible_info = this.selectBible(module);
+
+            if(!bible_info) {
+                continue;
+            }
+
             var name = this._getBibleComponentName(i);
 
             if(this.multiBibles) {            
@@ -29,7 +34,8 @@ module.exports = kind({
             copyComponents.push({
                 kind: CopyPane,
                 owner: this.container,
-                name: name
+                name: name,
+                classes: (this.selectedBible.rtl) ? 'rtl' : null
             });
         }
 
@@ -51,10 +57,14 @@ module.exports = kind({
                 for(i in this.bibles) {
                     var module = this.bibles[i];
                     var content = '';
+                    var bible_info = this.selectBible(module);
+
+                    if(!bible_info) {
+                        continue;
+                    }
 
                     if(passage.verses[module] && passage.verses[module][chapter] && passage.verses[module][chapter][verse]) {
                         var content  = this.processSingleVerseContent(passage, passage.verses[module][chapter][verse]);
-                        // var content = passage.book_name + ' ' + passage.chapter_verse + '  ' + passage.verses[module][chapter][verse].text + this.newLine + this.newLine;
                         this._appendBibleComponent(content, i);
                     }
                 }
@@ -73,13 +83,16 @@ module.exports = kind({
                 var components = [];
 
                 for(i in this.bibles) {
-                    var bible_info = this.app.statics.bibles[module];
                     var module = this.bibles[i];
                     var content = '';
+                    var bible_info = this.selectBible(module);
+
+                    if(!bible_info) {
+                        continue;
+                    }
 
                     if(passage.verses[module] && passage.verses[module][chapter] && passage.verses[module][chapter][verse]) {
                         var content = this.processPassageVerseContent(passage, passage.verses[module][chapter][verse]);
-                        // var content = verse + '. ' + passage.verses[module][chapter][verse].text + this.newLine;
                         this._appendBibleComponent(content, i);
                     }
                 }

@@ -14,8 +14,15 @@ module.exports = kind({
     processAssemblePassageVerse: function(reference, verse) {
         // var processed = '<td class=\'ver\'><sup>' + reference + '</sup></td><td class=\'txt\'>' + this.processText(verse.text) + '</td>';
         // var processed = '<td><sup class=\'ver\'>' + reference + '</sup><span class=\'txt\'>' + this.processText(verse.text) + '</span></td>';
+        
         // Table within table - this is ugly!
-        var processed = '<td><table><tr><td class=\'ver\'><sup>' + reference + '</sup></td><td class=\'txt\'>' + this.processText(verse.text) + '</td></tr></table></td>';
+        if(this.selectedBible.rtl) {
+            var processed = '<td><table class=\'rtl\'><tr><td class=\'txt rtl\'>' + this.processText(verse.text) + '</td><td class=\'ver\'><sup>' + reference + '</sup></td></tr></table></td>';
+        }
+        else {
+            var processed = '<td><table><tr><td class=\'ver\'><sup>' + reference + '</sup></td><td class=\'txt\'>' + this.processText(verse.text) + '</td></tr></table></td>';
+        }
+
         return processed;
     },
 });

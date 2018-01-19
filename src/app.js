@@ -77,9 +77,17 @@ var App = Application.kind({
             var path = document.querySelector('script[src*="biblesupersearch.js"]').getAttribute('src');
             var dirParts = path.split('/'); 
             var name = dirParts.pop();
-            var dir = dirParts.join('/') || window.location.href;
+            var dir = dirParts.join('/') || null;
+
+            if(!dir) {
+                var hashParts = window.location.href.split('#');
+                dirParts = hashParts[0].split('/'); 
+                name = dirParts.pop();
+                dir = dirParts.join('/') || window.location.href;
+            }
+            
             // dir = dir.replace('/'+name,"");
-            this.log('bss script dir', dir, window.location.href);
+            this.log('bss script dir', dir, dirParts, path, hashParts, dirParts, name, window.location.href);
             this.rootDir = dir;
         }
 
@@ -377,6 +385,14 @@ var App = Application.kind({
     },
     singleBibleEnabled: function() {
         return (this.getNumberOfEnabledBibles() == 1) ? true : false;
+    },
+    staticsChanged: function(was, is) {
+        for(i in is.bibles) {
+            is.bibles[i].rtl = this._isRtl(is.bibles[i].lang_short);
+        }
+    },
+    _isRtl: function(language) {
+        return (language == 'he' || language == 'ar') ? true : false;
     }
 });
 
