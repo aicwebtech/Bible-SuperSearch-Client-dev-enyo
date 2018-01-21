@@ -4,7 +4,7 @@ var biblesupersearch_config_options = {
     //
     //      Automatically selected in first Bible selector
     //      Must be the 'module' of the desired Bible version
-    //      See the API documentation for a list of Bibles
+    //      See the API documentation for a list of available Bibles
     //          https://api.biblesupersearch.com/documentation
 
     "defaultBible": "kjv",                              
@@ -15,6 +15,8 @@ var biblesupersearch_config_options = {
     //      List of Bible 'modules' to show in the Bible selectors
     //      Comment out to enable all Bibles available
     //      Order indicates order Bibles will appear
+    //      See the API documentation for a list of available Bibles
+    //          https://api.biblesupersearch.com/documentation
 
     // "enabledBibles": ["kjv", "tr", "bishops"],                                
     
