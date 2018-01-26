@@ -1,6 +1,6 @@
 /* Layout CSS */  
 div.biblesupersearch_container {
-    background-color: #222222;
+    /*background-color: #222222;*/
     /*min-height: 100px;*/
     /*max-height: 1000px;*/
     max-width: 1000px;
@@ -14,7 +14,7 @@ div.biblesupersearch_loading_inline {
 }
 
 div.biblesupersearch_left_menu {
-    background-color: green;
+    /*background-color: green;*/
     width: 120px;
 /*    max-width: 200px;
     min-width: 120px;*/
@@ -27,7 +27,7 @@ div.biblesupersearch_top_menu {
 }
 
 div.biblesupersearch_content {
-    background-color: #D1D1D1;
+    /*background-color: #D1D1D1;*/
     position: relative;
     height: 100%;
     /*min-height: 300px;*/

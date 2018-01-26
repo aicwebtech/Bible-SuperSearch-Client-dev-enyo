@@ -134,8 +134,6 @@ var App = Application.kind({
         var view = null;
         this.UserConfig.newModel(0);
         this.log('USER', this.UserConfig.model);
-        this.log(this.UserConfig.get('something'));
-        this.log(this.UserConfig.get('mmm'));
 
         if(this.configs.interface) {
             this.log('Interface ', this.configs.interface);
@@ -157,6 +155,7 @@ var App = Application.kind({
         // this.log('ViewObject', ViewObject);
         // this.view.addClass(view.getClass);
         this.render();
+        this.configs.apiUrl += '/api';
 
         // Load Static Data (Bibles, Books, ect)
         var ajax = new Ajax({

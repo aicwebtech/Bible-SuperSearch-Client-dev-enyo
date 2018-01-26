@@ -35,6 +35,6 @@ var biblesupersearch_config_options = {
     
     // URL of Bible SuperSearch API         (string)
     
-    "apiUrl": "https://api.biblesupersearch.com/api",
+    "apiUrl": "https://api.biblesupersearch.com"
 
 };
