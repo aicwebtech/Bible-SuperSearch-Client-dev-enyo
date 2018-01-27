@@ -102,6 +102,11 @@ table.biblesupersearch_render_table {
 
 .biblesupersearch_render_table td {
     vertical-align: top;
+    font-size: 1em;
+}
+
+.biblesupersearch_render_table th {
+    font-size: 1em;
 }
 
 .biblesupersearch_render_table sup.ver {

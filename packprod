@@ -1,3 +1,5 @@
+echo 'Current git branch: '
+git branch | grep \*
 mkdir -p builds/prod/biblesupersearch
 enyo pack --production -d ./builds/prod/biblesupersearch --no-inline-css --no-inline-js --clean
 cp license.txt builds/prod/biblesupersearch/
