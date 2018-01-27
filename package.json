@@ -1,5 +1,5 @@
 {
-  "name": "enyo27test",
+  "name": "BibleSuperSearch",
   "main": "index.js",
   "assets": [
     "NOT_USED-config.json-example",
@@ -9,7 +9,8 @@
     "assets/images/*",
     "assets/images/classic/formatting/*.jpg",
     "assets/images/classic/prevnext/square/*.gif",
-    "assets/css/*.css"
+    "assets/css/*.css",
+    "license.txt"
   ],
   "styles": [
     "assets/css/*.css"

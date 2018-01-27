@@ -1,4 +1,4 @@
-Bible SuperSearch Client
+Bible SuperSearch Client (Stand Alone Edition)
 Copyright (C) 2006-2018  Luke Mounsey
 
 This program is free software; you can redistribute it and/or
@@ -23,19 +23,19 @@ API full documentation: https://api.biblesupersearch.com/documentation
 
 REQUIREMENTS
 1. A functioning website
-2. Web host must access to outside APIs.
+2. Web host must have access to outside APIs.
 3. Does NOT require PHP or database
 
 INSTALLATION
 1. Copy the 'biblesupersearch' directory (THIS directory) to somewhere on your website 
-    It MUST be above the webroot, and visable to outside users
+    It MUST be above the webroot, and visible to outside users
 2. Rename config-example.js to config.js
 3. Edit the configs in config.js
 4. Load yourdomain.com/path/to/biblesupersearch/index.html.  You should see the software working.
 5. Incorporate Bible SuperSearch into your website. (See example.html)
     
     On the page that you would like to have Bible SuperSearch:   
-    a.  Add these lines to your <head>, putting in the CORRECT path to the biblesupersearch directory:
+    a.  Add these lines to your <head>, inserting the CORRECT path to the biblesupersearch directory:
         <link rel="stylesheet" href="/path/to/biblesupersearch/biblesupersearch.css">
         <script src="/path/to/biblesupersearch/config.js"></script>
         <script src="/path/to/biblesupersearch/biblesupersearch.js"></script>
@@ -47,5 +47,5 @@ INSTALLATION
 
 6. Load the page.  It should be working.
 
-This client is written in the Enyo JavaScript framework, and the JavaScript code is minified.
+This client is built with the Enyo JavaScript framework, and the JavaScript code is minified.
 The unminified development code can be seen here: https://sourceforge.net/p/biblesuper/ui-d/ci/master/tree/
