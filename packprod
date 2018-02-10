@@ -8,3 +8,4 @@ cp assets/html/prod_site.html builds/prod/biblesupersearch.html
 cp assets/html/prod_site_sample.html builds/prod/biblesupersearch/example.html
 cp assets/html/prod_test.html builds/prod/biblesupersearch/test.html
 cp assets/html/prod.html builds/prod/biblesupersearch/index.html
+cp assets/html/demo.html builds/prod/biblesupersearch/demo.html
