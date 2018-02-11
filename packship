@@ -10,4 +10,4 @@ cp assets/html/user_guide.html ../ui-standalone/biblesupersearch/
 cp assets/html/prod_site_sample.html ../ui-standalone/biblesupersearch/example.html
 cp assets/html/prod_test.html ../ui-standalone/biblesupersearch/test.html
 cp assets/html/demo.html ../ui-standalone/biblesupersearch/index.html
-cp assets/html/prod.html builds/prod/biblesupersearch/biblesupersearch.html
+cp assets/html/prod.html ../ui-standalone/biblesupersearch/biblesupersearch.html

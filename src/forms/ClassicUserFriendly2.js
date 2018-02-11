@@ -11,7 +11,6 @@ var Shortcuts = require('../components/Shortcuts');
 module.exports = kind({
     name: 'ClassicUserFriendly2',
     kind: FormBase,
-    classes: 'bacon',
 
     components: [
         {classes: 'center', content: 'Bible SuperSearch', classes: 'biblesupersearch_classic_title'},

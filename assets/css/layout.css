@@ -1,5 +1,5 @@
 /* Layout CSS */  
-div.biblesupersearch_container {
+div.biblesupersearch_main {
     /*background-color: #222222;*/
     /*min-height: 100px;*/
     /*max-height: 1000px;*/
@@ -165,7 +165,7 @@ table.biblesupersearch_render_table {
 
 }
 
-.biblesupersearch_container .format_buttons {
+.biblesupersearch_main .format_buttons {
     text-align: center;
     margin-right: auto;
     margin-left: auto;
@@ -178,15 +178,15 @@ table.biblesupersearch_render_table {
 }
 
 /* Standard text formatting */
-.biblesupersearch_container .results.font_serif {
+.biblesupersearch_main .results.font_serif {
     font-family: serif;
 }
 
-.biblesupersearch_container .results.font_san_serif {
+.biblesupersearch_main .results.font_san_serif {
     font-family: sans-serif;
 }
 
-.biblesupersearch_container .results.font_monospace {
+.biblesupersearch_main .results.font_monospace {
     font-family: monospace;
 }
 
@@ -214,18 +214,18 @@ div.biblesupersearch_dialog {
     margin: 0 2px 0;
 }
 
-.biblesupersearch_container label {
+.biblesupersearch_main label {
     display: inline;
 }
 
-.biblesupersearch_container label.left_label {
+.biblesupersearch_main label.left_label {
     display: inline-block;
     margin-right: 5px;
     text-align: right;
     min-width: 100px;
 }
 
-.biblesupersearch_container label.resp_left_label {
+.biblesupersearch_main label.resp_left_label {
     display: inline-block;
     margin-right: 5px;
     text-align: right;
@@ -233,20 +233,20 @@ div.biblesupersearch_dialog {
     width: 98%; 
 }
 
-.biblesupersearch_container label.resp_left_label_150 { max-width: 150px; }
-.biblesupersearch_container label.resp_left_label_165 { max-width: 165px; }
+.biblesupersearch_main label.resp_left_label_150 { max-width: 150px; }
+.biblesupersearch_main label.resp_left_label_165 { max-width: 165px; }
 
-.biblesupersearch_container .resp_input {
+.biblesupersearch_main .resp_input {
     width: 98%; 
 }
 
-.biblesupersearch_container .resp_input_200 { max-width: 200px; }
-.biblesupersearch_container .resp_input_210 { max-width: 210px; }
-.biblesupersearch_container .resp_input_150 { max-width: 150px; }
-.biblesupersearch_container .resp_input_100 { max-width: 100px; }
+.biblesupersearch_main .resp_input_200 { max-width: 200px; }
+.biblesupersearch_main .resp_input_210 { max-width: 210px; }
+.biblesupersearch_main .resp_input_150 { max-width: 150px; }
+.biblesupersearch_main .resp_input_100 { max-width: 100px; }
 
 @media screen and (max-width: 400px)  {
-    .biblesupersearch_container label.resp_left_label {
+    .biblesupersearch_main label.resp_left_label {
         text-align: center;
         display: block;
         margin-left: auto;
@@ -254,7 +254,7 @@ div.biblesupersearch_dialog {
         max-width: initial;
     }
 
-    .biblesupersearch_container .resp_input {
+    .biblesupersearch_main .resp_input {
         display: block;
         margin-left: auto;
         margin-right: auto;

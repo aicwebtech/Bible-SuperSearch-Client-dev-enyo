@@ -29,12 +29,12 @@ var App = Application.kind({
     build: {},
     system: {},
     // view: Loading, // Loading will be replaced with actual UI
-    renderOnStart: false, // We need to load configs first
+    renderOnStart: false,       // We need to load configs first
     rootDir: null,
-    testing: false, // Indicates unit tests are running
+    testing: false,             // Indicates unit tests are running
     statics: {},
-    maximumBiblesDisplayed: 8, // This holds the absolute maximum number of parallel bibles that can be possibly displayed
-    bibleDisplayLimit: 8, // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
+    maximumBiblesDisplayed: 8,  // The absolute maximum number of parallel bibles that can be possibly displayed
+    bibleDisplayLimit: 8,       // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
     resetView: true,
     appLoaded: false,
     ajaxLoadingDelayTimer: null,

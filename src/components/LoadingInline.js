@@ -3,7 +3,7 @@ var Image = require('./Image');
 
 module.exports = kind({
     name: 'LoadingInline',
-    classes: 'biblesupersearch_container biblesupersearch_loading_inline',
+    classes: 'biblesupersearch_main biblesupersearch_loading_inline',
 
     components: [
         {

@@ -1,4 +1,4 @@
-Bible SuperSearch Client (Stand Alone Edition)
+Bible SuperSearch Client (Generic Edition)
 Copyright (C) 2006-2018  Luke Mounsey
 
 This program is free software; you can redistribute it and/or

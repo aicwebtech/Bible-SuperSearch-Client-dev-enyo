@@ -6,7 +6,7 @@ var NavButtons = require('../../components/NavButtons/NavClassic');
 // Base kind for all Application views
 module.exports = kind({
     name: 'InterfaceBase',
-    classes: 'biblesupersearch_container',
+    classes: 'biblesupersearch_main',
     
     // Variable Sub Components, to be overridden by child interface kinds
     NavButtonsControl: NavButtons,
