@@ -8,9 +8,10 @@ module.exports = kind({
     kind: FormBase,
 
     components: [
-        { components: [
-            {kind: Input, name: 'request'},
+        { classes: 'single_line', components: [
+            {kind: Input, name: 'request', placeholder: 'Enter passage reference(s) or search keyword(s)'},
             {kind: Button, content: 'Go', ontap: 'submitForm'}
         ]}
+        // {classes: 'single_line', content: 'Enter a passage reference(s) or search keyword(s) above. Example: Jn 3:16 or faith'}
     ]
 });

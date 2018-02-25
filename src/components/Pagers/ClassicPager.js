@@ -52,7 +52,9 @@ module.exports = kind({
 
             this.createComponent({
                 content: msg,
-                allowHtml: true
+                allowHtml: true,
+                name: 'TotalsContainer',
+                classes: 'totals'
             });
         }
 
@@ -60,9 +62,14 @@ module.exports = kind({
             this.set('showing', showing);
             return;
         }
+
+        var LinkContainer = this.createComponent({
+            name: 'LinkContainer',
+            classes: 'links'
+        });
         
         if(this.lastPage) {        
-            this.createComponent({
+            LinkContainer.createComponent({
                 kind: Link,
                 content: '<<<',
                 href: '#/c/' + cache + '/1',
@@ -70,7 +77,7 @@ module.exports = kind({
             });        
         }
 
-        this.createComponent({
+        LinkContainer.createComponent({
             kind: Link,
             href: '#/c/' + cache + '/' + prevPage.toString(),
             content: '<<',
@@ -95,7 +102,7 @@ module.exports = kind({
             }
 
             for(var i = displayFirstPage; i <= displayLastPage; i++) {
-                this.createComponent({
+                LinkContainer.createComponent({
                     kind: Link,
                     href: (i == page) ? null : '#/c/' + cache + '/' + i.toString(),
                     classes: (i == page) ? 'current_page' : null,
@@ -104,7 +111,7 @@ module.exports = kind({
             }
         }
 
-        this.createComponent({
+        LinkContainer.createComponent({
             kind: Link,
             href: '#/c/' + cache + '/' + nextPage.toString(),
             content: '>>',
@@ -112,7 +119,7 @@ module.exports = kind({
         });        
 
         if(this.lastPage) {        
-            this.createComponent({
+            LinkContainer.createComponent({
                 kind: Link,
                 content: '>>>',
                 href: '#/c/' + cache + '/' + this.lastPage.toString(),

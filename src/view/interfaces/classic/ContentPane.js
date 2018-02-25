@@ -11,7 +11,7 @@ var forms = {
 };
 
 module.exports = kind({
-    name: 'Content',
+    name: 'Content_Classic',
     kind: ContentBase,
     classes: 'biblesupersearch_content',
     formatButtonsView: FormatButtons,

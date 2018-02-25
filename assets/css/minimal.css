@@ -1,0 +1,87 @@
+.interface_minimal .form {
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.interface_minimal .form .single_line, .interface_minimal .form .single_line_bible {
+    width: 100%; 
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.interface_minimal .form .single_line input {
+    width: calc(100% - 35px); 
+}
+
+.interface_minimal .form .single_line button {
+    width: 35px; 
+    text-align: center;
+}
+
+.interface_minimal .form .single_line span, .interface_minimal .form .single_line_bible span, .interface_minimal .form .single_line_short_bible span {
+    white-space: nowrap;
+}
+
+.interface_minimal .form .single_line_bible input.request {
+    width: 100%;
+    max-width: 200px;
+}
+
+.interface_minimal .form .single_line_bible input.biblesupersearch_bible_selector {
+    /*width: calc(40% - 35px); */
+}
+
+.interface_minimal .form .single_line_bible button {
+    width: 35px; 
+    text-align: center;
+}
+
+.interface_minimal .form .single_line_short_bible input.request {
+    width: 100%;
+    max-width: 340px;
+}
+
+.interface_minimal .form .single_line_short_bible input.biblesupersearch_bible_selector {
+    /*width: calc(40% - 35px); */
+}
+
+.interface_minimal .form .single_line_short_bible button {
+    width: 35px; 
+    text-align: center;
+}
+
+.interface_minimal .biblesupersearch_pager a {
+    margin: 0 3px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.interface_minimal .biblesupersearch_pager a:hover {
+    text-decoration: underline overline;
+    background-color: #c4caff;
+}
+
+.interface_minimal .biblesupersearch_pager a.current_page {
+    font-weight: bold;
+    color: #ff8c00;
+    background-color: transparent;
+}
+
+.interface_minimal .form .single_line_go {
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%; 
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.interface_minimal .form .single_line_go input {
+    width: 90%; 
+    max-width: 500px;
+}
+
+.interface_minimal .form .single_line_go button {
+    margin: 0 10px;
+}

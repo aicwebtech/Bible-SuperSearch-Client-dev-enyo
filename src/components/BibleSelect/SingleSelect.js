@@ -8,6 +8,7 @@ module.exports = kind({
     shortWidthThreshold: 250, // viewport width (pixels) at which menu displays short names
     shortWidthWidth: 160,
     isShort: false,
+    alwaysShort: false,
     parallelNumber: 0,
     classes: 'biblesupersearch_bible_selector',
 
@@ -18,6 +19,7 @@ module.exports = kind({
     create: function() {
         this.inherited(arguments);
         this.isShort = (this.shortWidthThreshold <= window.innerWidth) ? false : true;
+        this.isShort = (this.alwaysShort) ? true : this.isShort;
 
         var statics = this.app.get('statics'),
             bibles = statics.bibles,
@@ -131,6 +133,7 @@ module.exports = kind({
     },
     handleResize: function(inSender, inEvent) {
         var isShort = (this.shortWidthThreshold <= window.innerWidth) ? false : true;
+        isShort = (this.alwaysShort) ? true : isShort;
         this.set('isShort', isShort);
         // this.log('isShort', isShort);
     }

@@ -11,15 +11,14 @@ var forms = {
 };
 
 module.exports = kind({
-    name: 'Content',
+    name: 'Content_Minimal',
     kind: ContentBase,
     classes: 'biblesupersearch_content',
-    formatButtonsView: FormatButtons,
+    // formatButtonsView: FormatButtons,
     forms: forms,
 
     create: function() {
         if(this.formView != null) {
-            this.log('overriding default classic form');
             this.forms.Form = this.formView;
             // Formview is expecting a string representing an index in this.forms so we set it to that
             this.formView = 'Form'; 

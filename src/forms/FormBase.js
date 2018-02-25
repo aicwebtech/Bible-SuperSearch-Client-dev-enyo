@@ -6,6 +6,7 @@ var Bindings = require('./FormBindings');
 
 module.exports = kind({
     name: 'FormBase',
+    classes: 'form',
     formData: {},
     _formDataAsSubmitted: {},
     _extraFormData: {},
@@ -148,7 +149,7 @@ module.exports = kind({
         }
     },
     submitRandom: function(inSender, inEvent) {
-        var randomType = inSender.random_type || null
+        var randomType = inSender.random_type || null;
         var formData = utils.clone(this.get('formData'));
         
         var submitData = {
@@ -272,6 +273,10 @@ module.exports = kind({
     formDataChanged: function(was, is) {
         // this.log('was', was);
         // this.log('is', is);
+
+        if(!this.$.reference) {
+            this.formData.reference = null; // Fix issues with random on forms with no 'reference' input
+        }
     },
     applyStandardBindings: function() {
         // this.log('form name: ' + this.name);

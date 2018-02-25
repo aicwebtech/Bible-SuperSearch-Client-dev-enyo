@@ -77,7 +77,11 @@ module.exports = kind({
             //     this.log('def', defaultBible);
             //     this.$.Select_1 && this.$.Select_1.set('value', defaultBible);
             // }
+
+            return comp;
         }
+
+        return false;
     },
     selectorChanged: function(inSender, inEvent) {
         var components = this.$.Container.getClientControls(),
@@ -91,23 +95,44 @@ module.exports = kind({
     },
     valueChanged: function(was, is) {
         // this.log(was, is);
+        var valueFiltered = [];
+        var selectorAdded = false;
 
         if(!Array.isArray(is)) {
-            this.value = [is];
+            is = [is];
         }
 
-        for(i in this.value) {
+        for(i in is) {
             var p = Number(i) + 1,
                 name = 'Select_' + p.toString(),
-                value = this.value[i];
+                value = is[i],
+                isNull = (!value || value == '0') ? true : false;
 
-            // this.log('biblesel single value', value);
+            // this.log('vib balye', value, name);
             
-            if(!this.$[name]) {
-                // this.log('biblesel bible does not exist', name);
+            if(!isNull && !this.$[name]) {
+                this.log('adding selector for', value, name);
+                var added = this._addSelectorHelper();
+                selectorAdded = (added) ? true : selectorAdded;
+                
+                if(added) {
+                    added.set('value', value); // Why isn't this automatically selecting?
+                    added.setSelectedValue(value); 
+                    // this.log('curval', added.get('value'));
+                    valueFiltered.push(value);
+                }
             }
-
-            this.$[name] && this.$[name].set('value', value);
+            else if(this.$[name]) {
+                // this.log('setting single value', value, name);
+                this.$[name].set('value', value); // This one IS automatically selecting?
+                valueFiltered.push(value);
+            }
         }
+
+        if(selectorAdded) {
+            this.$.Container.render();
+        }
+
+        this.value = valueFiltered;
     }
 });

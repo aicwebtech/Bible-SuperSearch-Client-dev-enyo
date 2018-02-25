@@ -71,7 +71,7 @@ div.biblesupersearch_content {
     margin-left: auto;
     text-align: center;
     min-width: 100px;
-    max-width: 600px;
+    max-width: 75%;
 }
 
 table.biblesupersearch_render_table {
@@ -238,6 +238,14 @@ div.biblesupersearch_dialog {
 
 .biblesupersearch_main .resp_input {
     width: 98%; 
+}
+
+.biblesupersearch_pager .links a:before {
+    content: ' ';
+}
+
+.biblesupersearch_pager .links a:after {
+    content: ' ';
 }
 
 .biblesupersearch_main .resp_input_200 { max-width: 200px; }
