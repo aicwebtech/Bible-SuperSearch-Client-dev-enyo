@@ -34,8 +34,14 @@ module.exports = {
         // Classic - Classic (same as Classic User Friendly 2)
         'Classic': require('./interfaces/classic/ClassicBase'),
         
+        // Classic User Friendly 1
+        'ClassicUserFriendly1': require('./interfaces/classic/UserFriendly1'),        
+
         // Classic User Friendly 2
-        'ClassicUserFriendly2': require('./interfaces/classic/UserFriendly2'),
+        'ClassicUserFriendly2': require('./interfaces/classic/UserFriendly2'),        
+
+        // Classic Parallel 2
+        'ClassicParallel2': require('./interfaces/classic/Parallel2'),
         
         // Classic Advanced 
         //      Advanced form used by classic forms

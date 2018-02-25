@@ -9,6 +9,7 @@ module.exports = kind({
     parallelStart: 1,   // Number of parallel Bibles to display initially
     selectorWidth: 0,   // Pixels, 0 means automatic
     selectorShortWidth: 0,
+    selectorShortWidthThreshold: 250,
     selectorClasses: '',
 
     components: [
@@ -58,6 +59,7 @@ module.exports = kind({
                 classes: 'biblesupersearch_bible_selector_multi ' + classes,
                 width: width,
                 shortWidthWidth: shortWidth,
+                shortWidthThreshold: this.selectorShortWidthThreshold,
                 // value: (this.parallelNumber == 1) ? this.app.configs.defaultBible : null,
                 owner: this
             });

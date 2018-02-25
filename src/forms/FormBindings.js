@@ -6,6 +6,14 @@ module.exports = {
             return (value && value != 0 && value != false) ? true : false;
         // }
         // return value || null;
+    }},    
+    exact_case: {from: 'formData.exact_case', to: '$.exact_case.checked', oneWay: false, transform: function(value, dir) {
+        // this.log('exact_case', value, dir);
+
+        // if(dir == 1) {
+            return (value && value != 0 && value != false) ? true : false;
+        // }
+        // return value || null;
     }},        
     request: {from: 'formData.request', to: '$.request.value', oneWay: false, transform: function(value, dir) {
         // this.log('request', value, dir);

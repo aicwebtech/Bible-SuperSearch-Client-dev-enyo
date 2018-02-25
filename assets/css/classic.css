@@ -12,8 +12,11 @@
     margin-right:auto; 
     padding:5px; 
     background-color:tan;
-    max-width:400px;
     margin-bottom: 20px;
+}
+
+.biblesupersearch_classic_form.user_friendly {
+    max-width:400px;
 }
 
 /* Title - appears at TOP of page, ie Bible SuperSearch */
@@ -100,3 +103,14 @@
     margin: 0 1px;
 }
 
+.biblesupersearch_classic_form.parallel2 .biblesupersearch_bible_selector_multi {
+    margin: 2px 0 3px;
+}
+
+.biblesupersearch_classic_form.parallel2 button {
+    text-align: center;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
