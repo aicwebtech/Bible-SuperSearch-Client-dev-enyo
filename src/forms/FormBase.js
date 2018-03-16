@@ -20,6 +20,8 @@ module.exports = kind({
     standardBindings: Bindings,
     subForm: false,
     formContainer: false,
+    referenceField: 'reference',
+    searchField: 'search',
 
     handlers: {
         onCacheChange: 'handleCacheChange',
@@ -286,8 +288,20 @@ module.exports = kind({
                 this.$[i] && this.bindings.push(this.standardBindings[i]);
             }
             else {
-                // this.log('bind target not found:' + i);
+                this.log('bind target not found:' + i);
             }
+        }
+
+        if(!this.$.reference && this.$.request) {
+            this.log('adding special binding: requestToReference');
+            this.referenceField = 'request';
+            this.bindings.push(this.standardBindings.requestToReference);
+        }        
+
+        if(!this.$.search && this.$.request) {
+            this.log('adding special binding: requestToSearch');
+            this.searchField = 'request';
+            this.bindings.push(this.standardBindings.requestToSearch);
         }
     },
     referenceTyped: function(inSender, inEvent) {

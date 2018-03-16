@@ -52,9 +52,15 @@
 }
 
 .interface_minimal .biblesupersearch_pager a {
-    margin: 0 3px;
+    margin: 0 5px;
+    padding: 0;
     text-decoration: none;
     font-weight: bold;
+}
+
+/* Weird bugfix -- move to layouts.css?? */
+.interface_minimal .biblesupersearch_pager a:after, .interface_minimal .biblesupersearch_pager a:before {
+    display:none;
 }
 
 .interface_minimal .biblesupersearch_pager a:hover {

@@ -1,4 +1,7 @@
+// Interface registry
+//
 // This file tells Bible SuperSearch where to find it's interfaces
+
 module.exports = {
     // Twenty Twenty
     //      Modern, phone app style theme
