@@ -5,6 +5,5 @@ var LinkBuilder = require('./LinkBuilder');
 module.exports = kind({
     name: 'Link',
     kind: Anchor,
-    LinkBuilder: LinkBuilder,
-
+    LinkBuilder: LinkBuilder
 });

@@ -237,6 +237,12 @@ var App = Application.kind({
                     break;
                 case 'p':   // Passage
                     return this._hashPassage(parts);
+                    break;                   
+                case 'r':   // Reference string
+                    return this._hashReference(parts);
+                    break;
+                case 's':   // Search string
+                    return this._hashSearch(parts);
                     break;                
                 case 'context': // Contextual lookup
                     return this._hashContext(parts);
@@ -272,6 +278,26 @@ var App = Application.kind({
         var formData = this._assembleHashPassage(partsObj);
         formData.context = true;
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
+    },    
+    _hashReference: function(parts) {
+        var partsObj = this._explodeHashPassage(parts);
+
+        partsObj.chap  = null;
+        partsObj.verse = null;
+
+        var formData = this._assembleHashPassage(partsObj);
+        this.waterfall('onHashRunForm', {formData: formData, newTab: true});
+    },   
+     _hashSearch: function(parts) {
+        var bible  = parts[0] || null;
+        var search = parts[1] || null;
+
+        var formData = {
+            search: search.replace(/%20/g, ' '),
+            bible: bible ? bible.split(',') : null,
+        };
+        
+        this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },
     _hashForm: function(parts) {
         var formData = (parts[0]) ? JSON.parse(parts[0]) : {};
@@ -292,7 +318,7 @@ var App = Application.kind({
             return {};
         }
 
-        var ref = partsObj.book;
+        var ref = partsObj.book.replace(/%20/g, ' ');
 
         if(partsObj.chap) {
             ref += ' ' + partsObj.chap;

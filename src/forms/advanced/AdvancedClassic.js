@@ -14,19 +14,19 @@ module.exports = kind({
         {
             name: 'AdvWord',
             kind: AdvWord,
-            classes: 'biblesupersearch_classic_form',
+            classes: 'biblesupersearch_classic_form advanced',
             subForm: true
         },        
         {
             name: 'AdvProximity',
             kind: AdvProximity,
-            classes: 'biblesupersearch_classic_form',
+            classes: 'biblesupersearch_classic_form advanced',
             subForm: true
         },        
         {
             name: 'AdvPower',
             kind: AdvPower,
-            classes: 'biblesupersearch_classic_form',
+            classes: 'biblesupersearch_classic_form advanced',
             subForm: true
         }
     ]

@@ -17,14 +17,14 @@ module.exports = {
     }},        
     
     // Special request bindings - ignored if not needed
-    requestToReference: {from: 'formData.reference', to: '$.request.value', oneWay: true, transform: function(value, dir) {
-        this.log('requestToReference', value, dir);
-        return value || null;
-    }},    
-    requestToSearch: {from: 'formData.search', to: '$.request.value', oneWay: true, transform: function(value, dir) {
-        this.log('requestToSearch', value, dir);
-        return value || null;
-    }},    
+    // requestToReference: {from: 'formData.reference', to: '$.request.value', oneWay: true, transform: function(value, dir) {
+    //     this.log('requestToReference', value, dir);
+    //     return value || null;
+    // }},    
+    // requestToSearch: {from: 'formData.search', to: '$.request.value', oneWay: true, transform: function(value, dir) {
+    //     this.log('requestToSearch', value, dir);
+    //     return value || null;
+    // }},    
     
     request: {from: 'formData.request', to: '$.request.value', oneWay: false, transform: function(value, dir) {
         // this.log('request', value, dir);

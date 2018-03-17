@@ -45,12 +45,19 @@ module.exports = kind({
     clearForm: function() {
         this.set('formData', {});
     },
+    // Submit form - via form submit button
     submitForm: function() {
         if(this.formContainer) {
             return;
         }
 
-        this._submitFormHelper(utils.clone(this.get('formData')), true);
+        var formData = utils.clone(this.get('formData'));
+
+        if(!this.$.context) {
+            formData.context = false; 
+        }
+
+        this._submitFormHelper(formData, true);
         return true;
     },    
     submitFormAuto: function() {
@@ -161,8 +168,21 @@ module.exports = kind({
 
         return this._submitFormHelper(submitData, true);
     },
+    setFormDataWithMapping: function(formData) {
+        if(formData.search && this.searchField != 'search') {
+            formData[this.searchField] = formData.search;
+            delete formData.search;
+        }        
+        else if(formData.reference && this.referenceField != 'reference') {
+            formData[this.referenceField] = formData.reference;
+            delete formData.reference;
+        }
+
+        this.set('formData', {});
+        this.set('formData', utils.clone(formData));
+    },
     loadCache: function(hash, extraFormData) {
-        this._extraFormData = extraFormData || {bacon: 'mmm'};
+        this._extraFormData = extraFormData || {};
         var url = this.app.configs.apiUrl + '/readcache?hash=' + hash;
 
         if(this.requestPending) {
@@ -190,8 +210,9 @@ module.exports = kind({
         var formData = utils.clone(inResponse.results.form_data);
         formData.bible = JSON.parse(formData.bible);
         formData.shortcut = formData.shortcut || 0;
-        this.set('formData', {});
-        this.set('formData', utils.clone(formData));
+        this.setFormDataWithMapping(formData);
+        // this.set('formData', {});
+        // this.set('formData', utils.clone(formData));
         this.submitFormWith(this._extraFormData);
     },
     handleCacheError: function(inSender, inResponse) {
@@ -233,8 +254,11 @@ module.exports = kind({
         // this.clearForm();
         var fd = utils.clone(inEvent.formData);
         fd.shortcut = fd.shortcut || 0;
-        this.set('formData', {});
-        this.set('formData', fd);
+
+        this.setFormDataWithMapping(fd);
+
+        // this.set('formData', {});
+        // this.set('formData', fd);
         this.log('just set form data, about to submit form');
         this.submitFormAuto();
         
@@ -281,27 +305,25 @@ module.exports = kind({
         }
     },
     applyStandardBindings: function() {
-        // this.log('form name: ' + this.name);
-
         for(i in this.standardBindings) {
             if(this.$[i]) {
                 this.$[i] && this.bindings.push(this.standardBindings[i]);
             }
             else {
-                this.log('bind target not found:' + i);
+                // this.log('bind target not found:' + i);
             }
         }
 
         if(!this.$.reference && this.$.request) {
             this.log('adding special binding: requestToReference');
             this.referenceField = 'request';
-            this.bindings.push(this.standardBindings.requestToReference);
+            // this.bindings.push(this.standardBindings.requestToReference);
         }        
 
         if(!this.$.search && this.$.request) {
             this.log('adding special binding: requestToSearch');
             this.searchField = 'request';
-            this.bindings.push(this.standardBindings.requestToSearch);
+            // this.bindings.push(this.standardBindings.requestToSearch);
         }
     },
     referenceTyped: function(inSender, inEvent) {

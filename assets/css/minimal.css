@@ -51,6 +51,15 @@
     text-align: center;
 }
 
+.interface_minimal a:link, .interface_minimal a:visited {
+    color: #0c17b2;
+    text-decoration: none;
+}
+
+.interface_minimal a:hover {
+    text-decoration: underline overline;
+}
+
 .interface_minimal .biblesupersearch_pager a {
     margin: 0 5px;
     padding: 0;

@@ -16,7 +16,11 @@
 }
 
 .biblesupersearch_classic_form.user_friendly {
-    max-width:400px;
+    max-width: 400px;
+}
+
+.biblesupersearch_classic_form.advanced {
+    max-width: 400px;
 }
 
 /* Title - appears at TOP of page, ie Bible SuperSearch */

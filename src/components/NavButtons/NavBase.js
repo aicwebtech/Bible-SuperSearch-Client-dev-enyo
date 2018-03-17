@@ -46,14 +46,14 @@ module.exports = kind({
 
         if(typeof this.nav.nb != 'undefined' && this.nav.nb != null) {
             var nbook = this.app.statics.books[this.nav.nb - 1];
-            nb_link = this.linkBuilder.buildReferenceLink('p', bible, nbook.name);
+            nb_link = this.linkBuilder.buildReferenceLink('p', bible, nbook.name, 1);
             nb_icon = this.iconDir + this.nextBook;
             nb_text = nbook.name;
         }         
 
         if(typeof this.nav.pb != 'undefined' && this.nav.pb != null) {
             var pbook = this.app.statics.books[this.nav.pb - 1];
-            pb_link = this.linkBuilder.buildReferenceLink('p', bible, pbook.name);
+            pb_link = this.linkBuilder.buildReferenceLink('p', bible, pbook.name, 1);
             pb_icon = this.iconDir + this.prevBook;
             pb_text = pbook.name
         }         
