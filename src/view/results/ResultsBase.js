@@ -4,6 +4,7 @@ var Signal = require('../../components/Signal');
 var Pager = require('../../components/Pagers/ClassicPager');
 var LinkBuilder = require('../../components/Link/LinkBuilder');
 var Nav = require('../../components/NavButtons/NavClassic');
+var HoverDialog = require('../../components/dialogs/Hover');
 
 module.exports = kind({
     name: 'ResultsBase',
@@ -17,6 +18,7 @@ module.exports = kind({
     paging: null,
     linkBuilder: LinkBuilder,
     selectedBible: null, // Bible we're currently processing
+    lastHoverTarget: null,
 
     published: {
         resultsData: null,
@@ -25,13 +27,17 @@ module.exports = kind({
 
     handlers: {
         onFormResponseSuccess: 'handleFormResponse',
-        onFormResponseError: 'handleFormError'
+        onFormResponseError: 'handleFormError',
+        onmouseover: 'handleHover'
     },
 
     components: [
         // {content: 'formatting buttons go here'},
         // {name: 'ResultsContainer'},
-        {kind: Signal, onFormResponseSuccess: 'handleFormResponse', onFormResponseError: 'handleFormError', isChrome: true}
+        {kind: Signal, onFormResponseSuccess: 'handleFormResponse', onFormResponseError: 'handleFormError', isChrome: true},
+        {name: 'DialogsContainer', components: [
+            {name: 'StrongsHover', kind: HoverDialog}
+        ]}
     ],
 
     // observers: [
@@ -172,6 +178,10 @@ module.exports = kind({
     },
     // Adds highlighting / strongs / italics / red letter when nessessary
     processText: function(text) {
+        // strongs
+        text = text.replace(/\{/g, "<sup class='strongs'>");
+        text = text.replace(/\}/g, "</sup>");
+
         return text;
     },
     isNewParagraph: function(verse) {
@@ -220,6 +230,27 @@ module.exports = kind({
     selectBible: function(module) {
         this.selectedBible = (typeof this.app.statics.bibles[module] == 'undefined') ? null : this.app.statics.bibles[module];
         return this.selectedBible;
+    },
+    handleHover: function(inSender, inEvent) {
+        var target = inEvent.target;
+
+        if(target != this.lastHoverTarget) {
+            this.$.StrongsHover.set('showing', false);
+            this.lastHoverTarget = target;
+            // this.log('inSender', inSender);
+
+            var top  = inEvent.y; //inEvent.screenY + inEvent.offsetY;
+            var left = inEvent.x; //inEvent.screenX + inEvent.offsetX;
+
+            // this.log(inEvent.target);
+
+            if(target.tagName == 'SUP' && target.className == 'strongs') {
+                this.log('inEvent', inEvent);
+                // this.log('SUPP', target.innerHTML);
+                this.$.StrongsHover.displayPosition(top, left, target.innerHTML);
+            }
+
+        }
     }
 
 });

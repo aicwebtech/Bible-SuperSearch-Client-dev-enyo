@@ -78,6 +78,7 @@ table.biblesupersearch_render_table {
     table-layout: fixed;
     width: 100%;
     margin-bottom: 5px;
+    position: relative;
 }
 
 .biblesupersearch_copy_pane {
@@ -269,4 +270,17 @@ div.biblesupersearch_dialog {
         width: 60%; 
         max-width: initial;
     }
+}
+
+.hover_dialog {
+    width: 300px; 
+    height: 300px; 
+    position: absolute;
+    border: 2px solid black;
+    background-color: #dddddd;
+    z-index: 10000001;
+}
+
+sup.strongs {
+    cursor: pointer;
 }
