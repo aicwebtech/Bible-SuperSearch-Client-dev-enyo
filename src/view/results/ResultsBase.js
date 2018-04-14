@@ -239,15 +239,24 @@ module.exports = kind({
             this.lastHoverTarget = target;
             // this.log('inSender', inSender);
 
-            var top  = inEvent.y; //inEvent.screenY + inEvent.offsetY;
-            var left = inEvent.x; //inEvent.screenX + inEvent.offsetX;
+            // var top  = inEvent.y; //inEvent.screenY + inEvent.offsetY;
+            var top  = inEvent.y + window.scrollY; // + inEvent.offsetY;
+            var left = inEvent.x + window.scrollX; //inEvent.screenX + inEvent.offsetX;
+            var parentWidth = inEvent.target.parentNode.offsetWidth;
+            var parentHeight = inEvent.target.parentNode.offsetHeight;
+
 
             // this.log(inEvent.target);
 
             if(target.tagName == 'SUP' && target.className == 'strongs') {
-                this.log('inEvent', inEvent);
-                // this.log('SUPP', target.innerHTML);
-                this.$.StrongsHover.displayPosition(top, left, target.innerHTML);
+                // this.log('top', top);
+                // this.log('offset', inEvent.offsetY);
+                // this.log('left', left);
+                // this.log('pWidth', parentWidth);
+                // this.log('pHeight', parentHeight);
+                // this.log('inEvent', inEvent);
+                // this.log('SUPP', target);
+                this.$.StrongsHover.displayPosition(top, left, target.innerHTML, parentWidth, parentHeight);
             }
 
         }

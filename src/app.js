@@ -199,6 +199,12 @@ var App = Application.kind({
             alert('Error: Failed to load application static data.  Error code 2');
         });    
     },
+    rendered: function() {
+        this.inherited(arguments);
+
+        this.log('view node', this.view.hasNode());
+    },
+
     /*  Used to run unit tests within app */
     test: function() {
         if(!this.testing || !QUnit) {
