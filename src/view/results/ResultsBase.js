@@ -5,11 +5,14 @@ var Pager = require('../../components/Pagers/ClassicPager');
 var LinkBuilder = require('../../components/Link/LinkBuilder');
 var Nav = require('../../components/NavButtons/NavClassic');
 var HoverDialog = require('../../components/dialogs/Hover');
+var StrongsHoverDialog = require('../../components/dialogs/StrongsHover');
+var utils = require('enyo/utils');
 
 module.exports = kind({
     name: 'ResultsBase',
     classes: 'results',
     bibles: [],
+    biblesStr: null,
     multiBibles: false,
     bibleCount: 1,
     isParagraphView: false,  // Indicates if render is a parargraph view
@@ -19,6 +22,8 @@ module.exports = kind({
     linkBuilder: LinkBuilder,
     selectedBible: null, // Bible we're currently processing
     lastHoverTarget: null,
+    lastHoverX: 0,
+    lastHoverY: 0,
 
     published: {
         resultsData: null,
@@ -28,7 +33,8 @@ module.exports = kind({
     handlers: {
         onFormResponseSuccess: 'handleFormResponse',
         onFormResponseError: 'handleFormError',
-        onmouseover: 'handleHover'
+        onmouseover: 'handleHover',
+        onmouseout: 'handleMouseOut'
     },
 
     components: [
@@ -36,7 +42,7 @@ module.exports = kind({
         // {name: 'ResultsContainer'},
         {kind: Signal, onFormResponseSuccess: 'handleFormResponse', onFormResponseError: 'handleFormError', isChrome: true},
         {name: 'DialogsContainer', components: [
-            {name: 'StrongsHover', kind: HoverDialog}
+            {name: 'StrongsHover', kind: StrongsHoverDialog}
         ]}
     ],
 
@@ -76,6 +82,7 @@ module.exports = kind({
 
         // this.log(this.bibles);
         this.bibleCount = this.bibles.length;
+        this.biblesStr = this.bibles.join(',');
         this.multiBibles = (this.bibleCount > 1) ? true : false;
     },
     resultsDataChanged: function(was, is) {
@@ -179,8 +186,12 @@ module.exports = kind({
     // Adds highlighting / strongs / italics / red letter when nessessary
     processText: function(text) {
         // strongs
-        text = text.replace(/\{/g, "<sup class='strongs'>");
+        text = text.replace(/\{/g, "<sup>");
         text = text.replace(/\}/g, "</sup>");
+        text = text.replace(/[GHgh][0-9]+/g, utils.bind(this, function(match, offset, string) {
+            var url = '/#/strongs/' + this.biblesStr + '/' + match;
+            return '<a class="strongs" href="' + url + '">' + match + '</a>';
+        }));
 
         return text;
     },
@@ -233,22 +244,38 @@ module.exports = kind({
     },
     handleHover: function(inSender, inEvent) {
         var target = inEvent.target;
+        var x = inEvent.x;
+        var y = inEvent.y;
+        var lastX = this.lastHoverX;
+        var lastY = this.lastHoverY;
+        var thres = 5;
+
+        if((
+            (x - thres <= lastX) && 
+            (x + thres >= lastX) && 
+            (y - thres <= lastY) && 
+            (y + thres >= lastY)
+        )) {
+            // return;
+        }
 
         if(target != this.lastHoverTarget) {
-            this.$.StrongsHover.set('showing', false);
+            this.hideHoverDialogs();
             this.lastHoverTarget = target;
+            this.lastHoverX = x;
+            this.lastHoverY = y;
             // this.log('inSender', inSender);
 
             // var top  = inEvent.y; //inEvent.screenY + inEvent.offsetY;
-            var top  = inEvent.y + window.scrollY; // + inEvent.offsetY;
-            var left = inEvent.x + window.scrollX; //inEvent.screenX + inEvent.offsetX;
+            var top  = inEvent.y + window.scrollY + 5; // + inEvent.offsetY;
+            var left = inEvent.x + window.scrollX + 5; //inEvent.screenX + inEvent.offsetX;
             var parentWidth = inEvent.target.parentNode.offsetWidth;
             var parentHeight = inEvent.target.parentNode.offsetHeight;
 
 
             // this.log(inEvent.target);
 
-            if(target.tagName == 'SUP' && target.className == 'strongs') {
+            if(target.tagName == 'A' && target.className == 'strongs') {
                 // this.log('top', top);
                 // this.log('offset', inEvent.offsetY);
                 // this.log('left', left);
@@ -256,10 +283,17 @@ module.exports = kind({
                 // this.log('pHeight', parentHeight);
                 // this.log('inEvent', inEvent);
                 // this.log('SUPP', target);
+                this.log('utils', utils);
                 this.$.StrongsHover.displayPosition(top, left, target.innerHTML, parentWidth, parentHeight);
             }
 
         }
+    },
+    handleMouseOut: function(inSender, inEvent) {
+        // this.hideHoverDialogs();
+    },
+    hideHoverDialogs: function() {
+        this.$.StrongsHover.set('showing', false);
     }
 
 });

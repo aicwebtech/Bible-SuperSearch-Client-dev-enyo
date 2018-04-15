@@ -100,3 +100,41 @@
 .interface_minimal .form .single_line_go button {
     margin: 0 10px;
 }
+
+.interface_minimal .strongs_hover {
+    padding: 10px;
+    border: 1px solid #333;
+    background-color: white;
+}
+
+.interface_minimal .strongs_hover .strongs_head {
+/*    background-color: #d2b48c;
+    padding: 10px;*/
+    text-align: center;
+}
+
+/*.interface_minimal .strongs_hover .strongs_tvm {
+    background-color: #d2b48c;
+    padding: 10px;
+}
+
+.interface_minimal .strongs_hover .strongs_body {
+    background-color: #702424;
+    padding: 10px;
+    color:white;
+    text-align: justify;
+}*/
+
+.interface_minimal .strongs_hover .hebrew .strongs_head span {
+    font-weight: bold;
+    font-size: 20pt;
+    font-family: serif;
+    padding-top: 5px;
+}
+
+.interface_minimal .strongs_hover .greek .strongs_head span {
+    font-weight: bold;
+    font-size: 16pt;
+    padding-top: 10px;
+    font-family: serif;
+}

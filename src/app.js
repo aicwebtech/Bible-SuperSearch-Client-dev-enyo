@@ -230,6 +230,7 @@ var App = Application.kind({
         }
 
         if(hash && hash != '') {
+            hash = decodeURI(hash);
             var parts = hash.split('/');
             var mode  = parts.shift();
 
@@ -253,6 +254,9 @@ var App = Application.kind({
                 case 'context': // Contextual lookup
                     return this._hashContext(parts);
                     break;
+                case 'strongs': // Strongs lookup
+                    return this._hashSearch(parts);
+                    break;
                 case 'f': // JSON-endoded form data
                     return this._hashContext(parts);
                     break;
@@ -271,6 +275,18 @@ var App = Application.kind({
     _hashPassage: function(parts) {
         var partsObj = this._explodeHashPassage(parts);
         var formData = this._assembleHashPassage(partsObj);
+        this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
+    },    
+    _hashStrongs: function(parts) {
+        this.log(parts);
+        var strongsNum = parts[0] || null;
+        
+        var formData = {
+            search: strongsNum
+        };
+
+        // var partsObj = this._explodeHashPassage(parts);
+        // var formData = this._assembleHashPassage(partsObj);
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
     },
     _hashContext: function(parts) {

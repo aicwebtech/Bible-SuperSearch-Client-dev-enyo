@@ -26,7 +26,7 @@
 /* Title - appears at TOP of page, ie Bible SuperSearch */
 .biblesupersearch_classic_title {
     font-size:18.0pt; 
-    color: darkorange; 
+    color: #ff8c00; 
     text-align: center;
 }
 
@@ -85,13 +85,13 @@
 
 .interface_classic .biblesupersearch_pager a:hover {
     background-color: #0000ee;
-    color: darkorange;
+    color: #ff8c00;
     text-decoration: none;
 }
 
 .interface_classic .biblesupersearch_pager a.current_page {
     font-weight: bold;
-    color: darkorange;
+    color: #ff8c00;
     background-color: transparent;
 }
 
@@ -123,3 +123,47 @@
 .nowrap {
     white-space: nowrap;
 }
+
+.interface_classic .strongs_hover {
+    padding: 0;
+    border: 0;
+    background-color: #d2b48c;
+}
+
+.interface_classic .strongs_hover .strongs_head {
+    background-color: #d2b48c;
+    padding: 10px;
+    text-align: center;
+}
+
+.interface_classic .strongs_hover .strongs_tvm {
+    background-color: #d2b48c;
+    padding: 10px;
+}
+
+.interface_classic .strongs_hover .strongs_body {
+    background-color: #702424;
+    padding:10px;
+    color:white;
+    text-align: justify;
+}
+
+.interface_classic .strongs_hover .hebrew .strongs_head span {
+    font-weight: bold;
+    font-size: 20pt;
+    font-family: serif;
+    padding-top: 5px;
+}
+
+.interface_classic .strongs_hover .greek .strongs_head span {
+    font-weight: bold;
+    font-size: 16pt;
+    padding-top: 10px;
+    font-family: serif;
+}
+
+/*.interface_classic a.strongs:link, .interface_classic a.strongs:visited, .interface_classic a.strongs:hover {
+    color: black;
+    text-decoration: none;
+}*/
+

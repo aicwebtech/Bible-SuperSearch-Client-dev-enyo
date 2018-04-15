@@ -1,3 +1,20 @@
+/* Universal styling */
+
+sup.strongs {
+    cursor: pointer;
+}
+
+a.strongs:link, a.strongs:visited, a.strongs:hover {
+    color: black;
+    text-decoration: none;
+}
+
+b a.strongs {
+    font-size: 1.1em;
+    font-weight: 800;
+}
+
+
 .random_verse_widget {
     border-radius: 8px;
     padding: 5px;
