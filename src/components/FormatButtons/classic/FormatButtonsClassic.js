@@ -85,6 +85,22 @@ module.exports = kind({
             falseImage: 'classic/formatting/ez-copy-on.jpg',
             trueAlt: 'Read Display',
             falseAlt: 'Copy Display'
+        },        
+        {
+            name: 'italics_toggle',
+            kind: Toggle,
+            trueImage: 'classic/formatting/italics_disable.jpg',
+            falseImage: 'classic/formatting/italics_enable.jpg',
+            trueAlt: 'Disable Italization of Added Words',
+            falseAlt: 'Enable Italization of Added Words'
+        },        
+        {
+            name: 'strongs_toggle',
+            kind: Toggle,
+            trueImage: 'classic/formatting/strongs_disable.jpg',
+            falseImage: 'classic/formatting/strongs_enable.jpg',
+            trueAlt: 'Disable Strongs Numbers',
+            falseAlt: 'Enable Strongs Numbers'
         },
         {
             name: 'help',
@@ -126,6 +142,14 @@ module.exports = kind({
             console.log('advanced_toggle', value, dir);
             return value;
             // return (value && value != 0 && value != false) ? true : false;
+        }},           
+        {from: 'app.UserConfig.italics', to: '$.italics_toggle.value', oneWay: false, transform: function(value, dir) {
+            console.log('italics', value, dir);
+            return value;
+        }},         
+        {from: 'app.UserConfig.strongs', to: '$.strongs_toggle.value', oneWay: false, transform: function(value, dir) {
+            console.log('strongs', value, dir);
+            return value;
         }},     
         // {from: 'app.UserConfig.copy', to: '$.copy.checked', oneWay: false, transform: function(value, dir) {
         //     console.log('copy', value, dir);

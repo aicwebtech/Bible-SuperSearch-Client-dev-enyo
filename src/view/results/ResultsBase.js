@@ -183,15 +183,42 @@ module.exports = kind({
     processAssembleVerse: function(reference, verse) {
         return reference + ' ' + this.processText(verse.text);
     },
+    
     // Adds highlighting / strongs / italics / red letter when nessessary
     processText: function(text) {
+        // red letter - ERROR - using <> for red letter will COLLIDE with highlighting which sends back HTML!
+        // U+2039, U+203A Single angle quotation marks (NOT <>)
+        if(this.app.UserConfig.get('red_letter')) {
+            text = text.replace(/‹/g, '<span class="red_letter">');
+            text = text.replace(/›/g, "</span>");
+        }
+        else {
+            text = text.replace(/[‹›]/g, '');
+        }
+
+
+
         // strongs
-        text = text.replace(/\{/g, "<sup>");
-        text = text.replace(/\}/g, "</sup>");
-        text = text.replace(/[GHgh][0-9]+/g, utils.bind(this, function(match, offset, string) {
-            var url = '/#/strongs/' + this.biblesStr + '/' + match;
-            return '<a class="strongs" href="' + url + '">' + match + '</a>';
-        }));
+        if(this.app.UserConfig.get('strongs')) {
+            text = text.replace(/\{/g, "<sup>");
+            text = text.replace(/\}/g, "</sup>");
+            text = text.replace(/[GHgh][0-9]+/g, utils.bind(this, function(match, offset, string) {
+                var url = '/#/strongs/' + this.biblesStr + '/' + match;
+                return '<a class="strongs" href="' + url + '">' + match + '</a>';
+            }));
+        }
+        else {
+            text = text.replace(/\{[^\}]+\}/g, '');
+        }
+
+        // italics
+        if(this.app.UserConfig.get('italics')) {
+            text = text.replace(/\[/g, '<i>');
+            text = text.replace(/\]/g, "</i>");
+        }
+        else {
+            text = text.replace(/[\[\]]/g, '');
+        }
 
         return text;
     },
@@ -260,31 +287,25 @@ module.exports = kind({
         }
 
         if(target != this.lastHoverTarget) {
-            this.hideHoverDialogs();
+            // this.hideHoverDialogs();
             this.lastHoverTarget = target;
             this.lastHoverX = x;
             this.lastHoverY = y;
             // this.log('inSender', inSender);
 
-            // var top  = inEvent.y; //inEvent.screenY + inEvent.offsetY;
-            var top  = inEvent.y + window.scrollY + 5; // + inEvent.offsetY;
-            var left = inEvent.x + window.scrollX + 5; //inEvent.screenX + inEvent.offsetX;
+            var mouseX = inEvent.x + window.scrollX; //inEvent.screenX + inEvent.offsetX;
+            var mouseY = inEvent.y + window.scrollY; // + inEvent.offsetY;
             var parentWidth = inEvent.target.parentNode.offsetWidth;
             var parentHeight = inEvent.target.parentNode.offsetHeight;
 
-
-            // this.log(inEvent.target);
-
             if(target.tagName == 'A' && target.className == 'strongs') {
-                // this.log('top', top);
+                this.hideHoverDialogs();
                 // this.log('offset', inEvent.offsetY);
-                // this.log('left', left);
                 // this.log('pWidth', parentWidth);
                 // this.log('pHeight', parentHeight);
                 // this.log('inEvent', inEvent);
-                // this.log('SUPP', target);
-                this.log('utils', utils);
-                this.$.StrongsHover.displayPosition(top, left, target.innerHTML, parentWidth, parentHeight);
+                // this.log('mouseY', mouseY);
+                this.$.StrongsHover.displayPosition(mouseX, mouseY, target.innerHTML, parentWidth, parentHeight);
             }
 
         }

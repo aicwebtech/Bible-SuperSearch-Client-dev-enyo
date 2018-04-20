@@ -17,6 +17,9 @@ module.exports = kind({
         text_size: 0,           //  - Text size: translated to ...
         font: 'sans-serif',     //  - Font: serif, sans-serif, or monospace
         advanced_toggle: false, //  - (Classic interfaces): indicates if the advanced form is toggled to display
+        italics: true,
+        strongs: false,
+        red_letter: true,
         something: 'else',
         mmm: 'bacon'
     },

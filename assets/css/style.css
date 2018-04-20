@@ -14,6 +14,9 @@ b a.strongs {
     font-weight: 800;
 }
 
+span.red_letter {
+    color: red;
+}
 
 .random_verse_widget {
     border-radius: 8px;

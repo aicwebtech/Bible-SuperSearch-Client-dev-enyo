@@ -29,17 +29,18 @@ module.exports = kind({
     ],
 
     displayPosition: function(top, left, content, parentWidth, parentHeight) {
+        this.inherited(arguments);
         this.strongsRaw = content;
 
         if(this._loadFromCache(content)) {
             this.showContent();
-            this.inherited(arguments);
-            return
+            // this.inherited(arguments);
+            return;
         }
 
         this.$.ContentContainer.destroyClientControls();
         this.showLoading();
-        this.inherited(arguments);
+        // this.inherited(arguments);
 
         var postBody = {
             strongs: content
