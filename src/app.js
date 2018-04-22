@@ -65,7 +65,7 @@ var App = Application.kind({
         
         // Older rootDir code, retaining for now
         this.rootDir = (typeof biblesupersearch_root_directory == 'string') ? biblesupersearch_root_directory : '/biblesupersearch';
-        this.log('rootDir', this.rootDir);
+        
 
         // Experimental code for determining root dir from script
         // Appears to be working
@@ -90,6 +90,8 @@ var App = Application.kind({
             this.log('bss script dir', dir, dirParts, path, hashParts, dirParts, name, window.location.href);
             this.rootDir = dir;
         }
+
+        this.log('rootDir - FINAL', this.rootDir);
 
         // If user provided a config path, use it.
         var config_path = (typeof biblesupersearch_config_path == 'string') ? biblesupersearch_config_path + '/config.json' : this.rootDir + '/config.json';

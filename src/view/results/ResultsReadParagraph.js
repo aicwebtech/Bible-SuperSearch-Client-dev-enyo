@@ -48,6 +48,8 @@ module.exports = kind({
             ]
         });
 
+        this._addNavButtons(Container, pd);
+
         if(this.multiBibles) {        
             Container.createComponent({
                 name: 'BibleRow',
@@ -113,6 +115,8 @@ module.exports = kind({
             content: html,
             allowHtml: true
         });
+
+        this._addNavButtons(Container, pd);
     },
     // Multi verse, single Bible
     renderPassageSingleBible: function(pd) {

@@ -101,6 +101,14 @@ module.exports = kind({
             falseImage: 'classic/formatting/strongs_enable.jpg',
             trueAlt: 'Disable Strongs Numbers',
             falseAlt: 'Enable Strongs Numbers'
+        },        
+        {
+            name: 'redletter_toggle',
+            kind: Toggle,
+            trueImage: 'classic/formatting/redletter_disable.jpg',
+            falseImage: 'classic/formatting/redletter_enable.jpg',
+            trueAlt: 'Disable Red Letter',
+            falseAlt: 'Enable Red Letter'
         },
         {
             name: 'help',
@@ -149,6 +157,10 @@ module.exports = kind({
         }},         
         {from: 'app.UserConfig.strongs', to: '$.strongs_toggle.value', oneWay: false, transform: function(value, dir) {
             console.log('strongs', value, dir);
+            return value;
+        }},             
+        {from: 'app.UserConfig.red_letter', to: '$.redletter_toggle.value', oneWay: false, transform: function(value, dir) {
+            console.log('red_letter', value, dir);
             return value;
         }},     
         // {from: 'app.UserConfig.copy', to: '$.copy.checked', oneWay: false, transform: function(value, dir) {

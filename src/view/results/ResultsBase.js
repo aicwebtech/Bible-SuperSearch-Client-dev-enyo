@@ -196,18 +196,18 @@ module.exports = kind({
             text = text.replace(/[‹›]/g, '');
         }
 
-
-
         // strongs
         if(this.app.UserConfig.get('strongs')) {
             text = text.replace(/\{/g, "<sup>");
             text = text.replace(/\}/g, "</sup>");
             text = text.replace(/[GHgh][0-9]+/g, utils.bind(this, function(match, offset, string) {
-                var url = '/#/strongs/' + this.biblesStr + '/' + match;
+                // This link not working for a URL that ends in a file (ie biblesupersearch.html)
+                var url = '#/strongs/' + this.biblesStr + '/' + match;
                 return '<a class="strongs" href="' + url + '">' + match + '</a>';
             }));
         }
         else {
+            text = text.replace(/\} \{/g, '');
             text = text.replace(/\{[^\}]+\}/g, '');
         }
 
@@ -220,6 +220,8 @@ module.exports = kind({
             text = text.replace(/[\[\]]/g, '');
         }
 
+        text = text.replace('¶ ', '');
+        // text = text.replace(/\s+([.,?!;])/, '$1');
         return text;
     },
     isNewParagraph: function(verse) {
@@ -227,8 +229,16 @@ module.exports = kind({
             return false;
         }
 
+        if(verse.verse == 1) {
+            return false;
+        }
+
         if(verse.italics && verse.italics.indexOf('#') === 0) {
             return true; // Ugly 3.0 format, should be changed in 4.0
+        }
+
+        if(verse.text.indexOf('¶') === 0) {
+            return true;
         }
 
         return false;
