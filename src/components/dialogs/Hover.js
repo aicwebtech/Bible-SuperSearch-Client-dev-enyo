@@ -16,6 +16,7 @@ module.exports = kind({
     offsetY: 10,
     content: null,
     debounce: 5,
+    waitCount: 0,
 
     handlers: {
         onmouseout: 'mouseOutHandler'
@@ -35,7 +36,7 @@ module.exports = kind({
     ],
 
     displayPosition: function(mouseX, mouseY, content, parentWidth, parentHeight) {
-        this.log('content', content);
+        // this.log('content', content);
 
         if(this.content == content && this.get('showing')) {
             this.log('already shwoing');
@@ -54,38 +55,23 @@ module.exports = kind({
 
         // this.log('thisWidth', this.width);
         // this.log('parentWidth', parentWidth);        
-        this.log('thisHeight', this.height);
-        this.log('parentHeight', parentHeight);
+        // this.log('thisHeight', this.height);
+        // this.log('parentHeight', parentHeight);
         this.mouseX = mouseX;
         this.mouseY = mouseY;
         this.content = content;
 
-        this.log('mouseX', mouseX);
-        this.log('mouseY', mouseY);
+        // this.log('mouseX', mouseX);
+        // this.log('mouseY', mouseY);
 
         var top = mouseY;
         var left = mouseX;
-        this.log('top', top);
-        this.log('left', left);
+        // this.log('top', top);
+        // this.log('left', left);
 
         this.$.ContentContainer.set('content', content);
 
-        // if(true || left + this.width > parentWidth) {
-        //     this.log('IGNOREING LEFT');
-        //     this.applyStyle('right', '10px');
-        //     this.applyStyle('left', null);
-        // }
-        // else {
-            this.log('using left');
-            this.applyStyle('left', left + 'px');
-            // this.applyStyle('right', null);
-        // }
-
-        if(top + this.height > parentHeight) {
-            // this.log('adjusting top');
-            // top -= this.height - 30;
-        }
-
+        this.applyStyle('left', left + 'px');
         this.applyStyle('top', top + 'px');
         this.set('showing', true);
     },
@@ -102,19 +88,26 @@ module.exports = kind({
     reposition: function() {
         var w = this.hasNode().scrollWidth;
         var h = this.hasNode().scrollHeight;
-        var wMax = document.body.scrollWidth;
-        var hMax = document.body.scrollHeight;
+        // var wMaxOld = document.body.scrollWidth;
+        // var hMaxOld = document.body.scrollHeight;
+
+        var wMax = window.innerWidth  + window.scrollX;
+        var hMax = window.innerHeight + window.scrollY;
 
         if(w == 0 || h == 0) {
             this.log('waiting');
 
             window.setTimeout(utils.bind(this, function() {
-                this.reposition();
+                if(this.waitCount < 10) {
+                    this.waitCount ++;
+                    this.reposition();
+                }
             }), 100);
 
             return;
         }
 
+        this.waitCount = 0;
         this.log('w', w, wMax);
         this.log('h', h, hMax);
         var xOuter = this.mouseX + w;

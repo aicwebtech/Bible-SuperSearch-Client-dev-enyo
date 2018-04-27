@@ -77,6 +77,11 @@ module.exports = {
         if(dir == 1) {
             this.$.search_type.setSelectedByValue(value, 0);
         }
+        else {
+            if(!value || value == '') {
+                this.$.search_type.setSelected(0); // Hack to prevent selector from showing 'blank'
+            }
+        }
 
         return value || null;
     }},            

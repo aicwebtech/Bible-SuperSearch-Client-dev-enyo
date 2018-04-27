@@ -18,7 +18,6 @@ module.exports = kind({
                 for(i in controls) {
                     if(controls[i].get('value') == value) {
                         this.setSelected(i);
-                        // this.log('select: set successfully to', value);
                         return true;
                         break;
                     }
@@ -27,7 +26,6 @@ module.exports = kind({
                 // this.log('select: value not found', value);
 
                 if(typeof defaultIndex != 'undefined') {
-                    // this.log('select: setting default index', defaultIndex);
                     this.setSelected(defaultIndex);
                 }
 

@@ -57,8 +57,13 @@ module.exports = kind({
         ajax.error(this, 'handleError');
     },
     handleResponse: function(inSender, inResponse) {
-        inResponse.results.forEach(utils.bind(this, this._addStrongs));
-        this.strongsCache[this.strongsRaw] = inResponse.results;
+        this.$.ContentContainer.destroyClientControls();
+        inResponse.results.forEach(utils.bind(this, function(strong) {
+            this.strongsCache[strong.number] = strong;
+            this._addStrongs(strong);
+        }));
+        
+        // this.strongsCache[this.strongsRaw] = inResponse.results;
         this.$.ContentContainer.render();
         this.showContent();
     },
@@ -72,7 +77,8 @@ module.exports = kind({
         }
 
         this.$.ContentContainer.destroyClientControls();
-        this.strongsCache[strongs].forEach(utils.bind(this, this._addStrongs));
+        // this.strongsCache[strongs].forEach(utils.bind(this, this._addStrongs));
+        this._addStrongs(this.strongsCache[strongs]);
         this.$.ContentContainer.render();
         return true;
     },

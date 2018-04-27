@@ -7,6 +7,9 @@ module.exports = kind({
     blankSingleVerse: '<td></td>',
     blankPassageVerse: '<td></td>',
     passageColumnsPerBible: 1,
+    singleVerseCount: 0,
+    singleVerseBibleHeaderThreshold: 10,
+    singleVerseBibleHeaderNext: true,
 
     // NOTA Single verse, single Bible
     renderSingleVerseSingleBible: function(pd) {
@@ -17,13 +20,20 @@ module.exports = kind({
     renderSingleVerseParallelBible: function(pd) {
         // this.log();
         var Container = this._createContainer();
+        var addBibleHeader = false;
+
+        if(this.multiBibles && (this.singleVerseBibleHeaderNext || this.singleVerseCount >= this.singleVerseBibleHeaderThreshold)) {
+            addBibleHeader = true;
+            this.singleVerseBibleHeaderNext = false;
+            this.singleVerseCount = 0;
+        }
 
         // Container.createComponent({
         //     name: 'ReferenceRow',
         //     tag: 'tr'
         // });
 
-        if(this.multiBibles) {        
+        if(addBibleHeader) {        
             Container.createComponent({
                 name: 'BibleRow',
                 tag: 'tr'
@@ -36,6 +46,7 @@ module.exports = kind({
         });
 
         var haveText = false;
+        this.singleVerseCount ++;
 
         for(chapter in pd.verse_index) {
             pd.verse_index[chapter].forEach(function(verse) {
@@ -75,7 +86,7 @@ module.exports = kind({
                 //     content: pd.book_name + ' ' + pd.chapter_verse
                 // });
 
-                if(this.multiBibles) {                
+                if(addBibleHeader) {                
                     Container.$.BibleRow.createComponent({
                         tag: 'th',
                         content: bible_info.name
@@ -94,6 +105,16 @@ module.exports = kind({
     renderPassageParallelBible: function(pd) {
         // this.log();
         var Container = this._createContainer();
+        // this.singleVerseCount = 0;
+        // this.singleVerseBibleHeaderNext = true;
+
+        var addBibleHeader = false;
+
+        if(this.multiBibles && (this.singleVerseBibleHeaderNext || this.singleVerseCount >= this.singleVerseBibleHeaderThreshold)) {
+            addBibleHeader = true;
+            this.singleVerseBibleHeaderNext = false;
+            this.singleVerseCount = 0;
+        }
 
         Container.createComponent({
             name: 'ReferenceRow',
@@ -106,10 +127,10 @@ module.exports = kind({
                 }
             ]
         });
-
+ 
         this._addNavButtons(Container, pd);
 
-        if(this.multiBibles) {            
+        if(addBibleHeader) {            
             Container.createComponent({
                 name: 'BibleRow',
                 tag: 'tr'
@@ -135,6 +156,7 @@ module.exports = kind({
         for(chapter in pd.verse_index) {
             pd.verse_index[chapter].forEach(function(verse) {
                 var html = '';
+                this.singleVerseCount ++;
 
                 for(i in this.bibles) {
                     var module = this.bibles[i];

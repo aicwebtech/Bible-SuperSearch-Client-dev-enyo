@@ -302,6 +302,7 @@ module.exports = kind({
             this.lastHoverX = x;
             this.lastHoverY = y;
             // this.log('inSender', inSender);
+            // this.log('inEvent', inEvent);
 
             var mouseX = inEvent.x + window.scrollX; //inEvent.screenX + inEvent.offsetX;
             var mouseY = inEvent.y + window.scrollY; // + inEvent.offsetY;
