@@ -106,6 +106,7 @@ module.exports = kind({
         formData.bible = JSON.stringify(formData.bible);
         formData.highlight = true;
         formData.data_format = 'lite';
+        formData.markup = 'raw';
         
         if(!formData.search_type || formData.search_type == '') {
             formData.search_type = 'and';
