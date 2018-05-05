@@ -89,24 +89,30 @@ module.exports = kind({
         {
             name: 'italics_toggle',
             kind: Toggle,
-            trueImage: 'classic/formatting/italics_disable.jpg',
-            falseImage: 'classic/formatting/italics_enable.jpg',
+            // trueImage: 'classic/formatting/italics_disable.jpg',
+            // falseImage: 'classic/formatting/italics_enable.jpg',            
+            trueImage: 'classic/formatting/italics_enable_new.png',
+            falseImage: 'classic/formatting/italics_disable_new.png',
             trueAlt: 'Disable Italization of Added Words',
             falseAlt: 'Enable Italization of Added Words'
         },        
         {
             name: 'strongs_toggle',
             kind: Toggle,
-            trueImage: 'classic/formatting/strongs_disable.jpg',
-            falseImage: 'classic/formatting/strongs_enable.jpg',
+            // trueImage: 'classic/formatting/strongs_disable.jpg',
+            // falseImage: 'classic/formatting/strongs_enable.jpg',            
+            trueImage: 'classic/formatting/strongs_enable_new.png',
+            falseImage: 'classic/formatting/strongs_disable_new.png',
             trueAlt: 'Disable Strongs Numbers',
             falseAlt: 'Enable Strongs Numbers'
         },        
         {
             name: 'redletter_toggle',
             kind: Toggle,
-            trueImage: 'classic/formatting/redletter_disable.jpg',
-            falseImage: 'classic/formatting/redletter_enable.jpg',
+            // trueImage: 'classic/formatting/redletter_disable.jpg',
+            // falseImage: 'classic/formatting/redletter_enable.jpg',            
+            trueImage: 'classic/formatting/red_enable_new.png',
+            falseImage: 'classic/formatting/red_disable_new.png',
             trueAlt: 'Disable Red Letter',
             falseAlt: 'Enable Red Letter'
         },
