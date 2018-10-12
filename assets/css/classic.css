@@ -19,6 +19,7 @@
     max-width: 400px;
 }
 
+
 .biblesupersearch_classic_form.advanced {
     max-width: 400px;
 }
@@ -50,7 +51,7 @@
 
 .biblesupersearch_classic_form button.user_friendly_random {
     /*width: 110px;*/
-    width: 120px;
+    width: 125px;
     /*font-size: 70%;*/
     /*font-size: 0.7em;*/
     text-align: center;

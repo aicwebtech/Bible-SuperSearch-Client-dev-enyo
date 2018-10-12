@@ -5,6 +5,12 @@ var CopyParagraph   = require('./ResultsCopyParagraph');
 var CopyVerse       = require('./ResultsCopyVerse');
 var ReadParagraph   = require('./ResultsReadParagraph');
 var ReadVerse       = require('./ResultsReadVerse');
+var TestView        = require('./TestView');
+
+// var views = {
+//     CopyParagraph: CopyParagraph,
+//     ReadVerse: ReadVerse
+// };
 
 module.exports = kind({
     name: 'ResultsController',
@@ -12,6 +18,7 @@ module.exports = kind({
     view: null, // View will be chosen based on form / format settings
     resetView: true,
     renderPending: false,
+    // views: views,
 
     published: {
         resultsData: null,

@@ -2,6 +2,7 @@ var kind = require('enyo/kind');
 var Dialog = require('./Hover');
 var Ajax = require('enyo/Ajax');
 var utils = require('enyo/utils');
+var Image = require('../Image');
 
 module.exports = kind({
     name: 'StongsHoverDialog',
@@ -20,7 +21,7 @@ module.exports = kind({
             {
                 classes: 'biblesupersearch_center_element', style: 'width:78px',
                 components: [
-                    {kind: Image, relSrc: '/Spinner.gif', },
+                    {kind: Image, relSrc: '/Spinner.gif' }
                 ]
             },
             {content: 'Loading, please wait ...', style: 'padding: 10px; font-weight: bold'},
