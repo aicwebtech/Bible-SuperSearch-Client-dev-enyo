@@ -39,6 +39,7 @@ var App = Application.kind({
     appLoaded: false,
     ajaxLoadingDelayTimer: null,
     baseTitle: null,
+    clientBrowser: null,
 
     published: {
         ajaxLoading: false,
@@ -66,7 +67,11 @@ var App = Application.kind({
         // Older rootDir code, retaining for now
         this.rootDir = (typeof biblesupersearch_root_directory == 'string') ? biblesupersearch_root_directory : '/biblesupersearch';
         
-
+        if(navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > -1) {
+            this.clientBrowser = 'IE';
+            this.log('Using Internet Explorer ... some minor functionality may be disabled ...');
+        }
+        
         // Experimental code for determining root dir from script
         // Appears to be working
         // Set biblesupersearch_root_directory for best performance

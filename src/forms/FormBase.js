@@ -336,6 +336,11 @@ module.exports = kind({
             return;
         }
 
+        if(this.app.get('clientBrowser') == 'IE') {
+            this.log('Using IE, no good!  Skipping some minor code that breaks IE ... ');
+            return; // bail if IE ... yuck!
+        }
+
         if(value && value != '0' && value != '') {
             if(!this.$.shortcut.setSelectedByValue(value, 1)) {
                 // this.$.shortcut.set('selected', 1);
