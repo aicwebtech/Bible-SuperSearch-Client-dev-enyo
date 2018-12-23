@@ -39,6 +39,7 @@ var App = Application.kind({
     appLoaded: false,
     ajaxLoadingDelayTimer: null,
     baseTitle: null,
+    baseUrl: null,
     clientBrowser: null,
 
     published: {
@@ -97,6 +98,11 @@ var App = Application.kind({
         }
 
         this.log('rootDir - FINAL', this.rootDir);
+
+        var urlParts = window.location.href.split('#');
+        this.baseUrl = urlParts[0];
+
+        this.log('baseUrl - FINAL', this.baseUrl);
 
         // If user provided a config path, use it.
         var config_path = (typeof biblesupersearch_config_path == 'string') ? biblesupersearch_config_path + '/config.json' : this.rootDir + '/config.json';
@@ -271,8 +277,21 @@ var App = Application.kind({
         }
         else {
             this.log('no hash');
+            this._hashLocalStorage();
         }
     },    
+    _hashLocalStorage: function() {
+        var formDataJson = localStorage.getItem('BibleSuperSearchFormData');
+        this.log(formDataJson);
+
+        if(!formDataJson || typeof formDataJson != 'string') {
+            return;
+        }
+
+        var formData = JSON.parse(formDataJson);
+        localStorage.removeItem('BibleSuperSearchFormData');
+        this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto', submitAsManual: true});
+    },
     _hashCache: function(parts) {
         this.log();
         var hash = parts[0] || null;

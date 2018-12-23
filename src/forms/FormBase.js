@@ -62,6 +62,9 @@ module.exports = kind({
     },    
     submitFormAuto: function() {
         return this._submitFormHelper(utils.clone(this.get('formData')), false);
+    },    
+    submitFormManual: function() {
+        return this._submitFormHelper(utils.clone(this.get('formData')), true);
     },
     submitFormWith: function(extraFormData) {
         var formData = utils.clone(this.get('formData'));
@@ -73,6 +76,13 @@ module.exports = kind({
 
         if(this.requestPending) {
             this.log('pendign request');
+            return;
+        }
+
+        if(typeof this.app.configs.destinationUrl != 'undefined' && this.app.get('baseUrl') != this.app.configs.destinationUrl) {
+            localStorage.setItem('BibleSuperSearchFormData', JSON.stringify(formData));
+            this.log('LocalStorage form data', localStorage.getItem('BibleSuperSearchFormData'));
+            window.location = this.app.configs.destinationUrl;
             return;
         }
 
@@ -255,13 +265,16 @@ module.exports = kind({
         // this.clearForm();
         var fd = utils.clone(inEvent.formData);
         fd.shortcut = fd.shortcut || 0;
-
         this.setFormDataWithMapping(fd);
 
-        // this.set('formData', {});
-        // this.set('formData', fd);
         this.log('just set form data, about to submit form');
-        this.submitFormAuto();
+
+        if(inEvent.submitAsManual) {
+            this.submitFormManual();
+        }
+        else {
+            this.submitFormAuto();
+        }
         
         return true; // Don't propagage, will cause issues with subforms, if any
     },

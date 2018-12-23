@@ -35,6 +35,12 @@ var biblesupersearch_config_options = {
     
     // URL of Bible SuperSearch API         (string)
     
-    "apiUrl": "https://api.biblesupersearch.com"
+    "apiUrl": "https://api.biblesupersearch.com",
 
+    // URL of destination page
+    // If specified, you will be redirected here after submitting form to see results.
+    // You will need to have Bible SuperSearch on the destination page for this to work.
+    // Destination Page MUST be on the same domain
+
+    "destinationUrl" : null
 };

@@ -42,8 +42,6 @@ module.exports = kind({
     }, 
     showingChanged: function(was, is) {
         this.inherited(arguments);
-
-
     },
     close: function() {
         this.set('showing', false);
