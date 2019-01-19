@@ -22,6 +22,7 @@ module.exports = kind({
     // formatButtonsView: FormatButtons,
     formatButtonsView: null,
     formatButtonsShowing: false,
+    formatButtonsToggle: false, // if true, format buttons will only display when there are form results
     uc: {},
 
     published: {
@@ -70,10 +71,16 @@ module.exports = kind({
         if(this.forms && this.forms[formView]) {
             this.$.FormController.set('view', this.forms[formView]);
             
-            if(this.formatButtonsView && !this.formatButtonsShowing) {    
+            if(this.formatButtonsView && !this.formatButtonsShowing ) {    
                 this.$.FormatButtonController.set('view', this.formatButtonsView);
-                this.$.FormatButtonContainer.set('showing', true);
-                this.formatButtonsShowing = true;
+                
+                if(!this.formatButtonsToggle) {
+                    this.$.FormatButtonContainer.set('showing', true);
+                    this.formatButtonsShowing = true;
+                }
+                else {
+                    this.$.FormatButtonContainer.set('showing', false);
+                }
             }
         }
     },
@@ -83,6 +90,7 @@ module.exports = kind({
     },
     handleFormResponse: function(inSender, inEvent) {
         this.$.ErrorsContainer.set('showing', false);
+        this.$.FormatButtonContainer.set('showing', true);
 
         if(inEvent.results.error_level == 4) {
             return this.handleFormError(inSender, inEvent);
@@ -105,6 +113,10 @@ module.exports = kind({
     handleFormError: function(inSender, inEvent) {
         this.log('error');
         this.log(inEvent);
+
+        if(this.formatButtonsToggle) {
+            this.$.FormatButtonContainer.set('showing', false);
+        }
 
         this.$.ResultsContainer.set('showing', false);
         

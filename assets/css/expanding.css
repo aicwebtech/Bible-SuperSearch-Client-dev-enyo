@@ -1,0 +1,32 @@
+.interface_expanding .biblesupersearch_expanding_form {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.biblesupersearch_expanding_form .input_row {
+    margin-bottom: 5px;
+}
+
+.biblesupersearch_expanding_form .input_row .label {
+    display: inline-block;
+    vertical-align: top;
+    width: 49%;
+    max-width: 200px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.biblesupersearch_expanding_form .input_row .element {
+    display: inline-block;
+    width: 49%;
+}
+
+.biblesupersearch_expanding_form .input_row_wide input, .biblesupersearch_expanding_form .input_row_wide select {
+    width: 98%;
+}
+
+
+.biblesupersearch_expanding_form textarea {
+    width: 98%;
+    height: 14px;
+}

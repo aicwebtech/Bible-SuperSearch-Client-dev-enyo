@@ -7,6 +7,12 @@ module.exports = {
     //      Modern, phone app style theme
     'TwentyTwenty': require('./interfaces/twentytwenty/TwentyTwenty'),
 
+    // Epanding interfaces
+    //      Modern interfaces with a minimal amounts of fields showing initially, but can be expanded to show 
+        
+        // Basic expanding form - new default form
+        'Expanding': require('./interfaces/expanding/Expanding'),
+
     
     // Minimal interfaces
     //      Forms with very few elements
