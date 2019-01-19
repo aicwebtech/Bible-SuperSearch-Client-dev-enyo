@@ -12,6 +12,7 @@ module.exports = kind({
     formView: formView,
     advancedFormView: null, //advancedFormView,
     classes: 'interface_expanding',
+    expanded: false,
 
     create: function() {
         this.inherited(arguments);

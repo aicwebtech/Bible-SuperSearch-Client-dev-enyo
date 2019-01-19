@@ -136,5 +136,59 @@ module.exports = kind({
         }
 
         this.value = valueFiltered;
+    },
+    parallelLimitChanged: function(was, is) {
+        if(is < this.parallelNumber) {
+            this.parallelLimit = this.parallelNumber;
+        }
+
+        var showAdd  = (this.parallelNumber >= this.parallelLimit) ? false : true;
+        this.$.Add.set('showing', showAdd);
+    },
+    parallelStartChanged: function(was, is) {
+        this.parallelStartBuild();
+    },
+    parallelStartBuild: function() {
+        if(this.parallelStart > this.parallelNumber) {
+            var num = (this.parallelStart >= 1) ? this.parallelStart : 1;
+
+            for(var i = this.parallelNumber + 1; i <= num; i++) {
+                var s = this._addSelectorHelper();
+            }
+
+            this.$.Container.render();
+        }
+    },
+    // removes some unused Bible selectors to attempt to only display between min and max
+    parallelCleanup: function() {
+        if(this.parallelStart == this.parallelNumber) {
+            return;  // displaying the minimum, definity nothing to do
+        }
+
+        if(this.parallelNumber >= this.parallelStart && this.parallelNumber <= this.parallelLimit) {
+            // return; // displaying within acceptible range, nothing to do
+        }
+
+        var components = this.$.Container.getClientControls(),
+            valueFiltered = [],
+            changed = false;
+
+        components.forEach(function(item) {
+            var val = item.get('value');
+
+            if((!val || val == '' || val == 0) && this.parallelNumber > this.parallelStart) {
+                changed = true;
+            }
+            else {
+                valueFiltered.push(val);
+            }
+        }, this);
+
+        if(changed) {
+            this.$.Container.destroyClientControls();
+            this.parallelNumber = 0;
+            this.setValue(valueFiltered);
+            this.parallelStartBuild();
+        }
     }
 });

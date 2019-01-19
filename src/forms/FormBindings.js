@@ -59,10 +59,10 @@ module.exports = {
         }
         else {
             if(value && value != '0' && value != '1') {
-                this.$.reference.set('value', value);
+                this.$.reference && this.$.reference.set('value', value);
             }
             else if (value != '1') {
-                this.$.reference.set('value', null);
+                this.$.reference && this.$.reference.set('value', null);
             }
             
             if(!value || value == '') {

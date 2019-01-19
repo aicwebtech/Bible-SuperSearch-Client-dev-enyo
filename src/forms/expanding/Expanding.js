@@ -1,5 +1,5 @@
 var kind = require('enyo/kind');
-var FormBase = require('../FormBase');
+var FormBase = require('./FormBaseExpanding');
 var Button = require('enyo/Button');
 var Input = require('enyo/Input');
 var TextArea = require('enyo/TextArea');
@@ -17,116 +17,83 @@ module.exports = kind({
             classes: 'biblesupersearch_expanding_form expanding',
             components: [
                 {classes: 'input_row_wide', components: [
-                    {name: 'request', kind: TextArea},
+                    {name: 'request', kind: TextArea, placeholder:'Enter search keyword(s) or passage reference(s)'},
                 ]},
                 {classes: 'input_row', components: [
                     {classes: 'label', content: 'Bible Version(s):'},
                     {classes: 'element', components: [
-                        {name: 'bible', kind: BibleSelect, parallelStart:2, parallelLimit: 6}
+                        {
+                            name: 'bible', 
+                            kind: BibleSelect, 
+                            parallelStart: 1, 
+                            parallelLimit: 1,
+                            selectorWidth: 500
+                        }
                     ]}
-                ]},                
-                {classes: 'input_row', components: [
-                    {classes: 'label', content: 'Limit Search To:'},
-                    {classes: 'element', components: [
-                        {kind: Shortcuts, name: 'shortcut'}
-                    ]}
-                ]},                
-                {classes: 'input_row', components: [
-                    {classes: 'label', content: 'Passages:'},
-                    {classes: 'element', components: [
-                        {kind: TextArea, name: 'passage'}
-                    ]}
-                ]},                
-                {classes: 'input_row', components: [
-                    {classes: 'label', content: 'Search Type:'},
-                    {classes: 'element', components: [
-                        {kind: SearchType, name: 'search_type'}
-                    ]}
-                ]},                
-                {classes: 'input_row', components: [
-                    {classes: 'label', content: 'Whole Words Only:'},
-                    {classes: 'element', components: [
-                        {kind: Checkbox, name: 'whole_words'}
-                    ]}
-                ]},               
-                {classes: 'input_row', components: [
-                    {classes: 'label', content: 'Exact Case:'},
-                    {classes: 'element', components: [
-                        {kind: Checkbox, name: 'exact_case'}
-                    ]}
-                ]},
-
-                /*
-                {classes: 'biblesupersearch_center_element', components: [
-                    {content: 'Select Bible version(s):'},
-                    {
-                        name: 'bible2', 
-                        kind: BibleSelect, 
-                        parallelLimit: 4, 
-                        parallelStart: 4, 
-                        selectorWidth: 300
-                    },
-                    {tag: 'br'},
-                    {content: 'Enter word(s), phrase(s) or expression(s):'},
-                    {name: 'search', kind: Input, style: 'width: 100%; max-width: 300px'},
-                    {tag: 'br'},
-                    {tag: 'br'},
-                    {components: [
-                        {tag: 'span', content: 'Search for: '},
-                        {kind: SearchType, name: 'search_type', style: 'width: 100%; max-width: 200px'}
+                ]},      
+                
+                {name: 'Expansion', classes: 'wrapper', showing: false, components: [
+                    {classes: 'input_row', components: [
+                        {classes: 'label', content: 'Limit Search To:'},
+                        {classes: 'element', components: [
+                            {kind: Shortcuts, name: 'shortcut'}
+                        ]}
+                    ]},                
+                    {classes: 'input_row', components: [
+                        {classes: 'label', content: 'Passages:'},
+                        {classes: 'element', components: [
+                            {kind: TextArea, name: 'reference'}
+                        ]}
+                    ]},                
+                    {classes: 'input_row', components: [
+                        {classes: 'label', content: 'Match:'},
+                        {classes: 'element', components: [
+                            {kind: SearchType, name: 'search_type'}
+                        ]}
+                    ]},                
+                    {classes: 'input_row', components: [
+                        {classes: 'label', content: 'Whole Words Only:'},
+                        {classes: 'element', components: [
+                            {kind: Checkbox, name: 'whole_words'}
+                        ]}
+                    ]},               
+                    {classes: 'input_row', components: [
+                        {classes: 'label', content: 'Exact Case:'},
+                        {classes: 'element', components: [
+                            {kind: Checkbox, name: 'exact_case'}
+                        ]}
                     ]},
-                    {components: [
-                        {tag: 'span', content: 'Limit search to: '},
-                        {kind: Shortcuts, name: 'shortcut', style: 'width: 100%; max-width: 200px'}
-                    ]},
-                    {components: [
-                        {kind: Checkbox, name: 'whole_words', id: 'whole_words'},
-                        {tag: 'label', content: ' Whole words only', attributes: {for: 'whole_words'}},
-                        {tag: 'span', content: '&nbsp; &nbsp;', allowHtml: true},
-                        {kind: Checkbox, name: 'exact_case', id: 'exact_case'},
-                        {tag: 'label', content: ' Exact Case', attributes: {for: 'exact_case'}}
-                    ]},
-                    {tag: 'br'},
-                    {kind: Button, content: 'Search the Bible', ontap: 'submitForm'},
-                    {tag: 'br'},
-                    {tag: 'br'},
-                    {content: 'Enter passage(s):'},
-                    {name: 'reference', kind: Input, style: 'width: 100%; max-width: 300px', onblur: 'referenceTyped'},
-                    { components: [
-                        {tag: 'small', content: 'Example: John 4; Rom 5:8;'},
-                    ]},
-                    {kind: Button, content: 'Look up Passage(s)', ontap: 'submitForm'},
-                    {tag: 'br'},
-                    {tag: 'br'},
-                    {components: [
+                    {classes: 'input_row_wide', components: [
                         {
                             kind: Button, 
                             content: 'Random Chapter', 
                             ontap: 'submitRandom', 
                             random_type: 'Random Chapter', 
                             style: 'margin-right: 4px', 
-                            classes: 'user_friendly_random'
+                            // classes: 'user_friendly_random'
                         },
                         {
                             kind: Button, 
                             content: 'Random Verse', 
                             ontap: 'submitRandom', 
                             random_type: 'Random Verse', 
-                            classes: 'user_friendly_random'
+                            // classes: 'user_friendly_random'
                         }
                     ]},
-                    {tag: 'br'},
-                    {components: [
-                        {
-                            tag: 'small', 
-                            name: 'tip', 
-                            content: 'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).'
-                        }
-                    ]}
-                ]}*/
-
-            ]
+                ]},
+                {classes: 'input_row_wide', components: [
+                    {kind: Button, content: 'Search', ontap: 'submitForm'},
+                ]},                
+                {classes: 'expander_row', components: [
+                    {name: 'Expand1', kind: Button, content: "&#9660;", ontap: 'toggleExpanded', allowHtml: true},
+                    {name: 'Expand0', kind: Button, content: "&#9650;", ontap: 'toggleExpanded', allowHtml: true, showing: false}
+                ]}, 
+            ],
         }
-    ]
+    ], 
+
+    expandedChanged: function(was, is) {
+        this.inherited(arguments);
+    }
 
 });

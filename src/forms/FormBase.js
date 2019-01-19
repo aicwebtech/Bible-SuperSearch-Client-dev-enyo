@@ -364,8 +364,15 @@ module.exports = kind({
         }
     },
     keyPress: function(inSender, inEvent) {
+        this.log('keyPress', inSender._openTag);
+
         if(inEvent.keyCode == 13) {
-            this.submitForm(); // Submit form if user presses 'enter'
+            var textarea = inSender._openTag.match(/<textarea/);
+            this.log('textarea', textarea);
+
+            if(!textarea) {
+                this.submitForm(); // Submit form if user presses 'enter'
+            }
         }
     }
 });
