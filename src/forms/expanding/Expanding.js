@@ -7,6 +7,8 @@ var Checkbox = require('enyo/Checkbox');
 var BibleSelect = require('../../components/BibleSelect/MultiSelect');
 var SearchType = require('../../components/SearchType');
 var Shortcuts = require('../../components/Shortcuts');
+var Drawer = require('enyo/Drawer');
+var easing = require('layout/easing');
 
 module.exports = kind({
     name: 'Expanding',
@@ -19,11 +21,24 @@ module.exports = kind({
                 {classes: 'input_row_wide', components: [
                     {name: 'request', kind: TextArea, placeholder:'Enter search keyword(s) or passage reference(s)'},
                 ]},
-                {classes: 'input_row', components: [
-                    {classes: 'label', content: 'Bible Version(s):'},
+                // {classes: 'input_row', components: [
+                //     {classes: 'label', content: 'Bible Version(s):'},
+                //     {classes: 'element', components: [
+                //         {
+                //             name: 'bible', 
+                //             kind: BibleSelect, 
+                //             parallelStart: 1, 
+                //             parallelLimit: 1,
+                //             selectorWidth: 500
+                //         }
+                //     ]}
+                // ]},                  
+                {classes: 'input_row_wide', components: [
+                    // {classes: 'label', content: 'Bible Version(s):'},
                     {classes: 'element', components: [
                         {
                             name: 'bible', 
+                            classes: 'bible',
                             kind: BibleSelect, 
                             parallelStart: 1, 
                             parallelLimit: 1,
@@ -32,7 +47,19 @@ module.exports = kind({
                     ]}
                 ]},      
                 
-                {name: 'Expansion', classes: 'wrapper', showing: false, components: [
+                {
+                    name: 'Expansion', 
+                    classes: 'wrapper', 
+                    kind: Drawer,
+                    open: false, 
+                    orient: 'v',
+                    components: [
+                    {classes: 'input_row', components: [
+                        {classes: 'label', content: 'Match:'},
+                        {classes: 'element', components: [
+                            {kind: SearchType, name: 'search_type'}
+                        ]}
+                    ]},                
                     {classes: 'input_row', components: [
                         {classes: 'label', content: 'Limit Search To:'},
                         {classes: 'element', components: [
@@ -44,24 +71,20 @@ module.exports = kind({
                         {classes: 'element', components: [
                             {kind: TextArea, name: 'reference'}
                         ]}
-                    ]},                
-                    {classes: 'input_row', components: [
-                        {classes: 'label', content: 'Match:'},
-                        {classes: 'element', components: [
-                            {kind: SearchType, name: 'search_type'}
-                        ]}
-                    ]},                
-                    {classes: 'input_row', components: [
-                        {classes: 'label', content: 'Whole Words Only:'},
-                        {classes: 'element', components: [
-                            {kind: Checkbox, name: 'whole_words'}
-                        ]}
-                    ]},               
-                    {classes: 'input_row', components: [
-                        {classes: 'label', content: 'Exact Case:'},
-                        {classes: 'element', components: [
-                            {kind: Checkbox, name: 'exact_case'}
-                        ]}
+                    ]},                                     
+                    {classes: 'input_row_checkbox', components: [
+                        {classes: 'checkbox_container', components: [
+                            {classes: 'label', content: 'Whole Words Only:'},
+                            {classes: 'element', components: [
+                                {kind: Checkbox, name: 'whole_words'}
+                            ]}
+                        ]},               
+                        {classes: 'checkbox_container', components: [
+                            {classes: 'label', content: 'Exact Case:'},
+                            {classes: 'element', components: [
+                                {kind: Checkbox, name: 'exact_case'}
+                            ]}
+                        ]},
                     ]},
                     {classes: 'input_row_wide', components: [
                         {
