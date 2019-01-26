@@ -11,6 +11,7 @@ module.exports = kind({
     selectorShortWidth: 0,
     selectorShortWidthThreshold: 250,
     selectorClasses: '',
+    valueUnfiltered: [],
 
     components: [
         {name: 'Container', tag: 'div'},
@@ -36,14 +37,25 @@ module.exports = kind({
         this.$.Container.render();
     },
     _addSelectorHelper: function() {
+        if(this.parallelNumber >= this.parallelLimit) {  
+            return false;
+        }
+
         this.parallelNumber ++;
         var width = (this.selectorWidth) ? this.selectorWidth : 270;
         var shortWidth = (this.selectorShortWidth) ? this.selectorShortWidth : 160;
         var classes = (this.selectorClasses && typeof this.selectorClasses == 'string') ? this.selectorClasses : '';
         var style = '';
+
+        this.log('parallelNumber', this.parallelNumber);
+        this.log('parallelLimit', this.parallelLimit);
+
         
         if(this.parallelNumber >= this.parallelLimit) {
             this.$.Add.set('showing', false);
+        }
+        else if(this.parallelNumber < this.parallelLimit) {
+            // this.$.Add.set('showing', true);
         }
 
         if(width != 0) {
@@ -90,13 +102,20 @@ module.exports = kind({
             value = [];
 
         for(i in components) {
-            value.push(components[i].get('value'));
+            value.push(components[i].get && components[i].get('value'));
         }
 
         this.set('value', value);
     },
     valueChanged: function(was, is) {
         // this.log(was, is);
+        this.valueUnfiltered = is;
+        this.populateValue(is);
+    },
+    populateValue: function() {
+        this._populateValueHelper(this.valueUnfiltered);
+    },
+    _populateValueHelper: function(is) {
         var valueFiltered = [];
         var selectorAdded = false;
 
@@ -110,7 +129,13 @@ module.exports = kind({
                 value = is[i],
                 isNull = (!value || value == '0') ? true : false;
 
-            // this.log('vib balye', value, name);
+            // this.log('vib balye', i, p, value, name);
+
+            if(isNaN(p)) {
+                // Fix weird IE bug - yuck!
+                this.log('IE NaN error');
+                continue;
+            }
             
             if(!isNull && !this.$[name]) {
                 this.log('adding selector for', value, name);
@@ -140,6 +165,9 @@ module.exports = kind({
     parallelLimitChanged: function(was, is) {
         if(is < this.parallelNumber) {
             this.parallelLimit = this.parallelNumber;
+        }
+        else {
+            this.populateValue();
         }
 
         var showAdd  = (this.parallelNumber >= this.parallelLimit) ? false : true;

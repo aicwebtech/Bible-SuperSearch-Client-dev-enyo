@@ -9,7 +9,6 @@ var ErrorView = require('../results/ErrorView');
 var ResultsController = require('../results/ResultsController');
 // var FormatButtons = require('./FormatButtonsBase');
 
-
 var forms = {
     // populate forms in child kinds
 };

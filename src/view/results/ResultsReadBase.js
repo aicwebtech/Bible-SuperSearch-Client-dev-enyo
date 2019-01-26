@@ -79,6 +79,11 @@ module.exports = kind({
         if(haveText) {            
             for(i in this.bibles) {
                 var module = this.bibles[i];
+
+                if(typeof this.app.statics.bibles[module] == 'undefined') {
+                    continue;
+                }
+
                 var bible_info = this.app.statics.bibles[module];
                 
                 // Container.$.ReferenceRow.createComponent({

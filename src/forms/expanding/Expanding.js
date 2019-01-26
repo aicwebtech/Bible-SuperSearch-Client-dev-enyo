@@ -19,22 +19,9 @@ module.exports = kind({
             classes: 'biblesupersearch_expanding_form expanding',
             components: [
                 {classes: 'input_row_wide', components: [
-                    {name: 'request', kind: TextArea, placeholder:'Enter search keyword(s) or passage reference(s)'},
-                ]},
-                // {classes: 'input_row', components: [
-                //     {classes: 'label', content: 'Bible Version(s):'},
-                //     {classes: 'element', components: [
-                //         {
-                //             name: 'bible', 
-                //             kind: BibleSelect, 
-                //             parallelStart: 1, 
-                //             parallelLimit: 1,
-                //             selectorWidth: 500
-                //         }
-                //     ]}
-                // ]},                  
+                    {name: 'request', kind: TextArea, placeholder: 'Enter search keyword(s) or passage reference(s)'},
+                ]},                 
                 {classes: 'input_row_wide', components: [
-                    // {classes: 'label', content: 'Bible Version(s):'},
                     {classes: 'element', components: [
                         {
                             name: 'bible', 
@@ -46,7 +33,6 @@ module.exports = kind({
                         }
                     ]}
                 ]},      
-                
                 {
                     name: 'Expansion', 
                     classes: 'wrapper', 
@@ -54,56 +40,57 @@ module.exports = kind({
                     open: false, 
                     orient: 'v',
                     components: [
-                    {classes: 'input_row', components: [
-                        {classes: 'label', content: 'Match:'},
-                        {classes: 'element', components: [
-                            {kind: SearchType, name: 'search_type'}
-                        ]}
-                    ]},                
-                    {classes: 'input_row', components: [
-                        {classes: 'label', content: 'Limit Search To:'},
-                        {classes: 'element', components: [
-                            {kind: Shortcuts, name: 'shortcut'}
-                        ]}
-                    ]},                
-                    {classes: 'input_row', components: [
-                        {classes: 'label', content: 'Passages:'},
-                        {classes: 'element', components: [
-                            {kind: TextArea, name: 'reference'}
-                        ]}
-                    ]},                                     
-                    {classes: 'input_row_checkbox', components: [
-                        {classes: 'checkbox_container', components: [
-                            {classes: 'label', content: 'Whole Words Only:'},
+                        {classes: 'input_row', components: [
+                            {classes: 'label', content: 'Match:'},
                             {classes: 'element', components: [
-                                {kind: Checkbox, name: 'whole_words'}
+                                {kind: SearchType, name: 'search_type'}
                             ]}
-                        ]},               
-                        {classes: 'checkbox_container', components: [
-                            {classes: 'label', content: 'Exact Case:'},
+                        ]},                
+                        {classes: 'input_row', components: [
+                            {classes: 'label', content: 'Limit Search To:'},
                             {classes: 'element', components: [
-                                {kind: Checkbox, name: 'exact_case'}
+                                {kind: Shortcuts, name: 'shortcut', selectedPassagesLabel: 'Passage(s) listed below: ', onchange: 'shortcutChangedHandler'}
                             ]}
+                        ]},                
+                        {name: 'PassageContainer', showing: false, classes: 'input_row', components: [
+                            {classes: 'label', content: 'Passages:'},
+                            {classes: 'element', components: [
+                                {kind: TextArea, name: 'reference'}
+                            ]}
+                        ]},                                     
+                        {classes: 'input_row_checkbox', components: [
+                            {classes: 'checkbox_container', components: [
+                                {classes: 'label', content: 'Whole Words Only:'},
+                                {classes: 'element', components: [
+                                    {kind: Checkbox, name: 'whole_words'}
+                                ]}
+                            ]},               
+                            {classes: 'checkbox_container', components: [
+                                {classes: 'label', content: 'Exact Case:'},
+                                {classes: 'element', components: [
+                                    {kind: Checkbox, name: 'exact_case'}
+                                ]}
+                            ]},
                         ]},
-                    ]},
-                    {classes: 'input_row_wide', components: [
-                        {
-                            kind: Button, 
-                            content: 'Random Chapter', 
-                            ontap: 'submitRandom', 
-                            random_type: 'Random Chapter', 
-                            style: 'margin-right: 4px', 
-                            // classes: 'user_friendly_random'
-                        },
-                        {
-                            kind: Button, 
-                            content: 'Random Verse', 
-                            ontap: 'submitRandom', 
-                            random_type: 'Random Verse', 
-                            // classes: 'user_friendly_random'
-                        }
-                    ]},
-                ]},
+                        {classes: 'input_row_wide', components: [
+                            {
+                                kind: Button, 
+                                content: 'Random Chapter', 
+                                ontap: 'submitRandom', 
+                                random_type: 'Random Chapter', 
+                                style: 'margin-right: 4px', 
+                                // classes: 'user_friendly_random'
+                            },
+                            {
+                                kind: Button, 
+                                content: 'Random Verse', 
+                                ontap: 'submitRandom', 
+                                random_type: 'Random Verse', 
+                                // classes: 'user_friendly_random'
+                            }
+                        ]},
+                    ]
+                },
                 {classes: 'input_row_wide', components: [
                     {kind: Button, content: 'Search', ontap: 'submitForm'},
                 ]},                
@@ -117,6 +104,23 @@ module.exports = kind({
 
     expandedChanged: function(was, is) {
         this.inherited(arguments);
-    }
+    },
+    shortcutChangedHandler: function(inSender, inEvent) {
+        // this.log(inSender);
+        // this.log(inEvent);
+        // this.log('shortcut id selected', inSender.selected);
+        this.log('shortcut value selected', inSender.get('value'));
+
+        var val = inSender.get('value');
+
+        if(val == 1) {
+            this.log('shortcut setting passage SHOWING');
+        }
+        else {
+            this.log('shortcut setting passage HIDING');
+        }
+
+        this.$.PassageContainer.set('showing', (val == 1) );
+    },
 
 });

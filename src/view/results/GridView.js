@@ -143,9 +143,12 @@ module.exports = kind({
         if(haveText) {            
             for(i in this.bibles) {
                 var module = this.bibles[i];
-                // var bible_info = AICWS.BibleSuperSearch.Bibles[module];
+                if(typeof this.app.statics.bibles[module] == 'undefined') {
+                    continue;
+                }
+
                 var bible_info = this.app.statics.bibles[module];
-                
+
                 this.$.Container.$.ReferenceRow.createComponent({
                     tag: 'th',
                     content: pd.book_name + ' ' + pd.chapter_verse

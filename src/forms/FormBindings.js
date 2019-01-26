@@ -1,6 +1,7 @@
 module.exports = {
     whole_words: {from: 'formData.whole_words', to: '$.whole_words.checked', oneWay: false, transform: function(value, dir) {
         // this.log('whole_words', value, dir);
+        this.bubble('onFormFieldChanged', {field: 'whole_words', value: value, dir: dir});
 
         // if(dir == 1) {
             return (value && value != 0 && value != false) ? true : false;
@@ -9,6 +10,7 @@ module.exports = {
     }},    
     exact_case: {from: 'formData.exact_case', to: '$.exact_case.checked', oneWay: false, transform: function(value, dir) {
         // this.log('exact_case', value, dir);
+        this.bubble('onFormFieldChanged', {field: 'exact_case', value: value, dir: dir});
 
         // if(dir == 1) {
             return (value && value != 0 && value != false) ? true : false;
@@ -28,6 +30,7 @@ module.exports = {
     
     request: {from: 'formData.request', to: '$.request.value', oneWay: false, transform: function(value, dir) {
         // this.log('request', value, dir);
+        this.bubble('onFormFieldChanged', {field: 'request', value: value, dir: dir});
         return value || null;
     }},
     // reference binding MUST be before the shortcut binding!
@@ -48,6 +51,7 @@ module.exports = {
     }},
     shortcut: {from: 'formData.shortcut', to: '$.shortcut.value', oneWay: false, transform: function(value, dir) {
         // this.log('shortcut', value, dir);
+        this.bubble('onFormFieldChanged', {field: 'shortcut', value: value, dir: dir});
 
         if(dir === 1) {
             if(value || value === 0) {
@@ -73,6 +77,8 @@ module.exports = {
         return value || null;
     }},           
     search_type: {from: 'formData.search_type', to: '$.search_type.value', oneWay: false, transform: function(value, dir) {
+        this.bubble('onFormFieldChanged', {field: 'search_type', value: value, dir: dir});
+
         // this.log('search_type', value, dir);
         if(dir == 1) {
             this.$.search_type.setSelectedByValue(value, 0);
@@ -87,6 +93,8 @@ module.exports = {
     }},            
     proximity_limit: {from: 'formData.proximity_limit', to: '$.proximity_limit.value', oneWay: false, transform: function(value, dir) {
         // this.log('proximity_limit', value, dir);
+        this.bubble('onFormFieldChanged', {field: 'proximity_limit', value: value, dir: dir});
+
         if(dir == 1) {
             this.$.proximity_limit.setSelectedByValue(value, 0);
         }
@@ -95,6 +103,7 @@ module.exports = {
     }},        
     search: {from: 'formData.search', to: '$.search.value', oneWay: false, transform: function(value, dir) {
         // this.log('search', value, dir);
+        this.bubble('onFormFieldChanged', {field: 'search', value: value, dir: dir});
         return value || null;
     }},    
     search_all: {from: 'formData.search_all', to: '$.search_all.value', oneWay: false, transform: function(value, dir) {
@@ -119,6 +128,7 @@ module.exports = {
     }},
     bible: {from: 'formData.bible', to: '$.bible.value', oneWay: false, transform: function(value, dir) {
         // this.log('biblesel', value, dir);
+        this.bubble('onFormFieldChanged', {field: 'bible', value: value, dir: dir});
         return value || null;
     }}
 };
