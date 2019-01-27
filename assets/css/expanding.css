@@ -21,7 +21,7 @@
 .biblesupersearch_expanding_form .input_row .label {
     display: inline-block;
     vertical-align: top;
-    width: 140px;
+    width: 120px;
     /*max-width: 140px;*/
     text-align: right;
     margin-right: 10px;
@@ -120,7 +120,7 @@
     }
 }*/
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 340px) {
     .biblesupersearch_expanding_form .input_row .label {
         display: block;
         vertical-align: top;

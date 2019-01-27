@@ -26,7 +26,7 @@ module.exports = kind({
     handlers: {
         onCacheChange: 'handleCacheChange',
         onHashRunForm: 'handleHashRunForm',
-        onkeypress: 'keyPress'
+        onkeydown: 'keyPress'
     },
 
     create: function() {
@@ -365,12 +365,13 @@ module.exports = kind({
     },
     keyPress: function(inSender, inEvent) {
         this.log('keyPress', inSender._openTag);
+        this.log(inEvent);
 
-        if(inEvent.keyCode == 13) {
+        if(inEvent.key == 'Enter' || inEvent.keyCode && inEvent.keyCode == 13) {
             var textarea = inSender._openTag.match(/<textarea/);
-            this.log('textarea', textarea);
+            // this.log('textarea', textarea);
 
-            if(!textarea) {
+            if(!textarea || !inEvent.shiftKey) {
                 this.submitForm(); // Submit form if user presses 'enter'
             }
         }
