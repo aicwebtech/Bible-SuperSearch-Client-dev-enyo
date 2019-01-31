@@ -3,6 +3,7 @@ var Button = require('enyo/Button');
 var Signal = require('../Signal');
 var Link = require('../Link/Link');
 
+// Classic text / html based pager
 module.exports = kind({
     name: 'ClassicPager',
     classes: 'biblesupersearch_pager',

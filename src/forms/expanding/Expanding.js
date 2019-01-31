@@ -1,5 +1,6 @@
 var kind = require('enyo/kind');
 var FormBase = require('./FormBaseExpanding');
+var FormSection = require('../FormSection')
 var Button = require('enyo/Button');
 var Input = require('enyo/Input');
 var TextArea = require('enyo/TextArea');
@@ -16,6 +17,7 @@ module.exports = kind({
 
     components: [
         {
+            kind: FormSection,
             classes: 'biblesupersearch_expanding_form expanding',
             components: [
                 {classes: 'input_row_wide', components: [
