@@ -23,9 +23,9 @@
     width: 120px;
     /*max-width: 140px;*/
     text-align: right;
-    margin-right: 10px;
+    margin-right: 5px;
     padding: 0;
-    background-color: springgreen;
+    /*background-color: springgreen;*/
     white-space: nowrap;
 }
 
@@ -34,7 +34,7 @@
     width: 59%;
     padding: 0;
     text-align: center;
-    background-color: navy;
+    /*background-color: navy;*/
     max-width: 300px;
 }
 
@@ -85,6 +85,10 @@
     padding-right: 10px;
 }
 
+.biblesupersearch_expanding_form  .input_row_checkbox {
+    text-align: center;
+}
+
 .biblesupersearch_expanding_form  .input_row_checkbox .checkbox_container {
     display: inline-block;
     width: 49%;
@@ -95,7 +99,7 @@
     display: inline-block;
     width: 140px;
     margin-right: 6px;
-    background-color: yellow;
+    /*background-color: yellow;*/
     text-align: right;
 }
 .biblesupersearch_expanding_form  .input_row_checkbox .checkbox_container .element {
@@ -118,6 +122,16 @@
 
     }
 }*/
+
+.interface_expanding a:link, .interface_expanding a:visited {
+    color: #0000ee;
+    text-decoration: none;
+}
+
+.interface_expanding a:hover {
+    /*text-decoration: underline overline;*/
+    background-color: #609bff;
+}
 
 @media only screen and (max-width: 340px) {
     .biblesupersearch_expanding_form .input_row .label {

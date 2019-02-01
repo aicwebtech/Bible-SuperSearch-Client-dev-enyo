@@ -4,6 +4,7 @@ var Form = require('../../../forms/expanding/Expanding');
 var ContentBase = require('../ContentPaneBase');
 // var FormatButtons = require('./FormatButtons');
 var FormatButtons = require('../../../components/FormatButtons/classic/FormatButtonsClassic');
+var Pager = require('../../../components/Pagers/CleanPager');
 
 var forms = {
     Form: Form,
@@ -15,6 +16,7 @@ module.exports = kind({
     kind: ContentBase,
     classes: 'biblesupersearch_content',
     formatButtonsView: FormatButtons,
+    pagerView: Pager,
     formatButtonsToggle: true,
     forms: forms,
 

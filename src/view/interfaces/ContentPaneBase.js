@@ -19,6 +19,7 @@ module.exports = kind({
     forms: forms,
     displayFormOnCreate: false,
     // formatButtonsView: FormatButtons,
+    navigationButtonsView: null,
     formatButtonsView: null,
     formatButtonsShowing: false,
     formatButtonsToggle: false, // if true, format buttons will only display when there are form results
@@ -62,6 +63,14 @@ module.exports = kind({
 
         if(this.displayFormOnCreate) {
             this.formViewProcess(this.formView);
+        }
+
+        if(this.navigationButtonsView) {
+            this.$.ResultsController.set('navigationButtonsView', this.navigationButtonsView);
+        }
+
+        if(this.pagerView) {
+            this.$. ResultsController.set('pagerView', this.pagerView);
         }
     },
     formViewProcess: function(formView) {

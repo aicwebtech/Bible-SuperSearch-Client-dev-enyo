@@ -18,6 +18,8 @@ module.exports = kind({
     view: null, // View will be chosen based on form / format settings
     resetView: true,
     renderPending: false,
+    pagerView: null,
+    navigationButtonsView: null,
     // views: views,
 
     published: {
@@ -52,6 +54,8 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+
+
     },
     renderResults: function() {
         if(this.renderPending) {
@@ -78,6 +82,15 @@ module.exports = kind({
         this.set('view', view);
         this.view.set('formData', this.get('formData'));
         this.view.set('resultsData', this.get('resultsData'));
+
+        if(this.navigationButtonsView) {
+            this.view.set('navigationButtonsView', this.navigationButtonsView);
+        }        
+
+        if(this.pagerView) {
+            this.view.set('pagerView', this.pagerView);
+        }
+
         this.applyViewFont();
         this.applyViewTextSize();
         this.view.renderResults();

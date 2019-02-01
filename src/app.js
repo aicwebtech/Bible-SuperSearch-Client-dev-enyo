@@ -417,6 +417,8 @@ var App = Application.kind({
             }, delay);
         }
     },
+    // TO DO - apply this to the following:
+    //   Pager, Nav Buttons (done), Format Buttons
     getSubControl: function(name) {
         var varName = name + 'Control';
         return this.getViewProp(varName);

@@ -2,6 +2,7 @@ var kind = require('enyo/kind');
 var GridView = require('./GridView');
 var Signal = require('../../components/Signal');
 var Pager = require('../../components/Pagers/ClassicPager');
+// var Pager = require('../../components/Pagers/CleanPager');
 var LinkBuilder = require('../../components/Link/LinkBuilder');
 var Nav = require('../../components/NavButtons/NavClassic');
 var HoverDialog = require('../../components/dialogs/Hover');
@@ -24,6 +25,8 @@ module.exports = kind({
     lastHoverTarget: null,
     lastHoverX: 0,
     lastHoverY: 0,
+    navigationButtonsView: Nav,
+    pagerView: Pager,
 
     published: {
         resultsData: null,
@@ -266,7 +269,7 @@ module.exports = kind({
         includeTotals = includeTotals || false;
 
         this.createComponent({
-            kind: Pager,
+            kind: this.pagerView,
             currentPage: this.paging.current_page,
             lastPage: this.paging.last_page,
             perPage: this.paging.per_page,

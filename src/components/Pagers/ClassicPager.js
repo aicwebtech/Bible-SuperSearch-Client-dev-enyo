@@ -15,16 +15,15 @@ module.exports = kind({
     numPageLinks: 10, // maximum number of individual page links to display at once,
     includeTotals: false,
 
+    // settings:
+    firstPageText:  '<<<',
+    prevPageText: '<<',
+    nextPageText: '>>',
+    lastPageText: '>>>',
+
     events: {
         onPageChange: ''
     },
-
-    components: [
-        // {kind: Button, content: '|<=', ontap:'goChangePage', page: 1},
-        // {kind: Button, content: '<=', ontap:'goPrevPage'},
-        // {kind: Button, content: '=>', ontap:'goNextPage'},
-        // {kind: Button, content: '=>|', ontap:'goLastPage'}
-    ],
 
     create: function() {
         this.inherited(arguments);
@@ -72,7 +71,8 @@ module.exports = kind({
         if(this.lastPage) {        
             LinkContainer.createComponent({
                 kind: Link,
-                content: '<<<',
+                content: this.firstPageText,
+                allowHtml: true,
                 href: '#/c/' + cache + '/1',
                 title: 'First Page'
             });        
@@ -81,7 +81,8 @@ module.exports = kind({
         LinkContainer.createComponent({
             kind: Link,
             href: '#/c/' + cache + '/' + prevPage.toString(),
-            content: '<<',
+            content: this.prevPageText,
+            allowHtml: true,
             title: 'Previous Page'
         });
 
@@ -115,14 +116,16 @@ module.exports = kind({
         LinkContainer.createComponent({
             kind: Link,
             href: '#/c/' + cache + '/' + nextPage.toString(),
-            content: '>>',
+            content: this.nextPageText,
+            allowHtml: true,
             title: 'Next Page'
         });        
 
         if(this.lastPage) {        
             LinkContainer.createComponent({
                 kind: Link,
-                content: '>>>',
+                allowHtml: true,
+                content: this.lastPageText,
                 href: '#/c/' + cache + '/' + this.lastPage.toString(),
                 title: 'Last Page'
             });
