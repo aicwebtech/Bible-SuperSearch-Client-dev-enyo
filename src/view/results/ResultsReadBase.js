@@ -226,7 +226,6 @@ module.exports = kind({
     },   
     _addNavButtons: function(Container, passage) {
         if(typeof passage.nav == 'object') {
-            // Todo - add browsing buttons!
             var NavButtons = this.app.getSubControl('NavButtons');
 
             if(NavButtons) {

@@ -30,5 +30,4 @@ module.exports = kind({
             subForm: true
         }
     ]
-
 });

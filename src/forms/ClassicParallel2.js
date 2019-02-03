@@ -7,6 +7,7 @@ var Checkbox = require('enyo/Checkbox');
 var BibleSelect = require('../components/BibleSelect/MultiSelect');
 var SearchType = require('../components/SearchType');
 var Shortcuts = require('../components/Shortcuts');
+var FormSection = require('./FormSection');
 
 module.exports = kind({
     name: 'ClassicParallel2',
@@ -17,6 +18,7 @@ module.exports = kind({
         {
             classes: 'biblesupersearch_classic_form parallel2',
             tag: 'table',
+            kind: FormSection,
             // attributes: {border: 1},
             // style: 'width: 656px',
 

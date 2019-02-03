@@ -26,7 +26,7 @@ module.exports = kind({
     handlers: {
         onCacheChange: 'handleCacheChange',
         onHashRunForm: 'handleHashRunForm',
-        onkeydown: 'keyPress'
+        onkeyup: 'keyPress'
     },
 
     create: function() {
@@ -37,6 +37,14 @@ module.exports = kind({
 
         if(this.autoApplyStandardBindings) {
             this.applyStandardBindings();
+        }
+
+        if(this.subForm) {
+            var styles = this.app.configs.formStyles || {};
+
+            Object.entries(styles).forEach(function(item) {
+                this.applyStyle(item[0], item[1]);
+            }, this);
         }
 
         // Break references to formData on other forms?
@@ -371,7 +379,15 @@ module.exports = kind({
             var textarea = inSender._openTag.match(/<textarea/);
             // this.log('textarea', textarea);
 
-            if(!textarea || !inEvent.shiftKey) {
+            var enterSubmit = (!textarea || (inSender.enterSubmit && inSender.enterSubmit == true)) ? true : false;
+
+            if(enterSubmit && (!textarea || !inEvent.shiftKey)) {
+                if(textarea) {
+                    val = inSender.get('value');
+                    val = val.substr(0, val.length - 1);
+                    inSender.set('value', val);
+                }
+
                 this.submitForm(); // Submit form if user presses 'enter'
             }
         }

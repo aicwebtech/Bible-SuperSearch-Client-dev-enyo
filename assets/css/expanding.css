@@ -1,7 +1,7 @@
 .interface_expanding .biblesupersearch_expanding_form {
     max-width: 400px;
     margin: 0 auto;
-    padding: 0 10px 10px;
+    padding: 10px;
 }
 
 .biblesupersearch_expanding_form .wrapper {
@@ -50,7 +50,7 @@
 .biblesupersearch_expanding_form .input_row .element textarea {
     width: 100%; 
     /*width: calc(100% - 2px);*/
-    height: 24px;
+    height: 16px;
     padding: 0;
     margin: 0;
 }
@@ -75,7 +75,7 @@
 }
 
 .biblesupersearch_expanding_form textarea {
-    height: 18px;
+    height: 16px;
     font-size: 12px
 }
 
@@ -123,6 +123,16 @@
     }
 }*/
 
+.interface_expanding .bible button {
+    font-size: .7em;
+}
+
+.interface_expanding button.random {
+    font-size: .7em;
+    width: 110px;
+    text-align: center;
+}
+
 .interface_expanding a:link, .interface_expanding a:visited {
     color: #0000ee;
     text-decoration: none;
@@ -131,6 +141,11 @@
 .interface_expanding a:hover {
     /*text-decoration: underline overline;*/
     background-color: #609bff;
+}
+
+.interface_expanding .expander_row button {
+    background-color: transparent;
+    border: 0;
 }
 
 @media only screen and (max-width: 340px) {

@@ -65,13 +65,13 @@ module.exports = kind({
             this.formViewProcess(this.formView);
         }
 
-        if(this.navigationButtonsView) {
-            this.$.ResultsController.set('navigationButtonsView', this.navigationButtonsView);
-        }
+        // if(this.navigationButtonsView) {
+        //     this.$.ResultsController.set('navigationButtonsView', this.navigationButtonsView);
+        // }
 
-        if(this.pagerView) {
-            this.$. ResultsController.set('pagerView', this.pagerView);
-        }
+        // if(this.pagerView) {
+        //     this.$. ResultsController.set('pagerView', this.pagerView);
+        // }
     },
     formViewProcess: function(formView) {
         this.log('formView', formView);

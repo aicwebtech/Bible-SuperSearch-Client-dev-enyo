@@ -34,6 +34,19 @@ module.exports = kind({
         }
     },
 
+    getIndexByValue: function(value) {
+        var value = value || 0,
+            controls = this.getClientControls();
+
+        for(i in controls) {
+            if(controls[i].get('value') == value) {
+                return i;
+            }
+        }
+
+        return -1;
+    },
+
     resetValue: function() {
         
     }

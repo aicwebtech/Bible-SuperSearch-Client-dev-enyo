@@ -7,6 +7,7 @@ var Checkbox = require('enyo/Checkbox');
 var BibleSelect = require('../components/BibleSelect/MultiSelect');
 var SearchType = require('../components/SearchType');
 var Shortcuts = require('../components/Shortcuts');
+var FormSection = require('./FormSection');
 
 module.exports = kind({
     name: 'ClassicUserFriendly2',
@@ -15,6 +16,7 @@ module.exports = kind({
     components: [
         {classes: 'center', content: 'Bible SuperSearch', classes: 'biblesupersearch_classic_title'},
         {
+            kind: FormSection,
             classes: 'biblesupersearch_classic_form user_friendly',
             components: [
                 {classes: 'biblesupersearch_center_element', components: [

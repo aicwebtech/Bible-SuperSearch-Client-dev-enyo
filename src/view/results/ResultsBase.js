@@ -69,6 +69,9 @@ module.exports = kind({
     create: function() {
         this.inherited(arguments);
         // this.formViewProcess(this.formView);
+
+        this.pagerView = this.app.getSubControl('Pager');
+        // this.navigationButtonsView = this.app.getSubControl('');
     },
     formDataChanged: function(was, is) {
         this.bibles = [];

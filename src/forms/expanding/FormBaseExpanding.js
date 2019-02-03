@@ -8,6 +8,7 @@ module.exports = kind({
     expanded: false,
     drawerAnimationStep: 0,
     drawerAnimationThreshold: 3,
+    // FormatButtonsIncludeAdvancedToggle: false,
 
     // List of fields on the 'expander'
     // When these fields are populated, we ensure that the expander is expanded
@@ -90,18 +91,25 @@ module.exports = kind({
 
         if(inEvent.dir == 1 && (inEvent.value && inEvent.value != '') ) {
             if((this.expansionFields.indexOf(inEvent.field) != -1)) {
-                this.set('expanded', true);
+                valIndex = -1;
+
+                if(this.$[inEvent.field].getIndexByValue) {
+                    valIndex = this.$[inEvent.field].getIndexByValue(inEvent.value);
+                }
+
+                if(valIndex != 0) {
+                    this.set('expanded', true);
+                }
             }
 
             if(inEvent.field == 'bible' && Array.isArray(inEvent.value) && inEvent.value.length > this.parallelBibleSettings.contracted.parallelLimit) {
-                this.log('Bible field changed', inEvent);
+                // this.log('Bible field changed', inEvent);
                 this.set('expanded', true);
                 this.log('bible parallelLimit', this.$.bible.get('parallelLimit'));
                 this.log('bible parallelStart', this.$.bible.get('parallelStart'));
                 // this.$.bible.parallelCleanup();
                 this.$.bible.set('value', utils.clone(inEvent.value));
             }
-
         }
     }
 });

@@ -13,9 +13,20 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+    },
+    rendered: function() {
+        this.inherited(arguments);
+        this._initAdvancedToggle();
+    },
 
-        if(!this.includeAdvancedToggle) {
-            this.$.advanced_toggle && this.advanced_toggle.destroy();
+    _initAdvancedToggle: function() {
+        var advancedView = this.app.getViewProp('FormatButtonsIncludeAdvancedToggle');
+
+        this.log('advancedToggle - CONFIG', this.app.configs.toggleAdvanced, this.app.configs);
+        this.log('advancedToggle - Interface', advancedView, this.app.view.FormatButtonsIncludeAdvancedToggle);
+
+        if(!this.includeAdvancedToggle || !advancedView || !this.app.configs.toggleAdvanced) {
+            this.$.advanced_toggle && this.$.advanced_toggle.destroy();
         }
     },
     handleFontChange: function(inSender, inEvent) {

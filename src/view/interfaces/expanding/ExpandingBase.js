@@ -5,12 +5,14 @@ var InterfaceBase = require('../InterfaceBase');
 var ContentPane = require('./ContentPane');
 // var FormatButtons = require('../../../components/FormatButtons/classic/FormatButtonsClassic');
 // var advancedFormView = require('../../../forms/ClassicAdvanced');
+var Pager = require('../../../components/Pagers/CleanPager');
 
 module.exports = kind({
     name: 'ExpandingBase',
     kind: InterfaceBase,
     formView: formView,
     advancedFormView: null, //advancedFormView,
+    PagerControl: Pager,
     classes: 'interface_expanding',
     expanded: false,
 

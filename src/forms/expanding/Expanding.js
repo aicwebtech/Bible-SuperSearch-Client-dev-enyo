@@ -1,6 +1,6 @@
 var kind = require('enyo/kind');
 var FormBase = require('./FormBaseExpanding');
-var FormSection = require('../FormSection')
+var FormSection = require('../FormSection');
 var Button = require('enyo/Button');
 var Input = require('enyo/Input');
 var TextArea = require('enyo/TextArea');
@@ -21,7 +21,7 @@ module.exports = kind({
             classes: 'biblesupersearch_expanding_form expanding',
             components: [
                 {classes: 'input_row_wide', components: [
-                    {name: 'request', kind: TextArea, placeholder: 'Enter search keyword(s) or passage reference(s)'},
+                    {name: 'request', kind: TextArea, placeholder: 'Enter search keyword(s) or passage reference(s)', enterSubmit: true},
                 ]},                 
                 {classes: 'input_row_wide', components: [
                     {classes: 'element', components: [
@@ -57,20 +57,20 @@ module.exports = kind({
                         {name: 'PassageContainer', showing: false, classes: 'input_row', components: [
                             {classes: 'label', content: 'Passages:'},
                             {classes: 'element', components: [
-                                {kind: TextArea, name: 'reference'}
+                                {kind: TextArea, name: 'reference', enterSubmit: true}
                             ]}
                         ]},                                     
                         {classes: 'input_row_checkbox', components: [
                             {classes: 'checkbox_container', components: [
-                                {classes: 'label', content: 'Whole Words Only:'},
+                                {tag: 'label', attributes: {for: 'whole_words'}, classes: 'label', content: 'Whole Words Only:'},
                                 {classes: 'element', components: [
-                                    {kind: Checkbox, name: 'whole_words'}
+                                    {kind: Checkbox, name: 'whole_words', id: 'whole_words'}
                                 ]}
                             ]},               
                             {classes: 'checkbox_container', components: [
-                                {classes: 'label', content: 'Exact Case:'},
+                                {tag: 'label', attributes: {for: 'exact_case'}, classes: 'label', content: 'Exact Case:'},
                                 {classes: 'element', components: [
-                                    {kind: Checkbox, name: 'exact_case'}
+                                    {kind: Checkbox, name: 'exact_case', id: 'exact_case'}
                                 ]}
                             ]},
                         ]},
@@ -81,14 +81,14 @@ module.exports = kind({
                                 ontap: 'submitRandom', 
                                 random_type: 'Random Chapter', 
                                 style: 'margin-right: 4px', 
-                                // classes: 'user_friendly_random'
+                                classes: 'random'
                             },
                             {
                                 kind: Button, 
                                 content: 'Random Verse', 
                                 ontap: 'submitRandom', 
                                 random_type: 'Random Verse', 
-                                // classes: 'user_friendly_random'
+                                classes: 'random'
                             }
                         ]},
                     ]

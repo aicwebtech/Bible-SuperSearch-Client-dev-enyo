@@ -55,7 +55,8 @@ module.exports = kind({
     create: function() {
         this.inherited(arguments);
 
-
+        // this.pagerView = this.app.getSubControl('Pager');
+        // this.pagerView = this.app.getSubControl('Pager');
     },
     renderResults: function() {
         if(this.renderPending) {

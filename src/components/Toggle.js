@@ -44,12 +44,12 @@ module.exports = kind({
 
     valueChanged: function(was, is) {
         if(is) {
-            this.$.ImgTrue.set('showing', true);
-            this.$.ImgFalse.set('showing', false);
+            this.$.ImgTrue && this.$.ImgTrue.set('showing', true);
+            this.$.ImgFalse && this.$.ImgFalse.set('showing', false);
         }
         else {
-            this.$.ImgFalse.set('showing', true);
-            this.$.ImgTrue.set('showing', false);
+            this.$.ImgFalse && this.$.ImgFalse.set('showing', true);
+            this.$.ImgTrue && this.$.ImgTrue.set('showing', false);
         }
     },
     toggleValue: function() {
