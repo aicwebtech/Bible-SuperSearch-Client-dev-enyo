@@ -1,0 +1,80 @@
+/* HTML format Buttons */
+
+.format_buttons_html .item {
+    display: inline-block;
+    margin: 0 2px;
+    border: 1px solid #909090;
+    background-color: yellow;
+    cursor: pointer;
+    padding: 1px 3px;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
+}
+
+.format_buttons_html .item.size_plus {
+    /*font-size: 1.1em;*/
+    font-weight: bold;
+}
+
+.format_buttons_html .item.size_reg {
+    font-weight: bold;
+}
+
+.format_buttons_html .item.size_minus {
+    /*font-size: 0.9em;*/
+    font-weight: bold;
+}
+
+.format_buttons_html .item.font_serif {
+    font-family: serif;
+}
+
+.format_buttons_html .item.font_sans_serif {
+    font-family: sans-serif;
+}
+
+.format_buttons_html .item.font_monospace {
+    font-family: monospace;
+}
+
+.format_buttons_html .item.italics_toggle {
+    font-family: 'Courier New', monospace;
+}
+
+.format_buttons_html .item.italics_toggle .true {
+    font-style: italic;
+}
+
+.format_buttons_html .item.redletter_toggle {
+    /*width: 300px;*/
+
+}
+
+.format_buttons_html .block_enabled, .format_buttons_html .block_disabled {
+    display: inline-block;
+    margin-right: 3px;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 11px;
+    width: 11px;
+    border: 1px solid black;
+    font-size: 8px;
+    padding: 0;
+    font-weight: bold;
+}
+    
+.format_buttons_html .block_enabled {
+    /*display: inline-block;*/
+    background-color: green;
+}
+
+.format_buttons_html .block_disabled {
+    /*display: inline-block;*/
+/*    margin-right: 3px;
+    height: 4px;
+    width: 4px;*/
+}

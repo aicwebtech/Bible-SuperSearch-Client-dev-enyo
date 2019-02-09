@@ -16,6 +16,6 @@ module.exports = kind({
     create: function() {
         this.inherited(arguments);
         // is this kind even used?
-        this.log('yes this is used!');
+        // this.log('yes this is used!');
     }
 });

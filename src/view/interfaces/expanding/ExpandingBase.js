@@ -3,7 +3,7 @@ var ViewController = require('enyo/ViewController');
 var formView = require('../../../forms/expanding/Expanding');
 var InterfaceBase = require('../InterfaceBase');
 var ContentPane = require('./ContentPane');
-// var FormatButtons = require('../../../components/FormatButtons/classic/FormatButtonsClassic');
+var FormatButtons = require('../../../components/FormatButtons/FormatButtonsHtml');
 // var advancedFormView = require('../../../forms/ClassicAdvanced');
 var Pager = require('../../../components/Pagers/CleanPager');
 
