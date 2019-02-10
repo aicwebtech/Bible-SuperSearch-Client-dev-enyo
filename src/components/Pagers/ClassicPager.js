@@ -71,6 +71,7 @@ module.exports = kind({
         if(this.lastPage) {        
             LinkContainer.createComponent({
                 kind: Link,
+                classes: 'std_link',
                 content: this.firstPageText,
                 allowHtml: true,
                 href: '#/c/' + cache + '/1',
@@ -80,6 +81,7 @@ module.exports = kind({
 
         LinkContainer.createComponent({
             kind: Link,
+            classes: 'std_link',
             href: '#/c/' + cache + '/' + prevPage.toString(),
             content: this.prevPageText,
             allowHtml: true,
@@ -107,13 +109,14 @@ module.exports = kind({
                 LinkContainer.createComponent({
                     kind: Link,
                     href: (i == page) ? null : '#/c/' + cache + '/' + i.toString(),
-                    classes: (i == page) ? 'current_page' : null,
+                    classes: (i == page) ? 'std_link current_page' : 'std_link',
                     content: i.toString()
                 });
             }
         }
 
         LinkContainer.createComponent({
+            classes: 'std_link',
             kind: Link,
             href: '#/c/' + cache + '/' + nextPage.toString(),
             content: this.nextPageText,
@@ -123,6 +126,7 @@ module.exports = kind({
 
         if(this.lastPage) {        
             LinkContainer.createComponent({
+                classes: 'std_link',
                 kind: Link,
                 allowHtml: true,
                 content: this.lastPageText,

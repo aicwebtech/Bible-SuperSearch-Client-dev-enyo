@@ -15,7 +15,7 @@ module.exports = kind({
     
     components: [
         {
-            classes: 'item size_plus',
+            classes: 'item size size_plus',
             name: 'size_plus',
             tag: 'span',
             val: 'plus',
@@ -26,33 +26,34 @@ module.exports = kind({
             }
         },      
         {
-            classes: 'item size_reg',
+            classes: 'item size size_reg',
             name: 'size_reg',
             val: 'reg',
             ontap: 'handleSizeChange',
-            content: 'A =',
-            components: [
-                {tag:'span', content: 'A'},
-                {tag: 'sub', content: '0'}
-            ],
+            content: '&nbsp;A&nbsp;',
+            allowHtml: true,
             tag: 'span',
             attributes: {
                 title: 'Default Text Size',
             },
-        },        
+            components: [
+                {tag: 'span', content: '&nbsp;A&nbsp;', allowHtml: true},
+            ]
+        },  
         {
-            classes: 'item size_minus',
+            classes: 'item size size_minus',
             name: 'size_minus',
             val: 'minus',
             ontap: 'handleSizeChange',
             content: 'A-',
+            // allowHtml: true,
             tag: 'span',
             attributes: {
                 title: 'Shrink Text'
             }
         },
         {
-            classes: 'item font_serif',
+            classes: 'item font font_serif',
             name: 'font_serif',
             ontap: 'handleFontChange',
             val: 'serif',
@@ -60,10 +61,13 @@ module.exports = kind({
             tag: 'span',
             attributes: {
                 title: 'Serif'
-            }
+            },
+            components: [
+                {tag: 'span', content: 'Abc'}
+            ]
         },        
         {
-            classes: 'item font_sans_serif',
+            classes: 'item font font_sans_serif',
             name: 'font_sans_serif',
             ontap: 'handleFontChange',
             val: 'sans_serif',
@@ -71,10 +75,13 @@ module.exports = kind({
             tag: 'span',
             attributes: {
                 title: 'Sans Serif',
-            }
+            },
+            components: [
+                {tag: 'span', content: 'Abc'}
+            ]
         },
         {
-            classes: 'item font_monospace',
+            classes: 'item font font_monospace',
             name: 'font_monospace',
             ontap: 'handleFontChange',
             val: 'monospace',
@@ -82,7 +89,10 @@ module.exports = kind({
             tag: 'span',
             attributes: {
                 title: 'Monospace',
-            }
+            },
+            components: [
+                {tag: 'span', content: 'Abc'}
+            ],
         },
         {
             classes: 'item paragraph_toggle',
@@ -92,11 +102,14 @@ module.exports = kind({
             falseContent: '&para;',
             trueTitle: 'Verse Display',
             falseTitle: 'Paragraph Display',
-            // trueComponent: {
-            //     components: [
-            //         {}
-            //     ]
-            // },
+            trueComponent: {
+                components: [
+                    {tag: 'span', content: '- &mdash;-&ndash;', allowHtml: true},
+                    {tag: 'span', content: '- &mdash;&ndash;-', allowHtml: true},
+                    {tag: 'span', content: '- -&ndash;&mdash;', allowHtml: true},
+                    {tag: 'span', content: '- &ndash;&mdash;-', allowHtml: true}
+                ]
+            },
             falseComponent: {
                 allowHtml: true
             }
@@ -108,43 +121,80 @@ module.exports = kind({
             trueContent: 'Read Display',
             falseContent: 'Copy Display',            
             trueTitle: 'Read Display',
-            falseTitle: 'Copy Display'
+            falseTitle: 'Copy Display',
+            trueComponent: {
+                components: [
+                    {tag: 'span', classes: 'buttons', content: '<< < = > >>', allowHtml: true},
+                    {tag: 'span', content: '', allowHtml: true},
+                    {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true},
+                    {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true}
+                ]
+            },
+            falseComponent: {
+                components: [
+                    {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
+                    {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
+                    {tag: 'span', content: '- -&ndash;&mdash;&ndash;', allowHtml: true},
+                    {tag: 'span', content: '- &ndash;&ndash;&mdash;-', allowHtml: true},
+                    {tag: 'span', content: ''},
+                    {tag: 'span', content: ''},
+                    {tag: 'span', content: ''}
+                ]
+            },
         },        
         {
             classes: 'item italics_toggle',
             name: 'italics_toggle',
-            kind: Toggle,
-            trueContent: 'I',
-            falseContent: 'I',           
+            kind: Toggle,         
             trueTitle: 'Disable Italization of Added Words',
-            falseTitle: 'Enable Italization of Added Words'
+            falseTitle: 'Enable Italization of Added Words',
+            trueComponent: {
+                components: [
+                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+                    {tag: 'span', content: 'Italics'}
+                ]
+            },        
+            falseComponent: {
+                components: [
+                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
+                    {tag: 'span', content: 'Italics'}
+                ]
+            }
         },        
         {
             classes: 'item strongs_toggle',
             name: 'strongs_toggle',
-            kind: Toggle,
-            trueContent: 'Disable Strongs',
-            falseContent: 'Enable Strongs',            
+            kind: Toggle,        
             trueTitle: 'Disable Strongs Numbers',
-            falseTitle: 'Enable Strongs Numbers'
+            falseTitle: 'Enable Strongs Numbers',
+            trueComponent: {
+                components: [
+                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+                    {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
+                ]
+            },        
+            falseComponent: {
+                components: [
+                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
+                    {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
+                ]
+            }
         },        
         {
             classes: 'item redletter_toggle',
             name: 'redletter_toggle',
-            kind: Toggle,
-            trueContent: 'Disable Red Letter',
-            falseContent: 'Enable Red Letter',            
+            kind: Toggle,         
             trueTitle: 'Disable Red Letter',
             falseTitle: 'Enable Red Letter', 
             trueComponent: {
                 components: [
-                    {classes: 'block_enabled', _content: '&#10003;', allowHtml: true},
+                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
                     {tag: 'span', content: 'Red Letter'}
                 ]
             },        
             falseComponent: {
                 components: [
-                    {classes: 'block_disabled', _content: ' ', allowHtml: true},
+                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
                     {tag: 'span', content: 'Red Letter'}
                 ]
             }

@@ -222,7 +222,11 @@ module.exports = kind({
         var book = this.app.getBook(passage.book_id);
         var chapterLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, book.name, verse.chapter);
         var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, book.name, verse.chapter, verse.verse);
-        return '<a href="' + chapterLink + '" title="Show this Chapter">' + book.name + ' ' + verse.chapter + '</a>:<a href="' + contextLink + '" title="Show in Context">' + verse.verse + '</a>';
+
+        var html =  '<a href="' + chapterLink + '" title="Show this Chapter" class="std_link">' + book.name + ' ' + verse.chapter + '</a>:';
+            html += '<a href="' + contextLink + '" title="Show in Context" class="std_link">' + verse.verse + '</a>';
+
+        return html;
     },   
     _addNavButtons: function(Container, passage) {
         if(typeof passage.nav == 'object') {

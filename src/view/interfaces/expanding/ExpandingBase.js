@@ -4,6 +4,7 @@ var formView = require('../../../forms/expanding/Expanding');
 var InterfaceBase = require('../InterfaceBase');
 var ContentPane = require('./ContentPane');
 var FormatButtons = require('../../../components/FormatButtons/FormatButtonsHtml');
+var NavButtons = require('../../../components/NavButtons/NavHtml');
 // var advancedFormView = require('../../../forms/ClassicAdvanced');
 var Pager = require('../../../components/Pagers/CleanPager');
 
@@ -11,6 +12,7 @@ module.exports = kind({
     name: 'ExpandingBase',
     kind: InterfaceBase,
     formView: formView,
+    NavButtonsControl: NavButtons,
     advancedFormView: null, //advancedFormView,
     PagerControl: Pager,
     classes: 'interface_expanding',

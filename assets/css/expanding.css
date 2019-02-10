@@ -133,12 +133,14 @@
     text-align: center;
 }
 
-.interface_expanding a:link, .interface_expanding a:visited {
+/*Todo - add class to 'standard links' so that only those we acutally want to style here are affected!*/
+
+.interface_expanding a.std_link:link, .interface_expanding a.std_link:visited {
     color: #0000ee;
     text-decoration: none;
 }
 
-.interface_expanding a:hover {
+.interface_expanding a.std_link:hover {
     /*text-decoration: underline overline;*/
     background-color: #609bff;
 }

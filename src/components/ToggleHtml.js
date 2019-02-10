@@ -4,6 +4,7 @@ var Image = require('./Image');
 module.exports = kind({
     name: 'ToggleHtml',
     // tag: 'span',
+    classes: 'is_false',
     
     trueComponent: {},  // Component that displays when value = true
     falseComponent: {}, // Component that displays when value = false,
@@ -49,14 +50,19 @@ module.exports = kind({
     },
 
     valueChanged: function(was, is) {        
-        if(is) {
-            this.$.ViewTrue && this.$.ViewTrue.set('showing', true);
-            this.$.ViewFalse && this.$.ViewFalse.set('showing', false);
-        }
-        else {
-            this.$.ViewFalse && this.$.ViewFalse.set('showing', true);
-            this.$.ViewTrue && this.$.ViewTrue.set('showing', false);
-        }
+        this.addRemoveClass('is_true', !!is);
+        this.addRemoveClass('is_false', !is);
+        this.$.ViewTrue && this.$.ViewTrue.set('showing', !!is);
+        this.$.ViewFalse && this.$.ViewFalse.set('showing', !is);
+
+        // if(is) {
+        //     this.$.ViewTrue && this.$.ViewTrue.set('showing', true);
+        //     this.$.ViewFalse && this.$.ViewFalse.set('showing', false);
+        // }
+        // else {
+        //     this.$.ViewFalse && this.$.ViewFalse.set('showing', true);
+        //     this.$.ViewTrue && this.$.ViewTrue.set('showing', false);
+        // }
     },
     toggleValue: function() {
         this.set('value', !this.get('value'));

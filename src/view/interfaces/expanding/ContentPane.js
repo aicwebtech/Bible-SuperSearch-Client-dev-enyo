@@ -18,7 +18,7 @@ module.exports = kind({
     classes: 'biblesupersearch_content',
     formatButtonsView: FormatButtons,
     pagerView: Pager,
-    formatButtonsToggle: true,
+    // formatButtonsToggle: true,
     forms: forms,
 
     create: function() {

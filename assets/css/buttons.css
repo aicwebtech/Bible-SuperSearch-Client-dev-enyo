@@ -9,6 +9,10 @@
     padding: 1px 3px;
     text-align: center;
     white-space: nowrap;
+    vertical-align: middle;
+    height: 18px;
+    font-size: 14px;
+    overflow: hidden;
     -webkit-user-select: none;  
     -moz-user-select: none;    
     -ms-user-select: none;      
@@ -17,64 +21,134 @@
 
 .format_buttons_html .item.size_plus {
     /*font-size: 1.1em;*/
-    font-weight: bold;
+    /*font-weight: bold;*/
+    width: 20px;
+    font-size: 18px;
 }
 
 .format_buttons_html .item.size_reg {
-    font-weight: bold;
+/*    font-weight: bold;
+    text-decoration: underline overline;*/
+    width: 20px;
+    /*font-size: 18px;*/
+
+}
+
+.format_buttons_html .item.size_reg span {
+    border-bottom: 2px solid black;
+    display: inline-block;
+    height: 14px;
 }
 
 .format_buttons_html .item.size_minus {
     /*font-size: 0.9em;*/
-    font-weight: bold;
+    /*font-weight: bold;*/
+    width: 20px;
+    font-size: 18px;
 }
 
-.format_buttons_html .item.font_serif {
+.format_buttons_html .item.font span {
+    padding-top: 1px;
+    display: inline-block;
+}
+
+.format_buttons_html .item.font_serif span {
+    padding-top: 2px;
     font-family: serif;
 }
 
-.format_buttons_html .item.font_sans_serif {
+.format_buttons_html .item.font_sans_serif span {
     font-family: sans-serif;
 }
 
-.format_buttons_html .item.font_monospace {
+.format_buttons_html .item.font_monospace span {
     font-family: monospace;
 }
 
-.format_buttons_html .item.italics_toggle {
-    font-family: 'Courier New', monospace;
+.format_buttons_html .item.paragraph_toggle {
+    width: 36px;
+    overflow: hidden;
 }
 
-.format_buttons_html .item.italics_toggle .true {
-    font-style: italic;
+.format_buttons_html .item.paragraph_toggle .true span, .format_buttons_html .item.copy_toggle .true span, .format_buttons_html .item.copy_toggle .false span  {
+    height: 4px;
+    display: block;
+    text-align: left;
+    position: relative;
+    top: -6px;
+    white-space: nowrap;
 }
 
-.format_buttons_html .item.redletter_toggle {
-    /*width: 300px;*/
+.format_buttons_html .item.copy_toggle.is_false span span {
+    background-color: blue;
+    position: initial;
+    line-height: 4px;
+}
 
+.format_buttons_html .item.copy_toggle {
+    width: 40px;
+}
+
+.format_buttons_html .item.copy_toggle .false {
+    background-color: blue;
+    color: white;
+}
+
+.format_buttons_html .item.copy_toggle span.buttons {
+    font-size: 8px;
+    top: -1px;
+}
+
+.format_buttons_html .item.advanced_toggle {
+    width: 63px;
 }
 
 .format_buttons_html .block_enabled, .format_buttons_html .block_disabled {
     display: inline-block;
     margin-right: 3px;
-    margin-top: auto;
-    margin-bottom: auto;
     height: 11px;
     width: 11px;
     border: 1px solid black;
     font-size: 8px;
     padding: 0;
     font-weight: bold;
+    overflow: hidden;
+    position: relative;
+    top: 2px;
 }
     
 .format_buttons_html .block_enabled {
-    /*display: inline-block;*/
     background-color: green;
+    color: white;
 }
 
-.format_buttons_html .block_disabled {
-    /*display: inline-block;*/
-/*    margin-right: 3px;
-    height: 4px;
-    width: 4px;*/
+.html_nav_buttons {
+    text-align: center;
+}
+
+/* HTML Nav Buttons */
+.html_nav_buttons a {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 3px;
+    line-height: 29px;
+    border: 1px solid #656565;
+    background-color: #a7c9f9;
+}
+
+.html_nav_buttons a.active:link, .interface_expanding a.active:visited {
+    text-decoration: none;
+    color: #444444;
+}
+
+.html_nav_buttons a.active:hover  {
+    background-color: blue;
+}
+
+.html_nav_buttons a.inactive {
+    background-color: #dddddd;
+    /*background-color: transparent;*/
 }
