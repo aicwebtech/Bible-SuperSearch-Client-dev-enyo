@@ -27,6 +27,9 @@ var biblesupersearch_config_options = {
     
     "interface": "Classic",                             
     
+    // Include toggling to an 'advanced search' form
+    // Some interfaces may force this to false
+    'toggleAdvanced': false,  
     
     // id of target HTML div tag            (string)
     

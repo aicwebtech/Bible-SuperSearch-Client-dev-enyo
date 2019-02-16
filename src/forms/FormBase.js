@@ -32,7 +32,6 @@ module.exports = kind({
     create: function() {
         this.inherited(arguments);
         this.createComponent({kind: Signal, onPageChange: 'handlePageChange'});
-        this.log();
         // this.formData.bible = [this.app.configs.defaultBible];
 
         if(this.autoApplyStandardBindings) {
@@ -83,30 +82,28 @@ module.exports = kind({
         this.manualRequest = manual || false;
 
         if(this.requestPending) {
-            this.log('pendign request');
             return;
         }
 
         if(typeof this.app.configs.destinationUrl != 'undefined' && this.app.get('baseUrl') != this.app.configs.destinationUrl) {
             localStorage.setItem('BibleSuperSearchFormData', JSON.stringify(formData));
-            this.log('LocalStorage form data', localStorage.getItem('BibleSuperSearchFormData'));
+            // this.log('LocalStorage form data', localStorage.getItem('BibleSuperSearchFormData'));
             window.location = this.app.configs.destinationUrl;
             return;
         }
 
-        this.log('submitting form: ' + this.name);
+        // this.log('submitting form: ' + this.name);
 
         var ajax = new Ajax({
             url: this.app.configs.apiUrl,
             method: 'GET'
         });
 
-        // this.app.set('ajaxLoading', true);
         this.app.set('ajaxLoadingDelay', 100);
         this.requestPending = true;
         var formData = this.beforeSubmitForm(formData);
         formData = this.processDefaults(formData);
-        this.log('formData', formData);
+        // this.log('formData', formData);
         ajax.go(formData); // for GET
         ajax.response(this, 'handleResponse');
         ajax.error(this, 'handleError');
@@ -205,7 +202,7 @@ module.exports = kind({
         var url = this.app.configs.apiUrl + '/readcache?hash=' + hash;
 
         if(this.requestPending) {
-            this.log('pending cache request, skipping');
+            // this.log('pending cache request, skipping');
             return;
         }
 
@@ -214,7 +211,7 @@ module.exports = kind({
             method: 'GET'
         });
 
-        this.log('Loading cache...');
+        // this.log('Loading cache...');
         this.requestPending = true;
         // ajax.response(this, 'handleCacheResponse');
         ajax.response(utils.bind(this, this.handleCacheResponse));
@@ -222,7 +219,6 @@ module.exports = kind({
         ajax.go(); // for GET
     },
     handleCacheResponse: function(inSender, inResponse) {
-        this.log();
         //this.showResults(inResponse.results);
         this.set('cacheHash', inResponse.results.hash);
         this.requestPending = false;
@@ -242,9 +238,9 @@ module.exports = kind({
     // Handles cache change and page change
     // Lots of problems will need to be solved with page / cache change handling so subforms (advanced search) will work correct
     handleCacheChange: function(inSender, inEvent) {
-        this.log('hashcache', inEvent);
-        this.log('cur hash', this.get('cacheHash'));
-        this.log('cur page', this.get('page'));
+        // this.log('hashcache', inEvent);
+        // this.log('cur hash', this.get('cacheHash'));
+        // this.log('cur page', this.get('page'));
 
         if(this.subForm) {
             this.log('subform, returning');
@@ -269,13 +265,12 @@ module.exports = kind({
             return;
         }
 
-        this.log(inEvent);
         // this.clearForm();
         var fd = utils.clone(inEvent.formData);
         fd.shortcut = fd.shortcut || 0;
         this.setFormDataWithMapping(fd);
 
-        this.log('just set form data, about to submit form');
+        // this.log('just set form data, about to submit form');
 
         if(inEvent.submitAsManual) {
             this.submitFormManual();
@@ -372,13 +367,8 @@ module.exports = kind({
         }
     },
     keyPress: function(inSender, inEvent) {
-        this.log('keyPress', inSender._openTag);
-        this.log(inEvent);
-
         if(inEvent.key == 'Enter' || inEvent.keyCode && inEvent.keyCode == 13) {
             var textarea = inSender._openTag.match(/<textarea/);
-            // this.log('textarea', textarea);
-
             var enterSubmit = (!textarea || (inSender.enterSubmit && inSender.enterSubmit == true)) ? true : false;
 
             if(enterSubmit && (!textarea || !inEvent.shiftKey)) {

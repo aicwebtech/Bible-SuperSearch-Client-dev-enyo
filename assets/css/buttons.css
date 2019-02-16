@@ -1,10 +1,14 @@
 /* HTML format Buttons */
 
+.format_buttons_html {
+    margin: 15px 0;
+}
+
 .format_buttons_html .item {
     display: inline-block;
     margin: 0 2px;
     border: 1px solid #909090;
-    background-color: yellow;
+    background-color: #eae99f;
     cursor: pointer;
     padding: 1px 3px;
     text-align: center;
@@ -13,6 +17,7 @@
     height: 18px;
     font-size: 14px;
     overflow: hidden;
+    border-radius: 3px;
     -webkit-user-select: none;  
     -moz-user-select: none;    
     -ms-user-select: none;      
@@ -80,7 +85,7 @@
 }
 
 .format_buttons_html .item.copy_toggle.is_false span span {
-    background-color: blue;
+    background-color: #3390ff;
     position: initial;
     line-height: 4px;
 }
@@ -90,7 +95,7 @@
 }
 
 .format_buttons_html .item.copy_toggle .false {
-    background-color: blue;
+    background-color: #3390ff;
     color: white;
 }
 
@@ -108,7 +113,7 @@
     margin-right: 3px;
     height: 11px;
     width: 11px;
-    border: 1px solid black;
+    border: 1px solid #222222;
     font-size: 8px;
     padding: 0;
     font-weight: bold;
@@ -118,12 +123,13 @@
 }
     
 .format_buttons_html .block_enabled {
-    background-color: green;
+    background-color: #43b243;
     color: white;
 }
 
 .html_nav_buttons {
     text-align: center;
+    margin: 15px 0;
 }
 
 /* HTML Nav Buttons */
@@ -137,6 +143,12 @@
     line-height: 29px;
     border: 1px solid #656565;
     background-color: #a7c9f9;
+    font-size: 16px !important;
+
+/*    border-top-color: #cfe0f9;
+    border-left-color: #cfe0f9;
+    border-bottom-color: #5e88c4;
+    border-right-color: #5e88c4;*/
 }
 
 .html_nav_buttons a.active:link, .interface_expanding a.active:visited {
@@ -145,7 +157,7 @@
 }
 
 .html_nav_buttons a.active:hover  {
-    background-color: blue;
+    background-color: #6fa7f7;
 }
 
 .html_nav_buttons a.inactive {

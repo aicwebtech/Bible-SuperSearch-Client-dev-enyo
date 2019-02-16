@@ -20,7 +20,6 @@ module.exports = kind({
     published: {
         ajaxLoading: false,
     },
-
     create: function() {
         this.inherited(arguments);
     },
@@ -36,5 +35,16 @@ module.exports = kind({
         }
 
         this.$.LoadingDialog.set('showing', is);
+    },
+    formHasField: function(fieldName) {
+        // For special interfaces, implement on child!
+        return this._formHasFieldStandard(fieldName);
+    },
+    _formHasFieldStandard: function(fieldName) {
+        if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view) {
+            return (this.$.Content.$.FormController.view.$[fieldName]) ? true : false;
+        }
+
+        return false;
     }
 });

@@ -223,30 +223,30 @@ module.exports = kind({
 
     bindings: [    
         {from: 'app.UserConfig.paragraph', to: '$.paragraph_toggle.value', oneWay: false, transform: function(value, dir) {
-            console.log('FormatButtons paragraph_toggle', value, dir);
+            // console.log('FormatButtons paragraph_toggle', value, dir);
             return value;
             // return (value && value != 0 && value != false) ? true : false;
         }},         
         {from: 'app.UserConfig.copy', to: '$.copy_toggle.value', oneWay: false, transform: function(value, dir) {
-            console.log('FormatButtons copy_toggle', value, dir);
+            // console.log('FormatButtons copy_toggle', value, dir);
             return value;
             // return (value && value != 0 && value != false) ? true : false;
         }},             
         {from: 'app.UserConfig.advanced_toggle', to: '$.advanced_toggle.value', oneWay: false, transform: function(value, dir) {
-            console.log('FormatButtons advanced_toggle', value, dir);
+            // console.log('FormatButtons advanced_toggle', value, dir);
             return value;
             // return (value && value != 0 && value != false) ? true : false;
         }},           
         {from: 'app.UserConfig.italics', to: '$.italics_toggle.value', oneWay: false, transform: function(value, dir) {
-            console.log('FormatButtons italics', value, dir);
+            // console.log('FormatButtons italics', value, dir);
             return value;
         }},         
         {from: 'app.UserConfig.strongs', to: '$.strongs_toggle.value', oneWay: false, transform: function(value, dir) {
-            console.log('FormatButtons strongs', value, dir);
+            // console.log('FormatButtons strongs', value, dir);
             return value;
         }},             
         {from: 'app.UserConfig.red_letter', to: '$.redletter_toggle.value', oneWay: false, transform: function(value, dir) {
-            console.log('FormatButtons red_letter', value, dir);
+            // console.log('FormatButtons red_letter', value, dir);
             return value;
         }}
     ],

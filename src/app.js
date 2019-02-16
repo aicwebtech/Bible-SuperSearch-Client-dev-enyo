@@ -93,23 +93,21 @@ var App = Application.kind({
             }
             
             // dir = dir.replace('/'+name,"");
-            this.log('bss script dir', dir, dirParts, path, hashParts, dirParts, name, window.location.href);
+            // this.log('bss script dir', dir, dirParts, path, hashParts, dirParts, name, window.location.href);
             this.rootDir = dir;
         }
 
-        this.log('rootDir - FINAL', this.rootDir);
-
+        // this.log('rootDir - FINAL', this.rootDir);
         var urlParts = window.location.href.split('#');
         this.baseUrl = urlParts[0];
-
-        this.log('baseUrl - FINAL', this.baseUrl);
+        // this.log('baseUrl - FINAL', this.baseUrl);
 
         // If user provided a config path, use it.
         var config_path = (typeof biblesupersearch_config_path == 'string') ? biblesupersearch_config_path + '/config.json' : this.rootDir + '/config.json';
 
         if(typeof biblesupersearch_config_options == 'object') {
             utils.mixin(this.configs, biblesupersearch_config_options);
-            this.log('configs - preloaded');
+            // this.log('configs - preloaded');
             this.handleConfigFinal();
             return;
         }
@@ -133,26 +131,24 @@ var App = Application.kind({
     },
     handleConfigLoad: function(inSender, inResponse) {
         utils.mixin(this.configs, inResponse);
-        this.log('configs - loaded', utils.clone(this.configs));
+        // this.log('configs - loaded', utils.clone(this.configs));
         this.handleConfigFinal();
     },
     handleConfigFinal: function() {
         if(this.configs.target) {
             this.renderTarget = this.configs.target;
         }
-
-
         // this.render();
-        this.log(this.configs);
+        // this.log(this.configs);
         var view = null;
         this.UserConfig.newModel(0);
-        this.log('USER', this.UserConfig.model);
+        // this.log('USER', this.UserConfig.model);
 
         if(this.configs.interface) {
-            this.log('Interface ', this.configs.interface);
+            // this.log('Interface ', this.configs.interface);
 
             if(Interfaces[this.configs.interface]) {
-                this.log('secondary view found', this.configs.interface);
+                // this.log('secondary view found', this.configs.interface);
                 view = Interfaces[this.configs.interface];
             }
             else {
@@ -186,7 +182,7 @@ var App = Application.kind({
         // this.set('ajaxLoading', true);
         // Experimental
 
-        this.log('loading statics');
+        // this.log('loading statics');
         ajax.go();
         ajax.response(this, function(inSender, inResponse) {
             // this.set('ajaxLoading', false);
@@ -214,8 +210,7 @@ var App = Application.kind({
     },
     rendered: function() {
         this.inherited(arguments);
-
-        this.log('view node', this.view.hasNode());
+        // this.log('view node', this.view.hasNode());
     },
 
     /*  Used to run unit tests within app */
@@ -282,7 +277,6 @@ var App = Application.kind({
     },    
     _hashLocalStorage: function() {
         var formDataJson = localStorage.getItem('BibleSuperSearchFormData');
-        this.log(formDataJson);
 
         if(!formDataJson || typeof formDataJson != 'string') {
             return;
@@ -293,7 +287,6 @@ var App = Application.kind({
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto', submitAsManual: true});
     },
     _hashCache: function(parts) {
-        this.log();
         var hash = parts[0] || null;
         var page = parts[1] || null;
         this.waterfall('onCacheChange', {cacheHash: hash, page: page});
@@ -304,7 +297,6 @@ var App = Application.kind({
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
     },    
     _hashStrongs: function(parts) {
-        this.log(parts);
         var strongsNum = parts[0] || null;
         
         var formData = {
@@ -366,6 +358,7 @@ var App = Application.kind({
             return {};
         }
 
+        var useRequestField = this.formHasField('request');
         var ref = partsObj.book.replace(/%20/g, ' ');
 
         if(partsObj.chap) {
@@ -377,28 +370,32 @@ var App = Application.kind({
         }
 
         var formData = {
-            bible: partsObj.bible ? partsObj.bible.split(',') : null,
-            reference: ref
+            bible: partsObj.bible ? partsObj.bible.split(',') : null
         };
 
-        this.log(formData);
+        if(useRequestField) {
+            formData.request = ref;
+        }
+        else {
+            formData.reference = ref;
+        }
+
         return formData;
     },
     handleCacheHash: function(inSender, inEvent) {
-        this.log(arguments);
-        this.log(inSender);
-        this.log(inEvent);
+        this.log('not used');
+        // this.log(arguments);
+        // this.log(inSender);
+        // this.log(inEvent);
     },    
     handlePassageHash: function(inSender, inEvent) {
-        this.log(arguments);
-        this.log(inSender);
-        this.log(inEvent);
+        this.log('not used');
+        // this.log(arguments);
+        // this.log(inSender);
+        // this.log(inEvent);
     },
     ajaxLoadingChanged: function(was, is) {
-        this.log(is);
-
         if(this.view && this.view.set) {
-            this.log('setting');
             this.view.set('ajaxLoading', is);
         }
     },
@@ -416,6 +413,13 @@ var App = Application.kind({
                 t.set('ajaxLoading', true);
             }, delay);
         }
+    },
+    formHasField: function(fieldName) {
+        if(this.view && this.view.formHasField) {
+            return this.view.formHasField(fieldName);
+        }
+
+        return false;
     },
     // TO DO - apply this to the following:
     //   Pager, Nav Buttons (done), Format Buttons
@@ -445,7 +449,6 @@ var App = Application.kind({
             bibleCount = this.getNumberOfAvailableBibles();
         }
 
-        this.log('bibleCount', bibleCount);
         this.numberOfEnabledBibles = bibleCount;
         return bibleCount;
     },

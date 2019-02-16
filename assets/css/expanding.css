@@ -150,6 +150,10 @@
     border: 0;
 }
 
+/*.interface_expanding .biblesupersearch_pager a:after, .interface_expanding .biblesupersearch_pager a:before {
+    display:none;
+}*/
+
 @media only screen and (max-width: 340px) {
     .biblesupersearch_expanding_form .input_row .label {
         display: block;
