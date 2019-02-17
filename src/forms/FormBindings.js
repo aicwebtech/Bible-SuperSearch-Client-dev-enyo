@@ -79,13 +79,15 @@ module.exports = {
     search_type: {from: 'formData.search_type', to: '$.search_type.value', oneWay: false, transform: function(value, dir) {
         this.bubble('onFormFieldChanged', {field: 'search_type', value: value, dir: dir});
 
-        // this.log('search_type', value, dir);
-        if(dir == 1) {
-            this.$.search_type.setSelectedByValue(value, 0);
-        }
-        else {
-            if(!value || value == '') {
-                this.$.search_type.setSelected(0); // Hack to prevent selector from showing 'blank'
+        if(this.$.search_type.setSelected) {
+            // this.log('search_type', value, dir);
+            if(dir == 1) {
+                this.$.search_type.setSelectedByValue(value, 0);
+            }
+            else {
+                if(!value || value == '') {
+                    this.$.search_type.setSelected(0); // Hack to prevent selector from showing 'blank'
+                }
             }
         }
 

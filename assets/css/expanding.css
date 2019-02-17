@@ -64,7 +64,7 @@
     margin-bottom: 5px;
 }
 
-.biblesupersearch_expanding_form .input_row_wide textarea, .biblesupersearch_expanding_form .input_row_wide .bible {
+.biblesupersearch_expanding_form .input_row_wide textarea, .biblesupersearch_expanding_form .input_row_wide .bible, .biblesupersearch_expanding_form .input_row_wide input {
     width: 85%;
     margin: 0 auto;
     padding: 0;
@@ -148,6 +148,14 @@
 .interface_expanding .expander_row button {
     background-color: transparent;
     border: 0;
+}
+
+.interface_expanding textarea.large_block_textarea {
+    max-width: 400px;
+    width: 98%;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /*.interface_expanding .biblesupersearch_pager a:after, .interface_expanding .biblesupersearch_pager a:before {

@@ -22,6 +22,7 @@ module.exports = kind({
     formContainer: false,
     referenceField: 'reference',
     searchField: 'search',
+    defaultSearchType: 'and',
 
     handlers: {
         onCacheChange: 'handleCacheChange',
@@ -124,7 +125,7 @@ module.exports = kind({
         formData.markup = 'raw';
         
         if(!formData.search_type || formData.search_type == '') {
-            formData.search_type = 'and';
+            formData.search_type = this.defaultSearchType;
         }
 
         // formData.page = this.get('page');

@@ -8,6 +8,7 @@ var FormSection = require('../FormSection');
 module.exports = kind({
     name: 'AdvancedPower',
     kind: FormBase,
+    defaultSearchType: 'boolean',
 
     components: [
         {kind: FormSection, components: [

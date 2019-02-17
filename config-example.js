@@ -34,7 +34,11 @@ var biblesupersearch_config_options = {
     // id of target HTML div tag            (string)
     
     'target': 'biblesupersearch_container',
-    
+
+    // Styles for form sections
+    'formStyles': {
+        // 'background-color': '#dddddd'
+    },
     
     // URL of Bible SuperSearch API         (string)
     

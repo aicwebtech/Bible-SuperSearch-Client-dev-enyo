@@ -8,10 +8,13 @@ module.exports = {
     'TwentyTwenty': require('./interfaces/twentytwenty/TwentyTwenty'),
 
     // Epanding interfaces
-    //      Modern interfaces with a minimal amounts of fields showing initially, but can be expanded to show 
+    //      Modern interfaces with a minimal amounts of fields showing initially, but can be expanded to show more
         
         // Basic expanding form - new default form
         'Expanding': require('./interfaces/expanding/Expanding'),
+        
+        // Power search form designed to expand easily
+        'PowerExpanding': require('./interfaces/expanding/PowerExpanding'),
 
     
     // Minimal interfaces

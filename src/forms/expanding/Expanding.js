@@ -21,7 +21,7 @@ module.exports = kind({
             classes: 'biblesupersearch_expanding_form expanding',
             components: [
                 {classes: 'input_row_wide', components: [
-                    {name: 'request', kind: TextArea, placeholder: 'Enter search keyword(s) or passage reference(s)', enterSubmit: true},
+                    {name: 'request', kind: Input, placeholder: 'Enter search keyword(s) or passage reference(s)', enterSubmit: true},
                 ]},                 
                 {classes: 'input_row_wide', components: [
                     {classes: 'element', components: [
@@ -57,7 +57,7 @@ module.exports = kind({
                         {name: 'PassageContainer', showing: false, classes: 'input_row', components: [
                             {classes: 'label', content: 'Passages:'},
                             {classes: 'element', components: [
-                                {kind: TextArea, name: 'reference', enterSubmit: true}
+                                {kind: Input, name: 'reference', enterSubmit: true}
                             ]}
                         ]},                                     
                         {classes: 'input_row_checkbox', components: [

@@ -178,6 +178,5 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
-
     }
 });

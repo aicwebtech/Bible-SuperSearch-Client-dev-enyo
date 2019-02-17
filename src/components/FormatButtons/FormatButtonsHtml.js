@@ -117,11 +117,9 @@ module.exports = kind({
         {
             classes: 'item copy_toggle',
             name: 'copy_toggle',
-            kind: Toggle,
-            trueContent: 'Read Display',
-            falseContent: 'Copy Display',            
+            kind: Toggle,            
             trueTitle: 'Read Display',
-            falseTitle: 'Copy Display',
+            falseTitle: 'EZ Copy',
             trueComponent: {
                 components: [
                     {tag: 'span', classes: 'buttons', content: '<< < = > >>', allowHtml: true},
