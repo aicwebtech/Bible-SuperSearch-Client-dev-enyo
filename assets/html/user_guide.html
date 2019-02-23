@@ -14,7 +14,7 @@
             }
             
             <!--
-            @page { size: 8.5in 11in; margin: 0.79in }
+            @__page { size: 8.5in 11in; margin: 0.79in }
             TD P { margin-bottom: 0in }
             TH P {  font-style: italic }
             P { margin-bottom: 0.08in }
@@ -22,6 +22,31 @@
 
             .c {
                 text-align: center
+            }
+
+            .cd {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            small.s4 {
+                font-size: 10.2px;
+            }
+
+            .table-of-contents {                
+                width: 90%;
+                max-width: 1000px;
+            }
+
+            .table-of-contents tr td {
+                vertical-align: top;
+            }
+
+            @media print {
+                body {
+                    margin-left: 0;
+                    margin-right: 0;
+                }
             }
         </style>
     </head>
@@ -54,10 +79,6 @@
     </font>
 </p>
 
-<p class="c"><br>
-
-</p>
-
 <p><font><font style="font-size: 16pt;" size="4"><b>Introduction</b></font></font></p>
 
 <p align="justify">
@@ -73,13 +94,12 @@
 
 <p align="justify">
     <font size="3">
-            Bible SuperSearch is open source software, and is freely available. If
-            you would like to install Bible SuperSearch on your website, please
-            check out the official Bible SuperSearch website at
+            Bible SuperSearch is open source software, and is freely available. &nbsp; It can be run entirely on your website. &nbsp; If
+            you would like to install Bible SuperSearch on your website, please check out the official Bible SuperSearch website at
     </font>
 
     <font color="#000080">
-        <u><a href="http://www.BibleSuperSearch.com/"><font size="3">www.BibleSuperSearch.com</font></a></u>
+        <u><a href="http://www.BibleSuperSearch.com/downloads"><font size="3">www.BibleSuperSearch.com/downloads</font></a></u>
     </font>
 
     <font size="3">
@@ -87,103 +107,76 @@
 </p>
 
 <p style=" " align="justify">
-<font><font style="font-size: 16pt;" size="4"><b><a name="top"></a>Table
-of Contents</b></font></font></p>
+<font><font style="font-size: 16pt;" size="4"><b><a name="top"></a>Table of Contents</b></font></font></p>
 
-<p style=" color: rgb(0, 0, 255);" align="justify"><a href="#search"><font size="3"><b>Searches</b></font></a></p>
+<table class='cd table-of-contents'>
+    <tr>
+        <td>
+            <p style=""><a href="#search"><font size="3"><b>Searches</b></font></a></p>
+            <p style=" margin-left: 0.5in;">
+                <font size="3">
+                    <a href="#Search_Type">Basic Search</a><br />
+                    <a href="#Search_Type">Search Type</a><br />
+                    <a href="#search_bible_version">Bible Version</a><br>
+                    <a href="#search_parallel_bible">Parallel Search</a><br>
+                    <a href="#whole_words">Whole Words Only</a><br />
+                    <br />
+                </font>
+            </p>
+        </td>
+        <td>
+            <p style=""><a href="#lookup"><font size="3"><b>Looking up passages</b></font></a></p>
+            <p style="margin-left: 0.5in; ">
+                <font size="3">
+                    <a href="#lookup_parallel_bibles">Basic Retrevial</a><br>
+                    <a href="#lookup_parallel_bibles">Parallel Bibles</a><br>
+                    <a href="#Multiple_verses_Verse_Ranges">Multiple Verses &amp; Verse Ranges</a><br>
+                    <a href="#Multiple_books_or_chapters">Multiple Books or Chapters</a><br>
+                    <a href="#Multiple_Passages">Multiple Passages</a><br />
+                    <br />
+                </font>
+            </p>
+        </td>
+        <td>
+            <p style=""><a href="#formatting"><font size="3"><b>Other Features</b></font></a></p>
+            <p style="margin-left: 0.5in; ">
+                <a href="#Easy_Copy">Easy Copy</a><br />
+                <a href="#Seeing_Verses_in_Context">Seeing results in context</a>
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p style=""><a href="#boolean"><font size="3"><b>Boolean Searches</b></font></a></p>
+            <p style="margin-left: 0.5in; ">
+                <font size="3">
+                    <a href="#boolean_phrase">Phrases and Regular Expressions</a><br>
+                    <a href="#boolean_parentheses">Parentheses</a><br>
+                    <a href="#boolean_aliases">Operator Aliases</a><br>
+                    <a href="#Wildcard_Searches">Wildcard Searches</a><br>
+                    <a href="#boolean_proximity">With Proximity Search</a>
+                </font>
+            </p>
+        </td>
+        <td>
+            <p style=" margin-left: 0in; font-weight: bold;"><font><font size="3"><a href="#limiting">Limiting your Searches</a></font></font></p>
+            <p style="margin-left: 0.5in">
+                <a href="#custom_limitation"><font size="3">Custom Search Limitation</font></a>
+            </p>
+        </td>
+        <td>
+            <p style="" align="justify"><a h`f="#advanced"><font size="3"><b>Advanced Search</b></font></a></p>
 
-<p style="margin-left: 0.5in; " align="justify">
-<a href="#Search_Options"><font size="3">Search
-Options</font></a></p>
+            <p style="margin-left: 0.51in; ">
+                <a href="#custom_proximity"><font size="3">Custom Proximity Range</font></a>
+            </p>
+        </td>
+    </tr>
+</table>
 
-<p style=" margin-left: 0.9134in;" align="justify"><font><font size="3"><a href="#Search_Type">Search Type</a></font></font></p>
+<p style=" "><font><font style="font-size: 16pt;" size="4"><b><a name="search"></a>Searches </b><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
-<p style=" margin-left: 0.9134in;" align="justify"><font><font size="3"><a href="#search_bible_version">Bible
-Version</a><br>
-
-<a href="#search_parallel_bible">Parallel Search</a><br>
-
-<a href="#whole_words">Whole Words Only</a></font></font></p>
-
-<p style="margin-left: 0.5in; " align="justify"><font><font size="3"><a href="#Search_Pagination">Search
-Pagination</a><br>
-
-<a href="#Seeing_Verses_in_Context">Seeing results in
-context</a><a href="#limiting"><br>
-
-</a></font></font></p>
-
-<p style=" color: rgb(0, 0, 255);" align="justify"><a href="#boolean"><font size="3"><b>Boolean
-Searches</b></font></a></p>
-
-<p style="margin-left: 0.5in; " align="justify"><font><font size="3"><a href="#boolean_phrase">Phrases and Regular Expressions</a><br>
-
-<a href="#boolean_parentheses">Parentheses</a><br>
-
-<a href="#boolean_implied_and">Implied AND</a><br>
-
-<a href="#boolean_aliases">Operator Aliases</a><br>
-
-<a href="#Wildcard_Searches">Wildcard Searches</a><br>
-
-<a href="#boolean_proximity">With Proximity Search</a></font></font></p>
-
-<p style=" margin-left: 0in; font-weight: bold;" align="justify"><font><font size="3"><a href="#limiting">Limiting
-your Searches</a></font></font></p>
-
-<p style=" color: rgb(0, 0, 255);" align="justify"><a href="#lookup"><font size="3"><b>Looking
-up passages</b></font></a></p>
-
-<p style="margin-left: 0.5in; " align="justify">
-<font><font size="3"><a href="#lookup_parallel_bibles">Parallel
-Bibles</a><br>
-
-<a href="#Multiple_verses_Verse_Ranges">Multiple Verses
-&amp; Verse Ranges</a><br>
-
-<a href="#Multiple_books_or_chapters">Multiple Books or
-Chapters</a><br>
-
-<a href="#Multiple_Passages">Multiple Passages</a><br>
-
-<a href="#Indefinite_Ranges">Indefinite Ranges</a><br>
-
-<a href="#Random_Chapter_Random_Verse">Random chapters
-&amp; Random verses</a><br>
-
-<a href="#Browsing_the_Bible">Browsing the Bible</a><br>
-
-<a href="#other_lookup_features">Other features</a></font></font></p>
-
-<p style=" color: rgb(0, 0, 255);" align="justify"><a href="#custom_limitation"><font size="3"><b>Custom
-Search Limitation</b></font></a></p>
-
-<p style=" color: rgb(0, 0, 255);" align="justify"><a href="#formatting"><font size="3"><b>Formatting
-Options</b></font></a></p>
-
-<p style=" color: rgb(0, 0, 255); margin-left: 40px;" align="justify"><a href="#Text_Size"><font size="3">Text Size</font></a></p>
-
-<div style="margin-left: 40px;"><a href="#Font_Style">Font
-Style</a><br>
-
-<a href="#Easy_Copy">Easy Copy</a></div>
-
-<p style=" color: rgb(0, 0, 255);" align="justify"><a href="#advanced"><font size="3"><b>Advanced
-Search</b></font></a></p>
-
-<p style="margin-left: 0.51in;  color: rgb(0, 0, 255);" align="justify">
-<a href="#custom_proximity"><font size="3">Custom
-Proximity Range</font></a></p>
-
-<h2>Basics</h2>
-
-<h3>Searches</h3>
-
-<h4>Basic Searches</h4>
-
-<p style=" "><font><font style="font-size: 16pt;" size="4"><b><a name="search"></a>Searches </b><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
-
-<p><font><font size="3"><b><a name="Basic_Searches"></a>Basic Searches&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+<p><font><font size="3"><b><a name="Basic_Searches"></a>Basic Searches&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p align="justify"><font><font size="3">Enter
 a word or words into the &ldquo;Search&rdquo; text box, and
@@ -193,30 +186,31 @@ return ALL verses with the given word(s). </font></font>
 </p>
 
 <p align="justify"><font><font size="3"><b><a name="Search_Options"></a>Search
-Options&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Options&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p style=" margin-left: 40px;" align="justify">
-<font><font size="3"><u><a name="Search_Type"></a>Search
-Type</u></font></font><font><font size="3"><b>&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+    <font size="3"><u><a name="Search_Type"></a>Search Type</u></font>
+    <font size="3"><b>&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font>
+</p>
 
 <p style=" margin-left: 40px;" align="justify">
-<font><font size="3">The
-search type is selected by the
-radio buttons or drop down menu, if applicable, on the form:<br>
+    <font size="3">
+        The search type is selected by the radio buttons or drop down menu, if applicable, on the form:<br>
+    </font>
+</p>
 
-</font></font></p>
+<table style="text-align: left; margin-left: auto; margin-right: auto; max-width: 800px;" border="1" cellpadding="2" cellspacing="0">
 
-<table style="text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="2" cellspacing="2">
-
-    <cola width="140"> <cola width="428"> <tbody>
+    <cola width="140"> <cola width="428"> 
+    <tbody>
 
     <tr valign="top">
-        <td style="width: 160px;">
-            <p style="margin-left: 0px; width: 238px;" align="right">
+        <td style=' width: 30%; max-width: 200px;'>
+            <p style="margin-left: 0px;" align="right">
                 <font size="3"><u>All Words</u></font>
             </p>
         </td>
-        <td width="428">
+        <td>
             <div style="text-align: justify;">
                 <font size="3">(Default) Searches for verses containing ALL of the keywords entered.</font>
             </div>
@@ -224,45 +218,29 @@ radio buttons or drop down menu, if applicable, on the form:<br>
     </tr>
 
 <tr valign="top">
-
-<td width="160">
-
-<p align="right"><font><font size="3"><u>Any Word</u></font></font></p>
-
+<td>
+    <p align="right"><font><font size="3"><u>Any Word</u></font></font></p>
 </td>
+<td>
 
-<td width="428">
-
-<div style="text-align: justify; width: 420px;"> <font><font size="3">Searches for
+<div style="text-align: justify;"> <font><font size="3">Searches for
 verses containing ANY of the keywords
 entered</font></font></div>
 
 </td>
 
 </tr>
-
-<tr valign="top">
-
-<td width="160">
-
-<p align="right"><font><font size="3"><u>Exact
-Phrase</u></font></font></p>
-
-</td>
-
-<td width="428">
-
-<div style="text-align: justify;"> <font><font size="3">Searches for
-verses containing the exact phrase
-entered.</font></font></div>
-
-</td>
-
-</tr>
-
     <tr valign="top">
         <td>
-            <p style="margin-left: 0px; width: 238px;" align="right">
+            <p align="right"><font><font size="3"><u>Exact Phrase</u></font></font></p>
+        </td>
+        <td>
+            <div style="text-align: justify;"><font size="3">Searches for.verses containing the exact phrase entered.</font></div>
+        </td>
+    </tr>
+    <tr valign="top">
+        <td>
+            <p style="margin-left: 0px;" align="right">
                 <font size="3"><u>One Word</u></font>
             </p>
         </td>
@@ -274,7 +252,7 @@ entered.</font></font></div>
     </tr>    
     <tr valign="top">
         <td>
-            <p style="margin-left: 0px; width: 238px;" align="right">
+            <p style="margin-left: 0px;" align="right">
                 <font size="3"><u>Two or More Words</u></font>
             </p>
         </td>
@@ -286,11 +264,11 @@ entered.</font></font></div>
     </tr>
 
 <tr valign="top">
-    <td width="160">
+    <td>
     <p align="right"><font><font size="3"><u>Words
     Within 5 Verses</u></font></font></p>
     </td>
-    <td width="428">
+    <td>
     <div style="text-align: justify;"><font size="3">Finds all words,
     not necessarily in the same verse.&nbsp;Word2 within 5 verses of word1, word3 within 5 verses of word2... See <a href="#advanced">Advanced Search</a> below
     for more proximity search options.<a href="#PROX_Note">*</a></font></div>
@@ -298,58 +276,35 @@ entered.</font></font></div>
 </tr>
 
 <tr>
-
-<td style="text-align: right;"><span style="text-decoration: underline;">Words within Same Chapter</span></td>
-
-<td style="vertical-align: top;">Finds all the
-words, within the same chapter.<a href="#PROX_Note">*</a></td>
-
+    <td style="text-align: right;"><span style="text-decoration: underline;">Words within Same Chapter</span></td>
+    <td style="vertical-align: top;">Finds all the
+    words, within the same chapter.<a href="#PROX_Note">*</a></td>
 </tr>
-
 <tr>
-
-<td style="text-align: right; vertical-align: top;"><span style="text-decoration: underline;">Regular Expression</span></td>
-
-<td>
-
-<div style="text-align: justify;">Searches for the
-specified regular expression. See <a href="http://www.regular-expressions.info" target="_blank">http://www.regular-expressions.info</a>
-for details on using regular expressions.</div>
-
-</td>
-
+    <td style="text-align: right; vertical-align: top;"><span style="text-decoration: underline;">Regular Expression</span></td>
+    <td>
+    <div style="text-align: justify;">Searches for the
+    specified regular expression. See <a href="http://www.regular-expressions.info" target="_blank">http://www.regular-expressions.info</a>
+    for details on using regular expressions.</div>
+    </td>
 </tr>
-
 <tr valign="top">
-
-<td width="160">
-
-<p align="right"><font><font size="3"><u>Boolean
-Expression</u></font></font></p>
-
-</td>
-
-<td style="text-align: justify;" width="428">
-
-<p><font><font size="3">Boolean
-expression search
-with parentheses support.</font></font>
-
-<font><font size="3">Allows you to specify advanced search queries using
-operators AND, OR, XOR, NOT, PROX(N) and CHAP. Also allows grouping of
-terms with
-parenthesis (). See <a href="#boolean">below</a>
-for details.</font></font></p>
-
-</td>
-
+    <td width="160">
+        <p align="right"><font><font size="3"><u>Boolean Expression</u></font></font></p>
+    </td>
+    <td style="text-align: justify;" width="428">
+        <p>
+            <font size="3">
+                Boolean expression search with parentheses support. &nbsp;Allows you to specify advanced search queries using operators and parentheses. &nbsp;See <a href="#boolean">below</a> for details.
+            </font>
+        </p>
+    </td>
 </tr>
-
 </tbody>
 </table>
 
 <p style=" margin-left: 40px;"><font><font size="3"><u><a name="search_parallel_bible"></a>Parallel
-Bible Versions</u>&nbsp;</font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Bible Versions</u>&nbsp;</font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p style=" text-decoration: none; margin-left: 40px;" align="justify">
 <font><font size="3">You may
@@ -364,7 +319,7 @@ menu.</font></font>
 </p>
 
 <p style=" margin-left: 40px;"><font><font size="3"><u><a name="whole_words"></a>Whole
-Words Only</u></font></font>&nbsp;<font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Words Only</u></font></font>&nbsp;<font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p style=" margin-left: 40px;"><span><font size="3"><font>Check
 &ldquo;Whole words only&rdquo; check box for searches for the
@@ -384,29 +339,27 @@ things. &ldquo;Whole Words Only&rdquo; is selected by default. </font></font></s
 
 
 <p><font><font size="3"><u><a name="Wildcard_Searches"></a></u><span style="font-weight: bold;">Wildcard
-Searches</span>&nbsp;</font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Searches</span>&nbsp;</font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p>
-<font><font size="3">You may
-specify wildcard
-characters in your Boolean searches using the following characters.</font></font><br>
+<font><font size="3">You may specify wildcard characters in your searches using the following characters.</font></font><br>
 
 <br>
 
-<span style="text-decoration: none;"><font><span><span><font size="3">% -&nbsp;
+<span><font><span><span><font size="3">% -&nbsp;
 Unlimited
 characters</font></span></span></font></span></p>
 
-<p><span style="text-decoration: none;">
+<p><span>
 <font size="3">_ - Single character</font></span></p>
 
-<p style=" text-decoration: none;" align="justify">
+<p align="justify">
 <font><font size="3">The
 unlimited characters wildcard
 allows for any amount of characters, while the single character
 wildcard only takes the place of one character.</font></font></p>
 
-<p style=" text-decoration: none;">
+<p>
     <font size="3">
         Example: stand% returns stand, standing, standeth, standard<br />
         Example: %stand returns stand, understand.
@@ -414,7 +367,7 @@ wildcard only takes the place of one character.</font></font></p>
 </p>
 
 <p><font><font size="3"><b><a name="Seeing_Verses_in_Context"></a>Seeing Results in
-Context&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Context&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p><font><font size="3">You
 can easily see your search results in context by clicking on the
@@ -428,7 +381,7 @@ for Acts 4:12, clicking on &ldquo;12&rdquo; will give Acts
 4:10-14; while
 clicking on &ldquo;Acts 12&rdquo; will give Acts chapter 12.</font></font></p>
 
-<p><font><font size="3"><b><a name="Basic_Passage_Retrieval"></a>Basic Passage Retrieval</b></font></font><font><font size="3"><b>&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+<p><font><font size="3"><b><a name="Basic_Passage_Retrieval"></a>Basic Passage Retrieval</b></font></font><font><font size="3"><b>&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p><font><font size="3">Enter
 the reference into the &ldquo;passage&rdquo; or
@@ -484,7 +437,7 @@ Example: Rev</p>
 </table>
 
 <font><font size="3"><b><a name="lookup_parallel_bibles"></a>Parallel
-Bibles</b>&nbsp;</font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font>
+Bibles</b>&nbsp;</font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font>
 <p align="justify"><font><font size="3">You may
 look up references in
 multiple Bibles, to be displayed side-by-side. Choose the Bibles
@@ -497,7 +450,7 @@ Bibles in parallel format.<br>
 
 <p>
 <font><font size="3"><b><a name="boolean"></a><big><big>Boolean
-Searches</big></big>&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Searches</big></big>&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p><font><font size="3">The
 Boolean search allows you to specify advanced search queries using
@@ -507,7 +460,7 @@ parentheses ( ). </font></font>
 </p>
 
 <p><span><span><font size="3"><font>A
-<span style="text-decoration: none;">search </span><u>term</u><span style="text-decoration: none;">
+<span>search </span><u>term</u><span>
 is defined as a word or phrase that is part of the search query.</span></font></font></span></span></p>
 
 <ul>
@@ -565,7 +518,7 @@ verses with either 'Jesus' or 'Lord' or both 'Jesus' and 'Lord', but
 only those that do not contain the word 'Christ'</font></font></p>
 
 <p><font><font size="3"><u><a name="boolean_phrase"></a></u><span style="font-weight: bold;">Phrases
-and Regular Expressions</span> </font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+and Regular Expressions</span> </font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p><font><font size="3">You
 can also search for phrases and regular expressions, enclosed with double quotations
@@ -583,34 +536,34 @@ both the phrase &ldquo;Lord Jesus&rdquo; and the word 'Christ'
 particular order.)</font></font></p>
 
 <p><font><font size="3"><u><a name="boolean_parentheses"></a></u><span style="font-weight: bold;">Parentheses</span>
-</font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+</font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
-<p style=" text-decoration: none;">
+<p>
 <font><font size="3">Search
 terms can be grouped using
 parentheses. You may also use brackets [ ] { }.</font></font></p>
 
-<p style=" text-decoration: none;">
+<p>
 <font><font size="3">Example:
 '(Lord OR Christ) AND
 Jesus' </font></font>
 </p>
 
-<p style=" text-decoration: none;">
+<p>
 <font><font size="3"> Returns
 verses with 'Jesus' and
 'Lord or 'Jesus' and 'Christ' or 'Lord' and 'Christ' and 'Jesus'</font></font></p>
 
-<p style=" text-decoration: none;">
+<p>
 <font><font size="3">More
 examples:</font></font></p>
 
-<p style=" text-decoration: none;">
+<p>
 <font><font size="3">'(preserved
 OR stand) AND (word
 OR truth)'</font></font></p>
 
-<p style=" text-decoration: none;">
+<p>
 <font><font size="3"> '((Lord
 OR Christ) AND Jesus OR
 God) AND disciples </font></font>
@@ -618,67 +571,51 @@ God) AND disciples </font></font>
 
 <p style=''>
 <font><font size="3"><u><a name="boolean_implied_and"></a></u><span style="font-weight: bold;">Implied
-AND</span>&nbsp;</font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+AND</span>&nbsp;</font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
-<p style=" text-decoration: none;">
+<p>
 <font><font size="3">If an
 operator is not specified
 between terms, Bible SuperSearch interprets the query as if there was
 an AND between the terms.</font></font></p>
 
-<p style=" text-decoration: none;">
-<font><font size="3">Example:
-'Jesus Lord OR Christ' interpreted as 'Jesus AND Lord OR Christ'<br>
-
-Example:
-'(Lord OR Christ) Jesus' interpreted as '(Lord OR Christ) AND Jesus'<br>
-
-Example:
-'Jesus Lord Christ' interpreted as 'Jesus AND Lord AND Christ' </font></font>
+<p>
+<font size="3">
+Example: 'Jesus Lord OR Christ' interpreted as 'Jesus AND Lord OR Christ'<br>
+Example: '(Lord OR Christ) Jesus' interpreted as '(Lord OR Christ) AND Jesus'<br>
+Example: 'Jesus Lord Christ' interpreted as 'Jesus AND Lord AND Christ' 
+</font>
 </p>
 
 <p><font><font size="3"><u><a name="boolean_aliases"></a></u><span style="font-weight: bold;">Operator
-Aliases</span>&nbsp;</font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Aliases</span>&nbsp;</font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
-<p style=" text-decoration: none;">
+<p>
 <font><font size="3">To make
 the Boolean search quicker
 to use, the following operator aliases have been developed. Any of
 these can be used in place of the operator, for the same results.</font></font></p>
 
-<p style=" text-decoration: none;">
-<br>
-
-</p>
+<p><br /></p>
 
 <center>
 <table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="213">
 
-<col width="70"> <col width="59"> <col width="58"> <thead> <tr valign="top">
-
-<th width="70">
-
-<p class="c"><font><font size="3"><i><b>Operator</b></i></font></font></p>
-
-</th>
-
-<th width="59">
-
-<p class="c"><font><font size="3"><i><b>Alias
-#1</b></i></font></font></p>
-
-</th>
-
-<th width="58">
-
-<p class="c"><font><font size="3"><i><b>Alias
-#2</b></i></font></font></p>
-
-</th>
-
-</tr>
-
-</thead> <tbody>
+    <col width="70"> <col width="59"> <col width="58"> 
+    <thead> 
+    <tr valign="top">
+        <th width="70">
+            <p class="c"><font size="3"><i><b>Operator</b></i></font></p>
+        </th>
+        <th width="59">
+            <p class="c"><font size="3"><i><b>Alias #1</b></i></font></p>
+        </th>
+        <th width="58">
+            <p class="c"><font size="3"><i><b>Alias #2</b></i></font></p>
+        </th>
+    </tr>
+    </thead> 
+    <tbody>
 
 <tr valign="top">
 
@@ -794,51 +731,53 @@ these can be used in place of the operator, for the same results.</font></font><
 </center>
 
 
-<p><font><font size="3"><u><a name="boolean_proximity"></a></u><span style="font-weight: bold;">Proximity
-Searches*</span> </font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+<p>
+    <font size="3"><u><a name="boolean_proximity"></a></u><span style="font-weight: bold;">Proximity Searches*</span></font>
+    <font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font>
+</p>
 
-<p style=" text-decoration: none;">
+<p>
 <font><font size="3">You may
 specify a proximity search
 within a Boolean search, using the PROX(N) operator. N is the
 proximity range.</font></font></p>
 
-<p style=" text-decoration: none;">
+<p>
 <font><font size="3">For
 example, 'preserve PROX(4)
 words|truth'</font></font></p>
 
-<p style=" text-decoration: none;">
+<p>
 <font><font size="3">Proximity searches are interpreted
 as follows: for term1 PROX(4) term2 prox(20) term3, term2 must be found
 within 4 verses of term1, and term3 must be found within 20 verses of
 term 2.</font></font></p>
 
-<p style=" text-decoration: none;"><font><font size="3">Note:
-due to system limitation, the PROX()
-operator may not be enclosed within parentheses or brackets.</font></font></p>
+<p><font><font size="3">Note: due to system limitation, the PROX() operator may not be enclosed within parentheses or brackets.</font></font></p>
 
-<p style=" text-decoration: none;"><font><font size="3"><a name="PROX_Note"></a>*Please
+<p><font><font size="3"><a name="PROX_Note"></a>*Please
 note, the Proximity/Chapter search will run slower than other searches,
 because of the complexity of the computation involved. Also, using
 PROX() with a limitation specified to the verse (such as Gen 1:1-20)
 may produce undesired results.&nbsp; </font></font>
 </p>
 
-<p><span><span style="text-decoration: none;"><span><font size="3"><font>For
+<p><font size="3">For
 a detailed description of Boolean searches, please visit this link:
-</font></font></span></span></span><font color="#000080"><u><a href="http://www.internettutorials.net/boolean.html"><span><span><font size="3">http://www.internettutorials.net/boolean.html</font></span></span></a></u></font><span><span style="text-decoration: none;"><span><font size="3"><font>
-</font></font></span></span></span></p>
+</font><font color="#000080"><u><a href="http://www.internettutorials.net/boolean.html"><font size="3">http://www.internettutorials.net/boolean.html</font></a></u></font>
+</p>
 
-<p style=" text-decoration: none;" align="justify">
+<p align="justify">
 <font><font size="3">This is
 an article on Internet
 Boolean searches, but the concept is the same. Please note that
 while the Bible SuperSearch Boolean search performs similarly to the
 searches described here, it may not function exactly as described.</font></font></p>
 
-<p style=""><font><font size="3"><b><a name="limiting"></a><big>Limiting
-Your Searches</big>&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+<p>
+    <font size="3"><b><a name="limiting"></a><big>Limiting Your Searches</big>&nbsp;</b></font>
+    <font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font>
+</p>
 
 <p align="justify"><font><font size="3">Your
 searches can be limited to certain, predefined sections of the Bible
@@ -860,7 +799,7 @@ must enter the EXACT WORD OR PHRASE as listed below.)</font></font></p>
 
 </p>
 
-<table style="text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="2" cellspacing="1" width="582">
+<table style="text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="2" cellspacing="0" width="582">
 
 <col width="161"> <col width="101"> <col width="137"> <col width="160"> <tbody>
 
@@ -1265,14 +1204,14 @@ see the &ldquo;Custom Search Limitation&rdquo; below.</font></font></p>
 <p><font><font size="3"></font></font></p>
 
 <p style=""><font><font style="font-size: 16pt;" size="4"><b><a name="lookup"></a>Looking
-Up Passages&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Up Passages&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 
 
 <a name='advanced_lookup' /><h3>Passage Retrieval</h3>
 
 <p style=" font-weight: bold;"><font><font size="3"><a name="Multiple_verses_Verse_Ranges"></a>Multiple
-verses</font></font><font><font size="3"><b> &amp; Verse Ranges </b></font></font><font style="font-weight: normal;"><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+verses</font></font><font><font size="3"><b> &amp; Verse Ranges </b></font></font><font style="font-weight: normal;"><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p><font><font size="3">You
 may request multiple verses from a chapter using commas and hyphens.</font></font></p>
@@ -1347,7 +1286,7 @@ verse three through chapter 10, verse 2, and chapter 10, verse six. (<span style
 </font></font>
 
 <p style=" font-weight: bold;"><font><font size="3"><span style="font-weight: bold;"><a name="Multiple_books_or_chapters"></a>Multiple
-books or chapters</span>&nbsp;</font></font><font style="font-weight: normal;"><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+books or chapters</span>&nbsp;</font></font><font style="font-weight: normal;"><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p align="justify"><font><font size="3">You
 may also request multiple chapters and books in the same way. However,
@@ -1367,7 +1306,7 @@ Example: Acts 2, 5-7 (Chapters 2 and 5 through 7)</font></font></p>
 </p>
 
 <p style=" font-weight: bold;"><font><font size="3"><a name="Indefinite_Ranges"></a>Indefinite
-Ranges&nbsp;</font></font><font style="font-weight: normal;"><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Ranges&nbsp;</font></font><font style="font-weight: normal;"><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p><font><font size="3">You
 may request retrieval to the end of a chapter without knowing the
@@ -1382,7 +1321,7 @@ Titus 2:-10 (Chapter 2, verses 1 through 10) </font></font>
 </p>
 
 <p><font><font size="3"><b><a name="Cross_Chapter_Lookup"></a>Cross
-Chapter Lookup&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Chapter Lookup&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p><font><font size="3">You
 may look up verses across multiple chapters in the following manner:</font></font></p>
@@ -1441,11 +1380,11 @@ Example:
 Ps 3:2-4 (will return chapter 3, verses 2-4)</font></font></p>
 
 <p><font><font size="3"><b><a name="Multiple_Passages"></a>Multiple
-Passages&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Passages&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p align="justify"><span><font size="3"><font>To
 look up multiple passages, enter the separate references with a
-semicolon (&ldquo;;&rdquo;) between them.<span style="text-decoration: none;">
+semicolon (&ldquo;;&rdquo;) between them.<span>
 </span>You may
 add as few or as many spaces (before or after the semicolon) as you
 want.</font></font></span></p>
@@ -1454,37 +1393,21 @@ want.</font></font></span></p>
 SuperSearch can handle complex requests with any combination of
 references in the forms listed above.</font></font></p>
 
-<p align="justify"><font><font size="3">Example:
-1 Tim 5:2; Rom. 5:8<br>
+<p align="justify">
+    <font size="3">
+        Example: 1 Tim 5:2; Rom. 5:8<br>
+        Example: Romans 1:16;Acts 4:12; Ps 119:11; Rom 8:5-7<br>
+        Example: Rom 3:23, 6:23, 5:8, 10:9,13; Eph 2:8,9; Acts 4:12; Jn 8:31-32,36
+    </font>
+</p>
 
-Example:
-Romans 1:16;Acts 4:12; Ps
-119:11; Rom 8:5-7<br>
-
-Example:
-Rom 3:23, 6:23, 5:8,
-10:9,13; Eph 2:8,9; Acts 4:12; Jn 8:31-32,36</font></font></p>
-
-<p align="justify"><font><font size="3"><span style="font-weight: bold;"><a name="Random_Chapter_Random_Verse"></a>Random Chapter
-&amp; Random Verse</span></font></font><font><font size="3"><b>&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
-
-<p align="justify"><font><font size="3"><span style="font-weight: bold;"></span>For
-those who like to randomly open your Bible and start reading, this is
-for you! &nbsp;&nbsp;</font></font></p>
-
-<p align="justify"><font><font size="3">To veiw a random chapter, click "Random Chapter."</font></font></p>
-
-<p align="justify"><font><font size="3">To veiw a random verse, click "Random Verse."</font></font></p>
-
-<p align="justify"><font><font size="3">Note: If you are using multiple Bibles, the chapter
-or verse will be randomly selected from the first one, and displayed
-from all.</font></font></p>
-
-<p><font><font size="3"><b><a name="other_lookup_features"></a>Other
-Features&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+<p>
+    <font size="3"><b><a name="other_lookup_features"></a>Other Features&nbsp;</b></font>
+    <font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font>
+</p>
 
 <p style=" "><font><font style="font-size: 16pt;" size="4"><b><a name="custom_limitation"></a>Custom
-Search Limitation</b>&nbsp;</font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Search Limitation</b>&nbsp;</font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p align="justify">
 <font><font size="3">You may
@@ -1508,20 +1431,10 @@ as given above.</font></font></p>
 <p>look up: Rom 3:23, 6:23, 5:8, 10:9-13; Jn 3:15-; Acts
 4:12-25, search: saved</p>
 
-<p><font><font style="font-size: 16pt;" size="4"><b><a name="formatting"></a>Formatting
-Options&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
-
-<p align="justify"><a name="Text_Size"></a><span style="font-weight: bold;">Text Size&nbsp;</span></p>
-
-<p align="justify">Increase Text Size</p>
-<p align="justify">Restore Text Size</p>
-<p align="justify">Decrease Text Size</p>
-
-<p align="justify"><a name="Font_Style"></a><span style="font-weight: bold;">Font Style&nbsp;</span></p>
-
-<p align="justify">Serif (Times New Roman or similar)<br></p>
-<p align="justify">Sans-Serif (Arial or similar)</p>
-<p align="justify">Monospace (Courier New or similar)</p>
+<p>
+    <font style="font-size: 16pt;" size="4"><b><a name="formatting"></a>Other Features</b></font>
+    <font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font>
+</p>
 
 <p align="justify"><font><font size="3"><a name="Easy_Copy"></a><span style="font-weight: bold;">Easy Copy</span></font></font></p>
 
@@ -1534,7 +1447,7 @@ while requiring minimal editing and formatting.</font></font></p>
 
 
 <p><font><font style="font-size: 16pt;" size="4"><b><a name="advanced"></a>Advanced
-Search&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Search&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p align="left"><font><font size="3">For
 advanced search options, click the &ldquo;Advanced
@@ -1544,7 +1457,7 @@ advanced search gives these additional features:</font></font></p>
 <p align="left"><font><font size="3">Find: </font></font>
 </p>
 
-<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="576">
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="576" style='margin-left: auto; margin-right: auto'>
 
 <col width="174"> <col width="384"> <tbody>
 
@@ -1646,7 +1559,7 @@ containing both &ldquo;Jesus&rdquo; AND
 </p>
 
 <p align="justify"><font><font size="3"><b><a name="advanced_search_limitation"></a>Search
-Limitation&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Limitation&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p align="justify"><font><font size="3">You
 may limit all advanced searches by making a selection from the
@@ -1655,7 +1568,7 @@ into the
 &ldquo;Passage limitation&rdquo; box.</font></font></p>
 
 <p align="justify"><font><font size="3"><b><a name="custom_proximity"></a>Custom
-Proximity Search&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Proximity Search&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p align="justify"><span><font size="3"><font>You
 can specify a custom range for a proximity search using the drop down
@@ -1672,7 +1585,7 @@ search related boxes will be ignored. However, your search
 restrictions will be applied.</font></font></p>
 
 <p align="left"><font><font size="3"><b><a name="advanced_power_search"></a>Power
-Search&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small><small><small><small>[top]</small></small></small></small></a></font></font></p>
+Search&nbsp;</b></font></font><font><font style="font-size: 16pt;" size="4"><a href="#top"><small class='s4'>[top]</small></a></font></font></p>
 
 <p align="justify"><font><font size="3">Power
 users will like these extra large boxes for entering long passage and
