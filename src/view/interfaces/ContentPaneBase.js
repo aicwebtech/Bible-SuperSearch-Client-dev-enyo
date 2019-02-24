@@ -7,6 +7,7 @@ var FormController = require('./FormController');
 var GridView = require('../results/GridView');
 var ErrorView = require('../results/ErrorView');
 var ResultsController = require('../results/ResultsController');
+var utils = require('enyo/utils');
 // var FormatButtons = require('./FormatButtonsBase');
 
 var forms = {
@@ -61,10 +62,13 @@ module.exports = kind({
     create: function() {
         this.inherited(arguments);
 
+        if(this.app.get('formatButtonsView')) {
+            this.formatButtonsView = this.app.formatButtonsView;
+        }
+
         if(this.displayFormOnCreate) {
             this.formViewProcess(this.formView);
         }
-
         // if(this.navigationButtonsView) {
         //     this.$.ResultsController.set('navigationButtonsView', this.navigationButtonsView);
         // }
@@ -82,7 +86,7 @@ module.exports = kind({
             if(this.formatButtonsView && !this.formatButtonsShowing ) {    
                 this.$.FormatButtonController.set('view', this.formatButtonsView);
                 
-                if(!this.formatButtonsToggle) {
+                if(!this.app.configs.formatButtonsToggle) {
                     this.$.FormatButtonContainer.set('showing', true);
                     this.formatButtonsShowing = true;
                 }
@@ -122,7 +126,7 @@ module.exports = kind({
         this.log('error');
         this.log(inEvent);
 
-        if(this.formatButtonsToggle) {
+        if(this.app.configs.formatButtonsToggle) {
             this.$.FormatButtonContainer.set('showing', false);
         }
 
@@ -135,8 +139,6 @@ module.exports = kind({
         this.$.ErrorsContainer.set('showing', true);
     },
     watchAdvancedToggle: function(pre, cur, prop) {
-        this.log(pre, cur, prop);
-
         if(cur) {
             this.set('formView', 'Advanced');
         }

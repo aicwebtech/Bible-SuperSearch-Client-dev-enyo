@@ -9,6 +9,9 @@ var systemConfig = require('./config/system');
 var utils = require('enyo/utils');
 var DefaultInterface = require('./view/interfaces/twentytwenty/TwentyTwenty');
 var Interfaces = require('./view/Interfaces');
+var FormatButtons = require('./view/FormatButtons');
+var NavigationButtons = require('./view/BrowsingButtons');
+var Pagers = require('./view/Pagers');
 var UserConfigController = require('./data/controllers/UserConfig');
 var Router = require('enyo/Router');
 var Loading = require('./components/LoadingInline');
@@ -41,6 +44,11 @@ var App = Application.kind({
     baseTitle: null,
     baseUrl: null,
     clientBrowser: null,
+    
+    // Selectable sub-views:
+    formatButtonsView: null,
+    navigationButtonsView: null,
+    pagerView: null,
 
     published: {
         ajaxLoading: false,
@@ -157,6 +165,27 @@ var App = Application.kind({
             }
         }
 
+        if(this.configs.formatButtons && this.configs.formatButtons != 'default') {
+            if(FormatButtons[this.configs.formatButtons]) {
+                this.log('FormatButtons found');
+                this.formatButtonsView = FormatButtons[this.configs.formatButtons];
+            }
+        }        
+
+        if(this.configs.navigationButtons && this.configs.navigationButtons != 'default') {
+            if(NavigationButtons[this.configs.navigationButtons]) {
+                this.log('navigationButtons found');
+                this.navigationButtonsView = NavigationButtons[this.configs.navigationButtons];
+            }
+        }        
+
+        if(this.configs.pager && this.configs.pager != 'default') {
+            if(Pagers[this.configs.pager]) {
+                this.log('pager found');
+                this.pagerView = Pagers[this.configs.pager];
+            }
+        }
+
         // Render 'Loading' view
         // Todo - set css style based on selected interface
         this.set('view', Loading);
@@ -198,13 +227,13 @@ var App = Application.kind({
             }
             
             this.render();
-
             this.appLoaded = true;
             this.$.Router.trigger();
         });    
 
         ajax.error(this, function(inSender, inResponse) {
             // this.set('ajaxLoading', false);
+            this.log('Error code 2 details', inSender, inResponse);
             alert('Error: Failed to load application static data.  Error code 2');
         });    
     },

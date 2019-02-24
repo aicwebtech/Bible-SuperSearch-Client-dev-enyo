@@ -72,6 +72,11 @@ module.exports = kind({
         // this.formViewProcess(this.formView);
 
         this.pagerView = this.app.getSubControl('Pager');
+
+        // if(this.app.pagerView) {
+        //     this.pagerView = this.app.pagerView;
+        // }
+
         // this.navigationButtonsView = this.app.getSubControl('');
     },
     formDataChanged: function(was, is) {

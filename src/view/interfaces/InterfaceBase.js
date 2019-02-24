@@ -22,6 +22,14 @@ module.exports = kind({
     },
     create: function() {
         this.inherited(arguments);
+
+        if(this.app.navigationButtonsView) {
+            this.NavButtonsControl = this.app.navigationButtonsView;
+        }        
+
+        if(this.app.pagerView) {
+            this.PagerControl = this.app.pagerView;
+        }
     },
     ajaxLoadingChanged: function(was, is) {
         this.log(is);

@@ -25,7 +25,28 @@ var biblesupersearch_config_options = {
     //      For a complete list, please see our demo page
     //          http://www.biblesupersearch.com/skins/
     
-    "interface": "Classic",                             
+    "interface": "Classic",   
+
+    // hide format buttons when there is no active search
+    "formatButtonsToggle": true,
+
+    // Which formating buttons to use?
+    //      default for skin default
+    //      Classic
+    //      Stylable
+    "formatButtons": 'default',                          
+    
+    // Which navigation buttons to use?
+    //      default for skin default
+    //      Classic
+    //      Stylable
+    "navigationButtons": 'default',      
+
+    // Which pager to use?
+    //      default for skin default
+    //      Classic
+    //      Clean
+    "pager": 'default',                          
     
     // Include toggling to an 'advanced search' form
     // Some interfaces may force this to false
