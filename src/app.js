@@ -44,6 +44,7 @@ var App = Application.kind({
     baseTitle: null,
     baseUrl: null,
     clientBrowser: null,
+    preventRedirect: false,
     
     // Selectable sub-views:
     formatButtonsView: null,
@@ -312,6 +313,11 @@ var App = Application.kind({
         }
 
         var formData = JSON.parse(formDataJson);
+
+        if(formData.redirected) {
+            this.preventRedirect = true;  // prevent further redirection if we were redirected here
+        }
+
         localStorage.removeItem('BibleSuperSearchFormData');
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto', submitAsManual: true});
     },

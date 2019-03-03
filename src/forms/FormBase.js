@@ -86,7 +86,8 @@ module.exports = kind({
             return;
         }
 
-        if(typeof this.app.configs.destinationUrl != 'undefined' && this.app.get('baseUrl') != this.app.configs.destinationUrl) {
+        if(!this.app.get('preventRedirect') && typeof this.app.configs.destinationUrl != 'undefined' && this.app.get('baseUrl') != this.app.configs.destinationUrl) {
+            formData.redirected = true;
             localStorage.setItem('BibleSuperSearchFormData', JSON.stringify(formData));
             // this.log('LocalStorage form data', localStorage.getItem('BibleSuperSearchFormData'));
             window.location = this.app.configs.destinationUrl;

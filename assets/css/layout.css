@@ -8,6 +8,7 @@ div.biblesupersearch_main {
     /*position: relative;*/
     /*min-height: 100vh;*/
     /*min-width: 100vw;*/
+    overflow-y: auto;
 }
 
 div.biblesupersearch_loading_inline {
