@@ -25,7 +25,10 @@ module.exports = {
         'Minimal' : require('./interfaces/minimal/MinimalBase'),
         
         // Minimal form with Bible selector (varying size)
-        'MinimalWithBible' : require('./interfaces/minimal/MinimalWithBible'),
+        'MinimalWithBible' : require('./interfaces/minimal/MinimalWithBible'),        
+
+        // Minimal form with Bible selector (Wide but varying size)
+        'MinimalWithBibleWide' : require('./interfaces/minimal/MinimalWithBibleWide'),
         
         // Minimal form with Bible selector (always short)
         'MinimalWithShortBible' : require('./interfaces/minimal/MinimalWithShortBible'),
