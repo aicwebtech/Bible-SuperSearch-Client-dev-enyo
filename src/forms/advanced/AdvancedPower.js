@@ -17,7 +17,7 @@ module.exports = kind({
                 kind: BibleSelect, 
                 parallelLimit: 8, 
                 parallelStart: 1, 
-                selectorWidth: 270,
+                selectorWidth: 300,
                 classes: 'biblesupersearch_center_element'
             },
             {tag: 'br'},
@@ -27,6 +27,7 @@ module.exports = kind({
                     {kind: TextArea, name: 'search', style: 'width: 98%; height: 50px;'}
                 ]
             },
+            {tag: 'br'},
             {
                 components: [
                     {allowHtml: true, content: 'Passage Retrieval:'},

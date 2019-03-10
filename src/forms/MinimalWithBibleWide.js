@@ -13,7 +13,7 @@ module.exports = kind({
         { classes: 'single_line_bible', components: [
             {kind: Input, name: 'request', classes: 'request', placeholder: 'Enter passage(s) or keyword(s)'},
             {tag: 'span', classes: 'bible_selector', components: [
-                {kind: Bible, name: 'bible', parallelLimit: 1, shortWidthThreshold: 800, shortWidthWidth: 155, width: 280},
+                {kind: Bible, name: 'bible', parallelLimit: 1, shortWidthThreshold: 800, shortWidthWidth: 140, width: 280},
                 {kind: Button, content: 'Go', ontap: 'submitForm'}
             ]}
         ]}
