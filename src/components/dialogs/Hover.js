@@ -18,6 +18,9 @@ module.exports = kind({
     content: null,
     debounce: 5,
     waitCount: 0,
+    parentHeight: null,
+    parentWidth: null,
+    widthMin: 400,
 
     handlers: {
         onmouseout: 'mouseOutHandler'
@@ -38,6 +41,24 @@ module.exports = kind({
 
     displayPosition: function(mouseX, mouseY, content, parentWidth, parentHeight) {
         // this.log('content', content);
+        this.app.debug && this.log('mouseX', mouseX);
+        this.app.debug && this.log('mouseY', mouseY);
+        this.app.debug && this.log('parentWidth', parentWidth);        
+        this.app.debug && this.log('parentHeight', parentHeight);
+
+        this.parentHeight = parentHeight;
+        this.parentWidth = parentWidth;
+
+        var bounds = this.getOwnerBounds();
+
+        // determine mouse position within 'owner' (container)
+        mouseX -= bounds.left;
+        mouseY -= bounds.top;
+
+        this.app.debug && this.log('mouse bounds', bounds);
+
+        this.app.debug && this.log('adjusted mouseX', mouseX);
+        this.app.debug && this.log('adjusted mouseY', mouseY);
 
         if(this.content == content && this.get('showing')) {
             this.log('already shwoing');
@@ -55,9 +76,7 @@ module.exports = kind({
         }
 
         // this.log('thisWidth', this.width);
-        // this.log('parentWidth', parentWidth);        
         // this.log('thisHeight', this.height);
-        // this.log('parentHeight', parentHeight);
         this.mouseX = mouseX;
         this.mouseY = mouseY;
         this.content = content;
@@ -89,15 +108,31 @@ module.exports = kind({
     reposition: function() {
         var w = this.hasNode().scrollWidth;
         var h = this.hasNode().scrollHeight;
+        var bounds = this.getOwnerBounds();
         // var wMaxOld = document.body.scrollWidth;
         // var hMaxOld = document.body.scrollHeight;
+        // var wMax = this.parent.hasNode().clientWidth;
+        // var hMax = this.parent.hasNode().clientHeight;
 
-        var wMax = window.innerWidth  + window.scrollX;
-        var hMax = window.innerHeight + window.scrollY;
+        // var wMax = window.innerWidth  + window.scrollX;
+        // var hMax = window.innerHeight + window.scrollY;
+
+        w = (w < this.widthMin) ? this.widthMin : w;
+
+        var wMax = bounds.width || this.owner.hasNode().clientWidth + window.scrollX;
+        var hMax = bounds.height || this.owner.hasNode().clientHeight + window.scrollY;
+
+        this.log('window height', window.innerHeight);
+
+        if(window.innerHeight < hMax) {
+            this.log('hMax adjusted due to windowHeight');
+            hMax = window.innerHeight - bounds.top;
+        }
+
+        // var wMax = this.parentWidth;
+        // var hMax = this.parentHeight;
 
         if(w == 0 || h == 0) {
-            this.log('waiting');
-
             window.setTimeout(utils.bind(this, function() {
                 if(this.waitCount < 10) {
                     this.waitCount ++;
@@ -109,34 +144,55 @@ module.exports = kind({
         }
 
         this.waitCount = 0;
-        this.log('w', w, wMax);
-        this.log('h', h, hMax);
         var xOuter = this.mouseX + w;
         var yOuter = this.mouseY + h;
+        this.app.debug && this.log('w', w, wMax, xOuter);
+        this.app.debug && this.log('h', h, hMax, yOuter);
 
         if(xOuter > wMax) {
-            this.log('X adjusted');
+            this.app.debug && this.log('X adjusted');
             posX = wMax - w - this.offsetX;
         }
         else {
-            posX = this.mouseX + this.offsetY;
+            posX = this.mouseX + this.offsetX;
         }        
 
         if(yOuter > hMax) {
-            this.log('Y adjusted');
-            posY = hMax - h - this.offsetY;
+            this.app.debug && this.log('Y adjusted');
+
+            if(hMax > h) {
+                posY = hMax - h - this.offsetY;
+                this.app.debug && this.log('greater than');
+            }
+            else {
+                posY = this.mouseY + this.offsetY;
+                // posY = yOuter - hMax - this.offsetY;
+                this.app.debug && this.log('less than');
+            }
         }
         else {
             posY = this.mouseY + this.offsetY;
         }
 
-        this.log('posX', posX);
-        this.log('posY', posY);
+        this.app.debug && this.log('posX', posX);
+        this.app.debug && this.log('posY', posY);
 
         this.applyStyle('left', posX + 'px');
         this.applyStyle('top', posY + 'px');
     },
     mouseOutHandler: function(inSender, inEvent) {
         this.set('showing', false);
+    },
+    getOwnerBounds: function() {
+        var rect = this.owner.hasNode().getBoundingClientRect(),
+            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        return { 
+            top: rect.top + scrollTop, 
+            left: rect.left + scrollLeft,
+            width: rect.width || null,
+            height: rect.height || null
+        };
     }
 });

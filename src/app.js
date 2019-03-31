@@ -35,6 +35,7 @@ var App = Application.kind({
     renderOnStart: false,       // We need to load configs first
     rootDir: null,
     testing: false,             // Indicates unit tests are running
+    debug: true,
     statics: {},
     maximumBiblesDisplayed: 8,  // The absolute maximum number of parallel bibles that can be possibly displayed
     bibleDisplayLimit: 8,       // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
@@ -195,6 +196,10 @@ var App = Application.kind({
         // this.view.addClass(view.getClass);
         this.render();
         this.configs.apiUrl += '/api';
+
+        if(this.configs.debug) {
+            this.debug = this.configs.debug;
+        }
 
         // Load Static Data (Bibles, Books, ect)
         var ajax = new Ajax({

@@ -74,6 +74,15 @@ module.exports = kind({
             // this.set('value', this.app.configs.defaultBible);
         }
     },
+    applyDefaultValue: function() {
+        var value = this.getValue();
+
+        this.log(value);
+
+        if(!value || value == 0) {
+            this.resetValue();
+        }
+    },
     _addBibleHelper: function(bible) {
         if(bible.lang != this._lastLang) {
             // do something?

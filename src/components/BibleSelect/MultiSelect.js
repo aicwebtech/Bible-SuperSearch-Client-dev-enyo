@@ -150,11 +150,13 @@ module.exports = kind({
                 }
             }
             else if(this.$[name]) {
-                // this.log('setting single value', value, name);
+                this.log('setting single value', value, name);
                 this.$[name].set('value', value); // This one IS automatically selecting?
                 valueFiltered.push(value);
             }
         }
+        
+        this.$.Select_1.applyDefaultValue();
 
         if(selectorAdded) {
             this.$.Container.render();

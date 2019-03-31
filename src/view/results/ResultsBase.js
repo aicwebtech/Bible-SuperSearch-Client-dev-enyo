@@ -314,15 +314,21 @@ module.exports = kind({
             this.lastHoverX = x;
             this.lastHoverY = y;
             // this.log('inSender', inSender);
-            // this.log('inEvent', inEvent);
+            // this.log('hover inEvent', inEvent);
 
             var mouseX = inEvent.x + window.scrollX; //inEvent.screenX + inEvent.offsetX;
             var mouseY = inEvent.y + window.scrollY; // + inEvent.offsetY;
             var parentWidth = inEvent.target.parentNode.offsetWidth;
             var parentHeight = inEvent.target.parentNode.offsetHeight;
+            // var parentHeight = this.hasNode().scrollHeight;
+            // var parentWidth  = this.hasNode().scrollWidth;
+            // var mouseX = inEvent.offsetX;
+            // var mouseY = inEvent.offsetY;
+
 
             if(target.tagName == 'A' && target.className == 'strongs') {
-                this.hideHoverDialogs();
+                // this.log('mouseY options', inEvent.offsetY, inEvent.y, inEvent.pageY, inEvent.movementY, inEvent.screenY);
+                // this.hideHoverDialogs(); // uncomment in production
                 // this.log('offset', inEvent.offsetY);
                 // this.log('pWidth', parentWidth);
                 // this.log('pHeight', parentHeight);
@@ -337,6 +343,7 @@ module.exports = kind({
         // this.hideHoverDialogs();
     },
     hideHoverDialogs: function() {
+        this.log();
         this.$.StrongsHover.set('showing', false);
     }
 
