@@ -99,16 +99,39 @@ module.exports = kind({
         this.$.LoadingContainer && this.$.LoadingContainer.set('showing', true);
         this.$.ContentContainer && this.$.ContentContainer.set('showing', false);
         this.reposition();
+        // this.set('showing', false);
+        // this.render();
     },    
     showContent: function() {
         this.$.LoadingContainer && this.$.LoadingContainer.set('showing', false);
         this.$.ContentContainer && this.$.ContentContainer.set('showing', true);
         this.reposition();
+        // this.set('showing', false);
+        // this.render();
     },
+    // rendered: function() {
+    //     this.inherited(arguments);
+    //     this.log();
+    //     window.setTimeout(utils.bind(this, function() {
+    //         this.reposition();
+    //     }), 1000);
+    // },
     reposition: function() {
+        this.set('showing', true);
+        this.log();
         var w = this.hasNode().scrollWidth;
         var h = this.hasNode().scrollHeight;
+
+
+        var myBounds = this.hasNode().getBoundingClientRect();
+        this.log('alt height', this.hasNode().scrollHeight, this.hasNode().clientHeight, this.hasNode().offsetHeight, myBounds.height);
+
+        w = myBounds.width;
+        h = Math.min(h, myBounds.height);
+
         var bounds = this.getOwnerBounds();
+
+        this.log('extra height', this.hasNode().scrollHeight);
         // var wMaxOld = document.body.scrollWidth;
         // var hMaxOld = document.body.scrollHeight;
         // var wMax = this.parent.hasNode().clientWidth;
@@ -117,12 +140,16 @@ module.exports = kind({
         // var wMax = window.innerWidth  + window.scrollX;
         // var hMax = window.innerHeight + window.scrollY;
 
-        w = (w < this.widthMin) ? this.widthMin : w;
+        // w = (w < this.widthMin) ? this.widthMin : w;
 
         var wMax = bounds.width || this.owner.hasNode().clientWidth + window.scrollX;
         var hMax = bounds.height || this.owner.hasNode().clientHeight + window.scrollY;
 
-        this.log('window height', window.innerHeight);
+        if(wMax - this.mouseX < this.widthMin) {
+            w = this.widthMin;
+        }
+
+        // this.log('window height', window.innerHeight);
 
         if(window.innerHeight < hMax) {
             this.log('hMax adjusted due to windowHeight');
@@ -146,44 +173,49 @@ module.exports = kind({
         this.waitCount = 0;
         var xOuter = this.mouseX + w;
         var yOuter = this.mouseY + h;
-        this.app.debug && this.log('w', w, wMax, xOuter);
-        this.app.debug && this.log('h', h, hMax, yOuter);
+        this.app.debug && this.log('mouseX', this.mouseX, 'w', w, 'wMax', wMax, 'xOuter', xOuter);
+        this.app.debug && this.log('mouseY', this.mouseY, 'h', h, 'hmax', hMax, 'yOuter', yOuter);
+        this.log('extra height', this.hasNode().scrollHeight);
+        posX = this.mouseX + this.offsetX;
+        posY = this.mouseY + this.offsetY;
 
         if(xOuter > wMax) {
             this.app.debug && this.log('X adjusted');
-            posX = wMax - w - this.offsetX;
+            // posX = wMax - w - this.offsetX;
+            posX = this.mouseX - w - this.offsetX;
         }
-        else {
-            posX = this.mouseX + this.offsetX;
-        }        
 
         if(yOuter > hMax) {
             this.app.debug && this.log('Y adjusted');
 
             if(hMax > h) {
                 posY = hMax - h - this.offsetY;
+                posY = this.mouseY - h - this.offsetY;
                 this.app.debug && this.log('greater than');
             }
-            else {
-                posY = this.mouseY + this.offsetY;
-                // posY = yOuter - hMax - this.offsetY;
-                this.app.debug && this.log('less than');
-            }
-        }
-        else {
-            posY = this.mouseY + this.offsetY;
+            // else {
+            //     posY = this.mouseY + this.offsetY;
+            //     // posY = yOuter - hMax - this.offsetY;
+            //     this.app.debug && this.log('less than');
+            // }
         }
 
+        this.log('extra height', this.hasNode().scrollHeight);
         this.app.debug && this.log('posX', posX);
         this.app.debug && this.log('posY', posY);
 
         this.applyStyle('left', posX + 'px');
         this.applyStyle('top', posY + 'px');
+        this.render();
     },
     mouseOutHandler: function(inSender, inEvent) {
         this.set('showing', false);
     },
     getOwnerBounds: function() {
+        if(!this.owner) {
+            return {};
+        };
+
         var rect = this.owner.hasNode().getBoundingClientRect(),
             scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
             scrollTop = window.pageYOffset || document.documentElement.scrollTop;
