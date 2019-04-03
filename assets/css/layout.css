@@ -9,7 +9,7 @@ div.biblesupersearch_main {
     /*min-height: 100vh;*/
     /*min-width: 100vw;*/
     overflow-y: auto;
-    /*overflow-x: visible;*/
+    overflow-x: hidden;
 }
 
 div.biblesupersearch_loading_inline {
@@ -286,17 +286,45 @@ div.biblesupersearch_dialog {
     position: absolute;
     border: 2px solid black;
     background-color: #dddddd;
-    z-index: 10000001;
+    z-index: 97;
     box-shadow: 10px 10px 5px #444;
+    display: block;
+}
+
+.hover_dialog .inner {
+    position: relative;
+    z-index: 97;
+    overflow: visible;
+    height: auto;
 }
 
 .biblesupersearch_content {
     overflow: visible;
 }
 
-/* force any any all textareas displayed to only expand vertically */
+/* force any and all textareas displayed to only expand vertically */
 .biblesupersearch_content textarea {
     resize: vertical;
 }
 
+.strongs_inline {
+    text-align: center;
+}
 
+.strongs_inline .item:not(:first-child) {
+    margin-top: 15px;
+}
+
+.strongs_inline .hebrew .strongs_head span {
+    font-weight: bold;
+    font-size: 20pt;
+    font-family: serif;
+    padding-top: 5px;
+}
+
+.strongs_inline .greek .strongs_head span {
+    font-weight: bold;
+    font-size: 16pt;
+    padding-top: 10px;
+    font-family: serif;
+}

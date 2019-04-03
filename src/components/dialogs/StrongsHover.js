@@ -3,6 +3,7 @@ var Dialog = require('./Hover');
 var Ajax = require('enyo/Ajax');
 var utils = require('enyo/utils');
 var Image = require('../Image');
+var StrongsView = require('../../view/results/StrongsView');
 
 module.exports = kind({
     name: 'StongsHoverDialog',
@@ -17,16 +18,18 @@ module.exports = kind({
     strongsRaw: null,
 
     components: [
-        {name: 'LoadingContainer', showing: false, components: [
-            {
-                classes: 'biblesupersearch_center_element', style: 'width:78px',
-                components: [
-                    {kind: Image, relSrc: '/Spinner.gif' }
-                ]
-            },
-            {content: 'Loading, please wait ...', style: 'padding: 10px; font-weight: bold'},
-        ]},
-        {name: 'ContentContainer'}
+        {classes: 'inner', components: [
+            {name: 'LoadingContainer', showing: false, components: [
+                {
+                    classes: 'biblesupersearch_center_element', style: 'width:78px',
+                    components: [
+                        {kind: Image, relSrc: '/Spinner.gif' }
+                    ]
+                },
+                {content: 'Loading, please wait ...', style: 'padding: 10px; font-weight: bold'},
+            ]},
+            {name: 'ContentContainer', style: 'width: 400px', kind: StrongsView}
+        ]}
     ],
 
     displayPosition: function(top, left, content, parentWidth, parentHeight) {
@@ -61,7 +64,8 @@ module.exports = kind({
         this.$.ContentContainer.destroyClientControls();
         inResponse.results.forEach(utils.bind(this, function(strong) {
             this.strongsCache[strong.number] = strong;
-            this._addStrongs(strong);
+            // this._addStrongs(strong);
+            this.$.ContentContainer._addStrongs(strong);
         }));
         
         // this.strongsCache[this.strongsRaw] = inResponse.results;
@@ -119,7 +123,6 @@ module.exports = kind({
                 ]
             });
         }
-        
     }
 
 });

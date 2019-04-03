@@ -96,9 +96,10 @@ module.exports = kind({
         this.set('showing', true);
     },
     showLoading: function() {
-        this.$.LoadingContainer && this.$.LoadingContainer.set('showing', true);
+        this.$.LoadingContainer && this.$.LoadingContainer.set('showing', false);
+        // this.$.LoadingContainer && this.$.LoadingContainer.set('showing', true);
         this.$.ContentContainer && this.$.ContentContainer.set('showing', false);
-        this.reposition();
+        // this.reposition();
         // this.set('showing', false);
         // this.render();
     },    
@@ -145,7 +146,12 @@ module.exports = kind({
         var wMax = bounds.width || this.owner.hasNode().clientWidth + window.scrollX;
         var hMax = bounds.height || this.owner.hasNode().clientHeight + window.scrollY;
 
-        if(wMax - this.mouseX < this.widthMin) {
+        wRaw = w;
+        w = this.widthMin;
+
+        // if(wMax - this.mouseX < this.widthMin) {
+        if(this.mouseX + w >= wMax) {
+            this.app.debug && this.log('w adjusted, original: ', w);
             w = this.widthMin;
         }
 
@@ -206,6 +212,7 @@ module.exports = kind({
 
         this.applyStyle('left', posX + 'px');
         this.applyStyle('top', posY + 'px');
+        this.applyStyle('width', this.widthMin + 'px');
         this.render();
     },
     mouseOutHandler: function(inSender, inEvent) {
