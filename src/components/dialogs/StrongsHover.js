@@ -38,13 +38,11 @@ module.exports = kind({
 
         if(this._loadFromCache(content)) {
             this.showContent();
-            // this.inherited(arguments);
             return;
         }
 
         this.$.ContentContainer.destroyClientControls();
         this.showLoading();
-        // this.inherited(arguments);
 
         var postBody = {
             strongs: content
@@ -64,11 +62,9 @@ module.exports = kind({
         this.$.ContentContainer.destroyClientControls();
         inResponse.results.forEach(utils.bind(this, function(strong) {
             this.strongsCache[strong.number] = strong;
-            // this._addStrongs(strong);
             this.$.ContentContainer._addStrongs(strong);
         }));
         
-        // this.strongsCache[this.strongsRaw] = inResponse.results;
         this.$.ContentContainer.render();
         this.showContent();
     },
@@ -82,47 +78,8 @@ module.exports = kind({
         }
 
         this.$.ContentContainer.destroyClientControls();
-        // this.strongsCache[strongs].forEach(utils.bind(this, this._addStrongs));
-        this._addStrongs(this.strongsCache[strongs]);
+        this.$.ContentContainer._addStrongs(this.strongsCache[strongs]);
         this.$.ContentContainer.render();
         return true;
-    },
-    _addStrongs: function(item) {
-        this.log('strongs item', item);
-        var head = '';
-        var text = '';
-
-        if(item.number.charAt(0) == "H"){
-            var classes = 'hebrew';
-            // $pd="5px";
-        }
-        else {
-            // $pd="10px";
-            var classes = 'greek';
-        }
-
-        if(item.tvm && item.tvm != '') {
-            text = item.tvm;
-
-            var comp = this.$.ContentContainer.createComponent({
-                classes: classes,
-                components: [
-                    {classes: 'strongs_tvm', allowHtml: true, content: item.tvm}
-                ]
-            });
-        }
-        else {
-            head = '<span>' + item.root_word + '</span> &nbsp; (' + item.number + ')<br />' + item.transliteration + ' (' + item.pronunciation + ')';
-            text = item.entry;
-    
-            var comp = this.$.ContentContainer.createComponent({
-                classes: classes,
-                components: [
-                    {classes: 'strongs_head', allowHtml: true, content: head},
-                    {classes: 'strongs_body', allowHtml: true, content: text},
-                ]
-            });
-        }
     }
-
 });

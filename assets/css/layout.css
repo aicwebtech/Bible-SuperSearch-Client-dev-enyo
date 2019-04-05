@@ -309,22 +309,31 @@ div.biblesupersearch_dialog {
 
 .strongs_inline {
     text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 50px;
 }
 
 .strongs_inline .item:not(:first-child) {
     margin-top: 15px;
 }
 
-.strongs_inline .hebrew .strongs_head span {
+.strongs_inline .item .strongs_head {
     font-weight: bold;
-    font-size: 20pt;
     font-family: serif;
+    margin-bottom: 20px
+}
+
+.strongs_inline .hebrew .strongs_head span {
+    font-size: 20pt;
     padding-top: 5px;
 }
 
 .strongs_inline .greek .strongs_head span {
-    font-weight: bold;
     font-size: 16pt;
     padding-top: 10px;
-    font-family: serif;
+}
+
+.strongs_inline .item .strongs_body {
+    text-align: justify;
 }

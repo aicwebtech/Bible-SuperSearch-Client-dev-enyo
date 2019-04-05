@@ -61,7 +61,7 @@ module.exports = kind({
         this.app.debug && this.log('adjusted mouseY', mouseY);
 
         if(this.content == content && this.get('showing')) {
-            this.log('already shwoing');
+            this.app.debug && this.log('already shwoing');
             // return;
         }
 
@@ -71,23 +71,16 @@ module.exports = kind({
             (mouseY - this.debounce <= this.mouseY) && 
             (mouseY + this.debounce >= this.mouseY)
         )) {
-            this.log('debounced!');
+            this.app.debug && this.log('debounced!');
             return;
         }
 
-        // this.log('thisWidth', this.width);
-        // this.log('thisHeight', this.height);
         this.mouseX = mouseX;
         this.mouseY = mouseY;
         this.content = content;
 
-        // this.log('mouseX', mouseX);
-        // this.log('mouseY', mouseY);
-
         var top = mouseY;
         var left = mouseX;
-        // this.log('top', top);
-        // this.log('left', left);
 
         this.$.ContentContainer.set('content', content);
 
@@ -96,43 +89,26 @@ module.exports = kind({
         this.set('showing', true);
     },
     showLoading: function() {
-        this.$.LoadingContainer && this.$.LoadingContainer.set('showing', false);
-        // this.$.LoadingContainer && this.$.LoadingContainer.set('showing', true);
+        this.$.LoadingContainer && this.$.LoadingContainer.set('showing', true);
         this.$.ContentContainer && this.$.ContentContainer.set('showing', false);
-        // this.reposition();
-        // this.set('showing', false);
-        // this.render();
+        this.reposition();
     },    
     showContent: function() {
         this.$.LoadingContainer && this.$.LoadingContainer.set('showing', false);
         this.$.ContentContainer && this.$.ContentContainer.set('showing', true);
         this.reposition();
-        // this.set('showing', false);
-        // this.render();
     },
-    // rendered: function() {
-    //     this.inherited(arguments);
-    //     this.log();
-    //     window.setTimeout(utils.bind(this, function() {
-    //         this.reposition();
-    //     }), 1000);
-    // },
     reposition: function() {
         this.set('showing', true);
-        this.log();
-        var w = this.hasNode().scrollWidth;
+        var w = this.widthMin; // this.hasNode().scrollWidth;
         var h = this.hasNode().scrollHeight;
-
-
         var myBounds = this.hasNode().getBoundingClientRect();
-        this.log('alt height', this.hasNode().scrollHeight, this.hasNode().clientHeight, this.hasNode().offsetHeight, myBounds.height);
-
+       
         w = myBounds.width;
         h = Math.min(h, myBounds.height);
 
         var bounds = this.getOwnerBounds();
 
-        this.log('extra height', this.hasNode().scrollHeight);
         // var wMaxOld = document.body.scrollWidth;
         // var hMaxOld = document.body.scrollHeight;
         // var wMax = this.parent.hasNode().clientWidth;
@@ -141,29 +117,13 @@ module.exports = kind({
         // var wMax = window.innerWidth  + window.scrollX;
         // var hMax = window.innerHeight + window.scrollY;
 
-        // w = (w < this.widthMin) ? this.widthMin : w;
-
         var wMax = bounds.width || this.owner.hasNode().clientWidth + window.scrollX;
         var hMax = bounds.height || this.owner.hasNode().clientHeight + window.scrollY;
 
-        wRaw = w;
-        w = this.widthMin;
-
-        // if(wMax - this.mouseX < this.widthMin) {
-        if(this.mouseX + w >= wMax) {
-            this.app.debug && this.log('w adjusted, original: ', w);
-            w = this.widthMin;
-        }
-
-        // this.log('window height', window.innerHeight);
-
         if(window.innerHeight < hMax) {
-            this.log('hMax adjusted due to windowHeight');
+            this.app.debug && this.log('hMax adjusted due to windowHeight');
             hMax = window.innerHeight - bounds.top;
         }
-
-        // var wMax = this.parentWidth;
-        // var hMax = this.parentHeight;
 
         if(w == 0 || h == 0) {
             window.setTimeout(utils.bind(this, function() {
@@ -181,7 +141,6 @@ module.exports = kind({
         var yOuter = this.mouseY + h;
         this.app.debug && this.log('mouseX', this.mouseX, 'w', w, 'wMax', wMax, 'xOuter', xOuter);
         this.app.debug && this.log('mouseY', this.mouseY, 'h', h, 'hmax', hMax, 'yOuter', yOuter);
-        this.log('extra height', this.hasNode().scrollHeight);
         posX = this.mouseX + this.offsetX;
         posY = this.mouseY + this.offsetY;
 
@@ -206,7 +165,6 @@ module.exports = kind({
             // }
         }
 
-        this.log('extra height', this.hasNode().scrollHeight);
         this.app.debug && this.log('posX', posX);
         this.app.debug && this.log('posY', posY);
 

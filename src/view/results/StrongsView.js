@@ -7,7 +7,6 @@ module.exports = kind({
 
     // Duplicated from strongs hover - hover dialog needs to use this kind!
     _addStrongs: function(item) {
-        this.log('strongs item', item);
         var head = '';
         var text = '';
 
