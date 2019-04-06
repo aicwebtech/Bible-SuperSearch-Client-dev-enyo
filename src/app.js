@@ -383,6 +383,9 @@ var App = Application.kind({
         var formData = (parts[0]) ? JSON.parse(parts[0]) : {};
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },
+    runFormData: function(formData) {
+        this.waterfall('onHashRunForm', {formData: formData, newTab: true, submitAsManual: true});
+    },
     _explodeHashPassage: function(parts) {
         var exploded = {
             bible : parts[0] || null,

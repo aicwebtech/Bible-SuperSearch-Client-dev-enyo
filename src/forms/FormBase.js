@@ -272,7 +272,7 @@ module.exports = kind({
         fd.shortcut = fd.shortcut || 0;
         this.setFormDataWithMapping(fd);
 
-        // this.log('just set form data, about to submit form');
+        this.app.debug && this.log('just set form data, about to submit form', fd);
 
         if(inEvent.submitAsManual) {
             this.submitFormManual();

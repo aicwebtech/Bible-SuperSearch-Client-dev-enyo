@@ -337,3 +337,13 @@ div.biblesupersearch_dialog {
 .strongs_inline .item .strongs_body {
     text-align: justify;
 }
+
+.disambiguation .item {
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.disambiguation .item:not(:first-child) {
+    margin-top: 20px;
+}

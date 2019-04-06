@@ -5,7 +5,6 @@ module.exports = kind({
     name: 'StrongsView',
     components: [],
 
-    // Duplicated from strongs hover - hover dialog needs to use this kind!
     _addStrongs: function(item) {
         var head = '';
         var text = '';

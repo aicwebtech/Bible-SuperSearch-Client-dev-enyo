@@ -7,6 +7,7 @@ var FormController = require('./FormController');
 var GridView = require('../results/GridView');
 var ErrorView = require('../results/ErrorView');
 var StrongsView = require('../results/StrongsView');
+var DisambigView = require('../results/DisambiguationView');
 var ResultsController = require('../results/ResultsController');
 var utils = require('enyo/utils');
 // var FormatButtons = require('./FormatButtonsBase');
@@ -45,6 +46,7 @@ module.exports = kind({
         ]},        
         {name: 'ErrorsContainer', showing: false, kind: ErrorView},
         {name: 'StrongsContainer', showing: false, kind: StrongsView, classes: 'strongs_inline'},
+        {name: 'DisambigContainer', showing: false, kind: DisambigView, classes: 'disambiguation'},
         { name: 'ResultsContainer', components: [
             {name: 'ResultsController', kind: ResultsController, view: null},
         ]}
@@ -127,10 +129,12 @@ module.exports = kind({
         this.$.ResultsContainer.set('showing', true);
     },
     handleResponseExtra: function(results) {
+        this.$.StrongsContainer.set('showing', false);
+        this.$.DisambigContainer.set('showing', false);
+
         if(Array.isArray(results.strongs)) {
             var hasStrongs = false;
             this.$.StrongsContainer.destroyClientControls();
-            this.$.StrongsContainer.set('showing', false);
 
             results.strongs.forEach(function(item) {
                 hasStrongs = true;
@@ -140,6 +144,21 @@ module.exports = kind({
             if(hasStrongs) {
                 this.$.StrongsContainer.set('showing', true);
                 this.$.StrongsContainer.render();
+            }
+        }        
+
+        if(Array.isArray(results.disambiguation)) {
+            var hasStrongs = false;
+            this.$.DisambigContainer.destroyClientControls();
+
+            results.disambiguation.forEach(function(item) {
+                hasStrongs = true;
+                this.$.DisambigContainer._addItem(item)
+            }, this);
+
+            if(hasStrongs) {
+                this.$.DisambigContainer.set('showing', true);
+                this.$.DisambigContainer.render();
             }
         }
     },

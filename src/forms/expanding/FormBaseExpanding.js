@@ -51,6 +51,7 @@ module.exports = kind({
         }
     },
     toggleExpanded: function() {
+        this.app.debug && this.log();
         this.set('expanded', !this.get('expanded'));
     },
     handleEndAnimation: function(inSender, inEvent) {
@@ -80,6 +81,7 @@ module.exports = kind({
         this.inherited(arguments);
 
         if(value && value != '') {
+            this.app.debug && this.log('expanding because of reference change', value);
             this.set('expanded', true);
             this.$.PassageContainer && this.$.PassageContainer.set('showing', true);
         }
@@ -98,11 +100,13 @@ module.exports = kind({
                 }
 
                 if(valIndex != 0) {
+                    this.app.debug && this.log('expanding because of field', inEvent.field);
                     this.set('expanded', true);
                 }
             }
 
             if(inEvent.field == 'bible' && Array.isArray(inEvent.value) && inEvent.value.length > this.parallelBibleSettings.contracted.parallelLimit) {
+                this.app.debug && this.log('expanding because of parallel bibles');
                 // this.log('Bible field changed', inEvent);
                 this.set('expanded', true);
                 this.log('bible parallelLimit', this.$.bible.get('parallelLimit'));
