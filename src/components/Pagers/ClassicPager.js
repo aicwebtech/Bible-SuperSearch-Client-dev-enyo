@@ -74,7 +74,7 @@ module.exports = kind({
                 classes: 'std_link',
                 content: this.firstPageText,
                 allowHtml: true,
-                href: '#/c/' + cache + '/1',
+                href: (page == 1) ? null : '#/c/' + cache + '/1',
                 title: 'First Page'
             });        
         }
@@ -82,7 +82,7 @@ module.exports = kind({
         LinkContainer.createComponent({
             kind: Link,
             classes: 'std_link',
-            href: '#/c/' + cache + '/' + prevPage.toString(),
+            href: (page == 1) ? null : '#/c/' + cache + '/' + prevPage.toString(),
             content: this.prevPageText,
             allowHtml: true,
             title: 'Previous Page'
@@ -118,7 +118,7 @@ module.exports = kind({
         LinkContainer.createComponent({
             classes: 'std_link',
             kind: Link,
-            href: '#/c/' + cache + '/' + nextPage.toString(),
+            href: (page == this.lastPage) ? null : '#/c/' + cache + '/' + nextPage.toString(),
             content: this.nextPageText,
             allowHtml: true,
             title: 'Next Page'
@@ -130,7 +130,7 @@ module.exports = kind({
                 kind: Link,
                 allowHtml: true,
                 content: this.lastPageText,
-                href: '#/c/' + cache + '/' + this.lastPage.toString(),
+                href: (page == this.lastPage) ? null : '#/c/' + cache + '/' + this.lastPage.toString(),
                 title: 'Last Page'
             });
         }
