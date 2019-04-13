@@ -201,6 +201,20 @@
     text-decoration: none;
 }*/
 
+.interface_expanding .biblesupersearch_pager a {
+    margin: 0 2px;
+    /*font-weight: bold;*/
+}
+
+.interface_expanding .biblesupersearch_pager a.current_page {
+    color: #369336;
+    font-weight: bold;
+}
+
+.interface_expanding .biblesupersearch_pager a.disabled {
+    color: #676767;
+}
+
 /*.interface_expanding .biblesupersearch_pager a:after, .interface_expanding .biblesupersearch_pager a:before {
     display:none;
 }*/

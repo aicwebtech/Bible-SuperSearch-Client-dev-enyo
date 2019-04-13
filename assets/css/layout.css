@@ -256,6 +256,10 @@ div.biblesupersearch_dialog {
     content: ' ';
 }
 
+.biblesupersearch_pager a.current_page:hover, .biblesupersearch_pager a.disabled:hover {
+    background-color: transparent;
+}
+
 .biblesupersearch_main .resp_input_200 { max-width: 200px; }
 .biblesupersearch_main .resp_input_210 { max-width: 210px; }
 .biblesupersearch_main .resp_input_150 { max-width: 150px; }

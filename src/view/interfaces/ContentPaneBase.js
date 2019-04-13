@@ -105,6 +105,7 @@ module.exports = kind({
         this.$.FormController && this.$.FormController.render();
     },
     handleFormResponse: function(inSender, inEvent) {
+        this.hideExtra();
         this.$.ErrorsContainer.set('showing', false);
         this.$.FormatButtonContainer.set('showing', true);
 
@@ -129,9 +130,6 @@ module.exports = kind({
         this.$.ResultsContainer.set('showing', true);
     },
     handleResponseExtra: function(results) {
-        this.$.StrongsContainer.set('showing', false);
-        this.$.DisambigContainer.set('showing', false);
-
         if(Array.isArray(results.strongs)) {
             var hasStrongs = false;
             this.$.StrongsContainer.destroyClientControls();
@@ -162,9 +160,12 @@ module.exports = kind({
             }
         }
     },
+    hideExtra: function() {
+        this.$.StrongsContainer.set('showing', false);
+        this.$.DisambigContainer.set('showing', false);
+    },
     handleFormError: function(inSender, inEvent) {
-        this.log('error');
-        this.log(inEvent);
+        this.hideExtra();
 
         if(this.app.configs.formatButtonsToggle) {
             this.$.FormatButtonContainer.set('showing', false);

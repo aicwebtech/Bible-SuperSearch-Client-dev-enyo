@@ -117,6 +117,7 @@ var biblesupersearch_config_options = {
     // URL of Bible SuperSearch API         (string)
     //      Note:  You can install the Bible SuperSearch API on your own server
     //             If you do, you will need to change this
+    //             Default: https://api.biblesupersearch.com
     
     "apiUrl": "https://api.biblesupersearch.com",
 
