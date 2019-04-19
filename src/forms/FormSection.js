@@ -10,9 +10,18 @@ module.exports = kind({
         if(!this.parent.subForm) {
             var styles = this.app.configs.formStyles || {};
 
-            Object.entries(styles).forEach(function(item) {
-                this.applyStyle(item[0], item[1]);
-            }, this);
+            if(Object.entries) {            
+                Object.entries(styles).forEach(function(item) {
+                    this.applyStyle(item[0], item[1]);
+                }, this);
+            }
+            // IE fix, yuck
+            else {
+                Object.keys(styles).forEach(function(key) {
+                    var item = styles[key];
+                    this.applyStyle(item[0], item[1]);
+                }, this);
+            }
         }
     }
 });

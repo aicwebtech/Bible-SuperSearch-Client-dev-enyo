@@ -52,7 +52,7 @@
 }
 
 .interface_minimal_wide .form .single_line_bible button {
-    width: initial; 
+    width: initial !important; 
     margin-left: 15px;
     text-align: center;
 }

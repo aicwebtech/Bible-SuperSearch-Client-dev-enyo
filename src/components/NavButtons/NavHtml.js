@@ -10,11 +10,11 @@ module.exports = kind({
     nav: {}, // navigation data
     bibles: [],
 
-    prevBookText: '|&#9664;',
-    prevChapterText: '&#9664;',
-    currentChapterText: '&ndash;',
-    nextChapterText: '&#9654;',
-    nextBookText: '&#9654;|',
+    prevBookText: '|&#9664;&#xFE0E;',
+    prevChapterText: '&#9664;&#xFE0E;',
+    currentChapterText: '&ndash;&#xFE0E;',
+    nextChapterText: '&#9654;&#xFE0E;',
+    nextBookText: '&#9654;&#xFE0E;|',
 
     create: function() {
         this.inherited(arguments);

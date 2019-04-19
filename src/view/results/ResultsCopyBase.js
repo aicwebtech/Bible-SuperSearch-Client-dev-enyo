@@ -10,6 +10,7 @@ module.exports = kind({
     newLine: '<br />',
 
     renderHeader: function() {
+        this.app.debug && this.log();
         this.container = this._createContainer();
         var headerComponents = [];
         var copyComponents = [];
@@ -112,7 +113,7 @@ module.exports = kind({
     },
     _appendBibleComponent: function(content, index) {
         var compName = this._getBibleComponentName(index);
-        this.container.$[compName].appendText(content);    
+        this.container.$[compName] && this.container.$[compName].appendText(content);    
     },
     processAssembleVerse: function(reference, verse) {
         return reference + '  ' + this.processText(verse.text);

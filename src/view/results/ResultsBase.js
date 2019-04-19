@@ -314,10 +314,19 @@ module.exports = kind({
             this.lastHoverX = x;
             this.lastHoverY = y;
             // this.log('inSender', inSender);
-            // this.log('hover inEvent', inEvent);
+            this.app.debug && this.log('hover inEvent', inEvent);
 
-            var mouseX = inEvent.x + window.scrollX; //inEvent.screenX + inEvent.offsetX;
-            var mouseY = inEvent.y + window.scrollY; // + inEvent.offsetY;
+            var mouseX = inEvent.clientX; //inEvent.screenX + inEvent.offsetX;
+            var mouseY = inEvent.clientY; // + inEvent.offsetY;
+
+            if(this.app.clientBrowser == 'IE') {
+                // apparently, do nothing - seems to position correctly?
+            }
+            else {
+                mouseX += window.scrollX;
+                mouseY += window.scrollY;
+            }
+
             var parentWidth = inEvent.target.parentNode.offsetWidth;
             var parentHeight = inEvent.target.parentNode.offsetHeight;
             // var parentHeight = this.hasNode().scrollHeight;
