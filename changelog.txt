@@ -1,0 +1,44 @@
+
+= 4.0.0 =
+* Added: Expanding form
+* Added: Inline Strong's Definitions - Displayed at top of search results when search includes Strong's number(s).
+* Added: Disambiguation links - For when using the single request field but requesting something that could be either a keyword or a book of the Bible.
+* Added: More config options and expanded config page into tabs.
+* Added: Official release of our API code.
+* Bugfix: Fixed positioning of strongs dialog when inclosed in a positiioned element
+
+= 2.7.7 =
+* Bugfix: Fixed another issue with destination page options list
+
+= 2.7.6 =
+* Bugfix: Fixed a couple issues with destination page options list
+
+= 2.7.5 =
+* Bugfix: Fixed Internet Explorer issue causing passage field to be ignored
+* Added Destination Page option
+
+= 2.7.2 =
+* Gutenberg editor support (quick fix)
+
+= 2.7.1 =
+* Bugfix: Fixed issues with Strong's dialogs causing breakage in Internet Explorer and Edge
+
+= 2.7.0 =
+* Added Strong's Numbers with definitions (KJV)
+* Added support for Italicised words (KJV / RVG)
+* Added support for Words of Christ in Red (KJV / RVG)
+* Misc bugfixes
+
+= 2.6.5 =
+* Adding several new interfaces
+* Misc bug fixes and formatting fixes
+
+= 2.6.2 =
+* Bugfix: checking custom API URL to make sure it's valid
+
+= 2.6.1 =
+* Bugfix: Allowing for cURL or allow_url_fopen for loading statics on options page
+
+= 2.6.0 =
+* Initial release of official WordPress plugin.
+* Complete rebuild of legacy Bible SuperSearch (version 2.2.x) code.

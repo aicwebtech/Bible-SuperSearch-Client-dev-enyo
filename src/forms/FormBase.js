@@ -95,11 +95,13 @@ module.exports = kind({
             return;
         }
 
-        if(!this.app.get('preventRedirect') && typeof this.app.configs.destinationUrl != 'undefined' && this.app.get('baseUrl') != this.app.configs.destinationUrl) {
+        var destUrl = this.app.configs.destinationUrl || null;
+
+        if(!this.app.get('preventRedirect') && destUrl && this.app.get('baseUrl') != destUrl) {
             formData.redirected = true;
             localStorage.setItem('BibleSuperSearchFormData', JSON.stringify(formData));
             // this.log('LocalStorage form data', localStorage.getItem('BibleSuperSearchFormData'));
-            window.location = this.app.configs.destinationUrl;
+            window.location = destUrl;
             return;
         }
 

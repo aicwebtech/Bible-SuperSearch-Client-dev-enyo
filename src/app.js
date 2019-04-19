@@ -35,7 +35,7 @@ var App = Application.kind({
     renderOnStart: false,       // We need to load configs first
     rootDir: null,
     testing: false,             // Indicates unit tests are running
-    debug: true,
+    debug: false,
     statics: {},
     maximumBiblesDisplayed: 8,  // The absolute maximum number of parallel bibles that can be possibly displayed
     bibleDisplayLimit: 8,       // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
@@ -117,7 +117,6 @@ var App = Application.kind({
 
         if(typeof biblesupersearch_config_options == 'object') {
             utils.mixin(this.configs, biblesupersearch_config_options);
-            // this.log('configs - preloaded');
             this.handleConfigFinal();
             return;
         }
@@ -169,21 +168,21 @@ var App = Application.kind({
 
         if(this.configs.formatButtons && this.configs.formatButtons != 'default') {
             if(FormatButtons[this.configs.formatButtons]) {
-                this.log('FormatButtons found');
+                // this.log('FormatButtons found');
                 this.formatButtonsView = FormatButtons[this.configs.formatButtons];
             }
         }        
 
         if(this.configs.navigationButtons && this.configs.navigationButtons != 'default') {
             if(NavigationButtons[this.configs.navigationButtons]) {
-                this.log('navigationButtons found');
+                // this.log('navigationButtons found');
                 this.navigationButtonsView = NavigationButtons[this.configs.navigationButtons];
             }
         }        
 
         if(this.configs.pager && this.configs.pager != 'default') {
             if(Pagers[this.configs.pager]) {
-                this.log('pager found');
+                // this.log('pager found');
                 this.pagerView = Pagers[this.configs.pager];
             }
         }
@@ -221,14 +220,11 @@ var App = Application.kind({
         ajax.go();
         ajax.response(this, function(inSender, inResponse) {
             // this.set('ajaxLoading', false);
-            this.log(inResponse);
             this.test();
-            this.log('statics loaded');
             this.set('statics', inResponse.results);
             this.waterfall('onStaticsLoaded');
 
             if(view && view != null) {
-                this.log('view set');
                 this.set('view', view);
             }
             

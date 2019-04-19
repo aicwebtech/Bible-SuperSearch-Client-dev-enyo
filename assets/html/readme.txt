@@ -1,5 +1,5 @@
 Bible SuperSearch Client (Generic Edition)
-Copyright (C) 2006-2018  Luke Mounsey
+Copyright (C) 2006-2019  Luke Mounsey
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -11,15 +11,30 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
+You should have received a copy of the GNU General Public License (GPL)
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-This is the official client for the Bible SuperSearch API.
+This software is licensed for NON-COMMERCIAL use only.  
+
+Commercial use will require a commercial license.  Commercial use includes:
+
+* Putting the SOFTWARE behind a paywall
+* Charging others to access or use the SOFTWARE
+* Selling the SOFTWARE for any amount, whether by itself or bundled with other software
+* Incorporating into third party software which is NOT compatible with the GNU GPL (See https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses)
+* Any other use which would violate the GNU GPL
+
+Please see full license at https://www.biblesupersearch.com/license/
+
+OVERVIEW
+This is the official user interface client for the Bible SuperSearch API.
 
 By installing and using this software, you agree to the API Terms of Service: https://api.biblesupersearch.com/documentation#tab_tos.
 API Privacy Policy: https://api.biblesupersearch.com/documentation#tab_privacy
 API full documentation: https://api.biblesupersearch.com/documentation
+
+Alternatively, you can install the Bible SuperSearch API on your website.
 
 REQUIREMENTS
 1. A functioning website
