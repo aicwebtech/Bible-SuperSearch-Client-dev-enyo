@@ -12,6 +12,10 @@ div.biblesupersearch_main {
     overflow-x: hidden;
 }
 
+.biblesupersearch_render_table, .biblesupersearch_render_table td table {
+    font-size: inherit !important;
+}
+
 div.biblesupersearch_loading_inline {
     background-color: transparent;
 }
@@ -215,6 +219,10 @@ div.biblesupersearch_dialog {
 .biblesupersearch_nav_buttons {
     margin: 15px auto 15px;
     text-align: center;
+}
+
+.biblesupersearch_render_table .html_nav_buttons {
+    font-family:'Helvetica Neue','Nimbus Sans L',Arial,sans-serif;
 }
 
 .biblesupersearch_nav_buttons img {

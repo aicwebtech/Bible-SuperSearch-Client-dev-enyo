@@ -104,10 +104,14 @@ module.exports = kind({
             falseTitle: 'Paragraph Display',
             trueComponent: {
                 components: [
-                    {tag: 'span', content: '- &mdash;-&ndash;', allowHtml: true},
-                    {tag: 'span', content: '- &mdash;&ndash;-', allowHtml: true},
-                    {tag: 'span', content: '- -&ndash;&mdash;', allowHtml: true},
-                    {tag: 'span', content: '- &ndash;&mdash;-', allowHtml: true}
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true}
+                    // {tag: 'span', content: '- &mdash;-&ndash;', allowHtml: true},
+                    // {tag: 'span', content: '- &mdash;&ndash;-', allowHtml: true},
+                    // {tag: 'span', content: '- -&ndash;&mdash;', allowHtml: true},
+                    // {tag: 'span', content: '- &ndash;&mdash;-', allowHtml: true}
                 ]
             },
             falseComponent: {
@@ -130,10 +134,14 @@ module.exports = kind({
             },
             falseComponent: {
                 components: [
-                    {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
-                    {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
-                    {tag: 'span', content: '- -&ndash;&mdash;&ndash;', allowHtml: true},
-                    {tag: 'span', content: '- &ndash;&ndash;&mdash;-', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    // {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
+                    // {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
+                    // {tag: 'span', content: '- -&ndash;&mdash;&ndash;', allowHtml: true},
+                    // {tag: 'span', content: '- &ndash;&ndash;&mdash;-', allowHtml: true},
                     {tag: 'span', content: ''},
                     {tag: 'span', content: ''},
                     {tag: 'span', content: ''}
