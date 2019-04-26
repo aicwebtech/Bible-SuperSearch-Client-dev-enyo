@@ -5,20 +5,42 @@
         <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
         <title>Bible SuperSearch User Guide</title>
         <meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
-        <meta name="CHANGEDBY" content="Luke Mounsey">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
 
         <style type="text/css">
             body {
                 margin-left: 1in;
                 margin-right: 1in;
+                /*width: 100%;*/
+                /*box-sizing: border-box;*/
+                /*overflow-x: auto;*/
+                overflow-x: hidden;
+            }
+
+            html {
+                /*width: 60vw;*/
+                /*box-sizing: border-box;*/
             }
             
-            <!--
+            * {
+                /*box-sizing: inherit;*/
+            }
+
+
+            .collapse-columns .col2 {
+                display: inline-block;
+                float: left;
+            }
+
+            .collapse-columns .clear {
+                clear: both;
+            }
+/*            <!--
             @__page { size: 8.5in 11in; margin: 0.79in }
             TD P { margin-bottom: 0in }
             TH P {  font-style: italic }
             P { margin-bottom: 0.08in }
-            -->
+            -->*/
 
             .c {
                 text-align: center;
@@ -27,6 +49,10 @@
             .cd {
                 margin-left: auto;
                 margin-right: auto;
+            }
+
+            .label {
+                text-align: right;
             }
 
             small.s4 {
@@ -48,6 +74,50 @@
                     margin-right: 0;
                 }
             }
+        
+        @media only screen and (max-width: 1000px) {
+
+            body {
+                margin: 0 6%;
+            }            
+
+        }
+        
+        @media only screen and (max-width: 650px) {
+            body {
+                margin: 0 3%;
+            }
+
+            .collapsing-table {
+                border: none;
+                /*table-cell-spacing: 0;*/
+            }
+
+            .collapsing-table tr td {
+                display:block;
+                /*background-color: green;*/
+                text-align: justify;
+                border: none;
+            }
+
+            .collapsing-table tr td p {
+                /*display: inline;*/
+            }
+
+            .label {
+                text-align: left;
+            }
+
+            p.label {
+                display: inline;
+            }
+
+            .hide-small {
+                display: none;
+            }
+        }
+
+
         </style>
     </head>
 <body>
@@ -83,18 +153,14 @@
 
 <p align="justify">
     <font size="3">
-        Bible SuperSearch is a free, easy-to-use, web based Bible search and
-        passage retrieval program. It includes a powerful search engine,
-        which can search the entire Bible, or at your option, search only the
-        requested book(s), chapter(s) or passage reference(s). Bible
-        SuperSearch can also look up multiple passage references at once,
-        including complex references. 
+        Bible SuperSearch is a powerful web-based Bible search engine. &nbsp; It can handle anything from simple keyword searches to complex boolean and regular expressions.  
+        &nbsp; It can also look up long, complex lists of Bible references.
     </font>
 </p>
 
 <p align="justify">
     <font size="3">
-            Bible SuperSearch is open source software, and is freely available. &nbsp; It can be run entirely on your website. &nbsp; If
+            Bible SuperSearch is open source software, and is readily available. &nbsp; It can be run entirely on your website. &nbsp; If
             you would like to install Bible SuperSearch on your website, please check out the official Bible SuperSearch website at
     </font>
 
@@ -109,7 +175,7 @@
 <p style=" " align="justify">
 <font><font style="font-size: 16pt;" size="4"><b><a name="top"></a>Table of Contents</b></font></font></p>
 
-<table class='cd table-of-contents'>
+<table class='cd table-of-contents collapsing-table'>
     <tr>
         <td>
             <p style=""><a href="#search"><font size="3"><b>Searches</b></font></a></p>
@@ -200,14 +266,12 @@
     </font>
 </p>
 
-<table style="text-align: left; margin-left: auto; margin-right: auto; max-width: 800px;" border="1" cellpadding="2" cellspacing="0">
-
-    <cola width="140"> <cola width="428"> 
+<table style="text-align: left; margin-left: auto; margin-right: auto; max-width: 800px; width:100%" border="1" cellpadding="2" cellspacing="0" class='collapsing-table'>
     <tbody>
 
     <tr valign="top">
         <td style=' width: 30%; max-width: 200px;'>
-            <p style="margin-left: 0px;" align="right">
+            <p style="margin-left: 0px;" class='label'>
                 <font size="3"><u>All Words</u></font>
             </p>
         </td>
@@ -219,7 +283,7 @@
     </tr>
     <tr valign="top">
         <td>
-            <p align="right"><font><font size="3"><u>Any Word</u></font></font></p>
+            <p class='label'><font><font size="3"><u>Any Word</u></font></font></p>
         </td>
         <td>
             <div style="text-align: justify;"> <font><font size="3">Searches for verses containing ANY of the keywords entered</font></font></div>
@@ -227,15 +291,15 @@
     </tr>
     <tr valign="top">
         <td>
-            <p align="right"><font><font size="3"><u>Exact Phrase</u></font></font></p>
+            <p class='label'><font><font size="3"><u>Exact Phrase</u></font></font></p>
         </td>
         <td>
-            <div style="text-align: justify;"><font size="3">Searches for.verses containing the exact phrase entered.</font></div>
+            <div style="text-align: justify;"><font size="3">Searches for verses containing the exact phrase entered.</font></div>
         </td>
     </tr>
     <tr valign="top">
         <td>
-            <p style="margin-left: 0px;" align="right">
+            <p style="margin-left: 0px;" class='label'>
                 <font size="3"><u>One Word</u></font>
             </p>
         </td>
@@ -247,7 +311,7 @@
     </tr>    
     <tr valign="top">
         <td>
-            <p style="margin-left: 0px;" align="right">
+            <p style="margin-left: 0px;" class='label'>
                 <font size="3"><u>Two or More Words</u></font>
             </p>
         </td>
@@ -259,8 +323,7 @@
     </tr>
     <tr valign="top">
         <td>
-        <p align="right"><font><font size="3"><u>Words
-        Within 5 Verses</u></font></font></p>
+        <p class='label'><font><font size="3"><u>Words Within 5 Verses</u></font></font></p>
         </td>
         <td>
         <div style="text-align: justify;"><font size="3">Finds all words,
@@ -269,11 +332,11 @@
         </td>
     </tr>
     <tr>
-        <td style="text-align: right;"><span style="text-decoration: underline;">Words within Same Chapter</span></td>
+        <td class='label'><span style="text-decoration: underline;">Words within Same Chapter</span></td>
         <td style="vertical-align: top;">Finds all the words, within the same chapter.</td>
     </tr>
     <tr>
-        <td style="text-align: right; vertical-align: top;"><span style="text-decoration: underline;">Regular Expression</span></td>
+        <td class='label'><span style="text-decoration: underline;">Regular Expression</span></td>
         <td>
         <div style="text-align: justify;">Searches for the
         specified regular expression. See <a href="http://www.regular-expressions.info" target="_blank">http://www.regular-expressions.info</a>
@@ -282,9 +345,9 @@
     </tr>
     <tr valign="top">
         <td width="160">
-            <p align="right"><font><font size="3"><u>Boolean Expression</u></font></font></p>
+            <p class='label'><font><font size="3"><u>Boolean Expression</u></font></font></p>
         </td>
-        <td style="text-align: justify;" width="428">
+        <td style="text-align: justify;">
             <p>
                 <font size="3">
                     Boolean expression search with parentheses support. &nbsp;Allows you to specify advanced search queries using operators and parentheses. &nbsp;See <a href="#boolean">below</a> for details.
@@ -371,25 +434,32 @@ You may enter either the full
 name of the book, or any common abbreviation of it. You may also
 request whole chapters and books.</font></font></p>
 
-<table border="0" cellpadding="4" cellspacing="0" width="576">
-    <col width="280"> <col width="280"> <thead>
+<div class='collapse-columns'>
+    <div class='col2'>
+        Example: Romans 8:2<br>
+        Example: Rom 8:2<br>
+        Example: Rom<b>.</b> 8:2 (with period)<br>
+        Example: Ro. 8:2<br>
+        Example: Jas 1:8 (James 1:8)
+    </div>
+    <div class='col2'>
+        Example: James 3<br>
+        Example: 2 Tim 2<br>
+        Example: 2Tim<br>
+        Example: Rev
+    </div>
+    <div class='clear'></div>
+</div>
+
+<table border="0" cellpadding="4" cellspacing="0">
+    <thead>
     <tr valign="top">
-        <td width="280">
+        <td width="28%">
             <p>
-                Example: Romans 8:2<br>
-                Example: Rom 8:2<br>
-                Example: Rom<b>.</b>
-                8:2 (with period)<br>
-                Example: Ro. 8:2<br>
-                Example: Jas 1:8 (James 1:8)
             </p>
         </td>
-        <td width="280">
+        <td width="28%">
             <p>
-                Example: James 3<br>
-                Example: 2 Tim 2<br>
-                Example: 2Tim<br>
-                Example: Rev
             </p>
         </td>
     </tr>
@@ -417,18 +487,18 @@ Bibles in parallel format.<br>
 
 <br>
 
-<table border="0" cellpadding="0" cellspacing="0" width="576">
+<table border="0" cellpadding="0" cellspacing="0" class='collapsing-table'>
     <col width="288"> <col width="288"> <tbody>
     <tr valign="top">
-        <td width="288">Example: Jas 1:1,2, 3</td>
-        <td width="288">Example: Rom 1:2, 5:8</td>
+        <td awidth="288">Example: Jas 1:1,2, 3</td>
+        <td awidth="288">Example: Rom 1:2, 5:8</td>
     </tr>
     <tr valign="top">
-        <td width="288">Example: Matt 1:1-3</td>
-        <td width="288">Example: Rom 3:23, 6:23, 5:8, 10:9,13;</td>
+        <td awidth="288">Example: Matt 1:1-3</td>
+        <td awidth="288">Example: Rom 3:23, 6:23, 5:8, 10:9,13;</td>
     </tr>
     <tr>
-        <td colspan="2" valign="top" width="576">Example: Jn 1:1-3, 5,6, 8-10 (Chapter 1, verses 1-3, 5 and 6, and 8-10)</td>
+        <td colspan="2" valign="top" >Example: Jn 1:1-3, 5,6, 8-10 (Chapter 1, verses 1-3, 5 and 6, and 8-10)</td>
     </tr>
     </tbody>
 </table>
@@ -582,92 +652,93 @@ must enter the EXACT WORD OR PHRASE as listed below.)</font></font></p>
 
 </p>
 
-<table style="text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="2" cellspacing="0" width="582">
-    <col width="161"> <col width="101"> <col width="137"> <col width="160"> <tbody>
-    <tr>
-        <th class='c' width="161">Name</td>
-        <th class='c' width="101">Alias 1</td>
-        <th class='c' width="137">Alias 2</td>
-        <th class='c' width="160">Reference</td>
-    </tr>
-    <tr>
-        <td>Old Testament</td>
-        <td>OT</td>
-        <td>Old</td>
-        <td>Genesis - Malachi</td>
-    </tr>
-    <tr>
-        <td>New Testament</td>
-        <td>NT</td>
-        <td>New</td>
-        <td>Matthew - Revelation</td>
-    </tr>
-    <tr>
-        <td>Law</td>
-        <td>OT Law</td>
-        <td>Torah</td>
-        <td>Genesis - Deuteronomy</td>
-    </tr>
-    <tr>
-        <td>History</td>
-        <td>History</td>
-        <td></td>
-        <td>Joshua - Esther</td>
-    </tr>
-    <tr>
-        <td>Wisdom &amp; Poetry</td>
-        <td>Wisdom</td>
-        <td>Poetry</td>
-        <td>Job - Song of Solomon</td>
-    </tr>
-    <tr>
-        <td>Prophets</td>
-        <td>Prophets</td>
-        <td>All Prophets</td>
-        <td>Isaiah - Malachi</td>
-    </tr>
-    <tr>
-        <td>Major Prophets</td>
-        <td>Major</td>
-        <td>Major_Prophets</td>
-        <td>Isaiah - Daniel</td>
-    </tr>
-    <tr>
-        <td>Minor Prophets</td>
-        <td>Minor</td>
-        <td>Minor_Prophets</td>
-        <td>Hosea - Malachi</td>
-    </tr>
-    <tr>
-        <td>Gospels</td>
-        <td>Gospel</td>
-        <td>Passion</td>
-        <td>Matthew - John</td>
-    </tr>
-    <tr>
-        <td>Epistles</td>
-        <td>Doctrine</td>
-        <td>NT Epistles</td>
-        <td>Romans - Jude</td>
-    </tr>
-    <tr>
-        <td>Pauline Epistles</td>
-        <td>Paul</td>
-        <td>Pauline</td>
-        <td>Romans - Hebrews</td>
-    </tr>
-    <tr>
-        <td>General Epistles</td>
-        <td>General</td>
-        <td>General_Epistles</td>
-        <td>James - Jude</td>
-    </tr>
-    <tr>
-        <td>End Times Prophecy</td>
-        <td>Last Days</td>
-        <td>End</td>
-        <td>Rev; Daniel; Matt 24</td>
-    </tr>
+<table style="text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="2" cellspacing="0">
+    <col width="161"> <col width="101"> <col width="137"> <col width="160"> 
+    <tbody>
+        <tr>
+            <th class='c' awidth="161">Name</td>
+            <th class='c' awidth="101">Alias 1</td>
+            <th class='c hide-small' awidth="137">Alias 2</td>
+            <th class='c' awidth="160">Reference</td>
+        </tr>
+        <tr>
+            <td>Old Testament</td>
+            <td>OT</td>
+            <td class='hide-small'>Old</td>
+            <td>Genesis - Malachi</td>
+        </tr>
+        <tr>
+            <td>New Testament</td>
+            <td>NT</td>
+            <td class='hide-small'>New</td>
+            <td>Matthew - Revelation</td>
+        </tr>
+        <tr>
+            <td>Law</td>
+            <td>OT Law</td>
+            <td class='hide-small'>Torah</td>
+            <td>Genesis - Deuteronomy</td>
+        </tr>
+        <tr>
+            <td>History</td>
+            <td>History</td>
+            <td class='hide-small'></td>
+            <td>Joshua - Esther</td>
+        </tr>
+        <tr>
+            <td>Wisdom &amp; Poetry</td>
+            <td>Wisdom</td>
+            <td class='hide-small'>Poetry</td>
+            <td>Job - Song of Solomon</td>
+        </tr>
+        <tr>
+            <td>Prophets</td>
+            <td>Prophets</td>
+            <td class='hide-small'>All Prophets</td>
+            <td>Isaiah - Malachi</td>
+        </tr>
+        <tr>
+            <td>Major Prophets</td>
+            <td>Major</td>
+            <td class='hide-small'>Major_Prophets</td>
+            <td>Isaiah - Daniel</td>
+        </tr>
+        <tr>
+            <td>Minor Prophets</td>
+            <td>Minor</td>
+            <td class='hide-small'>Minor_Prophets</td>
+            <td>Hosea - Malachi</td>
+        </tr>
+        <tr>
+            <td>Gospels</td>
+            <td>Gospel</td>
+            <td class='hide-small'>Passion</td>
+            <td>Matthew - John</td>
+        </tr>
+        <tr>
+            <td>Epistles</td>
+            <td>Doctrine</td>
+            <td class='hide-small'>NT Epistles</td>
+            <td>Romans - Jude</td>
+        </tr>
+        <tr>
+            <td>Pauline Epistles</td>
+            <td>Paul</td>
+            <td class='hide-small'>Pauline</td>
+            <td>Romans - Hebrews</td>
+        </tr>
+        <tr>
+            <td>General Epistles</td>
+            <td>General</td>
+            <td class='hide-small'>General_Epistles</td>
+            <td>James - Jude</td>
+        </tr>
+        <tr>
+            <td>End Times Prophecy</td>
+            <td>Last Days</td>
+            <td class='hide-small'>End</td>
+            <td>Rev; Daniel; Matt 24</td>
+        </tr>
     </tbody>
 </table>
 
@@ -758,9 +829,7 @@ is defined as a word or phrase that is part of the search query.</span></font></
 
 <li>
 
-<p><font><font size="3">AND
-&nbsp;&ndash;
-returns verses with both words</font></font></p>
+<font><font size="3">AND&nbsp;&ndash; returns verses with both words</font></font>
 
 </li>
 
@@ -842,9 +911,7 @@ Jesus' </font></font>
 </p>
 
 <p>
-<font><font size="3"> Returns
-verses with 'Jesus' and
-'Lord or 'Jesus' and 'Christ' or 'Lord' and 'Christ' and 'Jesus'</font></font></p>
+<font><font size="3"> Returnsnverses with 'Jesus' and 'Lord or 'Jesus' and 'Christ' or 'Lord' and 'Christ' and 'Jesus'</font></font></p>
 
 <p>
 <font><font size="3">More
@@ -891,7 +958,7 @@ these can be used in place of the operator, for the same results.</font></font><
 <p><br /></p>
 
 <center>
-<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width='50%'>
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" awidth='50%'>
     <thead> 
     <tr valign="top">
         <th width="20%">
@@ -961,7 +1028,7 @@ term 2.</font></font></p>
 <p>Note: due to system limitation, the PROX() operator may not be enclosed within parentheses or brackets.</p>
 
 <p>
-    For a detailed description of Boolean searches, please visit this link: <a href="http://www.internettutorials.net/boolean.html">http://www.internettutorials.net/boolean.html</a>
+    For a detailed description of Boolean searches, please visit this link: <a target=”_blank” href="http://www.google.com/search?q=boolean+search">Boolean search</a>
 </p>
 
 <p align="justify">
@@ -983,28 +1050,28 @@ advanced search gives these additional features:</font></font></p>
 <p align="left"><font><font size="3">Find: </font></font>
 </p>
 
-<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" width="576" style='margin-left: auto; margin-right: auto'>
-    <col width="174"> <col width="384"> 
+<table border="1" bordercolor="#000000" cellpadding="4" cellspacing="0" style='margin-left: auto; margin-right: auto; max-width: 800px' class='collapsing-table'>
+    <!-- <col width="174"> <col width="384">  -->
     <tbody>
     <tr valign="top">
-        <td width="174">All of these words</td>
-        <td width="384">Verses containing ALL the words entered.</td>
+        <td class='label'>All of these words</td>
+        <td>Verses containing ALL the words entered.</td>
     </tr>
     <tr valign="top">
-        <td width="174">Any of these words</td>
-        <td width="384">Verses containing ANY the words entered.</td>
+        <td class='label'>Any of these words</td>
+        <td>Verses containing ANY the words entered.</td>
     </tr>
     <tr valign="top">
-        <td width="174">Only one of these words</td>
-        <td width="384">Verses with exactly ONE of the words entered.</td>
+        <td class='label'>Only one of these words</td>
+        <td>Verses with exactly ONE of the words entered.</td>
     </tr>
     <tr valign="top">
-        <td width="174">The exact phrase</td>
-        <td width="384">Verses containing the exact phrase entered.</td>
+        <td class='label'>The exact phrase</td>
+        <td>Verses containing the exact phrase entered.</td>
     </tr>
     <tr valign="top">
-        <td width="174">None of these words</td>
-        <td width="384">Verses containing NONE of the words entered.</td>
+        <td class='label'>None of these words</td>
+        <td>Verses containing NONE of the words entered.</td>
     </tr>
     </tbody>
 </table>

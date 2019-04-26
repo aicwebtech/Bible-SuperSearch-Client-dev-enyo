@@ -168,3 +168,10 @@
     background-color: #dddddd;
     /*background-color: transparent;*/
 }
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    div.copy_toggle span.false {
+        padding-top: 6px;
+        display: inline-block;
+    }
+}
