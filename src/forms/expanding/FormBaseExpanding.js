@@ -109,8 +109,8 @@ module.exports = kind({
                 this.app.debug && this.log('expanding because of parallel bibles');
                 // this.log('Bible field changed', inEvent);
                 this.set('expanded', true);
-                this.log('bible parallelLimit', this.$.bible.get('parallelLimit'));
-                this.log('bible parallelStart', this.$.bible.get('parallelStart'));
+                this.app.debug && this.log('bible parallelLimit', this.$.bible.get('parallelLimit'));
+                this.app.debug && this.log('bible parallelStart', this.$.bible.get('parallelStart'));
                 // this.$.bible.parallelCleanup();
                 this.$.bible.set('value', utils.clone(inEvent.value));
             }

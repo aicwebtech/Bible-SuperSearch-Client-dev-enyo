@@ -47,8 +47,8 @@ module.exports = kind({
         var classes = (this.selectorClasses && typeof this.selectorClasses == 'string') ? this.selectorClasses : '';
         var style = '';
 
-        this.log('parallelNumber', this.parallelNumber);
-        this.log('parallelLimit', this.parallelLimit);
+        this.app.debug && this.log('parallelNumber', this.parallelNumber);
+        this.app.debug && this.log('parallelLimit', this.parallelLimit);
 
         
         if(this.parallelNumber >= this.parallelLimit) {
@@ -108,7 +108,6 @@ module.exports = kind({
         this.set('value', value);
     },
     valueChanged: function(was, is) {
-        // this.log(was, is);
         this.valueUnfiltered = is;
         this.populateValue(is);
     },
@@ -129,8 +128,6 @@ module.exports = kind({
                 value = is[i],
                 isNull = (!value || value == '0') ? true : false;
 
-            // this.log('vib balye', i, p, value, name);
-
             if(isNaN(p)) {
                 // Fix weird IE bug - yuck!
                 this.log('IE NaN error');
@@ -138,19 +135,18 @@ module.exports = kind({
             }
             
             if(!isNull && !this.$[name]) {
-                this.log('adding selector for', value, name);
+                this.app.debug && this.log('adding selector for', value, name);
                 var added = this._addSelectorHelper();
                 selectorAdded = (added) ? true : selectorAdded;
                 
                 if(added) {
                     added.set('value', value); // Why isn't this automatically selecting?
                     added.setSelectedValue(value); 
-                    // this.log('curval', added.get('value'));
                     valueFiltered.push(value);
                 }
             }
             else if(this.$[name]) {
-                this.log('setting single value', value, name);
+                this.app.debug && this.log('setting single value', value, name);
                 this.$[name].set('value', value); // This one IS automatically selecting?
                 valueFiltered.push(value);
             }

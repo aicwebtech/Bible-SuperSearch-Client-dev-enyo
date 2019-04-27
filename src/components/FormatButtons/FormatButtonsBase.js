@@ -22,10 +22,11 @@ module.exports = kind({
     _initAdvancedToggle: function() {
         var advancedView = this.app.getViewProp('FormatButtonsIncludeAdvancedToggle');
 
-        this.log('advancedToggle - CONFIG', this.app.configs.toggleAdvanced, this.app.configs);
-        this.log('advancedToggle - Interface', advancedView, this.app.view.FormatButtonsIncludeAdvancedToggle);
+        this.app.debug && this.log('advancedToggle - CONFIG', this.app.configs.toggleAdvanced, this.app.configs);
+        this.app.debug && this.log('advancedToggle - Interface', advancedView, this.app.view.FormatButtonsIncludeAdvancedToggle);
+        this.app.debug && this.log('advancedToggle - Format Buttons Toggle', this.app.configs.formatButtonsToggle);
 
-        if(!this.includeAdvancedToggle || !advancedView || !this.app.configs.toggleAdvanced) {
+        if(!this.includeAdvancedToggle || !advancedView || !this.app.configs.toggleAdvanced || this.app.configs.formatButtonsToggle) {
             this.$.advanced_toggle && this.$.advanced_toggle.destroy();
         }
     },
@@ -50,8 +51,8 @@ module.exports = kind({
         // this.log(this.app.UserConfig.getAttributes());
     },
     handleHelp: function(inSender, inEvent) {
-        this.log(inSender);
-        this.log(inEvent);
+        // this.app.debug && this.log(inSender);
+        // this.app.debug && this.log(inEvent);
 
         // this.$.HelpDialog && this.$.HelpDialog.set('showing', true);
         // Todo - reformat user guild, redesign help based on context, needs to work on phones, ect

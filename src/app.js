@@ -69,11 +69,11 @@ var App = Application.kind({
 
     create: function() {
         this.inherited(arguments);
-        this.log('defaultConfig', defaultConfig);
         this.configs = defaultConfig;
         this.build = buildConfig;
         this.system = systemConfig;
         this.set('baseTitle', document.title);
+        // this.log('defaultConfig', defaultConfig);
         
         // Older rootDir code, retaining for now
         this.rootDir = (typeof biblesupersearch_root_directory == 'string') ? biblesupersearch_root_directory : '/biblesupersearch';
@@ -168,21 +168,18 @@ var App = Application.kind({
 
         if(this.configs.formatButtons && this.configs.formatButtons != 'default') {
             if(FormatButtons[this.configs.formatButtons]) {
-                // this.log('FormatButtons found');
                 this.formatButtonsView = FormatButtons[this.configs.formatButtons];
             }
         }        
 
         if(this.configs.navigationButtons && this.configs.navigationButtons != 'default') {
             if(NavigationButtons[this.configs.navigationButtons]) {
-                // this.log('navigationButtons found');
                 this.navigationButtonsView = NavigationButtons[this.configs.navigationButtons];
             }
         }        
 
         if(this.configs.pager && this.configs.pager != 'default') {
             if(Pagers[this.configs.pager]) {
-                // this.log('pager found');
                 this.pagerView = Pagers[this.configs.pager];
             }
         }

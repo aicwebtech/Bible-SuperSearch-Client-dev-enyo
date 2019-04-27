@@ -103,6 +103,7 @@ var biblesupersearch_config_options = {
     
     // Include toggling to an 'advanced search' form
     // Some interfaces may force this to false
+    // Also, this is disabled when formatButtonsToggle above is true
     'toggleAdvanced': false,  
     
     // id of target HTML div tag            (string)

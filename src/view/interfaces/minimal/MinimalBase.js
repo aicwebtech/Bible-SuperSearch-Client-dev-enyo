@@ -15,7 +15,6 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
-        this.log();
 
         this.createComponent({
             name: 'Content',

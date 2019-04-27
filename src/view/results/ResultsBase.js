@@ -38,7 +38,8 @@ module.exports = kind({
         onFormResponseSuccess: 'handleFormResponse',
         onFormResponseError: 'handleFormError',
         onmouseover: 'handleHover',
-        onmouseout: 'handleMouseOut'
+        onmouseout: 'handleMouseOut',
+        ontap: 'handleClick'
     },
 
     components: [
@@ -122,7 +123,7 @@ module.exports = kind({
             return;
         }
         
-        this.log('Rendering Results!');
+        this.app.debug && this.log('Rendering Results!');
         this.renderPager(true);
         this.renderHeader();
 
@@ -351,8 +352,10 @@ module.exports = kind({
     handleMouseOut: function(inSender, inEvent) {
         // this.hideHoverDialogs();
     },
+    handleClick: function(inSender, inEvent) {
+        this.hideHoverDialogs();
+    },
     hideHoverDialogs: function() {
-        this.log();
         this.$.StrongsHover.set('showing', false);
     }
 

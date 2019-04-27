@@ -59,6 +59,10 @@ module.exports = kind({
         ajax.error(this, 'handleError');
     },
     handleResponse: function(inSender, inResponse) {
+        if(!this.get('showing')) {
+            return;
+        }
+
         this.$.ContentContainer.destroyClientControls();
         inResponse.results.forEach(utils.bind(this, function(strong) {
             this.strongsCache[strong.number] = strong;

@@ -25,7 +25,6 @@ module.exports = kind({
     },    
     _create: function() {
         this.inherited(arguments);
-        this.log();
         this.$.Form.set('view', this.formView);
         // this.$.Form.render();
     },

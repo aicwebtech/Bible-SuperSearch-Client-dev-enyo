@@ -100,7 +100,7 @@ module.exports = kind({
         if(!this.app.get('preventRedirect') && destUrl && this.app.get('baseUrl') != destUrl) {
             formData.redirected = true;
             localStorage.setItem('BibleSuperSearchFormData', JSON.stringify(formData));
-            // this.log('LocalStorage form data', localStorage.getItem('BibleSuperSearchFormData'));
+            this.app.debug && this.log('LocalStorage form data', localStorage.getItem('BibleSuperSearchFormData'));
             window.location = destUrl;
             return;
         }
@@ -116,7 +116,6 @@ module.exports = kind({
         this.requestPending = true;
         var formData = this.beforeSubmitForm(formData);
         formData = this.processDefaults(formData);
-        // this.log('formData', formData);
         ajax.go(formData); // for GET
         ajax.response(this, 'handleResponse');
         ajax.error(this, 'handleError');
@@ -251,12 +250,8 @@ module.exports = kind({
     // Handles cache change and page change
     // Lots of problems will need to be solved with page / cache change handling so subforms (advanced search) will work correct
     handleCacheChange: function(inSender, inEvent) {
-        // this.log('hashcache', inEvent);
-        // this.log('cur hash', this.get('cacheHash'));
-        // this.log('cur page', this.get('page'));
-
         if(this.subForm) {
-            this.log('subform, returning');
+            this.app.debug && this.log('subform, returning');
             return;
         }
 
@@ -345,13 +340,13 @@ module.exports = kind({
         }
 
         if(!this.$.reference && this.$.request) {
-            this.log('adding special binding: requestToReference');
+            this.app.debug && this.log('adding special binding: requestToReference');
             this.referenceField = 'request';
             // this.bindings.push(this.standardBindings.requestToReference);
         }        
 
         if(!this.$.search && this.$.request) {
-            this.log('adding special binding: requestToSearch');
+            this.app.debug && this.log('adding special binding: requestToSearch');
             this.searchField = 'request';
             // this.bindings.push(this.standardBindings.requestToSearch);
         }

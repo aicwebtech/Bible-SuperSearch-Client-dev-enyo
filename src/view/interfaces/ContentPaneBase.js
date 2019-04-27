@@ -59,7 +59,6 @@ module.exports = kind({
     ],
     bindings: [
         {from: 'app.UserConfig', to: 'uc', transform: function(value, dir) {
-            this.log('results controller user config', value, dir);
             return value;
         }}
     ],
@@ -82,7 +81,7 @@ module.exports = kind({
         // }
     },
     formViewProcess: function(formView) {
-        this.log('formView', formView);
+        this.app.debug && this.log('formView', formView);
 
         if(this.forms && this.forms[formView]) {
             this.$.FormController.set('view', this.forms[formView]);

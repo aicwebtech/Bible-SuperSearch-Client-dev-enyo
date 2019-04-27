@@ -69,7 +69,6 @@ module.exports = kind({
         window.select = this;
 
         if(this.parallelNumber == 0 || this.parallelNumber == 1) {
-            // this.log('setting myself to default');
             this.setSelectedValue(this.app.configs.defaultBible);
             // this.set('value', this.app.configs.defaultBible);
         }
@@ -77,7 +76,7 @@ module.exports = kind({
     applyDefaultValue: function() {
         var value = this.getValue();
 
-        this.log(value);
+        this.app.debug && this.log(value);
 
         if(!value || value == 0) {
             this.resetValue();
@@ -105,7 +104,6 @@ module.exports = kind({
     _lastLang: null,
     valueChanged: function(was, is) {
         this.inherited(arguments);
-        // this.log(was, is);
     },
     setSelectedValue: function(value) {
         var value = value || 0
@@ -132,7 +130,7 @@ module.exports = kind({
             content && option.set('content', content);
         }, this);
 
-        this.log('width', width);
+        // this.app.debug && this.log('width', width);
 
         if(width && width != 0) {
             this.log('applying max-width');
@@ -144,6 +142,5 @@ module.exports = kind({
         var isShort = (this.shortWidthThreshold <= window.innerWidth) ? false : true;
         isShort = (this.alwaysShort) ? true : isShort;
         this.set('isShort', isShort);
-        // this.log('isShort', isShort);
     }
 });

@@ -32,8 +32,6 @@ module.exports = kind({
         }
     },
     ajaxLoadingChanged: function(was, is) {
-        this.log(is);
-
         if(!this.$.LoadingDialog) {
             this.createComponent({
                 name: 'LoadingDialog',

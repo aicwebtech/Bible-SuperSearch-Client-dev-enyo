@@ -37,7 +37,7 @@ module.exports = kind({
     // observers not working?  why? Shouldn't have tu use bindings for this
     bindings: [
         {from: 'app.UserConfig', to: 'uc', transform: function(value, dir) {
-            this.log('results controller user config', value, dir);
+            this.app.debug && this.log('results controller user config', value, dir);
             return value;
         }}
         // {from: 'app.UserConfig.copy', to: 'uc.copy', transform: function(value, dir) {
@@ -64,7 +64,6 @@ module.exports = kind({
         }
 
         this.renderPending = true;
-        this.log();
 
         var paragraph = this.app.UserConfig.get('paragraph'),
             copy = this.app.UserConfig.get('copy'),

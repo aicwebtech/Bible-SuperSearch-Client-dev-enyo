@@ -326,6 +326,12 @@ div.biblesupersearch_dialog {
     padding: 0 50px;
 }
 
+@media screen and (max-width: 400px)  {
+    .strongs_inline {
+        padding: 0 20px;
+    }
+}
+
 .strongs_inline .item:not(:first-child) {
     margin-top: 15px;
 }

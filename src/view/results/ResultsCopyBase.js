@@ -47,12 +47,9 @@ module.exports = kind({
 
     },
     renderSingleVerseSingleBible: function(passage) {
-        this.log();
         this.renderSingleVerseParallelBible(passage);
     },    
     renderSingleVerseParallelBible: function(passage) {
-        this.log();
-
         for(chapter in passage.verse_index) {
             passage.verse_index[chapter].forEach(function(verse) {
                 for(i in this.bibles) {
@@ -72,9 +69,7 @@ module.exports = kind({
             }, this);
         }
     },
-    renderPassageParallelBible: function(passage) {
-        this.log();
-        
+    renderPassageParallelBible: function(passage) {        
         for(i in this.bibles) {
             this._appendBibleComponent(passage.book_name + ' ' + passage.chapter_verse + this.newLine + this.newLine, i);
         }
@@ -105,7 +100,6 @@ module.exports = kind({
         }
     },    
     renderPassageSingleBible: function(passage) {
-        this.log();
         this.renderPassageParallelBible(passage);
     },
     _getBibleComponentName: function(index) {
