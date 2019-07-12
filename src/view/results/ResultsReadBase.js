@@ -220,10 +220,10 @@ module.exports = kind({
     },
     proccessSingleVerseReference: function(passage, verse) {
         var book = this.app.getBook(passage.book_id);
-        var chapterLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, book.name, verse.chapter);
-        var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, book.name, verse.chapter, verse.verse);
+        var chapterLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, passage.book_name, verse.chapter);
+        var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, passage.book_name, verse.chapter, verse.verse);
 
-        var html =  '<a href="' + chapterLink + '" title="Show this Chapter" class="std_link">' + book.name + ' ' + verse.chapter + '</a>:';
+        var html =  '<a href="' + chapterLink + '" title="Show this Chapter" class="std_link">' + passage.book_name + ' ' + verse.chapter + '</a>:';
             html += '<a href="' + contextLink + '" title="Show in Context" class="std_link">' + verse.verse + '</a>';
 
         return html;
