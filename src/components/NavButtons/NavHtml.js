@@ -33,32 +33,32 @@ module.exports = kind({
 
         if(typeof this.nav.nb != 'undefined' && this.nav.nb != null) {
             var nbook = this.app.statics.books[this.nav.nb - 1];
-            nb_link = this.linkBuilder.buildReferenceLink('p', bible, nbook.name, 1);
-            nb_text = nbook.name;
+            nb_link = this.linkBuilder.buildReferenceLink('p', bible, this.nav.next_book, 1);
+            nb_text = this.nav.next_book;
         }         
 
         if(typeof this.nav.pb != 'undefined' && this.nav.pb != null) {
             var pbook = this.app.statics.books[this.nav.pb - 1];
-            pb_link = this.linkBuilder.buildReferenceLink('p', bible, pbook.name, 1);
-            pb_text = pbook.name
+            pb_link = this.linkBuilder.buildReferenceLink('p', bible, this.nav.prev_book, 1);
+            pb_text = this.nav.prev_book;
         }         
 
         if(typeof this.nav.pcc != 'undefined' && this.nav.pcc != null) {
             var pcbook = this.app.statics.books[this.nav.pcb - 1];
-            pc_link = this.linkBuilder.buildReferenceLink('p', bible, pcbook.name, this.nav.pcc);
-            pc_text = pcbook.name + ' ' + this.nav.pcc;
+            pc_link = this.linkBuilder.buildReferenceLink('p', bible, this.nav.pcb_name, this.nav.pcc);
+            pc_text = this.nav.pcb_name + ' ' + this.nav.pcc;
         }         
 
         if(typeof this.nav.ncc != 'undefined' && this.nav.ncc != null) {
             var ncbook = this.app.statics.books[this.nav.ncb - 1];
-            nc_link = this.linkBuilder.buildReferenceLink('p', bible, ncbook.name, this.nav.ncc);
-            nc_text = ncbook.name + ' ' + this.nav.ncc;
+            nc_link = this.linkBuilder.buildReferenceLink('p', bible, this.nav.ncb_name, this.nav.ncc);
+            nc_text = this.nav.ncb_name + ' ' + this.nav.ncc;
         }         
 
         if(typeof this.nav.ccc != 'undefined' && this.nav.ccc != null) {
             var ccbook = this.app.statics.books[this.nav.ccb - 1];
-            cc_link = this.linkBuilder.buildReferenceLink('p', bible, ccbook.name, this.nav.ccc);
-            cc_text = ccbook.name + ' ' + this.nav.ccc;
+            cc_link = this.linkBuilder.buildReferenceLink('p', bible, this.nav.ccb_name, this.nav.ccc);
+            cc_text = this.nav.ccb_name + ' ' + this.nav.ccc;
         }
 
         this.createComponent({
