@@ -18,8 +18,8 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
-        this.isShort = (this.shortWidthThreshold <= window.innerWidth) ? false : true;
-        this.isShort = (this.alwaysShort) ? true : this.isShort;
+        // this.isShort = (this.shortWidthThreshold <= window.innerWidth) ? false : true;
+        // this.isShort = (this.alwaysShort) ? true : this.isShort;
 
         var statics = this.app.get('statics'),
             bibles = statics.bibles,
@@ -59,6 +59,7 @@ module.exports = kind({
             // this.style = 'width:100%';
         }
 
+        this.checkShort();
         this.resetValue();
     },
     // rendered: function() {
@@ -122,6 +123,7 @@ module.exports = kind({
         }
     },
     isShortChanged: function(was, is) {
+        this.log(was, is);
         var width = (is) ? this.shortWidthWidth : this.width;
         var comp = this.getClientControls();
 
@@ -133,14 +135,21 @@ module.exports = kind({
         // this.app.debug && this.log('width', width);
 
         if(width && width != 0) {
-            this.log('applying max-width');
+            // this.log('applying max-width', width.toString());
+            this.applyStyle('max-width', null);
             this.applyStyle('max-width', width.toString() + 'px' );
             this.render();
         }
     },
-    handleResize: function(inSender, inEvent) {
+    checkShort: function() {
         var isShort = (this.shortWidthThreshold <= window.innerWidth) ? false : true;
         isShort = (this.alwaysShort) ? true : isShort;
         this.set('isShort', isShort);
+        // this.log('shortWidthThreshold', this.shortWidthThreshold);
+        // this.log('alwaysShort', this.alwaysShort);
+        // this.log('isShort', isShort);
+    },
+    handleResize: function(inSender, inEvent) {
+        this.checkShort();
     }
 });
