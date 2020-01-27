@@ -174,7 +174,7 @@ module.exports = kind({
         this.render();
     },
     mouseOutHandler: function(inSender, inEvent) {
-        this.set('showing', false);
+        // this.set('showing', false);
     },
     getOwnerBounds: function() {
         if(!this.owner) {

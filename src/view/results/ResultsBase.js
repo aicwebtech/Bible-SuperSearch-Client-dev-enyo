@@ -350,10 +350,14 @@ module.exports = kind({
         }
     },
     handleMouseOut: function(inSender, inEvent) {
-        // this.hideHoverDialogs();
+        if(inSender === this) {
+            this.hideHoverDialogs();
+        }
     },
     handleClick: function(inSender, inEvent) {
-        this.hideHoverDialogs();
+        if(inSender.name != 'DialogsContainer') {
+            this.hideHoverDialogs();
+        }
     },
     hideHoverDialogs: function() {
         this.$.StrongsHover.set('showing', false);
