@@ -173,6 +173,21 @@ table.biblesupersearch_render_table {
 
 }
 
+.biblesupersearch_render_table td.copyright_statement {
+    padding: 5px;
+    text-align: justify;
+    font-size: 0.7rem;
+}
+
+.biblesupersearch_render_table td.copyright_statement h5 {
+    font-size: 0.8rem;
+    margin-top: 3px;
+}
+
+.biblesupersearch_content hr {
+    margin: 20px 0;
+}
+
 .biblesupersearch_main .format_buttons {
     text-align: center;
     margin-right: auto;

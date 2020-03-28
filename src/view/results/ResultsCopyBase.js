@@ -130,5 +130,27 @@ module.exports = kind({
         }
 
         return processed;
-    }
+    },
+
+    // Overrides bottom copyright row to embed it in the copyable text
+    _renderCopyrightBottom: function() {
+        for(i in this.bibles) {
+            var module = this.bibles[i];
+
+            if(typeof this.app.statics.bibles[module] == 'undefined') {
+                continue;
+            }
+            
+            var bible_info = this.app.statics.bibles[module];
+            var content = bible_info.name + ' (' + bible_info.shortname + ')\n\n' + bible_info.copyright_statement;
+
+            if(bible_info.research) {
+                content += '\n\nThis Bible is provided for research purposes only.';
+            }
+
+            this._appendBibleComponent(content, i);
+        }
+
+        this.showingCopyrightBottom = true;
+    },
 });

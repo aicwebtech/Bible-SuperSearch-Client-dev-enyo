@@ -190,7 +190,15 @@ module.exports = kind({
         }
 
         this._addNavButtons(Container, pd);
+
+        // var Row = Container.createComponent({
+        //     name: 'BibleCopyrightRow',
+        //     tag: 'tr'
+        // });
+
+        // this._renderCopyRightBottomHelper(Row);
     },
+
     processAssembleVerse: function(reference, verse) {
         if(this.selectedBible.rtl) {
             return this.processText(verse.text) + ' ' + reference;

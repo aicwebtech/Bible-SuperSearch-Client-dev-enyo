@@ -28,6 +28,7 @@ module.exports = kind({
     lastHoverY: 0,
     navigationButtonsView: Nav,
     pagerView: Pager,
+    showingCopyrightBottom: false,
 
     published: {
         resultsData: null,
@@ -134,9 +135,19 @@ module.exports = kind({
         this.renderFooter();
         this.renderPager(false);
         // this.$.ResultsContainer.render();
+
+        this.log('showingCopyrightBottom', this.showingCopyrightBottom);
+
+        if(!this.showingCopyrightBottom) {
+            this.log('about to renderCopyrightBottom');
+            this.renderCopyrightBottom();
+        }
+
         this.render();
     },
     renderPassage: function(passage) {        
+        this.showingCopyrightBottom = false;
+
         if(passage.single_verse && this.multiBibles) {
             this.renderSingleVerseParallelBible(passage);
         }
@@ -156,9 +167,51 @@ module.exports = kind({
     renderPassageParallelBible: function(passage) {},       // Must implement on child kind!
     renderPassageSingleBible: function(passage) {},         // Must implement on child kind!
 
+    renderCopyrightBottom: function() {
+        this.createComponent({
+            tag: 'hr'
+        });
+
+        var Container = this.createComponent({
+            name: 'CopyrightFooter',
+            tag: 'table',
+            classes: 'biblesupersearch_render_table copyright_footer'
+        }).createComponent({
+            tag: 'tr'
+        });
+
+        this._renderCopyRightBottomHelper(Container);
+    },
+    _renderCopyRightBottomHelper: function(Container) {
+        for(i in this.bibles) {
+            var module = this.bibles[i];
+
+            if(typeof this.app.statics.bibles[module] == 'undefined') {
+                continue;
+            }
+            
+            var bible_info = this.app.statics.bibles[module];
+            var content = '<h5>' + bible_info.name + ' (' + bible_info.shortname + ')</h5>' + bible_info.copyright_statement;
+
+            if(bible_info.research) {
+                content += '<br /><br />This Bible is provided for research purposes only.';
+            }
+
+            Container.createComponent({
+                tag: 'td',
+                allowHtml: true,
+                classes: 'copyright_statement',
+                attributes: {colspan: this.passageColumnsPerBible},
+                content: content
+            });
+        }
+
+        this.showingCopyrightBottom = true;
+    },
+
     renderHeader: function() {}, // Called before results are rendered, not required
     renderFooter: function() {}, // Called after results are rendered, not required
-    
+
     processText: function(verse) {
         return verse.text;
     },
