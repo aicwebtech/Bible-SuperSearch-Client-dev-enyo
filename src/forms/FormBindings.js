@@ -35,7 +35,7 @@ module.exports = {
     }},
     // reference binding MUST be before the shortcut binding!
     reference: {from: 'formData.reference', to: '$.reference.value', oneWay: false, transform: function(value, dir) {
-        // this.log('reference', value, dir);
+        this.log('reference', value, dir);
         // if(dir === 2) {
         //     if(value && value != '0' && value != '') {
         //         this.$.shortcut.set('selected', 1);

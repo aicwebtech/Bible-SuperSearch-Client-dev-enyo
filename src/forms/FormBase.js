@@ -329,8 +329,8 @@ module.exports = kind({
         document.title = newTitle;
     },
     formDataChanged: function(was, is) {
-        // this.log('was', was);
-        // this.log('is', is);
+        this.log('was', was);
+        this.log('is', is);
 
         if(!this.$.reference) {
             this.formData.reference = null; // Fix issues with random on forms with no 'reference' input
@@ -398,6 +398,20 @@ module.exports = kind({
         }
     },
     handleReferenceClick: function(inSender, inEvent) {
-        this.log(inEvent);
+        // this.log(inEvent);
+
+        var formData = {};
+
+        if(this.$.request) {
+            formData.request = inEvent.reference;
+        }
+        else {
+            formData.reference = inEvent.reference;
+        }
+
+        this.log('formData', formData);
+        this.set('formData', {});
+        this.set('formData', utils.clone(formData));
+        this.submitFormManual();
     }
 });
