@@ -380,3 +380,24 @@ div.biblesupersearch_dialog {
 .disambiguation .item:not(:first-child) {
     margin-top: 20px;
 }
+
+.biblesupersearch_dialog .sos_item {
+
+}
+
+.biblesupersearch_dialog .sos_item .label {
+    float: left;
+    background-color: yellow;
+    display: inline-block;
+}
+
+.biblesupersearch_dialog .sos_item .verses {
+    float: right;
+    background-color: green;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.clear-both {
+    clear: both;
+}

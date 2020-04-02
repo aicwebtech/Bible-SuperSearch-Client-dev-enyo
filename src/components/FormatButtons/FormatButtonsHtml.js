@@ -221,6 +221,12 @@ module.exports = kind({
             trueContent: 'Basic',
             falseContent: 'Advanced'
         },
+        {
+            classes: 'item sos',
+            name: 'sos_button',
+            content: 'Bible SOS',
+            ontap: 'handleSos'
+        },
         
         {name: 'Dialogs', components: [
             {name: 'HelpDialog', kind: Help, showing: false}

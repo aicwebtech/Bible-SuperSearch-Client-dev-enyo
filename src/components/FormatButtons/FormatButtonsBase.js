@@ -65,4 +65,7 @@ module.exports = kind({
             'menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes,height=800,width=600'
         );
     },
+    handleSos: function(inSender, inEvent) {
+        this.app.set('sosShowing', true);
+    }
 });

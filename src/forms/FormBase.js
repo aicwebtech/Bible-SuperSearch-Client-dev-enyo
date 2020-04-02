@@ -30,9 +30,15 @@ module.exports = kind({
         onkeyup: 'keyPress'
     },
 
+    signalComponent: {
+        kind: Signal,
+        onClickReference: 'handleReferenceClick',
+        onPageChange: 'handlePageChange'
+    },
+
     create: function() {
         this.inherited(arguments);
-        this.createComponent({kind: Signal, onPageChange: 'handlePageChange'});
+        this.createComponent(this.signalComponent);
         // this.formData.bible = [this.app.configs.defaultBible];
 
         if(this.autoApplyStandardBindings) {
@@ -390,5 +396,8 @@ module.exports = kind({
                 this.submitForm(); // Submit form if user presses 'enter'
             }
         }
+    },
+    handleReferenceClick: function(inSender, inEvent) {
+        this.log(inEvent);
     }
 });
