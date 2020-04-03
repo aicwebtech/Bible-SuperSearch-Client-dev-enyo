@@ -381,21 +381,28 @@ div.biblesupersearch_dialog {
     margin-top: 20px;
 }
 
-.biblesupersearch_dialog .sos_item {
+.bible_sos .sos_list {
+    padding: 10px;
+}
 
+.biblesupersearch_dialog .sos_item {
+    margin-bottom: 5px;
 }
 
 .biblesupersearch_dialog .sos_item .label {
     float: left;
-    background-color: yellow;
+    /*background-color: yellow;*/
     display: inline-block;
+    font-weight: bold;
 }
 
 .biblesupersearch_dialog .sos_item .verses {
     float: right;
-    background-color: green;
+    /*background-color: green;*/
     cursor: pointer;
     display: inline-block;
+    max-width: 80%;
+    font-size: 0.8em;
 }
 
 .clear-both {

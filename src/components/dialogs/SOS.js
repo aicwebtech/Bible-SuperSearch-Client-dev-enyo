@@ -12,21 +12,27 @@ module.exports = kind({
     kind: Dialog,
     width: '400px',
     height: '400px',
-    classes: 'sos',
+    classes: 'bible_sos',
     
     published: {
-        message: 'Help me, I cant find it', 
         list: [
-            {label: 'Lonely', verses: 'Romans 1:1; John 3:15-17, Psalms 23'},
-            {label: 'Afraid', verses: 'Isaiah 41:10; Psalms 91'},
+            {label: 'Afraid', verses: 'Psalms 34:4; Matt 10:28; 2 Tim 1:7; Hebrews 13:5,6'},
+            {label: 'Anxious', verses: 'Psalms 46; Matt 6:19-34; Phil 4:6; 1 Peter 5:6,7'},
+            {label: 'Backsliding', verses: 'Psalms 51; 1 John 1:4-9'},
+            {label: 'Bereaved', verses: 'Matt 5:4; 2 Corinthians 1:3-4'},
+            {label: 'Lonely', verses: 'Psalms 23; Hebrews 13:5,6'},
+            {label: 'Discouraged', verses: 'Psalms 23; Psalms 42:6-11; Psalms 55:22; Matthew 5:11, 12; 2 Corinthians 4:8-18; Phil 4:4-7'},
+            {label: 'Doubting', verses: 'Matthew 8:26; Hebrews 11'},
             {label: 'Troubled', verses: 'John 16:33'},
-            {label: 'Doubting', verses: 'Psalms 17'},
         ]
     },
 
     bodyComponents: [
-        {name: 'MessageContainer', allowHtml: true}, 
-        {name: 'ListContainer'}
+        {classes: 'sos_header', components: [
+            {tag: 'h1', content: 'Bible SOS'}, 
+            {tag: 'h2', content: 'Emergency Help from the Bible'}, 
+        ]},
+        {classes: 'sos_list', name: 'ListContainer'}
     ],
 
     buttonComponents: [
@@ -34,7 +40,7 @@ module.exports = kind({
     ],
 
     bindings: [
-        {from: 'message', to: '$.MessageContainer.content'}
+        // {from: 'message', to: '$.MessageContainer.content'}
     ],
 
     create: function() {
@@ -63,6 +69,7 @@ module.exports = kind({
                 // ontap: 'handleVerseTap',
                 classes: 'sos_item', components: [
                     {classes: 'label', content: label},
+                    // TODO - make these fully-functioning hyperlinks, including right click!
                     {classes: 'verses', content: item.verses, ontap: 'handleVerseTap'},
                     {classes: 'clear-both'}
                 ]
