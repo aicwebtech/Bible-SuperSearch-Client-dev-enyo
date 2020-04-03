@@ -59,6 +59,13 @@ module.exports = kind({
         // For special interfaces, implement on child!
         return this._formHasFieldStandard(fieldName);
     },
+    getFormFieldValue: function(fieldName) {
+        if(!this.formHasField(fieldName)) {
+            return false;
+        }
+
+        return this.$.Content.$.FormController.view.$[fieldName].get('value');
+    },
     _formHasFieldStandard: function(fieldName) {
         if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view) {
             return (this.$.Content.$.FormController.view.$[fieldName]) ? true : false;

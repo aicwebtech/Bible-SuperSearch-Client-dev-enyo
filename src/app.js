@@ -462,6 +462,31 @@ var App = Application.kind({
 
         return false;
     },
+    getFormFieldValue: function(fieldName) {
+        if(this.view && this.view.getFormFieldValue) {
+            return this.view.getFormFieldValue(fieldName);
+        }
+        
+        return false;
+    },
+    getSelectedBibles: function() {
+        var bibles = this.getFormFieldValue('bible');
+
+        if(!bibles || bibles.length == 0 || bibles.length == 1 && bibles[0] == null) {
+            bibles = [this.configs.defaultBible];
+        }
+
+        return bibles;
+    },
+    getSelectedBiblesString: function() {
+        var bibles = this.getSelectedBibles();
+            bibles = bibles.filter(function(b) {
+                return b != 0 && b != null;
+            });
+
+        var bibleString = bibles.join(',');
+        return bibleString;
+    },
     // TO DO - apply this to the following:
     //   Pager, Nav Buttons (done), Format Buttons
     getSubControl: function(name) {
