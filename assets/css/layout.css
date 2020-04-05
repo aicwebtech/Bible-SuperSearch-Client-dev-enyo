@@ -382,11 +382,24 @@ div.biblesupersearch_dialog {
 }
 
 .bible_sos .sos_list {
-    padding: 10px;
+    vertical-align: top;
+    margin-bottom: 10px;
+}
+
+.bible_sos .sos_list .col {
+    padding: 0 15px;
+    display: inline-block;
+    height: 320px;
+    overflow-y: auto;
 }
 
 .biblesupersearch_dialog .sos_item {
     margin-bottom: 5px;
+    padding: 2px;
+}
+
+.biblesupersearch_dialog .sos_item:nth-child(odd) {
+    background-color: #ddd;
 }
 
 .biblesupersearch_dialog .sos_item .label {
@@ -394,6 +407,8 @@ div.biblesupersearch_dialog {
     /*background-color: yellow;*/
     display: inline-block;
     font-weight: bold;
+    text-align: left;
+    font-size: 0.9em;
 }
 
 .biblesupersearch_dialog .sos_item .verses {
@@ -401,8 +416,9 @@ div.biblesupersearch_dialog {
     /*background-color: green;*/
     cursor: pointer;
     display: inline-block;
-    max-width: 80%;
+    max-width: 70%;
     font-size: 0.8em;
+    text-align: right;
 }
 
 .clear-both {
