@@ -532,11 +532,16 @@ var App = Application.kind({
     },
     staticsChanged: function(was, is) {
         for(i in is.bibles) {
-            is.bibles[i].rtl = this._isRtl(is.bibles[i].lang_short);
+            if(typeof is.bibles[i].rtl == 'undefined') {
+                is.bibles[i].rtl = this._isRtl(is.bibles[i].lang_short);
+            }
         }
     },
     _isRtl: function(language) {
-        return (language == 'he' || language == 'ar') ? true : false;
+        return (
+            language == 'he' || language == 'ar' || language == 'dv' || language == 'fa' || 
+            language == 'ps' || language == 'ur' || language == 'yi' || language == 'ug'
+        ) ? true : false;
     }
 });
 
