@@ -17,7 +17,11 @@ var biblesupersearch_config_options = {
     //      See the API documentation for a list of available Bibles
     //          https://api.biblesupersearch.com/documentation
 
-    // "enabledBibles": ["kjv", "tr", "bishops"],                                
+    // "enabledBibles": ["kjv", "tr", "bishops"],    
+
+    // Bible List Grouping
+    // Options: 'language', 'language_english', 'none'
+    "bibleGrouping": 'language',                             
     
     // Bible SuperSearch skin / interface   (string)
     //      Select an interface below by uncommenting the one that you want to use

@@ -1,5 +1,7 @@
 var kind = require('enyo/kind');
 var Sel = require('../Select');
+var OptionGroup = require('enyo.OptionGroup');
+// var Option = require('enyo.Option');
 
 module.exports = kind({
     name: 'SingleSelect',
@@ -11,6 +13,7 @@ module.exports = kind({
     alwaysShort: false,
     parallelNumber: 0,
     classes: 'biblesupersearch_bible_selector',
+    _currentGroup: null,
 
     handlers: {
         resize: 'handleResize',
@@ -70,6 +73,7 @@ module.exports = kind({
         window.select = this;
 
         if(this.parallelNumber == 0 || this.parallelNumber == 1) {
+            // this.log(this.app.configs.defaultBible);
             this.setSelectedValue(this.app.configs.defaultBible);
             // this.set('value', this.app.configs.defaultBible);
         }
@@ -89,18 +93,63 @@ module.exports = kind({
         }
 
         this._lastLang = bible.lang;
-
         var narrow = this.isShort,
-            contentShort = bible.shortname + ' (' + bible.lang + ')',
-            contentLong = bible.name + ' (' + bible.lang + ')',
-            content = narrow ? contentShort : contentLong;
+            group = null;
 
-        this.createComponent({
-            content: content,
-            value: bible.module,
-            contentShort: contentShort,
-            contentLong: contentLong
-        });
+        // this.app.configs.bibleGrouping = null;
+
+        if(this.app.configs.bibleGrouping && this.app.configs.bibleGrouping != 'none') {
+            var contentShort = bible.shortname,
+                contentLong = bible.name,
+                content = narrow ? contentShort : contentLong;
+
+            switch(this.app.configs.bibleGrouping) {
+                case 'language':
+                    group = bible.lang_short;
+                    groupContent = bible.lang_native + ' - (' + bible.lang_short.toUpperCase() + ')';
+                    break;
+                case 'language_english':
+                    group = bible.lang_short;
+                    groupContent = bible.lang + ' - (' + bible.lang_short.toUpperCase() + ')';
+                    break;
+                default:
+                    alert('Invalid bibleGrouping: ' + this.app.configs.bibleGrouping);
+            }
+
+            var compName = 'group' + group;
+
+            if(!this.$[compName]) {
+                this.createComponent({
+                    tag: 'optgroup',
+                    // kind: OptionGroup,
+                    attributes: {label: groupContent},
+                    name: compName,
+                });
+            }
+
+            this.$[compName].createComponent({
+                // kind: Option,
+                tag: 'option',
+                content: content,
+                value: bible.module,
+                attributes: {value: bible.module},
+                contentShort: contentShort,
+                contentLong: contentLong,
+                // owner: this
+            });
+        }
+        else {
+            var contentShort = bible.shortname + ' (' + bible.lang + ')',
+                contentLong = bible.name + ' (' + bible.lang + ')',
+                content = narrow ? contentShort : contentLong;
+
+            this.createComponent({
+                content: content,
+                value: bible.module,
+                contentShort: contentShort,
+                contentLong: contentLong
+            });
+        }
     },
     _lastLang: null,
     valueChanged: function(was, is) {
@@ -110,10 +159,15 @@ module.exports = kind({
         var value = value || 0
             controls = this.getClientControls();
 
+        this.log(value);
+
         if(this.setSelectedByValue) {
             this.setSelectedByValue(value);
             return;
         }
+
+        this.log('here');
+        this.set('value', value);
 
         for(i in controls) {
             if(controls[i].get('value') == value) {
