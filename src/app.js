@@ -213,8 +213,22 @@ var App = Application.kind({
         // this.set('ajaxLoading', true);
         // Experimental
 
+        var ajaxData = {};
+
+        switch (this.configs.bibleGrouping) {
+            case 'language':
+                ajaxData.bible_order_by = 'lang_native_name|rank';
+                break;            
+            case 'language_english':
+                ajaxData.bible_order_by = 'lang_name|rank';
+                break;
+            case 'none':
+            default:
+                ajaxData.bible_order_by = 'rank';
+        }
+
         // this.log('loading statics');
-        ajax.go();
+        ajax.go(ajaxData);
         ajax.response(this, function(inSender, inResponse) {
             // this.set('ajaxLoading', false);
             this.test();

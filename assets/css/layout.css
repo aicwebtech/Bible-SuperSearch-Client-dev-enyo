@@ -271,6 +271,8 @@ div.biblesupersearch_dialog {
     width: 98%; 
 }
 
+
+
 .biblesupersearch_pager .links a:before {
     content: ' ';
 }
@@ -423,4 +425,10 @@ div.biblesupersearch_dialog {
 
 .clear-both {
     clear: both;
+}
+
+.biblesupersearch_bible_selector option.label {
+    background-color: transparent;
+    font-weight: bold;
+    color: black;
 }

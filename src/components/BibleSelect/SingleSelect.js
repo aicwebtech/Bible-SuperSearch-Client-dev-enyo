@@ -36,8 +36,13 @@ module.exports = kind({
         }
 
         if(!this.app.singleBibleEnabled()) {        
+            if(this.app.configs.bibleGrouping && this.app.configs.bibleGrouping != 'none') {
+                // noSelectLabel = '&nbsp; &nbsp; &nbsp;' + noSelectLabel;
+            }
+
             this.createComponent({
                 content: noSelectLabel,
+                allowHtml: true,
                 value: '0'
             });
         }
@@ -73,7 +78,7 @@ module.exports = kind({
         window.select = this;
 
         if(this.parallelNumber == 0 || this.parallelNumber == 1) {
-            // this.log(this.app.configs.defaultBible);
+            this.app.debug && this.log('defaulting', this.app.configs.defaultBible);
             this.setSelectedValue(this.app.configs.defaultBible);
             // this.set('value', this.app.configs.defaultBible);
         }
@@ -99,8 +104,9 @@ module.exports = kind({
         // this.app.configs.bibleGrouping = null;
 
         if(this.app.configs.bibleGrouping && this.app.configs.bibleGrouping != 'none') {
-            var contentShort = bible.shortname,
-                contentLong = bible.name,
+            var spacer = '', //&nbsp; &nbsp; &nbsp;',
+                contentShort = spacer + bible.shortname,
+                contentLong = spacer + bible.name,
                 content = narrow ? contentShort : contentLong;
 
             switch(this.app.configs.bibleGrouping) {
@@ -118,6 +124,28 @@ module.exports = kind({
 
             var compName = 'group' + group;
 
+            // if(this._currentGroup != group) {
+            //     this.createComponent({
+            //         content: groupContent,
+            //         value: 0,
+            //         contentShort: groupContent,
+            //         contentLong: groupContent,
+            //         // disabled: true,
+            //         attributes: {disabled: true},
+            //         classes: 'label'
+            //     });
+
+            //     this._currentGroup = group;
+            // }
+
+            // this.createComponent({
+            //     content: content,
+            //     value: bible.module,
+            //     contentShort: contentShort,
+            //     contentLong: contentLong,
+            //     allowHtml: true
+            // });
+
             if(!this.$[compName]) {
                 this.createComponent({
                     tag: 'optgroup',
@@ -127,12 +155,18 @@ module.exports = kind({
                 });
             }
 
+            var selected = '';
+
+            if((this.parallelNumber == 0 || this.parallelNumber == 1) && this.app.configs.defaultBible == bible.module) {
+                selected = 'selected';
+            }
+
             this.$[compName].createComponent({
                 // kind: Option,
                 tag: 'option',
                 content: content,
                 value: bible.module,
-                attributes: {value: bible.module},
+                attributes: {value: bible.module, selected: selected},
                 contentShort: contentShort,
                 contentLong: contentLong,
                 // owner: this
