@@ -193,14 +193,11 @@ module.exports = kind({
         var value = value || 0
             controls = this.getClientControls();
 
-        this.log(value);
-
         if(this.setSelectedByValue) {
             this.setSelectedByValue(value);
             return;
         }
 
-        this.log('here');
         this.set('value', value);
 
         for(i in controls) {
@@ -214,11 +211,7 @@ module.exports = kind({
         this.log(was, is);
         var width = (is) ? this.shortWidthWidth : this.width;
         var comp = this.getClientControls();
-
-        comp.forEach(function(option) {
-            var content = (is) ? option.contentShort : option.contentLong;
-            content && option.set('content', content);
-        }, this);
+        this._isShortChangedHelper(comp, is);
 
         // this.app.debug && this.log('width', width);
 
@@ -228,6 +221,18 @@ module.exports = kind({
             this.applyStyle('max-width', width.toString() + 'px' );
             this.render();
         }
+    },
+    _isShortChangedHelper: function(components, isShort) {
+        components.forEach(function(option) {
+            if(option.get('tag') == 'optgroup') {
+                var comp2 = option.getClientControls();
+                this._isShortChangedHelper(comp2, isShort);
+                return;
+            }
+
+            var content = (isShort) ? option.contentShort : option.contentLong;
+            content && option.set('content', content);
+        }, this);
     },
     checkShort: function() {
         var isShort = (this.shortWidthThreshold <= window.innerWidth) ? false : true;

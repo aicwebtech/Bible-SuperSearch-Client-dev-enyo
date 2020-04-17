@@ -20,9 +20,24 @@ var biblesupersearch_config_options = {
     // "enabledBibles": ["kjv", "tr", "bishops"],    
 
     // Bible List Grouping
-    // Options: 'language', 'language_english', 'none'
-    "bibleGrouping": 'language',                             
-    
+    // Options: 
+    // 'language' - Group by language (endonym)
+    // 'language_english' - Group by language's English name
+    //  'none' - no grouping
+    "bibleGrouping": 'language',          
+
+    // Bible List Sorting
+    // Specified as a string of options, separated by |
+    // Options:
+    // 'name' - Bible full name
+    // 'shortname' - Bible short name
+    // 'lang_name' - Language (endonym)
+    // 'lang_name_english' - Language (English name)
+    // 'rank' - Rank / Sort Order specified on API
+
+    // Default: 'rank|name',
+    "bibleSorting": 'rank|name',          
+
     // Bible SuperSearch skin / interface   (string)
     //      Select an interface below by uncommenting the one that you want to use
     //      For a complete list, please see our demo page

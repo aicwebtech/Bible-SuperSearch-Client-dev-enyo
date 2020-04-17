@@ -214,18 +214,21 @@ var App = Application.kind({
         // Experimental
 
         var ajaxData = {};
+        var groupOrder = null;
 
         switch (this.configs.bibleGrouping) {
             case 'language':
-                ajaxData.bible_order_by = 'lang_native_name|rank';
+                groupOrder = 'lang_name';
                 break;            
             case 'language_english':
-                ajaxData.bible_order_by = 'lang_name|rank';
+                groupOrder = 'lang_name_english';
                 break;
             case 'none':
             default:
-                ajaxData.bible_order_by = 'rank';
+                groupOrder = null;
         }
+
+        ajaxData.bible_order_by = (groupOrder) ? groupOrder + '|' + this.configs.bibleSorting : this.configs.bibleSorting;
 
         // this.log('loading statics');
         ajax.go(ajaxData);
