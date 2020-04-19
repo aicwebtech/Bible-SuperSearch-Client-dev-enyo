@@ -14,7 +14,7 @@ module.exports = kind({
     name: 'SosDialog',
     kind: Dialog,
     width: '400px',
-    height: '500px',
+    height: '455px',
     classes: 'bible_sos',
     bibleString: null,
     // multiColumn: true,
@@ -32,16 +32,17 @@ module.exports = kind({
             {label: 'Disaster Threatens', verses: 'Psalms 91; Psalms 118:5-6; Luke 8:22-25'},
             {label: 'Discouraged', verses: 'Psalms 23; Psalms 42:6-11; Psalms 55:22; Matthew 5:11-12; 2 Corinthians 4:8-18; Philippians 4:4-7'},
             {label: 'Doubting', verses: 'Matthew 8:26; Hebrews 11'},
-            {label: 'Facing a Crisis', verses: 'Psalms 121; 6:25-34; Hebrews 4:16'},
+            {label: 'Facing a Crisis', verses: 'Psalms 121; Matthew 6:25-34; Hebrews 4:16'},
             {label: 'Faith Fails', verses: 'Psalms 42:5; Hebrews 11'},
             {label: 'Friends Fail', verses: 'Psalms 41:9-13; Luke 17:3-4; Rom 12:14,17,19,21; 2 Timothy 4:16-18', newColumn: true},
+            {label: 'Hopeless', verses: 'Psalms 71:5; Psalms 42; Lamentations 3:18-26; 1 Peter 1:3, 21'},
             {label: 'Leaving Home', verses: 'Psalms 121; Matthew 10:16-20'},
             {label: 'Lonely', verses: 'Psalms 23; Hebrews 13:5-6'},
             {label: 'Needing God\'s protection', verses: 'Psalms 27:1-6; Psalms 91; Philippians 4:19'},
             {label: 'Needing Guidance', verses: 'Psalms 32:8; Proverbs 3:5-6'},
             {label: 'Needing Peace', verses: 'John 14:1-4; John 16:33; Romans 5:1-5; Philippians 4:6-7'},
             {label: 'Needing Rules for Living', verses: 'Romans 12', newColumn: true},
-            {label: 'Overcome', verses: 'Psalms 6; Romans 8:31-39'},
+            {label: 'Overcome', verses: 'Psalms 6; Romans 8:31-39; 1 John 1:4-9'},
             {label: 'Prayerful', verses: 'Psalms 4; Psalms 42; Luke 11:1-13; John 17; 1 John 5:14-15'},
             {label: 'Protected', verses: 'Psalms 18:1-3; Psalms 34:7'},
             {label: 'Sick or in Pain', verses: 'Psalms 38; James 5:14-15; Matthew 26:39; Romans 5:3-5; 2 Corinthians 12:9-10; 1 Peter 4:12,13,19'},
@@ -50,15 +51,16 @@ module.exports = kind({
             {label: 'Thankful', verses: 'Psalms 100; 1 Thessalonians 5:18; Hebrews 13:15'},
             {label: 'Traveling', verses: 'Psalms 121'},
             {label: 'Trouble, In', verses: 'Psalms 16; Psalms 31; John 14:1-4; Hebrews 7:25'},
-            {label: 'Troubled', verses: 'John 14:27; John 16:33; 2 Corinthians 4:8-10'},
+            {label: 'Troubled', verses: 'John 14:1-3, 27; John 16:33; 2 Corinthians 4:8-10'},
             {label: 'Weary', verses: 'Psalms 90; Matthew 11:28-30; 1 Corinthians 15:58; Gal 6:9-10'},
+            {label: 'Worried', verses: 'Matthew 6:19-34; 1 Peter 5:6-7'}
         ]
     },
 
     bodyComponents: [
         {classes: 'sos_header', components: [
-            {tag: 'h2', content: 'Bible SOS'}, 
-            {tag: 'h3', content: 'Emergency Help from the Bible'}, 
+            // {tag: 'h2', content: 'Bible SOS'}, 
+            {tag: 'h2', content: 'Emergency Help from the Bible'}, 
             {tag: 'h3', content: 'Where to go When ...'}, 
         ]},
         {classes: 'sos_list', name: 'ListContainer'}
@@ -97,7 +99,7 @@ module.exports = kind({
             colName = 'Col_1';
 
         this.bibleString = this.app.getSelectedBiblesString();
-        var urlBase = '/#/r/' + this.bibleString + '/';
+        var urlBase = '#/r/' + this.bibleString + '/';
 
         this.list.forEach(function(item) {
             var label = item.label + ': ';

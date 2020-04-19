@@ -383,6 +383,10 @@ div.biblesupersearch_dialog {
     margin-top: 20px;
 }
 
+.bible_sos {
+    padding-top: 5px;
+}
+
 .bible_sos .sos_list {
     vertical-align: top;
     margin-bottom: 10px;

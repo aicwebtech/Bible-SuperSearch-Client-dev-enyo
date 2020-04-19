@@ -112,7 +112,8 @@ module.exports = kind({
             switch(this.app.configs.bibleGrouping) {
                 case 'language':
                     group = bible.lang_short;
-                    groupContent = bible.lang_native + ' - (' + bible.lang_short.toUpperCase() + ')';
+                    var n = bible.lang_native || bible.lang; // Fall back to English name if needed
+                    groupContent = n + ' - (' + bible.lang_short.toUpperCase() + ')';
                     break;
                 case 'language_english':
                     group = bible.lang_short;
