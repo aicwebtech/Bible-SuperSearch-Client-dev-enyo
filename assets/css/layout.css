@@ -399,16 +399,20 @@ div.biblesupersearch_dialog {
     overflow-y: auto;
 }
 
-.biblesupersearch_dialog .sos_item {
+.bible_sos .sos_item {
     margin-bottom: 5px;
     padding: 2px;
 }
 
-.biblesupersearch_dialog .sos_item:nth-child(odd) {
+.bible_sos .sos_item:nth-child(odd) {
     background-color: #ddd;
 }
 
-.biblesupersearch_dialog .sos_item .label {
+.bible_sos .dialog {
+    padding-top: 2px;
+}
+
+.bible_sos .sos_item .label {
     float: left;
     /*background-color: yellow;*/
     display: inline-block;
@@ -417,7 +421,7 @@ div.biblesupersearch_dialog {
     font-size: 0.9em;
 }
 
-.biblesupersearch_dialog .sos_item .verses {
+.bible_sos .sos_item .verses {
     float: right;
     /*background-color: green;*/
     cursor: pointer;
@@ -435,4 +439,9 @@ div.biblesupersearch_dialog {
     background-color: transparent;
     font-weight: bold;
     color: black;
+}
+
+.biblesupersearch_dialog .dialog {
+    opacity: 1;
+    background-color: white; 
 }

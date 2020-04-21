@@ -196,6 +196,20 @@
     font-family: serif;
 }
 
+.interface_expanding .help_dialog .dialog {
+    background-color: #7690f7;
+    color: white;
+}
+
+.interface_expanding .help_dialog .dialog .content {
+    background-color: #dee4fc;
+    color: black;
+}
+
+.interface_expanding .help_dialog .sos_item:nth-child(odd) {
+    background-color: #ccc;
+}
+
 /*.interface_expanding a.strongs:link, .interface_expanding a.strongs:visited, .interface_expanding a.strongs:hover {
     color: black;
     text-decoration: none;

@@ -17,22 +17,29 @@ module.exports = kind({
     buttonComponents: [],
 
     components: [
-        {name: 'Container', classes: 'biblesupersearch_center_element', components: [
-            {name: 'TitleBar', showing: false},
-            {name: 'Body', showing: true},
-            {name: 'ButtonBar', showing: false}
+        {name: 'Container', classes: 'biblesupersearch_center_element dialog', components: [
+            {name: 'TitleBar', classes: 'title', showing: false},
+            {name: 'Body', classes: 'content', showing: true},
+            {name: 'ButtonBar', classes: 'buttons', showing: false}
         ] },
     ],
 
     create: function() {
         this.inherited(arguments);
         // var style = 'background-color: white; opacity: 1;  margin: 30% auto 30% auto;'
-        var style = 'background-color: white; opacity: 1;'
+        // var style = 'background-color: white; opacity: 1;'
+        var style = '';
         style += 'width: ' + this.width + '; ';
         style += 'height: ' + this.height + '; ';
         style += 'margin-top: calc(50vh - ' + this.height + ' / 2);'; // Vertical align using height
 
         this.$.Container.setStyle(style);
+
+        if(this.titleComponents.length > 0) {
+            this.$.TitleBar.createComponents(this.titleComponents);
+            this.$.TitleBar.set('showing', true);
+        }
+
         this.$.Body.createComponents(this.bodyComponents, {owner: this});
 
         if(this.buttonComponents.length > 0) {

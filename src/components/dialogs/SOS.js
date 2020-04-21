@@ -14,8 +14,8 @@ module.exports = kind({
     name: 'SosDialog',
     kind: Dialog,
     width: '400px',
-    height: '455px',
-    classes: 'bible_sos',
+    height: '475px',
+    classes: 'help_dialog bible_sos',
     bibleString: null,
     // multiColumn: true,
     
@@ -57,12 +57,16 @@ module.exports = kind({
         ]
     },
 
-    bodyComponents: [
+    titleComponents: [
         {classes: 'sos_header', components: [
+            // {tag: 'br'},
             // {tag: 'h2', content: 'Bible SOS'}, 
-            {tag: 'h2', content: 'Emergency Help from the Bible'}, 
-            {tag: 'h3', content: 'Where to go When ...'}, 
-        ]},
+            {tag: 'h3', content: 'Emergency Help from the Bible'}, 
+            {tag: 'h4', content: 'Where to go When ...'}, 
+        ]}
+    ],
+
+    bodyComponents: [
         {classes: 'sos_list', name: 'ListContainer'}
     ],
 
