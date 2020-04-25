@@ -206,7 +206,7 @@
     color: black;
 }
 
-.interface_expanding .help_dialog .sos_item:nth-child(odd) {
+.interface_expanding .help_dialog .item:nth-child(odd) {
     background-color: #ccc;
 }
 

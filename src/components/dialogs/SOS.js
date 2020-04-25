@@ -4,7 +4,6 @@ var Anchor = require('enyo/Anchor');
 var Dialog = require('./Dialog');
 var LinkBuilder = require('../Link/LinkBuilder');
 
-
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
 var Signal = require('enyo/Signals');
@@ -17,7 +16,6 @@ module.exports = kind({
     height: '475px',
     classes: 'help_dialog bible_sos',
     bibleString: null,
-    // multiColumn: true,
     
     published: {
         list: [
@@ -58,7 +56,7 @@ module.exports = kind({
     },
 
     titleComponents: [
-        {classes: 'sos_header', components: [
+        {classes: 'header', components: [
             // {tag: 'br'},
             // {tag: 'h2', content: 'Bible SOS'}, 
             {tag: 'h3', content: 'Emergency Help from the Bible'}, 
@@ -67,7 +65,7 @@ module.exports = kind({
     ],
 
     bodyComponents: [
-        {classes: 'sos_list', name: 'ListContainer'}
+        {classes: 'list sos_list', name: 'ListContainer'}
     ],
 
     buttonComponents: [
@@ -109,11 +107,6 @@ module.exports = kind({
             var label = item.label + ': ';
             var url = urlBase + item.verses;
 
-            if(item.newColumn && this.multiColumn) {
-                col ++;
-                colName = 'Col_' + col;
-            }
-
             if(!this.$.ListContainer.$[colName]) {
                 this.$.ListContainer.createComponent({
                     name: colName,
@@ -124,9 +117,9 @@ module.exports = kind({
             this.$.ListContainer.$[colName].createComponent({
                 verses: item.verses,
                 owner: this,
-                classes: 'sos_item', components: [
+                classes: 'item sos_item', components: [
                     {classes: 'label', content: label},
-                    {classes: 'verses', content: item.verses, _ontap: 'handleVerseTap', components: [
+                    {classes: 'verses', components: [
                         {kind: Anchor, href: url, _title: item.verses, content: item.verses, ontap: 'handleVerseTap'}
                     ]},
                     {classes: 'clear-both'}
@@ -135,16 +128,6 @@ module.exports = kind({
         }, this);
     },
     handleVerseTap: function(inSender, inEvent) {
-        // this.log(inSender);
-        // this.log(inEvent);
-
-        // var verses = inSender.get('content');
         this.close();
-
-        // this.log(verses);
-
-        // Signal.send('onClickReference', {reference: verses});
-        // inEvent.preventDefault();
-        // return false;
     }
 });

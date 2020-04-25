@@ -67,5 +67,8 @@ module.exports = kind({
     },
     handleSos: function(inSender, inEvent) {
         this.app.set('sosShowing', true);
+    },    
+    handleStart: function(inSender, inEvent) {
+        this.app.set('startShowing', true);
     }
 });

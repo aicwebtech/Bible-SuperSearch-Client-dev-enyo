@@ -383,16 +383,16 @@ div.biblesupersearch_dialog {
     margin-top: 20px;
 }
 
-.bible_sos {
+.help_dialog {
     padding-top: 5px;
 }
 
-.bible_sos .sos_list {
+.help_dialog .list {
     vertical-align: top;
     margin-bottom: 10px;
 }
 
-.bible_sos .sos_list .col {
+.help_dialog .list .col {
     padding: 0 15px;
     display: inline-block;
     height: 320px;
@@ -404,11 +404,11 @@ div.biblesupersearch_dialog {
     padding: 2px;
 }
 
-.bible_sos .sos_item:nth-child(odd) {
+.help_dialog .item:nth-child(odd) {
     background-color: #ddd;
 }
 
-.bible_sos .dialog {
+.help_dialog .dialog {
     padding-top: 2px;
 }
 
@@ -429,6 +429,40 @@ div.biblesupersearch_dialog {
     max-width: 70%;
     font-size: 0.8em;
     text-align: right;
+}
+
+.bible_start .start_item {
+    padding: 5px 2px;
+}
+
+.bible_start .start_item .num {
+    float: left;
+    /*background-color: orange;*/
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.8em;
+    text-align: right;
+    width: 22px;
+    margin-right: 5px;
+}
+
+.bible_start .start_item .verses {
+    float: left;
+    /*background-color: green;*/
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 0.8em;
+    text-align: left;
+}
+
+.bible_start .start_item .desc {
+    float: right;
+    /*background-color: yellow;*/
+    display: inline-block;
+    max-width: 80%;
+    text-align: right;
+    font-size: 0.9em;
 }
 
 .clear-both {

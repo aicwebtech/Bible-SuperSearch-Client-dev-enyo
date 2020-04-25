@@ -2,6 +2,7 @@ var kind = require('enyo/kind');
 var ViewController = require('enyo/ViewController');
 var LoadingDialog = require('../../components/dialogs/Loading');
 var SosDialog = require('../../components/dialogs/SOS');
+var StartDialog = require('../../components/dialogs/Start');
 var NavButtons = require('../../components/NavButtons/NavClassic');
 var FormatButtons = require('../../components/FormatButtons/classic/FormatButtonsClassic');
 var Pager = require('../../components/Pagers/ClassicPager');
@@ -54,6 +55,17 @@ module.exports = kind({
         }
 
         this.$.SosDialog.set('showing', is);
+    },    
+    startShowingChanged: function(was, is) {
+        if(!this.$.StartDialog) {
+            this.createComponent({
+                name: 'StartDialog',
+                kind: StartDialog,
+                showing: false
+            }).render();
+        }
+
+        this.$.StartDialog.set('showing', is);
     },
     formHasField: function(fieldName) {
         // For special interfaces, implement on child!

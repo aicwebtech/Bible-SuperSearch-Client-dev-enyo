@@ -226,6 +226,12 @@ module.exports = kind({
             name: 'sos_button',
             content: 'Bible SOS',
             ontap: 'handleSos'
+        },        
+        {
+            classes: 'item start',
+            name: 'start_button',
+            content: 'Start',
+            ontap: 'handleStart'
         },
         
         {name: 'Dialogs', components: [

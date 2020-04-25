@@ -456,6 +456,11 @@ var App = Application.kind({
         if(this.view && this.view.set) {
             this.view.set('sosShowing', is);
         }
+    },    
+    startShowingChanged: function(was, is) {
+        if(this.view && this.view.set) {
+            this.view.set('startShowing', is);
+        }
     },
     ajaxLoadingDelayChanged: function(was, is) {
         var delay = is || false,
