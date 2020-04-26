@@ -46,7 +46,13 @@ module.exports = kind({
     components: [
         // {content: 'formatting buttons go here'},
         // {name: 'ResultsContainer'},
-        {kind: Signal, onFormResponseSuccess: 'handleFormResponse', onFormResponseError: 'handleFormError', isChrome: true},
+        {
+            kind: Signal, 
+            onFormResponseSuccess: 'handleFormResponse', 
+            onFormResponseError: 'handleFormError', 
+            onkeyup: 'handleKey', // Keyboard events need to be handled by Signal per docs
+            isChrome: true
+        },
         {name: 'DialogsContainer', components: [
             {name: 'StrongsHover', kind: StrongsHoverDialog}
         ]}
@@ -368,7 +374,7 @@ module.exports = kind({
             this.lastHoverX = x;
             this.lastHoverY = y;
             // this.log('inSender', inSender);
-            this.app.debug && this.log('hover inEvent', inEvent);
+            // this.app.debug && this.log('hover inEvent', inEvent);
 
             var mouseX = inEvent.clientX; //inEvent.screenX + inEvent.offsetX;
             var mouseY = inEvent.clientY; // + inEvent.offsetY;
@@ -409,6 +415,13 @@ module.exports = kind({
     },
     handleClick: function(inSender, inEvent) {
         if(inSender.name != 'DialogsContainer') {
+            this.hideHoverDialogs();
+        }
+    },
+    handleKey: function(inSender, inEvent) {
+        // this.log(inEvent);
+
+        if(inEvent.code == 'Escape') {
             this.hideHoverDialogs();
         }
     },
