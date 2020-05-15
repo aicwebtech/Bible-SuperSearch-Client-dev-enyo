@@ -88,18 +88,28 @@ var App = Application.kind({
         // Set biblesupersearch_root_directory for best performance
         if(typeof biblesupersearch_root_directory == 'string') {
             this.rootDir = biblesupersearch_root_directory;
+            // this.log('rootDir - using biblesupersearch_root_directory');
         }
         else {        
-            var path = document.querySelector('script[src*="biblesupersearch.js"]').getAttribute('src');
-            var dirParts = path.split('/'); 
-            var name = dirParts.pop();
-            var dir = dirParts.join('/') || null;
+            var dir = null;
+            var script = document.querySelector('script[src*="biblesupersearch.js"]');
+
+            // script = null;
+
+            if(script) {
+                var path = script.getAttribute('src');
+                var dirParts = path.split('/'); 
+                var name = dirParts.pop();
+                dir = dirParts.join('/') || null;
+                // this.log('rootDir - using script path');
+            }
 
             if(!dir) {
                 var hashParts = window.location.href.split('#');
                 dirParts = hashParts[0].split('/'); 
                 name = dirParts.pop();
-                dir = dirParts.join('/') || window.location.href;
+                dir = dirParts.join('/') || hashParts[0];
+                // this.log('rootDir - using window location');
             }
             
             // dir = dir.replace('/'+name,"");
