@@ -82,6 +82,13 @@ var App = Application.kind({
             this.clientBrowser = 'IE';
             this.log('Using Internet Explorer ... some minor functionality may be disabled ...');
         }
+
+        if(typeof biblesupersearch != 'object' || biblesupersearch == null) {
+            biblesupersearch = {
+                app: this,
+                instances: {}
+            }
+        }
         
         // Experimental code for determining root dir from script
         // Appears to be working
@@ -143,6 +150,21 @@ var App = Application.kind({
         loader.go(); // for GET
         loader.response(this, 'handleConfigLoad');
         loader.error(this, 'handleConfigError');
+    },
+    talk: function() {
+        alert('Hello')
+    }, 
+    createInstance: function(container, configs) {
+        var inst = new App;
+        // var inst = utils.clone(new App);
+        // var inst = utils.clone(this);
+
+        configs = configs || this.configs;
+        configs.target = container;
+        inst.configs = configs;
+        inst.renderInto(container);
+        this.log('New instance:', inst);
+        biblesupersearch.instances[container] = inst;
     },
     handleConfigError: function() {
         alert('Error: Failed to load application configuration.  Error code 1');
@@ -207,6 +229,11 @@ var App = Application.kind({
             this.debug = this.configs.debug;
         }
 
+        if(typeof biblesupersearch_statics == 'object' && biblesupersearch_statics != null) {
+            this._handleStaticsLoad(biblesupersearch_statics, view);
+            return;
+        }
+
         // Load Static Data (Bibles, Books, ect)
         var ajax = new Ajax({
             url: this.configs.apiUrl + '/statics',
@@ -243,18 +270,20 @@ var App = Application.kind({
         // this.log('loading statics');
         ajax.go(ajaxData);
         ajax.response(this, function(inSender, inResponse) {
-            // this.set('ajaxLoading', false);
-            this.test();
-            this.set('statics', inResponse.results);
-            this.waterfall('onStaticsLoaded');
+            this._handleStaticsLoad(inResponse.results, view);
 
-            if(view && view != null) {
-                this.set('view', view);
-            }
+            // this.set('ajaxLoading', false);
+            // this.test();
+            // this.set('statics', inResponse.results);
+            // this.waterfall('onStaticsLoaded');
+
+            // if(view && view != null) {
+            //     this.set('view', view);
+            // }
             
-            this.render();
-            this.appLoaded = true;
-            this.$.Router.trigger();
+            // this.render();
+            // this.appLoaded = true;
+            // this.$.Router.trigger();
         });    
 
         ajax.error(this, function(inSender, inResponse) {
@@ -262,6 +291,19 @@ var App = Application.kind({
             this.log('Error code 2 details', inSender, inResponse);
             alert('Error: Failed to load application static data.  Error code 2');
         });    
+    },
+    _handleStaticsLoad: function(statics, view) {
+        this.test();
+        this.set('statics', statics);
+        this.waterfall('onStaticsLoaded');
+
+        if(view && view != null) {
+            this.set('view', view);
+        }
+        
+        this.render();
+        this.appLoaded = true;
+        this.$.Router.trigger();
     },
     rendered: function() {
         this.inherited(arguments);
