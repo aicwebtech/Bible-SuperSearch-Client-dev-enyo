@@ -336,6 +336,7 @@ var App = Application.kind({
 
         if(hash && hash != '') {
             hash = decodeURI(hash);
+            hash = hash.replace(/\./g, ' ');
             var parts = hash.split('/');
             var mode  = parts.shift();
 

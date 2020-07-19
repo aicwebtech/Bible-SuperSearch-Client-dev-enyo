@@ -297,10 +297,15 @@ module.exports = kind({
         return true; // Don't propagage, will cause issues with subforms, if any
     },
     updateHash: function() {
-        var hash = '#/c/' + this.get('cacheHash');
+        this.log();
+        var hash = this._generateHashFromData();
 
-        if(this.page) {
-            hash += '/' + this.page.toString();
+        if(!hash) {        
+            hash = '#/c/' + this.get('cacheHash');
+
+            if(this.page) {
+                hash += '/' + this.page.toString();
+            }
         }
 
         history.pushState(null, null, document.location.pathname + hash);
@@ -413,5 +418,82 @@ module.exports = kind({
         this.set('formData', {});
         this.set('formData', utils.clone(formData));
         this.submitFormManual();
+    },
+    _generateHashFromData: function() {
+        if(!this.isShortHashable()) {
+            return null;
+        }
+
+            // return null;
+        var hash = null;
+        var bibles = this.app.getSelectedBiblesString();
+
+        var reference = this.$.reference ? this.$.reference.get('value') : null;
+        var search = this.$.search ? this.$.search.get('value') : null;
+        var request = this.$.request ? this.$.request.get('value') : null;
+
+        this.log(reference, search, request);
+
+        // Todo - convert space to something more aesthetic.  _ or .?
+        // UNSAFE: /,;-
+
+        if(reference && !search && !request) {
+            // Todo - single reference hashes need to be in this format: /#/p/kjv,rvg/Romans/2
+            reference = reference.trim();
+
+            // if(reference.match(/))
+
+            hash = '#/r/' + bibles + '/' + reference;
+        }        
+
+        if(!reference && search && !request) {
+            hash = '#/s/' + bibles + '/' + search;
+        }
+
+        if(!hash) {
+            return null;
+        }
+
+        hash = hash.replace(/\s+/g, '.');
+        return hash;
+    },
+    isShortHashable: function() {
+        var pass = ['request', 'reference', 'search', 'search_type'];
+        var sh = true;
+
+        // Todo - Handle separately: search_type, shortcut (verse selected)
+
+        this.bindings.forEach(function(item, idx) {
+            console.log('formItem to', item.to);
+
+            if(item.shortLink) {
+                return;
+            }
+
+            // console.log('formItem', item);
+
+            var p = item.to.split('.'),
+                field = p[1],
+                property = p[2];
+
+
+            if(!this.$[field]) {
+                return;
+            }
+
+            var value = this.$[field].get(property);
+
+            console.log('formItem field', field);
+            console.log('formItem property', property);
+            console.log('formItem value', value);
+            // if(item.from = 'formData.' +)
+
+            if(value && value != '' && value != 0) {
+                sh = false;
+            }
+
+        }, this );
+
+        return sh;
     }
-});
+ });
