@@ -232,6 +232,12 @@ module.exports = kind({
             name: 'start_button',
             content: 'Start',
             ontap: 'handleStart'
+        },        
+        {
+            classes: 'item download',
+            name: 'download_button',
+            content: 'DN',
+            ontap: 'handleDownload'
         },
         
         {name: 'Dialogs', components: [

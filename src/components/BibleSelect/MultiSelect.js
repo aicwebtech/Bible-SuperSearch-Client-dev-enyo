@@ -12,6 +12,7 @@ module.exports = kind({
     selectorShortWidthThreshold: 250,
     selectorClasses: '',
     valueUnfiltered: [],
+    downloadableOnly: false,
 
     components: [
         {name: 'Container', tag: 'div'},
@@ -72,6 +73,8 @@ module.exports = kind({
                 width: width,
                 shortWidthWidth: shortWidth,
                 shortWidthThreshold: this.selectorShortWidthThreshold,
+                downloadableOnly: this.downloadableOnly,
+
                 // value: (this.parallelNumber == 1) ? this.app.configs.defaultBible : null,
                 owner: this
             });

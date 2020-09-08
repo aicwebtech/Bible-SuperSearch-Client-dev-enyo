@@ -70,5 +70,8 @@ module.exports = kind({
     },    
     handleStart: function(inSender, inEvent) {
         this.app.set('startShowing', true);
+    },    
+    handleDownload: function(inSender, inEvent) {
+        this.app.set('downloadShowing', true);
     }
 });

@@ -3,6 +3,7 @@ var ViewController = require('enyo/ViewController');
 var LoadingDialog = require('../../components/dialogs/Loading');
 var SosDialog = require('../../components/dialogs/SOS');
 var StartDialog = require('../../components/dialogs/Start');
+var DownloadDialog = require('../../components/dialogs/Download');
 var NavButtons = require('../../components/NavButtons/NavClassic');
 var FormatButtons = require('../../components/FormatButtons/classic/FormatButtonsClassic');
 var Pager = require('../../components/Pagers/ClassicPager');
@@ -66,6 +67,17 @@ module.exports = kind({
         }
 
         this.$.StartDialog.set('showing', is);
+    },    
+    downloadShowingChanged: function(was, is) {
+        if(!this.$.DownloadDialog) {
+            this.createComponent({
+                name: 'DownloadDialog',
+                kind: DownloadDialog,
+                showing: false
+            }).render();
+        }
+
+        this.$.DownloadDialog.set('showing', is);
     },
     formHasField: function(fieldName) {
         // For special interfaces, implement on child!

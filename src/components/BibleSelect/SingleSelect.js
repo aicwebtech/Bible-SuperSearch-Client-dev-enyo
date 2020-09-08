@@ -14,6 +14,7 @@ module.exports = kind({
     parallelNumber: 0,
     classes: 'biblesupersearch_bible_selector',
     _currentGroup: null,
+    downloadableOnly: false,
 
     handlers: {
         resize: 'handleResize',
@@ -32,7 +33,12 @@ module.exports = kind({
             width = (this.isShort) ? this.shortWidthWidth : this.width;
 
         if(this.parallelNumber && this.parallelNumber != 0) {
-            var noSelectLabel = 'Paralell Bible #' + this.parallelNumber.toString();
+            if(this.downloadableOnly) {
+                noSelectLabel = 'Bible #' + this.parallelNumber.toString();
+            }
+            else {
+                noSelectLabel = 'Parallel Bible #' + this.parallelNumber.toString();
+            }
         }
 
         if(!this.app.singleBibleEnabled()) {        
@@ -95,6 +101,12 @@ module.exports = kind({
     _addBibleHelper: function(bible) {
         if(bible.lang != this._lastLang) {
             // do something?
+        }
+
+        if(this.downloadableOnly) {
+            if(!bible.downloadable) {
+                return;
+            }
         }
 
         this._lastLang = bible.lang;

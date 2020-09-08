@@ -514,6 +514,11 @@ var App = Application.kind({
         if(this.view && this.view.set) {
             this.view.set('startShowing', is);
         }
+    },    
+    downloadShowingChanged: function(was, is) {
+        if(this.view && this.view.set) {
+            this.view.set('downloadShowing', is);
+        }
     },
     ajaxLoadingDelayChanged: function(was, is) {
         var delay = is || false,
