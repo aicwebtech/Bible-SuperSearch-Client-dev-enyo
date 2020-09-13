@@ -81,21 +81,27 @@ module.exports = kind({
     //     this.resetValue();
     // },
     resetValue: function() {
-        window.select = this;
+        this.log('SINGSEL parallelNumber', this.parallelNumber, this.app.configs.defaultBible);
 
         if(this.parallelNumber == 0 || this.parallelNumber == 1) {
             this.app.debug && this.log('defaulting', this.app.configs.defaultBible);
+            // this.setSelectedValue('0');
             this.setSelectedValue(this.app.configs.defaultBible);
-            // this.set('value', this.app.configs.defaultBible);
         }
     },
     applyDefaultValue: function() {
         var value = this.getValue();
 
         this.app.debug && this.log(value);
+        this.log(value);
 
-        if(!value || value == 0) {
+        if(!value || value == 0 || value == '0' || value == '') {
+            this.log('reseting value');
             this.resetValue();
+        }
+        else {
+            this.log('set selected value - again');
+            this.setSelectedByValue(value);
         }
     },
     _addBibleHelper: function(bible) {

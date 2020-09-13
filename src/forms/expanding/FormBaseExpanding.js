@@ -46,6 +46,9 @@ module.exports = kind({
             this.$.bible && this.$.bible.set('parallelStart', bibset.parallelStart);
         }
 
+        this.$.bible && this.$.bible.set('value', []);
+        this.$.bible && this.$.bible.set('value', utils.clone(this.app.getSelectedBibles()) );
+
         if(!is) {
             this.$.bible && this.$.bible.parallelCleanup();
         }

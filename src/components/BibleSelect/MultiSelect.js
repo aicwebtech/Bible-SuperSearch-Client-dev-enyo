@@ -38,6 +38,8 @@ module.exports = kind({
         this.$.Container.render();
     },
     _addSelectorHelper: function() {
+        this.log();
+
         if(this.parallelNumber >= this.parallelLimit) {  
             return false;
         }
@@ -51,7 +53,6 @@ module.exports = kind({
         this.app.debug && this.log('parallelNumber', this.parallelNumber);
         this.app.debug && this.log('parallelLimit', this.parallelLimit);
 
-        
         if(this.parallelNumber >= this.parallelLimit) {
             this.$.Add.set('showing', false);
         }
@@ -154,8 +155,15 @@ module.exports = kind({
                 valueFiltered.push(value);
             }
         }
+
+        this.$.Select_0 && this.log('Select_0 exists');
+        this.$.Select_1 && this.log('Select_1 exists');
+        this.$.Select_2 && this.log('Select_2 exists');
+        this.$.Select_3 && this.log('Select_3 exists');
         
-        this.$.Select_1.applyDefaultValue();
+        this.log('parallelNumber', this.parallelNumber);
+        this.$.Select_0 && this.$.Select_0.applyDefaultValue();
+        this.$.Select_1 && this.$.Select_1.applyDefaultValue();
 
         if(selectorAdded) {
             this.$.Container.render();

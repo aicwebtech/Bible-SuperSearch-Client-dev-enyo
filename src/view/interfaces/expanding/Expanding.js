@@ -2,7 +2,7 @@ var kind = require('enyo/kind');
 var Base = require('./ExpandingBase');
 
 module.exports = kind({
-    name: 'ExpandingBase',
+    name: 'Expanding',
     kind: Base,
     // formView: formView,
     advancedFormView: null //advancedFormView,
