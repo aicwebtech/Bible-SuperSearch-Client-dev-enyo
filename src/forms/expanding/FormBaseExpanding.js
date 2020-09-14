@@ -21,7 +21,7 @@ module.exports = kind({
         },
         expanded: {
             parallelLimit: 6,
-            parallelStart: 2
+            parallelStart: 2 // Contract Problem does not exist when this = 1
         }
     },
 
@@ -39,7 +39,11 @@ module.exports = kind({
         this.$.Expand0 && this.$.Expand0.set('showing', !!is);
         this.$.Expansion && this.$.Expansion.set('open', !!is);
 
+        var bibles = utils.clone(this.app.getSelectedBibles());
         var bibset = (is) ? this.parallelBibleSettings.expanded : this.parallelBibleSettings.contracted;
+
+        // Breakage only occurs when colapsing form with ONLY ONE Bible selected
+        this.log('bibles', bibles);
 
         if(bibset && !is) {
             this.$.bible && this.$.bible.set('parallelLimit', bibset.parallelLimit);
@@ -47,7 +51,7 @@ module.exports = kind({
         }
 
         this.$.bible && this.$.bible.set('value', []);
-        this.$.bible && this.$.bible.set('value', utils.clone(this.app.getSelectedBibles()) );
+        this.$.bible && this.$.bible.set('value',  bibles);
 
         if(!is) {
             this.$.bible && this.$.bible.parallelCleanup();

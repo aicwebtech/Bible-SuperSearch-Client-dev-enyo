@@ -156,12 +156,15 @@ module.exports = kind({
             }
         }
 
-        this.$.Select_0 && this.log('Select_0 exists');
-        this.$.Select_1 && this.log('Select_1 exists');
-        this.$.Select_2 && this.log('Select_2 exists');
-        this.$.Select_3 && this.log('Select_3 exists');
-        
-        this.log('parallelNumber', this.parallelNumber);
+        this.log('valueUnfiltered', this.valueUnfiltered);
+        this.log('valueFiltered', valueFiltered);
+
+        // this.$.Select_0 && this.log('Select_0 exists');
+        // this.$.Select_1 && this.log('Select_1 exists');
+        // this.$.Select_2 && this.log('Select_2 exists');
+        // this.$.Select_3 && this.log('Select_3 exists');
+        // this.log('parallelNumber', this.parallelNumber);
+
         this.$.Select_0 && this.$.Select_0.applyDefaultValue();
         this.$.Select_1 && this.$.Select_1.applyDefaultValue();
 
