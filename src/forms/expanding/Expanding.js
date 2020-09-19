@@ -111,7 +111,7 @@ module.exports = kind({
         // this.log(inSender);
         // this.log(inEvent);
         // this.log('shortcut id selected', inSender.selected);
-        this.log('shortcut value selected', inSender.get('value'));
+        this.app.debug && this.log('shortcut value selected', inSender.get('value'));
 
         var val = inSender.get('value');
 

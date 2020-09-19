@@ -1,4 +1,7 @@
-= 4.2.0 -
+= 4.2.3 = 
+* Fixed Bible selected breakaga on expanding form when contracting the form.
+
+= 4.2.0 =
 * Added ability to group Bibles by language
 * Added Bible SOS, Bible Start Guide dialogs
 * Changed Strongs Definition dialogs to stay open longer, allowing a user to copy and paste the Strong's text

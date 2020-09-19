@@ -142,11 +142,16 @@ module.exports = kind({
                 this.app.debug && this.log('adding selector for', value, name);
                 var added = this._addSelectorHelper();
                 selectorAdded = (added) ? true : selectorAdded;
+
+                this.app.debug && this.log('selectorAdded', selectorAdded);
                 
                 if(added) {
                     added.set('value', value); // Why isn't this automatically selecting?
-                    added.setSelectedValue(value); 
+                    // added.setSelectedValue(value); 
                     valueFiltered.push(value);
+                }
+                else {
+                    this.app.debug && this.log('Error: no selector added!');
                 }
             }
             else if(this.$[name]) {
@@ -167,6 +172,8 @@ module.exports = kind({
 
         this.$.Select_0 && this.$.Select_0.applyDefaultValue();
         this.$.Select_1 && this.$.Select_1.applyDefaultValue();
+
+        this.log('selectorAdded', selectorAdded);
 
         if(selectorAdded) {
             this.$.Container.render();

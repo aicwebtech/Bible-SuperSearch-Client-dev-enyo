@@ -21,7 +21,7 @@ module.exports = kind({
         },
         expanded: {
             parallelLimit: 6,
-            parallelStart: 2 // Contract Problem does not exist when this = 1
+            parallelStart: 1 // Contract Problem does not exist when this = 1, however this really should = 2
         }
     },
 
@@ -45,7 +45,8 @@ module.exports = kind({
         // Breakage only occurs when colapsing form with ONLY ONE Bible selected
         this.log('bibles', bibles);
 
-        if(bibset && !is) {
+        // if(bibset && !is) {
+        if(bibset) {
             this.$.bible && this.$.bible.set('parallelLimit', bibset.parallelLimit);
             this.$.bible && this.$.bible.set('parallelStart', bibset.parallelStart);
         }

@@ -18,6 +18,7 @@ module.exports = kind({
                 for(i in controls) {
                     if(controls[i].get('value') == value) {
                         this.setSelected(i);
+                        this.setValue('value');
                         return true;
                         break;
                     }

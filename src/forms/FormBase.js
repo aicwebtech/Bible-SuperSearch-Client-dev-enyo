@@ -122,6 +122,9 @@ module.exports = kind({
         this.requestPending = true;
         var formData = this.beforeSubmitForm(formData);
         formData = this.processDefaults(formData);
+
+        this.app.debug && this.log('Submitted formData', formData);
+
         ajax.go(formData); // for GET
         ajax.response(this, 'handleResponse');
         ajax.error(this, 'handleError');
