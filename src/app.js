@@ -364,7 +364,7 @@ var App = Application.kind({
                     return this._hashSearch(parts);
                     break;
                 case 'f': // JSON-endoded form data
-                    return this._hashContext(parts);
+                    return this._hashForm(parts);
                     break;
             }
         }
@@ -377,10 +377,16 @@ var App = Application.kind({
         var formDataJson = localStorage.getItem('BibleSuperSearchFormData');
 
         if(!formDataJson || typeof formDataJson != 'string') {
-            return;
+            if(typeof biblesupersearch_form_data == 'object') {
+                var formData = utils.clone(biblesupersearch_form_data);
+            }
+            else {
+                return;
+            }
         }
-
-        var formData = JSON.parse(formDataJson);
+        else {
+            var formData = JSON.parse(formDataJson);
+        }
 
         if(formData.redirected) {
             this.preventRedirect = true;  // prevent further redirection if we were redirected here

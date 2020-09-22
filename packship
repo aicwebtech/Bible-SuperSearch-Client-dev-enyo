@@ -1,13 +1,15 @@
 echo 'Current git branch: '
 git branch | grep \*
-mkdir -p ../ui-standalone/biblesupersearch
-rm -r ../ui-standalone/biblesupersearch/assets
+mkdir -p ../ui-standalone/
+rm -r ../ui-standalone/assets
 
-enyo pack --production -d ../ui-standalone/biblesupersearch --no-inline-css --no-inline-js
-rm ../ui-standalone/biblesupersearch/config.js
-cp assets/html/readme.txt ../ui-standalone/biblesupersearch/
-cp assets/html/user_guide.html ../ui-standalone/biblesupersearch/
-cp assets/html/prod_site_sample.html ../ui-standalone/biblesupersearch/example.html
-cp assets/html/prod_test.html ../ui-standalone/biblesupersearch/test.html
-cp assets/html/demo.html ../ui-standalone/biblesupersearch/index.html
-cp assets/html/prod.html ../ui-standalone/biblesupersearch/biblesupersearch.html
+enyo pack --production -d ../ui-standalone --no-inline-css --no-inline-js
+rm ../ui-standalone/config.js
+cp config-example.js ../ui-standalone/
+cp changelog.txt ../ui-standalone/
+cp assets/html/readme.txt ../ui-standalone/
+cp assets/html/user_guide.html ../ui-standalone/
+cp assets/html/prod_site_sample.html ../ui-standalone/example.html
+cp assets/html/prod_test.html ../ui-standalone/test.html
+cp assets/html/demo.html ../ui-standalone/index.html
+cp assets/html/prod.html ../ui-standalone/biblesupersearch.html
