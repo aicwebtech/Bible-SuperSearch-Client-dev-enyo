@@ -128,12 +128,18 @@ module.exports = kind({
                 content = narrow ? contentShort : contentLong;
 
             switch(this.app.configs.bibleGrouping) {
-                case 'language':
+                case 'language': // Language: Endonym
                     group = bible.lang_short;
                     var n = bible.lang_native || bible.lang; // Fall back to English name if needed
                     groupContent = n + ' - (' + bible.lang_short.toUpperCase() + ')';
+                    break;                
+                case 'language_and_english': // Language: Both Endonym and English name
+                    group = bible.lang_short;
+                    // If no Endonym, only display English name once
+                    var n = (bible.lang_native && bible.lang_native != bible.lang) ? bible.lang_native + ' / ' + bible.lang : bible.lang;
+                    groupContent = n + ' - (' + bible.lang_short.toUpperCase() + ')';
                     break;
-                case 'language_english':
+                case 'language_english': // Language: English name
                     group = bible.lang_short;
                     groupContent = bible.lang + ' - (' + bible.lang_short.toUpperCase() + ')';
                     break;
