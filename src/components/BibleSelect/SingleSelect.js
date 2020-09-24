@@ -1,4 +1,5 @@
 var kind = require('enyo/kind');
+var utils = require('enyo/utils');
 var Sel = require('../Select');
 var OptionGroup = require('enyo.OptionGroup');
 // var Option = require('enyo.Option');
@@ -27,6 +28,7 @@ module.exports = kind({
 
         var statics = this.app.get('statics'),
             bibles = statics.bibles,
+            biblesDisplayed = this.app.get('biblesDisplayed'),
             configs = this.app.get('configs'),
             enabled = configs.enabledBibles,
             noSelectLabel = 'Select a Bible',
@@ -53,15 +55,8 @@ module.exports = kind({
             });
         }
 
-        if(Array.isArray(enabled) && enabled.length) {
-            for(i in enabled) {
-                bibles[enabled[i]] && this._addBibleHelper(bibles[enabled[i]]);
-            }
-        }
-        else {        
-            for(i in bibles) {
-                this._addBibleHelper(bibles[i]);
-            }
+        for(i in biblesDisplayed) {
+            this._addBibleHelper(biblesDisplayed[i]);
         }
 
         if(width && width != 0) {

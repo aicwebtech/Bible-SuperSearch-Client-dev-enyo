@@ -23,6 +23,7 @@ var biblesupersearch_config_options = {
     // Options: 
     // 'language' - Group by language (endonym) (Not supported if API version is < 4.2, and will fall back to English name)
     // 'language_english' - Group by language's English name
+    // 'language_and english' - Group by language (endonym), with language's English name
     //  'none' - no grouping
     "bibleGrouping": 'language',          
 

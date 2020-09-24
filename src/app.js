@@ -46,6 +46,7 @@ var App = Application.kind({
     baseUrl: null,
     clientBrowser: null,
     preventRedirect: false,
+    biblesDisplayed: [],
     
     // Selectable sub-views:
     formatButtonsView: null,
@@ -251,21 +252,24 @@ var App = Application.kind({
         // Experimental
 
         var ajaxData = {};
-        var groupOrder = null;
+        // var groupOrder = null;
 
-        switch (this.configs.bibleGrouping) {
-            case 'language':
-                groupOrder = 'lang_name';
-                break;            
-            case 'language_english':
-                groupOrder = 'lang_name_english';
-                break;
-            case 'none':
-            default:
-                groupOrder = null;
-        }
+        // switch (this.configs.bibleGrouping) {
+        //     case 'language':
+        //     case 'language_and_english':
+        //         groupOrder = 'lang_name';
+        //         break;            
+        //     case 'language_english':
+        //         groupOrder = 'lang_name_english';
+        //         break;
+        //     case 'none':
+        //     default:
+        //         groupOrder = null;
+        // }
 
-        ajaxData.bible_order_by = (groupOrder) ? groupOrder + '|' + this.configs.bibleSorting : this.configs.bibleSorting;
+        // ajaxData.bible_order_by = (groupOrder) ? groupOrder + '|' + this.configs.bibleSorting : this.configs.bibleSorting;
+
+        ajaxData.bible_order_by = this._getBibleOrderBy();
 
         // this.log('loading statics');
         ajax.go(ajaxData);
@@ -292,9 +296,28 @@ var App = Application.kind({
             alert('Error: Failed to load application static data.  Error code 2');
         });    
     },
+    _getBibleOrderBy: function() {
+        var groupOrder = null;
+
+        switch (this.configs.bibleGrouping) {
+            case 'language':
+            case 'language_and_english':
+                groupOrder = 'lang_name';
+                break;            
+            case 'language_english':
+                groupOrder = 'lang_name_english';
+                break;
+            case 'none':
+            default:
+                groupOrder = null;
+        }
+
+        return (groupOrder) ? groupOrder + '|' + this.configs.bibleSorting : this.configs.bibleSorting;
+    },
     _handleStaticsLoad: function(statics, view) {
         this.test();
         this.set('statics', statics);
+        this.processBiblesDisplayed();
         this.waterfall('onStaticsLoaded');
 
         if(view && view != null) {
@@ -304,6 +327,63 @@ var App = Application.kind({
         this.render();
         this.appLoaded = true;
         this.$.Router.trigger();
+    },
+    processBiblesDisplayed: function() {
+        this.inherited(arguments);
+        this.biblesDisplayed = [];
+
+        var bibles = this.statics.bibles,
+            displayed = [],
+            enabled = this.configs.enabledBibles,
+            orderBy = this._getBibleOrderBy().split('|');
+
+        if(Array.isArray(enabled) && enabled.length) {
+            for(i in enabled) {
+                bibles[enabled[i]] && displayed.push(bibles[enabled[i]]);
+            }
+        }
+        else {        
+            for(i in bibles) {
+                displayed.push(bibles[i]);
+            }
+        } 
+
+        displayed.sort(function(a, b) {
+            var ob = null,
+                compA = null,
+                compB = null;
+
+            for(i in orderBy) {
+                ob = orderBy[i];
+
+                switch(ob) {
+                    case 'lang_name':
+                        ob = 'lang_native';
+                        break;
+                    case 'lang_name_english':
+                        ob = 'lang';
+                        break;
+                }
+
+                compA = a[ob] || null;
+                compB = b[ob] || null;
+
+                compA = (typeof compA == 'String') ? compA.toUpperCase() : compA;
+                compB = (typeof compB == 'String') ? compB.toUpperCase() : compB;
+
+                // Todo - implement descending sort option!
+                if(compA > compB) {
+                    return 1;
+                }
+                else if(compB > compA) {
+                    return -1;
+                }
+            }
+
+            return 0;
+        });
+
+        this.biblesDisplayed = displayed;
     },
     rendered: function() {
         this.inherited(arguments);
