@@ -54,7 +54,6 @@ module.exports = kind({
             passage.verse_index[chapter].forEach(function(verse) {
                 for(i in this.bibles) {
                     var module = this.bibles[i];
-                    var content = '';
                     var bible_info = this.selectBible(module);
 
                     if(!bible_info) {
@@ -62,7 +61,7 @@ module.exports = kind({
                     }
 
                     if(passage.verses[module] && passage.verses[module][chapter] && passage.verses[module][chapter][verse]) {
-                        content  = this.processSingleVerseContent(passage, passage.verses[module][chapter][verse]);
+                        var content  = this.processSingleVerseContent(passage, passage.verses[module][chapter][verse]);
                         this._appendBibleComponent(content, i);
                     }
                 }
@@ -70,8 +69,6 @@ module.exports = kind({
         }
     },
     renderPassageParallelBible: function(passage) {        
-        // this.log(passage);
-
         for(i in this.bibles) {
             this._appendBibleComponent(passage.book_name + ' ' + passage.chapter_verse + this.newLine + this.newLine, i);
         }
@@ -82,7 +79,6 @@ module.exports = kind({
 
                 for(i in this.bibles) {
                     var module = this.bibles[i];
-                    var content = '';
                     var bible_info = this.selectBible(module);
 
                     if(!bible_info) {
@@ -90,9 +86,7 @@ module.exports = kind({
                     }
 
                     if(passage.verses[module] && passage.verses[module][chapter] && passage.verses[module][chapter][verse]) {
-                        // this.log(passage.verses[module][chapter][verse]);
-                        content = this.processPassageVerseContent(passage, passage.verses[module][chapter][verse]);
-                        this.log(content);
+                        var content = this.processPassageVerseContent(passage, passage.verses[module][chapter][verse]);
                         this._appendBibleComponent(content, i);
                     }
                 }
@@ -111,7 +105,6 @@ module.exports = kind({
     },
     _appendBibleComponent: function(content, index) {
         var compName = this._getBibleComponentName(index);
-        // this.log(content);
         this.container.$[compName] && this.container.$[compName].appendText(content);    
     },
     processAssembleVerse: function(reference, verse) {

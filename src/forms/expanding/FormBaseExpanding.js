@@ -43,7 +43,7 @@ module.exports = kind({
         var bibset = (is) ? this.parallelBibleSettings.expanded : this.parallelBibleSettings.contracted;
 
         // Breakage only occurs when colapsing form with ONLY ONE Bible selected
-        this.log('bibles', bibles);
+        // this.log('bibles', bibles);
 
         // if(bibset && !is) {
         if(bibset) {

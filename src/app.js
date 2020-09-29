@@ -329,7 +329,6 @@ var App = Application.kind({
         this.$.Router.trigger();
     },
     processBiblesDisplayed: function() {
-        this.inherited(arguments);
         this.biblesDisplayed = [];
 
         var bibles = this.statics.bibles,

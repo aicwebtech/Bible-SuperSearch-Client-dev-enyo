@@ -142,10 +142,10 @@ module.exports = kind({
         this.renderPager(false);
         // this.$.ResultsContainer.render();
 
-        this.log('showingCopyrightBottom', this.showingCopyrightBottom);
+        this.app.debug && this.log('showingCopyrightBottom', this.showingCopyrightBottom);
 
         if(!this.showingCopyrightBottom) {
-            this.log('about to renderCopyrightBottom');
+            this.app.debug && this.log('about to renderCopyrightBottom');
             this.renderCopyrightBottom();
         }
 

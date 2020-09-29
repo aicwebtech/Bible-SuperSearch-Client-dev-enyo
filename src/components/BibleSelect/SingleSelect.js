@@ -76,7 +76,7 @@ module.exports = kind({
     //     this.resetValue();
     // },
     resetValue: function() {
-        this.log('SINGSEL parallelNumber', this.parallelNumber, this.app.configs.defaultBible);
+        // this.log('SINGSEL parallelNumber', this.parallelNumber, this.app.configs.defaultBible);
 
         if(this.parallelNumber == 0 || this.parallelNumber == 1) {
             this.app.debug && this.log('defaulting', this.app.configs.defaultBible);
@@ -87,15 +87,12 @@ module.exports = kind({
     applyDefaultValue: function() {
         var value = this.getValue();
 
-        this.app.debug && this.log(value);
-        this.log(value);
-
         if(!value || value == 0 || value == '0' || value == '') {
-            this.log('reseting value');
+            // this.log('reseting value');
             this.resetValue();
         }
         else {
-            this.log('set selected value - again');
+            // this.log('set selected value - again');
             this.setSelectedByValue(value);
         }
     },
@@ -228,7 +225,6 @@ module.exports = kind({
         }
     },
     isShortChanged: function(was, is) {
-        this.log(was, is);
         var width = (is) ? this.shortWidthWidth : this.width;
         var comp = this.getClientControls();
         this._isShortChangedHelper(comp, is);

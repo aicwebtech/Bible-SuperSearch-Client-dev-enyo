@@ -38,8 +38,6 @@ module.exports = kind({
         this.$.Container.render();
     },
     _addSelectorHelper: function() {
-        this.log();
-
         if(this.parallelNumber >= this.parallelLimit) {  
             return false;
         }
@@ -161,8 +159,8 @@ module.exports = kind({
             }
         }
 
-        this.log('valueUnfiltered', this.valueUnfiltered);
-        this.log('valueFiltered', valueFiltered);
+        this.app.debug && this.log('valueUnfiltered', this.valueUnfiltered);
+        this.app.debug && this.log('valueFiltered', valueFiltered);
 
         // this.$.Select_0 && this.log('Select_0 exists');
         // this.$.Select_1 && this.log('Select_1 exists');
@@ -173,7 +171,7 @@ module.exports = kind({
         this.$.Select_0 && this.$.Select_0.applyDefaultValue();
         this.$.Select_1 && this.$.Select_1.applyDefaultValue();
 
-        this.log('selectorAdded', selectorAdded);
+        this.app.debug && this.log('selectorAdded', selectorAdded);
 
         if(selectorAdded) {
             this.$.Container.render();
