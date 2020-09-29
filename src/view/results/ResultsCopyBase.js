@@ -62,7 +62,7 @@ module.exports = kind({
                     }
 
                     if(passage.verses[module] && passage.verses[module][chapter] && passage.verses[module][chapter][verse]) {
-                        var content  = this.processSingleVerseContent(passage, passage.verses[module][chapter][verse]);
+                        content  = this.processSingleVerseContent(passage, passage.verses[module][chapter][verse]);
                         this._appendBibleComponent(content, i);
                     }
                 }
@@ -70,6 +70,8 @@ module.exports = kind({
         }
     },
     renderPassageParallelBible: function(passage) {        
+        // this.log(passage);
+
         for(i in this.bibles) {
             this._appendBibleComponent(passage.book_name + ' ' + passage.chapter_verse + this.newLine + this.newLine, i);
         }
@@ -88,7 +90,9 @@ module.exports = kind({
                     }
 
                     if(passage.verses[module] && passage.verses[module][chapter] && passage.verses[module][chapter][verse]) {
-                        var content = this.processPassageVerseContent(passage, passage.verses[module][chapter][verse]);
+                        // this.log(passage.verses[module][chapter][verse]);
+                        content = this.processPassageVerseContent(passage, passage.verses[module][chapter][verse]);
+                        this.log(content);
                         this._appendBibleComponent(content, i);
                     }
                 }
@@ -107,6 +111,7 @@ module.exports = kind({
     },
     _appendBibleComponent: function(content, index) {
         var compName = this._getBibleComponentName(index);
+        // this.log(content);
         this.container.$[compName] && this.container.$[compName].appendText(content);    
     },
     processAssembleVerse: function(reference, verse) {
