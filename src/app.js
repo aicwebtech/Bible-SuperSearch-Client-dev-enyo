@@ -357,9 +357,12 @@ var App = Application.kind({
 
                 switch(ob) {
                     case 'lang_name':
+                    case 'language':
+                    case 'language_and_english':
                         ob = 'lang_native';
                         break;
                     case 'lang_name_english':
+                    case 'language_english':
                         ob = 'lang';
                         break;
                 }
