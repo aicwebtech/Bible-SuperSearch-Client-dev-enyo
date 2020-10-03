@@ -233,12 +233,12 @@ module.exports = kind({
             content: 'Start',
             ontap: 'handleStart'
         },        
-        // {
-        //     classes: 'item download',
-        //     name: 'download_button',
-        //     content: 'DN',
-        //     ontap: 'handleDownload'
-        // },
+        {
+            classes: 'item download',
+            name: 'download_button',
+            content: 'DN',
+            ontap: 'handleDownload'
+        },
         
         {name: 'Dialogs', components: [
             {name: 'HelpDialog', kind: Help, showing: false}

@@ -16,6 +16,7 @@ module.exports = kind({
     classes: 'biblesupersearch_bible_selector',
     _currentGroup: null,
     downloadableOnly: false,
+    defaultNull: false,
 
     handlers: {
         resize: 'handleResize',
@@ -80,8 +81,16 @@ module.exports = kind({
 
         if(this.parallelNumber == 0 || this.parallelNumber == 1) {
             this.app.debug && this.log('defaulting', this.app.configs.defaultBible);
-            // this.setSelectedValue('0');
-            this.setSelectedValue(this.app.configs.defaultBible);
+
+            if(this.defaultNull) {
+                // this.setSelectedValue('0');
+                this.setSelected(0);
+                this.setValue('0');
+                this.app.debug && this.log('defaulting NULL');
+            }
+            else {
+                this.setSelectedValue(this.app.configs.defaultBible);
+            }
         }
     },
     applyDefaultValue: function() {
@@ -174,7 +183,7 @@ module.exports = kind({
 
             var selected = '';
 
-            if((this.parallelNumber == 0 || this.parallelNumber == 1) && this.app.configs.defaultBible == bible.module) {
+            if((this.parallelNumber == 0 || this.parallelNumber == 1) && this.app.configs.defaultBible == bible.module && !this.defaultNull) {
                 selected = 'selected';
             }
 

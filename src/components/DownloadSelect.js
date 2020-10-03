@@ -40,13 +40,11 @@ module.exports = kind({
             item.formats.forEach(function(fm) {
                 var info = item.renderers[fm];
 
-                this.log(info);
-
-
+                // this.log('downloadinfo', info, fm);
 
                 optgroup.createComponent({
                     tag: 'option',
-                    value: fm,
+                    attributes: {value: fm},
                     allowHtml: true,
                     content: optLabel + info.name
                 });

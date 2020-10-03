@@ -13,6 +13,7 @@ module.exports = kind({
     selectorClasses: '',
     valueUnfiltered: [],
     downloadableOnly: false,
+    defaultNull: false, // Use NULL as the default value, ignoring the configured default
 
     components: [
         {name: 'Container', tag: 'div'},
@@ -73,6 +74,7 @@ module.exports = kind({
                 shortWidthWidth: shortWidth,
                 shortWidthThreshold: this.selectorShortWidthThreshold,
                 downloadableOnly: this.downloadableOnly,
+                defaultNull: this.defaultNull,
 
                 // value: (this.parallelNumber == 1) ? this.app.configs.defaultBible : null,
                 owner: this
