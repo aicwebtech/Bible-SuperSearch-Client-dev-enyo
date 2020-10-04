@@ -465,7 +465,39 @@ div.biblesupersearch_dialog {
     font-size: 0.9em;
 }
 
-.clear-both {
+.bible_download h4 {
+    margin-top: 0;
+}
+
+.render_list {
+    text-align: left;
+}
+
+.render_list .name {
+    display: inline-block;
+    float: left;
+    text-align: left;
+}
+
+.render_list .status {
+    display: inline-block;
+    float: right;
+    text-align: right;
+}
+
+.render_list .status .success {
+    color: green;
+}
+
+.render_list .status .error {
+    color: red;
+}
+
+.render_list .render_item:nth-child(odd) {
+    background-color: #ddd;
+}
+
+.clear-both, .clear_both {
     clear: both;
 }
 

@@ -4,6 +4,7 @@ var Anchor = require('enyo/Anchor');
 var Dialog = require('./Dialog');
 var LinkBuilder = require('../Link/LinkBuilder');
 var utils = require('enyo/utils');
+var Image = require('../Image');
 
 var Ajax = require('enyo/Ajax');
 var BibleSelector = require('../BibleSelect/MultiSelect.js');
@@ -19,7 +20,7 @@ module.exports = kind({
     kind: Dialog,
     width: '400px',
     height: '475px',
-    classes: 'help_dialog bible_start',
+    classes: 'help_dialog bible_download',
     bibleString: null,
     formData: null,
     
@@ -28,7 +29,6 @@ module.exports = kind({
             {tag: 'h3', content: 'Bible Downloads'}
         ]}
     ],
-
     bodyComponents: [
         {classes: 'list start_list', name: 'ListContainer'},
         {components: [
@@ -39,9 +39,21 @@ module.exports = kind({
             {name: 'FormatSelect', kind: FormatSelector},
         ]},
         {tag: 'br'},
-        {name: 'Status', showing: false}
+        {name: 'Status', showing: false, components: [
+            {name: 'Spinner', kind: Image, relSrc: '/Spinner.gif'},
+            {tag: 'h4', content: 'Rendering Bibles, this may take some time'},
+            {name: 'RenderStatusContainer', classes: 'render_list'}
+        ]},
+        {name: 'RenderingComplete', tag: 'h4', content: 'Rendering is Complete', showing: false},
+        {name: 'DownloadPending', showing: false, components: [
+            {tag: 'h4', content: 'Your download should begin shortly'},
+            {content: 'If not, please click on the below link:'},
+            {tag: 'br'},
+            {components: [
+                {kind: Anchor, name: 'DownloadLink', content: 'placeholder', _attributes: {target: '_NEW'}}
+            ]}
+        ]}
     ],
-
     buttonComponents: [
         {kind: Button, ontap: 'download', content: 'Download'},
         {name: 'Close', kind: Button, content: 'Close', ontap: 'close'}
@@ -60,6 +72,8 @@ module.exports = kind({
     showingChanged: function(was, is) {
         this.inherited(arguments);
         this.$.Status.setShowing(false);
+        this.$.RenderingComplete.setShowing(false);
+        this.$.DownloadPending.setShowing(false);
         this.$.BibleSelect.setValue([]);
 
         if(is && this.app.getSelectedBiblesString() != this.bibleString) {
@@ -108,13 +122,9 @@ module.exports = kind({
         var response = JSON.parse(inSender.xhrResponse.body);
 
         if(response.error_level == 4) {
-
-            
             // this.bubble('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
         }
         else {
-            // this.handleResponse(inSender, response);
-            // this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: response});
             this.initRenderProcess();
         }
     },
@@ -130,25 +140,30 @@ module.exports = kind({
         }
     },
     sendFiles: function() {
+        this.$.DownloadPending.set('showing', true);
         var bibles = JSON.stringify(this.formData.bible);
         var url = this.app.configs.apiUrl + '/download?format=' + this.formData.format + '&bible=' + bibles;
+        this.$.DownloadLink.set('href', url);
+        this.$.DownloadLink.set('content', url);
         this.log(url);
         window.location = url;
     },
     initRenderProcess: function() {
         this.bibleQueue = utils.clone(this.formData.bible);
+        this.$.RenderStatusContainer.destroyClientControls();
         this.$.Status.set('showing', true);
-
+        this.$.Spinner.set('showing', true);
         this.renderNextBible();
     },
     renderNextBible: function() {
         if(this.bibleQueue.length == 0) {
-            // do something
+            //this.$.Spinner.set('showing', false);
+            this.$.RenderingComplete.set('showing', true);
+            this.$.Status.set('showing', false);
             return this.sendFiles();
         }
 
         var bible = this.bibleQueue.shift();
-
         var bibleInfo = this.app.statics.bibles[bible];
 
         var formData = {
@@ -156,9 +171,12 @@ module.exports = kind({
             format: this.formData.format
         };
 
-        var comp = this.$.Status.createComponent({
+        var comp = this.$.RenderStatusContainer.createComponent({
+            classes: 'render_item',
             components: [
-                {tag: 'span', content: 'Rendering: ' + bibleInfo.name}
+                {tag: 'span', _name: 'Label', classes: 'name', content: bibleInfo.name},
+                {tag: 'span', _name: 'Status', classes: 'status', content: 'Rendering ...'},
+                {classes: 'clear_both'}
             ],
         }).render();
 
@@ -167,19 +185,30 @@ module.exports = kind({
             method: 'GET'
         });
 
-        // this.app.set('ajaxLoadingDelay', 100);
+        this.log('comp-controls', comp.controls);
+
+        // comp.controls[1].set('content', 'Chewie');
+
+        var StatusControl = comp.controls[1];
+
         this.requestPending = true;
 
         ajax.go(formData); // for GET
         ajax.response(this, function(inSender, inResponse) {
             if(inResponse.results.success) {
+
+                StatusControl.set('content', 'Success');
+                StatusControl.addClass('success');
+
                 var text = 'Success';
             }
             else {
                 var text = 'Error';
+                StatusControl.set('content', 'Error');
+                StatusControl.addClass('error');
             }
 
-            comp.createComponent({tag: 'span', content: '--- ' + text}).render();
+            // comp.createComponent({tag: 'span', content: '--- ' + text}).render();
             this.renderNextBible();
         });
         ajax.error(this, 'handleError');
