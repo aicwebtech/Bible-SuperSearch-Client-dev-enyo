@@ -18,11 +18,12 @@ var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 module.exports = kind({
     name: 'DownloadDialog',
     kind: Dialog,
-    width: '400px',
-    height: '475px',
+    width: '500px',
+    height: '410px',
     classes: 'help_dialog bible_download',
     bibleString: null,
     formData: null,
+    requestPending: false,
     
     titleComponents: [
         {classes: 'header', components: [
@@ -31,12 +32,20 @@ module.exports = kind({
     ],
     bodyComponents: [
         {classes: 'list start_list', name: 'ListContainer'},
+        {tag: 'h5', content: 'Select Bible(s)'},
         {components: [
-            {name: 'BibleSelect', kind: BibleSelector, downloadableOnly: true, defaultNull: true},
+            {
+                name: 'BibleSelect', 
+                kind: BibleSelector, 
+                downloadableOnly: true, 
+                defaultNull: true,
+                selectorWidth: 350
+            },
         ]},        
-        {tag: 'br'},
+        {tag: 'h5', content: 'Select a Format'},
+        // {tag: 'br'},
         {components: [
-            {name: 'FormatSelect', kind: FormatSelector},
+            {name: 'FormatSelect', kind: FormatSelector, style: 'width: 350px'},
         ]},
         {tag: 'br'},
         {name: 'Status', showing: false, components: [
@@ -50,12 +59,12 @@ module.exports = kind({
             {content: 'If not, please click on the below link:'},
             {tag: 'br'},
             {components: [
-                {kind: Anchor, name: 'DownloadLink', content: 'placeholder', _attributes: {target: '_NEW'}}
+                {kind: Anchor, name: 'DownloadLink', content: 'Manual Download', _attributes: {target: '_NEW'}}
             ]}
         ]}
     ],
     buttonComponents: [
-        {kind: Button, ontap: 'download', content: 'Download'},
+        {name: 'DownloadButton', kind: Button, ontap: 'download', content: 'Download'},
         {name: 'Close', kind: Button, content: 'Close', ontap: 'close'}
     ],
 
@@ -71,22 +80,31 @@ module.exports = kind({
     },
     showingChanged: function(was, is) {
         this.inherited(arguments);
-        this.$.Status.setShowing(false);
-        this.$.RenderingComplete.setShowing(false);
-        this.$.DownloadPending.setShowing(false);
-        this.$.BibleSelect.setValue([]);
+        this.resetForm();
 
         if(is && this.app.getSelectedBiblesString() != this.bibleString) {
             // redraww the list because the URLs have changed
-
         }
     }, 
+    resetForm: function() {
+        this.$.Status.setShowing(false);
+        this.$.RenderingComplete.setShowing(false);
+        this.$.DownloadPending.setShowing(false);
+        // this.$.BibleSelect.setValue([]);
+        this.$.BibleSelect.resetValue();
+        this.$.FormatSelect.setSelected(0);
+    },
     download: function() {
+        if(this.get('requestPending')) {
+            return;
+        }
+
         var bibles = this.$.BibleSelect.getValue();
         var format = this.$.FormatSelect.getValue();
+        var errors = [];
 
-        this.log(bibles);
-        this.log(format);
+        // this.log(bibles);
+        // this.log(format);
 
         this.formData = {
             bible: bibles,
@@ -94,12 +112,15 @@ module.exports = kind({
         };
 
         if(bibles.length == 0) {
-            alert('Please select at least one Bible');
-            return;
+            errors.push('Please select at least one Bible');
         }
 
         if(!format || format == '0') {
-            alert('Please select a format');
+            errors.push('Please select a format');
+        }
+
+        if(errors.length > 0) {
+            alert(errors.join('\n'));
             return;
         }
 
@@ -109,16 +130,19 @@ module.exports = kind({
         });
 
         this.app.set('ajaxLoadingDelay', 100);
-        this.requestPending = true;
+        this.set('requestPending', true);
 
         ajax.go(this.formData); // for GET
         ajax.response(this, 'handleRenderNeeded');
         ajax.error(this, 'handleError');
     },
+    requestPendingChanged: function(was, is) {
+        this.$.DownloadButton.set('disabled', !!is);
+    },
     handleError: function(inSender, inResponse) {
         // this.app.set('ajaxLoading', false);
         this.app.set('ajaxLoadingDelay', false);
-        this.requestPending = false;
+        this.set('requestPending', false);
         var response = JSON.parse(inSender.xhrResponse.body);
 
         if(response.error_level == 4) {
@@ -130,7 +154,6 @@ module.exports = kind({
     },
     handleRenderNeeded: function(inSender, inResponse) {
         this.app.set('ajaxLoadingDelay', false);
-        this.requestPending = false;
 
         if(inResponse.results.success) {
             return this.sendFiles(); // send to download 
@@ -141,10 +164,11 @@ module.exports = kind({
     },
     sendFiles: function() {
         this.$.DownloadPending.set('showing', true);
+        this.set('requestPending', false);
         var bibles = JSON.stringify(this.formData.bible);
         var url = this.app.configs.apiUrl + '/download?format=' + this.formData.format + '&bible=' + bibles;
         this.$.DownloadLink.set('href', url);
-        this.$.DownloadLink.set('content', url);
+        // this.$.DownloadLink.set('content', url); // We need a cleaner URL format - maybe a hash or something
         this.log(url);
         window.location = url;
     },
@@ -180,15 +204,15 @@ module.exports = kind({
             ],
         }).render();
 
+        var BodyContainer = this.$.Body.hasNode();
+        BodyContainer.scrollTop = BodyContainer.scrollHeight; // Force scroll to bottom
+
         var ajax = new Ajax({
             url: this.app.configs.apiUrl + '/render',
             method: 'GET'
         });
 
-        this.log('comp-controls', comp.controls);
-
-        // comp.controls[1].set('content', 'Chewie');
-
+        // this.log('comp-controls', comp.controls);
         var StatusControl = comp.controls[1];
 
         this.requestPending = true;
@@ -208,7 +232,6 @@ module.exports = kind({
                 StatusControl.addClass('error');
             }
 
-            // comp.createComponent({tag: 'span', content: '--- ' + text}).render();
             this.renderNextBible();
         });
         ajax.error(this, 'handleError');

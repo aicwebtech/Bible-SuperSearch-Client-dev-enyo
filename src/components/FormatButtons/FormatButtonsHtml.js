@@ -236,8 +236,10 @@ module.exports = kind({
         {
             classes: 'item download',
             name: 'download_button',
-            content: 'DN',
-            ontap: 'handleDownload'
+            content: '&#8659;',
+            allowHtml: true,
+            ontap: 'handleDownload',
+            attributes: {title: 'Bible Downloads'}
         },
         
         {name: 'Dialogs', components: [

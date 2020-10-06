@@ -34,6 +34,20 @@ module.exports = kind({
             this._addSelectorHelper();
         }
     },
+    resetValue: function() {
+        this.setValue([]);
+        // this.parallelCleanup();
+        this.$.Container.destroyClientControls();
+        this.parallelNumber = 0;
+
+        var num = (this.parallelStart >= 1) ? this.parallelStart : 1;
+
+        for(var i = 1; i <= num; i++) {
+            this._addSelectorHelper();
+        }
+
+        this.$.Container.render();
+    },
     addSelector: function() {
         this._addSelectorHelper();
         this.$.Container.render();
