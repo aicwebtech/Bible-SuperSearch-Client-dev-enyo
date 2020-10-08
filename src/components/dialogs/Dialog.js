@@ -1,5 +1,6 @@
 var kind = require('enyo/kind');
 var Button = require('enyo/Button');
+var Signal = require('../Signal');
 
 module.exports = kind({
     name: 'Dialog',
@@ -22,6 +23,10 @@ module.exports = kind({
             {name: 'Body', classes: 'content', showing: true},
             {name: 'ButtonBar', classes: 'buttons', showing: false}
         ] },
+        {
+            kind: Signal, 
+            onkeyup: 'handleKey'
+        }
     ],
 
     create: function() {
@@ -52,6 +57,11 @@ module.exports = kind({
     },
     close: function() {
         this.set('showing', false);
+    },
+    handleKey: function(inSender, inEvent) {
+        if(inEvent.code == 'Escape') {
+            this.close();
+        }
     }
 
 });

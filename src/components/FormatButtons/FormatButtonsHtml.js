@@ -231,12 +231,13 @@ module.exports = kind({
             classes: 'item start',
             name: 'start_button',
             content: 'Start',
-            ontap: 'handleStart'
+            ontap: 'handleStart',
+            attributes: {title: 'Bible Start Guide'}
         },        
         {
             classes: 'item download',
             name: 'download_button',
-            content: '&#8659;',
+            content: '&#11123;&nbsp;',
             allowHtml: true,
             ontap: 'handleDownload',
             attributes: {title: 'Bible Downloads'}

@@ -11,6 +11,7 @@ var Help = require('../../dialogs/Help');
 module.exports = kind({
     name: 'FormatButtonsClassic',
     kind: Base,
+    classes: 'format_buttons_classic',
     
     components: [
         // {kind: Checkbox, name: 'copy'},
@@ -129,6 +130,27 @@ module.exports = kind({
             falseImage: 'classic/formatting/advanced.jpg',
             trueAlt: 'Basic',
             falseAlt: 'Advanced'
+        },
+        {
+            classes: 'item sos',
+            name: 'sos_button',
+            content: 'Bible SOS',
+            ontap: 'handleSos'
+        },        
+        {
+            classes: 'item start',
+            name: 'start_button',
+            content: 'Start',
+            ontap: 'handleStart',
+            attributes: {title: 'Bible Start Guide'}
+        },        
+        {
+            classes: 'item download',
+            name: 'download_button',
+            content: '&#11123;&nbsp;',
+            allowHtml: true,
+            ontap: 'handleDownload',
+            attributes: {title: 'Bible Downloads'}
         },
 
         {name: 'Dialogs', components: [

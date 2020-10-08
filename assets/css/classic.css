@@ -182,3 +182,20 @@
     text-decoration: none;
 }*/
 
+/* Emulate a 'classic' format button without creating a new image for it */
+.format_buttons_classic {
+    line-height: 22px;
+    vertical-align: top;
+}
+
+.format_buttons_classic .item {
+    border-radius: 2px;
+    border: 1.5px solid #a3a38b;
+    background-color: #fef8de;
+    color: #242500;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 12px;
+    height: 18px;
+    padding: 0px 5px;
+}

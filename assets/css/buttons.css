@@ -112,6 +112,12 @@
     width: 63px;
 }
 
+.format_buttons_html .item.download {
+    font-weight: bold;
+    text-align: center;
+    width: 10px;
+}
+
 .format_buttons_html .block_enabled, .format_buttons_html .block_disabled {
     display: inline-block;
     margin-right: 3px;
