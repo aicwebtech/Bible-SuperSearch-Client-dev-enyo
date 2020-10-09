@@ -104,8 +104,9 @@ module.exports = kind({
         var format = this.$.FormatSelect.getValue();
         var errors = [];
 
-        // this.log(bibles);
-        // this.log(format);
+        this.$.DownloadPending.set('showing', false);
+        this.$.RenderingComplete.set('showing', false);
+        this.$.Status.set('showing', false);
 
         this.formData = {
             bible: bibles,
