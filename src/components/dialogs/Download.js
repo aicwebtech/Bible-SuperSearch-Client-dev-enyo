@@ -24,6 +24,7 @@ module.exports = kind({
     bibleString: null,
     formData: null,
     requestPending: false,
+    hasErrors: false,
     
     titleComponents: [
         {classes: 'header', components: [
@@ -107,6 +108,7 @@ module.exports = kind({
         this.$.DownloadPending.set('showing', false);
         this.$.RenderingComplete.set('showing', false);
         this.$.Status.set('showing', false);
+        this.hasErrors = false;
 
         this.formData = {
             bible: bibles,
@@ -165,6 +167,7 @@ module.exports = kind({
         }
     },
     sendFiles: function() {
+        // TODO - only download if at least one Bible rendered successfully
         this.$.DownloadPending.set('showing', true);
         this.set('requestPending', false);
         var bibles = JSON.stringify(this.formData.bible);
@@ -222,21 +225,33 @@ module.exports = kind({
         ajax.go(formData); // for GET
         ajax.response(this, function(inSender, inResponse) {
             if(inResponse.results.success) {
-
+                var text = 'Success';
                 StatusControl.set('content', 'Success');
                 StatusControl.addClass('success');
-
-                var text = 'Success';
             }
             else {
                 var text = 'Error';
                 StatusControl.set('content', 'Error');
                 StatusControl.addClass('error');
+                this.hasErrors = true;
             }
 
             this.renderNextBible();
         });
-        ajax.error(this, 'handleError');
+        ajax.error(this, function(inSender, inResponse) {
+            this.hasErrors = true;
+
+            try {
+                var response = JSON.parse(inSender.xhrResponse.body);
+            }
+            catch(error) {
+
+            }
+
+            StatusControl.set('content', 'Error');
+            StatusControl.addClass('error');
+            this.renderNextBible();
+        });
     }
 
 });
