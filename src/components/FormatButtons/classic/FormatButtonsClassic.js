@@ -122,7 +122,7 @@ module.exports = kind({
             kind: Image,
             relSrc: 'classic/formatting/help.jpg',
             ontap: 'handleHelp'
-        },
+        },        
         {
             name: 'advanced_toggle',
             kind: Toggle,
@@ -131,26 +131,39 @@ module.exports = kind({
             trueAlt: 'Basic',
             falseAlt: 'Advanced'
         },
+
         {
-            classes: 'item sos',
-            name: 'sos_button',
-            content: 'Bible SOS',
-            ontap: 'handleSos'
-        },        
+            name: 'more',
+            kind: Image,
+            relSrc: 'classic/formatting/more.jpg',
+            ontap: 'handleMore'
+        },
         {
-            classes: 'item start',
-            name: 'start_button',
-            content: 'Start',
-            ontap: 'handleStart',
-            attributes: {title: 'Bible Start Guide'}
-        },        
-        {
-            classes: 'item download',
-            name: 'download_button',
-            content: '&#11123;&nbsp;',
-            allowHtml: true,
-            ontap: 'handleDownload',
-            attributes: {title: 'Bible Downloads'}
+            name: 'more_items', 
+            showing: false,
+            components: [
+                {
+                    classes: 'item sos',
+                    name: 'sos_button',
+                    content: 'Bible SOS',
+                    ontap: 'handleSos'
+                },        
+                {
+                    classes: 'item start',
+                    name: 'start_button',
+                    content: 'Start',
+                    ontap: 'handleStart',
+                    attributes: {title: 'Bible Start Guide'}
+                },        
+                {
+                    classes: 'item download',
+                    name: 'download_button',
+                    content: '&#11123;&nbsp;',
+                    allowHtml: true,
+                    ontap: 'handleDownload',
+                    attributes: {title: 'Bible Downloads'}
+                }
+            ]
         },
 
         {name: 'Dialogs', components: [
@@ -200,5 +213,8 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+    },
+    handleMore: function(inSender, inEvent) {
+        this.$.more_items.set('showing', !this.$.more_items.get('showing'));
     }
 });

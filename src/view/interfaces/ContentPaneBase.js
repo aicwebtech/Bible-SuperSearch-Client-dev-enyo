@@ -38,9 +38,12 @@ module.exports = kind({
     },
 
     components: [
-        { components: [
-            {name: 'FormController', kind: FormController, view: null},
-        ]},        
+        {
+            name: 'FormContainer',
+            components: [
+                {name: 'FormController', kind: FormController, view: null},
+            ]
+        },        
         { name: 'FormatButtonContainer', showing: false, components: [
             {name: 'FormatButtonController', kind: FormController, view: null},
         ]},        
@@ -126,6 +129,30 @@ module.exports = kind({
         this.$.ResultsController.set('resultsData', inEvent.results);
         this.$.ResultsController.set('formData', inEvent.formData);
         this.$.ResultsController.renderResults();
+
+        // Attempts to scroll to top of results
+        // Sort-of works, but needs tweaking before we will go live with it.
+        // var headerHeight = 0;
+        // var headerItems = ['FormContainer', 'FormatButtonContainer', 'ErrorsContainer', 'StrongsContainer', 'DisambigContainer'];
+
+        // headerItems.forEach(function(item) {
+        //     var element = this.$[item].hasNode();
+
+        //     if(!element) {
+        //         return;
+        //     }
+
+        //     var style = element.currentStyle || window.getComputedStyle(element);
+        //     this.app.debug && this.log('ResultsController', element.offsetHeight, style.marginTop, style.marginBottom);
+        //     headerHeight += element.offsetHeight;
+        //     headerHeight += parseInt(style.marginTop, 10);
+        //     headerHeight += parseInt(style.marginBottom, 10);
+        // }, this);
+
+        // this.parent.hasNode().scrollTo(0, headerHeight);
+        // this.app.debug && this.log('ResultsContainer scroll', headerHeight);
+        // End scroll
+
         this.$.ResultsContainer.set('showing', true);
     },
     handleResponseExtra: function(results) {
