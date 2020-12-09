@@ -52,11 +52,18 @@ module.exports = kind({
             this.$.ButtonBar.set('showing', true);
         }
     }, 
-    showingChanged: function(was, is) {
-        this.inherited(arguments);
-    },
+    // showingChanged: function(was, is) {
+    //     this.inherited(arguments);
+    // },
     close: function() {
+        if(!this._safeToClose()) {
+            return;
+        }
+
         this.set('showing', false);
+    },
+    _safeToClose: function() {
+        return true;
     },
     handleKey: function(inSender, inEvent) {
         if(inEvent.code == 'Escape') {

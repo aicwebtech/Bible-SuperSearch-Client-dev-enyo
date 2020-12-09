@@ -65,9 +65,11 @@ module.exports = kind({
         ]}
     ],
     buttonComponents: [
+        {name: 'PseudoDownload', kind: Button, content: 'Pseudo - Download', ontap: 'pseudoDownload'},
+        {tag: 'span', classes: 'spacer'},
         {name: 'DownloadButton', kind: Button, ontap: 'download', content: 'Download'},
         {tag: 'span', classes: 'spacer'},
-        {name: 'Close', kind: Button, content: 'Close', ontap: 'close'}
+        {name: 'Close', kind: Button, content: 'Close', ontap: 'close'}        
     ],
 
     create: function() {
@@ -78,6 +80,10 @@ module.exports = kind({
         }
     },
     close: function() {
+        if(!this._safeToClose()) {
+            return;
+        }
+
         this.app.set('downloadShowing', false);
     },
     showingChanged: function(was, is) {
@@ -86,6 +92,7 @@ module.exports = kind({
 
         if(is && this.app.getSelectedBiblesString() != this.bibleString) {
             // redraww the list because the URLs have changed
+            this.app.debug && this.log('Need to redraw list!');
         }
     }, 
     resetForm: function() {
@@ -140,6 +147,13 @@ module.exports = kind({
         ajax.response(this, 'handleRenderNeeded');
         ajax.error(this, 'handleError');
     },
+    pseudoDownload: function() {
+        if(this.get('requestPending')) {
+            return;
+        }
+
+        this.set('requestPending', true);
+    },
     requestPendingChanged: function(was, is) {
         this.$.DownloadButton.set('disabled', !!is);
     },
@@ -185,6 +199,10 @@ module.exports = kind({
         this.renderNextBible();
     },
     renderNextBible: function() {
+        if(!this.get('requestPending')) {
+            return;
+        }
+
         if(this.bibleQueue.length == 0) {
             //this.$.Spinner.set('showing', false);
             this.$.RenderingComplete.set('showing', true);
@@ -220,7 +238,7 @@ module.exports = kind({
         // this.log('comp-controls', comp.controls);
         var StatusControl = comp.controls[1];
 
-        this.requestPending = true;
+        this.set('requestPending', true);
 
         ajax.go(formData); // for GET
         ajax.response(this, function(inSender, inResponse) {
@@ -252,6 +270,25 @@ module.exports = kind({
             StatusControl.addClass('error');
             this.renderNextBible();
         });
+    },
+    abortRequest: function() {
+        this.bibleQueue = [];
+        this.set('requestPending', false);
+    },
+    _safeToClose: function() {
+        this.log('_safeToClose');
+
+        if(this.get('requestPending')) {
+            this.log('requestPending');
+            var cont = confirm('Are you sure you want to exit?  This will end the current download.');
+
+            if(!cont) {
+                return false;
+            }
+        }
+
+        this.abortRequest();
+        return true;
     }
 
 });
