@@ -65,8 +65,8 @@ module.exports = kind({
         ]}
     ],
     buttonComponents: [
-        {name: 'PseudoDownload', kind: Button, content: 'Pseudo - Download', ontap: 'pseudoDownload'},
-        {tag: 'span', classes: 'spacer'},
+        // {name: 'PseudoDownload', kind: Button, content: 'Pseudo - Download', ontap: 'pseudoDownload'},
+        // {tag: 'span', classes: 'spacer'},
         {name: 'DownloadButton', kind: Button, ontap: 'download', content: 'Download'},
         {tag: 'span', classes: 'spacer'},
         {name: 'Close', kind: Button, content: 'Close', ontap: 'close'}        
@@ -192,6 +192,7 @@ module.exports = kind({
         window.location = url;
     },
     initRenderProcess: function() {
+        this.set('requestPending', true);
         this.bibleQueue = utils.clone(this.formData.bible);
         this.$.RenderStatusContainer.destroyClientControls();
         this.$.Status.set('showing', true);
@@ -279,6 +280,11 @@ module.exports = kind({
         this.log('_safeToClose');
 
         if(this.get('requestPending')) {
+            // Todo - restore ability to download in background.
+            // Requires 3-way confirm dialog: 1) Cancel 2) Download in Background 3) Cancel Download
+            // Also, need to prevent users from opening dialog when download running in background.
+            // Probably could use confirm dialog for this:  1) Cancel Download 2) Continue Download, ect
+
             this.log('requestPending');
             var cont = confirm('Are you sure you want to exit?  This will end the current download.');
 
