@@ -15,13 +15,20 @@ module.exports = kind({
     downloadableOnly: false,
     defaultNull: false, // Use NULL as the default value, ignoring the configured default
 
+    events: {
+        onValueChanged: '',
+        onAddSelectorTapped: '',
+        onSelectorAdded: '',
+    },
+
     components: [
         {name: 'Container', tag: 'div'},
         {name: 'Add', kind: Button, content: 'Add Bible', ontap: 'addSelector'}
     ],
 
     published: {
-        value: []
+        value: [],
+        disabled: false
     },
 
     create: function() {
@@ -49,6 +56,7 @@ module.exports = kind({
         this.$.Container.render();
     },
     addSelector: function() {
+        this.doAddSelectorTapped();
         this._addSelectorHelper();
         this.$.Container.render();
     },
@@ -110,6 +118,7 @@ module.exports = kind({
             //     this.$.Select_1 && this.$.Select_1.set('value', defaultBible);
             // }
 
+            this.doSelectorAdded();
             return comp;
         }
 
@@ -124,6 +133,7 @@ module.exports = kind({
         }
 
         this.set('value', value);
+        this.doValueChanged();
     },
     valueChanged: function(was, is) {
         this.valueUnfiltered = is;
@@ -251,5 +261,17 @@ module.exports = kind({
             this.setValue(valueFiltered);
             this.parallelStartBuild();
         }
+    },
+    disabledChanged: function(was, is) {
+        var disabled = (is) ? true : false;
+
+        this.$.Add.set('disabled', disabled);
+        
+        var components = this.$.Container.getClientControls();
+
+        for(i in components) {
+            components[i].set('disabled', disabled);
+        }
+
     }
 });

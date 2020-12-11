@@ -40,13 +40,15 @@ module.exports = kind({
                 kind: BibleSelector, 
                 downloadableOnly: true, 
                 defaultNull: true,
-                selectorWidth: 350
+                selectorWidth: 350,
+                onAddSelectorTapped: '_formChanged',
+                onValueChanged: '_formChanged'
             },
         ]},        
         {tag: 'h5', content: 'Select a Format'},
         // {tag: 'br'},
         {components: [
-            {name: 'FormatSelect', kind: FormatSelector, style: 'width: 350px'},
+            {name: 'FormatSelect', kind: FormatSelector, style: 'width: 350px', onchange: '_formChanged'},
         ]},
         {tag: 'br'},
         {name: 'Status', showing: false, components: [
@@ -65,8 +67,8 @@ module.exports = kind({
         ]}
     ],
     buttonComponents: [
-        // {name: 'PseudoDownload', kind: Button, content: 'Pseudo - Download', ontap: 'pseudoDownload'},
-        // {tag: 'span', classes: 'spacer'},
+        {name: 'PseudoDownload', kind: Button, content: 'Pseudo - Download', ontap: 'pseudoDownload'},
+        {tag: 'span', classes: 'spacer'},
         {name: 'DownloadButton', kind: Button, ontap: 'download', content: 'Download'},
         {tag: 'span', classes: 'spacer'},
         {name: 'Close', kind: Button, content: 'Close', ontap: 'close'}        
@@ -102,6 +104,12 @@ module.exports = kind({
         // this.$.BibleSelect.setValue([]);
         this.$.BibleSelect.resetValue();
         this.$.FormatSelect.setSelected(0);
+    },
+    _formChanged: function(inSender, inEvent) {
+        // this.log(inSender);
+        // this.log(inEvent);
+        this.$.RenderingComplete.setShowing(false);
+        this.$.DownloadPending.setShowing(false);
     },
     download: function() {
         if(this.get('requestPending')) {
@@ -156,6 +164,8 @@ module.exports = kind({
     },
     requestPendingChanged: function(was, is) {
         this.$.DownloadButton.set('disabled', !!is);
+        this.$.FormatSelect.set('disabled', !!is);
+        this.$.BibleSelect.set('disabled', !!is);
     },
     handleError: function(inSender, inResponse) {
         // this.app.set('ajaxLoading', false);
