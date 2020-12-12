@@ -213,6 +213,10 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+
+        if(!this.app.statics.download_enabled) {
+            this.$.download_button.set('showing', false);
+        }
     },
     handleMore: function(inSender, inEvent) {
         this.$.more_items.set('showing', !this.$.more_items.get('showing'));

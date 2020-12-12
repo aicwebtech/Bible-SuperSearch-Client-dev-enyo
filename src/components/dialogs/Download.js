@@ -67,8 +67,8 @@ module.exports = kind({
         ]}
     ],
     buttonComponents: [
-        {name: 'PseudoDownload', kind: Button, content: 'Pseudo - Download', ontap: 'pseudoDownload'},
-        {tag: 'span', classes: 'spacer'},
+        // {name: 'PseudoDownload', kind: Button, content: 'Pseudo - Download', ontap: 'pseudoDownload'},
+        // {tag: 'span', classes: 'spacer'},
         {name: 'DownloadButton', kind: Button, ontap: 'download', content: 'Download'},
         {tag: 'span', classes: 'spacer'},
         {name: 'Close', kind: Button, content: 'Close', ontap: 'close'}        

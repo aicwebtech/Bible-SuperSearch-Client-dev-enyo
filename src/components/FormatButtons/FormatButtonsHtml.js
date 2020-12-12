@@ -280,5 +280,9 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+
+        if(!this.app.statics.download_enabled) {
+            this.$.download_button.set('showing', false);
+        }
     }
 });
