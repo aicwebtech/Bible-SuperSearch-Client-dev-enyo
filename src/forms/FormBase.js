@@ -177,7 +177,14 @@ module.exports = kind({
         // this.app.set('ajaxLoading', false);
         this.app.set('ajaxLoadingDelay', false);
         this.requestPending = false;
-        var response = JSON.parse(inSender.xhrResponse.body);
+        
+        try {
+            var response = JSON.parse(inSender.xhrResponse.body);
+        }
+        catch (error) {
+            alert('An unknown error has occurred');
+            return;
+        }
 
         if(response.error_level == 4) {
             this.set('cacheHash', response.hash);
@@ -192,7 +199,6 @@ module.exports = kind({
         }
         else {
             this.handleResponse(inSender, response);
-            // this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: response});
         }
     },
     submitRandom: function(inSender, inEvent) {

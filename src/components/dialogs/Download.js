@@ -171,14 +171,26 @@ module.exports = kind({
         // this.app.set('ajaxLoading', false);
         this.app.set('ajaxLoadingDelay', false);
         this.set('requestPending', false);
-        var response = JSON.parse(inSender.xhrResponse.body);
+        
+        try {
+            var response = JSON.parse(inSender.xhrResponse.body);
+        }
+        catch (error) {
+            response = null;
+        }
 
-        if(response.error_level == 4) {
-            // this.bubble('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
-        }
-        else {
+        var errorMsg = 'An unknown error has occurred.';
+
+        if(response && response.results && response.results.render_needed) {
             this.initRenderProcess();
+            return;
         }
+
+        if(response && response.errors) {
+            errorMsg = response.errors.join('\n');
+        }
+
+        alert(errorMsg);
     },
     handleRenderNeeded: function(inSender, inResponse) {
         this.app.set('ajaxLoadingDelay', false);
