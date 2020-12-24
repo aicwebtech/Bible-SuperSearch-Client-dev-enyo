@@ -239,7 +239,11 @@ module.exports = kind({
         }
 
         var bible = this.bibleQueue.shift();
-        var bibleInfo = this.app.statics.bibles[bible];
+        var bibleInfo = this.app.statics.bibles[bible] || null;
+
+        if(!bibleInfo) {
+            return this.renderNextBible();
+        }
 
         var formData = {
             bible: bible,
