@@ -1,8 +1,10 @@
+= 4.3.1 =
+* Bugfix: New download dialog breaks when requesting two or more Bibles, but leaving the last Bible selector empty.
+
 = 4.3.0 = 
 * Added dialog for downloading Bibles
 * Added Escape (ESC) to all dialogs
 * Bugfix: Fixed Bible sort mapping
-* Bugfix: 
 
 = 4.2.8 =
 * Fixed total breakage / no display on EZ-Copy

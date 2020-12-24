@@ -130,6 +130,11 @@ module.exports = kind({
             format: format
         };
 
+        var formData = {
+            bible: JSON.stringify(bibles),
+            format: format
+        }
+
         if(bibles.length == 0) {
             errors.push('Please select at least one Bible');
         }
@@ -151,7 +156,7 @@ module.exports = kind({
         this.app.set('ajaxLoadingDelay', 100);
         this.set('requestPending', true);
 
-        ajax.go(this.formData); // for GET
+        ajax.go(formData); // for GET
         ajax.response(this, 'handleRenderNeeded');
         ajax.error(this, 'handleError');
     },
@@ -210,7 +215,7 @@ module.exports = kind({
         var url = this.app.configs.apiUrl + '/download?format=' + this.formData.format + '&bible=' + bibles;
         this.$.DownloadLink.set('href', url);
         // this.$.DownloadLink.set('content', url); // We need a cleaner URL format - maybe a hash or something
-        this.log(url);
+        this.app.debug && this.log('download url', url);
         window.location = url;
     },
     initRenderProcess: function() {
