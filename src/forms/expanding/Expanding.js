@@ -116,10 +116,10 @@ module.exports = kind({
         var val = inSender.get('value');
 
         if(val == 1) {
-            this.log('shortcut setting passage SHOWING');
+            this.app.debug && this.log('shortcut setting passage SHOWING');
         }
         else {
-            this.log('shortcut setting passage HIDING');
+            this.app.debug && this.log('shortcut setting passage HIDING');
         }
 
         this.$.PassageContainer.set('showing', (val == 1) );

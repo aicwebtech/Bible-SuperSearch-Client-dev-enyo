@@ -381,6 +381,8 @@ module.exports = kind({
             return;
         }
 
+        this.app.debug && this.log(value);
+
         if(this.app.get('clientBrowser') == 'IE') {
             this.log('Using IE, no good!  Skipping some minor code that breaks IE ... ');
             return; // bail if IE ... yuck!

@@ -1,3 +1,6 @@
+= 4.3.2 =
+* Bugfix: Fixed breakage in the 'limit search to' presets.  When one of the preset values were selected, it would revert to 'Passage(s) Listed Below (or above), with the passage set to 'value'
+
 = 4.3.1 =
 * Bugfix: New download dialog breaks when requesting two or more Bibles, but leaving the last Bible selector empty.
 
@@ -10,7 +13,7 @@
 * Fixed total breakage / no display on EZ-Copy
 
 = 4.2.7 = 
-* Fixed Bible selected breakaga on expanding form when contracting the form.
+* Fixed Bible selected breakage on expanding form when contracting the form.
 
 = 4.2.3 =
 Bugfix / improvement: eliminate statics AJAX call
