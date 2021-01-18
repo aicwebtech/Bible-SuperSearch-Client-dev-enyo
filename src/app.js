@@ -25,6 +25,7 @@ var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
+    applicationVersion: '4.3.2',
 
     defaultView: DefaultInterface,
     //renderTarget: 'biblesupersearch_container',
@@ -75,13 +76,15 @@ var App = Application.kind({
         this.system = systemConfig;
         this.set('baseTitle', document.title);
         // this.log('defaultConfig', defaultConfig);
+
+        window.console && console.log('BibleSuperSearch client version', this.applicationVersion);
         
         // Older rootDir code, retaining for now
         this.rootDir = (typeof biblesupersearch_root_directory == 'string') ? biblesupersearch_root_directory : '/biblesupersearch';
         
         if(navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > -1) {
             this.clientBrowser = 'IE';
-            this.log('Using Internet Explorer ... some minor functionality may be disabled ...');
+            window.console && console.log('Using Internet Explorer ... some minor functionality may be disabled ...');
         }
 
         if(typeof biblesupersearch != 'object' || biblesupersearch == null) {
@@ -714,6 +717,9 @@ var App = Application.kind({
             language == 'he' || language == 'ar' || language == 'dv' || language == 'fa' || 
             language == 'ps' || language == 'ur' || language == 'yi' || language == 'ug'
         ) ? true : false;
+    },
+    logAnon: function() {
+        window.console && console.log(arguments);
     }
 });
 
