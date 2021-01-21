@@ -12,7 +12,7 @@ var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 module.exports = kind({
     name: 'SosDialog',
     kind: Dialog,
-    width: '400px',
+    maxWidth: '400px',
     height: '475px',
     classes: 'help_dialog bible_sos',
     bibleString: null,

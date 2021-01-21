@@ -18,7 +18,7 @@ var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 module.exports = kind({
     name: 'DownloadDialog',
     kind: Dialog,
-    width: '500px',
+    maxWidth: '500px',
     height: '410px',
     classes: 'help_dialog bible_download',
     bibleString: null,
@@ -48,7 +48,7 @@ module.exports = kind({
         {tag: 'h5', content: 'Select a Format'},
         // {tag: 'br'},
         {components: [
-            {name: 'FormatSelect', kind: FormatSelector, style: 'width: 350px', onchange: '_formChanged'},
+            {name: 'FormatSelect', kind: FormatSelector, style: 'width: 100%; max-width: 350px', onchange: '_formChanged'},
         ]},
         {tag: 'br'},
         {name: 'Status', showing: false, components: [

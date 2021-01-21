@@ -1,3 +1,6 @@
+= 4.3.3 =
+....
+
 = 4.3.2 =
 * Bugfix: Fixed breakage in the 'limit search to' presets.  When one of the preset values were selected, it would revert to 'Passage(s) Listed Below (or above), with the passage set to 'value'
 

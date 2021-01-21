@@ -388,8 +388,16 @@ div.biblesupersearch_dialog {
     width: 40px;
 } 
 
+.help_dialog .dialog {
+    margin: 10px;
+}
+
 .help_dialog {
     padding-top: 5px;
+}
+
+.help_dialog .buttons {
+    height: 35px;
 }
 
 .help_dialog .list {
