@@ -158,7 +158,7 @@ module.exports = kind({
                 {
                     classes: 'item download',
                     name: 'download_button',
-                    content: '&#11123;&nbsp;',
+                    content: '<b>&#10515;</b>&nbsp;Download',
                     allowHtml: true,
                     ontap: 'handleDownload',
                     attributes: {title: 'Bible Downloads'}
