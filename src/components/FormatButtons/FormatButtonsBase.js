@@ -3,6 +3,7 @@ var Button = require('enyo/Button');
 var Input = require('enyo/Input');
 var TextArea = require('enyo/TextArea');
 var Checkbox = require('enyo/Checkbox');
+var Signal = require('../Signal');
 
 module.exports = kind({
     name: 'FormatButtonsBase',
@@ -65,6 +66,10 @@ module.exports = kind({
             'menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes,height=800,width=600'
         );
     },
+    handlePrint: function(inSender, inEvent) {
+        Signal.send('onResultsPrint');
+    },
+
     handleSos: function(inSender, inEvent) {
         this.app.set('sosShowing', true);
     },    

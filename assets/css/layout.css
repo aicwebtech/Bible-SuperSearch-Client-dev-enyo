@@ -541,3 +541,8 @@ div.biblesupersearch_dialog {
     opacity: 1;
     background-color: white; 
 }
+
+/* Print dialog specific formatting */
+.biblesupersearch_print .biblesupersearch_nav_buttons {
+    display:none;
+}

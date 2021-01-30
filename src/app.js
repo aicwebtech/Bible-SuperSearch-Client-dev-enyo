@@ -44,6 +44,7 @@ var App = Application.kind({
     appLoaded: false,
     ajaxLoadingDelayTimer: null,
     baseTitle: null,
+    bssTitle: null,
     baseUrl: null,
     clientBrowser: null,
     preventRedirect: false,

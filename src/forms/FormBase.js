@@ -333,13 +333,16 @@ module.exports = kind({
             }
         }, this);
 
+        var bssTitle = values.join(' | ');
+
         if(baseFirst) {
-            var newTitle = baseTitle + mainSep + values.join(' | ');
+            var newTitle = baseTitle + mainSep + bssTitle;
         }
         else {
-            var newTitle = values.join(' | ') + mainSep + baseTitle;
+            var newTitle = bssTitle + mainSep + baseTitle;
         }
 
+        this.app.set('bssTitle', bssTitle);
         document.title = newTitle;
     },
     formDataChanged: function(was, is) {

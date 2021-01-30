@@ -50,6 +50,7 @@ module.exports = kind({
             kind: Signal, 
             onFormResponseSuccess: 'handleFormResponse', 
             onFormResponseError: 'handleFormError', 
+            onResultsPrint: 'handlePrint',
             onkeyup: 'handleKey', // Keyboard events need to be handled by Signal per docs
             isChrome: true
         },
@@ -427,6 +428,41 @@ module.exports = kind({
     },
     hideHoverDialogs: function() {
         this.$.StrongsHover.set('showing', false);
+    },
+    handlePrint: function(inSender, inEvent) {
+        var resultsHtml = this.hasNode().innerHTML,
+            cssPath = this.app.get('rootDir') + '/biblesupersearch.css',
+            title = this.app.get('bssTitle'),
+            curURL = window.location.href;
+
+        var html = '';
+            html += '<html>\n';
+            html +=     '<head>\n';
+            html +=         '<title>' + title + '</title>\n';
+            html +=         '<style>\n';
+            html +=             "@import url('" + cssPath + "');\n";
+            html +=         '</style>\n';
+            html +=     '</head>\n';
+            html +=     '<body>\n';
+            html +=         '<div class="biblesupersearch_print">\n';
+            html +=             resultsHtml + '\n';
+            html +=         '</div>\n';
+            html +=     '</body>\n';
+            html +=     '<script>\n';
+            html +=         'history.replaceState(history.state, "", "' + curURL + '");\n'; // Force the displayed URL to that of the parent page
+            html +=         'window.print();\n';                                            // After html is rendered, this triggers the print dialog
+            html +=     '</script>\n';
+            html += '</html>\n';
+
+        var winName = 'printWindow-' + new Date().getTime(),
+            printWindow = window.open('about:blank', winName);
+
+        if(printWindow) {
+            printWindow.document.write(html);
+        }
+        else {
+            alert('Could not open print friendly window.  Is your browser blocking popups?');
+        }
     }
 
 });

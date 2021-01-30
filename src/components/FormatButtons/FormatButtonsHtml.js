@@ -241,6 +241,15 @@ module.exports = kind({
             allowHtml: true,
             ontap: 'handleDownload',
             attributes: {title: 'Bible Downloads'}
+        },        
+
+        {
+            classes: 'item print',
+            name: 'print_button',
+            content: 'P',
+            allowHtml: true,
+            ontap: 'handlePrint',
+            attributes: {title: 'Printer Friendly'}
         },
         
         {name: 'Dialogs', components: [
