@@ -9,7 +9,7 @@ var Image = require('../Image');
 var Help = require('../dialogs/Help');
 
 module.exports = kind({
-    name: 'FormatButtonsBase',
+    name: 'FormatButtonsHtml',
     kind: Base,
     classes: 'format_buttons_html',
     

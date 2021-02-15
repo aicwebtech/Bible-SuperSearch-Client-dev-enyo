@@ -14,6 +14,7 @@ var NavigationButtons = require('./view/BrowsingButtons');
 var Pagers = require('./view/Pagers');
 var UserConfigController = require('./data/controllers/UserConfig');
 var Router = require('enyo/Router');
+var i18n = require('enyo/i18n');
 var Loading = require('./components/LoadingInline');
 
 //var MainView = require('./view/Content');
@@ -721,6 +722,9 @@ var App = Application.kind({
     },
     logAnon: function() {
         window.console && console.log(arguments);
+    },
+    trans: function(index, vars) {
+        return 'bacon';
     }
 });
 

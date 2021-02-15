@@ -9,7 +9,11 @@ var BibleSelect = require('../../components/BibleSelect/MultiSelect');
 var SearchType = require('../../components/SearchType');
 var Shortcuts = require('../../components/Shortcuts');
 var Drawer = require('enyo/Drawer');
+var DialogButtons = require('../../components/DialogEtcButtons/DialogEtcButtonsHtml');
 var easing = require('layout/easing');
+// var app = require('../../app');
+// var i18n = require('enyo/i18n');
+var i18n = require('../../components/i18n');
 
 module.exports = kind({
     name: 'Expanding',
@@ -91,10 +95,11 @@ module.exports = kind({
                                 classes: 'random'
                             }
                         ]},
+                        {kind: DialogButtons}
                     ]
                 },
                 {classes: 'input_row_wide', components: [
-                    {kind: Button, content: 'Search', ontap: 'submitForm'},
+                    {kind: Button, content:i18n.$L('Search'), _content: 'Search', ontap: 'submitForm'},
                 ]},                
                 {classes: 'expander_row', components: [
                     {name: 'Expand1', kind: Button, content: "&#9660;", ontap: 'toggleExpanded', allowHtml: true},
