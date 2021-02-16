@@ -16,6 +16,7 @@ var UserConfigController = require('./data/controllers/UserConfig');
 var Router = require('enyo/Router');
 var i18n = require('enyo/i18n');
 var Loading = require('./components/LoadingInline');
+var Locales = require('./i18n/LocaleLoader');
 
 //var MainView = require('./view/Content');
 
@@ -50,6 +51,9 @@ var App = Application.kind({
     clientBrowser: null,
     preventRedirect: false,
     biblesDisplayed: [],
+    locale: 'en',
+    localeData: Locales.en,
+    localeDatasets: Locales,
     
     // Selectable sub-views:
     formatButtonsView: null,
@@ -723,8 +727,31 @@ var App = Application.kind({
     logAnon: function() {
         window.console && console.log(arguments);
     },
-    trans: function(index, vars) {
-        return 'bacon';
+    localeChanged: function(was, is) {
+        this.log(was, is);
+
+        var defaultLocale = 'en';
+        var locale = is || defaultLocale;
+        var fallbackLocale = locale.substring(0, 2);
+        // var Locales = this.localeDatasets;
+
+        // TODO - mixin logic for locale data
+
+        if(Locales[locale]) {
+            this.localeData = Locales[locale];
+            Signal.send('onLocaleChange');
+            return;
+        }        
+
+        if(Locales[fallbackLocale]) {
+            this.localeData = Locales[fallbackLocale];
+            Signal.send('onLocaleChange');
+            return;
+        }
+
+        this.localeData = Locales[defaultLocale];
+        Signal.send('onLocaleChange');
+        // this.log(this.localeData);
     }
 });
 

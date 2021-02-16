@@ -14,6 +14,8 @@ var easing = require('layout/easing');
 // var app = require('../../app');
 // var i18n = require('enyo/i18n');
 var i18n = require('../../components/i18n');
+var LocaleSelector = require('../../components/Locale/LocaleSelector')
+var inc = require('../../components/Locale/i18nComponent')
 
 module.exports = kind({
     name: 'Expanding',
@@ -24,6 +26,10 @@ module.exports = kind({
             kind: FormSection,
             classes: 'biblesupersearch_expanding_form expanding',
             components: [
+                {classes: 'input_row_wide', components: [
+                    {kind: inc, string: 'Search'}, 
+                    {name: 'Locale', kind: LocaleSelector},
+                ]},                  
                 {classes: 'input_row_wide', components: [
                     {name: 'request', kind: Input, placeholder: 'Enter search keyword(s) or passage reference(s)', enterSubmit: true},
                 ]},                 
