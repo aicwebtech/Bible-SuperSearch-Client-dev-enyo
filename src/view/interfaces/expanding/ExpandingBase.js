@@ -15,6 +15,7 @@ module.exports = kind({
     NavButtonsControl: NavButtons,
     advancedFormView: null, //advancedFormView,
     PagerControl: Pager,
+    FormatButtonsHideExtras: true,
     classes: 'interface_expanding',
     expanded: false,
 

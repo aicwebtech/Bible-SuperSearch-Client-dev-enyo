@@ -20,6 +20,8 @@ module.exports = kind({
     // formatButtonsToggle: false,             // Set to true to cause format buttons to display ONLY when displaying results
     PagerControl: Pager,
 
+    FormatButtonsHideExtras: false,             // Set to true if the 'extra' (non-formatting) buttons are displaying elsewhere on the form, to hide them on the Format Buttons
+
     published: {
         ajaxLoading: false,
         sosShowing: false

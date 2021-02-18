@@ -78,5 +78,18 @@ module.exports = kind({
     },    
     handleDownload: function(inSender, inEvent) {
         this.app.set('downloadShowing', true);
+    },
+    _hideExtras: function() {
+        var softConfig = this.app.configs.extraButtonsSeparate || 'default';
+
+        if(softConfig === true || softConfig == 'true') {
+            return true;
+        }
+        else if (softConfig === false || softConfig == 'false') {
+            return false;
+        }
+        else {
+            return this.app.view.FormatButtonsHideExtras;
+        }
     }
 });

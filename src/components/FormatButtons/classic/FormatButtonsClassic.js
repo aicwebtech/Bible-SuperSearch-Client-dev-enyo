@@ -218,6 +218,14 @@ module.exports = kind({
             this.$.download_button.set('showing', false);
         }
     },
+    rendered: function() {
+        this.inherited(arguments);
+
+        if(this._hideExtras()) {
+            this.$.more.set('showing', false);
+            this.$.help.set('showing', false);
+        }
+    },
     handleMore: function(inSender, inEvent) {
         this.$.more_items.set('showing', !this.$.more_items.get('showing'));
     }

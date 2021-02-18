@@ -246,7 +246,8 @@ module.exports = kind({
         {
             classes: 'item print',
             name: 'print_button',
-            content: 'P',
+            // content: '&#128438;&nbsp;Print',
+            content: 'Print',
             allowHtml: true,
             ontap: 'handlePrint',
             attributes: {title: 'Printer Friendly'}
@@ -292,6 +293,16 @@ module.exports = kind({
 
         if(!this.app.statics.download_enabled) {
             this.$.download_button.set('showing', false);
+        }
+    }, 
+    rendered: function() {
+        this.inherited(arguments);
+
+        if(this._hideExtras()) {
+            this.$.sos_button.set('showing', false);
+            this.$.start_button.set('showing', false);
+            this.$.download_button.set('showing', false);
+            this.$.help.set('showing', false);
         }
     }
 });

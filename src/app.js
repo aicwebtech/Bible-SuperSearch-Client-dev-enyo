@@ -331,11 +331,17 @@ var App = Application.kind({
 
         if(view && view != null) {
             this.set('view', view);
+            this.set('viewCache', view);
         }
         
         this.render();
         this.appLoaded = true;
         this.$.Router.trigger();
+
+        if(this.configs.query_string) {
+            this.log(this.configs.query_string);
+            this.handleHashGeneric(this.configs.query_string);
+        }
     },
     processBiblesDisplayed: function() {
         this.biblesDisplayed = [];
@@ -733,25 +739,27 @@ var App = Application.kind({
         var defaultLocale = 'en';
         var locale = is || defaultLocale;
         var fallbackLocale = locale.substring(0, 2);
+        var found = false;
         // var Locales = this.localeDatasets;
 
         // TODO - mixin logic for locale data
 
         if(Locales[locale]) {
             this.localeData = Locales[locale];
-            Signal.send('onLocaleChange');
-            return;
+            found = true;
         }        
 
-        if(Locales[fallbackLocale]) {
+        if(!found && Locales[fallbackLocale]) {
             this.localeData = Locales[fallbackLocale];
-            Signal.send('onLocaleChange');
-            return;
+            found = true;
         }
 
-        this.localeData = Locales[defaultLocale];
-        Signal.send('onLocaleChange');
+        if(!found) {
+            this.localeData = Locales[defaultLocale];
+        }
         // this.log(this.localeData);
+        // biblesupersearch_config_options.locale = is;
+        Signal.send('onLocaleChange');
     }
 });
 

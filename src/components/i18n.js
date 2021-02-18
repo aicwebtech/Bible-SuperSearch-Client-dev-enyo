@@ -13,6 +13,8 @@ var fallbackLocale = locale.substring(0, 2);
 console.log('biblesupersearch_locale', locale, fallbackLocale);
 
 i18n.$L = function(string, vars) {
+    console.log('locale', locale);
+
     if(locales[locale] && locales[locale][string]) {
         return locales[locale][string];
     }
