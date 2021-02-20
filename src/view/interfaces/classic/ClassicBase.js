@@ -11,6 +11,7 @@ module.exports = kind({
     kind: InterfaceBase,
     formView: formView,
     advancedFormView: advancedFormView,
+    FormatButtonsHideExtras: false,
     classes: 'interface_classic',
 
     create: function() {

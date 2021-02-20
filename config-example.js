@@ -68,6 +68,10 @@ var biblesupersearch_config_options = {
             // Minimal form with Bible selector (always short)
             // "interface": 'MinimalWithShortBible',
 
+            // Minimal with Parallel Bible
+            //      Has only text input, multiple Bible selector and submit button 
+            // "interface": 'MinimalWithParallelBible',
+            
             // Minimal Go Random
             //      Has only text input, submit button and random chapter button
             // "interface": 'MinimalGoRandom',
@@ -78,7 +82,8 @@ var biblesupersearch_config_options = {
 
             // Minimal Go Random with Parallel Bible
             //      Has only text input, multiple Bible selector, submit button and random chapter button
-            // "interface": 'MinimalGoRandomParallelBible',
+            // "interface": 'MinimalGoRandomParallelBible',            
+
 
         // Classic forms - migrated from legacy
 
@@ -107,7 +112,14 @@ var biblesupersearch_config_options = {
     //      default for skin default
     //      Classic
     //      Stylable
-    "formatButtons": 'default',                          
+    "formatButtons": 'default',        
+
+    // Display extra buttons seprately from format buttons?
+    //      Extra buttons include help, SOS dialog, download dialog
+    //      'default' for skin default
+    //      true
+    //      false
+    "extraButtonsSeparate": 'default',                         
     
     // Which navigation buttons to use?
     //      default for skin default

@@ -27,6 +27,9 @@ module.exports = {
         // Minimal form with Bible selector (varying size)
         'MinimalWithBible' : require('./interfaces/minimal/MinimalWithBible'),        
 
+        // Minimal with Parallel Bible
+        'MinimalWithParallelBible' : require('./interfaces/minimal/MinimalWithParallelBible'),
+
         // Minimal form with Bible selector (Wide but varying size)
         'MinimalWithBibleWide' : require('./interfaces/minimal/MinimalWithBibleWide'),
         
@@ -41,8 +44,7 @@ module.exports = {
         'MinimalGoRandomBible' : require('./interfaces/minimal/MinimalGoRandomBible'),
 
         // Minimal Go Random with Parallel Bible
-        'MinimalGoRandomParallelBible' : require('./interfaces/minimal/MinimalGoRandomParallelBible'),
-
+        'MinimalGoRandomParallelBible' : require('./interfaces/minimal/MinimalGoRandomParallelBible'),        
     
     // Classic forms - migrated from legacy
 

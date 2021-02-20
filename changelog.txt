@@ -1,3 +1,9 @@
+= 4.4.0 (tentative) =
+* Added ability to display help / download dialog buttons separately from formatting buttons.
+* Added 'Minimal with Parallel Bible' skin
+* Added print button
+
+
 = 4.3.3 =
 * Bugfix: Fixed issues with responsiveness on the Bible SOS, Start, and Download dialogs
 * Bugfix: Fixed display issues with Download button

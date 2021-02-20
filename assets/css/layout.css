@@ -543,6 +543,6 @@ div.biblesupersearch_dialog {
 }
 
 /* Print dialog specific formatting */
-.biblesupersearch_print .biblesupersearch_nav_buttons {
+.biblesupersearch_print .biblesupersearch_nav_buttons, .biblesupersearch_print .html_nav_buttons {
     display:none;
 }

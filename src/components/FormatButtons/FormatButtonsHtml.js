@@ -246,8 +246,8 @@ module.exports = kind({
         {
             classes: 'item print',
             name: 'print_button',
-            // content: '&#128438;&nbsp;Print',
-            content: 'Print',
+            content: '&#128438;&nbsp;Print',
+            // content: 'Print',
             allowHtml: true,
             ontap: 'handlePrint',
             attributes: {title: 'Printer Friendly'}

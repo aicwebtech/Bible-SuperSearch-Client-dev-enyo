@@ -15,6 +15,7 @@ module.exports = kind({
     kind: ContentBase,
     classes: 'biblesupersearch_content',
     formatButtonsView: FormatButtons,
+    FormatButtonsHideExtras: false,
     forms: forms,
 
     create: function() {

@@ -6,6 +6,9 @@ module.exports = kind({
     name: 'Parallel2',
     kind: Base,
     formView: formView,
+    FormatButtonsHideExtras: false,
+    FormatButtonsHideExtrasSupported: false,
+
     create: function() {
         this.inherited(arguments);
     }

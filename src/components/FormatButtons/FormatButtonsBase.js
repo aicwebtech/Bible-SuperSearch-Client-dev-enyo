@@ -80,7 +80,14 @@ module.exports = kind({
         this.app.set('downloadShowing', true);
     },
     _hideExtras: function() {
-        var softConfig = this.app.configs.extraButtonsSeparate || 'default';
+        var softConfig = this.app.configs.extraButtonsSeparate,
+            supported = this.app.view.FormatButtonsHideExtrasSupported || false;
+
+        if(!supported) {
+            return false;
+        }
+
+        this.log('extras soft config', softConfig);
 
         if(softConfig === true || softConfig == 'true') {
             return true;

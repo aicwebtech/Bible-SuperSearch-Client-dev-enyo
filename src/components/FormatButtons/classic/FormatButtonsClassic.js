@@ -122,6 +122,12 @@ module.exports = kind({
             kind: Image,
             relSrc: 'classic/formatting/help.jpg',
             ontap: 'handleHelp'
+        },             
+        {
+            name: 'print',
+            kind: Image,
+            relSrc: 'classic/formatting/print.jpg',
+            ontap: 'handlePrint'
         },        
         {
             name: 'advanced_toggle',

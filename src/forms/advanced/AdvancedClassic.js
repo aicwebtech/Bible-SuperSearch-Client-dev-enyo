@@ -3,6 +3,7 @@ var kind = require('enyo/kind');
 var AdvWord = require('./AdvancedWord');
 var AdvProximity = require('./AdvancedProximity');
 var AdvPower = require('./AdvancedPower');
+var EtcButtons = require('../../components/DialogEtcButtons/DialogEtcButtonsHtml');
 
 module.exports = kind({
     name: 'Advanced',
@@ -28,6 +29,9 @@ module.exports = kind({
             kind: AdvPower,
             classes: 'biblesupersearch_classic_form advanced',
             subForm: true
+        },
+        {
+            kind: EtcButtons
         }
     ]
 });

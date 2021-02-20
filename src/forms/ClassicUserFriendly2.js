@@ -8,6 +8,7 @@ var BibleSelect = require('../components/BibleSelect/MultiSelect');
 var SearchType = require('../components/SearchType');
 var Shortcuts = require('../components/Shortcuts');
 var FormSection = require('./FormSection');
+var EtcButtons = require('../components/DialogEtcButtons/DialogEtcButtonsHtml');
 
 module.exports = kind({
     name: 'ClassicUserFriendly2',
@@ -84,11 +85,12 @@ module.exports = kind({
                             name: 'tip', 
                             content: 'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).'
                         }
-                    ]}
+                    ]},
+                    {kind: EtcButtons}
                 ]}
 
             ]
-        }
+        },
     ],
     create: function() {
         this.inherited(arguments);

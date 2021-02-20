@@ -16,7 +16,8 @@ module.exports = kind({
                 // this.log('select: attempting to set to', value);
 
                 for(i in controls) {
-                    if(controls[i].get('value') == value) {
+                    // IE hack fix :P  make sure it has get()
+                    if(controls[i].get && controls[i].get('value') == value) {
                         this.setSelected(i);
                         this.setValue(value);
                         return true;
