@@ -7,6 +7,7 @@ var Base = require('./FormatButtonsBase');
 var Toggle = require('../ToggleHtml');
 var Image = require('../Image');
 var Help = require('../dialogs/Help');
+var i18n = require('../Locale/i18nContent');
 
 module.exports = kind({
     name: 'FormatButtonsHtml',
@@ -244,9 +245,16 @@ module.exports = kind({
         },        
 
         {
+            kind: i18n,
             classes: 'item print',
             name: 'print_button',
             content: '&#128438;&nbsp;Print',
+
+            // components: [
+            //     {tag: 'span', allowHtml: true, content: '&#128438;&nbsp;'},
+            //     {kind: i18n, content: 'Print'}
+            // ],
+
             // content: 'Print',
             allowHtml: true,
             ontap: 'handlePrint',

@@ -119,7 +119,7 @@ module.exports = kind({
 
         // Non-fatal errors
         if(inEvent.results.error_level > 0) {
-            this.$.ErrorsContainer.set('content', 
+            this.$.ErrorsContainer.set('string', 
                 inEvent.results.errors.join('<br><br>')
             );
             

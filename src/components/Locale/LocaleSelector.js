@@ -3,8 +3,6 @@ var Select = require('../Select');
 // var Select = require('enyo/Select');
 var Locales = require('../../i18n/LocaleLoader')
 
-
-
 module.exports = kind({
     kind: Select,
 
@@ -12,8 +10,12 @@ module.exports = kind({
         this.inherited(arguments);
 
         for(i in Locales) {
+            if(!Locales[i].lang_name_en) {
+                continue;
+            }
+
             this.createComponent({
-                content: i,
+                content: i + ' ' + Locales[i].lang_name_en,
                 value: i
             });
         }

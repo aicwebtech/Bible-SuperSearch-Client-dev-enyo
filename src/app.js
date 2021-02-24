@@ -760,6 +760,33 @@ var App = Application.kind({
         // this.log(this.localeData);
         // biblesupersearch_config_options.locale = is;
         Signal.send('onLocaleChange');
+        this.waterfall('onLocaleChange');
+    },
+    // Translate
+    t: function(string) {
+        var Locale = this.get('localeData'),
+            trans = Locale[string] || string;
+
+        this.log('string', string);
+
+        if(Locale[string]) {
+            return Locale[string]; // Preferred method - exact string match
+        }
+
+        // NOT preferred method - string regexp and replace
+        for(i in Locales._partial) {
+            var match = Locales._partial[i];
+            var regexp = new RegExp(match, 'g');
+
+            if(!Locale[match]) {
+                continue;
+            }
+            
+            this.log(i, match, regexp, Locale[match]);
+            trans = trans.replace(regexp, Locale[match]);
+        }
+
+        return trans;
     }
 });
 

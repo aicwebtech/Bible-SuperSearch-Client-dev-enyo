@@ -16,6 +16,7 @@ var easing = require('layout/easing');
 var i18n = require('../../components/i18n');
 var LocaleSelector = require('../../components/Locale/LocaleSelector')
 var inc = require('../../components/Locale/i18nComponent')
+var cont = require('../../components/Locale/i18nContent')
 
 module.exports = kind({
     name: 'Expanding',
@@ -28,6 +29,7 @@ module.exports = kind({
             components: [
                 {classes: 'input_row_wide', components: [
                     {kind: inc, string: 'Search'}, 
+                    {kind: cont, tag: 'span', content: 'Search'}, 
                     {name: 'Locale', kind: LocaleSelector},
                 ]},                  
                 {classes: 'input_row_wide', components: [
