@@ -16,17 +16,20 @@ module.exports = kind({
     
     components: [
         {
+            kind: i18n,
             classes: 'item size size_plus',
             name: 'size_plus',
             tag: 'span',
             val: 'plus',
             ontap: 'handleSizeChange',
+            // components:
             content: 'A+',
             attributes: {
                 title: 'Enlarge Text'
             }
         },      
         {
+            kind: i18n,
             classes: 'item size size_reg',
             name: 'size_reg',
             val: 'reg',
@@ -42,6 +45,7 @@ module.exports = kind({
             ]
         },  
         {
+            kind: i18n,
             classes: 'item size size_minus',
             name: 'size_minus',
             val: 'minus',
@@ -54,6 +58,7 @@ module.exports = kind({
             }
         },
         {
+            kind: i18n,
             classes: 'item font font_serif',
             name: 'font_serif',
             ontap: 'handleFontChange',
@@ -68,6 +73,7 @@ module.exports = kind({
             ]
         },        
         {
+            kind: i18n,
             classes: 'item font font_sans_serif',
             name: 'font_sans_serif',
             ontap: 'handleFontChange',
@@ -75,13 +81,14 @@ module.exports = kind({
             content: 'Abc',
             tag: 'span',
             attributes: {
-                title: 'Sans Serif',
+                title: 'Sans-Serif',
             },
             components: [
                 {tag: 'span', content: 'Abc'}
             ]
         },
         {
+            kind: i18n,
             classes: 'item font font_monospace',
             name: 'font_monospace',
             ontap: 'handleFontChange',
@@ -158,13 +165,13 @@ module.exports = kind({
             trueComponent: {
                 components: [
                     {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                    {tag: 'span', content: 'Italics'}
+                    {kind: i18n, tag: 'span', content: 'Italics'}
                 ]
             },        
             falseComponent: {
                 components: [
                     {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                    {tag: 'span', content: 'Italics'}
+                    {kind: i18n, tag: 'span', content: 'Italics'}
                 ]
             }
         },        
@@ -172,8 +179,8 @@ module.exports = kind({
             classes: 'item strongs_toggle',
             name: 'strongs_toggle',
             kind: Toggle,        
-            trueTitle: 'Disable Strongs Numbers',
-            falseTitle: 'Enable Strongs Numbers',
+            trueTitle: 'Disable Strong\'s Numbers',
+            falseTitle: 'Enable Strong\'s Numbers',
             trueComponent: {
                 components: [
                     {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
@@ -196,22 +203,25 @@ module.exports = kind({
             trueComponent: {
                 components: [
                     {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                    {tag: 'span', content: 'Red Letter'}
+                    {kind: i18n, tag: 'span', content: 'Red Letter'}
                 ]
             },        
             falseComponent: {
                 components: [
                     {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                    {tag: 'span', content: 'Red Letter'}
+                    {kind: i18n, tag: 'span', content: 'Red Letter'}
                 ]
             }
         },
+        // 'Extra' (non-formatting) buttons
         {
+            kind: i18n,
             classes: 'item help',
             name: 'help',
             content: '?',
             tag: 'span',
-            ontap: 'handleHelp'
+            ontap: 'handleHelp',
+            attributes: {title: 'Help'}
         },
         {
             classes: 'item advanced_toggle',
@@ -223,12 +233,15 @@ module.exports = kind({
             falseContent: 'Advanced'
         },
         {
+            kind: i18n,
             classes: 'item sos',
             name: 'sos_button',
             content: 'Bible SOS',
-            ontap: 'handleSos'
+            ontap: 'handleSos',
+            attributes: {title: 'Emergency Help from the Bible'}
         },        
         {
+            kind: i18n,
             classes: 'item start',
             name: 'start_button',
             content: 'Start',
@@ -236,29 +249,27 @@ module.exports = kind({
             attributes: {title: 'Bible Start Guide'}
         },        
         {
+            kind: i18n,
             classes: 'item download',
             name: 'download_button',
-            content: '<b>&#10515;</b>&nbsp;Download',
-            allowHtml: true,
             ontap: 'handleDownload',
-            attributes: {title: 'Bible Downloads'}
+            attributes: {title: 'Bible Downloads'},
+            components: [
+                {tag: 'span', allowHtml: true, content: '<b>&#10515;</b>&nbsp;'},
+                {kind: i18n, content: 'Download'}
+            ]
         },        
-
+        // End Extra buttons
         {
             kind: i18n,
             classes: 'item print',
             name: 'print_button',
-            content: '&#128438;&nbsp;Print',
-
-            // components: [
-            //     {tag: 'span', allowHtml: true, content: '&#128438;&nbsp;'},
-            //     {kind: i18n, content: 'Print'}
-            // ],
-
-            // content: 'Print',
-            allowHtml: true,
             ontap: 'handlePrint',
-            attributes: {title: 'Printer Friendly'}
+            attributes: {title: 'Printer Friendly'},
+            components: [
+                {tag: 'span', allowHtml: true, content: '&#128438;&nbsp;'},
+                {kind: i18n, content: 'Print'}
+            ],
         },
         
         {name: 'Dialogs', components: [

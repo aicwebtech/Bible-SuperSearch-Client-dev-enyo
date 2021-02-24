@@ -1,5 +1,6 @@
 var kind = require('enyo/kind');
 var Image = require('./Image');
+var i18n = require('./Locale/i18nContent');
 
 module.exports = kind({
     name: 'ToggleHtml',
@@ -11,7 +12,7 @@ module.exports = kind({
     trueContent: '',
     falseContent: '',    
     trueTitle: '',
-    falseTitle: '',
+    falseTitle: '',    
 
     published: {
         value: false,
@@ -28,11 +29,13 @@ module.exports = kind({
         this.trueComponent.tag = this.trueComponent.tag || 'span';
         this.trueComponent.showing = this.value;
         this.trueComponent.content = this.trueContent;
+        this.trueComponent.kind = i18n;
 
         this.falseComponent.name = 'ViewFalse';
         this.falseComponent.tag = this.falseComponent.tag || 'span';
         this.falseComponent.showing = !this.value;
         this.falseComponent.content = this.falseContent;
+        this.falseComponent.kind = i18n;
 
         var vf = this.createComponent(this.falseComponent);  
         var vt = this.createComponent(this.trueComponent);      
@@ -41,11 +44,13 @@ module.exports = kind({
         vt.addClass('true');  
 
         if(this.falseTitle) {
-            vf.setAttribute('title', this.falseTitle);
+            // vf.setAttribute('title', this.falseTitle);
+            vf.set('titleString', this.falseTitle);
         }        
 
         if(this.trueTitle) {
-            vt.setAttribute('title', this.trueTitle);
+            // vt.setAttribute('title', this.trueTitle);
+            vt.set('titleString', this.trueTitle);
         }
     },
 

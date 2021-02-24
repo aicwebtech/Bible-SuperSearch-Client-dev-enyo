@@ -29,6 +29,9 @@ module.exports = kind({
     },
     stringChanged: function(was, is) {
         this.translate();
+    },    
+    titleStringChanged: function(was, is) {
+        this.translate();
     },
     localeChanged: function(inSender, inEvent) {
         this.translate();

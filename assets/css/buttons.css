@@ -114,7 +114,11 @@
 
 .format_buttons_html .item.download {
     text-align: center;
-    width: 76px;
+    /*width: 76px;*/
+}
+
+.format_buttons_html .item.print {
+    line-height: 18px;
 }
 
 .format_buttons_html .block_enabled, .format_buttons_html .block_disabled {

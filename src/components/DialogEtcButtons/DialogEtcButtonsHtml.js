@@ -7,6 +7,7 @@ var Base = require('../FormatButtons/FormatButtonsBase');
 var Toggle = require('../ToggleHtml');
 var Image = require('../Image');
 var Help = require('../dialogs/Help');
+var i18n = require('../Locale/i18nContent');
 
 module.exports = kind({
     name: 'DialogEtcButtonsHtml',
@@ -15,11 +16,13 @@ module.exports = kind({
     
     components: [
         {
+            kind: i18n,
             classes: 'item help',
             name: 'help',
             content: '?',
             tag: 'span',
-            ontap: 'handleHelp'
+            ontap: 'handleHelp',
+            attributes: {title: 'Help'}
         },
         {
             classes: 'item advanced_toggle',
@@ -31,12 +34,15 @@ module.exports = kind({
             falseContent: 'Advanced'
         },
         {
+            kind: i18n,
             classes: 'item sos',
             name: 'sos_button',
             content: 'Bible SOS',
-            ontap: 'handleSos'
+            ontap: 'handleSos',
+            attributes: {title: 'Emergency Help from the Bible'}
         },        
         {
+            kind: i18n,
             classes: 'item start',
             name: 'start_button',
             content: 'Start',
@@ -44,13 +50,16 @@ module.exports = kind({
             attributes: {title: 'Bible Start Guide'}
         },        
         {
+            kind: i18n,
             classes: 'item download',
             name: 'download_button',
-            content: '<b>&#10515;</b>&nbsp;Download',
-            allowHtml: true,
             ontap: 'handleDownload',
-            attributes: {title: 'Bible Downloads'}
-        },        
+            attributes: {title: 'Bible Downloads'},
+            components: [
+                {tag: 'span', allowHtml: true, content: '<b>&#10515;</b>&nbsp;'},
+                {kind: i18n, content: 'Download'}
+            ]
+        },          
 
         {name: 'Dialogs', components: [
             {name: 'HelpDialog', kind: Help, showing: false}
