@@ -14,9 +14,9 @@ var easing = require('layout/easing');
 // var app = require('../../app');
 // var i18n = require('enyo/i18n');
 var i18n = require('../../components/i18n');
-var LocaleSelector = require('../../components/Locale/LocaleSelector')
-var inc = require('../../components/Locale/i18nComponent')
-var cont = require('../../components/Locale/i18nContent')
+var LocaleSelector = require('../../components/Locale/LocaleSelector');
+var inc = require('../../components/Locale/i18nComponent');
+var i18n = require('../../components/Locale/i18nContent');
 
 module.exports = kind({
     name: 'Expanding',
@@ -28,9 +28,7 @@ module.exports = kind({
             classes: 'biblesupersearch_expanding_form expanding',
             components: [
                 {classes: 'input_row_wide', components: [
-                    {kind: inc, string: 'Search'}, 
-                    {kind: cont, tag: 'span', content: 'Search'}, 
-                    {name: 'Locale', kind: LocaleSelector},
+                    {name: 'Locale', kind: LocaleSelector}
                 ]},                  
                 {classes: 'input_row_wide', components: [
                     {name: 'request', kind: Input, placeholder: 'Enter search keyword(s) or passage reference(s)', enterSubmit: true},
@@ -55,32 +53,32 @@ module.exports = kind({
                     orient: 'v',
                     components: [
                         {classes: 'input_row', components: [
-                            {classes: 'label', content: 'Match:'},
+                            {kind: i18n, classes: 'label', content: 'Match:'},
                             {classes: 'element', components: [
                                 {kind: SearchType, name: 'search_type'}
                             ]}
                         ]},                
                         {classes: 'input_row', components: [
-                            {classes: 'label', content: 'Limit Search To:'},
+                            {kind: i18n, classes: 'label', content: 'Limit Search To:'},
                             {classes: 'element', components: [
-                                {kind: Shortcuts, name: 'shortcut', selectedPassagesLabel: 'Passage(s) listed below: ', onchange: 'shortcutChangedHandler'}
+                                {kind: Shortcuts, name: 'shortcut', selectedPassagesLabel: 'Passage(s) listed below:', onchange: 'shortcutChangedHandler'}
                             ]}
                         ]},                
                         {name: 'PassageContainer', showing: false, classes: 'input_row', components: [
-                            {classes: 'label', content: 'Passages:'},
+                            {kind: i18n, classes: 'label', content: 'Passages:'},
                             {classes: 'element', components: [
                                 {kind: Input, name: 'reference', enterSubmit: true}
                             ]}
                         ]},                                     
                         {classes: 'input_row_checkbox', components: [
                             {classes: 'checkbox_container', components: [
-                                {tag: 'label', attributes: {for: 'whole_words'}, classes: 'label', content: 'Whole Words Only:'},
+                                {kind: i18n, tag: 'label', attributes: {for: 'whole_words'}, classes: 'label', content: 'Whole Words Only:'},
                                 {classes: 'element', components: [
                                     {kind: Checkbox, name: 'whole_words', id: 'whole_words'}
                                 ]}
                             ]},               
                             {classes: 'checkbox_container', components: [
-                                {tag: 'label', attributes: {for: 'exact_case'}, classes: 'label', content: 'Exact Case:'},
+                                {kind: i18n, tag: 'label', attributes: {for: 'exact_case'}, classes: 'label', content: 'Exact Case:'},
                                 {classes: 'element', components: [
                                     {kind: Checkbox, name: 'exact_case', id: 'exact_case'}
                                 ]}
@@ -89,25 +87,29 @@ module.exports = kind({
                         {classes: 'input_row_wide', components: [
                             {
                                 kind: Button, 
-                                content: 'Random Chapter', 
                                 ontap: 'submitRandom', 
                                 random_type: 'Random Chapter', 
                                 style: 'margin-right: 4px', 
-                                classes: 'random'
+                                classes: 'random',
+                                components: [{kind: i18n, content: 'Random Chapter'}]
                             },
                             {
                                 kind: Button, 
-                                content: 'Random Verse', 
                                 ontap: 'submitRandom', 
                                 random_type: 'Random Verse', 
-                                classes: 'random'
+                                classes: 'random',
+                                components: [{kind: i18n, content: 'Random Verse'}]
                             }
                         ]},
                         {kind: DialogButtons}
                     ]
                 },
                 {classes: 'input_row_wide', components: [
-                    {kind: Button, content:i18n.$L('Search'), _content: 'Search', ontap: 'submitForm'},
+                    {
+                        kind: Button, 
+                        ontap: 'submitForm', 
+                        components: [{kind: i18n, content: 'Search'}]
+                    },
                 ]},                
                 {classes: 'expander_row', components: [
                     {name: 'Expand1', kind: Button, content: "&#9660;", ontap: 'toggleExpanded', allowHtml: true},

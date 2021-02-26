@@ -2,11 +2,13 @@ var kind = require('enyo/kind');
 var utils = require('enyo/utils');
 var Sel = require('../Select');
 var OptionGroup = require('enyo.OptionGroup');
+var i18n = require('../Locale/i18nContent');
 // var Option = require('enyo.Option');
 
 module.exports = kind({
     name: 'SingleSelect',
     kind: Sel,
+    autoTranslate: false,
     width: 270,
     shortWidthThreshold: 250, // viewport width (pixels) at which menu displays short names
     shortWidthWidth: 160,
@@ -50,6 +52,8 @@ module.exports = kind({
             }
 
             this.createComponent({
+                kind: i18n,
+                tag: 'option',
                 content: noSelectLabel,
                 allowHtml: true,
                 value: '0'

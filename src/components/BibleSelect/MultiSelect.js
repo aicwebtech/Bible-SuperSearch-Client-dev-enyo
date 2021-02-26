@@ -1,6 +1,7 @@
 var kind = require('enyo/kind');
 var Button = require('enyo/Button');
 var Single = require('./SingleSelect');
+var i18n = require('../Locale/i18nContent');
 
 module.exports = kind({
     name: 'MultiSelect',
@@ -23,7 +24,7 @@ module.exports = kind({
 
     components: [
         {name: 'Container', tag: 'div'},
-        {name: 'Add', kind: Button, content: 'Add Bible', ontap: 'addSelector'}
+        {name: 'Add', kind: Button, content: 'Add Bible', ontap: 'addSelector', components: [{kind: i18n, content: 'Add Bible'}]}
     ],
 
     published: {

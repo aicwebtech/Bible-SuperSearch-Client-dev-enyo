@@ -2,6 +2,7 @@ var kind = require('enyo/kind');
 var Button = require('enyo/Button');
 var Signal = require('../Signal');
 var Link = require('../Link/Link');
+var i18n = require('../Locale/i18nContent');
 
 // Classic text / html based pager
 module.exports = kind({
@@ -46,12 +47,24 @@ module.exports = kind({
         displayRangeEn = (displayRangeEn > this.totalResults) ? this.totalResults : displayRangeEn;
 
         if(this.includeTotals) {
-            var msg = 'Your search produced ' + this.totalResults + ' results. &nbsp;';
-            msg += 'Showing results ' + displayRangeSt + ' to ' + displayRangeEn + '.<br /><br />';
+            // var msg = 'Your search produced HZHA ' + this.totalResults + ' results. &nbsp;';
+            // msg += 'Showing results ' + displayRangeSt + ' to ' + displayRangeEn + '.<br /><br />';
             showing = true;
 
             this.createComponent({
-                content: msg,
+                // content: msg,
+                components: [
+                    {kind: i18n, content: 'Your search produced'},
+                    {tag: 'span', content: ' ' + this.totalResults + ' '},
+                    {kind: i18n, content: 'results'},
+                    {tag: 'span', content: '. &nbsp;', allowHtml: true},
+                    {kind: i18n, content: 'Showing Results'},
+                    {tag: 'span', content: ' ' + displayRangeSt + ' '},
+                    {kind: i18n, content: 'to'},
+                    {tag: 'span', content: ' ' + displayRangeEn + '.'},
+                    {tag: 'br'},
+                    {tag: 'br'}
+                ],
                 allowHtml: true,
                 name: 'TotalsContainer',
                 classes: 'totals'

@@ -767,10 +767,21 @@ var App = Application.kind({
         var Locale = this.get('localeData'),
             trans = Locale[string] || string;
 
-        this.log('string', string);
-
         if(Locale[string]) {
             return Locale[string]; // Preferred method - exact string match
+        }
+
+        // End punctuation check
+        var found = string.match(/([\.:!?])$/);
+
+        if(found) {
+            var p = found[1];
+            // this.log(string, p);
+            stringNoP = string.slice(0, -1);
+
+            if(Locale[stringNoP]) {
+                return Locale[stringNoP] + p;
+            }
         }
 
         // NOT preferred method - string regexp and replace

@@ -8,6 +8,8 @@ module.exports = {
     // Put longest at top of list
     _partial: [
         'However, verses from this Bible have been included for comparison.',
-        'Your search produced no results in'
+        'Your search produced no results in',
+        'Parallel Bible #',
+        'Bible #',
     ]
 };

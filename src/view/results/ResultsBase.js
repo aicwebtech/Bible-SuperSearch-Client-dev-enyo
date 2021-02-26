@@ -9,6 +9,7 @@ var Nav = require('../../components/NavButtons/NavHtml');
 var HoverDialog = require('../../components/dialogs/Hover');
 var StrongsHoverDialog = require('../../components/dialogs/StrongsHover');
 var utils = require('enyo/utils');
+var i18n = require('../../components/Locale/i18nComponent');
 
 module.exports = kind({
     name: 'ResultsBase',
@@ -198,18 +199,25 @@ module.exports = kind({
             }
             
             var bible_info = this.app.statics.bibles[module];
-            var content = '<h5>' + bible_info.name + ' (' + bible_info.shortname + ')</h5>' + bible_info.copyright_statement;
+            // var content = '<h5>' + bible_info.name + ' (' + bible_info.shortname + ')</h5>' + bible_info.copyright_statement;
+            
+            var components = [
+                {tag: 'h5', content: bible_info.name + ' (' + bible_info.shortname + ')'},
+                {kind: i18n, content: bible_info.copyright_statement, allowHtml: true}
+            ];
 
             if(bible_info.research) {
-                content += '<br /><br />This Bible is provided for research purposes only.';
+                // content += '<br /><br />This Bible is provided for research purposes only.';
+                components.push({tag: 'br'});
+                components.push({tag: 'br'});
+                components.push({kind: i18n, content: 'This Bible is provided for research purposes only.'});
             }
 
             Container.createComponent({
                 tag: 'td',
-                allowHtml: true,
+                components: components,
                 classes: 'copyright_statement',
-                attributes: {colspan: this.passageColumnsPerBible},
-                content: content
+                attributes: {colspan: this.passageColumnsPerBible}
             });
         }
 

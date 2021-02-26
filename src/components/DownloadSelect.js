@@ -1,5 +1,6 @@
 var Select = require('./Select');
 var kind = require('enyo/kind');
+var i18n = require('./Locale/i18nComponent');
 
 module.exports = kind({
     name: 'DownloadSelect',
@@ -24,23 +25,26 @@ module.exports = kind({
         formats.forEach(function(item) {
             var unit = (item == 1) ? this.rangeUnit : this.rangeUnitPlural;
             var label = item.name;
-            var optLabel = (label == 'PDF') ? '<b>' + label + '</b> - ' : '';
+            var optLabel = (label == 'PDF') ? label + ' - ' : '';
+            var labelNoHtml = label.replace(/(<([^>]+)>)/gi, "");
 
             var optgroup = this.createComponent({
-                allowHtml: true,
+                kind: i18n,
                 tag: 'optgroup',
                 allowHtml: true,
-                attributes: {label: label}
+                attributes: {label: labelNoHtml}
             });
 
             item.formats.forEach(function(fm) {
                 var info = item.renderers[fm];
+                var content = optLabel + info.name;
+                content = content.replace(/(<([^>]+)>)/gi, "");
 
                 optgroup.createComponent({
+                    kind: i18n,
                     tag: 'option',
                     attributes: {value: fm},
-                    allowHtml: true,
-                    content: optLabel + info.name
+                    content: content
                 });
             }, this);
         }, this);        

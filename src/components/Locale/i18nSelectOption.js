@@ -1,14 +1,13 @@
 var kind = require('enyo/kind');
-var Component = require('enyo/Component');
+var Option = require('enyo/Option');
 
 module.exports = kind({
-    name: 'i18nContent',
-    tag: 'span',
+    name: 'i18nOption',
+    kind: Option,
 
     published: {
         string: '',
-        titleString: '',
-        labelString: '',
+        titleString: ''
     },
 
     handlers: {
@@ -24,10 +23,6 @@ module.exports = kind({
 
         if(this.attributes.title && this.attributes.title != '' && this.titleString == '') {
             this.titleString = this.attributes.title;
-        }        
-
-        if(this.attributes.label && this.attributes.label != '' && this.labelString == '') {
-            this.labelString = this.attributes.label;
         }
 
         this.translate();
@@ -37,17 +32,13 @@ module.exports = kind({
     },    
     titleStringChanged: function(was, is) {
         this.translate();
-    },    
-    labelStringChanged: function(was, is) {
-        this.translate();
     },
     localeChanged: function(inSender, inEvent) {
         this.translate();
     },
     translate: function() {
         var string = this.get('string'),
-            titleString = this.get('titleString'),
-            labelString = this.get('labelString');
+            titleString = this.get('titleString');
 
         if(string && string != '') {
             this.setContent( this.app.t(string) );
@@ -55,10 +46,6 @@ module.exports = kind({
 
         if(titleString && titleString != '') {
             this.setAttribute('title', this.app.t(titleString) );
-        }        
-
-        if(labelString && labelString != '') {
-            this.setAttribute('label', this.app.t(labelString) );
         }
     }
 });

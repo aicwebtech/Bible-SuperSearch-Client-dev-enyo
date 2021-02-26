@@ -3,6 +3,7 @@ var Button = require('enyo/Button');
 var Anchor = require('enyo/Anchor');
 var Dialog = require('./Dialog');
 var LinkBuilder = require('../Link/LinkBuilder');
+var i18n = require('../Locale/i18nContent');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -39,8 +40,8 @@ module.exports = kind({
 
     titleComponents: [
         {classes: 'header', components: [
-            {tag: 'h3', content: 'New to the Bible?'}, 
-            {tag: 'h4', content: 'Not Sure Where to Begin?'}, 
+            {kind: i18n, tag: 'h3', content: 'New to the Bible?'}, 
+            {kind: i18n, tag: 'h4', content: 'Not Sure Where to Begin?'}, 
             // {tag: 'h4', content: 'Here\'s a reading list to get you started'}, 
         ]}
     ],
@@ -50,8 +51,14 @@ module.exports = kind({
     ],
 
     buttonComponents: [
-        {name: 'Close', kind: Button, content: 'Close', ontap: 'close'}
+        {name: 'Close', kind: Button, ontap: 'close', components: [
+            {kind: i18n, content: 'Close'},
+        ]}
     ],
+
+    handlers: {
+        onLocaleChange: 'localeChanged',
+    },
 
     create: function() {
         if(this.multiColumn) {
@@ -85,7 +92,7 @@ module.exports = kind({
         var urlBase = '#/r/' + this.bibleString + '/';
 
         this.list.forEach(function(item, key) {
-            var label = item.label + ': ';
+            var desc = this.app.t(item.desc);
             var urlVerse = item.linkVerse || item.verse;
             var url = urlBase + urlVerse;
             var numDisplay = (key + 1) + ') ';
@@ -105,7 +112,7 @@ module.exports = kind({
                     {classes: 'verses', components: [
                         {kind: Anchor, href: url, _title: item.verses, content: item.verse, ontap: 'handleVerseTap'}
                     ]},
-                    {classes: 'desc', content: item.desc, allowHtml: true},
+                    {classes: 'desc', content: desc, allowHtml: true},
                     {classes: 'clear-both'}
                 ]
             });
@@ -113,5 +120,9 @@ module.exports = kind({
     },
     handleVerseTap: function(inSender, inEvent) {
         this.close();
+    },
+    localeChanged: function(inSender, inEvent) {
+        this.populateList();
+        this.render();
     }
 });

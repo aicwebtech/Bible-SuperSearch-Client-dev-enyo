@@ -5,6 +5,7 @@ var Dialog = require('./Dialog');
 var LinkBuilder = require('../Link/LinkBuilder');
 var utils = require('enyo/utils');
 var Image = require('../Image');
+var i18n = require('../Locale/i18nContent');
 
 var Ajax = require('enyo/Ajax');
 var BibleSelector = require('../BibleSelect/MultiSelect.js');
@@ -28,12 +29,12 @@ module.exports = kind({
     
     titleComponents: [
         {classes: 'header', components: [
-            {tag: 'h3', content: 'Bible Downloads'}
+            {kind: i18n, tag: 'h3', content: 'Bible Downloads'}
         ]}
     ],
     bodyComponents: [
         {classes: 'list start_list', name: 'ListContainer'},
-        {tag: 'h5', content: 'Select Bible(s)'},
+        {kind: i18n, tag: 'h5', content: 'Select Bible(s)'},
         {components: [
             {
                 name: 'BibleSelect', 
@@ -45,7 +46,7 @@ module.exports = kind({
                 onValueChanged: '_formChanged'
             },
         ]},        
-        {tag: 'h5', content: 'Select a Format'},
+        {kind: i18n, tag: 'h5', content: 'Select a Format'},
         // {tag: 'br'},
         {components: [
             {name: 'FormatSelect', kind: FormatSelector, style: 'width: 100%; max-width: 350px', onchange: '_formChanged'},
@@ -53,25 +54,34 @@ module.exports = kind({
         {tag: 'br'},
         {name: 'Status', showing: false, components: [
             {name: 'Spinner', kind: Image, relSrc: '/Spinner.gif'},
-            {tag: 'h4', content: 'Rendering Bibles, this may take some time'},
+            {kind: i18n, tag: 'h4', content: 'Rendering Bibles, this may take some time'},
             {name: 'RenderStatusContainer', classes: 'render_list'}
         ]},
-        {name: 'RenderingComplete', tag: 'h4', content: 'Rendering is Complete', showing: false},
+        {kind: i18n, name: 'RenderingComplete', tag: 'h4', content: 'Rendering is Complete', showing: false},
         {name: 'DownloadPending', showing: false, components: [
-            {tag: 'h4', content: 'Your download should begin shortly'},
-            {content: 'If not, please click on the below link:'},
+            {kind: i18n, tag: 'h4', content: 'Your download should begin shortly'},
+            {components: [            
+                {kind: i18n, content: 'If not, please click on the below link'},
+                {tag: 'span', content: ':'}
+            ]},
             {tag: 'br'},
             {components: [
-                {kind: Anchor, name: 'DownloadLink', content: 'Manual Download', _attributes: {target: '_NEW'}}
+                {kind: Anchor, name: 'DownloadLink', _attributes: {target: '_NEW'}, components: [
+                    {kind: i18n, content: 'Manual Download'}
+                ]}
             ]}
         ]}
     ],
     buttonComponents: [
         // {name: 'PseudoDownload', kind: Button, content: 'Pseudo - Download', ontap: 'pseudoDownload'},
         // {tag: 'span', classes: 'spacer'},
-        {name: 'DownloadButton', kind: Button, ontap: 'download', content: 'Download'},
+        {name: 'DownloadButton', kind: Button, ontap: 'download', components: [
+            {kind: i18n, content: 'Download'},
+        ]},
         {tag: 'span', classes: 'spacer'},
-        {name: 'Close', kind: Button, content: 'Close', ontap: 'close'}        
+        {name: 'Close', kind: Button, ontap: 'close', components: [
+            {kind: i18n, content: 'Close'},
+        ]}     
     ],
 
     create: function() {
@@ -136,11 +146,11 @@ module.exports = kind({
         }
 
         if(bibles.length == 0) {
-            errors.push('Please select at least one Bible');
+            errors.push( this.app.t('Please select at least one Bible') );
         }
 
         if(!format || format == '0') {
-            errors.push('Please select a format');
+            errors.push( this.app.t('Please select a format') );
         }
 
         if(errors.length > 0) {
@@ -184,7 +194,7 @@ module.exports = kind({
             response = null;
         }
 
-        var errorMsg = 'An unknown error has occurred.';
+        var errorMsg = this.app.t('An unknown error has occurred.');
 
         if(response && response.results && response.results.render_needed) {
             this.initRenderProcess();
@@ -254,7 +264,7 @@ module.exports = kind({
             classes: 'render_item',
             components: [
                 {tag: 'span', _name: 'Label', classes: 'name', content: bibleInfo.name},
-                {tag: 'span', _name: 'Status', classes: 'status', content: 'Rendering ...'},
+                {tag: 'span', _name: 'Status', classes: 'status', content: this.app.t('Rendering') + ' ...'},
                 {classes: 'clear_both'}
             ],
         }).render();
@@ -275,13 +285,13 @@ module.exports = kind({
         ajax.go(formData); // for GET
         ajax.response(this, function(inSender, inResponse) {
             if(inResponse.results.success) {
-                var text = 'Success';
-                StatusControl.set('content', 'Success');
+                var text = this.app.t('Success');
+                StatusControl.set('content', text);
                 StatusControl.addClass('success');
             }
             else {
-                var text = 'Error';
-                StatusControl.set('content', 'Error');
+                var text = this.app.t('Error');
+                StatusControl.set('content', text);
                 StatusControl.addClass('error');
                 this.hasErrors = true;
             }
@@ -298,7 +308,7 @@ module.exports = kind({
 
             }
 
-            StatusControl.set('content', 'Error');
+            StatusControl.set('content', this.app.t('Error'));
             StatusControl.addClass('error');
             this.renderNextBible();
         });
@@ -317,7 +327,7 @@ module.exports = kind({
             // Probably could use confirm dialog for this:  1) Cancel Download 2) Continue Download, ect
 
             this.log('requestPending');
-            var cont = confirm('Are you sure you want to exit?  This will end the current download.');
+            var cont = confirm( this.app.t('Are you sure you want to exit?  This will end the current download.') );
 
             if(!cont) {
                 return false;

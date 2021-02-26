@@ -3,6 +3,7 @@ var Button = require('enyo/Button');
 var Anchor = require('enyo/Anchor');
 var Dialog = require('./Dialog');
 var LinkBuilder = require('../Link/LinkBuilder');
+var i18n = require('../Locale/i18nContent');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -59,8 +60,8 @@ module.exports = kind({
         {classes: 'header', components: [
             // {tag: 'br'},
             // {tag: 'h2', content: 'Bible SOS'}, 
-            {tag: 'h3', content: 'Emergency Help from the Bible'}, 
-            {tag: 'h4', content: 'Where to go When ...'}, 
+            {kind: i18n, tag: 'h3', content: 'Emergency Help from the Bible'}, 
+            {kind: i18n, tag: 'h4', content: 'Where to go When ...'}, 
         ]}
     ],
 
@@ -69,8 +70,14 @@ module.exports = kind({
     ],
 
     buttonComponents: [
-        {name: 'Close', kind: Button, content: 'Close', ontap: 'close'}
+        {name: 'Close', kind: Button, ontap: 'close', components: [
+            {kind: i18n, content: 'Close'},
+        ]}
     ],
+
+    handlers: {
+        onLocaleChange: 'localeChanged',
+    },
 
     create: function() {
         if(this.multiColumn) {
@@ -104,7 +111,7 @@ module.exports = kind({
         var urlBase = '#/r/' + this.bibleString + '/';
 
         this.list.forEach(function(item) {
-            var label = item.label + ': ';
+            var label = this.app.t(item.label) + ': ';
             var url = urlBase + item.verses;
 
             if(!this.$.ListContainer.$[colName]) {
@@ -129,5 +136,9 @@ module.exports = kind({
     },
     handleVerseTap: function(inSender, inEvent) {
         this.close();
+    },
+    localeChanged: function(inSender, inEvent) {
+        this.populateList();
+        this.render();
     }
 });
