@@ -1,7 +1,8 @@
 var kind = require('enyo/kind');
 var FormBase = require('./FormBase');
 var Button = require('enyo/Button');
-var Input = require('enyo/Input');
+var Input = require('../components/Locale/i18nInput');
+var i18n = require('../components/Locale/i18nContent');
 
 module.exports = kind({
     name: 'MinimalGoRandom',
@@ -9,11 +10,15 @@ module.exports = kind({
 
     components: [
         { classes: 'single_line_go', components: [
-            {kind: Input, name: 'request', classes: 'request', placeholder: 'Enter passage reference(s) or search keyword(s)'},
+            {kind: Input, name: 'request', classes: 'request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
         ]},
         { classes: 'single_line_go', components: [
-            {kind: Button, content: 'Bible Search', ontap: 'submitForm'},
-            {kind: Button, content: 'Random Chapter', ontap: 'submitRandom', random_type: 'Random Chapter'}
+            {kind: Button, ontap: 'submitForm', components: [
+                {kind: i18n, content: 'Bible Search'}
+            ]},
+            {kind: Button, ontap: 'submitRandom', random_type: 'Random Chapter', components: [
+                {kind: i18n, content: 'Random Chapter'}
+            ]},
         ]}
     ]
 });

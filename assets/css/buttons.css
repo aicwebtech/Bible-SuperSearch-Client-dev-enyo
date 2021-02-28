@@ -31,14 +31,14 @@
 .format_buttons_html .item.size_plus {
     /*font-size: 1.1em;*/
     /*font-weight: bold;*/
-    width: 20px;
+    /*width: 20px;*/
     font-size: 18px;
 }
 
 .format_buttons_html .item.size_reg {
 /*    font-weight: bold;
     text-decoration: underline overline;*/
-    width: 20px;
+    /*width: 20px;*/
     /*font-size: 18px;*/
 
 }
@@ -52,7 +52,7 @@
 .format_buttons_html .item.size_minus {
     /*font-size: 0.9em;*/
     /*font-weight: bold;*/
-    width: 20px;
+    /*width: 20px;*/
     font-size: 18px;
 }
 

@@ -111,8 +111,16 @@ module.exports = kind({
         var urlBase = '#/r/' + this.bibleString + '/';
 
         this.list.forEach(function(item) {
+            var t = this;
+
+            // var versesTranslated = item.verses.replace(/([0-9] )?[A-Za-z][A-Za-z ]*[A-Za-z]/g, function(match) {
+            //     return t.app.t(match);
+            // });
+
+            var versesTranslated = this.app.vt(item.verses);
+
             var label = this.app.t(item.label) + ': ';
-            var url = urlBase + item.verses;
+            var url = urlBase + versesTranslated;
 
             if(!this.$.ListContainer.$[colName]) {
                 this.$.ListContainer.createComponent({
@@ -127,7 +135,7 @@ module.exports = kind({
                 classes: 'item sos_item', components: [
                     {classes: 'label', content: label},
                     {classes: 'verses', components: [
-                        {kind: Anchor, href: url, _title: item.verses, content: item.verses, ontap: 'handleVerseTap'}
+                        {kind: Anchor, href: url, _title: versesTranslated, content: versesTranslated, ontap: 'handleVerseTap'}
                     ]},
                     {classes: 'clear-both'}
                 ]

@@ -56,7 +56,7 @@ module.exports = kind({
                 tag: 'option',
                 content: noSelectLabel,
                 allowHtml: true,
-                value: '0'
+                attributes: {value: '0'}
             });
         }
 

@@ -119,10 +119,11 @@ module.exports = kind({
 
         // Non-fatal errors
         if(inEvent.results.error_level > 0) {
-            this.$.ErrorsContainer.set('string', 
-                inEvent.results.errors.join('<br><br>')
-            );
+            // this.$.ErrorsContainer.set('string', 
+            //     inEvent.results.errors.join('<br><br>')
+            // );
             
+            this.$.ErrorsContainer.set('errors', inEvent.results.errors);
             this.$.ErrorsContainer.set('showing', true);
         }
 
@@ -199,10 +200,11 @@ module.exports = kind({
 
         this.$.ResultsContainer.set('showing', false);
         
-        this.$.ErrorsContainer.set('content', 
-            inEvent.response.errors.join('<br><br>')
-        );
+        // this.$.ErrorsContainer.set('string', 
+        //     inEvent.response.errors.join('<br><br>')
+        // );
         
+        this.$.ErrorsContainer.set('errors', inEvent.response.errors);
         this.$.ErrorsContainer.set('showing', true);
     },
     watchAdvancedToggle: function(pre, cur, prop) {

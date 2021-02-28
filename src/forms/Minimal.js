@@ -1,7 +1,8 @@
 var kind = require('enyo/kind');
 var FormBase = require('./FormBase');
 var Button = require('enyo/Button');
-var Input = require('enyo/Input');
+var Input = require('../components/Locale/i18nInput');
+var i18n = require('../components/Locale/i18nContent');
 
 module.exports = kind({
     name: 'Minimal',
@@ -9,9 +10,10 @@ module.exports = kind({
 
     components: [
         { classes: 'single_line', components: [
-            {kind: Input, name: 'request', placeholder: 'Enter passage reference(s) or search keyword(s)'},
-            {kind: Button, content: 'Go', ontap: 'submitForm'}
+            {kind: Input, name: 'request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
+            {kind: Button, ontap: 'submitForm', components: [
+                {kind: i18n, content: 'Go'}
+            ]}
         ]}
-        // {classes: 'single_line', content: 'Enter a passage reference(s) or search keyword(s) above. Example: Jn 3:16 or faith'}
     ]
 });

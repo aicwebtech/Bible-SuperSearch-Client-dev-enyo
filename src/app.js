@@ -52,8 +52,11 @@ var App = Application.kind({
     preventRedirect: false,
     biblesDisplayed: [],
     locale: 'en',
+    defaultLocale: 'en', // hardcoded
     localeData: Locales.en,
-    localeDatasets: Locales,
+    localeDatasetsRaw: Locales,
+    localeDatasets: {},
+    localeBibleBooks: {},
     
     // Selectable sub-views:
     formatButtonsView: null,
@@ -246,7 +249,7 @@ var App = Application.kind({
 
         // Load Static Data (Bibles, Books, ect)
         var ajax = new Ajax({
-            url: this.configs.apiUrl + '/statics',
+            url: this.configs.apiUrl + '/statics?language=en',
             method: 'GET'
         });
 
@@ -327,6 +330,7 @@ var App = Application.kind({
         this.test();
         this.set('statics', statics);
         this.processBiblesDisplayed();
+        this.localeBibleBooks.en = statics.books;
         this.waterfall('onStaticsLoaded');
 
         if(view && view != null) {
@@ -734,31 +738,77 @@ var App = Application.kind({
         window.console && console.log(arguments);
     },
     localeChanged: function(was, is) {
-        this.log(was, is);
-
-        var defaultLocale = 'en';
+        var defaultLocale = this.defaultLocale || 'en';
         var locale = is || defaultLocale;
         var fallbackLocale = locale.substring(0, 2);
         var found = false;
-        // var Locales = this.localeDatasets;
+
+        if(typeof this.localeDatasets[locale] == 'undefined') {
+            this._initLocale(locale);
+        }
+        else {
+            this._localeChangedHelper(locale);            
+        }
+    },
+    _initLocale: function(locale) {
+        var defaultLocale = this.defaultLocale || 'en';
+        var locale = locale || defaultLocale;
+        var fallbackLocale = language = locale.substring(0, 2);
+        var found = false,
+            localData = {};
 
         // TODO - mixin logic for locale data
-
         if(Locales[locale]) {
-            this.localeData = Locales[locale];
+            localeData = Locales[locale];
             found = true;
         }        
 
         if(!found && Locales[fallbackLocale]) {
-            this.localeData = Locales[fallbackLocale];
+            localeData = Locales[fallbackLocale];
             found = true;
         }
 
         if(!found) {
             this.localeData = Locales[defaultLocale];
         }
-        // this.log(this.localeData);
-        // biblesupersearch_config_options.locale = is;
+        
+        if(found && locale != defaultLocale) {
+            // Load Bible book list
+            var ajax = new Ajax({
+                url: this.configs.apiUrl + '/books?language=' + language,
+                method: 'GET'
+            });
+
+            var ajaxData = {};
+            ajax.go(ajaxData);
+            ajax.response(this, function(inSender, inResponse) {
+                this.localeBibleBooks[locale] = inResponse.results; // ??
+
+                for(key in inResponse.results) {
+                    var book = inResponse.results[key],
+                        bookEn = this.localeBibleBooks.en[key];
+
+                    if(typeof localeData[ bookEn.name ] == 'undefined') {
+                        localeData[ bookEn.name ] = book.name;
+                    }
+                }
+
+                this.localeDatasets[locale] = utils.clone(localeData);
+                this._localeChangedHelper(locale);
+            });    
+
+            ajax.error(this, function(inSender, inResponse) {
+                // this.set('ajaxLoading', false);
+                this.log('Error code 3 details', inSender, inResponse);
+                alert('Error: Failed to load application Bible Book data.  Error code 3');
+            });    
+        }
+
+        this.localeDatasets[locale] = utils.clone(localeData);
+        this._localeChangedHelper(locale);
+    },
+    _localeChangedHelper: function(locale) {
+        this.localeData = utils.clone(this.localeDatasets[locale]);
         Signal.send('onLocaleChange');
         this.waterfall('onLocaleChange');
     },
@@ -776,7 +826,6 @@ var App = Application.kind({
 
         if(found) {
             var p = found[1];
-            // this.log(string, p);
             stringNoP = string.slice(0, -1);
 
             if(Locale[stringNoP]) {
@@ -793,9 +842,19 @@ var App = Application.kind({
                 continue;
             }
             
-            this.log(i, match, regexp, Locale[match]);
+            // this.log('trans found', match);
             trans = trans.replace(regexp, Locale[match]);
         }
+
+        return trans;
+    },
+    // Translate string having embedded Bible passages
+    vt: function(string) {
+        var t = this;
+            
+        var trans = string.replace(/([0-9] )?[A-Za-z][A-Za-z ]*[A-Za-z]/g, function(match) {
+            return t.t(match);
+        });
 
         return trans;
     }

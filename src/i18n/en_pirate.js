@@ -1,19 +1,27 @@
 module.exports = {
     'lang_name_en': 'English - Pirate',
-      
+    
+    'Bible SuperSearch': 'Bibl SuperTreasures',
+
     // Search Forms
+    'Select Bible version(s)': 'Version(s) of the Goode Booke',
     'Search': 'Searchseys',
+    'Search the Bible': 'Scour for treasures',
     'Go': 'Arr',
+    'Bible Search': 'Plunge for Bibl treasures',
     'Bible': 'Holey Bibl',
     'Whole Words Only': 'Ye Full Words Onlee',
+    'Whole words only': 'Ye full words onlee',
     'Exact Case': 'Ye Samee Case',
     'Parallel Bible #': 'Parlay Sword No. ',
     'Add Bible': 'Arr! New Sworde',
     'Random Chapter': 'Try for Big Plunder',
     'Random Verse': 'Try for Small Plunder',
     'Passages': 'Partes',
-    
+    'The book of': 'Ye olde booke of',
+
     'Limit Search To': 'Plunder in',
+    'Limit search to': 'Plunder in',
     'Entire Bible': 'Whole Ocean Booke',
     'Passage(s) listed below': 'Partes knowne below deck',
     'Passage(s) listed above': 'Partes knowne above deck',
@@ -30,6 +38,12 @@ module.exports = {
     'Pauline Epistles': 'Ye matey Paule\'s Olde Letters',
     'General Epistles': 'Olde Letters by other mateys',
 
+    'Look up Passage(s)': 'Select ye headings',
+    'Enter passage(s)' : 'Select ye headings',
+    'Enter word(s), phrase(s) or expression(s)' : 'Select ye desired treasures',
+    'Example': 'Ensamlpe',
+
+    'Search for' : 'Plunderng\' by',
     'Match': 'Typee',
     'All Words': 'All ye Wordes',
     'Any Word': 'Anie worde',
@@ -42,12 +56,21 @@ module.exports = {
     'Boolean Expression': 'Espresso of ye matey Boole',
     'Regular Expression': 'Espresso of ye regulare varietie',
     'Select one ...' : 'Parley ono ...',
+
+    'Enter search keyword(s) or passage reference(s)': 'Enter ye desired treasure(s) or ye heading(s)',
+    'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'Clue to the treasures: Plundering bothe the shipe and the lande will leade to better treasures',
     
     'Bible #': 'Retrieve Sword No. ', // downloads
+
+    // Pagination
+    'Next Page' : 'Sheet Nexte',
+    'Previous Page' : 'Sheet Lasto',
+    'First Page' : 'Sheet Firsta',
+    'Last Page': 'Sheet Endo',
     
     // Formatting and dialog buttons
-    // 'A': 'Aye',     // First letter in given language
-    // 'Abc': 'Ayebc'  // First 3 letters in given language, with 1st capitalized
+    'A': 'Aye',     // First letter in given language
+    'Abc': 'Ayebc',  // First 3 letters in given language, with 1st capitalized
     'Serif' : 'Sherrif (noe goode)',
     'Sans-Serif': 'No Sherrif (goode)',
     'Monospace': 'Mono chapitain',
@@ -89,7 +112,29 @@ module.exports = {
     'This Bible is provided for research purposes only.': 'Scallywag booke only for comparin\' with Goode Booke',
     'An unknown error has occurred.' : 'Ye Kraken or the ghostes done it',
     'Error' : 'Arrg',
-    'Success': 'Yarr Eigh',
+    'Success': 'Yarr Aye',
+    'Cache not found': 'No finde treasure stash',
+    'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Ye missin\' ye olde searche terms.',
+    'Your search produced no results.' : 'Ye searche findes no treasure',
+    'Maximum hits has been reached for today for this domain / IP address': 'Arrg, reached plunderin\' limit for today',
+    'is invalid, and appears to be a passage reference.': 'no goode, and lookes like they reference.',
+    'is invalid.': 'noo goode',
+    'Your search for': 'Yar query afor',
+    'No Bibles are enabled. Please contact site adminstrator.': 'No Bookes to plunder, holler at the admiral.',
+    'Cannot retrieve multiple books at once.': 'Whatch ye plunderin\', save some for the othern',
+    'Bible text not found': 'Yarr, no Booke here',
+    'Invalid book in book range': 'Yar ranges no goode book',
+    'Book not found': 'Narr, no findy booke',
+    'Your parenthenses are mismatched.': 'Yarr, ye roundy brackets are misbracketed',
+    'Your parenthenses are mismatched, or you have a proximity operator inside of parentheses.': 'Ye roundy brackets are mismatched or have prox op belowe decke',
+    'Proximity operators such as PROX and CHAP can only be used with boolean searches' : 'Keep ouut of yee shipe proximity unless in matey Mr Boole searrches',
+    'Your access to this API has been revoked.  Please contact system administrator.': 'Ye bee given the blacke spote, holler at ye admiral before ye walks thee planke',
+    'Your search was limited to': 'Yar, ye got greedy and ye searche was limited to',
+    'Please refine your search if nessessary': 'Aske for less nexte time',
+    'Operators such as': 'Scraparators liken to',
+    'cannot be at the beginning of your search.': 'no goode in front of ye shippe.',
+    'cannot be at the end of your search.': 'no goode in backe of ye shippe.',
+    'Please remove it, or use it\'s lower case equivalent.': 'Pleese be to remoove it or use it in looowercase.',
 
     // Dialogs - general
     'Close': 'Abandone shippe!', 
@@ -169,7 +214,10 @@ module.exports = {
     'PDF - Compact Text, Letter, Words of Christ Underlined': 'PDF - Squezzen Text, Lettern, Words ye Capitan Christ Underlinneen',
     'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF - Squezzen Text, A4, Words ye Capitan Christ Underlinneen',
 
-    // Bible books - usually auto populated!
-
-
+    // Bible books - these are auto populated from the API
+    // Specifying here not reccommended, as these names would need to match those on the API for some things to work.
+    'Matthew' : 'Goode News Accordin\' to me matey Mahhew',
+    'Mark' : 'Goode News Accordin\' to me matey Markus',
+    'Luke' : 'Goode News Accordin\' to me matey Lukey',
+    'John' : 'Goode News Accordin\' to me matey Long John'
 };

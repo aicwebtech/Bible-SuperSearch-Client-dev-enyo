@@ -92,10 +92,23 @@ module.exports = kind({
         var urlBase = '#/r/' + this.bibleString + '/';
 
         this.list.forEach(function(item, key) {
+            var t = this;
             var desc = this.app.t(item.desc);
             var urlVerse = item.linkVerse || item.verse;
+
+            // urlVerse = urlVerse.replace(/([0-9] )?[A-Za-z][A-Za-z ]*[A-Za-z]/g, function(match) {
+            //     return t.app.t(match);
+            // });
+
             var url = urlBase + urlVerse;
             var numDisplay = (key + 1) + ') ';
+
+            // var verseTrans = item.verse.replace(/([0-9] )?[A-Za-z][A-Za-z ]*[A-Za-z]/g, function(match) {
+            //     return t.app.t(match);
+            // });
+
+            urlVerse = this.app.vt(urlVerse);
+            verseTrans = this.app.vt(verseTrans);
 
             if(!this.$.ListContainer.$[colName]) {
                 this.$.ListContainer.createComponent({
@@ -110,7 +123,7 @@ module.exports = kind({
                 classes: 'item start_item', components: [
                     {classes: 'num', content: numDisplay},
                     {classes: 'verses', components: [
-                        {kind: Anchor, href: url, _title: item.verses, content: item.verse, ontap: 'handleVerseTap'}
+                        {kind: Anchor, href: url, _title: item.verses, content: verseTrans, ontap: 'handleVerseTap'}
                     ]},
                     {classes: 'desc', content: desc, allowHtml: true},
                     {classes: 'clear-both'}

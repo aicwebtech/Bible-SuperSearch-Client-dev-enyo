@@ -5,11 +5,26 @@ module.exports = {
     es: require('./es'),
 
     // Translation strings that allow partial matches.
-    // Put longest at top of list
+    // For best results, put longest at top of list
     _partial: [
         'However, verses from this Bible have been included for comparison.',
+        'Please remove it, or use it\'s lower case equivalent.',
         'Your search produced no results in',
+        'is invalid, and appears to be a passage reference.',
+        'is invalid.',
+        'Your search for',
+        'Bible text not found',
+        'Your search produced no results.',
         'Parallel Bible #',
         'Bible #',
+        'Bible text not found',
+        'Invalid book in book range',
+        'Book not found',
+        'Your search was limited to',
+        'Please refine your search if nessessary',
+        'Operators such as',
+        'cannot be at the beginning of your search.',
+        'cannot be at the end of your search.',
+        'results'
     ]
 };

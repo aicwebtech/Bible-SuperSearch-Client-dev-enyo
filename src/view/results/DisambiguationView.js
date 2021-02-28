@@ -2,6 +2,7 @@
 var kind = require('enyo/kind');
 var Anchor = require('enyo/Anchor');
 var utils = require('enyo/utils');
+var i18n = require('../../components/Locale/i18nContent');
 
 module.exports = kind({
     name: 'DisambiguationView',
@@ -27,7 +28,12 @@ module.exports = kind({
                 {
                     kind: Anchor,
                     classes: 'std_link',
-                    content: content,
+                    // content: content,
+                    components: [
+                        {kind: i18n, content: 'The book of'},
+                        {tag: 'span', content: ' '},
+                        {tag: 'span', content: item.simple}
+                    ],
                     href: url
                 }
             ]

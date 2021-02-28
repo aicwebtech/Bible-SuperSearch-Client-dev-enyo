@@ -1,15 +1,13 @@
 var kind = require('enyo/kind');
-var Component = require('enyo/Component');
+var Input = require('enyo/Input');
 
 module.exports = kind({
     name: 'i18nContent',
-    tag: 'span',
+    kind: Input,
     containsVerses: false,
 
     published: {
-        string: '',
         titleString: '',
-        labelString: '',
         placeholderString: '',
     },
 
@@ -19,22 +17,14 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
-        
-        if(this.content != '' && this.string == '') {
-            this.string = this.content;
-        }
 
         if(this.attributes.title && this.attributes.title != '' && this.titleString == '') {
             this.titleString = this.attributes.title;
         }        
 
-        if(this.attributes.label && this.attributes.label != '' && this.labelString == '') {
-            this.labelString = this.attributes.label;
-        }        
-
         if(this.attributes.placeholder && this.attributes.placeholder != '' && this.placeholderString == '') {
             this.placeholderString = this.attributes.placeholder;
-        }
+        }        
 
         this.translate();
     },
@@ -44,33 +34,18 @@ module.exports = kind({
     titleStringChanged: function(was, is) {
         this.translate();
     },    
-    labelStringChanged: function(was, is) {
+    placeholderStringChanged: function(was, is) {
         this.translate();
     },
     localeChanged: function(inSender, inEvent) {
         this.translate();
     },
     translate: function() {
-        var string = this.get('string'),
-            titleString = this.get('titleString'),
-            labelString = this.get('labelString'),
-            placeholderString = this.get('placeholderString');
-
-        if(string && string != '') {
-            if(this.containsVerses) {
-                this.setContent( this.app.vt(string) );
-            }
-            else {
-                this.setContent( this.app.t(string) );
-            }
-        }        
+        var titleString = this.get('titleString'),
+            placeholderString = this.get('placeholderString');    
 
         if(titleString && titleString != '') {
             this.setAttribute('title', this.app.t(titleString) );
-        }        
-
-        if(labelString && labelString != '') {
-            this.setAttribute('label', this.app.t(labelString) );
         }        
 
         if(placeholderString && placeholderString != '') {

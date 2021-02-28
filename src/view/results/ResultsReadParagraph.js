@@ -85,7 +85,7 @@ module.exports = kind({
                         continue;
                     }
 
-                    if(pd.verses[module][chapter][verse]) {
+                    if(pd.verses[module] && pd.verses[module][chapter] && pd.verses[module][chapter][verse]) {
                         var processed = this.processPassageVerseContent(pd, pd.verses[module][chapter][verse]);
                         bibleHtml[i] += processed;
                     }

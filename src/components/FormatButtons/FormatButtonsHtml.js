@@ -8,6 +8,7 @@ var Toggle = require('../ToggleHtml');
 var Image = require('../Image');
 var Help = require('../dialogs/Help');
 var i18n = require('../Locale/i18nContent');
+var LocaleSelector = require('../Locale/LocaleSelector');
 
 module.exports = kind({
     name: 'FormatButtonsHtml',
@@ -22,8 +23,10 @@ module.exports = kind({
             tag: 'span',
             val: 'plus',
             ontap: 'handleSizeChange',
-            // components:
-            content: 'A+',
+            components: [
+                {kind: i18n, content: 'A'},
+                {tag: 'span', content: '+'},
+            ],
             attributes: {
                 title: 'Enlarge Text'
             }
@@ -34,14 +37,14 @@ module.exports = kind({
             name: 'size_reg',
             val: 'reg',
             ontap: 'handleSizeChange',
-            content: '&nbsp;A&nbsp;',
-            allowHtml: true,
             tag: 'span',
             attributes: {
                 title: 'Default Text Size',
             },
             components: [
-                {tag: 'span', content: '&nbsp;A&nbsp;', allowHtml: true},
+                {tag: 'span', content: '&nbsp;', allowHtml: true},
+                {kind: i18n, content: 'A'},
+                {tag: 'span', content: '&nbsp;', allowHtml: true},
             ]
         },  
         {
@@ -50,9 +53,11 @@ module.exports = kind({
             name: 'size_minus',
             val: 'minus',
             ontap: 'handleSizeChange',
-            content: 'A-',
-            // allowHtml: true,
             tag: 'span',
+            components: [
+                {kind: i18n, content: 'A'},
+                {tag: 'span', content: '-'},
+            ],
             attributes: {
                 title: 'Shrink Text'
             }
@@ -63,13 +68,12 @@ module.exports = kind({
             name: 'font_serif',
             ontap: 'handleFontChange',
             val: 'serif',
-            content: 'Abc',
             tag: 'span',
             attributes: {
                 title: 'Serif'
             },
             components: [
-                {tag: 'span', content: 'Abc'}
+                {kind: i18n,  content: 'Abc'}
             ]
         },        
         {
@@ -78,13 +82,12 @@ module.exports = kind({
             name: 'font_sans_serif',
             ontap: 'handleFontChange',
             val: 'sans_serif',
-            content: 'Abc',
             tag: 'span',
             attributes: {
                 title: 'Sans-Serif',
             },
             components: [
-                {tag: 'span', content: 'Abc'}
+                {kind: i18n, content: 'Abc'}
             ]
         },
         {
@@ -93,13 +96,12 @@ module.exports = kind({
             name: 'font_monospace',
             ontap: 'handleFontChange',
             val: 'monospace',
-            content: 'Abc',
             tag: 'span',
             attributes: {
                 title: 'Monospace',
             },
             components: [
-                {tag: 'span', content: 'Abc'}
+                {kind: i18n, content: 'Abc'}
             ],
         },
         {
@@ -271,6 +273,10 @@ module.exports = kind({
                 {kind: i18n, content: 'Print'}
             ],
         },
+
+                {classes: 'input_row_wide', components: [
+                    {name: 'Locale', kind: LocaleSelector}
+                ]},  
         
         {name: 'Dialogs', components: [
             {name: 'HelpDialog', kind: Help, showing: false}
