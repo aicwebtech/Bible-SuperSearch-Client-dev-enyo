@@ -4,6 +4,8 @@ var Button = require('enyo/Button');
 var TextArea = require('enyo/TextArea');
 var BibleSelect = require('../../components/BibleSelect/MultiSelect');
 var FormSection = require('../FormSection');
+var i18n = require('../../components/Locale/i18nComponent');
+var i18nContent = require('../../components/Locale/i18nContent');
 
 module.exports = kind({
     name: 'AdvancedPower',
@@ -23,14 +25,14 @@ module.exports = kind({
             {tag: 'br'},
             {
                 components: [
-                    {allowHtml: true, content: 'Boolean Search:'},
+                    {kind: i18n, allowHtml: true, content: 'Boolean Search:'},
                     {kind: TextArea, name: 'search', style: 'width: 98%; height: 50px;'}
                 ]
             },
             {tag: 'br'},
             {
                 components: [
-                    {allowHtml: true, content: 'Passage Retrieval:'},
+                    {kind: i18n, allowHtml: true, content: 'Passage Retrieval:'},
                     {kind: TextArea, name: 'reference', style: 'width: 98%; height: 50px;'}
                 ]
             },
@@ -38,7 +40,9 @@ module.exports = kind({
             {
                 classes: 'biblesupersearch_center_element',
                 components: [
-                    {kind: Button, content: 'Power Search', ontap: 'submitForm'}
+                    {kind: Button, ontap: 'submitForm', components: [
+                        {kind: i18nContent, content: 'Power Search'}
+                    ]}
                 ]
             }
         ]}

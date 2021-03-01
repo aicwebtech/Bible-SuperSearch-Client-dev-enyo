@@ -123,9 +123,6 @@ module.exports = kind({
         this.inherited(arguments);
     },
     shortcutChangedHandler: function(inSender, inEvent) {
-        // this.log(inSender);
-        // this.log(inEvent);
-        // this.log('shortcut id selected', inSender.selected);
         this.app.debug && this.log('shortcut value selected', inSender.get('value'));
 
         var val = inSender.get('value');

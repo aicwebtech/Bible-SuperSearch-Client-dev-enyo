@@ -8,6 +8,8 @@ var BibleSelect = require('../../components/BibleSelect/MultiSelect');
 var SearchType = require('../../components/SearchType');
 var Shortcuts = require('../../components/Shortcuts');
 var FormSection = require('../FormSection');
+var i18n = require('../../components/Locale/i18nComponent');
+var i18nContent = require('../../components/Locale/i18nContent');
 
 module.exports = kind({
     name: 'AdvancedWord',
@@ -24,43 +26,44 @@ module.exports = kind({
                 classes: 'biblesupersearch_center_element'
             },
             {tag: 'br'},
-            {content: 'Find verses containing:'},
+            {kind: i18n, content: 'Find verses containing:'},
             {tag: 'br'},
             {
                 components: [
-                    {tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>All</b> of the words:'},
+                    {kind: i18nContent, tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>All</b> of the words:'},
                     {kind: Input, classes: 'resp_input resp_input_200', name: 'search_all'}
                 ]
             },
             {
                 components: [
-                    {tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>Any</b> of the words:'},
+                    {kind: i18nContent, tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>Any</b> of the words:'},
                     {kind: Input, classes: 'resp_input resp_input_200', name: 'search_any'}
                 ]
             },
             {
                 components: [
-                    {tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>Only one</b> of the words:'},
+                    {kind: i18nContent, tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>Only one</b> of the words:'},
                     {kind: Input, classes: 'resp_input resp_input_200', name: 'search_one'}
                 ]
             },
             {
                 components: [
-                    {tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>None</b> of the words:'},
+                    {kind: i18nContent, tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>None</b> of the words:'},
                     {kind: Input, classes: 'resp_input resp_input_200', name: 'search_none'}
                 ]
             },
             {
                 components: [
-                    {tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: 'The <b>exact phrase</b>:'},
+                    {kind: i18nContent, tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: 'The <b>exact phrase</b>:'},
                     {kind: Input, classes: 'resp_input resp_input_200', name: 'search_phrase'}
                 ]
             },
             {tag: 'br'},
             {
                 components: [
-                    {tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: 'Restrict Search to:'},
-                    {kind: SearchType, classes: 'resp_input resp_input_200', name: 'search_type', style: 'max-width: 200px'}
+                    {kind: i18nContent, tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: 'Restrict search to:'},
+                    {kind: Shortcuts, classes: 'resp_input resp_input_200', name: 'shortcut', style: 'max-width: 200px', selectedPassagesLabel: null},
+                    {kind: Input, name: 'reference', type: 'hidden'}
                 ]
             },
             {tag: 'br'},
@@ -68,13 +71,16 @@ module.exports = kind({
                 classes:'biblesupersearch_center_element',
                 components: [
                     {kind: Checkbox, name: 'whole_words', id: 'whole_words_adv_word'},
-                    {tag: 'label', content: ' Whole words', attributes: {for: 'whole_words_adv_word'}}
+                    {tag: 'span', content: ' '},
+                    {kind: i18nContent, tag: 'label', content: 'Whole words only', attributes: {for: 'whole_words_adv_word'}}
             ]},
             {tag: 'br'},
             {
                 classes: 'biblesupersearch_center_element',
                 components: [
-                    {kind: Button, content: 'Word Search', ontap: 'submitForm'}
+                    {kind: Button, ontap: 'submitForm', components: [
+                        {kind: i18nContent, content: 'Word Search'}
+                    ]}
                 ]
             }
         ]}

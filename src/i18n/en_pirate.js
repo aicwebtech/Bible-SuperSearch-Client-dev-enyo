@@ -14,11 +14,22 @@ module.exports = {
     'Whole words only': 'Ye full words onlee',
     'Exact Case': 'Ye Samee Case',
     'Parallel Bible #': 'Parlay Sword No. ',
+    'Select a Bible': 'Choose yar Sworde',
     'Add Bible': 'Arr! New Sworde',
     'Random Chapter': 'Try for Big Plunder',
     'Random Verse': 'Try for Small Plunder',
     'Passages': 'Partes',
+    'Passage': 'Parte',
     'The book of': 'Ye olde booke of',
+    'Look for': 'Desires',
+    'Look up': 'Fetche',
+    'in': 'ain',
+    'verse': 'jewel',
+    'verses': 'jewels',
+    'A Chapter': 'A Cheste',
+    'Find verses containing': 'Locate partes havin\'',
+    'Restrict search to': 'Prevent ye maties from searchin\' outside of', 
+
 
     'Limit Search To': 'Plunder in',
     'Limit search to': 'Plunder in',
@@ -60,6 +71,19 @@ module.exports = {
     'Enter search keyword(s) or passage reference(s)': 'Enter ye desired treasure(s) or ye heading(s)',
     'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'Clue to the treasures: Plundering bothe the shipe and the lande will leade to better treasures',
     
+    // Advanced Search
+    'Boolean Search': 'Searchseys of ye matey Boole expressio',
+    'Passage Retrieval': 'Fetche partes',
+    'Find words within': 'Arr, words in closes proximitie of me ship',
+    'Proximity Search': 'Serche the shipe proximitie',
+    'Power Search': 'Make the Kraken do the Searcen\'',
+
+    '<b>All</b> of the words' : '<b>Vall</b> of thee wordes',
+    '<b>Any</b> of the words' : '<b>Anie</b> of thee wordes',
+    '<b>Only one</b> of the words': '<b>Onlie ono</b> of thee wordes',
+    '<b>None</b> of the words' : '<b>Naner</b> of thee wordes',
+    'The <b>exact phrase</b>': 'The <b>xact phrasee</b>',
+
     'Bible #': 'Retrieve Sword No. ', // downloads
 
     // Pagination

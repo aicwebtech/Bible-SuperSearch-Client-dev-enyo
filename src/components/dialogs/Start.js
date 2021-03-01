@@ -108,7 +108,7 @@ module.exports = kind({
             // });
 
             urlVerse = this.app.vt(urlVerse);
-            verseTrans = this.app.vt(verseTrans);
+            verseTrans = this.app.vt(item.verse);
 
             if(!this.$.ListContainer.$[colName]) {
                 this.$.ListContainer.createComponent({

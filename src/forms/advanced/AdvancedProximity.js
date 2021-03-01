@@ -8,6 +8,8 @@ var BibleSelect = require('../../components/BibleSelect/MultiSelect');
 var SearchType = require('../../components/SearchType');
 var ProximitySelect = require('../../components/ProximitySelect');
 var FormSection = require('../FormSection');
+var i18n = require('../../components/Locale/i18nComponent');
+var i18nContent = require('../../components/Locale/i18nContent');
 
 module.exports = kind({
     name: 'AdvancedProximity',
@@ -29,7 +31,7 @@ module.exports = kind({
                     {kind: Input, name: 'search', style: 'width: 98%'},
                     {tag: 'br'},
                     {tag: 'br'},
-                    {tag: 'label', allowHtml: true, classes: 'resp_left_label resp_left_label_165', content: 'Find words within:'},
+                    {kind: i18nContent, tag: 'label', allowHtml: true, classes: 'resp_left_label resp_left_label_165', content: 'Find words within:'},
                     {kind: ProximitySelect, classes: 'resp_input resp_input_100', name: 'proximity_limit', style: 'max-width: 100px'}
                 ]
             },
@@ -37,7 +39,9 @@ module.exports = kind({
             {
                 classes: 'biblesupersearch_center_element',
                 components: [
-                    {kind: Button, content: 'Proximity Search', ontap: 'submitForm'}
+                    {kind: Button, ontap: 'submitForm', components: [
+                        {kind: i18nContent, content: 'Proximity Search'}
+                    ]}
                 ]
             }
         ]}

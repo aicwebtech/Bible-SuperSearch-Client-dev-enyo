@@ -9,11 +9,21 @@ module.exports = kind({
     rangeUnitPlural: 'verses',
     postOptions: [],
 
+    handlers: {
+        onLocaleChange: 'localeChanged',
+    },
+
     create: function() {
         this.inherited(arguments);
+        this._buildOptions();
+    },
+    _buildOptions: function() {
+        this.destroyClientControls();
+        var rangeUnit = this.app.t(this.rangeUnit),
+            rangeUnitPlural = this.app.t(this.rangeUnitPlural);
 
         this.rangeOptions.forEach(function(item) {
-            var unit = (item == 1) ? this.rangeUnit : this.rangeUnitPlural;
+            var unit = (item == 1) ? rangeUnit : rangeUnitPlural;
             var label = '± ' + item.toString() + ' ' + unit;
 
             this.createComponent({
@@ -30,5 +40,9 @@ module.exports = kind({
                 value: item.value
             });
         }, this);
+    },
+    localeChanged: function(inSender, inEvent) {
+        this._buildOptions();
+        this.render();
     }
 });
