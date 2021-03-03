@@ -627,6 +627,9 @@ var App = Application.kind({
             this.view.set('downloadShowing', is);
         }
     },
+    showHelp: function(section) {
+        this.waterfall('onShowHelp', {section: section});
+    },
     ajaxLoadingDelayChanged: function(was, is) {
         var delay = is || false,
             t = this;

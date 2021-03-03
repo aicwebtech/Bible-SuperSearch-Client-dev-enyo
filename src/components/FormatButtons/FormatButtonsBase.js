@@ -52,6 +52,10 @@ module.exports = kind({
         // this.log(this.app.UserConfig.getAttributes());
     },
     handleHelp: function(inSender, inEvent) {
+        this.app.showHelp(null);
+        return;
+
+
         // this.app.debug && this.log(inSender);
         // this.app.debug && this.log(inEvent);
 
@@ -60,7 +64,6 @@ module.exports = kind({
         
         // Temporary!
         window.open(
-            // 'https://www.biblesupersearch.com/wp-content/plugins/bible_supersearch/bible_supersearch_user_guide.html', 
             this.app.get('rootDir') +  '/user_guide.html', 
             'helpDialog',
             'menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes,height=800,width=600'

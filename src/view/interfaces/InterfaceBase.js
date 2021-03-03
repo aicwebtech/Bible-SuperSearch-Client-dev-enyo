@@ -4,6 +4,7 @@ var LoadingDialog = require('../../components/dialogs/Loading');
 var SosDialog = require('../../components/dialogs/SOS');
 var StartDialog = require('../../components/dialogs/Start');
 var DownloadDialog = require('../../components/dialogs/Download');
+var HelpDialog = require('../../components/dialogs/Help');
 var NavButtons = require('../../components/NavButtons/NavClassic');
 var FormatButtons = require('../../components/FormatButtons/classic/FormatButtonsClassic');
 var Pager = require('../../components/Pagers/ClassicPager');
@@ -37,6 +38,14 @@ module.exports = kind({
         if(this.app.pagerView) {
             this.PagerControl = this.app.pagerView;
         }
+
+        // if(!this.$.HelpDialog) {
+        //     this.createComponent({
+        //         name: 'HelpDialog',
+        //         kind: HelpDialog,
+        //         showing: false
+        //     });
+        // }
     },
     ajaxLoadingChanged: function(was, is) {
         if(!this.$.LoadingDialog) {

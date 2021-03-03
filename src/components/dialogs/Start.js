@@ -95,20 +95,10 @@ module.exports = kind({
             var t = this;
             var desc = this.app.t(item.desc);
             var urlVerse = item.linkVerse || item.verse;
-
-            // urlVerse = urlVerse.replace(/([0-9] )?[A-Za-z][A-Za-z ]*[A-Za-z]/g, function(match) {
-            //     return t.app.t(match);
-            // });
-
-            var url = urlBase + urlVerse;
-            var numDisplay = (key + 1) + ') ';
-
-            // var verseTrans = item.verse.replace(/([0-9] )?[A-Za-z][A-Za-z ]*[A-Za-z]/g, function(match) {
-            //     return t.app.t(match);
-            // });
-
             urlVerse = this.app.vt(urlVerse);
             verseTrans = this.app.vt(item.verse);
+            var url = urlBase + urlVerse;
+            var numDisplay = (key + 1) + ') ';
 
             if(!this.$.ListContainer.$[colName]) {
                 this.$.ListContainer.createComponent({
