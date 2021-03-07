@@ -81,6 +81,9 @@ module.exports = kind({
     },    
     handleDownload: function(inSender, inEvent) {
         this.app.set('downloadShowing', true);
+    },    
+    handleShare: function(inSender, inEvent) {
+        this.app.set('shareShowing', true);
     },
     _hideExtras: function() {
         var softConfig = this.app.configs.extraButtonsSeparate,

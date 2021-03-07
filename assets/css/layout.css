@@ -434,6 +434,15 @@ div.biblesupersearch_dialog {
     font-size: 0.9em;
 }
 
+.share_dialog .link_share_container {
+    padding: 5px;
+}
+
+.share_dialog textarea.link_share {
+    width: 99%;
+    height: 60px;
+}
+
 .bible_sos .sos_item .verses {
     float: right;
     /*background-color: green;*/

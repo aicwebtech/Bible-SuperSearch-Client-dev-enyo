@@ -28,10 +28,7 @@ module.exports = kind({
     sections: {
         basicSearch: [
             {tag: 'h5', content: 'Basic Search'},
-            {content: 'Romans 8:2'},
-            {content: 'Rom 8:2'},
-            {content: 'Example: Rom. 8:2'},
-            {content: 'Ro. 8:2'},
+            {content: 'faith'}
         ],
         boolSearch: [
             {tag: 'h5', content: 'Advanced Searches'},
@@ -40,15 +37,18 @@ module.exports = kind({
 
         ],
         basicLookup: [
-            {tag: 'h5', content: 'Passage Retrieval'}
+            {tag: 'h5', content: 'Passage Retrieval'},
+            {content: 'Romans 8:2'},
+            {content: 'Rom 8:2'},
+            {content: 'Example: Rom. 8:2'},
+            {content: 'Ro. 8:2'},
         ],
     },
 
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, tag: 'h3', content: 'New to the Bible?'}, 
-            {kind: i18n, tag: 'h4', content: 'Not Sure Where to Begin?'}, 
-            // {tag: 'h4', content: 'Here\'s a reading list to get you started'}, 
+            {kind: i18n, tag: 'h3', content: 'Bible SuperSearch'}, 
+            {kind: i18n, tag: 'h4', content: 'Quick Start Guide'}
         ]}
     ],
 

@@ -163,6 +163,7 @@ module.exports = kind({
         this.requestPending = false;
         this.set('cacheHash', inResponse.hash);
         this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: inResponse});
+        Signal.send('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: inResponse});
         this.maxPage = (inResponse.paging && inResponse.paging.last_page) ? inResponse.paging.last_page : null;
         this.page = (inResponse.paging && inResponse.paging.current_page) ? inResponse.paging.current_page : null;
 
@@ -195,6 +196,7 @@ module.exports = kind({
             
             this.updateTitle();
             this.bubble('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
+            Signal.send('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
             this.manualRequest = false;
         }
         else {

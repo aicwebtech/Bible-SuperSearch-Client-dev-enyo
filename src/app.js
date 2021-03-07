@@ -626,6 +626,11 @@ var App = Application.kind({
         if(this.view && this.view.set) {
             this.view.set('downloadShowing', is);
         }
+    },    
+    shareShowingChanged: function(was, is) {
+        if(this.view && this.view.set) {
+            this.view.set('shareShowing', is);
+        }
     },
     showHelp: function(section) {
         this.waterfall('onShowHelp', {section: section});

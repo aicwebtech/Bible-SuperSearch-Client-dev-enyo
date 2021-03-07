@@ -122,7 +122,13 @@ module.exports = {
     'Bible Start Guide': 'Gettin\' started in ye Holy Booke',
     'Download': 'Retrieve',
     'Bible Downloads': 'Retrieve from the Depths',
-
+    
+    // Copy / Share dialog
+    'Copy': 'Pirate this',
+    'Copy Link': 'Pirate this linke',
+    'Copy with Text': 'Pirate this with scribblings',
+    'Share Link': 'Give to ye mateys',
+    'Share' : 'Givem',
 
     
     // Result and error messages

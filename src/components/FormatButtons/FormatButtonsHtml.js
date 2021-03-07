@@ -272,6 +272,17 @@ module.exports = kind({
                 {tag: 'span', allowHtml: true, content: '&#128438;&nbsp;'},
                 {kind: i18n, content: 'Print'}
             ],
+        },        
+        {
+            kind: i18n,
+            classes: 'item share',
+            name: 'share_button',
+            ontap: 'handleShare',
+            attributes: {title: 'Share Link'},
+            components: [
+                // {tag: 'span', allowHtml: true, content: '&#128438;&nbsp;'},
+                {kind: i18n, content: 'Share'}
+            ],
         },
 
         {classes: 'input_row_wide', components: [

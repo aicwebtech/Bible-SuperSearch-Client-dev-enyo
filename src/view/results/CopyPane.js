@@ -1,12 +1,15 @@
 var kind = require('enyo/kind');
 var Button = require('enyo/Button');
 var utils = require('enyo/utils');
+var i18n = require('../../components/Locale/i18nContent');
 
 module.exports = kind({
     tag: 'td',
     classes: 'biblesupersearch_copy_pane',
     components: [
-        {kind: Button, content: 'Copy', ontap: 'handleCopy'},
+        {kind: Button, ontap: 'handleCopy', components: [
+            {kind: i18n, content: 'Copy'}
+        ]},
         {name: 'CopyText', tag: 'p', allowHtml: true}
     ],
     handleCopy: function(inSender, inEvent) {        

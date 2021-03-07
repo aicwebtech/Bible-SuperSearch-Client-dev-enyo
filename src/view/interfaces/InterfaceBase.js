@@ -5,6 +5,7 @@ var SosDialog = require('../../components/dialogs/SOS');
 var StartDialog = require('../../components/dialogs/Start');
 var DownloadDialog = require('../../components/dialogs/Download');
 var HelpDialog = require('../../components/dialogs/Help');
+var ShareDialog = require('../../components/dialogs/Share');
 var NavButtons = require('../../components/NavButtons/NavClassic');
 var FormatButtons = require('../../components/FormatButtons/classic/FormatButtonsClassic');
 var Pager = require('../../components/Pagers/ClassicPager');
@@ -90,6 +91,20 @@ module.exports = kind({
         }
 
         this.$.DownloadDialog.set('showing', is);
+    },
+    shareShowingChanged: function(was, is) {
+        this._dialogShowingHelper(ShareDialog, 'ShareDialog', is);
+    },
+    _dialogShowingHelper: function(kind, name, showing) {
+        if(!this.$[name]) {
+            this.createComponent({
+                name: name,
+                kind: kind,
+                showing: false
+            }).render();
+        }
+
+        this.$[name].set('showing', showing);
     },
     formHasField: function(fieldName) {
         // For special interfaces, implement on child!
