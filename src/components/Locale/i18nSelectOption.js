@@ -4,6 +4,7 @@ var Option = require('enyo/Option');
 module.exports = kind({
     name: 'i18nOption',
     kind: Option,
+    titleVerse: false,
 
     published: {
         string: '',
@@ -45,7 +46,8 @@ module.exports = kind({
         }        
 
         if(titleString && titleString != '') {
-            this.setAttribute('title', this.app.t(titleString) );
+            var titleTrans = (this.titleVerse) ? this.app.vt(titleString) : this.app.t(titleString);
+            this.setAttribute('title', titleTrans );
         }
     }
 });

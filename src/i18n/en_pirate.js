@@ -130,6 +130,7 @@ module.exports = {
     'Share Link': 'Give to ye mateys',
     'Share' : 'Givem',
 
+    'User\'s Manual': 'Arr, how me operate this thing?',
     
     // Result and error messages
     'Your search produced' : 'Ye olde plundering retrieved',  

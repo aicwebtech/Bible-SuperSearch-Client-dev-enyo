@@ -29,7 +29,11 @@ module.exports = kind({
         for(i in shortcuts) {
             this.createComponent({
                 content: shortcuts[i].name,
-                value: shortcuts[i].reference
+                value: shortcuts[i].reference,
+                titleVerse: true,
+                attributes: {
+                    title: shortcuts[i].reference
+                }
             });
         }
 

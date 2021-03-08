@@ -397,7 +397,7 @@ div.biblesupersearch_dialog {
 }
 
 .help_dialog .buttons {
-    height: 30px;
+    min-height: 30px;
 }
 
 .help_dialog .list {
@@ -423,6 +423,12 @@ div.biblesupersearch_dialog {
 
 .help_dialog .dialog {
     padding-top: 2px;
+}
+
+.help_dialog.help .content {
+/*    height: 400px;
+    overflow-y: auto;
+    margin-bottom: 10px;*/
 }
 
 .bible_sos .sos_item .label {

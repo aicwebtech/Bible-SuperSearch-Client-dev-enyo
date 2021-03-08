@@ -538,13 +538,15 @@ var App = Application.kind({
         var formData = this._assembleHashPassage(partsObj);
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },   
-     _hashSearch: function(parts) {
+    _hashSearch: function(parts) {
         var bible  = parts[0] || null;
         var search = parts[1] || null;
+        var searchType = parts[2] || null;
 
         var formData = {
             search: search.replace(/%20/g, ' '),
             bible: bible ? bible.split(',') : null,
+            search_type: searchType,
         };
         
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});

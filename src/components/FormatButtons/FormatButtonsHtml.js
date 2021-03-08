@@ -264,7 +264,7 @@ module.exports = kind({
         // End Extra buttons
         {
             kind: i18n,
-            classes: 'item print',
+            classes: 'item print text_only',
             name: 'print_button',
             ontap: 'handlePrint',
             attributes: {title: 'Printer Friendly'},
@@ -275,7 +275,7 @@ module.exports = kind({
         },        
         {
             kind: i18n,
-            classes: 'item share',
+            classes: 'item share text_only',
             name: 'share_button',
             ontap: 'handleShare',
             attributes: {title: 'Share Link'},
@@ -290,7 +290,7 @@ module.exports = kind({
         ]},  
         
         {name: 'Dialogs', components: [
-            {name: 'HelpDialog', kind: Help, showing: false}
+            // {name: 'HelpDialog', kind: Help, showing: false}
         ]}
     ],
 

@@ -27,21 +27,31 @@ module.exports = kind({
 
     sections: {
         basicSearch: [
-            {tag: 'h5', content: 'Basic Search'},
-            {content: 'faith'}
+            {tag: 'h3', content: 'Basic Search'},
+            {content: 'faith', link: 'search'},
+            {content: 'Wildcards: \'_\' and \'%\''},
         ],
         boolSearch: [
-            {tag: 'h5', content: 'Advanced Searches'},
-            {content: 'Jesus AND Lord OR Christ'},
-            {content: 'Jesus OR Lord NOT Christ'},
+            {tag: 'h3', content: 'Advanced Searches using Boolean'},
+            {content: 'Select Boolean Search'},
+            {content: 'Jesus AND Lord OR Christ', link: 'search', searchType: 'boolean'},
+            {content: '(Lord OR Christ) AND Jesus', link: 'search', searchType: 'boolean'},
+            {content: '(preserved OR stand) AND (word OR truth)', link: 'search', searchType: 'boolean'},
 
+            {tag: 'h4', content: 'Special Proximity Operators'},
+            {content: 'preserve PROX(4) words OR truth'},
+            {content: 'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets.'}
         ],
         basicLookup: [
-            {tag: 'h5', content: 'Passage Retrieval'},
-            {content: 'Romans 8:2'},
-            {content: 'Rom 8:2'},
-            {content: 'Example: Rom. 8:2'},
-            {content: 'Ro. 8:2'},
+            {tag: 'h3', content: 'Passage Retrieval'},
+            {content: 'Romans 8:2', link: 'passage'},
+            {content: 'Rom 8:2', link: 'passage'},
+            {content: 'Rom. 8:2', link: 'passage'},
+            {content: 'Ro. 8:2', link: 'passage'},
+            {content: 'Rom 3:23, 6:23, 5:8, 10:9,13;', link: 'passage'},
+            {content: 'Ephesians 2:8,9; Acts 4:12; John 8:31-32,36', link: 'passage'},
+            {content: '1 Corinthians 4:8 - 5:2', link: 'passage'},
+
         ],
     },
 
@@ -60,6 +70,7 @@ module.exports = kind({
         {name: 'UsersManual', kind: Button, ontap: 'usersManual', components: [
             {kind: i18n, content: 'User\'s Manual'},
         ]},
+        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'}, 
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'},
         ]}
@@ -118,13 +129,17 @@ module.exports = kind({
             colName = 'Col_1';
 
         this.bibleString = this.app.getSelectedBiblesString();
-        var urlBase = '#/r/' + this.bibleString + '/';
+        var passageUrlBase = '#/r/' + this.bibleString + '/';
+        var searchUrlBase = '#/s/' + this.bibleString + '/';
+        var bothUrlBase = '#/f/';
 
         section.forEach(function(item, key) {
             var t = this,
                 component = {
                     kind: i18nComponent
-                };
+                },
+                url = null,
+                linkType = item.link || null;
 
 
             if(item.tag) {
@@ -135,13 +150,6 @@ module.exports = kind({
                 component.content = this.app.vt(item.content);
             }
 
-            // var desc = this.app.t(item.desc);
-            // var urlVerse = item.linkVerse || item.verse;
-            // urlVerse = this.app.vt(urlVerse);
-            // verseTrans = this.app.vt(item.verse);
-            // var url = urlBase + urlVerse;
-            // var numDisplay = (key + 1) + ') ';
-
             if(!this.$.ListContainer.$[colName]) {
                 this.$.ListContainer.createComponent({
                     name: colName,
@@ -149,23 +157,44 @@ module.exports = kind({
                 });
             }
 
-            this.$.ListContainer.$[colName].createComponent(component);
+            if(linkType == 'passage') {
+                url = passageUrlBase + item.content;
+                trans = this.app.vt(item.content);
+            }
+            else if(linkType == 'search') {
+                trans = this.app.t(item.content);
+                url = searchUrlBase + item.content;
 
-            // this.$.ListContainer.$[colName].createComponent({
-            //     verses: item.verses,
-            //     owner: this,
-            //     classes: 'item start_item', components: [
-            //         {classes: 'num', content: numDisplay},
-            //         {classes: 'verses', components: [
-            //             {kind: Anchor, href: url, _title: item.verses, content: verseTrans, ontap: 'handleVerseTap'}
-            //         ]},
-            //         {classes: 'desc', content: desc, allowHtml: true},
-            //         {classes: 'clear-both'}
-            //     ]
-            // });
+                if(item.searchType) {
+                    url += '/' + item.searchType;
+                }
+            }
+            else if(linkType == 'both') {
+                // Untested
+                var formData = {
+                    reference: item.reference,
+                    search: item.search,
+                    bible: this.bibleString,
+                }
+
+                url = bothUrlBase + JSON.stringify(formData);
+                trans = this.app.vt(item.content);
+            }
+
+            if(url) {
+                this.$.ListContainer.$[colName].createComponent({
+                    owner: this,
+                    components: [
+                        {kind: Anchor, href: url, content: trans, ontap: 'handleLinkTap'}
+                    ]
+                });
+            }
+            else {
+                this.$.ListContainer.$[colName].createComponent(component);
+            }
         }, this);
     },
-    handleVerseTap: function(inSender, inEvent) {
+    handleLinkTap: function(inSender, inEvent) {
         this.close();
     },
     localeChanged: function(inSender, inEvent) {
