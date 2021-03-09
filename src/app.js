@@ -542,13 +542,23 @@ var App = Application.kind({
         var bible  = parts[0] || null;
         var search = parts[1] || null;
         var searchType = parts[2] || null;
+        var reference = parts[3] || null;
+        var useRequestField = this.formHasField('request');
 
         var formData = {
-            search: search.replace(/%20/g, ' '),
+            // search: search.replace(/%20/g, ' '),
             bible: bible ? bible.split(',') : null,
             search_type: searchType,
+            reference: reference
         };
         
+        if(useRequestField) {
+            formData.request = search.replace(/%20/g, ' ');
+        }
+        else {
+            formData.search = search.replace(/%20/g, ' ');
+        }
+
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },
     _hashForm: function(parts) {
@@ -824,6 +834,10 @@ var App = Application.kind({
     },
     // Translate
     t: function(string) {
+        if(!string || string == '') {
+            return '';
+        }
+
         var Locale = this.get('localeData'),
             trans = Locale[string] || string;
 
@@ -860,9 +874,27 @@ var App = Application.kind({
     },
     // Translate string having embedded Bible passages
     vt: function(string) {
+        if(!string || string == '') {
+            return '';
+        }
+
         var t = this;
             
         var trans = string.replace(/([0-9] )?[A-Za-z][A-Za-z ]*[A-Za-z]/g, function(match) {
+            return t.t(match);
+        });
+
+        return trans;
+    },    
+    // Translate string having embedded keywords
+    wt: function(string) {
+        if(!string || string == '') {
+            return '';
+        }
+
+        var t = this;
+            
+        var trans = string.replace(/[A-Za-z]+/g, function(match) {
             return t.t(match);
         });
 

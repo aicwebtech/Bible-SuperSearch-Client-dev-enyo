@@ -1,7 +1,7 @@
 module.exports = {
     'lang_name_en': 'English - Pirate',
     
-    'Bible SuperSearch': 'Bibl SuperTreasures',
+    'Bible SuperSearch': 'Bibl SupahTreasah',
 
     // Search Forms
     'Select Bible version(s)': 'Version(s) of the Goode Booke',
@@ -245,8 +245,47 @@ module.exports = {
     'PDF - Compact Text, Letter, Words of Christ Underlined': 'PDF - Squezzen Text, Lettern, Words ye Capitan Christ Underlinneen',
     'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF - Squezzen Text, A4, Words ye Capitan Christ Underlinneen',
 
-    // Bible books - these are auto populated from the API
-    // Specifying here not reccommended, as these names would need to match those on the API for some things to work.
+    // Quick Start Help Dialog
+    'Quick Start Guide': 'Hastie Learnin\' Matey',
+
+    'Wildcards': 'Ye wilde cardes',
+    'Wildcard': 'Yar wilde carde',
+    'Basic Search' : 'Ya eazey searchin',
+    'Advanced Searches using Boolean': 'Ardvanced searche of ye matey Boole',
+    'Select' : 'Purley',
+    'Operators': 'Cantrules',
+    'Operator': 'Cantrule',
+    'Aliases': 'Me fake name',
+    'Description': 'Dsecripto the thingy',
+    'Match both': 'Finde the bothe',
+    'Match either': 'Finde anie',
+    'Match only one': 'Finde onlie the one',
+    'Does not match': 'No findie',
+    'Matches words in the same chapter': 'Findie in thee same chaptare',
+    'Matches words in the same book': 'Findie in thee same Booke',
+    'Matches words in the same book, and within N verses of each other': 'Findie in thee same Booke, in the withe N verses',
+    'Matches words in the same chapter, and within N verses of each other': 'Findie in thee same chaptare, in the withe N verses',
+    'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets': 'Noticea: PROX / CHAP cantrules no welcome inside of parentheses.',
+    'Special Proximity Operators': 'Ye Uniquea Proximitie Cantrules',
+    'Single character': 'Onu lettare',
+    'Unlimited characters': 'Anie number of lettares',
+
+    // Keywords for sample searches
+    'Jesus': 'Jehosua',
+    'Christ': 'Christero',
+    'Lord': 'El Capitan',
+    'faith': 'faythe',
+    'hope': 'hoope',
+    'joy': 'joye',
+    'preserved' : 'keepes',
+    'preserve' : 'keepe',
+    'stand' : 'standeup',
+    'word': 'vworde',
+    'words': 'vwordes',
+    'truth': 'tryuth',
+
+    // Bible books - these are auto populated from the API based on selected language
+    // Specifying here not reccommended, as these names would need to match those on the API for things to actually work.
     'Matthew' : 'Goode News Accordin\' to me matey Mahhew',
     'Mark' : 'Goode News Accordin\' to me matey Markus',
     'Luke' : 'Goode News Accordin\' to me matey Lukey',

@@ -29,18 +29,23 @@ module.exports = kind({
         basicSearch: [
             {tag: 'h3', content: 'Basic Search'},
             {content: 'faith', link: 'search'},
-            {content: 'Wildcards: \'_\' and \'%\''},
-        ],
-        boolSearch: [
-            {tag: 'h3', content: 'Advanced Searches using Boolean'},
-            {content: 'Select Boolean Search'},
-            {content: 'Jesus AND Lord OR Christ', link: 'search', searchType: 'boolean'},
-            {content: '(Lord OR Christ) AND Jesus', link: 'search', searchType: 'boolean'},
-            {content: '(preserved OR stand) AND (word OR truth)', link: 'search', searchType: 'boolean'},
-
-            {tag: 'h4', content: 'Special Proximity Operators'},
-            {content: 'preserve PROX(4) words OR truth'},
-            {content: 'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets.'}
+            {content: 'Romans, searched for faith', link: 'both', reference: 'Romans', search: 'faith'},
+            {tag: 'br'},
+            {tag: 'h4', kind: i18n, content: 'Wildcards'},
+            // Apparently not supported in V4?
+            {tag: 'div', components: [
+                {tag: 'span', content: '\'_\': &nbsp;', allowHtml: true},
+                {kind: i18n, content: 'Single character' }
+            ]},            
+            {tag: 'div', components: [
+                {tag: 'span', content: '\'%\': &nbsp;', allowHtml: true},
+                {kind: i18n, content: 'Unlimited characters' }
+            ]},
+            {tag: 'br'},
+            {content: 'stand%', link: 'form', formData: {
+                search: 'stand%',
+                whole_words: true,
+            }},
         ],
         basicLookup: [
             {tag: 'h3', content: 'Passage Retrieval'},
@@ -53,6 +58,77 @@ module.exports = kind({
             {content: '1 Corinthians 4:8 - 5:2', link: 'passage'},
 
         ],
+        boolSearch: [
+            {tag: 'h3', content: 'Advanced Searches using Boolean'},
+            {tag: 'div', components: [
+                {kind: i18n, content: 'Select'},
+                {tag: 'span', content: ' \''},
+                {kind: i18n, content: 'Boolean Expression'},
+                {tag: 'span', content: '\''}
+            ]},
+            {tag: 'br'},
+            {tag: 'table', components: [
+                {tag: 'tr', components: [
+                    {tag: 'th', kind: i18n, content: 'Operators', attributes: {colspan: 3}}
+                ]},
+                {tag: 'tr', components: [
+                    {tag: 'th', kind: i18n, content: 'Operator'},
+                    {tag: 'th', kind: i18n, content: 'Aliases'},
+                    {tag: 'th', kind: i18n, content: 'Description'},
+                ]},
+                {tag: 'tr', components: [
+                    {tag: 'td', content: 'AND'},
+                    {tag: 'td', content: '&'},
+                    {tag: 'td', kind: i18n, content: 'Match both'}
+                ]},
+                {tag: 'tr', components: [
+                    {tag: 'td', content: 'OR'},
+                    {tag: 'td', content: '|'},
+                    {tag: 'td', kind: i18n, content: 'Match either'}
+                ]},
+                {tag: 'tr', components: [
+                    {tag: 'td', content: 'XOR'},
+                    {tag: 'td', content: '^'},
+                    {tag: 'td', kind: i18n, content: 'Match only one'}
+                ]},
+                {tag: 'tr', components: [
+                    {tag: 'td', content: 'NOT'},
+                    {tag: 'td', content: '-'},
+                    {tag: 'td', kind: i18n, content: 'Does not match'}
+                ]},
+                {tag: 'tr', components: [
+                    {tag: 'td', content: 'CHAP'},
+                    {tag: 'td', content: ''},
+                    {tag: 'td', kind: i18n, content: 'Matches words in the same chapter'}
+                ]},                     
+                {tag: 'tr', components: [
+                    {tag: 'td', content: 'BOOK'},
+                    {tag: 'td', content: ''},
+                    {tag: 'td', kind: i18n, content: 'Matches words in the same book'}
+                ]},                
+                {tag: 'tr', components: [
+                    {tag: 'td', content: 'PROX(N)'},
+                    {tag: 'td', content: ''},
+                    {tag: 'td', kind: i18n, content: 'Matches words in the same book, and within N verses of each other'}
+                ]},                
+                {tag: 'tr', components: [
+                    {tag: 'td', content: 'PROC(N)'},
+                    {tag: 'td', content: ''},
+                    {tag: 'td', kind: i18n, content: 'Matches words in the same chapter, and within N verses of each other'}
+                ]}
+            ]},
+
+            {tag: 'br'},
+            {content: 'Jesus AND Lord OR Christ', link: 'search', searchType: 'boolean'},
+            {content: '(Lord OR Christ) AND Jesus', link: 'search', searchType: 'boolean'},
+            {content: '(preserved OR stand) AND (word OR truth)', link: 'search', searchType: 'boolean'},
+
+            {tag: 'h4', content: 'Special Proximity Operators'},
+            {content: 'preserve PROX(4) words OR truth', link: 'search', searchType: 'boolean'},
+            {tag: 'br'},
+            {content: 'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets.'}
+        ],
+
     },
 
     titleComponents: [
@@ -130,8 +206,8 @@ module.exports = kind({
 
         this.bibleString = this.app.getSelectedBiblesString();
         var passageUrlBase = '#/r/' + this.bibleString + '/';
-        var searchUrlBase = '#/s/' + this.bibleString + '/';
-        var bothUrlBase = '#/f/';
+        var searchUrlBase  = '#/s/' + this.bibleString + '/';
+        var formUrlBase    = '#/f/';
 
         section.forEach(function(item, key) {
             var t = this,
@@ -145,6 +221,8 @@ module.exports = kind({
             if(item.tag) {
                 component.tag = item.tag;
                 component.content = this.app.t(item.content);
+                component.components = item.components;
+                component.classes = item.classes;
             }
             else {
                 component.content = this.app.vt(item.content);
@@ -162,7 +240,7 @@ module.exports = kind({
                 trans = this.app.vt(item.content);
             }
             else if(linkType == 'search') {
-                trans = this.app.t(item.content);
+                trans = this.app.wt(item.content);
                 url = searchUrlBase + item.content;
 
                 if(item.searchType) {
@@ -170,15 +248,22 @@ module.exports = kind({
                 }
             }
             else if(linkType == 'both') {
-                // Untested
-                var formData = {
-                    reference: item.reference,
-                    search: item.search,
-                    bible: this.bibleString,
+                trans = this.app.vt(item.content);
+
+                url = searchUrlBase + item.search + '/';
+
+                if(item.searchType) {
+                    url += item.searchType;
                 }
 
-                url = bothUrlBase + JSON.stringify(formData);
-                trans = this.app.vt(item.content);
+                url += '/' + item.reference;
+            }
+            else if(linkType == 'form') {
+                var formData = item.formData,
+                    trans = this.app.wt(item.content);
+
+                formData.bible = this.bibleString;
+                url = formUrlBase + encodeURI( JSON.stringify(formData) );
             }
 
             if(url) {

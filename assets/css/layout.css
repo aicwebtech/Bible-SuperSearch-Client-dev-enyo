@@ -431,6 +431,25 @@ div.biblesupersearch_dialog {
     margin-bottom: 10px;*/
 }
 
+.help_dialog.help table {
+    border: 1px solid #333;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.help_dialog.help table tr td {
+    font-size: .8em;
+    border: 1px solid #333;
+}
+
+.help_dialog.help table tr td.op {
+    text-align: right;
+}
+
+.help_dialog.help table tr td.desc {
+    text-align: left;
+}
+
 .bible_sos .sos_item .label {
     float: left;
     /*background-color: yellow;*/

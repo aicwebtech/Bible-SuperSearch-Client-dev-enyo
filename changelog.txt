@@ -1,4 +1,6 @@
 = 4.4.0 (tentative) =
+* Added new Basic help dialog
+* Added new share link dialog
 * Added ability to display help / download dialog buttons separately from formatting buttons.
 * Added 'Minimal with Parallel Bible' skin
 * Added print button
