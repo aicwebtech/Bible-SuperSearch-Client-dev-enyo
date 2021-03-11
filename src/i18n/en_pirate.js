@@ -250,7 +250,7 @@ module.exports = {
 
     'Wildcards': 'Ye wilde cardes',
     'Wildcard': 'Yar wilde carde',
-    'Basic Search' : 'Ya eazey searchin',
+    'Basic Searches' : 'Ya eazey searchin',
     'Advanced Searches using Boolean': 'Ardvanced searche of ye matey Boole',
     'Select' : 'Purley',
     'Operators': 'Cantrules',
@@ -266,6 +266,7 @@ module.exports = {
     'Matches words in the same book, and within N verses of each other': 'Findie in thee same Booke, in the withe N verses',
     'Matches words in the same chapter, and within N verses of each other': 'Findie in thee same chaptare, in the withe N verses',
     'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets': 'Noticea: PROX / CHAP cantrules no welcome inside of parentheses.',
+    'For details, please see the User\'s Manual': 'For ye full bearin\'s, see thee Instructione Manualle',
     'Special Proximity Operators': 'Ye Uniquea Proximitie Cantrules',
     'Single character': 'Onu lettare',
     'Unlimited characters': 'Anie number of lettares',

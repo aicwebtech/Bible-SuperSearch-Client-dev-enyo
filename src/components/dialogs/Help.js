@@ -16,7 +16,7 @@ var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 module.exports = kind({
     name: 'HelpDialog',    
     kind: Dialog,
-    maxWidth: '400px',
+    maxWidth: '500px',
     height: '475px',
     classes: 'help_dialog help',
     bibleString: null,
@@ -27,10 +27,9 @@ module.exports = kind({
 
     sections: {
         basicSearch: [
-            {tag: 'h3', content: 'Basic Search'},
+            {tag: 'h3', content: 'Basic Searches'},
             {content: 'faith', link: 'search'},
             {content: 'Romans, searched for faith', link: 'both', reference: 'Romans', search: 'faith'},
-            {tag: 'br'},
             {tag: 'h4', kind: i18n, content: 'Wildcards'},
             // Apparently not supported in V4?
             {tag: 'div', components: [
@@ -51,7 +50,6 @@ module.exports = kind({
             {tag: 'h3', content: 'Passage Retrieval'},
             {content: 'Romans 8:2', link: 'passage'},
             {content: 'Rom 8:2', link: 'passage'},
-            {content: 'Rom. 8:2', link: 'passage'},
             {content: 'Ro. 8:2', link: 'passage'},
             {content: 'Rom 3:23, 6:23, 5:8, 10:9,13;', link: 'passage'},
             {content: 'Ephesians 2:8,9; Acts 4:12; John 8:31-32,36', link: 'passage'},
@@ -67,7 +65,7 @@ module.exports = kind({
                 {tag: 'span', content: '\''}
             ]},
             {tag: 'br'},
-            {tag: 'table', components: [
+            {tag: 'table', classes: 'biblesupersearch_center_element',components: [
                 {tag: 'tr', components: [
                     {tag: 'th', kind: i18n, content: 'Operators', attributes: {colspan: 3}}
                 ]},
@@ -79,42 +77,42 @@ module.exports = kind({
                 {tag: 'tr', components: [
                     {tag: 'td', content: 'AND'},
                     {tag: 'td', content: '&'},
-                    {tag: 'td', kind: i18n, content: 'Match both'}
+                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Match both'}
                 ]},
                 {tag: 'tr', components: [
                     {tag: 'td', content: 'OR'},
                     {tag: 'td', content: '|'},
-                    {tag: 'td', kind: i18n, content: 'Match either'}
+                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Match either'}
                 ]},
                 {tag: 'tr', components: [
                     {tag: 'td', content: 'XOR'},
                     {tag: 'td', content: '^'},
-                    {tag: 'td', kind: i18n, content: 'Match only one'}
+                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Match only one'}
                 ]},
                 {tag: 'tr', components: [
                     {tag: 'td', content: 'NOT'},
                     {tag: 'td', content: '-'},
-                    {tag: 'td', kind: i18n, content: 'Does not match'}
+                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Does not match'}
                 ]},
                 {tag: 'tr', components: [
                     {tag: 'td', content: 'CHAP'},
                     {tag: 'td', content: ''},
-                    {tag: 'td', kind: i18n, content: 'Matches words in the same chapter'}
+                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same chapter'}
                 ]},                     
                 {tag: 'tr', components: [
                     {tag: 'td', content: 'BOOK'},
                     {tag: 'td', content: ''},
-                    {tag: 'td', kind: i18n, content: 'Matches words in the same book'}
+                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same book'}
                 ]},                
                 {tag: 'tr', components: [
                     {tag: 'td', content: 'PROX(N)'},
                     {tag: 'td', content: ''},
-                    {tag: 'td', kind: i18n, content: 'Matches words in the same book, and within N verses of each other'}
+                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same book, and within N verses of each other'}
                 ]},                
                 {tag: 'tr', components: [
                     {tag: 'td', content: 'PROC(N)'},
                     {tag: 'td', content: ''},
-                    {tag: 'td', kind: i18n, content: 'Matches words in the same chapter, and within N verses of each other'}
+                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same chapter, and within N verses of each other'}
                 ]}
             ]},
 
@@ -122,11 +120,18 @@ module.exports = kind({
             {content: 'Jesus AND Lord OR Christ', link: 'search', searchType: 'boolean'},
             {content: '(Lord OR Christ) AND Jesus', link: 'search', searchType: 'boolean'},
             {content: '(preserved OR stand) AND (word OR truth)', link: 'search', searchType: 'boolean'},
+            {content: '"Lord Jesus" OR Christ', link: 'search', searchType: 'boolean'},
 
             {tag: 'h4', content: 'Special Proximity Operators'},
             {content: 'preserve PROX(4) words OR truth', link: 'search', searchType: 'boolean'},
+            {content: 'faith PROX(4) joy PROX(10) hope', link: 'search', searchType: 'boolean'},
+            {content: 'faith CHAP joy OR hope', link: 'search', searchType: 'boolean'},
+
             {tag: 'br'},
-            {content: 'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets.'}
+            {content: 'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets.'},
+            {tag: 'br'},
+            {content: 'For details, please see the User\'s Manual.'},
+            {tag: 'br'},
         ],
 
     },
@@ -269,6 +274,7 @@ module.exports = kind({
             if(url) {
                 this.$.ListContainer.$[colName].createComponent({
                     owner: this,
+                    classes: 'link',
                     components: [
                         {kind: Anchor, href: url, content: trans, ontap: 'handleLinkTap'}
                     ]
