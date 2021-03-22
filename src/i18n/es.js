@@ -13,4 +13,5 @@ module.exports = {
     'Download': 'Descargar',
     'Bible SOS': 'Biblia SOS',
     'Red Letter': 'Carta roja',
+    'faith': 'fe'
 };

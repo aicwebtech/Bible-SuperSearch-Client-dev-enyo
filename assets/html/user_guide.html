@@ -129,7 +129,7 @@
 </p>
 
 <p class="c">
-    <font size="2">Version 4.0</font>
+    <font size="2">Version 4.4</font>
 </p>
 
 <p class="c">
@@ -396,17 +396,8 @@ Searches</span>&nbsp;</font></font><font><font style="font-size: 16pt;" size="4"
 <br>
 
 <span><font><span><span><font size="3">% -&nbsp;
-Unlimited
+Matches unlimited
 characters</font></span></span></font></span></p>
-
-<p><span>
-<font size="3">_ - Single character</font></span></p>
-
-<p align="justify">
-<font><font size="3">The
-unlimited characters wildcard
-allows for any amount of characters, while the single character
-wildcard only takes the place of one character.</font></font></p>
 
 <p>
     <font size="3">
@@ -846,11 +837,18 @@ OR) &ndash; returns verses with only ONE of the words</font></font></li>
 returns verses without the word (to be used only in conjunction with
 other search terms)</font></font></li>
 
-<li><font><font size="3">PROX(N)
-- searches for both words within N verses (in the same chapter).</font></font></li>
-
 <li><font><font size="3">CHAP
 - searches for both words within the same chapter.<br>
+</font></font></li>
+
+<li><font><font size="3">BOOK
+- searches for both words within the same book.<br>
+
+<li><font><font size="3">PROX(N)
+- searches for both words within N verses and within the same book (In Psalms, within the same Psalm).</font></font></li>
+
+<li><font><font size="3">PROC(N)
+- searches for both words within N verses and within the same chapter.</font></font></li>
 
 </font></font></li>
 
@@ -911,7 +909,7 @@ Jesus' </font></font>
 </p>
 
 <p>
-<font><font size="3"> Returnsnverses with 'Jesus' and 'Lord or 'Jesus' and 'Christ' or 'Lord' and 'Christ' and 'Jesus'</font></font></p>
+<font><font size="3"> Returns verses with 'Jesus' and 'Lord or 'Jesus' and 'Christ' or 'Lord' and 'Christ' and 'Jesus'</font></font></p>
 
 <p>
 <font><font size="3">More
@@ -975,18 +973,18 @@ these can be used in place of the operator, for the same results.</font></font><
     <tbody>
         <tr valign="top">
             <td class="c">AND</td>
-            <td class="c">*</td>
             <td class="c">&amp;</td>
+            <td class="c">&amp;&amp;</td>
         </tr>
         <tr valign="top">
             <td class="c">OR</td>
-            <td class="c">+</td>
             <td class="c">|</td>
+            <td class="c">||</td>
         </tr>
         <tr valign="top">
             <td class="c">NOT</td>
+            <td class="c">!</td>
             <td class="c">-</td>
-            <td class="c">!=</td>
         </tr>
         <tr valign="top">
             <td class="c">XOR</td>
@@ -994,14 +992,24 @@ these can be used in place of the operator, for the same results.</font></font><
             <td class="c">^^</td>
         </tr>
         <tr>
-            <td class='c'>PROX(N)</td>
-            <td class='c'>~P(N)</td>
-            <td class='c'>~</td>
+            <td class='c'>CHAP</td>
+            <td class="c">(none)</td>
+            <td class="c">&nbsp;</td>
+        </tr>        
+        <tr>
+            <td class='c'>BOOK</td>
+            <td class="c">(none)</td>
+            <td class="c">&nbsp;</td>
         </tr>
         <tr>
-            <td class='c'>CHAP</td>
-            <td class='c'>~C</td>
-            <td>&nbsp;</td>
+            <td class='c'>PROX(N)</td>
+            <td class="c">(none)</td>
+            <td class="c">&nbsp;</td>
+        </tr>        
+        <tr>
+            <td class='c'>PROC(N)</td>
+            <td class="c">(none)</td>
+            <td class="c">&nbsp;</td>
         </tr>
     </tbody>
 </table>

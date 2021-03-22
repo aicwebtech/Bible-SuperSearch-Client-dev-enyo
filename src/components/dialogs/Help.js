@@ -30,21 +30,13 @@ module.exports = kind({
             {tag: 'h3', content: 'Basic Searches'},
             {content: 'faith', link: 'search'},
             {content: 'Romans, searched for faith', link: 'both', reference: 'Romans', search: 'faith'},
-            {tag: 'h4', kind: i18n, content: 'Wildcards'},
-            // Apparently not supported in V4?
+            {tag: 'h4', kind: i18n, content: 'Wildcard'},         
             {tag: 'div', components: [
-                {tag: 'span', content: '\'_\': &nbsp;', allowHtml: true},
-                {kind: i18n, content: 'Single character' }
-            ]},            
-            {tag: 'div', components: [
-                {tag: 'span', content: '\'%\': &nbsp;', allowHtml: true},
-                {kind: i18n, content: 'Unlimited characters' }
+                {tag: 'span', content: '<b>*</b> &nbsp;', allowHtml: true},
+                {kind: i18n, content: 'Matches unlimited characters'}
             ]},
             {tag: 'br'},
-            {content: 'stand%', link: 'form', formData: {
-                search: 'stand%',
-                whole_words: true,
-            }},
+            {content: 'stand*', link: 'search'},
         ],
         basicLookup: [
             {tag: 'h3', content: 'Passage Retrieval'},
@@ -241,12 +233,12 @@ module.exports = kind({
             }
 
             if(linkType == 'passage') {
-                url = passageUrlBase + item.content;
                 trans = this.app.vt(item.content);
+                url = passageUrlBase + trans;
             }
             else if(linkType == 'search') {
                 trans = this.app.wt(item.content);
-                url = searchUrlBase + item.content;
+                url = searchUrlBase + trans;
 
                 if(item.searchType) {
                     url += '/' + item.searchType;
@@ -255,17 +247,25 @@ module.exports = kind({
             else if(linkType == 'both') {
                 trans = this.app.vt(item.content);
 
-                url = searchUrlBase + item.search + '/';
+                url = searchUrlBase + this.app.wt(item.search) + '/';
 
                 if(item.searchType) {
                     url += item.searchType;
                 }
 
-                url += '/' + item.reference;
+                url += '/' + this.app.vt(item.reference);
             }
             else if(linkType == 'form') {
                 var formData = item.formData,
                     trans = this.app.wt(item.content);
+
+                if(formData.reference) {
+                    formData.reference = this.app.vt(formData.reference);
+                }                
+
+                if(formData.search) {
+                    formData.search = this.app.wt(formData.search);
+                }
 
                 formData.bible = this.bibleString;
                 url = formUrlBase + encodeURI( JSON.stringify(formData) );

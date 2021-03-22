@@ -248,7 +248,6 @@ module.exports = {
     // Quick Start Help Dialog
     'Quick Start Guide': 'Hastie Learnin\' Matey',
 
-    'Wildcards': 'Ye wilde cardes',
     'Wildcard': 'Yar wilde carde',
     'Basic Searches' : 'Ya eazey searchin',
     'Advanced Searches using Boolean': 'Ardvanced searche of ye matey Boole',
@@ -268,8 +267,7 @@ module.exports = {
     'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets': 'Noticea: PROX / CHAP cantrules no welcome inside of parentheses.',
     'For details, please see the User\'s Manual': 'For ye full bearin\'s, see thee Instructione Manualle',
     'Special Proximity Operators': 'Ye Uniquea Proximitie Cantrules',
-    'Single character': 'Onu lettare',
-    'Unlimited characters': 'Anie number of lettares',
+    'Matches unlimited characters': 'Anie number of lettares',
 
     // Keywords for sample searches
     'Jesus': 'Jehosua',
