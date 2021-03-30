@@ -1,11 +1,13 @@
 // Produced using Google translate
 module.exports = {
     meta: {
-        lang_name_en: 'Spanish',
-        lang_name: 'Español',
+        lang_name_en: 'Arabic',
+        lang_name: 'العربية',
+        isRtl: true,
     },
 
-    'Search': 'Buscar',
+    'Match': 'مباراة',
+    'Search': 'بحث',
     'Printer Friendly': 'Impresora amigable',
     'Print': 'Imprimir',
 

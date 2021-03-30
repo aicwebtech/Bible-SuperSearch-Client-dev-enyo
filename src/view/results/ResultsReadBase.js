@@ -70,7 +70,7 @@ module.exports = kind({
                         content: content,
                         attributes: {valign: 'top'},
                         allowHtml: true,
-                        classes: (this.selectedBible.rtl) ? 'rtl' : null
+                        classes: (this.selectedBible.rtl) ? 'rtl' : 'ltr'
                     });
                 }
             }, this);

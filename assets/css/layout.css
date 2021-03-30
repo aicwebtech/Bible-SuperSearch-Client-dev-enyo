@@ -12,6 +12,10 @@ div.biblesupersearch_main {
     overflow-x: hidden;
 }
 
+div.biblesupersearch_main.rtl {
+    direction: rtl;
+}
+
 .biblesupersearch_render_table, .biblesupersearch_render_table td table {
     font-size: inherit !important;
 }
@@ -147,6 +151,10 @@ table.biblesupersearch_render_table {
 
 .biblesupersearch_render_table td.txt {
     text-align: justify;
+}
+
+.biblesupersearch_render_table td.ltr, p.ltr {
+    direction: ltr;
 }
 
 .biblesupersearch_render_table td.rtl, p.rtl {

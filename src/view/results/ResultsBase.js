@@ -41,6 +41,7 @@ module.exports = kind({
         onFormResponseError: 'handleFormError',
         onmouseover: 'handleHover',
         onmouseout: 'handleMouseOut',
+        onLocaleChange: 'handleLocaleChange',
         ontap: 'handleClick'
     },
 
@@ -471,6 +472,9 @@ module.exports = kind({
         else {
             alert('Could not open print friendly window.  Is your browser blocking popups?');
         }
+    },
+    handleLocaleChange: function(inSender, inEvent) {
+        this.renderResults();
     }
 
 });

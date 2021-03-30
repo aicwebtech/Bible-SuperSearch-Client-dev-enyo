@@ -36,7 +36,7 @@ module.exports = kind({
                 kind: CopyPane,
                 owner: this.container,
                 name: name,
-                classes: (this.selectedBible.rtl) ? 'biblesupersearch_copy_pane rtl' : 'biblesupersearch_copy_pane'
+                classes: (this.selectedBible.rtl) ? 'biblesupersearch_copy_pane rtl' : 'biblesupersearch_copy_pane ltr'
             });
         }
 

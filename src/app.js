@@ -829,6 +829,9 @@ var App = Application.kind({
     },
     _localeChangedHelper: function(locale) {
         this.localeData = utils.clone(this.localeDatasets[locale]);
+        var localeData = this.localeData;
+        this.isRtl = localeData.meta.isRtl || false;
+
         Signal.send('onLocaleChange');
         this.waterfall('onLocaleChange');
     },
@@ -841,7 +844,7 @@ var App = Application.kind({
         var Locale = this.get('localeData'),
             trans = Locale[string] || string;
 
-        if(Locale[string]) {
+        if(Locale[string] && Locale[string] != '') {
             return Locale[string]; // Preferred method - exact string match
         }
 
@@ -862,7 +865,7 @@ var App = Application.kind({
             var match = Locales._partial[i];
             var regexp = new RegExp(match, 'g');
 
-            if(!Locale[match]) {
+            if(!Locale[match] || Locale[match] == '') {
                 continue;
             }
             

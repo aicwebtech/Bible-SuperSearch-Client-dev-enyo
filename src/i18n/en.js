@@ -1,5 +1,12 @@
 module.exports = {
     // Intentionally empty?
-    'lang_name': 'English',
-    'lang_name_en': 'English',
+    meta: {
+        lang_name: 'English',
+        lang_name_en: 'English',
+    },
+
+    // Test data, comment out in production
+    // 'Match': '',
+    // 'Search': null,
+    // 'Limit Search To': 'bacon'
 };

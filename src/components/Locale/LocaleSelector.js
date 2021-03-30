@@ -10,12 +10,12 @@ module.exports = kind({
         this.inherited(arguments);
 
         for(i in Locales) {
-            if(!Locales[i].lang_name_en) {
+            if(!Locales[i] || !Locales[i].meta || !Locales[i].meta.lang_name_en) {
                 continue;
             }
 
             this.createComponent({
-                content: i + ' ' + Locales[i].lang_name_en,
+                content: i + ' ' + Locales[i].meta.lang_name_en,
                 value: i
             });
         }

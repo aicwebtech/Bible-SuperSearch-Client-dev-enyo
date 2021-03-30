@@ -99,16 +99,9 @@ module.exports = kind({
         bibleHtml.forEach(function(bhtml, idx) {
             var module = this.bibles[idx];
             var bible_info = this.selectBible(module);
-
-            if(this.selectedBible.rtl) {
-                html += '<td class=\'txt rtl\'>' + bhtml + '</td>';
-            }
-            else {
-                html += '<td class=\'txt\'>' + bhtml + '</td>';
-            }
+            var dc = this.selectedBible.rtl ? 'rtl' : 'ltr';
+            html += '<td class=\'txt ' + dc + '\'>' + bhtml + '</td>';
         }, this);
-
-        // var html = '<td class=\'txt\'>' + bibleHtml.join('</td><td class=\'txt\'>') + '</td>';
 
         Container.createComponent({
             tag: 'tr',

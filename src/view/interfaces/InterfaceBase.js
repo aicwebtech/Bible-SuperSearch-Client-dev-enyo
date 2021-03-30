@@ -24,6 +24,9 @@ module.exports = kind({
     FormatButtonsHideExtrasSupported: false,    // Indicates the interface actually has a place to dsiplay the 'extra' buttons outside of the format buttons
     PagerControl: Pager,
 
+    handlers: {
+        onLocaleChange: 'handleLocaleChanged',
+    },
 
     published: {
         ajaxLoading: false,
@@ -123,5 +126,12 @@ module.exports = kind({
         }
 
         return false;
+    },
+
+    handleLocaleChanged: function(inSender, inEvent) {
+        this.log(inSender);
+        this.log(inEvent);
+
+        this.addRemoveClass('rtl', this.app.isRtl);
     }
 });

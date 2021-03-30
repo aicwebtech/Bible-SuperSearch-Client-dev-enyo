@@ -3,6 +3,7 @@ module.exports = {
     // en_US: require('./en_US'),
     en_pirate: require('./en_pirate'),
     es: require('./es'),
+    ar: require('./ar'),
 
     // Translation strings that allow partial matches.
     // For best results, put longest at top of list
