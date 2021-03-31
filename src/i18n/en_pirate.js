@@ -2,6 +2,7 @@ module.exports = {
     meta: {
         lang_name: 'Anglyshe - Pyratee',
         lang_name_en: 'English - Pirate',
+        isRtl: false,
     },
     
     'Bible SuperSearch': 'Bibl SupahTreasah',
@@ -15,6 +16,7 @@ module.exports = {
     'Bible': 'Holey Bibl',
     'Whole Words Only': 'Ye Full Words Onlee',
     'Whole words only': 'Ye full words onlee',
+    'Whole words': 'Ye full wordes',
     'Exact Case': 'Ye Samee Case',
     'Parallel Bible #': 'Parlay Sword No. ',
     'Select a Bible': 'Choose yar Sworde',
@@ -166,8 +168,8 @@ module.exports = {
     'Bible text not found': 'Yarr, no Booke here',
     'Invalid book in book range': 'Yar ranges no goode book',
     'Book not found': 'Narr, no findy booke',
-    'Your parenthenses are mismatched.': 'Yarr, ye roundy brackets are misbracketed',
-    'Your parenthenses are mismatched, or you have a proximity operator inside of parentheses.': 'Ye roundy brackets are mismatched or have prox op belowe decke',
+    'Your parentheses are mismatched.': 'Yarr, ye roundy brackets are misbracketed',
+    'Your parentheses are mismatched, or you have a proximity operator inside of parentheses.': 'Ye roundy brackets are mismatched or have prox op belowe decke',
     'Proximity operators such as PROX and CHAP can only be used with boolean searches' : 'Keep ouut of yee shipe proximity unless in matey Mr Boole searrches',
     'Your access to this API has been revoked.  Please contact system administrator.': 'Ye bee given the blacke spote, holler at ye admiral before ye walks thee planke',
     'Your search was limited to': 'Yar, ye got greedy and ye searche was limited to',

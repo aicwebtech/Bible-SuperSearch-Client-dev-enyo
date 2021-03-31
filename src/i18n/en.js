@@ -3,6 +3,7 @@ module.exports = {
     meta: {
         lang_name: 'English',
         lang_name_en: 'English',
+        isRtl: false,
     },
 
     // Test data, comment out in production
