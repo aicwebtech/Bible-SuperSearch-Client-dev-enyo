@@ -34,7 +34,7 @@ module.exports = kind({
             {verse: 'Ephesians', desc: 'Salvation by faith, not works'},
             {verse: 'Philippians', desc: 'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ'},
             {verse: 'Isaiah 53', desc: 'Christ the suffering servant'},
-            {verse: 'Psalm 22', desc: 'Christ’s crucifixion foretold'},
+            {verse: 'Psalms 22', desc: 'Christ’s crucifixion foretold'},
         ]
     },
 

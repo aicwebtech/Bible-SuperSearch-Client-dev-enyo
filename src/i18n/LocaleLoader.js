@@ -26,6 +26,7 @@ module.exports = {
         'Operators such as',
         'cannot be at the beginning of your search.',
         'cannot be at the end of your search.',
+        'searched for',
         'results',
         'faith'
     ]

@@ -1,6 +1,7 @@
 var kind = require('enyo/kind');
 var Button = require('enyo/Button');
 var Anchor = require('enyo/Anchor');
+var utils = require('enyo/utils');
 var Dialog = require('./Dialog');
 var LinkBuilder = require('../Link/LinkBuilder');
 var i18n = require('../Locale/i18nContent');
@@ -109,17 +110,34 @@ module.exports = kind({
 
         this.bibleString = this.app.getSelectedBiblesString();
         var urlBase = '#/r/' + this.bibleString + '/';
+        var list = [];
 
-        this.list.forEach(function(item) {
+        // Pre-translate the labels, then sort by the label
+        this.list.forEach(function(itemDirty) {
+            item = utils.clone(itemDirty);
+            item.label = this.app.t(item.label);
+            list.push(item);
+        }, this);
+
+        list.sort(function(a, b) {
+            var labelA = a.label.toUpperCase();
+            var labelB = b.label.toUpperCase();
+
+            if(labelA == labelB) {
+                return 0;
+            }
+            else if(labelA < labelB) {
+                return -1;
+            }
+            else {
+                return 1;
+            }
+        });
+
+        list.forEach(function(item) {
             var t = this;
-
-            // var versesTranslated = item.verses.replace(/([0-9] )?[A-Za-z][A-Za-z ]*[A-Za-z]/g, function(match) {
-            //     return t.app.t(match);
-            // });
-
             var versesTranslated = this.app.vt(item.verses);
-
-            var label = this.app.t(item.label) + ': ';
+            var label = item.label + ': ';
             var url = urlBase + versesTranslated;
 
             if(!this.$.ListContainer.$[colName]) {

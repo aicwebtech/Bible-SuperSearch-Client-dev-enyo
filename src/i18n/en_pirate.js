@@ -6,6 +6,7 @@ module.exports = {
     },
     
     'Bible SuperSearch': 'Bibl SupahTreasah',
+    'Loading, please wait': 'Pillagin\', pleaseth be paytient',
 
     // Search Forms
     'Select Bible version(s)': 'Version(s) of the Goode Booke',
@@ -282,6 +283,7 @@ module.exports = {
     'For details, please see the User\'s Manual': 'For ye full bearin\'s, see thee Instructione Manualle',
     'Special Proximity Operators': 'Ye Uniquea Proximitie Cantrules',
     'Matches unlimited characters': 'Anie number of lettares',
+    'searched for' : 'plundered fer',
 
     // Keywords for sample searches
     'Jesus': 'Jehosua',

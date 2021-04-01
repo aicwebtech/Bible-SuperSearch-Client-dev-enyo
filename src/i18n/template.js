@@ -8,6 +8,7 @@ module.exports = {
     // The actual translation data
 
     'Bible SuperSearch': '',
+    'Loading, please wait': '',
 
     // Search Forms
     'Select Bible version(s)': '',
@@ -36,9 +37,10 @@ module.exports = {
     'A Chapter': '',
     'Find verses containing': '',
     'Restrict search to': '', 
+    'Word Search': '',
 
     'Limit Search To': '',
-    'Limit search to': '', // Is this duplication needed?
+    'Limit search to': '', // Watch case!
     'Entire Bible': '',
     'Passage(s) listed below': '',
     'Passage(s) listed above': '',
@@ -122,21 +124,6 @@ module.exports = {
     'Print': '',
     'Printer Friendly': '',
     'Help': '',
-    'Bible SOS': '',
-    'Emergency Help from the Bible': '',
-    'Start': '',
-    'Bible Start Guide': '',
-    'Download': '',
-    'Bible Downloads': '',
-    
-    // Copy / Share dialog
-    'Copy': '',
-    'Copy Link': '',
-    'Copy with Text': '',
-    'Share Link': '',
-    'Share' : '',
-
-    'User\'s Manual': '',
     
     // Result and error messages
     
@@ -186,12 +173,14 @@ module.exports = {
     'Your parentheses are mismatched.': '',
     'Your parentheses are mismatched, or you have a proximity operator inside of parentheses.': '',
     'Proximity operators such as PROX and CHAP can only be used with boolean searches' : '',
+    'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets': '',
     'Your access to this API has been revoked.  Please contact system administrator.': '',
-    
+
     // Dialogs - general
     'Close': '', 
 
     // Bible SOS dialog
+    'Bible SOS': '',
     'Emergency Help from the Bible': '',
     'Where to go When ...': '',
     'Afraid': '',
@@ -229,6 +218,8 @@ module.exports = {
     'Worried': '',
 
     // Bible Start dialog
+    'Start': '',
+    'Bible Start Guide': '',
     'New to the Bible?': '',
     'Not Sure Where to Begin?' : '',
     'Life and Teachings of Jesus Christ': '',
@@ -245,6 +236,8 @@ module.exports = {
     'Christ’s crucifixion foretold': '',
 
     // Bible downloads dialog
+    'Download': '',
+    'Bible Downloads': '',
     'Select Bible(s)' : '',
     'Select a Format': '',
     'Rendering': '',
@@ -266,9 +259,16 @@ module.exports = {
     'PDF - Compact Text, Letter, Words of Christ Underlined': '',
     'PDF - Compact Text, A4, Words of Christ Underlined': '',
 
+    // Copy / Share dialog
+    'Copy': '',
+    'Copy Link': '',
+    'Copy with Text': '',
+    'Share Link': '',
+    'Share' : '',
+
     // Quick Start Help Dialog
     'Quick Start Guide': '',
-
+    'User\'s Manual': '',
     'Wildcard': '',
     'Basic Searches' : '',
     'Advanced Searches using Boolean': '',
@@ -285,10 +285,10 @@ module.exports = {
     'Matches words in the same book': '',
     'Matches words in the same book, and within N verses of each other': '',
     'Matches words in the same chapter, and within N verses of each other': '',
-    'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets': '',
     'For details, please see the User\'s Manual': '',
     'Special Proximity Operators': '',
     'Matches unlimited characters': '',
+    'searched for': '',
 
     // Keywords for sample searches
     'Jesus': '',

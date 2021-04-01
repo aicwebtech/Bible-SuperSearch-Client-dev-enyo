@@ -2,6 +2,7 @@ var kind = require('enyo/kind');
 var Button = require('enyo/Button');
 var Dialog = require('./Dialog');
 var Image = require('../Image');
+var i18n = require('../Locale/i18nContent');
 
 module.exports = kind({
     name: 'LoadingDialog',
@@ -16,6 +17,9 @@ module.exports = kind({
                 {kind: Image, relSrc: '/Spinner.gif' },
             ]
         },
-        {content: 'Loading, please wait ...', style: 'padding: 10px; font-weight: bold'}
+        {style: 'padding: 10px; font-weight: bold', components: [
+            {kind: i18n, content: 'Loading, please wait'},
+            {tag: 'span', content: ' ...'}
+        ]}
     ]
 });
