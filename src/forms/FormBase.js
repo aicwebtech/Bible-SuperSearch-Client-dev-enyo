@@ -159,11 +159,14 @@ module.exports = kind({
     },
     handleResponse: function(inSender, inResponse) {
         // this.app.set('ajaxLoading', false);
+        this.log();
         this.app.set('ajaxLoadingDelay', false);
         this.requestPending = false;
         this.set('cacheHash', inResponse.hash);
-        this.bubble('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: inResponse});
-        Signal.send('onFormResponseSuccess', {formData: this._formDataAsSubmitted, results: inResponse});
+        var responseData = {formData: this._formDataAsSubmitted, results: inResponse, success: true};
+        this.bubble('onFormResponseSuccess', responseData);
+        Signal.send('onFormResponseSuccess', responseData);
+        this.app.set('responseData', responseData)
         this.maxPage = (inResponse.paging && inResponse.paging.last_page) ? inResponse.paging.last_page : null;
         this.page = (inResponse.paging && inResponse.paging.current_page) ? inResponse.paging.current_page : null;
 
@@ -178,6 +181,7 @@ module.exports = kind({
         // this.app.set('ajaxLoading', false);
         this.app.set('ajaxLoadingDelay', false);
         this.requestPending = false;
+        this.app.set('responseData', {success: false});
         
         try {
             var response = JSON.parse(inSender.xhrResponse.body);

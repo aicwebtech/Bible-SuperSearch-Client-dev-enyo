@@ -53,26 +53,10 @@ module.exports = kind({
     },
     handleHelp: function(inSender, inEvent) {
         this.app.showHelp(null);
-        return;
-
-
-        // this.app.debug && this.log(inSender);
-        // this.app.debug && this.log(inEvent);
-
-        // this.$.HelpDialog && this.$.HelpDialog.set('showing', true);
-        // Todo - reformat user guild, redesign help based on context, needs to work on phones, ect
-        
-        // Temporary!
-        window.open(
-            this.app.get('rootDir') +  '/user_guide.html', 
-            'helpDialog',
-            'menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes,height=800,width=600'
-        );
     },
     handlePrint: function(inSender, inEvent) {
         Signal.send('onResultsPrint');
     },
-
     handleSos: function(inSender, inEvent) {
         this.app.set('sosShowing', true);
     },    
