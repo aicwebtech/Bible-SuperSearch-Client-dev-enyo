@@ -43,6 +43,8 @@ module.exports = kind({
             this.PagerControl = this.app.pagerView;
         }
 
+        this.addRemoveClass('rtl', this.app.isRtl);
+
         // if(!this.$.HelpDialog) {
         //     this.createComponent({
         //         name: 'HelpDialog',
@@ -129,9 +131,6 @@ module.exports = kind({
     },
 
     handleLocaleChanged: function(inSender, inEvent) {
-        this.log(inSender);
-        this.log(inEvent);
-
         this.addRemoveClass('rtl', this.app.isRtl);
     }
 });

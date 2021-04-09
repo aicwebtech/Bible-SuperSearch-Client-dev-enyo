@@ -26,8 +26,7 @@ module.exports = kind({
     
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, tag: 'h3', content: 'Share Link'}, 
-            // {kind: i18n, tag: 'h4', content: 'Quick Start Guide'}
+            {kind: i18n, tag: 'h3', content: 'Share'}, 
         ]}
     ],
 

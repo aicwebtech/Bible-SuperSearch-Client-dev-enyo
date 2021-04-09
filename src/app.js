@@ -236,7 +236,9 @@ var App = Application.kind({
         // this.log('ViewObject', ViewObject);
         // this.view.addClass(view.getClass);
         this.render();
+
         this.configs.apiUrl += '/api';
+        this.configs.language && this.set('locale', this.configs.language);
 
         if(this.configs.debug) {
             this.debug = this.configs.debug;
@@ -789,7 +791,9 @@ var App = Application.kind({
         }
 
         if(!found) {
-            this.localeData = Locales[defaultLocale];
+            // this.localeData = Locales[defaultLocale];
+            this.set('locale', defaultLocale);
+            return;
         }
         
         if(found && locale != defaultLocale) {

@@ -1,5 +1,13 @@
 var biblesupersearch_config_options = {
     
+    // Language code for user interface language
+    // If language is not supported, English will display
+    // Supported language:
+    // * en : English
+    // * es : Español
+    // * fr: Français
+    'language' : 'en',
+
     // Default Bible                        (string)
     //
     //      Automatically selected in first Bible selector

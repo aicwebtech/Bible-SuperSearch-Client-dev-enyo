@@ -6,6 +6,10 @@ var Locales = require('../../i18n/LocaleLoader')
 module.exports = kind({
     kind: Select,
 
+    handlers: {
+        onLocaleChange: 'handleLocaleChange'
+    },
+
     create: function() {
         this.inherited(arguments);
 
@@ -25,5 +29,9 @@ module.exports = kind({
         this.inherited(arguments);
         // this.log(inSender.getValue());
         this.app.set('locale', this.getValue());
+    }, 
+
+    handleLocaleChange: function() {
+        this.setSelectedByValue(this.app.get('locale'));
     }
 });
