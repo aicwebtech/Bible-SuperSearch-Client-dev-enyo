@@ -34,6 +34,7 @@ module.exports = {
     'verse': 'verso',
     'verses': 'versos',
     'A Chapter': 'Un capítulo',
+    'Chapters': 'Capítulos',
     'Find verses containing': 'Encuentra versículos que contengan',
     'Restrict search to': 'Restringir la búsqueda a', 
     'Word Search': 'Búsqueda de palabras',
@@ -153,7 +154,7 @@ module.exports = {
 
     // Your search was limited to [number of] verses
     'Your search was limited to': 'Tu búsqueda se limitó a',
-    'Please refine your search if nessessary': 'Refina tu búsqueda si es necesario',
+    'Please refine your search if necessary': 'Refina tu búsqueda si es necesario',
 
     'This Bible is in the Public Domain.': 'Esta Biblia es de dominio público.',
     'This Bible is provided for research purposes only.': 'Esta Biblia se proporciona únicamente con fines de investigación.',

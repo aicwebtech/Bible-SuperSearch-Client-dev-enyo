@@ -1,9 +1,10 @@
-= 4.4.0 (tentative) =
+= 4.4.0 Apr 24, 2021 =
 * Added new Basic help dialog
 * Added new share link dialog
 * Added ability to display help / download dialog buttons separately from formatting buttons.
 * Added 'Minimal with Parallel Bible' skin
 * Added print button
+* Added localization and language options
 
 
 = 4.3.3 =

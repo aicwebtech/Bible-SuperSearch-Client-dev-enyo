@@ -33,6 +33,7 @@ module.exports = {
     'verse': 'jewel',
     'verses': 'jewels',
     'A Chapter': 'A Cheste',
+    'Chapters' : 'Chestes',
     'Find verses containing': 'Locate partes havin\'',
     'Restrict search to': 'Prevent ye maties from searchin\' outside of', 
 

@@ -20,7 +20,7 @@
 .biblesupersearch_expanding_form .input_row .label {
     display: inline-block;
     vertical-align: top;
-    width: 120px;
+    width: 165px;
     /*max-width: 140px;*/
     text-align: right;
     margin-right: 5px;
@@ -31,7 +31,7 @@
 
 .biblesupersearch_expanding_form .input_row .element {
     display: inline-block;
-    width: 59%;
+    width: 49%;
     padding: 0;
     text-align: center;
     /*background-color: navy;*/

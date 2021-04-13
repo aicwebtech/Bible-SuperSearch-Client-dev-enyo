@@ -7,6 +7,11 @@ module.exports = {
     
     // The actual translation data
 
+    // Notes:
+    // * Please place the corresponding translation text between '' (single quotes) on each line below.
+    // * Please maintain capitalization and punctuation, if possible.
+    // * Any ' (single quote) in the translation MUST be preceded by a \ (backslash).
+
     'Bible SuperSearch': '',
     'Loading, please wait': '',
 
@@ -35,6 +40,7 @@ module.exports = {
     'verse': '',
     'verses': '',
     'A Chapter': '',
+    'Chapters': '',
     'Find verses containing': '',
     'Restrict search to': '', 
     'Word Search': '',
@@ -86,6 +92,7 @@ module.exports = {
     'Proximity Search': '',
     'Power Search': '',
 
+    // <b> ... </b> is HTML for bold text, please ensure that your translation maintains the bold
     '<b>All</b> of the words' : '',
     '<b>Any</b> of the words' : '',
     '<b>Only one</b> of the words': '',
@@ -111,7 +118,7 @@ module.exports = {
     'Shrink Text': '',
     'Verse Display': '',
     'Paragraph Display': '',
-    'EZ Copy': '',
+    'EZ Copy': '',  // 'Easy Copy'
     'Read Display': '',
     'Italics': '',
     'Disable Italization of Added Words' : '',
@@ -141,7 +148,7 @@ module.exports = {
     
     'However, verses from this Bible have been included for comparison.': '',
     
-    // Operatorus such as [boolean operator] cannot be at the (beginning|end) of your search
+    // Operators such as [boolean operator] cannot be at the (beginning|end) of your search
     'Operators such as': '',
     'cannot be at the beginning of your search.': '',
     'cannot be at the end of your search.': '',
@@ -154,7 +161,7 @@ module.exports = {
 
     // Your search was limited to [number of] verses
     'Your search was limited to': '',
-    'Please refine your search if nessessary': '',
+    'Please refine your search if necessary': '',
 
     'This Bible is in the Public Domain.': '',
     'This Bible is provided for research purposes only.': '',
