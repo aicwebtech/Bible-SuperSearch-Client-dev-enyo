@@ -159,7 +159,6 @@ module.exports = kind({
     },
     handleResponse: function(inSender, inResponse) {
         // this.app.set('ajaxLoading', false);
-        this.log();
         this.app.set('ajaxLoadingDelay', false);
         this.requestPending = false;
         this.set('cacheHash', inResponse.hash);
@@ -312,7 +311,6 @@ module.exports = kind({
         return true; // Don't propagage, will cause issues with subforms, if any
     },
     updateHash: function() {
-        this.log();
         var hash = this._generateHashFromData();
 
         if(!hash) {        
@@ -452,7 +450,7 @@ module.exports = kind({
         var search = this.$.search ? this.$.search.get('value') : null;
         var request = this.$.request ? this.$.request.get('value') : null;
 
-        this.log(reference, search, request);
+        this.app.debug && this.log(reference, search, request);
 
         // Todo - convert space to something more aesthetic.  _ or .?
         // UNSAFE: /,;-
@@ -482,9 +480,10 @@ module.exports = kind({
         var sh = true;
 
         // Todo - Handle separately: search_type, shortcut (verse selected)
+        // Todo - work in progress!
 
         this.bindings.forEach(function(item, idx) {
-            console.log('formItem to', item.to);
+            this.app.debug && console.log('formItem to', item.to);
 
             if(item.shortLink) {
                 return;
@@ -503,9 +502,9 @@ module.exports = kind({
 
             var value = this.$[field].get(property);
 
-            console.log('formItem field', field);
-            console.log('formItem property', property);
-            console.log('formItem value', value);
+            this.app.debug && console.log('formItem field', field);
+            this.app.debug && console.log('formItem property', property);
+            this.app.debug && console.log('formItem value', value);
             // if(item.from = 'formData.' +)
 
             if(value && value != '' && value != 0) {

@@ -80,7 +80,7 @@ var App = Application.kind({
 
     create: function() {
         this.inherited(arguments);
-        this.configs = defaultConfig;
+        this.configs = utils.clone(defaultConfig);
         this.build = buildConfig;
         this.system = systemConfig;
         this.set('baseTitle', document.title);
@@ -196,7 +196,8 @@ var App = Application.kind({
         // this.log(this.configs);
         var view = null;
         this.UserConfig.newModel(0);
-        // this.log('USER', this.UserConfig.model);
+
+        this.configs.apiUrl == defaultConfig.apiUrl ? defaultConfig._urlDefaultNotice() : defaultConfig._urlLocalNotice();
 
         if(this.configs.interface) {
             // this.log('Interface ', this.configs.interface);
@@ -472,7 +473,7 @@ var App = Application.kind({
             }
         }
         else {
-            this.log('no hash');
+            this.debug && this.log('no hash');
             this._hashLocalStorage();
         }
     },    

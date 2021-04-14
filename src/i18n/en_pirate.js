@@ -175,7 +175,7 @@ module.exports = {
     'Proximity operators such as PROX and CHAP can only be used with boolean searches' : 'Keep ouut of yee shipe proximity unless in matey Mr Boole searrches',
     'Your access to this API has been revoked.  Please contact system administrator.': 'Ye bee given the blacke spote, holler at ye admiral before ye walks thee planke',
     'Your search was limited to': 'Yar, ye got greedy and ye searche was limited to',
-    'Please refine your search if nessessary': 'Aske for less nexte time',
+    'Please refine your search if necessary': 'Aske for less nexte time',
     
     // Operatorus such as [boolean operator] cannot be at the (beginning|end) of your search
     'Operators such as': 'Scraparators liken to',

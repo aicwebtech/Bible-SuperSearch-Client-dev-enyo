@@ -77,8 +77,6 @@ module.exports = kind({
             return false;
         }
 
-        this.log('extras soft config', softConfig);
-
         if(softConfig === true || softConfig == 'true') {
             return true;
         }

@@ -20,7 +20,6 @@ module.exports = kind({
         this.renderErrors();
     },
     renderErrors: function() {
-        this.log();
         var errorsTranslated = [];
 
         for(i in this.errors) {

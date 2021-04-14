@@ -1,9 +1,9 @@
 module.exports = {
     en: require('./en'),
     // en_US: require('./en_US'),
-    en_pirate: require('./en_pirate'),
+    // en_pirate: require('./en_pirate'),
     es: require('./es'),
-    ar: require('./ar'),
+    // ar: require('./ar'),
     fr: require('./fr'),
 
     // Translation strings that allow partial matches.
@@ -23,7 +23,7 @@ module.exports = {
         'Invalid book in book range',
         'Book not found',
         'Your search was limited to',
-        'Please refine your search if nessessary',
+        'Please refine your search if necessary',
         'Operators such as',
         'cannot be at the beginning of your search.',
         'cannot be at the end of your search.',
