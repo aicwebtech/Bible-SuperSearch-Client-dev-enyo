@@ -27,9 +27,9 @@ module.exports = kind({
             kind: FormSection,
             classes: 'biblesupersearch_expanding_form expanding',
             components: [
-                {classes: 'input_row_wide', components: [
-                    {name: 'Locale', kind: LocaleSelector}
-                ]},                  
+                // {classes: 'input_row_wide', components: [
+                //     {name: 'Locale', kind: LocaleSelector}
+                // ]},                  
                 {classes: 'input_row_wide', components: [
                     {name: 'request', kind: Input, placeholder: 'Enter search keyword(s) or passage reference(s)', enterSubmit: true},
                 ]},                 

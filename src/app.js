@@ -27,7 +27,7 @@ var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '4.3.2',
+    applicationVersion: '4.4.0',
 
     defaultView: DefaultInterface,
     //renderTarget: 'biblesupersearch_container',

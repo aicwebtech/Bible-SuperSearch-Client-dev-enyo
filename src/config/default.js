@@ -9,6 +9,7 @@ var defaultConfig = {
     "interface": "twentytwenty",                        // Bible SuperSearch skin / interface
     "useJSONP": false,                                  // (Future) Use JSONP for cross-site API calls
 
+
     _urlDefaultNotice: function() {
         if(window.console) {
             console.log('----------------------------------------------------------------------');
@@ -21,7 +22,6 @@ var defaultConfig = {
             console.log();
         }
     },
-
     _urlLocalNotice: function() {
         if(window.console) {
             console.log('Congratulations, you are successfully using your own instance of the Bible SuperSearch API!');

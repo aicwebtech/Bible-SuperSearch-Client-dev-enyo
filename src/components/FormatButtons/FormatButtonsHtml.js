@@ -285,9 +285,9 @@ module.exports = kind({
             ],
         },
 
-        {classes: 'input_row_wide', components: [
-            {name: 'Locale', kind: LocaleSelector}
-        ]},  
+        // {classes: 'input_row_wide', components: [
+        //     {name: 'Locale', kind: LocaleSelector}
+        // ]},  
         
         {name: 'Dialogs', components: [
             // {name: 'HelpDialog', kind: Help, showing: false}
