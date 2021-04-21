@@ -285,9 +285,9 @@ module.exports = kind({
             ],
         },
 
-        // {classes: 'input_row_wide', components: [
-        //     {name: 'Locale', kind: LocaleSelector}
-        // ]},  
+        {classes: 'input_row_wide', components: [
+            {name: 'Locale', kind: LocaleSelector}
+        ]},  
         
         {name: 'Dialogs', components: [
             // {name: 'HelpDialog', kind: Help, showing: false}
@@ -338,6 +338,7 @@ module.exports = kind({
             this.$.sos_button.set('showing', false);
             this.$.start_button.set('showing', false);
             this.$.download_button.set('showing', false);
+            this.$.advanced_toggle.set('showing', false);
             this.$.help.set('showing', false);
         }
     }

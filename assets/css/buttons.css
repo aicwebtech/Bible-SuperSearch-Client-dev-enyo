@@ -109,7 +109,7 @@
 }
 
 .format_buttons_html .item.advanced_toggle {
-    width: 63px;
+    min-width: 63px;
 }
 
 .format_buttons_html .item.download {

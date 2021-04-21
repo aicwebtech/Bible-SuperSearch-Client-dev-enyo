@@ -9,6 +9,7 @@ var ErrorView = require('../results/ErrorView');
 var StrongsView = require('../results/StrongsView');
 var DisambigView = require('../results/DisambiguationView');
 var ResultsController = require('../results/ResultsController');
+var DefaultAdvancedForm = require('../../forms/advanced/AdvancedClassic');
 var utils = require('enyo/utils');
 // var FormatButtons = require('./FormatButtonsBase');
 
@@ -100,6 +101,9 @@ module.exports = kind({
                     this.$.FormatButtonContainer.set('showing', false);
                 }
             }
+        }
+        else {
+            this.log('form view not found', formView)
         }
     },
     formViewChanged: function(was, is) {

@@ -128,6 +128,8 @@ module.exports = {
     'Bible Start Guide': 'Gettin\' started in ye Holy Booke',
     'Download': 'Retrieve',
     'Bible Downloads': 'Retrieve from the Depths',
+    'Basic': 'Ye simpeel',
+    'Advanced': 'Arrdvancede',
     
     // Copy / Share dialog
     'Copy': 'Pirate this',

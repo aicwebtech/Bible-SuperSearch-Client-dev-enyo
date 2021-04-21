@@ -13,6 +13,10 @@ module.exports = kind({
     create: function() {
         this.inherited(arguments);
 
+        if(!this.app.debug) {
+            this.set('showing', false);
+        }
+
         for(i in Locales) {
             if(!Locales[i] || !Locales[i].meta || !Locales[i].meta.lang_name_en) {
                 continue;

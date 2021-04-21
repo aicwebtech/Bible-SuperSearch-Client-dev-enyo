@@ -4,7 +4,7 @@
 * Added ability to display help / download dialog buttons separately from formatting buttons.
 * Added 'Minimal with Parallel Bible' skin
 * Added print button
-* Added localization and language options
+* Added language options
 
 
 = 4.3.3 =

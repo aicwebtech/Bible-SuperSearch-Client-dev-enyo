@@ -123,7 +123,9 @@ module.exports = kind({
         return this.$.Content.$.FormController.view.$[fieldName].get('value');
     },
     _formHasFieldStandard: function(fieldName) {
-        if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view) {
+        this.log(this.$.Content.$.FormController);
+
+        if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view && this.$.Content.$.FormController.view.$) {
             return (this.$.Content.$.FormController.view.$[fieldName]) ? true : false;
         }
 

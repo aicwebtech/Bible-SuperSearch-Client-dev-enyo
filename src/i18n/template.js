@@ -131,6 +131,8 @@ module.exports = {
     'Print': '',
     'Printer Friendly': '',
     'Help': '',
+    'Basic': '',
+    'Advanced': '',
     
     // Result and error messages
     

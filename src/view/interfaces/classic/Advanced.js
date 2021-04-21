@@ -11,5 +11,9 @@ module.exports = kind({
     formView: formView,
     create: function() {
         this.inherited(arguments);
-    }
+    },
+
+    formHasField: function(fieldName) {
+        return false;
+    },
 });

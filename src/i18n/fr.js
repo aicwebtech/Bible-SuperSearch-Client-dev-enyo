@@ -124,6 +124,8 @@ module.exports = {
     'Print': 'Imprimer',
     'Printer Friendly': 'Compatible à l\'impression',
     'Help': 'Aide',
+    'Basic': 'De base',
+    'Advanced': 'Avancée',
     
     // Result and error messages
     

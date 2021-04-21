@@ -66,6 +66,14 @@ module.exports = kind({
         ]}
     ],
 
+    bindings: [                
+        {from: 'app.UserConfig.advanced_toggle', to: '$.advanced_toggle.value', oneWay: false, transform: function(value, dir) {
+            // console.log('FormatButtons advanced_toggle', value, dir);
+            return value;
+            // return (value && value != 0 && value != false) ? true : false;
+        }},           
+    ],
+
     create: function() {
         this.inherited(arguments);
 

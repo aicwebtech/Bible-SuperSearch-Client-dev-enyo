@@ -682,14 +682,15 @@ var App = Application.kind({
     getSelectedBibles: function() {
         var bibles = this.getFormFieldValue('bible');
 
-        if(!Array.isArray(bibles)) {
-            bibles = [bibles];
-        }
-
         if(!bibles || bibles.length == 0 || bibles.length == 1 && bibles[0] == null) {
             bibles = [this.configs.defaultBible];
         }
 
+        if(!Array.isArray(bibles)) {
+            bibles = [bibles];
+        }
+
+        this.log(bibles);
         return bibles;
     },
     getSelectedBiblesString: function() {
