@@ -26,6 +26,8 @@ module.exports = kind({
 
     handlers: {
         onLocaleChange: 'handleLocaleChanged',
+        onFormResponseError: 'handleFormResponse',
+        onFormResponseSuccess: 'handleFormResponse'
     },
 
     published: {
@@ -134,5 +136,8 @@ module.exports = kind({
 
     handleLocaleChanged: function(inSender, inEvent) {
         this.addRemoveClass('rtl', this.app.isRtl);
+    },
+    handleFormResponse: function(inSender, inEvent) {
+        this.hasNode().scrollTop = 0;
     }
 });

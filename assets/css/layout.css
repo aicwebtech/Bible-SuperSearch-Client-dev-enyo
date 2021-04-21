@@ -3,11 +3,11 @@
 div.biblesupersearch_main {
     /*background-color: #222222;*/
     /*min-height: 100px;*/
-    max-height: 1000px;
+    /*max-height: 1000px;*/
+    height: 95%;
+    max-height: 90vh;
     max-width: 1000px;
     position: relative;
-    /*min-height: 100vh;*/
-    /*min-width: 100vw;*/
     overflow-y: auto;
     overflow-x: hidden;
 }
