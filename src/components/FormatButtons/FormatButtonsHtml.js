@@ -330,11 +330,11 @@ module.exports = kind({
         this.inherited(arguments);
 
         if(this._hideExtras()) {
-            this.$.sos_button.set('showing', false);
-            this.$.start_button.set('showing', false);
-            this.$.download_button.set('showing', false);
-            this.$.advanced_toggle.set('showing', false);
-            this.$.help.set('showing', false);
+            this.$.sos_button && this.$.sos_button.set('showing', false);
+            this.$.start_button && this.$.start_button.set('showing', false);
+            this.$.download_button && this.$.download_button.set('showing', false);
+            this.$.advanced_toggle && this.$.advanced_toggle.set('showing', false);
+            this.$.help && this.$.help.set('showing', false);
         }
     }
 });
