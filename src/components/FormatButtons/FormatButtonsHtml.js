@@ -290,7 +290,7 @@ module.exports = kind({
         ]},  
         
         {name: 'Dialogs', components: [
-            // {name: 'HelpDialog', kind: Help, showing: false}
+            {name: 'HelpDialog', kind: Help, showing: false}
         ]}
     ],
 
