@@ -4,6 +4,7 @@ var Input = require('enyo/Input');
 var TextArea = require('enyo/TextArea');
 var Checkbox = require('enyo/Checkbox');
 var Signal = require('../Signal');
+var Help = require('../dialogs/Help');
 
 module.exports = kind({
     name: 'FormatButtonsBase',
@@ -14,6 +15,12 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+
+        this.createComponent({
+            name: 'Dialogs', components: [
+                {name: 'HelpDialog', kind: Help, showing: false}
+            ]
+        });
     },
     rendered: function() {
         this.inherited(arguments);

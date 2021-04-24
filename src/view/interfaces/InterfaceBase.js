@@ -27,7 +27,8 @@ module.exports = kind({
     handlers: {
         onLocaleChange: 'handleLocaleChanged',
         onFormResponseError: 'handleFormResponse',
-        onFormResponseSuccess: 'handleFormResponse'
+        onFormResponseSuccess: 'handleFormResponse',
+        onFormViewChanged: 'handleFormViewChanged'
     },
 
     published: {
@@ -134,10 +135,16 @@ module.exports = kind({
         return false;
     },
 
+    scrollToTop: function() {
+        this.hasNode().scrollTop = 0;
+    },
     handleLocaleChanged: function(inSender, inEvent) {
         this.addRemoveClass('rtl', this.app.isRtl);
     },
     handleFormResponse: function(inSender, inEvent) {
-        this.hasNode().scrollTop = 0;
+        this.scrollToTop();
+    },
+    handleFormViewChanged: function(inSender, inEvent) {
+        this.scrollToTop();
     }
 });

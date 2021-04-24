@@ -108,6 +108,7 @@ module.exports = kind({
     },
     formViewChanged: function(was, is) {
         this.formViewProcess(is);
+        this.bubble('onFormViewChanged');
         this.$.FormController && this.$.FormController.render();
     },
     handleFormResponse: function(inSender, inEvent) {

@@ -6,7 +6,6 @@ var Checkbox = require('enyo/Checkbox');
 var Base = require('../FormatButtons/FormatButtonsBase');
 var Toggle = require('../ToggleHtml');
 var Image = require('../Image');
-var Help = require('../dialogs/Help');
 var i18n = require('../Locale/i18nContent');
 
 module.exports = kind({
@@ -59,11 +58,7 @@ module.exports = kind({
                 {tag: 'span', allowHtml: true, content: '<b>&#10515;</b>&nbsp;'},
                 {kind: i18n, content: 'Download'}
             ]
-        },          
-
-        {name: 'Dialogs', components: [
-            {name: 'HelpDialog', kind: Help, showing: false}
-        ]}
+        }
     ],
 
     bindings: [                
@@ -76,6 +71,7 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+        this.$.Dialogs.set('showing', false);
 
         if(!this.app.statics.download_enabled) {
             this.$.download_button.set('showing', false);

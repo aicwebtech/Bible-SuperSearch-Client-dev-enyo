@@ -6,7 +6,6 @@ var Checkbox = require('enyo/Checkbox');
 var Base = require('./FormatButtonsBase');
 var Toggle = require('../ToggleHtml');
 var Image = require('../Image');
-var Help = require('../dialogs/Help');
 var i18n = require('../Locale/i18nContent');
 var LocaleSelector = require('../Locale/LocaleSelector');
 
@@ -287,10 +286,6 @@ module.exports = kind({
 
         {classes: 'input_row_wide', components: [
             {name: 'Locale', kind: LocaleSelector}
-        ]},  
-        
-        {name: 'Dialogs', components: [
-            {name: 'HelpDialog', kind: Help, showing: false}
         ]}
     ],
 
