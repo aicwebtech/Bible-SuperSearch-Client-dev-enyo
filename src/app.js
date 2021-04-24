@@ -690,7 +690,6 @@ var App = Application.kind({
             bibles = [bibles];
         }
 
-        this.log(bibles);
         return bibles;
     },
     getSelectedBiblesString: function() {

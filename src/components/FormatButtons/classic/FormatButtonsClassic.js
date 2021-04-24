@@ -179,30 +179,30 @@ module.exports = kind({
         //     // return (value && value != 0 && value != false) ? true : false;
         // }},         
         {from: 'app.UserConfig.paragraph', to: '$.paragraph_toggle.value', oneWay: false, transform: function(value, dir) {
-            console.log('paragraph_toggle', value, dir);
+            // console.log('paragraph_toggle', value, dir);
             return value;
             // return (value && value != 0 && value != false) ? true : false;
         }},         
         {from: 'app.UserConfig.copy', to: '$.copy_toggle.value', oneWay: false, transform: function(value, dir) {
-            console.log('copy_toggle', value, dir);
+            // console.log('copy_toggle', value, dir);
             return value;
             // return (value && value != 0 && value != false) ? true : false;
         }},             
         {from: 'app.UserConfig.advanced_toggle', to: '$.advanced_toggle.value', oneWay: false, transform: function(value, dir) {
-            console.log('advanced_toggle', value, dir);
+            // console.log('advanced_toggle', value, dir);
             return value;
             // return (value && value != 0 && value != false) ? true : false;
         }},           
         {from: 'app.UserConfig.italics', to: '$.italics_toggle.value', oneWay: false, transform: function(value, dir) {
-            console.log('italics', value, dir);
+            // console.log('italics', value, dir);
             return value;
         }},         
         {from: 'app.UserConfig.strongs', to: '$.strongs_toggle.value', oneWay: false, transform: function(value, dir) {
-            console.log('strongs', value, dir);
+            // console.log('strongs', value, dir);
             return value;
         }},             
         {from: 'app.UserConfig.red_letter', to: '$.redletter_toggle.value', oneWay: false, transform: function(value, dir) {
-            console.log('red_letter', value, dir);
+            // console.log('red_letter', value, dir);
             return value;
         }},     
         // {from: 'app.UserConfig.copy', to: '$.copy.checked', oneWay: false, transform: function(value, dir) {
