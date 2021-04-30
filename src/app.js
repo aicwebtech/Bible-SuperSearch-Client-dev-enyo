@@ -842,7 +842,7 @@ var App = Application.kind({
     },
     // Translate
     t: function(string) {
-        if(!string || string == '') {
+        if(!string || string == '' || typeof string != 'string') {
             return '';
         }
 
@@ -868,11 +868,12 @@ var App = Application.kind({
         // NOT preferred method - string regexp and replace
         for(i in Locales._partial) {
             var match = Locales._partial[i];
-            var regexp = new RegExp(match, 'g');
 
             if(!Locale[match] || Locale[match] == '') {
                 continue;
             }
+
+            var regexp = new RegExp(match, 'g');
             
             // this.log('trans found', match);
             trans = trans.replace(regexp, Locale[match]);

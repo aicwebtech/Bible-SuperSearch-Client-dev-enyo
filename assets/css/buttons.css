@@ -15,6 +15,7 @@
     white-space: nowrap;
     vertical-align: middle;
     height: 18px;
+    line-height: 16px;
     font-size: 14px;
     overflow: hidden;
     border-radius: 3px;
@@ -26,6 +27,10 @@
     -webkit-box-sizing: content-box;  
     -moz-box-sizing: content-box;    
     -ms-box-sizing: content-box; 
+}
+
+.format_buttons_html .item:hover {
+    background-color: #d1cf45;
 }
 
 .format_buttons_html .item.size_plus {
