@@ -128,8 +128,7 @@ module.exports = kind({
                         var verse = p.verses[bible][c][v];
 
                         content += (p.single_verse) ? p.book_name + ' ' + p.chapter_verse + '\n' : verse.verse + ' ';
-                        content += verse.text;
-
+                        content += this.processText(verse.text);
                         if(count >= limit) {
                             content += (p.single_verse) ? '\n…' : ' …';
                             break mainLoop;
@@ -192,6 +191,39 @@ module.exports = kind({
         this.set('ezCopy', true);
         // todo - enable link on EZ Copy here
         this.close();
-    }
+    },
+    processText: function(text) {
+        text = text.replace(/<[^<>]+>/g, ''); // strip HTML
+
+        // red letter - ERROR - using <> for red letter will COLLIDE with highlighting which sends back HTML!
+        // U+2039, U+203A Single angle quotation marks (NOT <>)
+        if(this.app.UserConfig.get('red_letter')) {
+            // Do nothing?  Remove?
+            text = text.replace(/[‹›]/g, '');
+        }
+        else {
+            text = text.replace(/[‹›]/g, '');
+        }
+
+        // strongs
+        if(this.app.UserConfig.get('strongs')) {
+            // do nothing
+        }
+        else {
+            text = text.replace(/\} \{/g, '');
+            text = text.replace(/\{[^\}]+\}/g, '');
+        }
+
+        // italics
+        if(this.app.UserConfig.get('italics')) {
+            // do nothing
+        }
+        else {
+            text = text.replace(/[\[\]]/g, '');
+        }
+
+        text = text.replace('¶ ', '');
+        return text;
+    },
 });
 

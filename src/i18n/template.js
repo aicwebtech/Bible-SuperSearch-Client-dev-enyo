@@ -149,6 +149,10 @@ module.exports = {
     'Your search produced no results in': '', 
     
     'However, verses from this Bible have been included for comparison.': '',
+
+    // Context Links
+    'Context': '',
+    'Chapter': '',
     
     // Operators such as [boolean operator] cannot be at the (beginning|end) of your search
     'Operators such as': '',

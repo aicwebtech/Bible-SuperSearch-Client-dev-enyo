@@ -209,6 +209,7 @@ module.exports = kind({
     },
     processAssembleSingleVerse: function(reference, verse) {
         return reference + '<br />' + this.processText(verse.text);
+        // return reference + '<br />' + this.processText(verse.text) + verse.linksHtml;
     },
     processAssemblePassageVerse: function(reference, verse) {
         var processed = this.processAssembleVerse(reference, verse);
@@ -228,14 +229,37 @@ module.exports = kind({
     },
     proccessSingleVerseReference: function(passage, verse) {
         var book = this.app.getBook(passage.book_id);
+        var verseLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, passage.book_name, verse.chapter, verse.verse);
         var chapterLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, passage.book_name, verse.chapter);
         var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, passage.book_name, verse.chapter, verse.verse);
 
-        var html =  '<a href="' + chapterLink + '" title="Show this Chapter" class="std_link">' + passage.book_name + ' ' + verse.chapter + '</a>:';
-            html += '<a href="' + contextLink + '" title="Show in Context" class="std_link">' + verse.verse + '</a>';
+        // var html =  '<a href="' + chapterLink + '" title="Show this Chapter" class="std_link">' + passage.book_name + ' ' + verse.chapter + '</a>:';
+        //     html += '<a href="' + contextLink + '" title="Show in Context" class="std_link">' + verse.verse + '</a>';
+
+        // verse.linksHtml = '<br /><small>'; // future use?
+
+        var chapterTitle = this.app.t("Show full Chapter"),
+            chapterText = this.app.t('Chapter'),
+            verseTitle = this.app.t('Show this Verse'),
+            contextTitle = this.app.t('Show in Context'),
+            contextText = this.app.t('Context');
+
+        var html = '';
+            html += '<a href="' + verseLink + '" title="' + verseTitle + '" class="std_link">' + passage.book_name + ' ' + verse.chapter + ':' + verse.verse + '</a>';
+            html += '&nbsp; <sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + contextText + '</a></sup>';           
+            html += '&nbsp; <sup>' + '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a></sup>';
+            // verse.linksHtml += '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a>&nbsp; &nbsp;';
+            // verse.linksHtml += '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + contextText + '</a>';
+            // future? 
+            // html += '&nbsp;&nbsp;<sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + 'Statistics' + '</a></sup>';
+
+        // verse.linksHtml += '</small>';
 
         return html;
     },   
+    _processSingleVerseLinks: function(passage, verse) {
+
+    },
     _addNavButtons: function(Container, passage) {
         if(typeof passage.nav == 'object') {
             var NavButtons = this.app.getSubControl('NavButtons');

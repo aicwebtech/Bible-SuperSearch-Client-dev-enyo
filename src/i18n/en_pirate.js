@@ -37,6 +37,10 @@ module.exports = {
     'Find verses containing': 'Locate partes havin\'',
     'Restrict search to': 'Prevent ye maties from searchin\' outside of', 
 
+    // Context Links
+    'Context': 'Rooma',
+    'Chapter': 'Cheste',
+
     'Limit Search To': 'Plunder in',
     'Limit search to': 'Plunder in',
     'Entire Bible': 'Whole Ocean Booke',
