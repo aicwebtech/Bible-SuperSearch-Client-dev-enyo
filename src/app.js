@@ -17,6 +17,7 @@ var Router = require('enyo/Router');
 var i18n = require('enyo/i18n');
 var Loading = require('./components/LoadingInline');
 var Locales = require('./i18n/LocaleLoader');
+var Validators = require('./lib/Validators');
 
 //var MainView = require('./view/Content');
 
@@ -57,6 +58,7 @@ var App = Application.kind({
     localeDatasetsRaw: Locales,
     localeDatasets: {},
     localeBibleBooks: {},
+    validate: Validators,
     
     // Selectable sub-views:
     formatButtonsView: null,
@@ -748,6 +750,9 @@ var App = Application.kind({
         for(i in is.bibles) {
             if(typeof is.bibles[i].rtl == 'undefined') {
                 is.bibles[i].rtl = this._isRtl(is.bibles[i].lang_short);
+            }
+            else {
+                this.validate.bool(is.bibles[i], 'rtl');
             }
         }
     },

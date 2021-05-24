@@ -53,6 +53,8 @@ span.red_letter {
 }
 
 /* Cross-browser formatting */
+
+/* TODO - FINISH THIS! */
 div.biblesupersearch_main select, div.biblesupersearch_main input.enyo-input {
 /*    background-color: white;
     border: 1px solid #767676;*/
@@ -73,12 +75,12 @@ div.biblesupersearch_main select, div.biblesupersearch_main input.enyo-input {
 */
 
 div.biblesupersearch_main optgroup {
-    font-style: normal;
+    /*font-style: normal;*/
 }
 
 div.biblesupersearch_main option:hover {
-    background-color: blue;
-    color: white;
+/*    background-color: blue;
+    color: white;*/
 }
 
 /* End Cross-browser formatting */

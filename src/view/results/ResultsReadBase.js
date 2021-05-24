@@ -233,8 +233,10 @@ module.exports = kind({
         var chapterLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, passage.book_name, verse.chapter);
         var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, passage.book_name, verse.chapter, verse.verse);
 
-        // var html =  '<a href="' + chapterLink + '" title="Show this Chapter" class="std_link">' + passage.book_name + ' ' + verse.chapter + '</a>:';
-        //     html += '<a href="' + contextLink + '" title="Show in Context" class="std_link">' + verse.verse + '</a>';
+        var html =  '<a href="' + chapterLink + '" title="Show this Chapter" class="std_link">' + passage.book_name + ' ' + verse.chapter + '</a>:';
+            html += '<a href="' + contextLink + '" title="Show in Context" class="std_link">' + verse.verse + '</a>';
+
+        return html; 
 
         // verse.linksHtml = '<br /><small>'; // future use?
 

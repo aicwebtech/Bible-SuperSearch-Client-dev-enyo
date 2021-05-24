@@ -1,3 +1,6 @@
+= 4.4.2 May 24, 2021 =
+* Fixed issues with RTL detection on Bibles
+
 = 4.4.1 Apr 24, 2021 =
 * Fixed breakage when advanced toggle disabled
 
