@@ -45,6 +45,13 @@ module.exports = {
     'Restrict search to': '', 
     'Word Search': '',
 
+    // Context Links
+    'Show full chapter': '',
+    'Chapter': '',
+    'Show this verse': '',
+    'Show in context': '',
+    'Context': '',
+
     'Limit Search To': '',
     'Limit search to': '', // Watch case!
     'Entire Bible': '',
@@ -147,12 +154,7 @@ module.exports = {
     
     // Your search produced no results in [name of Bible version]
     'Your search produced no results in': '', 
-    
     'However, verses from this Bible have been included for comparison.': '',
-
-    // Context Links
-    'Context': '',
-    'Chapter': '',
     
     // Operators such as [boolean operator] cannot be at the (beginning|end) of your search
     'Operators such as': '',

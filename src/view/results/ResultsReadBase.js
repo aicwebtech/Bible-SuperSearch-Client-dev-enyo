@@ -236,14 +236,14 @@ module.exports = kind({
         var html =  '<a href="' + chapterLink + '" title="Show this Chapter" class="std_link">' + passage.book_name + ' ' + verse.chapter + '</a>:';
             html += '<a href="' + contextLink + '" title="Show in Context" class="std_link">' + verse.verse + '</a>';
 
-        return html; 
+        // return html; 
 
         // verse.linksHtml = '<br /><small>'; // future use?
 
-        var chapterTitle = this.app.t("Show full Chapter"),
+        var chapterTitle = this.app.t("Show full chapter"),
             chapterText = this.app.t('Chapter'),
-            verseTitle = this.app.t('Show this Verse'),
-            contextTitle = this.app.t('Show in Context'),
+            verseTitle = this.app.t('Show this verse'),
+            contextTitle = this.app.t('Show in context'),
             contextText = this.app.t('Context');
 
         var html = '';

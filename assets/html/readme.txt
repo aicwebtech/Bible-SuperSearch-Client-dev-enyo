@@ -15,14 +15,17 @@ You should have received a copy of the GNU General Public License (GPL)
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-This software is licensed for NON-COMMERCIAL use only.  
+This SOFTWARE is made available FREE of charge, and is licensed for NON-COMMERCIAL use only.
+
+    Matthew 10:8 freely ye have received, freely give. - Jesus
 
 Commercial use will require a commercial license.  Commercial use includes:
 
 * Putting the SOFTWARE behind a paywall
 * Charging others to access or use the SOFTWARE
-* Selling the SOFTWARE for any amount, whether by itself or bundled with other software
-* Incorporating into third party software which is NOT compatible with the GNU GPL (See https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses)
+* Selling the SOFTWARE for any amount, whether by itself or bundled with other software.  This includes charging for shipping, handling or installation.
+* Using the SOFTWARE as a gift to solicit donations.
+* Incorporating into third party software which is NOT compatible with the GNU GPL. See [GNU License Compatibility](https://www.gnu.org/licenses/license-list.html#GPLCompatibleLicenses)
 * Any other use which would violate the GNU GPL
 
 Please see full license at https://www.biblesupersearch.com/license/

@@ -39,6 +39,13 @@ module.exports = {
     'Restrict search to': 'Restreindre la rechrech à', 
     'Word Search': 'cherchez par mot',
 
+    // Context Links
+    'Show full chapter': 'Afficher le chapitre complet',
+    'Chapter': 'Chapitre',
+    'Show this verse': 'Montrez ce verset',
+    'Show in context': 'Afficher en contexte',
+    'Context': 'Contexte',
+
     'Limit Search To': 'Limitez la Recherche à',
     'Limit search to': 'Limitez la recherche à', // Watch case!
     'Entire Bible': 'La bible entière',

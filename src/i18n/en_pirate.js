@@ -38,8 +38,11 @@ module.exports = {
     'Restrict search to': 'Prevent ye maties from searchin\' outside of', 
 
     // Context Links
-    'Context': 'Rooma',
+    'Show full chapter': 'Reveale all thee cheste contents',
     'Chapter': 'Cheste',
+    'Show this verse': 'Reveale jewelle',
+    'Show in context': 'Reveale jewewell with its mateys',
+    'Context': 'Jewwel Mateys',
 
     'Limit Search To': 'Plunder in',
     'Limit search to': 'Plunder in',
