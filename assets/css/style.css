@@ -53,34 +53,31 @@ span.red_letter {
 }
 
 /* Cross-browser formatting */
-
-/* TODO - FINISH THIS! */
 div.biblesupersearch_main select, div.biblesupersearch_main input.enyo-input {
     background-color: white;
     border: 1px solid #767676;
-    /*border: 2px solid green;*/
 }
 
-/* NOTE: CAN CAUSE ISSUES WITH WP PLUGIN */
+/* Attempting to make buttons look the same */
+/* NOTE: CAUSES ISSUES WITH WP PLUGIN - SKIPPING */
 /*div.biblesupersearch_main button, div.biblesupersearch_main input[type=button] {
     background-color: #efefef;
     border: 1px solid #767676;
     border-radius: 2px;
 }
-*/
 
-/*div.biblesupersearch_main button:hover, div.biblesupersearch_main input[type=button]:hover {
+div.biblesupersearch_main button:hover, div.biblesupersearch_main input[type=button]:hover {
     background-color: #aaaaaa;
-}
-*/
+}*/
+
 
 div.biblesupersearch_main optgroup {
     font-style: normal;
+    font-weight: bold;
 }
 
-div.biblesupersearch_main option:hover {
-    background-color: blue;
-    color: white;
+div.biblesupersearch_main optgroup, div.biblesupersearch_main option {
+    /*padding: 2px;*/
 }
 
 /* End Cross-browser formatting */

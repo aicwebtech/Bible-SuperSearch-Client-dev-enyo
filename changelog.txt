@@ -1,3 +1,8 @@
+= 4.4.3 ??? =
+* Fixed responsive issues on expanding form
+* Fixed off-centered checkbox on the toggle buttons
+* Fixed misc off cross-browser issues
+
 = 4.4.2 May 24, 2021 =
 * Fixed issues with RTL detection on Bibles
 
