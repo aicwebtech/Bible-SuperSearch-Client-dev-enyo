@@ -302,6 +302,19 @@ module.exports = kind({
             text = text.replace(/[\[\]]/g, '');
         }
 
+        // higlight
+        if(this.app.UserConfig.get('highlight')) {
+            // do nothing
+        }
+        else {
+            text = text.replace(/\<b\>/g, '');
+            text = text.replace(/\<\/b\>/g, '');            
+            text = text.replace(/\<em\>/g, '');
+            text = text.replace(/\<\/em\>/g, '');            
+            text = text.replace(/\<strong\>/g, '');
+            text = text.replace(/\<\/strong\>/g, '');
+        }
+
         text = text.replace('¶ ', '');
         // text = text.replace(/\s+([.,?!;])/, '$1');
         return text;

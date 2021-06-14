@@ -20,6 +20,7 @@ module.exports = kind({
         italics: true,
         strongs: true,
         red_letter: true,
+        highlight: true,
         something: 'else',
         mmm: 'bacon'
     },

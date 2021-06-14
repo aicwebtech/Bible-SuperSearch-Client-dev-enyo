@@ -168,6 +168,7 @@ module.exports = kind({
         this.app.set('responseData', responseData)
         this.maxPage = (inResponse.paging && inResponse.paging.last_page) ? inResponse.paging.last_page : null;
         this.page = (inResponse.paging && inResponse.paging.current_page) ? inResponse.paging.current_page : null;
+        this.app.UserConfig.set('copy', false); // force EZ-Copy disabled when submitting the form - make a config for this?
 
         if(this.manualRequest) {
             this.updateHash();

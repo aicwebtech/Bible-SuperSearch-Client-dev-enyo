@@ -214,6 +214,27 @@ module.exports = kind({
                 ]
             }
         },
+        {
+            classes: 'item highlight_toggle',
+            name: 'highlight_toggle',
+            kind: Toggle,         
+            trueTitle: 'Disable Highlighting of Keywords',
+            falseTitle: 'Enable Highlighting of Keywords',
+            trueComponent: {
+                components: [
+                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+                    {kind: i18n, tag: 'span', content: 'Highlight'}
+                ]
+            },        
+            falseComponent: {
+                components: [
+                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
+                    {kind: i18n, tag: 'span', content: 'Highlight'}
+                ]
+            }
+        },    
+
+
         // 'Extra' (non-formatting) buttons
         {
             kind: i18n,
@@ -314,6 +335,10 @@ module.exports = kind({
             return value;
         }},             
         {from: 'app.UserConfig.red_letter', to: '$.redletter_toggle.value', oneWay: false, transform: function(value, dir) {
+            // console.log('FormatButtons red_letter', value, dir);
+            return value;
+        }},
+        {from: 'app.UserConfig.highlight', to: '$.highlight_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons red_letter', value, dir);
             return value;
         }}

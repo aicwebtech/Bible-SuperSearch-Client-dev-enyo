@@ -29,7 +29,7 @@ module.exports = kind({
 
     observers: [
         // {method: 'watchRenderable', path: ['app.UserConfig.copy', 'app.UserConfig.paragraph']}
-        {method: 'watchRenderable', path: ['uc.copy', 'uc.paragraph', 'uc.strongs', 'uc.italics', 'uc.red_letter']},
+        {method: 'watchRenderable', path: ['uc.copy', 'uc.paragraph', 'uc.strongs', 'uc.italics', 'uc.red_letter', 'uc.highlight']},
         {method: 'watchTextSize', path: ['uc.text_size']},
         {method: 'watchFont', path: ['uc.font']}
     ],

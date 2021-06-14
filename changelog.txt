@@ -1,4 +1,6 @@
-= 4.4.3 ??? =
+= 4.4.3 ??? =  4.5 ????
+* Improvement: Added ability to toggle keyword highlighting
+* Improvement: Auto disabling of EZ-Copy when submitting the form
 * Fixed responsive issues on expanding form
 * Fixed off-centered checkbox on the toggle buttons
 * Fixed misc off cross-browser issues
