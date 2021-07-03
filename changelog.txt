@@ -1,9 +1,10 @@
 = 4.4.3 ??? =  4.5 ????
+* Improvement: Share text format: put URL and title at the bottom.
 * Improvement: Added ability to toggle keyword highlighting
 * Improvement: Auto disabling of EZ-Copy when submitting the form
 * Fixed responsive issues on expanding form
 * Fixed off-centered checkbox on the toggle buttons
-* Fixed misc off cross-browser issues
+* Fixed misc cross-browser issues
 
 = 4.4.2 May 24, 2021 =
 * Fixed issues with RTL detection on Bibles

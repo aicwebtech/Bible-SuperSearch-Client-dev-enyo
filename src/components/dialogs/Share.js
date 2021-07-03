@@ -87,16 +87,16 @@ module.exports = kind({
         var title = document.title,
             url = window.location.href,
             responseData = this.app.get('responseData'),
-            limit = 7
-            count = 0;
-
-        var content = title + '\n\n' + url;
+            limit = 7,
+            count = 0,
+            content = '',
+            bibleName = '',
+            singleVerse = false,
+            maxReached = false;
 
         if(responseData.success) {
             var passages = responseData.results.results,
                 bible = null;
-
-            content += '\n\n';
 
             mainLoop:
             for(var i in passages) {
@@ -112,7 +112,7 @@ module.exports = kind({
                             }
 
                             bible = b;
-                            content += this.app.statics.bibles[b].name + '\n\n';
+                            bibleName = this.app.statics.bibles[b].name;
                             break;
                         } 
                     }
@@ -121,7 +121,6 @@ module.exports = kind({
                 content += (p.single_verse) ? '' : p.book_name + ' ' + p.chapter_verse + '\n\n';
 
                 for(var c in p.verse_index) {
-
                     for(var idx in p.verse_index[c]) {
                         count ++;
                         var v = p.verse_index[c][idx];
@@ -129,8 +128,10 @@ module.exports = kind({
 
                         content += (p.single_verse) ? p.book_name + ' ' + p.chapter_verse + '\n' : verse.verse + ' ';
                         content += this.processText(verse.text);
+                        
                         if(count >= limit) {
-                            content += (p.single_verse) ? '\n…' : ' …';
+                            content += (p.single_verse) ? '\n\n…' : ' …';
+                            maxReached = true;
                             break mainLoop;
                         }
 
@@ -139,9 +140,12 @@ module.exports = kind({
                 }
 
                 content += (p.single_verse) ? '' : '\n';
+                singleVerse = p.single_verse;
             }
         }
 
+        content += (maxReached) ? '\n\n' : ''; // same regardles of singleVerse
+        content += '\n' + bibleName + '\n\n\n' + title + '\n' + url;
         this.$.CopyArea.set('content', content.trim());
     },
 
