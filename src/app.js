@@ -18,6 +18,7 @@ var i18n = require('enyo/i18n');
 var Loading = require('./components/LoadingInline');
 var Locales = require('./i18n/LocaleLoader');
 var Validators = require('./lib/Validators');
+var AlertDialog = require('./components/dialogs/Alert');
 
 //var MainView = require('./view/Content');
 
@@ -59,6 +60,7 @@ var App = Application.kind({
     localeDatasets: {},
     localeBibleBooks: {},
     validate: Validators,
+    AlertDialog: AlertDialog,
     
     // Selectable sub-views:
     formatButtonsView: null,
@@ -913,6 +915,18 @@ var App = Application.kind({
         });
 
         return trans;
+    },
+    alert: function(string, inSender, inEvent) {
+        // todo - make some sort of custom alert dialog here!
+        // alert(string);
+        if(inSender && inEvent) {
+            Signal.send('onPositionedAlert', {alert: string, inSender: inSender, inEvent: inEvent});
+        }
+        else {
+            Signal.send('onAlert', {alert: string});
+        }
+        // this.AlertDialog.set('showing', true);
+        // this.AlertDialog.set('alert', alert);
     }
 });
 

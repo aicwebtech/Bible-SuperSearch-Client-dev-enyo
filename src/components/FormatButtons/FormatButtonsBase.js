@@ -76,6 +76,11 @@ module.exports = kind({
     handleShare: function(inSender, inEvent) {
         this.app.set('shareShowing', true);
     },
+    handleCopyInstant: function(inSender, inEvent) {
+        this.app.UserConfig.set('copy', true);
+        Signal.send('onTriggerCopy', {inSender: inSender, inEvent: inEvent});
+        this.app.UserConfig.set('copy', false);
+    },
     _hideExtras: function() {
         var softConfig = this.app.configs.extraButtonsSeparate,
             supported = this.app.view.FormatButtonsHideExtrasSupported || false;

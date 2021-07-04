@@ -14,6 +14,7 @@ module.exports = kind({
         this.container = this._createContainer();
         var headerComponents = [];
         var copyComponents = [];
+        var displayedBible = 0;
 
         for(i in this.bibles) {
             var module = this.bibles[i];
@@ -24,6 +25,7 @@ module.exports = kind({
             }
 
             var name = this._getBibleComponentName(i);
+            displayedBible ++;
 
             if(this.multiBibles) {            
                 headerComponents.push({
@@ -36,6 +38,7 @@ module.exports = kind({
                 kind: CopyPane,
                 owner: this.container,
                 name: name,
+                displayedBible: displayedBible,
                 classes: (this.selectedBible.rtl) ? 'biblesupersearch_copy_pane rtl' : 'biblesupersearch_copy_pane ltr'
             });
         }

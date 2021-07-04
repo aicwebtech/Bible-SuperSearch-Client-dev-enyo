@@ -127,6 +127,16 @@ module.exports = kind({
                 allowHtml: true
             }
         },
+        // {tag: 'span', components: [
+            {
+                classes: 'item',
+                name: 'copy_instant',
+                kind: i18n,
+                content: 'Copy',
+                ontap: 'handleCopyInstant',
+                style: 'position: relative'
+            },
+        // ]},
         {
             classes: 'item copy_toggle',
             name: 'copy_toggle',
