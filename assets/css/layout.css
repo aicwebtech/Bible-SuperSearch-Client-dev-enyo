@@ -319,17 +319,20 @@ div.biblesupersearch_dialog {
 
 .alert_dialog {
     /*background-color: green;*/
-    text-align: center;
-    /*position: sticky;*/
+/*    text-align: center;
+    position: sticky;
     top: 20px;
-    z-index: 40000000;
-    font-weight: bold;
+    z-index: 40000000;*/
     /*border: 1px solid black;*/
-    background-color: #e0e0e0;
+    background-color: white;
+}
+
+.alert_dialog .content {
     padding: 5px 10px;
 }
 
 .alert_dialog_container {
+    font-weight: bold;
     text-align: center;
     margin-top: 15px;
     /*position: relative;*/
