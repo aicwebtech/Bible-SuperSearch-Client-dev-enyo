@@ -168,6 +168,34 @@ module.exports = kind({
             },
         },        
         {
+            classes: 'item single_verse_toggle',
+            name: 'single_verse_toggle',
+            kind: Toggle,            
+            trueTitle: 'Group Display',
+            falseTitle: 'Single Display',
+            trueComponent: {
+                components: [
+                    {tag: 'span', content: '&nbsp; -- -', allowHtml: true},
+                    {tag: 'span', content: '', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                ]
+            },
+            falseComponent: {
+                components: [
+                    {tag: 'span', content: '- -.- ------', allowHtml: true},
+                    {tag: 'span', content: '- -.- ------', allowHtml: true},
+                    {tag: 'span', content: '- -.- ------', allowHtml: true},
+                    {tag: 'span', content: '- -.- ------', allowHtml: true},
+                    {tag: 'span', content: ''},
+                    {tag: 'span', content: ''},
+                    {tag: 'span', content: ''}
+                ]
+            },
+        },        
+        {
             classes: 'item italics_toggle',
             name: 'italics_toggle',
             kind: Toggle,         
@@ -327,6 +355,11 @@ module.exports = kind({
             // return (value && value != 0 && value != false) ? true : false;
         }},         
         {from: 'app.UserConfig.copy', to: '$.copy_toggle.value', oneWay: false, transform: function(value, dir) {
+            // console.log('FormatButtons copy_toggle', value, dir);
+            return value;
+            // return (value && value != 0 && value != false) ? true : false;
+        }},        
+        {from: 'app.UserConfig.single_verses', to: '$.single_verse_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons copy_toggle', value, dir);
             return value;
             // return (value && value != 0 && value != false) ? true : false;

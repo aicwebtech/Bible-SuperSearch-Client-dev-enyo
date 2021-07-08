@@ -84,7 +84,12 @@
     overflow: hidden;
 }
 
-.format_buttons_html .item.paragraph_toggle .true span, .format_buttons_html .item.copy_toggle .true span, .format_buttons_html .item.copy_toggle .false span  {
+.format_buttons_html .item.paragraph_toggle .true span, 
+.format_buttons_html .item.copy_toggle .true span, 
+.format_buttons_html .item.copy_toggle .false span,  
+.format_buttons_html .item.single_verse_toggle .true span, 
+.format_buttons_html .item.single_verse_toggle .false span  
+{
     height: 4px;
     display: block;
     text-align: left;
@@ -112,6 +117,26 @@
     font-size: 8px;
     top: -1px;
 }
+
+.format_buttons_html .item.single_verse_toggle.is_false span span {
+    /*background-color: #3390ff;*/
+    position: initial;
+    line-height: 4px;
+}
+
+.format_buttons_html .item.single_verse_toggle {
+    width: 40px;
+}
+
+.format_buttons_html .item.single_verse_toggle .false {
+    /*color: white;*/
+}
+
+.format_buttons_html .item.single_verse_toggle span.buttons {
+    font-size: 8px;
+    top: -1px;
+}
+
 
 .format_buttons_html .item.advanced_toggle {
     min-width: 63px;

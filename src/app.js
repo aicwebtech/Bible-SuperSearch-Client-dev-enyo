@@ -19,6 +19,7 @@ var Loading = require('./components/LoadingInline');
 var Locales = require('./i18n/LocaleLoader');
 var Validators = require('./lib/Validators');
 var AlertDialog = require('./components/dialogs/Alert');
+var ResponseCollection = require('./data/collections/ResponseCollection');
 
 //var MainView = require('./view/Content');
 
@@ -61,6 +62,7 @@ var App = Application.kind({
     localeBibleBooks: {},
     validate: Validators,
     AlertDialog: AlertDialog,
+    responseCollection: ResponseCollection,
     
     // Selectable sub-views:
     formatButtonsView: null,
@@ -81,6 +83,11 @@ var App = Application.kind({
             routes: [ {handler: 'handleHashGeneric', default: true} ]
         }
     ],
+
+    observers: [
+        {method: 'watchSingleVerses', path: ['UserConfig.single_verses']}
+    ],
+
 
     create: function() {
         this.inherited(arguments);
@@ -927,6 +934,36 @@ var App = Application.kind({
         }
         // this.AlertDialog.set('showing', true);
         // this.AlertDialog.set('alert', alert);
+    },
+    responseDataChanged: function(was, is) {
+        this.UserConfig.get('single_verses') && this._checkSingleVerses();
+    },
+    watchSingleVerses: function(pre, cur, prop)  {
+        this.log();
+        this._checkSingleVerses();
+    },
+    _checkSingleVerses: function() {
+        if(!this.get('responseData')) {
+            return;
+        }
+
+        if(this.UserConfig.get('single_verses')) {
+            this.log('yes');
+            var responseDataNew = utils.clone(this.get('responseData'));
+            responseDataNew.results = utils.clone(responseDataNew.results);
+            responseDataNew.results.results = this.responseCollection.toVerses( utils.clone(responseDataNew.results.results) );
+        }
+        else {
+            this.log('no');
+            // responseDataNew.results.results = utils.clone(responseDataNew.results.results);
+            var responseDataNew = this.get('responseData');
+        }
+
+        this.log('responseDataNew', responseDataNew.results.results);
+        this.log('responseData', this.get('responseData').results.results);
+
+        this.waterfall('onFormResponseSuccess', responseDataNew);
+        Signal.send('onFormResponseSuccess', responseDataNew);
     }
 });
 

@@ -136,7 +136,7 @@ module.exports = kind({
             this.$.ErrorsContainer.set('showing', true);
         }
 
-        this.$.ResultsController.set('resultsData', inEvent.results);
+        this.$.ResultsController.set('resultsData', utils.clone(inEvent.results));
         this.$.ResultsController.set('formData', inEvent.formData);
         this.$.ResultsController.renderResults();
 
