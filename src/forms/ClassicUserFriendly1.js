@@ -47,6 +47,7 @@ module.exports = kind({
                         {tag: 'span', content: ' '},
                         {kind: Shortcuts, name: 'shortcut', style: 'width: 100%; max-width: 200px'}
                     ]},
+                    {tag: 'br'},
                     {components: [
                         {kind: Checkbox, name: 'whole_words', id: 'whole_words'},
                         {tag: 'span', content: ' '},

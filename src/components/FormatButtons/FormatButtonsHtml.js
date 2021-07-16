@@ -128,14 +128,14 @@ module.exports = kind({
             }
         },
         // {tag: 'span', components: [
-            {
-                classes: 'item',
-                name: 'copy_instant',
-                kind: i18n,
-                content: 'Copy',
-                ontap: 'handleCopyInstant',
-                style: 'position: relative'
-            },
+            // {
+            //     classes: 'item',
+            //     name: 'copy_instant',
+            //     kind: i18n,
+            //     content: 'Copy',
+            //     ontap: 'handleCopyInstant',
+            //     style: 'position: relative'
+            // },
         // ]},
         {
             classes: 'item copy_toggle',
@@ -167,34 +167,34 @@ module.exports = kind({
                 ]
             },
         },        
-        {
-            classes: 'item single_verse_toggle',
-            name: 'single_verse_toggle',
-            kind: Toggle,            
-            trueTitle: 'Group Display',
-            falseTitle: 'Single Display',
-            trueComponent: {
-                components: [
-                    {tag: 'span', content: '&nbsp; -- -', allowHtml: true},
-                    {tag: 'span', content: '', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                ]
-            },
-            falseComponent: {
-                components: [
-                    {tag: 'span', content: '- -.- ------', allowHtml: true},
-                    {tag: 'span', content: '- -.- ------', allowHtml: true},
-                    {tag: 'span', content: '- -.- ------', allowHtml: true},
-                    {tag: 'span', content: '- -.- ------', allowHtml: true},
-                    {tag: 'span', content: ''},
-                    {tag: 'span', content: ''},
-                    {tag: 'span', content: ''}
-                ]
-            },
-        },        
+        // {
+        //     classes: 'item single_verse_toggle',
+        //     name: 'single_verse_toggle',
+        //     kind: Toggle,            
+        //     trueTitle: 'Group Display',
+        //     falseTitle: 'Single Display',
+        //     trueComponent: {
+        //         components: [
+        //             {tag: 'span', content: '&nbsp; -- -', allowHtml: true},
+        //             {tag: 'span', content: '', allowHtml: true},
+        //             {tag: 'span', content: '- ------', allowHtml: true},
+        //             {tag: 'span', content: '- ------', allowHtml: true},
+        //             {tag: 'span', content: '- ------', allowHtml: true},
+        //             {tag: 'span', content: '- ------', allowHtml: true},
+        //         ]
+        //     },
+        //     falseComponent: {
+        //         components: [
+        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
+        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
+        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
+        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
+        //             {tag: 'span', content: ''},
+        //             {tag: 'span', content: ''},
+        //             {tag: 'span', content: ''}
+        //         ]
+        //     },
+        // },        
         {
             classes: 'item italics_toggle',
             name: 'italics_toggle',
