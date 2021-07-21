@@ -22,8 +22,10 @@ module.exports = kind({
                 continue;
             }
 
+            var langName = Locales[i].meta.lang_name || Locales[i].meta.lang_name_en
+
             this.createComponent({
-                content: i + ' ' + Locales[i].meta.lang_name_en,
+                content: langName + ' (' + i.toUpperCase() + ')',
                 value: i
             });
         }

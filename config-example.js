@@ -95,7 +95,7 @@ var biblesupersearch_config_options = {
 
         // Classic forms - migrated from legacy
 
-            // Classic - Classic (same as Classic User Friendly 2)
+            // Classic - Classic (alias of 'Classic User Friendly 2')
             // "interface": 'Classic',
             
             // Classic User Friendly 1

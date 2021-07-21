@@ -48,8 +48,8 @@ module.exports = {
     
     // Classic forms - migrated from legacy
 
-        // Classic - Classic (same as Classic User Friendly 2)
-        'Classic': require('./interfaces/classic/ClassicBase'),
+        // Classic - Classic (Alias of Classic User Friendly 2)
+        'Classic': require('./interfaces/classic/UserFriendly2'),
         
         // Classic User Friendly 1
         'ClassicUserFriendly1': require('./interfaces/classic/UserFriendly1'),        

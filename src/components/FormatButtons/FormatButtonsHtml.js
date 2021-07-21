@@ -252,25 +252,25 @@ module.exports = kind({
                 ]
             }
         },
-        {
-            classes: 'item highlight_toggle',
-            name: 'highlight_toggle',
-            kind: Toggle,         
-            trueTitle: 'Disable Highlighting of Keywords',
-            falseTitle: 'Enable Highlighting of Keywords',
-            trueComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                    {kind: i18n, tag: 'span', content: 'Highlight'}
-                ]
-            },        
-            falseComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                    {kind: i18n, tag: 'span', content: 'Highlight'}
-                ]
-            }
-        },    
+        // {
+        //     classes: 'item highlight_toggle',
+        //     name: 'highlight_toggle',
+        //     kind: Toggle,         
+        //     trueTitle: 'Disable Highlighting of Keywords',
+        //     falseTitle: 'Enable Highlighting of Keywords',
+        //     trueComponent: {
+        //         components: [
+        //             {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+        //             {kind: i18n, tag: 'span', content: 'Highlight'}
+        //         ]
+        //     },        
+        //     falseComponent: {
+        //         components: [
+        //             {tag: 'span', classes: 'block_disabled', allowHtml: true},
+        //             {kind: i18n, tag: 'span', content: 'Highlight'}
+        //         ]
+        //     }
+        // },    
 
 
         // 'Extra' (non-formatting) buttons
