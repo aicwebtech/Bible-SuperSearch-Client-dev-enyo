@@ -30,6 +30,14 @@ module.exports = {
     
     request: {from: 'formData.request', to: '$.request.value', oneWay: false, shortLink: true, transform: function(value, dir) {
         // this.log('request', value, dir);
+        
+        // If form data has 'request' but form does NOT, route it to the correct field, and DON'T populate the request field.
+        // if(dir == 1 && this._requestChangeRoute(value)) {
+        //     this.formData.request = null;
+        //     this.log('request change DENIED');
+        //     return null;
+        // }
+
         this.bubble('onFormFieldChanged', {field: 'request', value: value, dir: dir});
         return value || null;
     }},
