@@ -1,3 +1,7 @@
+= 4.5.0
+* (Possible) Improvement: Added ability to toggle keyword highlighting
+* (Possible) Improvement: Auto disabling of EZ-Copy when submitting the form
+
 = 4.4.3
 * Improvement: Share text format: put URL and title at the bottom.
 * Fixed responsive issues on expanding form
