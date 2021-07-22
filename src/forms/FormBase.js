@@ -3,6 +3,7 @@ var Ajax = require('enyo/Ajax');
 var utils = require('enyo/utils');
 var Signal = require('../components/Signal');
 var Bindings = require('./FormBindings');
+var Passage = require('../components/Passage');
 
 module.exports = kind({
     name: 'FormBase',
@@ -23,6 +24,8 @@ module.exports = kind({
     referenceField: 'reference',
     searchField: 'search',
     defaultSearchType: 'and',
+
+    Passage: Passage,
 
     handlers: {
         onCacheChange: 'handleCacheChange',
@@ -419,6 +422,8 @@ module.exports = kind({
         if(this.$.request && this.$.request.get('type') != 'hidden' || !value || value == null) {
             return false;
         }
+
+        return this.Passage.routeRequest(value);
 
         var field = null;
         var nonPassageChars = this._containsNonPassageCharacters(value);
