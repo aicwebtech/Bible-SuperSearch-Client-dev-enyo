@@ -228,6 +228,16 @@ module.exports = kind({
             delete formData.reference;
         }
 
+        var requestField = this._requestChangeRoute(formData.request);
+        this.log('requestField', requestField);
+
+        if(requestField) {
+            formData[requestField] = formData.request;
+            delete formData.request;
+        }
+
+        this.log(formData);
+
         this.set('formData', {});
         this.set('formData', utils.clone(formData));
     },
@@ -404,6 +414,53 @@ module.exports = kind({
         else {
             this.$.shortcut.set('selected', 0);
         }
+    },
+    _requestChangeRoute: function(value) {
+        if(this.$.request && this.$.request.get('type') != 'hidden' || !value || value == null) {
+            return false;
+        }
+
+        var field = null;
+        var nonPassageChars = this._containsNonPassageCharacters(value);
+
+
+        // todo - migrate full logic here!
+
+        // Treats as passage if 
+        // * It's not empty AND 
+        // * doesn't contain Strong's Numbers AND
+        // * doesn't contain invalid characters for a reference (such as those used for boolean or REGEXP queries) AND 
+        // * either
+        //      1) It contains numbers but no (parentheses) or
+        //      2) It resolves to multiple (possible) passages
+        // Note: This passage-checking logic is specific to this method
+
+
+        if(
+            !nonPassageChars && 
+            !value.match(/[GHgh][0-9]+/) && 
+            value.match(/[0-9]/) && !value.match(/\(\)/)
+        ) {
+            field = 'reference';
+            // this.$.reference.set('value', value);
+        }
+        else {
+            // this.$.search.set('value', value);
+            field = 'search';
+        }
+
+
+        // matches = value.match(/([123] )?[]/gi);
+        return field;
+
+    },
+
+    _containsNonPassageCharacters: function(str) {
+        // migrated from PHP API.
+
+        nonPassageChars = str.match(/[`\\~!@#$%\^&*{}_[\]()]/);
+
+        return nonPassageChars ? true : false;
     },
     keyPress: function(inSender, inEvent) {
         if(inEvent.key == 'Enter' || inEvent.keyCode && inEvent.keyCode == 13) {
