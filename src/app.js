@@ -468,6 +468,9 @@ var App = Application.kind({
                     break;                   
                 case 'r':   // Reference string
                     return this._hashReference(parts);
+                    break;                
+                case 'q':   // Request string
+                    return this._hashRequest(parts);
                     break;
                 case 's':   // Search string
                     return this._hashSearch(parts);
@@ -552,18 +555,23 @@ var App = Application.kind({
         var formData = this._assembleHashPassage(partsObj);
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },   
-    _hashSearch: function(parts) {
+    _hashRequest: function(parts) {
+        this._hashSearch(parts, true);
+    },
+    _hashSearch: function(parts, forceUseRequestField) {
         var bible  = parts[0] || null;
         var search = parts[1] || null;
         var searchType = parts[2] || null;
         var reference = parts[3] || null;
-        var useRequestField = this.formHasField('request');
+        var page = parts[4] || null;
+        var useRequestField = (forceUseRequestField || this.formHasField('request')) ? true : false;
 
         var formData = {
             // search: search.replace(/%20/g, ' '),
             bible: bible ? bible.split(',') : null,
             search_type: searchType,
-            reference: reference
+            reference: reference,
+            page: page
         };
         
         if(useRequestField) {
