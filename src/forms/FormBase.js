@@ -502,10 +502,11 @@ module.exports = kind({
     },
     _generateHashFromData: function() {
         if(!this.isShortHashable()) {
+            this.app.debug && this.log('NOT short hashable');
+
             return null;
         }
 
-            // return null;
         var hash = null;
         var bibles = this.app.getSelectedBiblesString();
 
@@ -513,22 +514,37 @@ module.exports = kind({
         var search = this.$.search ? this.$.search.get('value') : null;
         var request = this.$.request ? this.$.request.get('value') : null;
 
-        this.app.debug && this.log(reference, search, request);
+        var pas = reference ? reference : request;
+        var passages = this.Passage.explodeReferences(pas, true);
+        var refId = 'r';
+
+        if(passages && passages.length == 1 && this.Passage.isPassage(pas)) {
+            if(!reference) {
+                request = null;
+            }
+
+            reference = passages[0].book + '/' + passages[0].chapter_verse;
+            refId = 'p';
+        }
+
+        this.app.debug && this.log(reference, search, request, passages);
 
         // Todo - convert space to something more aesthetic.  _ or .?
-        // UNSAFE: /,;-
+        // UNSAFE IN URL: /,;-
 
         if(reference && !search && !request) {
             // Todo - single reference hashes need to be in this format: /#/p/kjv,rvg/Romans/2
             reference = reference.trim();
-
-            // if(reference.match(/))
-
-            hash = '#/r/' + bibles + '/' + reference;
+            hash = '#/' + refId + '/' + bibles + '/' + reference;
         }        
 
         if(!reference && search && !request) {
             hash = '#/s/' + bibles + '/' + search;
+        }
+
+        if(!reference && !search && request) {
+            hash = '#/q/' + bibles + '/' + request;
+            // hash = '#/s/' + bibles + '/' + request; // Also works
         }
 
         if(!hash) {

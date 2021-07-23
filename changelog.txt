@@ -7,6 +7,8 @@
 * Fixed responsive issues on expanding form
 * Fixed off-centered checkbox on the toggle buttons
 * Fixed misc cross-browser issues
+* Fixed issues when sending a request from a form/widget with a single request field to a form with both reference and search fields.
+* Fixed clean URLs now working when using the expanding form.
 
 = 4.4.2 May 24, 2021 =
 * Fixed issues with RTL detection on Bibles

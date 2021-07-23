@@ -10,6 +10,7 @@ module.exports = kind({
     classes: 'biblesupersearch_pager',
     lastPage: null, // Total number of pages
     cacheHash: 'abcde12345', //null,
+    formData: {},
     currentPage: 1,
     perPage: 30,
     totalResults: null,
@@ -43,6 +44,7 @@ module.exports = kind({
         var displayRangeSt = (page - 1) * this.perPage + 1;
         var displayRangeEn = page * this.perPage;
         var showing = (this.lastPage > 1) ? true : false;
+        var urlBase = this.getLinkBase();
 
         displayRangeEn = (displayRangeEn > this.totalResults) ? this.totalResults : displayRangeEn;
 
@@ -95,7 +97,7 @@ module.exports = kind({
         LinkContainer.createComponent({
             kind: Link,
             classes: (page == 1) ? 'std_link disabled' : 'std_link',
-            href: (page == 1) ? null : '#/c/' + cache + '/' + prevPage.toString(),
+            href: (page == 1) ? null : urlBase + prevPage.toString(),
             content: this.prevPageText,
             allowHtml: true,
             title: 'Previous Page'
@@ -121,7 +123,7 @@ module.exports = kind({
             for(var i = displayFirstPage; i <= displayLastPage; i++) {
                 LinkContainer.createComponent({
                     kind: Link,
-                    href: (i == page) ? null : '#/c/' + cache + '/' + i.toString(),
+                    href: (i == page) ? null : urlBase + i.toString(),
                     classes: (i == page) ? 'std_link current_page' : 'std_link',
                     content: i.toString()
                 });
@@ -131,7 +133,7 @@ module.exports = kind({
         LinkContainer.createComponent({
             classes: (page == this.lastPage) ? 'std_link disabled' : 'std_link',
             kind: Link,
-            href: (page == this.lastPage) ? null : '#/c/' + cache + '/' + nextPage.toString(),
+            href: (page == this.lastPage) ? null : urlBase + nextPage.toString(),
             content: this.nextPageText,
             allowHtml: true,
             title: 'Next Page'
@@ -143,7 +145,7 @@ module.exports = kind({
                 kind: Link,
                 allowHtml: true,
                 content: this.lastPageText,
-                href: (page == this.lastPage) ? null : '#/c/' + cache + '/' + this.lastPage.toString(),
+                href: (page == this.lastPage) ? null : urlBase + this.lastPage.toString(),
                 title: 'Last Page'
             });
         }
@@ -179,6 +181,39 @@ module.exports = kind({
             Signal.send('onPageChange', data);
             this.doPageChange(data);
         }
+    },
+    getLinkBase: function() {
+        var curUrl = window.location.href;
+        parts = curUrl.split('#');
+
+        if(parts[1]) {        
+            subparts = parts[1].split('/');
+
+            var mode = subparts.shift();
+
+            if(mode == '') {
+                mode = subparts.shift();
+            }
+
+            subpartsClean = [
+                mode || 's',
+                subparts[0] || '',
+                subparts[1] || '',
+                subparts[2] || '',
+                subparts[3] || '',
+            ];
+
+            // page = subparts.pop();
+
+            // if(Number.isNaN( Number.parseInt(page, 10))) {
+            //     subparts.push(page);
+            // }
+
+            return '#/' + subpartsClean.join('/') + '/';
+        }
+
+        var cache = this.get('cacheHash');
+        return '#/c/' + cache + '/';
     }
 
 });

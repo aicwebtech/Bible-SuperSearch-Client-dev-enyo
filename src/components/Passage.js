@@ -33,6 +33,10 @@ module.exports = {
         return field;
     },
 
+    isPassage: function(str) {
+        return this.routeRequest(str) == 'reference' ? true : false;
+    },
+
     _containsNonPassageCharacters: function(str) {
         // migrated from PHP API.
         nonPassageChars = str.match(/[`\\~!@#$%\^&*{}_[\]()]/);
@@ -55,7 +59,7 @@ module.exports = {
         for(pos = ref_end; pos >= 0; pos --) {
             char = reference.charAt(pos);
 
-            if(!book_end && !char.match(/[0-9\s.,;: ]/) ) {
+            if(!book_end && !char.match(/[0-9\s.,;:\- ]/) ) {
                 book_end = pos;
             }
             else if(book_end && (char == ',' || char == ';' || pos == 0)) {
