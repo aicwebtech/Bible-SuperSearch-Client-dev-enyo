@@ -367,6 +367,7 @@ module.exports = kind({
             perPage: this.paging.per_page,
             totalResults: this.paging.total,
             cacheHash: this.resultsData.hash,
+            formData: this.formData,
             includeTotals: includeTotals
         });
     },

@@ -559,6 +559,8 @@ var App = Application.kind({
         this._hashSearch(parts, true);
     },
     _hashSearch: function(parts, forceUseRequestField) {
+        // Proposed new Format: '#/s/<Bible(s)>/<SearchOrRequest>/<page>/<SearchType>/<Reference>/'
+
         var bible  = parts[0] || null;
         var search = parts[1] || null;
         var searchType = parts[2] || null;
@@ -947,7 +949,6 @@ var App = Application.kind({
         this.UserConfig.get('single_verses') && this._checkSingleVerses();
     },
     watchSingleVerses: function(pre, cur, prop)  {
-        this.log();
         this._checkSingleVerses();
     },
     _checkSingleVerses: function() {

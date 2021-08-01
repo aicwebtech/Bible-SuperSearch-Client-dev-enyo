@@ -3,6 +3,7 @@ var Button = require('enyo/Button');
 var Signal = require('../Signal');
 var Link = require('../Link/Link');
 var i18n = require('../Locale/i18nContent');
+var Passage = require('../Passage');
 
 // Classic text / html based pager
 module.exports = kind({
@@ -22,6 +23,8 @@ module.exports = kind({
     prevPageText: '<<',
     nextPageText: '>>',
     lastPageText: '>>>',
+
+    Passage: Passage,
 
     events: {
         onPageChange: ''
@@ -183,8 +186,25 @@ module.exports = kind({
         }
     },
     getLinkBase: function() {
+        var cache = this.get('cacheHash');
+        return '#/c/' + cache + '/';
+
         var curUrl = window.location.href;
         parts = curUrl.split('#');
+
+        var search = '',
+            passage = '';
+
+        if(this.formData) {
+            if(this.formData.search) {
+                search = this.formData.search;
+                passage = this.formData.reference || null;
+            }
+            else {
+                search = this.formData.request;
+                
+            }
+        }
 
         if(parts[1]) {        
             subparts = parts[1].split('/');

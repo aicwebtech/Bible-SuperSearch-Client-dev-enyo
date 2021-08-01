@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 = 4.5.0
 * (Possible) Improvement: Added ability to toggle keyword highlighting
 * (Possible) Improvement: Auto disabling of EZ-Copy when submitting the form
 
 = 4.4.3
+=======
+= 4.4.3 July 31, 2021 = 
+>>>>>>> 6a1a081... Finishing up 4.4.3 release
 * Improvement: Share text format: put URL and title at the bottom.
 * Fixed responsive issues on expanding form
 * Fixed off-centered checkbox on the toggle buttons
