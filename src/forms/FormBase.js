@@ -232,14 +232,11 @@ module.exports = kind({
         }
 
         var requestField = this._requestChangeRoute(formData.request);
-        this.log('requestField', requestField);
 
         if(requestField) {
             formData[requestField] = formData.request;
             delete formData.request;
         }
-
-        this.log(formData);
 
         this.set('formData', {});
         this.set('formData', utils.clone(formData));

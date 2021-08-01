@@ -1,4 +1,4 @@
-= 4.4.3
+= 4.4.3 July 31, 2021 = 
 * Improvement: Share text format: put URL and title at the bottom.
 * Fixed responsive issues on expanding form
 * Fixed off-centered checkbox on the toggle buttons
