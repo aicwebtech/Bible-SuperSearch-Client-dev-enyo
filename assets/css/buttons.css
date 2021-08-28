@@ -210,6 +210,15 @@
     /*background-color: transparent;*/
 }
 
+.biblesupersearch_copy_settings .presets button {
+    margin: 0 3px;
+}
+
+.biblesupersearch_copy_settings .presets button.active {
+    background-color: #444444;
+    color: white;
+}
+
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     div.copy_toggle span.false {
         padding-top: 6px;

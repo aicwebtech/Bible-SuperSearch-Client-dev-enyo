@@ -1,6 +1,7 @@
 var kind = require('enyo/kind');
 var Button = require('enyo/Button');
 var Group = require('enyo/Group');
+var utils = require('enyo/utils');
 var Signal = require('../Signal');
 
 
@@ -8,6 +9,53 @@ var Input = require('../../components/Locale/i18nInput');
 var Checkbox = require('enyo/Checkbox');
 var inc = require('../../components/Locale/i18nComponent');
 var i18n = require('../../components/Locale/i18nContent');
+
+var Preset = kind({
+    name: 'CopySettingsPreset',
+    kind: Button,
+    settings: null,
+    label: null,
+
+    components: [
+        {name: 'label', kind: i18n}
+    ],
+
+    bindings: [
+        {from: 'label', to: '$.label.content'}
+    ]
+});
+
+var presetOptions = [
+    {
+        label: 'Word Processor', 
+        name: 'word_processor',
+        settings: {
+            copy_separate_line: false,
+            copy_omit_extra_br: false,
+            copy_abbr_book: false,
+            copy_text_format: 'reference_text',
+            copy_passage_format: 'reference_passage',
+            copy_passage_verse_number: true
+        }
+    }, 
+    {
+        label: 'Outline',
+        name: 'outline',
+        settings: {
+            copy_separate_line: true,
+            copy_omit_extra_br: true,
+            copy_abbr_book: false,
+            copy_text_format: 'reference_text',
+            copy_passage_format: 'reference_passage',
+            copy_passage_verse_number: true
+        }
+    },    
+    {
+        label: 'Custom',
+        name: 'custom',
+        settings: null
+    }
+];
 
 // This might be converted to an actual dialog some day
 module.exports = kind({
@@ -19,15 +67,26 @@ module.exports = kind({
 
     components: [
         {
-            classes: 'presets',
+            classes: 'presets_container',
             components: [
-                {kind: Button, content: 'Verse'},
-                {kind: Button, content: 'Outline'},
-                {kind: Button, content: 'Something Else'}
+                {
+                    kind: i18n,
+                    content: 'Copy Format',
+                    tag: 'b',
+                    classes: 'label',
+                },
+                {tag: 'b', content: ': ', classes: 'label'},
+                {            
+                    classes: 'presets',
+                    name: 'presets_group',
+                    kind: Group,
+                    // allowHighlanderDeactivate: true,
+                }
             ]
         },
         {
             classes: 'settings',
+            name: 'settings_container',
             components: [
                 {
                     classes: 'section',
@@ -122,37 +181,43 @@ module.exports = kind({
                                 {kind: Checkbox, name: 'omit_extra_br', id: 'omit_extra_br'}
                             ]},
                             {kind: i18n, tag: 'label', attributes: {for: 'omit_extra_br'}, classes: 'label', content: 'Omit Extra Line Breaks'}
-                        ]},                
+                        ]},                          
+                        // NOT NEEDED?
+                        // {classes: 'checkbox_container checkbox_first', components: [
+                        //     {classes: 'element', components: [
+                        //         {kind: Checkbox, name: 'allow_html', id: 'allow_html'}
+                        //     ]},
+                        //     {kind: i18n, tag: 'label', attributes: {for: 'allow_html'}, classes: 'label', content: 'Allow HTML Line Breaks'}
+                        // ]},                
                     ]
                 },
                 {classes: 'clear-both'}
             ]
         }
-        
     ],
 
     bindings: [    
         {from: 'app.UserConfig.copy_separate_line', to: '$.separate_line.checked', oneWay: false, transform: function(value, dir) {
-            console.log('Copy separate_line', value, dir);
+            // console.log('Copy separate_line', value, dir);
             return value;
         }},         
         {from: 'app.UserConfig.copy_omit_extra_br', to: '$.omit_extra_br.checked', oneWay: false, transform: function(value, dir) {
-            console.log('Copy omit_extra_br', value, dir);
+            // console.log('Copy omit_extra_br', value, dir);
             return value;
         }},        
         {from: 'app.UserConfig.copy_abbr_book', to: '$.abbr_book.checked', oneWay: false, transform: function(value, dir) {
-            console.log('Copy abbr_book', value, dir);
+            // console.log('Copy abbr_book', value, dir);
             return value;
         }},            
         {from: 'app.UserConfig.copy_passage_verse_number', to: '$.passage_verse_number.checked', oneWay: false, transform: function(value, dir) {
-            console.log('Copy passage_verse_number', value, dir);
+            // console.log('Copy passage_verse_number', value, dir);
             return value;
         }},             
         {from: 'app.UserConfig.copy_text_format', to: 'textFormat', oneWay: false, transform: function(value, dir) {
-            console.log('Copy textFormat', value, dir);
+            // console.log('Copy textFormat', value, dir);
 
             if(dir == 1 && this.$[value]) {
-                console.log('Copy textFormat setActive');
+                // console.log('Copy textFormat setActive');
                 this.$.text_format.set('active', this.$[value]);
                 this.$[value].set('checked', true);
             }
@@ -160,12 +225,24 @@ module.exports = kind({
             return value;
         }},
         {from: 'app.UserConfig.copy_passage_format', to: 'passageFormat', oneWay: false, transform: function(value, dir) {
-            console.log('Copy passageFormat', value, dir);
+            // console.log('Copy passageFormat', value, dir);
 
             if(dir == 1 && this.$[value]) {
-                console.log('Copy passageFormat setActive');
+                // console.log('Copy passageFormat setActive');
                 this.$.passage_format.set('active', this.$[value]);
                 this.$[value].set('checked', true);
+            }
+
+            return value;
+        }},        
+        {from: 'app.UserConfig.copy_preset', to: 'preset', oneWay: false, transform: function(value, dir) {
+            // console.log('Copy preset', value, dir);
+
+            if(dir == 1 && this.$.presets_group && this.$.presets_group.$[value]) {
+                // console.log('Copy preset setActive');
+                this.$.presets_group.set('active', this.$.presets_group.$[value]);
+                this.$.presets_group.$[value].set('checked', true);
+                this.applyPreset(value);
             }
 
             return value;
@@ -178,18 +255,40 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
-        // this.$.text_format.set('active', this.$.text_reference);
+
+        presetOptions.forEach(function(opt) {
+            this.$.presets_group.createComponent({
+                kind: Preset,
+                name: opt.name,
+                label: opt.label,
+                settings: opt.settings
+            });
+        }, this);
     },
 
     handleActiveChanged: function(inSender, inEvent) {
-        this.log(inEvent);
-        
+        this.app.debug && this.log(inEvent);
+        var value = (inEvent.active) ? inEvent.active.name : null;
+
         if(inEvent.originator.name == 'text_format') {
-            this.set('textFormat', inEvent.active.name);
+            this.set('textFormat', value);
         }        
 
         if(inEvent.originator.name == 'passage_format') {
-            this.set('passageFormat', inEvent.active.name);
+            this.set('passageFormat', value);
+        }        
+
+        if(inEvent.originator.name == 'presets_group') {
+            this.set('preset', value);
+            this.$.settings_container && this.$.settings_container.set('showing', value == 'custom' ? true : false);
         }
+    },
+    applyPreset: function(preset) {
+        if(!this.$.presets_group || !this.$.presets_group.$[preset]) {
+            return;
+        }
+
+        var settings = utils.clone(this.$.presets_group.$[preset].get('settings'));
+        settings && this.app.UserConfig.set(settings);
     }
 });

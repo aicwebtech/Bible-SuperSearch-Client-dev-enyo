@@ -117,28 +117,17 @@ module.exports = kind({
         }
     },
     watchRenderable: function(pre, cur, prop) {
-        // this.log(pre, cur, prop);
-
-        // debugging code
-        // var attr = ['text_size', 'font'];
-        // attr.forEach(function(item) {
-        //     this.log('watchRenderable', item, this.app.UserConfig.get(item));
-        // }, this);
-
         this.renderResults();
     },
     watchCopyRenderable: function() {
         if(this.app.UserConfig.get('copy')) {
-            this.log();
             this.renderResults();
         }
     },
     watchTextSize: function(pre, cur, prop) {
-        // this.log(pre, cur, prop);
         this.applyViewTextSize();
     },    
     watchFont: function(pre, cur, prop) {
-        // this.log(pre, cur, prop);
         this.applyViewFont();
     }
 });

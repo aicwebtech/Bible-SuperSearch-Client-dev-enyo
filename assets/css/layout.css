@@ -637,6 +637,10 @@ div.biblesupersearch_dialog {
 }
 
 .biblesupersearch_copy_settings .presets {
+    display: inline-block;
+}
+
+.biblesupersearch_copy_settings .presets_container {
     text-align: center;
     margin-bottom: 10px;
 }
