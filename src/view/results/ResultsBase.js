@@ -347,7 +347,6 @@ module.exports = kind({
     },
 
     watchRenderable: function(pre, cur, prop) {
-        this.log(pre, cur, prop);
         this.renderResults();
     },
     watchFormatable: function(pre, cur, prop) {

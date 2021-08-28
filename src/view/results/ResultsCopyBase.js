@@ -1,6 +1,7 @@
 var kind = require('enyo/kind');
 var ResultsBase = require('./ResultsBase');
 var CopyPane = require('./CopyPane');
+var CopySettings = require('../../components/dialogs/CopySettings');
 
 module.exports = kind({
     name: 'ResultsCopyBase',
@@ -8,6 +9,14 @@ module.exports = kind({
     container: null,
     // newLine: '\n',
     newLine: '<br />',
+
+    create: function() {
+        this.inherited(arguments);
+
+        this.$.DialogsContainer.createComponent({
+            kind: CopySettings
+        });
+    },
 
     renderHeader: function() {
         this.app.debug && this.log();
@@ -72,8 +81,11 @@ module.exports = kind({
         }
     },
     renderPassageParallelBible: function(passage) {        
+        var omitExtraBr = this.app.UserConfig.get('copy_omit_extra_br')
+            br = (omitExtraBr) ? this.newLine : this.newLine + this.newLine;
+
         for(i in this.bibles) {
-            this._appendBibleComponent(passage.book_name + ' ' + passage.chapter_verse + this.newLine + this.newLine, i);
+            this._appendBibleComponent(passage.book_name + ' ' + passage.chapter_verse + br, i);
         }
 
         for(chapter in passage.verse_index) {
@@ -96,8 +108,10 @@ module.exports = kind({
             }, this);
         }
 
-        for(i in this.bibles) {
-            this._appendBibleComponent(this.newLine, i);
+        if(!omitExtraBr) {        
+            for(i in this.bibles) {
+                this._appendBibleComponent(this.newLine, i);
+            }
         }
     },    
     renderPassageSingleBible: function(passage) {
@@ -111,13 +125,35 @@ module.exports = kind({
         this.container.$[compName] && this.container.$[compName].appendText(content);    
     },
     processAssembleVerse: function(reference, verse) {
-        return reference + '  ' + this.processText(verse.text);
+        var format = this.app.UserConfig.get('copy_text_format'),
+            line = this.app.UserConfig.get('copy_separate_line') ? this.newLine : ' ',
+            text = this.processText(verse.text);
+
+        switch(format) {
+            case 'text_only':
+                return text;
+                break;            
+            case 'reference_only':
+                return reference;
+                break;
+            case 'text_reference':
+                return text + line + reference;
+                break;
+            case 'reference_text':
+            default:
+                return reference + line + text;
+        }
+
+        // return reference + '  ' + this.processText(verse.text);
     },
+
     processAssembleSingleVerse: function(reference, verse) {
-        return this.processAssembleVerse(reference, verse)  + this.newLine + this.newLine;
+        var nl = this.app.UserConfig.get('copy_omit_extra_br') ? this.newLine : this.newLine + this.newLine;
+        return this.processAssembleVerse(reference, verse) + nl;
     }, 
     processAssemblePassageVerse: function(reference, verse) {
-        var processed = this.processAssembleVerse(reference, verse);
+        // var processed = this.processAssembleVerse(reference, verse);
+        var processed = reference + ' ' + this.processText(verse.text);
 
         if(this.isParagraphView) {
             processed += '  ';

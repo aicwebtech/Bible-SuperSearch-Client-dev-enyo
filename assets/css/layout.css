@@ -624,3 +624,17 @@ div.biblesupersearch_dialog {
     display:none;
 }
 
+.checkbox_container .element {
+    display: inline;
+}
+
+.biblesupersearch_copy_settings {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.biblesupersearch_copy_settings .section {
+    float: left;
+    margin: 10px;
+}

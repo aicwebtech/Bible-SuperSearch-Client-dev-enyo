@@ -127,16 +127,16 @@ module.exports = kind({
                 allowHtml: true
             }
         },
-        // {tag: 'span', components: [
-            // {
-            //     classes: 'item',
-            //     name: 'copy_instant',
-            //     kind: i18n,
-            //     content: 'Copy',
-            //     ontap: 'handleCopyInstant',
-            //     style: 'position: relative'
-            // },
-        // ]},
+        {tag: 'span', components: [
+            {
+                classes: 'item',
+                name: 'copy_instant',
+                kind: i18n,
+                content: 'Copy',
+                ontap: 'handleCopyInstant',
+                style: 'position: relative'
+            },
+        ]},
         {
             classes: 'item copy_toggle',
             name: 'copy_toggle',
@@ -167,34 +167,34 @@ module.exports = kind({
                 ]
             },
         },        
-        // {
-        //     classes: 'item single_verse_toggle',
-        //     name: 'single_verse_toggle',
-        //     kind: Toggle,            
-        //     trueTitle: 'Group Display',
-        //     falseTitle: 'Single Display',
-        //     trueComponent: {
-        //         components: [
-        //             {tag: 'span', content: '&nbsp; -- -', allowHtml: true},
-        //             {tag: 'span', content: '', allowHtml: true},
-        //             {tag: 'span', content: '- ------', allowHtml: true},
-        //             {tag: 'span', content: '- ------', allowHtml: true},
-        //             {tag: 'span', content: '- ------', allowHtml: true},
-        //             {tag: 'span', content: '- ------', allowHtml: true},
-        //         ]
-        //     },
-        //     falseComponent: {
-        //         components: [
-        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
-        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
-        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
-        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
-        //             {tag: 'span', content: ''},
-        //             {tag: 'span', content: ''},
-        //             {tag: 'span', content: ''}
-        //         ]
-        //     },
-        // },        
+        {
+            classes: 'item single_verse_toggle',
+            name: 'single_verse_toggle',
+            kind: Toggle,            
+            trueTitle: 'Group Display',
+            falseTitle: 'Single Display',
+            trueComponent: {
+                components: [
+                    {tag: 'span', content: '&nbsp; -- -', allowHtml: true},
+                    {tag: 'span', content: '', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                ]
+            },
+            falseComponent: {
+                components: [
+                    {tag: 'span', content: '- -.- ------', allowHtml: true},
+                    {tag: 'span', content: '- -.- ------', allowHtml: true},
+                    {tag: 'span', content: '- -.- ------', allowHtml: true},
+                    {tag: 'span', content: '- -.- ------', allowHtml: true},
+                    {tag: 'span', content: ''},
+                    {tag: 'span', content: ''},
+                    {tag: 'span', content: ''}
+                ]
+            },
+        },        
         {
             classes: 'item italics_toggle',
             name: 'italics_toggle',
@@ -252,25 +252,25 @@ module.exports = kind({
                 ]
             }
         },
-        // {
-        //     classes: 'item highlight_toggle',
-        //     name: 'highlight_toggle',
-        //     kind: Toggle,         
-        //     trueTitle: 'Disable Highlighting of Keywords',
-        //     falseTitle: 'Enable Highlighting of Keywords',
-        //     trueComponent: {
-        //         components: [
-        //             {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-        //             {kind: i18n, tag: 'span', content: 'Highlight'}
-        //         ]
-        //     },        
-        //     falseComponent: {
-        //         components: [
-        //             {tag: 'span', classes: 'block_disabled', allowHtml: true},
-        //             {kind: i18n, tag: 'span', content: 'Highlight'}
-        //         ]
-        //     }
-        // },    
+        {
+            classes: 'item highlight_toggle',
+            name: 'highlight_toggle',
+            kind: Toggle,         
+            trueTitle: 'Disable Highlighting of Keywords',
+            falseTitle: 'Enable Highlighting of Keywords',
+            trueComponent: {
+                components: [
+                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+                    {kind: i18n, tag: 'span', content: 'Highlight'}
+                ]
+            },        
+            falseComponent: {
+                components: [
+                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
+                    {kind: i18n, tag: 'span', content: 'Highlight'}
+                ]
+            }
+        },    
 
 
         // 'Extra' (non-formatting) buttons

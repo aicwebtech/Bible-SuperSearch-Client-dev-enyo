@@ -22,8 +22,10 @@ module.exports = kind({
         strongs: true,
         red_letter: true,
         highlight: true,
-        something: 'else',
-        mmm: 'bacon'
+        copy_separate_line: false,
+        copy_omit_extra_br: false,
+        copy_abbr_book: false,
+        copy_text_format: 'reference_text'
     },
 
     getUrl: function() {
