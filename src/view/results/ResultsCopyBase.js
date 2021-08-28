@@ -81,11 +81,16 @@ module.exports = kind({
         }
     },
     renderPassageParallelBible: function(passage) {        
-        var omitExtraBr = this.app.UserConfig.get('copy_omit_extra_br')
-            br = (omitExtraBr) ? this.newLine : this.newLine + this.newLine;
+        var omitExtraBr = this.app.UserConfig.get('copy_omit_extra_br'),
+            passageLayout = this.app.UserConfig.get('copy_passage_format'),
+            br = (omitExtraBr) ? this.newLine : this.newLine + this.newLine,
+            bookName = this.app.UserConfig.get('copy_abbr_book') && passage.book_short ? passage.book_short : passage.book_name,
+            reference = bookName + ' ' + passage.chapter_verse;
 
-        for(i in this.bibles) {
-            this._appendBibleComponent(passage.book_name + ' ' + passage.chapter_verse + br, i);
+        if(passageLayout == 'reference_passage') {        
+            for(i in this.bibles) {
+                this._appendBibleComponent(reference + br, i);
+            }
         }
 
         for(chapter in passage.verse_index) {
@@ -106,6 +111,14 @@ module.exports = kind({
                     }
                 }
             }, this);
+        }
+
+        if(passageLayout == 'passage_reference') {        
+            referenceHtml = (omitExtraBr) ? reference + this.newLine : this.newLine + reference + this.newLine;
+
+            for(i in this.bibles) {
+                this._appendBibleComponent(referenceHtml, i);
+            }
         }
 
         if(!omitExtraBr) {        
@@ -153,7 +166,8 @@ module.exports = kind({
     }, 
     processAssemblePassageVerse: function(reference, verse) {
         // var processed = this.processAssembleVerse(reference, verse);
-        var processed = reference + ' ' + this.processText(verse.text);
+        var processed = (this.app.UserConfig.get('copy_passage_verse_number')) ? reference + ' ' : '';
+            processed += this.processText(verse.text);
 
         if(this.isParagraphView) {
             processed += '  ';
@@ -190,4 +204,8 @@ module.exports = kind({
 
         this.showingCopyrightBottom = true;
     },
+    proccessSingleVerseReference: function(passage, verse) {
+        var bookName = this.app.UserConfig.get('copy_abbr_book') && passage.book_short ? passage.book_short : passage.book_name;
+        return bookName + ' ' + verse.chapter + ':' + verse.verse;
+    },    
 });

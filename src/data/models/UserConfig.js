@@ -25,7 +25,9 @@ module.exports = kind({
         copy_separate_line: false,
         copy_omit_extra_br: false,
         copy_abbr_book: false,
-        copy_text_format: 'reference_text'
+        copy_text_format: 'reference_text',
+        copy_passage_format: 'reference_passage',
+        copy_passage_verse_number: true
     },
 
     getUrl: function() {
