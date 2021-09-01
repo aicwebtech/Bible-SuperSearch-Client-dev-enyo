@@ -29,7 +29,7 @@
     -ms-box-sizing: content-box; 
 }
 
-.format_buttons_html .item:hover {
+.format_buttons_html .item:hover, .format_buttons_html .item.selected {
     background-color: #d1cf45;
 }
 
@@ -84,11 +84,18 @@
     overflow: hidden;
 }
 
+.format_buttons_html .item.renderstyle.paragraph {
+    width: 36px;
+    text-align: center;
+}
+
 .format_buttons_html .item.paragraph_toggle .true span, 
 .format_buttons_html .item.copy_toggle .true span, 
 .format_buttons_html .item.copy_toggle .false span,  
 .format_buttons_html .item.single_verse_toggle .true span, 
-.format_buttons_html .item.single_verse_toggle .false span  
+.format_buttons_html .item.single_verse_toggle .false span,
+.format_buttons_html .item.renderstyle.verse span,
+.format_buttons_html .item.renderstyle.passage span
 {
     height: 4px;
     display: block;
@@ -171,6 +178,11 @@
     background-color: #43b243;
     color: white;
 }
+
+/*.format_buttons_html .selected {
+    background-color: #c7b72c;
+}
+*/
 
 .html_nav_buttons {
     text-align: center;

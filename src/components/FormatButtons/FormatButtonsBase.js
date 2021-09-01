@@ -12,6 +12,20 @@ module.exports = kind({
     // Whether to include the toggle button for advanced search
     // Should be disabled if already displaying the advanced search button
     includeAdvancedToggle: true,
+    uc: null,
+
+    handlers: {
+        onkeydown: 'handleKey'
+    },
+
+    bindings: [
+        {from: 'app.UserConfig', to: 'uc'}
+    ],
+
+    observers: [
+        {method: 'watchRenderStyle', path: ['uc.render_style']},
+        {method: 'watchStyleFlags', path: ['uc.paragraph', 'uc.single_line']}
+    ],
 
     create: function() {
         this.inherited(arguments);
@@ -41,6 +55,12 @@ module.exports = kind({
     handleFontChange: function(inSender, inEvent) {
         val = inSender.val || 'serif';
         this.app.UserConfig.set('font', val);
+        // this.log(this.app.UserConfig.getAttributes());
+    },    
+    handleRenderStyle: function(inSender, inEvent) {
+        val = inSender.val || 'passage';
+        this.log(val);
+        this.app.UserConfig.set('render_style', val);
         // this.log(this.app.UserConfig.getAttributes());
     },
     handleSizeChange: function(inSender, inEvent) {
@@ -80,6 +100,27 @@ module.exports = kind({
         this.app.UserConfig.set('copy', true);
         Signal.send('onTriggerCopy', {inSender: inSender, inEvent: inEvent});
         this.app.UserConfig.set('copy', false);
+    },
+    handkeKey: function(inSender, inEvent) {
+        this.log(inEvent);
+    },
+    watchRenderStyle: function(pre, cur, prop) {
+        this.log(pre, cur, prop);
+
+        if(cur == 'verse') {
+            this.app.UserConfig.set('single_verses', true);
+        }
+        else {
+            this.app.UserConfig.set('single_verses', false);
+            this.app.UserConfig.set('paragraph', !!(cur == 'paragraph'));
+        }
+
+        this.$.renderstyle_paragraph && this.$.renderstyle_paragraph.addRemoveClass('selected', cur == 'paragraph');
+        this.$.renderstyle_passage && this.$.renderstyle_passage.addRemoveClass('selected', cur == 'passage');
+        this.$.renderstyle_verse && this.$.renderstyle_verse.addRemoveClass('selected', cur == 'verse');
+    },    
+    watchStyleFlags: function(pre, cur, prop) {
+        this.log(pre, cur, prop);
     },
     _hideExtras: function() {
         var softConfig = this.app.configs.extraButtonsSeparate,

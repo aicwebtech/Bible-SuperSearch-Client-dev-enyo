@@ -13,6 +13,7 @@ module.exports = kind({
     name: 'FormatButtonsHtml',
     kind: Base,
     classes: 'format_buttons_html',
+    font: null,
     
     components: [
         {
@@ -104,39 +105,123 @@ module.exports = kind({
             ],
         },
         {
-            classes: 'item paragraph_toggle',
-            name: 'paragraph_toggle',
-            kind: Toggle,
-            trueContent: 'Verse Display',
-            falseContent: '&para;',
-            trueTitle: 'Verse Display',
-            falseTitle: 'Paragraph Display',
-            trueComponent: {
-                components: [
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true}
-                    // {tag: 'span', content: '- &mdash;-&ndash;', allowHtml: true},
-                    // {tag: 'span', content: '- &mdash;&ndash;-', allowHtml: true},
-                    // {tag: 'span', content: '- -&ndash;&mdash;', allowHtml: true},
-                    // {tag: 'span', content: '- &ndash;&mdash;-', allowHtml: true}
-                ]
-            },
-            falseComponent: {
-                allowHtml: true
+            kind: i18n,
+            classes: 'item renderstyle paragraph',
+            name: 'renderstyle_paragraph',
+            val: 'paragraph',
+            tag: 'span',
+            content: '&para;',
+            allowHtml: true,
+            ontap: 'handleRenderStyle',
+            attributes: {
+                title: 'Paragraph Display'
+            }
+        },        
+        {
+            kind: i18n,
+            classes: 'item renderstyle passage',
+            name: 'renderstyle_passage',
+            val: 'passage',
+            tag: 'span',
+            ontap: 'handleRenderStyle',
+            components: [
+                {tag: 'span', content: '&nbsp;---- -', allowHtml: true},
+                {tag: 'span', content: '', allowHtml: true},
+                {tag: 'span', content: '- -------', allowHtml: true},
+                {tag: 'span', content: '- -------', allowHtml: true},
+                {tag: 'span', content: '- -------', allowHtml: true},
+                {tag: 'span', content: '- -------', allowHtml: true},
+            ],
+            attributes: {
+                title: 'Passage Display'
+            }
+        },        
+        {
+            kind: i18n,
+            classes: 'item renderstyle verse',
+            name: 'renderstyle_verse',
+            val: 'verse',
+            tag: 'span',
+            ontap: 'handleRenderStyle',
+            components: [
+                {tag: 'span', content: '- -.- -----', allowHtml: true},
+                {tag: 'span', content: '- -.- -----', allowHtml: true},
+                {tag: 'span', content: '- -.- -----', allowHtml: true},
+                {tag: 'span', content: '- - - -----', allowHtml: true},
+                {tag: 'span', content: ''},
+                {tag: 'span', content: ''},
+                {tag: 'span', content: ''}
+            ],
+            attributes: {
+                title: 'Verse Display'
             }
         },
-        {tag: 'span', components: [
-            {
-                classes: 'item',
-                name: 'copy_instant',
-                kind: i18n,
-                content: 'Copy',
-                ontap: 'handleCopyInstant',
-                style: 'position: relative'
-            },
-        ]},
+
+        // {
+        //     classes: 'item paragraph_toggle',
+        //     name: 'paragraph_toggle',
+        //     kind: Toggle,
+        //     trueContent: 'Verse Display',
+        //     falseContent: '&para;',
+        //     trueTitle: 'Verse Display',
+        //     falseTitle: 'Paragraph Display',
+        //     trueComponent: {
+        //         components: [
+        //             {tag: 'span', content: '- ------', allowHtml: true},
+        //             {tag: 'span', content: '- ------', allowHtml: true},
+        //             {tag: 'span', content: '- ------', allowHtml: true},
+        //             {tag: 'span', content: '- ------', allowHtml: true}
+        //             // {tag: 'span', content: '- &mdash;-&ndash;', allowHtml: true},
+        //             // {tag: 'span', content: '- &mdash;&ndash;-', allowHtml: true},
+        //             // {tag: 'span', content: '- -&ndash;&mdash;', allowHtml: true},
+        //             // {tag: 'span', content: '- &ndash;&mdash;-', allowHtml: true}
+        //         ]
+        //     },
+        //     falseComponent: {
+        //         allowHtml: true
+        //     }
+        // },
+        // {
+        //     classes: 'item single_verse_toggle',
+        //     name: 'single_verse_toggle',
+        //     kind: Toggle,            
+        //     trueTitle: 'Group Display',
+        //     falseTitle: 'Single Display',
+        //     trueComponent: {
+        //         components: [
+        //             {tag: 'span', content: '&nbsp; -- -', allowHtml: true},
+        //             {tag: 'span', content: '', allowHtml: true},
+        //             {tag: 'span', content: '- ------', allowHtml: true},
+        //             {tag: 'span', content: '- ------', allowHtml: true},
+        //             {tag: 'span', content: '- ------', allowHtml: true},
+        //             {tag: 'span', content: '- ------', allowHtml: true},
+        //         ]
+        //     },
+        //     falseComponent: {
+        //         components: [
+        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
+        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
+        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
+        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
+        //             {tag: 'span', content: ''},
+        //             {tag: 'span', content: ''},
+        //             {tag: 'span', content: ''}
+        //         ]
+        //     },
+        // },
+        
+        // TODO - FUTURE - copy instantly button
+        // {tag: 'span', components: [
+        //     {
+        //         classes: 'item',
+        //         name: 'copy_instant',
+        //         kind: i18n,
+        //         content: 'Copy',
+        //         ontap: 'handleCopyInstant',
+        //         style: 'position: relative',
+        //         title: 'Copy with given copy settings'
+        //     },
+        // ]},
         {
             classes: 'item copy_toggle',
             name: 'copy_toggle',
@@ -166,35 +251,7 @@ module.exports = kind({
                     {tag: 'span', content: ''}
                 ]
             },
-        },        
-        {
-            classes: 'item single_verse_toggle',
-            name: 'single_verse_toggle',
-            kind: Toggle,            
-            trueTitle: 'Group Display',
-            falseTitle: 'Single Display',
-            trueComponent: {
-                components: [
-                    {tag: 'span', content: '&nbsp; -- -', allowHtml: true},
-                    {tag: 'span', content: '', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                ]
-            },
-            falseComponent: {
-                components: [
-                    {tag: 'span', content: '- -.- ------', allowHtml: true},
-                    {tag: 'span', content: '- -.- ------', allowHtml: true},
-                    {tag: 'span', content: '- -.- ------', allowHtml: true},
-                    {tag: 'span', content: '- -.- ------', allowHtml: true},
-                    {tag: 'span', content: ''},
-                    {tag: 'span', content: ''},
-                    {tag: 'span', content: ''}
-                ]
-            },
-        },        
+        },                
         {
             classes: 'item italics_toggle',
             name: 'italics_toggle',
@@ -383,6 +440,13 @@ module.exports = kind({
         }},
         {from: 'app.UserConfig.highlight', to: '$.highlight_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons red_letter', value, dir);
+            return value;
+        }}, 
+        {from: 'app.UserConfig.font', to: 'font', oneWay: true, transform: function(value, dir) {
+            // console.log('FormatButtons font', value, dir);
+            this.$.font_serif.addRemoveClass('selected', value == 'serif');
+            this.$.font_sans_serif.addRemoveClass('selected', value == 'sans_serif' || value == 'sans-serif');
+            this.$.font_monospace.addRemoveClass('selected', value == 'monospace');
             return value;
         }}
     ],

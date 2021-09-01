@@ -28,7 +28,8 @@ module.exports = kind({
         onLocaleChange: 'handleLocaleChanged',
         onFormResponseError: 'handleFormResponse',
         onFormResponseSuccess: 'handleFormResponse',
-        onFormViewChanged: 'handleFormViewChanged'
+        onFormViewChanged: 'handleFormViewChanged',
+        onkeydown: 'handleKey',
     },
 
     published: {
@@ -144,5 +145,8 @@ module.exports = kind({
     },
     handleFormViewChanged: function(inSender, inEvent) {
         this.scrollToTop();
-    }
+    },
+    handkeKey: function(inSender, inEvent) {
+        this.log(inEvent);
+    },
 });
