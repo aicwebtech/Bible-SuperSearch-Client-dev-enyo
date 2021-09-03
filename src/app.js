@@ -88,7 +88,6 @@ var App = Application.kind({
         {method: 'watchSingleVerses', path: ['UserConfig.single_verses']}
     ],
 
-
     create: function() {
         this.inherited(arguments);
         this.configs = utils.clone(defaultConfig);

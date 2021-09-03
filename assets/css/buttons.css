@@ -34,10 +34,8 @@
 }
 
 .format_buttons_html .item.size_plus {
-    /*font-size: 1.1em;*/
-    /*font-weight: bold;*/
-    /*width: 20px;*/
-    font-size: 18px;
+    font-weight: bold;
+    /*font-size: 16px;*/
 }
 
 .format_buttons_html .item.size_reg {
@@ -49,16 +47,18 @@
 }
 
 .format_buttons_html .item.size_reg span {
-    border-bottom: 2px solid black;
+    /*border-bottom: 2px solid black;*/
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    font-weight: bold;
     display: inline-block;
     height: 14px;
 }
 
 .format_buttons_html .item.size_minus {
-    /*font-size: 0.9em;*/
-    /*font-weight: bold;*/
+    font-weight: bold;
     /*width: 20px;*/
-    font-size: 18px;
+    /*font-size: 16px;*/
 }
 
 .format_buttons_html .item.font span {
@@ -87,6 +87,46 @@
 .format_buttons_html .item.renderstyle.paragraph {
     width: 36px;
     text-align: center;
+}
+
+/*@import "https://fonts.googleapis.com/icon?family=Material+Icons+Outlined";*/
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.icon {
+    font-size: 18px;
+    line-height: 18px;
+}
+
+img.icon {
+    height: 18px;
+}
+
+.format_buttons_html .item {
+    color:  green;
 }
 
 .format_buttons_html .item.paragraph_toggle .true span, 

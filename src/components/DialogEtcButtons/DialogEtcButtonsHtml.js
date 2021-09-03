@@ -21,7 +21,10 @@ module.exports = kind({
             content: '?',
             tag: 'span',
             ontap: 'handleHelp',
-            attributes: {title: 'Help'}
+            attributes: {title: 'Help'},
+            components: [
+                {tag: 'span', classes: 'material-icons icon', content: 'help_outline'},
+            ]
         },
         {
             classes: 'item advanced_toggle',
@@ -55,8 +58,9 @@ module.exports = kind({
             ontap: 'handleDownload',
             attributes: {title: 'Bible Downloads'},
             components: [
-                {tag: 'span', allowHtml: true, content: '<b>&#10515;</b>&nbsp;'},
-                {kind: i18n, content: 'Download'}
+                // {tag: 'span', allowHtml: true, content: '<b>&#10515;</b>&nbsp;'},
+                {tag: 'span', classes: 'material-icons icon', content: 'download'},
+                // {kind: i18n, content: 'Download'}
             ]
         }
     ],

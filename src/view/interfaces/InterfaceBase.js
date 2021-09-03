@@ -9,6 +9,7 @@ var ShareDialog = require('../../components/dialogs/Share');
 var NavButtons = require('../../components/NavButtons/NavClassic');
 var FormatButtons = require('../../components/FormatButtons/classic/FormatButtonsClassic');
 var Pager = require('../../components/Pagers/ClassicPager');
+var MaterialIconsStyle = require('../../components/Styles/MaterialIcons');
 
 // Base kind for all Application views
 module.exports = kind({
@@ -48,6 +49,8 @@ module.exports = kind({
         }
 
         this.addRemoveClass('rtl', this.app.isRtl);
+
+        this.createComponent({kind: MaterialIconsStyle});
 
         // if(!this.$.HelpDialog) {
         //     this.createComponent({

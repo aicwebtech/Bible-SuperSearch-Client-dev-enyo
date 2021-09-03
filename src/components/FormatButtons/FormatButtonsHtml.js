@@ -234,6 +234,8 @@ module.exports = kind({
                     {tag: 'span', content: '', allowHtml: true},
                     {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true},
                     {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true}
+
+                    // {tag: 'span', classes: 'material-icons icon', content: 'bookvisibility'}
                 ]
             },
             falseComponent: {
@@ -248,7 +250,9 @@ module.exports = kind({
                     // {tag: 'span', content: '- &ndash;&ndash;&mdash;-', allowHtml: true},
                     {tag: 'span', content: ''},
                     {tag: 'span', content: ''},
-                    {tag: 'span', content: ''}
+                    {tag: 'span', content: ''},
+
+                    // {tag: 'span', classes: 'material-icons icon', content: 'content_copypageview'}
                 ]
             },
         },                
@@ -318,12 +322,14 @@ module.exports = kind({
             trueComponent: {
                 components: [
                     {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+                    // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
                     {kind: i18n, tag: 'span', content: 'Highlight'}
                 ]
             },        
             falseComponent: {
                 components: [
                     {tag: 'span', classes: 'block_disabled', allowHtml: true},
+                    // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
                     {kind: i18n, tag: 'span', content: 'Highlight'}
                 ]
             }
@@ -377,15 +383,18 @@ module.exports = kind({
             ]
         },        
         // End Extra buttons
+
         {
             kind: i18n,
             classes: 'item print text_only',
             name: 'print_button',
             ontap: 'handlePrint',
-            attributes: {title: 'Printer Friendly'},
+            attributes: {title: 'Print'},
             components: [
-                {tag: 'span', allowHtml: true, content: '&#128438;&nbsp;'},
-                {kind: i18n, content: 'Print'}
+                // {tag: 'span', allowHtml: true, content: '&#128438;&nbsp;'},
+                {tag: 'span', classes: 'material-icons icon', content: 'print'},
+                // {kind: Image, relSrc: 'icons/print_black_24dp.svg', classes: 'icon'},
+                // {kind: i18n, content: 'Print'}
             ],
         },        
         {
@@ -393,10 +402,11 @@ module.exports = kind({
             classes: 'item share text_only',
             name: 'share_button',
             ontap: 'handleShare',
-            attributes: {title: 'Share Link'},
+            attributes: {title: 'Share'},
             components: [
                 // {tag: 'span', allowHtml: true, content: '&#128438;&nbsp;'},
-                {kind: i18n, content: 'Share'}
+                // {kind: i18n, content: 'Share'}
+                {tag: 'span', classes: 'material-icons icon', content: 'share'}
             ],
         },
 

@@ -35,7 +35,8 @@ var presetOptions = [
             copy_abbr_book: false,
             copy_text_format: 'reference_text',
             copy_passage_format: 'reference_passage',
-            copy_passage_verse_number: true
+            copy_passage_verse_number: true,
+            render_style: 'passage'
         }
     }, 
     {
@@ -47,7 +48,8 @@ var presetOptions = [
             copy_abbr_book: false,
             copy_text_format: 'reference_text',
             copy_passage_format: 'reference_passage',
-            copy_passage_verse_number: true
+            copy_passage_verse_number: true,
+            render_style: 'verse'
         }
     },    
     {
