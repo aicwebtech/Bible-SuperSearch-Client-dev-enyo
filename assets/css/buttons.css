@@ -116,12 +116,12 @@
   font-feature-settings: 'liga';
 }
 
-.icon {
+.format_buttons_html .item .icon {
     font-size: 18px;
     line-height: 18px;
 }
 
-img.icon {
+.format_buttons_html .item img.icon {
     height: 18px;
 }
 

@@ -96,6 +96,9 @@ module.exports = kind({
     handleShare: function(inSender, inEvent) {
         this.app.set('shareShowing', true);
     },
+    handleClearForm: function() {
+        Signal.send('onClearForm');
+    },
     handleCopyInstant: function(inSender, inEvent) {
         this.app.UserConfig.set('copy', true);
         Signal.send('onTriggerCopy', {inSender: inSender, inEvent: inEvent});
@@ -105,8 +108,6 @@ module.exports = kind({
         this.log(inEvent);
     },
     watchRenderStyle: function(pre, cur, prop) {
-        this.log(pre, cur, prop);
-
         if(cur == 'verse') {
             this.app.UserConfig.set('single_verses', true);
         }
@@ -120,7 +121,7 @@ module.exports = kind({
         this.$.renderstyle_verse && this.$.renderstyle_verse.addRemoveClass('selected', cur == 'verse');
     },    
     watchStyleFlags: function(pre, cur, prop) {
-        this.log(pre, cur, prop);
+        this.app.debug && this.log(pre, cur, prop);
     },
     _hideExtras: function() {
         var softConfig = this.app.configs.extraButtonsSeparate,

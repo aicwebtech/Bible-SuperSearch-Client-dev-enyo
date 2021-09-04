@@ -36,7 +36,8 @@ module.exports = kind({
     signalComponent: {
         kind: Signal,
         onClickReference: 'handleReferenceClick',
-        onPageChange: 'handlePageChange'
+        onPageChange: 'handlePageChange',
+        onClearForm: 'clearFormManual'
     },
 
     create: function() {
@@ -70,6 +71,13 @@ module.exports = kind({
     },
     clearForm: function() {
         this.set('formData', {});
+    },
+    clearFormManual: function() {
+        this.set('formData', {
+            bible: [this.app.configs.defaultBible]
+        });
+        
+        this.clearHash();
     },
     // Submit form - via form submit button
     submitForm: function() {
@@ -333,6 +341,9 @@ module.exports = kind({
         }
 
         history.pushState(null, null, document.location.pathname + hash);
+    },
+    clearHash: function() {
+        history.pushState(null, null, document.location.pathname);
     },
     updateTitle: function() {
         var mainSep = ' - ',
