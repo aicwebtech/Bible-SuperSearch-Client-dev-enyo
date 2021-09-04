@@ -74,9 +74,10 @@ module.exports = kind({
     },
     clearFormManual: function() {
         this.set('formData', {
-            bible: [this.app.configs.defaultBible]
+            // bible: [this.app.configs.defaultBible]
         });
-        
+
+        this.waterfall('onClearFormWaterfall');
         this.clearHash();
     },
     // Submit form - via form submit button
