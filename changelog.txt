@@ -1,7 +1,8 @@
-= 4.5.0
-* (Possible) Improvement: Added ability to toggle keyword highlighting
-* -(Possible) Improvement: Auto disabling of EZ-Copy when submitting the form- OMMITTED?
+= 4.5.0 (soft release)
+* Improvement: Added ability to toggle keyword highlighting
+* ****OMITTED**** -(Possible) Improvement: Auto disabling of EZ-Copy when submitting the form- OMMITTED?
 * Replaced paragraph toggle with paragraph / passage / verse selector (Stylable format buttons only)
+* Bug fix: Fixed ASV display issue {{selah
 
 = 4.4.3 July 31, 2021 = 
 * Finishing up 4.4.3 release

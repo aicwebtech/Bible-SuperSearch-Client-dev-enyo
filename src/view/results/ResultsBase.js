@@ -278,6 +278,12 @@ module.exports = kind({
             text = text.replace(/[‹›]/g, '');
         }
 
+        // ASV hack - ASV text has {{Selah or {Selah}
+        // (I confirmed in a print ASV that this is original to the text)
+        // We compensate for this here by using placeholders for the curly brackets
+        text = text.replace(/\{\{/g, '(LCB)(LCB)');
+        text = text.replace(/\{([A-Za-z<>/ ]+)\}/g, '(LCB)$1(RCB)');
+
         // strongs
         if(this.app.UserConfig.get('strongs')) {
             text = text.replace(/\{/g, "<sup>");
@@ -292,6 +298,10 @@ module.exports = kind({
             text = text.replace(/\} \{/g, '');
             text = text.replace(/\{[^\}]+\}/g, '');
         }
+
+        // Now that we're done with Strong's, we replace our placeholders with curly brackets
+        text = text.replace(/\(LCB\)/g, '{');
+        text = text.replace(/\(RCB\)/g, '}');
 
         // italics
         if(this.app.UserConfig.get('italics')) {
