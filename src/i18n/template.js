@@ -44,6 +44,7 @@ module.exports = {
     'Find verses containing': '',
     'Restrict search to': '', 
     'Word Search': '',
+    'Clear Form': '', // 4.5
 
     // Context Links
     'Show full chapter': '',
@@ -143,6 +144,11 @@ module.exports = {
     'Help': '',
     'Basic': '',
     'Advanced': '',
+
+    // Verse Cherry-picking
+    'Select All': '', // 5.0
+    'Select None': '', // 5.0
+    'Select': '', // 5.0
     
     // Result and error messages
     

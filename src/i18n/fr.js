@@ -38,6 +38,7 @@ module.exports = {
     'Find verses containing': 'Cherhez un verset qui contient',
     'Restrict search to': 'Restreindre la rechrech à', 
     'Word Search': 'cherchez par mot',
+    'Clear Form': 'Forme claire', // 4.5
 
     // Context Links
     'Show full chapter': 'Afficher le chapitre complet',
@@ -136,6 +137,11 @@ module.exports = {
     'Help': 'Aide',
     'Basic': 'De base',
     'Advanced': 'Avancée',
+
+    // Verse Cherry-picking
+    'Select All': 'Tout sélectionner', // 5.0
+    'Select None': 'Ne rien sélectionner', // 5.0
+    'Select': 'Sélectionner', // 5.0
     
     // Result and error messages
     

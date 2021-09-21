@@ -21,7 +21,7 @@ var Preset = kind({
     ],
 
     bindings: [
-        {from: 'label', to: '$.label.content'}
+        {from: 'label', to: '$.label.string'}
     ]
 });
 

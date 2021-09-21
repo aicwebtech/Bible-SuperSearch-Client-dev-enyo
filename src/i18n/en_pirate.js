@@ -36,6 +36,8 @@ module.exports = {
     'Chapters' : 'Chestes',
     'Find verses containing': 'Locate partes havin\'',
     'Restrict search to': 'Prevent ye maties from searchin\' outside of', 
+    'Word Search' : 'Pyllage ye wordes',
+    'Clear Form': 'Sweepe ye Decke', // 4.5
 
     // Context Links
     'Show full chapter': 'Reveale all thee cheste contents',
@@ -140,6 +142,11 @@ module.exports = {
     'Bible Downloads': 'Retrieve from the Depths',
     'Basic': 'Ye simpeel',
     'Advanced': 'Arrdvancede',
+
+    // Verse Cherry-picking
+    'Select All': 'Picme ye all', // 5.0
+    'Select None': 'Picme ye non', // 5.0
+    'Select': 'Picme', // 5.0
     
     // Copy / Share dialog
     'Copy': 'Pirate this',
@@ -147,6 +154,18 @@ module.exports = {
     'Copy with Text': 'Pirate this with scribblings',
     'Share Link': 'Give to ye mateys',
     'Share' : 'Givem',
+
+    // Copy format options
+    'Copy Format': 'Pirate likeness', 
+    'Word Processor': 'Worde typee thingy',
+    'Outline' : 'Lyne of the oute',
+    'Custom': 'Cusstum',
+
+    'Single Verses': 'Onely One Verses',
+    'Reference - Text': 'Coord - Jewwel',
+    'Text - Reference': 'Jewwel - Coord',
+    'Text Only': 'Jewel onlie',
+    'Separate Line': 'Slice ye line',
 
     'User\'s Manual': 'Arr, how me operate this thing?',
     

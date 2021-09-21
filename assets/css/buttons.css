@@ -34,7 +34,7 @@
 }
 
 .format_buttons_html .item.size_plus {
-    font-weight: bold;
+    /*font-weight: bold;*/
     /*font-size: 16px;*/
 }
 
@@ -50,13 +50,13 @@
     /*border-bottom: 2px solid black;*/
     text-decoration: underline;
     text-decoration-thickness: 2px;
-    font-weight: bold;
+    /*font-weight: bold;*/
     display: inline-block;
     height: 14px;
 }
 
 .format_buttons_html .item.size_minus {
-    font-weight: bold;
+    /*font-weight: bold;*/
     /*width: 20px;*/
     /*font-size: 16px;*/
 }
@@ -126,7 +126,7 @@
 }
 
 .format_buttons_html .item {
-    color:  green;
+    /*color:  green;*/
 }
 
 .format_buttons_html .item.paragraph_toggle .true span, 

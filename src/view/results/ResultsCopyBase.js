@@ -39,7 +39,7 @@ module.exports = kind({
             if(this.multiBibles) {            
                 headerComponents.push({
                     tag: 'th',
-                    content: bible_info.name
+                    content: this._getBibleDisplayName(bible_info)
                 });
             }
 

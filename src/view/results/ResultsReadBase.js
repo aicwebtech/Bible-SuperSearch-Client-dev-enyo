@@ -94,7 +94,7 @@ module.exports = kind({
                 if(addBibleHeader) {                
                     Container.$.BibleRow.createComponent({
                         tag: 'th',
-                        content: bible_info.name
+                        content: this._getBibleDisplayName(bible_info)
                     });
                 }
             }
@@ -153,7 +153,7 @@ module.exports = kind({
                 Container.$.BibleRow.createComponent({
                     tag: 'th',
                     attributes: {colspan: this.passageColumnsPerBible},
-                    content: bible_info.name
+                    content: this._getBibleDisplayName(bible_info)
                 });
             }
         }

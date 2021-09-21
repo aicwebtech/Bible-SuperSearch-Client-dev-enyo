@@ -225,6 +225,14 @@ module.exports = kind({
         this.showingCopyrightBottom = true;
     },
 
+    _getBibleDisplayName: function(bible) {
+        if(this.bibles.length <= 1) {
+            return bible.name;
+        }
+
+        return bible.name.length > 20 ? bible.shortname : bible.name;
+    },
+
     renderHeader: function() {}, // Called before results are rendered, not required
     renderFooter: function() {}, // Called after results are rendered, not required
 
