@@ -645,6 +645,13 @@ div.biblesupersearch_dialog {
     margin-bottom: 10px;
 }
 
+.biblesupersearch_copy_settings .presets_container .label {
+    padding: 1px 0;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
 .biblesupersearch_copy_settings .section {
     float: left;
     margin: 10px;

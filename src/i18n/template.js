@@ -149,7 +149,33 @@ module.exports = {
     'Select All': '', // 5.0
     'Select None': '', // 5.0
     'Select': '', // 5.0
+    'Unselect': '', // 5.0
     
+    // Copy format options
+    'Copy Format': '', // 5.0
+    'Word Processor': '', // 5.0
+    'Outline' : '', // 5.0
+    'Custom': '', // 5.0
+
+    'Single Verses': '', // 5.0
+    'Reference - Text': '', // 5.0
+    'Text - Reference': '', // 5.0
+    'Text Only': '', // 5.0
+    'Separate Line': '', // 5.0
+
+    'Multi-verse Passages': '', // 5.0
+    'Reference - Passage': '', // 5.0
+    'Passage - Reference': '', // 5.0
+    'Passage Only': '', // 5.0
+    'Show Verse Number': '', // 5.0
+
+    'Other': '', // 5.0
+    'Abbreviate Books': '', // 5.0
+    'Omit Extra Line Breaks': '', // 5.0
+
+    // Settings Dialog
+    'Settings' : '', // 5.0
+
     // Result and error messages
     
     // Your search produced (number of verses) results

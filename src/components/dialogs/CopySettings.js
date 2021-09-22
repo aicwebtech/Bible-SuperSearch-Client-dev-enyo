@@ -74,15 +74,14 @@ module.exports = kind({
                 {
                     kind: i18n,
                     content: 'Copy Format',
-                    tag: 'b',
+                    tag: 'span',
                     classes: 'label',
                 },
-                {tag: 'b', content: ': ', classes: 'label'},
+                {tag: 'span', content: ': &nbsp;', classes: 'label', allowHtml: true},
                 {            
                     classes: 'presets',
                     name: 'presets_group',
-                    kind: Group,
-                    // allowHighlanderDeactivate: true,
+                    kind: Group
                 }
             ]
         },

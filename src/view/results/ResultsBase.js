@@ -230,7 +230,7 @@ module.exports = kind({
             return bible.name;
         }
 
-        return bible.name.length > 20 ? bible.shortname : bible.name;
+        return bible.name.length > 30 ? bible.shortname : bible.name;
     },
 
     renderHeader: function() {}, // Called before results are rendered, not required

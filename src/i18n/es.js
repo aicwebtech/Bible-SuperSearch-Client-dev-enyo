@@ -142,6 +142,32 @@ module.exports = {
     'Select All': 'Seleccionar todo', // 5.0
     'Select None': 'No seleccionar ninguno', // 5.0
     'Select': 'Seleccione', // 5.0
+    'Unselect': 'Deseleccionar', // 5.0
+    
+    // Copy format options
+    'Copy Format': 'Copiar formato', // 5.0
+    'Word Processor': 'Procesador de textos', // 5.0
+    'Outline' : 'Esquema', // 5.0
+    'Custom': 'Personalizado', // 5.0
+
+    'Single Verses': 'Versos individuales', // 5.0
+    'Reference - Text': 'Referencia - Texto', // 5.0
+    'Text - Reference': 'Texto - Referencia', // 5.0
+    'Text Only': 'Solo texto', // 5.0
+    'Separate Line': 'Línea separada', // 5.0
+
+    'Multi-verse Passages': 'Pasajes de varios versos', // 5.0
+    'Reference - Passage': 'Referencia - Pasaje', // 5.0
+    'Passage - Reference': 'Pasaje - Referencia', // 5.0
+    'Passage Only': 'Solo pasaje', // 5.0
+    'Show Verse Number': 'Mostrar número de versículo', // 5.0
+
+    'Other': 'Otro', // 5.0
+    'Abbreviate Books': 'Libros abreviados', // 5.0
+    'Omit Extra Line Breaks': 'Omitir saltos de línea adicionales', // 5.0
+
+    // Settings Dialog
+    'Settings' : 'Ajustes', // 5.0
 
     // Result and error messages
     

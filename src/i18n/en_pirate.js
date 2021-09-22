@@ -147,6 +147,7 @@ module.exports = {
     'Select All': 'Picme ye all', // 5.0
     'Select None': 'Picme ye non', // 5.0
     'Select': 'Picme', // 5.0
+    'Unselect': 'Nopic', // 5.0
     
     // Copy / Share dialog
     'Copy': 'Pirate this',
@@ -156,16 +157,29 @@ module.exports = {
     'Share' : 'Givem',
 
     // Copy format options
-    'Copy Format': 'Pirate likeness', 
-    'Word Processor': 'Worde typee thingy',
-    'Outline' : 'Lyne of the oute',
-    'Custom': 'Cusstum',
+    'Copy Format': 'Pirate likeness', // 5.0
+    'Word Processor': 'Worde typee thingy', // 5.0
+    'Outline' : 'Lyne of the oute', // 5.0
+    'Custom': 'Cusstum', // 5.0
 
-    'Single Verses': 'Onely One Verses',
-    'Reference - Text': 'Coord - Jewwel',
-    'Text - Reference': 'Jewwel - Coord',
-    'Text Only': 'Jewel onlie',
-    'Separate Line': 'Slice ye line',
+    'Single Verses': 'Onely One Verses', // 5.0
+    'Reference - Text': 'Coord - Jewwel', // 5.0
+    'Text - Reference': 'Jewwel - Coord', // 5.0
+    'Text Only': 'Jewel onlie', // 5.0
+    'Separate Line': 'Slice ye line', // 5.0
+
+    'Multi-verse Passages': 'Partes of manie Jewels', // 5.0
+    'Reference - Passage': 'Coord - Parte', // 5.0
+    'Passage - Reference': 'Parte - Coord', // 5.0
+    'Passage Only': 'Parte onlie', // 5.0
+    'Show Verse Number': 'Shew ye jewwel numbre', // 5.0
+
+    'Other': 'Orther', // 5.0
+    'Abbreviate Books': 'Fsorten the booke', // 5.0
+    'Omit Extra Line Breaks': 'Less ye line slicee', // 5.0
+
+    // Settings Dialog
+    'Settings' : 'Pickens', // 5.0
 
     'User\'s Manual': 'Arr, how me operate this thing?',
     
