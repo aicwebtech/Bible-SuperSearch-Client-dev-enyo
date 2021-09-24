@@ -118,6 +118,7 @@ module.exports = {
     'Shrink Text': 'Text Shrimpe',
     'Verse Display': 'Line up booty in rows',
     'Paragraph Display': 'Group booty into paragraphs',
+    'Passage Display': 'Group booty into paysaggage', // 4.5
     'EZ Copy': 'Lazy Pirate',
     'Read Display': 'Readin\' It',
     'Italics': 'Slante',

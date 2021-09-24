@@ -1,10 +1,11 @@
 = 4.5.0 (soft release)
-* Improvement: Added ability to toggle keyword highlighting
-* Improvement: Added 'Clear Form' button
-* Improvement: Displaying short name of Bibles with long name when in parallel mode
-* ****OMITTED**** -(Possible) Improvement: Auto disabling of EZ-Copy when submitting the form- OMMITTED?
-* Replaced paragraph toggle with paragraph / passage / verse selector (Stylable format buttons only)
-* Bug fix: Replaced unicode icons with ones that display on mobile devices
+* Added format options for the copying text.
+* Improvement: Added ability to toggle keyword highlighting.
+* Improvement: Added 'Clear Form' button.
+* Improvement: Displaying short name of Bibles with long name when in parallel mode.
+* Improvement: Added clean URL for search queries.
+* Replaced paragraph toggle with paragraph / passage / verse selector (Stylable format buttons only).
+* Bug fix: Replaced unicode icons with ones that display on mobile devices.
 * Bug fix: Fixed ASV display issue {{selah
 
 = 4.4.3 July 31, 2021 = 

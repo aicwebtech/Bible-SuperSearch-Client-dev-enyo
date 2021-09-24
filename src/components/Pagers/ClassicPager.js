@@ -92,7 +92,7 @@ module.exports = kind({
                 classes: (page == 1) ? 'std_link disabled' : 'std_link',
                 content: this.firstPageText,
                 allowHtml: true,
-                href: (page == 1) ? null : '#/c/' + cache + '/1',
+                href: (page == 1) ? null : this.makeLink('1'),
                 title: 'First Page'
             });        
         }
@@ -100,7 +100,7 @@ module.exports = kind({
         LinkContainer.createComponent({
             kind: Link,
             classes: (page == 1) ? 'std_link disabled' : 'std_link',
-            href: (page == 1) ? null : urlBase + prevPage.toString(),
+            href: (page == 1) ? null : this.makeLink( prevPage.toString() ),
             content: this.prevPageText,
             allowHtml: true,
             title: 'Previous Page'
@@ -126,7 +126,7 @@ module.exports = kind({
             for(var i = displayFirstPage; i <= displayLastPage; i++) {
                 LinkContainer.createComponent({
                     kind: Link,
-                    href: (i == page) ? null : urlBase + i.toString(),
+                    href: (i == page) ? null : this.makeLink( i.toString() ),
                     classes: (i == page) ? 'std_link current_page' : 'std_link',
                     content: i.toString()
                 });
@@ -136,7 +136,7 @@ module.exports = kind({
         LinkContainer.createComponent({
             classes: (page == this.lastPage) ? 'std_link disabled' : 'std_link',
             kind: Link,
-            href: (page == this.lastPage) ? null : urlBase + nextPage.toString(),
+            href: (page == this.lastPage) ? null : this.makeLink( nextPage.toString() ),
             content: this.nextPageText,
             allowHtml: true,
             title: 'Next Page'
@@ -148,7 +148,7 @@ module.exports = kind({
                 kind: Link,
                 allowHtml: true,
                 content: this.lastPageText,
-                href: (page == this.lastPage) ? null : urlBase + this.lastPage.toString(),
+                href: (page == this.lastPage) ? null : this.makeLink( this.lastPage.toString() ),
                 title: 'Last Page'
             });
         }
@@ -185,53 +185,56 @@ module.exports = kind({
             this.doPageChange(data);
         }
     },
+    makeLink: function(page) {
+        var cacheLink = this.getLinkBase() + page;
+        // return cacheLink;
+
+        if(!this.app.formIsShortHashable() || !this.formData) {
+            return cacheLink;
+        }
+
+        var bibles = this.app.getSelectedBiblesString();
+
+        var reference = this.formData.reference || null;
+        var search = this.formData.search || null;
+        var request = this.formData.request || null;
+        var searchType = this.formData.search_type || null;
+        var searchExtras = '';
+        var hasSe = false;
+        var se = [];
+
+        var searchValues = [
+            {field: 'reference',    value: reference,  default: ''},
+            {field: 'search_type',  value: searchType, default: 'and'}
+        ];
+
+        for(i in searchValues) {
+            var sv = searchValues[i];
+
+            if(hasSe || (sv.value && sv.value != '' && sv.value != sv.default)) {
+                hasSe = true;
+                var val = (sv.value && sv.value != '') ? sv.value : sv.default;
+                se.push(val);
+            }
+        }
+
+        if(hasSe) {
+            se.reverse();
+            searchExtras = '/' + se.join('/');
+        }
+
+        if(!reference && search && !request || reference && search && !request) {
+            cacheLink = '#/s/' + bibles + '/' + search + '/' + page + searchExtras;
+        }
+
+        if(!reference && !search && request || reference && !search && request) {
+            cacheLink = '#/q/' + bibles + '/' + request + '/' + page + searchExtras;
+        }
+
+        cacheLink = cacheLink.replace(/\s+/g, '.');
+        return cacheLink;
+    },
     getLinkBase: function() {
-        var cache = this.get('cacheHash');
-        return '#/c/' + cache + '/';
-
-        var curUrl = window.location.href;
-        parts = curUrl.split('#');
-
-        var search = '',
-            passage = '';
-
-        if(this.formData) {
-            if(this.formData.search) {
-                search = this.formData.search;
-                passage = this.formData.reference || null;
-            }
-            else {
-                search = this.formData.request;
-                
-            }
-        }
-
-        if(parts[1]) {        
-            subparts = parts[1].split('/');
-
-            var mode = subparts.shift();
-
-            if(mode == '') {
-                mode = subparts.shift();
-            }
-
-            subpartsClean = [
-                mode || 's',
-                subparts[0] || '',
-                subparts[1] || '',
-                subparts[2] || '',
-                subparts[3] || '',
-            ];
-
-            // page = subparts.pop();
-
-            // if(Number.isNaN( Number.parseInt(page, 10))) {
-            //     subparts.push(page);
-            // }
-
-            return '#/' + subpartsClean.join('/') + '/';
-        }
-
         var cache = this.get('cacheHash');
         return '#/c/' + cache + '/';
     }

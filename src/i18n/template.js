@@ -126,6 +126,7 @@ module.exports = {
     'Shrink Text': '',
     'Verse Display': '',
     'Paragraph Display': '',
+    'Passage Display': '', // 4.5
     'EZ Copy': '',  // 'Easy Copy'
     'Read Display': '',
     'Italics': '',

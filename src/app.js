@@ -558,13 +558,20 @@ var App = Application.kind({
         this._hashSearch(parts, true);
     },
     _hashSearch: function(parts, forceUseRequestField) {
-        // Proposed new Format: '#/s/<Bible(s)>/<SearchOrRequest>/<page>/<SearchType>/<Reference>/'
+        //OLD format: '#/s/<Bible(s)>/<SearchOrRequest>/<SearchType>/<Reference>/page/'
+
+        // These elements should be ordered left to right in the order that represents the likeliness that they will be used.
+        
+        // Proposed new Formats: 
+        // Current A: '#/s/<Bible(s)>/<SearchOrRequest>/<page>/<SearchType>/<Reference>/'
+        // B: '#/s/<Bible(s)>/<SearchOrRequest>/<page>/<Reference>/<SearchType>/'
+        // C: '#/s/<Bible(s)>/<SearchOrRequest>/<page>/'
 
         var bible  = parts[0] || null;
         var search = parts[1] || null;
-        var searchType = parts[2] || null;
-        var reference = parts[3] || null;
-        var page = parts[4] || null;
+        var page = parts[2] || null;
+        var searchType = parts[3] || null;
+        var reference = parts[4] || null;
         var useRequestField = (forceUseRequestField || this.formHasField('request')) ? true : false;
 
         var formData = {
@@ -695,6 +702,13 @@ var App = Application.kind({
     getFormFieldValue: function(fieldName) {
         if(this.view && this.view.getFormFieldValue) {
             return this.view.getFormFieldValue(fieldName);
+        }
+        
+        return false;
+    },    
+    formIsShortHashable: function() {
+        if(this.view && this.view._formIsShortHashable) {
+            return this.view._formIsShortHashable();
         }
         
         return false;

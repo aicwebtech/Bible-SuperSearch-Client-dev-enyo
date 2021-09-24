@@ -119,6 +119,7 @@ module.exports = {
     'Shrink Text': 'Réduire la taille du texte',
     'Verse Display': 'Affichage du text',
     'Paragraph Display': 'Affichage du paragraph',
+    'Passage Display': 'Affichage des passages', // 4.5
     'EZ Copy': 'Copie Facile',
     'Read Display': 'Lisez l\'affichage',
     'Italics': 'Italics',

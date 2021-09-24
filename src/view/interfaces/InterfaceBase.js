@@ -136,6 +136,13 @@ module.exports = kind({
 
         return false;
     },
+    _formIsShortHashable: function() {
+        if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view && this.$.Content.$.FormController.view) {
+            return this.$.Content.$.FormController.view.isShortHashable();
+        }
+
+        return false;
+    },
 
     scrollToTop: function() {
         this.hasNode().scrollTop = 0;

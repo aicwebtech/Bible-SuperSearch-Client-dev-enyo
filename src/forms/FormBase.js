@@ -109,6 +109,12 @@ module.exports = kind({
     _submitFormHelper: function(formData, manual) {
         this.manualRequest = manual || false;
 
+        if(this.manualRequest) {
+            formData.page = null;
+            // this.formData.page = null;
+            this.page = null;
+        }
+
         if(this.requestPending) {
             return;
         }
@@ -522,10 +528,40 @@ module.exports = kind({
         var reference = this.$.reference ? this.$.reference.get('value') : null;
         var search = this.$.search ? this.$.search.get('value') : null;
         var request = this.$.request ? this.$.request.get('value') : null;
+        var searchType = this.$.search_type ? this.$.search_type.get('value') : null;
 
         var pas = reference ? reference : request;
         var passages = this.Passage.explodeReferences(pas, true);
         var refId = 'r';
+        var page = this.page || 1;
+        var searchExtras = '';
+        var se = [];
+        var hasSe = false;
+
+        var searchValues = [
+            {field: 'reference',    value: reference,  default: ''},
+            {field: 'search_type',  value: searchType, default: 'and'},
+            {field: 'page',         value: page,       default: 1}
+        ];
+
+        this.app.debug && this.log('searchValues', searchValues);
+
+        for(i in searchValues) {
+            var sv = searchValues[i];
+
+            if(hasSe || (sv.value && sv.value != '' && sv.value != sv.default)) {
+                hasSe = true;
+                var val = (sv.value && sv.value != '') ? sv.value : sv.default;
+                se.push(val);
+            }
+        }
+
+        if(hasSe) {
+            se.reverse();
+            searchExtras = '/' + se.join('/');
+        }
+
+        this.app.debug && this.log('se', se, searchExtras);
 
         if(passages && passages.length == 1 && this.Passage.isPassage(pas)) {
             if(!reference) {
@@ -536,7 +572,7 @@ module.exports = kind({
             refId = 'p';
         }
 
-        this.app.debug && this.log(reference, search, request, passages);
+        // this.app.debug && this.log(reference, search, request, passages);
 
         // Todo - convert space to something more aesthetic.  _ or .?
         // UNSAFE IN URL: /,;-
@@ -547,12 +583,12 @@ module.exports = kind({
             hash = '#/' + refId + '/' + bibles + '/' + reference;
         }        
 
-        if(!reference && search && !request) {
-            hash = '#/s/' + bibles + '/' + search;
+        if(!reference && search && !request || reference && search && !request) {
+            hash = '#/s/' + bibles + '/' + search + searchExtras;
         }
 
-        if(!reference && !search && request) {
-            hash = '#/q/' + bibles + '/' + request;
+        if(!reference && !search && request || reference && !search && request) {
+            hash = '#/q/' + bibles + '/' + request + searchExtras;
             // hash = '#/s/' + bibles + '/' + request; // Also works
         }
 
