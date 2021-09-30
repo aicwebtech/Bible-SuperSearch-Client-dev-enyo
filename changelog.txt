@@ -1,9 +1,10 @@
-= 4.5.0 (soft release)
+= 4.5.0 Oct 9, 2021 (soft release)
 * Added format options for the copying text.
+* Added Romanian UI translation
 * Improvement: Added ability to toggle keyword highlighting.
 * Improvement: Added 'Clear Form' button.
 * Improvement: Displaying short name of Bibles with long name when in parallel mode.
-* Improvement: Added clean URL for search queries.
+* Improvement: Added clean URL for many search queries.
 * Replaced paragraph toggle with paragraph / passage / verse selector (Stylable format buttons only).
 * Bug fix: Replaced unicode icons with ones that display on mobile devices.
 * Bug fix: Fixed ASV display issue {{selah
@@ -30,7 +31,6 @@
 * Added 'Minimal with Parallel Bible' skin
 * Added print button
 * Added language options
-
 
 = 4.3.3 =
 * Bugfix: Fixed issues with responsiveness on the Bible SOS, Start, and Download dialogs

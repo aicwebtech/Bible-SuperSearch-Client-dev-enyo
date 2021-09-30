@@ -28,9 +28,16 @@ var ResponseCollection = require('./data/collections/ResponseCollection');
 var Signal = require('enyo/Signals');
 var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 
+// Extend Router to suppres _currentChanged console logging.
+var BssRouter = kind({
+    name: 'BssRouter',
+    kind: Router,
+    _currentChanged: function(was, is) {} 
+});
+
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '4.4.2',
+    applicationVersion: '4.5.0',
 
     defaultView: DefaultInterface,
     //renderTarget: 'biblesupersearch_container',
@@ -78,7 +85,7 @@ var App = Application.kind({
         {name: 'UserConfig', kind: UserConfigController, publish: true},
         {
             name: 'Router',
-            kind: Router,
+            kind: BssRouter,
             triggerOnStart: true,
             routes: [ {handler: 'handleHashGeneric', default: true} ]
         }
