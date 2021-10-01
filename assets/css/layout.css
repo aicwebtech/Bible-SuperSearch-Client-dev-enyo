@@ -624,3 +624,43 @@ div.biblesupersearch_dialog {
     display:none;
 }
 
+.checkbox_container .element {
+    display: inline;
+}
+
+.biblesupersearch_copy_settings .settings {
+    display: flex;
+    justify-content: center;
+/*    margin-left: auto;
+    margin-right: auto;*/
+    font-size: .85em;
+}
+
+.biblesupersearch_copy_settings .presets {
+    display: inline-block;
+}
+
+.biblesupersearch_copy_settings .presets_container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.biblesupersearch_copy_settings .presets_container .label {
+    padding: 1px 0;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.biblesupersearch_copy_settings .section {
+    float: left;
+    margin: 10px;
+    background-color: #eeeeee;
+    padding: 10px;
+}
+
+.biblesupersearch_copy_settings .section .header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}

@@ -38,6 +38,7 @@ module.exports = {
     'Find verses containing': 'Cherhez un verset qui contient',
     'Restrict search to': 'Restreindre la rechrech à', 
     'Word Search': 'cherchez par mot',
+    'Clear Form': 'Forme claire', // 4.5
 
     // Context Links
     'Show full chapter': 'Afficher le chapitre complet',
@@ -118,6 +119,7 @@ module.exports = {
     'Shrink Text': 'Réduire la taille du texte',
     'Verse Display': 'Affichage du text',
     'Paragraph Display': 'Affichage du paragraph',
+    'Passage Display': 'Affichage des passages', // 4.5
     'EZ Copy': 'Copie Facile',
     'Read Display': 'Lisez l\'affichage',
     'Italics': 'Italics',
@@ -136,6 +138,37 @@ module.exports = {
     'Help': 'Aide',
     'Basic': 'De base',
     'Advanced': 'Avancée',
+
+    // Verse Cherry-picking
+    'Select All': 'Tout sélectionner', // 5.0
+    'Select None': 'Ne rien sélectionner', // 5.0
+    'Select': 'Sélectionner', // 5.0
+    'Unselect': 'Désélectionner', // 5.0
+    
+    // Copy format options
+    'Copy Format': 'Format de copie', // 5.0
+    'Word Processor': 'Traitement de texte', // 5.0
+    'Outline' : 'Contour', // 5.0
+    'Custom': 'Personnalisé', // 5.0
+
+    'Single Verses': 'Versets simples', // 5.0
+    'Reference - Text': 'Référence - Texte', // 5.0
+    'Text - Reference': 'Texte - Référence', // 5.0
+    'Text Only': 'Text Only', // 5.0
+    'Separate Line': 'Ligne séparée', // 5.0
+
+    'Multi-verse Passages': 'Passages multi-vers', // 5.0
+    'Reference - Passage': 'Référence - Passage', // 5.0
+    'Passage - Reference': 'Passage - Référence', // 5.0
+    'Passage Only': 'Passage seulement', // 5.0
+    'Show Verse Number': 'Afficher le numéro du verset', // 5.0
+
+    'Other': 'Autre', // 5.0
+    'Abbreviate Books': 'Livres abrégés', // 5.0
+    'Omit Extra Line Breaks': 'Omettre les sauts de ligne supplémentaires', // 5.0
+
+    // Settings Dialog
+    'Settings' : 'Paramètres', // 5.0
     
     // Result and error messages
     

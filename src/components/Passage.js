@@ -4,9 +4,6 @@ module.exports = {
             nonPassageChars = this._containsNonPassageCharacters(value),
             passages = this.explodeReferences(value, true);
 
-        console.log('routeRequest');
-        console.log('passages', passages);
-
         // todo - migrate full logic here!
 
         // Treats as passage if 
@@ -38,6 +35,10 @@ module.exports = {
     },
 
     _containsNonPassageCharacters: function(str) {
+        if(!str) {
+            return false;
+        }
+
         // migrated from PHP API.
         nonPassageChars = str.match(/[`\\~!@#$%\^&*{}_[\]()]/);
         return nonPassageChars ? true : false;
@@ -46,7 +47,9 @@ module.exports = {
     explodeReferences: function(reference, separate_book) {
         separate_book = separate_book ? true : false;
 
-        console.log('explodeReferences');
+        if(!reference) {
+            return [];
+        }
 
         if(this._containsNonPassageCharacters(reference)) {
             return [];

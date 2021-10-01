@@ -123,6 +123,10 @@
     }
 }*/
 
+.biblesupersearch_expanding_form  .biblesupersearch_copy_settings .section {
+    background-color: #eeeeee;
+}
+
 .interface_expanding .bible button {
     font-size: .7em;
 }

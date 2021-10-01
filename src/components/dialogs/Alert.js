@@ -30,11 +30,9 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
-        this.log();
     },
 
     openAlert: function(inSender, inEvent) {
-        this.log();
         this._openAlertHelper(inEvent.alert || 'Alert');
     },
     openPositionedAlert: function(inSender, inEvent) {

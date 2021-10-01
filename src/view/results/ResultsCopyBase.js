@@ -1,6 +1,7 @@
 var kind = require('enyo/kind');
 var ResultsBase = require('./ResultsBase');
 var CopyPane = require('./CopyPane');
+var CopySettings = require('../../components/dialogs/CopySettings');
 
 module.exports = kind({
     name: 'ResultsCopyBase',
@@ -8,6 +9,14 @@ module.exports = kind({
     container: null,
     // newLine: '\n',
     newLine: '<br />',
+
+    create: function() {
+        this.inherited(arguments);
+
+        this.$.DialogsContainer.createComponent({
+            kind: CopySettings
+        });
+    },
 
     renderHeader: function() {
         this.app.debug && this.log();
@@ -30,7 +39,7 @@ module.exports = kind({
             if(this.multiBibles) {            
                 headerComponents.push({
                     tag: 'th',
-                    content: bible_info.name
+                    content: this._getBibleDisplayName(bible_info)
                 });
             }
 
@@ -72,8 +81,16 @@ module.exports = kind({
         }
     },
     renderPassageParallelBible: function(passage) {        
-        for(i in this.bibles) {
-            this._appendBibleComponent(passage.book_name + ' ' + passage.chapter_verse + this.newLine + this.newLine, i);
+        var omitExtraBr = this.app.UserConfig.get('copy_omit_extra_br'),
+            passageLayout = this.app.UserConfig.get('copy_passage_format'),
+            br = (omitExtraBr) ? this.newLine : this.newLine + this.newLine,
+            bookName = this.app.UserConfig.get('copy_abbr_book') && passage.book_short ? passage.book_short : passage.book_name,
+            reference = bookName + ' ' + passage.chapter_verse;
+
+        if(passageLayout == 'reference_passage') {        
+            for(i in this.bibles) {
+                this._appendBibleComponent(reference + br, i);
+            }
         }
 
         for(chapter in passage.verse_index) {
@@ -96,8 +113,18 @@ module.exports = kind({
             }, this);
         }
 
-        for(i in this.bibles) {
-            this._appendBibleComponent(this.newLine, i);
+        if(passageLayout == 'passage_reference') {        
+            referenceHtml = (omitExtraBr) ? reference + this.newLine : this.newLine + reference + this.newLine;
+
+            for(i in this.bibles) {
+                this._appendBibleComponent(referenceHtml, i);
+            }
+        }
+
+        if(!omitExtraBr) {        
+            for(i in this.bibles) {
+                this._appendBibleComponent(this.newLine, i);
+            }
         }
     },    
     renderPassageSingleBible: function(passage) {
@@ -111,13 +138,36 @@ module.exports = kind({
         this.container.$[compName] && this.container.$[compName].appendText(content);    
     },
     processAssembleVerse: function(reference, verse) {
-        return reference + '  ' + this.processText(verse.text);
+        var format = this.app.UserConfig.get('copy_text_format'),
+            line = this.app.UserConfig.get('copy_separate_line') ? this.newLine : ' ',
+            text = this.processText(verse.text);
+
+        switch(format) {
+            case 'text_only':
+                return text;
+                break;            
+            case 'reference_only':
+                return reference;
+                break;
+            case 'text_reference':
+                return text + line + reference;
+                break;
+            case 'reference_text':
+            default:
+                return reference + line + text;
+        }
+
+        // return reference + '  ' + this.processText(verse.text);
     },
+
     processAssembleSingleVerse: function(reference, verse) {
-        return this.processAssembleVerse(reference, verse)  + this.newLine + this.newLine;
+        var nl = this.app.UserConfig.get('copy_omit_extra_br') ? this.newLine : this.newLine + this.newLine;
+        return this.processAssembleVerse(reference, verse) + nl;
     }, 
     processAssemblePassageVerse: function(reference, verse) {
-        var processed = this.processAssembleVerse(reference, verse);
+        // var processed = this.processAssembleVerse(reference, verse);
+        var processed = (this.app.UserConfig.get('copy_passage_verse_number')) ? reference + ' ' : '';
+            processed += this.processText(verse.text);
 
         if(this.isParagraphView) {
             processed += '  ';
@@ -154,4 +204,8 @@ module.exports = kind({
 
         this.showingCopyrightBottom = true;
     },
+    proccessSingleVerseReference: function(passage, verse) {
+        var bookName = this.app.UserConfig.get('copy_abbr_book') && passage.book_short ? passage.book_short : passage.book_name;
+        return bookName + ' ' + verse.chapter + ':' + verse.verse;
+    },    
 });

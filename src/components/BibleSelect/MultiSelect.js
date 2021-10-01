@@ -27,6 +27,10 @@ module.exports = kind({
         {name: 'Add', kind: Button, content: 'Add Bible', ontap: 'addSelector', components: [{kind: i18n, content: 'Add Bible'}]}
     ],
 
+    handlers: {
+        onClearFormWaterfall: 'resetValue'
+    },
+
     published: {
         value: [],
         disabled: false
@@ -45,16 +49,7 @@ module.exports = kind({
     resetValue: function() {
         this.setValue([]);
         // this.parallelCleanup();
-        this.$.Container.destroyClientControls();
-        this.parallelNumber = 0;
-
-        var num = (this.parallelStart >= 1) ? this.parallelStart : 1;
-
-        for(var i = 1; i <= num; i++) {
-            this._addSelectorHelper();
-        }
-
-        this.$.Container.render();
+        this._resetSelectors();
     },
     addSelector: function() {
         this.doAddSelectorTapped();
@@ -124,6 +119,18 @@ module.exports = kind({
         }
 
         return false;
+    },
+    _resetSelectors: function() {
+        this.$.Container.destroyClientControls();
+        this.parallelNumber = 0;
+
+        var num = (this.parallelStart >= 1) ? this.parallelStart : 1;
+
+        for(var i = 1; i <= num; i++) {
+            this._addSelectorHelper();
+        }
+
+        this.$.Container.render();
     },
     selectorChanged: function(inSender, inEvent) {
         var components = this.$.Container.getClientControls(),

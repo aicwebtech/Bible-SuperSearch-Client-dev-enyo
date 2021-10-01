@@ -9,6 +9,7 @@ var ShareDialog = require('../../components/dialogs/Share');
 var NavButtons = require('../../components/NavButtons/NavClassic');
 var FormatButtons = require('../../components/FormatButtons/classic/FormatButtonsClassic');
 var Pager = require('../../components/Pagers/ClassicPager');
+var MaterialIconsStyle = require('../../components/Styles/MaterialIcons');
 
 // Base kind for all Application views
 module.exports = kind({
@@ -28,7 +29,8 @@ module.exports = kind({
         onLocaleChange: 'handleLocaleChanged',
         onFormResponseError: 'handleFormResponse',
         onFormResponseSuccess: 'handleFormResponse',
-        onFormViewChanged: 'handleFormViewChanged'
+        onFormViewChanged: 'handleFormViewChanged',
+        onkeydown: 'handleKey',
     },
 
     published: {
@@ -47,6 +49,8 @@ module.exports = kind({
         }
 
         this.addRemoveClass('rtl', this.app.isRtl);
+
+        this.createComponent({kind: MaterialIconsStyle});
 
         // if(!this.$.HelpDialog) {
         //     this.createComponent({
@@ -132,6 +136,13 @@ module.exports = kind({
 
         return false;
     },
+    _formIsShortHashable: function() {
+        if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view && this.$.Content.$.FormController.view) {
+            return this.$.Content.$.FormController.view.isShortHashable();
+        }
+
+        return false;
+    },
 
     scrollToTop: function() {
         this.hasNode().scrollTop = 0;
@@ -144,5 +155,8 @@ module.exports = kind({
     },
     handleFormViewChanged: function(inSender, inEvent) {
         this.scrollToTop();
-    }
+    },
+    handkeKey: function(inSender, inEvent) {
+        this.log(inEvent);
+    },
 });

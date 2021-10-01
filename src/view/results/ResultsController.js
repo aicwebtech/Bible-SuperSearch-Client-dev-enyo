@@ -30,6 +30,9 @@ module.exports = kind({
     observers: [
         // {method: 'watchRenderable', path: ['app.UserConfig.copy', 'app.UserConfig.paragraph']}
         {method: 'watchRenderable', path: ['uc.copy', 'uc.paragraph', 'uc.strongs', 'uc.italics', 'uc.red_letter', 'uc.highlight']},
+        {method: 'watchCopyRenderable', path: [
+            'uc.copy_separate_line', 'uc.copy_omit_extra_br', 'uc.copy_abbr_book', 'uc.copy_text_format', 'uc.copy_passage_format', 'uc.copy_passage_verse_number'
+        ]},
         {method: 'watchTextSize', path: ['uc.text_size']},
         {method: 'watchFont', path: ['uc.font']}
     ],
@@ -114,22 +117,17 @@ module.exports = kind({
         }
     },
     watchRenderable: function(pre, cur, prop) {
-        // this.log(pre, cur, prop);
-
-        // debugging code
-        // var attr = ['text_size', 'font'];
-        // attr.forEach(function(item) {
-        //     this.log('watchRenderable', item, this.app.UserConfig.get(item));
-        // }, this);
-
         this.renderResults();
     },
+    watchCopyRenderable: function() {
+        if(this.app.UserConfig.get('copy')) {
+            this.renderResults();
+        }
+    },
     watchTextSize: function(pre, cur, prop) {
-        // this.log(pre, cur, prop);
         this.applyViewTextSize();
     },    
     watchFont: function(pre, cur, prop) {
-        // this.log(pre, cur, prop);
         this.applyViewFont();
     }
 });

@@ -28,9 +28,16 @@ var ResponseCollection = require('./data/collections/ResponseCollection');
 var Signal = require('enyo/Signals');
 var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 
+// Extend Router to suppres _currentChanged console logging.
+var BssRouter = kind({
+    name: 'BssRouter',
+    kind: Router,
+    _currentChanged: function(was, is) {} 
+});
+
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '4.4.3',
+    applicationVersion: '4.5.0',
 
     defaultView: DefaultInterface,
     //renderTarget: 'biblesupersearch_container',
@@ -78,7 +85,7 @@ var App = Application.kind({
         {name: 'UserConfig', kind: UserConfigController, publish: true},
         {
             name: 'Router',
-            kind: Router,
+            kind: BssRouter,
             triggerOnStart: true,
             routes: [ {handler: 'handleHashGeneric', default: true} ]
         }
@@ -87,7 +94,6 @@ var App = Application.kind({
     observers: [
         {method: 'watchSingleVerses', path: ['UserConfig.single_verses']}
     ],
-
 
     create: function() {
         this.inherited(arguments);
@@ -559,13 +565,20 @@ var App = Application.kind({
         this._hashSearch(parts, true);
     },
     _hashSearch: function(parts, forceUseRequestField) {
-        // Proposed new Format: '#/s/<Bible(s)>/<SearchOrRequest>/<page>/<SearchType>/<Reference>/'
+        //OLD format: '#/s/<Bible(s)>/<SearchOrRequest>/<SearchType>/<Reference>/page/'
+
+        // These elements should be ordered left to right in the order that represents the likeliness that they will be used.
+        
+        // Proposed new Formats: 
+        // Current A: '#/s/<Bible(s)>/<SearchOrRequest>/<page>/<SearchType>/<Reference>/'
+        // B: '#/s/<Bible(s)>/<SearchOrRequest>/<page>/<Reference>/<SearchType>/'
+        // C: '#/s/<Bible(s)>/<SearchOrRequest>/<page>/'
 
         var bible  = parts[0] || null;
         var search = parts[1] || null;
-        var searchType = parts[2] || null;
-        var reference = parts[3] || null;
-        var page = parts[4] || null;
+        var page = parts[2] || null;
+        var searchType = parts[3] || null;
+        var reference = parts[4] || null;
         var useRequestField = (forceUseRequestField || this.formHasField('request')) ? true : false;
 
         var formData = {
@@ -696,6 +709,13 @@ var App = Application.kind({
     getFormFieldValue: function(fieldName) {
         if(this.view && this.view.getFormFieldValue) {
             return this.view.getFormFieldValue(fieldName);
+        }
+        
+        return false;
+    },    
+    formIsShortHashable: function() {
+        if(this.view && this.view._formIsShortHashable) {
+            return this.view._formIsShortHashable();
         }
         
         return false;

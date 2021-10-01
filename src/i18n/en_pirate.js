@@ -36,6 +36,8 @@ module.exports = {
     'Chapters' : 'Chestes',
     'Find verses containing': 'Locate partes havin\'',
     'Restrict search to': 'Prevent ye maties from searchin\' outside of', 
+    'Word Search' : 'Pyllage ye wordes',
+    'Clear Form': 'Sweepe ye Decke', // 4.5
 
     // Context Links
     'Show full chapter': 'Reveale all thee cheste contents',
@@ -116,6 +118,7 @@ module.exports = {
     'Shrink Text': 'Text Shrimpe',
     'Verse Display': 'Line up booty in rows',
     'Paragraph Display': 'Group booty into paragraphs',
+    'Passage Display': 'Group booty into paysaggage', // 4.5
     'EZ Copy': 'Lazy Pirate',
     'Read Display': 'Readin\' It',
     'Italics': 'Slante',
@@ -140,6 +143,12 @@ module.exports = {
     'Bible Downloads': 'Retrieve from the Depths',
     'Basic': 'Ye simpeel',
     'Advanced': 'Arrdvancede',
+
+    // Verse Cherry-picking
+    'Select All': 'Picme ye all', // 5.0
+    'Select None': 'Picme ye non', // 5.0
+    'Select': 'Picme', // 5.0
+    'Unselect': 'Nopic', // 5.0
     
     // Copy / Share dialog
     'Copy': 'Pirate this',
@@ -147,6 +156,31 @@ module.exports = {
     'Copy with Text': 'Pirate this with scribblings',
     'Share Link': 'Give to ye mateys',
     'Share' : 'Givem',
+
+    // Copy format options
+    'Copy Format': 'Pirate likeness', // 5.0
+    'Word Processor': 'Worde typee thingy', // 5.0
+    'Outline' : 'Lyne of the oute', // 5.0
+    'Custom': 'Cusstum', // 5.0
+
+    'Single Verses': 'Onely One Verses', // 5.0
+    'Reference - Text': 'Coord - Jewwel', // 5.0
+    'Text - Reference': 'Jewwel - Coord', // 5.0
+    'Text Only': 'Jewel onlie', // 5.0
+    'Separate Line': 'Slice ye line', // 5.0
+
+    'Multi-verse Passages': 'Partes of manie Jewels', // 5.0
+    'Reference - Passage': 'Coord - Parte', // 5.0
+    'Passage - Reference': 'Parte - Coord', // 5.0
+    'Passage Only': 'Parte onlie', // 5.0
+    'Show Verse Number': 'Shew ye jewwel numbre', // 5.0
+
+    'Other': 'Orther', // 5.0
+    'Abbreviate Books': 'Fsorten the booke', // 5.0
+    'Omit Extra Line Breaks': 'Less ye line slicee', // 5.0
+
+    // Settings Dialog
+    'Settings' : 'Pickens', // 5.0
 
     'User\'s Manual': 'Arr, how me operate this thing?',
     

@@ -5,6 +5,7 @@ module.exports = {
     es: require('./es'),
     // ar: require('./ar'),
     fr: require('./fr'),
+    ro: require('./ro'),
 
     // Translation strings that allow partial matches.
     // For best results, put longest at top of list

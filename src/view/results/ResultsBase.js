@@ -225,6 +225,14 @@ module.exports = kind({
         this.showingCopyrightBottom = true;
     },
 
+    _getBibleDisplayName: function(bible) {
+        if(this.bibles.length <= 1) {
+            return bible.name;
+        }
+
+        return bible.name.length > 30 ? bible.shortname : bible.name;
+    },
+
     renderHeader: function() {}, // Called before results are rendered, not required
     renderFooter: function() {}, // Called after results are rendered, not required
 
@@ -278,6 +286,12 @@ module.exports = kind({
             text = text.replace(/[‹›]/g, '');
         }
 
+        // ASV hack - ASV text has {{Selah or {Selah}
+        // (I confirmed in a print ASV that this is original to the text)
+        // We compensate for this here by using placeholders for the curly brackets
+        text = text.replace(/\{\{/g, '(LCB)(LCB)');
+        text = text.replace(/\{([A-Za-z<>/ ]+)\}/g, '(LCB)$1(RCB)');
+
         // strongs
         if(this.app.UserConfig.get('strongs')) {
             text = text.replace(/\{/g, "<sup>");
@@ -292,6 +306,10 @@ module.exports = kind({
             text = text.replace(/\} \{/g, '');
             text = text.replace(/\{[^\}]+\}/g, '');
         }
+
+        // Now that we're done with Strong's, we replace our placeholders with curly brackets
+        text = text.replace(/\(LCB\)/g, '{');
+        text = text.replace(/\(RCB\)/g, '}');
 
         // italics
         if(this.app.UserConfig.get('italics')) {
@@ -347,7 +365,6 @@ module.exports = kind({
     },
 
     watchRenderable: function(pre, cur, prop) {
-        this.log(pre, cur, prop);
         this.renderResults();
     },
     watchFormatable: function(pre, cur, prop) {

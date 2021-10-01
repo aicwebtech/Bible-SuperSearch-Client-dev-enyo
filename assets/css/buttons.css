@@ -29,15 +29,13 @@
     -ms-box-sizing: content-box; 
 }
 
-.format_buttons_html .item:hover {
+.format_buttons_html .item:hover, .format_buttons_html .item.selected {
     background-color: #d1cf45;
 }
 
 .format_buttons_html .item.size_plus {
-    /*font-size: 1.1em;*/
     /*font-weight: bold;*/
-    /*width: 20px;*/
-    font-size: 18px;
+    /*font-size: 16px;*/
 }
 
 .format_buttons_html .item.size_reg {
@@ -49,16 +47,18 @@
 }
 
 .format_buttons_html .item.size_reg span {
-    border-bottom: 2px solid black;
+    /*border-bottom: 2px solid black;*/
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    /*font-weight: bold;*/
     display: inline-block;
     height: 14px;
 }
 
 .format_buttons_html .item.size_minus {
-    /*font-size: 0.9em;*/
     /*font-weight: bold;*/
     /*width: 20px;*/
-    font-size: 18px;
+    /*font-size: 16px;*/
 }
 
 .format_buttons_html .item.font span {
@@ -84,11 +84,58 @@
     overflow: hidden;
 }
 
+.format_buttons_html .item.renderstyle.paragraph {
+    width: 36px;
+    text-align: center;
+}
+
+/*@import "https://fonts.googleapis.com/icon?family=Material+Icons+Outlined";*/
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.format_buttons_html .item .icon {
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.format_buttons_html .item img.icon {
+    height: 18px;
+}
+
+.format_buttons_html .item {
+    /*color:  green;*/
+}
+
 .format_buttons_html .item.paragraph_toggle .true span, 
 .format_buttons_html .item.copy_toggle .true span, 
 .format_buttons_html .item.copy_toggle .false span,  
 .format_buttons_html .item.single_verse_toggle .true span, 
-.format_buttons_html .item.single_verse_toggle .false span  
+.format_buttons_html .item.single_verse_toggle .false span,
+.format_buttons_html .item.renderstyle.verse span,
+.format_buttons_html .item.renderstyle.passage span
 {
     height: 4px;
     display: block;
@@ -172,6 +219,11 @@
     color: white;
 }
 
+/*.format_buttons_html .selected {
+    background-color: #c7b72c;
+}
+*/
+
 .html_nav_buttons {
     text-align: center;
     margin: 15px 0;
@@ -208,6 +260,15 @@
 .html_nav_buttons a.inactive {
     background-color: #dddddd;
     /*background-color: transparent;*/
+}
+
+.biblesupersearch_copy_settings .presets button {
+    margin: 0 3px;
+}
+
+.biblesupersearch_copy_settings .presets button.active {
+    background-color: #444444;
+    color: white;
 }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {

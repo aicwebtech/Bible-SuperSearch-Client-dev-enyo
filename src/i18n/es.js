@@ -38,6 +38,7 @@ module.exports = {
     'Find verses containing': 'Encuentra versículos que contengan',
     'Restrict search to': 'Restringir la búsqueda a', 
     'Word Search': 'Búsqueda de palabras',
+    'Clear Form': 'Forma clara', // 4.5
 
     // Context Links
     'Show full chapter': 'Mostrar capítulo completo',
@@ -118,6 +119,7 @@ module.exports = {
     'Shrink Text': 'Reducir texto',
     'Verse Display': 'Visualización del verso',
     'Paragraph Display': 'Visualización de párrafo',
+    'Passage Display': 'Pantalla de paso', // 4.5
     'EZ Copy': 'Copia Fácil',
     'Read Display': 'Leer pantalla',
     'Italics': 'Cursiva',
@@ -137,6 +139,37 @@ module.exports = {
     'Basic': 'Básico',
     'Advanced': 'Avanzado',
     
+    // Verse Cherry-picking
+    'Select All': 'Seleccionar todo', // 5.0
+    'Select None': 'No seleccionar ninguno', // 5.0
+    'Select': 'Seleccione', // 5.0
+    'Unselect': 'Deseleccionar', // 5.0
+    
+    // Copy format options
+    'Copy Format': 'Copiar formato', // 5.0
+    'Word Processor': 'Procesador de textos', // 5.0
+    'Outline' : 'Esquema', // 5.0
+    'Custom': 'Personalizado', // 5.0
+
+    'Single Verses': 'Versos individuales', // 5.0
+    'Reference - Text': 'Referencia - Texto', // 5.0
+    'Text - Reference': 'Texto - Referencia', // 5.0
+    'Text Only': 'Solo texto', // 5.0
+    'Separate Line': 'Línea separada', // 5.0
+
+    'Multi-verse Passages': 'Pasajes de varios versos', // 5.0
+    'Reference - Passage': 'Referencia - Pasaje', // 5.0
+    'Passage - Reference': 'Pasaje - Referencia', // 5.0
+    'Passage Only': 'Solo pasaje', // 5.0
+    'Show Verse Number': 'Mostrar número de versículo', // 5.0
+
+    'Other': 'Otro', // 5.0
+    'Abbreviate Books': 'Libros abreviados', // 5.0
+    'Omit Extra Line Breaks': 'Omitir saltos de línea adicionales', // 5.0
+
+    // Settings Dialog
+    'Settings' : 'Ajustes', // 5.0
+
     // Result and error messages
     
     // Your search produced (number of verses) results

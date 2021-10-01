@@ -104,7 +104,6 @@ module.exports = kind({
 
                 if(bible == null) {
                     for(var b in p.verses) {
-                        this.log('b', b);
 
                         if(b && b != null && b != '0' && b != 0) {
                             if(typeof this.app.statics.bibles[b] == 'undefined') {

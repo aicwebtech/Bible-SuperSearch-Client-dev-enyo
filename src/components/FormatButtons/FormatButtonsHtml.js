@@ -13,6 +13,7 @@ module.exports = kind({
     name: 'FormatButtonsHtml',
     kind: Base,
     classes: 'format_buttons_html',
+    font: null,
     
     components: [
         {
@@ -104,69 +105,82 @@ module.exports = kind({
             ],
         },
         {
-            classes: 'item paragraph_toggle',
-            name: 'paragraph_toggle',
-            kind: Toggle,
-            trueContent: 'Verse Display',
-            falseContent: '&para;',
-            trueTitle: 'Verse Display',
-            falseTitle: 'Paragraph Display',
-            trueComponent: {
-                components: [
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true}
-                    // {tag: 'span', content: '- &mdash;-&ndash;', allowHtml: true},
-                    // {tag: 'span', content: '- &mdash;&ndash;-', allowHtml: true},
-                    // {tag: 'span', content: '- -&ndash;&mdash;', allowHtml: true},
-                    // {tag: 'span', content: '- &ndash;&mdash;-', allowHtml: true}
-                ]
-            },
-            falseComponent: {
-                allowHtml: true
+            kind: i18n,
+            classes: 'item renderstyle paragraph',
+            name: 'renderstyle_paragraph',
+            val: 'paragraph',
+            tag: 'span',
+            content: '&para;',
+            allowHtml: true,
+            ontap: 'handleRenderStyle',
+            attributes: {
+                title: 'Paragraph Display'
+            }
+        },        
+        {
+            kind: i18n,
+            classes: 'item renderstyle passage',
+            name: 'renderstyle_passage',
+            val: 'passage',
+            tag: 'span',
+            ontap: 'handleRenderStyle',
+            components: [
+                {tag: 'span', content: '&nbsp;---- -', allowHtml: true},
+                {tag: 'span', content: '', allowHtml: true},
+                {tag: 'span', content: '- -------', allowHtml: true},
+                {tag: 'span', content: '- -------', allowHtml: true},
+                {tag: 'span', content: '- -------', allowHtml: true},
+                {tag: 'span', content: '- -------', allowHtml: true},
+            ],
+            attributes: {
+                title: 'Passage Display'
+            }
+        },        
+        {
+            kind: i18n,
+            classes: 'item renderstyle verse',
+            name: 'renderstyle_verse',
+            val: 'verse',
+            tag: 'span',
+            ontap: 'handleRenderStyle',
+            components: [
+                {tag: 'span', content: '- -.- -----', allowHtml: true},
+                {tag: 'span', content: '- -.- -----', allowHtml: true},
+                {tag: 'span', content: '- -.- -----', allowHtml: true},
+                {tag: 'span', content: '- - - -----', allowHtml: true},
+                {tag: 'span', content: ''},
+                {tag: 'span', content: ''},
+                {tag: 'span', content: ''}
+            ],
+            attributes: {
+                title: 'Verse Display'
             }
         },
-        // {tag: 'span', components: [
-            // {
-            //     classes: 'item',
-            //     name: 'copy_instant',
-            //     kind: i18n,
-            //     content: 'Copy',
-            //     ontap: 'handleCopyInstant',
-            //     style: 'position: relative'
-            // },
-        // ]},
-        {
-            classes: 'item copy_toggle',
-            name: 'copy_toggle',
-            kind: Toggle,            
-            trueTitle: 'Read Display',
-            falseTitle: 'EZ Copy',
-            trueComponent: {
-                components: [
-                    {tag: 'span', classes: 'buttons', content: '<< < = > >>', allowHtml: true},
-                    {tag: 'span', content: '', allowHtml: true},
-                    {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true},
-                    {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true}
-                ]
-            },
-            falseComponent: {
-                components: [
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    // {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
-                    // {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
-                    // {tag: 'span', content: '- -&ndash;&mdash;&ndash;', allowHtml: true},
-                    // {tag: 'span', content: '- &ndash;&ndash;&mdash;-', allowHtml: true},
-                    {tag: 'span', content: ''},
-                    {tag: 'span', content: ''},
-                    {tag: 'span', content: ''}
-                ]
-            },
-        },        
+
+        // {
+        //     classes: 'item paragraph_toggle',
+        //     name: 'paragraph_toggle',
+        //     kind: Toggle,
+        //     trueContent: 'Verse Display',
+        //     falseContent: '&para;',
+        //     trueTitle: 'Verse Display',
+        //     falseTitle: 'Paragraph Display',
+        //     trueComponent: {
+        //         components: [
+        //             {tag: 'span', content: '- ------', allowHtml: true},
+        //             {tag: 'span', content: '- ------', allowHtml: true},
+        //             {tag: 'span', content: '- ------', allowHtml: true},
+        //             {tag: 'span', content: '- ------', allowHtml: true}
+        //             // {tag: 'span', content: '- &mdash;-&ndash;', allowHtml: true},
+        //             // {tag: 'span', content: '- &mdash;&ndash;-', allowHtml: true},
+        //             // {tag: 'span', content: '- -&ndash;&mdash;', allowHtml: true},
+        //             // {tag: 'span', content: '- &ndash;&mdash;-', allowHtml: true}
+        //         ]
+        //     },
+        //     falseComponent: {
+        //         allowHtml: true
+        //     }
+        // },
         // {
         //     classes: 'item single_verse_toggle',
         //     name: 'single_verse_toggle',
@@ -194,7 +208,54 @@ module.exports = kind({
         //             {tag: 'span', content: ''}
         //         ]
         //     },
-        // },        
+        // },
+        
+        // TODO - FUTURE - copy instantly button
+        // {tag: 'span', components: [
+        //     {
+        //         classes: 'item',
+        //         name: 'copy_instant',
+        //         kind: i18n,
+        //         content: 'Copy',
+        //         ontap: 'handleCopyInstant',
+        //         style: 'position: relative',
+        //         title: 'Copy with given copy settings'
+        //     },
+        // ]},
+        {
+            classes: 'item copy_toggle',
+            name: 'copy_toggle',
+            kind: Toggle,            
+            trueTitle: 'Read Display',
+            falseTitle: 'EZ Copy',
+            trueComponent: {
+                components: [
+                    {tag: 'span', classes: 'buttons', content: '<< < = > >>', allowHtml: true},
+                    {tag: 'span', content: '', allowHtml: true},
+                    {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true},
+                    {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true}
+
+                    // {tag: 'span', classes: 'material-icons icon', content: 'bookvisibility'}
+                ]
+            },
+            falseComponent: {
+                components: [
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    {tag: 'span', content: '- ------', allowHtml: true},
+                    // {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
+                    // {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
+                    // {tag: 'span', content: '- -&ndash;&mdash;&ndash;', allowHtml: true},
+                    // {tag: 'span', content: '- &ndash;&ndash;&mdash;-', allowHtml: true},
+                    {tag: 'span', content: ''},
+                    {tag: 'span', content: ''},
+                    {tag: 'span', content: ''},
+
+                    // {tag: 'span', classes: 'material-icons icon', content: 'content_copypageview'}
+                ]
+            },
+        },                
         {
             classes: 'item italics_toggle',
             name: 'italics_toggle',
@@ -252,36 +313,51 @@ module.exports = kind({
                 ]
             }
         },
-        // {
-        //     classes: 'item highlight_toggle',
-        //     name: 'highlight_toggle',
-        //     kind: Toggle,         
-        //     trueTitle: 'Disable Highlighting of Keywords',
-        //     falseTitle: 'Enable Highlighting of Keywords',
-        //     trueComponent: {
-        //         components: [
-        //             {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-        //             {kind: i18n, tag: 'span', content: 'Highlight'}
-        //         ]
-        //     },        
-        //     falseComponent: {
-        //         components: [
-        //             {tag: 'span', classes: 'block_disabled', allowHtml: true},
-        //             {kind: i18n, tag: 'span', content: 'Highlight'}
-        //         ]
-        //     }
-        // },    
+        {
+            classes: 'item highlight_toggle',
+            name: 'highlight_toggle',
+            kind: Toggle,         
+            trueTitle: 'Disable Highlighting of Keywords',
+            falseTitle: 'Enable Highlighting of Keywords',
+            trueComponent: {
+                components: [
+                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+                    // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
+                    {kind: i18n, tag: 'span', content: 'Highlight'}
+                ]
+            },        
+            falseComponent: {
+                components: [
+                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
+                    // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
+                    {kind: i18n, tag: 'span', content: 'Highlight'}
+                ]
+            }
+        },    
 
+        {
+            kind: i18n,
+            classes: 'item clear',
+            name: 'clear',
+            tag: 'span',
+            ontap: 'handleClearForm',
+            attributes: {title: 'Clear Form'},
+            components: [
+                {tag: 'span', classes: 'material-icons icon', content: 'clear'}
+            ]
+        },
 
         // 'Extra' (non-formatting) buttons
         {
             kind: i18n,
             classes: 'item help',
             name: 'help',
-            content: '?',
             tag: 'span',
             ontap: 'handleHelp',
-            attributes: {title: 'Help'}
+            attributes: {title: 'Help'},
+            components: [
+                {tag: 'b', content: '?'}
+            ]
         },
         {
             classes: 'item advanced_toggle',
@@ -315,20 +391,22 @@ module.exports = kind({
             ontap: 'handleDownload',
             attributes: {title: 'Bible Downloads'},
             components: [
-                {tag: 'span', allowHtml: true, content: '<b>&#10515;</b>&nbsp;'},
-                {kind: i18n, content: 'Download'}
+                {tag: 'span', classes: 'material-icons icon', content: 'download'}
             ]
         },        
         // End Extra buttons
+
         {
             kind: i18n,
             classes: 'item print text_only',
             name: 'print_button',
             ontap: 'handlePrint',
-            attributes: {title: 'Printer Friendly'},
+            attributes: {title: 'Print'},
             components: [
-                {tag: 'span', allowHtml: true, content: '&#128438;&nbsp;'},
-                {kind: i18n, content: 'Print'}
+                // {tag: 'span', allowHtml: true, content: '&#128438;&nbsp;'},
+                {tag: 'span', classes: 'material-icons icon', content: 'print'},
+                // {kind: Image, relSrc: 'icons/print_black_24dp.svg', classes: 'icon'},
+                // {kind: i18n, content: 'Print'}
             ],
         },        
         {
@@ -336,10 +414,11 @@ module.exports = kind({
             classes: 'item share text_only',
             name: 'share_button',
             ontap: 'handleShare',
-            attributes: {title: 'Share Link'},
+            attributes: {title: 'Share'},
             components: [
                 // {tag: 'span', allowHtml: true, content: '&#128438;&nbsp;'},
-                {kind: i18n, content: 'Share'}
+                // {kind: i18n, content: 'Share'}
+                {tag: 'span', classes: 'material-icons icon', content: 'share'}
             ],
         },
 
@@ -383,6 +462,13 @@ module.exports = kind({
         }},
         {from: 'app.UserConfig.highlight', to: '$.highlight_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons red_letter', value, dir);
+            return value;
+        }}, 
+        {from: 'app.UserConfig.font', to: 'font', oneWay: true, transform: function(value, dir) {
+            // console.log('FormatButtons font', value, dir);
+            this.$.font_serif.addRemoveClass('selected', value == 'serif');
+            this.$.font_sans_serif.addRemoveClass('selected', value == 'sans_serif' || value == 'sans-serif');
+            this.$.font_monospace.addRemoveClass('selected', value == 'monospace');
             return value;
         }}
     ],
