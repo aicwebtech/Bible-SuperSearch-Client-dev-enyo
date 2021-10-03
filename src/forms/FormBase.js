@@ -477,6 +477,9 @@ module.exports = kind({
 
     _containsNonPassageCharacters: function(str) {
         // migrated from PHP API.
+        if(!str || !str.match) {
+            return false;
+        }
 
         nonPassageChars = str.match(/[`\\~!@#$%\^&*{}_[\]()]/);
 

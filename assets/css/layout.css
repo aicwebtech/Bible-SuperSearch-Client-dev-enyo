@@ -317,21 +317,24 @@ div.biblesupersearch_dialog {
 }
 
 
-.alert_dialog {
+div.alert_dialog {
     /*background-color: green;*/
 /*    text-align: center;
     position: sticky;
     top: 20px;
     z-index: 40000000;*/
     /*border: 1px solid black;*/
-    background-color: white;
+    z-index: 10000000;
 }
+
+
 
 .alert_dialog .content {
     padding: 5px 10px;
 }
 
 .alert_dialog_container {
+    background-color: white;
     font-weight: bold;
     text-align: center;
     margin-top: 15px;
