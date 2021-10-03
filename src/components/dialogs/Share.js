@@ -180,14 +180,14 @@ module.exports = kind({
             var success = document.execCommand('copy');
 
             if(success) {
-                alert('Copied to clipboard');
+                this.app.alert('Copied to clipboard');
             }
             else {
-                alert('Failed to copy');
+                this.app.alert('Failed to copy');
             }
         }
         catch (e) {
-            alert('Failed to copy');
+           this.app.alert('Failed to copy');
         }
     },
     copyWithText: function() {
