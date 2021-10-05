@@ -310,12 +310,13 @@ module.exports = {
     'PDF - Compact Text, Letter, Words of Christ Underlined': '',
     'PDF - Compact Text, A4, Words of Christ Underlined': '',
 
-    // Copy / Share dialog
+    // Copy / Share / Link dialogs
     'Copy': '',
     'Copy Link': '',
     'Copy with Text': '',
     'Share Link': '',
     'Share' : '',
+    'Link' : '', // 4.5
 
     // Quick Start Help Dialog
     'Quick Start Guide': '',

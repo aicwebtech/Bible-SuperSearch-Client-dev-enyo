@@ -1,4 +1,3 @@
-// Produced using Google translate
 module.exports = {
     meta: {
         lang_name_en: 'Spanish',
@@ -13,32 +12,32 @@ module.exports = {
     'Select Bible version(s)': 'Seleccionar versiones de la Biblia',
     'Search': 'Buscar',
     'Search the Bible': 'Buscar en la Biblia',
-    'Go': 'Vamos',
-    'Bible Search': 'Búsqueda de la Biblia',
+    'Go': 'entrar',
+    'Bible Search': 'Búsqueda en la Biblia',
     'Bible': 'Biblia',
-    'Whole Words Only': 'Palabras Completas', // 'Sólo Palabras Completas' no encaja
-    'Whole words only': 'Palabras completas',
+    'Whole Words Only': 'Solamente Palabras Completas', // 'Sólo Palabras Completas' 
+    'Whole words only': 'Solamente palabras completas',
     'Whole words': 'Palabras completas',
     'Exact Case': 'Caso exacto',
     'Parallel Bible #': 'Biblia paralela #',
     'Select a Bible': 'Seleccione una Biblia',
     'Add Bible': 'Agregar Biblia',
-    'Random Chapter': 'Capítulo Aleatorio',
-    'Random Verse': 'Verso Aleatorio',
+    'Random Chapter': 'Capítulo al azar',
+    'Random Verse': 'Verso al azar',
     'Passages': 'Pasajes',
     'Passage': 'Pasaje',
     'The book of': 'El libro de',
     'Look for': 'Buscar',
-    'Look up': 'Buscar',
+    'Look up': 'encontrar',
     'in': 'en',
     'verse': 'verso',
     'verses': 'versos',
     'A Chapter': 'Un capítulo',
     'Chapters': 'Capítulos',
     'Find verses containing': 'Encuentra versículos que contengan',
-    'Restrict search to': 'Restringir la búsqueda a', 
+    'Restrict search to': 'limitada búsqueda de', 
     'Word Search': 'Búsqueda de palabras',
-    'Clear Form': 'Forma clara', // 4.5
+    'Clear Form': 'borrar la forma', // 4.5
 
     // Context Links
     'Show full chapter': 'Mostrar capítulo completo',
@@ -214,7 +213,7 @@ module.exports = {
     'Cannot retrieve multiple books at once.': 'No se pueden recuperar varios libros a la vez.',
     'Bible text not found': 'No se encontró el texto de la Biblia',
     'Invalid book in book range': 'Libro no válido en rango de libros',
-    'Book not found': 'Libro no encontrado',
+    'Book not found': 'Libro no se encuentra',
     'Your parentheses are mismatched.': 'Sus paréntesis no coinciden.',
     'Your parentheses are mismatched, or you have a proximity operator inside of parentheses.': 'Sus paréntesis no coinciden o tiene un operador de proximidad entre paréntesis.',
     'Proximity operators such as PROX and CHAP can only be used with boolean searches' : 'Los operadores de proximidad como PROX y CHAP solo se pueden usar con búsquedas booleanas',
@@ -230,7 +229,7 @@ module.exports = {
     'Where to go When ...': 'Dónde ir cuando ...',
     'Afraid': 'Asustado',
     'Anxious': 'Ansioso',
-    'Backsliding': 'Reincidencia',
+    'Backsliding': 'Recaida',
     'Bereaved': 'Afligido',
     'Bitter or Critical': 'Amargo o crítico',
     'Conscious of Sin': 'Consciente del pecado',
@@ -239,12 +238,12 @@ module.exports = {
     'Disaster Threatens': 'Desastre amenaza',
     'Discouraged': 'Desanimado',
     'Doubting': 'Inseguro',
-    'Facing a Crisis': 'Frente a una crisis',
+    'Facing a Crisis': 'Enfrentando una crisis',
     'Faith Fails': 'La fe falla',
     'Friends Fail': 'Los amigos fallan', 
     'Hopeless': 'Sin esperanza',
     'Leaving Home': 'Dejando el hogar',
-    'Lonely': 'Solo',
+    'Lonely': 'Solitario',
     'Needing God\'s protection': 'Necesitando la protección de Dios',
     'Needing Guidance': 'Necesidad de orientación',
     'Needing Peace': 'Necesitando paz',
@@ -274,10 +273,10 @@ module.exports = {
     'Imperfection in Churches and Believers': 'Imperfección en iglesias y creyentes',
     'Early human history, especially that of Israel': 'Historia humana temprana, especialmente la de Israel',
     'The relationship between the Old Testament Law and the Church': 'La relación entre la ley del Antiguo Testamento y la Iglesia',
-    'History and Law': 'Historia y derecho',
+    'History and Law': 'Historia y Ley',
     'Salvation by faith, not works': 'Salvación por fe, no por obras',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Vida y experiencia cristianas. &nbsp; El apóstol Pablo renunció a las credenciales bajo la ley del Antiguo Testamento para seguir a Cristo',
-    'Christ the suffering servant': 'Cristo el siervo sufriente',
+    'Christ the suffering servant': 'Cristo el siervo que sufre',
     'Christ’s crucifixion foretold': 'Se predice la crucifixión de Cristo',
 
     // Bible downloads dialog
@@ -304,21 +303,22 @@ module.exports = {
     'PDF - Compact Text, Letter, Words of Christ Underlined': 'PDF - Texto compacto, carta, palabras de Cristo subrayadas',
     'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF - Texto compacto, A4, Palabras de Cristo subrayadas',
 
-    // Copy / Share dialog
+    // Copy / Share / Link dialogs
     'Copy': 'Copiar',
-    'Copy Link': 'Copiar link',
+    'Copy Link': 'Copiar enlace',
     'Copy with Text': 'Copiar con texto',
     'Share Link': 'Compartir enlace',
     'Share' : 'Cuota',
+    'Link': 'Enlace',
 
-    // Quick Start Help Dialog
+    // Quick Start Help Dialog "dialogo de ayuda en incio rapido"
     'Quick Start Guide': 'Guía de inicio rápido',
     'User\'s Manual': 'Manual de Usuario',
 
     'Wildcard': 'Comodín',
     'Basic Searches' : 'Búsquedas básicas',
     'Advanced Searches using Boolean': 'Búsquedas avanzadas usando booleanos',
-    'Select' : 'Seleccione',
+    'Select' : 'Seleccionar',
     'Operators': 'Operadores',
     'Operator': 'Operador',
     'Aliases': 'Alias',

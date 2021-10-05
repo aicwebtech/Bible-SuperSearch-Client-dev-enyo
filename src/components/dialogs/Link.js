@@ -19,7 +19,7 @@ var Signal = require('enyo/Signals');
 module.exports = kind({
     name: 'LinkDialog',    
     kind: Dialog,
-    maxWidth: '300px',
+    maxWidth: '400px',
     height: '475px',
     classes: 'help_dialog link_dialog',
     bibleString: null,
