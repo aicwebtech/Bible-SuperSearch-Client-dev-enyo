@@ -60,6 +60,7 @@ var App = Application.kind({
     baseUrl: null,
     clientBrowser: null,
     preventRedirect: false,
+    shortHashUrl: '',
     biblesDisplayed: [],
     locale: 'en',
     defaultLocale: 'en', // hardcoded
@@ -680,6 +681,11 @@ var App = Application.kind({
         if(this.view && this.view.set) {
             this.view.set('shareShowing', is);
         }
+    },    
+    linkShowingChanged: function(was, is) {
+        if(this.view && this.view.set) {
+            this.view.set('linkShowing', is);
+        }
     },
     showHelp: function(section) {
         this.waterfall('onShowHelp', {section: section});
@@ -993,6 +999,71 @@ var App = Application.kind({
 
         this.waterfall('onFormResponseSuccess', responseDataNew);
         Signal.send('onFormResponseSuccess', responseDataNew);
+    },
+    _copyComponentContent: function(Component, contentField) {
+        if(!Component) {
+            return;
+        }
+
+        var contentField = contentField || 'content',
+            content = Component.get(contentField),
+            n = Component.hasNode();
+
+        if(!n || !content) {
+            return;
+        }
+
+        // This code for selection all text in a HTML element was migrated from Bible SuperSearch version 3.0
+        // This works, but there is probably a better way
+        if (document.selection) {   // IE
+            var div = document.body.createTextRange(); // IE only?
+            div.moveToElementText(n);
+            div.select();
+        }
+        else {                      // All others
+            var div = document.createRange(); // Supported ALL
+            div.setStartBefore(n); // Supported ALL
+            div.setEndAfter(n); // Supported ALL
+            window.getSelection().removeAllRanges(); // EXPERIMENTAL! Supported ALL
+            window.getSelection().addRange(div); // EXPERIMENTAL! Supported ALL
+        }
+
+        // this.log('navigator', navigator);
+
+        // todo - implement clipboard API
+        if(false && navigator && navigator.clipboard && navigator.clipboard.writeText) {
+            var promise = navigator.clipboard.writeText(content);
+            this.log('Using clipboard API');
+
+            promise.then(utils.bind(this, function() {
+                this.alert('Copied to clipboard');
+            }), 
+            utils.bind(this, function() {
+                this.alert('Failed to Copied to clipboard');
+            }));
+
+            promise.catch(utils.bind(this, function(error) {
+                this.alert('Failed to copy');
+            }));
+        }
+        else {        
+            // this.log('Using document.execCommand(copy)');
+
+            try {
+                var success = document.execCommand('copy'); // depricated 
+
+                if(success) {
+                    this.alert('Copied to clipboard');
+                }
+                else {
+                    this.alert('Failed to copy');
+                }
+            }
+            catch (e) {
+               this.alert('Failed to copy');
+            }
+        }
+
     }
 });
 

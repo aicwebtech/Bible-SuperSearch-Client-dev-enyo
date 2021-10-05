@@ -19,6 +19,9 @@ module.exports = kind({
     ],
     handleCopy: function(inSender, inEvent) {        
         this.log('elementID', this.$.CopyText.id);
+
+        return this.app._copyComponentContent(this.$.CopyText);
+
         var n = this.$.CopyText.hasNode();
         // n && n.focus();  // doesn't work
         // n && n.select(); // doesn't work

@@ -420,6 +420,16 @@ module.exports = kind({
                 // {kind: i18n, content: 'Share'}
                 {tag: 'span', classes: 'material-icons icon', content: 'share'}
             ],
+        },        
+        {
+            kind: i18n,
+            classes: 'item link text_only',
+            name: 'link_button',
+            ontap: 'handleLink',
+            attributes: {title: 'Link'},
+            components: [
+                {tag: 'span', classes: 'material-icons icon', content: 'link'}
+            ],
         },
 
         {classes: 'input_row_wide', components: [

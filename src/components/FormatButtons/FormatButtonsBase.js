@@ -95,6 +95,9 @@ module.exports = kind({
     },    
     handleShare: function(inSender, inEvent) {
         this.app.set('shareShowing', true);
+    },    
+    handleLink: function(inSender, inEvent) {
+        this.app.set('linkShowing', true);
     },
     handleClearForm: function() {
         Signal.send('onClearForm');
