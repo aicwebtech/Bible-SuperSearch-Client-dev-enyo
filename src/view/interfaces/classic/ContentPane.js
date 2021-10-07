@@ -20,7 +20,6 @@ module.exports = kind({
 
     create: function() {
         if(this.formView != null) {
-            this.log('overriding default classic form');
             this.forms.Form = this.formView;
             // Formview is expecting a string representing an index in this.forms so we set it to that
             this.formView = 'Form'; 
