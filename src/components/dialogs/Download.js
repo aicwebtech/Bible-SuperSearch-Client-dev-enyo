@@ -318,8 +318,6 @@ module.exports = kind({
         this.set('requestPending', false);
     },
     _safeToClose: function() {
-        this.log('_safeToClose');
-
         if(this.get('requestPending')) {
             // Todo - restore ability to download in background.
             // Requires 3-way confirm dialog: 1) Cancel 2) Download in Background 3) Cancel Download
