@@ -304,12 +304,13 @@ module.exports = {
     'PDF - Compact Text, Letter, Words of Christ Underlined': 'PDF - Texte compact, lettre, paroles du Christ soulignées',
     'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF - Texte compact, A4, paroles du Christ soulignées',
 
-    // Copy / Share dialog
+    // Copy / Share / Link dialogs
     'Copy': 'Copier',
     'Copy Link': 'Copier le lien',
     'Copy with Text': 'Copier avec texte',
     'Share Link': 'Partager le lien',
     'Share' : 'Partager',
+    'Link': 'le lien', // 4.5
 
     // Quick Start Help Dialog
     'Quick Start Guide': 'Guide de démarrage rapide',

@@ -60,7 +60,6 @@ module.exports = kind({
 
     bindings: [
         {from: 'app.UserConfig.copy', to: 'ezCopy', oneWay: false, transform: function(value, dir) {
-            console.log('copy_toggle', value, dir);
             return value;
         }},             
     ],
@@ -155,6 +154,8 @@ module.exports = kind({
 
     },
     copy: function() {
+        return this.app._copyComponentContent(this.$.CopyArea);
+
         var n = this.$.CopyArea.hasNode();
 
         if(!n) {
@@ -177,7 +178,7 @@ module.exports = kind({
         }
 
         try {
-            var success = document.execCommand('copy');
+            var success = document.execCommand('copy'); // depricated 
 
             if(success) {
                 this.app.alert('Copied to clipboard');

@@ -150,12 +150,13 @@ module.exports = {
     'Select': 'Picme', // 5.0
     'Unselect': 'Nopic', // 5.0
     
-    // Copy / Share dialog
+    // Copy / Share / Link dialogs
     'Copy': 'Pirate this',
-    'Copy Link': 'Pirate this linke',
+    'Copy Link': 'Pirate this chaine',
     'Copy with Text': 'Pirate this with scribblings',
     'Share Link': 'Give to ye mateys',
     'Share' : 'Givem',
+    'Link' : 'Chaine', // 4.5
 
     // Copy format options
     'Copy Format': 'Pirate likeness', // 5.0

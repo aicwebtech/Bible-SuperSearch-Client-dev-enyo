@@ -310,12 +310,13 @@ module.exports = {
     'PDF - Compact Text, Letter, Words of Christ Underlined': 'PDF - Text Compact, Tip Scrisoare, Cuvintele Lui Cristos subliniate',
     'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF - Text Compact, Tip A4, Cuvintele Lui Cristos subliniate',
 
-    // Copy / Share dialog
+    // Copy / Share / Link dialogs
     'Copy': 'Copiați',
     'Copy Link': 'Copiați Link-ul',
     'Copy with Text': 'Copiați cu Text',
     'Share Link': 'Distribuiți Link-ul',
     'Share' : 'Distribuiți',
+    'Link': 'Link-ul',
 
     // Quick Start Help Dialog
     'Quick Start Guide': 'Ghid Rapid',

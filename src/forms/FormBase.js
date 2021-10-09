@@ -180,6 +180,7 @@ module.exports = kind({
         this.app.set('ajaxLoadingDelay', false);
         this.requestPending = false;
         this.set('cacheHash', inResponse.hash);
+        this.app.set('shortHashUrl', '#/c/' + this.get('cacheHash'));
         var responseData = {formData: this._formDataAsSubmitted, results: inResponse, success: true};
         this.bubble('onFormResponseSuccess', responseData);
         Signal.send('onFormResponseSuccess', responseData);
@@ -337,15 +338,16 @@ module.exports = kind({
         return true; // Don't propagage, will cause issues with subforms, if any
     },
     updateHash: function() {
-        var hash = this._generateHashFromData();
+        var hash = this._generateHashFromData(),
+            shortHash = '#/c/' + this.get('cacheHash');
 
-        if(!hash) {        
-            hash = '#/c/' + this.get('cacheHash');
-
-            if(this.page) {
-                hash += '/' + this.page.toString();
-            }
+        if(this.page) {
+            shortHash += '/' + this.page.toString();
         }
+
+        this.app.set('shortHashUrl', shortHash);
+
+        hash = (hash) ? hash : shortHash;
 
         history.pushState(null, null, document.location.pathname + hash);
     },
