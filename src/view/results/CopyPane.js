@@ -10,7 +10,7 @@ module.exports = kind({
     displayedBible: null,
     components: [
         {kind: signal, onTriggerCopy: 'handleTriggerCopy'},
-        {style: 'height:20px; overflow: show', components: [
+        {style: 'overflow: show', components: [
             {kind: Button, ontap: 'handleCopy', components: [
                 {kind: i18n, content: 'Copy'}
             ]},

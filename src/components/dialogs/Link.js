@@ -33,13 +33,13 @@ module.exports = kind({
 
     bodyComponents: [
         {tag: 'br'},
-        {name: 'FullUrlContainer', classes: 'container', components: [
+        {name: 'FullUrlContainer', classes: 'copy-link-containr', components: [
             {kind: Input, name: 'FullUrl'},
             {kind: Button, onclick: 'copyFullUrl', components: [
                 {kind: i18n, content: 'Copy'}
             ]}
         ]},
-        {name: 'ShortUrlContainer', classes: 'container', components: [
+        {name: 'ShortUrlContainer', classes: 'copy-link-containr', components: [
             {tag: 'br'},
             {kind: Input, name: 'ShortUrl'},
             {kind: Button, onclick: 'copyShortUrl', components: [
