@@ -1028,12 +1028,13 @@ var App = Application.kind({
             window.getSelection().addRange(div); // EXPERIMENTAL! Supported ALL
         }
 
-        // this.log('navigator', navigator);
+        var content = window.getSelection().toString();
 
-        // todo - implement clipboard API
-        if(false && navigator && navigator.clipboard && navigator.clipboard.writeText) {
+        // Attempt to use modern clipboard API
+        // This requires HTTPS
+        if(navigator && navigator.clipboard && navigator.clipboard.writeText) {
             var promise = navigator.clipboard.writeText(content);
-            this.log('Using clipboard API');
+            this.debug && this.log('Using clipboard API');
 
             promise.then(utils.bind(this, function() {
                 this.alert('Copied to clipboard');
@@ -1047,7 +1048,13 @@ var App = Application.kind({
             }));
         }
         else {        
-            // this.log('Using document.execCommand(copy)');
+            // Fallback: Use depricated document.execCommand(copy)
+            this.debug && this.log('Using document.execCommand(copy)');
+
+            if(!document.execCommand) {
+                this.alert('Unable to copy, please use HTTPS');
+                return;
+            }
 
             try {
                 var success = document.execCommand('copy'); // depricated 
