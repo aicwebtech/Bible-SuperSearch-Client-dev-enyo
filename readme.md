@@ -5,6 +5,10 @@
 This repository contains the raw development code for the 
 Bible SuperSearch UI, written using the [Enyo](http://enyojs.com) JavaScript framework.
 
+This is used for all official Bible SuperSearch Clients:
+* Universal Client
+* WordPress Plugin
+
 Requirements: Node, npm
 
 Must install the Enyo dev tools:
