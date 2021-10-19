@@ -1028,19 +1028,19 @@ var App = Application.kind({
             window.getSelection().addRange(div); // EXPERIMENTAL! Supported ALL
         }
 
-        var content = window.getSelection().toString();
 
         // Attempt to use modern clipboard API
         // This requires HTTPS
         if(navigator && navigator.clipboard && navigator.clipboard.writeText) {
-            var promise = navigator.clipboard.writeText(content);
+            var selected = window.getSelection().toString();
+            var promise = navigator.clipboard.writeText(selected);
             this.debug && this.log('Using clipboard API');
 
             promise.then(utils.bind(this, function() {
                 this.alert('Copied to clipboard');
             }), 
             utils.bind(this, function() {
-                this.alert('Failed to Copied to clipboard');
+                this.alert('Failed to copy');
             }));
 
             promise.catch(utils.bind(this, function(error) {
@@ -1052,7 +1052,7 @@ var App = Application.kind({
             this.debug && this.log('Using document.execCommand(copy)');
 
             if(!document.execCommand) {
-                this.alert('Unable to copy, please use HTTPS');
+                this.alert('Unable to copy, please use HTTPS or copy manually.');
                 return;
             }
 
