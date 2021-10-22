@@ -532,13 +532,7 @@ var App = Application.kind({
     },    
     _hashStrongs: function(parts) {
         var strongsNum = parts[0] || null;
-        
-        var formData = {
-            search: strongsNum
-        };
-
-        // var partsObj = this._explodeHashPassage(parts);
-        // var formData = this._assembleHashPassage(partsObj);
+        var formData = { search: strongsNum };
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
     },
     _hashContext: function(parts) {
