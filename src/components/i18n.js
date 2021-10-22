@@ -1,7 +1,7 @@
 var i18n = require('enyo/i18n');
 var locales = require('../i18n/LocaleLoader');
 var defaultLocale = 'en';
-var locale = biblesupersearch_config_options.locale || defaultLocale;
+var locale = typeof biblesupersearch_config_options == 'object' && biblesupersearch_config_options.locale ? biblesupersearch_config_options.locale : defaultLocale;
 var fallbackLocale = locale.substring(0, 2);
 
 // var locales = {
