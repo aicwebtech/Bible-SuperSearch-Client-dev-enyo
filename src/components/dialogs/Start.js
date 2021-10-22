@@ -20,21 +20,21 @@ module.exports = kind({
     
     published: {
         list: [
-            {verse: 'John', desc:'Life and Teachings of Jesus Christ'},
-            {verse: 'Romans', desc: 'Basic Christian Beliefs'},
-            {verse: 'Genesis, Chapters 1 - 3', desc: 'Creation and the Fall of Man', linkVerse: 'Genesis 1 - 3'},
-            {verse: 'Luke', desc: 'Birth of Christ / Life of Christ'},
-            {verse: '1 Corinthians', desc: 'Imperfection in Churches and Believers'},
-            {verse: '2 Corinthians', desc: 'Imperfection in Churches and Believers'},
-            {verse: 'Mark', desc: 'Life and Teachings of Jesus Christ'},
-            {verse: 'Genesis, Chapters 4 - 50', desc: 'Early human history, especially that of Israel', linkVerse: 'Genesis 4 - 50'},
-            {verse: 'Matthew', desc: 'Life and Teachings of Jesus Christ'},
-            {verse: 'Galatians', desc: 'The relationship between the Old Testament Law and the Church'},
-            {verse: 'Exodus', desc: 'History and Law'},
-            {verse: 'Ephesians', desc: 'Salvation by faith, not works'},
-            {verse: 'Philippians', desc: 'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ'},
-            {verse: 'Isaiah 53', desc: 'Christ the suffering servant'},
-            {verse: 'Psalms 22', desc: 'Christ’s crucifixion foretold'},
+            {verse: 'John', desc:'Life and Teachings of Jesus Christ', linkVerse: 'John/1'},
+            {verse: 'Romans', desc: 'Basic Christian Beliefs', linkVerse: 'Romans/1'},
+            {verse: 'Genesis, Chapters 1 - 3', desc: 'Creation and the Fall of Man', linkVerse: 'Genesis/1-3'},
+            {verse: 'Luke', desc: 'Birth of Christ / Life of Christ', linkVerse: 'Luke/1'},
+            {verse: '1 Corinthians', desc: 'Imperfection in Churches and Believers', linkVerse: '1 Corinthians/1'},
+            {verse: '2 Corinthians', desc: 'Imperfection in Churches and Believers', linkVerse: '2 Corinthians/1'},
+            {verse: 'Mark', desc: 'Life and Teachings of Jesus Christ', linkVerse: 'Mark/1'},
+            {verse: 'Genesis, Chapters 4 - 50', desc: 'Early human history, especially that of Israel', linkVerse: 'Genesis/4'},
+            {verse: 'Matthew', desc: 'Life and Teachings of Jesus Christ', linkVerse: 'Matthew/1'},
+            {verse: 'Galatians', desc: 'The relationship between the Old Testament Law and the Church', linkVerse: 'Galatians/1'},
+            {verse: 'Exodus', desc: 'History and Law', linkVerse: 'Exodus/1'},
+            {verse: 'Ephesians', desc: 'Salvation by faith, not works', linkVerse: 'Ephesians/1'},
+            {verse: 'Philippians', desc: 'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ', linkVerse: 'Philippians/1'},
+            {verse: 'Isaiah 53', desc: 'Christ the suffering servant', linkVerse: 'Isaiah/53'},
+            {verse: 'Psalms 22', desc: 'Christ’s crucifixion foretold', linkVerse: 'Psalms/22'},
         ]
     },
 
@@ -89,7 +89,7 @@ module.exports = kind({
             colName = 'Col_1';
 
         this.bibleString = this.app.getSelectedBiblesString();
-        var urlBase = '#/r/' + this.bibleString + '/';
+        var urlBase = '#/p/' + this.bibleString + '/';
 
         this.list.forEach(function(item, key) {
             var t = this;

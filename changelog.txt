@@ -1,7 +1,8 @@
 Bible SuperSearch Universal Client Changelog
 
-* 4.x.x
-* Bugfix: Using modern clipboard API when available 
+* 4.5.x
+* Bugfix: Using modern clipboard API when available.
+* Bugfix: Start menu links doing search instead of pulling passage.
 
 = 4.5.0 Oct 9, 2021 (soft release)
 * Added format options for the copying text.
