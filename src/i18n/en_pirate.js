@@ -3,6 +3,7 @@ module.exports = {
         lang_name: 'Anglyshe - Pyratee',
         lang_name_en: 'English - Pirate',
         isRtl: false,
+        debug: true
     },
     
     'Bible SuperSearch': 'Bibl SupahTreasah',

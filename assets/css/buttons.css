@@ -219,6 +219,22 @@
     color: white;
 }
 
+.bible_settings .settings_toggle {
+    width: 150px;
+    margin: 0 auto 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.bible_settings .settings_toggle .icon {
+    font-size: 16px;
+    /*background-color: blue;*/
+    color: green;
+    position: relative;
+    top: 2px;
+}
+
+
 /*.format_buttons_html .selected {
     background-color: #c7b72c;
 }

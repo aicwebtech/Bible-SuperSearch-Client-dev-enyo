@@ -98,6 +98,9 @@ module.exports = kind({
     },    
     handleLink: function(inSender, inEvent) {
         this.app.set('linkShowing', true);
+    },    
+    handleSettings: function(inSender, inEvent) {
+        this.app.set('settingsShowing', true);
     },
     handleClearForm: function() {
         Signal.send('onClearForm');

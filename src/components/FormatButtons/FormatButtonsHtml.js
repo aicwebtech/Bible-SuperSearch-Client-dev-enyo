@@ -256,84 +256,84 @@ module.exports = kind({
                 ]
             },
         },                
-        {
-            classes: 'item italics_toggle',
-            name: 'italics_toggle',
-            kind: Toggle,         
-            trueTitle: 'Disable Italization of Added Words',
-            falseTitle: 'Enable Italization of Added Words',
-            trueComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                    {kind: i18n, tag: 'span', content: 'Italics'}
-                ]
-            },        
-            falseComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                    {kind: i18n, tag: 'span', content: 'Italics'}
-                ]
-            }
-        },        
-        {
-            classes: 'item strongs_toggle',
-            name: 'strongs_toggle',
-            kind: Toggle,        
-            trueTitle: 'Disable Strong\'s Numbers',
-            falseTitle: 'Enable Strong\'s Numbers',
-            trueComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                    {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
-                ]
-            },        
-            falseComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                    {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
-                ]
-            }
-        },        
-        {
-            classes: 'item redletter_toggle',
-            name: 'redletter_toggle',
-            kind: Toggle,         
-            trueTitle: 'Disable Red Letter',
-            falseTitle: 'Enable Red Letter', 
-            trueComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                    {kind: i18n, tag: 'span', content: 'Red Letter'}
-                ]
-            },        
-            falseComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                    {kind: i18n, tag: 'span', content: 'Red Letter'}
-                ]
-            }
-        },
-        {
-            classes: 'item highlight_toggle',
-            name: 'highlight_toggle',
-            kind: Toggle,         
-            trueTitle: 'Disable Highlighting of Keywords',
-            falseTitle: 'Enable Highlighting of Keywords',
-            trueComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                    // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
-                    {kind: i18n, tag: 'span', content: 'Highlight'}
-                ]
-            },        
-            falseComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                    // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
-                    {kind: i18n, tag: 'span', content: 'Highlight'}
-                ]
-            }
-        },    
+        // {
+        //     classes: 'item italics_toggle',
+        //     name: 'italics_toggle',
+        //     kind: Toggle,         
+        //     trueTitle: 'Disable Italization of Added Words',
+        //     falseTitle: 'Enable Italization of Added Words',
+        //     trueComponent: {
+        //         components: [
+        //             {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+        //             {kind: i18n, tag: 'span', content: 'Italics'}
+        //         ]
+        //     },        
+        //     falseComponent: {
+        //         components: [
+        //             {tag: 'span', classes: 'block_disabled', allowHtml: true},
+        //             {kind: i18n, tag: 'span', content: 'Italics'}
+        //         ]
+        //     }
+        // },        
+        // {
+        //     classes: 'item strongs_toggle',
+        //     name: 'strongs_toggle',
+        //     kind: Toggle,        
+        //     trueTitle: 'Disable Strong\'s Numbers',
+        //     falseTitle: 'Enable Strong\'s Numbers',
+        //     trueComponent: {
+        //         components: [
+        //             {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+        //             {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
+        //         ]
+        //     },        
+        //     falseComponent: {
+        //         components: [
+        //             {tag: 'span', classes: 'block_disabled', allowHtml: true},
+        //             {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
+        //         ]
+        //     }
+        // },        
+        // {
+        //     classes: 'item redletter_toggle',
+        //     name: 'redletter_toggle',
+        //     kind: Toggle,         
+        //     trueTitle: 'Disable Red Letter',
+        //     falseTitle: 'Enable Red Letter', 
+        //     trueComponent: {
+        //         components: [
+        //             {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+        //             {kind: i18n, tag: 'span', content: 'Red Letter'}
+        //         ]
+        //     },        
+        //     falseComponent: {
+        //         components: [
+        //             {tag: 'span', classes: 'block_disabled', allowHtml: true},
+        //             {kind: i18n, tag: 'span', content: 'Red Letter'}
+        //         ]
+        //     }
+        // },
+        // {
+        //     classes: 'item highlight_toggle',
+        //     name: 'highlight_toggle',
+        //     kind: Toggle,         
+        //     trueTitle: 'Disable Highlighting of Keywords',
+        //     falseTitle: 'Enable Highlighting of Keywords',
+        //     trueComponent: {
+        //         components: [
+        //             {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+        //             // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
+        //             {kind: i18n, tag: 'span', content: 'Highlight'}
+        //         ]
+        //     },        
+        //     falseComponent: {
+        //         components: [
+        //             {tag: 'span', classes: 'block_disabled', allowHtml: true},
+        //             // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
+        //             {kind: i18n, tag: 'span', content: 'Highlight'}
+        //         ]
+        //     }
+        // },    
 
         {
             kind: i18n,
@@ -431,10 +431,23 @@ module.exports = kind({
                 {tag: 'span', classes: 'material-icons icon', content: 'link'}
             ],
         },
+        {
+            kind: i18n,
+            classes: 'item settings text_only',
+            name: 'settings_button',
+            ontap: 'handleSettings',
+            attributes: {title: 'Settings'},
+            components: [
+                // {tag: 'span', allowHtml: true, content: '&#128438;&nbsp;'},
+                {tag: 'span', classes: 'material-icons icon', content: 'settings'},
+                // {kind: Image, relSrc: 'icons/print_black_24dp.svg', classes: 'icon'},
+                // {kind: i18n, content: 'Print'}
+            ],
+        },      
 
-        {classes: 'input_row_wide', components: [
-            {name: 'Locale', kind: LocaleSelector}
-        ]}
+        // {classes: 'input_row_wide', components: [
+        //     {name: 'Locale', kind: LocaleSelector}
+        // ]}
     ],
 
     bindings: [    

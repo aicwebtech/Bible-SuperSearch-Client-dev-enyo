@@ -23,6 +23,8 @@ module.exports = kind({
         strongs: true,
         red_letter: true,
         highlight: true,
+        context_range: 5,
+        page_limit: 30,
         copy_separate_line: false,
         copy_omit_extra_br: false,
         copy_abbr_book: false,
