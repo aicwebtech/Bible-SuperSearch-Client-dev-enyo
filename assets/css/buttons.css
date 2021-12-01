@@ -4,6 +4,10 @@
     margin: 13px 0;
 }
 
+.format_buttons_html_narrow {
+    max-width: 450px;
+}
+
 .format_buttons_html .item {
     display: inline-block;
     margin: 2px;
@@ -145,10 +149,19 @@
     white-space: nowrap;
 }
 
+.bss_button_group {
+    white-space: nowrap;
+    display: inline-block;
+}
+
 .format_buttons_html .item.copy_toggle.is_false span span {
     background-color: #3390ff;
     position: initial;
     line-height: 4px;
+}
+
+.format_buttons_html .item.copy_toggle_new {
+    width: 36px;
 }
 
 .format_buttons_html .item.copy_toggle {
@@ -184,7 +197,6 @@
     top: -1px;
 }
 
-
 .format_buttons_html .item.advanced_toggle {
     min-width: 63px;
 }
@@ -196,6 +208,16 @@
 
 .format_buttons_html .item.text_only {
     line-height: 18px;
+}
+
+.format_buttons_html .item.language {
+    line-height: 18px;
+    padding: 0 4px 2px;
+}
+
+.format_buttons_html .item.language select {
+    font-size: 10px;
+    background-color: transparent;
 }
 
 .format_buttons_html .block_enabled, .format_buttons_html .block_disabled {

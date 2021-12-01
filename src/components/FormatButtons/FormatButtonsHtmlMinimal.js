@@ -3,14 +3,14 @@ var Button = require('enyo/Button');
 var Input = require('enyo/Input');
 var TextArea = require('enyo/TextArea');
 var Checkbox = require('enyo/Checkbox');
-var Base = require('./FormatButtonsBase');
+var Base = require('./FormatButtonsHtml');
 var Toggle = require('../ToggleHtml');
 var Image = require('../Image');
 var i18n = require('../Locale/i18nContent');
 var LocaleSelector = require('../Locale/LocaleSelector');
 
 module.exports = kind({
-    name: 'FormatButtonsHtml',
+    name: 'FormatButtonsHtmlMinimal',
     kind: Base,
     classes: 'format_buttons_html',
     font: null,
@@ -165,7 +165,7 @@ module.exports = kind({
             },
 
         ]},
-        
+
         // TODO - FUTURE - copy instantly button
         // {tag: 'span', components: [
         //     {
@@ -179,88 +179,7 @@ module.exports = kind({
         //     },
         // ]},
               
-        {classes: 'bss_button_group', components: [
-            {
-                classes: 'item italics_toggle',
-                name: 'italics_toggle',
-                kind: Toggle,         
-                trueTitle: 'Disable Italization of Added Words',
-                falseTitle: 'Enable Italization of Added Words',
-                trueComponent: {
-                    components: [
-                        {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                        {kind: i18n, tag: 'span', content: 'Italics'}
-                    ]
-                },        
-                falseComponent: {
-                    components: [
-                        {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                        {kind: i18n, tag: 'span', content: 'Italics'}
-                    ]
-                }
-            },        
-            {
-                classes: 'item strongs_toggle',
-                name: 'strongs_toggle',
-                kind: Toggle,        
-                trueTitle: 'Disable Strong\'s Numbers',
-                falseTitle: 'Enable Strong\'s Numbers',
-                trueComponent: {
-                    components: [
-                        {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                        {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
-                    ]
-                },        
-                falseComponent: {
-                    components: [
-                        {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                        {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
-                    ]
-                }
-            },   
-        ]},
-        {classes: 'bss_button_group', components: [     
-            {
-                classes: 'item redletter_toggle',
-                name: 'redletter_toggle',
-                kind: Toggle,         
-                trueTitle: 'Disable Red Letter',
-                falseTitle: 'Enable Red Letter', 
-                trueComponent: {
-                    components: [
-                        {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                        {kind: i18n, tag: 'span', content: 'Red Letter'}
-                    ]
-                },        
-                falseComponent: {
-                    components: [
-                        {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                        {kind: i18n, tag: 'span', content: 'Red Letter'}
-                    ]
-                }
-            },
-            {
-                classes: 'item highlight_toggle',
-                name: 'highlight_toggle',
-                kind: Toggle,         
-                trueTitle: 'Disable Highlighting of Keywords',
-                falseTitle: 'Enable Highlighting of Keywords',
-                trueComponent: {
-                    components: [
-                        {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                        // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
-                        {kind: i18n, tag: 'span', content: 'Highlight'}
-                    ]
-                },        
-                falseComponent: {
-                    components: [
-                        {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                        // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
-                        {kind: i18n, tag: 'span', content: 'Highlight'}
-                    ]
-                }
-            },    
-        ]},
+
         {classes: 'bss_button_group', components: [
             {
                 classes: 'item copy_toggle_new',
@@ -340,16 +259,16 @@ module.exports = kind({
                     {tag: 'span', classes: 'material-icons icon', content: 'link'}
                 ],
             },
-            // {
-            //     kind: i18n,
-            //     classes: 'item settings text_only',
-            //     name: 'settings_button',
-            //     ontap: 'handleSettings',
-            //     attributes: {title: 'Settings'},
-            //     components: [
-            //         {tag: 'span', classes: 'material-icons icon', content: 'settings'}
-            //     ],
-            // },      
+            {
+                kind: i18n,
+                classes: 'item settings text_only',
+                name: 'settings_button',
+                ontap: 'handleSettings',
+                attributes: {title: 'Settings'},
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'settings'}
+                ],
+            },      
         ]},
 
         {classes: 'bss_button_group', components: [
@@ -401,80 +320,9 @@ module.exports = kind({
                 ]
             },        
             // End Extra buttons
-        ]}, 
-        {
-            classes: 'item language',
-            components: [
-                {name: 'Locale', kind: LocaleSelector}
-            ]
-        }
+        ]}
 
         // {classes: 'input_row_wide', components: [
         // ]}
-    ],
-
-    bindings: [    
-        {from: 'app.UserConfig.paragraph', to: '$.paragraph_toggle.value', oneWay: false, transform: function(value, dir) {
-            // console.log('FormatButtons paragraph_toggle', value, dir);
-            return value;
-            // return (value && value != 0 && value != false) ? true : false;
-        }},         
-        {from: 'app.UserConfig.copy', to: '$.copy_toggle.value', oneWay: false, transform: function(value, dir) {
-            // console.log('FormatButtons copy_toggle', value, dir);
-            return value;
-            // return (value && value != 0 && value != false) ? true : false;
-        }},        
-        {from: 'app.UserConfig.single_verses', to: '$.single_verse_toggle.value', oneWay: false, transform: function(value, dir) {
-            // console.log('FormatButtons copy_toggle', value, dir);
-            return value;
-            // return (value && value != 0 && value != false) ? true : false;
-        }},             
-        {from: 'app.UserConfig.advanced_toggle', to: '$.advanced_toggle.value', oneWay: false, transform: function(value, dir) {
-            // console.log('FormatButtons advanced_toggle', value, dir);
-            return value;
-            // return (value && value != 0 && value != false) ? true : false;
-        }},           
-        {from: 'app.UserConfig.italics', to: '$.italics_toggle.value', oneWay: false, transform: function(value, dir) {
-            // console.log('FormatButtons italics', value, dir);
-            return value;
-        }},         
-        {from: 'app.UserConfig.strongs', to: '$.strongs_toggle.value', oneWay: false, transform: function(value, dir) {
-            // console.log('FormatButtons strongs', value, dir);
-            return value;
-        }},             
-        {from: 'app.UserConfig.red_letter', to: '$.redletter_toggle.value', oneWay: false, transform: function(value, dir) {
-            // console.log('FormatButtons red_letter', value, dir);
-            return value;
-        }},
-        {from: 'app.UserConfig.highlight', to: '$.highlight_toggle.value', oneWay: false, transform: function(value, dir) {
-            // console.log('FormatButtons red_letter', value, dir);
-            return value;
-        }}, 
-        {from: 'app.UserConfig.font', to: 'font', oneWay: true, transform: function(value, dir) {
-            // console.log('FormatButtons font', value, dir);
-            this.$.font_serif.addRemoveClass('selected', value == 'serif');
-            this.$.font_sans_serif.addRemoveClass('selected', value == 'sans_serif' || value == 'sans-serif');
-            this.$.font_monospace.addRemoveClass('selected', value == 'monospace');
-            return value;
-        }}
-    ],
-
-    create: function() {
-        this.inherited(arguments);
-
-        if(!this.app.statics.download_enabled) {
-            this.$.download_button.set('showing', false);
-        }
-    }, 
-    rendered: function() {
-        this.inherited(arguments);
-
-        if(this._hideExtras()) {
-            this.$.sos_button && this.$.sos_button.set('showing', false);
-            this.$.start_button && this.$.start_button.set('showing', false);
-            this.$.download_button && this.$.download_button.set('showing', false);
-            this.$.advanced_toggle && this.$.advanced_toggle.set('showing', false);
-            this.$.help && this.$.help.set('showing', false);
-        }
-    }
+    ]
 });
