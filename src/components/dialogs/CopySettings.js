@@ -191,6 +191,36 @@ module.exports = kind({
                         //     {kind: i18n, tag: 'label', attributes: {for: 'allow_html'}, classes: 'label', content: 'Allow HTML Line Breaks'}
                         // ]},                
                     ]
+                },                
+                {
+                    classes: 'section', 
+                    components: [
+                        {kind: inc, content: 'Text Display', classes: 'header'},
+                        {
+                            kind: Group,
+                            name: 'render_style',
+                            components: [
+                                {classes: 'checkbox_container checkbox_first', components: [
+                                    {classes: 'element', components: [
+                                        {kind: Checkbox, name: 'paragraph', id: 'paragraph', type: 'radio'}
+                                    ]},
+                                    {kind: i18n, tag: 'label', attributes: {for: 'paragraph'}, classes: 'label', content: 'Paragraph Display'}
+                                ]},                
+                                {classes: 'checkbox_container checkbox_first', components: [
+                                    {classes: 'element', components: [
+                                        {kind: Checkbox, name: 'passage', id: 'passage', type: 'radio'}
+                                    ]},
+                                    {kind: i18n, tag: 'label', attributes: {for: 'passage'}, classes: 'label', content: 'Passage Display'}
+                                ]},                
+                                {classes: 'checkbox_container checkbox_first', components: [
+                                    {classes: 'element', components: [
+                                        {kind: Checkbox, name: 'verse', id: 'verse', type: 'radio'}
+                                    ]},
+                                    {kind: i18n, tag: 'label', attributes: {for: 'verse'}, classes: 'label', content: 'Verse Display'}
+                                ]},                
+                            ]
+                        }      
+                    ]
                 },
                 {classes: 'clear-both'}
             ]
@@ -231,6 +261,16 @@ module.exports = kind({
             if(dir == 1 && this.$[value]) {
                 // console.log('Copy passageFormat setActive');
                 this.$.passage_format.set('active', this.$[value]);
+                this.$[value].set('checked', true);
+            }
+
+            return value;
+        }},         
+        {from: 'app.UserConfig.render_style', to: 'renderStyle', oneWay: false, transform: function(value, dir) {
+            // console.log('Copy renderStyle', value, dir);
+
+            if(dir == 1 && this.$[value]) {
+                this.$.render_style.set('active', this.$[value]);
                 this.$[value].set('checked', true);
             }
 
@@ -277,6 +317,10 @@ module.exports = kind({
 
         if(inEvent.originator.name == 'passage_format') {
             this.set('passageFormat', value);
+        }              
+
+        if(inEvent.originator.name == 'render_style') {
+            this.set('renderStyle', value);
         }        
 
         if(inEvent.originator.name == 'presets_group') {

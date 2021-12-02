@@ -982,19 +982,14 @@ var App = Application.kind({
         }
 
         if(this.UserConfig.get('single_verses')) {
-            this.log('yes');
             var responseDataNew = utils.clone(this.get('responseData'));
             responseDataNew.results = utils.clone(responseDataNew.results);
             responseDataNew.results.results = this.responseCollection.toVerses( utils.clone(responseDataNew.results.results) );
         }
         else {
-            this.log('no');
             // responseDataNew.results.results = utils.clone(responseDataNew.results.results);
             var responseDataNew = this.get('responseData');
         }
-
-        this.log('responseDataNew', responseDataNew.results.results);
-        this.log('responseData', this.get('responseData').results.results);
 
         this.waterfall('onFormResponseSuccess', responseDataNew);
         Signal.send('onFormResponseSuccess', responseDataNew);

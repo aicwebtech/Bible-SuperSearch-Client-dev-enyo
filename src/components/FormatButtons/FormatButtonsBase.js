@@ -59,7 +59,6 @@ module.exports = kind({
     },    
     handleRenderStyle: function(inSender, inEvent) {
         val = inSender.val || 'passage';
-        this.log(val);
         this.app.UserConfig.set('render_style', val);
         // this.log(this.app.UserConfig.getAttributes());
     },

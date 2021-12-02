@@ -3,10 +3,12 @@ var Button = require('enyo/Button');
 var Anchor = require('enyo/Anchor');
 var Input = require('enyo/Input');
 var Checkbox = require('enyo/Checkbox');
+var Group = require('enyo/Group');
 var LanguageSelector = require('../Locale/LocaleSelector');
 var Dialog = require('./Dialog');
 var LinkBuilder = require('../Link/LinkBuilder');
 var i18n = require('../Locale/i18nContent');
+var inc = require('../../components/Locale/i18nComponent');
 var Toggle = require('../ToggleHtml');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
@@ -21,6 +23,10 @@ module.exports = kind({
     height: '475px',
     classes: 'help_dialog bible_settings',
     bibleString: null,
+
+    handlers: {
+        onActiveChanged: 'handleActiveChanged'
+    },
     
     titleComponents: [
         {classes: 'header', components: [
@@ -129,22 +135,54 @@ module.exports = kind({
                 ]
             }
         },       
-        {tag: 'br'},
-        {components: [
-           {kind: i18n, content: 'Results per Page'},
-           {tag: 'span', allowHtml: true, content: ':&nbsp;'},
-           {kind: Input, name: 'page_limit', attributes: {size: 1}},
-           {tag: 'span', allowHtml: true, content: '&nbsp;'},
-           {kind: i18n, content: 'verses'}     
-        ]},
-        {components: [
-           {kind: i18n, content: 'Context Range'},
-           {tag: 'span', allowHtml: true, content: ':&nbsp;'},
-           {kind: Input, name: 'context_range', attributes: {size: 1}},
-           {tag: 'span', allowHtml: true, content: '&nbsp;'},
-           {kind: i18n, content: 'verses'}     
-        ]},        
-        {tag: 'br'},
+        {
+            classes: 'section', 
+            components: [
+                {kind: inc, content: 'Text Display', classes: 'header'},
+                {
+                    kind: Group,
+                    name: 'render_style',
+                    components: [
+                        {classes: 'checkbox_container checkbox_first', components: [
+                            {classes: 'element', components: [
+                                {kind: Checkbox, name: 'paragraph', id: 'paragraph', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'paragraph'}, classes: 'label', content: 'Paragraph Display'}
+                        ]},                
+                        {classes: 'checkbox_container checkbox_first', components: [
+                            {classes: 'element', components: [
+                                {kind: Checkbox, name: 'passage', id: 'passage', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'passage'}, classes: 'label', content: 'Passage Display'}
+                        ]},                
+                        {classes: 'checkbox_container checkbox_first', components: [
+                            {classes: 'element', components: [
+                                {kind: Checkbox, name: 'verse', id: 'verse', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'verse'}, classes: 'label', content: 'Verse Display'}
+                        ]},                
+                    ]
+                }      
+            ]
+        },
+
+        // TODO: future
+        // {tag: 'br'},
+        // {components: [
+        //    {kind: i18n, content: 'Results per Page'},
+        //    {tag: 'span', allowHtml: true, content: ':&nbsp;'},
+        //    {kind: Input, name: 'page_limit', attributes: {size: 1}},
+        //    {tag: 'span', allowHtml: true, content: '&nbsp;'},
+        //    {kind: i18n, content: 'verses'}     
+        // ]},
+        // {components: [
+        //    {kind: i18n, content: 'Context Range'},
+        //    {tag: 'span', allowHtml: true, content: ':&nbsp;'},
+        //    {kind: Input, name: 'context_range', attributes: {size: 1}},
+        //    {tag: 'span', allowHtml: true, content: '&nbsp;'},
+        //    {kind: i18n, content: 'verses'}     
+        // ]},        
+        // {tag: 'br'},
         {tag: 'br'}
     ],
 
@@ -178,7 +216,17 @@ module.exports = kind({
         {from: 'app.UserConfig.page_limit', to: '$.page_limit.value', oneWay: false, transform: function(value, dir) {
             console.log('Settings page_limit', value, dir);
             return value;
-        }}
+        }},
+        {from: 'app.UserConfig.render_style', to: 'renderStyle', oneWay: false, transform: function(value, dir) {
+            // console.log('Copy renderStyle', value, dir);
+
+            if(dir == 1 && this.$[value]) {
+                this.$.render_style.set('active', this.$[value]);
+                this.$[value].set('checked', true);
+            }
+
+            return value;
+        }},  
     ],
 
     handlers: {
@@ -212,5 +260,13 @@ module.exports = kind({
     },
     localeChanged: function(inSender, inEvent) {
         // this.render();
-    }
+    },
+    handleActiveChanged: function(inSender, inEvent) {
+        this.app.debug && this.log(inEvent);
+        var value = (inEvent.active) ? inEvent.active.name : null;       
+
+        if(inEvent.originator.name == 'render_style') {
+            this.set('renderStyle', value);
+        }        
+    },
 });

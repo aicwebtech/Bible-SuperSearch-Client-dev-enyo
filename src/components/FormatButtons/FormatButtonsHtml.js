@@ -16,7 +16,7 @@ module.exports = kind({
     font: null,
     
     components: [
-        {classes: 'bss_button_group', components: [
+        {classes: 'bss_button_group', name: 'TextSizeGroup', components: [
             {
                 kind: i18n,
                 classes: 'item size size_plus',
@@ -65,7 +65,7 @@ module.exports = kind({
             },
         ]},
 
-        {classes: 'bss_button_group', components: [
+        {classes: 'bss_button_group', name: 'FontStyleGroup', components: [
             {
                 kind: i18n,
                 classes: 'item font font_serif',
@@ -110,7 +110,7 @@ module.exports = kind({
             },
         ]},
 
-        {classes: 'bss_button_group', components: [
+        {classes: 'bss_button_group', name: 'TextDisplayGroup', components: [
             {
                 kind: i18n,
                 classes: 'item renderstyle paragraph',
@@ -179,7 +179,7 @@ module.exports = kind({
         //     },
         // ]},
               
-        {classes: 'bss_button_group', components: [
+        {classes: 'bss_button_group', name: 'TextEmbGroup1', components: [
             {
                 classes: 'item italics_toggle',
                 name: 'italics_toggle',
@@ -219,7 +219,7 @@ module.exports = kind({
                 }
             },   
         ]},
-        {classes: 'bss_button_group', components: [     
+        {classes: 'bss_button_group', name: 'TextEmbGroup2', components: [     
             {
                 classes: 'item redletter_toggle',
                 name: 'redletter_toggle',
@@ -261,7 +261,7 @@ module.exports = kind({
                 }
             },    
         ]},
-        {classes: 'bss_button_group', components: [
+        {classes: 'bss_button_group', name: 'SmallButtonsGroup1', components: [
             {
                 classes: 'item copy_toggle_new',
                 name: 'copy_toggle',
@@ -340,16 +340,17 @@ module.exports = kind({
                     {tag: 'span', classes: 'material-icons icon', content: 'link'}
                 ],
             },
-            // {
-            //     kind: i18n,
-            //     classes: 'item settings text_only',
-            //     name: 'settings_button',
-            //     ontap: 'handleSettings',
-            //     attributes: {title: 'Settings'},
-            //     components: [
-            //         {tag: 'span', classes: 'material-icons icon', content: 'settings'}
-            //     ],
-            // },      
+            {
+                kind: i18n,
+                showing: false,
+                classes: 'item settings text_only',
+                name: 'settings_button',
+                ontap: 'handleSettings',
+                attributes: {title: 'Settings'},
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'settings'}
+                ],
+            },      
         ]},
 
         {classes: 'bss_button_group', components: [
@@ -404,6 +405,7 @@ module.exports = kind({
         ]}, 
         {
             classes: 'item language',
+            name: 'language_selector',
             components: [
                 {name: 'Locale', kind: LocaleSelector}
             ]

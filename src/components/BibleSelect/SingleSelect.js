@@ -154,28 +154,6 @@ module.exports = kind({
 
             var compName = 'group' + group;
 
-            // if(this._currentGroup != group) {
-            //     this.createComponent({
-            //         content: groupContent,
-            //         value: 0,
-            //         contentShort: groupContent,
-            //         contentLong: groupContent,
-            //         // disabled: true,
-            //         attributes: {disabled: true},
-            //         classes: 'label'
-            //     });
-
-            //     this._currentGroup = group;
-            // }
-
-            // this.createComponent({
-            //     content: content,
-            //     value: bible.module,
-            //     contentShort: contentShort,
-            //     contentLong: contentLong,
-            //     allowHtml: true
-            // });
-
             if(!this.$[compName]) {
                 this.createComponent({
                     tag: 'optgroup',
