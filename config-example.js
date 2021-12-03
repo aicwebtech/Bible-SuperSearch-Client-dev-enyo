@@ -117,9 +117,11 @@ var biblesupersearch_config_options = {
     "formatButtonsToggle": true,
 
     // Which formating buttons to use?
-    //      default for skin default
-    //      Classic
-    //      Stylable
+    //      default - for skin default
+    //      Classic - (legacy classic icons from v2 - deprecated)
+    //      Stylable - Pure HTML / CSS buttons that are readily stylable
+    //      StylableNarrow - Stylable buttons wrapped onto multiple lines even on wide screens
+    //      StylableMinimal - A minimal set of stylable buttons, with an settings dialog containging the rest of the settings
     "formatButtons": 'default',        
 
     // Display extra buttons seprately from format buttons?

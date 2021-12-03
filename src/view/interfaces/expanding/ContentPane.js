@@ -2,9 +2,7 @@ var kind = require('enyo/kind');
 var Advanced = require('../../../forms/advanced/AdvancedClassic');
 var Form = require('../../../forms/expanding/Expanding');
 var ContentBase = require('../ContentPaneBase');
-// var FormatButtons = require('./FormatButtons');
-// var FormatButtons = require('../../../components/FormatButtons/classic/FormatButtonsClassic');
-var FormatButtons = require('../../../components/FormatButtons/FormatButtonsHtml');
+var FormatButtons = require('../../../components/FormatButtons/FormatButtonsHtmlNarrow');
 var Pager = require('../../../components/Pagers/CleanPager');
 
 var forms = {

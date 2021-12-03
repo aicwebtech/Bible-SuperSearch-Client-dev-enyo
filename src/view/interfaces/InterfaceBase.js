@@ -9,7 +9,7 @@ var ShareDialog = require('../../components/dialogs/Share');
 var LinkDialog = require('../../components/dialogs/Link');
 var SettingsDialog = require('../../components/dialogs/Settings');
 var NavButtons = require('../../components/NavButtons/NavClassic');
-var FormatButtons = require('../../components/FormatButtons/classic/FormatButtonsClassic');
+var FormatButtons = require('../../components/FormatButtons/FormatButtonsHtml');
 var Pager = require('../../components/Pagers/ClassicPager');
 var MaterialIconsStyle = require('../../components/Styles/MaterialIcons');
 
