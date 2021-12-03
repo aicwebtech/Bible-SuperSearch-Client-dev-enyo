@@ -19,7 +19,7 @@ var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 module.exports = kind({
     name: 'StartDialog',
     kind: Dialog,
-    maxWidth: '400px',
+    maxWidth: '350px',
     height: '475px',
     classes: 'help_dialog bible_settings',
     bibleString: null,
@@ -135,6 +135,7 @@ module.exports = kind({
                 ]
             }
         },       
+        {tag: 'br'},
         {
             classes: 'section', 
             components: [
@@ -142,6 +143,8 @@ module.exports = kind({
                 {
                     kind: Group,
                     name: 'render_style',
+                    onActiveChanged: 'handleActiveChanged',
+                    classes: 'settings_container',
                     components: [
                         {classes: 'checkbox_container checkbox_first', components: [
                             {classes: 'element', components: [
@@ -160,6 +163,39 @@ module.exports = kind({
                                 {kind: Checkbox, name: 'verse', id: 'verse', type: 'radio'}
                             ]},
                             {kind: i18n, tag: 'label', attributes: {for: 'verse'}, classes: 'label', content: 'Verse Display'}
+                        ]},                
+                    ]
+                }      
+            ]
+        },        
+        {tag: 'br'},
+        {
+            classes: 'section', 
+            components: [
+                {kind: inc, content: 'Font Style', classes: 'header'},
+                {
+                    kind: Group,
+                    name: 'font',
+                    onActiveChanged: 'handleActiveChanged',
+                    classes: 'settings_container',
+                    components: [
+                        {classes: 'checkbox_container checkbox_first', components: [
+                            {classes: 'element', components: [
+                                {kind: Checkbox, name: 'serif', id: 'serif', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'serif'}, classes: 'label', content: 'Serif', style: 'font-family: Serif'}
+                        ]},                
+                        {classes: 'checkbox_container checkbox_first', components: [
+                            {classes: 'element', components: [
+                                {kind: Checkbox, name: 'sans-serif', id: 'sans-serif', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'sans-serif'}, classes: 'label', content: 'Sans-Serif', style: 'font-family: Sans-Serif'}
+                        ]},                
+                        {classes: 'checkbox_container checkbox_first', components: [
+                            {classes: 'element', components: [
+                                {kind: Checkbox, name: 'monospace', id: 'monospace', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'monospace'}, classes: 'label', content: 'Monospace', style: 'font-family: monospace'}
                         ]},                
                     ]
                 }      
@@ -210,18 +246,28 @@ module.exports = kind({
             return value;
         }},        
         {from: 'app.UserConfig.context_range', to: '$.context_range.value', oneWay: false, transform: function(value, dir) {
-            console.log('Settings context_range', value, dir);
+            // console.log('Settings context_range', value, dir);
             return value;
         }},
         {from: 'app.UserConfig.page_limit', to: '$.page_limit.value', oneWay: false, transform: function(value, dir) {
-            console.log('Settings page_limit', value, dir);
+            // console.log('Settings page_limit', value, dir);
             return value;
         }},
         {from: 'app.UserConfig.render_style', to: 'renderStyle', oneWay: false, transform: function(value, dir) {
-            // console.log('Copy renderStyle', value, dir);
+            // console.log('SETTINGS renderStyle', value, dir);
 
             if(dir == 1 && this.$[value]) {
                 this.$.render_style.set('active', this.$[value]);
+                this.$[value].set('checked', true);
+            }
+
+            return value;
+        }},         
+        {from: 'app.UserConfig.font', to: 'font', oneWay: false, transform: function(value, dir) {
+            console.log('SETTINGS font', value, dir);
+
+            if(dir == 1 && this.$[value]) {
+                this.$.font.set('active', this.$[value]);
                 this.$[value].set('checked', true);
             }
 
@@ -267,6 +313,10 @@ module.exports = kind({
 
         if(inEvent.originator.name == 'render_style') {
             this.set('renderStyle', value);
+        }             
+
+        if(inEvent.originator.name == 'font') {
+            this.set('font', value);
         }        
     },
 });

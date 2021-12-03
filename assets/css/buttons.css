@@ -256,6 +256,23 @@
     top: 2px;
 }
 
+.bible_settings .settings_container {
+    width: 250px;
+    margin: 0 auto 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.bible_settings .settings_container label {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.bible_settings .section .header {
+    /*font-weight: bold;*/
+    text-decoration: underline;
+    margin-bottom: 4px;
+}
 
 /*.format_buttons_html .selected {
     background-color: #c7b72c;

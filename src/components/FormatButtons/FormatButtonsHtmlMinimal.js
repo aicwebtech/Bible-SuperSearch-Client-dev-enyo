@@ -21,5 +21,7 @@ module.exports = kind({
         this.$.TextEmbGroup1.set('showing', false);
         this.$.TextEmbGroup2.set('showing', false);
         this.$.language_selector.set('showing', false);
+        this.$.FontStyleGroup.set('showing', false);
+        this.$.TextDisplayGroup.set('showing', false);
     }
 });
