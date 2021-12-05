@@ -176,6 +176,9 @@ module.exports = {
 
     // Settings Dialog
     'Settings' : 'Setări', // 5.0
+    'Language' : 'Limba', // 5.0
+    'Text Display': 'Afișare text', // 5.0
+    'Font Style': 'Stilul fontului', // 5.0
 
     // Result and error messages
     

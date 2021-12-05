@@ -183,6 +183,9 @@ module.exports = {
 
     // Settings Dialog
     'Settings' : 'Pickens', // 5.0
+    'Language' : 'Manre of Speeche', // 5.0
+    'Text Display': 'Bootie Showcasee', // 5.0
+    'Font Style': 'Scripble Stilen', // 5.0
 
     'User\'s Manual': 'Arr, how me operate this thing?',
     

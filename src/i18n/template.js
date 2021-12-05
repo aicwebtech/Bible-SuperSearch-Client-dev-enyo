@@ -176,6 +176,9 @@ module.exports = {
 
     // Settings Dialog
     'Settings' : '', // 5.0
+    'Language' : '', // 5.0
+    'Text Display': '', // 5.0
+    'Font Style': '', // 5.0
 
     // Result and error messages
     

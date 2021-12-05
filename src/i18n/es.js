@@ -168,7 +168,10 @@ module.exports = {
 
     // Settings Dialog
     'Settings' : 'Ajustes', // 5.0
-
+    'Language' : 'Idioma', // 5.0
+    'Text Display': 'Visualización de texto', // 5.0
+    'Font Style': 'Estilo de fuente', // 5.0
+    
     // Result and error messages
     
     // Your search produced (number of verses) results

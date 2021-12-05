@@ -251,12 +251,9 @@ var App = Application.kind({
         // Render 'Loading' view
         // Todo - set css style based on selected interface
         this.set('view', Loading);
-        // var ViewObject = new view;
-        // this.log('ViewObject', ViewObject);
-        // this.view.addClass(view.getClass);
         this.render();
 
-        this.configs.apiUrl += '/api';
+        this.configs.apiUrl = this.configs.apiUrl.replace(/\/+$/, '') + '/api';
         this.configs.language && this.set('locale', this.configs.language);
 
         if(this.configs.debug) {
@@ -285,42 +282,12 @@ var App = Application.kind({
         // Experimental
 
         var ajaxData = {};
-        // var groupOrder = null;
-
-        // switch (this.configs.bibleGrouping) {
-        //     case 'language':
-        //     case 'language_and_english':
-        //         groupOrder = 'lang_name';
-        //         break;            
-        //     case 'language_english':
-        //         groupOrder = 'lang_name_english';
-        //         break;
-        //     case 'none':
-        //     default:
-        //         groupOrder = null;
-        // }
-
-        // ajaxData.bible_order_by = (groupOrder) ? groupOrder + '|' + this.configs.bibleSorting : this.configs.bibleSorting;
-
         ajaxData.bible_order_by = this._getBibleOrderBy();
 
         // this.log('loading statics');
         ajax.go(ajaxData);
         ajax.response(this, function(inSender, inResponse) {
             this._handleStaticsLoad(inResponse.results, view);
-
-            // this.set('ajaxLoading', false);
-            // this.test();
-            // this.set('statics', inResponse.results);
-            // this.waterfall('onStaticsLoaded');
-
-            // if(view && view != null) {
-            //     this.set('view', view);
-            // }
-            
-            // this.render();
-            // this.appLoaded = true;
-            // this.$.Router.trigger();
         });    
 
         ajax.error(this, function(inSender, inResponse) {

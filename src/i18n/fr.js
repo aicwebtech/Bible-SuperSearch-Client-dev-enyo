@@ -169,6 +169,9 @@ module.exports = {
 
     // Settings Dialog
     'Settings' : 'Paramètres', // 5.0
+    'Language' : 'Langue', // 5.0
+    'Text Display': 'Style de texte', // 5.0
+    'Font Style': 'Le style de police', // 5.0
     
     // Result and error messages
     
