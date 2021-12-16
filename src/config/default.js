@@ -26,6 +26,15 @@ var defaultConfig = {
         if(window.console) {
             console.log('Congratulations, you are successfully using your own instance of the Bible SuperSearch API!');
         }
+    },
+    _downloadDisabledNotice: function() {
+        if(window.console) {
+            console.log('----------------------------------------------------------------------');
+            console.log('NOTE TO WEBMASTER: Your Bible SuperSearch API instance has Bible downloads disabled.');
+            console.log('Please enable this, otherwise important features such as the downloads dialog won\'t work.');
+            console.log('----------------------------------------------------------------------');
+            console.log();
+        }
     }
 };
 

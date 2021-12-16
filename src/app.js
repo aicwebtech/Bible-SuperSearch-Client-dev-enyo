@@ -318,6 +318,11 @@ var App = Application.kind({
         this.test();
         this.set('statics', statics);
         this.processBiblesDisplayed();
+
+        if(!statics.download_enabled) {
+            defaultConfig._downloadDisabledNotice();
+        }
+
         this.localeBibleBooks.en = statics.books;
         this.waterfall('onStaticsLoaded');
 
