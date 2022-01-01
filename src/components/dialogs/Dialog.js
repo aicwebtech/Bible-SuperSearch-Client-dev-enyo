@@ -21,7 +21,7 @@ module.exports = kind({
 
     components: [
         {name: 'Container', classes: 'biblesupersearch_center_element super_container', components: [
-            {name: 'SubContainer', classes: '_iblesupersearch_center_element dialog', components: [
+            {name: 'SubContainer', classes: 'dialog', components: [
                 {name: 'TitleBar', classes: 'title', showing: false},
                 {name: 'Body', classes: 'content', showing: true},
                 {name: 'ButtonBar', classes: 'buttons', showing: false}

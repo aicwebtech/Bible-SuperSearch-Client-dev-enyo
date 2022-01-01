@@ -430,12 +430,12 @@ div.alert_dialog {
 }
 
 .help_dialog .buttons {
-    min-height: 30px;
+    /*min-height: 30px;*/
+    padding: 8px 0 8px;
 }
 
 .help_dialog .list {
     vertical-align: top;
-    margin-bottom: 10px;
 }
 
 .help_dialog .list .col {

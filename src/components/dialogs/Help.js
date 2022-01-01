@@ -253,7 +253,7 @@ module.exports = kind({
                     url += item.searchType;
                 }
 
-                url += '/' + this.app.vt(item.reference);
+                url += '//' + this.app.vt(item.reference);
             }
             else if(linkType == 'form') {
                 var formData = item.formData,
