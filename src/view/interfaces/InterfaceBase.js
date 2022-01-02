@@ -105,6 +105,17 @@ module.exports = kind({
         }
 
         this.$.DownloadDialog.set('showing', is);
+    },    
+    helpShowingChanged: function(was, is) {
+        if(!this.$.HelpDialog) {
+            this.createComponent({
+                name: 'HelpDialog',
+                kind: HelpDialog,
+                showing: false
+            }).render();
+        }
+
+        this.$.HelpDialog.set('showing', is);
     },
     shareShowingChanged: function(was, is) {
         this._dialogShowingHelper(ShareDialog, 'ShareDialog', is);

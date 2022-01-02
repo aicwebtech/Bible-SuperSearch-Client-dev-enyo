@@ -78,7 +78,8 @@ module.exports = kind({
         // this.log(this.app.UserConfig.getAttributes());
     },
     handleHelp: function(inSender, inEvent) {
-        this.app.showHelp(null);
+        // this.app.showHelp(null);
+        this.app.set('helpShowing', true);
     },
     handlePrint: function(inSender, inEvent) {
         Signal.send('onResultsPrint');

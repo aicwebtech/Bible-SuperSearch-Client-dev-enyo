@@ -164,6 +164,7 @@ module.exports = kind({
     },
     close: function() {
         this.set('showing', false);
+        this.app.set('helpShowing', false);
     },
     usersManual: function() {
         window.open(

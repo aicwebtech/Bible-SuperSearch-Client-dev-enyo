@@ -657,6 +657,11 @@ var App = Application.kind({
         if(this.view && this.view.set) {
             this.view.set('settingsShowing', is);
         }
+    },    
+    helpShowingChanged: function(was, is) {
+        if(this.view && this.view.set) {
+            this.view.set('helpShowing', is);
+        }
     },
     showHelp: function(section) {
         this.waterfall('onShowHelp', {section: section});
