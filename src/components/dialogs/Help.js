@@ -136,7 +136,12 @@ module.exports = kind({
     ],
 
     bodyComponents: [
-        {classes: 'list start_list', name: 'ListContainer'}
+        {classes: 'list start_list', name: 'ListContainer'},
+        { classes: 'link', components: [
+            {tag: 'hr'}, 
+            {tag: 'a', content: 'www.BibleSuperSearch.com', attributes: {href: 'https://www.biblesupersearch.com', target: '_NEW'}},
+            {tag: 'hr'}
+        ]}
     ],
 
     buttonComponents: [
