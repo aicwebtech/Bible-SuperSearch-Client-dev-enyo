@@ -60,6 +60,10 @@ var biblesupersearch_config_options = {
             // Basic expanding form - new default form
             // "interface": 'Expanding',
 
+            // Poser Expanding form - has larger text areas, defaults to Boolean search
+            // "interface": 'PowerExpanding',
+
+
         // Minimal interfaces
         //      Forms with very few elements
         
