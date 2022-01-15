@@ -247,7 +247,7 @@ module.exports = kind({
                 url = searchUrlBase + trans;
 
                 if(item.searchType) {
-                    url += '/' + item.searchType;
+                    url += '/1/' + item.searchType;
                 }
             }
             else if(linkType == 'both') {
@@ -278,6 +278,8 @@ module.exports = kind({
             }
 
             if(url) {
+                url = url.replace(/\s+/g, '.');
+
                 this.$.ListContainer.$[colName].createComponent({
                     owner: this,
                     classes: 'link',
