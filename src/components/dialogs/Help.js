@@ -45,7 +45,7 @@ module.exports = kind({
             {content: 'Ro. 8:2', link: 'passage'},
             {content: 'Rom 3:23, 6:23, 5:8, 10:9,13;', link: 'passage'},
             {content: 'Ephesians 2:8,9; Acts 4:12; John 8:31-32,36', link: 'passage'},
-            {content: '1 Corinthians 4:8 - 5:2', link: 'passage'},
+            {content: 'John 13:36 - 14:3', link: 'passage'},
 
         ],
         boolSearch: [
