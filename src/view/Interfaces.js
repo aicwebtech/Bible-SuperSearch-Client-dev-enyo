@@ -13,7 +13,10 @@ module.exports = {
         // Basic expanding form - new default form
         'Expanding': require('./interfaces/expanding/Expanding'),
         
-        // Power search form designed to expand easily
+        // Expanding form with larger textarea input fields
+        'ExpandingLargeInput': require('./interfaces/expanding/ExpandingLargeInput'),        
+
+        // Power search form designed to expand easily (not yet ready)
         'PowerExpanding': require('./interfaces/expanding/PowerExpanding'),
 
     
