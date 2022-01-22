@@ -213,6 +213,7 @@ module.exports = {
     'This Bible is in the Public Domain.': '',
     'This Bible is provided for research purposes only.': '',
     'An unknown error has occurred.' : '',
+    'An error has occurred, please try again later.': '',
     'Error' : '',
     'Success': '',
     'Cache not found': '',

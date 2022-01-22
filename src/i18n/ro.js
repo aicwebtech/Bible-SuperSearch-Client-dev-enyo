@@ -213,6 +213,7 @@ module.exports = {
     'This Bible is in the Public Domain.': 'Această Biblie este Domeniu Public',
     'This Bible is provided for research purposes only.': 'Această Biblie este disponibilă doar pentru studiu.',
     'An unknown error has occurred.' : 'O eroare necunoscută a avut loc.',
+    'An error has occurred, please try again later.': 'A intervenit o eroare. Vă rugăm încercați din nou mai târziu.',
     'Error' : 'Eroare',
     'Success': 'Succes',
     'Cache not found': 'Memoria cache lipsește',

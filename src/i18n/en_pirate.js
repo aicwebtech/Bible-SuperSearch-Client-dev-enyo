@@ -207,6 +207,7 @@ module.exports = {
     'This Bible is in the Public Domain.': 'Ye olde Booke free for the takin\' and usin\'.',
     'This Bible is provided for research purposes only.': 'Scallywag booke only for comparin\' with Goode Booke',
     'An unknown error has occurred.' : 'Ye Kraken or the ghostes done it',
+    'An error has occurred, please try again later.': 'Ye broke, try againe after thee while.',
     'Error' : 'Arrg',
     'Success': 'Yarr Aye',
     'Cache not found': 'No finde treasure stash',

@@ -206,6 +206,7 @@ module.exports = {
     'This Bible is in the Public Domain.': 'Esta Biblia es de dominio público.',
     'This Bible is provided for research purposes only.': 'Esta Biblia se proporciona únicamente con fines de investigación.',
     'An unknown error has occurred.' : 'Un error desconocido a ocurrido.',
+    'An error has occurred, please try again later.': 'Ha ocurrido un error, inténtalo de nuevo más tarde.',
     'Error' : 'Error',
     'Success': 'Éxito',
     'Cache not found': 'Caché no encontrado',
