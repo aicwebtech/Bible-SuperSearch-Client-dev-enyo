@@ -126,6 +126,7 @@ var biblesupersearch_config_options = {
     //      Stylable - Pure HTML / CSS buttons that are readily stylable
     //      StylableNarrow - Stylable buttons wrapped onto multiple lines even on wide screens
     //      StylableMinimal - A minimal set of stylable buttons, with an settings dialog containging the rest of the settings
+    //      none - Format buttons disabled, never show
     "formatButtons": 'default',        
 
     // Display extra buttons seprately from format buttons?

@@ -7,4 +7,7 @@ module.exports = {
     'Stylable': require('../components/FormatButtons/FormatButtonsHtml'),
     'StylableNarrow': require('../components/FormatButtons/FormatButtonsHtmlNarrow'),
     'StylableMinimal': require('../components/FormatButtons/FormatButtonsHtmlMinimal'),
+
+    // None - (no buttons)
+    'none': require('../components/FormatButtons/FormatButtonsNone'),
 };

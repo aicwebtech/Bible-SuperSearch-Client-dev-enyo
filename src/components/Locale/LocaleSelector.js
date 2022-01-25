@@ -34,7 +34,6 @@ module.exports = kind({
 
     change: function(inSender, inEvent) {
         this.inherited(arguments);
-        // this.log(inSender.getValue());
         this.app.set('locale', this.getValue());
     }, 
 

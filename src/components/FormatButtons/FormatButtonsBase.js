@@ -48,7 +48,7 @@ module.exports = kind({
         this.app.debug && this.log('advancedToggle - Interface', advancedView, this.app.view.FormatButtonsIncludeAdvancedToggle);
         this.app.debug && this.log('advancedToggle - Format Buttons Toggle', this.app.configs.formatButtonsToggle);
 
-        if(!this.includeAdvancedToggle || !advancedView || !this.app.configs.toggleAdvanced || this.app.configs.formatButtonsToggle) {
+        if(!this.includeAdvancedToggle || !advancedView || !this.app.configs.toggleAdvanced) {
             this.$.advanced_toggle && this.$.advanced_toggle.destroy();
         }
     },

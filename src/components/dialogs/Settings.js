@@ -40,7 +40,7 @@ module.exports = kind({
         {components: [
             {kind: i18n, tag: 'span', content: 'Language'},
             {tag: 'span', allowHtml: true, content: ':&nbsp;'},
-            {kind: LanguageSelector},
+            {name: 'Language', kind: LanguageSelector},
         ]},
         {tag: 'br'},
         {
@@ -264,7 +264,7 @@ module.exports = kind({
             return value;
         }},         
         {from: 'app.UserConfig.font', to: 'font', oneWay: false, transform: function(value, dir) {
-            console.log('SETTINGS font', value, dir);
+            // console.log('SETTINGS font', value, dir);
 
             if(dir == 1 && this.$[value]) {
                 this.$.font.set('active', this.$[value]);
@@ -292,7 +292,9 @@ module.exports = kind({
     showingChanged: function(was, is) {
         this.inherited(arguments);
 
-
+        if(is) {
+            this.$.Language.handleLocaleChange();
+        }
     },
     listChanged: function(was, is) {
         this.populateList();

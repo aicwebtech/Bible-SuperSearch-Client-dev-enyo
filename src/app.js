@@ -837,7 +837,7 @@ var App = Application.kind({
 
                 for(key in inResponse.results) {
                     var book = inResponse.results[key],
-                        bookEn = this.localeBibleBooks.en[key];
+                        bookEn = this.localeBibleBooks.en[key] || null;
 
                     if(typeof localeData[ bookEn.name ] == 'undefined') {
                         localeData[ bookEn.name ] = book.name;
