@@ -32,6 +32,7 @@ module.exports = kind({
         var statics = this.app.get('statics'),
             bibles = statics.bibles,
             biblesDisplayed = this.app.get('biblesDisplayed'),
+            singleBibleMode = this.app.get('singleBibleEnabled'),
             configs = this.app.get('configs'),
             enabled = configs.enabledBibles,
             noSelectLabel = 'Select a Bible',
@@ -46,7 +47,11 @@ module.exports = kind({
             }
         }
 
-        if(!this.app.singleBibleEnabled()) {        
+        if(this.app.singleBibleEnabled() && biblesDisplayed[0].module == configs.defaultBible) {
+            this.set('showing', false);
+            window.console && console.log('Note: Only ONE Bible is enabled, therefore the Bible selector has been hidden.');
+        }
+        else {        
             if(this.app.configs.bibleGrouping && this.app.configs.bibleGrouping != 'none') {
                 // noSelectLabel = '&nbsp; &nbsp; &nbsp;' + noSelectLabel;
             }

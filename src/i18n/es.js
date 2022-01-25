@@ -12,7 +12,7 @@ module.exports = {
     'Select Bible version(s)': 'Seleccionar versiones de la Biblia',
     'Search': 'Buscar',
     'Search the Bible': 'Buscar en la Biblia',
-    'Go': 'entrar',
+    'Go': 'Entrar',
     'Bible Search': 'Búsqueda en la Biblia',
     'Bible': 'Biblia',
     'Whole Words Only': 'Solamente Palabras Completas', // 'Sólo Palabras Completas' 
@@ -28,7 +28,7 @@ module.exports = {
     'Passage': 'Pasaje',
     'The book of': 'El libro de',
     'Look for': 'Buscar',
-    'Look up': 'encontrar',
+    'Look up': 'Encontrar',
     'in': 'en',
     'verse': 'verso',
     'verses': 'versos',

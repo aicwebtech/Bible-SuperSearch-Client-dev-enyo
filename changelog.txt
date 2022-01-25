@@ -12,12 +12,13 @@ Bible SuperSearch Universal Client Changelog
 * Improvement: Added 'Clear Form' button.
 * Improvement: Displaying short name of Bibles with long name when in parallel mode.
 * Improvement: Added clean URL for many search queries.
+* Improvement: Hiding Bible selector if a single Bible is enabled (and the same is selected as default)
 * Bugfix: Using modern clipboard API when available.
 * Bugfix: Start menu links doing search instead of pulling passage.
 * Bugfix: Fixed missing config variable issue when initializing localization.
-* Bug fix: Replaced unicode icons with ones that display on mobile devices.
-* Bug fix: Fixed ASV display issue {{selah
-* Bug fix: Share copy now using same alert dialog as EZ copy
+* Bugfix: Replaced unicode icons with ones that display on mobile devices.
+* Bugfix: Fixed ASV display issue {{selah
+* Bugfix: Share copy now using same alert dialog as EZ copy
 
 
 = 4.4.3 July 31, 2021 = 
