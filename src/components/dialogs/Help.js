@@ -28,13 +28,28 @@ module.exports = kind({
     sections: {
         basicSearch: [
             {tag: 'h3', content: 'Basic Searches'},
-            {content: 'faith', link: 'search'},
-            {content: 'Romans, searched for faith', link: 'both', reference: 'Romans', search: 'faith'},
-            {tag: 'h4', kind: i18n, content: 'Wildcard'},         
-            {tag: 'div', components: [
-                {tag: 'span', content: '<b>*</b> &nbsp;', allowHtml: true},
-                {kind: i18n, content: 'Matches unlimited characters'}
-            ]},
+                {content: 'faith', link: 'search'},
+                {content: 'Romans, searched for faith', link: 'both', reference: 'Romans', search: 'faith'},
+                {tag: 'h4', kind: i18n, content: 'All Words'},
+                    {content: 'faith hope', link: 'search', search: 'faith hope', searchType: 'all_words'},            
+                    {content: 'preserve words', link: 'search', search: 'preserve words', searchType: 'all_words'},            
+                {tag: 'h4', kind: i18n, content: 'Any Word'},
+                    {content: 'faith hope', link: 'search', search: 'faith hope', searchType: 'or'},            
+                    {content: 'preserve words', link: 'search', search: 'preserve words', searchType: 'or'},            
+                {tag: 'h4', kind: i18n, content: 'Words Within 5 Verses'},
+                    {content: 'faith hope', link: 'search', search: 'faith hope', searchType: 'proximity'},            
+                    {content: 'preserve words', link: 'search', search: 'preserve words', searchType: 'proximity'},                
+                {tag: 'h4', kind: i18n, content: 'Exact Phrase'},
+                    {content: 'faith hope', link: 'search', search: 'faith hope', searchType: 'phrase'},            
+                    {content: 'preserve words', link: 'search', search: 'preserve words', searchType: 'phrase'},                
+                {tag: 'h4', kind: i18n, content: 'Only One Word'},
+                    {content: 'faith hope', link: 'search', search: 'faith hope', searchType: 'xor'},            
+                    {content: 'preserve words', link: 'search', search: 'preserve words', searchType: 'xor'},
+                {tag: 'h4', kind: i18n, content: 'Wildcard'},         
+                {tag: 'div', components: [
+                    {tag: 'span', content: '<b>*</b> &nbsp;', allowHtml: true},
+                    {kind: i18n, content: 'Matches unlimited characters'}
+                ]},
             {tag: 'br'},
             {content: 'stand*', link: 'search'},
         ],
