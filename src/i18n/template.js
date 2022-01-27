@@ -176,6 +176,9 @@ module.exports = {
 
     // Settings Dialog
     'Settings' : '', // 5.0
+    'Language' : '', // 5.0
+    'Text Display': '', // 5.0
+    'Font Style': '', // 5.0
 
     // Result and error messages
     
@@ -210,6 +213,7 @@ module.exports = {
     'This Bible is in the Public Domain.': '',
     'This Bible is provided for research purposes only.': '',
     'An unknown error has occurred.' : '',
+    'An error has occurred, please try again later.': '',
     'Error' : '',
     'Success': '',
     'Cache not found': '',

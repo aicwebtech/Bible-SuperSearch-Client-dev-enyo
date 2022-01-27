@@ -12,7 +12,7 @@ module.exports = {
     'Select Bible version(s)': 'Seleccionar versiones de la Biblia',
     'Search': 'Buscar',
     'Search the Bible': 'Buscar en la Biblia',
-    'Go': 'entrar',
+    'Go': 'Entrar',
     'Bible Search': 'Búsqueda en la Biblia',
     'Bible': 'Biblia',
     'Whole Words Only': 'Solamente Palabras Completas', // 'Sólo Palabras Completas' 
@@ -28,7 +28,7 @@ module.exports = {
     'Passage': 'Pasaje',
     'The book of': 'El libro de',
     'Look for': 'Buscar',
-    'Look up': 'encontrar',
+    'Look up': 'Encontrar',
     'in': 'en',
     'verse': 'verso',
     'verses': 'versos',
@@ -168,7 +168,10 @@ module.exports = {
 
     // Settings Dialog
     'Settings' : 'Ajustes', // 5.0
-
+    'Language' : 'Idioma', // 5.0
+    'Text Display': 'Visualización de texto', // 5.0
+    'Font Style': 'Estilo de fuente', // 5.0
+    
     // Result and error messages
     
     // Your search produced (number of verses) results
@@ -203,6 +206,7 @@ module.exports = {
     'This Bible is in the Public Domain.': 'Esta Biblia es de dominio público.',
     'This Bible is provided for research purposes only.': 'Esta Biblia se proporciona únicamente con fines de investigación.',
     'An unknown error has occurred.' : 'Un error desconocido a ocurrido.',
+    'An error has occurred, please try again later.': 'Ha ocurrido un error, inténtalo de nuevo más tarde.',
     'Error' : 'Error',
     'Success': 'Éxito',
     'Cache not found': 'Caché no encontrado',

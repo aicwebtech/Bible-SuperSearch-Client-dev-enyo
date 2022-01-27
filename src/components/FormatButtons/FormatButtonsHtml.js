@@ -16,199 +16,155 @@ module.exports = kind({
     font: null,
     
     components: [
-        {
-            kind: i18n,
-            classes: 'item size size_plus',
-            name: 'size_plus',
-            tag: 'span',
-            val: 'plus',
-            ontap: 'handleSizeChange',
-            components: [
-                {kind: i18n, content: 'A'},
-                {tag: 'span', content: '+'},
-            ],
-            attributes: {
-                title: 'Enlarge Text'
-            }
-        },      
-        {
-            kind: i18n,
-            classes: 'item size size_reg',
-            name: 'size_reg',
-            val: 'reg',
-            ontap: 'handleSizeChange',
-            tag: 'span',
-            attributes: {
-                title: 'Default Text Size',
+        {classes: 'bss_button_group', name: 'TextSizeGroup', components: [
+            {
+                kind: i18n,
+                classes: 'item size size_plus',
+                name: 'size_plus',
+                tag: 'span',
+                val: 'plus',
+                ontap: 'handleSizeChange',
+                components: [
+                    {kind: i18n, content: 'A'},
+                    {tag: 'span', content: '+'},
+                ],
+                attributes: {
+                    title: 'Enlarge Text'
+                }
+            },      
+            {
+                kind: i18n,
+                classes: 'item size size_reg',
+                name: 'size_reg',
+                val: 'reg',
+                ontap: 'handleSizeChange',
+                tag: 'span',
+                attributes: {
+                    title: 'Default Text Size',
+                },
+                components: [
+                    {tag: 'span', content: '&nbsp;', allowHtml: true},
+                    {kind: i18n, content: 'A'},
+                    {tag: 'span', content: '&nbsp;', allowHtml: true},
+                ]
+            },  
+            {
+                kind: i18n,
+                classes: 'item size size_minus',
+                name: 'size_minus',
+                val: 'minus',
+                ontap: 'handleSizeChange',
+                tag: 'span',
+                components: [
+                    {kind: i18n, content: 'A'},
+                    {tag: 'span', content: '-'},
+                ],
+                attributes: {
+                    title: 'Shrink Text'
+                }
             },
-            components: [
-                {tag: 'span', content: '&nbsp;', allowHtml: true},
-                {kind: i18n, content: 'A'},
-                {tag: 'span', content: '&nbsp;', allowHtml: true},
-            ]
-        },  
-        {
-            kind: i18n,
-            classes: 'item size size_minus',
-            name: 'size_minus',
-            val: 'minus',
-            ontap: 'handleSizeChange',
-            tag: 'span',
-            components: [
-                {kind: i18n, content: 'A'},
-                {tag: 'span', content: '-'},
-            ],
-            attributes: {
-                title: 'Shrink Text'
-            }
-        },
-        {
-            kind: i18n,
-            classes: 'item font font_serif',
-            name: 'font_serif',
-            ontap: 'handleFontChange',
-            val: 'serif',
-            tag: 'span',
-            attributes: {
-                title: 'Serif'
-            },
-            components: [
-                {kind: i18n,  content: 'Abc'}
-            ]
-        },        
-        {
-            kind: i18n,
-            classes: 'item font font_sans_serif',
-            name: 'font_sans_serif',
-            ontap: 'handleFontChange',
-            val: 'sans_serif',
-            tag: 'span',
-            attributes: {
-                title: 'Sans-Serif',
-            },
-            components: [
-                {kind: i18n, content: 'Abc'}
-            ]
-        },
-        {
-            kind: i18n,
-            classes: 'item font font_monospace',
-            name: 'font_monospace',
-            ontap: 'handleFontChange',
-            val: 'monospace',
-            tag: 'span',
-            attributes: {
-                title: 'Monospace',
-            },
-            components: [
-                {kind: i18n, content: 'Abc'}
-            ],
-        },
-        {
-            kind: i18n,
-            classes: 'item renderstyle paragraph',
-            name: 'renderstyle_paragraph',
-            val: 'paragraph',
-            tag: 'span',
-            content: '&para;',
-            allowHtml: true,
-            ontap: 'handleRenderStyle',
-            attributes: {
-                title: 'Paragraph Display'
-            }
-        },        
-        {
-            kind: i18n,
-            classes: 'item renderstyle passage',
-            name: 'renderstyle_passage',
-            val: 'passage',
-            tag: 'span',
-            ontap: 'handleRenderStyle',
-            components: [
-                {tag: 'span', content: '&nbsp;---- -', allowHtml: true},
-                {tag: 'span', content: '', allowHtml: true},
-                {tag: 'span', content: '- -------', allowHtml: true},
-                {tag: 'span', content: '- -------', allowHtml: true},
-                {tag: 'span', content: '- -------', allowHtml: true},
-                {tag: 'span', content: '- -------', allowHtml: true},
-            ],
-            attributes: {
-                title: 'Passage Display'
-            }
-        },        
-        {
-            kind: i18n,
-            classes: 'item renderstyle verse',
-            name: 'renderstyle_verse',
-            val: 'verse',
-            tag: 'span',
-            ontap: 'handleRenderStyle',
-            components: [
-                {tag: 'span', content: '- -.- -----', allowHtml: true},
-                {tag: 'span', content: '- -.- -----', allowHtml: true},
-                {tag: 'span', content: '- -.- -----', allowHtml: true},
-                {tag: 'span', content: '- - - -----', allowHtml: true},
-                {tag: 'span', content: ''},
-                {tag: 'span', content: ''},
-                {tag: 'span', content: ''}
-            ],
-            attributes: {
-                title: 'Verse Display'
-            }
-        },
+        ]},
 
-        // {
-        //     classes: 'item paragraph_toggle',
-        //     name: 'paragraph_toggle',
-        //     kind: Toggle,
-        //     trueContent: 'Verse Display',
-        //     falseContent: '&para;',
-        //     trueTitle: 'Verse Display',
-        //     falseTitle: 'Paragraph Display',
-        //     trueComponent: {
-        //         components: [
-        //             {tag: 'span', content: '- ------', allowHtml: true},
-        //             {tag: 'span', content: '- ------', allowHtml: true},
-        //             {tag: 'span', content: '- ------', allowHtml: true},
-        //             {tag: 'span', content: '- ------', allowHtml: true}
-        //             // {tag: 'span', content: '- &mdash;-&ndash;', allowHtml: true},
-        //             // {tag: 'span', content: '- &mdash;&ndash;-', allowHtml: true},
-        //             // {tag: 'span', content: '- -&ndash;&mdash;', allowHtml: true},
-        //             // {tag: 'span', content: '- &ndash;&mdash;-', allowHtml: true}
-        //         ]
-        //     },
-        //     falseComponent: {
-        //         allowHtml: true
-        //     }
-        // },
-        // {
-        //     classes: 'item single_verse_toggle',
-        //     name: 'single_verse_toggle',
-        //     kind: Toggle,            
-        //     trueTitle: 'Group Display',
-        //     falseTitle: 'Single Display',
-        //     trueComponent: {
-        //         components: [
-        //             {tag: 'span', content: '&nbsp; -- -', allowHtml: true},
-        //             {tag: 'span', content: '', allowHtml: true},
-        //             {tag: 'span', content: '- ------', allowHtml: true},
-        //             {tag: 'span', content: '- ------', allowHtml: true},
-        //             {tag: 'span', content: '- ------', allowHtml: true},
-        //             {tag: 'span', content: '- ------', allowHtml: true},
-        //         ]
-        //     },
-        //     falseComponent: {
-        //         components: [
-        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
-        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
-        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
-        //             {tag: 'span', content: '- -.- ------', allowHtml: true},
-        //             {tag: 'span', content: ''},
-        //             {tag: 'span', content: ''},
-        //             {tag: 'span', content: ''}
-        //         ]
-        //     },
-        // },
+        {classes: 'bss_button_group', name: 'FontStyleGroup', components: [
+            {
+                kind: i18n,
+                classes: 'item font font_serif',
+                name: 'font_serif',
+                ontap: 'handleFontChange',
+                val: 'serif',
+                tag: 'span',
+                attributes: {
+                    title: 'Serif'
+                },
+                components: [
+                    {kind: i18n,  content: 'Abc'}
+                ]
+            },        
+            {
+                kind: i18n,
+                classes: 'item font font_sans_serif',
+                name: 'font_sans_serif',
+                ontap: 'handleFontChange',
+                val: 'sans_serif',
+                tag: 'span',
+                attributes: {
+                    title: 'Sans-Serif',
+                },
+                components: [
+                    {kind: i18n, content: 'Abc'}
+                ]
+            },
+            {
+                kind: i18n,
+                classes: 'item font font_monospace',
+                name: 'font_monospace',
+                ontap: 'handleFontChange',
+                val: 'monospace',
+                tag: 'span',
+                attributes: {
+                    title: 'Monospace',
+                },
+                components: [
+                    {kind: i18n, content: 'Abc'}
+                ],
+            },
+        ]},
+
+        {classes: 'bss_button_group', name: 'TextDisplayGroup', components: [
+            {
+                kind: i18n,
+                classes: 'item renderstyle paragraph',
+                name: 'renderstyle_paragraph',
+                val: 'paragraph',
+                tag: 'span',
+                content: '&para;',
+                allowHtml: true,
+                ontap: 'handleRenderStyle',
+                attributes: {
+                    title: 'Paragraph Display'
+                }
+            },        
+            {
+                kind: i18n,
+                classes: 'item renderstyle passage',
+                name: 'renderstyle_passage',
+                val: 'passage',
+                tag: 'span',
+                ontap: 'handleRenderStyle',
+                components: [
+                    {tag: 'span', content: '&nbsp;---- -', allowHtml: true},
+                    {tag: 'span', content: '', allowHtml: true},
+                    {tag: 'span', content: '- -------', allowHtml: true},
+                    {tag: 'span', content: '- -------', allowHtml: true},
+                    {tag: 'span', content: '- -------', allowHtml: true},
+                    {tag: 'span', content: '- -------', allowHtml: true},
+                ],
+                attributes: {
+                    title: 'Passage Display'
+                }
+            },        
+            {
+                kind: i18n,
+                classes: 'item renderstyle verse',
+                name: 'renderstyle_verse',
+                val: 'verse',
+                tag: 'span',
+                ontap: 'handleRenderStyle',
+                components: [
+                    {tag: 'span', content: '- -.- -----', allowHtml: true},
+                    {tag: 'span', content: '- -.- -----', allowHtml: true},
+                    {tag: 'span', content: '- -.- -----', allowHtml: true},
+                    {tag: 'span', content: '- - - -----', allowHtml: true},
+                    {tag: 'span', content: ''},
+                    {tag: 'span', content: ''},
+                    {tag: 'span', content: ''}
+                ],
+                attributes: {
+                    title: 'Verse Display'
+                }
+            },
+
+        ]},
         
         // TODO - FUTURE - copy instantly button
         // {tag: 'span', components: [
@@ -222,219 +178,241 @@ module.exports = kind({
         //         title: 'Copy with given copy settings'
         //     },
         // ]},
-        {
-            classes: 'item copy_toggle',
-            name: 'copy_toggle',
-            kind: Toggle,            
-            trueTitle: 'Read Display',
-            falseTitle: 'EZ Copy',
-            trueComponent: {
-                components: [
-                    {tag: 'span', classes: 'buttons', content: '<< < = > >>', allowHtml: true},
-                    {tag: 'span', content: '', allowHtml: true},
-                    {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true},
-                    {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true}
+              
+        {classes: 'bss_button_group', name: 'TextEmbGroup1', components: [
+            {
+                classes: 'item italics_toggle',
+                name: 'italics_toggle',
+                kind: Toggle,         
+                trueTitle: 'Disable Italization of Added Words',
+                falseTitle: 'Enable Italization of Added Words',
+                trueComponent: {
+                    components: [
+                        {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+                        {kind: i18n, tag: 'span', content: 'Italics'}
+                    ]
+                },        
+                falseComponent: {
+                    components: [
+                        {tag: 'span', classes: 'block_disabled', allowHtml: true},
+                        {kind: i18n, tag: 'span', content: 'Italics'}
+                    ]
+                }
+            },        
+            {
+                classes: 'item strongs_toggle',
+                name: 'strongs_toggle',
+                kind: Toggle,        
+                trueTitle: 'Disable Strong\'s Numbers',
+                falseTitle: 'Enable Strong\'s Numbers',
+                trueComponent: {
+                    components: [
+                        {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+                        {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
+                    ]
+                },        
+                falseComponent: {
+                    components: [
+                        {tag: 'span', classes: 'block_disabled', allowHtml: true},
+                        {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
+                    ]
+                }
+            },   
+        ]},
+        {classes: 'bss_button_group', name: 'TextEmbGroup2', components: [     
+            {
+                classes: 'item redletter_toggle',
+                name: 'redletter_toggle',
+                kind: Toggle,         
+                trueTitle: 'Disable Red Letter',
+                falseTitle: 'Enable Red Letter', 
+                trueComponent: {
+                    components: [
+                        {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+                        {kind: i18n, tag: 'span', content: 'Red Letter'}
+                    ]
+                },        
+                falseComponent: {
+                    components: [
+                        {tag: 'span', classes: 'block_disabled', allowHtml: true},
+                        {kind: i18n, tag: 'span', content: 'Red Letter'}
+                    ]
+                }
+            },
+            {
+                classes: 'item highlight_toggle',
+                name: 'highlight_toggle',
+                kind: Toggle,         
+                trueTitle: 'Disable Highlighting of Keywords',
+                falseTitle: 'Enable Highlighting of Keywords',
+                trueComponent: {
+                    components: [
+                        {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+                        // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
+                        {kind: i18n, tag: 'span', content: 'Highlight'}
+                    ]
+                },        
+                falseComponent: {
+                    components: [
+                        {tag: 'span', classes: 'block_disabled', allowHtml: true},
+                        // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
+                        {kind: i18n, tag: 'span', content: 'Highlight'}
+                    ]
+                }
+            },    
+        ]},
+        {classes: 'bss_button_group', name: 'SmallButtonsGroup1', components: [
+            {
+                classes: 'item copy_toggle_new',
+                name: 'copy_toggle',
+                kind: Toggle,            
+                trueTitle: 'Read Display',
+                falseTitle: 'EZ Copy',
+                trueComponent: {
+                    components: [
+                        // {tag: 'span', classes: 'buttons', content: '<< < = > >>', allowHtml: true},
+                        // {tag: 'span', content: '', allowHtml: true},
+                        // {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true},
+                        // {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true}
 
-                    // {tag: 'span', classes: 'material-icons icon', content: 'bookvisibility'}
+                        {tag: 'span', classes: 'material-icons icon', content: 'book'}
+                        // {tag: 'span', classes: 'material-icons icon', content: 'bookvisibility'}
+                    ]
+                },
+                falseComponent: {
+                    components: [
+                        /*
+                        {tag: 'span', content: '- ------', allowHtml: true},
+                        {tag: 'span', content: '- ------', allowHtml: true},
+                        {tag: 'span', content: '- ------', allowHtml: true},
+                        {tag: 'span', content: '- ------', allowHtml: true},
+                        // {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
+                        // {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
+                        // {tag: 'span', content: '- -&ndash;&mdash;&ndash;', allowHtml: true},
+                        // {tag: 'span', content: '- &ndash;&ndash;&mdash;-', allowHtml: true},
+                        {tag: 'span', content: ''},
+                        {tag: 'span', content: ''},
+                        {tag: 'span', content: ''},
+                        */
+
+                        {tag: 'span', classes: 'material-icons icon', content: 'content_copypageview'}
+                    ]
+                },
+            },  
+            {
+                kind: i18n,
+                classes: 'item clear',
+                name: 'clear',
+                tag: 'span',
+                ontap: 'handleClearForm',
+                attributes: {title: 'Clear Form'},
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'clear'}
                 ]
             },
-            falseComponent: {
+            {
+                kind: i18n,
+                classes: 'item print text_only',
+                name: 'print_button',
+                ontap: 'handlePrint',
+                attributes: {title: 'Print'},
                 components: [
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    {tag: 'span', content: '- ------', allowHtml: true},
-                    // {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
-                    // {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
-                    // {tag: 'span', content: '- -&ndash;&mdash;&ndash;', allowHtml: true},
-                    // {tag: 'span', content: '- &ndash;&ndash;&mdash;-', allowHtml: true},
-                    {tag: 'span', content: ''},
-                    {tag: 'span', content: ''},
-                    {tag: 'span', content: ''},
+                    {tag: 'span', classes: 'material-icons icon', content: 'print'}
+                ],
+            },        
+            {
+                kind: i18n,
+                classes: 'item share text_only',
+                name: 'share_button',
+                ontap: 'handleShare',
+                attributes: {title: 'Share'},
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'share'}
+                ],
+            },        
+            {
+                kind: i18n,
+                classes: 'item link text_only',
+                name: 'link_button',
+                ontap: 'handleLink',
+                attributes: {title: 'Link'},
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'link'}
+                ],
+            },
+            {
+                kind: i18n,
+                showing: false,
+                classes: 'item settings text_only',
+                name: 'settings_button',
+                ontap: 'handleSettings',
+                attributes: {title: 'Settings'},
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'settings'}
+                ],
+            },      
+        ]},
 
-                    // {tag: 'span', classes: 'material-icons icon', content: 'content_copypageview'}
+        {classes: 'bss_button_group', components: [
+            // 'Extra' (non-formatting) buttons
+            {
+                kind: i18n,
+                classes: 'item help',
+                name: 'help',
+                tag: 'span',
+                ontap: 'handleHelp',
+                attributes: {title: 'Help'},
+                components: [
+                    {tag: 'b', content: '?'}
                 ]
             },
-        },                
-        {
-            classes: 'item italics_toggle',
-            name: 'italics_toggle',
-            kind: Toggle,         
-            trueTitle: 'Disable Italization of Added Words',
-            falseTitle: 'Enable Italization of Added Words',
-            trueComponent: {
+            {
+                classes: 'item advanced_toggle',
+                name: 'advanced_toggle',
+                kind: Toggle,
+                trueTitle: 'Basic',
+                falseTitle: 'Advanced',
+                trueContent: 'Basic',
+                falseContent: 'Advanced'
+            },
+            {
+                kind: i18n,
+                classes: 'item sos',
+                name: 'sos_button',
+                content: 'Bible SOS',
+                ontap: 'handleSos',
+                attributes: {title: 'Emergency Help from the Bible'}
+            },        
+            {
+                kind: i18n,
+                classes: 'item start',
+                name: 'start_button',
+                content: 'Start',
+                ontap: 'handleStart',
+                attributes: {title: 'Bible Start Guide'}
+            },        
+            {
+                kind: i18n,
+                classes: 'item download',
+                name: 'download_button',
+                ontap: 'handleDownload',
+                attributes: {title: 'Bible Downloads'},
                 components: [
-                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                    {kind: i18n, tag: 'span', content: 'Italics'}
+                    {tag: 'span', classes: 'material-icons icon', content: 'download'}
                 ]
             },        
-            falseComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                    {kind: i18n, tag: 'span', content: 'Italics'}
-                ]
-            }
-        },        
+            // End Extra buttons
+        ]}, 
         {
-            classes: 'item strongs_toggle',
-            name: 'strongs_toggle',
-            kind: Toggle,        
-            trueTitle: 'Disable Strong\'s Numbers',
-            falseTitle: 'Enable Strong\'s Numbers',
-            trueComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                    {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
-                ]
-            },        
-            falseComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                    {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
-                ]
-            }
-        },        
-        {
-            classes: 'item redletter_toggle',
-            name: 'redletter_toggle',
-            kind: Toggle,         
-            trueTitle: 'Disable Red Letter',
-            falseTitle: 'Enable Red Letter', 
-            trueComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                    {kind: i18n, tag: 'span', content: 'Red Letter'}
-                ]
-            },        
-            falseComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                    {kind: i18n, tag: 'span', content: 'Red Letter'}
-                ]
-            }
-        },
-        {
-            classes: 'item highlight_toggle',
-            name: 'highlight_toggle',
-            kind: Toggle,         
-            trueTitle: 'Disable Highlighting of Keywords',
-            falseTitle: 'Enable Highlighting of Keywords',
-            trueComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                    // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
-                    {kind: i18n, tag: 'span', content: 'Highlight'}
-                ]
-            },        
-            falseComponent: {
-                components: [
-                    {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                    // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
-                    {kind: i18n, tag: 'span', content: 'Highlight'}
-                ]
-            }
-        },    
-
-        {
-            kind: i18n,
-            classes: 'item clear',
-            name: 'clear',
-            tag: 'span',
-            ontap: 'handleClearForm',
-            attributes: {title: 'Clear Form'},
+            classes: 'item language',
+            name: 'language_selector',
             components: [
-                {tag: 'span', classes: 'material-icons icon', content: 'clear'}
+                {name: 'Locale', kind: LocaleSelector}
             ]
-        },
+        }
 
-        // 'Extra' (non-formatting) buttons
-        {
-            kind: i18n,
-            classes: 'item help',
-            name: 'help',
-            tag: 'span',
-            ontap: 'handleHelp',
-            attributes: {title: 'Help'},
-            components: [
-                {tag: 'b', content: '?'}
-            ]
-        },
-        {
-            classes: 'item advanced_toggle',
-            name: 'advanced_toggle',
-            kind: Toggle,
-            trueTitle: 'Basic',
-            falseTitle: 'Advanced',
-            trueContent: 'Basic',
-            falseContent: 'Advanced'
-        },
-        {
-            kind: i18n,
-            classes: 'item sos',
-            name: 'sos_button',
-            content: 'Bible SOS',
-            ontap: 'handleSos',
-            attributes: {title: 'Emergency Help from the Bible'}
-        },        
-        {
-            kind: i18n,
-            classes: 'item start',
-            name: 'start_button',
-            content: 'Start',
-            ontap: 'handleStart',
-            attributes: {title: 'Bible Start Guide'}
-        },        
-        {
-            kind: i18n,
-            classes: 'item download',
-            name: 'download_button',
-            ontap: 'handleDownload',
-            attributes: {title: 'Bible Downloads'},
-            components: [
-                {tag: 'span', classes: 'material-icons icon', content: 'download'}
-            ]
-        },        
-        // End Extra buttons
-
-        {
-            kind: i18n,
-            classes: 'item print text_only',
-            name: 'print_button',
-            ontap: 'handlePrint',
-            attributes: {title: 'Print'},
-            components: [
-                // {tag: 'span', allowHtml: true, content: '&#128438;&nbsp;'},
-                {tag: 'span', classes: 'material-icons icon', content: 'print'},
-                // {kind: Image, relSrc: 'icons/print_black_24dp.svg', classes: 'icon'},
-                // {kind: i18n, content: 'Print'}
-            ],
-        },        
-        {
-            kind: i18n,
-            classes: 'item share text_only',
-            name: 'share_button',
-            ontap: 'handleShare',
-            attributes: {title: 'Share'},
-            components: [
-                // {tag: 'span', allowHtml: true, content: '&#128438;&nbsp;'},
-                // {kind: i18n, content: 'Share'}
-                {tag: 'span', classes: 'material-icons icon', content: 'share'}
-            ],
-        },        
-        {
-            kind: i18n,
-            classes: 'item link text_only',
-            name: 'link_button',
-            ontap: 'handleLink',
-            attributes: {title: 'Link'},
-            components: [
-                {tag: 'span', classes: 'material-icons icon', content: 'link'}
-            ],
-        },
-
-        {classes: 'input_row_wide', components: [
-            {name: 'Locale', kind: LocaleSelector}
-        ]}
+        // {classes: 'input_row_wide', components: [
+        // ]}
     ],
 
     bindings: [    

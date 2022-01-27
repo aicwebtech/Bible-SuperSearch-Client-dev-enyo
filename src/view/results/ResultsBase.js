@@ -470,6 +470,16 @@ module.exports = kind({
         this.$.StrongsHover.set('showing', false);
     },
     handlePrint: function(inSender, inEvent) {
+        if(this.app.UserConfig.get('copy')) {
+            this.app.UserConfig.set('copy', false);
+
+            var to = setTimeout( function() {
+                Signal.send('onResultsPrint');
+            }, 500);
+
+            return;
+        }
+
         var resultsHtml = this.hasNode().innerHTML,
             cssPath = this.app.get('rootDir') + '/biblesupersearch.css',
             title = this.app.get('bssTitle'),

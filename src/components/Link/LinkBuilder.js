@@ -23,6 +23,8 @@ module.exports = {
             link += '/' + verse;
         }
 
+        link = link.replace(/\s+/g, '.');
+
         return link;
     }
 };

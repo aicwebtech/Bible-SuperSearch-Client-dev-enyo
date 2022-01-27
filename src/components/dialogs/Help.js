@@ -28,13 +28,28 @@ module.exports = kind({
     sections: {
         basicSearch: [
             {tag: 'h3', content: 'Basic Searches'},
-            {content: 'faith', link: 'search'},
-            {content: 'Romans, searched for faith', link: 'both', reference: 'Romans', search: 'faith'},
-            {tag: 'h4', kind: i18n, content: 'Wildcard'},         
-            {tag: 'div', components: [
-                {tag: 'span', content: '<b>*</b> &nbsp;', allowHtml: true},
-                {kind: i18n, content: 'Matches unlimited characters'}
-            ]},
+                {content: 'faith', link: 'search'},
+                {content: 'Romans, searched for faith', link: 'both', reference: 'Romans', search: 'faith'},
+                {tag: 'h4', kind: i18n, content: 'All Words'},
+                    {content: 'faith hope', link: 'search', search: 'faith hope', searchType: 'all_words'},            
+                    {content: 'preserve words', link: 'search', search: 'preserve words', searchType: 'all_words'},            
+                {tag: 'h4', kind: i18n, content: 'Any Word'},
+                    {content: 'faith hope', link: 'search', search: 'faith hope', searchType: 'or'},            
+                    {content: 'preserve words', link: 'search', search: 'preserve words', searchType: 'or'},            
+                {tag: 'h4', kind: i18n, content: 'Words Within 5 Verses'},
+                    {content: 'faith hope', link: 'search', search: 'faith hope', searchType: 'proximity'},            
+                    {content: 'preserve words', link: 'search', search: 'preserve words', searchType: 'proximity'},                
+                {tag: 'h4', kind: i18n, content: 'Exact Phrase'},
+                    {content: 'faith hope', link: 'search', search: 'faith hope', searchType: 'phrase'},            
+                    {content: 'preserve words', link: 'search', search: 'preserve words', searchType: 'phrase'},                
+                {tag: 'h4', kind: i18n, content: 'Only One Word'},
+                    {content: 'faith hope', link: 'search', search: 'faith hope', searchType: 'xor'},            
+                    {content: 'preserve words', link: 'search', search: 'preserve words', searchType: 'xor'},
+                {tag: 'h4', kind: i18n, content: 'Wildcard'},         
+                {tag: 'div', components: [
+                    {tag: 'span', content: '<b>*</b> &nbsp;', allowHtml: true},
+                    {kind: i18n, content: 'Matches unlimited characters'}
+                ]},
             {tag: 'br'},
             {content: 'stand*', link: 'search'},
         ],
@@ -45,7 +60,7 @@ module.exports = kind({
             {content: 'Ro. 8:2', link: 'passage'},
             {content: 'Rom 3:23, 6:23, 5:8, 10:9,13;', link: 'passage'},
             {content: 'Ephesians 2:8,9; Acts 4:12; John 8:31-32,36', link: 'passage'},
-            {content: '1 Corinthians 4:8 - 5:2', link: 'passage'},
+            {content: 'John 13:36 - 14:3', link: 'passage'},
 
         ],
         boolSearch: [
@@ -136,7 +151,12 @@ module.exports = kind({
     ],
 
     bodyComponents: [
-        {classes: 'list start_list', name: 'ListContainer'}
+        {classes: 'list start_list', name: 'ListContainer'},
+        { classes: 'link', components: [
+            {tag: 'hr'}, 
+            {tag: 'a', content: 'www.BibleSuperSearch.com', attributes: {href: 'https://www.biblesupersearch.com', target: '_NEW'}},
+            {tag: 'hr'}
+        ]}
     ],
 
     buttonComponents: [
@@ -164,6 +184,7 @@ module.exports = kind({
     },
     close: function() {
         this.set('showing', false);
+        this.app.set('helpShowing', false);
     },
     usersManual: function() {
         window.open(
@@ -241,7 +262,7 @@ module.exports = kind({
                 url = searchUrlBase + trans;
 
                 if(item.searchType) {
-                    url += '/' + item.searchType;
+                    url += '/1/' + item.searchType;
                 }
             }
             else if(linkType == 'both') {
@@ -253,7 +274,7 @@ module.exports = kind({
                     url += item.searchType;
                 }
 
-                url += '/' + this.app.vt(item.reference);
+                url += '//' + this.app.vt(item.reference);
             }
             else if(linkType == 'form') {
                 var formData = item.formData,
@@ -272,6 +293,8 @@ module.exports = kind({
             }
 
             if(url) {
+                url = url.replace(/\s+/g, '.');
+
                 this.$.ListContainer.$[colName].createComponent({
                     owner: this,
                     classes: 'link',

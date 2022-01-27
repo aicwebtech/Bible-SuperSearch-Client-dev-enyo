@@ -28,7 +28,6 @@ module.exports = kind({
 
     // Multi verse, multi Bible
     renderPassageParallelBible: function(pd) {
-        this.log();
         var Container = this._createContainer();
         var bibleHtml = [];
 
@@ -113,7 +112,6 @@ module.exports = kind({
     },
     // Multi verse, single Bible
     renderPassageSingleBible: function(pd) {
-        this.log();
         this.renderPassageParallelBible(pd);
     }
 });

@@ -162,6 +162,8 @@ module.exports = kind({
         formData.data_format = 'passage';
         // formData.data_format = 'lite';
         formData.markup = 'raw';
+        formData.context_range = this.app.UserConfig.get('context_range');
+        formData.page_limit = this.app.UserConfig.get('page_limit');
         
         if(!formData.search_type || formData.search_type == '') {
             formData.search_type = this.defaultSearchType;

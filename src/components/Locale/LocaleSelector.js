@@ -13,16 +13,17 @@ module.exports = kind({
     create: function() {
         this.inherited(arguments);
 
-        if(!this.app.debug) {
-            this.set('showing', false);
-        }
-
         for(i in Locales) {
             if(!Locales[i] || !Locales[i].meta || !Locales[i].meta.lang_name_en) {
                 continue;
             }
 
-            var langName = Locales[i].meta.lang_name || Locales[i].meta.lang_name_en
+            var ldb = Locales[i].meta.debug || false;
+            var langName = Locales[i].meta.lang_name || Locales[i].meta.lang_name_en;
+
+            if(ldb && !this.app.debug) {
+                continue;
+            }
 
             this.createComponent({
                 content: langName + ' (' + i.toUpperCase() + ')',
@@ -33,7 +34,6 @@ module.exports = kind({
 
     change: function(inSender, inEvent) {
         this.inherited(arguments);
-        // this.log(inSender.getValue());
         this.app.set('locale', this.getValue());
     }, 
 

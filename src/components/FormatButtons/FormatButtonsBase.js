@@ -48,7 +48,7 @@ module.exports = kind({
         this.app.debug && this.log('advancedToggle - Interface', advancedView, this.app.view.FormatButtonsIncludeAdvancedToggle);
         this.app.debug && this.log('advancedToggle - Format Buttons Toggle', this.app.configs.formatButtonsToggle);
 
-        if(!this.includeAdvancedToggle || !advancedView || !this.app.configs.toggleAdvanced || this.app.configs.formatButtonsToggle) {
+        if(!this.includeAdvancedToggle || !advancedView || !this.app.configs.toggleAdvanced) {
             this.$.advanced_toggle && this.$.advanced_toggle.destroy();
         }
     },
@@ -59,7 +59,6 @@ module.exports = kind({
     },    
     handleRenderStyle: function(inSender, inEvent) {
         val = inSender.val || 'passage';
-        this.log(val);
         this.app.UserConfig.set('render_style', val);
         // this.log(this.app.UserConfig.getAttributes());
     },
@@ -79,7 +78,8 @@ module.exports = kind({
         // this.log(this.app.UserConfig.getAttributes());
     },
     handleHelp: function(inSender, inEvent) {
-        this.app.showHelp(null);
+        // this.app.showHelp(null);
+        this.app.set('helpShowing', true);
     },
     handlePrint: function(inSender, inEvent) {
         Signal.send('onResultsPrint');
@@ -98,6 +98,9 @@ module.exports = kind({
     },    
     handleLink: function(inSender, inEvent) {
         this.app.set('linkShowing', true);
+    },    
+    handleSettings: function(inSender, inEvent) {
+        this.app.set('settingsShowing', true);
     },
     handleClearForm: function() {
         Signal.send('onClearForm');

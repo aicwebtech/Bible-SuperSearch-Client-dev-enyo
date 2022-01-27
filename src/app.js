@@ -37,7 +37,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '4.5.0',
+    applicationVersion: '5.0.0rc1',
 
     defaultView: DefaultInterface,
     //renderTarget: 'biblesupersearch_container',
@@ -251,14 +251,10 @@ var App = Application.kind({
         // Render 'Loading' view
         // Todo - set css style based on selected interface
         this.set('view', Loading);
-        // var ViewObject = new view;
-        // this.log('ViewObject', ViewObject);
-        // this.view.addClass(view.getClass);
         this.render();
 
-        this.configs.apiUrl += '/api';
-        this.configs.language && this.set('locale', this.configs.language);
-
+        this.configs.apiUrl = this.configs.apiUrl.replace(/\/+$/, '') + '/api';
+        
         if(this.configs.debug) {
             this.debug = this.configs.debug;
         }
@@ -274,53 +270,12 @@ var App = Application.kind({
             method: 'GET'
         });
 
-        // Experimental
-        // if(view && view != null) {
-        //     this.log('view set');
-        //     this.set('view', view);
-        // }
-        
-        // this.render();
-        // this.set('ajaxLoading', true);
-        // Experimental
-
         var ajaxData = {};
-        // var groupOrder = null;
-
-        // switch (this.configs.bibleGrouping) {
-        //     case 'language':
-        //     case 'language_and_english':
-        //         groupOrder = 'lang_name';
-        //         break;            
-        //     case 'language_english':
-        //         groupOrder = 'lang_name_english';
-        //         break;
-        //     case 'none':
-        //     default:
-        //         groupOrder = null;
-        // }
-
-        // ajaxData.bible_order_by = (groupOrder) ? groupOrder + '|' + this.configs.bibleSorting : this.configs.bibleSorting;
-
         ajaxData.bible_order_by = this._getBibleOrderBy();
 
-        // this.log('loading statics');
         ajax.go(ajaxData);
         ajax.response(this, function(inSender, inResponse) {
             this._handleStaticsLoad(inResponse.results, view);
-
-            // this.set('ajaxLoading', false);
-            // this.test();
-            // this.set('statics', inResponse.results);
-            // this.waterfall('onStaticsLoaded');
-
-            // if(view && view != null) {
-            //     this.set('view', view);
-            // }
-            
-            // this.render();
-            // this.appLoaded = true;
-            // this.$.Router.trigger();
         });    
 
         ajax.error(this, function(inSender, inResponse) {
@@ -351,7 +306,13 @@ var App = Application.kind({
         this.test();
         this.set('statics', statics);
         this.processBiblesDisplayed();
+
+        if(!statics.download_enabled) {
+            defaultConfig._downloadDisabledNotice();
+        }
+
         this.localeBibleBooks.en = statics.books;
+        this.configs.language && this.set('locale', this.configs.language);
         this.waterfall('onStaticsLoaded');
 
         if(view && view != null) {
@@ -680,6 +641,16 @@ var App = Application.kind({
         if(this.view && this.view.set) {
             this.view.set('linkShowing', is);
         }
+    },    
+    settingsShowingChanged: function(was, is) {
+        if(this.view && this.view.set) {
+            this.view.set('settingsShowing', is);
+        }
+    },    
+    helpShowingChanged: function(was, is) {
+        if(this.view && this.view.set) {
+            this.view.set('helpShowing', is);
+        }
     },
     showHelp: function(section) {
         this.waterfall('onShowHelp', {section: section});
@@ -855,7 +826,7 @@ var App = Application.kind({
 
                 for(key in inResponse.results) {
                     var book = inResponse.results[key],
-                        bookEn = this.localeBibleBooks.en[key];
+                        bookEn = this.localeBibleBooks.en[key] || null;
 
                     if(typeof localeData[ bookEn.name ] == 'undefined') {
                         localeData[ bookEn.name ] = book.name;
@@ -977,19 +948,14 @@ var App = Application.kind({
         }
 
         if(this.UserConfig.get('single_verses')) {
-            this.log('yes');
             var responseDataNew = utils.clone(this.get('responseData'));
             responseDataNew.results = utils.clone(responseDataNew.results);
             responseDataNew.results.results = this.responseCollection.toVerses( utils.clone(responseDataNew.results.results) );
         }
         else {
-            this.log('no');
             // responseDataNew.results.results = utils.clone(responseDataNew.results.results);
             var responseDataNew = this.get('responseData');
         }
-
-        this.log('responseDataNew', responseDataNew.results.results);
-        this.log('responseData', this.get('responseData').results.results);
 
         this.waterfall('onFormResponseSuccess', responseDataNew);
         Signal.send('onFormResponseSuccess', responseDataNew);

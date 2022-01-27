@@ -10,6 +10,7 @@ div.biblesupersearch_main {
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
+    margin: 0 auto;
 }
 
 div.biblesupersearch_main.rtl {
@@ -430,12 +431,12 @@ div.alert_dialog {
 }
 
 .help_dialog .buttons {
-    min-height: 30px;
+    /*min-height: 30px;*/
+    padding: 8px 0 8px;
 }
 
 .help_dialog .list {
     vertical-align: top;
-    margin-bottom: 10px;
 }
 
 .help_dialog .list .col {
@@ -634,6 +635,7 @@ div.alert_dialog {
 .biblesupersearch_copy_settings .settings {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 /*    margin-left: auto;
     margin-right: auto;*/
     font-size: .85em;
@@ -657,7 +659,7 @@ div.alert_dialog {
 
 .biblesupersearch_copy_settings .section {
     float: left;
-    margin: 10px;
+    margin: 7px;
     background-color: #eeeeee;
     padding: 10px;
 }

@@ -139,6 +139,7 @@ module.exports = kind({
             var versesTranslated = this.app.vt(item.verses);
             var label = item.label + ': ';
             var url = urlBase + versesTranslated;
+            url = url.replace(/\s+/g, '.');
 
             if(!this.$.ListContainer.$[colName]) {
                 this.$.ListContainer.createComponent({

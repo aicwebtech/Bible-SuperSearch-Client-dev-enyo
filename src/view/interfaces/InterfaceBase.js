@@ -7,8 +7,9 @@ var DownloadDialog = require('../../components/dialogs/Download');
 var HelpDialog = require('../../components/dialogs/Help');
 var ShareDialog = require('../../components/dialogs/Share');
 var LinkDialog = require('../../components/dialogs/Link');
+var SettingsDialog = require('../../components/dialogs/Settings');
 var NavButtons = require('../../components/NavButtons/NavClassic');
-var FormatButtons = require('../../components/FormatButtons/classic/FormatButtonsClassic');
+var FormatButtons = require('../../components/FormatButtons/FormatButtonsHtml');
 var Pager = require('../../components/Pagers/ClassicPager');
 var MaterialIconsStyle = require('../../components/Styles/MaterialIcons');
 
@@ -104,12 +105,26 @@ module.exports = kind({
         }
 
         this.$.DownloadDialog.set('showing', is);
+    },    
+    helpShowingChanged: function(was, is) {
+        if(!this.$.HelpDialog) {
+            this.createComponent({
+                name: 'HelpDialog',
+                kind: HelpDialog,
+                showing: false
+            }).render();
+        }
+
+        this.$.HelpDialog.set('showing', is);
     },
     shareShowingChanged: function(was, is) {
         this._dialogShowingHelper(ShareDialog, 'ShareDialog', is);
     },    
     linkShowingChanged: function(was, is) {
         this._dialogShowingHelper(LinkDialog, 'LinkDialog', is);
+    },    
+    settingsShowingChanged: function(was, is) {
+        this._dialogShowingHelper(SettingsDialog, 'SettingsDialog', is);
     },
     _dialogShowingHelper: function(kind, name, showing) {
         if(!this.$[name]) {

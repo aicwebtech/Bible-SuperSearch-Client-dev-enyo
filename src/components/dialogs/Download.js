@@ -70,7 +70,8 @@ module.exports = kind({
                     {kind: i18n, content: 'Manual Download'}
                 ]}
             ]}
-        ]}
+        ]},
+        {name: 'ErrorContainer', showing: false}
     ],
     buttonComponents: [
         // {name: 'PseudoDownload', kind: Button, content: 'Pseudo - Download', ontap: 'pseudoDownload'},
@@ -111,6 +112,7 @@ module.exports = kind({
         this.$.Status.setShowing(false);
         this.$.RenderingComplete.setShowing(false);
         this.$.DownloadPending.setShowing(false);
+        this.$.ErrorContainer.setShowing(false);
         // this.$.BibleSelect.setValue([]);
         this.$.BibleSelect.resetValue();
         this.$.FormatSelect.setSelected(0);
@@ -132,6 +134,7 @@ module.exports = kind({
 
         this.$.DownloadPending.set('showing', false);
         this.$.RenderingComplete.set('showing', false);
+        this.$.ErrorContainer.set('showing', false);
         this.$.Status.set('showing', false);
         this.hasErrors = false;
 
@@ -305,17 +308,46 @@ module.exports = kind({
                 var response = JSON.parse(inSender.xhrResponse.body);
             }
             catch(error) {
-
+                var response = false;
             }
 
+            if(response && response.results && response.results.success) {
+                this.renderNextBible();
+                return;
+            }
+
+            if(!response) {
+                this._showError('An error has occurred, please try again later.');
+            }
+            else {
+                // this._showError(null, respons.results.errors);
+                this._showError('An error has occurred, please try again later.');
+            }
+
+            this.set('requestPending', false);
+            this.$.Spinner.set('showing', false);
             StatusControl.set('content', this.app.t('Error'));
             StatusControl.addClass('error');
-            this.renderNextBible();
         });
     },
     abortRequest: function() {
         this.bibleQueue = [];
         this.set('requestPending', false);
+    },
+    _showError: function(msg, errors) {
+        msg = msg ? this.app.t(msg) : null;
+
+        this.$.ErrorContainer.destroyClientControls();
+
+        msg && this.$.ErrorContainer.createComponent({tag: 'h3', content: msg});
+
+        if(Array.isArray(errors) && errors.length > 0) {
+            for(i in errors) {
+                this.$.ErrorContainer.createComponent({tag: 'p', content: this.app.t(errors[i]) });
+            }
+        }
+
+        this.$.ErrorContainer.render().setShowing(true);
     },
     _safeToClose: function() {
         if(this.get('requestPending')) {

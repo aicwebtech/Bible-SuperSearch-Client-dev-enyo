@@ -4,6 +4,10 @@
     margin: 13px 0;
 }
 
+.format_buttons_html_narrow {
+    max-width: 450px;
+}
+
 .format_buttons_html .item {
     display: inline-block;
     margin: 2px;
@@ -145,10 +149,19 @@
     white-space: nowrap;
 }
 
+.bss_button_group {
+    white-space: nowrap;
+    display: inline-block;
+}
+
 .format_buttons_html .item.copy_toggle.is_false span span {
     background-color: #3390ff;
     position: initial;
     line-height: 4px;
+}
+
+.format_buttons_html .item.copy_toggle_new {
+    width: 36px;
 }
 
 .format_buttons_html .item.copy_toggle {
@@ -184,7 +197,6 @@
     top: -1px;
 }
 
-
 .format_buttons_html .item.advanced_toggle {
     min-width: 63px;
 }
@@ -196,6 +208,16 @@
 
 .format_buttons_html .item.text_only {
     line-height: 18px;
+}
+
+.format_buttons_html .item.language {
+    line-height: 18px;
+    padding: 0 4px 2px;
+}
+
+.format_buttons_html .item.language select {
+    font-size: 10px;
+    background-color: transparent;
 }
 
 .format_buttons_html .block_enabled, .format_buttons_html .block_disabled {
@@ -217,6 +239,39 @@
 .format_buttons_html .block_enabled {
     background-color: #43b243;
     color: white;
+}
+
+.bible_settings .settings_toggle {
+    width: 150px;
+    margin: 0 auto 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.bible_settings .settings_toggle .icon {
+    font-size: 16px;
+    /*background-color: blue;*/
+    color: green;
+    position: relative;
+    top: 2px;
+}
+
+.bible_settings .settings_container {
+    width: 250px;
+    margin: 0 auto 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.bible_settings .settings_container label {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.bible_settings .section .header {
+    /*font-weight: bold;*/
+    text-decoration: underline;
+    margin-bottom: 4px;
 }
 
 /*.format_buttons_html .selected {
@@ -241,11 +296,6 @@
     border: 1px solid #656565;
     background-color: #a7c9f9;
     font-size: 16px !important;
-
-/*    border-top-color: #cfe0f9;
-    border-left-color: #cfe0f9;
-    border-bottom-color: #5e88c4;
-    border-right-color: #5e88c4;*/
 }
 
 .html_nav_buttons a.active:link, .interface_expanding a.active:visited {
@@ -269,6 +319,15 @@
 .biblesupersearch_copy_settings .presets button.active {
     background-color: #444444;
     color: white;
+}
+
+.biblesupersearch_copy_settings .section {
+    font-size: 12px;
+    min-width: 140px;
+}
+
+.biblesupersearch_copy_settings .section label {
+    margin-left: 7px;
 }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
