@@ -254,8 +254,7 @@ var App = Application.kind({
         this.render();
 
         this.configs.apiUrl = this.configs.apiUrl.replace(/\/+$/, '') + '/api';
-        this.configs.language && this.set('locale', this.configs.language);
-
+        
         if(this.configs.debug) {
             this.debug = this.configs.debug;
         }
@@ -271,20 +270,9 @@ var App = Application.kind({
             method: 'GET'
         });
 
-        // Experimental
-        // if(view && view != null) {
-        //     this.log('view set');
-        //     this.set('view', view);
-        // }
-        
-        // this.render();
-        // this.set('ajaxLoading', true);
-        // Experimental
-
         var ajaxData = {};
         ajaxData.bible_order_by = this._getBibleOrderBy();
 
-        // this.log('loading statics');
         ajax.go(ajaxData);
         ajax.response(this, function(inSender, inResponse) {
             this._handleStaticsLoad(inResponse.results, view);
@@ -324,6 +312,7 @@ var App = Application.kind({
         }
 
         this.localeBibleBooks.en = statics.books;
+        this.configs.language && this.set('locale', this.configs.language);
         this.waterfall('onStaticsLoaded');
 
         if(view && view != null) {
