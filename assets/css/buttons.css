@@ -37,32 +37,11 @@
     background-color: #d1cf45;
 }
 
-.format_buttons_html .item.size_plus {
-    /*font-weight: bold;*/
-    /*font-size: 16px;*/
-}
-
-.format_buttons_html .item.size_reg {
-/*    font-weight: bold;
-    text-decoration: underline overline;*/
-    /*width: 20px;*/
-    /*font-size: 18px;*/
-
-}
-
 .format_buttons_html .item.size_reg span {
-    /*border-bottom: 2px solid black;*/
     text-decoration: underline;
     text-decoration-thickness: 2px;
-    /*font-weight: bold;*/
     display: inline-block;
     height: 14px;
-}
-
-.format_buttons_html .item.size_minus {
-    /*font-weight: bold;*/
-    /*width: 20px;*/
-    /*font-size: 16px;*/
 }
 
 .format_buttons_html .item.font span {
@@ -91,6 +70,10 @@
 .format_buttons_html .item.renderstyle.paragraph {
     width: 36px;
     text-align: center;
+}
+
+.format_buttons_html .item.language select {
+    border: 0;
 }
 
 /*@import "https://fonts.googleapis.com/icon?family=Material+Icons+Outlined";*/

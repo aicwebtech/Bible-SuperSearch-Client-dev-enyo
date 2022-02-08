@@ -4,6 +4,7 @@ Bible SuperSearch Universal Client Changelog
 * Added new format button options.
 * Replaced paragraph toggle with paragraph / passage / verse selector (Stylable format buttons only).
 * Added format options for the copying text.
+* Added (instant) copy button
 * Added copy link dialog
 * Added Interface: Expanding Large Input
 * Added Romanian UI translation

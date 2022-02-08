@@ -106,9 +106,11 @@ module.exports = kind({
         Signal.send('onClearForm');
     },
     handleCopyInstant: function(inSender, inEvent) {
+        var copy = this.app.UserConfig.get('copy');
+
         this.app.UserConfig.set('copy', true);
         Signal.send('onTriggerCopy', {inSender: inSender, inEvent: inEvent});
-        this.app.UserConfig.set('copy', false);
+        this.app.UserConfig.set('copy', copy);
     },
     handkeKey: function(inSender, inEvent) {
         this.log(inEvent);

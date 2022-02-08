@@ -37,7 +37,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.0.0rc1',
+    applicationVersion: '5.0.0',
 
     defaultView: DefaultInterface,
     //renderTarget: 'biblesupersearch_container',
@@ -121,8 +121,7 @@ var App = Application.kind({
             }
         }
         
-        // Experimental code for determining root dir from script
-        // Appears to be working
+        // Code for determining root dir from script
         // Set biblesupersearch_root_directory for best performance
         if(typeof biblesupersearch_root_directory == 'string') {
             this.rootDir = biblesupersearch_root_directory;
@@ -187,14 +186,12 @@ var App = Application.kind({
     }, 
     createInstance: function(container, configs) {
         var inst = new App;
-        // var inst = utils.clone(new App);
-        // var inst = utils.clone(this);
 
         configs = configs || this.configs;
         configs.target = container;
         inst.configs = configs;
         inst.renderInto(container);
-        this.log('New instance:', inst);
+        // this.log('New instance:', inst);
         biblesupersearch.instances[container] = inst;
     },
     handleConfigError: function() {
@@ -203,25 +200,21 @@ var App = Application.kind({
     },
     handleConfigLoad: function(inSender, inResponse) {
         utils.mixin(this.configs, inResponse);
-        // this.log('configs - loaded', utils.clone(this.configs));
         this.handleConfigFinal();
     },
     handleConfigFinal: function() {
         if(this.configs.target) {
             this.renderTarget = this.configs.target;
         }
-        // this.render();
-        // this.log(this.configs);
+
         var view = null;
         this.UserConfig.newModel(0);
 
         this.configs.apiUrl == defaultConfig.apiUrl ? defaultConfig._urlDefaultNotice() : defaultConfig._urlLocalNotice();
 
         if(this.configs.interface) {
-            // this.log('Interface ', this.configs.interface);
 
             if(Interfaces[this.configs.interface]) {
-                // this.log('secondary view found', this.configs.interface);
                 view = Interfaces[this.configs.interface];
             }
             else {
@@ -390,7 +383,6 @@ var App = Application.kind({
     },
     rendered: function() {
         this.inherited(arguments);
-        // this.log('view node', this.view.hasNode());
     },
 
     /*  Used to run unit tests within app */
@@ -599,18 +591,6 @@ var App = Application.kind({
         }
 
         return formData;
-    },
-    handleCacheHash: function(inSender, inEvent) {
-        this.log('not used');
-        // this.log(arguments);
-        // this.log(inSender);
-        // this.log(inEvent);
-    },    
-    handlePassageHash: function(inSender, inEvent) {
-        this.log('not used');
-        // this.log(arguments);
-        // this.log(inSender);
-        // this.log(inEvent);
     },
     ajaxLoadingChanged: function(was, is) {
         if(this.view && this.view.set) {
@@ -926,15 +906,12 @@ var App = Application.kind({
     },
     alert: function(string, inSender, inEvent) {
         // todo - make some sort of custom alert dialog here!
-        // alert(string);
         if(inSender && inEvent) {
             Signal.send('onPositionedAlert', {alert: string, inSender: inSender, inEvent: inEvent});
         }
         else {
             Signal.send('onAlert', {alert: string});
         }
-        // this.AlertDialog.set('showing', true);
-        // this.AlertDialog.set('alert', alert);
     },
     responseDataChanged: function(was, is) {
         this.UserConfig.get('single_verses') && this._checkSingleVerses();
@@ -953,7 +930,6 @@ var App = Application.kind({
             responseDataNew.results.results = this.responseCollection.toVerses( utils.clone(responseDataNew.results.results) );
         }
         else {
-            // responseDataNew.results.results = utils.clone(responseDataNew.results.results);
             var responseDataNew = this.get('responseData');
         }
 
@@ -987,7 +963,6 @@ var App = Application.kind({
             window.getSelection().removeAllRanges(); // EXPERIMENTAL! Supported ALL
             window.getSelection().addRange(div); // EXPERIMENTAL! Supported ALL
         }
-
 
         // Attempt to use modern clipboard API
         // This requires HTTPS

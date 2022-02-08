@@ -15,7 +15,6 @@
 }
 
 .interface_minimal .form .single_line button {
-    /*max-width: 50px;*/
     overflow: hidden;
     text-align: center;
 }
@@ -48,7 +47,6 @@
 }
 
 .interface_minimal .form .single_line_bible button {
-    /*max-width: 50px;*/
     overflow: hidden;
     text-align: center;
 }
@@ -135,22 +133,8 @@
 }
 
 .interface_minimal .strongs_hover .strongs_head {
-/*    background-color: #d2b48c;
-    padding: 10px;*/
     text-align: center;
 }
-
-/*.interface_minimal .strongs_hover .strongs_tvm {
-    background-color: #d2b48c;
-    padding: 10px;
-}
-
-.interface_minimal .strongs_hover .strongs_body {
-    background-color: #702424;
-    padding: 10px;
-    color:white;
-    text-align: justify;
-}*/
 
 .interface_minimal .strongs_hover .hebrew .strongs_head span {
     font-weight: bold;

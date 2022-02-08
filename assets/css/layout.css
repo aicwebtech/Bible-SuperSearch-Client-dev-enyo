@@ -319,12 +319,7 @@ div.biblesupersearch_dialog {
 
 
 div.alert_dialog {
-    /*background-color: green;*/
-/*    text-align: center;
-    position: sticky;
-    top: 20px;
-    z-index: 40000000;*/
-    /*border: 1px solid black;*/
+
     z-index: 10000000;
 }
 
@@ -459,12 +454,6 @@ div.alert_dialog {
     padding-top: 2px;
 }
 
-.help_dialog.help .content {
-/*    height: 400px;
-    overflow-y: auto;
-    margin-bottom: 10px;*/
-}
-
 .help_dialog.help table {
     border: 1px solid #333;
     border-spacing: 0;
@@ -499,7 +488,6 @@ div.alert_dialog {
 
 .bible_sos .sos_item .label {
     float: left;
-    /*background-color: yellow;*/
     display: inline-block;
     font-weight: bold;
     text-align: left;
@@ -531,7 +519,6 @@ div.alert_dialog {
 
 .bible_start .start_item .num {
     float: left;
-    /*background-color: orange;*/
     cursor: pointer;
     display: inline-block;
     font-size: 0.8em;
@@ -542,7 +529,6 @@ div.alert_dialog {
 
 .bible_start .start_item .verses {
     float: left;
-    /*background-color: green;*/
     cursor: pointer;
     display: inline-block;
     font-weight: bold;
@@ -552,7 +538,6 @@ div.alert_dialog {
 
 .bible_start .start_item .desc {
     float: right;
-    /*background-color: yellow;*/
     display: inline-block;
     max-width: 80%;
     text-align: right;
@@ -636,8 +621,6 @@ div.alert_dialog {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-/*    margin-left: auto;
-    margin-right: auto;*/
     font-size: .85em;
 }
 

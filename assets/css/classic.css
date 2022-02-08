@@ -180,11 +180,6 @@
     background-color: #edd9be;
 }
 
-/*.interface_classic a.strongs:link, .interface_classic a.strongs:visited, .interface_classic a.strongs:hover {
-    color: black;
-    text-decoration: none;
-}*/
-
 /* Emulate a 'classic' format button without creating a new image for it */
 .format_buttons_classic {
     line-height: 22px;

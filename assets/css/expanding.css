@@ -25,7 +25,6 @@
     text-align: right;
     margin-right: 5px;
     padding: 0;
-    /*background-color: springgreen;*/
     white-space: nowrap;
 }
 
@@ -34,7 +33,6 @@
     width: 49%;
     padding: 0;
     text-align: center;
-    /*background-color: navy;*/
     max-width: 300px;
 }
 
@@ -105,23 +103,6 @@
 .biblesupersearch_expanding_form  .input_row_checkbox .checkbox_container .element {
     display: inline-block;
 }
-
-/*@media only screen and (max-width: 430px) {
-    .biblesupersearch_expanding_form .input_row .label {
-        width: 100%;
-        max-width: none;
-        text-align: center;
-        margin-right: 0px;
-    }
-
-    .biblesupersearch_expanding_form .input_row .element {
-        width: 100%;
-    }
-
-    .biblesupersearch_expanding_form .input_row_wide textarea {
-
-    }
-}*/
 
 .biblesupersearch_expanding_form  .biblesupersearch_copy_settings .section {
     background-color: #eeeeee;

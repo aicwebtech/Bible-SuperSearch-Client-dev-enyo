@@ -166,18 +166,7 @@ module.exports = kind({
 
         ]},
         
-        // TODO - FUTURE - copy instantly button
-        // {tag: 'span', components: [
-        //     {
-        //         classes: 'item',
-        //         name: 'copy_instant',
-        //         kind: i18n,
-        //         content: 'Copy',
-        //         ontap: 'handleCopyInstant',
-        //         style: 'position: relative',
-        //         title: 'Copy with given copy settings'
-        //     },
-        // ]},
+
               
         {classes: 'bss_button_group', name: 'TextEmbGroup1', components: [
             {
@@ -262,6 +251,28 @@ module.exports = kind({
             },    
         ]},
         {classes: 'bss_button_group', name: 'SmallButtonsGroup1', components: [
+            // copy instantly button
+            {tag: 'span', components: [
+                {
+                    classes: 'item',
+                    name: 'copy_instant',
+                    kind: i18n,
+                    content: 'Copy',
+                    ontap: 'handleCopyInstant',
+                    style: 'position: relative',
+                    // title: 'Copy with given copy settings', 
+                    attributes: {title: 'Copy'},
+                    components: [
+                        {
+                            kind: i18n, 
+                            tag: 'span', 
+                            classes: 'material-icons icon', 
+                            content: 'content_copy',
+                            // title: 'Copy'
+                        }
+                    ]
+                },
+            ]},
             {
                 classes: 'item copy_toggle_new',
                 name: 'copy_toggle',
