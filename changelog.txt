@@ -1,6 +1,6 @@
 Bible SuperSearch Universal Client Changelog
 
-= 5.0.0 Feb _?_, 2022 =
+= 5.0.0 Feb 12, 2022 =
 * Added new format button options.
 * Replaced paragraph toggle with paragraph / passage / verse selector (Stylable format buttons only).
 * Added format options for the copying text.
