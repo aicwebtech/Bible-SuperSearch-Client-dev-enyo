@@ -20,6 +20,7 @@ var Locales = require('./i18n/LocaleLoader');
 var Validators = require('./lib/Validators');
 var AlertDialog = require('./components/dialogs/Alert');
 var ResponseCollection = require('./data/collections/ResponseCollection');
+var ErrorView = require('./view/ErrorView');
 
 //var MainView = require('./view/Content');
 
@@ -275,13 +276,30 @@ var App = Application.kind({
 
         ajax.go(ajaxData);
         ajax.response(this, function(inSender, inResponse) {
+             var msg = [
+                'Bible SuperSearch was unable to load data that it needs to work. &nbsp;',
+                'The Bible SuperSearch API may be down or you may be experiencing internet interruptions. &nbsp;',
+                'Error code 2'
+            ].join('<br />');
+
+            // this.displayInitError(msg);
+            // return;
+
             this._handleStaticsLoad(inResponse.results, view);
         });    
 
         ajax.error(this, function(inSender, inResponse) {
             // this.set('ajaxLoading', false);
+            this.log('Failed to load application static data from API.');
             this.log('Error code 2 details', inSender, inResponse);
-            alert('Error: Failed to load application static data.  Error code 2');
+
+             var msg = [
+                'Bible SuperSearch was unable to load data that it needs to work. &nbsp;',
+                'The Bible SuperSearch API may be down or you may be experiencing internet interruptions. &nbsp;',
+                'Error code 2'
+            ].join('<br />');
+
+            this.displayInitError(msg);
         });    
     },
     _getBibleOrderBy: function() {
@@ -935,6 +953,11 @@ var App = Application.kind({
         }
         // this.AlertDialog.set('showing', true);
         // this.AlertDialog.set('alert', alert);
+    },
+    displayInitError: function(message) {
+        this.set('view', ErrorView);
+        this.view.set('message', message);
+        this.render();
     },
     responseDataChanged: function(was, is) {
         this.UserConfig.get('single_verses') && this._checkSingleVerses();
