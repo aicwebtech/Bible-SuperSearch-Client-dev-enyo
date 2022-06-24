@@ -4,7 +4,7 @@ mkdir -p ../ui-standalone/
 rm -r ../ui-standalone/assets
 
 # 'ship' to standalone client
-enyo pack --production -d ../ui-standalone --no-inline-css --no-inline-js
+enyo pack --production -d ../ui-standalone --no-inline-css --no-inline-js --clean
 rm ../ui-standalone/config.js
 cp config-example.js ../ui-standalone/
 cp changelog.txt ../ui-standalone/
@@ -19,6 +19,7 @@ cp assets/html/prod.html ../ui-standalone/biblesupersearch.html
 # NOTE: 'com_test' is a temp dir, will eventually be replaced with 'com'
 cp -R ../ui-standalone/assets/images/* ../ui-wordpress/com_test/js/app/assets/images
 cp -R ../ui-standalone/assets/fonts/* ../ui-wordpress/com_test/js/app/assets/fonts
+cp -R ../ui-standalone/assets/extras/* ../ui-wordpress/com_test/js/app/assets/extras
 cp  ../ui-standalone/biblesupersearch.js ../ui-wordpress/com_test/js/app/
 cp  ../ui-standalone/biblesupersearch.css ../ui-wordpress/com_test/js/app/
 cp assets/html/user_guide.html ../ui-wordpress/com_test/js/app/
