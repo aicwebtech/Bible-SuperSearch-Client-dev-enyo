@@ -105,6 +105,8 @@ var App = Application.kind({
         this.set('baseTitle', document.title);
         // this.log('defaultConfig', defaultConfig);
 
+
+
         window.console && console.log('BibleSuperSearch client version', this.applicationVersion);
         
         // Older rootDir code, retaining for now
@@ -154,6 +156,8 @@ var App = Application.kind({
             // this.log('bss script dir', dir, dirParts, path, hashParts, dirParts, name, window.location.href);
             this.rootDir = dir;
         }
+
+        //this.displayInitError('bacon'); return; // debug
 
         // this.log('rootDir - FINAL', this.rootDir);
         var urlParts = window.location.href.split('#');
