@@ -41,7 +41,7 @@ var App = Application.kind({
     applicationVersion: '5.0.0',
 
     defaultView: DefaultInterface,
-    //renderTarget: 'biblesupersearch_container',
+    // renderTarget: 'biblesupersearch_container',
     configs: {},
     build: {},
     system: {},
@@ -105,8 +105,6 @@ var App = Application.kind({
         this.set('baseTitle', document.title);
         // this.log('defaultConfig', defaultConfig);
 
-
-
         window.console && console.log('BibleSuperSearch client version', this.applicationVersion);
         
         // Older rootDir code, retaining for now
@@ -156,8 +154,6 @@ var App = Application.kind({
             // this.log('bss script dir', dir, dirParts, path, hashParts, dirParts, name, window.location.href);
             this.rootDir = dir;
         }
-
-        //this.displayInitError('bacon'); return; // debug
 
         // this.log('rootDir - FINAL', this.rootDir);
         var urlParts = window.location.href.split('#');
@@ -211,6 +207,8 @@ var App = Application.kind({
         if(this.configs.target) {
             this.renderTarget = this.configs.target;
         }
+
+        // this.displayInitError('bacon', -1, 'wheres my', 'food'); return; // debug
 
         var view = null;
         this.UserConfig.newModel(0);
@@ -273,30 +271,15 @@ var App = Application.kind({
 
         ajax.go(ajaxData);
         ajax.response(this, function(inSender, inResponse) {
-             var msg = [
-                'Bible SuperSearch was unable to load data that it needs to work. &nbsp;',
-                'The Bible SuperSearch API may be down or you may be experiencing internet interruptions. &nbsp;',
-                'Error code 2'
-            ].join('<br />');
-
-            // this.displayInitError(msg);
-            // return;
 
             this._handleStaticsLoad(inResponse.results, view);
         });    
 
         ajax.error(this, function(inSender, inResponse) {
             // this.set('ajaxLoading', false);
-            this.log('Failed to load application static data from API.');
-            this.log('Error code 2 details', inSender, inResponse);
+            var msg = 'Failed to load application static data from API.';
 
-             var msg = [
-                'Bible SuperSearch was unable to load data that it needs to work. &nbsp;',
-                'The Bible SuperSearch API may be down or you may be experiencing internet interruptions. &nbsp;',
-                'Error code 2'
-            ].join('<br />');
-
-            this.displayInitError(msg);
+            this.displayInitError(msg, 2, inSender, inResponse);
         });    
     },
     _getBibleOrderBy: function() {
@@ -329,6 +312,8 @@ var App = Application.kind({
         this.localeBibleBooks.en = statics.books;
         this.configs.language && this.set('locale', this.configs.language);
         this.waterfall('onStaticsLoaded');
+
+        window.console && console.log('BibleSuperSearch API version', this.statics.version);
 
         if(view && view != null) {
             this.set('view', view);
@@ -935,9 +920,17 @@ var App = Application.kind({
             Signal.send('onAlert', {alert: string});
         }
     },
-    displayInitError: function(message) {
+    displayInitError: function(message, code) {
+        window.console && console.log('BibleSuperSearch error: ' + message);
+        window.console && console.log('BibleSuperSearch error code: ' + code);
+
+        for(i = 2; i < arguments.length; i++) {
+            var num = i - 1;
+            window.console && console.log('BibleSuperSearch error details #' + num, arguments[i]);
+        }
+
         this.set('view', ErrorView);
-        this.view.set('message', message);
+        // this.view.set('message', message);
         this.render();
     },
     responseDataChanged: function(was, is) {

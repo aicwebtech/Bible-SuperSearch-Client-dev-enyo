@@ -6,7 +6,7 @@ var App = require('./src/app');
 var BSS = null;
 
 ready(function () {
-    console.log('Browser ready now!')
+    // console.log('Browser ready now!')
     BSS = new App();
 
     if(typeof QUnit == 'object') {    

@@ -18,7 +18,6 @@ module.exports = kind({
     generateAbsHref: function() {
         if(this.relHref) {
             var href = this.app.get('rootDir') + '/assets/extras/' + this.relHref;
-            this.log(href);
             this.set('href', href);
         }
     }
