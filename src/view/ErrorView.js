@@ -28,7 +28,7 @@ module.exports = kind({
             {tag: 'br'},
             {tag: 'h3', components: [
                 {tag: 'span', content: 'In the meanwhile, you may download these '},
-                {kind: AssetLink, relHref: 'kjv.csv', content: 'CSV Bibles'}
+                {kind: AssetLink, relHref: 'text_bibles.zip', content: 'Plaintext Bibles'}
             ]},
             {tag: 'br'},
             {tag: 'b', content: 'Download the Truth, and Delete it Not!'}
