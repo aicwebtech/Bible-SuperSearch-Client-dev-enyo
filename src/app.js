@@ -72,6 +72,7 @@ var App = Application.kind({
     validate: Validators,
     AlertDialog: AlertDialog,
     responseCollection: ResponseCollection,
+    hasAjaxSuccess: false,
     
     // Selectable sub-views:
     formatButtonsView: null,
@@ -212,12 +213,8 @@ var App = Application.kind({
             this.renderTarget = this.configs.target;
         }
 
-        // this.displayInitError('bacon', -1, 'wheres my', 'food'); return; // debug
-
         var view = null;
         this.UserConfig.newModel(0);
-
-        this.configs.apiUrl == defaultConfig.apiUrl ? defaultConfig._urlDefaultNotice() : defaultConfig._urlLocalNotice();
 
         if(this.configs.interface) {
             // this.log('Interface ', this.configs.interface);
@@ -277,7 +274,7 @@ var App = Application.kind({
 
         ajax.go(ajaxData);
         ajax.response(this, function(inSender, inResponse) {
-
+            this.hasAjaxSuccess = true;
             this._handleStaticsLoad(inResponse.results, view);
         });    
 
@@ -320,6 +317,8 @@ var App = Application.kind({
         this.waterfall('onStaticsLoaded');
 
         window.console && console.log('BibleSuperSearch API version', this.statics.version);
+
+        this.configs.apiUrl == defaultConfig.apiUrl ? defaultConfig._urlDefaultNotice() : defaultConfig._urlLocalNotice();
 
         if(view && view != null) {
             this.set('view', view);
@@ -943,6 +942,11 @@ var App = Application.kind({
         // this.AlertDialog.set('alert', alert);
     },
     displayInitError: function(message, code) {
+        if(this.hasAjaxSuccess) {
+            alert('An unknown error ha occurred');            
+            return; // not an init error
+        }
+
         window.console && console.log('BibleSuperSearch error: ' + message);
         window.console && console.log('BibleSuperSearch error code: ' + code);
 

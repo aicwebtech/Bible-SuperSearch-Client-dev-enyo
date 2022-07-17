@@ -19,11 +19,14 @@ module.exports = kind({
     bindings: [],
     autoApplyStandardBindings: true,
     standardBindings: Bindings,
-    subForm: false,
     formContainer: false,
     referenceField: 'reference',
     searchField: 'search',
     defaultSearchType: 'and',
+    
+    containsSubforms: false, // Indicates the current form instance contains instances of other forms
+    subForm: false,  // Indicates the current form is one of multiple forms on the interface
+    defaultForm: false, // If this.subForm, indicates this form instance is the default form.
 
     Passage: Passage,
 
@@ -138,7 +141,8 @@ module.exports = kind({
 
         this.app.set('ajaxLoadingDelay', 100);
         this.requestPending = true;
-        var formData = this.beforeSubmitForm(formData);
+        
+        formData = this.beforeSubmitForm(formData);
         formData = this.processDefaults(formData);
 
         this.app.debug && this.log('Submitted formData', formData);
@@ -156,6 +160,10 @@ module.exports = kind({
             formData.bible = [formData.bible];
         }
 
+        if(!formData.search_type || formData.search_type == '') {
+            formData.search_type = this.defaultSearchType;
+        }
+        
         this._formDataAsSubmitted = utils.clone(formData);
         formData.bible = JSON.stringify(formData.bible);
         formData.highlight = true;
@@ -165,10 +173,6 @@ module.exports = kind({
         formData.context_range = this.app.UserConfig.get('context_range');
         formData.page_limit = this.app.UserConfig.get('page_limit');
         
-        if(!formData.search_type || formData.search_type == '') {
-            formData.search_type = this.defaultSearchType;
-        }
-
         // formData.page = this.get('page');
         return formData;
     },
@@ -197,6 +201,7 @@ module.exports = kind({
 
         this.updateTitle();
         this.manualRequest = false;
+        this.app.set('hasAjaxSuccess', true);
     },
     handleError: function(inSender, inResponse) {
         // this.app.set('ajaxLoading', false);
@@ -208,7 +213,7 @@ module.exports = kind({
             var response = JSON.parse(inSender.xhrResponse.body);
         }
         catch (error) {
-            alert('An unknown error has occurred');
+            this.app.displayInitError();
             return;
         }
 
@@ -300,8 +305,8 @@ module.exports = kind({
     // Handles cache change and page change
     // Lots of problems will need to be solved with page / cache change handling so subforms (advanced search) will work correct
     handleCacheChange: function(inSender, inEvent) {
-        if(this.subForm) {
-            this.app.debug && this.log('subform, returning');
+        if(!this._subformSafe()) {
+            this.app.debug && this.log('non-default subform, returning');
             return;
         }
 
@@ -315,11 +320,9 @@ module.exports = kind({
         else if(inEvent.page && inEvent.page != this.get('page')) {
             this.submitFormWith(extra);
         }
-
-        return true; // Don't propagage, will cause issues with subforms, if any
     },
     handleHashRunForm: function(inSender, inEvent) {
-        if(this.subForm) {
+        if(!this._subformSafe()) {
             return;
         }
 
@@ -336,8 +339,11 @@ module.exports = kind({
         else {
             this.submitFormAuto();
         }
-        
-        return true; // Don't propagage, will cause issues with subforms, if any
+    },
+    _subformSafe: function() {
+        //return !(this.containsSubforms || this.subForm && !this.defaultForm);
+
+        return (!this.containsSubforms && (!this.subForm || this.defaultForm));
     },
     updateHash: function() {
         var hash = this._generateHashFromData(),
@@ -535,7 +541,9 @@ module.exports = kind({
         var reference = this.$.reference ? this.$.reference.get('value') : null;
         var search = this.$.search ? this.$.search.get('value') : null;
         var request = this.$.request ? this.$.request.get('value') : null;
-        var searchType = this.$.search_type ? this.$.search_type.get('value') : null;
+        var searchType = this.$.search_type ? this.$.search_type.get('value') : this.defaultSearchType;
+
+        this.log('searchType', searchType);
 
         var pas = reference ? reference : request;
         var passages = this.Passage.explodeReferences(pas, true);
@@ -605,6 +613,23 @@ module.exports = kind({
 
         hash = hash.replace(/\s+/g, '.');
         return hash;
+    },
+    getFormFieldValue: function(fieldName) {
+        var val = null;
+
+        if(this.$[fieldName]) {
+            val = this.$[fieldName].get('value') || null;
+        }
+
+        if(val == null || val == '') {
+            switch(fieldName) {
+                case 'search_type':
+                    val = this.defaultSearchType;
+                    break;
+            }
+        }
+
+        return val;
     },
     isShortHashable: function() {
         var pass = ['request', 'reference', 'search', 'search_type'];

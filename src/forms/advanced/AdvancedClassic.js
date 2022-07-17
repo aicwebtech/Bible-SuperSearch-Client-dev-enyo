@@ -1,4 +1,4 @@
-var FormBase = require('../FormBase');
+var FormBase = require('../FormBaseMultiple');
 var kind = require('enyo/kind');
 var AdvWord = require('./AdvancedWord');
 var AdvProximity = require('./AdvancedProximity');
@@ -43,7 +43,8 @@ module.exports = kind({
             name: 'AdvPower',
             kind: AdvPower,
             classes: 'biblesupersearch_classic_form advanced',
-            subForm: true
+            subForm: true,
+            defaultForm: true
         },
         {
             kind: EtcButtons
