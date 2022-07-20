@@ -544,8 +544,6 @@ module.exports = kind({
         var request = this.$.request ? this.$.request.get('value') : null;
         var searchType = this.$.search_type ? this.$.search_type.get('value') : this.defaultSearchType;
 
-        this.log('searchType', searchType);
-
         var pas = reference ? reference : request;
         var passages = this.Passage.explodeReferences(pas, true);
         var refId = 'r';
