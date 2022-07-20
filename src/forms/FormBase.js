@@ -295,6 +295,7 @@ module.exports = kind({
         this.setFormDataWithMapping(formData);
         // this.set('formData', {});
         // this.set('formData', utils.clone(formData));
+        this.app.set('hasAjaxSuccess', true);
         this.submitFormWith(this._extraFormData);
     },
     handleCacheError: function(inSender, inResponse) {
