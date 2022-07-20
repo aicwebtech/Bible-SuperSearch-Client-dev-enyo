@@ -1,5 +1,10 @@
 Bible SuperSearch Universal Client Changelog
 
+
+= 5.0.1 July 23, 2022 =
+* Improved error handling when AJAX calls fail
+* Fixed bugs with the Advanced search
+
 = 5.0.0 Feb 12, 2022 =
 * Added new format button options.
 * Replaced paragraph toggle with paragraph / passage / verse selector (Stylable format buttons only).

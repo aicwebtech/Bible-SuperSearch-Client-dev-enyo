@@ -38,8 +38,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.0.0',
-
+    applicationVersion: '5.0.2',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -72,6 +71,7 @@ var App = Application.kind({
     validate: Validators,
     AlertDialog: AlertDialog,
     responseCollection: ResponseCollection,
+    hasAjaxSuccess: false,
     
     // Selectable sub-views:
     formatButtonsView: null,
@@ -208,12 +208,8 @@ var App = Application.kind({
             this.renderTarget = this.configs.target;
         }
 
-        // this.displayInitError('bacon', -1, 'wheres my', 'food'); return; // debug
-
         var view = null;
         this.UserConfig.newModel(0);
-
-        this.configs.apiUrl == defaultConfig.apiUrl ? defaultConfig._urlDefaultNotice() : defaultConfig._urlLocalNotice();
 
         if(this.configs.interface) {
 
@@ -271,7 +267,7 @@ var App = Application.kind({
 
         ajax.go(ajaxData);
         ajax.response(this, function(inSender, inResponse) {
-
+            this.hasAjaxSuccess = true;
             this._handleStaticsLoad(inResponse.results, view);
         });    
 
@@ -314,6 +310,8 @@ var App = Application.kind({
         this.waterfall('onStaticsLoaded');
 
         window.console && console.log('BibleSuperSearch API version', this.statics.version);
+
+        this.configs.apiUrl == defaultConfig.apiUrl ? defaultConfig._urlDefaultNotice() : defaultConfig._urlLocalNotice();
 
         if(view && view != null) {
             this.set('view', view);
@@ -921,6 +919,24 @@ var App = Application.kind({
         }
     },
     displayInitError: function(message, code) {
+        window.console && console.log('BibleSuperSearch error: ' + message);
+        window.console && console.log('BibleSuperSearch error code: ' + code);
+
+        for(i = 2; i < arguments.length; i++) {
+            var num = i - 1;
+            window.console && console.log('BibleSuperSearch error details #' + num, arguments[i]);
+        }
+
+        this.set('view', ErrorView);
+        // this.view.set('message', message);
+        this.render();
+    },
+    displayInitError: function(message, code) {
+        if(this.hasAjaxSuccess) {
+            alert('An unknown error ha occurred');            
+            return; // not an init error
+        }
+
         window.console && console.log('BibleSuperSearch error: ' + message);
         window.console && console.log('BibleSuperSearch error code: ' + code);
 

@@ -199,6 +199,7 @@ module.exports = kind({
         var search = this.formData.search || null;
         var request = this.formData.request || null;
         var searchType = this.formData.search_type || null;
+        // var searchType = this.app.getFormFieldValue('search_type');
         var searchExtras = '';
         var hasSe = false;
         var se = [];

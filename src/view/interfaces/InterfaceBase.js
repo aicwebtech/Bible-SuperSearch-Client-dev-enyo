@@ -142,11 +142,11 @@ module.exports = kind({
         return this._formHasFieldStandard(fieldName);
     },
     getFormFieldValue: function(fieldName) {
-        if(!this.formHasField(fieldName)) {
-            return false;
+        if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view && this.$.Content.$.FormController.view) {
+            return this.$.Content.$.FormController.view.getFormFieldValue(fieldName);
         }
 
-        return this.$.Content.$.FormController.view.$[fieldName].get('value');
+        return false;
     },
     _formHasFieldStandard: function(fieldName) {
         if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view && this.$.Content.$.FormController.view.$) {
