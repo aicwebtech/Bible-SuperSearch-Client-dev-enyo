@@ -4,7 +4,7 @@ mkdir -p ../ui-standalone/
 rm -r ../ui-standalone/assets
 
 # 'ship' to standalone client
-enyo pack --production -d ../ui-standalone --no-inline-css --no-inline-js --clean
+enyo pack --production -d ../ui-standalone --no-inline-css --no-inline-js # --clean #this kills our git repo!!
 rm ../ui-standalone/config.js
 cp config-example.js ../ui-standalone/
 cp changelog.txt ../ui-standalone/
