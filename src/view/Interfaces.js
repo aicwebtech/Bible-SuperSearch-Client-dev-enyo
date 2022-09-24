@@ -19,6 +19,14 @@ module.exports = {
         // Power search form designed to expand easily (not yet ready)
         'PowerExpanding': require('./interfaces/expanding/PowerExpanding'),
 
+    // Browsing / reading interfaces
+
+    
+        // Has a down selector to select book, then chapter.
+        'BrowsingBookList': require('./interfaces/browsing/BookList'),
+        // Lists out all the books
+        'BrowsingBookSelector': require('./interfaces/browsing/BookSelector'),
+
     
     // Minimal interfaces
     //      Forms with very few elements

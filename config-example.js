@@ -54,7 +54,7 @@ var biblesupersearch_config_options = {
     
     "interface": "Expanding",   
 
-        // Epanding interfaces
+        // Expanding interfaces
         //      Modern interfaces with a minimal amounts of fields showing initially, but can be expanded to show more
             
             // Basic expanding form - new default form
@@ -62,6 +62,15 @@ var biblesupersearch_config_options = {
 
             // Expanding form having larger text entry boxes
             // "interface": 'ExpandingLargeInput',
+
+        // Bible Browsing / reading interfaces.
+        //      Modern interfaces designed for reading and browsing the Bible.
+        //      These only have a minimal amount of fields, and no search fields.
+            // Has a down selector to select book, then chapter.
+            // "interface": 'BrowsingBookSelector',
+
+            // Lists out all the books
+            // "interface": 'BrowsingBookList,
 
 
         // Minimal interfaces

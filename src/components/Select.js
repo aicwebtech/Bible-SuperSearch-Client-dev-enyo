@@ -39,6 +39,33 @@ module.exports = kind({
 
                 return false;
             };
+        }        
+
+        if(typeof this.setSelectedByContent == 'undefined') {
+            this.setSelectedByContent = function(content, defaultIndex) {
+                var content = content || 0,
+                    controls = this.getClientControls();
+
+                // this.log('select: attempting to set to', content);
+
+                for(i in controls) {
+                    // IE hack fix :P  make sure it has get()
+                    if(controls[i].get && controls[i].get('content') == content) {
+                        this.setSelected(i);
+                        this.setValue(controls[i].get('value'));
+                        return true;
+                        break;
+                    }
+                }
+
+                // this.log('select: value not found', value);
+
+                if(typeof defaultIndex != 'undefined') {
+                    this.setSelected(defaultIndex);
+                }
+
+                return false;
+            };
         }
     },
 
