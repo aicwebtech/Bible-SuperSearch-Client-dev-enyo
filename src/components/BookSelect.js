@@ -1,15 +1,17 @@
 var kind = require('enyo/kind');
 var Select = require('./Select');
 var Passage = require('./Passage');
+var Option = require('enyo/Option');
 
 module.exports = kind({
     name: 'BookSelect',
     tag: 'span',
+    classes: 'bookselect',
 
     components: [
-        {name: 'Book', kind: Select, onchange: 'handleBookChange'}, 
+        {name: 'Book', kind: Select, onchange: 'handleBookChange', classes: 'book'}, 
         {tag: 'span', content: ''},
-        {name: 'Chapter', kind: Select, onchange: 'handleChapterChange'}
+        {name: 'Chapter', kind: Select, onchange: 'handleChapterChange', classes: 'chapter'}
     ],
 
     handlers: {
@@ -43,22 +45,49 @@ module.exports = kind({
         this.$.Book.destroyClientControls();
         this.$.Chapter.destroyClientControls();
 
+        // var tgroup = this.$.Book.createComponent({
+        //     tag: 'optgroup',
+        //     attributes: {
+        //         label: this.app.t('Old Testament')
+        //     }
+        // });
+
         BookList.forEach(function(item) {
+            // if(item.id == '40') {
+            //     tgroup = this.$.Book.createComponent({
+            //         tag: 'optgroup',
+            //         attributes: {
+            //             label: this.app.t('New Testament')
+            //         }
+            //     });
+            // }
+
+            // tgroup.createComponent({
+            //     kind: Option,
+            //     content: item.name,
+            //     value: item.id,
+            //     owner: this.$.Book
+            // });
+
             this.$.Book.createComponent({
                 content: item.name,
-                value: item.id
+                value: item.id,
+                style: item.id == 39 ? 'border-bottom: 2px solid black' : null
             });
         }, this);
     }, 
 
     _createChapterList: function(selected) {
         var bookId = this.$.Book.get('value');
+        this.log('bookId', bookId);
+        this.log('selected', selected);
+        selected = typeof selected != 'undefined' ? selected : '1';
 
         if(bookId != this.bookId) {
             var Book = this._getBookById(bookId);
             var chapters = parseInt(Book.chapters, 10);
             this.$.Chapter.destroyClientControls();
-
+            
             for(var i = 1; i <= chapters; i++) {
                 this.$.Chapter.createComponent({
                     content: i + '',
@@ -76,7 +105,7 @@ module.exports = kind({
     },
 
     valueChanged: function(was, is) {
-        this.log(was, is);
+        // this.log(was, is);
 
         if(!this._internalSet) {
             this._populateFromValueHelper(is);
@@ -84,9 +113,10 @@ module.exports = kind({
     },
 
     _populateFromValueHelper: function(value) {
-        this.log('value', value);
+        // this.log('value', value);
 
         if(!value) {
+            this._initDefault();
             return;
         }
 
@@ -104,6 +134,7 @@ module.exports = kind({
         var chapter = cv[0];
         this._createChapterList(chapter);
         this.$.Chapter.render();
+        this.$.Chapter.setSelectedByValue(chapter);
     },
 
     handleBookChange: function(inSender, inEvent) {
@@ -115,6 +146,7 @@ module.exports = kind({
         this._internalSet = false;
         this._createChapterList();
         this.$.Chapter.render();
+        this.$.Chapter.setSelectedByValue('1');
     }, 
 
     handleChapterChange: function(inSender, inEvent) {

@@ -15,8 +15,26 @@
     margin-bottom: 20px;
 }
 
-.biblesupersearch_browsing_form .book_selector {
-    width: 800px;
+.biblesupersearch_browsing_form.book_selector_vertical {
+    width: 400px;
+}
+
+.biblesupersearch_browsing_form.book_selector_vertical .bookselect .book {
+    width: 200px;
+}
+
+.biblesupersearch_browsing_form.book_selector_vertical .bookselect .chapter {
+    width: 40px;
+    margin: 0 3px;
+}
+
+.biblesupersearch_browsing_form.book_selector_vertical .submit {
+    min-width: 50px;
+    text-align: center;
+}
+
+.biblesupersearch_browsing_form.book_selector_horizontal .inline_block {
+    display: inline-block;
 }
 
 .biblesupersearch_main input, 

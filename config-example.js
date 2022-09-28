@@ -67,7 +67,9 @@ var biblesupersearch_config_options = {
         //      Modern interfaces designed for reading and browsing the Bible.
         //      These only have a minimal amount of fields, and no search fields.
             // Has a down selector to select book, then chapter.
-            // "interface": 'BrowsingBookSelector',
+            // "interface": 'BrowsingBookSelector',            
+            // Has a down selector to select book, then chapter.  Fields presented horizontally.
+            // "interface": 'BrowsingBookSelectorHorizontal',
 
             // Lists out all the books
             // "interface": 'BrowsingBookList,
