@@ -3,7 +3,7 @@ var FormBase = require('./FormBase');
 var Button = require('enyo/Button');
 var Input = require('enyo/Input');
 var Checkbox = require('enyo/Checkbox');
-var BibleSelect = require('../components/BibleSelect/MultiSelect');
+var BibleSelect = require('../components/BibleSelect/SingleSelect');
 var BookSelect = require('../components/BookSelect');
 var FormSection = require('./FormSection');
 var EtcButtons = require('../components/DialogEtcButtons/DialogEtcButtonsHtml');
@@ -23,17 +23,15 @@ module.exports = kind({
                     {
                         name: 'bible', 
                         kind: BibleSelect, 
-                        parallelLimit: 1, 
-                        parallelStart: 1, 
                         selectorWidth: 300,
                         classes: 'inline_block'
                     },
-                    {tag: 'span', content: ' '},
-                    {name: 'reference', kind: BookSelect},
-                    {kind: Button, ontap: 'submitForm', classes: 'submit', components: [
-                        {kind: i18nContent, content: 'Go'}
-                    ]},
-                    // {classes: 'inline_block', kind: EtcButtons}
+                    {tag: 'span', style: 'white-space: nowrap;', components: [
+                        {name: 'reference', kind: BookSelect},
+                        {kind: Button, ontap: 'submitForm', classes: 'submit', components: [
+                            {kind: i18nContent, content: 'Go'}
+                        ]}
+                    ]}
                 ]},
 
             ]
