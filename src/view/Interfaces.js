@@ -20,10 +20,6 @@ module.exports = {
         'PowerExpanding': require('./interfaces/expanding/PowerExpanding'),
 
     // Browsing / reading interfaces
-
-       
-        // Lists out all the books
-        // 'BrowsingBookList': require('./interfaces/browsing/BookList'),
         // Has a down selector to select book, then chapter.  Fields listed vertically
         'BrowsingBookSelector': require('./interfaces/browsing/BookSelector'),
         // Has a down selector to select book, then chapter.   Fields listed horizontally
