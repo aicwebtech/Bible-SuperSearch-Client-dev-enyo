@@ -4,8 +4,12 @@ var biblesupersearch_config_options = {
     // If language is not supported, English will display
     // Supported language:
     // * en : English
-    // * es : Español
-    // * fr: Français
+    // * es : Español / Spanish
+    // * fr: Français / French
+    // * ro: Română / Romanian
+    // * zh_TW: 繁體中文 / Chinese - Traditional
+    // * zh_CN: 简体中文 / Chinese - Simplfied
+
     'language' : 'en',
 
     // Default Bible                        (string)

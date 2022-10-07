@@ -374,7 +374,11 @@ module.exports = kind({
 
         fields.forEach(function(field) {
             if(formData[field] && formData[field] != '') {
-                values.push(formData[field]);
+                if(formData[field] == 'Random Chapter' || formData[field] == 'Random Verse') {
+                    values.push(this.app.t(formData[field]));
+                } else {
+                    values.push(formData[field]);
+                }
             }
         }, this);
 
