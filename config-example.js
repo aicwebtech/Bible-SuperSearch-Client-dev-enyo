@@ -4,8 +4,12 @@ var biblesupersearch_config_options = {
     // If language is not supported, English will display
     // Supported language:
     // * en : English
-    // * es : Español
-    // * fr: Français
+    // * es : Español / Spanish
+    // * fr: Français / French
+    // * ro: Română / Romanian
+    // * zh_TW: 繁體中文 / Chinese - Traditional
+    // * zh_CN: 简体中文 / Chinese - Simplfied
+
     'language' : 'en',
 
     // Default Bible                        (string)
@@ -54,7 +58,7 @@ var biblesupersearch_config_options = {
     
     "interface": "Expanding",   
 
-        // Epanding interfaces
+        // Expanding interfaces
         //      Modern interfaces with a minimal amounts of fields showing initially, but can be expanded to show more
             
             // Basic expanding form - new default form
@@ -62,6 +66,17 @@ var biblesupersearch_config_options = {
 
             // Expanding form having larger text entry boxes
             // "interface": 'ExpandingLargeInput',
+
+        // Bible Browsing / reading interfaces.
+        //      Modern interfaces designed for reading and browsing the Bible.
+        //      These only have a minimal amount of fields, and no search fields.
+            // Has a down selector to select book, then chapter.
+            // "interface": 'BrowsingBookSelector',            
+            // Has a down selector to select book, then chapter.  Fields presented horizontally.
+            // "interface": 'BrowsingBookSelectorHorizontal',
+
+            // Lists out all the books
+            // "interface": 'BrowsingBookList,
 
 
         // Minimal interfaces

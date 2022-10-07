@@ -1,0 +1,218 @@
+/* Styles for browsing apparence */
+
+/* Body of form */
+.biblesupersearch_main.interface_browsing {
+    min-height: 100px;
+    /*max-height: 80vh;*/
+    overflow-y: auto;
+}
+
+.biblesupersearch_browsing_form {
+    margin-left:auto;
+    margin-right:auto; 
+    padding:5px; 
+    background-color:tan;
+    margin-bottom: 20px;
+}
+
+.biblesupersearch_browsing_form.book_selector_vertical {
+    max-width: 400px;
+    width: 100%;
+}
+
+.biblesupersearch_browsing_form.book_selector_vertical .bookselect .book {
+    max-width: 200px;
+    width: 100%;
+}
+
+.biblesupersearch_browsing_form.book_selector_vertical .bookselect .chapter {
+    min-width: 40px;
+    margin: 0 3px;
+}
+
+.biblesupersearch_browsing_form.book_selector_vertical .submit {
+    min-width: 50px;
+    text-align: center;
+}
+
+.biblesupersearch_browsing_form.book_selector_horizontal .inline_block {
+    display: inline-block;
+}
+
+.biblesupersearch_browsing_form.book_selector_horizontal select {
+    margin-right: 3px;
+}
+
+.biblesupersearch_browsing_form.book_selector_horizontal .bookselect .book {
+    max-width: 150px;
+    width: 50%;
+}
+
+.biblesupersearch_main input, 
+.biblesupersearch_main textarea, 
+.biblesupersearch_main select, 
+.biblesupersearch_main button {
+    text-rendering: auto;
+    /*color: initial;*/
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 13.3333px Arial;
+}
+
+.biblesupersearch_browsing_form button.user_friendly_random {
+    /*width: 110px;*/
+    width: 125px;
+    /*font-size: 70%;*/
+    /*font-size: 0.7em;*/
+    text-align: center;
+}
+
+.biblesupersearch_browsing_form select.biblesupersearch_bible_selector_multi {
+    
+}
+
+.biblesupersearch_main.interface_browsing .biblesupersearch_error_view {
+    max-width: 800px;
+}
+
+.biblesupersearch_pager {
+    margin: 15px auto;
+}
+
+.interface_browsing a:link, .interface_browsing a:visited {
+    color: #0000ee;
+    text-decoration: none;
+}
+
+.interface_browsing a:hover {
+    text-decoration: underline overline;
+}
+
+.interface_browsing .biblesupersearch_pager a {
+    margin: 0 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.interface_browsing .biblesupersearch_pager a:hover {
+    background-color: #0000ee;
+    color: #ff8c00;
+    text-decoration: none;
+}
+
+.interface_browsing .biblesupersearch_pager a.current_page {
+    font-weight: bold;
+    color: #ff8c00;
+    background-color: transparent;
+}
+
+/* Weird bugfix -- move to layouts.css?? */
+.interface_browsing .biblesupersearch_pager a:after, .interface_browsing .biblesupersearch_pager a:before {
+    display:none;
+}
+
+.interface_browsing .biblesupersearch_pager a:link, .interface_browsing .biblesupersearch_pager a:visited {
+
+}
+
+.interface_browsing .format_buttons {
+    margin-bottom: 10px;
+}
+
+.interface_browsing .format_buttons img {
+    margin: 0 1px;
+}
+
+.biblesupersearch_browsing_form.parallel2 .biblesupersearch_bible_selector_multi {
+    margin: 2px 0 3px;
+}
+
+.biblesupersearch_browsing_form.parallel2 button {
+    text-align: center;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.interface_browsing .strongs_hover {
+    padding: 0;
+    border: 0;
+    background-color: #d2b48c;
+}
+
+.interface_browsing .strongs_hover .strongs_head {
+    background-color: #d2b48c;
+    padding: 10px;
+    text-align: center;
+}
+
+.interface_browsing .strongs_hover .strongs_tvm {
+    background-color: #d2b48c;
+    padding: 10px;
+}
+
+.interface_browsing .strongs_hover .strongs_body {
+    background-color: #702424;
+    padding:10px;
+    color:white;
+    text-align: justify;
+}
+
+.interface_browsing .strongs_hover .hebrew .strongs_head span {
+    font-weight: bold;
+    font-size: 20pt;
+    font-family: serif;
+    padding-top: 5px;
+}
+
+.interface_browsing .strongs_hover .greek .strongs_head span {
+    font-weight: bold;
+    font-size: 16pt;
+    padding-top: 10px;
+    font-family: serif;
+}
+
+.interface_browsing .help_dialog .dialog {
+    background-color: #702424;
+    color: white;
+}
+
+.interface_browsing .help_dialog .dialog .content {
+    background-color: #d2b48c;
+    color: black;
+}
+
+.interface_browsing .help_dialog .item:nth-child(odd) {
+    background-color: #edd9be;
+}
+
+/*.interface_browsing a.strongs:link, .interface_browsing a.strongs:visited, .interface_browsing a.strongs:hover {
+    color: black;
+    text-decoration: none;
+}*/
+
+/* Emulate a 'browsing' format button without creating a new image for it */
+.format_buttons_browsing {
+    line-height: 22px;
+    vertical-align: top;
+}
+
+.format_buttons_browsing .item {
+    border-radius: 2px;
+    border: 1.5px solid #a3a38b;
+    background-color: #fef8de;
+    color: #242500;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 12px;
+    height: 18px;
+    padding: 0px 5px;
+    cursor: pointer;
+}

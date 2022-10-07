@@ -27,6 +27,7 @@ module.exports = kind({
     containsSubforms: false, // Indicates the current form instance contains instances of other forms
     subForm: false,  // Indicates the current form is one of multiple forms on the interface
     defaultForm: false, // If this.subForm, indicates this form instance is the default form.
+    submitFormOnReferenceChange: false,
 
     Passage: Passage,
 
@@ -373,7 +374,11 @@ module.exports = kind({
 
         fields.forEach(function(field) {
             if(formData[field] && formData[field] != '') {
-                values.push(formData[field]);
+                if(formData[field] == 'Random Chapter' || formData[field] == 'Random Verse') {
+                    values.push(this.app.t(formData[field]));
+                } else {
+                    values.push(formData[field]);
+                }
             }
         }, this);
 
@@ -431,6 +436,7 @@ module.exports = kind({
         this.app.debug && this.log(value);
 
         if(this.app.get('clientBrowser') == 'IE') {
+            this.submitFormOnReferenceChange && this.submitForm();
             this.log('Using IE, no good!  Skipping some minor code that breaks IE ... ');
             return; // bail if IE ... yuck!
         }
@@ -443,6 +449,8 @@ module.exports = kind({
         else {
             this.$.shortcut.set('selected', 0);
         }
+
+        this.submitFormOnReferenceChange && this.submitForm();
     },
     _requestChangeRoute: function(value) {
         if(this.$.request && this.$.request.get('type') != 'hidden' || !value || value == null) {
