@@ -144,12 +144,23 @@ var biblesupersearch_config_options = {
     //      none - Format buttons disabled, never show
     "formatButtons": 'default',        
 
-    // Display extra buttons seprately from format buttons?
+    // How to display extra buttons?
+    //      Extra buttons include help, SOS dialog, download dialog
+    //      default for skin default
+    //      format - Display with format buttons 
+    //      separate - Display separatly on the form (some interfaces don't support this)
+    //      none - do not display at all
+    //      Note: for backward compatiblity, if extraButtonsSeparate is provided, that value will be used and this will be ignored.
+    //          (extraButtonsSeparate must be //commented out below for this to work.)
+    "extraButtonsDisplay": 'default',       
+
+    // (Deprecated, use extraButtonsDisplay) Display extra buttons seprately from format buttons?
     //      Extra buttons include help, SOS dialog, download dialog
     //      'default' for skin default
     //      true
     //      false
-    "extraButtonsSeparate": 'default',                         
+    //      none - do not display at all
+    // "extraButtonsSeparate": 'default',                         
     
     // Which navigation buttons to use?
     //      default for skin default
