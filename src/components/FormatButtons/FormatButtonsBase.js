@@ -12,6 +12,7 @@ module.exports = kind({
     // Whether to include the toggle button for advanced search
     // Should be disabled if already displaying the advanced search button
     includeAdvancedToggle: true,
+    onlyExtraButtons: false, // indicates the current kind ONLY contains 'extra' buttons (start/download,ect)
     uc: null,
 
     handlers: {
@@ -132,21 +133,33 @@ module.exports = kind({
         this.app.debug && this.log(pre, cur, prop);
     },
     _hideExtras: function() {
-        var softConfig = this.app.configs.extraButtonsSeparate,
-            supported = this.app.view.FormatButtonsHideExtrasSupported || false;
+        var softConfig = typeof this.app.configs.extraButtonsSeparate == 'undefined' ? null : this.app.configs.extraButtonsSeparate,
+            displayConfig = this.app.configs.extraButtonsDisplay;
+            supported = this.app.view.FormatButtonsHideExtrasSupported || false,
+            hide = null;
+
+
+        // To make this backward-compatible, we look at the legacy config if it's not undefined
+        var effectiveConfig = (softConfig == null) ? displayConfig : softConfig;
+        this.log('effectiveConfig', effectiveConfig);
+
+        if(effectiveConfig == 'none') {
+            return true; // does NOT toggle based on this.onlyExtraButtons
+        }
 
         if(!supported) {
-            return false;
+            hide = false;
         }
-
-        if(softConfig === true || softConfig == 'true') {
-            return true;
+        else if(effectiveConfig == 'separate' || effectiveConfig === true || effectiveConfig == 'true') {
+            hide = true;
         }
-        else if (softConfig === false || softConfig == 'false') {
-            return false;
+        else if(effectiveConfig == 'format' || effectiveConfig === false || effectiveConfig == 'false') {
+            hide = false;
         }
         else {
-            return this.app.view.FormatButtonsHideExtras;
+            hide = this.app.view.FormatButtonsHideExtras;
         }
+
+        return this.onlyExtraButtons ? !hide : hide;
     }
 });
