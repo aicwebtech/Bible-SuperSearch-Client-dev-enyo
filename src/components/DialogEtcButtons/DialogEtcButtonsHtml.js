@@ -12,6 +12,7 @@ module.exports = kind({
     name: 'DialogEtcButtonsHtml',
     kind: Base,
     classes: 'format_buttons_html',
+    onlyExtraButtons: true,
     
     components: [
         {
@@ -64,9 +65,7 @@ module.exports = kind({
 
     bindings: [                
         {from: 'app.UserConfig.advanced_toggle', to: '$.advanced_toggle.value', oneWay: false, transform: function(value, dir) {
-            // console.log('FormatButtons advanced_toggle', value, dir);
             return value;
-            // return (value && value != 0 && value != false) ? true : false;
         }},           
     ],
 
@@ -81,7 +80,7 @@ module.exports = kind({
     rendered: function() {
         this.inherited(arguments);
 
-        if(!this._hideExtras()) {
+        if(this._hideExtras()) {
             this.set('showing', false);
         }
     }
