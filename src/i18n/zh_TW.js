@@ -15,7 +15,7 @@ module.exports = {
     'Loading, please wait': '載入中, 請等待',
 
      // Search Forms
-    'Select Bible version(s)': '超級聖經搜索 ',
+    'Select Bible version(s)': '超級聖經搜索',
     'Search': '搜索',
     'Search the Bible': '搜索聖經',
     'Go': '開始搜索',
@@ -44,6 +44,7 @@ module.exports = {
     'Restrict search to': '限制搜索範圍在', 
     'Word Search': '搜索經文',
     'Clear Form': '清除表格', // 4.5
+    'Select Book and Chapter:' : '選擇書籍和章節', // 5.2
 
       // Context Links
     'Show full chapter': '顯示完整章節',

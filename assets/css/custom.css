@@ -1,0 +1,12 @@
+.biblesupersearch_classic_form.custom_user_friendly_book_sel .bookselect {
+    width: 200px;
+    margin: 0 auto 0;
+}
+
+.biblesupersearch_classic_form.custom_user_friendly_book_sel .bookselect .book {
+    width: 100%;
+}
+
+.biblesupersearch_classic_form.custom_user_friendly_book_sel .bookselect .chapter {
+    width: 100%;
+}

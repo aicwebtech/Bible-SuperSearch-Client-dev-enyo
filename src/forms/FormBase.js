@@ -29,6 +29,9 @@ module.exports = kind({
     defaultForm: false, // If this.subForm, indicates this form instance is the default form.
     submitFormOnReferenceChange: false,
 
+    _referenceChangeHelperIgnore: false,
+    defaultSubmitting: false,
+
     Passage: Passage,
 
     handlers: {
@@ -72,6 +75,23 @@ module.exports = kind({
 
         // Break references to formData on other forms?
         this.clearForm(); 
+        this.submitDefault();
+    },
+    submitDefault: function() {
+        var ref = this.app.configs.landingReference || null;
+
+        if(ref && ref != '') {
+            var formData = {};
+
+            if(this.$.reference) {
+                formData.reference = ref;
+            } else {
+                formData.request = ref;
+            }
+
+            this.defaultSubmitting = true;
+            this._submitFormHelper(formData, false);
+        }
     },
     clearForm: function() {
         this.set('formData', {});
@@ -94,6 +114,12 @@ module.exports = kind({
 
         if(!this.$.context) {
             formData.context = false; 
+        }
+
+        // Custom code - Make this a config??
+        if(this.$.reference_booksel) {        
+            this.$.reference_booksel.set('value', null);
+            this.$.reference && this.$.reference.set('value', formData.reference || null);
         }
 
         this._submitFormHelper(formData, true);
@@ -198,6 +224,11 @@ module.exports = kind({
 
         if(this.manualRequest) {
             this.updateHash();
+        }
+
+        if(this.defaultSubmitting) {
+            this.clearFormManual();
+            this.defaultSubmitting = false;
         }
 
         this.updateTitle();
@@ -426,14 +457,30 @@ module.exports = kind({
     },
     referenceTyped: function(inSender, inEvent) {
         var value = inSender.get('value') || null;
-        this._referenceChangeHelper(value);
+        this._referenceChangeHelper(value, 'reference', 2);
     },
-    _referenceChangeHelper: function(value) {
-        if(!this.$.shortcut) {
+    _referenceChangeHelper: function(value, field, dir) {
+        if(!this.$.shortcut && !this.$.reference_booksel || this._referenceChangeHelperIgnore) {
             return;
         }
 
-        this.app.debug && this.log(value);
+        this.app.debug && this.log(value, field, dir);
+        this._referenceChangeHelperIgnore = true;
+
+        if(this.$.reference && this.$.reference_booksel) {
+            this.app.debug && this.log('here');
+            if(field == 'reference') {
+                this.app.debug && this.log('ref');
+                if(dir == 2) {
+                    this.$.reference_booksel.set('value', '');
+                } else {
+                    this.$.reference_booksel.set('value', value);
+                }
+            } else {
+                this.app.debug && this.log('booksel');
+                this.$.reference.set('value', value || null);
+            }
+        }
 
         if(this.app.get('clientBrowser') == 'IE') {
             this.submitFormOnReferenceChange && this.submitForm();
@@ -450,6 +497,7 @@ module.exports = kind({
             this.$.shortcut.set('selected', 0);
         }
 
+        this._referenceChangeHelperIgnore = false;
         this.submitFormOnReferenceChange && this.submitForm();
     },
     _requestChangeRoute: function(value) {

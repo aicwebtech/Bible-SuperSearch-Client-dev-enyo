@@ -45,6 +45,7 @@ module.exports = {
     'Restrict search to': '', 
     'Word Search': '',
     'Clear Form': '', // 4.5
+    'Select Book and Chapter:' : '', // 5.2
 
     // Context Links
     'Show full chapter': '',

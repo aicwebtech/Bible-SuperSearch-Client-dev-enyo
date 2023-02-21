@@ -20,6 +20,7 @@ module.exports = kind({
 
     defaultBook: 1,
     defaultChapter: 1,
+    includeBlankValue: false,
     value: null,
     bookId: null,
     _internalSet: false,
@@ -44,6 +45,13 @@ module.exports = kind({
 
         this.$.Book.destroyClientControls();
         this.$.Chapter.destroyClientControls();
+
+        if(this.includeBlankValue) {
+            this.$.Book.createComponent({
+                content: '',
+                value: '0',
+            });
+        }
 
         // var tgroup = this.$.Book.createComponent({
         //     tag: 'optgroup',
@@ -79,21 +87,31 @@ module.exports = kind({
 
     _createChapterList: function(selected) {
         var bookId = this.$.Book.get('value');
-        this.log('bookId', bookId);
-        this.log('selected', selected);
         selected = typeof selected != 'undefined' ? selected : '1';
 
         if(bookId != this.bookId) {
-            var Book = this._getBookById(bookId);
-            var chapters = parseInt(Book.chapters, 10);
             this.$.Chapter.destroyClientControls();
-            
-            for(var i = 1; i <= chapters; i++) {
-                this.$.Chapter.createComponent({
-                    content: i + '',
-                    value: i + '',
-                });
+
+            if(bookId == 0) {
+                if(this.includeBlankValue) {
+                    this.$.Chapter.createComponent({
+                        content: '',
+                        value: '0',
+                    });
+                }
+            } else {            
+                var Book = this._getBookById(bookId);
+                var chapters = parseInt(Book.chapters, 10);
+                this.$.Chapter.destroyClientControls();
+                
+                for(var i = 1; i <= chapters; i++) {
+                    this.$.Chapter.createComponent({
+                        content: i + '',
+                        value: i + '',
+                    });
+                }
             }
+
 
             this.bookId = bookId;
         }
@@ -105,7 +123,7 @@ module.exports = kind({
     },
 
     valueChanged: function(was, is) {
-        // this.log(was, is);
+        this.app.debug && this.log(was, is);
 
         if(!this._internalSet) {
             this._populateFromValueHelper(is);
@@ -113,9 +131,9 @@ module.exports = kind({
     },
 
     _populateFromValueHelper: function(value) {
-        // this.log('value', value);
+        this.app.debug && this.log('value', value);
 
-        if(!value) {
+        if(!value || value == '') {
             this._initDefault();
             return;
         }
@@ -139,14 +157,22 @@ module.exports = kind({
 
     handleBookChange: function(inSender, inEvent) {
         var bookId = inSender.get('value');
-        var Book = this._getBookById(bookId);
 
-        this._internalSet = true;
-        this.set('value', Book.name);
-        this._internalSet = false;
-        this._createChapterList();
-        this.$.Chapter.render();
-        this.$.Chapter.setSelectedByValue('1');
+        if(bookId && bookId != '0') {
+            var Book = this._getBookById(bookId);
+            this._internalSet = true;
+            this.set('value', Book.name + ' 1');
+            this._internalSet = false;
+            this._createChapterList();
+            this.$.Chapter.render();
+            this.$.Chapter.setSelectedByValue('1');
+        } else {
+            this._internalSet = true;
+            this.set('value', '');
+            this._internalSet = false;
+            this._createChapterList();
+            this.$.Chapter.render();
+        }
     }, 
 
     handleChapterChange: function(inSender, inEvent) {
@@ -173,11 +199,20 @@ module.exports = kind({
         return Book;
     },
     _initDefault: function() {
-        this.$.Book.setSelectedByValue(this.defaultBook);
-        this._createChapterList(this.defaultChapter);
-        var Book = this._getBookById(this.defaultBook);
+        if(this.defaultBook) {
+            defaultChapter = this.defaultChapter || 1;
+            this.$.Book.setSelectedByValue(this.defaultBook);
+            this._createChapterList(this.defaultChapter);
+            var Book = this._getBookById(this.defaultBook);
+            var val = Book.name + ' ' + this.defaultChapter;
+        } else {
+            var val = '';
+            this.$.Book.setSelected(0);
+            this._createChapterList();
+        }
+
         this._internalSet = true;
-        this.set('value', Book.name + ' ' + this.defaultChapter);
+        this.set('value', val);
         this._internalSet = false;
     }
 });

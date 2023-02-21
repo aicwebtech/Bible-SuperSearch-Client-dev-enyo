@@ -38,6 +38,7 @@ module.exports = {
     'Restrict search to': 'limitada búsqueda de', 
     'Word Search': 'Búsqueda de palabras',
     'Clear Form': 'borrar la forma', // 4.5
+    'Select Book and Chapter:' : 'Seleccionar libro y capítulo:', // 5.2
 
     // Context Links
     'Show full chapter': 'Mostrar capítulo completo',
