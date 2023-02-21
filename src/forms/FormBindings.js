@@ -43,8 +43,15 @@ module.exports = {
     }},
     // reference binding MUST be before the shortcut binding!
     reference: {from: 'formData.reference', to: '$.reference.value', oneWay: false, shortLink: true, transform: function(value, dir) {
-        // this.log('reference', value, dir);
-        this._referenceChangeHelper(value || null);
+        //this.log('reference', value, dir);
+        this._referenceChangeHelper(value || null, 'reference', dir);
+
+        return value || null;
+    }},    
+    // Dedicated book selector reference field
+    reference_booksel: {from: 'formData.reference_booksel', to: '$.reference_booksel.value', oneWay: false, shortLink: true, transform: function(value, dir) {
+        //this.log('reference_booksel', value, dir);
+        this._referenceChangeHelper(value || null, 'reference_booksel', dir);
 
         return value || null;
     }},
@@ -61,6 +68,8 @@ module.exports = {
             }
         }
         else {
+            this.$.reference_booksel && this.$.reference_booksel.set('value', null);
+
             if(value && value != '0' && value != '1') {
                 this.$.reference && this.$.reference.set('value', value);
             }

@@ -32,7 +32,6 @@ module.exports = kind({
                     {kind: Button, ontap: 'submitForm', classes: 'submit', components: [
                         {kind: i18nContent, content: 'Go'}
                     ]},
-                    // {name: 'request', kind: Input, style: 'width: 100%; max-width: 300px', onblur: 'referenceTyped'},
                 ]},
                 {kind: EtcButtons}
 

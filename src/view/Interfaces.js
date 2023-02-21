@@ -71,6 +71,9 @@ module.exports = {
         
         // Classic Advanced 
         //      Advanced form used by classic forms
-        'ClassicAdvanced': require('./interfaces/classic/Advanced')
-    
+        'ClassicAdvanced': require('./interfaces/classic/Advanced'),
+
+    // Custom forms / interfaces
+
+        'CustomUserFriendly2BookSel': require('./interfaces/custom/UserFriendly2BookSel'),    
 };

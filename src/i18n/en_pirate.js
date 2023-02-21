@@ -39,6 +39,7 @@ module.exports = {
     'Restrict search to': 'Prevent ye maties from searchin\' outside of', 
     'Word Search' : 'Pyllage ye wordes',
     'Clear Form': 'Sweepe ye Decke', // 4.5
+    'Select Book and Chapter:' : 'Select ye booke and cheste:', // 5.2
 
     // Context Links
     'Show full chapter': 'Reveale all thee cheste contents',

@@ -51,6 +51,13 @@ var biblesupersearch_config_options = {
     // Default: 'rank|name',
     "bibleSorting": 'rank|name',          
 
+    // Landing Reference(s), 
+    // Any valid Bible reference, ie 'John 3:16; Romans 3:23; Genesis 1'
+    // When app is first loaded, these reference(s) will automatically be retrieved
+    // Form will remain blank, and URL will not change.
+    "landingReference": '',
+
+
     // Bible SuperSearch skin / interface   (string)
     //      Select an interface below by uncommenting the one that you want to use
     //      For a complete list, please see our demo page
@@ -129,6 +136,11 @@ var biblesupersearch_config_options = {
             // Classic Advanced 
             //      Advanced form used by classic forms
             // "interface": 'ClassicAdvanced',
+
+        // Custom Forms - made per customer request
+        
+            // Classic User Friendly 2 with Book Selector
+            // "interface": 'CustomUserFriendly2BookSel', 
 
     // (End interface options)
 

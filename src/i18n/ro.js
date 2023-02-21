@@ -45,6 +45,7 @@ module.exports = {
     'Restrict search to': 'Limitați Căutarea', 
     'Word Search': 'Căutați ',
     'Clear Form': 'Resetați Forma', // 4.5
+    'Select Book and Chapter:' : 'Selectați Carte și capitol:', // 5.2
 
     // Context Links
     'Show full chapter': 'Afișați întregul capitol',

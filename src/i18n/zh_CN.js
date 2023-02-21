@@ -16,7 +16,7 @@ module.exports = {
     'Loading, please wait': '加载中，请等待',
 
     // Search Forms
-    'Select Bible version(s)': '超级圣经搜索 ',
+    'Select Bible version(s)': '超级圣经搜索',
     'Search': '搜索',
     'Search the Bible': '搜索圣经',
     'Go': '开始搜索',
@@ -45,7 +45,7 @@ module.exports = {
     'Restrict search to': '限制搜索范围在', 
     'Word Search': '搜索经文',
     'Clear Form': '清除表格', // 4.5
-
+    'Select Book and Chapter:' : '选择书籍和章节', // 5.2
 
 
     // Context Links
