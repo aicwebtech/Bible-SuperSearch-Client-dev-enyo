@@ -139,7 +139,6 @@ module.exports = kind({
 
         // To make this backward-compatible, we look at the legacy config if it's not undefined
         var effectiveConfig = (softConfig == null) ? displayConfig : softConfig;
-        this.log('effectiveConfig', effectiveConfig);
 
         if(effectiveConfig == 'none') {
             return true; // does NOT toggle based on this.onlyExtraButtons
