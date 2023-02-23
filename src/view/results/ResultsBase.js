@@ -254,8 +254,8 @@ module.exports = kind({
         return this.processAssembleSingleVerse(ref, verse);
     },
     proccessSingleVerseReference: function(passage, verse) {
-        var book = this.app.getBook(passage.book_id);
-        return book.name + ' ' + verse.chapter + ':' + verse.verse;
+        var bookName = this.app.getLocaleBookName(passage.book_id, passage.book_name);
+        return bookName + ' ' + verse.chapter + ':' + verse.verse;
     },    
     processPassageVerseContent: function(passage, verse) {
         var ref = this.proccessPassageVerseReference(passage, verse);

@@ -3,7 +3,7 @@ var FormBase = require('./FormBase');
 var Button = require('enyo/Button');
 var Input = require('../components/Locale/i18nInput');
 var i18n = require('../components/Locale/i18nContent');
-var Bible = require('../components/BibleSelect/SingleSelect');
+var Bible = require('../components/BibleSelect/MultiSelect');
 
 module.exports = kind({
     name: 'MinimalWithBibleWide',
@@ -13,7 +13,15 @@ module.exports = kind({
         { classes: 'single_line_bible', components: [
             {kind: Input, name: 'request', classes: 'request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
             {tag: 'span', classes: 'bible_selector', components: [
-                {kind: Bible, name: 'bible', parallelLimit: 1, shortWidthThreshold: 800, shortWidthWidth: 140, width: 280},
+                {
+                    kind: Bible, 
+                    name: 'bible', 
+                    tag: 'span',
+                    parallelLimit: 1, 
+                    selectorShortWidthThreshold: 800, 
+                    selectorShortWidth: 140, 
+                    selectorWidth: 280
+                },
                 {kind: Button, ontap: 'submitForm', components: [
                     {kind: i18n, content: 'Go'}
                 ]}

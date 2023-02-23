@@ -3,7 +3,7 @@ var FormBase = require('./FormBase');
 var Button = require('enyo/Button');
 var Input = require('enyo/Input');
 var Checkbox = require('enyo/Checkbox');
-var BibleSelect = require('../components/BibleSelect/SingleSelect');
+var BibleSelect = require('../components/BibleSelect/MultiSelect');
 var BookSelect = require('../components/BookSelect');
 var FormSection = require('./FormSection');
 var EtcButtons = require('../components/DialogEtcButtons/DialogEtcButtonsHtml');
@@ -21,8 +21,10 @@ module.exports = kind({
             components: [
                 {classes: 'biblesupersearch_center_element', components: [
                     {
-                        name: 'bible', 
                         kind: BibleSelect, 
+                        name: 'bible', 
+                        tag: 'span',
+                        parallelLimit: 1,
                         selectorWidth: 300,
                         classes: 'inline_block'
                     },

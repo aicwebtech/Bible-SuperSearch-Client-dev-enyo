@@ -38,7 +38,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.1.0',
+    applicationVersion: '5.1.2',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -711,6 +711,24 @@ var App = Application.kind({
     getBook: function(id) {
         return this.statics.books[id - 1] || null;
     },
+    getLocaleBookName: function(id, fallbackName, useShortname) {
+        var locale = this.get('locale');
+        useShortname = useShortname || false;
+        var nameField = useShortname ? 'shortname' : 'name';
+
+        if(locale == 'en' || this.localeDatasets[locale].bibleBooksSource == 'api') {
+            return fallbackName;
+        }
+
+        var book = this.localeBibleBooks[locale][id - 1];
+        book = book || this.getBook(id);
+
+        if(book && useShortname) {
+            return book.shortname || book.name;
+        }
+
+        return book ? book.name : fallbackName;
+    },
     getNumberOfEnabledBibles: function() {
         if(this.numberOfEnabledBibles) {
             return this.numberOfEnabledBibles;
@@ -798,6 +816,11 @@ var App = Application.kind({
         }
         
         if(found && locale != defaultLocale) {
+            if(localeData.bibleBooks && localeData.bibleBooks.length >= 66) {
+                this._initLocaleBibleBooks(locale, localeData, localeData.bibleBooks, 'locale');
+                return;
+            }
+
             // Load Bible book list
             var ajax = new Ajax({
                 url: this.configs.apiUrl + '/books?language=' + language,
@@ -807,6 +830,9 @@ var App = Application.kind({
             var ajaxData = {};
             ajax.go(ajaxData);
             ajax.response(this, function(inSender, inResponse) {
+                this._initLocaleBibleBooks(locale, localeData, inResponse.results, 'api');
+                return;
+
                 this.localeBibleBooks[locale] = inResponse.results; // ??
 
                 for(key in inResponse.results) {
@@ -829,6 +855,27 @@ var App = Application.kind({
             });    
         }
 
+        this.localeDatasets[locale] = utils.clone(localeData);
+        this._localeChangedHelper(locale);
+    },
+    _initLocaleBibleBooks: function(locale, localeData, bookList, source) {
+
+        for(key in bookList) {
+            var book = bookList[key],
+                bookEn = this.localeBibleBooks.en[key] || null;
+
+            if(typeof localeData[ bookEn.name ] == 'undefined') {
+                localeData[ bookEn.name ] = book.name;
+            }
+
+            if(source == 'locale') {
+                bookList[key].chapters = bookEn.chapters;
+                // bookList[key].chapter_verses = bookEn.chapter_verses;
+            }
+        }
+
+        localeData.bibleBooksSource = source;
+        this.localeBibleBooks[locale] = bookList;
         this.localeDatasets[locale] = utils.clone(localeData);
         this._localeChangedHelper(locale);
     },

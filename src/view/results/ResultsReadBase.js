@@ -128,7 +128,7 @@ module.exports = kind({
                 {
                     tag: 'th', 
                     attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
-                    content: pd.book_name + ' ' + pd.chapter_verse
+                    content: this.app.getLocaleBookName(pd.book_id, pd.book_name) + ' ' + pd.chapter_verse
                 }
             ]
         });
@@ -229,11 +229,12 @@ module.exports = kind({
     },
     proccessSingleVerseReference: function(passage, verse) {
         var book = this.app.getBook(passage.book_id);
-        var verseLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, passage.book_name, verse.chapter, verse.verse);
-        var chapterLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, passage.book_name, verse.chapter);
-        var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, passage.book_name, verse.chapter, verse.verse);
+        var bookName = this.app.getLocaleBookName(passage.book_id, passage.book_name);
+        var verseLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, bookName, verse.chapter, verse.verse);
+        var chapterLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, bookName, verse.chapter);
+        var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, bookName, verse.chapter, verse.verse);
 
-        var html =  '<a href="' + chapterLink + '" title="Show this Chapter" class="std_link">' + passage.book_name + ' ' + verse.chapter + '</a>:';
+        var html =  '<a href="' + chapterLink + '" title="Show this Chapter" class="std_link">' + bookName + ' ' + verse.chapter + '</a>:';
             html += '<a href="' + contextLink + '" title="Show in Context" class="std_link">' + verse.verse + '</a>';
 
         // return html; 
@@ -247,7 +248,7 @@ module.exports = kind({
             contextText = this.app.t('Context');
 
         var html = '';
-            html += '<a href="' + verseLink + '" title="' + verseTitle + '" class="std_link">' + passage.book_name + ' ' + verse.chapter + ':' + verse.verse + '</a>';
+            html += '<a href="' + verseLink + '" title="' + verseTitle + '" class="std_link">' + bookName + ' ' + verse.chapter + ':' + verse.verse + '</a>';
             html += '&nbsp; <sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + contextText + '</a></sup>';           
             html += '&nbsp; <sup>' + '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a></sup>';
             // verse.linksHtml += '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a>&nbsp; &nbsp;';

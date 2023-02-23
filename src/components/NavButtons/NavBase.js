@@ -38,46 +38,49 @@ module.exports = kind({
             nc_text = null,
             pc_text = null,
             cc_text = null,
+            bookName = null,
             bible = (this.bibles) ? this.bibles : '';
 
-        // this.log('books', this.app.statics.books);
-        // this.log('nav', this.nav);
-        // return;
-
+        // Next Book
         if(typeof this.nav.nb != 'undefined' && this.nav.nb != null) {
-            var nbook = this.app.statics.books[this.nav.nb - 1];
-            nb_link = this.linkBuilder.buildReferenceLink('p', bible, this.nav.next_book, 1);
+            bookName = this.app.getLocaleBookName(this.nav.nb, this.nav.next_book);
+            nb_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, 1);
             nb_icon = this.iconDir + this.nextBook;
-            nb_text = this.nav.next_book;
+            nb_text = bookName;
         }         
 
+        // Prev Book
         if(typeof this.nav.pb != 'undefined' && this.nav.pb != null) {
-            var pbook = this.app.statics.books[this.nav.pb - 1];
-            pb_link = this.linkBuilder.buildReferenceLink('p', bible, this.nav.prev_book, 1);
+            bookName = this.app.getLocaleBookName(this.nav.pb, this.nav.prev_book);
+            pb_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, 1);
             pb_icon = this.iconDir + this.prevBook;
-            pb_text = this.nav.prev_book;
+            pb_text = bookName;
         }         
 
+        // Prev Chapter
         if(typeof this.nav.pcc != 'undefined' && this.nav.pcc != null) {
-            var pcbook = this.app.statics.books[this.nav.pcb - 1];
-            pc_link = this.linkBuilder.buildReferenceLink('p', bible, this.nav.pcb_name, this.nav.pcc);
+            bookName = this.app.getLocaleBookName(this.nav.pcb, this.nav.pcb_name);
+            pc_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, this.nav.pcc);
             pc_icon = this.iconDir + this.prevChapter;
-            pc_text = this.nav.pcb_name + ' ' + this.nav.pcc;
+            pc_text = bookName + ' ' + this.nav.pcc;
         }         
 
+        // Next Chapter
         if(typeof this.nav.ncc != 'undefined' && this.nav.ncc != null) {
-            var ncbook = this.app.statics.books[this.nav.ncb - 1];
-            nc_link = this.linkBuilder.buildReferenceLink('p', bible, this.nav.ncb_name, this.nav.ncc);
+            bookName = this.app.getLocaleBookName(this.nav.ncb, this.nav.ncb_name);
+            nc_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, this.nav.ncc);
             nc_icon = this.iconDir + this.nextChapter;
-            nc_text = this.nav.ncb_name + ' ' + this.nav.ncc;
+            nc_text = bookName + ' ' + this.nav.ncc;
         }         
 
+        // Current Chapter
         if(typeof this.nav.ccc != 'undefined' && this.nav.ccc != null) {
-            var ccbook = this.app.statics.books[this.nav.ccb - 1];
-            cc_link = this.linkBuilder.buildReferenceLink('p', bible, this.nav.ccb_name, this.nav.ccc);
+            ookName = this.app.getLocaleBookName(this.nav.ccb, this.nav.ccb_name);
+            cc_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, this.nav.ccc);
             cc_icon = this.iconDir + this.currentChapter;
-            cc_text = this.nav.ccb_name + ' ' + this.nav.ccc;
+            cc_text = bookName + ' ' + this.nav.ccc;
         }
+
 
         this.createComponent({
             kind:  ImageLink,

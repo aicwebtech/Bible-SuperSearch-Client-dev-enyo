@@ -119,6 +119,8 @@ module.exports = kind({
 
         if(selected) {
             this.$.Chapter.setSelectedByValue(selected);
+        } else {
+            this.$.Chapter.setSelected(0);
         }
     },
 
@@ -135,6 +137,7 @@ module.exports = kind({
 
         if(!value || value == '') {
             this._initDefault();
+            this.render();
             return;
         }
 
@@ -202,9 +205,9 @@ module.exports = kind({
         if(this.defaultBook) {
             defaultChapter = this.defaultChapter || 1;
             this.$.Book.setSelectedByValue(this.defaultBook);
-            this._createChapterList(this.defaultChapter);
+            this._createChapterList(defaultChapter);
             var Book = this._getBookById(this.defaultBook);
-            var val = Book.name + ' ' + this.defaultChapter;
+            var val = Book.name + ' ' + defaultChapter;
         } else {
             var val = '';
             this.$.Book.setSelected(0);
