@@ -85,6 +85,7 @@ module.exports = kind({
             passageLayout = this.app.UserConfig.get('copy_passage_format'),
             br = (omitExtraBr) ? this.newLine : this.newLine + this.newLine,
             bookName = this.app.UserConfig.get('copy_abbr_book') && passage.book_short ? passage.book_short : passage.book_name,
+            bookName = this.app.getLocaleBookName(passage.book_id, bookName, this.app.UserConfig.get('copy_abbr_book'));
             reference = bookName + ' ' + passage.chapter_verse;
 
         if(passageLayout == 'reference_passage') {        
@@ -206,6 +207,7 @@ module.exports = kind({
     },
     proccessSingleVerseReference: function(passage, verse) {
         var bookName = this.app.UserConfig.get('copy_abbr_book') && passage.book_short ? passage.book_short : passage.book_name;
+        bookName = this.app.getLocaleBookName(passage.book_id, bookName, this.app.UserConfig.get('copy_abbr_book'));
         return bookName + ' ' + verse.chapter + ':' + verse.verse;
     },    
 });

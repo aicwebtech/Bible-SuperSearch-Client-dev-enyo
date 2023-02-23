@@ -1,5 +1,8 @@
 Bible SuperSearch Universal Client Changelog
 
+= 5.1.2
+* Fixed setting default Bible with single Bible selector when clearing form
+* Added ability to specify Bible book list as part of locale translation file.
 
 = 5.1.1
 * Adding ability to competely hide extra buttons

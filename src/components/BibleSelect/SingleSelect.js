@@ -5,6 +5,8 @@ var OptionGroup = require('enyo.OptionGroup');
 var i18n = require('../Locale/i18nContent');
 // var Option = require('enyo.Option');
 
+// NOTICE: As of 23 Feb 2023, do not use this directly.  Use the MultiSelect even if only one Bible can be selected!
+
 module.exports = kind({
     name: 'SingleSelect',
     kind: Sel,
@@ -19,6 +21,7 @@ module.exports = kind({
     _currentGroup: null,
     downloadableOnly: false,
     defaultNull: false,
+    renderNeeded: false,
 
     handlers: {
         resize: 'handleResize',
@@ -81,10 +84,6 @@ module.exports = kind({
         this.checkShort();
         this.resetValue();
     },
-    // rendered: function() {
-    //     this.inherited(arguments);
-    //     this.resetValue();
-    // },
     resetValue: function() {
         // this.log('SINGSEL parallelNumber', this.parallelNumber, this.app.configs.defaultBible);
 
@@ -224,14 +223,11 @@ module.exports = kind({
         var width = (is) ? this.shortWidthWidth : this.width;
         var comp = this.getClientControls();
         this._isShortChangedHelper(comp, is);
-
-        // this.app.debug && this.log('width', width);
+        this.renderNeeded = true;
 
         if(width && width != 0) {
-            // this.log('applying max-width', width.toString());
             this.applyStyle('max-width', null);
             this.applyStyle('max-width', width.toString() + 'px' );
-            this.render();
         }
     },
     _isShortChangedHelper: function(components, isShort) {
@@ -250,11 +246,15 @@ module.exports = kind({
         var isShort = (this.shortWidthThreshold <= window.innerWidth) ? false : true;
         isShort = (this.alwaysShort) ? true : isShort;
         this.set('isShort', isShort);
-        // this.log('shortWidthThreshold', this.shortWidthThreshold);
-        // this.log('alwaysShort', this.alwaysShort);
-        // this.log('isShort', isShort);
     },
     handleResize: function(inSender, inEvent) {
         this.checkShort();
+        this.renderIfNeeded();
+    }, 
+    renderIfNeeded: function() {
+        if(this.renderNeeded) {
+            this.render();
+            this.renderNeeded = false;
+        }
     }
 });

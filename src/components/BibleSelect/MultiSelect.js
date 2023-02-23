@@ -11,6 +11,7 @@ module.exports = kind({
     selectorWidth: 0,   // Pixels, 0 means automatic
     selectorShortWidth: 0,
     selectorShortWidthThreshold: 250,
+    selectorAlwaysShort: false,
     selectorClasses: '',
     valueUnfiltered: [],
     downloadableOnly: false,
@@ -22,10 +23,10 @@ module.exports = kind({
         onSelectorAdded: '',
     },
 
-    components: [
-        {name: 'Container', tag: 'div'},
-        {name: 'Add', kind: Button, content: 'Add Bible', ontap: 'addSelector', components: [{kind: i18n, content: 'Add Bible'}]}
-    ],
+    // components: [
+    //     {name: 'Container', tag: 'div'},
+    //     {name: 'Add', kind: Button, content: 'Add Bible', ontap: 'addSelector', components: [{kind: i18n, content: 'Add Bible'}]}
+    // ],
 
     handlers: {
         onClearFormWaterfall: 'resetValue'
@@ -41,6 +42,14 @@ module.exports = kind({
         var num = (this.parallelStart >= 1) ? this.parallelStart : 1;
         var bibleCount = this.app.getNumberOfEnabledBibles();
         this.parallelLimit = (bibleCount < this.parallelLimit) ? bibleCount : this.parallelLimit;
+
+        var conTag = (this.tag == 'span') ? 'span' : 'div';
+
+        this.createComponent({name: 'Container', tag: conTag});
+
+        //if(this.parallelLimit > 1) {
+            this.createComponent({name: 'Add', kind: Button, content: 'Add Bible', ontap: 'addSelector', components: [{kind: i18n, content: 'Add Bible'}]});
+        //}
 
         for(var i = 1; i <= num; i++) {
             this._addSelectorHelper();
@@ -71,10 +80,10 @@ module.exports = kind({
         this.app.debug && this.log('parallelLimit', this.parallelLimit);
 
         if(this.parallelNumber >= this.parallelLimit) {
-            this.$.Add.set('showing', false);
+            this.$.Add && this.$.Add.set('showing', false);
         }
         else if(this.parallelNumber < this.parallelLimit) {
-            // this.$.Add.set('showing', true);
+            // this.$.Add && this.$.Add.set('showing', true);
         }
 
         if(width != 0) {
@@ -91,6 +100,7 @@ module.exports = kind({
                 width: width,
                 shortWidthWidth: shortWidth,
                 shortWidthThreshold: this.selectorShortWidthThreshold,
+                alwaysShort: this.selectorAlwaysShort,
                 downloadableOnly: this.downloadableOnly,
                 defaultNull: this.defaultNull,
 
@@ -222,7 +232,7 @@ module.exports = kind({
         }
 
         var showAdd  = (this.parallelNumber >= this.parallelLimit) ? false : true;
-        this.$.Add.set('showing', showAdd);
+        this.$.Add && this.$.Add.set('showing', showAdd);
     },
     parallelStartChanged: function(was, is) {
         this.parallelStartBuild();
@@ -273,7 +283,7 @@ module.exports = kind({
     disabledChanged: function(was, is) {
         var disabled = (is) ? true : false;
 
-        this.$.Add.set('disabled', disabled);
+        this.$.Add && this.$.Add.set('disabled', disabled);
         
         var components = this.$.Container.getClientControls();
 

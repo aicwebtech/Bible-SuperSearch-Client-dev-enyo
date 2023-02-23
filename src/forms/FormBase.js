@@ -192,6 +192,15 @@ module.exports = kind({
         }
         
         this._formDataAsSubmitted = utils.clone(formData);
+
+        if(formData.reference) {
+            formData.reference = this.mapPassages(formData.reference);
+        }        
+
+        if(formData.request) {
+            formData.request = this.mapPassages(formData.request);
+        }
+
         formData.bible = JSON.stringify(formData.bible);
         formData.highlight = true;
         formData.data_format = 'passage';
@@ -202,6 +211,42 @@ module.exports = kind({
         
         // formData.page = this.get('page');
         return formData;
+    },
+
+    mapPassages: function(reference) {
+        var locale = this.app.get('locale');
+
+        if(locale == 'en' || this.app.localeDatasets[locale].bibleBooksSource == 'api' || !this.Passage.isPassage(reference)) {
+            return reference;
+        }
+
+        var passages = this.Passage.explodeReferences(reference, true);
+
+        if(passages.length == 0) {
+            return reference;
+        }
+
+        var referenceNew = '';
+        var BookList = this.app.localeBibleBooks[locale] || this.app.statics.books;
+
+        passages.forEach(function(item) {
+            var book = BookList.find(function(bookItem) {
+                if(item.book == bookItem.name || item.book == bookItem.shortname) {
+                    return true;
+                }
+
+                if(bookItem.name.indexOf(item.book) == 0) {
+                    return true;
+                }
+
+                return false;
+            });
+
+            var bookName = book ? book.id + 'B' : item.book;
+            referenceNew += bookName + ' ' + item.chapter_verse + '; ';
+        });
+
+        return referenceNew;
     },
 
     // Override to add defaults to formData, ect
