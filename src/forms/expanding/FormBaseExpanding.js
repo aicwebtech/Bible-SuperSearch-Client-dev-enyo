@@ -28,7 +28,8 @@ module.exports = kind({
     handlers: {
         onDrawerAnimationEnd: 'handleEndAnimation',
         onDrawerAnimationStep: 'handleStepAnimation',
-        onFormFieldChanged: 'handleFormFieldChanged'
+        onFormFieldChanged: 'handleFormFieldChanged',
+        onSpecialBibleChange: 'handleBibleChangeSpecial'
     },
 
     create: function() {
@@ -122,6 +123,13 @@ module.exports = kind({
                 // this.$.bible.parallelCleanup();
                 this.$.bible.set('value', utils.clone(inEvent.value));
             }
+        }
+    },
+    handleBibleChangeSpecial: function(inSender, inEvent) {
+        if( Array.isArray(inEvent.value) && inEvent.value.length > this.parallelBibleSettings.contracted.parallelLimit) {
+            this.app.debug && this.log('expanding because of parallel bibles');
+            this.set('expanded', true);
+            //this.$.bible.set('value', utils.clone(inEvent.value)); // ??
         }
     }
 });
