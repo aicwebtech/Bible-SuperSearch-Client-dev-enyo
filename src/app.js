@@ -52,6 +52,7 @@ var App = Application.kind({
     statics: {},
     maximumBiblesDisplayed: 8,  // The absolute maximum number of parallel bibles that can be possibly displayed
     bibleDisplayLimit: 8,       // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
+    defaultBibles: [],
     resetView: true,
     appLoaded: false,
     ajaxLoadingDelayTimer: null,
@@ -238,6 +239,12 @@ var App = Application.kind({
             if(Pagers[this.configs.pager]) {
                 this.pagerView = Pagers[this.configs.pager];
             }
+        }
+
+        if(this.configs.defaultBible) {
+            this.defaultBibles = (typeof this.configs.defaultBible == 'string') ? this.configs.defaultBible.split(',') : this.configs.defaultBible;
+        } else {
+            this.defaultBibles = ['kjv'];
         }
 
         // Render 'Loading' view
@@ -712,12 +719,20 @@ var App = Application.kind({
         return this.statics.books[id - 1] || null;
     },
     getLocaleBookName: function(id, fallbackName, useShortname) {
+        if(this.configs.bibleBooksLanguageSource == 'bible') {
+            return fallbackName;
+        }
+
+        // :todo: make this a config??
+        // Option 1: Display book names in language selected in UI (Reccomended)
+        // Option 2: Display book names in language of First selected Bible (Legacy - not fully implemented)
+
         var locale = this.get('locale');
         useShortname = useShortname || false;
         var nameField = useShortname ? 'shortname' : 'name';
 
         if(locale == 'en' || this.localeDatasets[locale].bibleBooksSource == 'api') {
-            return fallbackName;
+            //return fallbackName;
         }
 
         var book = this.localeBibleBooks[locale][id - 1];

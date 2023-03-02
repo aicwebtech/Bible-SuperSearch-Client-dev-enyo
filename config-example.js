@@ -12,6 +12,12 @@ var biblesupersearch_config_options = {
 
     'language' : 'en',
 
+    // Bible books language source
+    // 'ui': Display book names in language selected in UI (Reccomended) (Default)
+    // 'bible' : Display book names in language of First selected Bible (Legacy - was never fully implemented)
+    'bibleBooksLanguageSource': 'ui', 
+
+
     // Default Bible                        (string)
     //
     //      Automatically selected in first Bible selector

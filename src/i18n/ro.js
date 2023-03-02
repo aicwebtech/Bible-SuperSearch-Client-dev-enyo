@@ -360,4 +360,337 @@ module.exports = {
     'word': 'cuvânt',
     'words': 'cuvinte',
     'truth': 'adevăr',
+
+    'bibleBooks': [
+        {
+          "id": 1,
+          "name": "Geneza",
+          "shortname": null
+        },
+        {
+          "id": 2,
+          "name": "Exod",
+          "shortname": null
+        },
+        {
+          "id": 3,
+          "name": "Levitic",
+          "shortname": null
+        },
+        {
+          "id": 4,
+          "name": "Numeri",
+          "shortname": null
+        },
+        {
+          "id": 5,
+          "name": "Deuteronom",
+          "shortname": null
+        },
+        {
+          "id": 6,
+          "name": "Iosua",
+          "shortname": null
+        },
+        {
+          "id": 7,
+          "name": "Judecatori",
+          "shortname": null
+        },
+        {
+          "id": 8,
+          "name": "Rut",
+          "shortname": null
+        },
+        {
+          "id": 9,
+          "name": "1 Samuel",
+          "shortname": null
+        },
+        {
+          "id": 10,
+          "name": "2 Samuel",
+          "shortname": null
+        },
+        {
+          "id": 11,
+          "name": "1 Imparati",
+          "shortname": null
+        },
+        {
+          "id": 12,
+          "name": "2 Imparati",
+          "shortname": null
+        },
+        {
+          "id": 13,
+          "name": "1 Cronici",
+          "shortname": null
+        },
+        {
+          "id": 14,
+          "name": "2 Cronici",
+          "shortname": null
+        },
+        {
+          "id": 15,
+          "name": "Ezra",
+          "shortname": null
+        },
+        {
+          "id": 16,
+          "name": "Neemia",
+          "shortname": null
+        },
+        {
+          "id": 17,
+          "name": "Estera",
+          "shortname": null
+        },
+        {
+          "id": 18,
+          "name": "Iov",
+          "shortname": null
+        },
+        {
+          "id": 19,
+          "name": "Psalmi",
+          "shortname": null
+        },
+        {
+          "id": 20,
+          "name": "Proverbe",
+          "shortname": null
+        },
+        {
+          "id": 21,
+          "name": "Ecclesiast",
+          "shortname": null
+        },
+        {
+          "id": 22,
+          "name": "Cantarea Cantarilor",
+          "shortname": null
+        },
+        {
+          "id": 23,
+          "name": "Isaia",
+          "shortname": null
+        },
+        {
+          "id": 24,
+          "name": "Ieremia",
+          "shortname": null
+        },
+        {
+          "id": 25,
+          "name": "Plângeri",
+          "shortname": null
+        },
+        {
+          "id": 26,
+          "name": "Ezechiel",
+          "shortname": null
+        },
+        {
+          "id": 27,
+          "name": "Daniel",
+          "shortname": null
+        },
+        {
+          "id": 28,
+          "name": "Osea",
+          "shortname": null
+        },
+        {
+          "id": 29,
+          "name": "Ioel",
+          "shortname": null
+        },
+        {
+          "id": 30,
+          "name": "Amos",
+          "shortname": null
+        },
+        {
+          "id": 31,
+          "name": "Obadia",
+          "shortname": null
+        },
+        {
+          "id": 32,
+          "name": "Iona",
+          "shortname": null
+        },
+        {
+          "id": 33,
+          "name": "Mica",
+          "shortname": null
+        },
+        {
+          "id": 34,
+          "name": "Naum",
+          "shortname": null
+        },
+        {
+          "id": 35,
+          "name": "Habacuc",
+          "shortname": null
+        },
+        {
+          "id": 36,
+          "name": "Tefania",
+          "shortname": null
+        },
+        {
+          "id": 37,
+          "name": "Hagai",
+          "shortname": null
+        },
+        {
+          "id": 38,
+          "name": "Zaharia",
+          "shortname": null
+        },
+        {
+          "id": 39,
+          "name": "Maleahi",
+          "shortname": null
+        },
+        {
+          "id": 40,
+          "name": "Matei",
+          "shortname": null
+        },
+        {
+          "id": 41,
+          "name": "Marcu",
+          "shortname": null
+        },
+        {
+          "id": 42,
+          "name": "Luca",
+          "shortname": null
+        },
+        {
+          "id": 43,
+          "name": "Ioan",
+          "shortname": null
+        },
+        {
+          "id": 44,
+          "name": "Faptele Apostolilor",
+          "shortname": null
+        },
+        {
+          "id": 45,
+          "name": "Romani",
+          "shortname": null
+        },
+        {
+          "id": 46,
+          "name": "1 Corinteni",
+          "shortname": null
+        },
+        {
+          "id": 47,
+          "name": "2 Corinteni",
+          "shortname": null
+        },
+        {
+          "id": 48,
+          "name": "Galateni",
+          "shortname": null
+        },
+        {
+          "id": 49,
+          "name": "Efeseni",
+          "shortname": null
+        },
+        {
+          "id": 50,
+          "name": "Filipeni",
+          "shortname": null
+        },
+        {
+          "id": 51,
+          "name": "Coloseni",
+          "shortname": null
+        },
+        {
+          "id": 52,
+          "name": "1 Tesaloniceni",
+          "shortname": null
+        },
+        {
+          "id": 53,
+          "name": "2 Tesaloniceni",
+          "shortname": null
+        },
+        {
+          "id": 54,
+          "name": "1 Timotei",
+          "shortname": null
+        },
+        {
+          "id": 55,
+          "name": "2 Timotei",
+          "shortname": null
+        },
+        {
+          "id": 56,
+          "name": "Tit",
+          "shortname": null
+        },
+        {
+          "id": 57,
+          "name": "Filimon",
+          "shortname": null
+        },
+        {
+          "id": 58,
+          "name": "Evrei",
+          "shortname": null
+        },
+        {
+          "id": 59,
+          "name": "Iacob",
+          "shortname": null
+        },
+        {
+          "id": 60,
+          "name": "1 Petru",
+          "shortname": null
+        },
+        {
+          "id": 61,
+          "name": "2 Petru",
+          "shortname": null
+        },
+        {
+          "id": 62,
+          "name": "1 Ioan",
+          "shortname": null
+        },
+        {
+          "id": 63,
+          "name": "2 Ioan",
+          "shortname": null
+        },
+        {
+          "id": 64,
+          "name": "3 Ioan",
+          "shortname": null
+        },
+        {
+          "id": 65,
+          "name": "Iuda",
+          "shortname": null
+        },
+        {
+          "id": 66,
+          "name": "Apocalipsa",
+          "shortname": null
+        }
+    ]
 };

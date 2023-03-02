@@ -75,6 +75,7 @@ module.exports = kind({
 
         // Break references to formData on other forms?
         this.clearForm(); 
+        this.populateDefaults();
         this.submitDefault();
     },
     submitDefault: function() {
@@ -103,6 +104,11 @@ module.exports = kind({
 
         this.waterfall('onClearFormWaterfall');
         this.clearHash();
+        this.populateDefaults();
+        
+    },
+    populateDefaults: function() {
+        //this.$.Bible && this.$.Bible.set('value', ['tr', 'kjv', 'tyndale']);
     },
     // Submit form - via form submit button
     submitForm: function() {
@@ -230,17 +236,29 @@ module.exports = kind({
         var BookList = this.app.localeBibleBooks[locale] || this.app.statics.books;
 
         passages.forEach(function(item) {
+            // Pass 1: Exact match
             var book = BookList.find(function(bookItem) {
                 if(item.book == bookItem.name || item.book == bookItem.shortname) {
                     return true;
                 }
 
-                if(bookItem.name.indexOf(item.book) == 0) {
+                if(bookItem.matching && bookItem.matching.includes && bookItem.matching.includes(item.book)) {
                     return true;
                 }
 
                 return false;
             });
+
+            // Pass 2: Partial match
+            if(!book) {
+                book = BookList.find(function(bookItem) {
+                    if(bookItem.name.indexOf(item.book) == 0) {
+                        return true;
+                    }
+
+                    return false;
+                });
+            }
 
             var bookName = book ? book.id + 'B' : item.book;
             referenceNew += bookName + ' ' + item.chapter_verse + '; ';

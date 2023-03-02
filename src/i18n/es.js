@@ -354,4 +354,337 @@ module.exports = {
     'word': 'palabra',
     'words': 'palabras',
     'truth': 'verdad',
+
+    'bibleBooks': [
+        {
+          "id": 1,
+          "name": "Génesis",
+          "shortname": null
+        },
+        {
+          "id": 2,
+          "name": "Éxodo",
+          "shortname": null
+        },
+        {
+          "id": 3,
+          "name": "Levítico",
+          "shortname": null
+        },
+        {
+          "id": 4,
+          "name": "Números",
+          "shortname": null
+        },
+        {
+          "id": 5,
+          "name": "Deuteronomio",
+          "shortname": null
+        },
+        {
+          "id": 6,
+          "name": "Josué",
+          "shortname": null
+        },
+        {
+          "id": 7,
+          "name": "Jueces",
+          "shortname": null
+        },
+        {
+          "id": 8,
+          "name": "Rut",
+          "shortname": null
+        },
+        {
+          "id": 9,
+          "name": "1 Samuel",
+          "shortname": null
+        },
+        {
+          "id": 10,
+          "name": "2 Samuel",
+          "shortname": null
+        },
+        {
+          "id": 11,
+          "name": "1 Reyes",
+          "shortname": null
+        },
+        {
+          "id": 12,
+          "name": "2 Reyes",
+          "shortname": null
+        },
+        {
+          "id": 13,
+          "name": "1 Crónicas",
+          "shortname": null
+        },
+        {
+          "id": 14,
+          "name": "2 Crónicas",
+          "shortname": null
+        },
+        {
+          "id": 15,
+          "name": "Esdras",
+          "shortname": null
+        },
+        {
+          "id": 16,
+          "name": "Nehemías",
+          "shortname": null
+        },
+        {
+          "id": 17,
+          "name": "Esther",
+          "shortname": null
+        },
+        {
+          "id": 18,
+          "name": "Job",
+          "shortname": null
+        },
+        {
+          "id": 19,
+          "name": "Salmos",
+          "shortname": null
+        },
+        {
+          "id": 20,
+          "name": "Proverbios",
+          "shortname": null
+        },
+        {
+          "id": 21,
+          "name": "Ecclesiastés",
+          "shortname": null
+        },
+        {
+          "id": 22,
+          "name": "Canción de canciones",
+          "shortname": null
+        },
+        {
+          "id": 23,
+          "name": "Isaías",
+          "shortname": null
+        },
+        {
+          "id": 24,
+          "name": "Jeremías",
+          "shortname": null
+        },
+        {
+          "id": 25,
+          "name": "Lamentaciones",
+          "shortname": null
+        },
+        {
+          "id": 26,
+          "name": "Ezequiel",
+          "shortname": null
+        },
+        {
+          "id": 27,
+          "name": "Daniel",
+          "shortname": null
+        },
+        {
+          "id": 28,
+          "name": "Oseas",
+          "shortname": null
+        },
+        {
+          "id": 29,
+          "name": "Joel",
+          "shortname": null
+        },
+        {
+          "id": 30,
+          "name": "Amós",
+          "shortname": null
+        },
+        {
+          "id": 31,
+          "name": "Abdías",
+          "shortname": null
+        },
+        {
+          "id": 32,
+          "name": "Jonás",
+          "shortname": null
+        },
+        {
+          "id": 33,
+          "name": "Miqueas",
+          "shortname": null
+        },
+        {
+          "id": 34,
+          "name": "Nahum",
+          "shortname": null
+        },
+        {
+          "id": 35,
+          "name": "Habacuc",
+          "shortname": null
+        },
+        {
+          "id": 36,
+          "name": "Sofonías",
+          "shortname": null
+        },
+        {
+          "id": 37,
+          "name": "Haggeo",
+          "shortname": null
+        },
+        {
+          "id": 38,
+          "name": "Zacarías",
+          "shortname": null
+        },
+        {
+          "id": 39,
+          "name": "Malaquías",
+          "shortname": null
+        },
+        {
+          "id": 40,
+          "name": "Mateo",
+          "shortname": null
+        },
+        {
+          "id": 41,
+          "name": "Marcos",
+          "shortname": null
+        },
+        {
+          "id": 42,
+          "name": "Lucas",
+          "shortname": null
+        },
+        {
+          "id": 43,
+          "name": "Juan",
+          "shortname": null
+        },
+        {
+          "id": 44,
+          "name": "Hechos",
+          "shortname": null
+        },
+        {
+          "id": 45,
+          "name": "Romanos",
+          "shortname": null
+        },
+        {
+          "id": 46,
+          "name": "1 Corintios",
+          "shortname": null
+        },
+        {
+          "id": 47,
+          "name": "2 Corintios",
+          "shortname": null
+        },
+        {
+          "id": 48,
+          "name": "Gálatas",
+          "shortname": null
+        },
+        {
+          "id": 49,
+          "name": "Efesios",
+          "shortname": null
+        },
+        {
+          "id": 50,
+          "name": "Filipenses",
+          "shortname": null
+        },
+        {
+          "id": 51,
+          "name": "Colosenses",
+          "shortname": null
+        },
+        {
+          "id": 52,
+          "name": "1 Tesalonicenses",
+          "shortname": null
+        },
+        {
+          "id": 53,
+          "name": "2 Tesalonicenses",
+          "shortname": null
+        },
+        {
+          "id": 54,
+          "name": "1 Timoteo",
+          "shortname": null
+        },
+        {
+          "id": 55,
+          "name": "2 Timoteo",
+          "shortname": null
+        },
+        {
+          "id": 56,
+          "name": "Tito",
+          "shortname": null
+        },
+        {
+          "id": 57,
+          "name": "Filemón",
+          "shortname": null
+        },
+        {
+          "id": 58,
+          "name": "Hebreos",
+          "shortname": null
+        },
+        {
+          "id": 59,
+          "name": "Santiago",
+          "shortname": null
+        },
+        {
+          "id": 60,
+          "name": "1 Pedro",
+          "shortname": null
+        },
+        {
+          "id": 61,
+          "name": "2 Pedro",
+          "shortname": null
+        },
+        {
+          "id": 62,
+          "name": "1 Juan",
+          "shortname": null
+        },
+        {
+          "id": 63,
+          "name": "2 Juan",
+          "shortname": null
+        },
+        {
+          "id": 64,
+          "name": "3 Juan",
+          "shortname": null
+        },
+        {
+          "id": 65,
+          "name": "Judas",
+          "shortname": null
+        },
+        {
+          "id": 66,
+          "name": "Revelación",
+          "shortname": null
+        }
+    ]
 };

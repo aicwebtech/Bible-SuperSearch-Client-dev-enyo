@@ -54,11 +54,22 @@ module.exports = kind({
         for(var i = 1; i <= num; i++) {
             this._addSelectorHelper();
         }
+
+        this.resetValue();
+    },
+    rendered: function() {
+        this.inherited(arguments);
+        this.resetValue();
     },
     resetValue: function() {
         this.setValue([]);
         // this.parallelCleanup();
         this._resetSelectors();
+        //this._populateValueHelper(['kjv', 'tyndale', 'tr']);
+
+        this.app.debug && this.log('default', this.app.defaultBibles);
+        this.bubble('onSpecialBibleChange', {value: this.app.defaultBibles});
+        this.setValue(this.app.defaultBibles);
     },
     addSelector: function() {
         this.doAddSelectorTapped();
@@ -163,6 +174,7 @@ module.exports = kind({
     _populateValueHelper: function(is) {
         var valueFiltered = [];
         var selectorAdded = false;
+        this.waterfall('bibleSelectReset');
 
         if(!Array.isArray(is)) {
             is = [is];
@@ -188,7 +200,9 @@ module.exports = kind({
                 this.app.debug && this.log('selectorAdded', selectorAdded);
                 
                 if(added) {
+                    added.render();
                     added.set('value', value); // Why isn't this automatically selecting?
+                    this.app.debug && this.log('setting new selector value', value, name);
                     // added.setSelectedValue(value); 
                     valueFiltered.push(value);
                 }
@@ -212,8 +226,8 @@ module.exports = kind({
         // this.$.Select_3 && this.log('Select_3 exists');
         // this.log('parallelNumber', this.parallelNumber);
 
-        this.$.Select_0 && this.$.Select_0.applyDefaultValue();
-        this.$.Select_1 && this.$.Select_1.applyDefaultValue();
+        //this.$.Select_0 && this.$.Select_0.applyDefaultValue();
+        //this.$.Select_1 && this.$.Select_1.applyDefaultValue();
 
         this.app.debug && this.log('selectorAdded', selectorAdded);
 

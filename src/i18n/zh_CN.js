@@ -360,4 +360,337 @@ module.exports = {
     'word': '話',
     'words': '話语',
     'truth': '真理',
+
+    'bibleBooks': [
+        {
+          "id": 1,
+          "name": "创世记",
+          "shortname": "创"
+        },
+        {
+          "id": 2,
+          "name": "出埃及",
+          "shortname": "出"
+        },
+        {
+          "id": 3,
+          "name": "利未记",
+          "shortname": "利"
+        },
+        {
+          "id": 4,
+          "name": "民数记",
+          "shortname": "民"
+        },
+        {
+          "id": 5,
+          "name": "申命记",
+          "shortname": "申"
+        },
+        {
+          "id": 6,
+          "name": "约书亚记",
+          "shortname": "书"
+        },
+        {
+          "id": 7,
+          "name": "士师记",
+          "shortname": "士"
+        },
+        {
+          "id": 8,
+          "name": "路得记",
+          "shortname": "得"
+        },
+        {
+          "id": 9,
+          "name": "撒母耳记上",
+          "shortname": "撒上"
+        },
+        {
+          "id": 10,
+          "name": "撒母耳记下",
+          "shortname": "撒下"
+        },
+        {
+          "id": 11,
+          "name": "列王纪上",
+          "shortname": "王上"
+        },
+        {
+          "id": 12,
+          "name": "列王纪下",
+          "shortname": "王下"
+        },
+        {
+          "id": 13,
+          "name": "历代志上",
+          "shortname": "代上"
+        },
+        {
+          "id": 14,
+          "name": "历代志下",
+          "shortname": "代下"
+        },
+        {
+          "id": 15,
+          "name": "以斯拉记",
+          "shortname": "拉"
+        },
+        {
+          "id": 16,
+          "name": "尼希米记",
+          "shortname": "尼"
+        },
+        {
+          "id": 17,
+          "name": "以斯帖记",
+          "shortname": "斯"
+        },
+        {
+          "id": 18,
+          "name": "约伯记",
+          "shortname": "伯"
+        },
+        {
+          "id": 19,
+          "name": "诗篇",
+          "shortname": "诗"
+        },
+        {
+          "id": 20,
+          "name": "箴言",
+          "shortname": "箴"
+        },
+        {
+          "id": 21,
+          "name": "传道书",
+          "shortname": "传"
+        },
+        {
+          "id": 22,
+          "name": "雅歌",
+          "shortname": "歌"
+        },
+        {
+          "id": 23,
+          "name": "以赛亚书",
+          "shortname": "赛"
+        },
+        {
+          "id": 24,
+          "name": "耶利米书",
+          "shortname": "耶"
+        },
+        {
+          "id": 25,
+          "name": "耶利米哀歌",
+          "shortname": "哀"
+        },
+        {
+          "id": 26,
+          "name": "以西结书",
+          "shortname": "结"
+        },
+        {
+          "id": 27,
+          "name": "但以理书",
+          "shortname": "但"
+        },
+        {
+          "id": 28,
+          "name": "何西阿书",
+          "shortname": "何"
+        },
+        {
+          "id": 29,
+          "name": "约珥书",
+          "shortname": "珥"
+        },
+        {
+          "id": 30,
+          "name": "阿摩司书",
+          "shortname": "摩"
+        },
+        {
+          "id": 31,
+          "name": "俄巴底亚书",
+          "shortname": "俄"
+        },
+        {
+          "id": 32,
+          "name": "约拿书",
+          "shortname": "拿"
+        },
+        {
+          "id": 33,
+          "name": "弥迦书",
+          "shortname": "弥"
+        },
+        {
+          "id": 34,
+          "name": "那鸿书",
+          "shortname": "鸿"
+        },
+        {
+          "id": 35,
+          "name": "哈巴谷书",
+          "shortname": "哈"
+        },
+        {
+          "id": 36,
+          "name": "西番雅书",
+          "shortname": "番"
+        },
+        {
+          "id": 37,
+          "name": "哈该书",
+          "shortname": "该"
+        },
+        {
+          "id": 38,
+          "name": "撒迦利亚书",
+          "shortname": "亚"
+        },
+        {
+          "id": 39,
+          "name": "玛拉基书",
+          "shortname": "玛"
+        },
+        {
+          "id": 40,
+          "name": "马太福音",
+          "shortname": "太"
+        },
+        {
+          "id": 41,
+          "name": "马可福音",
+          "shortname": "可"
+        },
+        {
+          "id": 42,
+          "name": "路加福音",
+          "shortname": "路"
+        },
+        {
+          "id": 43,
+          "name": "约翰福音",
+          "shortname": "约"
+        },
+        {
+          "id": 44,
+          "name": "使徒行传",
+          "shortname": "徒"
+        },
+        {
+          "id": 45,
+          "name": "罗马书",
+          "shortname": "罗"
+        },
+        {
+          "id": 46,
+          "name": "歌林多前书",
+          "shortname": "林前"
+        },
+        {
+          "id": 47,
+          "name": "歌林多后书",
+          "shortname": "林后"
+        },
+        {
+          "id": 48,
+          "name": "加拉太书",
+          "shortname": "加"
+        },
+        {
+          "id": 49,
+          "name": "以弗所书",
+          "shortname": "弗"
+        },
+        {
+          "id": 50,
+          "name": "腓立比书",
+          "shortname": "腓"
+        },
+        {
+          "id": 51,
+          "name": "歌罗西书",
+          "shortname": "西"
+        },
+        {
+          "id": 52,
+          "name": "帖撒罗尼迦前书",
+          "shortname": "贴前"
+        },
+        {
+          "id": 53,
+          "name": "帖撒罗尼迦后书",
+          "shortname": "贴后"
+        },
+        {
+          "id": 54,
+          "name": "提摩太前书",
+          "shortname": "提前"
+        },
+        {
+          "id": 55,
+          "name": "提摩太后书",
+          "shortname": "提后"
+        },
+        {
+          "id": 56,
+          "name": "提多书",
+          "shortname": "多"
+        },
+        {
+          "id": 57,
+          "name": "腓利门书",
+          "shortname": "门"
+        },
+        {
+          "id": 58,
+          "name": "希伯来书",
+          "shortname": "来"
+        },
+        {
+          "id": 59,
+          "name": "雅各书",
+          "shortname": "雅"
+        },
+        {
+          "id": 60,
+          "name": "彼得前书",
+          "shortname": "彼前"
+        },
+        {
+          "id": 61,
+          "name": "彼得后书",
+          "shortname": "彼后"
+        },
+        {
+          "id": 62,
+          "name": "约翰一书",
+          "shortname": "约一"
+        },
+        {
+          "id": 63,
+          "name": "约翰二书",
+          "shortname": "约二"
+        },
+        {
+          "id": 64,
+          "name": "约翰三书",
+          "shortname": "约三"
+        },
+        {
+          "id": 65,
+          "name": "犹大书",
+          "shortname": "犹"
+        },
+        {
+          "id": 66,
+          "name": "启示录",
+          "shortname": "启"
+        }
+    ]
 };

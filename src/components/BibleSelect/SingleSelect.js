@@ -25,6 +25,7 @@ module.exports = kind({
 
     handlers: {
         resize: 'handleResize',
+        bibleSelectReset: 'nullValue'
     },
 
     create: function() {
@@ -84,8 +85,14 @@ module.exports = kind({
         this.checkShort();
         this.resetValue();
     },
+    nullValue: function() {
+        this.setSelected(0);
+        this.setValue('0');
+    },
+
     resetValue: function() {
         // this.log('SINGSEL parallelNumber', this.parallelNumber, this.app.configs.defaultBible);
+        return; //multidefault haha
 
         if(this.parallelNumber == 0 || this.parallelNumber == 1) {
             this.app.debug && this.log('defaulting', this.app.configs.defaultBible);
@@ -102,6 +109,8 @@ module.exports = kind({
         }
     },
     applyDefaultValue: function() {
+        return; //multidefault haha
+
         var value = this.getValue();
 
         if(!value || value == 0 || value == '0' || value == '') {

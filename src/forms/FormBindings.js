@@ -138,7 +138,13 @@ module.exports = {
     }},
     bible: {from: 'formData.bible', to: '$.bible.value', oneWay: false, shortLink: true, transform: function(value, dir) {
         // this.log('biblesel', value, dir);
+        if(!value) {
+            //return 'tyndale,tr,kjv';
+            //value = ['tyndale', 'tr', 'kjv'];
+        }
+        
         this.bubble('onFormFieldChanged', {field: 'bible', value: value, dir: dir});
+
         return value || null;
     }}
 };
