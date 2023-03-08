@@ -186,8 +186,8 @@ module.exports = kind({
     },
     
     processDefaults: function(formData) {
-        var defaultBible = this.app.configs.defaultBible;
-        formData.bible = (formData.bible && formData.bible != '0' && formData.bible != [] && formData.bible.length != 0) ? formData.bible : [defaultBible];
+        var defaultBibles = this.app.defaultBibles;
+        formData.bible = (formData.bible && formData.bible != '0' && formData.bible != [] && formData.bible.length != 0) ? formData.bible : defaultBibles;
         
         if(!Array.isArray(formData.bible)) {
             formData.bible = [formData.bible];

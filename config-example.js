@@ -78,7 +78,7 @@ var biblesupersearch_config_options = {
             // "interface": 'Expanding',
 
             // Expanding form having larger text entry boxes
-            // "interface": 'ExpandingLargeInput',
+            "interface": 'ExpandingLargeInput',
 
         // Bible Browsing / reading interfaces.
         //      Modern interfaces designed for reading and browsing the Bible.
