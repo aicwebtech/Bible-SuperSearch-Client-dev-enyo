@@ -1,4 +1,5 @@
 var kind = require('enyo/kind');
+var utils = require('enyo/utils');
 var Button = require('enyo/Button');
 var Single = require('./SingleSelect');
 var i18n = require('../Locale/i18nContent');
@@ -7,6 +8,7 @@ module.exports = kind({
     name: 'MultiSelect',
     parallelNumber: 0,  // Number of currently showing parallel Bibles
     parallelLimit: 6,   // Maximum number of parallel Bibles that can be displayed
+    parallelMinimum: 1,   // Minimum number of parallel Bibles that can be displayed
     parallelStart: 1,   // Number of parallel Bibles to display initially
     selectorWidth: 0,   // Pixels, 0 means automatic
     selectorShortWidth: 0,
@@ -20,7 +22,9 @@ module.exports = kind({
     events: {
         onValueChanged: '',
         onAddSelectorTapped: '',
+        onRemoveSelectorTapped: '',
         onSelectorAdded: '',
+        onSelectorRemoved: '',
     },
 
     // components: [
@@ -47,9 +51,8 @@ module.exports = kind({
 
         this.createComponent({name: 'Container', tag: conTag});
 
-        //if(this.parallelLimit > 1) {
-            this.createComponent({name: 'Add', kind: Button, content: 'Add Bible', ontap: 'addSelector', components: [{kind: i18n, content: 'Add Bible'}]});
-        //}
+        this.createComponent({name: 'Add', kind: Button, ontap: 'addSelector', components: [{kind: i18n, content: 'Add Bible'}]});
+        this.createComponent({name: 'Remove', kind: Button, ontap: 'removeSelector', components: [{kind: i18n, content: 'Remove Bible'}]});
 
         for(var i = 1; i <= num; i++) {
             this._addSelectorHelper();
@@ -93,8 +96,9 @@ module.exports = kind({
         if(this.parallelNumber >= this.parallelLimit) {
             this.$.Add && this.$.Add.set('showing', false);
         }
-        else if(this.parallelNumber < this.parallelLimit) {
-            // this.$.Add && this.$.Add.set('showing', true);
+        
+        if(this.parallelNumber > this.parallelMinimum) {
+            this.$.Remove && this.$.Remove.set('showing', true);
         }
 
         if(width != 0) {
@@ -140,6 +144,38 @@ module.exports = kind({
         }
 
         return false;
+    },
+    removeSelector: function() {
+        this.doRemoveSelectorTapped();
+        this._removeSelectorHelper();
+        this.$.Container.render();
+    },
+    _removeSelectorHelper: function() {
+        if(this.parallelNumber <= this.parallelMinimum) {  
+            return false;
+        }
+
+        var curParNum = this.parallelNumber,
+            sel = 'Select_' + curParNum,
+            freshValue = utils.clone(this.value);
+
+        if(freshValue.length == curParNum) {
+            this.log('pop goes the value')
+            freshValue.pop();
+        }
+
+        this.parallelNumber --;
+        this.$[sel] && this.$[sel].destroy();
+
+        this.set('value', freshValue);
+
+        if(this.parallelNumber < this.parallelLimit) {
+            this.$.Add && this.$.Add.set('showing', true);
+        }
+        
+        if(this.parallelNumber <= this.parallelMinimum) {
+            this.$.Remove && this.$.Remove.set('showing', false);
+        }
     },
     _resetSelectors: function() {
         this.$.Container.destroyClientControls();

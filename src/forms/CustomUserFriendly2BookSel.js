@@ -28,8 +28,9 @@ module.exports = kind({
                     {
                         name: 'bible', 
                         kind: BibleSelect, 
-                        parallelLimit: 4, 
-                        parallelStart: 4, 
+                        parallelLimit: 12, 
+                        parallelStart: 7, 
+                        parallelMinimum: 2,
                         selectorWidth: 300
                     },
                     {tag: 'br'},

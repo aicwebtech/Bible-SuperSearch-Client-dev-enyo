@@ -5,7 +5,9 @@ module.exports = {
     es: require('./es'),
     // ar: require('./ar'),
     fr: require('./fr'),
+    lv: require('./lv'),
     ro: require('./ro'),
+    ru: require('./ru'),
     zh_TW: require('./zh_TW'),
     zh_CN: require('./zh_CN'),
 
