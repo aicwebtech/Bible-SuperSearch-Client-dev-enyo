@@ -27,7 +27,7 @@ module.exports = kind({
                     {
                         name: 'bible', 
                         kind: BibleSelect, 
-                        parallelLimit: 4, 
+                        parallelLimit: 8, 
                         parallelStart: 4, 
                         selectorWidth: 300
                     },

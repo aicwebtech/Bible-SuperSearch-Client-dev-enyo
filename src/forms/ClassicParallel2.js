@@ -30,6 +30,7 @@ module.exports = kind({
                             kind: BibleSelect, 
                             parallelLimit: 4, 
                             parallelStart: 4, 
+                            parallelMinium: 4, 
                             selectorWidth: 300,
                             selectorShortWidth: 150,
                             selectorShortWidthThreshold: 650

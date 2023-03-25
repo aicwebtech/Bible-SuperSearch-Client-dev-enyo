@@ -312,7 +312,7 @@ module.exports = kind({
             },  
             {
                 kind: i18n,
-                classes: 'item clear',
+                classes: 'item clear_form',
                 name: 'clear',
                 tag: 'span',
                 ontap: 'handleClearForm',

@@ -33,7 +33,7 @@ module.exports = kind({
                         parallelMinimum: 2,
                         selectorWidth: 300
                     },
-                    {tag: 'br'},
+                    {tag: 'hr'},
                     {kind: i18n, content: 'Select Book and Chapter:'},
                     {
                         name: 'reference_booksel', 
@@ -78,19 +78,20 @@ module.exports = kind({
                             ]
                         }
                     ]},
-                    {tag: 'br'},
+                    {tag: 'hr'},
                     {kind: i18n, content: 'Enter word(s), phrase(s) or expression(s):'},
                     {name: 'search', kind: Input, style: 'width: 100%; max-width: 300px'},
                     {tag: 'br'},
                     {tag: 'br'},
                     {components: [
                         {kind: i18nContent, tag: 'span', content: 'Search for:'},
-                        {tag: 'span', content: ' '},
+                        {tag: 'br', content: ' '},
                         {kind: SearchType, name: 'search_type', style: 'width: 100%; max-width: 200px'}
                     ]},
+                    {tag: 'br'},
                     {components: [
                         {kind: i18nContent, tag: 'span', content: 'Limit search to:'},
-                        {tag: 'span', content: ' '},
+                        {tag: 'br', content: ' '},
                         {kind: Shortcuts, name: 'shortcut', style: 'width: 100%; max-width: 200px'}
                     ]},
                     {tag: 'br'},
@@ -98,6 +99,8 @@ module.exports = kind({
                         {kind: Checkbox, name: 'whole_words', id: 'whole_words'},
                         {tag: 'span', content: ' '},
                         {kind: i18nContent, tag: 'label', content: 'Whole words only', attributes: {for: 'whole_words'}},
+                        {tag: 'br'},
+                        {tag: 'br'},
                         {tag: 'span', content: '&nbsp; &nbsp;', allowHtml: true},
                         {kind: Checkbox, name: 'exact_case', id: 'exact_case'},
                         {tag: 'span', content: ' '},
@@ -107,8 +110,7 @@ module.exports = kind({
                     {kind: Button, ontap: 'submitForm', components: [
                         {kind: i18nContent, content: 'Search the Bible'}
                     ]},
-                    {tag: 'br'},
-                    {tag: 'br'},
+                    {tag: 'hr'},
                     {components: [
                         {
                             kind: i18nContent,

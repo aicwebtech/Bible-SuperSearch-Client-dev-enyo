@@ -12,7 +12,7 @@ module.exports = {
     // * Please maintain capitalization and punctuation, if possible.
     // * Any ' (single quote) in the translation MUST be preceded by a \ (backslash).
 
-    'Bible SuperSearch': 'Bībeles meklētājs',
+    'Bible SuperSearch': 'Bībeles Meklētājs',
     'Loading, please wait': 'Notiek ielāde, lūdzu, uzgaidiet',
 
     // Search Forms
@@ -23,12 +23,13 @@ module.exports = {
     'Bible Search': 'Meklēšana Bībelē',
     'Bible': 'Bībele',
     'Whole Words Only': 'Meklēt Iekļaujot Tikai Precīzus Vārdus',
-    'Whole words only': 'Meklēt iekļaujot tikai precīzus Vārdus',
+    'Whole words only': 'Meklēt iekļaujot tikai precīzus vārdus',
     'Whole words': 'Meklēt iekļaujot precīzus vārdus',
     'Exact Case': 'Ņemt vērā lielos un mazos burtus',
     'Parallel Bible #': 'Paralēlā Bībele #',
     'Select a Bible': 'Izvēlieties Bībeli',
     'Add Bible': 'Pievienojiet Bībeli',
+    'Remove Bible': 'Noņemiet Bībeli',
     'Random Chapter': 'Atvērt Nejauši Izvēlētu Nodaļu',
     'Random Verse': 'Atvērt Nejauši Izvēlētu Pantu',
     'Passages': 'Rakstvietas',
@@ -45,7 +46,7 @@ module.exports = {
     'Restrict search to': 'Ierobežot meklēšanu uz', 
     'Word Search': 'Vārda Meklēšana',
     'Clear Form': 'Attīrīt formu', // 4.5
-    'Select Book and Chapter:' : 'Izvēlies Grāmatu un Nodaļu:', // 5.2
+    'Select Book and Chapter:' : 'Izvēlieties Grāmatu un Nodaļu:', // 5.2
 
     // Context Links
     'Show full chapter': 'Atvērt visu nodaļu',
@@ -130,17 +131,17 @@ module.exports = {
     'Passage Display': 'Nodaļu, Pantu Skats', // 4.5
     'EZ Copy': 'Pielāgotā Teksta Kopēšana',  // 'Easy Copy'
     'Read Display': 'Lasīšanas Skats',
-    'Italics': 'Slīpraksts (Italics)',
-    'Disable Italization of Added Words' : 'Atspējot Pievienoto Vārdu Attēlošanu Slīprakstā (Italics)',
-    'Enable Italization of Added Words': 'Iespējot Pievienoto Vārdu Attēlošanu Slīprakstā (Italics)',
-    'Disable Strong\'s Numbers': 'Atspējot Teksta Attēlošanu ar Papildus Vārdu Izcelsmes Skaidrojumiem (Strong\'s)',
-    'Enable Strong\'s Numbers': 'Iespējot Teksta Attēlošanu ar Papildus Vārdu Izcelsmes Skaidrojumiem (Strong\'s)',
-    'Red Letter': 'Sarkans Teksts',
+    'Italics': 'Slīprakstā (Italics) Attēloti Vārdi, kuri nav Atrodami Vēsturisko Manuskriptu Oriģinālvalodās un ir Papildu Pievienoti Bībeles Versijas Tulkošanas Procesā',
+    'Disable Italization of Added Words' : 'Atspējot Tulkojumā Papildu Pievienoto Vārdu Attēlošanu Slīprakstā (Italics)',
+    'Enable Italization of Added Words': 'Iespējot Tulkojumā Papildu Pievienoto Vārdu Attēlošanu Slīprakstā (Italics)',
+    'Disable Strong\'s Numbers': 'Atspējot Teksta Attēlošanu ar Papildu Vārdu Izcelsmes Skaidrojumiem (Strong\'s)',
+    'Enable Strong\'s Numbers': 'Iespējot Teksta Attēlošanu ar Papildu Vārdu Izcelsmes Skaidrojumiem (Strong\'s)',
+    'Red Letter': 'Jēzus Kristus Vārdi Iekrāsoti, Izcelti Sarkanā Krāsā',
     'Disable Red Letter': 'Atspējot Teksta Izcelšanu Sarkanā Krāsā',
     'Enable Red Letter': 'Iespējot Teksta Izcelšanu Sarkanā Krāsā',
-    'Highlight': 'Izcelt',
-    'Disable Highlighting of Keywords': 'Atspējot Meklējamā, Atrastā Atslēgas Teksta Sakrītošās Daļas Attēlošanu Treknrakstā (Bold)',
-    'Enable Highlighting of Keywords': 'Iespējot Meklējamā, Atrastā Atslēgas Teksta Sakrītošās Daļas Attēlošanu Treknrakstā (Bold)',
+    'Highlight': 'Izcelt Tekstā Atrasto Atslēgas Vārdu',
+    'Disable Highlighting of Keywords': 'Atspējot Meklējamā, Tekstā Atrastā Atslēgas Vārda Sakrītošās Daļas Attēlošanu Treknrakstā (Bold)',
+    'Enable Highlighting of Keywords': 'Iespējot Meklējamā, Tekstā Atrastā Atslēgas Vārda Sakrītošās Daļas Attēlošanu Treknrakstā (Bold)',
     'Print': 'Drukāt',
     'Printer Friendly': 'Drukāšanai Draudzīgs',
     'Help': 'Palīdzība',
@@ -176,9 +177,9 @@ module.exports = {
     'Omit Extra Line Breaks': 'Noņemt Tukšās Rindas', // 5.0
 
     // Settings Dialog
-    'Settings' : 'Iestatījumi', // 5.0
-    'Language' : 'Valoda', // 5.0
-    'Text Display': 'Teksta Skats', // 5.0
+    'Settings' : 'Papildu Iestatījumi', // 5.0
+    'Language' : 'Saskarnes Valoda (Language)', // 5.0
+    'Text Display': 'Attēlotā Teksta Skats', // 5.0
     'Font Style': 'Fonta Stils', // 5.0
 
     // Result and error messages
@@ -276,7 +277,7 @@ module.exports = {
     // Bible Start dialog
     'Start': 'Palīdzība, Uzsākot Lasīt Bībeli',
     'Bible Start Guide': 'Ievads Bībeles Iepazīšanā',
-    'New to the Bible?': 'Papildus informācija priekš tiem, kas vēl nav lasījuši Bībeli.',
+    'New to the Bible?': 'Papildu informācija priekš tiem, kas vēl nav lasījuši Bībeli.',
     'Not Sure Where to Begin?' : 'Īss apraksts par Bībeles grāmatām, ar kurām būtu ieteicams uzsākt Bībeles lasīšanu un iepazīšanu.',
     'Life and Teachings of Jesus Christ': 'Jēzus Kristus Dzīve un Mācības',
     'Basic Christian Beliefs': 'Kristiešu Pamatticība',
@@ -342,7 +343,7 @@ module.exports = {
     'Matches words in the same book': 'Atlasīt meklējamos rezultātus, kuros atslēgvārds ir atrodams vairākkārt vienas Bībeles grāmatas ietvaros',
     'Matches words in the same book, and within N verses of each other': 'Atlasīt meklējamos rezultātus, kuros atslēgvārds ir atrodams vairākkārt vienas Bībeles grāmatas ietvaros un tas atrodams norādītajā skaitā \'N\' pantos',
     'Matches words in the same chapter, and within N verses of each other': 'Atlasīt meklējamos rezultātus, kuros atslēgvārds ir atrodams vairākkārt vienas nodaļas ietvaros un tas atrodams norādītajā skaitā \'N\' pantos',
-    'For details, please see the User\'s Manual': 'Lai iegūtu papildus detalizētāku informāciju par šī Bībeles meklētāja rīka lietošanu, lūdzu, skatiet Lietotāja Rokasgrāmatu (uzklikšķinot zemāk)',
+    'For details, please see the User\'s Manual': 'Lai iegūtu papildu detalizētāku informāciju par šī Bībeles meklētāja rīka lietošanu, lūdzu, skatiet Lietotāja Rokasgrāmatu (uzklikšķinot zemāk)',
     'Special Proximity Operators': 'Speciālie atslēgas vārdu atrašanās attāluma operatori (Proximity Operators)',
     'Matches unlimited characters': 'Meklēšana atbilst neierobežotam meklējamo rakstzīmju skaitam',
     'searched for': 'tika meklēts',
@@ -356,13 +357,13 @@ module.exports = {
     'joy': 'prieks',
     'preserved' : 'pasargāts',
     'preserve' : 'pasargāt',
-    'stand' : 'stāvēt',
+    'stand' : 'pastāv',
     'word': 'vārds',
     'words': 'vārdi',
     'truth': 'patiesība',
 
 
-// Bible Books
+    // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  
     // The short name should be the most common abbreviation of the book name in the specified language.
     'bibleBooks': [

@@ -200,11 +200,11 @@ module.exports = kind({
         this._formDataAsSubmitted = utils.clone(formData);
 
         if(formData.reference) {
-            formData.reference = this.mapPassages(formData.reference);
+            formData.reference = this.mapPassages(formData.reference, false);
         }        
 
         if(formData.request) {
-            formData.request = this.mapPassages(formData.request);
+            formData.request = this.mapPassages(formData.request, true);
         }
 
         formData.bible = JSON.stringify(formData.bible);
@@ -219,10 +219,14 @@ module.exports = kind({
         return formData;
     },
 
-    mapPassages: function(reference) {
+    mapPassages: function(reference, isRequest) {
         var locale = this.app.get('locale');
 
-        if(locale == 'en' || this.app.localeDatasets[locale].bibleBooksSource == 'api' || !this.Passage.isPassage(reference)) {
+        if(locale == 'en' || this.app.localeDatasets[locale].bibleBooksSource == 'api') {
+            return reference;
+        }
+
+        if(isRequest && !this.Passage.isPassage(reference)) {
             return reference;
         }
 
@@ -236,6 +240,8 @@ module.exports = kind({
         var BookList = this.app.localeBibleBooks[locale] || this.app.statics.books;
 
         passages.forEach(function(item) {
+            //console.log('passage', item);
+
             // Pass 1: Exact match
             var book = BookList.find(function(bookItem) {
                 if(item.book == bookItem.name || item.book == bookItem.shortname) {

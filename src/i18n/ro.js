@@ -29,6 +29,7 @@ module.exports = {
     'Parallel Bible #': 'Biblie Paralelă #',
     'Select a Bible': 'Selectați o Biblie',
     'Add Bible': 'Adăugați Biblie',
+    'Remove Bible': 'Îndepărtați Biblie',
     'Random Chapter': 'Capitol Aleator',
     'Random Verse': 'Verset Aleator',
     'Passages': 'Pasaje',

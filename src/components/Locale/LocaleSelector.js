@@ -21,7 +21,7 @@ module.exports = kind({
             var ldb = Locales[i].meta.debug || false;
             var langName = Locales[i].meta.lang_name || Locales[i].meta.lang_name_en;
 
-            if(ldb && !this.app.debug) {
+            if(ldb && !this.app.debug && !this.app.configs.debugLocale) {
                 continue;
             }
 

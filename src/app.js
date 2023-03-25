@@ -318,7 +318,7 @@ var App = Application.kind({
 
         window.console && console.log('BibleSuperSearch API version', this.statics.version);
 
-        this.configs.apiUrl == defaultConfig.apiUrl ? defaultConfig._urlDefaultNotice() : defaultConfig._urlLocalNotice();
+        this.configs.apiUrl == defaultConfig.apiUrl + '/api' ? defaultConfig._urlDefaultNotice() : defaultConfig._urlLocalNotice();
 
         if(view && view != null) {
             this.set('view', view);

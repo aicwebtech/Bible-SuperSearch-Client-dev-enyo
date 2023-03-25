@@ -63,6 +63,10 @@ div.biblesupersearch_content {
     height: 100%;
 }
 
+.biblesupersearch_multiselect button {
+    margin: 4px 2px 0;
+}
+
 .biblesupersearch_bible_selector {
 
 }
@@ -679,4 +683,20 @@ div.alert_dialog {
     font-size: 10px;
     padding: 0px;
     height: 17px;
+}
+
+.biblesupersearch_context_help {
+    position: relative;
+}
+
+div.biblesupersearch_context_help_container {
+    position: absolute;
+    background-color: yellow;
+    z-index: 1000001;
+}
+
+.biblesupersearch_toggle_help {
+    padding-left: 26px;
+    font-size: 0.7em;
+    display: block;
 }

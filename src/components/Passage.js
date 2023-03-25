@@ -24,12 +24,15 @@ module.exports = {
             field = 'reference';
         }
         else {
+            // Todo, check for SINGLE PASSAGE here. 
             field = 'search';
         }
 
         return field;
     },
 
+    // Warning, this isPassage may return false negatives as it's dependent on this.routeReuqest
+    // Logic here needs to be replaced withe the actual "isPassage" logic from the API.
     isPassage: function(str) {
         return this.routeRequest(str) == 'reference' ? true : false;
     },
@@ -40,7 +43,8 @@ module.exports = {
         }
 
         // migrated from PHP API.
-        nonPassageChars = str.match(/[`\\~!@#$%\^&*{}_[\]()]/);
+        //nonPassageChars = str.match(/[`\\~!@#$%\^&*{}_[\]()]/);
+        nonPassageChars = str.match(/[`\\~!@#$%\^&*{}_[\]]/); // now allowing ()?
         return nonPassageChars ? true : false;
     },
 

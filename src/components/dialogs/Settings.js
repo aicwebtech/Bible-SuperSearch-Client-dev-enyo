@@ -10,6 +10,7 @@ var LinkBuilder = require('../Link/LinkBuilder');
 var i18n = require('../Locale/i18nContent');
 var inc = require('../../components/Locale/i18nComponent');
 var Toggle = require('../ToggleHtml');
+var ContextHelp = require('../ContextHelp');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -51,7 +52,6 @@ module.exports = kind({
             falseTitle: 'Enable Highlighting of Keywords',
             trueComponent: {
                 components: [
-                    // {kind: Checkbox, checked: true, ntap: 'ignoreTap', disabled: true},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Highlight'}
@@ -59,12 +59,15 @@ module.exports = kind({
             },        
             falseComponent: {
                 components: [
-                    // {kind: Checkbox, checked: false, ntap: 'ignoreTap', disabled: true},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Highlight'}
                 ]
-            }
+            },
+            help: true,
+            helpComponents: [
+                {kind: i18n, tag: 'span', content: 'Highlight Description'}
+            ]
         },    
         {
             classes: 'settings_toggle redletter_toggle',
@@ -74,7 +77,6 @@ module.exports = kind({
             falseTitle: 'Enable Red Letter', 
             trueComponent: {
                 components: [
-                    // {kind: Checkbox, checked: true, ontap: 'ignoreTap'},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Red Letter'}
@@ -82,12 +84,18 @@ module.exports = kind({
             },        
             falseComponent: {
                 components: [
-                    // {kind: Checkbox, checked: false, ontap: 'ignoreTap'},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Red Letter'}
                 ]
-            }
+            },
+            help: true,
+            helpComponents: [
+                {tag: 'span', kind: i18n, content: 'Red Letter Description'},
+                {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;('},
+                {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
+                {tag: 'span', content: '.)'}
+            ]
         },
         {
             classes: 'settings_toggle italics_toggle',
@@ -97,7 +105,6 @@ module.exports = kind({
             falseTitle: 'Enable Italization of Added Words',
             trueComponent: {
                 components: [
-                    // {kind: Checkbox, checked: true, ontap: 'ignoreTap'},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Italics'}
@@ -105,12 +112,18 @@ module.exports = kind({
             },        
             falseComponent: {
                 components: [
-                    // {kind: Checkbox, checked: false, ontap: 'ignoreTap'},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Italics'}
                 ]
-            }
+            },
+            help: true,
+            helpComponents: [
+                {tag: 'span', kind: i18n, content: 'Italics Description'},
+                {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;('},
+                {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
+                {tag: 'span', content: '.)'}
+            ]
         },        
         {
             classes: 'settings_toggle strongs_toggle',
@@ -120,7 +133,6 @@ module.exports = kind({
             falseTitle: 'Enable Strong\'s Numbers',
             trueComponent: {
                 components: [
-                    // {kind: Checkbox, checked: true, ontap: 'ignoreTap'},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
@@ -128,12 +140,17 @@ module.exports = kind({
             },        
             falseComponent: {
                 components: [
-                    // {kind: Checkbox, checked: false, ontap: 'ignoreTap'},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
-                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
-                    {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
+                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},                
                 ]
-            }
+            },
+            help: true,
+            helpComponents: [
+                {tag: 'span', kind: i18n, content: 'Strong\'s Description'},
+                {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;('},
+                {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
+                {tag: 'span', content: '.)'}
+            ]
         },       
         {tag: 'br'},
         {

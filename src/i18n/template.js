@@ -29,6 +29,7 @@ module.exports = {
     'Parallel Bible #': '',
     'Select a Bible': '',
     'Add Bible': '',
+    'Remove Bible': '', // 5.2
     'Random Chapter': '',
     'Random Verse': '',
     'Passages': '',
@@ -119,9 +120,9 @@ module.exports = {
     // Formatting and dialog buttons
     'A': '',     // First letter in given language
     'Abc': '',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : '',
-    'Sans-Serif': '',
-    'Monospace': '',
+    'Serif' : '',                     // * Button text, please keep translation short!
+    'Sans-Serif': '',                 // * Button text, please keep translation short!
+    'Monospace': '',                  // * Button text, please keep translation short!
     'Enlarge Text': '',
     'Default Text Size': '',
     'Shrink Text': '',
@@ -130,7 +131,7 @@ module.exports = {
     'Passage Display': '', // 4.5
     'EZ Copy': '',  // 'Easy Copy'
     'Read Display': '',
-    'Italics': '',
+    'Italics': '',                    // * Button text, please keep translation short!
     'Disable Italization of Added Words' : '',
     'Enable Italization of Added Words': '',
     'Disable Strong\'s Numbers': '',
@@ -138,7 +139,7 @@ module.exports = {
     'Red Letter': '',
     'Disable Red Letter': '',
     'Enable Red Letter': '',
-    'Highlight': '',
+    'Highlight': '',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': '',
     'Enable Highlighting of Keywords': '',
     'Print': '',
@@ -146,6 +147,15 @@ module.exports = {
     'Help': '',
     'Basic': '',
     'Advanced': '',
+
+    // Descriptions of special formatting features
+    'Formatting': '',  // 5.3
+    'Supported Bibles Only': '',  // 5.3
+    'Strong\'s Description': '',  // 5.3
+    'Italics Description': '',    // 5.3
+    'Red Letter Description': '', // 5.3
+    'Highlight Description': '',  // 5.3
+
 
     // Verse Cherry-picking
     'Select All': '', // 5.0
@@ -365,7 +375,7 @@ module.exports = {
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  
     // The short name should be the most common abbreviation of the book name in the specified language.
-    '_bibleBooks': [
+    'bibleBooks': [
         {
           "id": 1,
           "name": "Genesis",

@@ -146,6 +146,13 @@ module.exports = {
     'Basic': 'Ye simpeel',
     'Advanced': 'Arrdvancede',
 
+    'Formatting': 'Appeayrance',  // 5.3
+    'Supported Bibles Only': 'Onlee certain swordes',  // 5.3
+    'Strong\'s Description': 'Keyes to the ooriginal treasureth.',  // 5.3
+    'Italics Description': 'Slante wordes not in ooriginal treasureth.',    // 5.3
+    'Red Letter Description': 'Wordes of Christth in Bloode.', // 5.3
+    'Highlight Description': 'Markes on ye foundes treasures.',  // 5.3
+
     // Verse Cherry-picking
     'Select All': 'Picme ye all', // 5.0
     'Select None': 'Picme ye non', // 5.0

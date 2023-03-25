@@ -29,6 +29,7 @@ module.exports = {
     'Parallel Bible #': '平行圣经编号#',
     'Select a Bible': '选择一种圣经',
     'Add Bible': '增加圣经',
+    'Remove Bible': '删除圣经',
     'Random Chapter': '随机章节',
     'Random Verse': '随机经文',
     'Passages': '一些经句章节',

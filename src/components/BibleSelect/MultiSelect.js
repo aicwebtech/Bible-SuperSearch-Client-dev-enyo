@@ -6,6 +6,7 @@ var i18n = require('../Locale/i18nContent');
 
 module.exports = kind({
     name: 'MultiSelect',
+    classes: 'biblesupersearch_multiselect',
     parallelNumber: 0,  // Number of currently showing parallel Bibles
     parallelLimit: 6,   // Maximum number of parallel Bibles that can be displayed
     parallelMinimum: 1,   // Minimum number of parallel Bibles that can be displayed
@@ -51,8 +52,21 @@ module.exports = kind({
 
         this.createComponent({name: 'Container', tag: conTag});
 
-        this.createComponent({name: 'Add', kind: Button, ontap: 'addSelector', components: [{kind: i18n, content: 'Add Bible'}]});
-        this.createComponent({name: 'Remove', kind: Button, ontap: 'removeSelector', components: [{kind: i18n, content: 'Remove Bible'}]});
+        this.createComponent({
+            name: 'Add', 
+            kind: Button, 
+            ontap: 'addSelector', 
+            components: [{kind: i18n, content: 'Add Bible'}]
+        });
+        
+        this.createComponent({
+            name: 'Remove', 
+            kind: Button, 
+            ontap: 'removeSelector', 
+            showing: !!(num > this.parallelMinimum),
+            components: [{kind: i18n, content: 'Remove Bible'}]
+        });
+
 
         for(var i = 1; i <= num; i++) {
             this._addSelectorHelper();
@@ -68,7 +82,6 @@ module.exports = kind({
         this.setValue([]);
         // this.parallelCleanup();
         this._resetSelectors();
-        //this._populateValueHelper(['kjv', 'tyndale', 'tr']);
 
         this.app.debug && this.log('default', this.app.defaultBibles);
         this.bubble('onSpecialBibleChange', {value: this.app.defaultBibles});

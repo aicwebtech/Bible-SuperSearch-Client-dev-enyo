@@ -63,6 +63,38 @@ module.exports = kind({
             {content: 'John 13:36 - 14:3', link: 'passage'},
 
         ],
+        specialFormatting: [
+            {tag: 'h3', content: 'Formatting'},
+            
+            {tag: 'h4', content: 'Highlight'},
+            {tag: 'div', components: [
+                {tag: 'span', kind: i18n, content: 'Highlight Description'},
+            ]},            
+
+            {tag: 'h4', content: 'Red Letter'},
+            {tag: 'div', components: [
+                {tag: 'span', kind: i18n, content: 'Red Letter Description'},
+                {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;('},
+                {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
+                {tag: 'span', content: '.)'}
+            ]},            
+
+            {tag: 'h4', content: 'Italics'},
+            {tag: 'div', components: [
+                {tag: 'span', kind: i18n, content: 'Italics Description'},
+                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;('},
+                {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
+                {tag: 'span', content: '.)'}
+            ]},            
+
+            {tag: 'h4', content: 'Strong\'s'},
+            {tag: 'div', components: [
+                {tag: 'span', kind: i18n, content: 'Strong\'s Description'},
+                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;('},
+                {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
+                {tag: 'span', content: '.)'}
+            ]},
+        ],
         boolSearch: [
             {tag: 'h3', content: 'Advanced Searches using Boolean'},
             {tag: 'div', components: [
@@ -235,12 +267,12 @@ module.exports = kind({
                 url = null,
                 linkType = item.link || null;
 
-
             if(item.tag) {
                 component.tag = item.tag;
                 component.content = this.app.t(item.content);
                 component.components = item.components;
                 component.classes = item.classes;
+                component.allowHtml = item.allowHtml || false;
             }
             else {
                 component.content = this.app.vt(item.content);

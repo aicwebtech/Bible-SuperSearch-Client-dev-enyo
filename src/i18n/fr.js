@@ -23,6 +23,7 @@ module.exports = {
     'Parallel Bible #': 'Bible en parallèle',
     'Select a Bible': 'Choisir une Bible',
     'Add Bible': 'Ajoutez une Bible',
+    'Remove Bible': 'Supprimer la Bible',
     'Random Chapter': 'Chapitre Aléatoire',
     'Random Verse': 'Verset Aléatoire',
     'Passages': 'Passages',
