@@ -337,6 +337,10 @@ module.exports = kind({
     submitRandom: function(inSender, inEvent) {
         var randomType = inSender.random_type || null;
         var formData = utils.clone(this.get('formData'));
+
+        this.$.reference && this.$.reference.set('value', '');
+        this.$.request && this.$.request.set('value', '');
+        this.$.search && this.$.search.set('value', '');
         
         var submitData = {
             bible: formData.bible,

@@ -148,6 +148,15 @@ module.exports = {
     'Basic': 'Esenţial',
     'Advanced': 'Avansat',
 
+    // Descriptions of special formatting features
+    'Formatting': 'Formatare',  // 5.3
+    'Supported Bibles Only': 'Doar Biblii acceptate',  // 5.3
+    
+    'strongs_numbers_description': 'Numerele de concordanță ale lui Strong indică cuvintele ebraice sau grecești subiacente.',  // 5.3
+    'italics_description': 'Cuvintele lui Hristos în roșu.',    // 5.3
+    'red_letter_description': 'Words of Christ in Red.', // 5.3
+    'highlight_description': 'Evidențierea (aldine) a cuvintelor cheie în căutări.',  // 5.3
+
     // Verse Cherry-picking
     'Select All': 'Selectați Tot', // 5.0
     'Select None': 'Nu Selectați Nimic', // 5.0

@@ -148,10 +148,11 @@ module.exports = {
 
     'Formatting': 'Appeayrance',  // 5.3
     'Supported Bibles Only': 'Onlee certain swordes',  // 5.3
-    'Strong\'s Description': 'Keyes to the ooriginal treasureth.',  // 5.3
-    'Italics Description': 'Slante wordes not in ooriginal treasureth.',    // 5.3
-    'Red Letter Description': 'Wordes of Christth in Bloode.', // 5.3
-    'Highlight Description': 'Markes on ye foundes treasures.',  // 5.3
+    'strongs_numbers_description': 'Keyes to the ooriginal treasureth.',  // 5.3
+    'italics_description': 'Slante wordes not in ooriginal treasureth.',    // 5.3
+    'red_letter_description': 'Wordes of Christth in Bloode.', // 5.3
+    'highlight_description': 'Markes on ye foundes treasures.',  // 5.3
+
 
     // Verse Cherry-picking
     'Select All': 'Picme ye all', // 5.0

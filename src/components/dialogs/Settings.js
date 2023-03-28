@@ -66,7 +66,7 @@ module.exports = kind({
             },
             help: true,
             helpComponents: [
-                {kind: i18n, tag: 'span', content: 'Highlight Description'}
+                {kind: i18n, tag: 'span', content: 'highlight_description'}
             ]
         },    
         {
@@ -91,7 +91,7 @@ module.exports = kind({
             },
             help: true,
             helpComponents: [
-                {tag: 'span', kind: i18n, content: 'Red Letter Description'},
+                {tag: 'span', kind: i18n, content: 'red_letter_description'},
                 {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;('},
                 {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
                 {tag: 'span', content: '.)'}
@@ -119,7 +119,7 @@ module.exports = kind({
             },
             help: true,
             helpComponents: [
-                {tag: 'span', kind: i18n, content: 'Italics Description'},
+                {tag: 'span', kind: i18n, content: 'italics_description'},
                 {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;('},
                 {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
                 {tag: 'span', content: '.)'}
@@ -146,7 +146,7 @@ module.exports = kind({
             },
             help: true,
             helpComponents: [
-                {tag: 'span', kind: i18n, content: 'Strong\'s Description'},
+                {tag: 'span', kind: i18n, content: 'strongs_numbers_description'},
                 {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;('},
                 {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
                 {tag: 'span', content: '.)'}

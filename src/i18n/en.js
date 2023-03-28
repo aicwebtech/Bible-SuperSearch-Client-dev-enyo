@@ -7,10 +7,10 @@ module.exports = {
     },
 
     // Descriptions of special features
-    'Strong\'s Description': 'Strong\'s Numbers indicate the underlying Hebrew or Greek words.',  // 5.3
-    'Italics Description': 'Italics indicate words added in translating that were not in the original language.',    // 5.3
-    'Red Letter Description': 'Words of Christ in Red.', // 5.3
-    'Highlight Description': 'Highlighting (bold) of keywords in searches.',  // 5.3
+    'strongs_numbers_description': 'Strong\'s Concordance Numbers indicate the underlying Hebrew or Greek words.',  // 5.3
+    'italics_description': 'Italics indicate words added in translating that were not in the original language.',    // 5.3
+    'red_letter_description': 'Words of Christ in Red.', // 5.3
+    'highlight_description': 'Highlighting (bold) of keywords in searches.',  // 5.3
 
     'bibleBooks': [
         {

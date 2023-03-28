@@ -131,15 +131,15 @@ module.exports = {
     'Passage Display': 'Nodaļu, Pantu Skats', // 4.5
     'EZ Copy': 'Pielāgotā Teksta Kopēšana',  // 'Easy Copy'
     'Read Display': 'Lasīšanas Skats',
-    'Italics': 'Slīprakstā (Italics) Attēloti Vārdi, kuri nav Atrodami Vēsturisko Manuskriptu Oriģinālvalodās un ir Papildu Pievienoti Bībeles Versijas Tulkošanas Procesā',
+    'Italics': 'Slīpraksts (Italics)',
     'Disable Italization of Added Words' : 'Atspējot Tulkojumā Papildu Pievienoto Vārdu Attēlošanu Slīprakstā (Italics)',
     'Enable Italization of Added Words': 'Iespējot Tulkojumā Papildu Pievienoto Vārdu Attēlošanu Slīprakstā (Italics)',
     'Disable Strong\'s Numbers': 'Atspējot Teksta Attēlošanu ar Papildu Vārdu Izcelsmes Skaidrojumiem (Strong\'s)',
     'Enable Strong\'s Numbers': 'Iespējot Teksta Attēlošanu ar Papildu Vārdu Izcelsmes Skaidrojumiem (Strong\'s)',
-    'Red Letter': 'Jēzus Kristus Vārdi Iekrāsoti, Izcelti Sarkanā Krāsā',
+    'Red Letter': 'Sarkans Teksts',
     'Disable Red Letter': 'Atspējot Teksta Izcelšanu Sarkanā Krāsā',
     'Enable Red Letter': 'Iespējot Teksta Izcelšanu Sarkanā Krāsā',
-    'Highlight': 'Izcelt Tekstā Atrasto Atslēgas Vārdu',
+    'Highlight': 'Izcelt (Bold)',
     'Disable Highlighting of Keywords': 'Atspējot Meklējamā, Tekstā Atrastā Atslēgas Vārda Sakrītošās Daļas Attēlošanu Treknrakstā (Bold)',
     'Enable Highlighting of Keywords': 'Iespējot Meklējamā, Tekstā Atrastā Atslēgas Vārda Sakrītošās Daļas Attēlošanu Treknrakstā (Bold)',
     'Print': 'Drukāt',
@@ -147,6 +147,16 @@ module.exports = {
     'Help': 'Palīdzība',
     'Basic': 'Pamata',
     'Advanced': 'Paplašināta',
+
+
+    // Descriptions of special formatting features
+    'Formatting': '',  // 5.3
+    'Supported Bibles Only': '',  // 5.3
+
+    'strongs_numbers_description': 'Konkordances (Strong\'s) numerācijas rādītājs norāda uz Bībeles ebreju vai grieķu oriģinālvalodu vārdu skaidrojumiem.',  // 5.3
+    'italics_description': 'Slīprakstā (italics) attēloti vārdi, kuri nav atrodami vēsturisko manuskriptu oriģinālvalodās un ir papildu pievienoti Bībeles versijas tulkošanas procesā.',    // 5.3
+    'red_letter_description': 'Jēzus Kristus vārdi iekrāsoti, izcelti sarkanā krāsā.', // 5.3
+    'highlight_description': 'Izcelt treknrakstā (bold) tekstā atrastos atslēgas vārdus.',  // 5.3
 
     // Verse Cherry-picking
     'Select All': 'Atlasīt Visas', // 5.0

@@ -139,6 +139,15 @@ module.exports = {
     'Help': 'Ayudar',
     'Basic': 'Básico',
     'Advanced': 'Avanzado',
+
+    // Descriptions of special formatting features
+    'Formatting': 'Formateo',  // 5.3
+    'Supported Bibles Only': 'Solo Biblias Compatibles',  // 5.3
+    
+    'strongs_numbers_description': 'Los números de concordancia de Strong indican las palabras hebreas o griegas subyacentes.',  // 5.3
+    'italics_description': 'Las cursivas indican palabras añadidas en la traducción que no estaban en el idioma original.',    // 5.3
+    'red_letter_description': 'Palabras de Cristo en Rojo.', // 5.3
+    'highlight_description': 'Resaltado (negrita) de palabras clave en búsquedas.',  // 5.3
     
     // Verse Cherry-picking
     'Select All': 'Seleccionar todo', // 5.0

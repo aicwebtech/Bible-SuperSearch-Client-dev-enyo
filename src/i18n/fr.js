@@ -141,6 +141,15 @@ module.exports = {
     'Basic': 'De base',
     'Advanced': 'Avancée',
 
+    // Descriptions of special formatting features
+    'Formatting': 'Mise en page',  // 5.3
+    'Supported Bibles Only': 'Bibles prises en charge uniquement',  // 5.3
+    
+    'strongs_numbers_description': 'Les numéros de concordance de Strong indiquent les mots hébreux ou grecs sous-jacents.',  // 5.3
+    'italics_description': 'Les italiques indiquent les mots ajoutés lors de la traduction qui n\'étaient pas dans la langue d\'origine.',    // 5.3
+    'red_letter_description': 'Paroles du Christ en rouge.', // 5.3
+    'highlight_description': 'Mise en évidence (gras) des mots-clés dans les recherches.',  // 5.3
+
     // Verse Cherry-picking
     'Select All': 'Tout sélectionner', // 5.0
     'Select None': 'Ne rien sélectionner', // 5.0

@@ -149,6 +149,15 @@ module.exports = {
     'Basic': '基本的',
     'Advanced': '进阶的',
 
+    // Descriptions of special formatting features
+    'Formatting': '格式化',  // 5.3
+    'Supported Bibles Only': '仅支持圣经',  // 5.3
+    
+    'strongs_numbers_description': 'Strong 的索引编号表示潜在的希伯来语或希腊语单词。',  // 5.3
+    'italics_description': '斜体表示在翻译中添加的不是原始语言的单词。',    // 5.3
+    'red_letter_description': '红色的基督的话。', // 5.3
+    'highlight_description': '在搜索中突出显示（粗体）关键字。',  // 5.3
+
     // Verse Cherry-picking
     'Select All': '全选', // 5.0
     'Select None': '全部不选', // 5.0
