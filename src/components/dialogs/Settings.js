@@ -141,7 +141,8 @@ module.exports = kind({
             falseComponent: {
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
-                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},                
+                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},       
+                    {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}         
                 ]
             },
             help: true,

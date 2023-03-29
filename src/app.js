@@ -18,6 +18,7 @@ var i18n = require('enyo/i18n');
 var Loading = require('./components/LoadingInline');
 var Locales = require('./i18n/LocaleLoader');
 var Validators = require('./lib/Validators');
+var Utils = require('./lib/Utils');
 var AlertDialog = require('./components/dialogs/Alert');
 var ResponseCollection = require('./data/collections/ResponseCollection');
 var ErrorView = require('./view/ErrorView');
@@ -38,7 +39,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.1.2',
+    applicationVersion: '5.1.3',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -72,6 +73,7 @@ var App = Application.kind({
     validate: Validators,
     AlertDialog: AlertDialog,
     responseCollection: ResponseCollection,
+    utils: Utils,
     hasAjaxSuccess: false,
     
     // Selectable sub-views:
@@ -340,16 +342,25 @@ var App = Application.kind({
         var bibles = this.statics.bibles,
             displayed = [],
             enabled = this.configs.enabledBibles,
-            orderBy = this._getBibleOrderBy().split('|');
+            orderBy = this._getBibleOrderBy().split('|'),
+            t = this,
+
+            processBible = function(bible) {
+                bible.lang = t.utils.ucfirst(bible.lang);
+                bible.lang_native = t.utils.ucfirst(bible.lang_native);
+                displayed.push(bible);
+            };
 
         if(Array.isArray(enabled) && enabled.length) {
             for(i in enabled) {
-                bibles[enabled[i]] && displayed.push(bibles[enabled[i]]);
+                //bibles[enabled[i]] && displayed.push(bibles[enabled[i]]);
+                bibles[enabled[i]] && processBible(bibles[enabled[i]]);
             }
         }
         else {        
             for(i in bibles) {
-                displayed.push(bibles[i]);
+                //displayed.push(bibles[i]);
+                processBible(bibles[i]);
             }
         } 
 

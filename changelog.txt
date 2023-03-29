@@ -3,6 +3,12 @@ Bible SuperSearch Universal Client Changelog
 = 5.2.0
 = 5.1.3 
 * Added "Remove Bible" to paralell Bible selector
+* Added ability to have multiple default Bibles
+* Added descripive text for Strongs, Red Letter, Highlight and Italics
+* Added UI language support: Latvian, Russian
+* Bug fix: Capitalizing first letter in language name on UI.
+* Bug fix: Clearing out certain form fields when using random chapter or verse.
+* Misc bug other fixes.
 
 = 5.1.2
 * Fixed setting default Bible with single Bible selector when clearing form

@@ -5,7 +5,6 @@ var i18n = require('./Locale/i18nContent');
 
 module.exports = kind({
     name: 'ToggleHtml',
-    // tag: 'span',
     classes: 'is_false',
     
     trueComponent: {},  // Component that displays when value = true
@@ -24,7 +23,6 @@ module.exports = kind({
 
     handlers: {
         ontap: 'handleTap',
-        onmouseover: 'handleMouseOver',
         onmouseout: 'handleMouseOut'
     },
 
@@ -50,21 +48,21 @@ module.exports = kind({
         vt.addClass('true');  
 
         if(this.falseTitle) {
-            // vf.setAttribute('title', this.falseTitle);
             vf.set('titleString', this.falseTitle);
         }        
 
         if(this.trueTitle) {
-            // vt.setAttribute('title', this.trueTitle);
             vt.set('titleString', this.trueTitle);
         }
 
         if(this.help)  {
-            // this.createComponent({
-            //     kind: Help,
-            //     name: 'Help',
-            //     helpComponents: this.helpComponents,
-            // });            
+            this.createComponent({
+                tag: 'sup',
+                content: '?',
+                classes: 'biblesupersearch_toggle_help',
+                onmouseover: 'handleMouseOver',
+                ontap: 'handleHelpTab'
+            });
 
             this.createComponent({
                 name: 'Help',
@@ -83,7 +81,10 @@ module.exports = kind({
     },
     handleTap: function() {
         this.toggleValue();
+    },
+    handleHelpTab: function() {
         this.$.Help && this.$.Help.set('showing', true);
+        return true;
     },
     toggleValue: function() {
         this.set('value', !this.get('value'));

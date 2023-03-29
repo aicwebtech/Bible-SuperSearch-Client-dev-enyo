@@ -695,8 +695,14 @@ div.biblesupersearch_context_help_container {
     z-index: 1000001;
 }
 
-.biblesupersearch_toggle_help {
+div.biblesupersearch_toggle_help {
     padding-left: 26px;
     font-size: 0.7em;
     display: block;
+}
+
+span.biblesupersearch_toggle_help {
+    padding-left: 26px;
+    font-size: 0.8em;
+    display: inline;
 }
