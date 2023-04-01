@@ -173,7 +173,6 @@ module.exports = kind({
             freshValue = utils.clone(this.value);
 
         if(freshValue.length == curParNum) {
-            this.log('pop goes the value')
             freshValue.pop();
         }
 

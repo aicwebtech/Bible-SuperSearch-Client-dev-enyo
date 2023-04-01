@@ -706,3 +706,7 @@ span.biblesupersearch_toggle_help {
     font-size: 0.8em;
     display: inline;
 }
+
+.biblesupersearch_dialog.help_dialog .dialog .title .header h4 {
+    padding: 0 5px;
+}

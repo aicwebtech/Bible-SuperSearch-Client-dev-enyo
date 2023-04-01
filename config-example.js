@@ -1,12 +1,14 @@
 var biblesupersearch_config_options = {
     
     // Language code for user interface language
-    // If language is not supported, English will display
+    // If language selected is not supported, English will display
     // Supported language:
     // * en : English
     // * es : Español / Spanish
     // * fr: Français / French
+    // * lv: Latviešu / Latvian
     // * ro: Română / Romanian
+    // * ru: Русский / Russian
     // * zh_TW: 繁體中文 / Chinese - Traditional
     // * zh_CN: 简体中文 / Chinese - Simplfied
 

@@ -45,8 +45,8 @@ module.exports = {
     'Find verses containing': 'Atrast pantus, kas satur',
     'Restrict search to': 'Ierobežot meklēšanu uz', 
     'Word Search': 'Vārda Meklēšana',
-    'Clear Form': 'Attīrīt formu', // 4.5
-    'Select Book and Chapter:' : 'Izvēlieties Grāmatu un Nodaļu:', // 5.2
+    'Clear Form': 'Attīrīt Formu', // 4.5
+    'Select Book and Chapter:' : 'Izvēlieties grāmatu un nodaļu:', // 5.2
 
     // Context Links
     'Show full chapter': 'Atvērt visu nodaļu',
@@ -134,22 +134,22 @@ module.exports = {
     'Italics': 'Slīpraksts (Italics)',
     'Disable Italization of Added Words' : 'Atspējot Tulkojumā Papildu Pievienoto Vārdu Attēlošanu Slīprakstā (Italics)',
     'Enable Italization of Added Words': 'Iespējot Tulkojumā Papildu Pievienoto Vārdu Attēlošanu Slīprakstā (Italics)',
-    'Disable Strong\'s Numbers': 'Atspējot Teksta Attēlošanu ar Papildu Vārdu Izcelsmes Skaidrojumiem (Strong\'s)',
-    'Enable Strong\'s Numbers': 'Iespējot Teksta Attēlošanu ar Papildu Vārdu Izcelsmes Skaidrojumiem (Strong\'s)',
+    'Disable Strong\'s Numbers': 'Atspējot Teksta Attēlošanu ar Papildu Vārdu Izcelsmes Konkordances Skaidrojumiem (Strong\'s)',
+    'Enable Strong\'s Numbers': 'Iespējot Teksta Attēlošanu ar Papildu Vārdu Izcelsmes Konkordances Skaidrojumiem (Strong\'s)',
     'Red Letter': 'Sarkans Teksts',
-    'Disable Red Letter': 'Atspējot Teksta Izcelšanu Sarkanā Krāsā',
-    'Enable Red Letter': 'Iespējot Teksta Izcelšanu Sarkanā Krāsā',
+    'Disable Red Letter': 'Atspējot Jēzus Kristus Sacīto Vārdu Izcelšanu Sarkanā Krāsā',
+    'Enable Red Letter': 'Iespējot Jēzus Kristus Sacīto Vārdu Izcelšanu Sarkanā Krāsā',
     'Highlight': 'Izcelt (Bold)',
     'Disable Highlighting of Keywords': 'Atspējot Meklējamā, Tekstā Atrastā Atslēgas Vārda Sakrītošās Daļas Attēlošanu Treknrakstā (Bold)',
     'Enable Highlighting of Keywords': 'Iespējot Meklējamā, Tekstā Atrastā Atslēgas Vārda Sakrītošās Daļas Attēlošanu Treknrakstā (Bold)',
     'Print': 'Drukāt',
     'Printer Friendly': 'Drukāšanai Draudzīgs',
-    'Help': 'Palīdzība',
+    'Help': 'Palīdzība meklētāja rīka lietošanā',
     'Basic': 'Pamata',
     'Advanced': 'Paplašināta',
 
-
     // Descriptions of special formatting features
+
     'Formatting': '',  // 5.3
     'Supported Bibles Only': '',  // 5.3
 
@@ -248,8 +248,8 @@ module.exports = {
 
     // Bible SOS dialog
     'Bible SOS': 'Palīdzība, Meklējot Atbildes Bībelē',
-    'Emergency Help from the Bible': 'Šīs Bībeles rakstvietas jums sniegs palīdzību un atbalstu.',
-    'Where to go When ...': 'Tās noderēs par garīgu stiprinājumu, dzīvē nonākot kādā no šīm situācijām ...',
+    'Emergency Help from the Bible': 'Šīs Bībeles rakstvietas jums sniegs palīdzību un atbalstu',
+    'Where to go When ...': 'Tās noderēs par garīgu stiprinājumu, dzīvē nonākot kādā no šīm situācijām',
     'Afraid': 'Bailēs',
     'Anxious': 'Satraukumā',
     'Backsliding': 'Krītot grēkā',

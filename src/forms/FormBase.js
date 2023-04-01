@@ -31,12 +31,14 @@ module.exports = kind({
 
     _referenceChangeHelperIgnore: false,
     defaultSubmitting: false,
+    preventDefaultSubmit: false,
 
     Passage: Passage,
 
     handlers: {
         onCacheChange: 'handleCacheChange',
         onHashRunForm: 'handleHashRunForm',
+        onAppLoaded: 'handleAppLoaded',
         onkeyup: 'keyPress'
     },
 
@@ -76,12 +78,14 @@ module.exports = kind({
         // Break references to formData on other forms?
         this.clearForm(); 
         this.populateDefaults();
+    },
+    handleAppLoaded: function() {
         this.submitDefault();
     },
     submitDefault: function() {
         var ref = this.app.configs.landingReference || null;
 
-        if(ref && ref != '') {
+        if(!this.preventDefaultSubmit && ref && ref != '') {
             var formData = {};
 
             if(this.$.reference) {
@@ -433,6 +437,7 @@ module.exports = kind({
         }
 
         // this.clearForm();
+        this.preventDefaultSubmit = true;
         var fd = utils.clone(inEvent.formData);
         fd.shortcut = fd.shortcut || 0;
         this.setFormDataWithMapping(fd);
@@ -447,8 +452,6 @@ module.exports = kind({
         }
     },
     _subformSafe: function() {
-        //return !(this.containsSubforms || this.subForm && !this.defaultForm);
-
         return (!this.containsSubforms && (!this.subForm || this.defaultForm));
     },
     updateHash: function() {

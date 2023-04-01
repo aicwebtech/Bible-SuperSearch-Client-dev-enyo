@@ -39,7 +39,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.1.3',
+    applicationVersion: '5.2.0',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -331,8 +331,9 @@ var App = Application.kind({
         this.appLoaded = true;
         this.$.Router.trigger();
 
+        this.waterfall('onAppLoaded');
+
         if(this.configs.query_string) {
-            this.log(this.configs.query_string);
             this.handleHashGeneric(this.configs.query_string);
         }
     },

@@ -30,6 +30,8 @@ module.exports = kind({
                 value: i
             });
         }
+
+        this.handleLocaleChange();
     },
 
     change: function(inSender, inEvent) {

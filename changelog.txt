@@ -1,7 +1,6 @@
 Bible SuperSearch Universal Client Changelog
 
-= 5.2.0
-= 5.1.3 
+= 5.2.0 April 8, 2023
 * Added "Remove Bible" to paralell Bible selector
 * Added ability to have multiple default Bibles
 * Added descripive text for Strongs, Red Letter, Highlight and Italics
