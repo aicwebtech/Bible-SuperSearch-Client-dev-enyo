@@ -29,7 +29,7 @@ module.exports = {
     'Parallel Bible #': 'Paralēlā Bībele #',
     'Select a Bible': 'Izvēlieties Bībeli',
     'Add Bible': 'Pievienojiet Bībeli',
-    'Remove Bible': 'Noņemiet Bībeli',
+    'Remove Bible': 'Noņemiet Bībeli', // 5.2
     'Random Chapter': 'Atvērt Nejauši Izvēlētu Nodaļu',
     'Random Verse': 'Atvērt Nejauši Izvēlētu Pantu',
     'Passages': 'Rakstvietas',
@@ -120,9 +120,9 @@ module.exports = {
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif fonts',
-    'Sans-Serif': 'Sans-Serif fonts',
-    'Monospace': 'Monospace fonts',
+    'Serif' : 'Serif fonts',                    // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif fonts',           // * Button text, please keep translation short!
+    'Monospace': 'Monospace fonts',             // * Button text, please keep translation short!
     'Enlarge Text': 'Palielināt Tekstu',
     'Default Text Size': 'Noklusējuma Teksta Izmērs',
     'Shrink Text': 'Samazināt Tekstu',
@@ -131,7 +131,7 @@ module.exports = {
     'Passage Display': 'Nodaļu, Pantu Skats', // 4.5
     'EZ Copy': 'Pielāgotā Teksta Kopēšana',  // 'Easy Copy'
     'Read Display': 'Lasīšanas Skats',
-    'Italics': 'Slīpraksts (Italics)',
+    'Italics': 'Slīpraksts (Italics)',          // * Button text, please keep translation short!
     'Disable Italization of Added Words' : 'Atspējot Tulkojumā Papildu Pievienoto Vārdu Attēlošanu Slīprakstā (Italics)',
     'Enable Italization of Added Words': 'Iespējot Tulkojumā Papildu Pievienoto Vārdu Attēlošanu Slīprakstā (Italics)',
     'Disable Strong\'s Numbers': 'Atspējot Teksta Attēlošanu ar Papildu Vārdu Izcelsmes Konkordances Skaidrojumiem (Strong\'s)',
@@ -139,7 +139,7 @@ module.exports = {
     'Red Letter': 'Sarkans Teksts',
     'Disable Red Letter': 'Atspējot Jēzus Kristus Sacīto Vārdu Izcelšanu Sarkanā Krāsā',
     'Enable Red Letter': 'Iespējot Jēzus Kristus Sacīto Vārdu Izcelšanu Sarkanā Krāsā',
-    'Highlight': 'Izcelt (Bold)',
+    'Highlight': 'Izcelt (Bold)',               // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Atspējot Meklējamā, Tekstā Atrastā Atslēgas Vārda Sakrītošās Daļas Attēlošanu Treknrakstā (Bold)',
     'Enable Highlighting of Keywords': 'Iespējot Meklējamā, Tekstā Atrastā Atslēgas Vārda Sakrītošās Daļas Attēlošanu Treknrakstā (Bold)',
     'Print': 'Drukāt',
@@ -149,14 +149,14 @@ module.exports = {
     'Advanced': 'Paplašināta',
 
     // Descriptions of special formatting features
-
-    'Formatting': '',  // 5.3
-    'Supported Bibles Only': '',  // 5.3
-
+    'Formatting': 'Formatēšana',  // 5.3
+    'Supported Bibles Only': 'Tikai Atbalstītajās Bībeles Versijās',  // 5.3
+    
     'strongs_numbers_description': 'Konkordances (Strong\'s) numerācijas rādītājs norāda uz Bībeles ebreju vai grieķu oriģinālvalodu vārdu skaidrojumiem.',  // 5.3
     'italics_description': 'Slīprakstā (italics) attēloti vārdi, kuri nav atrodami vēsturisko manuskriptu oriģinālvalodās un ir papildu pievienoti Bībeles versijas tulkošanas procesā.',    // 5.3
     'red_letter_description': 'Jēzus Kristus vārdi iekrāsoti, izcelti sarkanā krāsā.', // 5.3
     'highlight_description': 'Izcelt treknrakstā (bold) tekstā atrastos atslēgas vārdus.',  // 5.3
+
 
     // Verse Cherry-picking
     'Select All': 'Atlasīt Visas', // 5.0
@@ -287,8 +287,8 @@ module.exports = {
     // Bible Start dialog
     'Start': 'Palīdzība, Uzsākot Lasīt Bībeli',
     'Bible Start Guide': 'Ievads Bībeles Iepazīšanā',
-    'New to the Bible?': 'Papildu informācija priekš tiem, kas vēl nav lasījuši Bībeli.',
-    'Not Sure Where to Begin?' : 'Īss apraksts par Bībeles grāmatām, ar kurām būtu ieteicams uzsākt Bībeles lasīšanu un iepazīšanu.',
+    'New to the Bible?': 'Informācija priekš tiem, kas vēl nav lasījuši Bībeli',
+    'Not Sure Where to Begin?' : 'Īss apraksts par Bībeles grāmatām, ar kurām būtu ieteicams uzsākt Bībeles lasīšanu un iepazīšanu',
     'Life and Teachings of Jesus Christ': 'Jēzus Kristus Dzīve un Mācības',
     'Basic Christian Beliefs': 'Kristiešu Pamatticība',
     'Creation and the Fall of Man': 'Radīšana un Cilvēka Krišana',
@@ -335,7 +335,7 @@ module.exports = {
     'Link' : 'Saite', // 4.5
 
     // Quick Start Help Dialog
-    'Quick Start Guide': 'Pamata Lietošanas Instrukcija',
+    'Quick Start Guide': 'Lietošanas Pamācība',
     'User\'s Manual': 'Lietotāja Rokasgrāmata',
     'Wildcard': 'Aizstājējzīme (Wildcard)',
     'Basic Searches' : 'Vienkāršā Meklēšana',

@@ -120,9 +120,9 @@ module.exports = {
     // Formatting and dialog buttons
     'A': 'А',     // First letter in given language
     'Abc': 'Абв',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Шрифт Serif',
-    'Sans-Serif': 'Шрифт Sans-Serif',
-    'Monospace': 'Шрифт Monospace',
+    'Serif' : 'Шрифт Serif',                     // * Button text, please keep translation short!
+    'Sans-Serif': 'Шрифт Sans-Serif',            // * Button text, please keep translation short!
+    'Monospace': 'Шрифт Monospace',              // * Button text, please keep translation short!
     'Enlarge Text': 'Увеличить Текст',
     'Default Text Size': 'Размер Текста по Умолчанию',
     'Shrink Text': 'Уменьшить Текст',
@@ -131,7 +131,7 @@ module.exports = {
     'Passage Display': 'Просмотр Глав и Стихов', // 4.5
     'EZ Copy': 'Копирование Текста с Настройками',  // 'Easy Copy'
     'Read Display': 'Режим Чтения',
-    'Italics': 'Курсив (Italics)',
+    'Italics': 'Курсив (Italics)',               // * Button text, please keep translation short!
     'Disable Italization of Added Words' : 'Отключить Отображение в Переводе Добавленных Слов Курсивом (Italics)',
     'Enable Italization of Added Words': 'Включить Отображение в Переводе Добавленных Слов Курсивом (Italics)',
     'Disable Strong\'s Numbers': 'Отключить Отображение Текста с Дополнительными Пояснениями Происхождения Слов, Конкорданс (Strong\'s)',
@@ -139,7 +139,7 @@ module.exports = {
     'Red Letter': 'Красный Текст',
     'Disable Red Letter': 'Отключить Выделение Красным Цветом Слов Иисуса Христа',
     'Enable Red Letter': 'Включить Выделение Красным Цветом Слов Иисуса Христа',
-    'Highlight': 'Выделить (Bold)',
+    'Highlight': 'Выделить (Bold)',              // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Отключить Отображение Совпадающей Части Найденного Ключевого Слова Жирным Шрифтом (Bold)',
     'Enable Highlighting of Keywords': 'Включить Отображение Совпадающей Части Найденного Ключевого Слова Жирным Шрифтом (Bold)',
     'Print': 'Распечатать',
@@ -149,13 +149,14 @@ module.exports = {
     'Advanced': 'Расширенный',
 
     // Descriptions of special formatting features
-    'Formatting': '',  // 5.3
-    'Supported Bibles Only': '',  // 5.3
-
+    'Formatting': 'Форматирование',  // 5.3
+    'Supported Bibles Only': 'Только в Поддерживаемых Версиях Библии',  // 5.3
+    
     'strongs_numbers_description': 'Указатель нумерации конкорданс (Strong\'s) указывает на пояснения к словам в оригинальном еврейском или греческом языках Библии.',  // 5.3
     'italics_description': 'Курсивом (italics) выделены слова, которые не найдены в языках оригинала исторических рукописей и дополнительно добавлены в процессе перевода версии Библии.',    // 5.3
     'red_letter_description': 'Слова Иисуса Христа выделены красным цветом.', // 5.3
     'highlight_description': 'Выделить в тексте найденных ключевых слов жирным шрифтом (bold).',  // 5.3
+
 
     // Verse Cherry-picking
     'Select All': 'Выбрать Все', // 5.0
@@ -286,8 +287,8 @@ module.exports = {
     // Bible Start dialog
     'Start': 'Помощь Начиная Чтения Библии',
     'Bible Start Guide': 'Введение в Изучение Библии',
-    'New to the Bible?': 'Дополнительная информация для тех, кто еще не читал Библию.',
-    'Not Sure Where to Begin?' : 'Краткое описание книг Библии, с которых рекомендуется начинать чтение Библии.',
+    'New to the Bible?': 'Информация для тех, кто еще не читал Библию',
+    'Not Sure Where to Begin?' : 'Краткое описание книг Библии, с которых рекомендуется начинать чтение Библии',
     'Life and Teachings of Jesus Christ': 'Жизнь и Учение Иисуса Христа',
     'Basic Christian Beliefs': 'Основная Христианская Вера',
     'Creation and the Fall of Man': 'Сотворение и Грехопадение Человека',
@@ -334,7 +335,7 @@ module.exports = {
     'Link' : 'Ссылка', // 4.5
 
     // Quick Start Help Dialog
-    'Quick Start Guide': 'Основные Инструкции по Использованию',
+    'Quick Start Guide': 'Краткое Руководство Пользователя',
     'User\'s Manual': 'Руководство Пользователя',
     'Wildcard': 'Подстановочный Знак (Wildcard)',
     'Basic Searches' : 'Простой Поиск',
