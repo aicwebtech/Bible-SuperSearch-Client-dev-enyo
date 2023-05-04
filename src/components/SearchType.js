@@ -16,7 +16,7 @@ module.exports = kind({
             selected = 0;
 
         if(!search_types || search_types.length == 0) {
-            this.log('using hardcoded search types')
+            this.app.debug && this.log('using hardcoded search types')
             search_types = this.defaultSearchTypes;
         }
 

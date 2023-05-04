@@ -1,0 +1,51 @@
+
+
+
+
+
+
+
+
+.bss_pseudo_select {
+	position: relative;
+	display: inline-block;
+
+	height: 17px;
+	background-color: white;
+	border: 1px solid #dddddd;
+	font-size: 13px;
+}
+
+.bss_pseudo_select_toggle {
+	position: absolute;
+	background-color: white;
+	margin-top: 0;
+	width: 100%;
+	text-align: left;
+}
+
+.bss_pseudo_select_placeholder {
+	display: inline-block;
+	/*background-color: white;*/
+	float: left;
+	text-align: left
+}
+
+.bss_pseudo_select_button {
+	display: inline-block;
+	background-color: blue;
+	float: right;
+}
+
+.bss_pseudo_option_hide .bss_pseudo_option, .bss_pseudo_option_hide .bss_pseudo_optgroup  {
+	display: none;
+}
+
+.bss_pseudo_option {
+
+}
+
+.bss_pseudo_option:hover {
+	background-color: #333333;
+	color: white;
+}
