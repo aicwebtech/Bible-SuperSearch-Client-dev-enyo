@@ -14,6 +14,10 @@ module.exports = kind({
         onPageChange: ''
     },
 
+    handlers: {
+        ontap: 'handleTap'
+    },
+
     components: [
         {kind: Button, content: '|<=', ontap:'goChangePage', page: 1},
         {kind: Button, content: '<=', ontap:'goPrevPage'},
@@ -47,11 +51,18 @@ module.exports = kind({
     },
     _pageChangeHelper: function(newPage) {
         if(this.get('currentPage') != newPage) {
+            this.app.set('scrollMode', 'results_top');
             this.set('currentPage', newPage);
             var data = {page: this.get('currentPage')};
             this.log('changing', data);
             Signal.send('onPageChange', data);
             this.doPageChange(data);
+        }
+    },
+    handleTap: function(inSender, inEvent) {
+        if(inSender.href) {
+            // If clicking on an active link, set scroll mode
+            this.app.set('scrollMode', 'results_top');
         }
     }
 

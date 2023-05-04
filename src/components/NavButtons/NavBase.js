@@ -20,6 +20,10 @@ module.exports = kind({
     currentChapter: 'sc.gif',
     currentChapterDisabled: 'sc_nl.gif',
 
+    handlers: {
+        ontap: 'handleTap'
+    },
+
     create: function() {
         this.inherited(arguments);
 
@@ -75,7 +79,7 @@ module.exports = kind({
 
         // Current Chapter
         if(typeof this.nav.ccc != 'undefined' && this.nav.ccc != null) {
-            ookName = this.app.getLocaleBookName(this.nav.ccb, this.nav.ccb_name);
+            bookName = this.app.getLocaleBookName(this.nav.ccb, this.nav.ccb_name);
             cc_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, this.nav.ccc);
             cc_icon = this.iconDir + this.currentChapter;
             cc_text = bookName + ' ' + this.nav.ccc;
@@ -121,5 +125,11 @@ module.exports = kind({
             href:  nb_link,
             title: nb_text,
         });
+    },
+    handleTap: function(inSender, inEvent) {
+        if(inSender.href) {
+            // If clicking on an active link, set scroll mode
+            this.app.set('scrollMode', 'results_top');
+        }
     }
 });

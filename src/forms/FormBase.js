@@ -256,6 +256,12 @@ module.exports = kind({
                     return true;
                 }
 
+                var namePeriodToSpace = bookItem.name.replace(/\./g,' ');
+
+                if(item.book == namePeriodToSpace) {
+                    return true;
+                }
+
                 return false;
             });
 

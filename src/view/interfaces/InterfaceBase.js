@@ -170,12 +170,12 @@ module.exports = kind({
         this.addRemoveClass('rtl', this.app.isRtl);
     },
     handleFormResponse: function(inSender, inEvent) {
-        this.scrollToTop();
+        // this.scrollToTop();
     },
     handleFormViewChanged: function(inSender, inEvent) {
-        this.scrollToTop();
+        //this.scrollToTop();
     },
     handkeKey: function(inSender, inEvent) {
         this.log(inEvent);
-    },
+    }
 });

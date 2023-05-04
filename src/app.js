@@ -75,6 +75,9 @@ var App = Application.kind({
     responseCollection: ResponseCollection,
     utils: Utils,
     hasAjaxSuccess: false,
+
+    scrollMode: 'container_top',
+    scrollModeDefault: 'container_top',
     
     // Selectable sub-views:
     formatButtonsView: null,
@@ -695,6 +698,16 @@ var App = Application.kind({
         
         return false;
     },
+    setScroll: function(scroll) {
+        this.view.hasNode() && this.view.hasNode().scrollTo({
+            top: scroll, 
+            left: 0, 
+            behavior: 'smooth'
+        });
+    },
+    resetScrollMode: function() {
+        this.set('scrollMode', this.get('scrollModeDefault'));
+    }, 
     getSelectedBibles: function() {
         var bibles = this.getFormFieldValue('bible');
 

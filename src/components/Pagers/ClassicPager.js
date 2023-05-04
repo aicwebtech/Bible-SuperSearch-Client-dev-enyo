@@ -30,6 +30,10 @@ module.exports = kind({
         onPageChange: ''
     },
 
+    handlers: {
+        onLinkTap: 'handleTap'
+    },
+
     create: function() {
         this.inherited(arguments);
         this._rebuildHelper();
@@ -129,6 +133,7 @@ module.exports = kind({
                     href: (i == page) ? null : this.makeLink( i.toString() ),
                     classes: (i == page) ? 'std_link current_page' : 'std_link',
                     content: i.toString()
+                    //onLinkTap: 'handleTap'
                 });
             }
         }
@@ -177,7 +182,10 @@ module.exports = kind({
         this._pageChangeHelper(inSender.get('page'));
     },
     _pageChangeHelper: function(newPage) {
+        this.log(newPage);
+
         if(this.get('currentPage') != newPage) {
+            this.app.set('scrollMode', 'results_top');
             this.set('currentPage', newPage);
             var data = {page: this.get('currentPage')};
             this.log('changing', data);
@@ -238,6 +246,13 @@ module.exports = kind({
     getLinkBase: function() {
         var cache = this.get('cacheHash');
         return '#/c/' + cache + '/';
-    }
+    },
+    handleTap: function(inSender, inEvent) {
+        //this.log(inSender, inEvent);
 
+        if(inEvent.sender && inEvent.sender.href) {
+            // If clicking on an active link, set scroll mode
+            this.app.set('scrollMode', 'results_top');
+        }
+    }
 });

@@ -14,6 +14,7 @@ module.exports = kind({
 
     handlers: {
         onLocaleChange: 'localeChanged',
+        ontap: 'handleTap'
     },
 
     create: function() {
@@ -54,5 +55,8 @@ module.exports = kind({
         if(titleString && titleString != '') {
             this.setAttribute('title', this.app.t(titleString) );
         }
+    },
+    handleTap: function(inSender, inEvent) {
+        this.bubble('onLinkTap', {sender: inSender});
     }
 });

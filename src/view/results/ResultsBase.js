@@ -90,6 +90,10 @@ module.exports = kind({
 
         // this.navigationButtonsView = this.app.getSubControl('');
     },
+    rendered: function() {
+        this.inherited(arguments);
+        this.bubble('onResultsRendered');
+    },
     formDataChanged: function(was, is) {
         this.bibles = [];
 

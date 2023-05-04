@@ -16,6 +16,10 @@ module.exports = kind({
     nextChapterText: '&#9654;&#xFE0E;',
     nextBookText: '&#9654;&#xFE0E;|',
 
+    handlers: {
+        ontap: 'handleTap'
+    },
+
     create: function() {
         this.inherited(arguments);
 
@@ -116,5 +120,11 @@ module.exports = kind({
             classes: (nb_link) ? 'active' : 'inactive',
             content: this.nextBookText
         });
+    },
+    handleTap: function(inSender, inEvent) {
+        if(inSender.href) {
+            // If clicking on an active link, set scroll mode
+            this.app.set('scrollMode', 'results_top');
+        }
     }
 });

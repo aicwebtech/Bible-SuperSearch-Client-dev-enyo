@@ -30,13 +30,23 @@ module.exports = kind({
     formatButtonsToggle: false, // if true, format buttons will only display when there are form results
     uc: {},
 
+    // Used to determine scroll height (this.autoScroll)
+    scrollExtraMargin: {
+        'FormContainer': 0, 
+        'FormatButtonContainer': 15, 
+        'ErrorsContainer': 0, 
+        'StrongsContainer': 10, 
+        'DisambigContainer': 0
+    },
+
     published: {
         formView: null // This is a string representing a kind reference in this.forms
     },
 
     handlers: {
         onFormResponseSuccess: 'handleFormResponse',
-        onFormResponseError: 'handleFormError'
+        onFormResponseError: 'handleFormError',
+        onResultsRendered: 'handleResultsRendered'
     },
 
     components: [
@@ -87,6 +97,43 @@ module.exports = kind({
         // if(this.pagerView) {
         //     this.$. ResultsController.set('pagerView', this.pagerView);
         // }
+    },
+    handleResultsRendered: function() {
+        this.autoScroll();
+    },
+    autoScroll: function() {
+        // Attempts to scroll to top of results
+        // Sort-of works, but needs tweaking before we will go live with it.
+        var headerHeight = 0;
+
+        if(this.app.get('scrollMode') == 'results_top') {
+            var headerItems = [
+                'FormContainer', 
+                'FormatButtonContainer', 
+                'ErrorsContainer', 
+                'StrongsContainer', 
+                'DisambigContainer'
+            ];
+
+            headerItems.forEach(function(item) {
+                var element = this.$[item].hasNode();
+
+                if(!element) {
+                    return;
+                }
+
+                var style = element.currentStyle || window.getComputedStyle(element);
+                this.app.debug && this.log('ResultsController', item, element.offsetHeight, style.marginTop, style.marginBottom);
+                headerHeight += element.offsetHeight;
+                headerHeight += parseInt(style.marginTop, 10);
+                headerHeight += parseInt(style.marginBottom, 10);
+                headerHeight += this.scrollExtraMargin[item] || 0;
+            }, this);
+        }
+
+        this.app.debug && this.log('ResultsContainer scroll', headerHeight);
+        this.app.setScroll(headerHeight);
+        this.app.resetScrollMode();
     },
     formViewProcess: function(formView) {
         this.app.debug && this.log('formView', formView);
@@ -139,30 +186,6 @@ module.exports = kind({
         this.$.ResultsController.set('resultsData', utils.clone(inEvent.results));
         this.$.ResultsController.set('formData', inEvent.formData);
         this.$.ResultsController.renderResults();
-
-        // Attempts to scroll to top of results
-        // Sort-of works, but needs tweaking before we will go live with it.
-        // var headerHeight = 0;
-        // var headerItems = ['FormContainer', 'FormatButtonContainer', 'ErrorsContainer', 'StrongsContainer', 'DisambigContainer'];
-
-        // headerItems.forEach(function(item) {
-        //     var element = this.$[item].hasNode();
-
-        //     if(!element) {
-        //         return;
-        //     }
-
-        //     var style = element.currentStyle || window.getComputedStyle(element);
-        //     this.app.debug && this.log('ResultsController', element.offsetHeight, style.marginTop, style.marginBottom);
-        //     headerHeight += element.offsetHeight;
-        //     headerHeight += parseInt(style.marginTop, 10);
-        //     headerHeight += parseInt(style.marginBottom, 10);
-        // }, this);
-
-        // this.parent.hasNode().scrollTo(0, headerHeight);
-        // this.app.debug && this.log('ResultsContainer scroll', headerHeight);
-        // End scroll
-
         this.$.ResultsContainer.set('showing', true);
     },
     handleResponseExtra: function(results) {
