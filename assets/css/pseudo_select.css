@@ -12,8 +12,9 @@
 
 	height: 17px;
 	background-color: white;
-	border: 1px solid #dddddd;
+	border: 1px solid #999999;
 	font-size: 13px;
+	cursor: default;
 }
 
 .bss_pseudo_select_toggle {
@@ -22,23 +23,25 @@
 	margin-top: 0;
 	width: 100%;
 	text-align: left;
+	z-index: 1000001;
+	border: 1px solid #aaaaaa;
 }
 
 .bss_pseudo_select_placeholder {
 	display: inline-block;
-	/*background-color: white;*/
 	float: left;
 	text-align: left
 }
 
 .bss_pseudo_select_button {
 	display: inline-block;
-	background-color: blue;
 	float: right;
+	padding-right: 3px;
+	font-size: 12px;
 }
 
-.bss_pseudo_option_hide .bss_pseudo_option, .bss_pseudo_option_hide .bss_pseudo_optgroup  {
-	display: none;
+.bss_pseudo_option_show .bss_pseudo_select_visable {
+	background-color: #dddddd;
 }
 
 .bss_pseudo_option {

@@ -1,8 +1,8 @@
 var kind = require('enyo/kind');
-var Sel = require('./Select');
+var Sel = require('./PseudoSelect/PseudoSelect');
 
 module.exports = kind({
-    name: 'SearchType',
+    name: 'SearchTypeNew',
     kind: Sel,
     defaultValue: null,
     defaultSelection: null,
@@ -23,13 +23,14 @@ module.exports = kind({
         for(i in search_types) {
             selected = (this.defaultValue == search_types[i].value) ? i : selected;
 
-            this.createComponent({
+            this.createOptionComponent({
                 content: search_types[i].label,
                 value: search_types[i].value
             });
         }
 
         this.defaultSelection = selected;
+        this.initOptions();
         this.resetValue();
     },
 

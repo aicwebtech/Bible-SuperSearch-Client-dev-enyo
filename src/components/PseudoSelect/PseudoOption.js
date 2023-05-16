@@ -11,6 +11,6 @@ module.exports = kind({
 
 	handleTap: function() {
 		this.log();
-		this.bubble('onPseudoOptionTap', {value: this.value});
+		this.bubble('onPseudoOptionTap', {value: this.value, content: this.content, type: 'option'});
 	}
 });

@@ -13,6 +13,7 @@ var i18nContent = require('../components/Locale/i18nContent');
 var i18n = require('../components/Locale/i18nComponent');
 
 
+var SearchTypeNew = require('../components/SearchTypeNew');
 var PseudoSelect = require('../components/PseudoSelect/PseudoSelect');
 
 module.exports = kind({
@@ -48,7 +49,22 @@ module.exports = kind({
                     {components: [
                         {kind: i18nContent, tag: 'span', content: 'Search for:'},
                         {tag: 'span', content: ' '},
-                        {kind: PseudoSelect, name: 'search_type_2', style: 'width: 100%; max-width: 200px'}
+                        {kind: SearchTypeNew, name: 'search_type_2', style: 'width: 100%; max-width: 200px'}
+                    ]},                    
+                    {components: [
+                        {kind: i18nContent, tag: 'span', content: 'Select:'},
+                        {tag: 'span', content: ' '},
+                        {
+                            kind: PseudoSelect, 
+                            name: 'search_type_3', 
+                            style: 'width: 100%; max-width: 200px',
+                            optionComponents: [
+                                {content: 'select one ...', value: '0'},
+                                {content: 'stuff 1', value: '1'},
+                                {content: 'stuff 2', value: '2'},
+                                {content: 'stuff 3', value: '3'},
+                            ]
+                        }
                     ]},
                     {components: [
                         {kind: i18nContent, tag: 'span', content: 'Limit search to:'},
