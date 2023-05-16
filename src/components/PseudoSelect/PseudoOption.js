@@ -1,7 +1,9 @@
 var kind = require('enyo/kind');
+var i18n = require('../Locale/i18nComponent');
 
 module.exports = kind({
 	name: 'PseudoOption',
+	kind: i18n,
 	classes: 'bss_pseudo_option',
 	value: null,
 	selected: false,

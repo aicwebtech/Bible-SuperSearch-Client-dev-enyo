@@ -1,5 +1,6 @@
 var kind = require('enyo/kind');
 var Opt = require('./PseudoOption');
+var i18n = require('../Locale/i18nComponent');
 
 module.exports = kind({
 	name: 'PseudoSelect',
@@ -14,7 +15,10 @@ module.exports = kind({
 
 	handlers: {
 		onPseudoOptionTap: 'handleOptionTap',
-		onGlobalTap: 'handleGlobalTap'
+		onGlobalTap: 'handleGlobalTap',
+		onblur: 'handleBlur',
+		onfocusout: 'handleBlur',
+		onmouseout: 'handleMouseOut'
 		//ontap: 'handleVisableTap'
 	},
 
@@ -26,6 +30,7 @@ module.exports = kind({
 			components: [
 				{
 					name: 'Placeholder',
+					kind: i18n,                                                      
 					classes: 'bss_pseudo_select_placeholder',
 					content: '(value)'
 				}, 
@@ -57,7 +62,7 @@ module.exports = kind({
 		this.valueIdxMap = {};
 
 		if(controls[0]) {
-			this.$.Placeholder.set('content', controls[0].get('content'));
+			this.$.Placeholder.set('string', controls[0].get('content'));
 			this.setSelected(0);
 			this.set('value', controls[0].get('value'));
 		}
@@ -71,10 +76,10 @@ module.exports = kind({
 		}
 	},
 	createOptionComponent: function(component) {
-		this.$.Toggle.createComponent(component);
+		return this.$.Toggle.createComponent(component);
 	},	
 	createOptionComponents: function(components) {
-		this.$.Toggle.createComponents(components);
+		return this.$.Toggle.createComponents(components);
 	},
 	renderOptionComponents: function() {
 		this.initOptions();
@@ -82,15 +87,27 @@ module.exports = kind({
 	},
 
 	handleGlobalTap: function(inSender, inEvent) {
+		this.log(inEvent.sender.id);
+
+
 		if(inEvent.sender != this) {
 			// this.set('toggled', false);
 		}
+	},
+
+	handleBlur: function() {
+		this.log();
+		this.set('toggled', false);
+	},
+	handleMouseOut: function() {
+		this.log();
+		//this.set('toggled', false);
 	},
 	
 	handleOptionTap: function(inSender, inEvent) {
 		if(inEvent.type == 'option') {		
 			this.set('toggled', false);
-			this.$.Placeholder.set('content', inEvent.content);
+			this.$.Placeholder.set('string', inEvent.content);
 			this.set('value', inEvent.value);
 		}
 
@@ -111,7 +128,7 @@ module.exports = kind({
 			return;
 		}
 
-		this.$.Placeholder.set('content', control.get('content'));
+		this.$.Placeholder.set('string', control.get('content'));
 	},
 	resetValue: function() {
 		// to do

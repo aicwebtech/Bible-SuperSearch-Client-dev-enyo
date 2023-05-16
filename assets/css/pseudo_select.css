@@ -61,3 +61,12 @@
 	background-color: #333333;
 	color: white;
 }
+
+
+.bss_pseudo_optgroup_label {
+	font-weight: bold;
+}
+
+.bss_pseudo_optgroup .bss_pseudo_option {
+	padding-left: 8px;
+}

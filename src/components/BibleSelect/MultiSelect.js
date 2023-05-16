@@ -1,7 +1,8 @@
 var kind = require('enyo/kind');
 var utils = require('enyo/utils');
 var Button = require('enyo/Button');
-var Single = require('./SingleSelect');
+//var Single = require('./SingleSelect');
+var Single = require('./SingleSelectNew');
 var i18n = require('../Locale/i18nContent');
 
 module.exports = kind({
