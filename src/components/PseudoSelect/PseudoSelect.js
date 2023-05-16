@@ -14,6 +14,7 @@ module.exports = kind({
 
 	handlers: {
 		onPseudoOptionTap: 'handleOptionTap',
+		onGlobalTap: 'handleGlobalTap'
 		//ontap: 'handleVisableTap'
 	},
 
@@ -53,9 +54,20 @@ module.exports = kind({
 	},
 	initOptions: function() {
 		controls = this.$.Toggle.getClientControls();
+		this.valueIdxMap = {};
 
 		if(controls[0]) {
 			this.$.Placeholder.set('content', controls[0].get('content'));
+			this.setSelected(0);
+			this.set('value', controls[0].get('value'));
+		}
+
+		for(i in controls) {
+			value = controls[i].get('value');
+
+			if(value) {
+				this.valueIdxMap[value] = i;
+			}
 		}
 	},
 	createOptionComponent: function(component) {
@@ -68,22 +80,38 @@ module.exports = kind({
 		this.initOptions();
 		this.$.Toggle.render();
 	},
+
+	handleGlobalTap: function(inSender, inEvent) {
+		if(inEvent.sender != this) {
+			// this.set('toggled', false);
+		}
+	},
+	
 	handleOptionTap: function(inSender, inEvent) {
 		if(inEvent.type == 'option') {		
 			this.set('toggled', false);
 			this.$.Placeholder.set('content', inEvent.content);
+			this.set('value', inEvent.value);
 		}
 
 
 		this.log(inEvent);
 	},
 	handleVisableTap: function() {
-		this.log();
-		// this.$.Toggle.set('showing', !this.$.Toggle.get('showing'));
 		this.set('toggled', !this.get('toggled'));
 	}, 
 	valueChanged: function(was, is) {
+		this.waterfall('onSetValue', {value: is});
 
+		var controls = this.$.Toggle.getClientControls(),
+			control = controls[this.valueIdxMap[is]] || null;
+
+		if(!control || control == null) {
+			this.resetValue();
+			return;
+		}
+
+		this.$.Placeholder.set('content', control.get('content'));
 	},
 	resetValue: function() {
 		// to do
@@ -93,13 +121,24 @@ module.exports = kind({
 		this.addRemoveClass('bss_pseudo_option_show', !!this.toggled);
 		this.$.Toggle.set('showing', !!this.toggled);
 	},
+	_clearSelected: function() {
+		/* private */
+		this.waterfall('onClearSelections');
+	},
 	setSelected: function(index) {
+		this._clearSelected();
+
 		controls = this.$.Toggle.getClientControls();
 
-		for(i in controls) {
-			controls[i].addRemoveClass('bss_pseudo_selected', i == index);
-			controls[i].addRemoveClass('bss_pseudo_not_selected', i != index);
+		if(controls[index]) {
+			controls[index].set('selected', true);
+			this.value = controls[index].get('value');
 		}
+
+		// for(i in controls) {
+		// 	controls[i].addRemoveClass('bss_pseudo_selected', i == index);
+		// 	controls[i].addRemoveClass('bss_pseudo_not_selected', i != index);
+		// }
 	},
 	setSelectedByValue: function(value, defaultIndex) {
         var value = value || 0,

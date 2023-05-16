@@ -44,12 +44,12 @@ module.exports = kind({
                     {components: [
                         {kind: i18nContent, tag: 'span', content: 'Search for:'},
                         {tag: 'span', content: ' '},
-                        {kind: SearchType, name: 'search_type', style: 'width: 100%; max-width: 200px'}
+                        {kind: SearchType, name: 'search_type_2', style: 'width: 100%; max-width: 200px'}
                     ]},                    
                     {components: [
                         {kind: i18nContent, tag: 'span', content: 'Search for:'},
                         {tag: 'span', content: ' '},
-                        {kind: SearchTypeNew, name: 'search_type_2', style: 'width: 100%; max-width: 200px'}
+                        {kind: SearchTypeNew, name: 'search_type', style: 'width: 100%; max-width: 200px'}
                     ]},                    
                     {components: [
                         {kind: i18nContent, tag: 'span', content: 'Select:'},

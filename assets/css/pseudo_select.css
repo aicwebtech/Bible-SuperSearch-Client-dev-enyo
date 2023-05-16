@@ -48,6 +48,15 @@
 
 }
 
+.bss_pseudo_option.bss_pseudo_selected {
+	background-color: #a0a0a0;
+	color: white;
+}
+
+.bss_pseudo_option.bss_pseudo_not_selected {
+
+}
+
 .bss_pseudo_option:hover {
 	background-color: #333333;
 	color: white;

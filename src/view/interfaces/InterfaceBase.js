@@ -33,6 +33,7 @@ module.exports = kind({
         onFormResponseSuccess: 'handleFormResponse',
         onFormViewChanged: 'handleFormViewChanged',
         onkeydown: 'handleKey',
+        ontap: 'handleTap'
     },
 
     published: {
@@ -61,6 +62,9 @@ module.exports = kind({
         //         showing: false
         //     });
         // }
+    },
+    handleTap: function(inSender, inEvent) {
+        this.waterfall('onGlobalTap', {sender: inSender});
     },
     ajaxLoadingChanged: function(was, is) {
         if(!this.$.LoadingDialog) {
