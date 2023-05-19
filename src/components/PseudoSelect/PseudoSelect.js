@@ -30,7 +30,8 @@ module.exports = kind({
 			components: [
 				{
 					name: 'Placeholder',
-					kind: i18n,                                                      
+					kind: i18n,          
+					allowHtml: true,                                            
 					classes: 'bss_pseudo_select_placeholder',
 					content: '(value)'
 				}, 
@@ -85,22 +86,36 @@ module.exports = kind({
 		this.initOptions();
 		this.$.Toggle.render();
 	},
-
+	destroyOptionControls: function() {
+		this.$.Toggle.destroyClientControls();
+	},
 	handleGlobalTap: function(inSender, inEvent) {
-		this.log(inEvent.sender.id);
+		// this.log(inSender);
+		// this.log(inEvent);
+
+		//this.log(inSender.id); // nope
+		
+		// this.log('e target', inEvent.e);
+		//this.log('e e.target', inEvent.e.target); // YES?
+		//this.log('e sender', inEvent.sender);
+		//this.log('S target.id', inSender.target.id);
 
 
-		if(inEvent.sender != this) {
-			// this.set('toggled', false);
+
+		if(
+			inEvent.e.target != this.$.Placeholder.hasNode() &&
+			inEvent.e.target != this.$.Visible.hasNode()
+		) {
+			this.set('toggled', false);
 		}
 	},
 
 	handleBlur: function() {
-		this.log();
+		//this.log();
 		this.set('toggled', false);
 	},
 	handleMouseOut: function() {
-		this.log();
+		//this.log();
 		//this.set('toggled', false);
 	},
 	
@@ -109,10 +124,8 @@ module.exports = kind({
 			this.set('toggled', false);
 			this.$.Placeholder.set('string', inEvent.content);
 			this.set('value', inEvent.value);
+			this.bubble('onchange');
 		}
-
-
-		this.log(inEvent);
 	},
 	handleVisableTap: function() {
 		this.set('toggled', !this.get('toggled'));
@@ -134,7 +147,6 @@ module.exports = kind({
 		// to do
 	},
 	toggledChanged: function(was, is) {
-		this.log(this.toggled);
 		this.addRemoveClass('bss_pseudo_option_show', !!this.toggled);
 		this.$.Toggle.set('showing', !!this.toggled);
 	},

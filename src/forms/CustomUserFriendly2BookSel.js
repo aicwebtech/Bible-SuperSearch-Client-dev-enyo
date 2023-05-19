@@ -13,6 +13,8 @@ var EtcButtons = require('../components/DialogEtcButtons/DialogEtcButtonsHtml');
 var i18nContent = require('../components/Locale/i18nContent');
 var i18n = require('../components/Locale/i18nComponent');
 
+var BookSelectNew = require('../components/BookSelectNew');
+
 module.exports = kind({
     name: 'CustomUserFriendly2BookSel',
     kind: FormBase,
@@ -34,9 +36,19 @@ module.exports = kind({
                         selectorWidth: 300
                     },
                     {tag: 'hr'},
-                    {kind: i18n, content: 'Select Book and Chapter:'},
+                    {kind: i18n, content: 'Select Book and Chapter (new):'},
                     {
                         name: 'reference_booksel', 
+                        kind: BookSelectNew,
+                        tag: 'div',
+                        defaultBook: null,
+                        defaultChapter: null,
+                        includeBlankValue: true
+                    },
+                    {tag: 'br'},                    
+                    {kind: i18n, content: 'Select Book and Chapter (old):'},
+                    {
+                        name: 'reference_booksel_old', 
                         kind: BookSelect,
                         tag: 'div',
                         defaultBook: null,

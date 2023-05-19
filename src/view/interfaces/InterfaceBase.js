@@ -64,7 +64,7 @@ module.exports = kind({
         // }
     },
     handleTap: function(inSender, inEvent) {
-        this.waterfall('onGlobalTap', {sender: inSender});
+        this.waterfall('onGlobalTap', {sender: inSender, e: inEvent});
     },
     ajaxLoadingChanged: function(was, is) {
         if(!this.$.LoadingDialog) {

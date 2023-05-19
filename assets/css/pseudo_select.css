@@ -25,6 +25,8 @@
 	text-align: left;
 	z-index: 1000001;
 	border: 1px solid #aaaaaa;
+	max-height: 300px; /* this shoule be responsive */
+	overflow-y: auto;
 }
 
 .bss_pseudo_select_placeholder {
@@ -44,8 +46,9 @@
 	background-color: #dddddd;
 }
 
-.bss_pseudo_option {
-
+.bss_pseudo_option, .bss_pseudo_optgroup {
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .bss_pseudo_option.bss_pseudo_selected {
@@ -67,6 +70,6 @@
 	font-weight: bold;
 }
 
-.bss_pseudo_optgroup .bss_pseudo_option {
-	padding-left: 8px;
+.bss_pseudo_option.bss_pseudo_option_grouped {
+	padding-left: 18px;
 }
