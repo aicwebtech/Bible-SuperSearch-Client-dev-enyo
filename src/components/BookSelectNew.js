@@ -55,28 +55,25 @@ module.exports = kind({
             });
         }  
 
-        if(this.includeBlankValue) {
-            this.$.Book.createOptionComponent({
-                content: ' ',
-                allowHtml: true,
-                value: '0',
-            });
-        }             
+        // if(this.includeBlankValue) {
+        //     this.$.Book.createOptionComponent({
+        //         content: ' ',
+        //         allowHtml: true,
+        //         value: '0',
+        //     });
+        // }             
 
-        if(this.includeBlankValue) {
-            this.$.Book.createOptionComponent({
-                content: '(blank)',
-                allowHtml: true,
-                value: '0',
-            });
-        }
+        // if(this.includeBlankValue) {
+        //     this.$.Book.createOptionComponent({
+        //         content: '(blank)',
+        //         allowHtml: true,
+        //         value: '0',
+        //     });
+        // }
 
         var tgroup = this.$.Book.createOptionComponent({
             kind: OptGroup,
             label: this.app.t('Old Testament')
-            // attributes: {
-            //     label: this.app.t('Old Testament')
-            // }
         });
 
         BookList.forEach(function(item) {
@@ -84,9 +81,6 @@ module.exports = kind({
                 tgroup = this.$.Book.createOptionComponent({
                     kind: OptGroup,
                     label: this.app.t('New Testament')
-                    // attributes: {
-                    //     label: this.app.t('New Testament')
-                    // }
                 });
             }
 
@@ -97,17 +91,28 @@ module.exports = kind({
                 grouped: true
             });
         }, this);
+
+        this.$.Book.initOptions();
+        this.$.Chapter.initOptions();
     }, 
 
     _createChapterList: function(selected) {
         var bookId = this.$.Book.get('value');
         selected = typeof selected != 'undefined' ? selected : '1';
 
-        if(bookId != this.bookId) {
-            this.$.Chapter.destroyClientControls();
+        // this.log('bookId', bookId);
+        // this.log('this.bookId', this.bookId);
 
-            if(bookId == 0) {
+        if(bookId != this.bookId) {
+            this.$.Chapter.destroyOptionControls();
+                // this.log('book changed');
+
+            if(bookId == 0 || bookId == '0') {
+                selected = null;
+
                 if(this.includeBlankValue) {
+                    selected = 0;
+
                     this.$.Chapter.createOptionComponent({
                         content: '',
                         value: '0',
@@ -116,7 +121,7 @@ module.exports = kind({
             } else {            
                 var Book = this._getBookById(bookId);
                 var chapters = parseInt(Book.chapters, 10);
-                this.$.Chapter.destroyClientControls();
+                //this.$.Chapter.destroyClientControls();
                 
                 for(var i = 1; i <= chapters; i++) {
                     this.$.Chapter.createOptionComponent({
@@ -126,15 +131,19 @@ module.exports = kind({
                 }
             }
 
-
             this.bookId = bookId;
+            this.$.Chapter.initOptions();
         }
 
+        // this.log('selected', selected);
 
         if(selected) {
             this.$.Chapter.setSelectedByValue(selected);
+        } else if(selected == null) {
+            //this.$.Chapter.resetValue();
         } else {
-            this.$.Chapter.setSelected(0);
+            //this.$.Chapter.setSelected(0);
+            //this.$.Chapter.resetValue();
         }
     },
 
@@ -224,7 +233,8 @@ module.exports = kind({
             var val = Book.name + ' ' + defaultChapter;
         } else {
             var val = '';
-            this.$.Book.setSelected(0);
+            //this.$.Book.setSelected(0);
+            this.$.Book.resetValue();
             this._createChapterList();
         }
 

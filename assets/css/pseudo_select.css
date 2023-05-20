@@ -25,7 +25,8 @@
 	text-align: left;
 	z-index: 1000001;
 	border: 1px solid #aaaaaa;
-	max-height: 300px; /* this shoule be responsive */
+	min-height: 10px;
+	max-height: 200px; /* this shoule be responsive */
 	overflow-y: auto;
 }
 

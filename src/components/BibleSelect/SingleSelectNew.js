@@ -65,6 +65,7 @@ module.exports = kind({
                 kind: Opt,
                 content: noSelectLabel,
                 allowHtml: true,
+                value: 0,
                 attributes: {value: '0'}
             });
         }
@@ -84,14 +85,14 @@ module.exports = kind({
 
         this.initOptions();
         this.checkShort();
-        this.resetValue();
+        //this.resetValue(); // redundant
     },
     nullValue: function() {
         this.setSelected(0);
         this.setValue('0');
     },
 
-    resetValue: function() {
+    _resetValue: function() {
         // this.log('SINGSEL parallelNumber', this.parallelNumber, this.app.configs.defaultBible);
         return; //multidefault haha
 

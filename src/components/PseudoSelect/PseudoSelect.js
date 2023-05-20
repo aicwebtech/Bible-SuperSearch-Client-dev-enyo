@@ -8,6 +8,8 @@ module.exports = kind({
 	toggled: false, // whether full drop down menu is showing.
 	selected: null, // Selected Index
 	optionComponents: [],
+	hasOptions: false,
+	defaultPlaceholder: '&nbsp;',
 
 	published: {
 		value: null,
@@ -33,7 +35,7 @@ module.exports = kind({
 					kind: i18n,          
 					allowHtml: true,                                            
 					classes: 'bss_pseudo_select_placeholder',
-					content: '(value)'
+					content: ''
 				}, 
 				{
 					name: 'Button',
@@ -61,20 +63,21 @@ module.exports = kind({
 	initOptions: function() {
 		controls = this.$.Toggle.getClientControls();
 		this.valueIdxMap = {};
-
-		if(controls[0]) {
-			this.$.Placeholder.set('string', controls[0].get('content'));
-			this.setSelected(0);
-			this.set('value', controls[0].get('value'));
-		}
-
+		this.contentIdxMap = {};
+		this.hasOptions = false;
+		
 		for(i in controls) {
-			value = controls[i].get('value');
+			value = controls[i].get('value') || null;
+			content = controls[i].get('content');
 
 			if(value) {
 				this.valueIdxMap[value] = i;
+				this.contentIdxMap[content] = i;
+				this.hasOptions = true;
 			}
 		}
+
+		this.resetValue();
 	},
 	createOptionComponent: function(component) {
 		return this.$.Toggle.createComponent(component);
@@ -88,6 +91,7 @@ module.exports = kind({
 	},
 	destroyOptionControls: function() {
 		this.$.Toggle.destroyClientControls();
+		this.$.Placeholder.set('string', this.defaultPlaceholder);
 	},
 	handleGlobalTap: function(inSender, inEvent) {
 		// this.log(inSender);
@@ -131,8 +135,6 @@ module.exports = kind({
 		this.set('toggled', !this.get('toggled'));
 	}, 
 	valueChanged: function(was, is) {
-		this.waterfall('onSetValue', {value: is});
-
 		var controls = this.$.Toggle.getClientControls(),
 			control = controls[this.valueIdxMap[is]] || null;
 
@@ -141,10 +143,40 @@ module.exports = kind({
 			return;
 		}
 
-		this.$.Placeholder.set('string', control.get('content'));
+		this._afterValueChanged(control);
 	},
 	resetValue: function() {
-		// to do
+
+		if(this.hasOptions) {
+			controls = this.$.Toggle.getClientControls();
+			control =  controls[0];
+			this.value = control.get('value');
+		} else {
+			control = null;
+			this.value = null;
+		}
+
+		this._afterValueChanged(control);
+
+		// if(controls[0]) {
+		// 	this.$.Placeholder.set('string', controls[0].get('content'));
+		// 	this.setSelected(0);
+		// 	this.set('value', controls[0].get('value'));
+		// } else {
+		// 	this.$.Placeholder.set('string', '');
+		// 	this.setSelected(null);
+		// 	this.set('value', null);
+		// }
+	},
+	_afterValueChanged: function(optionControl) {
+
+		if(optionControl) {
+			this.$.Placeholder.set('string', optionControl.get('content'));
+		} else {
+			this.$.Placeholder.set('string', this.defaultPlaceholder);
+		}
+
+		this.waterfall('onSetValue', {value: this.get('value')});
 	},
 	toggledChanged: function(was, is) {
 		this.addRemoveClass('bss_pseudo_option_show', !!this.toggled);
@@ -159,15 +191,18 @@ module.exports = kind({
 
 		controls = this.$.Toggle.getClientControls();
 
-		if(controls[index]) {
-			controls[index].set('selected', true);
-			this.value = controls[index].get('value');
+		if(index && controls[index]) {
+			// this.log('has option', index);
+			this.set('value', controls[index].get('value'));
+			// controls[index].set('selected', true);
+			// this.value = controls[index].get('value');
+			// this.$.Placeholder.set('string', controls[index].get('content'));
+		} else if(index == null || !this.hasOptions) {
+			// this.log('null option', index);
+			this.$.Placeholder.set('string', '');
+			this.value = null;
 		}
 
-		// for(i in controls) {
-		// 	controls[i].addRemoveClass('bss_pseudo_selected', i == index);
-		// 	controls[i].addRemoveClass('bss_pseudo_not_selected', i != index);
-		// }
 	},
 	setSelectedByValue: function(value, defaultIndex) {
         var value = value || 0,

@@ -21,7 +21,6 @@ module.exports = kind({
 		//this.setAttribute('title', this.get('content'));
 	},
 	handleTap: function() {
-		this.log();
 		this.bubble('onPseudoOptionTap', {value: this.value, content: this.content, type: 'option'});
 	},
 	clearSelection: function() {
