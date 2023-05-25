@@ -203,7 +203,7 @@ module.exports = kind({
                 content: content, /// ?? short/long NOT working!
                 value: bible.module,
                 attributes: {value: bible.module, selected: selected},
-                titleString: content,
+                // titleString: content,
                 contentShort: contentShort,
                 contentLong: contentLong,
                 grouped: true
@@ -218,7 +218,7 @@ module.exports = kind({
             this.$.Toggle.createComponent({
                 kind: Opt,
                 content: content,
-                titleString: content,
+                // titleString: content,
                 value: bible.module,
                 contentShort: contentShort,
                 contentLong: contentLong

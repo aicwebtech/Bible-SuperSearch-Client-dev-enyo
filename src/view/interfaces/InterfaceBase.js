@@ -32,6 +32,8 @@ module.exports = kind({
         onFormResponseError: 'handleFormResponse',
         onFormResponseSuccess: 'handleFormResponse',
         onFormViewChanged: 'handleFormViewChanged',
+        onmouseover: 'handleMouseEvent',
+        onmouseout: 'handleMouseEvent',
         onkeydown: 'handleKey',
         ontap: 'handleTap'
     },
@@ -65,6 +67,13 @@ module.exports = kind({
     },
     handleTap: function(inSender, inEvent) {
         this.waterfall('onGlobalTap', {sender: inSender, e: inEvent});
+    },
+    handleMouseEvent: function(inSender, inEvent) {
+        //this.log(inSender);
+        // this.log(inEvent);
+        this.app.set('hasMouse', true)
+
+        //this.addClass('bss_has_mouse');
     },
     ajaxLoadingChanged: function(was, is) {
         if(!this.$.LoadingDialog) {

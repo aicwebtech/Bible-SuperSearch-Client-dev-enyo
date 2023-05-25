@@ -72,6 +72,16 @@
     text-align: center;
 }
 
+.format_buttons_html .item.language {
+    overflow: visible;
+}
+
+.format_buttons_html .item.language .bss_pseudo_select {
+    width: 150px;
+    background-color: transparent;
+}
+
+/* OLD */
 .format_buttons_html .item.language select {
     border: 0;
 }

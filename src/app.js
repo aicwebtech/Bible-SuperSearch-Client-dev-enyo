@@ -75,6 +75,7 @@ var App = Application.kind({
     responseCollection: ResponseCollection,
     utils: Utils,
     hasAjaxSuccess: false,
+    hasMouse: false, // use mouse events to detect
 
     scrollMode: 'container_top',
     scrollModeDefault: 'container_top',

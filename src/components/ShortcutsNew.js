@@ -19,7 +19,7 @@ module.exports = kind({
             value: '0'
         });        
 
-        if(this.selectedPassagesLabel) {        
+    if(this.selectedPassagesLabel) {       
             this.createOptionComponent({
                 content: this.selectedPassagesLabel,
                 value: '1'
@@ -31,9 +31,10 @@ module.exports = kind({
                 content: shortcuts[i].name,
                 value: shortcuts[i].reference,
                 titleVerse: true,
-                attributes: {
-                    title: shortcuts[i].reference
-                }
+                titleString: shortcuts[i].reference
+                // attributes: {
+                //     title: shortcuts[i].reference
+                // }
             });
         }
 

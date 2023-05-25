@@ -1,5 +1,5 @@
 var kind = require('enyo/kind');
-var Select = require('../PseudoSelect/PseudoSelect');
+var Select = require('../Select');
 // var Select = require('enyo/Select');
 var Locales = require('../../i18n/LocaleLoader')
 
@@ -25,13 +25,12 @@ module.exports = kind({
                 continue;
             }
 
-            this.createOptionComponent({
+            this.createComponent({
                 content: langName + ' (' + i.toUpperCase() + ')',
                 value: i
             });
         }
 
-        this.initOptions();
         this.handleLocaleChange();
     },
 
@@ -39,10 +38,6 @@ module.exports = kind({
         this.inherited(arguments);
         this.app.set('locale', this.getValue());
     }, 
-    _afterValueChanged: function(optionControl) {
-        this.inherited(arguments);
-        this.app.set('locale', this.get('value'));
-    },
 
     handleLocaleChange: function() {
         this.setSelectedByValue(this.app.get('locale'));

@@ -33,7 +33,10 @@
 .bss_pseudo_select_placeholder {
 	display: inline-block;
 	float: left;
-	text-align: left
+	text-align: left;
+	width: calc(100% - 15px);
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 .bss_pseudo_select_button {
@@ -48,8 +51,16 @@
 }
 
 .bss_pseudo_option, .bss_pseudo_optgroup {
-	white-space: nowrap;
 	overflow: hidden;
+}
+
+.bss_has_mouse .bss_pseudo_option, .bss_has_mouse .bss_pseudo_optgroup {
+	white-space: nowrap;
+}
+
+.bss_pseudo_option {
+	padding-left: 20px;
+	text-indent: -20px;
 }
 
 .bss_pseudo_option.bss_pseudo_selected {
@@ -64,13 +75,14 @@
 .bss_pseudo_option:hover {
 	background-color: #333333;
 	color: white;
+	/*overflow-x: visible;*/
+	white-space: normal;
 }
-
 
 .bss_pseudo_optgroup_label {
 	font-weight: bold;
 }
 
 .bss_pseudo_option.bss_pseudo_option_grouped {
-	padding-left: 18px;
+	padding-left: 40px;
 }

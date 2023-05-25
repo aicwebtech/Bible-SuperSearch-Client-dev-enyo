@@ -24,6 +24,14 @@ module.exports = kind({
 		//ontap: 'handleVisableTap'
 	},
 
+	bindings: [
+        {from: 'app.hasMouse', to: 'hasMouse'}
+    ],
+
+	observers: [
+        {method: 'watchMouse', path: ['hasMouse']}
+    ],
+
 	components: [
 		{
 			name: 'Visible', 
@@ -122,7 +130,9 @@ module.exports = kind({
 		//this.log();
 		//this.set('toggled', false);
 	},
-	
+	watchMouse: function(pre, cur, prop) {
+		this.log(cur, prop);
+	},
 	handleOptionTap: function(inSender, inEvent) {
 		if(inEvent.type == 'option') {		
 			this.set('toggled', false);

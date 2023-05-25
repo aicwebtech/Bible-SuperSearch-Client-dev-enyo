@@ -230,7 +230,6 @@ module.exports = kind({
             this.$.Book.setSelectedByValue(this.defaultBook);
             this._createChapterList(defaultChapter);
             var Book = this._getBookById(this.defaultBook);
-            var val = Book.name + ' ' + defaultChapter;
         } else {
             var val = '';
             //this.$.Book.setSelected(0);
