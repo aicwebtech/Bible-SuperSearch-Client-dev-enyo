@@ -48,8 +48,14 @@ module.exports = kind({
 				{
 					name: 'Button',
 					classes: 'bss_pseudo_select_button',
+					ontap: 'handleVisableTap',
 					components: [
-						{tag: 'span', content: "▼"}
+						{
+							name: 'ButtonLabel',
+							tag: 'span', 
+							ontap: 'handleVisableTap',
+							content: "▼"
+						}
 					]
 				},
 				{style: 'clear: both'}
@@ -116,7 +122,10 @@ module.exports = kind({
 
 		if(
 			inEvent.e.target != this.$.Placeholder.hasNode() &&
-			inEvent.e.target != this.$.Visible.hasNode()
+			inEvent.e.target != this.$.Button.hasNode() &&
+			inEvent.e.target != this.$.ButtonLabel.hasNode() &&
+			inEvent.e.target != this.$.Visible.hasNode() &&
+			inEvent.e.target != this.$.Toggle.hasNode()
 		) {
 			this.set('toggled', false);
 		}
@@ -131,7 +140,7 @@ module.exports = kind({
 		//this.set('toggled', false);
 	},
 	watchMouse: function(pre, cur, prop) {
-		this.log(cur, prop);
+		//this.log(cur, prop);
 	},
 	handleOptionTap: function(inSender, inEvent) {
 		if(inEvent.type == 'option') {		
@@ -142,6 +151,7 @@ module.exports = kind({
 		}
 	},
 	handleVisableTap: function() {
+		this.log();
 		this.set('toggled', !this.get('toggled'));
 	}, 
 	valueChanged: function(was, is) {

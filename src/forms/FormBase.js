@@ -133,7 +133,7 @@ module.exports = kind({
         }
 
         this._submitFormHelper(formData, true);
-        return true;
+        //return true;
     },    
     submitFormAuto: function() {
         return this._submitFormHelper(utils.clone(this.get('formData')), false);

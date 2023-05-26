@@ -264,6 +264,8 @@ var App = Application.kind({
             this.debug = this.configs.debug;
         }
 
+        window.biblesupersearch_configs_final = this.configs;
+
         if(typeof biblesupersearch_statics == 'object' && biblesupersearch_statics != null) {
             this._handleStaticsLoad(biblesupersearch_statics, view);
             return;
@@ -749,19 +751,27 @@ var App = Application.kind({
             return fallbackName;
         }
 
+
         // :todo: make this a config??
         // Option 1: Display book names in language selected in UI (Reccomended)
         // Option 2: Display book names in language of First selected Bible (Legacy - not fully implemented)
 
         var locale = this.get('locale');
+
+
+        if(typeof this.localeDatasets[locale] == 'undefined') {
+            locale = 'en'; // ??
+        }
+
+
         useShortname = useShortname || false;
         var nameField = useShortname ? 'shortname' : 'name';
 
-        if(locale == 'en' || this.localeDatasets[locale].bibleBooksSource == 'api') {
+        if(locale == 'en' || this.localeDatasets[locale] && this.localeDatasets[locale].bibleBooksSource == 'api') {
             //return fallbackName;
         }
 
-        var book = this.localeBibleBooks[locale][id - 1];
+        var book = this.localeDatasets[locale][id - 1];
         book = book || this.getBook(id);
 
         if(book && useShortname) {

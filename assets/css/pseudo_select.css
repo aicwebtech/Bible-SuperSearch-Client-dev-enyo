@@ -17,6 +17,10 @@
 	cursor: default;
 }
 
+.bss_pseudo_select_visable {
+	margin: 0;
+}
+
 .bss_pseudo_select_toggle {
 	position: absolute;
 	background-color: white;
@@ -34,15 +38,18 @@
 	display: inline-block;
 	float: left;
 	text-align: left;
+	vertical-align: middle;
 	width: calc(100% - 15px);
 	overflow: hidden;
 	white-space: nowrap;
+	padding: 1px;
 }
 
 .bss_pseudo_select_button {
 	display: inline-block;
 	float: right;
 	padding-right: 3px;
+	padding-top: 2px;
 	font-size: 12px;
 }
 

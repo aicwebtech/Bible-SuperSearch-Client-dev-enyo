@@ -41,7 +41,7 @@ module.exports = kind({
         {components: [
             {kind: i18n, tag: 'span', content: 'Language'},
             {tag: 'span', allowHtml: true, content: ':&nbsp;'},
-            {name: 'Language', kind: LanguageSelector},
+            {name: 'Language', kind: LanguageSelector, style: 'width:120px'},
         ]},
         {tag: 'br'},
         {
