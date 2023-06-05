@@ -3,6 +3,9 @@ var Select = require('../PseudoSelect/PseudoSelect');
 // var Select = require('enyo/Select');
 var Locales = require('../../i18n/LocaleLoader')
 
+// NOT WORKING YET!  DO NOT USE
+// ALWAYS SETS LOCALE TO EN!!!
+
 module.exports = kind({
     kind: Select,
 
@@ -32,7 +35,10 @@ module.exports = kind({
         }
 
         this.initOptions();
-        this.handleLocaleChange();
+        this.app.debug && this.log('init locale on selector', this.app.get('locale'));
+        this.set('value', this.app.get('locale'));
+
+        //this.handleLocaleChange();
     },
 
     change: function(inSender, inEvent) {
@@ -43,8 +49,8 @@ module.exports = kind({
         this.inherited(arguments);
         this.app.set('locale', this.get('value'));
     },
-
     handleLocaleChange: function() {
-        this.setSelectedByValue(this.app.get('locale'));
+        this.set('value', this.app.get('locale'));
+        // this.setSelectedByValue(this.app.get('locale'));
     }
 });

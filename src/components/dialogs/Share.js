@@ -95,7 +95,8 @@ module.exports = kind({
 
         if(responseData.success) {
             var passages = responseData.results.results,
-                bible = null;
+                bible = null,
+                references = [];
 
             mainLoop:
             for(var i in passages) {
@@ -116,7 +117,13 @@ module.exports = kind({
                     }
                 }
 
-                content += (p.single_verse) ? '' : p.book_name + ' ' + p.chapter_verse + '\n\n';
+                var book_name = this.app.getLocaleBookName(p.book, p.book_name);
+
+                content += (p.single_verse) ? '' : book_name + ' ' + p.chapter_verse + '\n\n';
+
+                if(!p.single_verse) {
+                    references.push(book_name + ' ' + p.chapter_verse);
+                }
 
                 for(var c in p.verse_index) {
                     for(var idx in p.verse_index[c]) {
@@ -124,7 +131,12 @@ module.exports = kind({
                         var v = p.verse_index[c][idx];
                         var verse = p.verses[bible][c][v];
 
-                        content += (p.single_verse) ? p.book_name + ' ' + p.chapter_verse + '\n' : verse.verse + ' ';
+                        content += (p.single_verse) ? book_name + ' ' + p.chapter_verse + '\n' : verse.verse + ' ';
+
+                        if(p.single_verse) {
+                            references.push(book_name + ' ' + p.chapter_verse);
+                        }
+
                         content += this.processText(verse.text);
                         
                         if(count >= limit) {
@@ -143,7 +155,8 @@ module.exports = kind({
         }
 
         content += (maxReached) ? '\n\n' : ''; // same regardles of singleVerse
-        content += '\n' + bibleName + '\n\n\n' + title + '\n' + url;
+        //content += '\n' + bibleName + '\n\n\n' + title + '\n' + url;
+        content += '\n' + bibleName + '\n\n\n' + references.join('; ') + ' - ' + this.app.t('Bible SuperSearch') + '\n' + url;
         this.$.CopyArea.set('content', content.trim());
     },
 

@@ -31,6 +31,7 @@ module.exports = kind({
             });
         }
 
+        this.app.debug && this.log('init locale on selector', this.app.get('locale'));
         this.handleLocaleChange();
     },
 

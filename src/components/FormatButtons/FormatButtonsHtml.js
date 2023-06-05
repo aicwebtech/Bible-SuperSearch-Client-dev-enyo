@@ -7,7 +7,8 @@ var Base = require('./FormatButtonsBase');
 var Toggle = require('../ToggleHtml');
 var Image = require('../Image');
 var i18n = require('../Locale/i18nContent');
-var LocaleSelector = require('../Locale/LocaleSelector');
+//var LocaleSelector = require('../Locale/LocaleSelector');
+var LocaleSelector = require('../Locale/LocaleSelectorOld');
 
 module.exports = kind({
     name: 'FormatButtonsHtml',

@@ -30,8 +30,10 @@ module.exports = kind({
             this.createOptionComponent({
                 content: shortcuts[i].name,
                 value: shortcuts[i].reference,
-                titleVerse: true,
-                titleString: shortcuts[i].reference
+                titleVerses: true,
+                titleString: shortcuts[i].reference,
+                valueTranslate: true,
+                valueVerses: true,
                 // attributes: {
                 //     title: shortcuts[i].reference
                 // }

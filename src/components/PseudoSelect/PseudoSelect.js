@@ -201,6 +201,33 @@ module.exports = kind({
 	toggledChanged: function(was, is) {
 		this.addRemoveClass('bss_pseudo_option_show', !!this.toggled);
 		this.$.Toggle.set('showing', !!this.toggled);
+
+        this.waterfall('onToggleChanged', {toggled: this.toggled});
+
+        if(this.toggled) {
+            var idx = this.valueIdxMap[ this.get('value') ];
+            var controls = this.$.Toggle.getClientControls();
+            var top = 0;
+            var margin = 2;
+
+            for(var i = 0; i < idx; i++) {
+                if(controls[i].hasNode()) {
+                    this.log('node', controls[i].hasNode().offsetHeight, controls[i].hasNode());
+                    top += controls[i].hasNode().offsetHeight + margin;
+                }
+            }
+
+
+            //var top = idx * 17.1;
+
+            this.log(idx, top);
+
+            this.$.Toggle.hasNode() && this.$.Toggle.hasNode().scrollTo({
+                top: top, 
+                left: 0, 
+                behavior: 'instant'
+            });
+        }
 	},
 	_clearSelected: function() {
 		/* private */

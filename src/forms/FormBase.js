@@ -245,40 +245,21 @@ module.exports = kind({
 
         passages.forEach(function(item) {
             //console.log('passage', item);
+            item = this.Passage.parseBook(item);
 
-            // Pass 1: Exact match
-            var book = BookList.find(function(bookItem) {
-                if(item.book == bookItem.name || item.book == bookItem.shortname) {
-                    return true;
-                }
-
-                if(bookItem.matching && bookItem.matching.includes && bookItem.matching.includes(item.book)) {
-                    return true;
-                }
-
-                var namePeriodToSpace = bookItem.name.replace(/\./g,' ');
-
-                if(item.book == namePeriodToSpace) {
-                    return true;
-                }
-
-                return false;
-            });
-
-            // Pass 2: Partial match
-            if(!book) {
-                book = BookList.find(function(bookItem) {
-                    if(bookItem.name.indexOf(item.book) == 0) {
-                        return true;
-                    }
-
-                    return false;
-                });
+            if(item.isBookRange) {
+                var bookSt = this.app.findBookByName(item.bookSt);
+                var bookEn = this.app.findBookByName(item.bookEn);
+                var bookNameSt = bookSt ? bookSt.id + 'B' : item.bookSt;
+                var bookNameEn = bookEn ? bookEn.id + 'B' : item.bookEn;
+                referenceNew += bookNameSt + ' - ' + bookNameEn + ' ' + item.chapter_verse + '; ';
+            } else {
+                var book = this.app.findBookByName(item.book);
+                var bookName = book ? book.id + 'B' : item.book;
+                referenceNew += bookName + ' ' + item.chapter_verse + '; ';
             }
 
-            var bookName = book ? book.id + 'B' : item.book;
-            referenceNew += bookName + ' ' + item.chapter_verse + '; ';
-        });
+        }, this);
 
         return referenceNew;
     },

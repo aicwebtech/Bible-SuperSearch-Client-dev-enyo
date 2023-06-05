@@ -264,7 +264,7 @@ var App = Application.kind({
             this.debug = this.configs.debug;
         }
 
-        window.biblesupersearch_configs_final = this.configs;
+        //window.biblesupersearch_configs_final = this.configs;
 
         if(typeof biblesupersearch_statics == 'object' && biblesupersearch_statics != null) {
             this._handleStaticsLoad(biblesupersearch_statics, view);
@@ -321,6 +321,7 @@ var App = Application.kind({
         }
 
         this.localeBibleBooks.en = statics.books;
+        this.debug && this.log('Config language locale', this.configs.language);
         this.configs.language && this.set('locale', this.configs.language);
         this.waterfall('onStaticsLoaded');
 
@@ -931,6 +932,7 @@ var App = Application.kind({
         this._localeChangedHelper(locale);
     },
     _localeChangedHelper: function(locale) {
+        this.debug && this.log(locale);
         this.localeData = utils.clone(this.localeDatasets[locale]);
         var localeData = this.localeData;
         this.isRtl = localeData.meta.isRtl || false;
@@ -1006,6 +1008,42 @@ var App = Application.kind({
         });
 
         return trans;
+    },
+    findBookByName: function(bookName) {
+        var locale = this.get('locale');
+        var BookList = this.localeBibleBooks[locale] || this.statics.books;
+
+        // Pass 1: Exact match
+        var book = BookList.find(function(bookItem) {
+            if(bookName == bookItem.name || bookName == bookItem.shortname) {
+                return true;
+            }
+
+            if(bookItem.matching && bookItem.matching.includes && bookItem.matching.includes(bookName)) {
+                return true;
+            }
+
+            var namePeriodToSpace = bookItem.name.replace(/\./g,' ');
+
+            if(bookName == namePeriodToSpace) {
+                return true;
+            }
+
+            return false;
+        });
+
+        // Pass 2: Partial match
+        if(!book) {
+            book = BookList.find(function(bookItem) {
+                if(bookItem.name.indexOf(bookName) == 0) {
+                    return true;
+                }
+
+                return false;
+            });
+        }
+
+        return book;
     },
     alert: function(string, inSender, inEvent) {
         // todo - make some sort of custom alert dialog here!
