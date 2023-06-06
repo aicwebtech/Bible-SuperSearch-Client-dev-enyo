@@ -117,7 +117,7 @@ module.exports = kind({
                     }
                 }
 
-                var book_name = this.app.getLocaleBookName(p.book, p.book_name);
+                var book_name = this.app.getLocaleBookName(p.book_id, p.book_name);
 
                 content += (p.single_verse) ? '' : book_name + ' ' + p.chapter_verse + '\n\n';
 

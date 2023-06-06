@@ -23,7 +23,10 @@ module.exports = kind({
 		this.inherited(arguments);
 		this.groupedChanged();
 
-        this.valueUntranslated = this.value;
+        if(this.valueTranslate && !this.valueUntranslated) {
+            // this.log('init valueUntranslated', this.value);
+            this.valueUntranslated = this.value;
+        }
 
 		//this.setAttribute('title', this.get('content'));
 	},
@@ -54,21 +57,22 @@ module.exports = kind({
     },
     valueChanged: function(was, is) {
         if(!this._internalSet) {
-            this.valueUntranslated = is;
+            // this.valueUntranslated = is;
         }
     },
     translate: function() {
         this.inherited(arguments);
         this._internalSet = true;
 
-        // Experimental - translating values
-        if(!this.valueUntranslated) {
-            this.valueUntranslated = this.value;
-        }
-
         if(this.valueTranslate) {
+            // Experimental - translating values
+            if(!this.valueUntranslated) {
+                // this.log('init valueUntranslated', this.value);
+                this.valueUntranslated = this.value;
+            }
+            
             // this.log('value untranslated', this.valueUntranslated);
-            // this.log('value untranslated current', this.value);
+            // this.log('value - current', this.value);
 
             if(this.valueVerses) {
                 this.set('value', this.app.vt(this.valueUntranslated));
@@ -76,7 +80,7 @@ module.exports = kind({
                 this.set('value', this.app.t(this.valueUntranslated));
             }
 
-            // this.log('value translated', this.value);
+            // this.log('value - translated', this.value);
         }
 
         this._internalSet = false;

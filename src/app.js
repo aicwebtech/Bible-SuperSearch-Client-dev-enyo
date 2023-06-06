@@ -748,10 +748,11 @@ var App = Application.kind({
         return this.statics.books[id - 1] || null;
     },
     getLocaleBookName: function(id, fallbackName, useShortname) {
+
         if(this.configs.bibleBooksLanguageSource == 'bible') {
+            this.log('bible source, using fallbackName');
             return fallbackName;
         }
-
 
         // :todo: make this a config??
         // Option 1: Display book names in language selected in UI (Reccomended)
@@ -759,11 +760,10 @@ var App = Application.kind({
 
         var locale = this.get('locale');
 
-
         if(typeof this.localeDatasets[locale] == 'undefined') {
+            this.log('falling back to English!');
             locale = 'en'; // ??
         }
-
 
         useShortname = useShortname || false;
         var nameField = useShortname ? 'shortname' : 'name';
@@ -772,7 +772,7 @@ var App = Application.kind({
             //return fallbackName;
         }
 
-        var book = this.localeDatasets[locale][id - 1];
+        var book = this.localeDatasets[locale].bibleBooks[id - 1];
         book = book || this.getBook(id);
 
         if(book && useShortname) {
