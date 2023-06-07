@@ -1,5 +1,6 @@
 var kind = require('enyo/kind');
 var Opt = require('./PseudoOption');
+var Placeholder = require('./PseudoPlaceholder');
 var i18n = require('../Locale/i18nComponent');
 
 module.exports = kind({
@@ -20,7 +21,8 @@ module.exports = kind({
 		onGlobalTap: 'handleGlobalTap',
 		onblur: 'handleBlur',
 		onfocusout: 'handleBlur',
-		onmouseout: 'handleMouseOut'
+		onmouseout: 'handleMouseOut',
+        onLocaleChange: 'localeChanged',
 		//ontap: 'handleVisableTap'
 	},
 
@@ -40,7 +42,8 @@ module.exports = kind({
 			components: [
 				{
 					name: 'Placeholder',
-					kind: i18n,          
+					kind: Placeholder,          
+                    // kind: i18n,          
 					allowHtml: true,                                            
 					classes: 'bss_pseudo_select_placeholder',
 					content: ''
@@ -118,8 +121,6 @@ module.exports = kind({
 		//this.log('e sender', inEvent.sender);
 		//this.log('S target.id', inSender.target.id);
 
-
-
 		if(
 			inEvent.e.target != this.$.Placeholder.hasNode() &&
 			inEvent.e.target != this.$.Button.hasNode() &&
@@ -145,7 +146,7 @@ module.exports = kind({
 	handleOptionTap: function(inSender, inEvent) {
 		if(inEvent.type == 'option') {		
 			this.set('toggled', false);
-			this.$.Placeholder.set('string', inEvent.content);
+			this.$.Placeholder.set('string', inEvent.string);
 			this.set('value', inEvent.value);
 			this.bubble('onchange');
 		}
@@ -191,7 +192,7 @@ module.exports = kind({
 	_afterValueChanged: function(optionControl) {
 
 		if(optionControl) {
-			this.$.Placeholder.set('string', optionControl.get('content'));
+			this.$.Placeholder.set('string', optionControl.get('string'));
 		} else {
 			this.$.Placeholder.set('string', this.defaultPlaceholder);
 		}
