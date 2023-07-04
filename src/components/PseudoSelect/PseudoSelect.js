@@ -111,7 +111,8 @@ module.exports = kind({
 		this.$.Placeholder.set('string', this.defaultPlaceholder);
 	},
 	handleGlobalTap: function(inSender, inEvent) {
-		// this.log(inSender);
+		this.log();
+        // this.log(inSender);
 		// this.log(inEvent);
 
 		//this.log(inSender.id); // nope
@@ -213,13 +214,14 @@ module.exports = kind({
 
             for(var i = 0; i < idx; i++) {
                 if(controls[i].hasNode()) {
-                    this.log('node', controls[i].hasNode().offsetHeight, controls[i].hasNode());
+                    this.log('node', controls[i].hasNode().offsetHeight);
+                    styles = window.getComputedStyle(controls[i].hasNode());
+                    margin =    parseFloat(styles['marginTop']) +
+                                parseFloat(styles['marginBottom']);
+
                     top += controls[i].hasNode().offsetHeight + margin;
                 }
             }
-
-
-            //var top = idx * 17.1;
 
             this.log(idx, top);
 

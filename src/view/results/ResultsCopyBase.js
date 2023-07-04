@@ -86,7 +86,12 @@ module.exports = kind({
             br = (omitExtraBr) ? this.newLine : this.newLine + this.newLine,
             bookName = this.app.UserConfig.get('copy_abbr_book') && passage.book_short ? passage.book_short : passage.book_name,
             bookName = this.app.getLocaleBookName(passage.book_id, bookName, this.app.UserConfig.get('copy_abbr_book'));
+            
             reference = bookName + ' ' + passage.chapter_verse;
+
+            if(this.app.configs.includeTestament) {
+                reference = this.app.t( this.app.getTestamentByBookId(passage.book_id) ) + this.newLine + this.newLine + reference;
+            }
 
         if(passageLayout == 'reference_passage') {        
             for(i in this.bibles) {

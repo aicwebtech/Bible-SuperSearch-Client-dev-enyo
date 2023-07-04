@@ -57,7 +57,10 @@ var biblesupersearch_config_options = {
     // 'rank' - Rank / Sort Order specified on API
 
     // Default: 'rank|name',
-    "bibleSorting": 'rank|name',          
+    "bibleSorting": 'rank|name',       
+
+    // Include Testament ("Old Testament" or "New Testament") in some references
+    "includeTestament": false,  // true or false   
 
     // Landing Reference(s), 
     // Any valid Bible reference, ie 'John 3:16; Romans 3:23; Genesis 1'

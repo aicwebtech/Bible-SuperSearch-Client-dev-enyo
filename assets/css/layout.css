@@ -8,9 +8,16 @@ div.biblesupersearch_main {
     max-height: 90vh;
     max-width: 1000px;
     position: relative;
+
+    /* todo - get rid of this scrollbar?? */
     overflow-y: auto;
     overflow-x: hidden;
     margin: 0 auto;
+}
+
+div.biblesupersearch_main.bss_no_global_scrollbar {
+    overflow-y: visible;
+    overflow-x: visible;
 }
 
 div.biblesupersearch_main.rtl {
@@ -44,7 +51,7 @@ div.biblesupersearch_content {
     height: 100%;
     /*min-height: 300px;*/
 /*    text-align: center;*/
-    overflow-y: auto;
+/*    overflow-y: auto;*/
     /*overflow-x: hidden;*/
     min-width: 100px;
 }

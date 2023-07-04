@@ -1,8 +1,9 @@
 var kind = require('enyo/kind');
 var utils = require('enyo/utils');
 var Button = require('enyo/Button');
-//var Single = require('./SingleSelect');
-var Single = require('./SingleSelectNew');
+
+var SingleOld = require('./SingleSelect');
+var SingleNew = require('./SingleSelectNew');
 var i18n = require('../Locale/i18nContent');
 
 module.exports = kind({
@@ -48,6 +49,8 @@ module.exports = kind({
         var num = (this.parallelStart >= 1) ? this.parallelStart : 1;
         var bibleCount = this.app.getNumberOfEnabledBibles();
         this.parallelLimit = (bibleCount < this.parallelLimit) ? bibleCount : this.parallelLimit;
+
+        this.Single = this.app.get('useNewSelectors') ? SingleNew : SingleOld;
 
         var conTag = (this.tag == 'span') ? 'span' : 'div';
 
@@ -121,7 +124,7 @@ module.exports = kind({
 
         if(this.parallelNumber <= this.parallelLimit) {        
             var comp = this.$.Container.createComponent({
-                kind: Single,
+                kind: this.Single,
                 name: 'Select_' + this.parallelNumber,
                 parallelNumber: this.parallelNumber,
                 onchange: 'selectorChanged',

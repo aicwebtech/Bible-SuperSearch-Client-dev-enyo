@@ -12,10 +12,6 @@ var EtcButtons = require('../components/DialogEtcButtons/DialogEtcButtonsHtml');
 var i18nContent = require('../components/Locale/i18nContent');
 var i18n = require('../components/Locale/i18nComponent');
 
-
-var SearchTypeNew = require('../components/SearchTypeNew');
-var PseudoSelect = require('../components/PseudoSelect/PseudoSelect');
-
 module.exports = kind({
     name: 'ClassicUserFriendly2',
     kind: FormBase,
@@ -40,32 +36,12 @@ module.exports = kind({
                     {kind: i18n, content: 'Enter word(s), phrase(s) or expression(s):'},
                     {name: 'search', kind: Input, style: 'width: 100%; max-width: 300px'},
                     {tag: 'br'},
-                    {tag: 'br'},
+                    {tag: 'br'},         
                     {components: [
                         {kind: i18nContent, tag: 'span', content: 'Search for:'},
                         {tag: 'span', content: ' '},
-                        {kind: SearchType, name: 'search_type_2', style: 'width: 100%; max-width: 200px'}
+                        {kind: SearchType, name: 'search_type', style: 'width: 100%; max-width: 200px'}
                     ]},                    
-                    {components: [
-                        {kind: i18nContent, tag: 'span', content: 'Search for:'},
-                        {tag: 'span', content: ' '},
-                        {kind: SearchTypeNew, name: 'search_type', style: 'width: 100%; max-width: 200px'}
-                    ]},                    
-                    {components: [
-                        {kind: i18nContent, tag: 'span', content: 'Select:'},
-                        {tag: 'span', content: ' '},
-                        {
-                            kind: PseudoSelect, 
-                            name: 'search_type_3', 
-                            style: 'width: 100%; max-width: 200px',
-                            optionComponents: [
-                                {content: 'select one ...', value: '0'},
-                                {content: 'stuff 1', value: '1'},
-                                {content: 'stuff 2', value: '2'},
-                                {content: 'stuff 3', value: '3'},
-                            ]
-                        }
-                    ]},
                     {components: [
                         {kind: i18nContent, tag: 'span', content: 'Limit search to:'},
                         {tag: 'span', content: ' '},

@@ -77,6 +77,8 @@ var App = Application.kind({
     hasAjaxSuccess: false,
     hasMouse: false, // use mouse events to detect
 
+    useNewSelectors: false,
+
     scrollMode: 'container_top',
     scrollModeDefault: 'container_top',
     
@@ -780,6 +782,17 @@ var App = Application.kind({
         }
 
         return book ? book.name : fallbackName;
+    },
+    getTestamentByBookId: function(bookId) {
+        if(bookId >= 1 && bookId <= 39) {
+            return 'Old Testament';
+        }
+
+        if(bookId >= 40 && bookId <= 66) {
+            return 'New Testament';
+        }
+
+        return false;
     },
     getNumberOfEnabledBibles: function() {
         if(this.numberOfEnabledBibles) {
