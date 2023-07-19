@@ -60,7 +60,12 @@ var App = Application.kind({
     baseTitle: null,
     bssTitle: null,
     baseUrl: null,
-    clientBrowser: null,
+    clientBrowser: null, // legacy
+    client: {
+        os: null,
+        browser: null,
+        isMobile: false,
+    },
     preventRedirect: false,
     shortHashUrl: '',
     biblesDisplayed: [],
@@ -119,10 +124,7 @@ var App = Application.kind({
         // Older rootDir code, retaining for now
         this.rootDir = (typeof biblesupersearch_root_directory == 'string') ? biblesupersearch_root_directory : '/biblesupersearch';
         
-        if(navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > -1) {
-            this.clientBrowser = 'IE';
-            window.console && console.log('Using Internet Explorer ... some minor functionality may be disabled ...');
-        }
+        this.detectClient();
 
         if(typeof biblesupersearch != 'object' || biblesupersearch == null) {
             biblesupersearch = {
@@ -190,6 +192,37 @@ var App = Application.kind({
         loader.go(); // for GET
         loader.response(this, 'handleConfigLoad');
         loader.error(this, 'handleConfigError');
+    },
+    detectClient: function() {
+        this.log('navigator', navigator);
+
+        if(navigator.platform == 'Win32' || navigator.userAgent.indexOf('Windows') !== -1) {
+            this.client.os = 'Windows';
+        } 
+        else if(navigator.userAgent.indexOf('Android') !== -1) {
+            this.client.os = 'Andriod';
+            this.client.isMobile = true;
+        }
+
+        // todo: Mac OS / iOS detection, the below are just guesses
+        else if (navigator.userAgent.indexOf('OSX') !== -1 || navigator.userAgent.indexOf('MacOS') !== -1) {
+            this.client.os = 'MacOS';
+        } else if (navigator.userAgent.indexOf('iOS') !== -1) {
+            this.client.os = 'iOS';
+            this.client.isMobile = true;
+        }
+
+        if(navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > -1) {
+            this.client.browser = 'IE'; // MS IE no longer officially supported ... 
+            window.console && console.log('Using Internet Explorer ... some minor functionality may be disabled ...');
+        } else if(navigator.userAgent.indexOf('Firefox') !== -1) {
+            this.client.browser = 'Firefox';
+        } else if(navigator.userAgent.indexOf('WebKit') !== -1) {
+            this.client.browser = 'WebKit'; // Chrome, Safari, Edge, ect
+        }
+
+        this.clientBrowser = this.client.browser;
+        this.log('client', this.client);
     },
     talk: function() {
         alert('Hello')
@@ -705,11 +738,23 @@ var App = Application.kind({
         return false;
     },
     setScroll: function(scroll) {
-        this.view.hasNode() && this.view.hasNode().scrollTo({
-            top: scroll, 
-            left: 0, 
-            behavior: 'smooth'
-        });
+        if(this.view.hasNode() && this.view.hasClass('bss_no_global_scrollbar')) {
+
+            scroll += this.view.hasNode().getBoundingClientRect().top + window.scrollY;
+
+            window.scrollTo({
+                top: scroll, 
+                left: 0, 
+                behavior: 'instant'
+            });
+        } else {        
+            this.view.hasNode() && this.view.hasNode().scrollTo({
+                top: scroll, 
+                left: 0, 
+                behavior: 'instant'
+            });
+        }
+
     },
     resetScrollMode: function() {
         this.set('scrollMode', this.get('scrollModeDefault'));

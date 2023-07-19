@@ -111,9 +111,7 @@ module.exports = kind({
 		this.$.Placeholder.set('string', this.defaultPlaceholder);
 	},
 	handleGlobalTap: function(inSender, inEvent) {
-		this.log();
-        // this.log(inSender);
-		// this.log(inEvent);
+        // this.log('franken baken');
 
 		//this.log(inSender.id); // nope
 		
@@ -210,18 +208,26 @@ module.exports = kind({
             var idx = this.valueIdxMap[ this.get('value') ];
             var controls = this.$.Toggle.getClientControls();
             var top = 0;
-            var margin = 2;
+            var margin = 5;
+            var client = this.app.get('client');
+
+            this.log(top, margin);
 
             for(var i = 0; i < idx; i++) {
                 if(controls[i].hasNode()) {
-                    this.log('node', controls[i].hasNode().offsetHeight);
                     styles = window.getComputedStyle(controls[i].hasNode());
                     margin =    parseFloat(styles['marginTop']) +
                                 parseFloat(styles['marginBottom']);
 
-                    top += controls[i].hasNode().offsetHeight + margin;
+                    this.log('node', controls[i].hasNode().offsetHeight, margin);
+
+                    top += controls[i].hasNode().clientHeight + margin;
                 }
             }
+
+            // if(client.isMobile) {
+            //     top -= idx * .6;
+            // }
 
             this.log(idx, top);
 

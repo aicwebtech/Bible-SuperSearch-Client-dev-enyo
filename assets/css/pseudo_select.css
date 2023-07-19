@@ -48,6 +48,11 @@
 	font-size: 12px;
 }
 
+.bss_is_mobile .bss_pseudo_select_button {
+    padding-top: 1px;
+    font-size: 0.9em;
+}
+
 .bss_pseudo_option_show .bss_pseudo_select_visable {
 	background-color: #dddddd;
 }
@@ -99,4 +104,25 @@
 	font-weight: bold;
 }
 
+  
+.bss_is_mobile .bss_pseudo_option {
+/*    background-color: green;*/
+}
+   
 
+
+/*@media screen  and (
+    (max-device-width: 480px) and (orientation: portrait)) or 
+    (max-device-height: 480px) and (orientation: landscape)) { 
+  
+   .bss_pseudo_option {
+        background-color: green;
+   }
+
+}*/
+
+/*@media screen  and (max-device-width: 780px) and (orientation: landscape)  {
+   .bss_pseudo_option {
+        background-color: red;
+   }
+}*/

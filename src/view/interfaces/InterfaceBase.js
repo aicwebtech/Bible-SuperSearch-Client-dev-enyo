@@ -55,6 +55,11 @@ module.exports = kind({
 
         this.addRemoveClass('rtl', this.app.isRtl);
 
+        client = this.app.get('client');
+
+        this.addRemoveClass('bss_is_mobile', client.isMobile);
+        this.addRemoveClass('bss_is_desktop', !client.isMobile);
+
         this.createComponent({kind: MaterialIconsStyle});
 
         // if(!this.$.HelpDialog) {
