@@ -481,6 +481,7 @@ module.exports = kind({
             this.$.download_button.set('showing', false);
         }
 
+        // todo - use new selector for locale selector here (needs styling)
         //var LS = this.app.get('useNewSelectors') ? LocaleSelectorNew : LocaleSelectorOld;
         var LS = LocaleSelectorOld;
 

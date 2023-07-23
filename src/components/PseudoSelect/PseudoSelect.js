@@ -210,28 +210,74 @@ module.exports = kind({
             var top = 0;
             var margin = 5;
             var client = this.app.get('client');
+            var optGroups = 0;
+            var isOptGroup = false;
+            // var c = controls[idx];
 
-            this.log(top, margin);
+            // // if(client.isMobile) {            
+            //     this.log('top', c.hasNode().getBoundingClientRect().top);
+            //     this.log('scrollTop', this.$.Toggle.hasNode().scrollTop);
+
+            //     var top2 = c.hasNode().getBoundingClientRect().top + this.$.Toggle.hasNode().scrollTop;
+            //     //top =  this.$.Toggle.hasNode().scrollTop;
+
+            //     this.log(top, margin, top2);
+
+            //     // this.$.Toggle.hasNode() && this.$.Toggle.hasNode().scrollTo({
+            //     //     top: top, 
+            //     //     left: 0, 
+            //     //     behavior: 'instant'
+            //     // });
+
+            //     // return;
+            // // } 
 
             for(var i = 0; i < idx; i++) {
                 if(controls[i].hasNode()) {
+                    if(controls[i].hasClass('bss_pseudo_optgroup')) {
+                        isOptGroup = true;
+                        optGroups ++;
+                    }
+
                     styles = window.getComputedStyle(controls[i].hasNode());
                     margin =    parseFloat(styles['marginTop']) +
                                 parseFloat(styles['marginBottom']);
+                    height = controls[i].hasNode().offsetHeight;
 
-                    this.log('node', controls[i].hasNode().offsetHeight, margin);
+                    // this.log(controls[i].get('content'));
+                    // this.log('height', height);
+                    // this.log('margin', margin);
+                    // this.log('total', height + margin);
 
-                    top += controls[i].hasNode().clientHeight + margin;
+                    if(client.isMobile) {
+                        if(isOptGroup && optGroups > 1) {
+                            height += 0.35;
+                        }
+
+                        if(!isOptGroup) {                        
+                            if(height > 15) {
+                                mult = Math.floor(height / 15);
+                                height -= mult * 2;
+                            } else {
+                                //height -= 2;
+                            }
+                        }
+                    }
+
+                    //this.log('node', controls[i].hasNode().offsetHeight, height, margin);
+
+                    top += height + margin;
                 }
             }
 
             // if(client.isMobile) {
-            //     top -= idx * .6;
+            //     top += 4;
             // }
 
-            this.log(idx, top);
+            this.app.debug && this.log(idx, top);
 
             this.$.Toggle.hasNode() && this.$.Toggle.hasNode().scrollTo({
+                // top: 1300, 
                 top: top, 
                 left: 0, 
                 behavior: 'instant'

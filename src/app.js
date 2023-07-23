@@ -194,7 +194,7 @@ var App = Application.kind({
         loader.error(this, 'handleConfigError');
     },
     detectClient: function() {
-        this.log('navigator', navigator);
+        this.debug && this.log('navigator', navigator);
 
         if(navigator.platform == 'Win32' || navigator.userAgent.indexOf('Windows') !== -1) {
             this.client.os = 'Windows';
@@ -222,7 +222,7 @@ var App = Application.kind({
         }
 
         this.clientBrowser = this.client.browser;
-        this.log('client', this.client);
+        this.debug && this.log('client', this.client);
     },
     talk: function() {
         alert('Hello')
@@ -739,7 +739,6 @@ var App = Application.kind({
     },
     setScroll: function(scroll) {
         if(this.view.hasNode() && this.view.hasClass('bss_no_global_scrollbar')) {
-
             scroll += this.view.hasNode().getBoundingClientRect().top + window.scrollY;
 
             window.scrollTo({

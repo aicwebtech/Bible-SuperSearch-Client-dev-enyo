@@ -62,6 +62,8 @@ module.exports = kind({
 
         this.createComponent({kind: MaterialIconsStyle});
 
+        //this._dialogCreateHelper(SettingsDialog, 'SettingsDialog');
+
         // if(!this.$.HelpDialog) {
         //     this.createComponent({
         //         name: 'HelpDialog',
@@ -154,6 +156,15 @@ module.exports = kind({
         }
 
         this.$[name].set('showing', showing);
+    },    
+    _dialogCreateHelper: function(kind, name) {
+        if(!this.$[name]) {
+            this.createComponent({
+                name: name,
+                kind: kind,
+                showing: false
+            }); //.render();
+        }
     },
     formHasField: function(fieldName) {
         // For special interfaces, implement on child!

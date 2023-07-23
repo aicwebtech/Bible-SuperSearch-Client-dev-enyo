@@ -4,7 +4,7 @@ var Anchor = require('enyo/Anchor');
 var Input = require('enyo/Input');
 var Checkbox = require('enyo/Checkbox');
 var Group = require('enyo/Group');
-//var LanguageSelector = require('../Locale/LocaleSelector');
+var LanguageSelectorNew = require('../Locale/LocaleSelector');
 var LanguageSelector = require('../Locale/LocaleSelectorOld');
 var Dialog = require('./Dialog');
 var LinkBuilder = require('../Link/LinkBuilder');
@@ -301,6 +301,10 @@ module.exports = kind({
     create: function() {
         if(this.multiColumn) {
             this.width = '1200px';
+        }
+
+        if(this.app.get('useNewSelectors')) {
+            this.bodyComponents[1].components[2].kind = LanguageSelectorNew;
         }
 
         this.inherited(arguments);

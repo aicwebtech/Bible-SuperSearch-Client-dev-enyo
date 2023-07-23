@@ -3,11 +3,10 @@ var Select = require('../PseudoSelect/PseudoSelect');
 // var Select = require('enyo/Select');
 var Locales = require('../../i18n/LocaleLoader')
 
-// NOT WORKING YET!  DO NOT USE
-// ALWAYS SETS LOCALE TO EN!!!
-
 module.exports = kind({
+    name: 'LocaleSelectorNew',
     kind: Select,
+    _setValueInternal: false,
 
     handlers: {
         onLocaleChange: 'handleLocaleChange'
@@ -34,23 +33,35 @@ module.exports = kind({
             });
         }
 
+        this._setValueInternal = true; // or top option will push back into app as the selected locale!
         this.initOptions();
         this.app.debug && this.log('init locale on selector', this.app.get('locale'));
-        this.set('value', this.app.get('locale'));
-
-        //this.handleLocaleChange();
+        this.setValueFromLocale();
     },
 
     change: function(inSender, inEvent) {
+        this.log();
         this.inherited(arguments);
         this.app.set('locale', this.getValue());
     }, 
     _afterValueChanged: function(optionControl) {
         this.inherited(arguments);
-        this.app.set('locale', this.get('value'));
+        var val = this.get('value');
+
+        if(!this._setValueInternal && val && val != null) {
+            this.app.debug && this.log('backsetting locale', val);
+            this.app.set('locale', val);
+        }
     },
     handleLocaleChange: function() {
-        this.set('value', this.app.get('locale'));
-        // this.setSelectedByValue(this.app.get('locale'));
+        this.setValueFromLocale();
+    },
+    setValueInternal: function(value) {
+        this._setValueInternal = true;
+        this.set('value', value);
+        this._setValueInternal = false;
+    },
+    setValueFromLocale: function() {
+        this.setValueInternal(this.app.get('locale'));
     }
 });

@@ -86,7 +86,7 @@ module.exports = {
     }},           
     search_type: {from: 'formData.search_type', to: '$.search_type.value', oneWay: false, shortLink: true, transform: function(value, dir) {
         this.bubble('onFormFieldChanged', {field: 'search_type', value: value, dir: dir});
-        this.log('search_type', value, dir);
+        //this.log('search_type', value, dir);
 
         // if(this.$.search_type.setSelected) {
         //     // this.log('search_type', value, dir);
@@ -105,7 +105,7 @@ module.exports = {
     // test field, temporarary!
     search_type_2: {from: 'formData.search_type_2', to: '$.search_type_2.value', oneWay: false, shortLink: false, transform: function(value, dir) {
         this.bubble('onFormFieldChanged', {field: 'search_type_2', value: value, dir: dir});
-        this.log('search_type_2', value, dir);
+        this.log('search_type_2 (you should not be here!)', value, dir);
 
         if(this.$.search_type_2.setSelected) {
             if(dir == 1) {

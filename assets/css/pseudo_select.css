@@ -34,10 +34,15 @@
 	float: left;
 	text-align: left;
 	vertical-align: middle;
-	max-width: 90%;
 	overflow: hidden;
 	white-space: nowrap;
 	padding: 1px 5px;
+
+    /* Doesn't work - Less complies it as 80%!! */
+    /* max-width: calc(100% - 20px);*/
+    
+    /* This works as intended */
+    width: calc(~"100% - 30px");
 }
 
 .bss_pseudo_select_button {
