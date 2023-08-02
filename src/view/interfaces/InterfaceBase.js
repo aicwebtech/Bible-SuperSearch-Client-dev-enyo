@@ -32,7 +32,10 @@ module.exports = kind({
         onFormResponseError: 'handleFormResponse',
         onFormResponseSuccess: 'handleFormResponse',
         onFormViewChanged: 'handleFormViewChanged',
+        onmouseover: 'handleMouseEvent',
+        onmouseout: 'handleMouseEvent',
         onkeydown: 'handleKey',
+        ontap: 'handleTap'
     },
 
     published: {
@@ -52,7 +55,14 @@ module.exports = kind({
 
         this.addRemoveClass('rtl', this.app.isRtl);
 
+        client = this.app.get('client');
+
+        this.addRemoveClass('bss_is_mobile', client.isMobile);
+        this.addRemoveClass('bss_is_desktop', !client.isMobile);
+
         this.createComponent({kind: MaterialIconsStyle});
+
+        //this._dialogCreateHelper(SettingsDialog, 'SettingsDialog');
 
         // if(!this.$.HelpDialog) {
         //     this.createComponent({
@@ -61,6 +71,16 @@ module.exports = kind({
         //         showing: false
         //     });
         // }
+    },
+    handleTap: function(inSender, inEvent) {
+        this.waterfall('onGlobalTap', {sender: inSender, e: inEvent});
+    },
+    handleMouseEvent: function(inSender, inEvent) {
+        //this.log(inSender);
+        // this.log(inEvent);
+        this.app.set('hasMouse', true)
+
+        //this.addClass('bss_has_mouse');
     },
     ajaxLoadingChanged: function(was, is) {
         if(!this.$.LoadingDialog) {
@@ -136,6 +156,15 @@ module.exports = kind({
         }
 
         this.$[name].set('showing', showing);
+    },    
+    _dialogCreateHelper: function(kind, name) {
+        if(!this.$[name]) {
+            this.createComponent({
+                name: name,
+                kind: kind,
+                showing: false
+            }); //.render();
+        }
     },
     formHasField: function(fieldName) {
         // For special interfaces, implement on child!

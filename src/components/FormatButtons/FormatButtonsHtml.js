@@ -7,7 +7,9 @@ var Base = require('./FormatButtonsBase');
 var Toggle = require('../ToggleHtml');
 var Image = require('../Image');
 var i18n = require('../Locale/i18nContent');
-var LocaleSelector = require('../Locale/LocaleSelector');
+
+var LocaleSelectorNew = require('../Locale/LocaleSelector');
+var LocaleSelectorOld = require('../Locale/LocaleSelectorOld');
 
 module.exports = kind({
     name: 'FormatButtonsHtml',
@@ -417,9 +419,9 @@ module.exports = kind({
         {
             classes: 'item language',
             name: 'language_selector',
-            components: [
-                {name: 'Locale', kind: LocaleSelector}
-            ]
+            // components: [
+            //     {name: 'Locale', kind: LocaleSelector}
+            // ]
         }
 
         // {classes: 'input_row_wide', components: [
@@ -478,6 +480,16 @@ module.exports = kind({
         if(!this.app.statics.download_enabled) {
             this.$.download_button.set('showing', false);
         }
+
+        // todo - use new selector for locale selector here (needs styling)
+        //var LS = this.app.get('useNewSelectors') ? LocaleSelectorNew : LocaleSelectorOld;
+        var LS = LocaleSelectorOld;
+
+        this.$.language_selector.createComponent({
+            name: 'Locale',
+            kind: LS,
+            owner: this
+        });
     }, 
     rendered: function() {
         this.inherited(arguments);

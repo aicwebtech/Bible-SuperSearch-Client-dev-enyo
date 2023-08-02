@@ -5,13 +5,20 @@ var Input = require('enyo/Input');
 var TextArea = require('enyo/TextArea');
 var Checkbox = require('enyo/Checkbox');
 var BibleSelect = require('../components/BibleSelect/MultiSelect');
-var SearchType = require('../components/SearchType');
-var Shortcuts = require('../components/Shortcuts');
+//var SearchType = require('../components/SearchType');
+//var Shortcuts = require('../components/Shortcuts');
 var BookSelect = require('../components/BookSelect');
 var FormSection = require('./FormSection');
 var EtcButtons = require('../components/DialogEtcButtons/DialogEtcButtonsHtml');
 var i18nContent = require('../components/Locale/i18nContent');
 var i18n = require('../components/Locale/i18nComponent');
+
+var BookSelectNew = require('../components/BookSelectNew');
+
+var SearchType = require('../components/SearchTypeNew');
+var Shortcuts = require('../components/ShortcutsNew');
+
+var ShortcutsSwitch = require('../components/ShortcutsSwitch');
 
 module.exports = kind({
     name: 'CustomUserFriendly2BookSel',
@@ -37,13 +44,23 @@ module.exports = kind({
                     {kind: i18n, content: 'Select Book and Chapter:'},
                     {
                         name: 'reference_booksel', 
-                        kind: BookSelect,
+                        kind: BookSelectNew,
                         tag: 'div',
                         defaultBook: null,
                         defaultChapter: null,
                         includeBlankValue: true
                     },
-                    {tag: 'br'},
+                    {tag: 'br'},                    
+                    // {kind: i18n, content: 'Select Book and Chapter (old):'},
+                    // {
+                    //     name: 'reference_booksel_old', 
+                    //     kind: BookSelect,
+                    //     tag: 'div',
+                    //     defaultBook: null,
+                    //     defaultChapter: null,
+                    //     includeBlankValue: true
+                    // },
+                    // {tag: 'br'},
                     {kind: i18n, content: 'Enter passage(s):'},
                     {name: 'reference', kind: Input, style: 'width: 100%; max-width: 300px', onblur: 'referenceTyped'},
                     { components: [

@@ -5,6 +5,7 @@ module.exports = kind({
     name: 'i18nContent',
     tag: 'span',
     containsVerses: false,
+    titleVerses: false,
 
     published: {
         string: '',
@@ -66,7 +67,11 @@ module.exports = kind({
         }        
 
         if(titleString && titleString != '') {
-            this.setAttribute('title', this.app.t(titleString) );
+            if(this.titleVerses) {
+                this.setAttribute('title', this.app.vt(titleString) );
+            } else {
+                this.setAttribute('title', this.app.t(titleString) );
+            }
         }        
 
         if(labelString && labelString != '') {

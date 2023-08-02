@@ -36,12 +36,12 @@ module.exports = kind({
                     {kind: i18n, content: 'Enter word(s), phrase(s) or expression(s):'},
                     {name: 'search', kind: Input, style: 'width: 100%; max-width: 300px'},
                     {tag: 'br'},
-                    {tag: 'br'},
+                    {tag: 'br'},         
                     {components: [
                         {kind: i18nContent, tag: 'span', content: 'Search for:'},
                         {tag: 'span', content: ' '},
                         {kind: SearchType, name: 'search_type', style: 'width: 100%; max-width: 200px'}
-                    ]},
+                    ]},                    
                     {components: [
                         {kind: i18nContent, tag: 'span', content: 'Limit search to:'},
                         {tag: 'span', content: ' '},

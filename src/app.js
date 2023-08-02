@@ -39,7 +39,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.2.0',
+    applicationVersion: '5.2.1',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -60,7 +60,12 @@ var App = Application.kind({
     baseTitle: null,
     bssTitle: null,
     baseUrl: null,
-    clientBrowser: null,
+    clientBrowser: null, // legacy
+    client: {
+        os: null,
+        browser: null,
+        isMobile: false,
+    },
     preventRedirect: false,
     shortHashUrl: '',
     biblesDisplayed: [],
@@ -75,6 +80,9 @@ var App = Application.kind({
     responseCollection: ResponseCollection,
     utils: Utils,
     hasAjaxSuccess: false,
+    hasMouse: false, // use mouse events to detect
+
+    useNewSelectors: false,
 
     scrollMode: 'container_top',
     scrollModeDefault: 'container_top',
@@ -116,10 +124,7 @@ var App = Application.kind({
         // Older rootDir code, retaining for now
         this.rootDir = (typeof biblesupersearch_root_directory == 'string') ? biblesupersearch_root_directory : '/biblesupersearch';
         
-        if(navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > -1) {
-            this.clientBrowser = 'IE';
-            window.console && console.log('Using Internet Explorer ... some minor functionality may be disabled ...');
-        }
+        this.detectClient();
 
         if(typeof biblesupersearch != 'object' || biblesupersearch == null) {
             biblesupersearch = {
@@ -187,6 +192,37 @@ var App = Application.kind({
         loader.go(); // for GET
         loader.response(this, 'handleConfigLoad');
         loader.error(this, 'handleConfigError');
+    },
+    detectClient: function() {
+        this.debug && this.log('navigator', navigator);
+
+        if(navigator.platform == 'Win32' || navigator.userAgent.indexOf('Windows') !== -1) {
+            this.client.os = 'Windows';
+        } 
+        else if(navigator.userAgent.indexOf('Android') !== -1) {
+            this.client.os = 'Andriod';
+            this.client.isMobile = true;
+        }
+
+        // todo: Mac OS / iOS detection, the below are just guesses
+        else if (navigator.userAgent.indexOf('OSX') !== -1 || navigator.userAgent.indexOf('MacOS') !== -1) {
+            this.client.os = 'MacOS';
+        } else if (navigator.userAgent.indexOf('iOS') !== -1) {
+            this.client.os = 'iOS';
+            this.client.isMobile = true;
+        }
+
+        if(navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > -1) {
+            this.client.browser = 'IE'; // MS IE no longer officially supported ... 
+            window.console && console.log('Using Internet Explorer ... some minor functionality may be disabled ...');
+        } else if(navigator.userAgent.indexOf('Firefox') !== -1) {
+            this.client.browser = 'Firefox';
+        } else if(navigator.userAgent.indexOf('WebKit') !== -1) {
+            this.client.browser = 'WebKit'; // Chrome, Safari, Edge, ect
+        }
+
+        this.clientBrowser = this.client.browser;
+        this.debug && this.log('client', this.client);
     },
     talk: function() {
         alert('Hello')
@@ -263,6 +299,8 @@ var App = Application.kind({
             this.debug = this.configs.debug;
         }
 
+        //window.biblesupersearch_configs_final = this.configs;
+
         if(typeof biblesupersearch_statics == 'object' && biblesupersearch_statics != null) {
             this._handleStaticsLoad(biblesupersearch_statics, view);
             return;
@@ -318,6 +356,7 @@ var App = Application.kind({
         }
 
         this.localeBibleBooks.en = statics.books;
+        this.debug && this.log('Config language locale', this.configs.language);
         this.configs.language && this.set('locale', this.configs.language);
         this.waterfall('onStaticsLoaded');
 
@@ -699,11 +738,28 @@ var App = Application.kind({
         return false;
     },
     setScroll: function(scroll) {
-        this.view.hasNode() && this.view.hasNode().scrollTo({
-            top: scroll, 
-            left: 0, 
-            behavior: 'smooth'
-        });
+        var beh = this.configs.pageScroll || null;
+
+        if(!beh || beh == 'none' || beh == 'false') {
+            return;
+        }
+
+        if(this.view.hasNode() && this.view.hasClass('bss_no_global_scrollbar')) {
+            scroll += this.view.hasNode().getBoundingClientRect().top + window.scrollY;
+
+            window.scrollTo({
+                top: scroll, 
+                left: 0, 
+                behavior: beh
+            });
+        } else {        
+            this.view.hasNode() && this.view.hasNode().scrollTo({
+                top: scroll, 
+                left: 0, 
+                behavior: beh
+            });
+        }
+
     },
     resetScrollMode: function() {
         this.set('scrollMode', this.get('scrollModeDefault'));
@@ -744,7 +800,9 @@ var App = Application.kind({
         return this.statics.books[id - 1] || null;
     },
     getLocaleBookName: function(id, fallbackName, useShortname) {
+
         if(this.configs.bibleBooksLanguageSource == 'bible') {
+            this.log('bible source, using fallbackName');
             return fallbackName;
         }
 
@@ -753,21 +811,59 @@ var App = Application.kind({
         // Option 2: Display book names in language of First selected Bible (Legacy - not fully implemented)
 
         var locale = this.get('locale');
+
+        if(typeof this.localeDatasets[locale] == 'undefined') {
+            // Quick hack to get this working on WordPress for English
+            if(locale == 'en') {
+                var book = this.localeBibleBooks.en[id - 1];
+
+                if(book && useShortname) {
+                    return book.shortname || book.name;
+                }
+
+                return book ? book.name : fallbackName;
+            }
+
+            this.log('falling back to English!');
+            locale = 'en'; // ??
+        }
+        // else {
+        //     this.log('NOT falling fallbackName');
+        // }
+
         useShortname = useShortname || false;
         var nameField = useShortname ? 'shortname' : 'name';
 
-        if(locale == 'en' || this.localeDatasets[locale].bibleBooksSource == 'api') {
+        if(locale == 'en' || this.localeDatasets[locale] && this.localeDatasets[locale].bibleBooksSource == 'api') {
             //return fallbackName;
         }
 
-        var book = this.localeBibleBooks[locale][id - 1];
-        book = book || this.getBook(id);
+        var book = null;
+
+        if(!this.localeDatasets[locale].bibleBooks[id - 1]) {
+            this.log('BOOK MISSING FROM LOCALE, falling back to English');
+            book = this.getBook(id);
+        } else {
+            book = this.localeDatasets[locale].bibleBooks[id - 1];
+            book = book || this.getBook(id);
+        }
 
         if(book && useShortname) {
             return book.shortname || book.name;
         }
 
         return book ? book.name : fallbackName;
+    },
+    getTestamentByBookId: function(bookId) {
+        if(bookId >= 1 && bookId <= 39) {
+            return 'Old Testament';
+        }
+
+        if(bookId >= 40 && bookId <= 66) {
+            return 'New Testament';
+        }
+
+        return false;
     },
     getNumberOfEnabledBibles: function() {
         if(this.numberOfEnabledBibles) {
@@ -920,6 +1016,7 @@ var App = Application.kind({
         this._localeChangedHelper(locale);
     },
     _localeChangedHelper: function(locale) {
+        this.debug && this.log(locale);
         this.localeData = utils.clone(this.localeDatasets[locale]);
         var localeData = this.localeData;
         this.isRtl = localeData.meta.isRtl || false;
@@ -995,6 +1092,42 @@ var App = Application.kind({
         });
 
         return trans;
+    },
+    findBookByName: function(bookName) {
+        var locale = this.get('locale');
+        var BookList = this.localeBibleBooks[locale] || this.statics.books;
+
+        // Pass 1: Exact match
+        var book = BookList.find(function(bookItem) {
+            if(bookName == bookItem.name || bookName == bookItem.shortname) {
+                return true;
+            }
+
+            if(bookItem.matching && bookItem.matching.includes && bookItem.matching.includes(bookName)) {
+                return true;
+            }
+
+            var namePeriodToSpace = bookItem.name.replace(/\./g,' ');
+
+            if(bookName == namePeriodToSpace) {
+                return true;
+            }
+
+            return false;
+        });
+
+        // Pass 2: Partial match
+        if(!book) {
+            book = BookList.find(function(bookItem) {
+                if(bookItem.name.indexOf(bookName) == 0) {
+                    return true;
+                }
+
+                return false;
+            });
+        }
+
+        return book;
     },
     alert: function(string, inSender, inEvent) {
         // todo - make some sort of custom alert dialog here!

@@ -4,7 +4,7 @@
 .biblesupersearch_main.interface_classic {
     min-height: 100px;
     /*max-height: 80vh;*/
-    overflow-y: auto;
+/*    overflow-y: auto;*/
 }
 
 .biblesupersearch_classic_form {

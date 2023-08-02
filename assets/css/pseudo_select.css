@@ -1,0 +1,133 @@
+.bss_pseudo_select {
+	position: relative;
+	display: inline-block;
+
+	height: 17px;
+	background-color: white;
+	border: 1px solid #999999;
+	font-size: 13px;
+	cursor: default;
+}
+
+.bss_pseudo_select_visable {
+	margin: 0;
+}
+
+.bss_pseudo_select_toggle {
+	position: absolute;
+	background-color: white;
+	margin-top: 0;
+	width: 100%;
+	text-align: left;
+	z-index: 1000001;
+	border: 1px solid #aaaaaa;
+	min-height: 10px;
+	max-height: 200px; /* this shoule be responsive */
+	overflow-y: auto;
+    -webkit-user-select: none; /* Safari */
+    user-select: none; /* Standard syntax */
+    margin-left: -1px;
+}
+
+.bss_pseudo_select_placeholder {
+	display: inline-block;
+	float: left;
+	text-align: left;
+	vertical-align: middle;
+	overflow: hidden;
+	white-space: nowrap;
+	padding: 1px 5px;
+
+    /* Doesn't work - Less complies it as 80%!! */
+    /* max-width: calc(100% - 20px);*/
+    
+    /* This works as intended */
+    width: calc(~"100% - 30px");
+}
+
+.bss_pseudo_select_button {
+	display: inline-block;
+	float: right;
+	padding-right: 3px;
+	padding-top: 2px;
+	font-size: 12px;
+}
+
+.bss_is_mobile .bss_pseudo_select_button {
+    padding-top: 1px;
+    font-size: 0.9em;
+}
+
+.bss_pseudo_option_show .bss_pseudo_select_visable {
+	background-color: #dddddd;
+}
+
+.bss_pseudo_option, .bss_pseudo_optgroup {
+	overflow: hidden;
+}
+
+.bss_has_mouse .bss_pseudo_option, .bss_has_mouse .bss_pseudo_optgroup {
+	white-space: nowrap;
+}
+
+.bss_pseudo_optgroup {
+    padding-left: 5px;
+    margin-top: 2px;
+}
+
+.bss_pseudo_option {
+	padding-left: 20px;
+	text-indent: -15px;
+    margin-top: 2px;
+}
+
+.bss_pseudo_option:last-child {
+    margin-bottom: 2px;
+}
+
+.bss_pseudo_option.bss_pseudo_option_grouped {
+    padding-left: 40px;
+}
+
+.bss_pseudo_option.bss_pseudo_selected {
+	background-color: #a0a0a0;
+	color: white;
+}
+
+.bss_pseudo_option.bss_pseudo_not_selected {
+
+}
+
+.bss_pseudo_option:hover {
+	background-color: #333333;
+	color: white;
+	/*overflow-x: visible;*/
+	white-space: normal;
+}
+
+.bss_pseudo_optgroup_label {
+	font-weight: bold;
+}
+
+  
+.bss_is_mobile .bss_pseudo_option {
+/*    background-color: green;*/
+}
+   
+
+
+/*@media screen  and (
+    (max-device-width: 480px) and (orientation: portrait)) or 
+    (max-device-height: 480px) and (orientation: landscape)) { 
+  
+   .bss_pseudo_option {
+        background-color: green;
+   }
+
+}*/
+
+/*@media screen  and (max-device-width: 780px) and (orientation: landscape)  {
+   .bss_pseudo_option {
+        background-color: red;
+   }
+}*/

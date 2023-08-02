@@ -470,6 +470,10 @@ module.exports = kind({
             this.hideHoverDialogs();
         }
     },
+    hideEverything: function() {
+        this.hideHoverDialogs();
+        Signal.send('onHideEverything');
+    },
     hideHoverDialogs: function() {
         this.$.StrongsHover.set('showing', false);
     },

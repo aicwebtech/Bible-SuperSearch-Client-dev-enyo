@@ -57,7 +57,10 @@ var biblesupersearch_config_options = {
     // 'rank' - Rank / Sort Order specified on API
 
     // Default: 'rank|name',
-    "bibleSorting": 'rank|name',          
+    "bibleSorting": 'rank|name',       
+
+    // Include Testament ("Old Testament" or "New Testament") in some references
+    "includeTestament": false,  // true or false   
 
     // Landing Reference(s), 
     // Any valid Bible reference, ie 'John 3:16; Romans 3:23; Genesis 1'
@@ -192,7 +195,15 @@ var biblesupersearch_config_options = {
     //      default for skin default
     //      Classic
     //      Clean
-    "pager": 'default',                          
+    "pager": 'default',         
+
+    // Page Scroll 
+    //      When the page loads or query executes, 
+    //      how to scroll the page up to top of results
+    //      instant (default)
+    //      smooth
+    //      none (no scroll)
+    'pageScroll' : 'instant',                   
     
     // Include toggling to an 'advanced search' form
     // Some interfaces may force this to false

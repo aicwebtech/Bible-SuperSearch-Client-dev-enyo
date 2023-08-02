@@ -93,6 +93,22 @@ module.exports = {
 
         return exploded.reverse(); // To keep the references in the same order that they were submitted
     },
+    parseBook: function(ref) {
+        if(!ref.book) {
+            return ref;
+        }
+
+        if(ref.book.indexOf('-') == -1) {
+            ref.isBookRange = false;
+            return ref;
+        }
+
+        books = ref.book.split('-');
+        ref.bookSt = books[0].trim();
+        ref.bookEn = books[1].trim();
+        ref.isBookRange = true;
+        return ref;
+    },
     _substr: function(str, offset, len) {
         return str.substring(offset, offset + len);
     },
