@@ -39,7 +39,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.2.0',
+    applicationVersion: '5.2.1',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -738,19 +738,25 @@ var App = Application.kind({
         return false;
     },
     setScroll: function(scroll) {
+        var beh = this.configs.pageScroll || null;
+
+        if(!beh || beh == 'none' || beh == 'false') {
+            return;
+        }
+
         if(this.view.hasNode() && this.view.hasClass('bss_no_global_scrollbar')) {
             scroll += this.view.hasNode().getBoundingClientRect().top + window.scrollY;
 
             window.scrollTo({
                 top: scroll, 
                 left: 0, 
-                behavior: 'instant'
+                behavior: beh
             });
         } else {        
             this.view.hasNode() && this.view.hasNode().scrollTo({
                 top: scroll, 
                 left: 0, 
-                behavior: 'instant'
+                behavior: beh
             });
         }
 

@@ -51,16 +51,16 @@ module.exports = kind({
                         includeBlankValue: true
                     },
                     {tag: 'br'},                    
-                    {kind: i18n, content: 'Select Book and Chapter (old):'},
-                    {
-                        name: 'reference_booksel_old', 
-                        kind: BookSelect,
-                        tag: 'div',
-                        defaultBook: null,
-                        defaultChapter: null,
-                        includeBlankValue: true
-                    },
-                    {tag: 'br'},
+                    // {kind: i18n, content: 'Select Book and Chapter (old):'},
+                    // {
+                    //     name: 'reference_booksel_old', 
+                    //     kind: BookSelect,
+                    //     tag: 'div',
+                    //     defaultBook: null,
+                    //     defaultChapter: null,
+                    //     includeBlankValue: true
+                    // },
+                    // {tag: 'br'},
                     {kind: i18n, content: 'Enter passage(s):'},
                     {name: 'reference', kind: Input, style: 'width: 100%; max-width: 300px', onblur: 'referenceTyped'},
                     { components: [

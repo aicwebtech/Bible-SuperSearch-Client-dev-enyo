@@ -8,6 +8,7 @@ var defaultConfig = {
     "enabledBibles": [],                                // Order indicates order Bibles will appear
     "interface": "twentytwenty",                        // Bible SuperSearch skin / interface
     "useJSONP": false,                                  // (Future) Use JSONP for cross-site API calls
+    "pageScroll": 'instant',
 
 
     _urlDefaultNotice: function() {

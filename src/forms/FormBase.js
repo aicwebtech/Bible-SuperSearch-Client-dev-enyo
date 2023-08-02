@@ -46,6 +46,7 @@ module.exports = kind({
         kind: Signal,
         onClickReference: 'handleReferenceClick',
         onPageChange: 'handlePageChange',
+        onChangeLocaleManual: 'changeLocaleManual',
         onClearForm: 'clearFormManual'
     },
 
@@ -110,6 +111,10 @@ module.exports = kind({
         this.clearHash();
         this.populateDefaults();
         
+    },
+    changeLocaleManual: function() {
+        this.clearFormManual();
+        //this.submitDefault();
     },
     populateDefaults: function() {
         //this.$.Bible && this.$.Bible.set('value', ['tr', 'kjv', 'tyndale']);

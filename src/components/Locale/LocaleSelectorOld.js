@@ -1,6 +1,6 @@
 var kind = require('enyo/kind');
 var Select = require('../Select');
-// var Select = require('enyo/Select');
+var Signal = require('../../components/Signal');
 var Locales = require('../../i18n/LocaleLoader')
 
 module.exports = kind({
@@ -38,6 +38,7 @@ module.exports = kind({
     change: function(inSender, inEvent) {
         this.inherited(arguments);
         this.app.set('locale', this.getValue());
+        Signal.send('onChangeLocaleManual');
     }, 
 
     handleLocaleChange: function() {

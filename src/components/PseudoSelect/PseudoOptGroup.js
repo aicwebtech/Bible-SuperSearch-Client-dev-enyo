@@ -7,7 +7,6 @@ module.exports = kind({
 	classes: 'bss_pseudo_optgroup',
 	value: null,
 	label: null,
-	//defaultKind: Opt,
 
 	components: [
 		{

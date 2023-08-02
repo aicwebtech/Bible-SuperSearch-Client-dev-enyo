@@ -22,8 +22,7 @@ module.exports = kind({
 		onblur: 'handleBlur',
 		onfocusout: 'handleBlur',
 		onmouseout: 'handleMouseOut',
-        onLocaleChange: 'localeChanged',
-		//ontap: 'handleVisableTap'
+        onLocaleChange: 'localeChanged'
 	},
 
 	bindings: [
@@ -151,7 +150,6 @@ module.exports = kind({
 		}
 	},
 	handleVisableTap: function() {
-		this.log();
 		this.set('toggled', !this.get('toggled'));
 	}, 
 	valueChanged: function(was, is) {
@@ -212,25 +210,6 @@ module.exports = kind({
             var client = this.app.get('client');
             var optGroups = 0;
             var isOptGroup = false;
-            // var c = controls[idx];
-
-            // // if(client.isMobile) {            
-            //     this.log('top', c.hasNode().getBoundingClientRect().top);
-            //     this.log('scrollTop', this.$.Toggle.hasNode().scrollTop);
-
-            //     var top2 = c.hasNode().getBoundingClientRect().top + this.$.Toggle.hasNode().scrollTop;
-            //     //top =  this.$.Toggle.hasNode().scrollTop;
-
-            //     this.log(top, margin, top2);
-
-            //     // this.$.Toggle.hasNode() && this.$.Toggle.hasNode().scrollTo({
-            //     //     top: top, 
-            //     //     left: 0, 
-            //     //     behavior: 'instant'
-            //     // });
-
-            //     // return;
-            // // } 
 
             for(var i = 0; i < idx; i++) {
                 if(controls[i].hasNode()) {
@@ -280,7 +259,7 @@ module.exports = kind({
                 // top: 1300, 
                 top: top, 
                 left: 0, 
-                behavior: 'instant'
+                behavior: 'instant' // intentionally hardcoded
             });
         }
 	},

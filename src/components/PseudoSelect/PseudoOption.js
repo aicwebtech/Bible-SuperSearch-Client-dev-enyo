@@ -47,13 +47,7 @@ module.exports = kind({
 		this.set('selected', inEvent.value == this.value);
 	},
     handleToggledChanged: function(inSender, inEvent) {
-        // if(inEvent.toggled && this.selected) {
-        //     this.hasNode() && this.hasNode().scrollTo({
-        //         top: 0, 
-        //         left: 0, 
-        //         behavior: 'smooth'
-        //     });
-        // }
+        // 
     },
     valueChanged: function(was, is) {
         if(!this._internalSet) {

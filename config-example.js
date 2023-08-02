@@ -195,7 +195,15 @@ var biblesupersearch_config_options = {
     //      default for skin default
     //      Classic
     //      Clean
-    "pager": 'default',                          
+    "pager": 'default',         
+
+    // Page Scroll 
+    //      When the page loads or query executes, 
+    //      how to scroll the page up to top of results
+    //      instant (default)
+    //      smooth
+    //      none (no scroll)
+    'pageScroll' : 'instant',                   
     
     // Include toggling to an 'advanced search' form
     // Some interfaces may force this to false
