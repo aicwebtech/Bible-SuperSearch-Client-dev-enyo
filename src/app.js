@@ -813,9 +813,23 @@ var App = Application.kind({
         var locale = this.get('locale');
 
         if(typeof this.localeDatasets[locale] == 'undefined') {
+            // Quick hack to get this working on WordPress for English
+            if(locale == 'en') {
+                var book = this.localeBibleBooks.en[id - 1];
+
+                if(book && useShortname) {
+                    return book.shortname || book.name;
+                }
+
+                return book ? book.name : fallbackName;
+            }
+
             this.log('falling back to English!');
             locale = 'en'; // ??
         }
+        // else {
+        //     this.log('NOT falling fallbackName');
+        // }
 
         useShortname = useShortname || false;
         var nameField = useShortname ? 'shortname' : 'name';
@@ -824,8 +838,15 @@ var App = Application.kind({
             //return fallbackName;
         }
 
-        var book = this.localeDatasets[locale].bibleBooks[id - 1];
-        book = book || this.getBook(id);
+        var book = null;
+
+        if(!this.localeDatasets[locale].bibleBooks[id - 1]) {
+            this.log('BOOK MISSING FROM LOCALE, falling back to English');
+            book = this.getBook(id);
+        } else {
+            book = this.localeDatasets[locale].bibleBooks[id - 1];
+            book = book || this.getBook(id);
+        }
 
         if(book && useShortname) {
             return book.shortname || book.name;
