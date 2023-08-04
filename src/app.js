@@ -1094,6 +1094,7 @@ var App = Application.kind({
         return trans;
     },
     findBookByName: function(bookName) {
+        this.debug && this.log(bookName);
         var locale = this.get('locale');
         var BookList = this.localeBibleBooks[locale] || this.statics.books;
 
@@ -1120,6 +1121,30 @@ var App = Application.kind({
         if(!book) {
             book = BookList.find(function(bookItem) {
                 if(bookItem.name.indexOf(bookName) == 0) {
+                    return true;
+                }                
+
+                if(bookItem.shortname.indexOf(bookName) == 0) {
+                    return true;
+                }
+
+                return false;
+            });
+        }
+
+        // Pass 3: (Experimental) Partial match, ignoring pumctuation
+        if(!book) {
+            var bookNameNoPunc = bookName.replace(/[ .;:]/g, ' ');
+
+            book = BookList.find(function(bookItem) {
+                var biNameNoPunc = bookItem.name.replace(/[ .;:]/g, ' ');
+                var biShortameNoPunc = bookItem.shortname.replace(/[ .;:]/g, ' ');
+
+                if(biNameNoPunc.indexOf(bookNameNoPunc) == 0) {
+                    return true;
+                }                
+
+                if(biShortameNoPunc.indexOf(bookNameNoPunc) == 0) {
                     return true;
                 }
 
@@ -1199,6 +1224,7 @@ var App = Application.kind({
 
         var contentField = contentField || 'content',
             content = Component.get(contentField),
+            tag = Component.get('tag'),
             n = Component.hasNode();
 
         if(!n || !content) {
@@ -1222,7 +1248,7 @@ var App = Application.kind({
 
         // Attempt to use modern clipboard API
         // This requires HTTPS
-        if(navigator && navigator.clipboard && navigator.clipboard.writeText) {
+        if((tag == 'p' || tag == 'div') && navigator && navigator.clipboard && navigator.clipboard.writeText) {
             var selected = window.getSelection().toString();
             var promise = navigator.clipboard.writeText(selected);
             this.debug && this.log('Using clipboard API');
