@@ -167,6 +167,8 @@ module.exports = {
     'Share Link': 'Give to ye mateys',
     'Share' : 'Givem',
     'Link' : 'Chaine', // 4.5
+    'Copied to clipboard': 'Pirated to scrawboard',
+    'Failed to copy': 'Fayled to pirate', // 5.2.3
 
     // Copy format options
     'Copy Format': 'Pirate likeness', // 5.0

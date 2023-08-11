@@ -204,6 +204,11 @@ var biblesupersearch_config_options = {
     //      smooth
     //      none (no scroll)
     'pageScroll' : 'instant',                   
+
+    // Page Scroll Top Padding
+    //      When page scrolls, scroll down by this amount 
+    //      Usefull to prevent hiding behind menus, ect
+    'pageScrollTopPadding': 0,           
     
     // Include toggling to an 'advanced search' form
     // Some interfaces may force this to false

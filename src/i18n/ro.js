@@ -332,6 +332,8 @@ module.exports = {
     'Share Link': 'Distribuiți Link-ul',
     'Share' : 'Distribuiți',
     'Link': 'Link-ul',
+    'Copied to clipboard': 'Copiat în clipboard', // 5.2.3
+    'Failed to copy': 'Copierea eșuată', // 5.2.3
 
     // Quick Start Help Dialog
     'Quick Start Guide': 'Ghid Rapid',

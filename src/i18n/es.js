@@ -325,6 +325,8 @@ module.exports = {
     'Share Link': 'Compartir enlace',
     'Share' : 'Cuota',
     'Link': 'Enlace',
+    'Copied to clipboard': 'Copiado al portapapeles', // 5.2.3
+    'Failed to copy': 'Error al copiar', // 5.2.3
 
     // Quick Start Help Dialog "dialogo de ayuda en incio rapido"
     'Quick Start Guide': 'Guía de inicio rápido',

@@ -323,6 +323,8 @@ module.exports = {
     'Share Link': '分享連結',
     'Share' : '分享',
     'Link' : '連結', // 4.5
+    'Copied to clipboard': '已復製到剪貼板', // 5.2.3
+    'Failed to copy': '複製失敗', // 5.2.3
 
      // Quick Start Help Dialog
     'Quick Start Guide': '快速入門指南',

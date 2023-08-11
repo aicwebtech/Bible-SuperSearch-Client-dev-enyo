@@ -16,7 +16,9 @@ module.exports = kind({
     ],
 
     handlers: {
-        onLocaleChange: 'localeChanged'
+        onLocaleChange: 'localeChanged',
+        // onFormResponseSuccessWaterfall: 'clear',
+        onClearFormWaterfall: 'clear'
     },
 
     defaultBook: 1,
@@ -209,6 +211,10 @@ module.exports = kind({
         this.set('value', Book.name + ' ' + inSender.get('value'));
         this._internalSet = false;
     }, 
+
+    clear: function() {
+        this._initDefault();
+    },
     
     _getBookList: function() {
         var locale = this.app.get('locale');

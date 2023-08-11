@@ -42,7 +42,7 @@ module.exports = kind({
     change: function(inSender, inEvent) {
         this.inherited(arguments);
         this.app.set('locale', this.getValue());
-        Signal.send('onChangeLocaleManual');
+        // Signal.send('onChangeLocaleManual');
     }, 
     _afterValueChanged: function(optionControl) {
         this.inherited(arguments);
@@ -50,6 +50,7 @@ module.exports = kind({
 
         if(!this._setValueInternal && val && val != null) {
             this.app.debug && this.log('backsetting locale', val);
+            this.app.set('localeManual', true);
             this.app.set('locale', val);
         }
     },

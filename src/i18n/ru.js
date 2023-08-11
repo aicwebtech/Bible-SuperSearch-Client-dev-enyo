@@ -333,6 +333,8 @@ module.exports = {
     'Share Link': 'Поделиться Ссылкой',
     'Share' : 'Делиться',
     'Link' : 'Ссылка', // 4.5
+    'Copied to clipboard': 'Скопировано в буфер обмена (clipboard)', // 5.2.3
+    'Failed to copy': 'Не удалось скопировать', // 5.2.3
 
     // Quick Start Help Dialog
     'Quick Start Guide': 'Краткое Руководство Пользователя',

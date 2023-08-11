@@ -71,6 +71,7 @@ var App = Application.kind({
     biblesDisplayed: [],
     locale: 'en',
     defaultLocale: 'en', // hardcoded
+    localeManual: false, // whether locale has been manually changed
     localeData: Locales.en,
     localeDatasetsRaw: Locales,
     localeDatasets: {},
@@ -286,6 +287,12 @@ var App = Application.kind({
             this.defaultBibles = (typeof this.configs.defaultBible == 'string') ? this.configs.defaultBible.split(',') : this.configs.defaultBible;
         } else {
             this.defaultBibles = ['kjv'];
+        }
+
+        if(this.configs.pageScrollTopPadding) {
+            if(typeof this.configs.pageScrollTopPadding == 'string') {
+                this.configs.pageScrollTopPadding = parseInt(this.configs.pageScrollTopPadding, 10);
+            }
         }
 
         // Render 'Loading' view
@@ -738,14 +745,23 @@ var App = Application.kind({
         return false;
     },
     setScroll: function(scroll) {
-        var beh = this.configs.pageScroll || null;
+        var beh = this.configs.pageScroll || null,
+            pad = this.configs.pageScrollTopPadding || 0;
 
         if(!beh || beh == 'none' || beh == 'false') {
             return;
         }
 
+        this.debug && this.log('requested scroll', scroll);
+        this.debug && this.log('pad', pad);
+
         if(this.view.hasNode() && this.view.hasClass('bss_no_global_scrollbar')) {
-            scroll += this.view.hasNode().getBoundingClientRect().top + window.scrollY;
+            // In this case, if scroll == 0, we assume we want to scroll to the very top of the page
+            // Therefore, we don't add to the scroll
+            if(scroll != 0) {
+                scroll += this.view.hasNode().getBoundingClientRect().top + window.scrollY;
+                scroll += pad;
+            }
 
             window.scrollTo({
                 top: scroll, 
@@ -753,6 +769,8 @@ var App = Application.kind({
                 behavior: beh
             });
         } else {        
+            scroll += pad;
+
             this.view.hasNode() && this.view.hasNode().scrollTo({
                 top: scroll, 
                 left: 0, 
@@ -760,6 +778,7 @@ var App = Application.kind({
             });
         }
 
+        this.debug && this.log('delivered scroll', scroll);
     },
     resetScrollMode: function() {
         this.set('scrollMode', this.get('scrollModeDefault'));
@@ -1023,6 +1042,11 @@ var App = Application.kind({
 
         Signal.send('onLocaleChange');
         this.waterfall('onLocaleChange');
+
+        if(this.get('localeManual')) {
+            Signal.send('onChangeLocaleManual');
+            this.set('localeManual', false);
+        }
     },
     // Translate
     t: function(string) {
@@ -1156,11 +1180,13 @@ var App = Application.kind({
     },
     alert: function(string, inSender, inEvent) {
         // todo - make some sort of custom alert dialog here!
+        var tstr = this.t(string);
+
         if(inSender && inEvent) {
-            Signal.send('onPositionedAlert', {alert: string, inSender: inSender, inEvent: inEvent});
+            Signal.send('onPositionedAlert', {alert: tstr, inSender: inSender, inEvent: inEvent});
         }
         else {
-            Signal.send('onAlert', {alert: string});
+            Signal.send('onAlert', {alert: tstr});
         }
     },
     displayInitError: function(message, code) {

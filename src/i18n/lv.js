@@ -333,6 +333,8 @@ module.exports = {
     'Share Link': 'Kopīgot saiti',
     'Share' : 'Kopīgot',
     'Link' : 'Saite', // 4.5
+    'Copied to clipboard': 'Kopēts starpliktuvē (clipboard)', // 5.2.3
+    'Failed to copy': 'Neizdevās kopēt', // 5.2.3
 
     // Quick Start Help Dialog
     'Quick Start Guide': 'Lietošanas Pamācība',

@@ -113,6 +113,7 @@ module.exports = kind({
         
     },
     changeLocaleManual: function() {
+        this.app.debug && this.log();
         this.clearFormManual();
         //this.submitDefault();
     },
@@ -281,6 +282,7 @@ module.exports = kind({
         this.app.set('shortHashUrl', '#/c/' + this.get('cacheHash'));
         var responseData = {formData: this._formDataAsSubmitted, results: inResponse, success: true};
         this.bubble('onFormResponseSuccess', responseData);
+        this.waterfall('onFormResponseSuccessWaterfall', responseData);
         Signal.send('onFormResponseSuccess', responseData);
         this.app.set('responseData', responseData)
         this.maxPage = (inResponse.paging && inResponse.paging.last_page) ? inResponse.paging.last_page : null;

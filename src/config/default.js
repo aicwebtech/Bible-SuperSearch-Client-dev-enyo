@@ -9,6 +9,7 @@ var defaultConfig = {
     "interface": "twentytwenty",                        // Bible SuperSearch skin / interface
     "useJSONP": false,                                  // (Future) Use JSONP for cross-site API calls
     "pageScroll": 'instant',
+    "pageScrollTopPadding": 0,
 
 
     _urlDefaultNotice: function() {

@@ -37,8 +37,9 @@ module.exports = kind({
 
     change: function(inSender, inEvent) {
         this.inherited(arguments);
+        this.app.set('localeManual', true);
         this.app.set('locale', this.getValue());
-        Signal.send('onChangeLocaleManual');
+        //Signal.send('onChangeLocaleManual');
     }, 
 
     handleLocaleChange: function() {

@@ -333,6 +333,8 @@ module.exports = {
     'Share Link': '',
     'Share' : '',
     'Link' : '', // 4.5
+    'Copied to clipboard': '', // 5.2.3
+    'Failed to copy': '', // 5.2.3
 
     // Quick Start Help Dialog
     'Quick Start Guide': '',

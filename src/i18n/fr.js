@@ -326,6 +326,8 @@ module.exports = {
     'Share Link': 'Partager le lien',
     'Share' : 'Partager',
     'Link': 'le lien', // 4.5
+    'Copied to clipboard': 'Copié dans le presse-papier', // 5.2.3
+    'Failed to copy': 'Échec de la copie', // 5.2.3
 
     // Quick Start Help Dialog
     'Quick Start Guide': 'Guide de démarrage rapide',

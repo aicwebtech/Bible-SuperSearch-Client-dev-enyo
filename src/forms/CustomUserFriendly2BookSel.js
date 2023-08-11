@@ -5,19 +5,14 @@ var Input = require('enyo/Input');
 var TextArea = require('enyo/TextArea');
 var Checkbox = require('enyo/Checkbox');
 var BibleSelect = require('../components/BibleSelect/MultiSelect');
-//var SearchType = require('../components/SearchType');
-//var Shortcuts = require('../components/Shortcuts');
 var BookSelect = require('../components/BookSelect');
 var FormSection = require('./FormSection');
 var EtcButtons = require('../components/DialogEtcButtons/DialogEtcButtonsHtml');
 var i18nContent = require('../components/Locale/i18nContent');
 var i18n = require('../components/Locale/i18nComponent');
-
 var BookSelectNew = require('../components/BookSelectNew');
-
 var SearchType = require('../components/SearchTypeNew');
 var Shortcuts = require('../components/ShortcutsNew');
-
 var ShortcutsSwitch = require('../components/ShortcutsSwitch');
 
 module.exports = kind({
