@@ -1,10 +1,11 @@
 Bible SuperSearch Universal Client Changelog
 
-= 5.2.1 Aug 2, 2023
+= 5.2.4 Aug 12, 2023
 * Added custom select menus (these only appear in one custom interface)
 * Fixed scrolling to scroll down to results when using paging/browsing buttons
 * Fixed a bug in the navigation / hash parsing where having a . in a 
 		book name was causing the book to not be found.
+* Misc bug fixes
 
 = 5.2.0 April 8, 2023
 * Added "Remove Bible" to paralell Bible selector
