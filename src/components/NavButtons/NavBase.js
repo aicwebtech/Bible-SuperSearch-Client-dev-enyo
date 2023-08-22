@@ -21,7 +21,8 @@ module.exports = kind({
     currentChapterDisabled: 'sc_nl.gif',
 
     handlers: {
-        ontap: 'handleTap'
+        ontap: 'handleTap',
+        onAutoClick: 'handleAutoClick'
     },
 
     create: function() {
@@ -131,5 +132,9 @@ module.exports = kind({
             // If clicking on an active link, set scroll mode
             this.app.set('scrollMode', 'results_top');
         }
+    },
+    handleAutoClick: function(inSender, inEvent) {
+        button = inEvent.button || null;
+        button && this.$[button] && this.$[button].hasNode().click();
     }
 });

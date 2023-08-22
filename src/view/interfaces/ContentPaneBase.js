@@ -46,7 +46,7 @@ module.exports = kind({
     handlers: {
         onFormResponseSuccess: 'handleFormResponse',
         onFormResponseError: 'handleFormError',
-        onResultsRendered: 'handleResultsRendered'
+        onResultsRendered: 'handleResultsRendered',
     },
 
     components: [

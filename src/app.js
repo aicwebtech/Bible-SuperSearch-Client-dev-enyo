@@ -1019,6 +1019,16 @@ var App = Application.kind({
             var book = bookList[key],
                 bookEn = this.localeBibleBooks.en[key] || null;
 
+                book.fn = this._fmtBookNameMatch(book.name);
+                book.sn = this._fmtBookNameMatch(book.shortname);
+
+            if(Array.isArray(book.matching)) {
+                for(mk in book.matching) {
+                    book.matching[mk] = this._fmtBookNameMatch(book.matching[mk]);
+                }
+            }
+
+
             if(typeof localeData[ bookEn.name ] == 'undefined') {
                 localeData[ bookEn.name ] = book.name;
             }
@@ -1029,10 +1039,15 @@ var App = Application.kind({
             }
         }
 
+        this.log('booklist', bookList);
+
         localeData.bibleBooksSource = source;
         this.localeBibleBooks[locale] = bookList;
         this.localeDatasets[locale] = utils.clone(localeData);
         this._localeChangedHelper(locale);
+    },
+    _fmtBookNameMatch: function(name) {
+        return name.toLowerCase();
     },
     _localeChangedHelper: function(locale) {
         this.debug && this.log(locale);
@@ -1119,12 +1134,13 @@ var App = Application.kind({
     },
     findBookByName: function(bookName) {
         this.debug && this.log(bookName);
+        bookName = this._fmtBookNameMatch(bookName);
         var locale = this.get('locale');
         var BookList = this.localeBibleBooks[locale] || this.statics.books;
 
         // Pass 1: Exact match
         var book = BookList.find(function(bookItem) {
-            if(bookName == bookItem.name || bookName == bookItem.shortname) {
+            if(bookName == bookItem.fn || bookName == bookItem.sn) {
                 return true;
             }
 
@@ -1132,7 +1148,7 @@ var App = Application.kind({
                 return true;
             }
 
-            var namePeriodToSpace = bookItem.name.replace(/\./g,' ');
+            var namePeriodToSpace = bookItem.fn.replace(/\./g,' ');
 
             if(bookName == namePeriodToSpace) {
                 return true;
@@ -1144,11 +1160,11 @@ var App = Application.kind({
         // Pass 2: Partial match
         if(!book) {
             book = BookList.find(function(bookItem) {
-                if(bookItem.name.indexOf(bookName) == 0) {
+                if(bookItem.fn.indexOf(bookName) == 0) {
                     return true;
                 }                
 
-                if(bookItem.shortname.indexOf(bookName) == 0) {
+                if(bookItem.sn.indexOf(bookName) == 0) {
                     return true;
                 }
 
@@ -1161,8 +1177,8 @@ var App = Application.kind({
             var bookNameNoPunc = bookName.replace(/[ .;:]/g, ' ');
 
             book = BookList.find(function(bookItem) {
-                var biNameNoPunc = bookItem.name.replace(/[ .;:]/g, ' ');
-                var biShortameNoPunc = bookItem.shortname.replace(/[ .;:]/g, ' ');
+                var biNameNoPunc = bookItem.fn.replace(/[ .;:]/g, ' ');
+                var biShortameNoPunc = bookItem.sn.replace(/[ .;:]/g, ' ');
 
                 if(biNameNoPunc.indexOf(bookNameNoPunc) == 0) {
                     return true;

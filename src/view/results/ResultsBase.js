@@ -1,5 +1,6 @@
 var kind = require('enyo/kind');
 var GridView = require('./GridView');
+var ResCom = require('./ResultsReadComponent');
 var Signal = require('../../components/Signal');
 var Pager = require('../../components/Pagers/ClassicPager');
 // var Pager = require('../../components/Pagers/CleanPager');
@@ -362,6 +363,7 @@ module.exports = kind({
     },
     _createContainer: function() {
         return this.createComponent({
+            kind: ResCom,
             tag: 'table',
             // attributes:{border: 1},
             classes: 'biblesupersearch_render_table'
@@ -464,11 +466,15 @@ module.exports = kind({
         }
     },
     handleKey: function(inSender, inEvent) {
-        // this.log(inEvent);
+        //this.log(inEvent);
 
         if(inEvent.code == 'Escape') {
             this.hideHoverDialogs();
         }
+
+        // this.waterfall('onKeyWaterfall', inEvent);
+        //this.waterfall('onType', inEvent);
+        // return false;
     },
     hideEverything: function() {
         this.hideHoverDialogs();
