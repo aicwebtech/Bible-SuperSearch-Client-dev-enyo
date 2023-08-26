@@ -96,6 +96,7 @@ module.exports = kind({
             }
 
             this.defaultSubmitting = true;
+            this.app.set('scrollMode', 'container_top');
             this._submitFormHelper(formData, false);
         }
     },
@@ -156,6 +157,7 @@ module.exports = kind({
         this.manualRequest = manual || false;
 
         if(this.manualRequest) {
+            this.app.set('scrollMode', 'results_top');
             formData.page = null;
             // this.formData.page = null;
             this.page = null;
@@ -233,7 +235,7 @@ module.exports = kind({
         var locale = this.app.get('locale');
 
         if(locale == 'en' || this.app.localeDatasets[locale].bibleBooksSource == 'api') {
-            return reference;
+            // return reference;
         }
 
         if(isRequest && !this.Passage.isPassage(reference)) {

@@ -85,8 +85,9 @@ var App = Application.kind({
 
     useNewSelectors: false,
 
-    scrollMode: 'container_top',
-    scrollModeDefault: 'container_top',
+    // 'container_top' or 'results_top'
+    scrollMode: 'container_top',   // Ensures default loading page does NOT scroll down
+    scrollModeDefault: 'results_top',
     
     // Selectable sub-views:
     formatButtonsView: null,
@@ -362,7 +363,13 @@ var App = Application.kind({
             defaultConfig._downloadDisabledNotice();
         }
 
-        this.localeBibleBooks.en = statics.books;
+        //this.localeBibleBooks.en = statics.books; // prepopulate the English book list
+
+        var localeData = {}; // empty like my mind
+
+        this._initLocaleBibleBooks('en', localeData, statics.books, 'statics');
+        statics.books = this.localeBibleBooks.en;
+
         this.debug && this.log('Config language locale', this.configs.language);
         this.configs.language && this.set('locale', this.configs.language);
         this.waterfall('onStaticsLoaded');
@@ -1017,10 +1024,14 @@ var App = Application.kind({
 
         for(key in bookList) {
             var book = bookList[key],
-                bookEn = this.localeBibleBooks.en[key] || null;
+                bookEn = null;
 
-                book.fn = this._fmtBookNameMatch(book.name);
-                book.sn = this._fmtBookNameMatch(book.shortname);
+            book.fn = this._fmtBookNameMatch(book.name);
+            book.sn = this._fmtBookNameMatch(book.shortname);
+
+            if(locale != 'en') {
+                bookEn = this.localeBibleBooks.en[key] || null;
+            }
 
             if(Array.isArray(book.matching)) {
                 for(mk in book.matching) {
@@ -1028,23 +1039,29 @@ var App = Application.kind({
                 }
             }
 
+            if(bookEn) {            
+                if(typeof localeData[ bookEn.name ] == 'undefined') {
+                    localeData[ bookEn.name ] = book.name;
+                }
 
-            if(typeof localeData[ bookEn.name ] == 'undefined') {
-                localeData[ bookEn.name ] = book.name;
-            }
-
-            if(source == 'locale') {
-                bookList[key].chapters = bookEn.chapters;
-                // bookList[key].chapter_verses = bookEn.chapter_verses;
+                if(source == 'locale') {
+                    bookList[key].chapters = bookEn.chapters;
+                    // bookList[key].chapter_verses = bookEn.chapter_verses;
+                }
             }
         }
 
-        this.log('booklist', bookList);
+        this.log('booklist', locale, bookList);
 
         localeData.bibleBooksSource = source;
         this.localeBibleBooks[locale] = bookList;
-        this.localeDatasets[locale] = utils.clone(localeData);
-        this._localeChangedHelper(locale);
+
+        if(locale == 'en' && source == 'statics') {
+            // do something special?
+        } else {   
+            this.localeDatasets[locale] = utils.clone(localeData);
+            this._localeChangedHelper(locale);
+        }
     },
     _fmtBookNameMatch: function(name) {
         return name.toLowerCase();

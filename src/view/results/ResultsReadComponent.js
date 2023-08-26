@@ -46,7 +46,7 @@ module.exports = kind({
         this.log(inSender, inEvent);
     },
     handleKey: function(inSender, inEvent) {
-        this.log(inEvent);
+        // this.log(inEvent);
         // not recieving event from ResultBase
 
         if(inEvent.key == 'ArrowRight') {

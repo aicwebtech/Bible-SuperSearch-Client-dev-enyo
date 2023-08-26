@@ -110,9 +110,10 @@ module.exports = kind({
             var headerItems = [
                 'FormContainer', 
                 'FormatButtonContainer', 
-                'ErrorsContainer', 
-                'StrongsContainer', 
-                'DisambigContainer'
+                // May want to tweak which ones of these are shown when scrolling
+                //'ErrorsContainer', 
+                //'StrongsContainer', 
+                //'DisambigContainer'
             ];
 
             headerItems.forEach(function(item) {
