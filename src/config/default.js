@@ -4,6 +4,7 @@ var defaultConfig = {
     "defaultBible": "kjv",                              // Default Bible selected in first Bible selector
     "bibleGrouping": 'language',                        // Default Bible list grouping
     "bibleSorting": 'rank|name',                        // Default Bible list sorting
+    "bibleDefaultLanguageTop": false,                   // Default Bible list sorting
     "defaultLanguage": "en",                            // (future) Default Language 
     "enabledBibles": [],                                // Order indicates order Bibles will appear
     "interface": "twentytwenty",                        // Bible SuperSearch skin / interface

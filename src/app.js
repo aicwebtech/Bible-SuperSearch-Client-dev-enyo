@@ -459,7 +459,21 @@ var App = Application.kind({
             return 0;
         });
 
-        this.biblesDisplayed = displayed;
+        if(this.configs.bibleDefaultLanguageTop) {
+            var lang = this.configs.language;
+
+            var displayed_top = displayed.filter(function(bible) {
+                return bible.lang_short == lang;
+            });
+
+            var displayed_bottom = displayed.filter(function(bible) {
+                return bible.lang_short != lang;
+            });
+
+            this.biblesDisplayed = [].concat(displayed_top, displayed_bottom);
+        } else {
+            this.biblesDisplayed = displayed;
+        }
     },
     rendered: function() {
         this.inherited(arguments);
@@ -1064,7 +1078,7 @@ var App = Application.kind({
         }
     },
     _fmtBookNameMatch: function(name) {
-        return name.toLowerCase();
+        return name ? name.toLowerCase() : '';
     },
     _localeChangedHelper: function(locale) {
         this.debug && this.log(locale);

@@ -37,7 +37,7 @@ var biblesupersearch_config_options = {
     //      See the API documentation for a list of available Bibles
     //          https://api.biblesupersearch.com/documentation
 
-    // "enabledBibles": ["kjv", "tr", "bishops"],    
+    // "enabledBibles": ["kjv", "tr", "bishops"], 
 
     // Bible List Grouping
     // Options: 
@@ -58,6 +58,10 @@ var biblesupersearch_config_options = {
 
     // Default: 'rank|name',
     "bibleSorting": 'rank|name',       
+
+    // If bible list is being sorted or grouped by language, 
+    // this places the default langauge at top of Bible list.
+    "bibleDefaultLanguageTop": false,
 
     // Include Testament ("Old Testament" or "New Testament") in some references
     "includeTestament": false,  // true or false   
