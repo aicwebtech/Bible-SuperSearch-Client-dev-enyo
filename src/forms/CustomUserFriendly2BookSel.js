@@ -35,6 +35,10 @@ module.exports = kind({
                         parallelMinimum: 2,
                         selectorWidth: 300
                     },
+                    { components: [
+                        {kind: i18nContent, tag: 'small', content: 'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.'},
+                    ]},
+
                     {tag: 'hr'},
                     {kind: i18n, content: 'Select Book and Chapter:'},
                     {

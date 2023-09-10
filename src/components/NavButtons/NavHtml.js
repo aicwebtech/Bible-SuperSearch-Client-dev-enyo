@@ -22,6 +22,10 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+    },
+
+    buildLinks: function() {
+        this.destroyClientControls();
 
         var pb_link = null,
             nb_link = null,

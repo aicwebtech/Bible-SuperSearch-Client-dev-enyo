@@ -374,6 +374,8 @@ module.exports = {
     'words': 'vārdi',
     'truth': 'patiesība',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Ieteikums: Lai aktivizētu izvēlētās Bībeles versijas, atveriet rakstvietu, pāršķiriet nodaļu vai veiciet meklēšanu.',
 
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  

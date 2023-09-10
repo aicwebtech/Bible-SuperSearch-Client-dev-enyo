@@ -802,5 +802,14 @@ module.exports = kind({
         }, this );
 
         return sh;
+    },
+    signalBibleChange: function(value, dir) {
+        if(value && value.filter) {        
+            value = value.filter(function(item) {
+                return item && item != 0;
+            });
+        }
+
+        Signal.send('onBibleChange', {bibles: value, dir: dir});
     }
  });

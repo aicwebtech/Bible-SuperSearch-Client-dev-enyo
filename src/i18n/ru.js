@@ -374,6 +374,8 @@ module.exports = {
     'words': 'слова',
     'truth': 'истина',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Совет: Чтобы активировать выбранные версии Библии, откройте отрывок, переверните главу или выполните поиск.',
 
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  

@@ -1,6 +1,7 @@
 var kind = require('enyo/kind');
 var ImageLink = require('../LinkImage');
 var LinkBuilder = require('../Link/LinkBuilder');
+var Signal = require('../Signal');
 
 module.exports = kind({
     name: 'NavBase',
@@ -20,6 +21,10 @@ module.exports = kind({
     currentChapter: 'sc.gif',
     currentChapterDisabled: 'sc_nl.gif',
 
+    components: [
+        {kind: Signal, onBibleChange: 'handleBibleChange', isChrome: true}
+    ],
+
     handlers: {
         ontap: 'handleTap',
         onAutoClick: 'handleAutoClick'
@@ -27,6 +32,10 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+        this.buildLinks();
+    },
+    buildLinks: function() {
+        this.destroyClientControls();
 
         var pb_icon = this.iconDir + this.prevBookDisabled,
             nb_icon = this.iconDir + this.nextBookDisabled,
@@ -86,7 +95,6 @@ module.exports = kind({
             cc_text = bookName + ' ' + this.nav.ccc;
         }
 
-
         this.createComponent({
             kind:  ImageLink,
             name:  'pb',
@@ -127,6 +135,13 @@ module.exports = kind({
             title: nb_text,
         });
     },
+    
+    handleBibleChange: function(inSender, inEvent) {
+        this.bibles = inEvent.bibles;
+        this.buildLinks();
+        this.render();
+    },
+
     handleTap: function(inSender, inEvent) {
         if(inSender.href) {
             // If clicking on an active link, set scroll mode

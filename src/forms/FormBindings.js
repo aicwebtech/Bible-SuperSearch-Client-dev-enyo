@@ -159,6 +159,7 @@ module.exports = {
         //this.log('biblesel', value, dir);
         
         this.bubble('onFormFieldChanged', {field: 'bible', value: value, dir: dir});
+        this.signalBibleChange(value, dir);
 
         return value || null;
     }}
