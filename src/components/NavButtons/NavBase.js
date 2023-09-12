@@ -137,9 +137,13 @@ module.exports = kind({
     },
     
     handleBibleChange: function(inSender, inEvent) {
-        this.bibles = inEvent.bibles;
-        this.buildLinks();
-        this.render();
+        var c = this.app.configs.bibleChangeUpdateNavigation || false;
+
+        if(c && c != 'false') {
+            this.bibles = inEvent.bibles;
+            this.buildLinks();
+            this.render();
+        }
     },
 
     handleTap: function(inSender, inEvent) {

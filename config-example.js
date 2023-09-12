@@ -39,6 +39,12 @@ var biblesupersearch_config_options = {
 
     // "enabledBibles": ["kjv", "tr", "bishops"], 
 
+    // Bible Change Update Navigation (v5.3)
+    // Whether to update navigation (ie paging and browsing buttons) immediately when the selected 
+    // Bible(s) are changed to reflect the new Bible selections.
+    // Otherwise, the navication will not update until the search or look up is performed.
+    "bibleChangeUpdateNavigation": false,
+
     // Bible List Grouping
     // Options: 
     // 'language' - Group by language (endonym) (Not supported if API version is < 4.2, and will fall back to English name)

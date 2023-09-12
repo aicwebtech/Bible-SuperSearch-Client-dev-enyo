@@ -30,6 +30,10 @@ module.exports = kind({
         onPageChange: ''
     },
 
+    components: [
+        {kind: Signal, onBibleChange: 'handleBibleChange', isChrome: true}
+    ],
+
     handlers: {
         onLinkTap: 'handleTap'
     },
@@ -242,6 +246,13 @@ module.exports = kind({
 
         cacheLink = cacheLink.replace(/\s+/g, '.');
         return cacheLink;
+    },
+    handleBibleChange: function(inSender, inEvent) {
+        var c = this.app.configs.bibleChangeUpdateNavigation || false;
+
+        if(c && c != 'false') {
+            this.rebuild();
+        }
     },
     getLinkBase: function() {
         var cache = this.get('cacheHash');
