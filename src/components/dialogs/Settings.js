@@ -182,6 +182,12 @@ module.exports = kind({
                                 {kind: Checkbox, name: 'verse', id: 'verse', type: 'radio'}
                             ]},
                             {kind: i18n, tag: 'label', attributes: {for: 'verse'}, classes: 'label', content: 'Verse Display'}
+                        ]},                         
+                        {classes: 'checkbox_container checkbox_first', components: [
+                            {classes: 'element', components: [
+                                {kind: Checkbox, name: 'verse_passage', id: 'verse_passage', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'verse_passage'}, classes: 'label', content: 'Verse As Passage Display'}
                         ]},                
                     ]
                 }      

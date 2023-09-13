@@ -1,7 +1,8 @@
 module.exports = {
     // Mutate the results data structure so that each verse is placed in it's own passage.
     toVerses: function(results, asMultiverse) {
-        asMultiverse = true;
+        //asMultiverse = true;
+        console.log('asMultiverse', asMultiverse);
 
         var resultsNew = [],
             singleVerse = (typeof asMultiverse == 'undefined' || !asMultiverse) ? true : false;
@@ -11,6 +12,10 @@ module.exports = {
 
             if(p.single_verse) {
                 p.single_verse = singleVerse;
+                cv = p.chapter_verse.split(':');
+                v = cv[1] || null;
+                p.nav = this.generateNav(p.book_id, cv[0], v);
+
                 resultsNew.push(p);
                 continue;
             }
@@ -54,10 +59,6 @@ module.exports = {
         var nav = {};
 
         chapter = parseInt(chapter, 10);
-
-        console.log(book, chapter, verse);
-
-
         var pcc = this.prevChapter(book, chapter);
         var ncc = this.nextChapter(book, chapter);
         nav.pb = this.prevBook(book);        
@@ -72,6 +73,10 @@ module.exports = {
         return nav;
     },
     prevBook: function(book) {
+        if(typeof this.bookChapters[book] == 'undefined') {
+            return null;
+        }
+
         if(book == 1) {
             return null;
         } else {
@@ -79,6 +84,10 @@ module.exports = {
         }
     },    
     nextBook: function(book) {
+        if(typeof this.bookChapters[book] == 'undefined') {
+            return null;
+        }
+
         if(book == 66) {
             return null;
         } else {
@@ -86,21 +95,99 @@ module.exports = {
         }
     },
     prevChapter: function(book, chapter) {
+        if(typeof this.bookChapters[book] == 'undefined') {
+            return [null, null];
+        }
+
         if(chapter == 1) {
             book = this.prevBook(book);
-            return [book, 999]; // :X - get from book
+            return [book, this.bookChapters[book]]; // :X - get from book
         } else {
             return [book, chapter - 1];
         }
     },  
     nextChapter: function(book, chapter) {
-        return [book, chapter + 1]; // :X - get from book
-
-        if(chapter == 1) {
-            book = this.nextBook(book);
-            return 999; // :X - get from book
-        } else {
-            return chapter + 1;
+        if(typeof this.bookChapters[book] == 'undefined') {
+            return [null, null];
         }
-    }
+
+        if(chapter == this.bookChapters[book]) {
+            book = this.nextBook(book);
+            chapter = (book) ? 1 : null;
+        } else {
+            chapter ++;
+        }
+
+        return [book, chapter];
+    },
+
+    bookChapters: [
+        0,  // idx 0 => DNE
+        50, // idx 1 => Genesis
+        40, // idx 2 => Exodus
+        27,
+        36,
+        34,
+        24,
+        21,
+        4,
+        31,
+        24,
+        22,
+        25,
+        29,
+        36,
+        10,
+        13,
+        10,
+        42,
+        50,
+        31,
+        12,
+        8,
+        66,
+        52,
+        5,
+        48,
+        12,
+        14,
+        3,
+        9,
+        1,
+        4,
+        7,
+        3,
+        3,
+        3,
+        2,
+        14,
+        4,
+        28,
+        16,
+        24,
+        21,
+        28,
+        16,
+        16,
+        13,
+        6,
+        6,
+        4,
+        4,
+        5,
+        3,
+        6,
+        4,
+        3,
+        1,
+        13,
+        5,
+        5,
+        3,
+        5,
+        1,
+        1,
+        1,
+        22, // idx 66 => Revelation
+    ]
 };

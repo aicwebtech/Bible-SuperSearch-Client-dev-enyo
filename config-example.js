@@ -220,6 +220,11 @@ var biblesupersearch_config_options = {
     //      Usefull to prevent hiding behind menus, ect
     'pageScrollTopPadding': 0,           
     
+    // Default Text Display.
+    // Users can change this via general settings or copy settings
+    // Options: paragraph, passage, verse, verse_passage
+    'textDisplayDefault': 'passage',
+
     // Include toggling to an 'advanced search' form
     // Some interfaces may force this to false
     // Also, this is disabled when formatButtonsToggle above is true

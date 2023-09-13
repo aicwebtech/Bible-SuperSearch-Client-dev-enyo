@@ -134,7 +134,7 @@ module.exports = kind({
                 tag: 'span',
                 ontap: 'handleRenderStyle',
                 components: [
-                    {tag: 'span', content: '&nbsp;---- -', allowHtml: true},
+                    {tag: 'span', content: '&nbsp;&nbsp;---- -', allowHtml: true},
                     {tag: 'span', content: '', allowHtml: true},
                     {tag: 'span', content: '- -------', allowHtml: true},
                     {tag: 'span', content: '- -------', allowHtml: true},
@@ -164,12 +164,30 @@ module.exports = kind({
                 attributes: {
                     title: 'Verse Display'
                 }
+            },            
+            {
+                kind: i18n,
+                classes: 'item renderstyle verse_passage',
+                name: 'renderstyle_verse_passage',
+                val: 'verse_passage',
+                tag: 'span',
+                ontap: 'handleRenderStyle',
+                components: [
+                    {tag: 'span', content: '&nbsp; &nbsp;---- -', allowHtml: true},
+                    {tag: 'span', content: '----------', allowHtml: true},
+                    {tag: 'span', content: '&nbsp; &nbsp;---- -', allowHtml: true},
+                    {tag: 'span', content: '----------', allowHtml: true},
+                    {tag: 'span', content: '&nbsp; &nbsp;---- -', allowHtml: true},
+                    {tag: 'span', content: '----------', allowHtml: true},
+                    {tag: 'span', content: '', allowHtml: true},
+                ],
+                attributes: {
+                    title: 'Verse As Passage Display'
+                }
             },
 
         ]},
         
-
-              
         {classes: 'bss_button_group', name: 'TextEmbGroup1', components: [
             {
                 classes: 'item italics_toggle',

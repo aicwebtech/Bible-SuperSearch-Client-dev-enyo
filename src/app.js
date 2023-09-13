@@ -110,7 +110,8 @@ var App = Application.kind({
     ],
 
     observers: [
-        {method: 'watchSingleVerses', path: ['UserConfig.single_verses']}
+        //{method: 'watchSingleVerses', path: ['UserConfig.single_verses', 'UserConfig.passages']}
+        {method: 'watchRenderStyle', path: ['UserConfig.render_style']}
     ],
 
     create: function() {
@@ -294,6 +295,10 @@ var App = Application.kind({
             if(typeof this.configs.pageScrollTopPadding == 'string') {
                 this.configs.pageScrollTopPadding = parseInt(this.configs.pageScrollTopPadding, 10);
             }
+        }
+
+        if(this.configs.textDisplayDefault && this.configs.textDisplayDefault != 'passage') {
+            this.UserConfig.set('render_style', this.configs.textDisplayDefault);
         }
 
         // Render 'Loading' view
@@ -1065,8 +1070,6 @@ var App = Application.kind({
             }
         }
 
-        this.log('booklist', locale, bookList);
-
         localeData.bibleBooksSource = source;
         this.localeBibleBooks[locale] = bookList;
 
@@ -1268,20 +1271,54 @@ var App = Application.kind({
         this.render();
     },
     responseDataChanged: function(was, is) {
-        this.UserConfig.get('single_verses') && this._checkSingleVerses();
+        if(this.UserConfig.get('single_verses') || this.UserConfig.get('passages')) {
+            this._checkRenderStyle();
+        }
     },
     watchSingleVerses: function(pre, cur, prop)  {
-        this._checkSingleVerses();
+        //this._checkRenderStyle();
     },
-    _checkSingleVerses: function() {
+    watchRenderStyle: function(pre, cur, prop) {
+        var crs = false;
+
+        switch(cur) {
+            case 'verse':
+                this.UserConfig.set('passages', false);
+                this.UserConfig.set('single_verses', true);
+                crs = true;
+                break;            
+            case 'verse_passage':
+                this.UserConfig.set('passages', true);
+                this.UserConfig.set('single_verses', true);
+                crs = true;
+                break;
+            default:
+                this.UserConfig.set('single_verses', false);
+                this.UserConfig.set('passages', false);
+                this.UserConfig.set('paragraph', !!(cur == 'paragraph'));
+        }
+
+        switch(pre) {
+            case 'verse':
+            case 'verse_passge':
+            crs = true;
+            break;
+        }
+
+        crs && this._checkRenderStyle();
+    },
+    _checkRenderStyle: function() {
         if(!this.get('responseData')) {
             return;
         }
 
+        var passages = this.UserConfig.get('passages') || false;
+
         if(this.UserConfig.get('single_verses')) {
             var responseDataNew = utils.clone(this.get('responseData'));
             responseDataNew.results = utils.clone(responseDataNew.results);
-            responseDataNew.results.results = this.responseCollection.toVerses( utils.clone(responseDataNew.results.results) );
+            responseDataNew.results.results 
+                = this.responseCollection.toVerses( utils.clone(responseDataNew.results.results), passages );
         }
         else {
             var responseDataNew = this.get('responseData');

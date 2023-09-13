@@ -132,6 +132,7 @@
 .format_buttons_html .item.single_verse_toggle .true span, 
 .format_buttons_html .item.single_verse_toggle .false span,
 .format_buttons_html .item.renderstyle.verse span,
+.format_buttons_html .item.renderstyle.verse_passage span,
 .format_buttons_html .item.renderstyle.passage span
 {
     height: 4px;
