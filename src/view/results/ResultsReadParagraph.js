@@ -35,6 +35,22 @@ module.exports = kind({
             bibleHtml[i] = '';
         }
 
+        if(this.app.configs.includeTestament) {        
+            Container.createComponent({
+                name: 'TestamentRow',
+                tag: 'tr',
+                components: [
+                    {
+                        tag: 'th', 
+                        attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
+                        components: [
+                            {tag: 'h3', content: this.app.t( this.app.getTestamentByBookId(pd.book_id))}
+                        ]
+                    }
+                ]
+            });        
+        }
+
         Container.createComponent({
             name: 'ReferenceRow',
             tag: 'tr',

@@ -22,6 +22,10 @@ module.exports = kind({
         var Container = this._createContainer();
         var addBibleHeader = false;
 
+        if(this.app.UserConfig.get('render_style') == 'verse_passage') {
+            addBibleHeader = true;
+        }
+
         if(this.multiBibles && (this.singleVerseBibleHeaderNext || this.singleVerseCount >= this.singleVerseBibleHeaderThreshold)) {
             addBibleHeader = true;
             this.singleVerseBibleHeaderNext = false;
@@ -114,6 +118,10 @@ module.exports = kind({
         // this.singleVerseBibleHeaderNext = true;
 
         var addBibleHeader = false;
+
+        if(this.app.UserConfig.get('render_style') == 'verse_passage') {
+            addBibleHeader = true;
+        }
 
         if(this.multiBibles && (this.singleVerseBibleHeaderNext || this.singleVerseCount >= this.singleVerseBibleHeaderThreshold)) {
             addBibleHeader = true;
