@@ -23,7 +23,17 @@ module.exports = kind({
         var errorsTranslated = [];
 
         for(i in this.errors) {
-            errorsTranslated.push( this.app.t(this.errors[i]) );
+            var nr = this.errors[i].match(/Your request for (.*) produced no results./);
+
+            if(nr) {
+                var e = this.app.t('Your search produced no results.');
+                e = e.replace('.', '');
+                e = e +': ' + this.app.vt(nr[1]);
+                errorsTranslated.push(e);
+            }
+            else {
+                errorsTranslated.push( this.app.t(this.errors[i]) );
+            }
         }        
 
         this.set('content', errorsTranslated.join('<br /><br />'));

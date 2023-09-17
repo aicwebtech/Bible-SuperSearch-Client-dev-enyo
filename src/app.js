@@ -1150,6 +1150,12 @@ var App = Application.kind({
             return t.t(match);
         });
 
+        trans = string.replace(/[0-9]+B/g, function(match) {
+            var bookId = parseInt(match);
+            console.log('B match', match, bookId);
+            return t.getLocaleBookName(bookId, match, false);
+        });
+
         return trans;
     },    
     // Translate string having embedded keywords
@@ -1163,7 +1169,7 @@ var App = Application.kind({
         var trans = string.replace(/[A-Za-z]+/g, function(match) {
             return t.t(match);
         });
-
+        
         return trans;
     },
     findBookByName: function(bookName) {
