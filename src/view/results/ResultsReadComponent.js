@@ -31,16 +31,18 @@ module.exports = kind({
 
         var t = this;
 
+        // WARNING: something with these touch handlers BREAKS touch events on mobile
+        // Be careful when implementing!
         // These touch handlers 'work' but are very basic
-        this.hasNode().addEventListener('touchstart', function(ev) {
-            console.log('RENDER touchstart', ev);
-            //ev.preventDefault();
-        }, false);        
+        // this.hasNode().addEventListener('touchstart', function(ev) {
+        //     console.log('RENDER touchstart', ev);
+        //     //ev.preventDefault();
+        // }, false);        
 
-        this.hasNode().addEventListener('touchend', function(ev) {
-            console.log('RENDER touchend', ev);
-            ev.preventDefault();
-        }, false);
+        // this.hasNode().addEventListener('touchend', function(ev) {
+        //     console.log('RENDER touchend', ev);
+        //     //ev.preventDefault();
+        // }, false);
     }, 
     handleTouch: function(inSender, inEvent) {
         this.log(inSender, inEvent);

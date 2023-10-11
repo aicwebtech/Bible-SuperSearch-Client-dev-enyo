@@ -267,6 +267,10 @@ module.exports = kind({
         return this.processAssemblePassageVerse(ref, verse);
     },
     proccessPassageVerseReference: function(passage, verse) {
+        if(this.app.UserConfig.get('render_style') == 'verse_passage') {
+            return this.proccessSingleVerseReference(passage, verse);
+        }
+
         return verse.verse;
     },
     processAssembleSingleVerse: function(reference, verse) {

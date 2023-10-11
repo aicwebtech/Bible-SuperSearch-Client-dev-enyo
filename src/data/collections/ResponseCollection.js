@@ -1,9 +1,6 @@
 module.exports = {
     // Mutate the results data structure so that each verse is placed in it's own passage.
     toVerses: function(results, asMultiverse) {
-        //asMultiverse = true;
-        console.log('asMultiverse', asMultiverse);
-
         var resultsNew = [],
             singleVerse = (typeof asMultiverse == 'undefined' || !asMultiverse) ? true : false;
 
@@ -14,7 +11,7 @@ module.exports = {
                 p.single_verse = singleVerse;
                 cv = p.chapter_verse.split(':');
                 v = cv[1] || null;
-                p.nav = this.generateNav(p.book_id, cv[0], v);
+                //p.nav = this.generateNav(p.book_id, cv[0], v);
 
                 resultsNew.push(p);
                 continue;
@@ -52,8 +49,20 @@ module.exports = {
 
         return resultsNew;
     },
-    toMultiverse: function(results) {
+    toMultiversePassages: function(results) {
+        for(i in results) {
+            // p = results[i];
 
+            if(results[i].single_verse) {
+                results[i].single_verse = false;
+                
+                cv = results[i].chapter_verse.split(':');
+                v = cv[1] || null;
+                results[i].nav = this.generateNav(results[i].book_id, cv[0], v);
+            }
+        }
+
+        return results;
     },
     generateNav: function(book, chapter, verse) {
         var nav = {};

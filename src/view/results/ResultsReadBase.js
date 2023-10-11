@@ -20,10 +20,13 @@ module.exports = kind({
     renderSingleVerseParallelBible: function(pd) {
         // this.log();
         var Container = this._createContainer();
-        var addBibleHeader = false;
+        var addBibleHeader = false,
+            addReferenceRow = false,
+            renderStyle = this.app.UserConfig.get('render_style');
 
-        if(this.app.UserConfig.get('render_style') == 'verse_passage') {
+        if(renderStyle == 'verse_passage') {
             addBibleHeader = true;
+            addReferenceRow = true;
         }
 
         if(this.multiBibles && (this.singleVerseBibleHeaderNext || this.singleVerseCount >= this.singleVerseBibleHeaderThreshold)) {
@@ -32,10 +35,28 @@ module.exports = kind({
             this.singleVerseCount = 0;
         }
 
-        // Container.createComponent({
-        //     name: 'ReferenceRow',
-        //     tag: 'tr'
-        // });
+        if(addReferenceRow) {        
+            if(this.app.configs.includeTestament) {        
+                Container.createComponent({
+                    name: 'TestamentRow',
+                    tag: 'tr',
+                    components: [
+                        {
+                            tag: 'th', 
+                            attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
+                            components: [
+                                {tag: 'h3', content: this.app.t( this.app.getTestamentByBookId(pd.book_id))}
+                            ]
+                        }
+                    ]
+                });        
+            }
+
+            Container.createComponent({
+                name: 'ReferenceRow',
+                tag: 'tr'
+            });
+        }
 
         if(addBibleHeader) {        
             Container.createComponent({
@@ -90,17 +111,21 @@ module.exports = kind({
 
                 var bible_info = this.app.statics.bibles[module];
                 
-                // Container.$.ReferenceRow.createComponent({
-                //     tag: 'th',
-                //     content: pd.book_name + ' ' + pd.chapter_verse
-                // });
-
                 if(addBibleHeader) {                
                     Container.$.BibleRow.createComponent({
                         tag: 'th',
                         content: this._getBibleDisplayName(bible_info)
                     });
                 }
+            }
+
+            if(addReferenceRow) {                
+                Container.$.ReferenceRow.createComponent({
+                    tag: 'th',
+                    allowHtml: true,
+                    attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
+                    content: pd.book_name + ' ' + pd.chapter_verse + '<br /><br /><br /><br />'
+                });
             }
         }
 
@@ -117,7 +142,8 @@ module.exports = kind({
         // this.singleVerseCount = 0;
         // this.singleVerseBibleHeaderNext = true;
 
-        var addBibleHeader = false;
+        var addBibleHeader = false,
+            renderStyle = this.app.UserConfig.get('render_style');
 
         if(this.app.UserConfig.get('render_style') == 'verse_passage') {
             addBibleHeader = true;
@@ -197,7 +223,12 @@ module.exports = kind({
                     }
 
                     if(pd.verses[module] && pd.verses[module][chapter] && pd.verses[module][chapter][verse]) {
-                        var processed = this.processPassageVerseContent(pd, pd.verses[module][chapter][verse]);
+                        if(renderStyle == 'verse_passage') {
+                            var processed = '<td>' + this.processSingleVerseContent(pd, pd.verses[module][chapter][verse]) + '</td>';
+                        } else {
+                            var processed = this.processPassageVerseContent(pd, pd.verses[module][chapter][verse]);
+                        }
+
                         html += processed;
                     }
                     else {
@@ -258,10 +289,14 @@ module.exports = kind({
         var chapterLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, bookName, verse.chapter);
         var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, bookName, verse.chapter, verse.verse);
 
+        var includeContextLinks = true;
+
+        if(!passage.single_verse && (passage.nav && !passage.nav.ccc || passage.chapter_verse.indexOf(':') == -1)) {
+            includeContextLinks = false;
+        }
+
         var html =  '<a href="' + chapterLink + '" title="Show this Chapter" class="std_link">' + bookName + ' ' + verse.chapter + '</a>:';
             html += '<a href="' + contextLink + '" title="Show in Context" class="std_link">' + verse.verse + '</a>';
-
-        // return html; 
 
         // verse.linksHtml = '<br /><small>'; // future use?
 
@@ -273,12 +308,15 @@ module.exports = kind({
 
         var html = '';
             html += '<a href="' + verseLink + '" title="' + verseTitle + '" class="std_link">' + bookName + ' ' + verse.chapter + ':' + verse.verse + '</a>';
-            html += '&nbsp; <sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + contextText + '</a></sup>';           
-            html += '&nbsp; <sup>' + '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a></sup>';
-            // verse.linksHtml += '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a>&nbsp; &nbsp;';
-            // verse.linksHtml += '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + contextText + '</a>';
-            // future? 
-            // html += '&nbsp;&nbsp;<sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + 'Statistics' + '</a></sup>';
+            
+            if(includeContextLinks) {            
+                html += '&nbsp; <sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + contextText + '</a></sup>';           
+                html += '&nbsp; <sup>' + '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a></sup>';
+                // verse.linksHtml += '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a>&nbsp; &nbsp;';
+                // verse.linksHtml += '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + contextText + '</a>';
+                // future? 
+                // html += '&nbsp;&nbsp;<sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + 'Statistics' + '</a></sup>';
+            }
 
         // verse.linksHtml += '</small>';
 

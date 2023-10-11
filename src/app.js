@@ -1291,11 +1291,15 @@ var App = Application.kind({
             case 'verse':
                 this.UserConfig.set('passages', false);
                 this.UserConfig.set('single_verses', true);
+                this.UserConfig.set('paragraph', false);
                 crs = true;
                 break;            
             case 'verse_passage':
-                this.UserConfig.set('passages', true);
-                this.UserConfig.set('single_verses', true);
+                this.UserConfig.set('passages', false);
+                //this.UserConfig.set('passages', true);
+                //this.UserConfig.set('single_verses', true);
+                this.UserConfig.set('single_verses', false);
+                this.UserConfig.set('paragraph', false);
                 crs = true;
                 break;
             default:
@@ -1307,7 +1311,7 @@ var App = Application.kind({
         switch(pre) {
             case 'verse':
             case 'verse_passge':
-            crs = true;
+                crs = true;
             break;
         }
 
@@ -1325,6 +1329,12 @@ var App = Application.kind({
             responseDataNew.results = utils.clone(responseDataNew.results);
             responseDataNew.results.results 
                 = this.responseCollection.toVerses( utils.clone(responseDataNew.results.results), passages );
+        }
+        else if(passages) {
+            var responseDataNew = utils.clone(this.get('responseData'));
+            responseDataNew.results = utils.clone(responseDataNew.results);
+            responseDataNew.results.results 
+                = this.responseCollection.toMultiversePassages( utils.clone(responseDataNew.results.results) );
         }
         else {
             var responseDataNew = this.get('responseData');

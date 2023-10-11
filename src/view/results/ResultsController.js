@@ -20,6 +20,7 @@ module.exports = kind({
     renderPending: false,
     pagerView: null,
     navigationButtonsView: null,
+    renderStyleCache: null,
     // views: views,
 
     published: {
@@ -57,6 +58,8 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+
+        this.renderStyleCache = this.app.UserConfig.get('render_style');
 
         // this.pagerView = this.app.getSubControl('Pager');
         // this.pagerView = this.app.getSubControl('Pager');
@@ -117,6 +120,14 @@ module.exports = kind({
         }
     },
     watchRenderable: function(pre, cur, prop) {
+        if(prop == 'uc.copy') {
+            if(pre) {
+                this.app.UserConfig.set('render_style', this.renderStyleCache)
+            } else {
+                this.renderStyleCache = this.app.UserConfig.get('render_style');
+            }
+        }
+
         this.renderResults();
     },
     watchCopyRenderable: function() {

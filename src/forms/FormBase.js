@@ -227,6 +227,8 @@ module.exports = kind({
         formData.context_range = this.app.UserConfig.get('context_range');
         formData.page_limit = this.app.UserConfig.get('page_limit');
         
+        formData.group_passage_search_results = true; // experimental
+        
         // formData.page = this.get('page');
         return formData;
     },
