@@ -21,6 +21,7 @@ module.exports = kind({
     pagerView: null,
     navigationButtonsView: null,
     renderStyleCache: null,
+    copyChanged: true,
     // views: views,
 
     published: {
@@ -73,7 +74,27 @@ module.exports = kind({
 
         var paragraph = this.app.UserConfig.get('paragraph'),
             copy = this.app.UserConfig.get('copy'),
-            view = ReadVerse;
+            view = ReadVerse,
+            renderStyle = this.app.UserConfig.get('render_style');
+
+        if(this.copyChanged) {
+            this.copyChanged = false;
+            this.log('render_style prev', this.app.UserConfig.get('render_style'), this.renderStyleCache);
+            var cacheSwap = this.renderStyleCache;
+
+            this.renderStyleCache = renderStyle;
+            this.app.UserConfig.set('render_style', cacheSwap);
+            renderStyle = cacheSwap;
+
+
+            // if(copy) {
+            //     this.renderStyleCache = this.app.UserConfig.get('render_style');
+            // } else {
+            //     this.app.UserConfig.set('render_style', this.renderStyleCache);
+            // }
+
+            this.log('render_style cur', this.app.UserConfig.get('render_style'), this.renderStyleCache)
+        }
 
         if(paragraph && copy) {
             view = CopyParagraph;
@@ -121,11 +142,17 @@ module.exports = kind({
     },
     watchRenderable: function(pre, cur, prop) {
         if(prop == 'uc.copy') {
-            if(pre) {
-                this.app.UserConfig.set('render_style', this.renderStyleCache)
-            } else {
-                this.renderStyleCache = this.app.UserConfig.get('render_style');
-            }
+            this.copyChanged = true;
+
+            // this.log('render_style prev', this.app.UserConfig.get('render_style'));
+
+            // if(pre) {
+            //     this.app.UserConfig.set('render_style', this.renderStyleCache)
+            // } else {
+            //     this.renderStyleCache = this.app.UserConfig.get('render_style');
+            // }
+
+            // this.log('render_style cur', this.app.UserConfig.get('render_style'))
         }
 
         this.renderResults();

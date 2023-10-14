@@ -1310,11 +1310,12 @@ var App = Application.kind({
 
         switch(pre) {
             case 'verse':
-            case 'verse_passge':
+            case 'verse_passage':
                 crs = true;
             break;
         }
 
+        this.log('checking render style', crs, pre, cur);
         crs && this._checkRenderStyle();
     },
     _checkRenderStyle: function() {
@@ -1337,7 +1338,7 @@ var App = Application.kind({
                 = this.responseCollection.toMultiversePassages( utils.clone(responseDataNew.results.results) );
         }
         else {
-            var responseDataNew = this.get('responseData');
+            var responseDataNew = utils.clone( this.get('responseData') );
         }
 
         this.waterfall('onFormResponseSuccess', responseDataNew);

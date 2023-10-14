@@ -62,7 +62,7 @@ module.exports = kind({
 
         this.createComponent({kind: MaterialIconsStyle});
 
-        //this._dialogCreateHelper(SettingsDialog, 'SettingsDialog');
+        this._dialogCreateHelper(SettingsDialog, 'SettingsDialog');
 
         // if(!this.$.HelpDialog) {
         //     this.createComponent({

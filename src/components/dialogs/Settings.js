@@ -279,10 +279,10 @@ module.exports = kind({
             return value;
         }},
         {from: 'app.UserConfig.render_style', to: 'renderStyle', oneWay: false, transform: function(value, dir) {
-            // console.log('SETTINGS renderStyle', value, dir);
+            console.log('SETTINGS renderStyle', value, dir);
 
-            if(dir == 1 && this.$[value]) {
-                this.$.render_style.set('active', this.$[value]);
+            if(this.$[value]) {
+                this.$.render_style.set('active', this.$[value]).render();
                 this.$[value].set('checked', true);
             }
 
@@ -323,6 +323,7 @@ module.exports = kind({
 
         if(is) {
             this.$.Language.handleLocaleChange();
+            this.$.render_style.render(); // :X
         }
     },
     listChanged: function(was, is) {
