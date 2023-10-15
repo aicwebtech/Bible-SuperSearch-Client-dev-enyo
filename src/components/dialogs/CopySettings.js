@@ -202,27 +202,27 @@ module.exports = kind({
                             components: [
                                 {classes: 'checkbox_container checkbox_first', components: [
                                     {classes: 'element', components: [
-                                        {kind: Checkbox, name: 'paragraph', id: 'paragraph', type: 'radio'}
+                                        {kind: Checkbox, name: 'paragraph', id: 'copy_settings_paragraph', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'paragraph'}, classes: 'label', content: 'Paragraph Display'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_paragraph'}, classes: 'label', content: 'Paragraph Display'}
                                 ]},                
                                 {classes: 'checkbox_container checkbox_first', components: [
                                     {classes: 'element', components: [
-                                        {kind: Checkbox, name: 'passage', id: 'passage', type: 'radio'}
+                                        {kind: Checkbox, name: 'passage', id: 'copy_settings_passage', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'passage'}, classes: 'label', content: 'Passage Display'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_passage'}, classes: 'label', content: 'Passage Display'}
                                 ]},                
                                 {classes: 'checkbox_container checkbox_first', components: [
                                     {classes: 'element', components: [
-                                        {kind: Checkbox, name: 'verse', id: 'verse', type: 'radio'}
+                                        {kind: Checkbox, name: 'verse', id: 'copy_settings_verse', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'verse'}, classes: 'label', content: 'Verse Display'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_verse'}, classes: 'label', content: 'Verse Display'}
                                 ]},     
                                 {classes: 'checkbox_container checkbox_first', components: [
                                     {classes: 'element', components: [
-                                        {kind: Checkbox, name: 'verse_passage', id: 'verse_passage', type: 'radio'}
+                                        {kind: Checkbox, name: 'verse_passage', id: 'copy_settings_verse_passage', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'verse_passage'}, classes: 'label', content: 'Verse As Passage Display'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_verse_passage'}, classes: 'label', content: 'Verse As Passage Display'}
                                 ]},              
                             ]
                         }      
@@ -273,7 +273,7 @@ module.exports = kind({
             return value;
         }},         
         {from: 'app.UserConfig.render_style', to: 'renderStyle', oneWay: false, transform: function(value, dir) {
-            // console.log('Copy renderStyle', value, dir);
+            console.log('Copy renderStyle', value, dir);
 
             if(dir == 1 && this.$[value]) {
                 this.$.render_style.set('active', this.$[value]);

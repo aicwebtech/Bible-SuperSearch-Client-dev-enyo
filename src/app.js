@@ -299,6 +299,7 @@ var App = Application.kind({
 
         if(this.configs.textDisplayDefault && this.configs.textDisplayDefault != 'passage') {
             this.UserConfig.set('render_style', this.configs.textDisplayDefault);
+            this.UserConfig.set('read_render_style', this.configs.textDisplayDefault);
         }
 
         // Render 'Loading' view
