@@ -129,6 +129,7 @@ module.exports = {
     'Verse Display': 'Skats ar Pilniem Pantu Nosaukumiem',
     'Paragraph Display': 'Rindkopu Skats',
     'Passage Display': 'Nodaļu, Pantu Skats', // 4.5
+    'Verse as Passage Display': 'Skats ar Pilniem Nodaļu un Pantu Nosaukumiem', // 5.3
     'EZ Copy': 'Pielāgotā Teksta Kopēšana',  // 'Easy Copy'
     'Read Display': 'Lasīšanas Skats',
     'Italics': 'Slīpraksts (Italics)',          // * Button text, please keep translation short!

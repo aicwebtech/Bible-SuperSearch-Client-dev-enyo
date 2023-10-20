@@ -31,6 +31,7 @@ module.exports = kind({
     navigationButtonsView: Nav,
     pagerView: Pager,
     showingCopyrightBottom: false,
+    renderStyle: 'passage',
 
     published: {
         resultsData: null,
@@ -267,7 +268,7 @@ module.exports = kind({
         return this.processAssemblePassageVerse(ref, verse);
     },
     proccessPassageVerseReference: function(passage, verse) {
-        if(this.app.UserConfig.get('render_style') == 'verse_passage') {
+        if(this.renderStyle == 'verse_passage') {
             return this.proccessSingleVerseReference(passage, verse);
         }
 

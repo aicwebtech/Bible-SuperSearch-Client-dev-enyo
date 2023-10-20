@@ -122,6 +122,7 @@ module.exports = {
     'Verse Display': '經文顯示',
     'Paragraph Display': '段落顯示',
     'Passage Display': '章節顯示', // 4.5
+    'Verse as Passage Display': '作為段落顯示的詩句', // 5.3
     'EZ Copy': '簡易複製', // ' Easy Copy'
     'Read Display': '閱讀顯示',
     'Italics': '斜體字',

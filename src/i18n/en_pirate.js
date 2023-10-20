@@ -121,6 +121,7 @@ module.exports = {
     'Verse Display': 'Line up booty in rows',
     'Paragraph Display': 'Group booty into paragraphs',
     'Passage Display': 'Group booty into paysaggage', // 4.5
+    'Verse as Passage Display': 'Group booty into piles of nonsense', // 5.3
     'EZ Copy': 'Lazy Pirate',
     'Read Display': 'Readin\' It',
     'Italics': 'Slante',

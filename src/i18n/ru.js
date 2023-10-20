@@ -129,6 +129,7 @@ module.exports = {
     'Verse Display': 'Просмотр с Полными Названиями Стихов',
     'Paragraph Display': 'Просмотр по Параграфам',
     'Passage Display': 'Просмотр Глав и Стихов', // 4.5
+    'Verse as Passage Display': 'Просмотр с Полными Названиями Глав и Стихов', // 5.3
     'EZ Copy': 'Копирование Текста с Настройками',  // 'Easy Copy'
     'Read Display': 'Режим Чтения',
     'Italics': 'Курсив (Italics)',               // * Button text, please keep translation short!

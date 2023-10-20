@@ -718,3 +718,12 @@ span.biblesupersearch_toggle_help {
 .biblesupersearch_dialog.help_dialog .dialog .title .header h4 {
     padding: 0 5px;
 }
+
+tr.bss_render_testament_row th {
+    padding-top: 15px;
+}
+
+tr.bss_render_reference_row th {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

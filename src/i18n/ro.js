@@ -129,6 +129,7 @@ module.exports = {
     'Verse Display': 'Afișați Versetul',
     'Paragraph Display': 'Afișați Paragraful',
     'Passage Display': 'Afișați Pasajul',
+    'Verse as Passage Display': 'Versetul ca afișare a pasajului', // 5.3
     'EZ Copy': 'Copiere Ușoară',  // 'Easy Copy'
     'Read Display': 'Citiți Afișajul',
     'Italics': 'Text Cursiv',

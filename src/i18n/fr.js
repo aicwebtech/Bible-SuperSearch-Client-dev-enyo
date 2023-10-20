@@ -122,6 +122,7 @@ module.exports = {
     'Verse Display': 'Affichage du text',
     'Paragraph Display': 'Affichage du paragraph',
     'Passage Display': 'Affichage des passages', // 4.5
+    'Verse as Passage Display': 'Verset comme affichage de passage', // 5.3
     'EZ Copy': 'Copie Facile',
     'Read Display': 'Lisez l\'affichage',
     'Italics': 'Italics',

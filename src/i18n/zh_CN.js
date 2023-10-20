@@ -130,6 +130,7 @@ module.exports = {
     'Verse Display': '经文显示',
     'Paragraph Display': '段落显示',
     'Passage Display': '章节显示', // 4.5
+    'Verse as Passage Display': '作为段落显示的诗句', // 5.3
     'EZ Copy': '简易复制',  // 'Easy Copy'
     'Read Display': '阅读显示',
     'Italics': '斜体字',

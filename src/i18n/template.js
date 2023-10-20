@@ -129,6 +129,7 @@ module.exports = {
     'Verse Display': '',
     'Paragraph Display': '',
     'Passage Display': '', // 4.5
+    'Verse as Passage Display': '', // 5.3
     'EZ Copy': '',  // 'Easy Copy'
     'Read Display': '',
     'Italics': '',                    // * Button text, please keep translation short!

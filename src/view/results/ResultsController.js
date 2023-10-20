@@ -91,16 +91,16 @@ module.exports = kind({
             // renderStyle = cacheSwap;
 
             if(copy) {
-                this.app.UserConfig.set('read_render_style', renderStyle);
+                //this.app.UserConfig.set('read_render_style', renderStyle);
                 renderStyle = this.app.UserConfig.get('copy_render_style');
             } else {
-                this.app.UserConfig.set('copy_render_style', renderStyle);
+                //this.app.UserConfig.set('copy_render_style', renderStyle);
                 renderStyle = this.app.UserConfig.get('read_render_style');
             }
 
-            this.log('render_style mid', this.app.UserConfig.get('render_style'), this.app.UserConfig.get('read_render_style'), this.app.UserConfig.get('copy_render_style'));
+            //this.log('render_style mid', this.app.UserConfig.get('render_style'), this.app.UserConfig.get('read_render_style'), this.app.UserConfig.get('copy_render_style'));
 
-            this.app.UserConfig.set('render_style', renderStyle);
+            //this.app.UserConfig.set('render_style', renderStyle);
 
             this.log('render_style cur', this.app.UserConfig.get('render_style'), this.app.UserConfig.get('read_render_style'), this.app.UserConfig.get('copy_render_style'));
 
@@ -124,6 +124,9 @@ module.exports = kind({
         this.set('view', view);
         this.view.set('formData', this.get('formData'));
         this.view.set('resultsData', this.get('resultsData'));
+        this.view.set('renderStyle', renderStyle);
+
+        this.log('view renderStyle', renderStyle);
 
         if(this.navigationButtonsView) {
             this.view.set('navigationButtonsView', this.navigationButtonsView);
@@ -175,6 +178,12 @@ module.exports = kind({
 
     debugRenderStyle: function(pre, cur, prop) {
         this.log(prop, cur, pre);
+
+        if(this.get('copy')) {
+            this.app.UserConfig.set('copy_render_style', cur);
+        } else {
+            this.app.UserConfig.set('read_render_style', cur);
+        }
     },
     watchCopyRenderable: function() {
         if(this.app.UserConfig.get('copy')) {

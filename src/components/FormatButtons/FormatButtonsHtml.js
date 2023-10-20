@@ -182,7 +182,7 @@ module.exports = kind({
                     {tag: 'span', content: '', allowHtml: true},
                 ],
                 attributes: {
-                    title: 'Verse As Passage Display'
+                    title: 'Verse as Passage Display'
                 }
             },
 

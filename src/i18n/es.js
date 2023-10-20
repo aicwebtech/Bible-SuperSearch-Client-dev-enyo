@@ -121,6 +121,7 @@ module.exports = {
     'Verse Display': 'Visualización del verso',
     'Paragraph Display': 'Visualización de párrafo',
     'Passage Display': 'Pantalla de paso', // 4.5
+    'Verse as Passage Display': 'Verso como exhibición de pasaje', // 5.3
     'EZ Copy': 'Copia Fácil',
     'Read Display': 'Leer pantalla',
     'Italics': 'Cursiva',

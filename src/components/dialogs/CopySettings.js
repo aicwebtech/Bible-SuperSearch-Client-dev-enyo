@@ -222,7 +222,7 @@ module.exports = kind({
                                     {classes: 'element', components: [
                                         {kind: Checkbox, name: 'verse_passage', id: 'copy_settings_verse_passage', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_verse_passage'}, classes: 'label', content: 'Verse As Passage Display'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_verse_passage'}, classes: 'label', content: 'Verse as Passage Display'}
                                 ]},              
                             ]
                         }      

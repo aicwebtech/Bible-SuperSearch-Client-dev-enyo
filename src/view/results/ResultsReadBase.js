@@ -22,7 +22,7 @@ module.exports = kind({
         var Container = this._createContainer();
         var addBibleHeader = false,
             addReferenceRow = false,
-            renderStyle = this.app.UserConfig.get('render_style');
+            renderStyle = this.renderStyle;
 
         if(renderStyle == 'verse_passage') {
             addBibleHeader = true;
@@ -39,6 +39,7 @@ module.exports = kind({
             if(this.app.configs.includeTestament) {        
                 Container.createComponent({
                     name: 'TestamentRow',
+                    classes: 'bss_render_testament_row',
                     tag: 'tr',
                     components: [
                         {
@@ -54,6 +55,7 @@ module.exports = kind({
 
             Container.createComponent({
                 name: 'ReferenceRow',
+                classes: 'bss_render_reference_row',
                 tag: 'tr'
             });
         }
@@ -61,12 +63,14 @@ module.exports = kind({
         if(addBibleHeader) {        
             Container.createComponent({
                 name: 'BibleRow',
+                class: 'bss_render_bible_row',
                 tag: 'tr'
             });
         }
 
         Container.createComponent({
             name: 'VerseRow',
+            class: 'bss_render_verse_row',
             tag: 'tr'
         });
 
@@ -124,7 +128,7 @@ module.exports = kind({
                     tag: 'th',
                     allowHtml: true,
                     attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
-                    content: pd.book_name + ' ' + pd.chapter_verse + '<br /><br /><br /><br />'
+                    content: pd.book_name + ' ' + pd.chapter_verse
                 });
             }
         }
@@ -143,9 +147,9 @@ module.exports = kind({
         // this.singleVerseBibleHeaderNext = true;
 
         var addBibleHeader = false,
-            renderStyle = this.app.UserConfig.get('render_style');
+            renderStyle = this.renderStyle;
 
-        if(this.app.UserConfig.get('render_style') == 'verse_passage') {
+        if(this.renderStyle == 'verse_passage') {
             addBibleHeader = true;
         }
 
@@ -158,6 +162,7 @@ module.exports = kind({
         if(this.app.configs.includeTestament) {        
             Container.createComponent({
                 name: 'TestamentRow',
+                classes: 'bss_render_testament_row',
                 tag: 'tr',
                 components: [
                     {
@@ -173,6 +178,7 @@ module.exports = kind({
 
         Container.createComponent({
             name: 'ReferenceRow',
+            classes: 'bss_render_reference_row',
             tag: 'tr',
             components: [
                 {
