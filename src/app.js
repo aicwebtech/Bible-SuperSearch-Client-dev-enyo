@@ -316,8 +316,13 @@ var App = Application.kind({
         //window.biblesupersearch_configs_final = this.configs;
 
         if(typeof biblesupersearch_statics == 'object' && biblesupersearch_statics != null) {
-            this._handleStaticsLoad(biblesupersearch_statics, view);
-            return;
+            if(this._validateStatics(biblesupersearch_statics)) {            
+                this.debug && this.log('Using provided biblesupersearch_statics');
+                this._handleStaticsLoad(biblesupersearch_statics, view);
+                return;
+            } else {
+                this.log('ERROR: Provided biblesupersearch_statics is not valid, defaulting to API-provided statics.');
+            }
         }
 
         // Load Static Data (Bibles, Books, ect)
@@ -359,6 +364,37 @@ var App = Application.kind({
         }
 
         return (groupOrder) ? groupOrder + '|' + this.configs.bibleSorting : this.configs.bibleSorting;
+    },
+    _validateStatics: function(statics) {
+        var strings = ['name', 'version', 'environment'];
+            arrays = ['books', 'search_types', 'shortcuts', 'download_formats'];
+            objects = ['bibles'];
+
+        for(i in strings) {
+            item = strings[i];
+
+            if(typeof statics[item] !== 'string') {
+                return false;
+            }
+        }        
+
+        for(i in arrays) {
+            item = arrays[i];
+
+            if(typeof statics[item] == 'undefined' || !Array.isArray(statics[item])) {
+                return false;
+            }
+        }
+
+        for(i in objects) {
+            item = objects[i];
+
+            if(typeof statics[item] !== 'object' || Array.isArray(statics[item]) || statics[item] === null) {
+                return false;
+            }
+        }
+
+        return true;
     },
     _handleStaticsLoad: function(statics, view) {
         this.test();
