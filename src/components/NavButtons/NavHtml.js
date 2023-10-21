@@ -22,6 +22,7 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+        this.buildLinks();
     },
 
     buildLinks: function() {
