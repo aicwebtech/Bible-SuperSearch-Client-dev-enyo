@@ -303,6 +303,14 @@ module.exports = kind({
         var showAdd  = (this.parallelNumber >= this.parallelLimit) ? false : true;
         this.$.Add && this.$.Add.set('showing', showAdd);
     },
+    // parallelLimitForceSet: function(value, skipCLeanup) {
+    //     var curParLim = this.get('parallelLimit'),
+    //         skipCLeanup = typeof skipCLeanup == 'undefinded' ? false : skipCLeanup;
+
+    //     if(!skipCLeanup) {
+    //         this.parallelCleanup();
+    //     }
+    // },
     parallelStartChanged: function(was, is) {
         this.parallelStartBuild();
     },
@@ -318,12 +326,14 @@ module.exports = kind({
         }
     },
     // removes some unused Bible selectors to attempt to only display between min and max
-    parallelCleanup: function() {
+    parallelCleanup: function(parallelLimit) {
+        parallelLimit = (typeof parallelLimit != 'undefined') ? parallelLimit : this.parallelLimit;
+
         if(this.parallelStart == this.parallelNumber) {
             return;  // displaying the minimum, definity nothing to do
         }
 
-        if(this.parallelNumber >= this.parallelStart && this.parallelNumber <= this.parallelLimit) {
+        if(this.parallelNumber >= this.parallelStart && this.parallelNumber <= parallelLimit) {
             // return; // displaying within acceptible range, nothing to do
         }
 
@@ -341,19 +351,24 @@ module.exports = kind({
             }
             else {
                 bCount ++;
-                this.log('bCount', bCount, this.parallelLimit, force);
+                this.log('bCount', bCount, parallelLimit, force);
 
-                if(force && bCount > this.parallelLimit) {
+                if(force && bCount > parallelLimit) {
                     changed = true;
+                    this.log('value skipped');
                 } else {
                     valueFiltered.push(val);
+                    this.log('value pushed');
                 }
             }
         }, this);
 
+        this.log('valueFiltered', valueFiltered);
+
         if(changed) {
             this.$.Container.destroyClientControls();
             this.parallelNumber = 0;
+            this.set('parallelLimit', parallelLimit);
             this.setValue(valueFiltered);
             this.parallelStartBuild();
         }
@@ -373,7 +388,8 @@ module.exports = kind({
     handleResize: function(inSender, inEvent) {
         var pLimCurrent = this.get('parallelLimit');
 
-        var thr = this.app.configs.parallelBibleLimitByWidth;
+        var thr = this.app.configs.parallelBibleLimitByWidth,
+            force = this.app.configs.parallelBibleCleanUpForce || false;
 
         if(thr != false) {
             var width = window.innerWidth;
@@ -394,10 +410,14 @@ module.exports = kind({
                 var pStart = thr[i].startBibles || 1;
                 var pMin = thr[i].minBibles || 1;
 
+                // if(force) {
+                //     this.parallelNumber = 0;
+                // }
+
                 this.set('parallelLimit', pLim);
                 this.set('parallelStart', pStart);
                 this.set('parallelMinimum', pMin);
-                this.parallelCleanup();
+                this.parallelCleanup(pLim);
             }
         }
     },
