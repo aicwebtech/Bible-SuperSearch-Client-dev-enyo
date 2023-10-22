@@ -69,6 +69,47 @@ var biblesupersearch_config_options = {
     // this places the default langauge at top of Bible list.
     "bibleDefaultLanguageTop": false,
 
+    // If the parallel Bible limit is dynamically changed (ie by an expanding interface, or by limits set by parallelBibleLimitByWidth below)
+    // should we remove Bible selections above the new limit?
+    'parallelBibleCleanUpForce': false,
+
+    // Controls the number of parallel Bibles available based on screen width
+    // set to false to completely disable.
+    // minWidth and maxBibles must be in ascending order across each config, otherwise the entire config is ignored
+    "parallelBibleLimitByWidth": [
+        {
+            'minWidth': 0,       // Minimum width, in pixels.  Default: 0,
+            'maxBibles': 1,     // Maximum number of parallel Bible selectors displayed.  Default: 1.
+            'minBibles': 1,     // Minimum number of parallel Bible selectors displayed.  Default: 1.
+            'startBibles': 1    // Number of parallel Bible selectors to be displayed when first page first loaded.  Default: 1.
+        },
+        {
+            'minWidth': 250, 
+            'maxBibles': 2,
+            'minBibles': 2,
+            'startBibles': 1
+        },
+        {
+            'minWidth': 500, 
+            'maxBibles': 4,
+            'minBibles': 2,
+            'startBibles': 1
+        },        
+        {
+            'minWidth': 1000, 
+            'maxBibles': 6,
+            'minBibles': 2,
+            'startBibles': 2
+        },
+        {
+            'minWidth': 1500, 
+            'maxBibles': 'max',   // 'max' presents the maximim parallel Bibles allowed by the selected skin
+            'minBibles': 2,
+            'startBibles': 2
+        },
+    ],
+
+
     // Include Testament ("Old Testament" or "New Testament") in some references
     "includeTestament": false,  // true or false   
 

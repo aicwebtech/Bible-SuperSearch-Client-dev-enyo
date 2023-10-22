@@ -302,6 +302,69 @@ var App = Application.kind({
             this.UserConfig.set('read_render_style', this.configs.textDisplayDefault);
         }
 
+        if(
+            this.configs.parallelBibleLimitByWidth && 
+            Array.isArray(this.configs.parallelBibleLimitByWidth) &&
+            this.configs.parallelBibleLimitByWidth.length > 0
+        ) {
+
+            var pMax = 0,
+                bMax = 1,
+                bLast = 0,
+                gMaxReached = false,
+                hasError = false,
+                hasZeroPixel = false;
+
+            for(i in this.configs.parallelBibleLimitByWidth) {
+                if(gMaxReached) {
+                    this.log('Error: parallelBibleLimitByWidth has values past the global maximum');
+                    hasError = true;
+                    continue;
+                }
+
+                pLimit = this.configs.parallelBibleLimitByWidth[i];
+
+                pLim = pLimit.minWidth;
+                bLim = pLimit.maxBibles;
+                bStart = pLimit.Bibles;
+
+                this.log('parallel', pLimit, pLim, bLim);
+
+                if(!this.configs.parallelBibleLimitByWidth[i].minBibles) {
+                    this.configs.parallelBibleLimitByWidth[i].minBibles = 1;
+                }
+
+                if(i == 0 && pLim == 0) {
+                    hasZeroPixel = true;
+                }
+
+                if(bLim == 'max') {
+                    this.configs.parallelBibleLimitByWidth[i].maxBibles = bLim = 9999;
+                    gMaxReached = true;
+                } 
+
+                if(pLim < pMax || bLim < bMax) {
+                    this.log('Error: parallelBibleLimitByWidth has values out of order, width and Bible limits must be in ascending order!');
+                    hasError = true;
+                }
+
+                pMax = pLim;
+                bMax = bLim;
+            }
+
+            if(hasError) {
+                this.configs.parallelBibleLimitByWidth = false;
+            } else {            
+                if(!hasZeroPixel) {
+                    this.configs.parallelBibleLimitByWidth.unshift({'minWidth' : 0, 'maxBibles' : 1});
+                }
+            }
+        } else {
+            this.configs.parallelBibleLimitByWidth = false;
+        }
+
+        this.log('parallelBibleLimitByWidth', this.configs.parallelBibleLimitByWidth);
+
         // Render 'Loading' view
         // Todo - set css style based on selected interface
         this.set('view', Loading);

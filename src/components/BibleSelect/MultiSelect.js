@@ -11,6 +11,7 @@ module.exports = kind({
     classes: 'biblesupersearch_multiselect',
     parallelNumber: 0,  // Number of currently showing parallel Bibles
     parallelLimit: 6,   // Maximum number of parallel Bibles that can be displayed
+    parallelLimitInterface: 6,   // Maximum number of parallel Bibles per the interface.  
     parallelMinimum: 1,   // Minimum number of parallel Bibles that can be displayed
     parallelStart: 1,   // Number of parallel Bibles to display initially
     selectorWidth: 0,   // Pixels, 0 means automatic
@@ -36,7 +37,8 @@ module.exports = kind({
     // ],
 
     handlers: {
-        onClearFormWaterfall: 'resetValue'
+        onClearFormWaterfall: 'resetValue',
+        resize: 'handleResize'
     },
 
     published: {
@@ -49,6 +51,7 @@ module.exports = kind({
         var num = (this.parallelStart >= 1) ? this.parallelStart : 1;
         var bibleCount = this.app.getNumberOfEnabledBibles();
         this.parallelLimit = (bibleCount < this.parallelLimit) ? bibleCount : this.parallelLimit;
+        this.parallelLimitInterface = this.parallelLimit;
 
         this.Single = this.app.get('useNewSelectors') ? SingleNew : SingleOld;
 
@@ -326,7 +329,9 @@ module.exports = kind({
 
         var components = this.$.Container.getClientControls(),
             valueFiltered = [],
-            changed = false;
+            changed = false,
+            force = this.app.configs.parallelBibleCleanUpForce || false,
+            bCount = 0;
 
         components.forEach(function(item) {
             var val = item.get('value');
@@ -335,7 +340,14 @@ module.exports = kind({
                 changed = true;
             }
             else {
-                valueFiltered.push(val);
+                bCount ++;
+                this.log('bCount', bCount, this.parallelLimit, force);
+
+                if(force && bCount > this.parallelLimit) {
+                    changed = true;
+                } else {
+                    valueFiltered.push(val);
+                }
             }
         }, this);
 
@@ -357,5 +369,36 @@ module.exports = kind({
             components[i].set('disabled', disabled);
         }
 
-    }
+    },
+    handleResize: function(inSender, inEvent) {
+        var pLimCurrent = this.get('parallelLimit');
+
+        var thr = this.app.configs.parallelBibleLimitByWidth;
+
+        if(thr != false) {
+            var width = window.innerWidth;
+                pLim = 1;
+
+            for(i in thr) {
+                if(thr[i].minWidth > width) {
+                    break;
+                } else {
+                    pLim = thr[i].maxBibles;
+                }
+            }
+
+            pLim = (pLim == 'max' || pLim > this.parallelLimitInterface) ? this.parallelLimitInterface : pLim;
+
+            if(pLim != pLimCurrent) {
+                this.log('new parallelLimit', pLim);
+                var pStart = thr[i].startBibles || 1;
+                var pMin = thr[i].minBibles || 1;
+
+                this.set('parallelLimit', pLim);
+                this.set('parallelStart', pStart);
+                this.set('parallelMinimum', pMin);
+                this.parallelCleanup();
+            }
+        }
+    },
 });
