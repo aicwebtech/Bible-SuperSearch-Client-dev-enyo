@@ -2,6 +2,7 @@ var kind = require('enyo/kind');
 var Link = require('enyo/Anchor');
 var ImageLink = require('../LinkImage');
 var LinkBuilder = require('../Link/LinkBuilder');
+var Signal = require('../Signal');
 
 module.exports = kind({
     name: 'NavHtml',
@@ -16,8 +17,13 @@ module.exports = kind({
     nextChapterText: '&#9654;&#xFE0E;',
     nextBookText: '&#9654;&#xFE0E;|',
 
+    components: [
+        {kind: Signal, onBibleChange: 'handleBibleChange', isChrome: true}
+    ],
+
     handlers: {
-        ontap: 'handleTap'
+        ontap: 'handleTap',
+        onAutoClick: 'handleAutoClick'
     },
 
     create: function() {
@@ -131,5 +137,18 @@ module.exports = kind({
             // If clicking on an active link, set scroll mode
             this.app.set('scrollMode', 'results_top');
         }
+    },
+    handleBibleChange: function(inSender, inEvent) {
+        var c = this.app.configs.bibleChangeUpdateNavigation || false;
+
+        if(c && c != 'false') {
+            this.bibles = inEvent.bibles;
+            this.buildLinks();
+            this.render();
+        }
+    },
+    handleAutoClick: function(inSender, inEvent) {
+        button = inEvent.button || null;
+        button && this.$[button] && this.$[button].hasNode().click();
     }
 });

@@ -3,6 +3,8 @@ var ImageLink = require('../LinkImage');
 var LinkBuilder = require('../Link/LinkBuilder');
 var Signal = require('../Signal');
 
+// WARNING:  NavHtml (stylable buttons) does NOT extend NavBase!!!!!
+
 module.exports = kind({
     name: 'NavBase',
     linkBuilder: LinkBuilder,
