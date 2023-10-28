@@ -84,6 +84,7 @@ module.exports = kind({
     rendered: function() {
         this.inherited(arguments);
         this.resetValue();
+        this.handleResize();
     },
     resetValue: function() {
         this.setValue([]);
