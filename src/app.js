@@ -324,11 +324,12 @@ var App = Application.kind({
 
                 pLimit = this.configs.parallelBibleLimitByWidth[i];
 
-                pLim = pLimit.minWidth;
-                bLim = pLimit.maxBibles;
-                bStart = pLimit.Bibles;
+                pLim = parseInt(pLimit.minWidth, 10);
+                bLim = parseInt(pLimit.maxBibles, 10);
+                bMin = parseInt(pLimit.minBibles, 10);
+                bStart = parseInt(pLimit.startBibles, 10);
 
-                this.log('parallel', pLimit, pLim, bLim);
+                this.debug && this.log('parallel', pLimit, pLim, bLim);
 
                 if(!this.configs.parallelBibleLimitByWidth[i].minBibles) {
                     this.configs.parallelBibleLimitByWidth[i].minBibles = 1;
@@ -347,6 +348,11 @@ var App = Application.kind({
                     this.log('Error: parallelBibleLimitByWidth has values out of order, width and Bible limits must be in ascending order!');
                     hasError = true;
                 }
+
+                this.configs.parallelBibleLimitByWidth[i].minWidth = pLim;
+                this.configs.parallelBibleLimitByWidth[i].maxBibles = bLim;
+                this.configs.parallelBibleLimitByWidth[i].minBibles = bMin;
+                this.configs.parallelBibleLimitByWidth[i].startBibles = bStart;
 
                 pMax = pLim;
                 bMax = bLim;
