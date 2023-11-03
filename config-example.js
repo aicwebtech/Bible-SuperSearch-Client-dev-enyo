@@ -73,6 +73,10 @@ var biblesupersearch_config_options = {
     // should we remove Bible selections above the new limit?
     'parallelBibleCleanUpForce': false,
 
+    // If true, the number of parallel Bible selectors displayed initially ALWAYS equals the start Bibles number
+    // Regardless to the number of Bibles selected as default
+    'parallelBibleStartSuperceedsDefaultBibles': false,
+
     // Controls the number of parallel Bibles available based on screen width
     // set to false to completely disable.
     // minWidth and maxBibles must be in ascending order across each config, otherwise the entire config is ignored

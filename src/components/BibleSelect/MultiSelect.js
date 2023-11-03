@@ -91,9 +91,19 @@ module.exports = kind({
         // this.parallelCleanup();
         this._resetSelectors();
 
-        this.app.debug && this.log('default', this.app.defaultBibles);
-        this.bubble('onSpecialBibleChange', {value: this.app.defaultBibles});
-        this.setValue(this.app.defaultBibles);
+        var defaultBibles = this.app.defaultBibles;
+
+        if(this.app.configs.parallelBibleStartSuperceedsDefaultBibles && defaultBibles.length > this.parallelStart) {
+            defaultBibles = defaultBibles.slice(0, this.parallelStart);
+        }
+
+        this.app.debug && this.log('default', defaultBibles);
+        this.bubble('onSpecialBibleChange', {value: defaultBibles});
+        this.setValue(defaultBibles);        
+
+        // this.app.debug && this.log('default', this.app.defaultBibles);
+        // this.bubble('onSpecialBibleChange', {value: this.app.defaultBibles});
+        // this.setValue(this.app.defaultBibles);
     },
     addSelector: function() {
         this.doAddSelectorTapped();
@@ -406,7 +416,7 @@ module.exports = kind({
 
             pLim = (pLim == 'max' || pLim > this.parallelLimitInterface) ? this.parallelLimitInterface : pLim;
 
-            if(pLim != pLimCurrent) {
+            if(pLim != pLimCurrent || pStart != this.parallelStart || pMin != this.parallelMinimum) {
                 this.log('new parallelLimit', pLim);
                 var pStart = thr[i].startBibles || 1;
                 var pMin = thr[i].minBibles || 1;

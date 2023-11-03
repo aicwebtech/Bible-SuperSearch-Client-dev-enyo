@@ -339,7 +339,7 @@ var App = Application.kind({
                     hasZeroPixel = true;
                 }
 
-                if(bLim == 'max') {
+                if(pLimit.maxBibles == 'max') {
                     this.configs.parallelBibleLimitByWidth[i].maxBibles = bLim = 9999;
                     gMaxReached = true;
                 } 

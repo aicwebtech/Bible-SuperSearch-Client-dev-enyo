@@ -12,6 +12,7 @@ var defaultConfig = {
     "pageScroll": 'instant',
     "pageScrollTopPadding": 0,
     "textDisplayDefault": 'passage',
+    "parallelBibleStartSuperceedsDefaultBibles": false,
 
 
     _urlDefaultNotice: function() {
