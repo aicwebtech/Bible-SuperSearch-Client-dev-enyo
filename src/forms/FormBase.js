@@ -208,6 +208,14 @@ module.exports = kind({
         if(!formData.search_type || formData.search_type == '') {
             formData.search_type = this.defaultSearchType;
         }
+
+        if(this.$.bible) {
+            var maxBibles = this.$.bible.get('parallelLimit');
+
+            if(formData.bible.length > maxBibles) {
+                formData.bible = formData.bible.slice(0, maxBibles);
+            }
+        }
         
         this._formDataAsSubmitted = utils.clone(formData);
 
@@ -218,6 +226,7 @@ module.exports = kind({
         if(formData.request) {
             formData.request = this.mapPassages(formData.request, true);
         }
+
 
         formData.bible = JSON.stringify(formData.bible);
         formData.highlight = true;

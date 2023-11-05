@@ -291,6 +291,8 @@ var App = Application.kind({
             this.defaultBibles = ['kjv'];
         }
 
+        this.defaultBiblesRaw = utils.clone(this.defaultBibles);
+
         if(this.configs.pageScrollTopPadding) {
             if(typeof this.configs.pageScrollTopPadding == 'string') {
                 this.configs.pageScrollTopPadding = parseInt(this.configs.pageScrollTopPadding, 10);
@@ -328,6 +330,11 @@ var App = Application.kind({
                 bLim = parseInt(pLimit.maxBibles, 10);
                 bMin = parseInt(pLimit.minBibles, 10);
                 bStart = parseInt(pLimit.startBibles, 10);
+
+                if(bStart < bMin) {
+                    this.log('Error: parallelBibleLimitByWidth: startBibles must be equal or greated than minBibles!');
+                    hasError = true;
+                }
 
                 this.debug && this.log('parallel', pLimit, pLim, bLim);
 
@@ -369,7 +376,7 @@ var App = Application.kind({
             this.configs.parallelBibleLimitByWidth = false;
         }
 
-        this.log('parallelBibleLimitByWidth', this.configs.parallelBibleLimitByWidth);
+        this.debug && this.log('parallelBibleLimitByWidth', this.configs.parallelBibleLimitByWidth);
 
         // Render 'Loading' view
         // Todo - set css style based on selected interface
@@ -1421,7 +1428,7 @@ var App = Application.kind({
             break;
         }
 
-        this.log('checking render style', crs, pre, cur);
+        this.debug && this.log('checking render style', crs, pre, cur);
         crs && this._checkRenderStyle();
     },
     _checkRenderStyle: function() {

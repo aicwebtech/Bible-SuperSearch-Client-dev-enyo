@@ -83,20 +83,21 @@ module.exports = kind({
     },
     rendered: function() {
         this.inherited(arguments);
-        this.resetValue();
         this.handleResize();
+        this.resetValue();
     },
     resetValue: function() {
         this.setValue([]);
         // this.parallelCleanup();
         this._resetSelectors();
 
-        var defaultBibles = this.app.defaultBibles;
+        var defaultBibles = utils.clone(this.app.defaultBiblesRaw);
 
         if(this.app.configs.parallelBibleStartSuperceedsDefaultBibles && defaultBibles.length > this.parallelStart) {
             defaultBibles = defaultBibles.slice(0, this.parallelStart);
         }
 
+        this.app.defaultBibles = defaultBibles;
         this.app.debug && this.log('default', defaultBibles);
         this.bubble('onSpecialBibleChange', {value: defaultBibles});
         this.setValue(defaultBibles);        
@@ -175,6 +176,13 @@ module.exports = kind({
         }
 
         return false;
+    },
+    checkAddRemoveButtons: function() {
+        var addShowing = (this.parallelNumber < this.parallelLimit),
+            remShowing = (this.parallelNumber > this.parallelMinimum);
+        
+        this.$.Add && this.$.Add.set('showing', addShowing);
+        this.$.Remove && this.$.Remove.set('showing', remShowing);
     },
     removeSelector: function() {
         this.doRemoveSelectorTapped();
@@ -286,15 +294,6 @@ module.exports = kind({
         this.app.debug && this.log('valueUnfiltered', this.valueUnfiltered);
         this.app.debug && this.log('valueFiltered', valueFiltered);
 
-        // this.$.Select_0 && this.log('Select_0 exists');
-        // this.$.Select_1 && this.log('Select_1 exists');
-        // this.$.Select_2 && this.log('Select_2 exists');
-        // this.$.Select_3 && this.log('Select_3 exists');
-        // this.log('parallelNumber', this.parallelNumber);
-
-        //this.$.Select_0 && this.$.Select_0.applyDefaultValue();
-        //this.$.Select_1 && this.$.Select_1.applyDefaultValue();
-
         this.app.debug && this.log('selectorAdded', selectorAdded);
 
         if(selectorAdded) {
@@ -339,12 +338,13 @@ module.exports = kind({
     // removes some unused Bible selectors to attempt to only display between min and max
     parallelCleanup: function(parallelLimit) {
         parallelLimit = (typeof parallelLimit != 'undefined') ? parallelLimit : this.parallelLimit;
+        var parallelMinimum = this.parallelStart || this.parallelMinimum; // We treat parallelstart as the enforced minimum
 
-        if(this.parallelStart == this.parallelNumber) {
+        if(parallelMinimum == this.parallelNumber) {
             return;  // displaying the minimum, definity nothing to do
         }
 
-        if(this.parallelNumber >= this.parallelStart && this.parallelNumber <= parallelLimit) {
+        if(this.parallelNumber >= parallelMinimum && this.parallelNumber <= parallelLimit) {
             // return; // displaying within acceptible range, nothing to do
         }
 
@@ -357,24 +357,22 @@ module.exports = kind({
         components.forEach(function(item) {
             var val = item.get('value');
 
-            if((!val || val == '' || val == 0) && this.parallelNumber > this.parallelStart) {
+            if((!val || val == '' || val == 0) && this.parallelNumber > parallelMinimum) {
                 changed = true;
             }
             else {
                 bCount ++;
-                this.log('bCount', bCount, parallelLimit, force);
+                // this.log('bCount', bCount, parallelLimit, force);
 
                 if(force && bCount > parallelLimit) {
                     changed = true;
-                    this.log('value skipped');
                 } else {
                     valueFiltered.push(val);
-                    this.log('value pushed');
                 }
             }
         }, this);
 
-        this.log('valueFiltered', valueFiltered);
+        this.debug && this.log('valueFiltered', valueFiltered);
 
         if(changed) {
             this.$.Container.destroyClientControls();
@@ -382,7 +380,19 @@ module.exports = kind({
             this.set('parallelLimit', parallelLimit);
             this.setValue(valueFiltered);
             this.parallelStartBuild();
+            this.checkAddRemoveButtons();
         }
+    },
+    // removes some unused Bible selectors to attempt to only display between min and max
+    // but ONLY if the currently displayed number of selectors is outside min and max
+    parallelCleanupIfNeeded: function(parallelLimit) {
+        parallelLimit = (typeof parallelLimit != 'undefined') ? parallelLimit : this.parallelLimit;
+
+        if(this.parallelNumber >= this.parallelMinimum || this.parallelNumber <= parallelLimit) {
+            return;
+        }
+
+        this.parallelCleanup(parallelLimit);
     },
     disabledChanged: function(was, is) {
         var disabled = (is) ? true : false;
@@ -394,7 +404,6 @@ module.exports = kind({
         for(i in components) {
             components[i].set('disabled', disabled);
         }
-
     },
     handleResize: function(inSender, inEvent) {
         var pLimCurrent = this.get('parallelLimit');
@@ -403,24 +412,30 @@ module.exports = kind({
             force = this.app.configs.parallelBibleCleanUpForce || false;
 
         if(thr != false) {
-            var width = window.innerWidth;
-                pLim = 1;
+            // var width = window.innerWidth,
+            var width = document.documentElement.clientWidth,
+                pLim = thr[0].maxBibles || 1;
+                pMin = thr[0].minBibles || 1;
+                pStart = thr[0].startBibles || 1;
 
             for(i in thr) {
                 if(thr[i].minWidth > width) {
                     break;
                 } else {
-                    pLim = thr[i].maxBibles;
+                    pLim = thr[i].maxBibles || pLim;
+                    pMin = thr[i].minBibles || pMin;
+                    pStart = thr[i].startBibles || pStart;
                 }
             }
 
             pLim = (pLim == 'max' || pLim > this.parallelLimitInterface) ? this.parallelLimitInterface : pLim;
 
             if(pLim != pLimCurrent || pStart != this.parallelStart || pMin != this.parallelMinimum) {
-                this.log('new parallelLimit', pLim);
-                var pStart = thr[i].startBibles || 1;
-                var pMin = thr[i].minBibles || 1;
-
+                
+                this.app.debug && this.log('new parallelMax', pLim);
+                this.app.debug && this.log('new parallelMin', pMin);
+                this.app.debug && this.log('new parallelStart', pStart);
+                
                 // if(force) {
                 //     this.parallelNumber = 0;
                 // }
