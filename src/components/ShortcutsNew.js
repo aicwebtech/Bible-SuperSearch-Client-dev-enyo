@@ -19,7 +19,7 @@ module.exports = kind({
             value: '0'
         });        
 
-    if(this.selectedPassagesLabel) {       
+        if(this.selectedPassagesLabel) {       
             this.createOptionComponent({
                 content: this.selectedPassagesLabel,
                 value: '1'

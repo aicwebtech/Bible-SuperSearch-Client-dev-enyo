@@ -235,9 +235,11 @@ module.exports = kind({
         if(this.bibles.length <= 1) {
             return bible.name;
         }
-
+        
         return bible.name.length > 30 ? bible.shortname : bible.name;
     },
+
+
 
     renderHeader: function() {}, // Called before results are rendered, not required
     renderFooter: function() {}, // Called after results are rendered, not required
@@ -255,7 +257,6 @@ module.exports = kind({
         return verse.verse;
     },
     processSingleVerseContent: function(passage, verse) {
-        // passage.book_name + ' ' + passage.chapter_verse + '  ' + verse.text;
         var ref = this.proccessSingleVerseReference(passage, verse);
         return this.processAssembleSingleVerse(ref, verse);
     },

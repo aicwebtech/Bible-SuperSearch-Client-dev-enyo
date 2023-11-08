@@ -1153,6 +1153,7 @@ var App = Application.kind({
         this._localeChangedHelper(locale);
     },
     _initLocaleBibleBooks: function(locale, localeData, bookList, source) {
+        this.log(locale, localeData);
 
         for(key in bookList) {
             var book = bookList[key],
@@ -1216,6 +1217,8 @@ var App = Application.kind({
             return '';
         }
 
+        string = string.trim();
+
         var Locale = this.get('localeData'),
             trans = Locale[string] || string;
 
@@ -1258,14 +1261,13 @@ var App = Application.kind({
         }
 
         var t = this;
-            
+
         var trans = string.replace(/([0-9] )?[A-Za-z][A-Za-z ]*[A-Za-z]/g, function(match) {
             return t.t(match);
         });
 
-        trans = string.replace(/[0-9]+B/g, function(match) {
+        trans = trans.replace(/[0-9]+B/g, function(match) {
             var bookId = parseInt(match);
-            console.log('B match', match, bookId);
             return t.getLocaleBookName(bookId, match, false);
         });
 

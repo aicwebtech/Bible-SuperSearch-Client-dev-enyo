@@ -124,11 +124,13 @@ module.exports = kind({
             }
 
             if(addReferenceRow) {                
+                var bookName = this.app.getLocaleBookName(pd.book_id, pd.book_name);
+
                 Container.$.ReferenceRow.createComponent({
                     tag: 'th',
                     allowHtml: true,
                     attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
-                    content: pd.book_name + ' ' + pd.chapter_verse
+                    content: bookName + ' ' + pd.chapter_verse
                 });
             }
         }
@@ -289,7 +291,6 @@ module.exports = kind({
         return processed;
     },
     proccessSingleVerseReference: function(passage, verse) {
-        var book = this.app.getBook(passage.book_id);
         var bookName = this.app.getLocaleBookName(passage.book_id, passage.book_name);
         var verseLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, bookName, verse.chapter, verse.verse);
         var chapterLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, bookName, verse.chapter);

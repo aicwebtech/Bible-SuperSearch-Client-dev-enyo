@@ -56,7 +56,7 @@ module.exports = {
         return value || null;
     }},
     shortcut: {from: 'formData.shortcut', to: '$.shortcut.value', oneWay: false, shortLink: true, transform: function(value, dir) {
-        // this.log('shortcut', value, dir);
+        this.log('shortcut', value, dir);
         this.bubble('onFormFieldChanged', {field: 'shortcut', value: value, dir: dir});
 
         if(dir === 1) {
@@ -71,6 +71,9 @@ module.exports = {
             this.$.reference_booksel && this.$.reference_booksel.set('value', null);
 
             if(value && value != '0' && value != '1') {
+                // var valueTranslated = this.app.vt(value);
+                // this.log('shortcut value translated', valueTranslated);
+                // this.$.reference && this.$.reference.set('value', valueTranslated);
                 this.$.reference && this.$.reference.set('value', value);
             }
             else if (value != '1') {
