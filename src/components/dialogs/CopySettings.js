@@ -273,7 +273,7 @@ module.exports = kind({
             return value;
         }},         
         {from: 'app.UserConfig.render_style', to: 'renderStyle', oneWay: false, transform: function(value, dir) {
-            console.log('Copy renderStyle', value, dir);
+            // console.log('Copy renderStyle', value, dir);
 
             if(dir == 1 && this.$[value]) {
                 this.$.render_style.set('active', this.$[value]);

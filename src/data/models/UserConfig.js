@@ -22,7 +22,7 @@ module.exports = kind({
         
         // Maps to paragraph and single verse flags 
         // Options: paragraph, passage, verse, verse_passage
-        render_style: 'paragraph', 
+        render_style: 'passage', 
         copy_render_style: 'paragraph', // Cache of render style from copy view
         read_render_style: 'paragraph', // Cache of render style from read view
         italics: true,
