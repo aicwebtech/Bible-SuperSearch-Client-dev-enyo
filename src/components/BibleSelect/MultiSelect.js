@@ -428,7 +428,8 @@ module.exports = kind({
                 }
             }
 
-            pLim = (pLim == 'max' || pLim > this.parallelLimitInterface) ? this.parallelLimitInterface : pLim;
+            //pLim = (pLim == 'max' || pLim > this.parallelLimitInterface) ? this.parallelLimitInterface : pLim;
+            pLim = (pLim == 'max') ? this.parallelLimitInterface : pLim;
 
             if(pLim != pLimCurrent || pStart != this.parallelStart || pMin != this.parallelMinimum) {
                 

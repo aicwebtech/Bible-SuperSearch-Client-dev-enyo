@@ -6,6 +6,7 @@ var biblesupersearch_config_options = {
     // * en : English
     // * es : Español / Spanish
     // * fr: Français / French
+    // * fr: हिन्दी, हिंदी / Hindi
     // * lv: Latviešu / Latvian
     // * ro: Română / Romanian
     // * ru: Русский / Russian
@@ -83,21 +84,21 @@ var biblesupersearch_config_options = {
     "parallelBibleLimitByWidth": [
         {
             'minWidth': 0,       // Minimum width, in pixels.  Default: 0,
-            'maxBibles': 1,     // Maximum number of parallel Bible selectors displayed.  Default: 1.
+            'maxBibles': 2,     // Maximum number of parallel Bible selectors displayed.  Default: 1.
             'minBibles': 1,     // Minimum number of parallel Bible selectors displayed.  Default: 1.
             'startBibles': 1    // Number of parallel Bible selectors to be displayed when first page first loaded.  Default: 1.
         },
         {
             'minWidth': 250, 
-            'maxBibles': 2,
-            'minBibles': 2,
+            'maxBibles': 3,
+            'minBibles': 1,
             'startBibles': 1
         },
         {
             'minWidth': 500, 
             'maxBibles': 4,
-            'minBibles': 2,
-            'startBibles': 1
+            'minBibles': 1,
+            'startBibles': 2
         },        
         {
             'minWidth': 1000, 
@@ -109,7 +110,7 @@ var biblesupersearch_config_options = {
             'minWidth': 1500, 
             'maxBibles': 'max',   // 'max' presents the maximim parallel Bibles allowed by the selected skin
             'minBibles': 2,
-            'startBibles': 2
+            'startBibles': 4
         },
     ],
 

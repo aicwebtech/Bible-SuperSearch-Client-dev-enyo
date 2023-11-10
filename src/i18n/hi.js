@@ -1,8 +1,9 @@
 module.exports = {
     meta: {
-        lang_name: '',      // Native name of language (endonymn)
+        lang_name: 'हिन्दी, हिंदी',      // Native name of language (endonymn)
         lang_name_en: 'Hindi',   // Name of language, in English
         isRtl: false,       // Whether language is read Right-to-left
+        source: 'Google Translate',
     },
     
     // The actual translation data
@@ -217,165 +218,165 @@ module.exports = {
     'Please remove it, or use it\'s lower case equivalent.': 'कृपया इसे हटा दें, या इसके लोअरकेस समकक्ष का उपयोग करें।',
 
     // Your search for [attempted keywords] is invalid...
-    'Your search for': '',
-    'is invalid, and appears to be a passage reference.': '',
-    'is invalid.': '',
+    'Your search for': 'आपकी खोज',
+    'is invalid, and appears to be a passage reference.': 'अमान्य है, और एक परिच्छेद संदर्भ प्रतीत होता है।',
+    'is invalid.': 'इनवैलिड है',
 
     // Your search was limited to [number of] verses
-    'Your search was limited to': '',
-    'Please refine your search if necessary': '',
+    'Your search was limited to': 'आपकी खोज यहीं तक सीमित थी',
+    'Please refine your search if necessary': 'यदि आवश्यक हो तो कृपया अपनी खोज को परिष्कृत करें',
 
-    'This Bible is in the Public Domain.': '',
-    'This Bible is provided for research purposes only.': '',
-    'An unknown error has occurred.' : '',
-    'An error has occurred, please try again later.': '',
-    'Error' : '',
-    'Success': '',
-    'Cache not found': '',
-    'No query terms provided. Please specify search term(s) and/or passage reference(s).': '',
-    'Your search produced no results.' : '',
-    'Maximum hits has been reached for today for this domain / IP address': '',
-    'No Bibles are enabled. Please contact site adminstrator.': '',
-    'Cannot retrieve multiple books at once.': '',
-    'Bible text not found': '',
-    'Invalid book in book range': '',
-    'Book not found': '',
-    'Your parentheses are mismatched.': '',
-    'Your parentheses are mismatched, or you have a proximity operator inside of parentheses.': '',
-    'Proximity operators such as PROX and CHAP can only be used with boolean searches' : '',
-    'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets': '',
-    'Your access to this API has been revoked.  Please contact system administrator.': '',
+    'This Bible is in the Public Domain.': 'यह बाइबिल सार्वजनिक डोमेन में है.',
+    'This Bible is provided for research purposes only.': 'यह बाइबिल केवल शोध उद्देश्यों के लिए प्रदान की गई है।',
+    'An unknown error has occurred.' : 'एक अज्ञात त्रुटि हुई है।',
+    'An error has occurred, please try again later.': 'एक त्रुटि हुई है। कृपया बाद में दोबारा प्रयास करें।',
+    'Error' : 'गलती',
+    'Success': 'सफलता',
+    'Cache not found': 'कैश नहीं मिला',
+    'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'कोई क्वेरी शर्तें प्रदान नहीं की गईं. कृपया खोज शब्द और/या अनुच्छेद संदर्भ निर्दिष्ट करें।',
+    'Your search produced no results.' : 'आपकी खोज का कोई परिणाम नहीं निकला।',
+    'Maximum hits has been reached for today for this domain / IP address': 'इस डोमेन/आईपी पते के लिए आज अधिकतम हिट प्राप्त हो चुकी है',
+    'No Bibles are enabled. Please contact site adminstrator.': 'कोई बाइबिल सक्षम नहीं है. कृपया साइट व्यवस्थापक से संपर्क करें.',
+    'Cannot retrieve multiple books at once.': 'एक साथ अनेक पुस्तकें पुनर्प्राप्त नहीं की जा सकतीं.',
+    'Bible text not found': 'बाइबिल पाठ नहीं मिला',
+    'Invalid book in book range': 'Invalid book in book range',
+    'Book not found': 'किताब नहीं मिली',
+    'Your parentheses are mismatched.': 'आपके कोष्ठक बेमेल हैं.',
+    'Your parentheses are mismatched, or you have a proximity operator inside of parentheses.': 'आपके कोष्ठक बेमेल हैं, या आपके पास कोष्ठक के अंदर एक निकटता ऑपरेटर है।',
+    'Proximity operators such as PROX and CHAP can only be used with boolean searches' : 'PROX और CHAP जैसे निकटता ऑपरेटरों का उपयोग केवल बूलियन खोजों के साथ किया जा सकता है',
+    'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets': 'ध्यान दें: PROX / CHAP ऑपरेटरों को कोष्ठक या कोष्ठक में संलग्न नहीं किया जा सकता है',
+    'Your access to this API has been revoked.  Please contact system administrator.': 'इस एपीआई तक आपकी पहुंच रद्द कर दी गई है। कृपया सिस्टम प्रशासक से संपर्क करें.',
 
     // Dialogs - general
-    'Close': '', 
+    'Close': 'बंद करना', 
 
     // Bible SOS dialog
-    'Bible SOS': '',
-    'Emergency Help from the Bible': '',
-    'Where to go When ...': '',
-    'Afraid': '',
-    'Anxious': '',
-    'Backsliding': '',
-    'Bereaved': '',
-    'Bitter or Critical': '',
-    'Conscious of Sin': '',
-    'Defeated': '',
-    'Depressed': '', 
-    'Disaster Threatens': '',
-    'Discouraged': '',
-    'Doubting': '',
-    'Facing a Crisis': '',
-    'Faith Fails': '',
-    'Friends Fail': '', 
-    'Hopeless': '',
-    'Leaving Home': '',
-    'Lonely': '',
-    'Needing God\'s protection': '',
-    'Needing Guidance': '',
-    'Needing Peace': '',
-    'Needing Rules for Living': '', 
-    'Overcome': '',
-    'Prayerful': '',
-    'Protected': '',
-    'Sick or in Pain': '',
-    'Sorrowful': '',
-    'Tempted': '', 
-    'Thankful': '',
-    'Traveling': '',
-    'Trouble, In': '',
-    'Troubled': '',
-    'Weary': '',
-    'Worried': '',
+    'Bible SOS': 'बाइबिल एसओएस',
+    'Emergency Help from the Bible': 'बाइबिल से आपातकालीन सहायता',
+    'Where to go When ...': 'कब जाना है...',
+    'Afraid': 'डरना',
+    'Anxious': 'चिंतित',
+    'Backsliding': 'स्वधर्म त्याग',
+    'Bereaved': 'वंचित',
+    'Bitter or Critical': 'कड़वा या गंभीर',
+    'Conscious of Sin': 'पाप के प्रति सचेत',
+    'Defeated': 'हारा हुआ',
+    'Depressed': 'अवसादग्रस्त', 
+    'Disaster Threatens': 'आपदा का खतरा',
+    'Discouraged': 'हतोत्साहित',
+    'Doubting': 'संदेह करनेवाला',
+    'Facing a Crisis': 'संकट का सामना करना',
+    'Faith Fails': 'विश्वास विफल हो जाता है',
+    'Friends Fail': 'मित्र विफल', 
+    'Hopeless': 'आशाहीन',
+    'Leaving Home': 'घर छोड़ रहा हैं',
+    'Lonely': 'अकेला',
+    'Needing God\'s protection': 'भगवान की सुरक्षा की जरूरत है',
+    'Needing Guidance': 'मार्गदर्शन की आवश्यकता है',
+    'Needing Peace': 'शांति की आवश्यकता',
+    'Needing Rules for Living': 'जीवनयापन के लिए नियमों की आवश्यकता', 
+    'Overcome': 'काबू पाना',
+    'Prayerful': 'धार्मिक',
+    'Protected': 'संरक्षित',
+    'Sick or in Pain': 'बीमार या दर्द में',
+    'Sorrowful': 'उदास',
+    'Tempted': 'परीक्षा', 
+    'Thankful': 'कृतज्ञ',
+    'Traveling': 'यात्रा का',
+    'Trouble, In': 'मुसीबत, में',
+    'Troubled': 'परेशान',
+    'Weary': 'थका',
+    'Worried': 'चिंतित',
 
     // Bible Start dialog
-    'Start': '',
-    'Bible Start Guide': '',
-    'New to the Bible?': '',
-    'Not Sure Where to Begin?' : '',
-    'Life and Teachings of Jesus Christ': '',
-    'Basic Christian Beliefs': '',
-    'Creation and the Fall of Man': '',
-    'Birth of Christ / Life of Christ': '',
-    'Imperfection in Churches and Believers': '',
-    'Early human history, especially that of Israel': '',
-    'The relationship between the Old Testament Law and the Church': '',
-    'History and Law': '',
-    'Salvation by faith, not works': '',
-    'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': '',
-    'Christ the suffering servant': '',
-    'Christ’s crucifixion foretold': '',
+    'Start': 'शुरू',
+    'Bible Start Guide': 'बाइबिल आरंभ गाइड',
+    'New to the Bible?': 'बाइबिल में नये हैं?',
+    'Not Sure Where to Begin?' : 'पता नहीं कहां से शुरू करना है?',
+    'Life and Teachings of Jesus Christ': 'ईसा मसीह का जीवन और शिक्षाएँ',
+    'Basic Christian Beliefs': 'बुनियादी ईसाई विश्वास',
+    'Creation and the Fall of Man': 'सृष्टि और मनुष्य का पतन',
+    'Birth of Christ / Life of Christ': 'ईसा मसीह का जन्म / ईसा मसीह का जीवन',
+    'Imperfection in Churches and Believers': 'Imperfection in Churches and Believers',
+    'Early human history, especially that of Israel': 'प्रारंभिक मानव इतिहास, विशेषकर इज़राइल का',
+    'The relationship between the Old Testament Law and the Church': 'पुराने नियम के कानून और चर्च के बीच संबंध',
+    'History and Law': 'इतिहास और कानून',
+    'Salvation by faith, not works': 'विश्वास से मुक्ति, कर्म से नहीं',
+    'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'ईसाई जीवन और अनुभव. &nbsp;प्रेषित पॉल ने मसीह का अनुसरण करने के लिए ओटी कानून के तहत प्रमाण-पत्र त्याग दिए',
+    'Christ the suffering servant': 'मसीह पीड़ित सेवक',
+    'Christ’s crucifixion foretold': 'मसीह के सूली पर चढ़ने की भविष्यवाणी की गई',
 
     // Bible downloads dialog
-    'Download': '',
-    'Bible Downloads': '',
-    'Select Bible(s)' : '',
-    'Select a Format': '',
-    'Rendering': '',
-    'Rendering Bibles, this may take some time': '',
-    'Rendering is Complete': '',
-    'Your download should begin shortly': '',
-    'If not, please click on the below link': '',
-    'Manual Download': '',
-    'Please select at least one Bible': '',
-    'Please select a format': '',
-    'Are you sure you want to exit?  This will end the current download.': '',
-    'Plain Text' : '',
-    'Machine-readable Plain Text' : '',
-    'Spreadsheet' : '',
-    'Databases': '',
+    'Download': 'डाउनलोड करना',
+    'Bible Downloads': 'बाइबिल डाउनलोड',
+    'Select Bible(s)' : 'बाइबिल का चयन करें',
+    'Select a Format': 'एक प्रारूप चुनें',
+    'Rendering': 'प्रतिपादन',
+    'Rendering Bibles, this may take some time': 'बाइबल का प्रतिपादन करने में कुछ समय लग सकता है',
+    'Rendering is Complete': 'प्रतिपादन पूरा हो गया है',
+    'Your download should begin shortly': 'आपका डाउनलोड शीघ्र ही प्रारंभ हो जाना चाहिए',
+    'If not, please click on the below link': 'यदि नहीं, तो कृपया नीचे दिए गए लिंक पर क्लिक करें',
+    'Manual Download': 'मैन्युअल डाउनलोड',
+    'Please select at least one Bible': 'कृपया कम से कम एक बाइबिल चुनें',
+    'Please select a format': 'कृपया एक प्रारूप चुनें',
+    'Are you sure you want to exit?  This will end the current download.': 'क्या आप निश्चित हैं आपकी बाहर निकलने की इच्छा है? इससे वर्तमान डाउनलोड समाप्त हो जाएगा.',
+    'Plain Text' : 'सादे पाठ',
+    'Machine-readable Plain Text' : 'मशीन-पठनीय सादा पाठ',
+    'Spreadsheet' : 'स्प्रेडशीट',
+    'Databases': 'डेटाबेस',
 
-    'PDF - Compact Text, Letter, Words of Christ in Red': '',
-    'PDF - Compact Text, A4, Words of Christ in Red': '',
-    'PDF - Compact Text, Letter, Words of Christ Underlined': '',
-    'PDF - Compact Text, A4, Words of Christ Underlined': '',
+    'PDF - Compact Text, Letter, Words of Christ in Red': 'पीडीएफ - संक्षिप्त पाठ, पत्र, लाल रंग में ईसा मसीह के शब्द',
+    'PDF - Compact Text, A4, Words of Christ in Red': 'पीडीएफ - संक्षिप्त पाठ, ए4, लाल रंग में ईसा मसीह के शब्द',
+    'PDF - Compact Text, Letter, Words of Christ Underlined': 'पीडीएफ - संक्षिप्त पाठ, पत्र, रेखांकित मसीह के शब्द',
+    'PDF - Compact Text, A4, Words of Christ Underlined': 'पीडीएफ - संक्षिप्त पाठ, ए4, रेखांकित मसीह के शब्द',
 
     // Copy / Share / Link dialogs
-    'Copy': '',
-    'Copy Link': '',
-    'Copy with Text': '',
-    'Share Link': '',
-    'Share' : '',
-    'Link' : '', // 4.5
-    'Copied to clipboard': '', // 5.2.3
-    'Failed to copy': '', // 5.2.3
+    'Copy': 'प्रतिलिपि',
+    'Copy Link': 'लिंक की प्रतिलिपि करें',
+    'Copy with Text': 'टेक्स्ट के साथ कॉपी करें',
+    'Share Link': 'लिंक शेयर करें',
+    'Share' : 'शेयर करना',
+    'Link' : 'जोड़ना', // 4.5
+    'Copied to clipboard': 'क्लिपबोर्ड पर नकल', // 5.2.3
+    'Failed to copy': 'प्रतिलिपि बनाने में विफल', // 5.2.3
 
     // Quick Start Help Dialog
-    'Quick Start Guide': '',
-    'User\'s Manual': '',
-    'Wildcard': '',
-    'Basic Searches' : '',
-    'Advanced Searches using Boolean': '',
-    'Select' : '',
-    'Operators': '',
-    'Operator': '',
-    'Aliases': '',
-    'Description': '',
-    'Match both': '',
-    'Match either': '',
-    'Match only one': '',
-    'Does not match': '',
-    'Matches words in the same chapter': '',
-    'Matches words in the same book': '',
-    'Matches words in the same book, and within N verses of each other': '',
-    'Matches words in the same chapter, and within N verses of each other': '',
-    'For details, please see the User\'s Manual': '',
-    'Special Proximity Operators': '',
-    'Matches unlimited characters': '',
-    'searched for': '',
+    'Quick Start Guide': 'तुरत प्रारम्भ निर्देशिका',
+    'User\'s Manual': 'उपयोगकर्ता का मार्गदर्शन',
+    'Wildcard': 'वाइल्डकार्ड',
+    'Basic Searches' : 'बुनियादी खोजें',
+    'Advanced Searches using Boolean': 'बूलियन का उपयोग करके उन्नत खोजें',
+    'Select' : 'चुनना',
+    'Operators': 'ऑपरेटर्स',
+    'Operator': 'ऑपरेटर',
+    'Aliases': 'उपनाम',
+    'Description': 'विवरण',
+    'Match both': 'दोनों का मिलान करें',
+    'Match either': 'या तो मिलान करें',
+    'Match only one': 'केवल एक का मिलान करें',
+    'Does not match': 'मिलता जुलता नहीं है',
+    'Matches words in the same chapter': 'एक ही अध्याय के शब्दों से मेल खाता है',
+    'Matches words in the same book': 'एक ही किताब के शब्दों से मेल खाता है',
+    'Matches words in the same book, and within N verses of each other': 'एक ही किताब में और एक दूसरे के एन छंद के भीतर शब्दों से मेल खाता है',
+    'Matches words in the same chapter, and within N verses of each other': 'एक ही अध्याय में और एक दूसरे के एन छंद के भीतर शब्दों से मेल खाता है',
+    'For details, please see the User\'s Manual': 'विवरण के लिए, कृपया उपयोगकर्ता मैनुअल देखें',
+    'Special Proximity Operators': 'विशेष निकटता संचालक',
+    'Matches unlimited characters': 'असीमित वर्णों से मेल खाता है',
+    'searched for': 'खोजा गया',
 
     // Keywords for sample searches
-    'Jesus': '',
-    'Christ': '',
-    'Lord': '',
-    'faith': '',
-    'hope': '',
-    'joy': '',
-    'preserved' : '',
-    'preserve' : '',
-    'stand' : '',
-    'word': '',
-    'words': '',
-    'truth': '',
+    'Jesus': 'यीशु',
+    'Christ': 'मसीह',
+    'Lord': 'भगवान',
+    'faith': 'यक़ीन',
+    'hope': 'आशा',
+    'joy': 'आनंद',
+    'preserved' : 'सुरक्षित रखा',
+    'preserve' : 'संरक्षित करना',
+    'stand' : 'खड़ा होना',
+    'word': 'शब्द',
+    'words': 'शब्द',
+    'truth': 'सच',
 
 
     // Bible Books
@@ -384,333 +385,333 @@ module.exports = {
     'bibleBooks': [
         {
           "id": 1,
-          "name": "Genesis",
-          "shortname": "Gen"
+          "name": "उत्पत्ति",
+          "shortname": null
         },
         {
           "id": 2,
-          "name": "Exodus",
-          "shortname": "Ex"
+          "name": "निर्गमन",
+          "shortname": null
         },
         {
           "id": 3,
-          "name": "Leviticus",
-          "shortname": "Lev"
+          "name": "लैव्यव्यवस्था",
+          "shortname": null
         },
         {
           "id": 4,
-          "name": "Numbers",
-          "shortname": "Num"
+          "name": "गिनती",
+          "shortname": null
         },
         {
           "id": 5,
-          "name": "Deuteronomy",
-          "shortname": "Deut"
+          "name": "व्यवस्था विवरण",
+          "shortname": null
         },
         {
           "id": 6,
-          "name": "Joshua",
-          "shortname": "Josh"
+          "name": "यहोशू",
+          "shortname": null
         },
         {
           "id": 7,
-          "name": "Judges",
-          "shortname": "Judg"
+          "name": "न्यायियों",
+          "shortname": null
         },
         {
           "id": 8,
-          "name": "Ruth",
-          "shortname": "Ru"
+          "name": "रूत",
+          "shortname": null
         },
         {
           "id": 9,
-          "name": "1 Samuel",
-          "shortname": "1 Sam"
+          "name": "1 शमूएल",
+          "shortname": null
         },
         {
           "id": 10,
-          "name": "2 Samuel",
-          "shortname": "2 Sam"
+          "name": "2 शमूएल",
+          "shortname": null
         },
         {
           "id": 11,
-          "name": "1 Kings",
-          "shortname": "1 Ki"
+          "name": "1 राजा",
+          "shortname": null
         },
         {
           "id": 12,
-          "name": "2 Kings",
-          "shortname": "2 Ki"
+          "name": "2 राजा",
+          "shortname": null
         },
         {
           "id": 13,
-          "name": "1 Chronicles",
-          "shortname": "1 Chron"
+          "name": "1 इतिहास",
+          "shortname": null
         },
         {
           "id": 14,
-          "name": "2 Chronicles",
-          "shortname": "2 Chron"
+          "name": "2 इतिहास",
+          "shortname": null
         },
         {
           "id": 15,
-          "name": "Ezra",
-          "shortname": "Ezra"
+          "name": "एज्रा",
+          "shortname": null
         },
         {
           "id": 16,
-          "name": "Nehemiah",
-          "shortname": "Neh"
+          "name": "नहेमायाह",
+          "shortname": null
         },
         {
           "id": 17,
-          "name": "Esther",
-          "shortname": "Esth"
+          "name": "एस्तेर",
+          "shortname": null
         },
         {
           "id": 18,
-          "name": "Job",
-          "shortname": "Job"
+          "name": "अय्यूब",
+          "shortname": null
         },
         {
           "id": 19,
-          "name": "Psalms",
-          "shortname": "Ps"
+          "name": "भजन संहिता",
+          "shortname": null
         },
         {
           "id": 20,
-          "name": "Proverbs",
-          "shortname": "Prov"
+          "name": "नीतिवचन",
+          "shortname": null
         },
         {
           "id": 21,
-          "name": "Ecclesiastes",
-          "shortname": "Ecc"
+          "name": "सभोपदेशक",
+          "shortname": null
         },
         {
           "id": 22,
-          "name": "Song of Solomon",
-          "shortname": "SOS"
+          "name": "Cश्रेष्ठगीत",
+          "shortname": null
         },
         {
           "id": 23,
-          "name": "Isaiah",
-          "shortname": "Isa"
+          "name": "यशायाह",
+          "shortname": null
         },
         {
           "id": 24,
-          "name": "Jeremiah",
-          "shortname": "Jer"
+          "name": "यिर्मयाह",
+          "shortname": null
         },
         {
           "id": 25,
-          "name": "Lamentations",
-          "shortname": "Lam"
+          "name": "विलापगीत",
+          "shortname": null
         },
         {
           "id": 26,
-          "name": "Ezekiel",
-          "shortname": "Eze"
+          "name": "यहेजकेल",
+          "shortname": null
         },
         {
           "id": 27,
-          "name": "Daniel",
-          "shortname": "Dan"
+          "name": "दानिय्येल",
+          "shortname": null
         },
         {
           "id": 28,
-          "name": "Hosea",
-          "shortname": "Hos"
+          "name": "होशे",
+          "shortname": null
         },
         {
           "id": 29,
-          "name": "Joel",
-          "shortname": "Joel"
+          "name": "योएल",
+          "shortname": null
         },
         {
           "id": 30,
-          "name": "Amos",
-          "shortname": "Amos"
+          "name": "आमोस",
+          "shortname": null
         },
         {
           "id": 31,
-          "name": "Obadiah",
-          "shortname": "Obad"
+          "name": "ओबद्याह",
+          "shortname": null
         },
         {
           "id": 32,
-          "name": "Jonah",
-          "shortname": "Jon"
+          "name": "योना",
+          "shortname": null
         },
         {
           "id": 33,
-          "name": "Micah",
-          "shortname": "Micah"
+          "name": "मीका",
+          "shortname": null
         },
         {
           "id": 34,
-          "name": "Nahum",
-          "shortname": "Nah"
+          "name": "नहूम",
+          "shortname": null
         },
         {
           "id": 35,
-          "name": "Habakkuk",
-          "shortname": "Hab"
+          "name": "हबक्कूक",
+          "shortname": null
         },
         {
           "id": 36,
-          "name": "Zephaniah",
-          "shortname": "Zeph"
+          "name": "सपन्याह",
+          "shortname": null
         },
         {
           "id": 37,
-          "name": "Haggai",
-          "shortname": "Hag"
+          "name": "हाग्गै",
+          "shortname": null
         },
         {
           "id": 38,
-          "name": "Zechariah",
-          "shortname": "Zech"
+          "name": "जकर्याह",
+          "shortname": null
         },
         {
           "id": 39,
-          "name": "Malachi",
-          "shortname": "Mal"
+          "name": "मलाकी",
+          "shortname": null
         },
         {
           "id": 40,
-          "name": "Matthew",
-          "shortname": "Matt"
+          "name": "मत्ती",
+          "shortname": null
         },
         {
           "id": 41,
-          "name": "Mark",
-          "shortname": "Mark"
+          "name": "मरकुस",
+          "shortname": null
         },
         {
           "id": 42,
-          "name": "Luke",
-          "shortname": "Luke"
+          "name": "लूका",
+          "shortname": null
         },
         {
           "id": 43,
-          "name": "John",
-          "shortname": "John"
+          "name": "यूहन्ना",
+          "shortname": null
         },
         {
           "id": 44,
-          "name": "Acts",
-          "shortname": "Acts"
+          "name": "प्रेरितों के काम",
+          "shortname": null
         },
         {
           "id": 45,
-          "name": "Romans",
-          "shortname": "Rom"
+          "name": "रोमियों",
+          "shortname": null
         },
         {
           "id": 46,
-          "name": "1 Corinthians",
-          "shortname": "1 Cor"
+          "name": "1 कुरिन्थियों",
+          "shortname": null
         },
         {
           "id": 47,
-          "name": "2 Corinthians",
-          "shortname": "2 Cor"
+          "name": "2 कुरिन्थियों",
+          "shortname": null
         },
         {
           "id": 48,
-          "name": "Galatians",
-          "shortname": "Gal"
+          "name": "गलातियों",
+          "shortname": null
         },
         {
           "id": 49,
-          "name": "Ephesians",
-          "shortname": "Eph"
+          "name": "इफिसियों",
+          "shortname": null
         },
         {
           "id": 50,
-          "name": "Philippians",
-          "shortname": "Phil"
+          "name": "फिलिप्पियों",
+          "shortname": null
         },
         {
           "id": 51,
-          "name": "Colossians",
-          "shortname": "Col"
+          "name": "कुलुस्सियों",
+          "shortname": null
         },
         {
           "id": 52,
-          "name": "1 Thessalonians",
-          "shortname": "1 Thess"
+          "name": "1 थिस्सलुनीकियों",
+          "shortname": null
         },
         {
           "id": 53,
-          "name": "2 Thessalonians",
-          "shortname": "2 Thess"
+          "name": "2 थिस्सलुनीकियों",
+          "shortname": null
         },
         {
           "id": 54,
-          "name": "1 Timothy",
-          "shortname": "1 Tim"
+          "name": "1 तीमुथियुस",
+          "shortname": null
         },
         {
           "id": 55,
-          "name": "2 Timothy",
-          "shortname": "2 Tim"
+          "name": "2 तीमुथियुस",
+          "shortname": null
         },
         {
           "id": 56,
-          "name": "Titus",
-          "shortname": "Titus"
+          "name": "तीतुस",
+          "shortname": null
         },
         {
           "id": 57,
-          "name": "Philemon",
-          "shortname": "Phm"
+          "name": "फिलेमोन",
+          "shortname": null
         },
         {
           "id": 58,
-          "name": "Hebrews",
-          "shortname": "Heb"
+          "name": "इब्रानियों",
+          "shortname": null
         },
         {
           "id": 59,
-          "name": "James",
-          "shortname": "Jas"
+          "name": "याकूब",
+          "shortname": null
         },
         {
           "id": 60,
-          "name": "1 Peter",
-          "shortname": "1 Pet"
+          "name": "1 पतरस",
+          "shortname": null
         },
         {
           "id": 61,
-          "name": "2 Peter",
-          "shortname": "2 Pet"
+          "name": "2 पतरस",
+          "shortname": null
         },
         {
           "id": 62,
-          "name": "1 John",
-          "shortname": "1 John"
+          "name": "1 यूहन्ना",
+          "shortname": null
         },
         {
           "id": 63,
-          "name": "2 John",
-          "shortname": "2 John"
+          "name": "2 यूहन्ना",
+          "shortname": null
         },
         {
           "id": 64,
-          "name": "3 John",
-          "shortname": "3 John"
+          "name": "3 यूहन्ना",
+          "shortname": null
         },
         {
           "id": 65,
-          "name": "Jude",
-          "shortname": "Jude"
+          "name": "यहूदा",
+          "shortname": null
         },
         {
           "id": 66,
-          "name": "Revelation",
-          "shortname": "Rev"
+          "name": "प्रकाशित वाक्य",
+          "shortname": null
         }
-    ],
+    ]
 };

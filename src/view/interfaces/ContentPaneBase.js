@@ -98,8 +98,12 @@ module.exports = kind({
         //     this.$. ResultsController.set('pagerView', this.pagerView);
         // }
     },
-    handleResultsRendered: function() {
-        this.autoScroll();
+    handleResultsRendered: function(inSender, inEvent) {
+        var localeChange = inEvent && inEvent.localeChange;
+        
+        if(!localeChange) {
+            this.autoScroll();
+        }
     },
     autoScroll: function() {
         // Attempts to scroll to top of results

@@ -38,6 +38,7 @@ module.exports = kind({
         if(this.app.configs.includeTestament) {        
             Container.createComponent({
                 name: 'TestamentRow',
+                classes: 'bss_render_testament_row',
                 tag: 'tr',
                 components: [
                     {
@@ -53,6 +54,7 @@ module.exports = kind({
 
         Container.createComponent({
             name: 'ReferenceRow',
+            classes: 'bss_render_reference_row',
             tag: 'tr',
             components: [
                 {
@@ -68,6 +70,7 @@ module.exports = kind({
         if(this.multiBibles) {        
             Container.createComponent({
                 name: 'BibleRow',
+                classes: 'bss_render_bible_row',
                 tag: 'tr'
             });
 

@@ -32,6 +32,7 @@ module.exports = kind({
     pagerView: Pager,
     showingCopyrightBottom: false,
     renderStyle: 'passage',
+    _localeChangeRender: false,
 
     published: {
         resultsData: null,
@@ -94,7 +95,13 @@ module.exports = kind({
     },
     rendered: function() {
         this.inherited(arguments);
-        this.bubble('onResultsRendered');
+        
+        var e = {
+            localeChange: this._localeChangeRender,
+        };
+
+        this.bubble('onResultsRendered', e);
+        this._localeChangeRender = false;
     },
     formDataChanged: function(was, is) {
         this.bibles = [];
@@ -109,7 +116,6 @@ module.exports = kind({
             this.bibles.push(module);
         }
 
-        // this.log(this.bibles);
         this.bibleCount = this.bibles.length;
         this.biblesStr = this.bibles.join(',');
         this.multiBibles = (this.bibleCount > 1) ? true : false;
@@ -238,8 +244,6 @@ module.exports = kind({
         
         return bible.name.length > 30 ? bible.shortname : bible.name;
     },
-
-
 
     renderHeader: function() {}, // Called before results are rendered, not required
     renderFooter: function() {}, // Called after results are rendered, not required
@@ -472,8 +476,6 @@ module.exports = kind({
         }
     },
     handleKey: function(inSender, inEvent) {
-        //this.log(inEvent);
-
         if(inEvent.code == 'Escape') {
             this.hideHoverDialogs();
         }
@@ -535,6 +537,7 @@ module.exports = kind({
         }
     },
     handleLocaleChange: function(inSender, inEvent) {
+        this._localeChangeRender = true;
         this.renderResults();
     }
 

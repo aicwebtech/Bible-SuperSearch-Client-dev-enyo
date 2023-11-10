@@ -39,7 +39,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.2.4',
+    applicationVersion: '5.3.0',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -1153,8 +1153,6 @@ var App = Application.kind({
         this._localeChangedHelper(locale);
     },
     _initLocaleBibleBooks: function(locale, localeData, bookList, source) {
-        this.log(locale, localeData);
-
         for(key in bookList) {
             var book = bookList[key],
                 bookEn = null;
