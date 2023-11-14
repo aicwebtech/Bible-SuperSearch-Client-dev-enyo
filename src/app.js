@@ -332,7 +332,12 @@ var App = Application.kind({
                 bStart = parseInt(pLimit.startBibles, 10);
 
                 if(bStart < bMin) {
-                    this.log('Error: parallelBibleLimitByWidth: startBibles must be equal or greated than minBibles!');
+                    this.log('Error: parallelBibleLimitByWidth: startBibles must be equal or greater than minBibles!');
+                    hasError = true;
+                }                
+
+                if(bStart > bLim) {
+                    this.log('Error: parallelBibleLimitByWidth: startBibles must be equal or less than maxBibles!');
                     hasError = true;
                 }
 
@@ -351,8 +356,10 @@ var App = Application.kind({
                     gMaxReached = true;
                 } 
 
-                if(pLim < pMax || bLim < bMax) {
-                    this.log('Error: parallelBibleLimitByWidth has values out of order, width and Bible limits must be in ascending order!');
+                // if(pLim < pMax || bLim < bMax) {
+                if(pLim < pMax) {
+                    //this.log('Error: parallelBibleLimitByWidth has values out of order, width and Bible limits must be in ascending order!');
+                    this.log('Error: parallelBibleLimitByWidth has values out of order, width limits must be in ascending order!');
                     hasError = true;
                 }
 
