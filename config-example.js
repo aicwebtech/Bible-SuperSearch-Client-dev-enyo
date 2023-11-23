@@ -1,5 +1,17 @@
 var biblesupersearch_config_options = {
+   
     
+    // URL of Bible SuperSearch API         (string)
+    //      Note:  You can install the Bible SuperSearch API on your own server
+    //             If you do, you will need to change this
+    //             Default: https://api.biblesupersearch.com
+    
+    "apiUrl": "https://api.biblesupersearch.com",
+
+
+    // API Key, if needed.  (Not required.)
+    "apiKey": '',
+
     // Language code for user interface language
     // If language selected is not supported, English will display
     // Supported language:
@@ -284,13 +296,6 @@ var biblesupersearch_config_options = {
     'formStyles': {
         // 'background-color': '#dddddd'
     },
-    
-    // URL of Bible SuperSearch API         (string)
-    //      Note:  You can install the Bible SuperSearch API on your own server
-    //             If you do, you will need to change this
-    //             Default: https://api.biblesupersearch.com
-    
-    "apiUrl": "https://api.biblesupersearch.com",
 
     // URL of destination page
     // If specified, you will be redirected here after submitting form to see results.

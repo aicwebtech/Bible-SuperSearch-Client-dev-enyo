@@ -45,7 +45,8 @@ module.exports = kind({
         this.showLoading();
 
         var postBody = {
-            strongs: content
+            strongs: content,
+            key: this.app.configs.apiKey || null
         };
 
         var ajax = new Ajax({

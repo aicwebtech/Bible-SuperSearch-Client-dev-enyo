@@ -235,6 +235,7 @@ module.exports = kind({
         formData.markup = 'raw';
         formData.context_range = this.app.UserConfig.get('context_range');
         formData.page_limit = this.app.UserConfig.get('page_limit');
+        formData.key = this.app.configs.apiKey || null;
         
         //formData.group_passage_search_results = true; // experimental
         
@@ -312,6 +313,7 @@ module.exports = kind({
         }
 
         this.updateTitle();
+        this.app.pushHistory();
         this.manualRequest = false;
         this.app.set('hasAjaxSuccess', true);
     },
@@ -337,6 +339,7 @@ module.exports = kind({
             }
             
             this.updateTitle();
+            this.app.pushHistory();
             this.bubble('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
             Signal.send('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
             this.manualRequest = false;
@@ -382,7 +385,7 @@ module.exports = kind({
     },
     loadCache: function(hash, extraFormData) {
         this._extraFormData = extraFormData || {};
-        var url = this.app.configs.apiUrl + '/readcache?hash=' + hash;
+        var url = this.app.configs.apiUrl + '/readcache?hash=' + hash + this.app.configs.apiKeyStr;
 
         if(this.requestPending) {
             // this.log('pending cache request, skipping');
@@ -483,7 +486,7 @@ module.exports = kind({
             baseTitle = this.app.get('baseTitle'),
             baseFirst = false,
             formData = this.get('_formDataAsSubmitted'),
-            fields = Array('request','reference','search','search_all','search_any','search_one','search_none','search_phrase'),
+            fields = Array('request','reference','search','search_all','search_any','search_one','search_none','search_phrase', 'page'),
             values = Array();
 
         fields.forEach(function(field) {
@@ -491,10 +494,18 @@ module.exports = kind({
                 if(formData[field] == 'Random Chapter' || formData[field] == 'Random Verse') {
                     values.push(this.app.t(formData[field]));
                 } else {
-                    values.push(formData[field]);
+                    if(field == 'page') {
+                        values.push('Page ' + formData[field]);
+                    } else {
+                        values.push(formData[field]);
+                    }
                 }
             }
         }, this);
+
+        if(formData.context == true) {
+            values.push('In Context');
+        }
 
         var bssTitle = values.join(' | ');
 

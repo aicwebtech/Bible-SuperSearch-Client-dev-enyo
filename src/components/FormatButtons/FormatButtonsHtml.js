@@ -370,6 +370,16 @@ module.exports = kind({
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'link'}
                 ],
+            },            
+            {
+                kind: i18n,
+                classes: 'item link text_only',
+                name: 'history_button',
+                ontap: 'handleHistory',
+                attributes: {title: 'History'},
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'history'}
+                ],
             },
             {
                 kind: i18n,

@@ -520,6 +520,12 @@ div.alert_dialog {
     font-size: 0.9em;
 }
 
+.history_item.item {
+    text-align: left;
+    font-size: 0.9em;
+    padding: 5px;
+}
+
 .share_dialog .link_share_container {
     padding: 5px;
 }

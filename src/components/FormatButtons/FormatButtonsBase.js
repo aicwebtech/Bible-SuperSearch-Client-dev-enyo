@@ -97,6 +97,9 @@ module.exports = kind({
     },    
     handleLink: function(inSender, inEvent) {
         this.app.set('linkShowing', true);
+    },        
+    handleHistory: function(inSender, inEvent) {
+        this.app.setDialogShowing('HistoryDialog', true);
     },    
     handleSettings: function(inSender, inEvent) {
         this.app.set('settingsShowing', true);

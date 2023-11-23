@@ -23,7 +23,8 @@ var RandomVerse = kind({
     fetch: function(inSender, inEvent) {
         var formData = {
             'reference': 'Random Verse',
-            'bible': this.bible
+            'bible': this.bible,
+            'key': this.app.configs.apiKey || null
         };
 
         var ajax = new Ajax({

@@ -145,7 +145,8 @@ module.exports = kind({
 
         var formData = {
             bible: JSON.stringify(bibles),
-            format: format
+            format: format,
+            key: this.app.configs.apiKey || null
         }
 
         if(bibles.length == 0) {
@@ -225,7 +226,7 @@ module.exports = kind({
         this.$.DownloadPending.set('showing', true);
         this.set('requestPending', false);
         var bibles = JSON.stringify(this.formData.bible);
-        var url = this.app.configs.apiUrl + '/download?format=' + this.formData.format + '&bible=' + bibles;
+        var url = this.app.configs.apiUrl + '/download?format=' + this.formData.format + '&bible=' + bibles  + this.app.configs.apiKeyStr;
         this.$.DownloadLink.set('href', url);
         // this.$.DownloadLink.set('content', url); // We need a cleaner URL format - maybe a hash or something
         this.app.debug && this.log('download url', url);
@@ -260,7 +261,8 @@ module.exports = kind({
 
         var formData = {
             bible: bible,
-            format: this.formData.format
+            format: this.formData.format,
+            key: this.app.configs.apiKey || null
         };
 
         var comp = this.$.RenderStatusContainer.createComponent({

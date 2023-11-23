@@ -6,8 +6,14 @@ var StartDialog = require('../../components/dialogs/Start');
 var DownloadDialog = require('../../components/dialogs/Download');
 var HelpDialog = require('../../components/dialogs/Help');
 var ShareDialog = require('../../components/dialogs/Share');
+var HistoryDialog = require('../../components/dialogs/History');
 var LinkDialog = require('../../components/dialogs/Link');
 var SettingsDialog = require('../../components/dialogs/Settings');
+
+var Dialogs = {
+    'HistoryDialog': require('../../components/dialogs/History'),
+};
+
 var NavButtons = require('../../components/NavButtons/NavClassic');
 var FormatButtons = require('../../components/FormatButtons/FormatButtonsHtml');
 var Pager = require('../../components/Pagers/ClassicPager');
@@ -145,6 +151,9 @@ module.exports = kind({
     },    
     settingsShowingChanged: function(was, is) {
         this._dialogShowingHelper(SettingsDialog, 'SettingsDialog', is);
+    },
+    setDialogShowing: function(dialog, showing) {
+        this._dialogShowingHelper(Dialogs[dialog], dialog, showing);
     },
     _dialogShowingHelper: function(kind, name, showing) {
         if(!this.$[name]) {

@@ -54,6 +54,7 @@ var App = Application.kind({
     maximumBiblesDisplayed: 8,  // The absolute maximum number of parallel bibles that can be possibly displayed
     bibleDisplayLimit: 8,       // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
     defaultBibles: [],
+    history: [],
     resetView: true,
     appLoaded: false,
     ajaxLoadingDelayTimer: null,
@@ -391,6 +392,7 @@ var App = Application.kind({
         this.render();
 
         this.configs.apiUrl = this.configs.apiUrl.replace(/\/+$/, '') + '/api';
+        this.configs.apiKeyStr = (this.configs.apiKey && this.configs.apiKey != '') ? '&key=' + this.configs.apiKey : '';
         
         if(this.configs.debug) {
             this.debug = this.configs.debug;
@@ -410,7 +412,7 @@ var App = Application.kind({
 
         // Load Static Data (Bibles, Books, ect)
         var ajax = new Ajax({
-            url: this.configs.apiUrl + '/statics?language=en',
+            url: this.configs.apiUrl + '/statics?language=en' + this.configs.apiKeyStr,
             method: 'GET'
         });
 
@@ -851,6 +853,11 @@ var App = Application.kind({
             this.view.set('helpShowing', is);
         }
     },
+    setDialogShowing: function(dialog, showing) {
+        if(this.view && this.view.set) {
+            this.view.setDialogShowing(dialog, showing);
+        }
+    },
     showHelp: function(section) {
         this.waterfall('onShowHelp', {section: section});
     },
@@ -1124,7 +1131,7 @@ var App = Application.kind({
 
             // Load Bible book list
             var ajax = new Ajax({
-                url: this.configs.apiUrl + '/books?language=' + language,
+                url: this.configs.apiUrl + '/books?language=' + language + this.configs.apiKeyStr,
                 method: 'GET'
             });
 
@@ -1354,6 +1361,15 @@ var App = Application.kind({
 
         return book;
     },
+    pushHistory: function() {
+        var title = this.get('bssTitle'),
+            url = document.location.href;
+
+        if(this.history.length == 0 || this.history[0].title != title) {
+            this.history.unshift({title: title, url: url});
+        }
+    },
+
     alert: function(string, inSender, inEvent) {
         // todo - make some sort of custom alert dialog here!
         var tstr = this.t(string);
