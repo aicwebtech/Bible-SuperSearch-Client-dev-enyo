@@ -1,6 +1,7 @@
 var defaultConfig = {
     'target': 'biblesupersearch_container',             // id of HTML div tag
     "apiUrl": "https://api.biblesupersearch.com",       // URL to Bible SuperSearch API
+    "apiKey": null,                                     // API access key
     "defaultBible": "kjv",                              // Default Bible selected in first Bible selector
     "bibleGrouping": 'language',                        // Default Bible list grouping
     "bibleSorting": 'rank|name',                        // Default Bible list sorting

@@ -520,10 +520,15 @@ div.alert_dialog {
     font-size: 0.9em;
 }
 
+.history_list {
+    max-height: 220px;
+    overflow-y: auto;
+}
+
 .history_item.item {
     text-align: left;
     font-size: 0.9em;
-    padding: 5px;
+    padding: 3px 8px;
 }
 
 .share_dialog .link_share_container {
