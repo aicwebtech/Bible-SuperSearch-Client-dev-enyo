@@ -19,7 +19,7 @@ var Signal = require('enyo/Signals');
 var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 
 module.exports = kind({
-    name: 'StartDialog',
+    name: 'SettingsDialog',
     kind: Dialog,
     maxWidth: '350px',
     height: '475px',
