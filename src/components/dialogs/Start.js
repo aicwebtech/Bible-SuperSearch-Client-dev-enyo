@@ -17,6 +17,7 @@ module.exports = kind({
     height: '475px',
     classes: 'help_dialog bible_start',
     bibleString: null,
+    titleBarHeight: 64,
     
     published: {
         list: [
@@ -40,9 +41,8 @@ module.exports = kind({
 
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, tag: 'h3', content: 'New to the Bible?'}, 
-            {kind: i18n, tag: 'h4', content: 'Not Sure Where to Begin?'}, 
-            // {tag: 'h4', content: 'Here\'s a reading list to get you started'}, 
+            {kind: i18n, classes: 'bss_dialog_title', content: 'New to the Bible?'}, 
+            {kind: i18n, classes: 'bss_dialog_subtitle', content: 'Not Sure Where to Begin?'}, 
         ]}
     ],
 

@@ -11,8 +11,6 @@ var i18nComponent = require('../Locale/i18nComponent');
 var Signal = require('enyo/Signals');
 var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 
-
-
 module.exports = kind({
     name: 'HelpDialog',    
     kind: Dialog,
@@ -20,6 +18,7 @@ module.exports = kind({
     height: '475px',
     classes: 'help_dialog help',
     bibleString: null,
+    titleBarHeight: 64,
     
     published: {
         section: null
@@ -177,8 +176,8 @@ module.exports = kind({
 
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, tag: 'h3', content: 'Bible SuperSearch'}, 
-            {kind: i18n, tag: 'h4', content: 'Quick Start Guide'}
+            {kind: i18n, classes: 'bss_dialog_title', content: 'Bible SuperSearch'}, 
+            {kind: i18n, classes: 'bss_dialog_subtitle', content: 'Quick Start Guide'}
         ]}
     ],
 

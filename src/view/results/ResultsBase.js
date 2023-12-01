@@ -25,6 +25,7 @@ module.exports = kind({
     paging: null,
     linkBuilder: LinkBuilder,
     selectedBible: null, // Bible we're currently processing
+    lastHoverIntentTarget: null,
     lastHoverTarget: null,
     lastHoverX: 0,
     lastHoverY: 0,
@@ -45,7 +46,8 @@ module.exports = kind({
         onmouseover: 'handleHover',
         onmouseout: 'handleMouseOut',
         onLocaleChange: 'handleLocaleChange',
-        ontap: 'handleClick'
+        ontap: 'handleClick',
+        onGlobalTap: 'handleClick'
     },
 
     components: [
@@ -410,11 +412,13 @@ module.exports = kind({
     },
     handleHover: function(inSender, inEvent) {
         var target = inEvent.target;
+        var hoverIntent = false;
         var x = inEvent.x;
         var y = inEvent.y;
         var lastX = this.lastHoverX;
         var lastY = this.lastHoverY;
-        var thres = 5;
+        var thres = 50;
+        var hoverIntentThres = 1000;
 
         if((
             (x - thres <= lastX) && 
@@ -423,7 +427,7 @@ module.exports = kind({
             (y + thres >= lastY)
         )) {
             // return;
-        }
+        } 
 
         if(target != this.lastHoverTarget) {
             // this.hideHoverDialogs();
@@ -450,19 +454,26 @@ module.exports = kind({
             // var parentWidth  = this.hasNode().scrollWidth;
             // var mouseX = inEvent.offsetX;
             // var mouseY = inEvent.offsetY;
+            //this.$.StrongsHover.set('showing', false);
 
+            var t = this;
 
-            if(target.tagName == 'A' && target.className == 'strongs') {
-                // this.log('mouseY options', inEvent.offsetY, inEvent.y, inEvent.pageY, inEvent.movementY, inEvent.screenY);
-                // this.hideHoverDialogs(); // uncomment in production
-                // this.log('offset', inEvent.offsetY);
-                // this.log('pWidth', parentWidth);
-                // this.log('pHeight', parentHeight);
-                // this.log('inEvent', inEvent);
-                // this.log('mouseY', mouseY);
-                this.$.StrongsHover.displayPosition(mouseX, mouseY, target.innerHTML, parentWidth, parentHeight);
-            }
+            setTimeout(function() {
+                if(target != t.lastHoverTarget) {
+                    return;
+                }
 
+                if(target.tagName == 'A' && target.className == 'strongs') {
+                    // this.log('mouseY options', inEvent.offsetY, inEvent.y, inEvent.pageY, inEvent.movementY, inEvent.screenY);
+                    // this.hideHoverDialogs(); // uncomment in production
+                    // this.log('offset', inEvent.offsetY);
+                    // this.log('pWidth', parentWidth);
+                    // this.log('pHeight', parentHeight);
+                    // this.log('inEvent', inEvent);
+                    // this.log('mouseY', mouseY);
+                    t.$.StrongsHover && t.$.StrongsHover.displayPosition(mouseX, mouseY, target.innerHTML, parentWidth, parentHeight);
+                }
+            }, hoverIntentThres);
         }
     },
     handleMouseOut: function(inSender, inEvent) {

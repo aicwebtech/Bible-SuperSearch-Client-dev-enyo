@@ -22,7 +22,7 @@ module.exports = kind({
     name: 'SettingsDialog',
     kind: Dialog,
     maxWidth: '350px',
-    height: '475px',
+    height: '575px',
     classes: 'help_dialog bible_settings',
     bibleString: null,
 
@@ -32,8 +32,7 @@ module.exports = kind({
     
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, tag: 'h3', content: 'Settings'}, 
-            // {tag: 'h4', content: 'Here\'s a reading list to get you started'}, 
+            {kind: i18n, classes: 'bss_dialog_title', content: 'Settings'}, 
         ]}
     ],
 

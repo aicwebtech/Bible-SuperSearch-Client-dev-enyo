@@ -21,8 +21,7 @@ module.exports = kind({
     
     titleComponents: [
         {classes: 'header', components: [
-            // {tag: 'br'},
-            {kind: i18n, tag: 'h3', content: 'History'}
+            {kind: i18n, classes: 'bss_dialog_title', content: 'History'}
         ]}
     ],
 

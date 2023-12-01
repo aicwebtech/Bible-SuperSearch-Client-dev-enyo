@@ -18,6 +18,7 @@ module.exports = kind({
     height: '475px',
     classes: 'help_dialog bible_sos',
     bibleString: null,
+    titleBarHeight: 64,
     
     published: {
         list: [
@@ -59,10 +60,8 @@ module.exports = kind({
 
     titleComponents: [
         {classes: 'header', components: [
-            // {tag: 'br'},
-            // {tag: 'h2', content: 'Bible SOS'}, 
-            {kind: i18n, tag: 'h3', content: 'Emergency Help from the Bible'}, 
-            {kind: i18n, tag: 'h4', content: 'Where to go When ...'}, 
+            {kind: i18n, classes: 'bss_dialog_title', content: 'Emergency Help from the Bible'}, 
+            {kind: i18n, classes: 'bss_dialog_subtitle', content: 'Where to go When ...'}, 
         ]}
     ],
 

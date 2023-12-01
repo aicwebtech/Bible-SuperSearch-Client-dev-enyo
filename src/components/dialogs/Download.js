@@ -29,7 +29,7 @@ module.exports = kind({
     
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, tag: 'h3', content: 'Bible Downloads'}
+            {kind: i18n, classes: 'bss_dialog_title', content: 'Bible Downloads'}
         ]}
     ],
     bodyComponents: [

@@ -11,6 +11,9 @@ module.exports = kind({
     maxHeight: null,
     classes: 'biblesupersearch_dialog',
 
+    titleBarHeight: 36, // private
+    buttonBarHeight: 36, // private
+
     published: {
         title: null,
     },
@@ -70,18 +73,18 @@ module.exports = kind({
         this.processDimensions();
     },
     processDimensions: function() {
-        this.log();
-
         var docWidth = document.documentElement.clientWidth,
             docHeight = document.documentElement.clientHeight,
             maxHeightDoc = docHeight - 10;
             style = '',
             height = parseInt(this.height, 10),
             headerHeight = 0,
-            smallScreen = false;
+            smallScreen = false,
+            n = this.name;
 
-        this.log('docHeight', docHeight);
-        this.log('raw Height', height);
+        this.log(n, 'docHeight', docHeight);
+        this.log(n, 'raw Height', this.height);
+        this.log(n, 'parsed Height', height);
         
         if(this.maxWidth) {
             style += 'max-width: ' + this.maxWidth + '; ';
@@ -116,26 +119,26 @@ module.exports = kind({
             headerHeight += element.offsetHeight;
             headerHeight += parseInt(style.marginTop, 10);
             headerHeight += parseInt(style.marginBottom, 10);
-            //headerHeight += this.scrollExtraMargin[item] || 0;
         }, this);
 
-        //headerHeight = 100;
-        headerHeight = headerHeight < 120 ? 120 : headerHeight;
+        var minHeaderHeight = this.titleBarHeight + this.buttonBarHeight + 10;
+        headerHeight = headerHeight < minHeaderHeight ? minHeaderHeight : headerHeight;
 
         // height = height > docHeight ? docHeight : height;
-        this.log('headerHeight', headerHeight);
+        this.log(n, 'headerHeight', headerHeight);
 
         var bodyHeight = height - headerHeight;
 
-        this.log('adusted h', height);
+        this.log(n, 'adusted h', height);
 
         style += 'height: ' + height + 'px; ';
         
         if(smallScreen) {
-            // style += 'margin-top: 5px; margin-bottom: 5px';
-            style += 'top: 5px; bottom: 5px;';
+            style += 'margin-top: 5px; margin-bottom: 5px';
+            // style += 'top: 5px; bottom: 5px;';
         } else {
-            style += 'margin-top: calc(50vh - ' + height + 'px / 2);'; // Vertical align using height
+            //style += 'margin-top: calc(50vh - ' + height + 'px / 2);'; // Vertical align using height
+            style += 'margin-top: calc(50vh - ' + height / 2 + 'px);'; // Vertical align using height
         }
 
 
@@ -144,9 +147,9 @@ module.exports = kind({
         var bodyStyle = 'max-height: ' + bodyHeight + 'px; ';
         this.$.Body.setStyle(bodyStyle);
 
-        this.log('smallScreen', smallScreen);
-        this.log('Container style', style);
-        this.log('Body style', bodyStyle);
+        this.log(n, 'smallScreen', smallScreen);
+        this.log(n, 'Container style', style);
+        this.log(n, 'Body style', bodyStyle);
     },
     handleKey: function(inSender, inEvent) {
         if(inEvent.code == 'Escape') {

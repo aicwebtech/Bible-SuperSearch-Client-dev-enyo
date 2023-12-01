@@ -443,6 +443,26 @@ div.alert_dialog {
 /*    position: relative;*/
 }
 
+.biblesupersearch_dialog .dialog .title {
+    padding: 8px;
+}
+
+.biblesupersearch_dialog .bss_dialog_title, .biblesupersearch_dialog .bss_dialog_subtitle {
+    font-weight: bold;
+    display: block;
+}
+
+.biblesupersearch_dialog .bss_dialog_title {
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.biblesupersearch_dialog .bss_dialog_subtitle {
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 12px;
+}
+
 .dialog .content {
     overflow-y: auto;
 }
@@ -661,6 +681,10 @@ div.alert_dialog {
 
 .checkbox_container .element {
     display: inline;
+}
+
+.checkbox_container label {
+    white-space: normal;
 }
 
 .biblesupersearch_copy_settings .settings {

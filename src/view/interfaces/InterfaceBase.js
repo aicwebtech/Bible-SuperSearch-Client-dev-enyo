@@ -78,6 +78,14 @@ module.exports = kind({
         //     });
         // }
     },
+    rendered: function() {
+        this.inherited(arguments);
+        var t = this;
+
+        document.body.addEventListener('click', function(e) {
+            t.handleTap(null, e);
+        }); 
+    },
     handleTap: function(inSender, inEvent) {
         this.waterfall('onGlobalTap', {sender: inSender, e: inEvent});
     },
