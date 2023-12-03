@@ -94,36 +94,36 @@ var biblesupersearch_config_options = {
     // set to false to completely disable.
     // minWidth and maxBibles must be in ascending order across each config, otherwise the entire config is ignored
     "parallelBibleLimitByWidth": [
-        {
-            'minWidth': 0,       // Minimum width, in pixels.  Default: 0,
-            'maxBibles': 2,     // Maximum number of parallel Bible selectors displayed.  Default: 1.
-            'minBibles': 1,     // Minimum number of parallel Bible selectors displayed.  Default: 1.
-            'startBibles': 1    // Number of parallel Bible selectors to be displayed when first page first loaded.  Default: 1.
-        },
-        {
-            'minWidth': 250, 
-            'maxBibles': 3,
-            'minBibles': 1,
-            'startBibles': 1
-        },
-        {
-            'minWidth': 500, 
-            'maxBibles': 4,
-            'minBibles': 1,
-            'startBibles': 2
-        },        
-        {
-            'minWidth': 1000, 
-            'maxBibles': 6,
-            'minBibles': 2,
-            'startBibles': 2
-        },
-        {
-            'minWidth': 1500, 
-            'maxBibles': 'max',   // 'max' presents the maximim parallel Bibles allowed by the selected skin
-            'minBibles': 2,
-            'startBibles': 4
-        },
+        // {
+        //     'minWidth': 0,       // Minimum width, in pixels.  Default: 0,
+        //     'maxBibles': 2,     // Maximum number of parallel Bible selectors displayed.  Default: 1.
+        //     'minBibles': 1,     // Minimum number of parallel Bible selectors displayed.  Default: 1.
+        //     'startBibles': 1    // Number of parallel Bible selectors to be displayed when first page first loaded.  Default: 1.
+        // },
+        // {
+        //     'minWidth': 250, 
+        //     'maxBibles': 3,
+        //     'minBibles': 1,
+        //     'startBibles': 1
+        // },
+        // {
+        //     'minWidth': 500, 
+        //     'maxBibles': 4,
+        //     'minBibles': 1,
+        //     'startBibles': 2
+        // },        
+        // {
+        //     'minWidth': 1000, 
+        //     'maxBibles': 6,
+        //     'minBibles': 2,
+        //     'startBibles': 2
+        // },
+        // {
+        //     'minWidth': 1500, 
+        //     'maxBibles': 'max',   // 'max' presents the maximim parallel Bibles allowed by the selected skin
+        //     'minBibles': 2,
+        //     'startBibles': 4
+        // },
     ],
 
 
@@ -282,6 +282,14 @@ var biblesupersearch_config_options = {
     // Users can change this via general settings or copy settings
     // Options: paragraph, passage, verse, verse_passage
     'textDisplayDefault': 'passage',
+
+    // Click to open Strong's dialog
+    // Whether clicking on Strong's number will open the dialog, otherwise clicking the link will search for the Strong's
+    // Options: 
+    //  'none': Clicking link always searches
+    //  'mobile': Clicking link opens dialog for mobile devices only
+    //  'always': Clicking link always opens dialog
+    'strongsOpenClick': 'mobile',
 
     // Include toggling to an 'advanced search' form
     // Some interfaces may force this to false

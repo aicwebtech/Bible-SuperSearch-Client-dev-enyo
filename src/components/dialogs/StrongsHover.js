@@ -5,6 +5,11 @@ var utils = require('enyo/utils');
 var Image = require('../Image');
 var StrongsView = require('../../view/results/StrongsView');
 
+var Button = require('enyo/Button');
+var Anchor = require('enyo/Anchor');
+var LinkBuilder = require('../Link/LinkBuilder');
+var i18n = require('../Locale/i18nContent');
+
 module.exports = kind({
     name: 'StongsHoverDialog',
     kind: Dialog,
@@ -28,11 +33,25 @@ module.exports = kind({
                 },
                 {content: 'Loading, please wait ...', style: 'padding: 10px; font-weight: bold'},
             ]},
-            {name: 'ContentContainer', style: 'width: 400px', kind: StrongsView}
+            {name: 'ContentContainer', style: 'width: 400px', kind: StrongsView},
+            {
+                name: 'ButtonConteiner',
+                classes: 'buttons biblesupersearch_center_element',
+                style: 'width: 400px',
+                components: [
+                    // {name: 'Link', kind: Button, ontap: 'link', components: [
+                    //     {kind: i18n, content: 'Search'},
+                    // ]},
+                    // {tag: 'span', classes: 'spacer'},
+                    {name: 'Close', kind: Button, ontap: 'close', components: [
+                        {kind: i18n, content: 'Close'},
+                    ]}     
+                ]
+            }
         ]}
     ],
 
-    displayPosition: function(top, left, content, parentWidth, parentHeight) {
+    displayPosition: function(top, left, content, parentWidth, parentHeight, showButtons) {
         this.inherited(arguments);
         this.strongsRaw = content;
 
@@ -60,7 +79,10 @@ module.exports = kind({
         ajax.error(this, 'handleError');
     },
     handleResponse: function(inSender, inResponse) {
+        this.set('showing', true);
+
         if(!this.get('showing')) {
+            this.app.debug && this.log('Strongs dialog not showing, exiting');
             return;
         }
 

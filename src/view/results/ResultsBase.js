@@ -47,7 +47,7 @@ module.exports = kind({
         onmouseout: 'handleMouseOut',
         onLocaleChange: 'handleLocaleChange',
         ontap: 'handleClick',
-        onGlobalTap: 'handleClick'
+        // onGlobalTap: 'handleClick'
     },
 
     components: [
@@ -316,7 +316,12 @@ module.exports = kind({
             text = text.replace(/[GHgh][0-9]+/g, utils.bind(this, function(match, offset, string) {
                 // This link not working for a URL that ends in a file (ie biblesupersearch.html)
                 var url = '#/strongs/' + this.biblesStr + '/' + match;
-                return '<a class="strongs" href="' + url + '">' + match + '</a>';
+
+                if(this.getStrongsOpenClick()) {
+                    return '<a class="strongs" href="' + url + '" onclick="return false;">' + match + '</a>';
+                } else {
+                    return '<a class="strongs" href="' + url + '">' + match + '</a>';
+                }
             }));
         }
         else {
@@ -381,7 +386,24 @@ module.exports = kind({
             classes: 'biblesupersearch_render_table'
         });
     },
+    getStrongsOpenClick: function() {
+        var strongsOpenClick = this.app.configs.strongsOpenClick;
 
+        switch(strongsOpenClick) {
+            case 'mobile':
+                strongsOpenClick = this.app.client.isMobile;
+                break;
+            case 'always':
+                strongsOpenClick = true;
+                break;
+            case 'none':
+            default:
+                strongsOpenClick = false;
+                break;
+        }
+
+        return strongsOpenClick;
+    },
     watchRenderable: function(pre, cur, prop) {
         this.renderResults();
     },
@@ -430,15 +452,14 @@ module.exports = kind({
         } 
 
         if(target != this.lastHoverTarget) {
-            // this.hideHoverDialogs();
             this.lastHoverTarget = target;
             this.lastHoverX = x;
             this.lastHoverY = y;
-            // this.log('inSender', inSender);
-            // this.app.debug && this.log('hover inEvent', inEvent);
 
             var mouseX = inEvent.clientX; //inEvent.screenX + inEvent.offsetX;
             var mouseY = inEvent.clientY; // + inEvent.offsetY;
+
+
 
             if(this.app.clientBrowser == 'IE') {
                 // apparently, do nothing - seems to position correctly?
@@ -448,13 +469,8 @@ module.exports = kind({
                 mouseY += window.scrollY;
             }
 
-            var parentWidth = inEvent.target.parentNode.offsetWidth;
+            var parentWidth  = inEvent.target.parentNode.offsetWidth;
             var parentHeight = inEvent.target.parentNode.offsetHeight;
-            // var parentHeight = this.hasNode().scrollHeight;
-            // var parentWidth  = this.hasNode().scrollWidth;
-            // var mouseX = inEvent.offsetX;
-            // var mouseY = inEvent.offsetY;
-            //this.$.StrongsHover.set('showing', false);
 
             var t = this;
 
@@ -464,14 +480,16 @@ module.exports = kind({
                 }
 
                 if(target.tagName == 'A' && target.className == 'strongs') {
-                    // this.log('mouseY options', inEvent.offsetY, inEvent.y, inEvent.pageY, inEvent.movementY, inEvent.screenY);
+                    // t.log('mouseX raw', inEvent.clientX);
+                    // t.log('mouseX', mouseX);
+                    // t.log('mouseY raw', inEvent.clientY);
+                    // t.log('mouseY', mouseY);
+                    // t.log('target.innerHTML', target.innerHTML);
+                    // t.log('parentWidth', parentWidth);
+                    // t.log('parentHeight', parentHeight);
+
                     // this.hideHoverDialogs(); // uncomment in production
-                    // this.log('offset', inEvent.offsetY);
-                    // this.log('pWidth', parentWidth);
-                    // this.log('pHeight', parentHeight);
-                    // this.log('inEvent', inEvent);
-                    // this.log('mouseY', mouseY);
-                    t.$.StrongsHover && t.$.StrongsHover.displayPosition(mouseX, mouseY, target.innerHTML, parentWidth, parentHeight);
+                    t.$.StrongsHover && t.$.StrongsHover.displayPosition(mouseX, mouseY, target.innerHTML, parentWidth, parentHeight, false);
                 }
             }, hoverIntentThres);
         }
@@ -482,8 +500,46 @@ module.exports = kind({
         }
     },
     handleClick: function(inSender, inEvent) {
+        var strongsOpenClick = this.getStrongsOpenClick();
+        target = inEvent.target;
+
+        if(strongsOpenClick && target.tagName == 'A' && target.className == 'strongs') {
+            inEvent.preventDefault();
+            // inEvent.stopPropagation();
+            inEvent.bubbling = false;
+
+            var mouseX = Math.round(inEvent.clientX); 
+            var mouseY = Math.round(inEvent.clientY); 
+
+            if(this.app.clientBrowser == 'IE') {
+                // apparently, do nothing - seems to position correctly?
+            }
+            else {
+                mouseX += window.scrollX;
+                mouseY += window.scrollY;
+            }
+
+            var parentWidth  = inEvent.target.parentNode.offsetWidth;
+            var parentHeight = inEvent.target.parentNode.offsetHeight;
+            
+            // this.log('mouseX raw', inEvent.clientX);
+            // this.log('mouseX', mouseX);
+            // this.log('mouseY raw', inEvent.clientY);
+            // this.log('mouseY', mouseY);
+            // this.log('target.innerHTML', target.innerHTML);
+            // this.log('parentWidth', parentWidth);
+            // this.log('parentHeight', parentHeight);
+
+            // this.hideHoverDialogs(); // uncomment in production
+            this.$.StrongsHover && this.$.StrongsHover.displayPosition(mouseX, mouseY, target.innerHTML, parentWidth, parentHeight, true);
+            this.$.StrongsHover && this.log('displaying Strongs dialog');
+            return true;
+        }
+
+
+        // no longer relavant
         if(inSender.name != 'DialogsContainer') {
-            this.hideHoverDialogs();
+            // this.hideHoverDialogs();
         }
     },
     handleKey: function(inSender, inEvent) {

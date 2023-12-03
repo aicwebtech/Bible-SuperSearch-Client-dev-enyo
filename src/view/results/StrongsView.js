@@ -9,7 +9,7 @@ module.exports = kind({
         var head = '';
         var text = '';
 
-        if(item.number.charAt(0) == "H"){
+        if(item.number.charAt(0) == "H") {
             var classes = 'item hebrew';
         }
         else {

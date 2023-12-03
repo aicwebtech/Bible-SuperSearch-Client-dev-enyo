@@ -22,8 +22,14 @@ module.exports = kind({
     parentWidth: null,
     widthMin: 400,
 
+    _lastTapTarget: null, // private
+    _showButtons: false, // private
+
     handlers: {
-        onmouseout: 'mouseOutHandler'
+        onmouseout: 'mouseOutHandler',
+        onmouseover: 'mouseOverHandler',
+        ontap: 'handleTap',
+        onGlobalTap: 'handleGlobalTap'
     },
 
     components: [
@@ -39,7 +45,10 @@ module.exports = kind({
         {name: 'ContentContainer'}
     ],
 
-    displayPosition: function(mouseX, mouseY, content, parentWidth, parentHeight) {
+    displayPosition: function(mouseX, mouseY, content, parentWidth, parentHeight, showButtons) {
+        this._showButtons = showButtons || false;
+        this.log('_showButtons', this._showButtons);
+
         // this.log('content', content);
         this.app.debug && this.log('mouseX', mouseX);
         this.app.debug && this.log('mouseY', mouseY);
@@ -91,11 +100,14 @@ module.exports = kind({
     showLoading: function() {
         this.$.LoadingContainer && this.$.LoadingContainer.set('showing', true);
         this.$.ContentContainer && this.$.ContentContainer.set('showing', false);
+        this.$.ButtonContainer && this.$.ButtonContainer.set('showing', false);
         this.reposition();
     },    
     showContent: function() {
         this.$.LoadingContainer && this.$.LoadingContainer.set('showing', false);
         this.$.ContentContainer && this.$.ContentContainer.set('showing', true);
+        this.log('_showButtons', this._showButtons);
+        this.$.ButtonContainer && this.$.ButtonContainer.set('showing', this._showButtons);
         this.reposition();
     },
     reposition: function() {
@@ -174,7 +186,24 @@ module.exports = kind({
         this.render();
     },
     mouseOutHandler: function(inSender, inEvent) {
-        // this.set('showing', false);
+        this.set('showing', false);
+    },
+    mouseOverHandler: function(inSender, inEvent) {
+        this.set('showing', true);
+    },
+    handleTap: function(inSender, inEvent) {
+        this._lastTapTarget = inEvent.target;
+    },
+    handleGlobalTap: function(inSender, inEvent) {
+        if(inEvent.e.target == this._lastTapTarget) {
+            // do nothing, tap was within the hover dialog, keep it open!
+        } else if(inEvent.e.target.tagName == 'A' && inEvent.e.target.className == 'strongs') {
+            // do nothing, tap was on a hover dialog link
+            this._lastTapTarget = null;
+        } else {
+            this._lastTapTarget = null;
+            this.set('showing', false);
+        }
     },
     getOwnerBounds: function() {
         if(!this.owner) {
@@ -191,5 +220,8 @@ module.exports = kind({
             width: rect.width || null,
             height: rect.height || null
         };
+    },
+    close: function() {
+        this.set('showing', false);
     }
 });
