@@ -441,6 +441,11 @@ module.exports = kind({
         var lastY = this.lastHoverY;
         var thres = 50;
         var hoverIntentThres = 1000;
+        var strongsOpenClick = this.getStrongsOpenClick();
+
+        if(strongsOpenClick) {
+            return; // If strongs is opened via click, don't open via hover!
+        }
 
         if((
             (x - thres <= lastX) && 
@@ -458,8 +463,6 @@ module.exports = kind({
 
             var mouseX = inEvent.clientX; //inEvent.screenX + inEvent.offsetX;
             var mouseY = inEvent.clientY; // + inEvent.offsetY;
-
-
 
             if(this.app.clientBrowser == 'IE') {
                 // apparently, do nothing - seems to position correctly?
@@ -480,6 +483,10 @@ module.exports = kind({
                 }
 
                 if(target.tagName == 'A' && target.className == 'strongs') {
+                    if(strongsOpenClick) {
+                        return; // If strongs is opened via click, don't open via hover!
+                    }
+
                     // t.log('mouseX raw', inEvent.clientX);
                     // t.log('mouseX', mouseX);
                     // t.log('mouseY raw', inEvent.clientY);

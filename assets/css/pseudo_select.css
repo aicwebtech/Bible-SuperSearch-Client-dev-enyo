@@ -29,6 +29,10 @@
     margin-left: -1px;
 }
 
+.bss_pseudo_autocomplete_input {
+    width: 99%;
+}
+
 .bss_pseudo_select_placeholder {
 	display: inline-block;
 	float: left;

@@ -16,7 +16,7 @@ module.exports = kind({
     showing: false,
     classes: 'strongs_hover',
     // style: '',
-    width: 300,
+    width: 400,
     height: 300,
 
     strongsCache: {},
@@ -33,11 +33,10 @@ module.exports = kind({
                 },
                 {content: 'Loading, please wait ...', style: 'padding: 10px; font-weight: bold'},
             ]},
-            {name: 'ContentContainer', style: 'width: 400px', kind: StrongsView},
+            {name: 'ContentContainer', kind: StrongsView},
             {
-                name: 'ButtonConteiner',
+                name: 'ButtonContainer',
                 classes: 'buttons biblesupersearch_center_element',
-                style: 'width: 400px',
                 components: [
                     // {name: 'Link', kind: Button, ontap: 'link', components: [
                     //     {kind: i18n, content: 'Search'},

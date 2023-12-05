@@ -112,9 +112,10 @@ module.exports = kind({
     },
     reposition: function() {
         this.set('showing', true);
-        var w = this.widthMin; // this.hasNode().scrollWidth;
+        var w = widthNew = this.widthMin; // this.hasNode().scrollWidth;
         var h = this.hasNode().scrollHeight;
         var myBounds = this.hasNode().getBoundingClientRect();
+        var bodyWidth = document.body.clientWidth;
        
         w = myBounds.width;
         h = Math.min(h, myBounds.height);
@@ -162,6 +163,17 @@ module.exports = kind({
             posX = this.mouseX - w - this.offsetX;
         }
 
+        if(bodyWidth < widthNew) {
+            posX = 0;
+            widthNew = bodyWidth;
+        }
+
+        posX = (posX < 0) ? 0 : posX;
+
+        if(posX + widthNew > bodyWidth) {
+            posX - bodyWidth - widthNew;
+        }
+
         if(yOuter > hMax) {
             this.app.debug && this.log('Y adjusted');
 
@@ -182,7 +194,7 @@ module.exports = kind({
 
         this.applyStyle('left', posX + 'px');
         this.applyStyle('top', posY + 'px');
-        this.applyStyle('width', this.widthMin + 'px');
+        this.applyStyle('width', widthNew + 'px');
         this.render();
     },
     mouseOutHandler: function(inSender, inEvent) {

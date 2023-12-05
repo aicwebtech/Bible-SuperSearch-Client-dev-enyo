@@ -37,7 +37,7 @@ module.exports = kind({
 		{
 			name: 'Visible', 
 			ontap: 'handleVisableTap',
-			classes: 'bss_pseudo_select_visable',
+			classes: 'bss_pseudo_select_visible',
 			components: [
 				{
 					name: 'Placeholder',

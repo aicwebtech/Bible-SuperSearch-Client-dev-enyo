@@ -31,7 +31,8 @@ module.exports = kind({
 		//this.setAttribute('title', this.get('content'));
 	},
 	handleTap: function() {
-		this.bubble('onPseudoOptionTap', {value: this.value, content: this.content, string: this.string, type: 'option'});
+		this.log();
+        this.bubble('onPseudoOptionTap', {value: this.value, content: this.content, string: this.string, type: 'option'});
 	},
 	clearSelection: function() {
 		this.set('selection', false);
