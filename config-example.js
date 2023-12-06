@@ -136,6 +136,20 @@ var biblesupersearch_config_options = {
     // Form will remain blank, and URL will not change.
     "landingReference": '',
 
+    // Autocomplete Settings
+
+    // Whether to enable auto-complete
+    "autocompleteEnable": false,
+
+    // Minimum characters for autocomplete to be triggered
+    "autocompleteThreshold": 2,
+
+    // Whether to match anywhere in the given option / Book name
+    // If false, we only match at the beginning of the name
+    "autocompleteMatchAnywhere": true,
+
+    // Maximum number of autocomplete options to show at once.
+    "autocompleteMaximumOptions": 10,
 
     // Bible SuperSearch skin / interface   (string)
     //      Select an interface below by uncommenting the one that you want to use

@@ -9,6 +9,8 @@ module.exports = kind({
     kind: Dialog,
     width: '200px',
     height: '130px',
+    titleBarHeight: 0, // private
+    buttonBarHeight: 0, // private
 
     bodyComponents: [
         {

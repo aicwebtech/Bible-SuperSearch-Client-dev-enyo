@@ -9,6 +9,16 @@
 	cursor: default;
 }
 
+.bss_pseudo_autocomplete {
+    position: relative;
+    display: inline-block;
+
+    height: 17px;
+    background-color: white;
+    font-size: 13px;
+    cursor: default;
+}
+
 .bss_pseudo_select_visable {
 	margin: 0;
 }

@@ -38,10 +38,12 @@ module.exports = kind({
                 name: 'ButtonContainer',
                 classes: 'buttons biblesupersearch_center_element',
                 components: [
-                    // {name: 'Link', kind: Button, ontap: 'link', components: [
-                    //     {kind: i18n, content: 'Search'},
-                    // ]},
-                    // {tag: 'span', classes: 'spacer'},
+                    {name: 'Link', kind: Button, ontap: 'followLink', components: [
+                        {kind: i18n, content: 'Search for'},
+                        {tag: 'span', content: '&nbsp;', allowHtml: true},
+                        {tag: 'span', name: 'SearchFor'}
+                    ]},
+                    {tag: 'span', classes: 'spacer'},
                     {name: 'Close', kind: Button, ontap: 'close', components: [
                         {kind: i18n, content: 'Close'},
                     ]}     
@@ -50,9 +52,13 @@ module.exports = kind({
         ]}
     ],
 
+    bindings: [
+        {from: 'strongsRaw', to: '$.SearchFor.content'}
+    ],
+
     displayPosition: function(top, left, content, parentWidth, parentHeight, showButtons) {
         this.inherited(arguments);
-        this.strongsRaw = content;
+        this.set('strongsRaw', content);
 
         if(this._loadFromCache(content)) {
             this.showContent();
@@ -107,5 +113,11 @@ module.exports = kind({
         this.$.ContentContainer._addStrongs(this.strongsCache[strongs]);
         this.$.ContentContainer.render();
         return true;
+    },
+    followLink: function() {
+        //http://ui-dev.bss.plsv/#/strongs/kjv_strongs/H5612
+
+        var url = '/#/strongs/' + this.app.getSelectedBiblesString() + '/' + this.strongsRaw;
+        window.location = url;
     }
 });

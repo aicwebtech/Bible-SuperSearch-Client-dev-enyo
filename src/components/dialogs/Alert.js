@@ -10,6 +10,8 @@ module.exports = kind({
     // kind: HoverDialog,
     width: '400px',
     height: '50px',
+    titleBarHeight: 0, // private
+    buttonBarHeight: 0, // private
     classes: 'alert_dialog',
     showing: false,
     alert: '',

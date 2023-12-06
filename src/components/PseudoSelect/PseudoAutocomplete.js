@@ -7,7 +7,7 @@ var Input = require('enyo/Input');
 
 module.exports = kind({
 	name: 'PseudoAutocomplete',
-	classes: 'bss_pseudo_select',
+	classes: 'bss_pseudo_autocomplete',
 	toggled: false, // whether full drop down menu is showing.
 	value: null, // Selected Index
 	optionComponents: [],
@@ -47,7 +47,7 @@ module.exports = kind({
 	components: [
 		{
 			name: 'Visible', 
-			classes: 'bss_pseudo_select_visible',
+			classes: 'bss_pseudo_autocomplete_visible',
 			components: [
 				{
 					name: 'Input',
@@ -93,7 +93,11 @@ module.exports = kind({
         this.set('toggled', false);
         this.destroyOptionControls();
 
-        if(!value || value == '') {
+        if(!value || value == '' || 
+            value.length < this.app.configs.autocompleteThreshold || 
+            !this.app.configs.autocompleteEnable || 
+            this.app.configs.autocompleteEnable == 'false'
+        ) {
             return;
         }
         
@@ -110,15 +114,17 @@ module.exports = kind({
             lastComma = value.lastIndexOf(','),
             lastSemiColon = value.lastIndexOf(';'),
             split = Math.max(lastComma, lastSemiColon),
-            valuePrefix = value.substring(0, split),
+            valuePrefix = value.substring(0, split + 1),
             valueBook = value.substring(split + 1).trim(),
             contentPrefix = valuePrefix ? '... ' : '';
+        
+        valuePrefix += valuePrefix ? ' ' : '';
 
         this.log('value', value);
         this.log('valuePrefix', valuePrefix);
         this.log('valueBook', valueBook);
 
-        if(!valueBook || valueBook == '') {
+        if(!valueBook || valueBook == '' || valueBook.length < this.app.configs.autocompleteThreshold) {
             return [];
         }
 
@@ -129,7 +135,7 @@ module.exports = kind({
         }
 
         books.forEach(function(item) {
-            opts.push({content: contentPrefix + item.name, value: valuePrefix + ' ' + item.name});
+            opts.push({content: contentPrefix + item.name, value: valuePrefix + item.name});
         });
 
         // this.log('sof', sof);
@@ -178,6 +184,10 @@ module.exports = kind({
 
             return false;
         });
+
+        if(!this.app.configs.autocompleteMatchAnywhere || this.app.configs.autocompleteMatchAnywhere == 'false') {
+            return books;
+        }
 
         // Pass 2: Partial match
         if(!books || books.length == 0) {
@@ -258,6 +268,7 @@ module.exports = kind({
         if(inEvent.type == 'option') {		
 			this.set('toggled', false);
 			//this.$.Input.set('value', inEvent.value);
+            this.$.Input.hasNode().focus();
 			this.set('value', inEvent.value);
 			this.bubble('onchange');
 		}
