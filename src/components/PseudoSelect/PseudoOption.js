@@ -1,5 +1,6 @@
 var kind = require('enyo/kind');
 var i18n = require('../Locale/i18nComponent');
+var Signal = require('../../components/Signal');
 
 module.exports = kind({
 	name: 'PseudoOption',
@@ -7,6 +8,7 @@ module.exports = kind({
 	classes: 'bss_pseudo_option',
 	value: null,
 	selected: false,
+    keyboardSelected: false,
 	grouped: false, // whether part of an optgroup
     valueTranslate: false, // whether the value needs to be translated
     valueVerses: false, // For translation, whether the value has verses
@@ -16,8 +18,12 @@ module.exports = kind({
 	handlers: {
 		ontap: 'handleTap',
 		onClearSelections: 'clearSelection',
+        onClearKeyboardSelections: 'clearKeyboardSelection',
 		onSetValue: 'handleSetValue',
-        onToggledChanged: 'handleToggledChanged'
+        onToggledChanged: 'handleToggledChanged', 
+        keydown: 'handleKeyDown',
+        keyup: 'handleKeyUp',
+        keypress: 'handleKeyPress'
 	},
 	create: function() {
 		this.inherited(arguments);
@@ -34,13 +40,32 @@ module.exports = kind({
 		this.log();
         this.bubble('onPseudoOptionTap', {value: this.value, content: this.content, string: this.string, type: 'option'});
 	},
+    handleKeyDown: function(inSender, inEvent) {
+        this.log(inSender, inEvent);
+
+        if(this.keyboardSelected && inEvent.keyCode == 13) {
+            this.handleTap();  // Treat return as a click/tap
+        }
+    },
+    handleKeyUp: function(inSender, inEvent) {
+        this.log(inSender, inEvent);
+    },    
+    handleKeyPress: function(inSender, inEvent) {
+        this.log(inSender, inEvent);
+    },
 	clearSelection: function() {
 		this.set('selection', false);
-	},
+	}, 
+    clearKeyboardSelection: function() {
+        this.set('keyboardSelected', false);
+    },
 	selectedChanged: function(was, is) {
 		this.addRemoveClass('bss_pseudo_selected', !!this.selected);
 		this.addRemoveClass('bss_pseudo_not_selected', !this.selected);
 	},
+    keyboardSelectedChanged: function(was, is) {
+        this.addRemoveClass('bss_pseudo_keyboard_selected', !!this.keyboardSelected);
+    },
 	groupedChanged: function() {
 		this.addRemoveClass('bss_pseudo_option_grouped', !!this.grouped);
 	},

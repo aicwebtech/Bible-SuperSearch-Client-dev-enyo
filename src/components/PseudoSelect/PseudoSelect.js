@@ -2,12 +2,14 @@ var kind = require('enyo/kind');
 var Opt = require('./PseudoOption');
 var Placeholder = require('./PseudoPlaceholder');
 var i18n = require('../Locale/i18nComponent');
+var Signal = require('../../components/Signal');
 
 module.exports = kind({
 	name: 'PseudoSelect',
 	classes: 'bss_pseudo_select',
 	toggled: false, // whether full drop down menu is showing.
 	selected: null, // Selected Index
+    keyboardSelected: null,
 	optionComponents: [],
 	hasOptions: false,
 	defaultPlaceholder: '&nbsp;',
@@ -68,7 +70,12 @@ module.exports = kind({
 			classes: 'bss_pseudo_select_toggle',
 			showing: false,
 			defaultKind: Opt
-		}
+		}, 
+        {
+            kind: Signal,
+            onkeyup: 'handleKeyUp',
+            onkeydown: 'handleKeyDown'
+        }
 	],
 
 	create: function() {
@@ -163,7 +170,61 @@ module.exports = kind({
 
 		this._afterValueChanged(control);
 	},
-	resetValue: function() {
+    handleKeyUp: function(inSender, inEvent) {
+        if(!this.get('toggled')) {
+            return;
+        }
+
+        this.log(inSender, inEvent);
+
+        var code = inEvent.keyCode || null;
+
+        if(code != 13 && code != 38 && code != 40) {
+            // var value = this.$.Input.get('value');
+            // this.autocomplete(value);
+            // do something?
+        }
+    },
+	handleKeyDown: function(inSender, inEvent) {
+        if(!this.get('toggled')) {
+            return;
+        }
+
+        this.log(inSender, inEvent);
+
+        var code = inEvent.keyCode || null;
+
+        if(code == 38 || code == 40) {
+            inEvent.preventDefault();
+            var dir = code == 38 ? -1 : 1;
+            this.moveSelection(dir); // define me
+        } 
+        else if(code == 13) {
+            // item has been selected, set it as value
+            this.setSelected(this.keyboardSelected);
+        }
+    },
+
+    moveSelection: function(dir) {
+        if(!this.get('toggled')) {
+            return;
+        }
+
+        var sel = this.get('keyboardSelected');
+
+        sel = (sel == null) ? -1 : sel;
+
+        var selNew = sel + dir;
+
+
+        //selNew = selNew >= 0 ? selNew : -1;
+
+        this.log(dir, sel, selNew);
+
+        this.setKeyboardSelected(sel + dir);
+    },
+
+    resetValue: function() {
 
 		if(this.hasOptions) {
 			controls = this.$.Toggle.getClientControls();
@@ -247,7 +308,8 @@ module.exports = kind({
 
                     top += height + margin;
                 }
-            }
+            } 
+
 
             // if(client.isMobile) {
             //     top += 4;
@@ -261,12 +323,18 @@ module.exports = kind({
                 left: 0, 
                 behavior: 'instant' // intentionally hardcoded
             });
+        } else {
+            this._clearKeyboardSelected();
         }
 	},
 	_clearSelected: function() {
 		/* private */
 		this.waterfall('onClearSelections');
-	},
+	}, 
+    _clearKeyboardSelected: function() {
+        /* private */
+        this.waterfall('onClearKeyboardSelections');
+    },
 	setSelected: function(index) {
 		this._clearSelected();
 
@@ -284,7 +352,23 @@ module.exports = kind({
 			this.value = null;
 		}
 
-	},
+	}, 
+    setKeyboardSelected: function(index) {
+        this._clearKeyboardSelected();
+        this.keyboardSelected = index;
+
+        controls = this.$.Toggle.getClientControls();
+
+        if(index && controls[index]) {
+            controls[index].set('keyboardSelected', true);
+
+            // this.log('has option', index);
+
+        } else if(index == null || !this.hasOptions) {
+            // this.log('null option', index);
+        }
+
+    },
 	setSelectedByValue: function(value, defaultIndex) {
         var value = value || 0,
             controls = this.$.Toggle.getClientControls();

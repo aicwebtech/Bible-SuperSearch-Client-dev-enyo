@@ -135,7 +135,7 @@ module.exports = kind({
         }
 
         books.forEach(function(item) {
-            opts.push({content: contentPrefix + item.name, value: valuePrefix + item.name});
+            opts.push({content: contentPrefix + item.name, value: valuePrefix + item.name + ' '});
         });
 
         // this.log('sof', sof);
@@ -270,9 +270,26 @@ module.exports = kind({
 			//this.$.Input.set('value', inEvent.value);
             this.$.Input.hasNode().focus();
 			this.set('value', inEvent.value);
+            this.cursorAtEnd();
 			this.bubble('onchange');
 		}
 	},
+    cursorAtEnd: function() {
+        var end = this.$.Input.hasNode(),
+            value = this.$.Input.get('value'),
+            len = value.length;
+
+            if (end.setSelectionRange) {
+                end.focus();
+                end.setSelectionRange(len, len);
+            } else if (end.createTextRange) {
+                var t = end.createTextRange();
+                t.collapse(true);
+                t.moveEnd('character', len);
+                t.moveStart('character', len);
+                t.select();
+            }
+    },
 	valueChanged: function(was, is) {
 		// var controls = this.$.Toggle.getClientControls(),
 		// 	control = controls[this.valueIdxMap[is]] || null;
