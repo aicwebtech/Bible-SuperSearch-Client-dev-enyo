@@ -10,6 +10,7 @@ module.exports = kind({
 	toggled: false, // whether full drop down menu is showing.
 	selected: null, // Selected Index
     keyboardSelected: null, // Keyboard selected Index
+    keyboardSelectedInit: null,
 	optionComponents: [],
 	hasOptions: false,
 	defaultPlaceholder: '&nbsp;',
@@ -175,7 +176,7 @@ module.exports = kind({
             return;
         }
 
-        this.log(inSender, inEvent);
+        // this.log(inSender, inEvent);
 
         var code = inEvent.keyCode || null;
 
@@ -190,7 +191,7 @@ module.exports = kind({
             return;
         }
 
-        this.log(inSender, inEvent);
+        // this.log(inSender, inEvent);
 
         var code = inEvent.keyCode || null;
 
@@ -225,9 +226,17 @@ module.exports = kind({
 
         selNew = selNew >= 0 ? selNew : -1;
 
+        this.log('dir', dir);
+        this.log('raw Sel', this.get('keyboardSelected'));
+
         this.log(dir, sel, selNew);
 
         this.setKeyboardSelected(selNew);
+
+        if(this.keyboardSelectedInit == null || selNew < this.keyboardSelectedInit || selNew > this.keyboardSelectedInit + 10) {
+            this.keyboardSelectedInit = null;
+            this._toggleScrollHelper(selNew);
+        }
     },
 
     resetValue: function() {
@@ -272,7 +281,11 @@ module.exports = kind({
 
         if(this.toggled) {
             var idx = this.valueIdxMap[ this.get('value') ];
-            this.set('keyboardSelected', this.get('selected'));
+
+            idx = parseInt(idx, 10);
+            this.log('selected', idx);
+            this.set('keyboardSelected', idx);
+            this.set('keyboardSelectedInit', idx);
 
             this._toggleScrollHelper(idx);
 
@@ -388,7 +401,7 @@ module.exports = kind({
         //     top += 4;
         // }
 
-        this.app.debug && this.log(idx, top);
+        // this.app.debug && this.log(idx, top);
 
         this.$.Toggle.hasNode() && this.$.Toggle.hasNode().scrollTo({
             // top: 1300, 
@@ -424,6 +437,7 @@ module.exports = kind({
 		}
 	}, 
     setKeyboardSelected: function(index) {
+        this.log(index);
         this._clearKeyboardSelected();
         this.keyboardSelected = index;
 
@@ -431,10 +445,8 @@ module.exports = kind({
 
         if(index && controls[index]) {
             controls[index].set('keyboardSelected', true);
-            this._toggleScrollHelper(index);
-
+            // controls[index].hasNode().focus();
             // this.log('has option', index);
-
         } else if(index == null || !this.hasOptions) {
             // this.log('null option', index);
         }
