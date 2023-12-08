@@ -9,7 +9,7 @@ module.exports = kind({
 	classes: 'bss_pseudo_select',
 	toggled: false, // whether full drop down menu is showing.
 	selected: null, // Selected Index
-    keyboardSelected: null,
+    keyboardSelected: null, // Keyboard selected Index
 	optionComponents: [],
 	hasOptions: false,
 	defaultPlaceholder: '&nbsp;',
@@ -202,6 +202,8 @@ module.exports = kind({
         else if(code == 13) {
             // item has been selected, set it as value
             this.setSelected(this.keyboardSelected);
+            this.set('toggled', false);
+            this.bubble('onchange');
         }
     },
 
@@ -210,18 +212,22 @@ module.exports = kind({
             return;
         }
 
-        var sel = this.get('keyboardSelected');
+        var controls = this.$.Toggle.getClientControls(),
+            sel = this.get('keyboardSelected');
 
         sel = (sel == null) ? -1 : sel;
 
         var selNew = sel + dir;
 
+        if(controls[selNew] && !controls[selNew].hasClass('bss_pseudo_option')) {
+            selNew += dir;
+        } 
 
-        //selNew = selNew >= 0 ? selNew : -1;
+        selNew = selNew >= 0 ? selNew : -1;
 
         this.log(dir, sel, selNew);
 
-        this.setKeyboardSelected(sel + dir);
+        this.setKeyboardSelected(selNew);
     },
 
     resetValue: function() {
@@ -258,81 +264,146 @@ module.exports = kind({
 		this.waterfall('onSetValue', {value: this.get('value')});
 	},
 	toggledChanged: function(was, is) {
-		this.addRemoveClass('bss_pseudo_option_show', !!this.toggled);
+		this._clearKeyboardSelected();
+        this.addRemoveClass('bss_pseudo_option_show', !!this.toggled);
 		this.$.Toggle.set('showing', !!this.toggled);
 
         this.waterfall('onToggleChanged', {toggled: this.toggled});
 
         if(this.toggled) {
             var idx = this.valueIdxMap[ this.get('value') ];
-            var controls = this.$.Toggle.getClientControls();
-            var top = 0;
-            var margin = 5;
-            var client = this.app.get('client');
-            var optGroups = 0;
-            var isOptGroup = false;
+            this.set('keyboardSelected', this.get('selected'));
 
-            for(var i = 0; i < idx; i++) {
-                if(controls[i].hasNode()) {
-                    if(controls[i].hasClass('bss_pseudo_optgroup')) {
-                        isOptGroup = true;
-                        optGroups ++;
-                    }
+            this._toggleScrollHelper(idx);
 
-                    styles = window.getComputedStyle(controls[i].hasNode());
-                    margin =    parseFloat(styles['marginTop']) +
-                                parseFloat(styles['marginBottom']);
-                    height = controls[i].hasNode().offsetHeight;
-
-                    // this.log(controls[i].get('content'));
-                    // this.log('height', height);
-                    // this.log('margin', margin);
-                    // this.log('total', height + margin);
-
-                    if(client.isMobile) {
-                        if(isOptGroup && optGroups > 1) {
-                            height += 0.35;
-                        }
-
-                        if(!isOptGroup) {                        
-                            if(height > 15) {
-                                mult = Math.floor(height / 15);
-                                height -= mult * 2;
-                            } else {
-                                //height -= 2;
-                            }
-                        }
-                    }
-
-                    //this.log('node', controls[i].hasNode().offsetHeight, height, margin);
-
-                    top += height + margin;
-                }
-            } 
+            // var controls = this.$.Toggle.getClientControls();
+            // var top = 0;
+            // var margin = 5;
+            // var client = this.app.get('client');
+            // var optGroups = 0;
+            // var isOptGroup = false;
 
 
-            // if(client.isMobile) {
-            //     top += 4;
-            // }
+            // for(var i = 0; i < idx; i++) {
+            //     if(controls[i].hasNode()) {
+            //         if(controls[i].hasClass('bss_pseudo_optgroup')) {
+            //             isOptGroup = true;
+            //             optGroups ++;
+            //         }
 
-            this.app.debug && this.log(idx, top);
+            //         styles = window.getComputedStyle(controls[i].hasNode());
+            //         margin =    parseFloat(styles['marginTop']) +
+            //                     parseFloat(styles['marginBottom']);
+            //         height = controls[i].hasNode().offsetHeight;
 
-            this.$.Toggle.hasNode() && this.$.Toggle.hasNode().scrollTo({
-                // top: 1300, 
-                top: top, 
-                left: 0, 
-                behavior: 'instant' // intentionally hardcoded
-            });
-        } else {
-            this._clearKeyboardSelected();
+            //         // this.log(controls[i].get('content'));
+            //         // this.log('height', height);
+            //         // this.log('margin', margin);
+            //         // this.log('total', height + margin);
+
+            //         if(client.isMobile) {
+            //             if(isOptGroup && optGroups > 1) {
+            //                 height += 0.35;
+            //             }
+
+            //             if(!isOptGroup) {                        
+            //                 if(height > 15) {
+            //                     mult = Math.floor(height / 15);
+            //                     height -= mult * 2;
+            //                 } else {
+            //                     //height -= 2;
+            //                 }
+            //             }
+            //         }
+
+            //         //this.log('node', controls[i].hasNode().offsetHeight, height, margin);
+
+            //         top += height + margin;
+            //     }
+            // } 
+
+
+            // // if(client.isMobile) {
+            // //     top += 4;
+            // // }
+
+            // this.app.debug && this.log(idx, top);
+
+            // this.$.Toggle.hasNode() && this.$.Toggle.hasNode().scrollTo({
+            //     // top: 1300, 
+            //     top: top, 
+            //     left: 0, 
+            //     behavior: 'instant' // intentionally hardcoded
+            // });
         }
 	},
+    _toggleScrollHelper: function(idx) {
+        var controls = this.$.Toggle.getClientControls();
+        var top = 0;
+        var margin = 5;
+        var client = this.app.get('client');
+        var optGroups = 0;
+        var isOptGroup = false;
+
+        for(var i = 0; i < idx; i++) {
+            if(controls[i].hasNode()) {
+                if(controls[i].hasClass('bss_pseudo_optgroup')) {
+                    isOptGroup = true;
+                    optGroups ++;
+                }
+
+                styles = window.getComputedStyle(controls[i].hasNode());
+                margin =    parseFloat(styles['marginTop']) +
+                            parseFloat(styles['marginBottom']);
+                height = controls[i].hasNode().offsetHeight;
+
+                // this.log(controls[i].get('content'));
+                // this.log('height', height);
+                // this.log('margin', margin);
+                // this.log('total', height + margin);
+
+                if(client.isMobile) {
+                    if(isOptGroup && optGroups > 1) {
+                        height += 0.35;
+                    }
+
+                    if(!isOptGroup) {                        
+                        if(height > 15) {
+                            mult = Math.floor(height / 15);
+                            height -= mult * 2;
+                        } else {
+                            //height -= 2;
+                        }
+                    }
+                }
+
+                //this.log('node', controls[i].hasNode().offsetHeight, height, margin);
+
+                top += height + margin;
+            }
+        } 
+
+
+        // if(client.isMobile) {
+        //     top += 4;
+        // }
+
+        this.app.debug && this.log(idx, top);
+
+        this.$.Toggle.hasNode() && this.$.Toggle.hasNode().scrollTo({
+            // top: 1300, 
+            top: top, 
+            left: 0, 
+            behavior: 'instant' // intentionally hardcoded
+        });
+    },
 	_clearSelected: function() {
 		/* private */
 		this.waterfall('onClearSelections');
 	}, 
     _clearKeyboardSelected: function() {
         /* private */
+        this.keyboardSelected = null;
         this.waterfall('onClearKeyboardSelections');
     },
 	setSelected: function(index) {
@@ -351,7 +422,6 @@ module.exports = kind({
 			this.$.Placeholder.set('string', '');
 			this.value = null;
 		}
-
 	}, 
     setKeyboardSelected: function(index) {
         this._clearKeyboardSelected();
@@ -361,6 +431,7 @@ module.exports = kind({
 
         if(index && controls[index]) {
             controls[index].set('keyboardSelected', true);
+            this._toggleScrollHelper(index);
 
             // this.log('has option', index);
 
@@ -373,8 +444,6 @@ module.exports = kind({
         var value = value || 0,
             controls = this.$.Toggle.getClientControls();
 
-        // this.log('select: attempting to set to', value);
-
         for(i in controls) {
             // IE hack fix :P  make sure it has get()
             if(controls[i].get && controls[i].get('value') == value) {
@@ -384,8 +453,6 @@ module.exports = kind({
                 break;
             }
         }
-
-        // this.log('select: value not found', value);
 
         if(typeof defaultIndex != 'undefined') {
             this.setSelected(defaultIndex);

@@ -65,6 +65,13 @@ module.exports = kind({
 	},
     keyboardSelectedChanged: function(was, is) {
         this.addRemoveClass('bss_pseudo_keyboard_selected', !!this.keyboardSelected);
+
+        if(this.keyboardSelected) {
+            this.removeClass('bss_pseudo_selected');
+            this.removeClass('bss_pseudo_not_selected');
+        } else {
+            this.selectedChanged();
+        }
     },
 	groupedChanged: function() {
 		this.addRemoveClass('bss_pseudo_option_grouped', !!this.grouped);

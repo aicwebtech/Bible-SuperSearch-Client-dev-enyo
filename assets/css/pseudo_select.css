@@ -113,7 +113,7 @@
 }
 
 .bss_pseudo_option.bss_pseudo_keyboard_selected {
-    background-color: green;
+    background-color: green !important;
     color: white;
 }
 
