@@ -297,6 +297,9 @@ var biblesupersearch_config_options = {
     // Options: paragraph, passage, verse, verse_passage
     'textDisplayDefault': 'passage',
 
+    // Time, in milliseconds, to wait after hovering before opening a hover dialog (ie Strongs)
+    'hoverDelayThreshold': 500,
+
     // Click to open Strong's dialog
     // Whether clicking on Strong's number will open the dialog, otherwise clicking the link will search for the Strong's
     // Options: 
@@ -304,6 +307,9 @@ var biblesupersearch_config_options = {
     //  'mobile': Clicking link opens dialog for mobile devices only
     //  'always': Clicking link always opens dialog
     'strongsOpenClick': 'mobile',
+
+    // When clicking the Strongs # opens the dialog, should we show a button to access the original search by Strongs # link?
+    'strongsDialogSearchLink': false,
 
     // Include toggling to an 'advanced search' form
     // Some interfaces may force this to false

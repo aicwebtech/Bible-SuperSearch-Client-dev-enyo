@@ -11,6 +11,7 @@ module.exports = kind({
 	selected: null, // Selected Index
     keyboardSelected: null, // Keyboard selected Index
     keyboardSelectedInit: null,
+    keyboardScrollIdx: null,
 	optionComponents: [],
 	hasOptions: false,
 	defaultPlaceholder: '&nbsp;',
@@ -234,8 +235,15 @@ module.exports = kind({
         this.setKeyboardSelected(selNew);
 
         if(this.keyboardSelectedInit == null || selNew < this.keyboardSelectedInit || selNew > this.keyboardSelectedInit + 10) {
+            var scrollNew = this.get('keyboardScrollIdx') + dir;
+
+            if(selNew > this.get('keyboardScrollIdx') + 10) {
+                scrolNew = this.get('keyboardScrollIdx') + 1;
+            }
+
+
             this.keyboardSelectedInit = null;
-            this._toggleScrollHelper(selNew);
+            this._toggleScrollHelper(scrollNew);
         }
     },
 
@@ -286,6 +294,7 @@ module.exports = kind({
             this.log('selected', idx);
             this.set('keyboardSelected', idx);
             this.set('keyboardSelectedInit', idx);
+            this.set('keyboardScrollIdx', idx);
 
             this._toggleScrollHelper(idx);
 
@@ -409,6 +418,8 @@ module.exports = kind({
             left: 0, 
             behavior: 'instant' // intentionally hardcoded
         });
+
+        this.set('keyboardScrollIdx', idx);
     },
 	_clearSelected: function() {
 		/* private */

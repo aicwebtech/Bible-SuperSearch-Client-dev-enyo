@@ -14,6 +14,9 @@ var defaultConfig = {
     "pageScrollTopPadding": 0,
     "textDisplayDefault": 'passage',
     "parallelBibleStartSuperceedsDefaultBibles": false,
+    'hoverDelayThreshold': 500,
+    'strongsDialogSearchLink': false,
+    'strongsOpenClick': 'mobile',
 
 
     _urlDefaultNotice: function() {

@@ -440,8 +440,10 @@ module.exports = kind({
         var lastX = this.lastHoverX;
         var lastY = this.lastHoverY;
         var thres = 50;
-        var hoverIntentThres = 1000;
+        var hoverIntentThres = this.app.configs.hoverDelayThreshold;
         var strongsOpenClick = this.getStrongsOpenClick();
+
+        this.log('hoverIntentThres', hoverIntentThres, strongsOpenClick);
 
         if(strongsOpenClick) {
             return; // If strongs is opened via click, don't open via hover!

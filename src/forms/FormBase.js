@@ -647,6 +647,8 @@ module.exports = kind({
         return nonPassageChars ? true : false;
     },
     keyPress: function(inSender, inEvent) {
+        this.app.debug && this.log(inSender, inEvent);
+
         if(inEvent.key == 'Enter' || inEvent.keyCode && inEvent.keyCode == 13) {
             var textarea = inSender._openTag.match(/<textarea/);
             var enterSubmit = (!textarea || (inSender.enterSubmit && inSender.enterSubmit == true)) ? true : false;

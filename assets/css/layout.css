@@ -18,6 +18,8 @@ div.biblesupersearch_main {
 div.biblesupersearch_main.bss_no_global_scrollbar {
     overflow-y: visible;
     overflow-x: visible;
+    height: initial;
+    max-height: initial;
 }
 
 div.biblesupersearch_main.rtl {

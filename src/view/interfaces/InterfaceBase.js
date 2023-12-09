@@ -40,8 +40,8 @@ module.exports = kind({
         onFormViewChanged: 'handleFormViewChanged',
         onmouseover: 'handleMouseEvent',
         onmouseout: 'handleMouseEvent',
-        onkeydown: 'handleKey',
-        ontap: 'handleTap'
+        onkeydown: 'handleKey'
+        // ontap: 'handleTap'
     },
 
     published: {
@@ -83,10 +83,12 @@ module.exports = kind({
         var t = this;
 
         document.body.addEventListener('click', function(e) {
+            t.log('body tap');
             t.handleTap(null, e);
         }); 
     },
     handleTap: function(inSender, inEvent) {
+        this.log('init global tap');
         this.waterfall('onGlobalTap', {sender: inSender, e: inEvent});
     },
     handleMouseEvent: function(inSender, inEvent) {

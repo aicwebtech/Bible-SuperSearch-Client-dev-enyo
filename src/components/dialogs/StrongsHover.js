@@ -15,7 +15,6 @@ module.exports = kind({
     kind: Dialog,
     showing: false,
     classes: 'strongs_hover',
-    // style: '',
     width: 400,
     height: 300,
 
@@ -33,22 +32,24 @@ module.exports = kind({
                 },
                 {content: 'Loading, please wait ...', style: 'padding: 10px; font-weight: bold'},
             ]},
-            {name: 'ContentContainer', kind: StrongsView},
-            {
-                name: 'ButtonContainer',
-                classes: 'buttons biblesupersearch_center_element',
-                components: [
-                    {name: 'Link', kind: Button, ontap: 'followLink', components: [
-                        {kind: i18n, content: 'Search for'},
-                        {tag: 'span', content: '&nbsp;', allowHtml: true},
-                        {tag: 'span', name: 'SearchFor'}
-                    ]},
-                    {tag: 'span', classes: 'spacer'},
-                    {name: 'Close', kind: Button, ontap: 'close', components: [
-                        {kind: i18n, content: 'Close'},
-                    ]}     
-                ]
-            }
+            //{style: 'padding: 50px', classes: 'hover_dialog', components: [
+                {name: 'ContentContainer', kind: StrongsView},
+                {
+                    name: 'ButtonContainer',
+                    classes: 'buttons biblesupersearch_center_element',
+                    components: [
+                        {name: 'Link', kind: Button, ontap: 'followLink', components: [
+                            {kind: i18n, content: 'Search for'},
+                            {tag: 'span', content: '&nbsp;', allowHtml: true},
+                            {tag: 'span', name: 'SearchFor'}
+                        ]},
+                        {name: 'LinkSpacer', tag: 'span', classes: 'spacer'},
+                        {name: 'Close', kind: Button, ontap: 'close', components: [
+                            {kind: i18n, content: 'Close'},
+                        ]}     
+                    ]
+                }
+            //]}
         ]}
     ],
 
@@ -56,6 +57,11 @@ module.exports = kind({
         {from: 'strongsRaw', to: '$.SearchFor.content'}
     ],
 
+    create: function() {
+        this.inherited(arguments);
+        this.$.Link.set('showing', this.app.configs.strongsDialogSearchLink);
+        this.$.LinkSpacer.set('showing', this.app.configs.strongsDialogSearchLink);
+    },
     displayPosition: function(top, left, content, parentWidth, parentHeight, showButtons) {
         this.inherited(arguments);
         this.set('strongsRaw', content);
