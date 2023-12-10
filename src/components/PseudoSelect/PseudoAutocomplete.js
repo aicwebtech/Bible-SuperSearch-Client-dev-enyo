@@ -1,6 +1,5 @@
 var kind = require('enyo/kind');
 var Opt = require('./PseudoOption');
-var Placeholder = require('./PseudoPlaceholder');
 var i18n = require('../Locale/i18nComponent');
 // var PseudoSelect = require('./PseudoSelect');
 var Input = require('enyo/Input');
@@ -57,6 +56,7 @@ module.exports = kind({
 					name: 'Input',
 					kind: Input,          
 					classes: 'bss_pseudo_autocomplete_input',
+                    enterSubmitPrevent: false
 				},
 			]
 		}, 
@@ -101,6 +101,7 @@ module.exports = kind({
         this.log(value);
         this.set('toggled', false);
         this.destroyOptionControls();
+        this._clearKeyboardSelected();
 
         if(!value || value == '' || 
             value.length < this.app.configs.autocompleteThreshold || 
@@ -116,43 +117,11 @@ module.exports = kind({
             this.createOptionComponents(opts);
             this.$.Toggle.render();
             this.set('toggled', true);
+        } else {
+            this.$.Input.set('enterSubmitPrevent', false);
         }
     },
     generateAutocompleteOptions: function(value) {
-        var opts = [],
-            lastComma = value.lastIndexOf(','),
-            lastSemiColon = value.lastIndexOf(';'),
-            split = Math.max(lastComma, lastSemiColon),
-            valuePrefix = value.substring(0, split + 1),
-            valueBook = value.substring(split + 1).trim(),
-            contentPrefix = valuePrefix ? '... ' : '';
-        
-        valuePrefix += valuePrefix ? ' ' : '';
-
-        this.log('value', value);
-        this.log('valuePrefix', valuePrefix);
-        this.log('valueBook', valueBook);
-
-        if(!valueBook || valueBook == '' || valueBook.length < this.app.configs.autocompleteThreshold) {
-            return [];
-        }
-
-        var books = this.getBooksByName(valueBook);
-
-        if(!books || books.length == 0) {
-            return [];
-        }
-
-        books.forEach(function(item) {
-            opts.push({content: contentPrefix + item.name, value: valuePrefix + item.name + ' '});
-        });
-
-        // this.log('sof', sof);
-        this.log('opts', opts);
-
-        return opts;
-    },    
-    generateAutocompleteOptionsTest: function(value) {
         var opts = [];
 
         var superopts = ['ham', 'bacon', 'pepperoni', 'cheese', 'chicken', 'sausage'];
@@ -169,71 +138,6 @@ module.exports = kind({
         this.log('opts', opts);
 
         return opts;
-    },
-    getBooksByName: function(bookName) {
-        bookName = this.app._fmtBookNameMatch(bookName);
-        var locale = this.app.get('locale');
-        var BookList = this.app.localeBibleBooks[locale] || this.app.statics.books;
-
-        // Pass 1: Exact match
-        var books = BookList.filter(function(bookItem) {
-            if(bookName == bookItem.fn || bookName == bookItem.sn) {
-                return true;
-            }
-
-            if(bookItem.matching && bookItem.matching.includes && bookItem.matching.includes(bookName)) {
-                return true;
-            }
-
-            var namePeriodToSpace = bookItem.fn.replace(/\./g,' ');
-
-            if(bookName == namePeriodToSpace) {
-                return true;
-            }
-
-            return false;
-        });
-
-        if(!this.app.configs.autocompleteMatchAnywhere || this.app.configs.autocompleteMatchAnywhere == 'false') {
-            return books;
-        }
-
-        // Pass 2: Partial match
-        if(!books || books.length == 0) {
-            books = BookList.filter(function(bookItem) {
-                if(bookItem.fn.indexOf(bookName) == 0) {
-                    return true;
-                }                
-
-                if(bookItem.sn.indexOf(bookName) == 0) {
-                    return true;
-                }
-
-                return false;
-            });
-        }
-
-        // Pass 3: (Experimental) Partial match, ignoring pumctuation
-        if(!books || books.length == 0) {
-            var bookNameNoPunc = bookName.replace(/[ .;:]/g, ' ');
-
-            books = BookList.filter(function(bookItem) {
-                var biNameNoPunc = bookItem.fn.replace(/[ .;:]/g, ' ');
-                var biShortameNoPunc = bookItem.sn.replace(/[ .;:]/g, ' ');
-
-                if(biNameNoPunc.indexOf(bookNameNoPunc) == 0) {
-                    return true;
-                }                
-
-                if(biShortameNoPunc.indexOf(bookNameNoPunc) == 0) {
-                    return true;
-                }
-
-                return false;
-            });
-        }
-
-        return books;
     },
 	createOptionComponent: function(component) {
 		return this.$.Toggle.createComponent(component);
@@ -257,11 +161,13 @@ module.exports = kind({
 			inEvent.e.target != this.$.Toggle.hasNode()
 		) {
 			this.set('toggled', false);
+            //this.$.Input.set('enterSubmitPrevent', false);
 		}
 	},
 
 	handleBlur: function() {
-		this.log();
+		// this.log();
+        //this.$.Input.set('enterSubmitPrevent', false);
         //this.set('toggled', false);
 	},
 	handleMouseOut: function() {
@@ -272,11 +178,8 @@ module.exports = kind({
 		//this.log(cur, prop);
 	},
 	handleOptionTap: function(inSender, inEvent) {
-		this.log(inSender, inEvent);
-
         if(inEvent.type == 'option') {		
 			this.set('toggled', false);
-			//this.$.Input.set('value', inEvent.value);
             this.$.Input.hasNode().focus();
 			this.set('value', inEvent.value);
             this.cursorAtEnd();
@@ -319,9 +222,8 @@ module.exports = kind({
             return;
         }
 
-        // this.log(inSender, inEvent);
-
-        var code = inEvent.keyCode || null;
+        var code = inEvent.keyCode || null,
+            t = this;
 
         if(code == 38 || code == 40) {
             inEvent.preventDefault();
@@ -337,9 +239,16 @@ module.exports = kind({
                 sel = this.get('keyboardSelected');
 
             this.set('value', controls[sel].get('value'));
-            this.set('toggled', false);
             this.cursorAtEnd();
             this.bubble('onchange');
+            this.set('toggled', false);
+            //this.$.Input.set('enterSubmitPrevent', false);
+
+            // Ugly but idk what else to do ... 
+            setTimeout(function() {
+                t.$.Input.set('enterSubmitPrevent', false);
+            }, 500);
+            
             return true;
         }
     },
@@ -353,7 +262,6 @@ module.exports = kind({
             sel = this.get('keyboardSelected');
 
         sel = (sel == null) ? -1 : sel;
-
         var selNew = sel + dir;
 
         if(controls[selNew] && !controls[selNew].hasClass('bss_pseudo_option')) {
@@ -362,10 +270,9 @@ module.exports = kind({
 
         selNew = selNew >= 0 ? selNew : -1;
 
-        this.log('dir', dir);
-        this.log('raw Sel', this.get('keyboardSelected'));
-
-        this.log(dir, sel, selNew);
+        // this.log('dir', dir);
+        // this.log('raw Sel', this.get('keyboardSelected'));
+        // this.log(dir, sel, selNew);
 
         this.setKeyboardSelected(selNew);
 
@@ -383,27 +290,26 @@ module.exports = kind({
     },
 
     setKeyboardSelected: function(index) {
-        this.log(index);
         this._clearKeyboardSelected();
         this.keyboardSelected = index;
-
         controls = this.$.Toggle.getClientControls();
 
-        if(index && controls[index]) {
+        if(controls && controls[index]) {
             controls[index].set('keyboardSelected', true);
+            this.$.Input.set('enterSubmitPrevent', true);
             // controls[index].hasNode().focus();
             // this.log('has option', index);
-        } else if(index == null || !this.hasOptions) {
+        } else  {
+            this.$.Input.set('enterSubmitPrevent', false);
+            this.log('no findy');
             // this.log('null option', index);
         }
-
     },
     _clearKeyboardSelected: function() {
         /* private */
         this.keyboardSelected = null;
         this.waterfall('onClearKeyboardSelections');
     },
-
     valueChanged: function(was, is) {
 		// var controls = this.$.Toggle.getClientControls(),
 		// 	control = controls[this.valueIdxMap[is]] || null;
@@ -417,38 +323,6 @@ module.exports = kind({
 	},
 	resetValue: function() {
         this.set('value', null);
-
-		// if(this.hasOptions) {
-		// 	controls = this.$.Toggle.getClientControls();
-		// 	control =  controls[0];
-		// 	this.value = control.get('value');
-		// } else {
-		// 	control = null;
-		// 	this.value = null;
-		// }
-
-		// this._afterValueChanged(control);
-
-		// if(controls[0]) {
-		// 	this.$.Placeholder.set('string', controls[0].get('content'));
-		// 	this.setSelected(0);
-		// 	this.set('value', controls[0].get('value'));
-		// } else {
-		// 	this.$.Placeholder.set('string', '');
-		// 	this.setSelected(null);
-		// 	this.set('value', null);
-		// }
-	},
-	_afterValueChanged: function(optionControl) {
-        return;
-
-		if(optionControl) {
-			this.$.Placeholder.set('string', optionControl.get('string'));
-		} else {
-			this.$.Placeholder.set('string', this.defaultPlaceholder);
-		}
-
-		this.waterfall('onSetValue', {value: this.get('value')});
 	},
 	toggledChanged: function(was, is) {
 		this.addRemoveClass('bss_pseudo_option_show', !!this.toggled);

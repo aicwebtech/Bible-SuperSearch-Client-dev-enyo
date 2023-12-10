@@ -14,7 +14,7 @@ var BookSelectNew = require('../components/BookSelectNew');
 var SearchType = require('../components/SearchTypeNew');
 var Shortcuts = require('../components/ShortcutsNew');
 var ShortcutsSwitch = require('../components/ShortcutsSwitch');
-var Autocomplete = require('../components/PseudoSelect/PseudoAutocomplete');
+var Autocomplete = require('../components/PseudoSelect/PseudoAutocompleteReference');
 
 module.exports = kind({
     name: 'CustomUserFriendly2BookSel',

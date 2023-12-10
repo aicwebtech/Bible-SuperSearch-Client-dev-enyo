@@ -439,6 +439,7 @@ module.exports = kind({
         var y = inEvent.y;
         var lastX = this.lastHoverX;
         var lastY = this.lastHoverY;
+        var lastTarget = this.lastHoverTarget;
         var thres = 50;
         var hoverIntentThres = this.app.configs.hoverDelayThreshold;
         var strongsOpenClick = this.getStrongsOpenClick();
@@ -477,8 +478,15 @@ module.exports = kind({
             var parentWidth  = inEvent.target.parentNode.offsetWidth;
             var parentHeight = inEvent.target.parentNode.offsetHeight;
 
-            var t = this;
+            // Experimental!
+            // If user mouses off of Strongs link, close dialog
+            // make this a config?
+            if(!strongsOpenClick && lastTarget && lastTarget.tagName == 'A' && lastTarget.className == 'strongs') {
+                this.$.StrongsHover.set('showing', false);
+            }
 
+            var t = this;
+            
             setTimeout(function() {
                 if(target != t.lastHoverTarget) {
                     return;

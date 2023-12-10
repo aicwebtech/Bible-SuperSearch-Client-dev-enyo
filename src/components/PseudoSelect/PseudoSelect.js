@@ -241,7 +241,6 @@ module.exports = kind({
                 scrolNew = this.get('keyboardScrollIdx') + 1;
             }
 
-
             this.keyboardSelectedInit = null;
             this._toggleScrollHelper(scrollNew);
         }
@@ -435,7 +434,7 @@ module.exports = kind({
 
 		controls = this.$.Toggle.getClientControls();
 
-		if(index && controls[index]) {
+		if(controls && controls[index]) {
 			// this.log('has option', index);
 			this.set('value', controls[index].get('value'));
 			// controls[index].set('selected', true);
@@ -454,7 +453,7 @@ module.exports = kind({
 
         controls = this.$.Toggle.getClientControls();
 
-        if(index && controls[index]) {
+        if(controls && controls[index]) {
             controls[index].set('keyboardSelected', true);
             // controls[index].hasNode().focus();
             // this.log('has option', index);

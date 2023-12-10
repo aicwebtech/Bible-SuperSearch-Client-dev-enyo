@@ -123,7 +123,7 @@ module.exports = kind({
     followLink: function() {
         //http://ui-dev.bss.plsv/#/strongs/kjv_strongs/H5612
 
-        var url = '/#/strongs/' + this.app.getSelectedBiblesString() + '/' + this.strongsRaw;
+        var url = '#/strongs/' + this.app.getSelectedBiblesString() + '/' + this.strongsRaw;
         window.location = url;
     }
 });

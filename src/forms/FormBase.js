@@ -651,7 +651,14 @@ module.exports = kind({
 
         if(inEvent.key == 'Enter' || inEvent.keyCode && inEvent.keyCode == 13) {
             var textarea = inSender._openTag.match(/<textarea/);
+            var input = inSender._openTag.match(/<input/);
+            // this.log('is input', input);
             var enterSubmit = (!textarea || (inSender.enterSubmit && inSender.enterSubmit == true)) ? true : false;
+            // var enterSubmit = (input || (inSender.enterSubmit && inSender.enterSubmit == true)) ? true : false;
+
+            if(inSender.enterSubmitPrevent && inSender.enterSubmitPrevent == true) {
+                enterSubmit = false;
+            }
 
             if(enterSubmit && (!textarea || !inEvent.shiftKey)) {
                 if(textarea) {
