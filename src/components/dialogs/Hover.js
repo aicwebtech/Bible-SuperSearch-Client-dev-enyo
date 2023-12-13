@@ -21,6 +21,7 @@ module.exports = kind({
     parentHeight: null,
     parentWidth: null,
     widthMin: 400,
+    hideTimeout: null,
 
     _lastTapTarget: null, // private
     _showButtons: false, // private
@@ -201,7 +202,19 @@ module.exports = kind({
         this.set('showing', false);
     },
     mouseOverHandler: function(inSender, inEvent) {
+        this.log();
+        this.cancelHide();
         this.set('showing', true);
+    },
+    hideDelay: function() {
+        var t = this;
+
+        this.hideTimeout = setTimeout(function() {
+            t.set('showing', false);
+        }, 1000);
+    },
+    cancelHide: function() {
+        this.hideTimeout && clearTimeout(this.hideTimeout);
     },
     handleTap: function(inSender, inEvent) {
         this._lastTapTarget = inEvent.target;
@@ -235,5 +248,10 @@ module.exports = kind({
     },
     close: function() {
         this.set('showing', false);
-    }
+    },
+    // showingChanged: function() {
+    //     // if(!this.showing) {
+    //     //     this.cancelHide();
+    //     // }
+    // }
 });

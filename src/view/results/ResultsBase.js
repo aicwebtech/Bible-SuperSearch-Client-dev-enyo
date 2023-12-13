@@ -446,9 +446,20 @@ module.exports = kind({
 
         this.log('hoverIntentThres', hoverIntentThres, strongsOpenClick);
 
-        if(strongsOpenClick) {
-            return; // If strongs is opened via click, don't open via hover!
+        target.bssType = null;
+
+        if(target.tagName == 'A' && target.className == 'strongs') {
+            target.bssType = 'strongs';
         }
+
+        if(target.bssType == 'strongs') {
+            if(strongsOpenClick) {
+                return; // If strongs is opened via click, don't open via hover!
+            }
+
+            this.$.StrongsHover.cancelHide();
+        }
+
 
         if((
             (x - thres <= lastX) && 
@@ -481,8 +492,9 @@ module.exports = kind({
             // Experimental!
             // If user mouses off of Strongs link, close dialog
             // make this a config?
-            if(!strongsOpenClick && lastTarget && lastTarget.tagName == 'A' && lastTarget.className == 'strongs') {
-                this.$.StrongsHover.set('showing', false);
+            if(!strongsOpenClick && lastTarget && lastTarget.bssType == 'strongs') {
+                // this.$.StrongsHover.set('showing', false);
+                this.$.StrongsHover.hideDelay();
             }
 
             var t = this;
@@ -492,7 +504,7 @@ module.exports = kind({
                     return;
                 }
 
-                if(target.tagName == 'A' && target.className == 'strongs') {
+                if(target.bssType == 'strongs') {
                     if(strongsOpenClick) {
                         return; // If strongs is opened via click, don't open via hover!
                     }

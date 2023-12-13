@@ -9,13 +9,27 @@ module.exports = kind({
     classes: 'biblesupersearch_render_table',
 
     handlers: {
-        touchstart: 'handleTouch',
-        ontouchstart: 'handleTouch',
-        ontouchmove: 'handleTouch',
-        ontouchend: 'handleTouch',
-        ontouchcancel: 'handleTouch',
+        // touchstart: 'handleTouch',
+        // ontouchstart: 'handleTouch',
+        // ontouchmove: 'handleTouch',
+        // ontouchend: 'handleTouch',
+        // ontouchcancel: 'handleTouch',
+        // ondragstart: 'handleTouch',  // no touchscreen
+        // ondragfinish: 'handleTouch', // no touchscreen
+        // onflick: 'handleTouch', // no touchscreen
+        // onmove: 'handleTouch',
+        // ondown: 'handleTouch',
+        // onup: 'handleTouch',
+        // ontap: 'handleTouch'
+
         // onType: 'handleKey',
         // onKeyWaterfall: 'handleKey'
+    },
+
+    touch: {
+        startX: null,
+        startY: null,
+        startTime: null,
     },
 
     components: [
@@ -34,32 +48,86 @@ module.exports = kind({
         // WARNING: something with these touch handlers BREAKS touch events on mobile
         // Be careful when implementing!
         // These touch handlers 'work' but are very basic
-        // this.hasNode().addEventListener('touchstart', function(ev) {
-        //     console.log('RENDER touchstart', ev);
-        //     //ev.preventDefault();
-        // }, false);        
 
-        // this.hasNode().addEventListener('touchend', function(ev) {
-        //     console.log('RENDER touchend', ev);
-        //     //ev.preventDefault();
-        // }, false);
+        var listenerOptions = {
+            capture: false,
+            once: false,
+            passive: true
+        };
+        
+        this.hasNode().addEventListener('touchstart', function(ev) {
+            return;
+
+            console.log('RENDER touchstart', ev);
+            var touch = ev.changedTouches[0];
+            t.touch.startX = touch.pageX;
+            t.touch.startY = touch.pageY;
+            t.touch.startTime = new Date().getTime();
+            //ev.preventDefault();
+            return true;
+        }, listenerOptions);        
+
+        this.hasNode().addEventListener('touchend', function(ev) {
+           return;
+
+            console.log('RENDER touchend', ev);
+            var touch = ev.changedTouches[0],
+                distX = touch.pageX - t.touch.startX,
+                distY = touch.pageY - t.touch.startY,
+                distXabs = Math.abs(distX),
+                distYabs = Math.abs(distY),
+                elapsedTime = new Date().getTime() - t.touch.startTime,
+                yMax = 10,
+                xMin = 50
+
+            // t.app.alert('touchend time: '+ elapsedTime +'<br>dx:' + distX + '<br>dy:' + distY);
+
+            if(distXabs >= xMin && distYabs <= yMax) {
+                if(distX < 0) {
+                    t.clickNextChapter();
+                } else {
+                    t.clickPrevChapter();
+                }
+            }
+
+            t.touch.startX = null;
+            t.touch.startY = null;
+            t.touch.startTime = null;
+            //ev.preventDefault();
+            return false;
+        }, listenerOptions);
+
+        if(this.app.client.isMobile) {
+            // this.app.alert('mobile!!');
+        }
     }, 
     handleTouch: function(inSender, inEvent) {
-        this.log(inSender, inEvent);
+        this.log('event type', inEvent.type);
+        // this.log(inSender, inEvent);
+        this.log('client', this.app.client);
+
+        if(this.app.client.isMobile) {
+            this.app.alert('handleTouch mobile touched!' + inEvent.type);
+        }
     },
     handleKey: function(inSender, inEvent) {
-        // this.log(inEvent);
-        // not recieving event from ResultBase
-
         if(inEvent.key == 'ArrowRight') {
             this.log('Go RIGHT');
-            // this.waterfall('onAutoClick', {button: 'nc'});
+            // this.clickNextChapter();
         }
 
         if(inEvent.key == 'ArrowLeft') {
             this.log('Go LEFT');
-            // this.waterfall('onAutoClick', {button: 'pc'});
+            // this.clickPrevChapter();
         }
+    },
+    clickNextChapter: function() {
+        this.log();
+        this.waterfall('onAutoClick', {button: 'nc'});
+    },
+    clickPrevChapter: function() {
+        this.log();
+        this.waterfall('onAutoClick', {button: 'pc'});
     }
 
 });
