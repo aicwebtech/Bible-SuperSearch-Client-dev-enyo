@@ -456,10 +456,8 @@ module.exports = kind({
             if(strongsOpenClick) {
                 return; // If strongs is opened via click, don't open via hover!
             }
-
             this.$.StrongsHover.cancelHide();
         }
-
 
         if((
             (x - thres <= lastX) && 

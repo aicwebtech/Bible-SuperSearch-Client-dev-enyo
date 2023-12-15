@@ -22,6 +22,7 @@ module.exports = kind({
     parentWidth: null,
     widthMin: 400,
     hideTimeout: null,
+    preventHide: false,
 
     _lastTapTarget: null, // private
     _showButtons: false, // private
@@ -30,7 +31,8 @@ module.exports = kind({
         onmouseout: 'mouseOutHandler',
         onmouseover: 'mouseOverHandler',
         ontap: 'handleTap',
-        onGlobalTap: 'handleGlobalTap'
+        onGlobalTap: 'handleGlobalTap',
+        onmousedown: 'handleClick',
     },
 
     components: [
@@ -209,6 +211,9 @@ module.exports = kind({
     hideDelay: function() {
         var t = this;
 
+        this.cancelHide();
+        this.preventHide = false;
+
         this.hideTimeout = setTimeout(function() {
             t.set('showing', false);
         }, 1000);
@@ -219,6 +224,16 @@ module.exports = kind({
     handleTap: function(inSender, inEvent) {
         this._lastTapTarget = inEvent.target;
     },
+    hidePrevent: function() {
+        this.cancelHide();
+
+        this.preventHide = true;
+        var t = this;
+
+        this.hideTimeout = setTimeout(function() {
+            t.preventHide = false;
+        }, 1000);
+    },
     handleGlobalTap: function(inSender, inEvent) {
         if(inEvent.e.target == this._lastTapTarget) {
             // do nothing, tap was within the hover dialog, keep it open!
@@ -228,6 +243,18 @@ module.exports = kind({
         } else {
             this._lastTapTarget = null;
             this.set('showing', false);
+        }
+    },
+    handleClick: function(inSender, inEvent) {
+        this.log('button', inEvent.button);
+        this.log('buttons', inEvent.buttons);
+        this.log('which', inEvent.which);
+        this.log(this.app.client);
+
+        if(inEvent.which == 3 && this.app.client.browser == 'Firefox') {
+            this.hidePrevent();
+            // inEvent.preventDefault();
+            // return true;
         }
     },
     getOwnerBounds: function() {
@@ -249,9 +276,12 @@ module.exports = kind({
     close: function() {
         this.set('showing', false);
     },
-    // showingChanged: function() {
-    //     // if(!this.showing) {
-    //     //     this.cancelHide();
-    //     // }
-    // }
+    set: function(name, value) {
+        // Ugly Firefox hack :P
+        if(this.preventHide && name == 'showing' && value == false) {
+            return;
+        }
+
+        this.inherited(arguments);
+    }
 });
