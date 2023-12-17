@@ -15,6 +15,10 @@ var Signal = require('enyo/Signals');
 
 // Todo - format clean up!
 
+// Todo: Use Web Share API to use native device share dialogs!
+// https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
+// https://stackoverflow.com/questions/32176004/share-button-for-mobile-website-to-invoke-ios-android-system-share-dialogs
+
 module.exports = kind({
     name: 'ShareDialog',    
     kind: Dialog,
@@ -23,6 +27,7 @@ module.exports = kind({
     classes: 'help_dialog share_dialog',
     bibleString: null,
     ezCopy: false,
+    shareContent: null,
     
     titleComponents: [
         {classes: 'header', components: [
@@ -86,12 +91,15 @@ module.exports = kind({
         var title = document.title,
             url = window.location.href,
             responseData = this.app.get('responseData'),
-            limit = 7,
+            // limit = 7,
+            limit = 0, // unlimited
             count = 0,
             content = '',
             bibleName = '',
             singleVerse = false,
             maxReached = false;
+
+        this.shareContent = null;
 
         if(responseData.success) {
             var passages = responseData.results.results,
@@ -139,7 +147,7 @@ module.exports = kind({
 
                         content += this.processText(verse.text);
                         
-                        if(count >= limit) {
+                        if(limit > 0 && count >= limit) {
                             content += (p.single_verse) ? '\n\n…' : ' …';
                             maxReached = true;
                             break mainLoop;
@@ -156,6 +164,8 @@ module.exports = kind({
 
         content += (maxReached) ? '\n\n' : ''; // same regardles of singleVerse
         //content += '\n' + bibleName + '\n\n\n' + title + '\n' + url;
+        this.shareContent = content;
+
         content += '\n' + bibleName + '\n\n\n' + references.join('; ') + ' - ' + this.app.t('Bible SuperSearch') + '\n' + url;
         this.$.CopyArea.set('content', content.trim());
     },
@@ -167,42 +177,7 @@ module.exports = kind({
 
     },
     copy: function() {
-        return this.app._copyComponentContent(this.$.CopyArea);
-
-        var n = this.$.CopyArea.hasNode();
-
-        if(!n) {
-            return;
-        }
-
-        // This code for selection all text in a HTML element was migrated from Bible SuperSearch version 3.0
-        // This works, but there is probably a better way
-        if (document.selection) {
-            var div = document.body.createTextRange();
-            div.moveToElementText(n);
-            div.select();
-        }
-        else {
-            var div = document.createRange();
-            div.setStartBefore(n);
-            div.setEndAfter(n);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(div);
-        }
-
-        try {
-            var success = document.execCommand('copy'); // depricated 
-
-            if(success) {
-                this.app.alert('Copied to clipboard');
-            }
-            else {
-                this.app.alert('Failed to copy');
-            }
-        }
-        catch (e) {
-           this.app.alert('Failed to copy');
-        }
+        return this.app._copyComponentContent(this.$.CopyArea, 'content', true, this.shareContent);
     },
     copyWithText: function() {
         this.set('ezCopy', true);

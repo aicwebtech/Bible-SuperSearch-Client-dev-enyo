@@ -1480,17 +1480,43 @@ var App = Application.kind({
         this.waterfall('onFormResponseSuccess', responseDataNew);
         Signal.send('onFormResponseSuccess', responseDataNew);
     },
-    _copyComponentContent: function(Component, contentField) {
+    _copyComponentContent: function(Component, contentField, share, shareContent) {
         if(!Component) {
             return;
         }
 
         var contentField = contentField || 'content',
+            share = share || false,
+            share = navigator.share ? share : false,
             content = Component.get(contentField),
+            shareContent = shareContent || content,
             tag = Component.get('tag'),
             n = Component.hasNode();
 
         if(!n || !content) {
+            return;
+        }
+
+        // If share requested, attempt to use system share dialog
+        // This requires HTTPS  
+        if(share) {
+            var promise = navigator.share({
+                text: shareContent,
+                title: document.title,
+                url: window.location.href
+            });
+
+            promise.then(utils.bind(this, function() {
+                this.log('Successful share');
+            }), 
+            utils.bind(this, function() {
+                this.log('Failed to share');
+            }));
+
+            promise.catch(utils.bind(this, function(error) {
+                this.log('Failed to share');
+            }));
+            
             return;
         }
 
@@ -1519,6 +1545,7 @@ var App = Application.kind({
             promise.then(utils.bind(this, function() {
                 this.alert('Copied to clipboard');
             }), 
+            
             utils.bind(this, function() {
                 this.alert('Failed to copy');
             }));
