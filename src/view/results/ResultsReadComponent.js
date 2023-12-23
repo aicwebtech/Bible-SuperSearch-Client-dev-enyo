@@ -55,47 +55,47 @@ module.exports = kind({
             passive: true
         };
         
-        this.hasNode().addEventListener('touchstart', function(ev) {
-            return;
+        if(this.app.configs.changeChapterSwipe) {
+            this.hasNode().addEventListener('touchstart', function(ev) {
 
-            console.log('RENDER touchstart', ev);
-            var touch = ev.changedTouches[0];
-            t.touch.startX = touch.pageX;
-            t.touch.startY = touch.pageY;
-            t.touch.startTime = new Date().getTime();
-            //ev.preventDefault();
-            return true;
-        }, listenerOptions);        
+                console.log('RENDER touchstart', ev);
+                var touch = ev.changedTouches[0];
+                t.touch.startX = touch.pageX;
+                t.touch.startY = touch.pageY;
+                t.touch.startTime = new Date().getTime();
+                //ev.preventDefault();
+                return true;
+            }, listenerOptions);        
 
-        this.hasNode().addEventListener('touchend', function(ev) {
-           return;
+            this.hasNode().addEventListener('touchend', function(ev) {
 
-            console.log('RENDER touchend', ev);
-            var touch = ev.changedTouches[0],
-                distX = touch.pageX - t.touch.startX,
-                distY = touch.pageY - t.touch.startY,
-                distXabs = Math.abs(distX),
-                distYabs = Math.abs(distY),
-                elapsedTime = new Date().getTime() - t.touch.startTime,
-                yMax = 10,
-                xMin = 50
+                console.log('RENDER touchend', ev);
+                var touch = ev.changedTouches[0],
+                    distX = touch.pageX - t.touch.startX,
+                    distY = touch.pageY - t.touch.startY,
+                    distXabs = Math.abs(distX),
+                    distYabs = Math.abs(distY),
+                    elapsedTime = new Date().getTime() - t.touch.startTime,
+                    yMax = 10,
+                    xMin = 30
 
-            // t.app.alert('touchend time: '+ elapsedTime +'<br>dx:' + distX + '<br>dy:' + distY);
+                // t.app.alert('touchend time: '+ elapsedTime +'<br>dx:' + distX + '<br>dy:' + distY);
 
-            if(distXabs >= xMin && distYabs <= yMax) {
-                if(distX < 0) {
-                    t.clickNextChapter();
-                } else {
-                    t.clickPrevChapter();
+                if(distXabs >= xMin && distYabs <= yMax) {
+                    if(distX < 0) {
+                        t.clickNextChapter();
+                    } else {
+                        t.clickPrevChapter();
+                    }
                 }
-            }
 
-            t.touch.startX = null;
-            t.touch.startY = null;
-            t.touch.startTime = null;
-            //ev.preventDefault();
-            return false;
-        }, listenerOptions);
+                t.touch.startX = null;
+                t.touch.startY = null;
+                t.touch.startTime = null;
+                //ev.preventDefault();
+                return false;
+            }, listenerOptions);
+        }
 
         if(this.app.client.isMobile) {
             // this.app.alert('mobile!!');
@@ -111,15 +111,18 @@ module.exports = kind({
         }
     },
     handleKey: function(inSender, inEvent) {
-        if(inEvent.key == 'ArrowRight') {
-            this.log('Go RIGHT');
-            // this.clickNextChapter();
+        if(this.app.configs.changeChapterArrowKeys) {            
+            if(inEvent.key == 'ArrowRight') {
+                this.log('Go RIGHT');
+                this.clickNextChapter();
+            }
+
+            if(inEvent.key == 'ArrowLeft') {
+                this.log('Go LEFT');
+                this.clickPrevChapter();
+            }
         }
 
-        if(inEvent.key == 'ArrowLeft') {
-            this.log('Go LEFT');
-            // this.clickPrevChapter();
-        }
     },
     clickNextChapter: function() {
         this.log();

@@ -1,9 +1,9 @@
 module.exports = {
+    // ar: require('./ar'),
     en: require('./en'),
     // en_US: require('./en_US'),
     en_pirate: require('./en_pirate'),
     es: require('./es'),
-    // ar: require('./ar'),
     fr: require('./fr'),
     hi: require('./hi'),
     lv: require('./lv'),

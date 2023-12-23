@@ -83,13 +83,14 @@ module.exports = kind({
     renderPassageParallelBible: function(passage) {        
         var omitExtraBr = this.app.UserConfig.get('copy_omit_extra_br'),
             passageLayout = this.app.UserConfig.get('copy_passage_format'),
+            testament = this.app.UserConfig.get('copy_testament'),
             br = (omitExtraBr) ? this.newLine : this.newLine + this.newLine,
             bookName = this.app.UserConfig.get('copy_abbr_book') && passage.book_short ? passage.book_short : passage.book_name,
             bookName = this.app.getLocaleBookName(passage.book_id, bookName, this.app.UserConfig.get('copy_abbr_book'));
             
             reference = bookName + ' ' + passage.chapter_verse;
 
-            if(this.app.configs.includeTestament) {
+            if(testament) {
                 reference = this.app.t( this.app.getTestamentByBookId(passage.book_id) ) + this.newLine + this.newLine + reference;
             }
 
@@ -213,6 +214,14 @@ module.exports = kind({
     proccessSingleVerseReference: function(passage, verse) {
         var bookName = this.app.UserConfig.get('copy_abbr_book') && passage.book_short ? passage.book_short : passage.book_name;
         bookName = this.app.getLocaleBookName(passage.book_id, bookName, this.app.UserConfig.get('copy_abbr_book'));
-        return bookName + ' ' + verse.chapter + ':' + verse.verse;
+
+        var ref = '';
+
+        // if(this.app.UserConfig.get('copy_testament')) {
+        //     ref += this.app.t( this.app.getTestamentByBookId(passage.book_id) ) + ' ';
+        // }
+
+        ref += bookName + ' ' + verse.chapter + ':' + verse.verse;
+        return ref;
     },    
 });

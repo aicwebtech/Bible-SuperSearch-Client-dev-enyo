@@ -297,6 +297,12 @@ var biblesupersearch_config_options = {
     // Options: paragraph, passage, verse, verse_passage
     'textDisplayDefault': 'passage',
 
+    // Enable changing chapter via horizontal touchscreen swipe guesture
+    'changeChapterSwipe': false,
+
+    // Enable changing chapter via horizontal arrow keys
+    'changeChapterArrowKeys': false,
+
     // Time, in milliseconds, to wait after hovering before opening a hover dialog (ie Strongs)
     'hoverDelayThreshold': 500,
 

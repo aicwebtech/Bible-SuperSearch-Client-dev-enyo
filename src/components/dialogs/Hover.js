@@ -119,9 +119,20 @@ module.exports = kind({
         var h = this.hasNode().scrollHeight;
         var myBounds = this.hasNode().getBoundingClientRect();
         var bodyWidth = document.body.clientWidth;
+        var bodyHeight = document.body.clientHeight;
+
+        var docWidth = document.documentElement.clientWidth,
+            docHeight = document.documentElement.clientHeight,
+            maxHeightDoc = docHeight - 10;
+            style = '',
+            height = parseInt(this.height, 10),
+            headerHeight = 0,
+            smallScreen = false,
+            n = this.name;
        
         w = myBounds.width;
         h = Math.min(h, myBounds.height);
+        hRaw = myBounds.height;
 
         var bounds = this.getOwnerBounds();
 
@@ -135,11 +146,31 @@ module.exports = kind({
 
         var wMax = bounds.width || this.owner.hasNode().clientWidth + window.scrollX;
         var hMax = bounds.height || this.owner.hasNode().clientHeight + window.scrollY;
+        // var yMax = document.body.clientHeight + window.scrollY;
+        var yMax = window.innerHeight;
 
-        if(window.innerHeight < hMax) {
-            this.app.debug && this.log('hMax adjusted due to windowHeight');
-            hMax = window.innerHeight - bounds.top;
-        }
+
+        // if(window.innerHeight < hMax) {
+        //     this.app.debug && this.log('hMax adjusted due to windowHeight');
+        //     hMax = window.innerHeight - bounds.top;
+        // }
+
+        this.log('yMax START -------');
+        this.log('yMax mouseY', this.mouseY);
+        this.log('yMax document.body.clientHeight', document.body.clientHeight);
+        this.log('yMax window.scrollY', window.scrollY);
+        this.log('yMax window.innerHeight', window.innerHeight);
+        this.log('yMax END -------');
+
+        // this.log('hMax START -------------');
+        // this.log('hMax bounds.height', bounds.height);
+        // this.log('hMax owner clientHeight', this.owner.hasNode().clientHeight);
+        // this.log('hMax window.scrollY', window.scrollY);
+        // this.log('hMax window.innerHeight', window.innerHeight);
+        // this.log('hMax bounds.height', bounds.height);
+        // this.log('hMax bounds.top', bounds.top);
+        // this.log('hMax', hMax);
+        // this.log('hMax END -------------');
 
         if(w == 0 || h == 0) {
             window.setTimeout(utils.bind(this, function() {
@@ -153,6 +184,7 @@ module.exports = kind({
         }
 
         this.waitCount = 0;
+
         var xOuter = this.mouseX + w;
         var yOuter = this.mouseY + h;
         this.app.debug && this.log('mouseX', this.mouseX, 'w', w, 'wMax', wMax, 'xOuter', xOuter);
@@ -174,7 +206,11 @@ module.exports = kind({
         posX = (posX < 0) ? 0 : posX;
 
         if(posX + widthNew > bodyWidth) {
-            posX - bodyWidth - widthNew;
+            posX = bodyWidth - widthNew;
+        }
+
+        if(posY + hRaw > yMax) {
+            poxY = yMax - hRaw;
         }
 
         if(yOuter > hMax) {
@@ -193,7 +229,7 @@ module.exports = kind({
         }
 
         this.app.debug && this.log('posX', posX);
-        this.app.debug && this.log('posY', posY);
+        this.app.debug && this.log('posY', posY, 'yMax', yMax, 'h', h, 'bounds', bounds.height, this.owner.hasNode().clientHeight + window.scrollY);
 
         this.applyStyle('left', posX + 'px');
         this.applyStyle('top', posY + 'px');

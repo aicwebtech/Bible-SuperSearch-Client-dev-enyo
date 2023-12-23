@@ -37,7 +37,8 @@ module.exports = kind({
         copy_text_format: 'reference_text',
         copy_passage_format: 'reference_passage',
         copy_passage_verse_number: true,
-        copy_preset: 'word_processor'
+        copy_preset: 'word_processor',
+        copy_testament: false
     },
 
     getUrl: function() {

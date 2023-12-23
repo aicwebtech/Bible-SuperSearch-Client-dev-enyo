@@ -176,7 +176,17 @@ module.exports = kind({
                                 {kind: Checkbox, name: 'abbr_book', id: 'abbr_book'}
                             ]},
                             {kind: i18n, tag: 'label', attributes: {for: 'abbr_book'}, classes: 'label', content: 'Abbreviate Books'}
-                        ]},
+                        ]},                        
+                        // {classes: 'checkbox_container checkbox_first', components: [
+                        //     {classes: 'element', components: [
+                        //         {kind: Checkbox, name: 'testament', id: 'testament'}
+                        //     ]},
+                        //     {tag: 'label', attributes: {for: 'testament'}, classes: 'label', components: [
+                        //         {kind: i18n, content: 'Old Testament'},
+                        //         {tag: 'br', _content: ' / '},
+                        //         {kind: i18n, content: 'New Testament'},
+                        //     ]}
+                        // ]},
                         {classes: 'checkbox_container checkbox_first', components: [
                             {classes: 'element', components: [
                                 {kind: Checkbox, name: 'omit_extra_br', id: 'omit_extra_br'}
@@ -248,6 +258,10 @@ module.exports = kind({
         }},            
         {from: 'app.UserConfig.copy_passage_verse_number', to: '$.passage_verse_number.checked', oneWay: false, transform: function(value, dir) {
             // console.log('Copy passage_verse_number', value, dir);
+            return value;
+        }},                  
+        {from: 'app.UserConfig.copy_testament', to: '$.testament.checked', oneWay: false, transform: function(value, dir) {
+            // console.log('Copy testament', value, dir);
             return value;
         }},             
         {from: 'app.UserConfig.copy_text_format', to: 'textFormat', oneWay: false, transform: function(value, dir) {

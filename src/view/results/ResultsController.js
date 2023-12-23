@@ -34,7 +34,8 @@ module.exports = kind({
         {method: 'watchRenderable', path: ['uc.copy', 'uc.paragraph', 'uc.strongs', 'uc.italics', 'uc.red_letter', 'uc.highlight']},
         //{method: 'watchRenderable', path: ['uc.copy', 'uc.render_style', 'uc.strongs', 'uc.italics', 'uc.red_letter', 'uc.highlight']},
         {method: 'watchCopyRenderable', path: [
-            'uc.copy_separate_line', 'uc.copy_omit_extra_br', 'uc.copy_abbr_book', 'uc.copy_text_format', 'uc.copy_passage_format', 'uc.copy_passage_verse_number'
+            'uc.copy_separate_line', 'uc.copy_omit_extra_br', 'uc.copy_abbr_book', 'uc.copy_text_format', 'uc.copy_passage_format', 
+            'uc.copy_passage_verse_number', 'uc.copy_testament'
         ]},
         {method: 'watchTextSize', path: ['uc.text_size']},
         {method: 'watchFont', path: ['uc.font']},
