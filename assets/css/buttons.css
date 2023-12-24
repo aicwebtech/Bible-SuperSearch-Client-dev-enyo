@@ -113,6 +113,11 @@
   font-feature-settings: 'liga';
 }
 
+/* for use within small <button> elements */
+.material-icons-small-button {
+    font-size: 13px;
+}
+
 .format_buttons_html .item .icon {
     font-size: 18px;
     line-height: 18px;

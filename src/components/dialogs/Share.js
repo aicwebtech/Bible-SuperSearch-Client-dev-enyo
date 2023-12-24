@@ -37,7 +37,6 @@ module.exports = kind({
 
     bodyComponents: [
         // {kind: Signal, onFormResponseSuccess: 'handleFormResponse', onFormResponseError: 'handleFormError'},
-        {classes: 'list start_list', name: 'ListContainer'}, 
         {classes: 'link_share_container', components: [
             {kind: TextArea, name: 'CopyArea', classes: 'link_share'}
         ]},
@@ -46,7 +45,9 @@ module.exports = kind({
 
     buttonComponents: [
         {name: 'Copy', kind: Button, ontap: 'copy', components: [
-            {kind: i18n, content: 'Copy'},
+            {kind: i18n, content: 'Copy'}
+            // {tag: 'span', content: '&nbsp;', allowHtml: true},
+            // {tag: 'span', classes: 'material-icons icon material-icons-small-button', content: 'share'}
         ]},          
         {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
         // {name: 'CopyWithText', kind: Button, ontap: 'copyWithText', components: [
@@ -82,9 +83,16 @@ module.exports = kind({
     showingChanged: function(was, is) {
         this.inherited(arguments);
 
+        var actuallyShowDialog = navigator.share ? false : true;
+
         if(is) {
-            this.populate(); 
-            this.$.ListContainer.render();
+            if(actuallyShowDialog) {
+                this.populate(); 
+            } else {                
+                this.app.set('shareShowing', false);
+                this.populate(); 
+                this.copy();
+            }
         }
     },
     populate: function() {
@@ -164,7 +172,7 @@ module.exports = kind({
 
         content += (maxReached) ? '\n\n' : ''; // same regardles of singleVerse
         //content += '\n' + bibleName + '\n\n\n' + title + '\n' + url;
-        this.shareContent = content;
+        //this.shareContent = content;
 
         content += '\n' + bibleName + '\n\n\n' + references.join('; ') + ' - ' + this.app.t('Bible SuperSearch') + '\n' + url;
         this.$.CopyArea.set('content', content.trim());
@@ -177,7 +185,35 @@ module.exports = kind({
 
     },
     copy: function() {
-        return this.app._copyComponentContent(this.$.CopyArea, 'content', true, this.shareContent);
+        if(this.share()) {
+            return;
+        }
+
+        return this.app._copyComponentContent(this.$.CopyArea, 'content');
+    },
+    share: function() {
+        if(navigator.share) {
+            var promise = navigator.share({
+                // text: this.shareContent,
+                text: this.$.CopyArea.get('content'),
+                title: document.title
+            });
+
+            promise.then(utils.bind(this, function() {
+                this.app.debug && this.log('Successful share');
+            }), 
+            utils.bind(this, function() {
+                this.app.debug && this.log('Failed to share');
+            }));
+
+            promise.catch(utils.bind(this, function(error) {
+                this.app.debug && this.log('Failed to share');
+            }));
+            
+            return true;
+        }
+
+        return false;
     },
     copyWithText: function() {
         this.set('ezCopy', true);

@@ -1507,14 +1507,14 @@ var App = Application.kind({
             });
 
             promise.then(utils.bind(this, function() {
-                this.log('Successful share');
+                this.debug && this.log('Successful share');
             }), 
             utils.bind(this, function() {
-                this.log('Failed to share');
+                this.debug && this.log('Failed to share');
             }));
 
             promise.catch(utils.bind(this, function(error) {
-                this.log('Failed to share');
+                this.debug && this.log('Failed to share');
             }));
             
             return;

@@ -75,6 +75,14 @@ module.exports = kind({
     },
     populate: function() {
         var title = document.title,
+            url = window.location.href;
+
+        this.$.FullUrl.set('value', url);
+        this.$.FullUrlContainer.set('showing', true);
+        this.$.ShortUrlContainer.set('showing', false);
+    },
+    populateOld: function() {
+        var title = document.title,
             url = window.location.href,
             shortHash = this.app.get('shortHashUrl'),
             parts = url.split('#'),
@@ -110,10 +118,37 @@ module.exports = kind({
 
     },
     copyFullUrl: function() {
+        if(this.share()) {
+            return;
+        }
+
         return this.app._copyComponentContent(this.$.FullUrl, 'value');
     },    
     copyShortUrl: function() {
         return this.app._copyComponentContent(this.$.ShortUrl, 'value');
+    },
+    share: function() {
+        if(navigator.share) {
+            var promise = navigator.share({
+                title: document.title,
+                url: window.location.href
+            });
+
+            promise.then(utils.bind(this, function() {
+                this.app.debug && this.log('Successful share');
+            }), 
+            utils.bind(this, function() {
+                this.app.debug && this.log('Failed to share');
+            }));
+
+            promise.catch(utils.bind(this, function(error) {
+                this.app.debug && this.log('Failed to share');
+            }));
+            
+            return true;
+        }
+
+        return false;
     }
 
 });
