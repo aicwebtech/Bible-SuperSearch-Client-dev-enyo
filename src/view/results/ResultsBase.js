@@ -443,6 +443,7 @@ module.exports = kind({
         var thres = 50;
         var hoverIntentThres = this.app.configs.hoverDelayThreshold;
         var strongsOpenClick = this.getStrongsOpenClick();
+        // var strongsOpenClick = false; // debugging ONLY as handleHover and handleClick with collide if both are active!
 
         this.log('hoverIntentThres', hoverIntentThres, strongsOpenClick);
 
@@ -475,6 +476,10 @@ module.exports = kind({
 
             var mouseX = inEvent.clientX; //inEvent.screenX + inEvent.offsetX;
             var mouseY = inEvent.clientY; // + inEvent.offsetY;
+
+            if(target.bssType == 'strongs') {
+                this.log('raw mouse', mouseX, mouseY);
+            }
 
             if(this.app.clientBrowser == 'IE') {
                 // apparently, do nothing - seems to position correctly?
@@ -535,14 +540,22 @@ module.exports = kind({
             // inEvent.stopPropagation();
             inEvent.bubbling = false;
 
-            var mouseX = Math.round(inEvent.clientX); 
-            var mouseY = Math.round(inEvent.clientY); 
+            this.log('raw mouse', inEvent);
+
+            // var mouseX = Math.round(inEvent.clientX); 
+            // var mouseY = Math.round(inEvent.clientY); 
+
+            var mouseX = Math.round(inEvent.srcEvent.clientX); 
+            var mouseY = Math.round(inEvent.srcEvent.clientY); 
+
+            this.log('raw mouse client', mouseX, mouseY);
+            // this.log('raw mouse srcEvent client', inEvent.srcEvent.clientX, inEvent.srcEvent.clientY);
 
             if(this.app.clientBrowser == 'IE') {
                 // apparently, do nothing - seems to position correctly?
             }
             else {
-                mouseX += window.scrollX;
+                mouseX += window.scrollX
                 mouseY += window.scrollY;
             }
 

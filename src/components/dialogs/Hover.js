@@ -96,9 +96,9 @@ module.exports = kind({
 
         this.$.ContentContainer.set('content', content);
 
-        this.applyStyle('left', left + 'px');
-        this.applyStyle('top', top + 'px');
-        this.set('showing', true);
+        // this.applyStyle('left', left + 'px');
+        // this.applyStyle('top', top + 'px');
+        // this.set('showing', true);
     },
     showLoading: function() {
         this.$.LoadingContainer && this.$.LoadingContainer.set('showing', true);
@@ -114,6 +114,68 @@ module.exports = kind({
         this.reposition();
     },
     reposition: function() {
+        if(!this.owner) {
+            return;
+        };
+
+        // this.set('showing', true);
+
+        var containerBounds = this.getOwnerBounds(),
+            myBounds = this.hasNode().getBoundingClientRect(),
+            scrollHeight = this.hasNode().scrollHeight,
+            viewportHeight = window.innerHeight,
+            viewportWidth = window.innerWidth,
+            mouseX = posX = this.mouseX,
+            mouseY = posY = this.mouseY,
+            maxX = Math.min(containerBounds.width, viewportWidth),
+            maxYcontainer = containerBounds.topOrig + containerBounds.height,
+            // maxYviewport = scrollHeight + viewportHeight,
+            maxYviewport = viewportHeight,
+            maxY = Math.min(maxYviewport, maxYcontainer),
+            smallScreen = false,
+            width = myBounds.width || this.width,
+            height = myBounds.height || this.height;
+
+        this.log('containerBounds', containerBounds);
+        this.log('viewport', viewportWidth, viewportHeight);
+        this.log('width/height', width, height);
+        this.log('mouse', mouseX, mouseY);
+        this.log('maxY', maxY, maxYcontainer, maxYviewport);
+        this.log('posY', posY, height, posY + height);
+
+        //if(height > viewportHeight || width > viewportWidth) {
+        if(viewportHeight < 400 || viewportWidth < 400) {
+            // height = viewportHeight;
+            smallScreen = true;
+        }
+
+        this.log('smallScreen', smallScreen);
+
+        if(smallScreen) {
+            width = 300;
+            posX = (maxX - width)  / 2;
+            posY = (maxY - height) / 2;
+        } else {            
+            
+            if(posX + width > maxX) {
+                // posX = maxX - width;
+                posX = posX - width;
+            }
+
+            if(posY + myBounds.height > maxY) {
+                posY = posY - height;
+            }
+        }
+
+        this.set('showing', true);
+        this.log('pos', posX, posY);
+        this.applyStyle('left', posX + 'px');
+        this.applyStyle('top', posY + 'px');
+        this.applyStyle('width', width + 'px');
+        this.render();
+    },
+
+    repositionOld: function() {
         this.set('showing', true);
         var w = widthNew = this.widthMin; // this.hasNode().scrollWidth;
         var h = this.hasNode().scrollHeight;
@@ -305,6 +367,8 @@ module.exports = kind({
         return { 
             top: rect.top + scrollTop, 
             left: rect.left + scrollLeft,
+            topOrig: rect.top,
+            leftOrig: rect.left,
             width: rect.width || null,
             height: rect.height || null
         };

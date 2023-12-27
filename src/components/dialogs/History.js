@@ -15,7 +15,9 @@ module.exports = kind({
     name: 'HistoryDialog',
     kind: Dialog,
     maxWidth: '400px',
-    height: '475px',
+    height: '150px',
+    maxHeight: '450px',
+    //varyingHeight: true,
     classes: 'help_dialog history_dialog',
     bibleString: null,
     

@@ -7,6 +7,7 @@ module.exports = kind({
     showing: false,
     width: '300px',
     height: '200px',
+    varyingHeight: false,
     maxWidth: null,
     maxHeight: null,
     classes: 'biblesupersearch_dialog',
@@ -75,12 +76,18 @@ module.exports = kind({
     processDimensions: function() {
         var docWidth = document.documentElement.clientWidth,
             docHeight = document.documentElement.clientHeight,
+            myHeight = 0;
             maxHeightDoc = docHeight - 10;
             style = '',
             height = parseInt(this.height, 10),
             headerHeight = 0,
             smallScreen = false,
             n = this.name;
+
+        if(this.hasNode()) {
+            myBounds = this.hasNode().getBoundingClientRect();
+            myHeight = myBounds.height;
+        }
 
         this.log(n, 'docHeight', docHeight);
         this.log(n, 'raw Height', this.height);
@@ -130,6 +137,10 @@ module.exports = kind({
         var bodyHeight = height - headerHeight;
 
         this.log(n, 'adusted h', height);
+
+        if(this.varyingHeight) {
+            height = Math.max(height, myHeight);
+        }
 
         style += 'height: ' + height + 'px; ';
         
