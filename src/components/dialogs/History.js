@@ -15,8 +15,8 @@ module.exports = kind({
     name: 'HistoryDialog',
     kind: Dialog,
     maxWidth: '400px',
-    height: '150px',
-    maxHeight: '450px',
+    height: '300px',
+    // maxHeight: '350px',
     //varyingHeight: true,
     classes: 'help_dialog history_dialog',
     bibleString: null,
@@ -55,15 +55,17 @@ module.exports = kind({
     showingChanged: function(was, is) {
         this.inherited(arguments);
 
-        if(is && this.app.getSelectedBiblesString() != this.bibleString) {
+        if(is) {
             this.populateList(); // redraww the list because the URLs have changed
             this.$.ListContainer.render();
+            this.processDimensions();
         }
     },
-    listChanged: function(was, is) {
-        this.populateList();
-        this.$.ListContainer.render();
-    },
+    // listChanged: function(was, is) {
+    //     this.populateList();
+    //     this.$.ListContainer.render();
+    //     this.processDimensions();
+    // },
     populateList: function() {
         this.$.ListContainer.destroyClientControls();
 

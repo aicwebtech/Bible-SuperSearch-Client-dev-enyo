@@ -11,6 +11,7 @@ module.exports = kind({
     // style: '',
     width: 300,
     height: 300,
+    smallScreenThreshold: 400,
     mouseX: null,
     mouseY: null,
     offsetX: 10,
@@ -118,51 +119,52 @@ module.exports = kind({
             return;
         };
 
-        // this.set('showing', true);
-
         var containerBounds = this.getOwnerBounds(),
             myBounds = this.hasNode().getBoundingClientRect(),
-            scrollHeight = this.hasNode().scrollHeight,
             viewportHeight = window.innerHeight,
             viewportWidth = window.innerWidth,
-            mouseX = posX = this.mouseX,
-            mouseY = posY = this.mouseY,
+            posX = this.mouseX,
+            posY = this.mouseY,
             maxX = Math.min(containerBounds.width, viewportWidth),
             maxYcontainer = containerBounds.topOrig + containerBounds.height,
-            // maxYviewport = scrollHeight + viewportHeight,
             maxYviewport = viewportHeight,
             maxY = Math.min(maxYviewport, maxYcontainer),
             smallScreen = false,
             width = myBounds.width || this.width,
             height = myBounds.height || this.height;
 
-        this.log('containerBounds', containerBounds);
-        this.log('viewport', viewportWidth, viewportHeight);
-        this.log('width/height', width, height);
-        this.log('mouse', mouseX, mouseY);
-        this.log('maxY', maxY, maxYcontainer, maxYviewport);
-        this.log('posY', posY, height, posY + height);
-
-        //if(height > viewportHeight || width > viewportWidth) {
-        if(viewportHeight < 400 || viewportWidth < 400) {
-            // height = viewportHeight;
+        if(viewportHeight < this.smallScreenThreshold || viewportWidth < this.smallScreenThreshold) {
             smallScreen = true;
         }
 
+        if(myBounds.height == 0) {
+            this.render();
+            myBounds = this.hasNode().getBoundingClientRect();
+            height = myBounds.height;
+        }
+
+        this.log('containerBounds', containerBounds);
+        this.log('viewport', viewportWidth, viewportHeight);
+        this.log('width/height', width, height);
+        this.log('maxY', maxY, maxYcontainer, maxYviewport);
+        this.log('posY', posY, height, posY + height);
         this.log('smallScreen', smallScreen);
 
         if(smallScreen) {
             width = 300;
             posX = (maxX - width)  / 2;
-            posY = (maxY - height) / 2;
+            // posY = (maxY - height) / 2; // centers against page, not plancing it where we want
+
+            if(posY + height > maxY) {
+                posY = posY - height;
+            }
         } else {            
-            
             if(posX + width > maxX) {
                 // posX = maxX - width;
                 posX = posX - width;
             }
 
-            if(posY + myBounds.height > maxY) {
+            if(posY + height > maxY) {
                 posY = posY - height;
             }
         }
