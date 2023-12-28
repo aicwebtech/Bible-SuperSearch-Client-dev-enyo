@@ -41,41 +41,38 @@ module.exports = kind({
         return opts;
     }, 
     getBooksByName: function(bookName) {
-        bookName = this.app._fmtBookNameMatch(bookName);
         var locale = this.app.get('locale');
+        bookName = this.app._fmtBookNameMatch(bookName, locale);
         var BookList = this.app.localeBibleBooks[locale] || this.app.statics.books;
+
+        var matchAnywhere = (!this.app.configs.autocompleteMatchAnywhere || this.app.configs.autocompleteMatchAnywhere == 'false') ? false : true;
+        var matchOn = 'fn'; // fn or sn
 
         // Pass 1: Exact match
         var books = BookList.filter(function(bookItem) {
-            if(bookName == bookItem.fn || bookName == bookItem.sn) {
+            if(bookName == bookItem[matchOn]) {
                 return true;
             }
 
-            if(bookItem.matching && bookItem.matching.includes && bookItem.matching.includes(bookName)) {
-                return true;
-            }
+            // if(bookItem.matching && bookItem.matching.includes && bookItem.matching.includes(bookName)) {
+            //     return true;
+            // }
 
-            var namePeriodToSpace = bookItem.fn.replace(/\./g,' ');
+            // var namePeriodToSpace = bookItem.fn.replace(/\./g,' ');
 
-            if(bookName == namePeriodToSpace) {
-                return true;
-            }
+            // if(bookName == namePeriodToSpace) {
+            //     return true;
+            // }
 
             return false;
         });
 
-        if(!this.app.configs.autocompleteMatchAnywhere || this.app.configs.autocompleteMatchAnywhere == 'false') {
-            return books;
-        }
-
         // Pass 2: Partial match
         if(!books || books.length == 0) {
             books = BookList.filter(function(bookItem) {
-                if(bookItem.fn.indexOf(bookName) == 0) {
-                    return true;
-                }                
+                var pos = bookItem[matchOn].indexOf(bookName);
 
-                if(bookItem.sn.indexOf(bookName) == 0) {
+                if(matchAnywhere && pos != -1 || !matchAnywhere && pos == 0) {
                     return true;
                 }
 
@@ -88,14 +85,9 @@ module.exports = kind({
             var bookNameNoPunc = bookName.replace(/[ .;:]/g, ' ');
 
             books = BookList.filter(function(bookItem) {
-                var biNameNoPunc = bookItem.fn.replace(/[ .;:]/g, ' ');
-                var biShortameNoPunc = bookItem.sn.replace(/[ .;:]/g, ' ');
+                var pos = bookItem[matchOn].replace(/[ .;:]/g, ' ').indexOf(bookNameNoPunc);
 
-                if(biNameNoPunc.indexOf(bookNameNoPunc) == 0) {
-                    return true;
-                }                
-
-                if(biShortameNoPunc.indexOf(bookNameNoPunc) == 0) {
+                if(matchAnywhere && pos != -1 || !matchAnywhere && pos == 0) {
                     return true;
                 }
 

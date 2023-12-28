@@ -160,7 +160,6 @@ module.exports = {
     'Basic': 'Põhiline',
     'Advanced': 'Täiustatud',
 
-
     // Descriptions of special formatting features
     'Formatting': 'Vormindamine',  // 5.3
     'Supported Bibles Only': 'Ainult toetatud piiblid',  // 5.3
@@ -169,7 +168,6 @@ module.exports = {
     'italics_description': 'Kaldkiri tähistab tõlkes lisatud sõnu, mis ei olnud originaalkeeles.',    // 5.3
     'red_letter_description': 'Kristuse sõnad punases.', // 5.3
     'highlight_description': 'Märksõnade esiletõstmine (paksus kirjas) otsingutes.',  // 5.3
-
 
 
 
@@ -223,7 +221,7 @@ module.exports = {
     //  'tulemused',
 
      // Edited    
-    'Your search produced' : 'Teie otsing andis tulemusi'.
+    'Your search produced' : 'Teie otsing andis tulemusi',
      //"Teie otsing andis tulemuse',  
     // (total number of verses)
     'results' : '(salmide koguarv) tulemused',
@@ -253,7 +251,6 @@ module.exports = {
     'Your search was limited to': 'Teie otsing on piiratud',
     'Please refine your search if necessary': 'Vajadusel täpsustage oma otsingut',
 
-
     'This Bible is in the Public Domain.': 'See Piibel on avalikus omandis.',
     'This Bible is provided for research purposes only.': 'See Piibel on mõeldud ainult uurimiseesmärkidel.',
     'An unknown error has occurred.' : 'Ilmnes tundmatu viga.',
@@ -274,7 +271,6 @@ module.exports = {
     'Proximity operators such as PROX and CHAP can only be used with boolean searches' : 'Lähedusoperaatoreid, nagu PROX ja CHAP, saab kasutada ainult tõeväärtuslike otsingutega',
     'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets': 'Märkus. PROX/CHAP-operaatoreid ei saa panna sulgudesse ega nurksulgudesse',
     'Your access to this API has been revoked.  Please contact system administrator.': 'Teie juurdepääs sellele API-le on tühistatud. Võtke ühendust süsteemiadministraatoriga.',
-
 
     // Dialogs - general
     'Close': 'Sulge', 
@@ -380,7 +376,7 @@ module.exports = {
     'User\'s Manual': 'Kasutusjuhend',
     'Wildcard': 'Metamärk',
     'Basic Searches' : 'Põhiotsingud',
-    'Advanced Searches using Boolean': Täpsemad otsingud Booleani abil'',
+    'Advanced Searches using Boolean': 'Täpsemad otsingud Booleani abil',
     'Select' : 'Vali',
     'Operators': 'Operaatorid',
     'Operator': 'Operaator',
@@ -752,4 +748,5 @@ module.exports = {
           "shortname": "Ilm."
         }
     ],
+
 };

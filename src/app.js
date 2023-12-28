@@ -1171,8 +1171,8 @@ var App = Application.kind({
             var book = bookList[key],
                 bookEn = null;
 
-            book.fn = this._fmtBookNameMatch(book.name);
-            book.sn = this._fmtBookNameMatch(book.shortname);
+            book.fn = this._fmtBookNameMatch(book.name, locale);
+            book.sn = this._fmtBookNameMatch(book.shortname, locale);
 
             if(locale != 'en') {
                 bookEn = this.localeBibleBooks.en[key] || null;
@@ -1180,7 +1180,7 @@ var App = Application.kind({
 
             if(Array.isArray(book.matching)) {
                 for(mk in book.matching) {
-                    book.matching[mk] = this._fmtBookNameMatch(book.matching[mk]);
+                    book.matching[mk] = this._fmtBookNameMatch(book.matching[mk], locale);
                 }
             }
 
@@ -1206,8 +1206,31 @@ var App = Application.kind({
             this._localeChangedHelper(locale);
         }
     },
-    _fmtBookNameMatch: function(name) {
-        return name ? name.toLowerCase() : '';
+    _fmtBookNameMatch: function(name, locale) {
+        if(!name) {
+            return '';
+        }
+
+        locale = typeof locale == 'undefined' ? locale : this.get('locale');
+        var fmt = name.toLocaleLowerCase(locale);
+
+        switch(locale) {
+            case 'lv':
+                fmt = fmt.replace(/ā/g, 'a');
+                fmt = fmt.replace(/č/g, 'c');
+                fmt = fmt.replace(/ē/g, 'e');
+                fmt = fmt.replace(/ģ/g, 'g');
+                fmt = fmt.replace(/ī/g, 'i');
+                fmt = fmt.replace(/ķ/g, 'k');
+                fmt = fmt.replace(/ļ/g, 'l');
+                fmt = fmt.replace(/ņ/g, 'n');
+                fmt = fmt.replace(/š/g, 's');
+                fmt = fmt.replace(/ū/g, 'u');
+                fmt = fmt.replace(/ž/g, 'z');
+                break;
+        }
+
+        return fmt;
     },
     _localeChangedHelper: function(locale) {
         this.debug && this.log(locale);
@@ -1301,8 +1324,8 @@ var App = Application.kind({
     },
     findBookByName: function(bookName) {
         this.debug && this.log(bookName);
-        bookName = this._fmtBookNameMatch(bookName);
         var locale = this.get('locale');
+        bookName = this._fmtBookNameMatch(bookName, locale);
         var BookList = this.localeBibleBooks[locale] || this.statics.books;
 
         // Pass 1: Exact match

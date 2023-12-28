@@ -20,7 +20,7 @@ module.exports = kind({
     name: 'LinkDialog',    
     kind: Dialog,
     maxWidth: '400px',
-    height: '475px',
+    height: '140px',
     classes: 'help_dialog link_dialog',
     bibleString: null,
     ezCopy: false,
@@ -35,9 +35,9 @@ module.exports = kind({
         {tag: 'br'},
         {name: 'FullUrlContainer', classes: 'copy-link-containr', components: [
             {kind: Input, name: 'FullUrl'},
-            {kind: Button, onclick: 'copyFullUrl', components: [
-                {kind: i18n, content: 'Copy'}
-            ]}
+            // {kind: Button, onclick: 'copyFullUrl', components: [
+            //     {kind: i18n, content: 'Copy'}
+            // ]}
         ]},
         {name: 'ShortUrlContainer', classes: 'copy-link-containr', components: [
             {tag: 'br'},
@@ -50,6 +50,10 @@ module.exports = kind({
     ],
 
     buttonComponents: [
+        {name: 'Copy', kind: Button, ontap: 'copy', components: [
+            {kind: i18n, content: 'Copy'}
+        ]},          
+        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp; &nbsp; &nbsp;'},
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'}
         ]}
@@ -116,6 +120,9 @@ module.exports = kind({
     },
     localeChanged: function(inSender, inEvent) {
 
+    },
+    copy: function() {
+        return this.copyFullUrl()
     },
     copyFullUrl: function() {
         if(this.share()) {

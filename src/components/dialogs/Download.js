@@ -20,7 +20,7 @@ module.exports = kind({
     name: 'DownloadDialog',
     kind: Dialog,
     maxWidth: '500px',
-    height: '410px',
+    height: '420px',
     classes: 'help_dialog bible_download',
     bibleString: null,
     formData: null,

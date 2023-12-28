@@ -553,7 +553,6 @@ div.alert_dialog {
 
 .history_list {
     max-height: 220px;
-    overflow-y: auto;
 }
 
 .history_item.item {

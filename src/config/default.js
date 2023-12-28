@@ -16,6 +16,7 @@ var defaultConfig = {
     "parallelBibleStartSuperceedsDefaultBibles": false,
     'hoverDelayThreshold': 500,
     'strongsDialogSearchLink': false,
+    'legacyManual': false,
     'strongsOpenClick': 'mobile',
 
 

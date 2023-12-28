@@ -17,6 +17,7 @@ var biblesupersearch_config_options = {
     // Supported language:
     // * en : English
     // * es : Español / Spanish
+    // * et : Eesti / Estonian
     // * fr: Français / French
     // * fr: हिन्दी, हिंदी / Hindi
     // * lv: Latviešu / Latvian
@@ -321,6 +322,9 @@ var biblesupersearch_config_options = {
     // Some interfaces may force this to false
     // Also, this is disabled when formatButtonsToggle above is true
     'toggleAdvanced': false,  
+
+    // Whether to include a link to the legacy User's Manual (English only) from the quick start dialog
+    'legacyManual': false,
     
     // id of target HTML div tag            (string)
     

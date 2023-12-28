@@ -23,7 +23,7 @@ module.exports = kind({
     name: 'ShareDialog',    
     kind: Dialog,
     maxWidth: '400px',
-    height: '475px',
+    height: '320px',
     classes: 'help_dialog share_dialog',
     bibleString: null,
     ezCopy: false,
@@ -49,11 +49,7 @@ module.exports = kind({
             // {tag: 'span', content: '&nbsp;', allowHtml: true},
             // {tag: 'span', classes: 'material-icons icon material-icons-small-button', content: 'share'}
         ]},          
-        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
-        // {name: 'CopyWithText', kind: Button, ontap: 'copyWithText', components: [
-        //     {kind: i18n, content: 'Copy with Text'},
-        // ]},        
-        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
+        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp; &nbsp; &nbsp;'},
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'},
         ]}
@@ -214,11 +210,6 @@ module.exports = kind({
         }
 
         return false;
-    },
-    copyWithText: function() {
-        this.set('ezCopy', true);
-        // todo - enable link on EZ Copy here
-        this.close();
     },
     processText: function(text) {
         text = text.replace(/<[^<>]+>/g, ''); // strip HTML

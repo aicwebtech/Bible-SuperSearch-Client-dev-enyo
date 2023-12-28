@@ -62,6 +62,26 @@ module.exports = kind({
             {content: 'John 13:36 - 14:3', link: 'passage'},
 
         ],
+
+        // :todo - add shortcut list here!
+        /*
+        limitingSearches: [
+            {tag: 'h3', kind: i18n, content: 'Limiting Searches'},
+            {tag: 'h4', kind: i18n, content: 'Preset Limits'},
+            {tag: 'table', components: [
+                {tag: 'thead', components: [
+                    {tag: 'th', kind: i18n, content: 'Name'},
+                    // {tag: 'th', kind: i18n, content: 'Alias 1'},
+                    // {tag: 'th', kind: i18n, content: 'Alias 2'},
+                    {tag: 'th', kind: i18n, content: 'Reference'},
+                ]},
+                {tag: 'tbody', components: []}
+            ]},
+            {tag: 'h4', kind: i18n, content: 'Custom Limits'},
+
+        ],
+        */
+
         specialFormatting: [
             {tag: 'h3', content: 'Formatting'},
             
@@ -168,8 +188,8 @@ module.exports = kind({
             {tag: 'br'},
             {content: 'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets.'},
             {tag: 'br'},
-            {content: 'For details, please see the User\'s Manual.'},
-            {tag: 'br'},
+            // {content: 'For details, please see the User\'s Manual.'},
+            // {tag: 'br'},
         ],
 
     },
@@ -191,10 +211,10 @@ module.exports = kind({
     ],
 
     buttonComponents: [
-        {name: 'UsersManual', kind: Button, ontap: 'usersManual', components: [
+        {name: 'UsersManual', kind: Button, ontap: 'usersManual', showing: false, components: [
             {kind: i18n, content: 'User\'s Manual'},
         ]},
-        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'}, 
+        {name: 'UmSpacer', tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;', showing: false}, 
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'},
         ]}
@@ -211,7 +231,28 @@ module.exports = kind({
         }
 
         this.inherited(arguments);
+
+        var statics = this.app.get('statics'),
+            shortcuts = statics.shortcuts;
+
+        // for(i in shortcuts) {
+        //     this.sections.limitingSearches[2].components[1].components.push({
+        //         tag: 'tr',
+        //         components: [
+        //             {tag: 'td', kind: i18n, content: shortcuts[i].name},
+        //             // {tag: 'td', kind: i18n, content: shortcuts[i].alias1}, // not returned by API
+        //             // {tag: 'td', kind: i18n, content: shortcuts[i].alias2},
+        //             {tag: 'td', kind: i18n, content: shortcuts[i].reference},
+        //         ]
+        //     })
+        // }
+
         this.populateList();
+
+        if(this.app.configs.legacyManual) {
+            this.$.UsersManual.set('showing', true);
+            this.$.UmSpacer.set('showing', true);
+        }
     },
     close: function() {
         this.set('showing', false);

@@ -16,10 +16,7 @@ module.exports = kind({
     kind: Dialog,
     maxWidth: '400px',
     height: '300px',
-    // maxHeight: '350px',
-    //varyingHeight: true,
     classes: 'help_dialog history_dialog',
-    bibleString: null,
     
     titleComponents: [
         {classes: 'header', components: [
@@ -61,11 +58,6 @@ module.exports = kind({
             this.processDimensions();
         }
     },
-    // listChanged: function(was, is) {
-    //     this.populateList();
-    //     this.$.ListContainer.render();
-    //     this.processDimensions();
-    // },
     populateList: function() {
         this.$.ListContainer.destroyClientControls();
 
@@ -83,7 +75,6 @@ module.exports = kind({
                 verses: item.verses,
                 owner: this,
                 classes: 'item history_item', components: [
-                    //{classes: 'label', content: label},
                     {classes: 'verses', components: [
                         {
                             kind: Anchor, 
@@ -97,6 +88,19 @@ module.exports = kind({
                 ]
             });
         }, this);
+
+        var count = this.$.ListContainer.getClientControls().length;
+
+        while(count < 9) {
+            this.$.ListContainer.createComponent({
+                owner: this,
+                content: '&nbsp;',
+                allowHtml: true,
+                classes: 'item history_item'
+            });
+
+            count ++;
+        }
     },
     handleHistoryTap: function(inSender, inEvent) {
         this.close();

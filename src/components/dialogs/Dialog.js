@@ -81,10 +81,15 @@ module.exports = kind({
             style = '',
             height = parseInt(this.height, 10),
             headerHeight = 0,
+            contentHeight = 0,
             smallScreen = false,
             n = this.name;
 
-        if(this.hasNode()) {
+        if(this.varyingHeight) {
+            if(!this.hasNode()) {
+                this.render();
+            }
+
             myBounds = this.hasNode().getBoundingClientRect();
             myHeight = myBounds.height;
         }
@@ -109,6 +114,15 @@ module.exports = kind({
             height = maxHeightDoc;
             smallScreen = true;
         }
+
+        var contentElement = this.$.Body.hasNode() || null;
+
+        // if(contentElement) {
+        //     var style = contentElement.currentStyle || window.getComputedStyle(contentElement);
+        //     contentHeight += contentElement.offsetHeight;
+        //     contentHeight += parseInt(style.marginTop, 10);
+        //     contentHeight += parseInt(style.marginBottom, 10);
+        // }
         
         var headerItems = [
             'TitleBar', 
@@ -139,7 +153,7 @@ module.exports = kind({
         this.log(n, 'adusted h', height);
 
         if(this.varyingHeight) {
-            height = Math.max(height, myHeight);
+            height = headerHeight + contentHeight;
         }
 
         style += 'height: ' + height + 'px; ';
