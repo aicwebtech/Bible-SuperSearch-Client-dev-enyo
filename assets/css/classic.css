@@ -166,17 +166,17 @@
     font-family: serif;
 }
 
-.interface_classic .help_dialog .dialog {
+.interface_classic .help_dialog .bss_dialog_container {
     background-color: #702424;
     color: white;
 }
 
-.interface_classic .help_dialog .dialog .content {
+.interface_classic .help_dialog .bss_dialog_container .bss_dialog_content {
     background-color: #d2b48c;
     color: black;
 }
 
-.interface_classic .help_dialog .item:nth-child(odd) {
+.interface_classic .help_dialog .item:nth-child(odd), .interface_classic .bss_list_item:nth-child(odd),  {
     background-color: #edd9be;
 }
 

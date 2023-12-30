@@ -25,7 +25,7 @@ module.exports = kind({
     ],
 
     bodyComponents: [
-        {classes: 'list history_list', name: 'ListContainer'}
+        {classes: 'bss_history_list', name: 'ListContainer'}
     ],
 
     buttonComponents: [
@@ -74,7 +74,7 @@ module.exports = kind({
             this.$.ListContainer.createComponent({
                 verses: item.verses,
                 owner: this,
-                classes: 'item history_item', components: [
+                classes: 'bss_list_item bss_history_item', components: [
                     {classes: 'verses', components: [
                         {
                             kind: Anchor, 
@@ -96,7 +96,7 @@ module.exports = kind({
                 owner: this,
                 content: '&nbsp;',
                 allowHtml: true,
-                classes: 'item history_item'
+                classes: 'bss_list_item bss_history_item'
             });
 
             count ++;

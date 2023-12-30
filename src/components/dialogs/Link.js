@@ -32,7 +32,6 @@ module.exports = kind({
     ],
 
     bodyComponents: [
-        {tag: 'br'},
         {name: 'FullUrlContainer', classes: 'copy-link-containr', components: [
             {kind: Input, name: 'FullUrl'},
             // {kind: Button, onclick: 'copyFullUrl', components: [
@@ -45,8 +44,7 @@ module.exports = kind({
             {kind: Button, onclick: 'copyShortUrl', components: [
                 {kind: i18n, content: 'Copy'}
             ]}
-        ]},
-        {tag: 'br'}
+        ]}
     ],
 
     buttonComponents: [

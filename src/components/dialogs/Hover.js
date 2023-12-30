@@ -11,7 +11,7 @@ module.exports = kind({
     // style: '',
     width: 300,
     height: 300,
-    smallScreenThreshold: 400,
+    smallScreenThreshold: 600,
     mouseX: null,
     mouseY: null,
     offsetX: 10,

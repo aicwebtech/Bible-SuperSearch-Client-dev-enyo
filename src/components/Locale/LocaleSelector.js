@@ -28,7 +28,7 @@ module.exports = kind({
             }
 
             this.createOptionComponent({
-                content: langName + ' (' + i.toUpperCase() + ')',
+                content: langName + ' (' + this.app._fmtLocaleName(i) + ')',
                 value: i
             });
         }

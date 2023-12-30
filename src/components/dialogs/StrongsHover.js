@@ -36,7 +36,7 @@ module.exports = kind({
                 {name: 'ContentContainer', kind: StrongsView},
                 {
                     name: 'ButtonContainer',
-                    classes: 'buttons biblesupersearch_center_element',
+                    classes: 'bss_dialog_buttons biblesupersearch_center_element',
                     components: [
                         {name: 'Link', kind: Button, ontap: 'followLink', components: [
                             {kind: i18n, content: 'Search for'},

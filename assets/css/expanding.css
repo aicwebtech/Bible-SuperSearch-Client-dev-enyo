@@ -181,12 +181,12 @@
     font-family: serif;
 }
 
-.interface_expanding .help_dialog .dialog {
+.interface_expanding .help_dialog .bss_dialog_container {
     background-color: #7690f7;
     color: white;
 }
 
-.interface_expanding .help_dialog .dialog .content {
+.interface_expanding .help_dialog .bss_dialog_container .bss_dialog_content {
     background-color: #dee4fc;
     color: black;
 }

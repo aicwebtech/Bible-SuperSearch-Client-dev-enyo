@@ -37,11 +37,10 @@ module.exports = kind({
     ],
 
     bodyComponents: [
-        {tag: 'br'},
         {components: [
             {kind: i18n, tag: 'span', content: 'Language'},
-            {tag: 'span', allowHtml: true, content: ':&nbsp;'},
-            {name: 'Language', kind: LanguageSelector, style: 'width:120px'},
+            {tag: 'br'},
+            {name: 'Language', kind: LanguageSelector, style: 'width:250px'},
         ]},
         {tag: 'br'},
         {
@@ -243,7 +242,7 @@ module.exports = kind({
         //    {kind: i18n, content: 'verses'}     
         // ]},        
         // {tag: 'br'},
-        {tag: 'br'}
+        // {tag: 'br'}
     ],
 
     buttonComponents: [
@@ -309,7 +308,7 @@ module.exports = kind({
         }
 
         if(this.app.get('useNewSelectors')) {
-            this.bodyComponents[1].components[2].kind = LanguageSelectorNew;
+            this.bodyComponents[0].components[2].kind = LanguageSelectorNew;
         }
 
         this.inherited(arguments);

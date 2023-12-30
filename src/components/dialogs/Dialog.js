@@ -29,10 +29,10 @@ module.exports = kind({
 
     components: [
         {name: 'Container', classes: 'biblesupersearch_center_element super_container', components: [
-            {name: 'SubContainer', classes: 'dialog', components: [
-                {name: 'TitleBar', classes: 'title', showing: false},
-                {name: 'Body', classes: 'content', showing: true},
-                {name: 'ButtonBar', classes: 'buttons', showing: false}
+            {name: 'SubContainer', classes: 'bss_dialog_container', components: [
+                {name: 'TitleBar', classes: 'bss_dialog_title', showing: false},
+                {name: 'Body', classes: 'bss_dialog_content', showing: true},
+                {name: 'ButtonBar', classes: 'bss_dialog_buttons', showing: false}
             ] },
         ]},
         {
@@ -83,16 +83,22 @@ module.exports = kind({
             headerHeight = 0,
             contentHeight = 0,
             smallScreen = false,
+            viewportHeight = window.innerHeight,
+            viewportWidth = window.innerWidth,
             n = this.name;
 
-        if(this.varyingHeight) {
-            if(!this.hasNode()) {
-                this.render();
-            }
-
-            myBounds = this.hasNode().getBoundingClientRect();
-            myHeight = myBounds.height;
+        if(viewportHeight < 400 || viewportWidth < 400) {
+            smallScreen = true;
         }
+
+        // if(this.varyingHeight) {
+        //     if(!this.hasNode()) {
+        //         this.render();
+        //     }
+
+        //     myBounds = this.hasNode().getBoundingClientRect();
+        //     myHeight = myBounds.height;
+        // }
 
         this.log(n, 'docHeight', docHeight);
         this.log(n, 'raw Height', this.height);

@@ -1212,7 +1212,22 @@ var App = Application.kind({
         }
 
         locale = typeof locale == 'undefined' ? locale : this.get('locale');
-        var fmt = name.toLocaleLowerCase(locale);
+
+        var localeFmt = this._fmtLocaleName(locale);
+
+        this.log(locale, localeFmt);
+
+        switch(localeFmt) {
+            // :todo make sure all locales/sublocales are using the ISO standard
+            // case 'zh_TW':
+            // case 'zh_CN':
+            case 'en_pirate': // NOT an ISO locale 
+            case 'en-PIRATE': // NOT an ISO locale 
+                var fmt = name.toLowerCase();
+                break;
+            default:
+                var fmt = name.toLocaleLowerCase(localeFmt);
+        }
 
         switch(locale) {
             case 'lv':
@@ -1228,6 +1243,16 @@ var App = Application.kind({
                 fmt = fmt.replace(/ū/g, 'u');
                 fmt = fmt.replace(/ž/g, 'z');
                 break;
+        }
+
+        return fmt;
+    },
+    _fmtLocaleName: function(locale) {
+        var parts = locale.split('_'),
+            fmt = parts[0].toUpperCase();
+
+        if(parts[1]) {
+            fmt += '-' + parts[1].toUpperCase();
         }
 
         return fmt;
