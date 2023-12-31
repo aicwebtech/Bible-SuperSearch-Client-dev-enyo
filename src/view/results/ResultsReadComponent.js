@@ -75,13 +75,18 @@ module.exports = kind({
                     distY = touch.pageY - t.touch.startY,
                     distXabs = Math.abs(distX),
                     distYabs = Math.abs(distY),
+                    XYdistRatio = distXabs / distYabs,
                     elapsedTime = new Date().getTime() - t.touch.startTime,
                     yMax = 10,
                     xMin = 30
 
                 // t.app.alert('touchend time: '+ elapsedTime +'<br>dx:' + distX + '<br>dy:' + distY);
 
-                if(distXabs >= xMin && distYabs <= yMax) {
+                // console.log('touch distXAbs', distXabs);
+                // console.log('touch distYAbs', distYabs);
+                // console.log('touch ratio', XYdistRatio);
+
+                if(distXabs >= xMin && XYdistRatio >= 3) {
                     if(distX < 0) {
                         t.clickNextChapter();
                     } else {

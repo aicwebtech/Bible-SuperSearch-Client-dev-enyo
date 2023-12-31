@@ -11,7 +11,8 @@ module.exports = kind({
     // style: '',
     width: 300,
     height: 300,
-    smallScreenThreshold: 600,
+    smallScreenThresholdHeight: 400,
+    smallScreenThresholdWidth: 600,
     mouseX: null,
     mouseY: null,
     offsetX: 10,
@@ -119,12 +120,14 @@ module.exports = kind({
             return;
         };
 
+        this.app.debug && this.log();
+
         var containerBounds = this.getOwnerBounds(),
             myBounds = this.hasNode().getBoundingClientRect(),
             viewportHeight = window.innerHeight,
             viewportWidth = window.innerWidth,
             posX = this.mouseX,
-            posY = this.mouseY,
+            posY = posYContainer = this.mouseY,
             maxX = Math.min(containerBounds.width, viewportWidth),
             maxYcontainer = containerBounds.topOrig + containerBounds.height,
             maxYviewport = viewportHeight,
@@ -133,29 +136,62 @@ module.exports = kind({
             width = myBounds.width || this.width,
             height = myBounds.height || this.height;
 
-        if(viewportHeight < this.smallScreenThreshold || viewportWidth < this.smallScreenThreshold) {
+        var posYtoContainerBottom = containerBounds.rect.height - posY;
+            posYViewport = posY + containerBounds.rect.top;
+
+        if(viewportHeight < this.smallScreenThresholdHeight || viewportWidth < this.smallScreenThresholdWidth) {
             smallScreen = true;
         }
 
         if(myBounds.height == 0) {
-            this.render();
+            // this.render();
+            this.set('showing', true);
             myBounds = this.hasNode().getBoundingClientRect();
             height = myBounds.height;
+            this.set('showing', false);
+
+            if(height == 0) {
+                // Brute force attempt to get actual height before using default height
+                if(this.waitCount >= 10) {
+                    this.app.debug && this.log('USING DEFAULT HEIGHT OF ' + this.height);
+                    height = this.height;
+                } else {
+                    this.app.debug && this.log('WAITING FOR HEIGHT');
+
+                    window.setTimeout(utils.bind(this, function() {
+                        if(this.waitCount < 10) {
+                            this.waitCount ++;
+                            this.reposition();
+                        } else {
+                            this.waitCount = 0;
+                        }
+                    }), 100);
+
+                    return;
+                }
+            }
         }
 
-        this.log('containerBounds', containerBounds);
-        this.log('viewport', viewportWidth, viewportHeight);
-        this.log('width/height', width, height);
+        this.waitCount = 0;
+
+        this.app.debug && this.log('mouse X,Y', this.mouseX, this.mouseY);
+        // this.log('containerBounds', containerBounds);
+        this.app.debug && this.log('viewport', viewportWidth, viewportHeight);
+        this.app.debug && this.log('width/height', width, height);
+        this.log('posYViewport', posYViewport, height, posYViewport + height);
         this.log('maxY', maxY, maxYcontainer, maxYviewport);
-        this.log('posY', posY, height, posY + height);
-        this.log('smallScreen', smallScreen);
+        // this.log('posY', posY, height, posY + height);
+        // this.app.debug && this.log('smallScreen', smallScreen);
+
+        // var displayAbove = posYContainer + height > containerBounds.height || posYViewport + height > viewportHeight;
 
         if(smallScreen) {
             width = 300;
             posX = (maxX - width)  / 2;
-            // posY = (maxY - height) / 2; // centers against page, not plancing it where we want
+            // posY = (maxY - height) / 2; // centers against page, not placing it where we want
 
-            if(posY + height > maxY) {
+            // if(posY + height > maxY) {
+            if(posYContainer + height > containerBounds.height || posYViewport + height > viewportHeight) {
                 posY = posY - height;
             }
         } else {            
@@ -164,13 +200,15 @@ module.exports = kind({
                 posX = posX - width;
             }
 
-            if(posY + height > maxY) {
+            // if(posY + height > maxY) {
+            if(posYContainer + height > containerBounds.height || posYViewport + height > viewportHeight) {
+            // if(posYViewport + height > viewportHeight) {
                 posY = posY - height;
             }
         }
 
         this.set('showing', true);
-        this.log('pos', posX, posY);
+        this.log('pos X,Y', posX, posY);
         this.applyStyle('left', posX + 'px');
         this.applyStyle('top', posY + 'px');
         this.applyStyle('width', width + 'px');
@@ -372,7 +410,8 @@ module.exports = kind({
             topOrig: rect.top,
             leftOrig: rect.left,
             width: rect.width || null,
-            height: rect.height || null
+            height: rect.height || null,
+            rect: rect
         };
     },
     close: function() {

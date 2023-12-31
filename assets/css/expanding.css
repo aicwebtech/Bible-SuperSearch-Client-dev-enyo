@@ -62,7 +62,11 @@
     margin-bottom: 5px;
 }
 
-.biblesupersearch_expanding_form .input_row_wide textarea, .biblesupersearch_expanding_form .input_row_wide .bible, .biblesupersearch_expanding_form .input_row_wide input {
+.biblesupersearch_expanding_form .input_row_wide textarea, 
+.biblesupersearch_expanding_form .input_row_wide .bible, 
+.biblesupersearch_expanding_form .input_row_wide input,
+.biblesupersearch_expanding_form .input_row_wide .bss_pseudo_autocomplete 
+{
     width: 85%;
     margin: 0 auto;
     padding: 0;

@@ -16,6 +16,7 @@ module.exports = kind({
 	optionComponents: [],
 	hasOptions: false,
 	defaultPlaceholder: '&nbsp;',
+    forceDisableAutocomplete: false,
 
 	published: {
 		value: null,
@@ -106,7 +107,8 @@ module.exports = kind({
         if(!value || value == '' || 
             value.length < this.app.configs.autocompleteThreshold || 
             !this.app.configs.autocompleteEnable || 
-            this.app.configs.autocompleteEnable == 'false'
+            this.app.configs.autocompleteEnable == 'false' ||
+            this.get('forceDisableAutocomplete')
         ) {
             return;
         }

@@ -800,3 +800,14 @@ tr.bss_render_reference_row th {
     padding-top: 15px;
     padding-bottom: 15px;
 }
+
+.biblesupersearch_strongs_view {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.biblesupersearch_strongs_body {
+    max-height: 200px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}

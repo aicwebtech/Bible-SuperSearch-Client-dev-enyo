@@ -3,6 +3,7 @@ var kind = require('enyo/kind');
 
 module.exports = kind({
     name: 'StrongsView',
+    classes: 'biblesupersearch_strongs_view',
     components: [],
 
     _addStrongs: function(item) {
@@ -34,7 +35,7 @@ module.exports = kind({
                 classes: classes,
                 components: [
                     {classes: 'strongs_head', allowHtml: true, content: head},
-                    {classes: 'strongs_body', allowHtml: true, content: text},
+                    {classes: 'strongs_body biblesupersearch_strongs_body', allowHtml: true, content: text},
                 ]
             });
         }

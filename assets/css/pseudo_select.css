@@ -14,7 +14,7 @@
     display: inline-block;
 
     height: 17px;
-    background-color: white;
+/*    background-color: white;*/
     font-size: 13px;
     cursor: default;
 }
@@ -41,6 +41,7 @@
 
 .bss_pseudo_autocomplete_input {
     width: 99%;
+    box-sizing: border-box;
 }
 
 .bss_pseudo_select_placeholder {
@@ -113,7 +114,7 @@
 }
 
 .bss_pseudo_option.bss_pseudo_keyboard_selected {
-    background-color: green !important;
+    background-color: #999999 !important;
     color: white;
 }
 
