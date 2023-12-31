@@ -10,8 +10,9 @@
     margin-right: auto;
 }
 
-.interface_minimal .form .single_line input {
-    width: calc(100% - 35px); 
+.interface_minimal .form .single_line input, 
+.interface_minimal .form .single_line .request input  {
+    width: calc(~"100% - 35px"); 
 }
 
 .interface_minimal .form .single_line button {
@@ -23,12 +24,14 @@
     white-space: nowrap;
 }
 
-.interface_minimal .form .single_line_bible input.request {
+.interface_minimal .form .single_line_bible input.request,
+.interface_minimal .form .single_line_bible .request input {
     width: 100%;
     max-width: 200px;
 }
 
-.interface_minimal_wide .form .single_line_bible input.request {
+.interface_minimal_wide .form .single_line_bible input.request,
+.interface_minimal_wide .form .single_line_bible .request input {
     width: 100%;
     max-width: 320px;
 }

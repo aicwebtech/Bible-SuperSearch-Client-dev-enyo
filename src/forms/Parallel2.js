@@ -7,6 +7,7 @@ var Checkbox = require('enyo/Checkbox');
 var BibleSelect = require('../components/BibleSelect/MultiSelect');
 var SearchType = require('../components/SearchType');
 var Shortcuts = require('../components/Shortcuts');
+var Autocomplete = require('../components/PseudoSelect/PseudoAutocompleteReference');
 
 module.exports = kind({
     name: 'ClassicParallel2',
@@ -31,7 +32,7 @@ module.exports = kind({
                     ]},
                     {tag: 'td', style: 'text-align:right', content: 'Passage'},
                     {tag: 'td', attributes: {colspan: 3}, components: [
-                        {name: 'reference', kind: Input, onblur: 'referenceTyped'},
+                        {name: 'reference', kind: Autocomplete, onblur: 'referenceTyped'},
                         {kind: Button, content: 'Look up', ontap: 'submitForm', style: 'width:70px;font-size:70%'},
                     ]}
                 ]},

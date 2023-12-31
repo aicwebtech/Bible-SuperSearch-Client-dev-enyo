@@ -24,6 +24,8 @@ module.exports = {
         'BrowsingBookSelector': require('./interfaces/browsing/BookSelector'),
         // Has a down selector to select book, then chapter.   Fields listed horizontally
         'BrowsingBookSelectorHorizontal': require('./interfaces/browsing/BookSelectorHorizontal'),
+        
+        // 'BrowsingBookList': require('./interfaces/browsing/BrowsingBookList'), // DNE
 
     
     // Minimal interfaces

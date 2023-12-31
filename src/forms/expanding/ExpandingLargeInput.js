@@ -17,6 +17,7 @@ var i18n = require('../../components/i18n');
 var LocaleSelector = require('../../components/Locale/LocaleSelector');
 var inc = require('../../components/Locale/i18nComponent');
 var i18n = require('../../components/Locale/i18nContent');
+var Autocomplete = require('../../components/PseudoSelect/PseudoAutocompleteReference');
 
 module.exports = kind({
     name: 'Expanding',

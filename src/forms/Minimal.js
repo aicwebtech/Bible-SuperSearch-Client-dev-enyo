@@ -3,6 +3,7 @@ var FormBase = require('./FormBase');
 var Button = require('enyo/Button');
 var Input = require('../components/Locale/i18nInput');
 var i18n = require('../components/Locale/i18nContent');
+var Autocomplete = require('../components/PseudoSelect/PseudoAutocompleteReference');
 
 module.exports = kind({
     name: 'Minimal',
@@ -10,7 +11,7 @@ module.exports = kind({
 
     components: [
         { classes: 'single_line', components: [
-            {kind: Input, name: 'request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
+            {kind: Autocomplete, name: 'request', classes: 'request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
             {kind: Button, ontap: 'submitForm', components: [
                 {kind: i18n, content: 'Go'}
             ]}

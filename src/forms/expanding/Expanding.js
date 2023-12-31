@@ -17,6 +17,7 @@ var i18n = require('../../components/i18n');
 var LocaleSelector = require('../../components/Locale/LocaleSelector');
 var inc = require('../../components/Locale/i18nComponent');
 var i18n = require('../../components/Locale/i18nContent');
+var Autocomplete = require('../../components/PseudoSelect/PseudoAutocompleteReference');
 
 module.exports = kind({
     name: 'Expanding',
@@ -32,6 +33,13 @@ module.exports = kind({
                 // ]},                  
                 {classes: 'input_row_wide', components: [
                     {name: 'request', kind: Input, placeholder: 'Enter search keyword(s) or passage reference(s)', enterSubmit: true},
+                    // {
+                    //     name: 'request', 
+                    //     kind: Autocomplete, 
+                    //     // style: 'width: 100%; max-width: 340px', 
+                    //     laceholder: 'Enter search keyword(s) or passage reference(s)', 
+                    //     enterSubmit: true
+                    // },
                 ]},                 
                 {classes: 'input_row_wide', components: [
                     {classes: 'element', components: [
@@ -68,6 +76,7 @@ module.exports = kind({
                             {kind: i18n, classes: 'label', content: 'Passages:'},
                             {classes: 'element', components: [
                                 {kind: Input, name: 'reference', enterSubmit: true}
+                                // {kind: Autocomplete, name: 'reference', enterSubmit: true}
                             ]}
                         ]},                                     
                         {classes: 'input_row_checkbox', components: [
@@ -135,6 +144,7 @@ module.exports = kind({
         }
 
         this.$.PassageContainer.set('showing', (val == 1) );
+        this.$.request.set('forceDisableAutocomplete', (val == 1) );
     },
 
 });
