@@ -27,6 +27,7 @@
 	position: absolute;
 	background-color: white;
 	margin-top: 0;
+    left: 0;
 	width: 100%;
 	text-align: left;
 	z-index: 1000001;
@@ -37,6 +38,18 @@
     -webkit-user-select: none; /* Safari */
     user-select: none; /* Standard syntax */
     margin-left: -1px;
+}
+
+.bss_pseudo_input, .bss_pseudo_input .bss_pseudo_autocomplete_visible {
+    display: inline;
+}
+
+/*.bss_pseudo_input .bss_pseudo_select_toggle {
+    display: inline-block;
+}
+*/
+.bss_pseudo_input input {
+    width: 99%;
 }
 
 .bss_pseudo_autocomplete_input {

@@ -83,13 +83,20 @@ module.exports = kind({
         var t = this;
 
         document.body.addEventListener('click', function(e) {
-            t.log('body tap');
             t.handleTap(null, e);
+        });         
+
+        document.body.addEventListener('keydown', function(e) {
+            t.handleKey(null, e);
         }); 
     },
     handleTap: function(inSender, inEvent) {
-        this.log('init global tap');
         this.waterfall('onGlobalTap', {sender: inSender, e: inEvent});
+    },
+    handleKey: function(inSender, inEvent) {
+        if(inEvent.code == 'Escape') {
+            this.waterfall('onGlobalEscape');
+        }
     },
     handleMouseEvent: function(inSender, inEvent) {
         //this.log(inSender);

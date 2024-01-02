@@ -9,7 +9,7 @@ module.exports = kind({
     name: 'Minimal',
     kind: FormBase,
 
-    components: [
+    components: [  
         { classes: 'single_line', components: [
             {kind: Autocomplete, name: 'request', classes: 'request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
             {kind: Button, ontap: 'submitForm', components: [

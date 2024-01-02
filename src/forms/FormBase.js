@@ -667,6 +667,7 @@ module.exports = kind({
                     inSender.set('value', val);
                 }
 
+                this.waterfall('onGlobalEscape');
                 this.submitForm(); // Submit form if user presses 'enter'
             }
         }

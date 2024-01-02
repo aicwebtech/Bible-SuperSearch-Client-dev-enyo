@@ -11,8 +11,8 @@
 }
 
 .interface_minimal .form .single_line input, 
-.interface_minimal .form .single_line .request input  {
-    width: calc(~"100% - 35px"); 
+.interface_minimal .form .single_line .bss_pseudo_input {
+    width: calc(~"100% - 40px"); 
 }
 
 .interface_minimal .form .single_line button {
@@ -25,13 +25,14 @@
 }
 
 .interface_minimal .form .single_line_bible input.request,
-.interface_minimal .form .single_line_bible .request input {
+.interface_minimal .form .single_line_bible .bss_pseudo_input.request input 
+{
     width: 100%;
     max-width: 200px;
 }
 
 .interface_minimal_wide .form .single_line_bible input.request,
-.interface_minimal_wide .form .single_line_bible .request input {
+.interface_minimal_wide .form .single_line_bible .bss_pseudo_input.request input {
     width: 100%;
     max-width: 320px;
 }
@@ -60,7 +61,9 @@
     text-align: center;
 }
 
-.interface_minimal .form .single_line_short_bible input.request {
+.interface_minimal .form .single_line_short_bible input.request,
+.interface_minimal .form .single_line_short_bible .bss_pseudo_input.request input
+ {
     width: 100%;
     max-width: 340px;
 }
@@ -116,12 +119,15 @@
     margin-right: auto;
 }
 
-.interface_minimal .form .single_line_go input {
+.interface_minimal .form .single_line_go input,
+.interface_minimal .form .single_line_go .bss_pseudo_input input,
+ {
     width: 90%; 
     max-width: 500px;
 }
 
-.interface_minimal .form .single_line_go input.max_wide {
+.interface_minimal .form .single_line_go input.max_wide, 
+.interface_minimal .form .single_line_go .bss_pseudo_input.max_wide input {
     width: 98%; 
 }
 

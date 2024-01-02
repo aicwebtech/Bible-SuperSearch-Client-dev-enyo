@@ -12,6 +12,7 @@ module.exports = kind({
 
     components: [
         { classes: 'single_line_bible', components: [
+            // {kind: Input, name: 'request', classes: 'request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
             {kind: Autocomplete, name: 'request', classes: 'request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
             {tag: 'span', components: [
                 {

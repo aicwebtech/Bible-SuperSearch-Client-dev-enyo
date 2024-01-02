@@ -86,7 +86,11 @@ module.exports = {
     }},           
     search_type: {from: 'formData.search_type', to: '$.search_type.value', oneWay: false, shortLink: true, transform: function(value, dir) {
         this.bubble('onFormFieldChanged', {field: 'search_type', value: value, dir: dir});
-        //this.log('search_type', value, dir);
+        this.log('search_type', value, dir);
+
+        if(dir == 1) {
+            value = value || 'and';
+        }
 
         // if(this.$.search_type.setSelected) {
         //     // this.log('search_type', value, dir);

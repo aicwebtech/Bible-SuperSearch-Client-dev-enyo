@@ -41,7 +41,7 @@ module.exports = kind({
                         {kind: i18nContent, content: 'Passage'}
                     ]},
                     {tag: 'td', classes: 'nowrap', attributes: {colspan: 2}, components: [
-                        {name: 'reference', kind: Autocomplete, onblur: 'referenceTyped', style: 'width: 303px;'},
+                        {name: 'reference', kind: Autocomplete, onblur: 'referenceTyped', style: 'width: 303px;', isComponent: true},
                         {tag: 'span', content: ' '},
                         {kind: Button, ontap: 'submitForm', style: 'width:70px;font-size:70%', components: [
                             {kind: i18nContent, content: 'Look up'}

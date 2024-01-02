@@ -3,6 +3,7 @@ var Opt = require('./PseudoOption');
 var i18n = require('../Locale/i18nComponent');
 // var PseudoSelect = require('./PseudoSelect');
 var Input = require('enyo/Input');
+var TextArea = require('enyo/TextArea');
 var Signal = require('../../components/Signal');
 
 module.exports = kind({
@@ -17,6 +18,10 @@ module.exports = kind({
 	hasOptions: false,
 	defaultPlaceholder: '&nbsp;',
     forceDisableAutocomplete: false,
+    placeholder: null,
+    isComponent: false,
+    useTextArea: false,
+    inputStyle: null,
 
 	published: {
 		value: null,
@@ -25,6 +30,7 @@ module.exports = kind({
 	handlers: {
 		onPseudoOptionTap: 'handleOptionTap',
 		onGlobalTap: 'handleGlobalTap',
+        onGlobalEscape: 'handleGlobalEscape',
 		onblur: 'handleBlur',
 		onfocusout: 'handleBlur',
 		onmouseout: 'handleMouseOut',
@@ -32,10 +38,9 @@ module.exports = kind({
 	},
 
 	bindings: [
-        {from: 'app.hasMouse', to: 'hasMouse'},
+        // {from: 'app.hasMouse', to: 'hasMouse'},
+        {from: 'placeholder', to: '$.Input.placeholder'},
         {from: 'value', to: '$.Input.value', oneWay: false, transform: function(value, dir) {
-            console.log(value, dir);
-
             if(dir == 2) {
                 this.showAutocomplete(value);
             }
@@ -44,11 +49,11 @@ module.exports = kind({
         }}
     ],
 
-	observers: [
-        {method: 'watchMouse', path: ['hasMouse']}
-    ],
+	// observers: [
+    //     {method: 'watchMouse', path: ['hasMouse']}
+    // ],
 
-	components: [
+	componentsTemplate: [
 		{
 			name: 'Visible', 
 			classes: 'bss_pseudo_autocomplete_visible',
@@ -75,29 +80,41 @@ module.exports = kind({
 	],
 
 	create: function() {
-		this.inherited(arguments);
+
+        this.inherited(arguments);
+
+		if(this.useTextArea) {
+            this.componentsTemplate[0].components[0].kind = TextArea;
+        }
+
+        if(this.inputStyle) {
+            this.componentsTemplate[0].components[0].style = this.inputStyle;
+        }
+
+        this.createComponents(this.componentsTemplate);
+
 		// this.createOptionComponents(this.optionComponents);
-		// this.initOptions();
+        this.isComponentChanged();
 	},
-	initOptions: function() {
-		controls = this.$.Toggle.getClientControls();
-		this.valueIdxMap = {};
-		this.contentIdxMap = {};
-		this.hasOptions = false;
-		
-		for(i in controls) {
-			value = controls[i].get('value') || null;
-			content = controls[i].get('content');
+    initOptions: function() {
+        controls = this.$.Toggle.getClientControls();
+        this.valueIdxMap = {};
+        this.contentIdxMap = {};
+        this.hasOptions = false;
+        
+        for(i in controls) {
+            value = controls[i].get('value') || null;
+            content = controls[i].get('content');
 
-			if(value) {
-				this.valueIdxMap[value] = i;
-				this.contentIdxMap[content] = i;
-				this.hasOptions = true;
-			}
-		}
+            if(value) {
+                this.valueIdxMap[value] = i;
+                this.contentIdxMap[content] = i;
+                this.hasOptions = true;
+            }
+        }
 
-		this.resetValue();
-	},
+        this.resetValue();
+    },
     showAutocomplete: function(value) {
         this.log(value);
         this.set('toggled', false);
@@ -148,7 +165,6 @@ module.exports = kind({
 		return this.$.Toggle.createComponents(components);
 	},
 	renderOptionComponents: function() {
-		this.initOptions();
 		this.$.Toggle.render();
 	},
 	destroyOptionControls: function() {
@@ -166,19 +182,9 @@ module.exports = kind({
             //this.$.Input.set('enterSubmitPrevent', false);
 		}
 	},
-
-	handleBlur: function() {
-		// this.log();
-        //this.$.Input.set('enterSubmitPrevent', false);
-        //this.set('toggled', false);
-	},
-	handleMouseOut: function() {
-		//this.log();
-		//this.set('toggled', false);
-	},
-	watchMouse: function(pre, cur, prop) {
-		//this.log(cur, prop);
-	},
+    handleGlobalEscape: function(inSender, inEvent) {
+        this.set('toggled', false);
+    },
 	handleOptionTap: function(inSender, inEvent) {
         if(inEvent.type == 'option') {		
 			this.set('toggled', false);
@@ -240,7 +246,7 @@ module.exports = kind({
             var controls = this.$.Toggle.getClientControls(),
                 sel = this.get('keyboardSelected');
 
-            this.set('value', controls[sel].get('value'));
+            sel && controls[sel] && this.set('value', controls[sel].get('value'));
             this.cursorAtEnd();
             this.bubble('onchange');
             this.set('toggled', false);
@@ -352,4 +358,7 @@ module.exports = kind({
             });
         }
 	},
+    isComponentChanged: function() {
+        this.addRemoveClass('bss_pseudo_input', !this.isComponent);
+    }
 });

@@ -32,15 +32,8 @@ module.exports = kind({
                 //     {name: 'Locale', kind: LocaleSelector}
                 // ]},                  
                 {classes: 'input_row_wide', components: [
-                    {name: 'request', kind: Input, placeholder: 'Enter search keyword(s) or passage reference(s)', enterSubmit: true},
-                    // {
-                    //     name: 'request', 
-                    //     kind: Autocomplete, 
-                    //     // style: 'width: 100%; max-width: 340px', 
-                    //     laceholder: 'Enter search keyword(s) or passage reference(s)', 
-                    //     enterSubmit: true
-                    // },
-                ]},                 
+                    {name: 'request', kind: Autocomplete, placeholder: 'Enter search keyword(s) or passage reference(s)', enterSubmit: true},
+                ]},                                    
                 {classes: 'input_row_wide', components: [
                     {classes: 'element', components: [
                         {
@@ -75,8 +68,8 @@ module.exports = kind({
                         {name: 'PassageContainer', showing: false, classes: 'input_row', components: [
                             {kind: i18n, classes: 'label', content: 'Passages:'},
                             {classes: 'element', components: [
-                                {kind: Input, name: 'reference', enterSubmit: true}
-                                // {kind: Autocomplete, name: 'reference', enterSubmit: true}
+                                // {kind: Input, name: 'reference', enterSubmit: true}
+                                {kind: Autocomplete, name: 'reference', enterSubmit: true}
                             ]}
                         ]},                                     
                         {classes: 'input_row_checkbox', components: [

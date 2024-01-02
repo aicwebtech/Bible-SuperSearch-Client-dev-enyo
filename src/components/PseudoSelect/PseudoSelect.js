@@ -15,6 +15,7 @@ module.exports = kind({
 	optionComponents: [],
 	hasOptions: false,
 	defaultPlaceholder: '&nbsp;',
+    isComponent: false,
 
 	published: {
 		value: null,
@@ -23,6 +24,7 @@ module.exports = kind({
 	handlers: {
 		onPseudoOptionTap: 'handleOptionTap',
 		onGlobalTap: 'handleGlobalTap',
+        onGlobalEscape: 'handleGlobalEscape',
 		onblur: 'handleBlur',
 		onfocusout: 'handleBlur',
 		onmouseout: 'handleMouseOut',
@@ -84,6 +86,7 @@ module.exports = kind({
 		this.inherited(arguments);
 		this.createOptionComponents(this.optionComponents);
 		this.initOptions();
+        // this.isComponentChanged(); // for future use, will require changes on ABB form
 	},
 	initOptions: function() {
 		controls = this.$.Toggle.getClientControls();
@@ -138,6 +141,9 @@ module.exports = kind({
 			this.set('toggled', false);
 		}
 	},
+    handleGlobalEscape: function(inSender, inEvent) {
+        this.set('toggled', false);
+    },
 
 	handleBlur: function() {
 		//this.log();
@@ -501,5 +507,8 @@ module.exports = kind({
         }
 
         return false;
-	}
+	},
+    isComponentChanged: function() {
+        this.addRemoveClass('bss_pseudo_input', !this.isComponent);
+    }
 });
