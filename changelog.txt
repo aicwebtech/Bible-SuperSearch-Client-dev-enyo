@@ -1,5 +1,21 @@
 Bible SuperSearch Universal Client Changelog
 
+= 5.4.0 Jan 11, 2024
+* Dialog improvements and better responsiveness
+* Using native share dialog on mobile devices
+* New history dialog
+* Strong's hover tooltip improvements 
+** Option to open via clicking
+** Hover intent delay with configurable threshold
+* Passage autocomplete  
+* Touchscreen swipe to navigate between chapters and search 
+* Arrow keys to navigate between chapters and search 
+
+= 5.3.0 Nov 11, 2023
+* Added config to control maximum parallel Bibles based on screen width
+* Added new 'Verse as Passage' display
+* Hindi UI translation
+
 = 5.2.4 Aug 12, 2023
 * Added custom select menus (these only appear in one custom interface)
 * Fixed scrolling to scroll down to results when using paging/browsing buttons

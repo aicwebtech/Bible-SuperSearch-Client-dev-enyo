@@ -116,7 +116,6 @@ module.exports = kind({
         this.resetValue();
     },
     showAutocomplete: function(value) {
-        this.log(value);
         this.set('toggled', false);
         this.destroyOptionControls();
         this._clearKeyboardSelected();
@@ -141,6 +140,9 @@ module.exports = kind({
         }
     },
     generateAutocompleteOptions: function(value) {
+        // Extend this kind and replace this method to generate actual options
+        // These are just testing options
+
         var opts = [];
 
         var superopts = ['ham', 'bacon', 'pepperoni', 'cheese', 'chicken', 'sausage'];
@@ -152,9 +154,6 @@ module.exports = kind({
         sof.forEach(function(item) {
             opts.push({content: item, value: item});
         });
-
-        this.log('sof', sof);
-        this.log('opts', opts);
 
         return opts;
     },
@@ -171,8 +170,6 @@ module.exports = kind({
 		this.$.Toggle.destroyClientControls();
 	},
 	handleGlobalTap: function(inSender, inEvent) {
-		this.log();
-
         if(
 			inEvent.e.target != this.$.Input.hasNode() &&
 			inEvent.e.target != this.$.Visible.hasNode() &&
@@ -214,8 +211,6 @@ module.exports = kind({
         if(!this.get('toggled')) {
             return;
         }
-
-        // this.log(inSender, inEvent);
 
         var code = inEvent.keyCode || null;
 
@@ -278,10 +273,6 @@ module.exports = kind({
 
         selNew = selNew >= 0 ? selNew : -1;
 
-        // this.log('dir', dir);
-        // this.log('raw Sel', this.get('keyboardSelected'));
-        // this.log(dir, sel, selNew);
-
         this.setKeyboardSelected(selNew);
 
         // if(this.keyboardSelectedInit == null || selNew < this.keyboardSelectedInit || selNew > this.keyboardSelectedInit + 10) {
@@ -305,12 +296,8 @@ module.exports = kind({
         if(controls && controls[index]) {
             controls[index].set('keyboardSelected', true);
             this.$.Input.set('enterSubmitPrevent', true);
-            // controls[index].hasNode().focus();
-            // this.log('has option', index);
         } else  {
             this.$.Input.set('enterSubmitPrevent', false);
-            this.log('no findy');
-            // this.log('null option', index);
         }
     },
     _clearKeyboardSelected: function() {
@@ -319,15 +306,7 @@ module.exports = kind({
         this.waterfall('onClearKeyboardSelections');
     },
     valueChanged: function(was, is) {
-		// var controls = this.$.Toggle.getClientControls(),
-		// 	control = controls[this.valueIdxMap[is]] || null;
-
-		// if(!control || control == null) {
-		// 	this.resetValue();
-		// 	return;
-		// }
-
-		// this._afterValueChanged(control);
+        // do something?
 	},
 	resetValue: function() {
         this.set('value', null);

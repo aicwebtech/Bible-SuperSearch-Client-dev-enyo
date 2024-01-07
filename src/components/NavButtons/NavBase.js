@@ -24,7 +24,7 @@ module.exports = kind({
     currentChapterDisabled: 'sc_nl.gif',
 
     components: [
-        {kind: Signal, onBibleChange: 'handleBibleChange', isChrome: true}
+        {kind: Signal, onBibleChange: 'handleBibleChange', _onAutoClick: 'handleAutoClick', isChrome: true}
     ],
 
     handlers: {
@@ -156,6 +156,17 @@ module.exports = kind({
     },
     handleAutoClick: function(inSender, inEvent) {
         button = inEvent.button || null;
+        
+        // Handle special cases.
+        switch(button) {
+            case '_prev':
+                button = 'pc';
+                break;
+            case '_next':
+                button = 'nc';
+                break;
+        }
+
         button && this.$[button] && this.$[button].hasNode().click();
     }
 });

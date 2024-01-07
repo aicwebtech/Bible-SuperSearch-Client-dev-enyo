@@ -31,11 +31,12 @@ module.exports = kind({
     },
 
     components: [
-        {kind: Signal, onBibleChange: 'handleBibleChange', isChrome: true}
+        {kind: Signal, onBibleChange: 'handleBibleChange', onAutoClick: 'handleAutoClick', isChrome: true}
     ],
 
     handlers: {
-        onLinkTap: 'handleTap'
+        onLinkTap: 'handleTap',
+        onAutoClick: 'handleAutoClick'
     },
 
     create: function() {
@@ -99,6 +100,7 @@ module.exports = kind({
                 kind: Link,
                 classes: (page == 1) ? 'std_link disabled' : 'std_link',
                 content: this.firstPageText,
+                name: 'first_page',
                 allowHtml: true,
                 href: (page == 1) ? null : this.makeLink('1'),
                 title: 'First Page'
@@ -110,6 +112,7 @@ module.exports = kind({
             classes: (page == 1) ? 'std_link disabled' : 'std_link',
             href: (page == 1) ? null : this.makeLink( prevPage.toString() ),
             content: this.prevPageText,
+            name: 'prev_page',
             allowHtml: true,
             title: 'Previous Page'
         });
@@ -147,6 +150,7 @@ module.exports = kind({
             kind: Link,
             href: (page == this.lastPage) ? null : this.makeLink( nextPage.toString() ),
             content: this.nextPageText,
+            name: 'next_page',
             allowHtml: true,
             title: 'Next Page'
         });        
@@ -157,6 +161,7 @@ module.exports = kind({
                 kind: Link,
                 allowHtml: true,
                 content: this.lastPageText,
+                name: 'last_page',
                 href: (page == this.lastPage) ? null : this.makeLink( this.lastPage.toString() ),
                 title: 'Last Page'
             });
@@ -265,5 +270,22 @@ module.exports = kind({
             // If clicking on an active link, set scroll mode
             this.app.set('scrollMode', 'results_top');
         }
+    },
+    handleAutoClick: function(inSender, inEvent) {
+        button = inEvent.button || null;
+        this.log(button);
+        // this.log(this.$.L)
+
+        // Handle special cases.
+        switch(button) {
+            case '_prev':
+                button = 'prev_page';
+                break;
+            case '_next':
+                button = 'next_page';
+                break;
+        }
+
+        button && this.$.LinkContainer.$[button] && this.$.LinkContainer.$[button].hasNode().click();
     }
 });

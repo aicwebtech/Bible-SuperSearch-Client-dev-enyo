@@ -39,7 +39,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.3.0',
+    applicationVersion: '5.4.0',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -1212,10 +1212,7 @@ var App = Application.kind({
         }
 
         locale = typeof locale == 'undefined' ? locale : this.get('locale');
-
         var localeFmt = this._fmtLocaleName(locale);
-
-        this.log(locale, localeFmt);
 
         switch(localeFmt) {
             // :todo make sure all locales/sublocales are using the ISO standard

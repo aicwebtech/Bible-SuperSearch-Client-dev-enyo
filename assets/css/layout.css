@@ -483,7 +483,8 @@ div.alert_dialog {
 
 .bss_dialog_container .bss_dialog_buttons span.spacer, .hover_dialog .bss_dialog_buttons span.spacer {
     display: inline-block;
-    width: 40px;
+    width: 10%;
+    max-width: 40px;
 } 
 
 .help_dialog .bss_dialog_container {

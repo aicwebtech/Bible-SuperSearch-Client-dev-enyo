@@ -15,14 +15,15 @@ module.exports = kind({
     },
 
     handlers: {
-        ontap: 'handleTap'
+        ontap: 'handleTap',
+        onAutoClick: 'handleAutoClick'
     },
 
     components: [
-        {kind: Button, content: '|<=', ontap:'goChangePage', page: 1},
-        {kind: Button, content: '<=', ontap:'goPrevPage'},
-        {kind: Button, content: '=>', ontap:'goNextPage'},
-        {kind: Button, content: '=>|', ontap:'goLastPage'}
+        {kind: Button, content: '|<=', ontap:'goChangePage', page: 1, name: 'first_page'},
+        {kind: Button, content: '<=', ontap:'goPrevPage', name: 'prev_page'},
+        {kind: Button, content: '=>', ontap:'goNextPage', name: 'next_page'},
+        {kind: Button, content: '=>|', ontap:'goLastPage', name: 'last_page'}
     ],
 
     create: function() {
@@ -64,6 +65,21 @@ module.exports = kind({
             // If clicking on an active link, set scroll mode
             this.app.set('scrollMode', 'results_top');
         }
+    },
+    handleAutoClick: function(inSender, inEvent) {
+        button = inEvent.button || null;
+
+        // Handle special cases.
+        switch(button) {
+            case '_prev':
+                button = 'prev_page';
+                break;
+            case '_next':
+                button = 'next_page';
+                break;
+        }
+
+        button && this.$[button] && this.$[button].hasNode().click();
     }
 
 });

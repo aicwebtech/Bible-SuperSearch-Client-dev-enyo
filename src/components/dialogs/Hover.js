@@ -52,7 +52,6 @@ module.exports = kind({
 
     displayPosition: function(mouseX, mouseY, content, parentWidth, parentHeight, showButtons) {
         this._showButtons = showButtons || false;
-        this.log('_showButtons', this._showButtons);
 
         // this.log('content', content);
         this.app.debug && this.log('mouseX', mouseX);
@@ -111,7 +110,7 @@ module.exports = kind({
     showContent: function() {
         this.$.LoadingContainer && this.$.LoadingContainer.set('showing', false);
         this.$.ContentContainer && this.$.ContentContainer.set('showing', true);
-        this.log('_showButtons', this._showButtons);
+        this.app.debug && this.log('_showButtons', this._showButtons);
         this.$.ButtonContainer && this.$.ButtonContainer.set('showing', this._showButtons);
         this.reposition();
     },
@@ -178,15 +177,15 @@ module.exports = kind({
         // this.log('containerBounds', containerBounds);
         this.app.debug && this.log('viewport', viewportWidth, viewportHeight);
         this.app.debug && this.log('width/height', width, height);
-        this.log('posYViewport', posYViewport, height, posYViewport + height);
-        this.log('maxY', maxY, maxYcontainer, maxYviewport);
+        this.app.debug && this.log('posYViewport', posYViewport, height, posYViewport + height);
+        this.app.debug && this.log('maxY', maxY, maxYcontainer, maxYviewport);
         // this.log('posY', posY, height, posY + height);
         // this.app.debug && this.log('smallScreen', smallScreen);
 
         // var displayAbove = posYContainer + height > containerBounds.height || posYViewport + height > viewportHeight;
 
         if(smallScreen) {
-            width = 300;
+            width = 320;
             posX = (maxX - width)  / 2;
             // posY = (maxY - height) / 2; // centers against page, not placing it where we want
 
@@ -208,7 +207,7 @@ module.exports = kind({
         }
 
         this.set('showing', true);
-        this.log('pos X,Y', posX, posY);
+        this.app.debug && this.log('pos X,Y', posX, posY);
         this.applyStyle('left', posX + 'px');
         this.applyStyle('top', posY + 'px');
         this.applyStyle('width', width + 'px');
@@ -342,7 +341,6 @@ module.exports = kind({
         this.set('showing', false);
     },
     mouseOverHandler: function(inSender, inEvent) {
-        this.log();
         this.cancelHide();
         this.set('showing', true);
     },
@@ -384,10 +382,10 @@ module.exports = kind({
         }
     },
     handleClick: function(inSender, inEvent) {
-        this.log('button', inEvent.button);
-        this.log('buttons', inEvent.buttons);
-        this.log('which', inEvent.which);
-        this.log(this.app.client);
+        // this.log('button', inEvent.button);
+        // this.log('buttons', inEvent.buttons);
+        // this.log('which', inEvent.which);
+        // this.log(this.app.client);
 
         if(inEvent.which == 3 && this.app.client.browser == 'Firefox') {
             this.hidePrevent();

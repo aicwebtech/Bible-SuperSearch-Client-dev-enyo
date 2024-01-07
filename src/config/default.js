@@ -12,6 +12,8 @@ var defaultConfig = {
     "useJSONP": false,                                  // (Future) Use JSONP for cross-site API calls
     "pageScroll": 'instant',
     "pageScrollTopPadding": 0,
+    "swipePageChapter": false,
+    "arrowKeysPageChapter": false,
     "textDisplayDefault": 'passage',
     "parallelBibleStartSuperceedsDefaultBibles": false,
     'hoverDelayThreshold': 500,

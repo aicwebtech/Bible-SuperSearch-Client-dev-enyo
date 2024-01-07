@@ -445,7 +445,7 @@ module.exports = kind({
         var strongsOpenClick = this.getStrongsOpenClick();
         // var strongsOpenClick = false; // debugging ONLY as handleHover and handleClick with collide if both are active!
 
-        this.log('hoverIntentThres', hoverIntentThres, strongsOpenClick);
+        this.app.debug && this.log('hoverIntentThres', hoverIntentThres, strongsOpenClick);
 
         target.bssType = null;
 
@@ -478,7 +478,7 @@ module.exports = kind({
             var mouseY = inEvent.clientY; // + inEvent.offsetY;
 
             if(target.bssType == 'strongs') {
-                this.log('raw mouse', mouseX, mouseY);
+                this.app.debug && this.log('raw mouse', mouseX, mouseY);
             }
 
             if(this.app.clientBrowser == 'IE') {
@@ -540,7 +540,7 @@ module.exports = kind({
             // inEvent.stopPropagation();
             inEvent.bubbling = false;
 
-            this.log('raw mouse', inEvent);
+            this.app.debug && this.log('raw mouse', inEvent);
 
             // var mouseX = Math.round(inEvent.clientX); 
             // var mouseY = Math.round(inEvent.clientY); 
@@ -548,7 +548,7 @@ module.exports = kind({
             var mouseX = Math.round(inEvent.srcEvent.clientX); 
             var mouseY = Math.round(inEvent.srcEvent.clientY); 
 
-            this.log('raw mouse client', mouseX, mouseY);
+            this.app.debug && this.log('raw mouse client', mouseX, mouseY);
             // this.log('raw mouse srcEvent client', inEvent.srcEvent.clientX, inEvent.srcEvent.clientY);
 
             if(this.app.clientBrowser == 'IE') {
@@ -572,7 +572,7 @@ module.exports = kind({
 
             // this.hideHoverDialogs(); // uncomment in production
             this.$.StrongsHover && this.$.StrongsHover.displayPosition(mouseX, mouseY, target.innerHTML, parentWidth, parentHeight, true);
-            this.$.StrongsHover && this.log('displaying Strongs dialog');
+            this.app.debug && this.$.StrongsHover && this.log('displaying Strongs dialog');
             return true;
         }
 

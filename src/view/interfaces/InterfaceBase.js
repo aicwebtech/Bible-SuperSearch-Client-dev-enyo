@@ -88,6 +88,22 @@ module.exports = kind({
 
         document.body.addEventListener('keydown', function(e) {
             t.handleKey(null, e);
+        });         
+
+        document.addEventListener('scroll', function(e) {
+            t.handleScroll(null, e);
+        });         
+
+        document.addEventListener('scrollend', function(e) {
+            t.handleScrollEnd(null, e);
+        });         
+
+        this.hasNode().addEventListener('scroll', function(e) {
+            t.handleScroll(null, e);
+        });         
+
+        this.hasNode().addEventListener('scrollend', function(e) {
+            t.handleScrollEnd(null, e);
         }); 
     },
     handleTap: function(inSender, inEvent) {
@@ -97,6 +113,12 @@ module.exports = kind({
         if(inEvent.code == 'Escape') {
             this.waterfall('onGlobalEscape');
         }
+    },
+    handleScroll: function(inSender, inEvent) {
+        this.waterfall('onGlobalScroll')
+    },    
+    handleScrollEnd: function(inSender, inEvent) {
+        this.waterfall('onGlobalScrollEnd')
     },
     handleMouseEvent: function(inSender, inEvent) {
         //this.log(inSender);

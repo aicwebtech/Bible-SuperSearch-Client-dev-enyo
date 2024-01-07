@@ -7,23 +7,11 @@ module.exports = kind({
     tag: 'table',
     // attributes:{border: 1},
     classes: 'biblesupersearch_render_table',
+    scrolling: false,
 
     handlers: {
-        // touchstart: 'handleTouch',
-        // ontouchstart: 'handleTouch',
-        // ontouchmove: 'handleTouch',
-        // ontouchend: 'handleTouch',
-        // ontouchcancel: 'handleTouch',
-        // ondragstart: 'handleTouch',  // no touchscreen
-        // ondragfinish: 'handleTouch', // no touchscreen
-        // onflick: 'handleTouch', // no touchscreen
-        // onmove: 'handleTouch',
-        // ondown: 'handleTouch',
-        // onup: 'handleTouch',
-        // ontap: 'handleTouch'
-
-        // onType: 'handleKey',
-        // onKeyWaterfall: 'handleKey'
+        onGlobalScroll: 'handleGlobalScroll',
+        onGlobalScrollEnd: 'handleGlobalScrollEnd'
     },
 
     touch: {
@@ -55,10 +43,10 @@ module.exports = kind({
             passive: true
         };
         
-        if(this.app.configs.changeChapterSwipe) {
+        if(this.app.configs.swipePageChapter) {
             this.hasNode().addEventListener('touchstart', function(ev) {
 
-                console.log('RENDER touchstart', ev);
+                t.app.debug && console.log('RENDER touchstart', ev);
                 var touch = ev.changedTouches[0];
                 t.touch.startX = touch.pageX;
                 t.touch.startY = touch.pageY;
@@ -68,8 +56,13 @@ module.exports = kind({
             }, listenerOptions);        
 
             this.hasNode().addEventListener('touchend', function(ev) {
+                if(t.scrolling) {
+                    t.app.debug && console.log('TOUCHEND BLOCKED BY SCROLL');
+                    return;
+                }
 
-                console.log('RENDER touchend', ev);
+                t.app.debug && console.log('RENDER touchend', ev);
+
                 var touch = ev.changedTouches[0],
                     distX = touch.pageX - t.touch.startX,
                     distY = touch.pageY - t.touch.startY,
@@ -80,17 +73,11 @@ module.exports = kind({
                     yMax = 10,
                     xMin = 30
 
-                // t.app.alert('touchend time: '+ elapsedTime +'<br>dx:' + distX + '<br>dy:' + distY);
-
-                // console.log('touch distXAbs', distXabs);
-                // console.log('touch distYAbs', distYabs);
-                // console.log('touch ratio', XYdistRatio);
-
                 if(distXabs >= xMin && XYdistRatio >= 3) {
                     if(distX < 0) {
-                        t.clickNextChapter();
+                        t.clickNext();
                     } else {
-                        t.clickPrevChapter();
+                        t.clickPrev();
                     }
                 }
 
@@ -100,10 +87,6 @@ module.exports = kind({
                 //ev.preventDefault();
                 return false;
             }, listenerOptions);
-        }
-
-        if(this.app.client.isMobile) {
-            // this.app.alert('mobile!!');
         }
     }, 
     handleTouch: function(inSender, inEvent) {
@@ -116,26 +99,33 @@ module.exports = kind({
         }
     },
     handleKey: function(inSender, inEvent) {
-        if(this.app.configs.changeChapterArrowKeys) {            
+        if(this.app.configs.arrowKeysPageChapter) {            
             if(inEvent.key == 'ArrowRight') {
-                this.log('Go RIGHT');
-                this.clickNextChapter();
+                // this.log('Go RIGHT');
+                this.clickNext();
             }
 
             if(inEvent.key == 'ArrowLeft') {
-                this.log('Go LEFT');
-                this.clickPrevChapter();
+                // this.log('Go LEFT');
+                this.clickPrev();
             }
         }
-
     },
-    clickNextChapter: function() {
-        this.log();
-        this.waterfall('onAutoClick', {button: 'nc'});
+    handleGlobalScroll: function(inSender, inEvent) {
+        this.scrolling = true;
+    },    
+    handleGlobalScrollEnd: function(inSender, inEvent) {
+        this.scrolling = false;
     },
-    clickPrevChapter: function() {
-        this.log();
-        this.waterfall('onAutoClick', {button: 'pc'});
+    clickNext: function() {
+        this.app.debug && this.log();
+        this.waterfall('onAutoClick', {button: '_next'});
+        Signal.send('onAutoClick', {button: '_next'});
+    },
+    clickPrev: function() {
+        this.app.debug && this.log();
+        this.waterfall('onAutoClick', {button: '_prev'});
+        Signal.send('onAutoClick', {button: '_prev'});
     }
 
 });
