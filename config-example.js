@@ -301,6 +301,7 @@ var biblesupersearch_config_options = {
     // Enable changing chapter and search page via horizontal touchscreen swipe gesture 
     "swipePageChapter": false,
 
+    // Experimental, not yet production ready!
     // Enable changing chapter and search page via horizontal arrow keys
     'arrowKeysPageChapter': false,
 
