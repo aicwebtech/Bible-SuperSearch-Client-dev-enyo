@@ -9,7 +9,6 @@ Bible SuperSearch Universal Client Changelog
 ** Hover intent delay with configurable threshold
 * Passage autocomplete  
 * Touchscreen swipe to navigate between chapters and search 
-* Arrow keys to navigate between chapters and search 
 
 = 5.3.0 Nov 11, 2023
 * Added config to control maximum parallel Bibles based on screen width
