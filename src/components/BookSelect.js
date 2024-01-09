@@ -150,7 +150,11 @@ module.exports = kind({
 
         var Passage = Passages.shift();
 
-        this.$.Book.setSelectedByContent(Passage.book);
+        if(!Passage) {
+            return;
+        }
+
+        Passage.book && this.$.Book.setSelectedByContent(Passage.book);
 
         var cv = Passage.chapter_verse.split(':');
         var chapter = cv[0];

@@ -241,7 +241,7 @@ module.exports = kind({
             var controls = this.$.Toggle.getClientControls(),
                 sel = this.get('keyboardSelected');
 
-            sel && controls[sel] && this.set('value', controls[sel].get('value'));
+            controls[sel] && this.set('value', controls[sel].get('value'));
             this.cursorAtEnd();
             this.bubble('onchange');
             this.set('toggled', false);
