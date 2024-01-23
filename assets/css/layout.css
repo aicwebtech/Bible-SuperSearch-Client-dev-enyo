@@ -30,6 +30,10 @@ div.biblesupersearch_main * {
     box-sizing: content-box;
 }
 
+.biblesupersearch_render_table {
+    z-index: 10001;
+}
+
 .biblesupersearch_render_table, .biblesupersearch_render_table td table {
     font-size: inherit !important;
 }
@@ -811,4 +815,37 @@ tr.bss_render_reference_row th {
     max-height: 200px;
     overflow-y: auto;
     box-sizing: border-box;
+}
+
+.bss_side_swipe_button_container {
+    background-color: transparent;
+    position: fixed;
+/*    position: absolute;*/
+/*    z-index: 100000001;*/
+    top: 48vh;
+/*    top-margin: 48%;*/
+/*    width: 50%;*/
+    left: 0;
+    right: 0;
+}
+
+.bss_side_swipe_button {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: #dddddd;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.bss_side_swipe_button:hover {
+    background-color: rgba(10, 10, 10, 1); 
+    color: white;
+}
+
+.bss_render_active {
+    background-color: green;
 }

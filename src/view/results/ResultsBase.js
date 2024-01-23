@@ -34,6 +34,7 @@ module.exports = kind({
     showingCopyrightBottom: false,
     renderStyle: 'passage',
     _localeChangeRender: false,
+    activeComponent: null,
 
     published: {
         resultsData: null,
@@ -46,6 +47,8 @@ module.exports = kind({
         onmouseover: 'handleHover',
         onmouseout: 'handleMouseOut',
         onLocaleChange: 'handleLocaleChange',
+        onGlobalScroll: 'handleGenericReposition',
+        onGlobalScrollEnd: 'handleGenericReposition',
         ontap: 'handleClick',
         // onGlobalTap: 'handleClick'
     },
@@ -167,6 +170,8 @@ module.exports = kind({
         }
 
         this.render();
+
+        this.determineActiveComponent();
     },
     renderPassage: function(passage) {        
         this.showingCopyrightBottom = false;
@@ -641,6 +646,26 @@ module.exports = kind({
         }
         else {
             alert('Could not open print friendly window.  Is your browser blocking popups?');
+        }
+    },
+    handleGenericReposition: function(inSender, inEvent) {
+        this.log();
+        this.determineActiveComponent();
+    },
+    determineActiveComponent: function() {
+        var comp = this.getClientControls(),
+            visible = comp.filter(function(item) {
+                return item.isVisible && item.isVisible();
+            });
+
+        if(this.activeComponent) {
+            this.activeComponent.set('active', false);
+            this.activeComponent = null;
+        }
+
+        if(visible.length == 1) {
+            this.activeComponent = visible[0];
+            this.activeComponent.set('active', true);
         }
     },
     handleLocaleChange: function(inSender, inEvent) {

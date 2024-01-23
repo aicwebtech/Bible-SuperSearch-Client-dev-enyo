@@ -334,18 +334,27 @@ module.exports = kind({
     },
     _addNavButtons: function(Container, passage) {
         if(typeof passage.nav == 'object') {
-            var NavButtons = this.app.getSubControl('NavButtons');
+            var NavButtons = this.app.getSubControl('NavButtons')
+                NavName = 'NavButtons_' + Math.floor(Math.random() * 10000);
+
+            this.log('navName', NavName);
 
             if(NavButtons) {
-                Container.createComponent({
+                var comp = Container.createComponent({
                     tag: 'tr', 
                     components: [
                         {tag: 'td', attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
                         components: [
-                            { nav: passage.nav, kind: NavButtons, bibles: this.bibles }
+                            {name: NavName, nav: passage.nav, kind: NavButtons, bibles: this.bibles }
                         ]}
                     ]
                 });
+
+                this.log(comp);
+
+                Container.navButtons.push(comp);
+                // Container._pushNavButtons(comp.$[NavName]);
+                //Container._pushNavButtons(comp.components[0].components[0]);
             }
         }
     }
