@@ -11,7 +11,8 @@ module.exports = kind({
     scrolling: false,
     visible: false,
     active: false,
-    navButtons: [],
+    navButton_1: null,
+    navButton_2: null,
 
     handlers: {
         onGlobalScroll: 'handleGlobalScroll',
@@ -75,6 +76,7 @@ module.exports = kind({
             this.hasNode().addEventListener('touchend', function(ev) {
                 if(t.scrolling) {
                     t.app.debug && console.log('TOUCHEND BLOCKED BY SCROLL');
+                    t.scrolling = false; /// ?? either need this or a timeout on t.scrolling
                     return;
                 }
 
@@ -118,57 +120,59 @@ module.exports = kind({
     handleKey: function(inSender, inEvent) {
         if(this.app.configs.arrowKeysPageChapter) {            
             if(inEvent.key == 'ArrowRight') {
-                // this.log('Go RIGHT');
                 this.clickNext();
             }
 
             if(inEvent.key == 'ArrowLeft') {
-                // this.log('Go LEFT');
                 this.clickPrev();
             }
         }
     },
     handleGlobalScroll: function(inSender, inEvent) {
+        this.log();
+
         this.scrolling = true;
 
         this.handleGenericReposition(inSender, inEvent);
     },    
     handleGlobalScrollEnd: function(inSender, inEvent) {
+        this.log();
         this.scrolling = false;
     },
     handleGenericReposition: function(inSender, inEvent) {
         this.log();
 
-        var visible = this.isVisible();
-            navButtons = utils.clone(this.navButtons),
+        var visible = false
             navVisible = false;
 
-        if(visible) {
-            this.log('its VISIBLE');
-        }
+        if(this.app.configs.sideSwipePageChapter && this.app.configs.sideSwipePageChapter != 'false') {
+            // todo, make with with search pagination
+            // need to ensure buttons only appear ONCE though
 
-        this.log('active', this.get('active'));
+            if(!this.get('active')) {
+                this.$.SideSwipeButtons.set('showing', false);
+            } else if(this.app.configs.sideSwipeHideWithNavigationButtons && this.app.configs.sideSwipeHideWithNavigationButtons != 'false') {
 
-        // if(!this.get('active')) {
-        //     this.$.SideSwipeButtons.set('showing', false);
-        //     return;
-        // }
+                visible = this._isElementPartiallyInViewport(this.$.VerseContainer.hasNode());
 
+                if(this.navButton_1 && this._isElementPartiallyInViewport(this.navButton_1.hasNode())) {
+                    navVisible = true;
+                }        
 
+                if(this.navButton_2 && this._isElementPartiallyInViewport(this.navButton_2.hasNode())) {
+                    navVisible = true;
+                }
 
-        navButtons.forEach(function(item, idx) {
-            this.log('NavButtons', idx, item);
-
-            if(this._isElementPartiallyInViewport(item.hasNode())) {
-                this.log('NavButtons visible', idx);
-                navVisible = true;
+                this.log('navButton_1', this.navButton_1);
+                this.log('navButton_2', this.navButton_2);
+                this.log('navVisible', navVisible);
+                this.$.SideSwipeButtons.set('showing', visible && !navVisible);
+            } else {
+                visible = this.isVisible();
+                this.$.SideSwipeButtons.set('showing', visible);
             }
-        }, this);
 
-        this.log('navCount', navButtons.length);
-        this.log('navVisible', navVisible);
-
-        this.$.SideSwipeButtons.set('showing', visible && !navVisible);
+        }
     },
     handleFocus: function(inSender, inEvent) {
         this.log();
@@ -182,7 +186,7 @@ module.exports = kind({
     clickNext: function() {
         this.app.debug && this.log();
 
-        if(!this.get('active')) {
+        if(!this._canPrevNext()) {
             return;
         }
 
@@ -192,13 +196,25 @@ module.exports = kind({
     clickPrev: function() {
         this.app.debug && this.log();
 
-        if(!this.get('active')) {
+        if(!this._canPrevNext()) {
             return;
         }
 
         this.waterfall('onAutoClick', {button: '_prev'});
         Signal.send('onAutoClick', {button: '_prev'});
     }, 
+
+    _canPrevNext: function() {
+        if(this.get('active')) {
+            return true;
+        }
+
+        if(this.owner.hasPaging) {
+            return true;
+        }
+
+        return false;
+    },
 
     isVisible: function() {
         if(!this.hasNode()) {
@@ -246,13 +262,23 @@ module.exports = kind({
         );
     },
     _pushNavButtons: function(component) {
-        // this.log(component);
+        this.log(component);
 
-        var navButtons = utils.clone(this.navButtons);
+        if(!this.navButton_1) {
+            this.navButton_1 = component;
+            this.log('NavButton 1 set');
+        } else if(!this.navButton_2) {
+            this.navButton_2 = component;
+            this.log('NavButton 2 set');
+        } else {
+            this.log('TOO MANY NAVBUTTONS');
+        }
 
-        navButtons.push(component);
+        // var navButtons = utils.clone(this.navButtons);
 
-        this.navButtons = utils.clone(navButtons);
+        // navButtons.push(component);
+
+        // this.navButtons = utils.clone(navButtons);
     }
 
 });

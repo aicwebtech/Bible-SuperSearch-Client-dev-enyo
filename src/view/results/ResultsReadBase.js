@@ -216,6 +216,11 @@ module.exports = kind({
             }
         }
 
+        var VerseContainer = Container.createComponent({
+            tag: 'tbody',
+            name: 'VerseContainer'
+        });
+
         for(chapter in pd.verse_index) {
             pd.verse_index[chapter].forEach(function(verse) {
                 var html = '';
@@ -244,7 +249,7 @@ module.exports = kind({
                     }
                 }
 
-                Container.createComponent({
+                VerseContainer.createComponent({
                     tag: 'tr',
                     allowHtml: true,
                     content: html
@@ -337,8 +342,6 @@ module.exports = kind({
             var NavButtons = this.app.getSubControl('NavButtons')
                 NavName = 'NavButtons_' + Math.floor(Math.random() * 10000);
 
-            this.log('navName', NavName);
-
             if(NavButtons) {
                 var comp = Container.createComponent({
                     tag: 'tr', 
@@ -350,9 +353,7 @@ module.exports = kind({
                     ]
                 });
 
-                this.log(comp);
-
-                Container.navButtons.push(comp);
+                Container._pushNavButtons(comp);
                 // Container._pushNavButtons(comp.$[NavName]);
                 //Container._pushNavButtons(comp.components[0].components[0]);
             }
