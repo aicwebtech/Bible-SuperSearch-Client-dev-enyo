@@ -421,9 +421,15 @@ module.exports = kind({
         }
 
         includeTotals = includeTotals || false;
+        var name = includeTotals ? 'Pager_1' : 'Pager_2';
+
+        if(this.$[name]) {
+            return;
+        }
 
         this.createComponent({
             kind: this.pagerView,
+            name: name,
             currentPage: this.paging.current_page,
             lastPage: this.paging.last_page,
             perPage: this.paging.per_page,
@@ -663,7 +669,7 @@ module.exports = kind({
             this.activeComponent = null;
         }
 
-        if(visible.length == 1) {
+        if(visible.length == 1 || this.hasPaging && visible.length > 0) {
             this.activeComponent = visible[0];
             this.activeComponent.set('active', true);
         }

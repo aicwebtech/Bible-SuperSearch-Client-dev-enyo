@@ -152,15 +152,28 @@ module.exports = kind({
             if(!this.get('active')) {
                 this.$.SideSwipeButtons.set('showing', false);
             } else if(this.app.configs.sideSwipeHideWithNavigationButtons && this.app.configs.sideSwipeHideWithNavigationButtons != 'false') {
+                if(this.$.VerseContainer) {
+                    visible = this._isElementPartiallyInViewport(this.$.VerseContainer.hasNode());
+                } else {
+                    visible = this.isVisible();
+                }
 
-                visible = this._isElementPartiallyInViewport(this.$.VerseContainer.hasNode());
+                if(this.owner.hasPaging) {
+                    if(this.owner.$.Pager_1 && this._isElementPartiallyInViewport(this.owner.$.Pager_1.hasNode())) {
+                        navVisible = true;
+                    }                    
 
-                if(this.navButton_1 && this._isElementPartiallyInViewport(this.navButton_1.hasNode())) {
-                    navVisible = true;
-                }        
+                    if(this.owner.$.Pager_2 && this._isElementPartiallyInViewport(this.owner.$.Pager_2.hasNode())) {
+                        navVisible = true;
+                    }
+                } else {                    
+                    if(this.navButton_1 && this._isElementPartiallyInViewport(this.navButton_1.hasNode())) {
+                        navVisible = true;
+                    }        
 
-                if(this.navButton_2 && this._isElementPartiallyInViewport(this.navButton_2.hasNode())) {
-                    navVisible = true;
+                    if(this.navButton_2 && this._isElementPartiallyInViewport(this.navButton_2.hasNode())) {
+                        navVisible = true;
+                    }
                 }
 
                 this.log('navButton_1', this.navButton_1);
