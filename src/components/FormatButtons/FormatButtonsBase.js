@@ -100,6 +100,12 @@ module.exports = kind({
     },        
     handleHistory: function(inSender, inEvent) {
         this.app.setDialogShowing('HistoryDialog', true);
+    },        
+    handleBookmark: function(inSender, inEvent) {
+        this.app.setDialogShowing('BookmarkDialog', true);
+    },       
+    handleBookmarkCurrent: function(inSender, inEvent) {
+        this.app.setDialogShowing('BookmarkEditCurrentDialog', true);
     },    
     handleSettings: function(inSender, inEvent) {
         this.app.set('settingsShowing', true);

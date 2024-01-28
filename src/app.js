@@ -21,6 +21,8 @@ var Validators = require('./lib/Validators');
 var Utils = require('./lib/Utils');
 var AlertDialog = require('./components/dialogs/Alert');
 var ResponseCollection = require('./data/collections/ResponseCollection');
+var BookmarkCollection = require('./data/collections/BookmarkCollection');
+var StorageManager = require('./data/LocalStorageManager');
 var ErrorView = require('./view/ErrorView');
 
 //var MainView = require('./view/Content');
@@ -55,6 +57,7 @@ var App = Application.kind({
     bibleDisplayLimit: 8,       // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
     defaultBibles: [],
     history: [],
+    bookmarks: null,
     resetView: true,
     appLoaded: false,
     ajaxLoadingDelayTimer: null,
@@ -80,6 +83,7 @@ var App = Application.kind({
     validate: Validators,
     AlertDialog: AlertDialog,
     responseCollection: ResponseCollection,
+    storage: StorageManager,
     utils: Utils,
     hasAjaxSuccess: false,
     hasMouse: false, // use mouse events to detect
@@ -228,9 +232,6 @@ var App = Application.kind({
         this.clientBrowser = this.client.browser;
         this.debug && this.log('client', this.client);
     },
-    talk: function() {
-        alert('Hello')
-    }, 
     createInstance: function(container, configs) {
         var inst = new App;
 
@@ -256,6 +257,7 @@ var App = Application.kind({
 
         var view = null;
         this.UserConfig.newModel(0);
+        this.initBookmarks();
 
         if(this.configs.interface) {
 
@@ -1623,6 +1625,17 @@ var App = Application.kind({
             }
         }
 
+    },
+    initBookmarks: function() {
+        this.bookmarks = new BookmarkCollection;
+        this.bookmarks.fetch();
+    },
+    copyHistoryToBookmarks: function() {
+        this.history.forEach(function(item) {
+            item.link = item.url;
+
+            this.bookmarks.add(item);
+        }, this);
     }
 });
 

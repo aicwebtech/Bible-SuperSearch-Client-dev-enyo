@@ -380,6 +380,26 @@ module.exports = kind({
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'history'}
                 ],
+            },            
+            {
+                kind: i18n,
+                classes: 'item link text_only',
+                name: 'bookmark_add_button',
+                ontap: 'handleBookmarkCurrent',
+                attributes: {title: 'Bookmark'},
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'bookmark'}
+                ],
+            },            
+            {
+                kind: i18n,
+                classes: 'item link text_only',
+                name: 'bookmark_button',
+                ontap: 'handleBookmark',
+                attributes: {title: 'Bookmarks'},
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'bookmarks'}
+                ],
             },
             {
                 kind: i18n,

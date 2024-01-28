@@ -12,6 +12,8 @@ var SettingsDialog = require('../../components/dialogs/Settings');
 
 var Dialogs = {
     'HistoryDialog': require('../../components/dialogs/History'),
+    'BookmarkDialog': require('../../components/dialogs/Bookmarks'),
+    'BookmarkEditCurrentDialog': require('../../components/dialogs/BookmarkEditCurrent')
 };
 
 var NavButtons = require('../../components/NavButtons/NavClassic');
