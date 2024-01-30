@@ -22,7 +22,6 @@ module.exports = kind({
     },
     commit: function() {
         var raw = this.raw();
-
         localStorage.setItem(this.url, JSON.stringify(raw));
     },
     fetch: function() {

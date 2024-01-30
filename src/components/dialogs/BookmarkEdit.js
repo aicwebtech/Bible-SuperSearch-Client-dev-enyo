@@ -22,6 +22,7 @@ module.exports = kind({
     model: null,
     controller: null,
     current: false, // whether we are editing the current bookmark (linked directly from format buttons, not from bookmarks dialog)
+    pk: null,
 
     bindings: [
         {from: 'controller.title', to: '$.Title.value', oneWay: false, transform: function(value, dir) {
@@ -109,7 +110,7 @@ module.exports = kind({
 
         this.log(this.controller.model.raw());
 
-        this._openHelper(null)
+        this._openHelper(null);
     },
     openEdit: function(pk) {
         this.set('isNew', false);
@@ -130,11 +131,32 @@ module.exports = kind({
         this.openNew();
     },
     _openHelper: function(pk) {
+        this.set('pk', pk);
         this.set('showing', true);
     },
 
     save: function(inSender, inEvent) {
-        var model = this.controller.get('model');
+        var t = this,
+            model = this.controller.get('model'),
+            title = this.$.Title.get('value'),
+            pk = this.get('pk'),
+            sameTitle = this.app.bookmarks.find(function(item) {
+                return title == item.get('title') && pk != item.get('pk');
+            });
+
+        if(sameTitle) {
+            this.app.alert('This title already exists');
+
+            // msg = this.app.t('This title already exists.  Okay to update existing bookmark?');
+
+            // this.app.confirm(msg, function(confirm) {
+            //     if(confirm) {
+            //         t.
+            //     }
+            // });
+
+            return;
+        }
 
         if(this.get('isNew')) {
             this.app.bookmarks.addOne(model);
@@ -160,15 +182,26 @@ module.exports = kind({
 
     },
     delete: function(inSender, inEvent) {
-        var model = this.controller.get('model'),
-            confirm = window.confirm('Are you sure you want to delete: ' + model.get('title'));
+        var t = this;
+            model = this.controller.get('model'),
+            msg = this.app.t('Are you sure you want to delete');
+            // confirm = window.confirm(msg + ': ' + model.get('title'));
 
-        if(confirm) {
-            this.app.bookmarks.remove(model);
-            this.app.bookmarks.commit();
-            this.doEditBookmark();
-            this.close();
-        }
+        this.app.confirm(msg + ': ' + model.get('title'), function(confirm) {
+            if(confirm) {
+                t.app.bookmarks.remove(model);
+                t.app.bookmarks.commit();
+                t.doEditBookmark();
+                t.close();
+            } 
+        });
+
+        // if(confirm) {
+        //     this.app.bookmarks.remove(model);
+        //     this.app.bookmarks.commit();
+        //     this.doEditBookmark();
+        //     this.close();
+        // }
     },
     localeChanged: function(inSender, inEvent) {
 

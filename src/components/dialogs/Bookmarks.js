@@ -36,6 +36,10 @@ module.exports = kind({
 
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'},
+        ]},        
+
+        {name: 'Clear', kind: Button, ontap: 'clear', components: [
+            {kind: i18n, content: 'Clear'},
         ]},
 
         {name: 'Pop', kind: Button, ontap: 'populate', components: [
@@ -149,6 +153,26 @@ module.exports = kind({
     refreshList: function() {
         this.populateList();
         this.render();
+    },
+    clear: function() {
+        
+        var t = this,
+            msg = this.app.t('Are you sure?') + ' ' +
+                this.app.t('This will delete all bookmarks.');
+
+        this.app.confirm(msg, function(confirm) {
+            if(confirm) {
+                t.app.bookmarks.empty();
+                t.app.bookmarks.commit();
+                t.refreshList();
+            }
+        });
+
+        // if(window.confirm(msg)) {
+        //     this.app.bookmarks.empty();
+        //     this.app.bookmarks.commit();
+        //     this.refreshList();
+        // }
     },
     populate: function() {
         this.app.copyHistoryToBookmarks();

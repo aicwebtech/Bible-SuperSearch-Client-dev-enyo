@@ -1428,6 +1428,12 @@ var App = Application.kind({
             Signal.send('onAlert', {alert: tstr});
         }
     },
+    confirm: function(string, callback) {
+        var tstr = this.t(string),
+            confirm = window.confirm(tstr);
+
+        callback && callback(confirm);
+    },
     displayInitError: function(message, code) {
         window.console && console.log('BibleSuperSearch error: ' + message);
         window.console && console.log('BibleSuperSearch error code: ' + code);
