@@ -125,6 +125,7 @@ var App = Application.kind({
         this.build = buildConfig;
         this.system = systemConfig;
         this.set('baseTitle', document.title);
+        var t = this;
         // this.log('defaultConfig', defaultConfig);
 
         window.console && console.log('BibleSuperSearch client version', this.applicationVersion);
@@ -191,6 +192,17 @@ var App = Application.kind({
         if(this.build.dynamicConfig == true) {
             config_path = this.build.dynamicConfigUrl;
         }
+
+        window.addEventListener('beforeunload', function(e) {
+            window.confirm('Unload');
+
+            t.bookmarks.add({
+                pk: -1,
+                title: 'Last Session',
+                pageTitle: this.get('bssTitle'),
+                url: document.location.href
+            });
+        });
 
         var loader = new Ajax({
             url: config_path,

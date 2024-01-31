@@ -84,7 +84,10 @@ module.exports = kind({
         this.$.EditDialog.openNew();
     },
     edit: function(inSender, inEvent) {
+        this.log('pk', inSender.get('pk'));
         this.$.EditDialog.openEdit(inSender.get('pk'));
+
+        this.app.bookmarks.list();
     },
     delete: function(inSender, inEvent) {
 
@@ -94,11 +97,10 @@ module.exports = kind({
 
         this.app.bookmarks.forEach(function(item) {
             var content = item.get('title') || '(no title?)',
-                title = null,
+                title = item.get('pageTitle'),
                 lim = 60;
 
             if(content.length > lim) {
-                title = item.title;
                 content = content.substring(0, lim) + ' ...';
             }
 
@@ -111,6 +113,7 @@ module.exports = kind({
                             href: item.get('link'), 
                             content: content,
                             title: title, 
+                            pk: item.get('pk'),
                             ontap: 'handleBookmarkTap',
                             style: 'float: left',
                         }, 
@@ -142,6 +145,7 @@ module.exports = kind({
         }
     },
     handleBookmarkTap: function(inSender, inEvent) {
+        this.app.bookmarks.setCurrent(inSender.get('pk'));
         this.close();
     },
     handleEditBookmark: function(inSender, inEvent) {

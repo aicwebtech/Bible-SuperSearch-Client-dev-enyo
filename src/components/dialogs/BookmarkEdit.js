@@ -145,7 +145,7 @@ module.exports = kind({
             });
 
         if(sameTitle) {
-            this.app.alert('This title already exists');
+            this.app.alert('This bookmark name already exists.');
 
             // msg = this.app.t('This title already exists.  Okay to update existing bookmark?');
 
