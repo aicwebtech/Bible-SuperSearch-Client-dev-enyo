@@ -17,28 +17,29 @@ module.exports = kind({
     name: 'BookmarkEditDialog',
     kind: Dialog,
     maxWidth: '400px',
-    height: '300px',
-    classes: 'help_dialog history_dialog',
+    height: '230px',
+    classes: 'help_dialog bss_bookmark_edit_dialog',
     model: null,
     controller: null,
     current: false, // whether we are editing the current bookmark (linked directly from format buttons, not from bookmarks dialog)
     pk: null,
+    previous: {},
 
     bindings: [
         {from: 'controller.title', to: '$.Title.value', oneWay: false, transform: function(value, dir) {
-            // console.log('Bookmark title', value, dir);
+            console.log('Bookmark title', value, dir);
             return value || null;
         }},                
 
         {from: 'controller.pageTitle', to: '$.PageTitle.value', oneWay: true, transform: function(value, dir) {
-            // console.log('Bookmark title', value, dir);
+            console.log('Bookmark pageTitle', value, dir);
             return value || null;
         }},        
 
-        {from: 'controller.link', to: '$.URL.value', oneWay: true, transform: function(value, dir) {
-            // console.log('Bookmark link', value, dir);
-            return value || null;
-        }}
+        // {from: 'controller.link', to: '$.URL.value', oneWay: true, transform: function(value, dir) {
+        //     console.log('Bookmark link', value, dir);
+        //     return value || null;
+        // }}
     ],
 
     events: {
@@ -58,11 +59,8 @@ module.exports = kind({
         {tag: 'br'},
         {tag: 'br'},
         {kind: i18n, content: 'Description'},
-        {kind: Input, name: 'PageTitle', attributes:{readonly: true}},        
+        {kind: Input, name: 'PageTitle', attributes:{readonly: 'readonly'}, classes: 'bss_readonly'},        
         {tag: 'br'},
-        {tag: 'br'},
-        {kind: i18n, content: 'URL'},
-        {kind: Input, name: 'URL', attributes:{readonly: true}},
         {tag: 'br'},
     ],
 
@@ -70,13 +68,17 @@ module.exports = kind({
         {name: 'Save', kind: Button, ontap: 'save', components: [
             {kind: i18n, content: 'Save'},
         ]},        
-
+        {tag: 'span', classes: 'spacer'},
         {name: 'Delete', kind: Button, ontap: 'delete', components: [
             {kind: i18n, content: 'Delete'},
         ]},
-
-        {name: 'Close', kind: Button, ontap: 'close', components: [
-            {kind: i18n, content: 'Close'},
+        {tag: 'span', classes: 'spacer'},
+        {name: 'Restore', kind: Button, ontap: 'restore', components: [
+            {kind: i18n, content: 'Restore'},
+        ]},
+        {tag: 'span', classes: 'spacer'},
+        {name: 'Cancel', kind: Button, ontap: 'cancel', components: [
+            {kind: i18n, content: 'Cancel'},
         ]}
     ],
 
@@ -103,12 +105,13 @@ module.exports = kind({
         this.controller.set('title', title);
         this.controller.set('pageTitle', title);
         this.controller.set('link', url);
+        this.previous = {};
 
         // this.model = new Model;
         // this.model.set('title', title);
         // this.model.set('link', url);
 
-        this.log(this.controller.model.raw());
+        // this.log(this.controller.model.raw());
 
         this._openHelper(null);
     },
@@ -125,6 +128,9 @@ module.exports = kind({
         }
 
         this.controller.set('model', model);
+        this.previous = model.raw();
+
+        // this.controller.set('model', utils.clone(model));
         this._openHelper(pk);
     },
     openCurrent: function() {
@@ -134,7 +140,15 @@ module.exports = kind({
         this.set('pk', pk);
         this.set('showing', true);
     },
-
+    cancel: function() {
+        this.restore();
+        this.close();
+    },
+    restore: function() {
+        this.log();
+        var model = this.controller.get('model');
+        model.set(this.previous);
+    },
     save: function(inSender, inEvent) {
         var t = this,
             model = this.controller.get('model'),
@@ -164,14 +178,14 @@ module.exports = kind({
             this.app.bookmarks.add(model);
         }
 
-        this.app.bookmarks.commit();
+        // this.app.bookmarks.commit();
         this.doEditBookmark({model: model});
-        this.log('localstor', localStorage.getItem('BibleSuperSearchBookmarks'));
-        this.log('localstor', localStorage.length);
+        // this.log('localstor', localStorage.getItem('BibleSuperSearchBookmarks'));
+        // this.log('localstor', localStorage.length);
 
-        for (i = 0; i < localStorage.length; i++) {
-          this.log('localstore key', localStorage.getItem(localStorage.key(i)));
-        }
+        // for (i = 0; i < localStorage.length; i++) {
+        //   this.log('localstore key', localStorage.getItem(localStorage.key(i)));
+        // }
 
         this.close();
 

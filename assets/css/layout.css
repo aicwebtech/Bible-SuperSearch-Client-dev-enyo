@@ -491,6 +491,14 @@ div.alert_dialog {
     max-width: 40px;
 } 
 
+/*.bss_dialog_container .bss_dialog_buttons button, .hover_dialog .bss_dialog_buttons button {
+    display: inline-block;
+    width: 10%;
+    max-width: 40px;
+} 
+*/
+
+
 .help_dialog .bss_dialog_container {
     margin: 10px;
 }
@@ -848,4 +856,13 @@ tr.bss_render_reference_row th {
 
 .bss_render_active {
     background-color: green;
+}
+
+.bss_bookmark_edit_dialog input {
+    width: 90%;
+    max-width: 350px;
+}
+
+.biblesupersearch_main input.bss_readonly {
+    background-color: #ccc;
 }

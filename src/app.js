@@ -1426,6 +1426,7 @@ var App = Application.kind({
 
         if(this.history.length == 0 || this.history[0].title != title) {
             this.history.unshift({title: title, url: url});
+            localStorage.setItem('BibleSuperSearchHistory', JSON.stringify(this.history));
         }
     },
 
@@ -1647,6 +1648,10 @@ var App = Application.kind({
     initBookmarks: function() {
         this.bookmarks = new BookmarkCollection;
         this.bookmarks.fetch();
+
+        var hist = localStorage.getItem('BibleSuperSearchHistory') || null;
+
+        this.history = hist ? JSON.parse(hist) : [];
     },
     copyHistoryToBookmarks: function() {
         this.history.forEach(function(item) {

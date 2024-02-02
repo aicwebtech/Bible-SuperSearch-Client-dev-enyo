@@ -14,12 +14,6 @@ module.exports = kind({
         title: null, // given to bookmark by user
         pageTitle: null, // Title from page, not directly editable by user
         link: null,   // url to BSS bookmark, not directly editable by user
-    },
-
-    getUrl: function() {
-        return 'BibleSuperSearchBookmarks';
-
-        // do something?
     }
 });
 

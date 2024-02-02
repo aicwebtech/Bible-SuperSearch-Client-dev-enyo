@@ -33,17 +33,13 @@ module.exports = kind({
         {name: 'Add', kind: Button, ontap: 'add', components: [
             {kind: i18n, content: 'Add'},
         ]},
-
-        {name: 'Close', kind: Button, ontap: 'close', components: [
-            {kind: i18n, content: 'Close'},
-        ]},        
-
+        {tag: 'span', classes: 'spacer'},
         {name: 'Clear', kind: Button, ontap: 'clear', components: [
             {kind: i18n, content: 'Clear'},
         ]},
-
-        {name: 'Pop', kind: Button, ontap: 'populate', components: [
-            {kind: i18n, content: 'Populate'},
+        {tag: 'span', classes: 'spacer'},
+        {name: 'Close', kind: Button, ontap: 'close', components: [
+            {kind: i18n, content: 'Close'},
         ]}
     ],
 
@@ -118,9 +114,12 @@ module.exports = kind({
                             style: 'float: left',
                         }, 
                         {
-                            tag: 'span',
+                            kind: Anchor, 
+                            // kind: i18n,
+                            // tag: 'span',
+                            href: 'JavaScript:void(0)',
+                            // href: item.get('link'), 
                             style: 'float: right',
-                            kind: i18n,
                             content: 'Edit',
                             pk: item.get('pk'),
                             ontap: 'edit'
