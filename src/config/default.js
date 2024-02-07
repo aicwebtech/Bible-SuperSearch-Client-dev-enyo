@@ -20,6 +20,8 @@ var defaultConfig = {
     'strongsDialogSearchLink': false,
     'legacyManual': false,
     'strongsOpenClick': 'mobile',
+    'historyLimit': 50,
+    'bookmarkLimit': 20,
 
 
     _urlDefaultNotice: function() {

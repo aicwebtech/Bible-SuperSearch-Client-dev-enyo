@@ -1422,14 +1422,23 @@ var App = Application.kind({
     },
     pushHistory: function() {
         var title = this.get('bssTitle'),
-            url = document.location.href;
+            url = document.location.href,
+            limit = this.configs.historyLimit || 50;
 
         if(this.history.length == 0 || this.history[0].title != title) {
             this.history.unshift({title: title, url: url});
+
+            if(this.history.length > limit) {
+                this.history = this.history.slice(0, limit);
+            }
+
             localStorage.setItem('BibleSuperSearchHistory', JSON.stringify(this.history));
         }
     },
-
+    clearHistory: function() {
+        this.history = [];
+        localStorage.setItem('BibleSuperSearchHistory', '[]');
+    },
     alert: function(string, inSender, inEvent) {
         // todo - make some sort of custom alert dialog here!
         var tstr = this.t(string);
@@ -1647,6 +1656,7 @@ var App = Application.kind({
     },
     initBookmarks: function() {
         this.bookmarks = new BookmarkCollection;
+        this.bookmarks.app = this;
         this.bookmarks.fetch();
 
         var hist = localStorage.getItem('BibleSuperSearchHistory') || null;

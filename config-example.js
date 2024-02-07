@@ -28,6 +28,11 @@ var biblesupersearch_config_options = {
 
     'language' : 'en',
 
+    // Languages available to be selected by user
+    // Comment out to show all available languages.
+    // See supported languages above
+    'languageList': ['en', 'ru', 'lv', 'es'],
+
     // Bible books language source
     // 'ui': Display book names in language selected in UI (Reccomended) (Default)
     // 'bible' : Display book names in language of First selected Bible (Legacy - was never fully implemented)
@@ -318,6 +323,12 @@ var biblesupersearch_config_options = {
 
     // When clicking the Strongs # opens the dialog, should we show a button to access the original search by Strongs # link?
     'strongsDialogSearchLink': false,
+
+    'historyLimit': 50, // Maximum number of history items.
+
+    // Bookmarks
+    'bookmarkLimit': 20, // Maximum number of bookmarks.
+    
 
     // Include toggling to an 'advanced search' form
     // Some interfaces may force this to false

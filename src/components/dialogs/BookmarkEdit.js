@@ -19,6 +19,7 @@ module.exports = kind({
     maxWidth: '400px',
     height: '230px',
     classes: 'help_dialog bss_bookmark_edit_dialog',
+    isNew: false,
     model: null,
     controller: null,
     current: false, // whether we are editing the current bookmark (linked directly from format buttons, not from bookmarks dialog)
@@ -68,11 +69,11 @@ module.exports = kind({
         {name: 'Save', kind: Button, ontap: 'save', components: [
             {kind: i18n, content: 'Save'},
         ]},        
-        {tag: 'span', classes: 'spacer'},
+        {name: 'DeleteSpacer', tag: 'span', classes: 'spacer'},
         {name: 'Delete', kind: Button, ontap: 'delete', components: [
             {kind: i18n, content: 'Delete'},
         ]},
-        {tag: 'span', classes: 'spacer'},
+        {name: 'RestoreSpacer', tag: 'span', classes: 'spacer'},
         {name: 'Restore', kind: Button, ontap: 'restore', components: [
             {kind: i18n, content: 'Restore'},
         ]},
@@ -96,10 +97,29 @@ module.exports = kind({
     showingChanged: function(was, is) {
         this.inherited(arguments);
     },
+    isNewChanged: function(was, is) {
+        this.$.DeleteSpacer.set('showing', !is);
+        this.$.Delete.set('showing', !is);        
+        this.$.RestoreSpacer.set('showing', !is);
+        this.$.Restore.set('showing', !is);
+    },
     openNew: function() {
         this.set('isNew', true);
+
         var title = this.app.get('bssTitle'),
-            url = document.location.href;
+            url = document.location.href,
+            limit = this.app.configs.bookmarkLimit || 20;
+
+        this.app.bookmarks.limitReached();
+
+        if(this.app.bookmarks.length >= limit) {
+            msg = this.app.t('Limit of') + ' ' + limit + '. ' +
+                    this.app.t('Please delete some bookmarks first.')
+
+            this.app.alert(msg);
+            this.close();
+            return;
+        }
         
         this.controller.newModel();
         this.controller.set('title', title);
@@ -146,8 +166,11 @@ module.exports = kind({
     },
     restore: function() {
         this.log();
-        var model = this.controller.get('model');
-        model.set(this.previous);
+
+        if(!this.get('isNew') && this.previous) {            
+            var model = this.controller.get('model');
+            model.set(this.previous);
+        }
     },
     save: function(inSender, inEvent) {
         var t = this,
@@ -178,22 +201,9 @@ module.exports = kind({
             this.app.bookmarks.add(model);
         }
 
-        // this.app.bookmarks.commit();
+        this.app.bookmarks.commit();
         this.doEditBookmark({model: model});
-        // this.log('localstor', localStorage.getItem('BibleSuperSearchBookmarks'));
-        // this.log('localstor', localStorage.length);
-
-        // for (i = 0; i < localStorage.length; i++) {
-        //   this.log('localstore key', localStorage.getItem(localStorage.key(i)));
-        // }
-
         this.close();
-
-        // if(this.controller.save()) {            
-        //     this.close();
-        //     this.doEditBookmark({model: this.model});
-        // }
-
     },
     delete: function(inSender, inEvent) {
         var t = this;

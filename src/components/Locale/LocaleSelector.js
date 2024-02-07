@@ -14,29 +14,41 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+        var list = this.app.configs.languageList || [];
 
-        for(i in Locales) {
-            if(!Locales[i] || !Locales[i].meta || !Locales[i].meta.lang_name_en) {
-                continue;
+        if(list.length > 0) {
+            for(idx in list) {
+                this._createLocaleHelper(list[idx]);
             }
-
-            var ldb = Locales[i].meta.debug || false;
-            var langName = Locales[i].meta.lang_name || Locales[i].meta.lang_name_en;
-
-            if(ldb && !this.app.debug && !this.app.configs.debugLocale) {
-                continue;
+        }
+        else {            
+            for(i in Locales) {
+                this._createLocaleHelper(i);
             }
-
-            this.createOptionComponent({
-                content: langName + ' (' + this.app._fmtLocaleName(i) + ')',
-                value: i
-            });
         }
 
         this._setValueInternal = true; // or top option will push back into app as the selected locale!
         this.initOptions();
         this.app.debug && this.log('init locale on selector', this.app.get('locale'));
         this.setValueFromLocale();
+    },
+
+    _createLocaleHelper: function(i) {
+        if(!Locales[i] || !Locales[i].meta || !Locales[i].meta.lang_name_en) {
+            return;
+        }
+
+        var ldb = Locales[i].meta.debug || false;
+        var langName = Locales[i].meta.lang_name || Locales[i].meta.lang_name_en;
+
+        if(ldb && !this.app.debug && !this.app.configs.debugLocale) {
+            return;
+        }
+
+        this.createOptionComponent({
+            content: langName + ' (' + this.app._fmtLocaleName(i) + ')',
+            value: i
+        });
     },
 
     change: function(inSender, inEvent) {

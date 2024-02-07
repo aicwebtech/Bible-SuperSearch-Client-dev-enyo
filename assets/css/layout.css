@@ -855,7 +855,7 @@ tr.bss_render_reference_row th {
 }
 
 .bss_render_active {
-    background-color: green;
+/*    background-color: green;*/
 }
 
 .bss_bookmark_edit_dialog input {

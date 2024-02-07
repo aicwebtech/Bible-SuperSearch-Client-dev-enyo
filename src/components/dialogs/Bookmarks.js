@@ -170,12 +170,6 @@ module.exports = kind({
                 t.refreshList();
             }
         });
-
-        // if(window.confirm(msg)) {
-        //     this.app.bookmarks.empty();
-        //     this.app.bookmarks.commit();
-        //     this.refreshList();
-        // }
     },
     populate: function() {
         this.app.copyHistoryToBookmarks();

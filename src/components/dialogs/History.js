@@ -29,6 +29,10 @@ module.exports = kind({
     ],
 
     buttonComponents: [
+        {name: 'Clear', kind: Button, ontap: 'clear', components: [
+            {kind: i18n, content: 'Clear'},
+        ]},
+        {tag: 'span', classes: 'spacer'},     
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'},
         ]}
@@ -108,5 +112,18 @@ module.exports = kind({
     localeChanged: function(inSender, inEvent) {
         this.populateList();
         this.render();
-    }
+    },
+    clear: function() {
+        
+        var t = this,
+            msg = this.app.t('Are you sure?') + ' ' +
+                this.app.t('This will delete all history.');
+
+        this.app.confirm(msg, function(confirm) {
+            if(confirm) {
+                t.app.clearHistory();
+                t.close();
+            }
+        });
+    },
 });

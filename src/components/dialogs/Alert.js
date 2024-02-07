@@ -101,7 +101,7 @@ module.exports = kind({
         this.timer = window.setTimeout( function() {
             t.set('showing', false);
             t.pComponent && t.pComponent.destroy();
-        }, 400);
+        }, 1000);
 
     }
 });

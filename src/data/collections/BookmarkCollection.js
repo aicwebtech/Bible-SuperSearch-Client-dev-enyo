@@ -51,6 +51,13 @@ module.exports = kind({
             this.add(JSON.parse(col));
         }
     },
+    limitReached: function() {
+        var limit = this.app.configs.bookmarkLimit || 20;
+
+        this.log(limit, this.length);
+
+        return this.length >= limit;
+    },
     list: function() {
         console.log(this.raw());
     }
