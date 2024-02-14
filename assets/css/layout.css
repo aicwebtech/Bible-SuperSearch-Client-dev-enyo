@@ -835,6 +835,12 @@ tr.bss_render_reference_row th {
 /*    width: 50%;*/
     left: 0;
     right: 0;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.bss_side_swipe_button_container.fadein {
+    opacity: 1;
 }
 
 .bss_side_swipe_button {

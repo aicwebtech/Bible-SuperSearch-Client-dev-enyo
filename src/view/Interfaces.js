@@ -35,6 +35,9 @@ module.exports = {
         //      Form with only a text input and a submit button
         'Minimal' : require('./interfaces/minimal/MinimalBase'),
         
+        // No visible form
+        'NoForm' : require('./interfaces/minimal/NoForm'),          
+
         // Minimal form with Bible selector (varying size)
         'MinimalWithBible' : require('./interfaces/minimal/MinimalWithBible'),        
 

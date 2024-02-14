@@ -13,6 +13,7 @@ module.exports = kind({
     active: false,
     navButton_1: null,
     navButton_2: null,
+    sideButtons: false,
 
     handlers: {
         onGlobalScroll: 'handleGlobalScroll',
@@ -36,7 +37,7 @@ module.exports = kind({
         {
             name: 'SideSwipeButtons',
             isChrome: true,
-            showing: false,
+            showing: true,
             classes: 'bss_side_swipe_button_container',
 
             components: [
@@ -150,7 +151,7 @@ module.exports = kind({
             // need to ensure buttons only appear ONCE though
 
             if(!this.get('active')) {
-                this.$.SideSwipeButtons.set('showing', false);
+                this.set('sideButtons', false);
             } else if(this.app.configs.sideSwipeHideWithNavigationButtons && this.app.configs.sideSwipeHideWithNavigationButtons != 'false') {
                 if(this.$.VerseContainer) {
                     visible = this._isElementPartiallyInViewport(this.$.VerseContainer.hasNode());
@@ -179,10 +180,10 @@ module.exports = kind({
                 this.log('navButton_1', this.navButton_1);
                 this.log('navButton_2', this.navButton_2);
                 this.log('navVisible', navVisible);
-                this.$.SideSwipeButtons.set('showing', visible && !navVisible);
+                this.set('sideButtons', visible && !navVisible);
             } else {
                 visible = this.isVisible();
-                this.$.SideSwipeButtons.set('showing', visible);
+                this.set('sideButtons', visible);
             }
 
         }
@@ -292,6 +293,19 @@ module.exports = kind({
         // navButtons.push(component);
 
         // this.navButtons = utils.clone(navButtons);
+    },
+    sideButtonsChanged: function(was, is) {
+        this.log(is);
+
+        this.$.SideSwipeButtons.addRemoveClass('fadein', !!is);
+
+        // if(is) {
+        //     // this.$.SideSwipeButtons.set('showing', true);
+        //     this.$.SideSwipeButtons.hasNode().classList.toggle('fadein');
+        // } else {
+        //     this.$.SideSwipeButtons.hasNode().classList.toggle('fadein');
+        //     // this.$.SideSwipeButtons.set('showing', false);
+        // }
     }
 
 });

@@ -14,16 +14,19 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
-        var list = this.app.configs.languageList || [];
+        var list = this.app.configs.languageList || [],
+            defLang = this.app.configs.language || 'en';
+
+        this._createLocaleHelper(defLang);
 
         if(list.length > 0) {
             for(idx in list) {
-                this._createLocaleHelper(list[idx]);
+                list[idx] != defLang && this._createLocaleHelper(list[idx]);
             }
         }
         else {            
             for(i in Locales) {
-                this._createLocaleHelper(i);
+                i != defLang && this._createLocaleHelper(i);
             }
         }
 

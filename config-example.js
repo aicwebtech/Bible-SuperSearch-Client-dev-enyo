@@ -306,9 +306,14 @@ var biblesupersearch_config_options = {
     // Enable changing chapter and search page via horizontal touchscreen swipe gesture 
     "swipePageChapter": false,
 
-    // Experimental, not yet production ready!
     // Enable changing chapter and search page via horizontal arrow keys
     'arrowKeysPageChapter': false,
+
+    // Enable changing chapter and search page via fade-in side buttons
+    'sideSwipePageChapter': true,    
+
+    // Hide side swipe buttons when navigation buttons are showing
+    'sideSwipeHideWithNavigationButtons': true,
 
     // Time, in milliseconds, to wait after hovering before opening a hover dialog (ie Strongs)
     'hoverDelayThreshold': 500,
@@ -327,8 +332,10 @@ var biblesupersearch_config_options = {
     'historyLimit': 50, // Maximum number of history items.
 
     // Bookmarks
+    'bookmarksEnable': true,  // Whether to enable the bookmark functionality
+
     'bookmarkLimit': 20, // Maximum number of bookmarks.
-    
+
 
     // Include toggling to an 'advanced search' form
     // Some interfaces may force this to false
