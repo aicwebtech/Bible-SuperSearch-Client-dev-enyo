@@ -112,13 +112,13 @@ module.exports = kind({
         this.bibles = [];
 
         for(i in this.formData.bible) {
-            var module = this.formData.bible[i];
+            var mod = this.formData.bible[i];
 
-            if(typeof this.app.statics.bibles[module] == 'undefined') {
+            if(typeof this.app.statics.bibles[mod] == 'undefined') {
                 continue;
             }
 
-            this.bibles.push(module);
+            this.bibles.push(mod);
         }
 
         this.bibleCount = this.bibles.length;
@@ -212,13 +212,13 @@ module.exports = kind({
     },
     _renderCopyRightBottomHelper: function(Container) {
         for(i in this.bibles) {
-            var module = this.bibles[i];
+            var mod = this.bibles[i];
 
-            if(typeof this.app.statics.bibles[module] == 'undefined') {
+            if(typeof this.app.statics.bibles[mod] == 'undefined') {
                 continue;
             }
             
-            var bible_info = this.app.statics.bibles[module];
+            var bible_info = this.app.statics.bibles[mod];
             // var content = '<h5>' + bible_info.name + ' (' + bible_info.shortname + ')</h5>' + bible_info.copyright_statement;
             
             var components = [
@@ -439,8 +439,8 @@ module.exports = kind({
             includeTotals: includeTotals
         });
     },
-    selectBible: function(module) {
-        this.selectedBible = (typeof this.app.statics.bibles[module] == 'undefined') ? null : this.app.statics.bibles[module];
+    selectBible: function(mod) {
+        this.selectedBible = (typeof this.app.statics.bibles[mod] == 'undefined') ? null : this.app.statics.bibles[mod];
         return this.selectedBible;
     },
     handleHover: function(inSender, inEvent) {

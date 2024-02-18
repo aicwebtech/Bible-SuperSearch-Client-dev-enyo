@@ -842,6 +842,9 @@ module.exports = kind({
             });
         }
 
-        Signal.send('onBibleChange', {bibles: value, dir: dir});
+        var e = {bibles: value, dir: dir};
+
+        Signal.send('onBibleChange', e);
+        this.waterfall('onBibleChange', e);
     }
  });

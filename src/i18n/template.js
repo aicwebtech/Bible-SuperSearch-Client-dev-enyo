@@ -375,6 +375,16 @@ module.exports = {
     'words': '',
     'truth': '',
 
+    // 5.5
+    
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': '',
+    'You cannot search across Bibles of different languages using the selected search type.': '',
+
+    // Bookmarks
+
+    
+
 
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  

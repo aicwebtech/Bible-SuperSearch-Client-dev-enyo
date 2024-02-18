@@ -297,6 +297,8 @@ module.exports = kind({
     sideButtonsChanged: function(was, is) {
         this.log(is);
 
+        // this.$.SideSwipeButtons.set('showing', !!is);
+
         this.$.SideSwipeButtons.addRemoveClass('fadein', !!is);
 
         // if(is) {

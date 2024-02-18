@@ -7,6 +7,10 @@ module.exports = kind({
     defaultValue: null,
     defaultSelection: null,
 
+    handlers: {
+        onBibleChange: 'handleBibleChange'
+    },
+
     create: function() {
         this.inherited(arguments);
 
@@ -16,7 +20,7 @@ module.exports = kind({
             selected = 0;
 
         if(!search_types || search_types.length == 0) {
-            this.app.debug && this.log('using hardcoded search types')
+            this.app.debug && this.log('using hardcoded search types');
             search_types = this.defaultSearchTypes;
         }
 
@@ -25,7 +29,8 @@ module.exports = kind({
 
             this.createOptionComponent({
                 content: search_types[i].label,
-                value: search_types[i].value
+                value: search_types[i].value,
+                multiLang: search_types[i].multi_lang
             });
         }
 
@@ -37,6 +42,45 @@ module.exports = kind({
     rendered: function() {
         // this.inherited();
         this.setSelected(this.defaultSelection);
+    },
+
+    handleBibleChange: function(inSender, inEvent) {
+        var pls = this.app.statics.parallel_lang_search || 'always';
+
+        if(pls == 'search_type') {
+            var components = this.$.Toggle.getClientControls(),
+                showIt = !this.app.selectedBiblesMultipleLanguages(),
+                value = this.get('value'),
+                resetValue = false;
+
+            this.log(this.app.getSelectedBiblesString(), showIt);
+
+            // this.log(components);
+                
+            components.forEach(function(com) {
+                // this.log('bibleChange', com.get('content'), com.get('multiLang'), showIt);
+
+                if(!com.get('multiLang')) {
+                    if(!showIt && com.get('value') == value) {
+                        resetValue = true;
+                    }
+
+                    com.set('showing', showIt);
+                }
+            }, this);
+
+            if(resetValue) {
+                this.log('resetValue');
+                this.app.alert('You cannot search across Bibles of different languages with the selected search type.');
+                this.setSelected(this.defaultSelection);
+            }
+        } 
+        //else if(pls == 'never' && this.app.selectedBiblesMultipleLanguages()) {
+            // not valid - because users can look up passages across versions of diffrent languages
+            // It is difficult to tell here if a search is being performed as well.
+            // Will save this validation for the API for now ....
+            //this.app.alert('You cannot search across Bibles of different languages.');
+        //}
     },
 
     defaultSearchTypes: [

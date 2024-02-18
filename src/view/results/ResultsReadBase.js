@@ -80,18 +80,18 @@ module.exports = kind({
         for(chapter in pd.verse_index) {
             pd.verse_index[chapter].forEach(function(verse) {
                 for(i in this.bibles) {
-                    var module = this.bibles[i];
+                    var mod = this.bibles[i];
                     var content = '';
-                    var bible_info = this.selectBible(module);
+                    var bible_info = this.selectBible(mod);
 
                     if(!bible_info) {
                         continue;
                     }
 
-                    if(pd.verses[module] && pd.verses[module][chapter] && pd.verses[module][chapter][verse]) {
-                        content = pd.verses[module][chapter][verse].text || '';
+                    if(pd.verses[mod] && pd.verses[mod][chapter] && pd.verses[mod][chapter][verse]) {
+                        content = pd.verses[mod][chapter][verse].text || '';
                         haveText = (content != '') ? true : haveText;
-                        content = this.processSingleVerseContent(pd, pd.verses[module][chapter][verse]);
+                        content = this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]);
                     }
 
                     Container.$.VerseRow.createComponent({
@@ -107,13 +107,13 @@ module.exports = kind({
 
         if(haveText) {            
             for(i in this.bibles) {
-                var module = this.bibles[i];
+                var mod = this.bibles[i];
 
-                if(typeof this.app.statics.bibles[module] == 'undefined') {
+                if(typeof this.app.statics.bibles[mod] == 'undefined') {
                     continue;
                 }
 
-                var bible_info = this.app.statics.bibles[module];
+                var bible_info = this.app.statics.bibles[mod];
                 
                 if(addBibleHeader) {                
                     Container.$.BibleRow.createComponent({
@@ -200,13 +200,13 @@ module.exports = kind({
             });
 
             for(i in this.bibles) {
-                var module = this.bibles[i];
+                var mod = this.bibles[i];
 
-                if(typeof this.app.statics.bibles[module] == 'undefined') {
+                if(typeof this.app.statics.bibles[mod] == 'undefined') {
                     continue;
                 }
                 
-                var bible_info = this.app.statics.bibles[module];
+                var bible_info = this.app.statics.bibles[mod];
 
                 Container.$.BibleRow.createComponent({
                     tag: 'th',
@@ -227,19 +227,19 @@ module.exports = kind({
                 this.singleVerseCount ++;
 
                 for(i in this.bibles) {
-                    var module = this.bibles[i];
+                    var mod = this.bibles[i];
                     var content = '';
-                    var bible_info = this.selectBible(module);
+                    var bible_info = this.selectBible(mod);
 
                     if(!bible_info) {
                         continue;
                     }
 
-                    if(pd.verses[module] && pd.verses[module][chapter] && pd.verses[module][chapter][verse]) {
+                    if(pd.verses[mod] && pd.verses[mod][chapter] && pd.verses[mod][chapter][verse]) {
                         if(renderStyle == 'verse_passage') {
-                            var processed = '<td>' + this.processSingleVerseContent(pd, pd.verses[module][chapter][verse]) + '</td>';
+                            var processed = '<td>' + this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]) + '</td>';
                         } else {
-                            var processed = this.processPassageVerseContent(pd, pd.verses[module][chapter][verse]);
+                            var processed = this.processPassageVerseContent(pd, pd.verses[mod][chapter][verse]);
                         }
 
                         html += processed;

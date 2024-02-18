@@ -193,17 +193,6 @@ var App = Application.kind({
             config_path = this.build.dynamicConfigUrl;
         }
 
-        window.addEventListener('beforeunload', function(e) {
-            window.confirm('Unload');
-
-            t.bookmarks.add({
-                pk: -1,
-                title: 'Last Session',
-                pageTitle: this.get('bssTitle'),
-                url: document.location.href
-            });
-        });
-
         var loader = new Ajax({
             url: config_path,
             method: 'GET'
@@ -971,6 +960,29 @@ var App = Application.kind({
 
         var bibleString = bibles.join(',');
         return bibleString;
+    },
+    selectedBiblesMultipleLanguages: function() {
+        var bibles = this.getSelectedBibles(),
+            lang = null,
+            langCur = null;
+
+        bibles = bibles.filter(function(b) {
+            return b != 0 && b != null;
+        });
+
+        for(i in bibles) {
+            lang = this.statics.bibles[ bibles[i] ].lang_short;
+
+            if(lang != langCur) {
+                if(langCur == null) {
+                    langCur = lang;
+                } else {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     },
     // TO DO - apply this to the following:
     //   Pager, Nav Buttons (done), Format Buttons
