@@ -157,6 +157,9 @@ var biblesupersearch_config_options = {
     // Maximum number of autocomplete options to show at once.
     "autocompleteMaximumOptions": 10,
 
+    // Show hidden shortcuts (ie End Times)
+    "shortcutsShowHidden": false,
+
     // Bible SuperSearch skin / interface   (string)
     //      Select an interface below by uncommenting the one that you want to use
     //      For a complete list, please see our demo page

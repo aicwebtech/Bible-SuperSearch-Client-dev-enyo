@@ -875,6 +875,19 @@ tr.bss_render_reference_row th {
     max-width: 350px;
 }
 
+.bss_shortcuts_table {
+    width: 100%;
+}
+
+.bss_shortcuts_table tbody tr:nth-child(even) {
+    background-color: #ddd;
+}
+
+.bss_shortcuts_table tr td {
+    text-align: left;
+    padding: 3px;
+}
+
 .biblesupersearch_main input.bss_readonly {
     background-color: #ccc;
 }
