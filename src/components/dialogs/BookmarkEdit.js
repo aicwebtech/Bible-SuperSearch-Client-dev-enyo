@@ -113,8 +113,8 @@ module.exports = kind({
         this.app.bookmarks.limitReached();
 
         if(this.app.bookmarks.length >= limit) {
-            msg = this.app.t('Limit of') + ' ' + limit + '. ' +
-                    this.app.t('Please delete some bookmarks first.')
+            msg = //this.app.t('Limit of') + ' ' + limit + '. ' +
+                    this.app.t('Please delete some bookmarks before adding more.')
 
             this.app.alert(msg);
             this.close();
@@ -219,13 +219,6 @@ module.exports = kind({
                 t.close();
             } 
         });
-
-        // if(confirm) {
-        //     this.app.bookmarks.remove(model);
-        //     this.app.bookmarks.commit();
-        //     this.doEditBookmark();
-        //     this.close();
-        // }
     },
     localeChanged: function(inSender, inEvent) {
 

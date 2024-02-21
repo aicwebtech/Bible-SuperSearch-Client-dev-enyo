@@ -364,6 +364,34 @@ module.exports = {
     'words': 'vwordes',
     'truth': 'tryuth',
 
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': 'Ye cannote be searchin\' across Chestes of differente flavors.',
+    'You cannot search across Bibles of different languages using the selected search type.': 'Ye cannote be searchin\' across Chestes of differente flavors with tye searche thype.',
+
+    // General dialogs
+    'Name': 'Namer',
+    'Save': 'Preserv',
+    'Cancel': 'Baile oute',
+    'Edit': 'Changeth',
+    'Delete': 'Drown',
+    'Clear': 'Overboarde',
+    'Restore': 'Fix',
+    'Add': 'New matey',
+
+    'Are you sure?': 'Yar really?',
+    'Are you sure you want to delete': 'Yar really drown',
+
+    // Bookmarks/History
+    'This will delete all history.': 'Drowneth all historey?',
+    'This will delete all bookmarks.': 'Drowneth all barkmates?',
+
+    'Bookmark': 'Barkmate',
+    'Bookmarks': 'Barkmates',
+
+    'Please delete some bookmarks before adding more.': 'Pleaseth drown shome barkmate before addign new matey.',
+    'This bookmark name already exists.': 'Yar barkmate is arready a matey.',
+
+
     // Bible books - these are auto populated from the API based on selected language
     // Specifying here not reccommended, as these names would need to match those on the API for things to actually work.
     'Matthew' : 'Goode News Accordin\' to me matey Mahhew',

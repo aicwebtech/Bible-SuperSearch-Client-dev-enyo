@@ -381,10 +381,20 @@ module.exports = {
     'You cannot search across Bibles of different languages.': '',
     'You cannot search across Bibles of different languages using the selected search type.': '',
 
-    // Bookmarks
+    // General dialogs
+    'Are you sure?': '',
+    'Name': '',
+    'Save': '',
+    'Cancel': '',
+    'Edit': '',
+    'Restore': '',
 
-    
+    // Bookmarks/History
+    'This will delete all history.': '',
+    'This will delete all bookmarks.': '',
 
+    'Bookmark': '',
+    'Bookmarks': '',
 
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  

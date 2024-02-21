@@ -114,11 +114,12 @@ module.exports = kind({
                             style: 'float: left',
                         }, 
                         {
-                            kind: Anchor, 
-                            // kind: i18n,
-                            // tag: 'span',
-                            href: 'JavaScript:void(0)',
-                            // href: item.get('link'), 
+                            // kind: Anchor, 
+                            kind: i18n,
+                            tag: 'a',
+                            attributes: {
+                                href: 'JavaScript:void(0)',
+                            },
                             style: 'float: right',
                             content: 'Edit',
                             pk: item.get('pk'),
