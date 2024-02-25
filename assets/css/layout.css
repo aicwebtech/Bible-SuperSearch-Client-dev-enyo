@@ -580,8 +580,15 @@ div.alert_dialog {
     text-align: left;
     font-size: 0.9em;
     padding: 3px 8px;
-    height: 16px;
-    line-height: 16px;
+    height: 24px;
+    line-height: 24px;
+}
+
+.bss_history_item .material-icons {
+    font-size: 22px;
+    cursor: pointer;
+/*    border: 1px solid #333;*/
+    margin-left: 10px;
 }
 
 .share_dialog .link_share_container {

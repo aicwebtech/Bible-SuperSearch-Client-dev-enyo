@@ -60,5 +60,12 @@ module.exports = kind({
     },
     list: function() {
         console.log(this.raw());
+    },
+    findByPk: function(pk) {
+        var model = this.app.bookmarks.find(function(model) {
+            return model.get('pk') == pk;
+        });
+
+        return model;
     }
 });

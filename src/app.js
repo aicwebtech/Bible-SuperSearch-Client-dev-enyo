@@ -943,7 +943,7 @@ var App = Application.kind({
         var bibles = this.getFormFieldValue('bible');
 
         if(!bibles || bibles.length == 0 || bibles.length == 1 && bibles[0] == null) {
-            bibles = [this.configs.defaultBible];
+            bibles = this.configs.defaultBible;
         }
 
         if(!Array.isArray(bibles)) {
@@ -970,8 +970,15 @@ var App = Application.kind({
             return b != 0 && b != null;
         });
 
+        this.log('bibles', bibles);
+
         for(i in bibles) {
-            lang = this.statics.bibles[ bibles[i] ].lang_short;
+            if(!this.statics.bibles[bibles[i]]) {
+                this.log('no bible', bibles[i]);
+                continue;
+            }
+
+            lang = this.statics.bibles[ bibles[i] ].lang_short || null;
 
             if(lang != langCur) {
                 if(langCur == null) {

@@ -23,6 +23,7 @@ module.exports = {
     'Parallel Bible #': 'Parlay Sword No. ',
     'Select a Bible': 'Choose yar Sworde',
     'Add Bible': 'Arr! New Sworde',
+    'Remove Bible': 'Overboarde Sworde', // 5.2
     'Random Chapter': 'Try for Big Plunder',
     'Random Verse': 'Try for Small Plunder',
     'Passages': 'Partes',
@@ -366,7 +367,8 @@ module.exports = {
 
     // Parallel search multi language error messages
     'You cannot search across Bibles of different languages.': 'Ye cannote be searchin\' across Chestes of differente flavors.',
-    'You cannot search across Bibles of different languages using the selected search type.': 'Ye cannote be searchin\' across Chestes of differente flavors with tye searche thype.',
+    // 'You cannot search across Bibles of different languages using the selected search type.': 'Ye cannote be searchin\' across Chestes of differente flavors with tye searche thype.',
+    'You cannot search across Bibles of different languages with the selected search type.' : 'Ye canot plunder with swordes of dyfferent manre of speech with tye searche thype.',
 
     // General dialogs
     'Name': 'Namer',
@@ -390,6 +392,8 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Pleaseth drown shome barkmate before addign new matey.',
     'This bookmark name already exists.': 'Yar barkmate is arready a matey.',
+
+    // Searching across language
 
 
     // Bible books - these are auto populated from the API based on selected language

@@ -113,27 +113,57 @@ module.exports = kind({
                             ontap: 'handleBookmarkTap',
                             style: 'float: left',
                         }, 
+                        // {
+                        //     // kind: Anchor, 
+                        //     kind: i18n,
+                        //     tag: 'a',
+                        //     attributes: {
+                        //         href: 'JavaScript:void(0)',
+                        //     },
+                        //     style: 'float: right',
+                        //     content: 'Edit',
+                        //     pk: item.get('pk'),
+                        //     ontap: 'edit'
+                        // },
                         {
-                            // kind: Anchor, 
                             kind: i18n,
-                            tag: 'a',
-                            attributes: {
-                                href: 'JavaScript:void(0)',
-                            },
+                            ontap: 'edit',
                             style: 'float: right',
-                            content: 'Edit',
+                            attributes: {title: 'Edit'},
                             pk: item.get('pk'),
-                            ontap: 'edit'
-                        }
+                            components: [
+                                {tag: 'span', classes: 'material-icons icon', content: 'edit'}
+                            ],
+                        },                        
+                        {
+                            kind: i18n,
+                            ontap: 'move',
+                            style: 'float: right',
+                            attributes: {title: 'Move'},
+                            pk: item.get('pk'),
+                            components: [
+                                {tag: 'span', classes: 'material-icons icon', content: 'edit_location'}
+                            ],
+                        },                        
+                        {
+                            kind: i18n,
+                            ontap: 'delete',
+                            style: 'float: right',
+                            attributes: {title: 'Delete'},
+                            pk: item.get('pk'),
+                            components: [
+                                {tag: 'span', classes: 'material-icons icon', content: 'delete'}
+                            ],
+                        },
+                        {classes: 'clear-both'}
                     ]},
-                    {classes: 'clear-both'}
                 ]
             });
         }, this);
 
         var count = this.$.ListContainer.getClientControls().length;
 
-        while(count < 9) {
+        while(count < 7) {
             this.$.ListContainer.createComponent({
                 owner: this,
                 content: '&nbsp;',
@@ -158,8 +188,23 @@ module.exports = kind({
         this.populateList();
         this.render();
     },
+    move: function(inSender, inEvent) {
+        this.app.alert('This feature hasn\'t been built yet');
+    },
+    delete: function(inSender, inEvent) {
+        var t = this;
+            model = this.app.bookmarks.findByPk( inSender.get('pk') ),
+            msg = this.app.t('Are you sure you want to delete');
+
+        this.app.confirm(msg + ': ' + model.get('title'), function(confirm) {
+            if(confirm) {
+                t.app.bookmarks.remove(model);
+                t.app.bookmarks.commit();
+                t.refreshList();
+            } 
+        });
+    },
     clear: function() {
-        
         var t = this,
             msg = this.app.t('Are you sure?') + ' ' +
                 this.app.t('This will delete all bookmarks.');

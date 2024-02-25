@@ -239,7 +239,7 @@ var biblesupersearch_config_options = {
             //      Advanced form used by classic forms
             // "interface": 'ClassicAdvanced',
 
-        // Custom Forms - made per customer request
+        // Custom Forms and Interfaces - made per customer request
         
             // Classic User Friendly 2 with Book Selector
             // "interface": 'CustomUserFriendly2BookSel', 

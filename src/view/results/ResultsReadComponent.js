@@ -144,7 +144,10 @@ module.exports = kind({
         this.log();
 
         var visible = false
-            navVisible = false;
+            navVisible = false,
+            navVisOffset1 = 35,
+            navVisOffset2 = 65,
+            pagVisOffset = 5;
 
         if(this.app.configs.sideSwipePageChapter && this.app.configs.sideSwipePageChapter != 'false') {
             // todo, make with with search pagination
@@ -159,6 +162,8 @@ module.exports = kind({
                     visible = this.isVisible();
                 }
 
+                // NEED TO DETERMINE IF ELEMENT IS ACCESIBLE (IE TOP LEVEL).  IF IT'S IN THE VIEWPORT BUT NOT ACCESSIBLE, THEN THE BUTTONS SHOLD SHOW!
+
                 if(this.owner.hasPaging) {
                     if(this.owner.$.Pager_1 && this._isElementPartiallyInViewport(this.owner.$.Pager_1.hasNode())) {
                         navVisible = true;
@@ -168,11 +173,11 @@ module.exports = kind({
                         navVisible = true;
                     }
                 } else {                    
-                    if(this.navButton_1 && this._isElementPartiallyInViewport(this.navButton_1.hasNode())) {
+                    if(this.navButton_1 && this._isElementPartiallyInViewport(this.navButton_1.hasNode(), navVisOffset1)) {
                         navVisible = true;
                     }        
 
-                    if(this.navButton_2 && this._isElementPartiallyInViewport(this.navButton_2.hasNode())) {
+                    if(this.navButton_2 && this._isElementPartiallyInViewport(this.navButton_2.hasNode(), navVisOffset2)) {
                         navVisible = true;
                     }
                 }
@@ -251,29 +256,46 @@ module.exports = kind({
             rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
         );
     },    
-    _isElementPartiallyInViewport: function(el) {
+    _isElementPartiallyInViewport: function(el, offset) {
         if(!el) {
             return false;
         }
 
+        offset = (typeof offset == 'undefined') ? 0 : offset;
+
         var rect = el.getBoundingClientRect(),
-            h = (window.innerHeight || document.documentElement.clientHeight),
-            w = (window.innerWidth || document.documentElement.clientWidth);
+            h = (window.innerHeight || document.documentElement.clientHeight) - offset,
+            w = (window.innerWidth || document.documentElement.clientWidth) - offset;
 
         return (
             (
-                rect.top >= 0 && rect.top <= h ||
-                rect.bottom >= 0 && rect.bottom <= h ||
-                rect.top < 0 && rect.bottom > h ||
-                rect.top > 0 && rect.bottom < h
+                rect.top >= offset && rect.top <= h ||
+                rect.bottom >= offset && rect.bottom <= h ||
+                rect.top < offset && rect.bottom > h ||
+                rect.top > offset && rect.bottom < h
             ) && 
             (
-                rect.left >= 0 && rect.left <= w ||
-                rect.right >= 0 && rect.right <= w ||
-                rect.left < 0 && rect.right > w ||
-                rect.left > 0 && rect.right < w
+                rect.left >= offset && rect.left <= w ||
+                rect.right >= offset && rect.right <= w ||
+                rect.left < offset && rect.right > w ||
+                rect.left > offset && rect.right < w
             )
-        );
+        );        
+
+        // return (
+        //     (
+        //         rect.top >= 0 && rect.top <= h ||
+        //         rect.bottom >= 0 && rect.bottom <= h ||
+        //         rect.top < 0 && rect.bottom > h ||
+        //         rect.top > 0 && rect.bottom < h
+        //     ) && 
+        //     (
+        //         rect.left >= 0 && rect.left <= w ||
+        //         rect.right >= 0 && rect.right <= w ||
+        //         rect.left < 0 && rect.right > w ||
+        //         rect.left > 0 && rect.right < w
+        //     )
+        // );
     },
     _pushNavButtons: function(component) {
         this.log(component);

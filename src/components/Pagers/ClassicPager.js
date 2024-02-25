@@ -17,6 +17,7 @@ module.exports = kind({
     totalResults: null,
     numPageLinks: 10, // maximum number of individual page links to display at once,
     includeTotals: false,
+    visibilityOffset: 5,
 
     // settings:
     firstPageText:  '<<<',

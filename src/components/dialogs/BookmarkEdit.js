@@ -61,6 +61,15 @@ module.exports = kind({
         {tag: 'br'},
         {kind: i18n, content: 'Description'},
         {kind: Input, name: 'PageTitle', attributes:{readonly: 'readonly'}, classes: 'bss_readonly'},        
+        // {
+        //     kind: i18n,
+        //     tag: 'span',
+        //     ontap: 'moveToCurrent',
+        //     attributes: {title: 'Move to Current'},
+        //     components: [
+        //         {tag: 'span', classes: 'material-icons icon', content: 'pin_drop'}
+        //     ],
+        // },  
         {tag: 'br'},
         {tag: 'br'},
     ],
@@ -69,13 +78,17 @@ module.exports = kind({
         {name: 'Save', kind: Button, ontap: 'save', components: [
             {kind: i18n, content: 'Save'},
         ]},        
-        {name: 'DeleteSpacer', tag: 'span', classes: 'spacer'},
-        {name: 'Delete', kind: Button, ontap: 'delete', components: [
-            {kind: i18n, content: 'Delete'},
-        ]},
-        {name: 'RestoreSpacer', tag: 'span', classes: 'spacer'},
-        {name: 'Restore', kind: Button, ontap: 'restore', components: [
-            {kind: i18n, content: 'Restore'},
+        // {name: 'DeleteSpacer', tag: 'span', classes: 'spacer'},
+        // {name: 'Delete', kind: Button, ontap: 'delete', components: [
+        //     {kind: i18n, content: 'Delete'},
+        // ]},
+        // {name: 'RestoreSpacer', tag: 'span', classes: 'spacer'},
+        // {name: 'Restore', kind: Button, ontap: 'restore', components: [
+        //     {kind: i18n, content: 'Restore'},
+        // ]},        
+        {name: 'MoveSpacer', tag: 'span', classes: 'spacer'},
+        {name: 'Move', kind: Button, ontap: 'moveToCurrent', components: [
+            {kind: i18n, content: 'Move to Current'},
         ]},
         {tag: 'span', classes: 'spacer'},
         {name: 'Cancel', kind: Button, ontap: 'cancel', components: [
@@ -98,10 +111,12 @@ module.exports = kind({
         this.inherited(arguments);
     },
     isNewChanged: function(was, is) {
-        this.$.DeleteSpacer.set('showing', !is);
-        this.$.Delete.set('showing', !is);        
-        this.$.RestoreSpacer.set('showing', !is);
-        this.$.Restore.set('showing', !is);
+        // this.$.DeleteSpacer.set('showing', !is);
+        // this.$.Delete.set('showing', !is);        
+        // this.$.RestoreSpacer.set('showing', !is);
+        // this.$.Restore.set('showing', !is);        
+        this.$.MoveSpacer.set('showing', !is);
+        this.$.Move.set('showing', !is);
     },
     openNew: function() {
         this.set('isNew', true);
@@ -165,8 +180,6 @@ module.exports = kind({
         this.close();
     },
     restore: function() {
-        this.log();
-
         if(!this.get('isNew') && this.previous) {            
             var model = this.controller.get('model');
             model.set(this.previous);
@@ -219,6 +232,13 @@ module.exports = kind({
                 t.close();
             } 
         });
+    },
+    moveToCurrent: function() {
+        var title = this.app.get('bssTitle'),
+            url = document.location.href;
+
+        this.controller.set('pageTitle', title);
+        this.controller.set('link', url);
     },
     localeChanged: function(inSender, inEvent) {
 
