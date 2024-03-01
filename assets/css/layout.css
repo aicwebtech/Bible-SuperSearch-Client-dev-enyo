@@ -898,3 +898,7 @@ tr.bss_render_reference_row th {
 .biblesupersearch_main input.bss_readonly {
     background-color: #ccc;
 }
+
+.bss_confirm_dialog {
+    z-index: 100000001;
+}

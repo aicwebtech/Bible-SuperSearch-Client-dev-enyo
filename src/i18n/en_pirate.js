@@ -379,6 +379,7 @@ module.exports = {
     'Clear': 'Overboarde',
     'Restore': 'Fix',
     'Add': 'New matey',
+    'Okay': 'Aheade',
 
     'Are you sure?': 'Yar really?',
     'Are you sure you want to delete': 'Yar really drown',
@@ -386,6 +387,7 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Drowneth all historey?',
     'This will delete all bookmarks.': 'Drowneth all barkmates?',
+    'Move to Current': 'Marke yer bearin\'',
 
     'Bookmark': 'Barkmate',
     'Bookmarks': 'Barkmates',

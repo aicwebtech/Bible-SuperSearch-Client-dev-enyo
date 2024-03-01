@@ -11,6 +11,7 @@ var DisambigView = require('../results/DisambiguationView');
 var ResultsController = require('../results/ResultsController');
 var DefaultAdvancedForm = require('../../forms/advanced/AdvancedClassic');
 var AlertDialog = require('../../components/dialogs/Alert');
+var ConfirmDialog = require('../../components/dialogs/Confirm');
 var utils = require('enyo/utils');
 // var FormatButtons = require('./FormatButtonsBase');
 
@@ -51,7 +52,8 @@ module.exports = kind({
 
     components: [
         {name: 'DialogsContainer', components: [
-            {name: 'AlertDialog', kind: AlertDialog}
+            {name: 'AlertDialog', kind: AlertDialog},
+            {name: 'ConfirmDialog', kind: ConfirmDialog}
         ]},
         {
             name: 'FormContainer',

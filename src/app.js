@@ -1470,10 +1470,17 @@ var App = Application.kind({
         }
     },
     confirm: function(string, callback) {
-        var tstr = this.t(string),
-            confirm = window.confirm(tstr);
+        var tstr = this.t(string);
 
-        callback && callback(confirm);
+        Signal.send('onConfirm', {message: tstr, callback: callback});
+
+        // var confirm = window.confirm(tstr);
+        // callback && callback(confirm);
+    },
+    alertPrompt: function(string, callback) {
+        var tstr = this.t(string);
+
+        Signal.send('onPromptAlert', {message: tstr, callback: callback});
     },
     displayInitError: function(message, code) {
         window.console && console.log('BibleSuperSearch error: ' + message);

@@ -4,6 +4,7 @@ var Anchor = require('enyo/Anchor');
 var Input = require('enyo/Input');
 var utils = require('enyo/utils');
 var Dialog = require('./Dialog');
+var ConfirmDialog = require('./Confirm');
 var i18n = require('../Locale/i18nComponent');
 var Model = require('../../data/models/Bookmark');
 var Controller = require('../../data/controllers/BookmarkController');
@@ -17,9 +18,10 @@ module.exports = kind({
     name: 'BookmarkEditDialog',
     kind: Dialog,
     maxWidth: '400px',
-    height: '230px',
+    height: '300px',
     classes: 'help_dialog bss_bookmark_edit_dialog',
     isNew: false,
+    moving: false,
     model: null,
     controller: null,
     current: false, // whether we are editing the current bookmark (linked directly from format buttons, not from bookmarks dialog)
@@ -35,7 +37,11 @@ module.exports = kind({
         {from: 'controller.pageTitle', to: '$.PageTitle.value', oneWay: true, transform: function(value, dir) {
             console.log('Bookmark pageTitle', value, dir);
             return value || null;
-        }},        
+        }},                
+        // {from: 'previous.pageTitle', to: '$.PageTitleMove.value', oneWay: true, transform: function(value, dir) {
+        //     console.log('Bookmark pageTitleMove', value, dir);
+        //     return value || null;
+        // }},        
 
         // {from: 'controller.link', to: '$.URL.value', oneWay: true, transform: function(value, dir) {
         //     console.log('Bookmark link', value, dir);
@@ -49,18 +55,24 @@ module.exports = kind({
     
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, classes: 'bss_dialog_title', content: 'Bookmark'}
+            {name: 'Header', kind: i18n, classes: 'bss_dialog_title', content: 'Bookmark'}
         ]}
     ],
 
     bodyComponents: [
         {tag: 'br'},
+        {tag: 'br'},
         {kind: i18n, content: 'Name'},
         {kind: Input, name: 'Title'},
         {tag: 'br'},
         {tag: 'br'},
-        {kind: i18n, content: 'Description'},
-        {kind: Input, name: 'PageTitle', attributes:{readonly: 'readonly'}, classes: 'bss_readonly'},        
+        {kind: i18n, name: 'PageTitleLabel', content: 'Description'},
+        {kind: i18n, name: 'PageTitleLabelNew', content: 'New', showing: false},
+        {kind: Input, name: 'PageTitle', attributes:{_readonly: 'readonly', disabled: 'disabled'}, classes: 'bss_readonly', disabled: true,},        
+        {tag: 'br'},
+        {tag: 'br'},
+        {kind: i18n, name: 'PageTitleLabelOld', content: 'Old', showing: false},
+        {kind: Input, name: 'PageTitleMove', attributes:{_readonly: 'readonly', disabled: 'disabled'}, classes: 'bss_readonly', showing: false, disabled: true},        
         // {
         //     kind: i18n,
         //     tag: 'span',
@@ -103,6 +115,12 @@ module.exports = kind({
     create: function() {
         this.inherited(arguments);
         this.controller = new Controller();
+
+        this.createComponent({
+            name: 'ConfirmDialog',
+            kind: ConfirmDialog,
+            showing: false
+        });
     },
     close: function() {
         this.set('showing', false);
@@ -120,6 +138,8 @@ module.exports = kind({
     },
     openNew: function() {
         this.set('isNew', true);
+        this.set('moving', false);
+        this.setTitle('Add');
 
         var title = this.app.get('bssTitle'),
             url = document.location.href,
@@ -131,8 +151,8 @@ module.exports = kind({
             msg = //this.app.t('Limit of') + ' ' + limit + '. ' +
                     this.app.t('Please delete some bookmarks before adding more.')
 
-            this.app.alert(msg);
-            this.close();
+            this.$.ConfirmDialog.alert(msg, this.close);
+            // this.close();
             return;
         }
         
@@ -152,6 +172,8 @@ module.exports = kind({
     },
     openEdit: function(pk) {
         this.set('isNew', false);
+        this.set('moving', false);
+        this.setTitle('Edit');
         this.log(pk);
 
         var model = this.app.bookmarks.find(function(model) {
@@ -159,11 +181,29 @@ module.exports = kind({
         });
 
         if(!model) {
-            this.app.alert('Bookmark not found: pk=' + pk);
+            this.$.ConfirmDialog.alert('Bookmark not found: pk=' + pk);
         }
 
         this.controller.set('model', model);
         this.previous = model.raw();
+
+        // this.controller.set('model', utils.clone(model));
+        this._openHelper(pk);
+    },
+    openMove: function(pk) {
+        this.set('isNew', false);
+        this.set('moving', true);
+        this.setTitle('Move to Current');
+        var model = this.app.bookmarks.findByPk(pk);
+
+        if(!model) {
+            this.$.ConfirmDialog.alert('Bookmark not found: pk=' + pk);
+        }
+
+        this.controller.set('model', model);
+        this.previous = model.raw();
+
+        this.moveToCurrent();
 
         // this.controller.set('model', utils.clone(model));
         this._openHelper(pk);
@@ -175,6 +215,14 @@ module.exports = kind({
         this.set('pk', pk);
         this.set('showing', true);
     },
+    movingChanged: function(was, is) {
+        this.$.PageTitleMove.set('showing', !!is);
+        this.$.PageTitleLabel.set('showing', !is);
+        this.$.PageTitleLabelOld.set('showing', !!is);
+        this.$.PageTitleLabelNew.set('showing', !!is);
+        this.$.MoveSpacer.set('showing', !is);
+        this.$.Move.set('showing', !is);
+    },
     cancel: function() {
         this.restore();
         this.close();
@@ -184,6 +232,9 @@ module.exports = kind({
             var model = this.controller.get('model');
             model.set(this.previous);
         }
+    },
+    setTitle: function(title) {
+        this.$.TitleBar.$.Header.set('content', this.app.t('Bookmark') + ': ' + this.app.t(title));
     },
     save: function(inSender, inEvent) {
         var t = this,
@@ -195,7 +246,7 @@ module.exports = kind({
             });
 
         if(sameTitle) {
-            this.app.alert('This bookmark name already exists.');
+            this.$.ConfirmDialog.alert('This bookmark name already exists.');
 
             // msg = this.app.t('This title already exists.  Okay to update existing bookmark?');
 
@@ -224,7 +275,7 @@ module.exports = kind({
             msg = this.app.t('Are you sure you want to delete');
             // confirm = window.confirm(msg + ': ' + model.get('title'));
 
-        this.app.confirm(msg + ': ' + model.get('title'), function(confirm) {
+        this.$.ConfirmDialog.confirm(msg + ': ' + model.get('title'), function(confirm) {
             if(confirm) {
                 t.app.bookmarks.remove(model);
                 t.app.bookmarks.commit();
@@ -239,6 +290,7 @@ module.exports = kind({
 
         this.controller.set('pageTitle', title);
         this.controller.set('link', url);
+        this.$.PageTitleMove.set('value', this.previous.pageTitle);
     },
     localeChanged: function(inSender, inEvent) {
 

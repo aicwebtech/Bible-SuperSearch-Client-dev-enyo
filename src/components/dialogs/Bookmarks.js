@@ -6,6 +6,7 @@ var Dialog = require('./Dialog');
 var LinkBuilder = require('../Link/LinkBuilder');
 var i18n = require('../Locale/i18nContent');
 var EditDialog = require('./BookmarkEdit');
+var ConfirmDialog = require('./Confirm');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -21,7 +22,7 @@ module.exports = kind({
     
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, classes: 'bss_dialog_title', content: 'Bookmarks'}
+            {name: 'Title', kind: i18n, classes: 'bss_dialog_title', content: 'Bookmarks'}
         ]}
     ],
 
@@ -59,6 +60,12 @@ module.exports = kind({
             name: 'EditDialog',
             kind: EditDialog,
             showing: false
+        });        
+
+        this.createComponent({
+            name: 'ConfirmDialog',
+            kind: ConfirmDialog,
+            showing: false
         });
 
         this.log('localstor', localStorage.getItem('BibleSuperSearchBookmarks'));
@@ -77,13 +84,25 @@ module.exports = kind({
         }
     },
     add: function(inSender, inEvent) {
+        var limit = this.app.configs.bookmarkLimit || 20;
+
+        this.app.bookmarks.limitReached();
+
+        if(this.app.bookmarks.length >= limit) {
+            msg = //this.app.t('Limit of') + ' ' + limit + '. ' +
+                    this.app.t('Please delete some bookmarks before adding more.')
+
+            this.$.ConfirmDialog.alert(msg);
+            return;
+        }
+
         this.$.EditDialog.openNew();
     },
     edit: function(inSender, inEvent) {
         this.log('pk', inSender.get('pk'));
         this.$.EditDialog.openEdit(inSender.get('pk'));
 
-        this.app.bookmarks.list();
+        // this.app.bookmarks.list();
     },
     delete: function(inSender, inEvent) {
 
@@ -139,7 +158,7 @@ module.exports = kind({
                             kind: i18n,
                             ontap: 'move',
                             style: 'float: right',
-                            attributes: {title: 'Move'},
+                            attributes: {title: 'Move to Current'},
                             pk: item.get('pk'),
                             components: [
                                 {tag: 'span', classes: 'material-icons icon', content: 'edit_location'}
@@ -189,14 +208,14 @@ module.exports = kind({
         this.render();
     },
     move: function(inSender, inEvent) {
-        this.app.alert('This feature hasn\'t been built yet');
+        this.$.EditDialog.openMove(inSender.get('pk'));
     },
     delete: function(inSender, inEvent) {
         var t = this;
             model = this.app.bookmarks.findByPk( inSender.get('pk') ),
             msg = this.app.t('Are you sure you want to delete');
 
-        this.app.confirm(msg + ': ' + model.get('title'), function(confirm) {
+        this.$.ConfirmDialog.confirm(msg + ': ' + model.get('title'), function(confirm) {
             if(confirm) {
                 t.app.bookmarks.remove(model);
                 t.app.bookmarks.commit();
@@ -209,7 +228,7 @@ module.exports = kind({
             msg = this.app.t('Are you sure?') + ' ' +
                 this.app.t('This will delete all bookmarks.');
 
-        this.app.confirm(msg, function(confirm) {
+        this.$.ConfirmDialog.confirm(msg, function(confirm) {
             if(confirm) {
                 t.app.bookmarks.empty();
                 t.app.bookmarks.commit();

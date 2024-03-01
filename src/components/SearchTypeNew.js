@@ -71,7 +71,7 @@ module.exports = kind({
 
             if(resetValue) {
                 this.log('resetValue');
-                this.app.alert('You cannot search across Bibles of different languages with the selected search type.');
+                this.app.alertPrompt('You cannot search across Bibles of different languages with the selected search type.');
                 this.setSelected(this.defaultSelection);
             }
         } 
