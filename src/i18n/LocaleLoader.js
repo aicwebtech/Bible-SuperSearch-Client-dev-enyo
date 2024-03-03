@@ -20,6 +20,7 @@ module.exports = {
         'Please remove it, or use it\'s lower case equivalent.',
         'Your search produced no results in',
         'is invalid, and appears to be a passage reference.',
+        'You cannot search for these common words',
         'is invalid.',
         'Your search for',
         'Bible text not found',

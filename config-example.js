@@ -33,6 +33,12 @@ var biblesupersearch_config_options = {
     // See supported languages above
     'languageList': ['en', 'ru', 'lv', 'es'],
 
+
+    // Common words not allowed as search terms for each language.  
+    'commonWords': {
+        'en': ['a', 'an', 'the'],
+    },
+
     // Bible books language source
     // 'ui': Display book names in language selected in UI (Reccomended) (Default)
     // 'bible' : Display book names in language of First selected Bible (Legacy - was never fully implemented)

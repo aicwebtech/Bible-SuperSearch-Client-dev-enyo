@@ -1119,6 +1119,9 @@ var App = Application.kind({
     logAnon: function() {
         window.console && console.log(arguments);
     },
+    getLocaleLanguage: function() {
+        return this.get('locale').split('_')[0];
+    },
     localeChanged: function(was, is) {
         var defaultLocale = this.defaultLocale || 'en';
         var locale = is || defaultLocale;

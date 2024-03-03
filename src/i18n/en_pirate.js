@@ -365,6 +365,9 @@ module.exports = {
     'words': 'vwordes',
     'truth': 'tryuth',
 
+
+    // Searching across language
+
     // Parallel search multi language error messages
     'You cannot search across Bibles of different languages.': 'Ye cannote be searchin\' across Chestes of differente flavors.',
     // 'You cannot search across Bibles of different languages using the selected search type.': 'Ye cannote be searchin\' across Chestes of differente flavors with tye searche thype.',
@@ -380,6 +383,8 @@ module.exports = {
     'Restore': 'Fix',
     'Add': 'New matey',
     'Okay': 'Aheade',
+    'Old': 'Ye Olde',
+    'New': 'Neweth',
 
     'Are you sure?': 'Yar really?',
     'Are you sure you want to delete': 'Yar really drown',
@@ -395,7 +400,11 @@ module.exports = {
     'Please delete some bookmarks before adding more.': 'Pleaseth drown shome barkmate before addign new matey.',
     'This bookmark name already exists.': 'Yar barkmate is arready a matey.',
 
-    // Searching across language
+    // Quick start dialog: Limitins searches
+    'Limiting Searches': 'Refinin\' yer plunderin\'',
+    'Passages': 'Ye posyten',
+    'Alias': 'Alylias',
+    'You cannot search for these common words': 'Yarr, no searcheyt for scurvey dog wordes',
 
 
     // Bible books - these are auto populated from the API based on selected language

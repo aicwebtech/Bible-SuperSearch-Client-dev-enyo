@@ -877,6 +877,10 @@ tr.bss_render_reference_row th {
 /*    background-color: green;*/
 }
 
+.bss_bookmark_edit_dialog .bss_dialog_content {
+    overflow-y: hidden;
+}
+
 .bss_bookmark_edit_dialog input {
     width: 90%;
     max-width: 350px;
@@ -899,6 +903,3 @@ tr.bss_render_reference_row th {
     background-color: #ccc;
 }
 
-.bss_confirm_dialog {
-    z-index: 100000001;
-}

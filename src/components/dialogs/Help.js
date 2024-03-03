@@ -66,17 +66,16 @@ module.exports = kind({
         // :todo - add shortcut list here!
         limitingSearches: [
             {tag: 'h3', kind: i18n, content: 'Limiting Searches'},
-            {tag: 'h4', kind: i18n, content: 'Preset Limits'},
+            // {tag: 'h4', kind: i18n, content: 'Preset Limits'},
             {tag: 'table', classes: 'bss_shortcuts_table', components: [
                 {tag: 'thead', components: [
                     {tag: 'th', kind: i18n, content: 'Name'},
-                    {tag: 'th', kind: i18n, content: 'Alias 1'},
-                    // {tag: 'th', kind: i18n, content: 'Alias 2'},
-                    {tag: 'th', kind: i18n, content: 'Reference'},
+                    {tag: 'th', kind: i18n, content: 'Alias'},
+                    {tag: 'th', kind: i18n, content: 'Passages'},
                 ]},
                 {name: 'Shortcuts', tag: 'tbody', components: []}
             ]},
-            {tag: 'h4', kind: i18n, content: 'Custom Limits'},
+            // {tag: 'h4', kind: i18n, content: 'Custom Limits'},
         ],
 
         specialFormatting: [
@@ -230,21 +229,21 @@ module.exports = kind({
 
         var statics = this.app.get('statics'),
             shortcuts = statics.shortcuts;
-            this.log('shortcuts', shortcuts);
+            this.log('shortcuts', shortcuts),
+            limSearchIdx = 1;
         
-        this.sections.limitingSearches[2].components[1].components = [];
+        this.sections.limitingSearches[limSearchIdx].components[1].components = [];
 
         for(i in shortcuts) {
             if(!this.app.configs.shortcutsShowHidden && shortcuts[i].display == '0') {
                 continue;
             }
 
-            this.sections.limitingSearches[2].components[1].components.push({
+            this.sections.limitingSearches[limSearchIdx].components[1].components.push({
                 tag: 'tr',
                 components: [
                     {tag: 'td', kind: i18n, content: shortcuts[i].name},
                     {tag: 'td', kind: i18n, content: shortcuts[i].short1}, // not returned by API
-                    // {tag: 'td', kind: i18n, content: shortcuts[i].short2},
                     {tag: 'td', kind: i18n, content: shortcuts[i].reference, containsVerses: true},
                 ]
             })

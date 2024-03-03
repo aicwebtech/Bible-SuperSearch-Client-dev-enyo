@@ -37,16 +37,7 @@ module.exports = kind({
         {from: 'controller.pageTitle', to: '$.PageTitle.value', oneWay: true, transform: function(value, dir) {
             console.log('Bookmark pageTitle', value, dir);
             return value || null;
-        }},                
-        // {from: 'previous.pageTitle', to: '$.PageTitleMove.value', oneWay: true, transform: function(value, dir) {
-        //     console.log('Bookmark pageTitleMove', value, dir);
-        //     return value || null;
-        // }},        
-
-        // {from: 'controller.link', to: '$.URL.value', oneWay: true, transform: function(value, dir) {
-        //     console.log('Bookmark link', value, dir);
-        //     return value || null;
-        // }}
+        }}
     ],
 
     events: {
@@ -60,7 +51,13 @@ module.exports = kind({
     ],
 
     bodyComponents: [
-        {tag: 'br'},
+        
+        {name: 'PlaceHolderTop', components: [
+            {tag: 'br'},
+            {tag: 'br'},
+        ]},
+
+        // {tag: 'br'},
         {tag: 'br'},
         {kind: i18n, content: 'Name'},
         {kind: Input, name: 'Title'},
@@ -70,18 +67,15 @@ module.exports = kind({
         {kind: i18n, name: 'PageTitleLabelNew', content: 'New', showing: false},
         {kind: Input, name: 'PageTitle', attributes:{_readonly: 'readonly', disabled: 'disabled'}, classes: 'bss_readonly', disabled: true,},        
         {tag: 'br'},
+        {name: 'PlaceHolderBot', components: [
+            {tag: 'br'},
+            {tag: 'br'},
+        ]},
         {tag: 'br'},
         {kind: i18n, name: 'PageTitleLabelOld', content: 'Old', showing: false},
         {kind: Input, name: 'PageTitleMove', attributes:{_readonly: 'readonly', disabled: 'disabled'}, classes: 'bss_readonly', showing: false, disabled: true},        
-        // {
-        //     kind: i18n,
-        //     tag: 'span',
-        //     ontap: 'moveToCurrent',
-        //     attributes: {title: 'Move to Current'},
-        //     components: [
-        //         {tag: 'span', classes: 'material-icons icon', content: 'pin_drop'}
-        //     ],
-        // },  
+        {tag: 'br'},
+        {tag: 'br'},
         {tag: 'br'},
         {tag: 'br'},
     ],
@@ -222,6 +216,8 @@ module.exports = kind({
         this.$.PageTitleLabelNew.set('showing', !!is);
         this.$.MoveSpacer.set('showing', !is);
         this.$.Move.set('showing', !is);
+        this.$.PlaceHolderTop.set('showing', !is);
+        this.$.PlaceHolderBot.set('showing', !is);
     },
     cancel: function() {
         this.restore();

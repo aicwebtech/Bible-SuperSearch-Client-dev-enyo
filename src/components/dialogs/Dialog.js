@@ -100,9 +100,9 @@ module.exports = kind({
         //     myHeight = myBounds.height;
         // }
 
-        this.app.debug && this.log(n, 'docHeight', docHeight);
-        this.app.debug && this.log(n, 'raw Height', this.height);
-        this.app.debug && this.log(n, 'parsed Height', height);
+        // this.app.debug && this.log(n, 'docHeight', docHeight);
+        // this.app.debug && this.log(n, 'raw Height', this.height);
+        // this.app.debug && this.log(n, 'parsed Height', height);
         
         if(this.maxWidth) {
             style += 'max-width: ' + this.maxWidth + '; ';
@@ -178,9 +178,9 @@ module.exports = kind({
         var bodyStyle = 'max-height: ' + bodyHeight + 'px; ';
         this.$.Body.setStyle(bodyStyle);
 
-        this.app.debug && this.log(n, 'smallScreen', smallScreen);
-        this.app.debug && this.log(n, 'Container style', style);
-        this.app.debug && this.log(n, 'Body style', bodyStyle);
+        // this.app.debug && this.log(n, 'smallScreen', smallScreen);
+        // this.app.debug && this.log(n, 'Container style', style);
+        // this.app.debug && this.log(n, 'Body style', bodyStyle);
     },
     handleKey: function(inSender, inEvent) {
         if(inEvent.code == 'Escape') {

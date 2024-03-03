@@ -233,6 +233,7 @@ module.exports = kind({
         formData.data_format = 'passage';
         // formData.data_format = 'lite';
         formData.markup = 'raw';
+        formData.language = this.app.getLocaleLanguage();
         formData.context_range = this.app.UserConfig.get('context_range');
         formData.page_limit = this.app.UserConfig.get('page_limit');
         formData.key = this.app.configs.apiKey || null;
