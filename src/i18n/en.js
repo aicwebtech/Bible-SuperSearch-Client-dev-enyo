@@ -12,6 +12,127 @@ module.exports = {
     'red_letter_description': 'Words of Christ in Red.', // 5.3
     'highlight_description': 'Highlighting (bold) of keywords in searches.',  // 5.3
 
+    //Shortcuts - this is automatically generated from English
+    'shortcuts': [
+           {
+              "id": 1,
+              "name": "Old Testament",
+              "short1": "OT",
+              "short3": "Old",
+              "short2": "Tenakh",
+              "reference": "Genesis - Malachi",
+              "display": 1
+            },
+            {
+              "id": 2,
+              "name": "New Testament",
+              "short1": "NT",
+              "short2": "New",
+              "short3": "New_Testament",
+              "reference": "Matthew - Revelation",
+              "display": 1
+            },
+            {
+              "id": 3,
+              "name": "Law",
+              "short1": "Torah",
+              "short2": "OT Law",
+              "short3": "Moses",
+              "reference": "Genesis - Deuteronomy",
+              "display": 1
+            },
+            {
+              "id": 4,
+              "name": "History",
+              "short1": "History",
+              "short2": null,
+              "short3": null,
+              "reference": "Joshua - Esther",
+              "display": 1
+            },
+            {
+              "id": 5,
+              "name": "Wisdom & Poetry",
+              "short1": "Wisdom",
+              "short2": "Poetry",
+              "short3": "Wisdom and Poetry",
+              "reference": "Job - Song of Solomon",
+              "display": 1
+            },
+            {
+              "id": 6,
+              "name": "Prophets",
+              "short1": "Prophets",
+              "short2": "All Prophets",
+              "short3": null,
+              "reference": "Isaiah - Malachi",
+              "display": 1
+            },
+            {
+              "id": 7,
+              "name": "Major Prophets",
+              "short1": "Major",
+              "short2": "Major_Prophets",
+              "short3": "MajorProphets",
+              "reference": "Isaiah - Daniel",
+              "display": 1
+            },
+            {
+              "id": 8,
+              "name": "Minor Prophets",
+              "short1": "Minor",
+              "short2": "Minor_Prophets",
+              "short3": "MinorProphets",
+              "reference": "Hosea - Malachi",
+              "display": 1
+            },
+            {
+              "id": 9,
+              "name": "Gospels",
+              "short1": "Passion",
+              "short2": "Gospel",
+              "short3": null,
+              "reference": "Matthew - John",
+              "display": 1
+            },
+            {
+              "id": 10,
+              "name": "Epistles",
+              "short1": "Doctrine",
+              "short2": "NT Epistles",
+              "short3": "All Epistles",
+              "reference": "Romans - Jude",
+              "display": 1
+            },
+            {
+              "id": 11,
+              "name": "Pauline Epistles",
+              "short1": "Paul",
+              "short2": "Pauline",
+              "short3": "Pauline Epistles",
+              "reference": "Romans - Hebrews",
+              "display": 1
+            },
+            {
+              "id": 12,
+              "name": "General Epistles",
+              "short1": "General",
+              "short2": "General_Epistles",
+              "short3": "Epistles General",
+              "reference": "James - Jude",
+              "display": 1
+            },
+            {
+              "id": 13,
+              "name": "End Times Prophecy",
+              "short1": "Last Days",
+              "short2": "End",
+              "short3": "End Times",
+              "reference": "Revelation; Daniel; Matthew 24",
+              "display": 0
+            }
+    ],
+
     'bibleBooks': [
         {
           "id": 1,

@@ -255,7 +255,13 @@ module.exports = kind({
             return reference;
         }
 
-        var passages = this.Passage.explodeReferences(reference, true);
+        var ref = this.Passage.explodeReferences(reference, false);
+
+        for(i in ref) {
+            ref[i] = this.app.findShortcutByName(ref[i]);
+        }
+
+        var passages = this.Passage.explodeReferences(ref.join('; '), true);
 
         if(passages.length == 0) {
             return reference;
@@ -265,7 +271,6 @@ module.exports = kind({
         var BookList = this.app.localeBibleBooks[locale] || this.app.statics.books;
 
         passages.forEach(function(item) {
-            //console.log('passage', item);
             item = this.Passage.parseBook(item);
 
             if(item.isBookRange) {
@@ -273,13 +278,14 @@ module.exports = kind({
                 var bookEn = this.app.findBookByName(item.bookEn);
                 var bookNameSt = bookSt ? bookSt.id + 'B' : item.bookSt;
                 var bookNameEn = bookEn ? bookEn.id + 'B' : item.bookEn;
-                referenceNew += bookNameSt + ' - ' + bookNameEn + ' ' + item.chapter_verse + '; ';
+                var ref = bookNameSt + ' - ' + bookNameEn + ' ' + item.chapter_verse;
             } else {
                 var book = this.app.findBookByName(item.book);
                 var bookName = book ? book.id + 'B' : item.book;
-                referenceNew += bookName + ' ' + item.chapter_verse + '; ';
+                var ref = bookName + ' ' + item.chapter_verse;
             }
 
+            referenceNew += ref.trim() + '; ';
         }, this);
 
         return referenceNew;

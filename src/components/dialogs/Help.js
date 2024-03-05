@@ -229,7 +229,6 @@ module.exports = kind({
 
         var statics = this.app.get('statics'),
             shortcuts = statics.shortcuts;
-            this.log('shortcuts', shortcuts),
             limSearchIdx = 1;
         
         this.sections.limitingSearches[limSearchIdx].components[1].components = [];

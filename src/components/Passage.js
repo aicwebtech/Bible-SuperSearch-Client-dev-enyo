@@ -48,6 +48,15 @@ module.exports = {
         return nonPassageChars ? true : false;
     },
 
+    explodeReferencesWithShortcuts: function(reference, separate_book) {
+        var ref = this.explodeReferences(reference, false);
+
+        ref.forEach(function(r) {
+            
+        }, this);
+
+        return this.explodeReferences(ref.join('; '), separate_book);
+    },
     explodeReferences: function(reference, separate_book) {
         separate_book = separate_book ? true : false;
 

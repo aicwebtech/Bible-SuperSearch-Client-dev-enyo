@@ -497,8 +497,10 @@ var App = Application.kind({
 
         var localeData = {}; // empty like my mind
 
+        this._initLocaleShortcuts('en', localeData); // TODO: NOT WORKING!!!!
         this._initLocaleBibleBooks('en', localeData, statics.books, 'statics');
         statics.books = this.localeBibleBooks.en;
+        statics.shortcuts = Locales.en.shortcuts;
 
         this.debug && this.log('Config language locale', this.configs.language);
         this.configs.language && this.set('locale', this.configs.language);
@@ -1158,6 +1160,10 @@ var App = Application.kind({
             this.set('locale', defaultLocale);
             return;
         }
+
+        this.log('locale', locale);
+
+        this._initLocaleShortcuts(locale, localeData);
         
         if(found && locale != defaultLocale) {
             if(localeData.bibleBooks && localeData.bibleBooks.length >= 66) {
@@ -1175,21 +1181,6 @@ var App = Application.kind({
             ajax.go(ajaxData);
             ajax.response(this, function(inSender, inResponse) {
                 this._initLocaleBibleBooks(locale, localeData, inResponse.results, 'api');
-                return;
-
-                this.localeBibleBooks[locale] = inResponse.results; // ??
-
-                for(key in inResponse.results) {
-                    var book = inResponse.results[key],
-                        bookEn = this.localeBibleBooks.en[key] || null;
-
-                    if(typeof localeData[ bookEn.name ] == 'undefined') {
-                        localeData[ bookEn.name ] = book.name;
-                    }
-                }
-
-                this.localeDatasets[locale] = utils.clone(localeData);
-                this._localeChangedHelper(locale);
             });    
 
             ajax.error(this, function(inSender, inResponse) {
@@ -1242,6 +1233,35 @@ var App = Application.kind({
             this._localeChangedHelper(locale);
         }
     },
+    _initLocaleShortcuts: function(locale, localeData) {
+        if(localeData.shortcuts || locale == 'en') {
+            // return;
+        }
+
+        var shortcuts = Locales.en.shortcuts;
+        localeData.shortcuts = [];
+        // this.log('shortcuts', )
+
+        for(i in shortcuts) {
+            var sc = utils.clone(shortcuts[i]),
+                name = localeData[sc.name] || sc.name,
+                short1 = localeData[sc.short1] || sc.short1;
+
+            localeData.shortcuts.push({
+                id: sc.id,
+                name: name,
+                short1: short1,
+                // short2: this.t(sc.short2 || null),
+                // short3: this.t(sc.short3 || null),
+                reference: sc.reference, // will translate elsewhere
+                fn: this._fmtBookNameMatch( name, locale ),
+                sn1: this._fmtBookNameMatch( short1, locale ),
+                display: sc.display
+            });
+        }
+
+        this.log('shortcuts', locale, localeData.shortcuts);
+    },
     _fmtBookNameMatch: function(name, locale) {
         if(!name) {
             return '';
@@ -1278,7 +1298,7 @@ var App = Application.kind({
                 break;
         }
 
-        return fmt;
+        return fmt.trim();
     },
     _fmtLocaleName: function(locale) {
         var parts = locale.split('_'),
@@ -1441,6 +1461,19 @@ var App = Application.kind({
         }
 
         return book;
+    },
+    findShortcutByName: function(reference) {
+        var locale = this.get('locale'),
+            Shortcuts = this.localeDatasets[locale] ? this.localeDatasets[locale].shortcuts : this.statics.shortcuts,
+            sc = null,
+            refFmt = this._fmtBookNameMatch(reference, locale);
+
+        sc = Shortcuts.find(function(s) {
+            return s.fn == refFmt || s.sn1 == refFmt;
+        });
+
+        this.log(sc, locale, refFmt, reference, Shortcuts, this.localeDatasets[locale]);
+        return sc ? this.vt(sc.reference) : reference;
     },
     pushHistory: function() {
         var title = this.get('bssTitle'),
