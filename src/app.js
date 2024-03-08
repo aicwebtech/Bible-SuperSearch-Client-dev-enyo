@@ -497,10 +497,11 @@ var App = Application.kind({
 
         var localeData = {}; // empty like my mind
 
-        this._initLocaleShortcuts('en', localeData); // TODO: NOT WORKING!!!!
+        // Init some statics / English language items
+        this._initLocaleShortcuts('en', localeData);
         this._initLocaleBibleBooks('en', localeData, statics.books, 'statics');
         statics.books = this.localeBibleBooks.en;
-        statics.shortcuts = Locales.en.shortcuts;
+        statics.shortcuts = localeData.shortcuts;
 
         this.debug && this.log('Config language locale', this.configs.language);
         this.configs.language && this.set('locale', this.configs.language);

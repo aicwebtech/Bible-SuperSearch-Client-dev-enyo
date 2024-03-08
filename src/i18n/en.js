@@ -12,7 +12,7 @@ module.exports = {
     'red_letter_description': 'Words of Christ in Red.', // 5.3
     'highlight_description': 'Highlighting (bold) of keywords in searches.',  // 5.3
 
-    //Shortcuts - this is automatically generated from English
+    // Shortcuts - for languages other than English, this is automatically generated from English
     'shortcuts': [
            {
               "id": 1,

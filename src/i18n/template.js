@@ -60,6 +60,8 @@ module.exports = {
     'Entire Bible': '',
     'Passage(s) listed below': '',
     'Passage(s) listed above': '',
+    
+    // Shortcuts
     'Old Testament': '',
     'New Testament': '',
     'Law': '',
@@ -72,6 +74,23 @@ module.exports = {
     'Epistles': '',
     'Pauline Epistles': '',
     'General Epistles': '',
+
+    // 5.5 part 1
+    'End Times Prophecy': '',
+    
+    // Shortcut Aliases
+    'OT': '',
+    'NT': '',
+    'Torah': '',
+    'Wisdom': '',
+    'Major': '',
+    'Minor': '',
+    'Passion': '',
+    'Doctrine': '',
+    'Paul': '',
+    'General': '',
+    'Last Days': '',
+    // End 5.5 part 1
 
     'Look up Passage(s)': '',
     'Enter passage(s)' : '',
@@ -375,26 +394,47 @@ module.exports = {
     'words': '',
     'truth': '',
 
-    // 5.5
-    
+    // 5.5 part 2
+    // Searching across language
+
     // Parallel search multi language error messages
     'You cannot search across Bibles of different languages.': '',
-    'You cannot search across Bibles of different languages using the selected search type.': '',
+    'You cannot search across Bibles of different languages with the selected search type.' : '',
 
     // General dialogs
-    'Are you sure?': '',
     'Name': '',
     'Save': '',
     'Cancel': '',
     'Edit': '',
+    'Delete': '',
+    'Clear': '',
     'Restore': '',
+    'Add': '',
+    'Okay': '',
+    'Old': '',
+    'New': '',
+
+    'Are you sure?': '',
+    'Are you sure you want to delete': '',
 
     // Bookmarks/History
     'This will delete all history.': '',
     'This will delete all bookmarks.': '',
+    'Move to Current': '',
 
     'Bookmark': '',
     'Bookmarks': '',
+
+    'Please delete some bookmarks before adding more.': '',
+    'This bookmark name already exists.': '',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': '',
+    'Passages': '',
+    'Alias': '',
+    'You cannot search for these common words': '',
+    // End 5.5 part 2
+
 
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  

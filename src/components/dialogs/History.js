@@ -5,6 +5,7 @@ var utils = require('enyo/utils');
 var Dialog = require('./Dialog');
 var LinkBuilder = require('../Link/LinkBuilder');
 var i18n = require('../Locale/i18nContent');
+var ConfirmDialog = require('./Confirm');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -49,6 +50,12 @@ module.exports = kind({
 
         this.inherited(arguments);
         this.populateList();
+
+        this.createComponent({
+            name: 'ConfirmDialog',
+            kind: ConfirmDialog,
+            showing: false
+        });
     },
     close: function() {
         this.app.setDialogShowing('HistoryDialog', false);
@@ -119,7 +126,7 @@ module.exports = kind({
             msg = this.app.t('Are you sure?') + ' ' +
                 this.app.t('This will delete all history.');
 
-        this.app.confirm(msg, function(confirm) {
+        this.$.ConfirmDialog.confirm(msg, function(confirm) {
             if(confirm) {
                 t.app.clearHistory();
                 t.close();

@@ -24,6 +24,8 @@ module.exports = kind({
             addReferenceRow = false,
             renderStyle = this.renderStyle;
 
+        Container.set('singleVerse', true);
+
         if(renderStyle == 'verse_passage') {
             addBibleHeader = true;
             addReferenceRow = true;

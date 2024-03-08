@@ -383,6 +383,7 @@ module.exports = {
     'truth': 'tryuth',
 
 
+    // 5.5 part 2
     // Searching across language
 
     // Parallel search multi language error messages
@@ -397,7 +398,7 @@ module.exports = {
     'Edit': 'Changeth',
     'Delete': 'Drown',
     'Clear': 'Overboarde',
-    'Restore': 'Fix',
+    'Restore': 'Fixeth',
     'Add': 'New matey',
     'Okay': 'Aheade',
     'Old': 'Ye Olde',
@@ -422,7 +423,7 @@ module.exports = {
     'Passages': 'Ye posyten',
     'Alias': 'Alylias',
     'You cannot search for these common words': 'Yarr, no searcheyt for scurvey dog wordes',
-
+    // End 5.5 part 2
 
     // Bible books - these are auto populated from the API based on selected language
     // Specifying here not reccommended, as these names would need to match those on the API for things to actually work.
@@ -471,11 +472,11 @@ module.exports = {
         {id: 37, name: '37 Chestera', shortname: ''},
         {id: 38, name: '38 Chestera', shortname: ''},
         {id: 39, name: '39 Chestera', shortname: ''},
-        {id: 40, name: '40 Chestera', shortname: ''},
-        {id: 41, name: '41 Chestera', shortname: ''},
-        {id: 42, name: '42 Chestera', shortname: ''},
-        {id: 43, name: '43 Chestera', shortname: ''},
-        {id: 44, name: '44 Chestera', shortname: ''},
+        {id: 40, name: 'Goode News Accordin\' to me matey Mahhew', shortname: 'Mahhew'},
+        {id: 41, name: 'Goode News Accordin\' to me matey Markus', shortname: 'Markus'},
+        {id: 42, name: 'Goode News Accordin\' to me matey Lukey', shortname: 'Lukey'},
+        {id: 43, name: 'Goode News Accordin\' to me matey Long John', shortname: 'Long John'},
+        {id: 44, name: 'Axe of ye Apostiles', shortname: 'Axe'},
         {id: 45, name: '45 Chestera', shortname: ''},
         {id: 46, name: '46 Chestera', shortname: ''},
         {id: 47, name: '47 Chestera', shortname: ''},

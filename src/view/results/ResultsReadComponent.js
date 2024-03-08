@@ -15,6 +15,9 @@ module.exports = kind({
     navButton_2: null,
     sideButtons: false,
 
+    // Published
+    singleVerse: false,
+
     handlers: {
         onGlobalScroll: 'handleGlobalScroll',
         onGlobalScrollEnd: 'handleGlobalScrollEnd',
@@ -131,9 +134,7 @@ module.exports = kind({
     },
     handleGlobalScroll: function(inSender, inEvent) {
         this.log();
-
         this.scrolling = true;
-
         this.handleGenericReposition(inSender, inEvent);
     },    
     handleGlobalScrollEnd: function(inSender, inEvent) {
@@ -145,6 +146,7 @@ module.exports = kind({
 
         var visible = false
             navVisible = false,
+            hasPaging = this.owner.hasPaging,
             navVisOffset1 = 35,
             navVisOffset2 = 65,
             pagVisOffset = 5;
@@ -162,9 +164,9 @@ module.exports = kind({
                     visible = this.isVisible();
                 }
 
-                // NEED TO DETERMINE IF ELEMENT IS ACCESIBLE (IE TOP LEVEL).  IF IT'S IN THE VIEWPORT BUT NOT ACCESSIBLE, THEN THE BUTTONS SHOLD SHOW!
+                // NEED TO DETERMINE IF NAV/PAGING IS ACCESIBLE (IE TOP LEVEL).  IF IT'S IN THE VIEWPORT BUT NOT ACCESSIBLE, THEN THE BUTTONS SHOLD SHOW!
 
-                if(this.owner.hasPaging) {
+                if(hasPaging) {
                     if(this.owner.$.Pager_1 && this._isElementPartiallyInViewport(this.owner.$.Pager_1.hasNode())) {
                         navVisible = true;
                     }                    
@@ -185,12 +187,22 @@ module.exports = kind({
                 this.log('navButton_1', this.navButton_1);
                 this.log('navButton_2', this.navButton_2);
                 this.log('navVisible', navVisible);
-                this.set('sideButtons', visible && !navVisible);
+                // this.set('sideButtons', visible && !navVisible);
+
+                if(this.get('singleVerse')) {
+                    this.set('sideButtons', visible && hasPaging && !navVisible);
+                } else {
+                    this.set('sideButtons', visible && !navVisible);
+                }
             } else {
                 visible = this.isVisible();
-                this.set('sideButtons', visible);
-            }
 
+                if(this.get('singleVerse')) {
+                    this.set('sideButtons', visible && hasPaging);
+                } else {
+                    this.set('sideButtons', visible);
+                }
+            }
         }
     },
     handleFocus: function(inSender, inEvent) {
@@ -298,27 +310,15 @@ module.exports = kind({
         // );
     },
     _pushNavButtons: function(component) {
-        this.log(component);
-
         if(!this.navButton_1) {
             this.navButton_1 = component;
-            this.log('NavButton 1 set');
         } else if(!this.navButton_2) {
             this.navButton_2 = component;
-            this.log('NavButton 2 set');
         } else {
             this.log('TOO MANY NAVBUTTONS');
         }
-
-        // var navButtons = utils.clone(this.navButtons);
-
-        // navButtons.push(component);
-
-        // this.navButtons = utils.clone(navButtons);
     },
     sideButtonsChanged: function(was, is) {
-        this.log(is);
-
         // this.$.SideSwipeButtons.set('showing', !!is);
 
         this.$.SideSwipeButtons.addRemoveClass('fadein', !!is);

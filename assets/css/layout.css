@@ -826,14 +826,11 @@ tr.bss_render_reference_row th {
 
 .biblesupersearch_render_table {
     z-index: 1001;
-/*    background-color: orange;*/
 }
 
 .bss_side_swipe_button_container {
     background-color: transparent;
 /*        background-color: rgba(0, 0, 0, 0.3); */
-/*    background-color: green;*/
-/*    position: absolute;*/
     position: fixed;
 /*    position: absolute;*/
     z-index: 1002;
@@ -854,18 +851,17 @@ tr.bss_render_reference_row th {
 .bss_side_swipe_button {
     width: 30px;
     height: 30px;
+    font-family: Arial, sans-serif;
     background-color: rgba(0, 0, 0, 0.5); 
-/*    background-color: blue;*/
     color: #dddddd;
     font-size: 26px;
     font-weight: bold;
     position: relative;
     text-align: center;
     vertical-align: middle;
-/*    z-index: 10001;*/
-/*    z-index: 10000001;*/
     cursor: pointer;
     pointer-events: auto; 
+    line-height: initial;
 }
 
 .bss_side_swipe_button:hover {
