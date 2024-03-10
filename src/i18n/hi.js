@@ -67,14 +67,30 @@ module.exports = {
     'New Testament': 'नया करार',
     'Law': 'कानून',
     'History': 'इतिहास',
+    'History Books': 'इतिहास की पुस्तकें', // 5.5 Can translate as 'History'
     'Wisdom & Poetry': 'बुद्धि और काव्य',
     'Prophets': 'नबियों',
+    'Prophets Books': 'भविष्यवक्ताओं की पुस्तकें', // 5.5 Can translate as 'Prophets'
     'Major Prophets': 'प्रमुख पैगम्बर',
     'Minor Prophets': 'छोटे पैगंबर',
     'Gospels': 'गॉस्पेल',
     'Epistles': 'Epistles',
     'Pauline Epistles': 'पॉलीन एपिस्टल्स',
     'General Epistles': 'सामान्य पत्रियाँ',
+    'End Times Prophecy': 'अंत समय की भविष्यवाणी',
+
+    // Shortcut Aliases
+    'OT': 'ओटी',
+    'NT': 'एनटी',
+    'Torah': 'टोरा',
+    'Wisdom': 'बुद्धि',
+    'Major': 'प्रमुख',
+    'Minor': 'नाबालिग',
+    'Passion': 'जुनून',
+    'Doctrine': 'सिद्धांत',
+    'Paul': 'पॉल',
+    'General': 'सामान्य',
+    'Last Days': 'पिछले दिनों',
 
     'Look up Passage(s)': 'मार्ग देखें',
     'Enter passage(s)' : 'मार्ग दर्ज करें',
@@ -378,6 +394,44 @@ module.exports = {
     'words': 'शब्द',
     'truth': 'सच',
 
+    // Searching across language
+
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': 'आप विभिन्न भाषाओं की बाइबलों में खोज नहीं कर सकते',
+    'You cannot search across Bibles of different languages with the selected search type.' : 'आप इसके साथ विभिन्न भाषाओं की बाइबिल में खोज नहीं कर सकते चयनित खोज प्रकार',
+
+    // General dialogs
+    'Name': 'नाम',
+    'Save': 'बचाना',
+    'Cancel': 'रद्द करना',
+    'Edit': 'संपादन करना',
+    'Delete': 'मिटाना',
+    'Clear': 'स्पष्ट',
+    'Restore': 'पुनर्स्थापित करना',
+    'Add': 'जोड़ना',
+    'Okay': 'ठीक है',
+    'Old': 'पुराना',
+    'New': 'नया',
+
+    'Are you sure?': 'क्या आपको यकीन है',
+    'Are you sure you want to delete': 'क्या आप आश्वस्त है कि आपको डिलीट करना है',
+
+    // Bookmarks/History
+    'This will delete all history.': 'इससे सारा इतिहास मिट जाएगा',
+    'This will delete all bookmarks.': 'इससे सभी बुकमार्क हट जाएंगे',
+    'Move to Current': 'वर्तमान में ले जाएँ',
+
+    'Bookmark': 'बुकमार्क',
+    'Bookmarks': 'बुकमार्क',
+
+    'Please delete some bookmarks before adding more.': 'कृपया और जोड़ने से पहले कुछ बुकमार्क हटा दें',
+    'This bookmark name already exists.': 'यह बुकमार्क नाम पहले से मौजूद है',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': 'खोजों को सीमित करना',
+    'Passages': 'मार्ग',
+    'Alias': 'उपनाम',
+    'You cannot search for these common words': 'आप इन सामान्य शब्दों को नहीं खोज सकते',
 
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  

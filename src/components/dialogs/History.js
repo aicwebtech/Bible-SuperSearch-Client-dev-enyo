@@ -75,11 +75,18 @@ module.exports = kind({
         this.app.history.forEach(function(item) {
             var content = item.title,
                 title = null,
-                lim = 60;
+                lim = 50,
+                trun = lim;
 
             if(content.length > lim) {
                 title = item.title;
-                content = content.substring(0, lim) + ' ...';
+                var lwordPos = content.lastIndexOf(' ', lim);
+
+                if(lwordPos != -1) {
+                    trun = lwordPos;
+                }
+
+                content = content.substring(0, trun) + ' ...';
             }
 
             this.$.ListContainer.createComponent({

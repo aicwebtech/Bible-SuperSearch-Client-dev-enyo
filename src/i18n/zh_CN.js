@@ -61,18 +61,36 @@ module.exports = {
     'Entire Bible': '整本圣经',
     'Passage(s) listed below': '经文章节列在下面',
     'Passage(s) listed above': '经文章节列在上面',
+    
+    // Shortcuts
     'Old Testament': '旧约',
     'New Testament': '新约',
     'Law': '律法书',
     'History': '历史书',
+    'History Books': '历史书籍', // 5.5 Can translate as 'History'
     'Wisdom & Poetry': '智慧书与诗歌',
     'Prophets': '先知书',
+    'Prophets Books': '先知书', // 5.5 Can translate as 'Prophets'
     'Major Prophets': '大先知书',
     'Minor Prophets': '小先知书',
     'Gospels': '福音书',
     'Epistles': '书信',
     'Pauline Epistles': '保罗书信',
     'General Epistles': '一般书信',
+    'End Times Prophecy': '末日预言',
+
+    // Shortcut Aliases
+    'OT': '奥特',
+    'NT': '新台币',
+    'Torah': '妥拉',
+    'Wisdom': '智慧',
+    'Major': '主要的',
+    'Minor': '次要的',
+    'Passion': 'Passion',
+    'Doctrine': '教义',
+    'Paul': '保罗',
+    'General': '一般的',
+    'Last Days': '最后一天',
 
     'Look up Passage(s)': '查找经文章节',
     'Enter passage(s)' : '输入章节',
@@ -373,6 +391,45 @@ module.exports = {
     'word': '話',
     'words': '話语',
     'truth': '真理',
+
+    // Searching across language
+
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': '您无法搜索不同语言的圣经',
+    'You cannot search across Bibles of different languages with the selected search type.' : '您无法使用以下命令搜索不同语言的圣经选定的搜索类型',
+
+    // General dialogs
+    'Name': '姓名',
+    'Save': '节省',
+    'Cancel': '取消',
+    'Edit': '编辑',
+    'Delete': '删除',
+    'Clear': '清除',
+    'Restore': '恢复',
+    'Add': '添加',
+    'Okay': '好的',
+    'Old': '老的',
+    'New': '新的',
+
+    'Are you sure?': '你确定吗？',
+    'Are you sure you want to delete': '你确定你要删除',
+
+    // Bookmarks/History
+    'This will delete all history.': '这将删除所有历史记录。',
+    'This will delete all bookmarks.': '这将删除所有书签',
+    'Move to Current': '移至当前',
+
+    'Bookmark': '书签',
+    'Bookmarks': '书签',
+
+    'Please delete some bookmarks before adding more.': '请先删除一些书签，然后再添加更多书签',
+    'This bookmark name already exists.': '该书签名称已存在',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': 'Limiting Searches',
+    'Passages': '段落',
+    'Alias': '别名',
+    'You cannot search for these common words': '这些常用词你无法搜索',
 
     'bibleBooks': [
         {

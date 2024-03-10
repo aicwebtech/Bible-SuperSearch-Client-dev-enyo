@@ -65,7 +65,7 @@ module.exports = kind({
         if(addBibleHeader) {        
             Container.createComponent({
                 name: 'BibleRow',
-                class: 'bss_render_bible_row',
+                class: 'bss_render_bible_row bss_bacon',
                 tag: 'tr'
             });
         }
@@ -228,6 +228,12 @@ module.exports = kind({
                 var html = '';
                 this.singleVerseCount ++;
 
+                var addBibleHeader = (this.singleVerseCount > 1 && this.singleVerseCount % 10 == 1);
+
+                if(addBibleHeader && renderStyle == 'verse_passage') {
+                    this._addBibleHeader(VerseContainer);
+                }
+
                 for(i in this.bibles) {
                     var mod = this.bibles[i];
                     var content = '';
@@ -359,6 +365,34 @@ module.exports = kind({
                 // Container._pushNavButtons(comp.$[NavName]);
                 //Container._pushNavButtons(comp.components[0].components[0]);
             }
+        }
+    },
+    _addBibleHeader: function(Container, name) {
+        if(name) {
+            var BibleRow = Container.createComponent({
+                name: name,
+                tag: 'tr'
+            });
+        } else {
+            var BibleRow = Container.createComponent({
+                tag: 'tr'
+            });
+        }
+
+        for(i in this.bibles) {
+            var mod = this.bibles[i];
+
+            if(typeof this.app.statics.bibles[mod] == 'undefined') {
+                continue;
+            }
+            
+            var bible_info = this.app.statics.bibles[mod];
+
+            BibleRow.createComponent({
+                tag: 'th',
+                attributes: {colspan: this.passageColumnsPerBible},
+                content: this._getBibleDisplayName(bible_info)
+            });
         }
     }
 });

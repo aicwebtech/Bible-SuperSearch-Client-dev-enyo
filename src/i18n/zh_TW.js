@@ -58,18 +58,37 @@ module.exports = {
     'Entire Bible': '整本聖經',
     'Passage(s) listed below': '經文章節列在下面',
     'Passage(s) listed above': '經文章節列在上面',
+    
+    // Shortcuts
     'Old Testament': '舊約',
     'New Testament': '新約',
     'Law': '律法書',
     'History': '歷史書',
+    'History Books': '歷史書籍', // 5.5 Can translate as 'History'
     'Wisdom & Poetry': '智慧書與詩歌',
     'Prophets': '先知書',
+    'Prophets Books': '先知書', // 5.5 Can translate as 'Prophets'
     'Major Prophets': '大先知書',
     'Minor Prophets': '小先知書',
     'Gospels': '福音書',
     'Epistles': '書信',
     'Pauline Epistles': '保羅書信',
     'General Epistles': '一般書信',
+    'End Times Prophecy': '末日預言',
+
+    // Shortcut Aliases
+    'OT': '奧特',
+    'NT': '新台幣',
+    'Torah': '妥拉',
+    'Wisdom': '智慧',
+    'Major': '主要的',
+    'Minor': '次要的',
+    'Passion': '熱情',
+    'Doctrine': '教義',
+    'Paul': '保羅',
+    'General': '一般的',
+    'Last Days': '最後一天',
+
     'Look up Passage(s)': '查找經文章節',
     'Enter passage(s)' : '輸入章節',
     'Enter word(s), phrase(s) or expression(s)' : '輸入單字、句子或邏輯表達式',
@@ -364,6 +383,45 @@ module.exports = {
     'word': '話',
     'words': '話語',
     'truth': '真理',
+
+    // Searching across language
+
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': '您無法搜尋不同語言的聖經',
+    'You cannot search across Bibles of different languages with the selected search type.' : '您無法使用以下命令搜尋不同語言的聖經選定的搜尋類型',
+
+    // General dialogs
+    'Name': '姓名',
+    'Save': '節省',
+    'Cancel': '取消',
+    'Edit': '編輯',
+    'Delete': '刪除',
+    'Clear': '清除',
+    'Restore': '恢復',
+    'Add': '添加',
+    'Okay': '好的',
+    'Old': '老的',
+    'New': '新的',
+
+    'Are you sure?': '你確定嗎？',
+    'Are you sure you want to delete': '你確定你要刪除',
+
+    // Bookmarks/History
+    'This will delete all history.': '這將刪除所有歷史記錄。',
+    'This will delete all bookmarks.': '這將刪除所有書籤。',
+    'Move to Current': '移至目前',
+
+    'Bookmark': '書籤',
+    'Bookmarks': '書籤',
+
+    'Please delete some bookmarks before adding more.': '請先刪除一些書籤，然後再加入更多書籤。',
+    'This bookmark name already exists.': '書籤名稱已存在。',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': '限制搜尋',
+    'Passages': '段落',
+    'Alias': '別名',
+    'You cannot search for these common words': '這些常用詞你無法搜尋',
 
     'bibleBooks': [
         {

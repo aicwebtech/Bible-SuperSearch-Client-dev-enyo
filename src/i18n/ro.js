@@ -60,18 +60,36 @@ module.exports = {
     'Entire Bible': 'Întreaga Biblie',
     'Passage(s) listed below': 'Pasajul(ele) menționate mai jos',
     'Passage(s) listed above': 'Pasajul(ele) menționate mai sus',
+    
+    // Shortcuts
     'Old Testament': 'Vechiul Testament',
     'New Testament': 'Noul Testament',
     'Law': 'Lege',
     'History': 'Istorie',
+    'History Books': 'Cărți de istorie', // 5.5 Can translate as 'History'
     'Wisdom & Poetry': 'Înțelepciune & Poezie',
     'Prophets': 'Profeți',
+    'Prophets Books': 'Cărțile Profeților', // 5.5 Can translate as 'Prophets'
     'Major Prophets': 'Profeții Majori',
     'Minor Prophets': 'Profeții Minori',
     'Gospels': 'Evanghelii',
     'Epistles': 'Epistole',
     'Pauline Epistles': 'Epistolele Pauline',
     'General Epistles': 'Epistolele Generale',
+    'End Times Prophecy': 'Profeția Sfârșitului timpurilor',
+
+    // Shortcut Aliases
+    'OT': 'OT',
+    'NT': 'NT',
+    'Torah': 'Tora',
+    'Wisdom': 'Înţelepciune',
+    'Major': 'Major',
+    'Minor': 'Minor',
+    'Passion': 'Pasiune',
+    'Doctrine': 'Doctrină',
+    'Paul': 'Paul',
+    'General': 'General',
+    'Last Days': 'Ultimele zile',
 
     'Look up Passage(s)': 'Căutați Pasajul(ele)',
     'Enter passage(s)' : 'Introduceți Pasajul(ele)',
@@ -373,6 +391,45 @@ module.exports = {
     'word': 'cuvânt',
     'words': 'cuvinte',
     'truth': 'adevăr',
+
+    // Searching across language
+
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': 'Nu puteți căuta în Biblii în diferite limbi',
+    'You cannot search across Bibles of different languages with the selected search type.' : 'Nu puteți căuta în Biblii din diferite limbi cu ajutorul tipul de căutare selectat',
+
+    // General dialogs
+    'Name': 'Nume',
+    'Save': 'Salvați',
+    'Cancel': 'Anulare',
+    'Edit': 'Editați | ×',
+    'Delete': 'Șterge',
+    'Clear': 'clar',
+    'Restore': 'Restabili',
+    'Add': 'Adăuga',
+    'Okay': 'Bine',
+    'Old': 'Vechi',
+    'New': 'Nou',
+
+    'Are you sure?': 'Esti sigur',
+    'Are you sure you want to delete': 'ești sigur că vrei să ștergi',
+
+    // Bookmarks/History
+    'This will delete all history.': 'Aceasta va șterge tot istoricul',
+    'This will delete all bookmarks.': 'Aceasta va șterge toate marcajele',
+    'Move to Current': 'Mutați la Actual',
+
+    'Bookmark': 'Marcaj',
+    'Bookmarks': 'Marcaje',
+
+    'Please delete some bookmarks before adding more.': 'Vă rugăm să ștergeți câteva marcaje înainte de a adăuga altele',
+    'This bookmark name already exists.': 'Acest nume de marcaj există deja',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': 'Limitarea căutărilor',
+    'Passages': 'pasaje',
+    'Alias': 'Alias',
+    'You cannot search for these common words': 'Nu puteți căuta aceste cuvinte comune',
 
     'bibleBooks': [
         {

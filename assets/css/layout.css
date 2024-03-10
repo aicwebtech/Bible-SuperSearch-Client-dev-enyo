@@ -584,6 +584,14 @@ div.alert_dialog {
     line-height: 24px;
 }
 
+/* todo: use text-overflow: elippsis here */
+/*.bss_history_item a {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 70%;
+}*/
+
 .bss_history_item .material-icons {
     font-size: 22px;
     cursor: pointer;

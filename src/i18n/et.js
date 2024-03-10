@@ -65,19 +65,36 @@ module.exports = {
     'Entire Bible': 'Kogu Piiblist',
     'Passage(s) listed below': 'Allpool loetletud lõigud',
     'Passage(s) listed above': 'Eespool loetletud lõigud',
+    
+    // Shortcuts
     'Old Testament': 'Vana Testament',
     'New Testament': 'Uus Testament',
     'Law': 'Seadused',
     'History': 'Ajalugu',
+    'History Books': 'Ajaloo raamatud', // 5.5 Can translate as 'History'
     'Wisdom & Poetry': 'Tarkus ja luule',
     'Prophets': 'Prohvetid',
+    'Prophets Books': 'Prohvetite raamatud', // 5.5 Can translate as 'Prophets'
     'Major Prophets': 'Peamised prohvetid',
     'Minor Prophets': 'Väikesed prohvetid',
     'Gospels': 'Evangeeliumid',
     'Epistles': 'Kirjad',
     'Pauline Epistles': 'Pauluse kirjad',
     'General Epistles': 'Üldised kirjad',
+    'End Times Prophecy': 'Lõpuaegade ennustus',
 
+    // Shortcut Aliases
+    'OT': 'VT',
+    'NT': 'UT',
+    'Torah': 'Toora',
+    'Wisdom': 'Tarkus',
+    'Major': 'Major',
+    'Minor': 'Alaealine',
+    'Passion': 'Kirg',
+    'Doctrine': 'doktriin',
+    'Paul': 'Paul',
+    'General': 'Kindral',
+    'Last Days': 'Viimased päevad',
 
     'Look up Passage(s)': 'Otsige üles lõik(gud)',
     'Enter passage(s)' : 'Sisesta lõik(ud)',
@@ -410,7 +427,44 @@ module.exports = {
     'words': 'sõnad',
     'truth': 'tõde',
 
+    // Searching across language
 
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': 'Te ei saa otsida erinevates keeltes piiblitest',
+    'You cannot search across Bibles of different languages with the selected search type.' : 'Te ei saa otsida erinevate keelte piiblitest valitud otsingutüüp',
+
+    // General dialogs
+    'Name': 'Nimi',
+    'Save': 'Salvesta',
+    'Cancel': 'Tühista',
+    'Edit': 'Muuda',
+    'Delete': 'Kustuta',
+    'Clear': 'Selge',
+    'Restore': 'Taastama',
+    'Add': 'Lisama',
+    'Okay': 'Okei',
+    'Old': 'Vana',
+    'New': 'Uus',
+
+    'Are you sure?': 'Oled sa kindel​',
+    'Are you sure you want to delete': 'Kas soovite kindlasti kustutada?',
+
+    // Bookmarks/History
+    'This will delete all history.': 'See kustutab kogu ajaloo',
+    'This will delete all bookmarks.': 'See kustutab kõik järjehoidjad',
+    'Move to Current': 'Teisalda praegusesse',
+
+    'Bookmark': 'Järjehoidja',
+    'Bookmarks': 'Järjehoidjad',
+
+    'Please delete some bookmarks before adding more.': 'Enne järjehoidjate lisamist kustutage mõned järjehoidjad',
+    'This bookmark name already exists.': 'See järjehoidja nimi on juba olemas',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': 'Otsingute piiramine',
+    'Passages': 'Lõigud',
+    'Alias': 'Teise nimega',
+    'You cannot search for these common words': 'Te ei saa neid levinud sõnu otsida',
 
 
     // Bible Books

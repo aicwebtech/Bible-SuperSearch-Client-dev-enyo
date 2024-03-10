@@ -12,6 +12,9 @@ module.exports = {
     'red_letter_description': 'Words of Christ in Red.', // 5.3
     'highlight_description': 'Highlighting (bold) of keywords in searches.',  // 5.3
 
+    'History Books': 'History',
+    'Prophets Books': 'Prophets',
+
     // Shortcuts - for languages other than English, this is automatically generated from English
     'shortcuts': [
            {
@@ -43,7 +46,7 @@ module.exports = {
             },
             {
               "id": 4,
-              "name": "History",
+              "name": "History Books",
               "short1": "History",
               "short2": null,
               "short3": null,
@@ -61,7 +64,7 @@ module.exports = {
             },
             {
               "id": 6,
-              "name": "Prophets",
+              "name": "Prophets Books",
               "short1": "Prophets",
               "short2": "All Prophets",
               "short3": null,

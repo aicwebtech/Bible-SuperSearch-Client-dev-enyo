@@ -60,18 +60,36 @@ module.exports = {
     'Entire Bible': 'Вся Библия',
     'Passage(s) listed below': 'Отрывки, показанные ниже',
     'Passage(s) listed above': 'Отрывки, показанные выше',
+    
+    // Shortcuts
     'Old Testament': 'Ветхий Завет',
     'New Testament': 'Новый Завет',
     'Law': 'Пятикнижие (Закон)',
-    'History': 'Исторические книги',
+    'History Books': 'Исторические книги',
+    'History': 'История',
     'Wisdom & Poetry': 'Книги мудрых (учительные книги)',
-    'Prophets': 'Пророческие книги',
+    'Prophets Books': 'Пророческие книги',
+    'Prophets': 'Пророки',
     'Major Prophets': 'Большие (Великие) Пророки',
     'Minor Prophets': 'Малые Пророки',
     'Gospels': 'Евангелия',
     'Epistles': 'Все послания',
     'Pauline Epistles': 'Послания Павла',
     'General Epistles': 'Общие Послания',
+    'End Times Prophecy': 'Апокалиптические Писания',
+
+    // Shortcut Aliases
+    'OT': 'Ветхий',
+    'NT': 'Новый',
+    'Torah': 'Закон',
+    'Wisdom': 'Мудрые',
+    'Major': 'Большие',
+    'Minor': 'Малые',
+    'Passion': 'Ев',
+    'Doctrine': 'Послания',
+    'Paul': 'Павел',
+    'General': 'Общие',
+    'Last Days': 'Апокалипсис',
 
     'Look up Passage(s)': 'Открыть отрывки из Библии',
     'Enter passage(s)' : 'Введите отрывки из Библии',
@@ -374,6 +392,75 @@ module.exports = {
     'word': 'слово',
     'words': 'слова',
     'truth': 'истина',
+
+    'End Times Prophecy': 'Апокалиптические Писания',
+
+   
+
+    // Shortcut Aliases
+
+    'OT': 'Ветхий',
+
+    'NT': 'Новый',
+
+    'Torah': 'Закон',
+
+    'Wisdom': 'Мудрые',
+
+    'Major': 'Большие',
+
+    'Minor': 'Малые',
+
+    'Passion': 'Ев',
+
+    'Doctrine': 'Послания',
+
+    'Paul': 'Павел',
+
+    'General': 'Общие',
+
+    'Last Days': 'Апокалипсис',
+
+   
+
+    // Searching across language
+
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': 'Невозможно выполнить поиск по Библии на разных языках.',
+    'You cannot search across Bibles of different languages with the selected search type.': 'Невозможно выполнить поиск по Библии на разных языках с выбранным условием поиска.',
+
+    // General dialogs
+    'Name': 'Название',
+    'Save': 'Сохранить',
+    'Cancel': 'Отменить',
+    'Edit': 'Редактировать',
+    'Delete': 'Удалить',
+    'Clear': 'Очистить',
+    'Restore': 'Восстановить',
+    'Add': 'Добавить',
+    'Okay': 'Да',
+    'Old': 'Предыдущий',
+    'New': 'Новый',
+
+    'Are you sure?': 'Вы уверены?',
+    'Are you sure you want to delete': 'Вы уверены, что хотите удалить',
+
+    // Bookmarks/History
+    'This will delete all history.': 'Вся история будет удалена.',
+    'This will delete all bookmarks.': 'Все закладки будут удалены.',
+    'Move to Current': 'Изменить на Открытое',
+
+    'Bookmark': 'Создать закладку',
+    'Bookmarks': 'Закладки',
+
+    'Please delete some bookmarks before adding more.': 'Чтобы добавить новую, удалите одну из старых закладок.',
+    'This bookmark name already exists.': 'Такое название закладки уже существует.',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': 'Ограничение Поиска',
+    'Passages': 'Диапазоны Книг',
+    'Alias': 'Сокращение',
+    'You cannot search for these common words': 'Невозможно выполнить поиск, используя следующие часто используемые слова',
 
     // Custom
     'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Совет: Чтобы активировать выбранные версии Библии, откройте отрывок, переверните главу или выполните поиск.',

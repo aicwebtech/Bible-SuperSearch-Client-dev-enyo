@@ -53,18 +53,36 @@ module.exports = {
     'Entire Bible': 'Biblia completa',
     'Passage(s) listed below': 'Pasaje(s) enumerados a continuación',
     'Passage(s) listed above': 'Pasaje(s) enumerados arriba',
+    
+    // Shortcuts
     'Old Testament': 'Antiguo Testamento',
     'New Testament': 'Nuevo Testamento',
     'Law': 'Ley',
     'History': 'Historia',
+    'History Books': 'Libros de historia',
     'Wisdom & Poetry': 'Sabiduría y Poesía',
     'Prophets': 'Profetas',
+    'Prophets Books': 'Profetas', 
     'Major Prophets': 'Profetas Mayores',
     'Minor Prophets': 'Profetas Menores',
     'Gospels': 'Evangelios',
     'Epistles': 'Epístolas',
     'Pauline Epistles': 'Epístolas Paulinas',
     'General Epistles': 'Epístolas Generales',
+    'End Times Prophecy': 'Profecía del fin de los tiempos',
+
+    // Shortcut Aliases
+    'OT': 'AT',
+    'NT': 'NT',
+    'Torah': 'Tora',
+    'Wisdom': 'Sabiduría',
+    'Major': 'Mayor',
+    'Minor': 'Menor',
+    'Passion': 'Pasión',
+    'Doctrine': 'Doctrina',
+    'Paul': 'Pablo',
+    'General': 'General',
+    'Last Days': 'Últimos días',
 
     'Look up Passage(s)': 'Buscar pasajes',
     'Enter passage(s)' : 'Entrar en pasajes',
@@ -367,6 +385,46 @@ module.exports = {
     'word': 'palabra',
     'words': 'palabras',
     'truth': 'verdad',
+
+    // Searching across language
+
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': 'No puedes buscar en Biblias de diferentes idiomas.',
+    'You cannot search across Bibles of different languages with the selected search type.' : 'No puedes buscar en Biblias de diferentes idiomas con el tipo de búsqueda seleccionado',
+
+    // General dialogs
+    'Name': 'Nombre',
+    'Save': 'Ahorrar',
+    'Cancel': 'Cancelar',
+    'Edit': 'Editar',
+    'Delete': 'Borrar',
+    'Clear': 'Claro',
+    'Restore': 'Restaurar',
+    'Add': 'Agregar',
+    'Okay': 'Bueno',
+    'Old': 'Viejo',
+    'New': 'Nuevo',
+
+    'Are you sure?': 'Estas seguro',
+    'Are you sure you want to delete': '¿Estás seguro de que quieres eliminar?',
+
+    // Bookmarks/History
+    'This will delete all history.': 'Esto eliminará todo el historial.',
+    'This will delete all bookmarks.': 'Esto eliminará todos los marcadores.',
+    'Move to Current': 'Mover a actual',
+
+    'Bookmark': 'Marcador',
+    'Bookmarks': 'Marcadores',
+
+    'Please delete some bookmarks before adding more.': 'Elimina algunos marcadores antes de agregar más.',
+    'This bookmark name already exists.': 'El nombre de este marcador ya existe',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': 'Limitar búsquedas',
+    'Passages': 'Pasajes',
+    'Alias': 'Alias',
+    'You cannot search for these common words': 'No puedes buscar estas palabras comunes.',
+
 
     'bibleBooks': [
         {

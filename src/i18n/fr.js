@@ -54,18 +54,36 @@ module.exports = {
     'Entire Bible': 'La bible entière',
     'Passage(s) listed below': 'Les passages ci-dessous',
     'Passage(s) listed above': 'Les passages ci-dessus',
+    
+    // Shortcuts
     'Old Testament': 'Ancien Testament',
     'New Testament': 'Nouveau Testament',
     'Law': 'Loi',
     'History': 'Histoire',
+    'History Books': 'Livres d\'histoire', // 5.5 Can translate as 'History'
     'Wisdom & Poetry': 'Sagesse & Poésie',
     'Prophets': 'Prophètes',
+    'Prophets Books': 'Livres de prophètes', // 5.5 Can translate as 'Prophets'
     'Major Prophets': 'Prophètes Majeurs',
     'Minor Prophets': 'Prophètes Mineurs',
     'Gospels': 'Évangiles',
     'Epistles': 'Épitres',
     'Pauline Epistles': 'Épitres de Paul',
     'General Epistles': 'Épitres',
+    'End Times Prophecy': 'Prophétie de la fin des temps',
+
+    // Shortcut Aliases
+    'OT': 'AT',
+    'NT': 'NT',
+    'Torah': 'Torah',
+    'Wisdom': 'Sagesse',
+    'Major': 'Majeur',
+    'Minor': 'Mineure',
+    'Passion': 'Passion',
+    'Doctrine': 'Doctrine',
+    'Paul': 'Paul',
+    'General': 'Général',
+    'Last Days': 'Derniers jours',
 
     'Look up Passage(s)': 'Recherche de passages',
     'Enter passage(s)' : 'Entrez le(s) passage',
@@ -367,6 +385,45 @@ module.exports = {
     'word': 'mot',
     'words': 'mots',
     'truth': 'vérité',
+
+     // Searching across language
+
+     // Parallel search multi language error messages
+     'You cannot search across Bibles of different languages.': 'Vous ne pouvez pas effectuer de recherche dans des Bibles de différentes langues',
+     'You cannot search across Bibles of different languages with the selected search type.' : 'Vous ne pouvez pas effectuer de recherche dans des Bibles de différentes langues avec le type de recherche sélectionné',
+
+     // General dialogs
+     'Name': 'Nom',
+     'Save': 'Sauvegarder',
+     'Cancel': 'Annuler',
+     'Edit': 'Modifier',
+     'Delete': 'Supprimer',
+     'Clear': 'Clair',
+     'Restore': 'Restaurer',
+     'Add': 'Ajouter',
+     'Okay': 'D\'accord',
+     'Old': 'Vieux',
+     'New': 'Nouveau',
+
+     'Are you sure?': 'Es-tu sûr?',
+     'Are you sure you want to delete': 'Etes-vous sûr que vous voulez supprimer',
+
+     // Bookmarks/History
+     'This will delete all history.': 'Cela supprimera tout l\'historique',
+     'This will delete all bookmarks.': 'Cela supprimera tous les favoris',
+     'Move to Current': 'Passer à l\'actuel',
+
+     'Bookmark': 'Signet',
+     'Bookmarks': 'Signets',
+
+     'Please delete some bookmarks before adding more.': 'Veuillez supprimer certains favoris avant d\'en ajouter d\'autres.',
+     'This bookmark name already exists.': 'Ce nom de favori existe déjà',
+
+     // Quick start dialog: Limiting searches
+     'Limiting Searches': 'Limiter les recherches',
+     'Passages': 'Passages',
+     'Alias': 'Alias',
+     'You cannot search for these common words': 'Vous ne pouvez pas rechercher ces mots courants',
 
     'bibleBooks': [
         {

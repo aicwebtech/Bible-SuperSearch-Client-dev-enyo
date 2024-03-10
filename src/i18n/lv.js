@@ -63,15 +63,31 @@ module.exports = {
     'Old Testament': 'Vecā Derība',
     'New Testament': 'Jaunā Derība',
     'Law': 'Mozus grāmatas',
-    'History': 'Vēstures grāmatas',
+    'History Books': 'Vēstures grāmatas',
+    'History': 'Vēsture',
     'Wisdom & Poetry': 'Dzejas un gudrības',
-    'Prophets': 'Praviešu grāmatas',
+    'Prophets Books': 'Praviešu grāmatas',
+    'Prophets': 'Pravieši',
     'Major Prophets': 'Lielo praviešu grāmatas',
     'Minor Prophets': 'Mazo praviešu grāmatas',
     'Gospels': 'Evaņģēliji',
     'Epistles': 'Visas vēstules',
     'Pauline Epistles': 'Pāvila vēstules',
     'General Epistles': 'Vispārējās vēstules',
+    'End Times Prophecy': 'Apokaliptiskie Raksti',
+
+    // Shortcut Aliases
+    'OT': 'Vecā',
+    'NT': 'Jaunā',
+    'Torah': 'Mozus',
+    'Wisdom': 'Gudrība',
+    'Major': 'Lielie pravieši',
+    'Minor': 'Mazie pravieši',
+    'Passion': 'Ev',
+    'Doctrine': 'Vēstules',
+    'Paul': 'Pāvils',
+    'General': 'Pārējās',
+    'Last Days': 'Apokalipse',
 
     'Look up Passage(s)': 'Atvērt Rakstvietu(-as)',
     'Enter passage(s)' : 'Ievadiet rakstvietu(-as)',
@@ -374,6 +390,45 @@ module.exports = {
     'word': 'vārds',
     'words': 'vārdi',
     'truth': 'patiesība',
+
+    // Searching across language
+    // Parallel search multi language error messages
+
+    'You cannot search across Bibles of different languages.': 'Nav iespējams veikt meklēšanu dažādu valodu Bībelēs.',
+    'You cannot search across Bibles of different languages with the selected search type.': 'Nav iespējams veikt meklēšanu dažādu valodu Bībelēs ar izvēlēto meklēšanas nosacījumu.',
+
+    // General dialogs
+    'Name': 'Nosaukums',
+    'Save': 'Saglabāt',
+    'Cancel': 'Atcelt',
+    'Edit': 'Rediģēt',
+    'Delete': 'Dzēst',
+    'Clear': 'Attīrīt',
+    'Restore': 'Atjaunot',
+    'Add': 'Pievienot',
+    'Okay': 'Jā',
+    'Old': 'Iepriekšējais',
+    'New': 'Jaunais',
+
+    'Are you sure?': 'Vai esat drošs?',
+    'Are you sure you want to delete': 'Vai tiešām vēlaties izdzēst',
+
+    // Bookmarks/History
+    'This will delete all history.': 'Visa vēsture tiks izdzēsta.',
+    'This will delete all bookmarks.': 'Visas grāmatzīmes tiks izdzēstas.',
+    'Move to Current': 'Mainīt uz Atvērto',
+
+    'Bookmark': 'Izveidot grāmatzīmi',
+    'Bookmarks': 'Grāmatzīmes',
+
+    'Please delete some bookmarks before adding more.': 'Lai pievienotu jaunu, lūdzu izdzēsiet kādu no vecajām grāmatzīmēm.',
+    'This bookmark name already exists.': 'Šāds grāmatzīmes nosaukums jau eksistē.',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': 'Meklēšanas Ierobežošana',
+    'Passages': 'Grāmatu Diapazoni',
+    'Alias': 'Saīsinājums',
+    'You cannot search for these common words': 'Meklēšanu nav iespējams veikt pēc šādiem bieži lietotajiem vārdiem',
 
     // Custom
     'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Ieteikums: Lai aktivizētu izvēlētās Bībeles versijas, atveriet rakstvietu, pāršķiriet nodaļu vai veiciet meklēšanu.',

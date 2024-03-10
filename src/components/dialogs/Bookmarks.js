@@ -113,10 +113,17 @@ module.exports = kind({
         this.app.bookmarks.forEach(function(item) {
             var content = item.get('title') || '(no title?)',
                 title = item.get('pageTitle'),
-                lim = 60;
+                lim = 35,
+                trun = lim;
 
             if(content.length > lim) {
-                content = content.substring(0, lim) + ' ...';
+                var lwordPos = content.lastIndexOf(' ', lim);
+
+                if(lwordPos != -1) {
+                    trun = lwordPos;
+                }
+
+                content = content.substring(0, trun) + ' ...';
             }
 
             this.$.ListContainer.createComponent({
@@ -132,18 +139,6 @@ module.exports = kind({
                             ontap: 'handleBookmarkTap',
                             style: 'float: left',
                         }, 
-                        // {
-                        //     // kind: Anchor, 
-                        //     kind: i18n,
-                        //     tag: 'a',
-                        //     attributes: {
-                        //         href: 'JavaScript:void(0)',
-                        //     },
-                        //     style: 'float: right',
-                        //     content: 'Edit',
-                        //     pk: item.get('pk'),
-                        //     ontap: 'edit'
-                        // },
                         {
                             kind: i18n,
                             ontap: 'edit',

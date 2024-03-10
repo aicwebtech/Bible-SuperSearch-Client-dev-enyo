@@ -59,8 +59,10 @@ module.exports = {
     'Old Testament': 'Olde Testamonie',
     'New Testament': 'Newa Testamonie',
     'Law': 'Legalese',
+    'history_books': 'Bookes Historie',
     'History': 'Historyans',
     'Wisdom & Poetry': 'Wisdome ande Poems',
+    'prophets_books': 'Bookes Profites',
     'Prophets': 'Profites',
     'Major Prophets': 'Big Profites',
     'Minor Prophets': 'Little Profites',
@@ -412,6 +414,7 @@ module.exports = {
     'This will delete all bookmarks.': 'Drowneth all barkmates?',
     'Move to Current': 'Marke yer bearin\'',
 
+    'viewing_history': '',
     'Bookmark': 'Barkmate',
     'Bookmarks': 'Barkmates',
 

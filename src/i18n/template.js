@@ -65,8 +65,10 @@ module.exports = {
     'Old Testament': '',
     'New Testament': '',
     'Law': '',
+    'History Books': '', // 5.5 Can translate as 'History'
     'History': '',
     'Wisdom & Poetry': '',
+    'Prophets Books': '', // 5.5 Can translate as 'Prophets'
     'Prophets': '',
     'Major Prophets': '',
     'Minor Prophets': '',
