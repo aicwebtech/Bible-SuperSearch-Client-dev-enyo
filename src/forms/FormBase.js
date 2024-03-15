@@ -499,7 +499,10 @@ module.exports = kind({
         fields.forEach(function(field) {
             if(formData[field] && formData[field] != '') {
                 if(formData[field] == 'Random Chapter' || formData[field] == 'Random Verse') {
-                    values.push(this.app.t(formData[field]));
+                    values.push(this.getActualRandomPassage());
+
+                    // :todo actual_random make this a config?
+                    // values.push(this.app.t(formData[field]));
                 } else {
                     if(field == 'page') {
                         values.push('Page ' + formData[field]);
@@ -525,6 +528,19 @@ module.exports = kind({
 
         this.app.set('bssTitle', bssTitle);
         document.title = newTitle;
+    },
+    getActualRandomPassage: function() {
+        var resp = this.app.get('responseData'),
+            results = resp.results.results;
+
+        this.log(results);
+
+        var passage = this.app.getLocaleBookName(results[0].book_id, results[0].book_name) + ' ' + results[0].chapter_verse;
+            passage = passage.trim();
+
+        this.log(passage);
+
+        return passage;
     },
     formDataChanged: function(was, is) {
         // this.log('was', was);
@@ -710,14 +726,24 @@ module.exports = kind({
         var search = this.$.search ? this.$.search.get('value') : null;
         var request = this.$.request ? this.$.request.get('value') : null;
         var searchType = this.$.search_type ? this.$.search_type.get('value') : this.defaultSearchType;
+        var formDataSubmitted = this.get('_formDataAsSubmitted');
+        var pasSubmit = formDataSubmitted.reference || formDataSubmitted.request;
+            pasSubmit = pasSubmit.trim();
 
         var pas = reference ? reference : request;
-        var passages = this.Passage.explodeReferences(pas, true);
         var refId = 'r';
         var page = this.page || 1;
         var searchExtras = '';
         var se = [];
         var hasSe = false;
+        // this.log('inputs', pas, pasSubmit);
+
+        if(pasSubmit == 'Random Chapter' || pasSubmit == 'Random Verse') {
+            // :todo actual_random make this a config?
+            pas = this.getActualRandomPassage();
+        }
+
+        var passages = this.Passage.explodeReferences(pas, true);
 
         var searchValues = [
             {field: 'reference',    value: reference,  default: ''},
