@@ -775,7 +775,23 @@ module.exports = kind({
                 request = null;
             }
 
-            reference = passages[0].book + '/' + passages[0].chapter_verse;
+            var cv = passages[0].chapter_verse.trim(),
+                cv = cv.replace(/\s/g, ''), // remove all whitespace
+                book = this.app.findBookByName(passages[0].book),
+
+                // Regexp to detect single verses and single verse ranges
+                matches = cv.match(/^([0-9]+):([0-9]+)(-([0-9]+))?$/);
+
+            if(matches && matches.length > 0) {
+                reference = book.name + '/' + matches[1].trim() + '/' + matches[2].trim();
+
+                if(matches[4]) {
+                    reference += '-' + matches[4].trim();
+                }
+            } else {
+                reference = book.name + '/' + cv;
+            }
+
             refId = 'p';
         }
 

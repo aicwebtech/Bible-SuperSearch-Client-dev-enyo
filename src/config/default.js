@@ -20,6 +20,8 @@ var defaultConfig = {
     'strongsDialogSearchLink': false,
     'legacyManual': false,
     'strongsOpenClick': 'mobile',
+    'sideSwipeNavHideThresholdTop': 0,
+    'sideSwipeNavHideThresholdBottom': 0,
     'historyLimit': 50,
     'bookmarkLimit': 20,
 

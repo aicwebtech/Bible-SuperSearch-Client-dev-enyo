@@ -147,8 +147,8 @@ module.exports = kind({
         var visible = false
             navVisible = false,
             hasPaging = this.owner.hasPaging,
-            navVisOffset1 = 35,
-            navVisOffset2 = 65,
+            navVisOffset1 = 30 + parseInt(this.app.configs.sideSwipeNavHideThresholdTop, 10),
+            navVisOffset2 = 30 + parseInt(this.app.configs.sideSwipeNavHideThresholdBottom, 10),
             pagVisOffset = 5;
 
         if(this.app.configs.sideSwipePageChapter && this.app.configs.sideSwipePageChapter != 'false') {

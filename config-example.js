@@ -324,6 +324,10 @@ var biblesupersearch_config_options = {
     // Hide side swipe buttons when navigation buttons are showing
     'sideSwipeHideWithNavigationButtons': true,
 
+    // When sideSwipeHideWithNavigationButtons = true, use these to adjust values position where the buttons appear/disappear
+    'sideSwipeNavHideThresholdTop': 0,  // pixels from navication buttons
+    'sideSwipeNavHideThresholdBottom': 0, // pixels from navigation buttons
+
     // Time, in milliseconds, to wait after hovering before opening a hover dialog (ie Strongs)
     'hoverDelayThreshold': 500,
 
