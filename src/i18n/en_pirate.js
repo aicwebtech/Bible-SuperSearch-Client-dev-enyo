@@ -48,6 +48,7 @@ module.exports = {
     'Show this verse': 'Reveale jewelle',
     'Show in context': 'Reveale jewewell with its mateys',
     'Context': 'Jewwel Mateys',
+    'In Context': 'Withe Jewwel Mateys',
 
     'Limit Search To': 'Plunder in',
     'Limit search to': 'Plunder in',
@@ -128,6 +129,7 @@ module.exports = {
     'Previous Page' : 'Sheet Lasto',
     'First Page' : 'Sheet Firsta',
     'Last Page': 'Sheet Endo',
+    'Page': 'Sheeto',
     
     // Formatting and dialog buttons
     'A': 'Aye',     // First letter in given language

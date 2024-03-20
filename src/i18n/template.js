@@ -54,6 +54,7 @@ module.exports = {
     'Show this verse': '',
     'Show in context': '',
     'Context': '',
+    'In Context': '',
 
     'Limit Search To': '',
     'Limit search to': '', // Watch case!
@@ -137,6 +138,7 @@ module.exports = {
     'Previous Page' : '',
     'First Page' : '',
     'Last Page': '',
+    'Page': '',
     
     // Formatting and dialog buttons
     'A': '',     // First letter in given language

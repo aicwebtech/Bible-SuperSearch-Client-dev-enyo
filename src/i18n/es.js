@@ -47,6 +47,7 @@ module.exports = {
     'Show this verse': 'Muestra este verso',
     'Show in context': 'Mostrar en contexto',
     'Context': 'Contexto',
+    'In Context': 'En contexto',
 
     'Limit Search To': 'Busca en',
     'Limit search to': 'Busca en', // Is this duplication needed?
@@ -126,6 +127,7 @@ module.exports = {
     'Previous Page' : 'Pagina anterior',
     'First Page' : 'Primera página',
     'Last Page': 'Última página',
+    'Page': 'Página',
     
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language

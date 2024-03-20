@@ -54,6 +54,7 @@ module.exports = {
     'Show this verse': 'Открыть этот стих',
     'Show in context': 'Показать в контексте',
     'Context': 'Контекст',
+    'In Context': 'В Контексте',
 
     'Limit Search To': 'Ограничить Поиск до',
     'Limit search to': 'Ограничить поиск до', // Watch case!
@@ -134,6 +135,7 @@ module.exports = {
     'Previous Page' : 'Предыдущая Страница',
     'First Page' : 'Первая Страница',
     'Last Page': 'Последняя Страница',
+    'Page': 'Страница',
     
     // Formatting and dialog buttons
     'A': 'А',     // First letter in given language

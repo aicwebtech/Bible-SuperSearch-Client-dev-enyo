@@ -149,13 +149,14 @@ module.exports = kind({
             hasPaging = this.owner.hasPaging,
             navVisOffset1 = 30 + parseInt(this.app.configs.sideSwipeNavHideThresholdTop, 10),
             navVisOffset2 = 30 + parseInt(this.app.configs.sideSwipeNavHideThresholdBottom, 10),
+            copyMode = this.app.UserConfig.get('copy') || false,
             pagVisOffset = 5;
 
         if(this.app.configs.sideSwipePageChapter && this.app.configs.sideSwipePageChapter != 'false') {
             // todo, make with with search pagination
             // need to ensure buttons only appear ONCE though
 
-            if(!this.get('active')) {
+            if(!this.get('active') || copyMode) {
                 this.set('sideButtons', false);
             } else if(this.app.configs.sideSwipeHideWithNavigationButtons && this.app.configs.sideSwipeHideWithNavigationButtons != 'false') {
                 if(this.$.VerseContainer) {
@@ -183,11 +184,6 @@ module.exports = kind({
                         navVisible = true;
                     }
                 }
-
-                this.log('navButton_1', this.navButton_1);
-                this.log('navButton_2', this.navButton_2);
-                this.log('navVisible', navVisible);
-                // this.set('sideButtons', visible && !navVisible);
 
                 if(this.get('singleVerse')) {
                     this.set('sideButtons', visible && hasPaging && !navVisible);

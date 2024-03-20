@@ -58,6 +58,7 @@ module.exports = {
     'Show this verse': 'Näita seda salmi',
     'Show in context': 'Näita konteksti',
     'Context': 'Kontekst',
+    'In Context': 'Kontekstis',
 
 
     'Limit Search To': 'Piira otsingut',
@@ -144,6 +145,7 @@ module.exports = {
     'Previous Page' : 'Eelmine lehekülg',
     'First Page' : 'Esimene lehekülg',
     'Last Page': 'Viimane lehekülg',
+    'Page': 'Lehekülg',
     
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language

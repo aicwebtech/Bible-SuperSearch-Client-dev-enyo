@@ -505,7 +505,7 @@ module.exports = kind({
                     // values.push(this.app.t(formData[field]));
                 } else {
                     if(field == 'page') {
-                        values.push('Page ' + formData[field]);
+                        values.push(this.app.t('Page') + ' ' + formData[field]);
                     } else {
                         values.push(formData[field]);
                     }
@@ -514,7 +514,7 @@ module.exports = kind({
         }, this);
 
         if(formData.context == true) {
-            values.push('In Context');
+            values.push( this.app.t('In Context') );
         }
 
         var bssTitle = values.join(' | ');
@@ -728,7 +728,7 @@ module.exports = kind({
         var searchType = this.$.search_type ? this.$.search_type.get('value') : this.defaultSearchType;
         var formDataSubmitted = this.get('_formDataAsSubmitted');
         var pasSubmit = formDataSubmitted.reference || formDataSubmitted.request;
-            pasSubmit = pasSubmit.trim();
+            pasSubmit = pasSubmit ? pasSubmit.trim() : null;
 
         var pas = reference ? reference : request;
         var refId = 'r';

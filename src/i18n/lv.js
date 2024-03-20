@@ -54,6 +54,7 @@ module.exports = {
     'Show this verse': 'Atvērt šo pantu',
     'Show in context': 'Parādīt kontekstā',
     'Context': 'Konteksts',
+    'In Context': 'Kontekstā',
 
     'Limit Search To': 'Attiecināt Meklēšanu Uz Apgabalu',
     'Limit search to': 'Attiecināt meklēšanu uz apgabalu', // Watch case!
@@ -132,6 +133,7 @@ module.exports = {
     'Previous Page' : 'Iepriekšējā Lapa',
     'First Page' : 'Pirmā Lapa',
     'Last Page': 'Pēdējā Lapa',
+    'Page': 'Lapa',
     
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language

@@ -55,6 +55,7 @@ module.exports = {
     'Show this verse': '显示这节经文',
     'Show in context': '在上下文中显示',
     'Context': '上下文',
+    'In Context': '在上下文中',
 
     'Limit Search To': '限制搜索于',
     'Limit search to': '搜索限于, 注意大小写 !', // 注意大小写 !
@@ -135,6 +136,7 @@ module.exports = {
     'Previous Page' : '上一页',
     'First Page' : '第一页',
     'Last Page': '最后一页',
+    'Page': '页',
     
     // Formatting and dialog buttons
     'A': '特定语言的第一个字母',     // First letter in given language

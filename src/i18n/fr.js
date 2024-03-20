@@ -48,6 +48,7 @@ module.exports = {
     'Show this verse': 'Montrez ce verset',
     'Show in context': 'Afficher en contexte',
     'Context': 'Contexte',
+    'In Context': 'Dans le contexte',
 
     'Limit Search To': 'Limitez la Recherche à',
     'Limit search to': 'Limitez la recherche à', // Watch case!
@@ -127,6 +128,7 @@ module.exports = {
     'Previous Page' : 'Page précédente',
     'First Page' : 'Première page',
     'Last Page': 'Dernière page',
+    'Page': 'Page',
     
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language

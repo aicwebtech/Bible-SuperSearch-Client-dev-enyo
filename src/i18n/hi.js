@@ -57,6 +57,7 @@ module.exports = {
     'Show this verse': 'यह श्लोक दिखाओ',
     'Show in context': 'संदर्भ में दिखाएँ',
     'Context': 'प्रसंग',
+    'In Context': 'संदर्भ में',
 
     'Limit Search To': 'खोज को यहीं तक सीमित करें',
     'Limit search to': 'खोज को यहीं तक सीमित करें', // Watch case!
@@ -135,6 +136,7 @@ module.exports = {
     'Previous Page' : 'पिछला पृष्ठ',
     'First Page' : 'पहला पन्ना',
     'Last Page': 'अंतिम पृष्ठ',
+    'Page': 'पृष्ठ',
     
     // Formatting and dialog buttons
     'A': 'अ',     // First letter in given language

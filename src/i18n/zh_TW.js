@@ -53,6 +53,7 @@ module.exports = {
     'Show this verse': '顯示這節經文',
     'Show in context': '在上下文中顯示',
     'Context': '上下文',
+    'In Context': '在上下文中',
     'Limit Search To': '限制搜索於',
     'Limit search to': '搜索限於, 注意大小寫!', // 注意大小寫 ！
     'Entire Bible': '整本聖經',
@@ -129,6 +130,8 @@ module.exports = {
     'Previous Page' : '上一頁',
     'First Page' : '第一頁',
     'Last Page': '最後一頁',    
+    'Page': '頁',
+
       // Formatting and dialog buttons
     'A': '特定語言的第一個字母',     // First letter in given language
     'Abc': '前3個字母(第一字大寫)',   // First 3 letters in given language, with 1st capitalized

@@ -54,6 +54,7 @@ module.exports = {
     'Show this verse': 'Afișați acest verset',
     'Show in context': 'Afișați în context',
     'Context': 'Context',
+    'In Context': 'In context', // ????
 
     'Limit Search To': 'Limitați Căutarea',
     'Limit search to': 'Limitați căutarea', // Watch case!
@@ -134,6 +135,7 @@ module.exports = {
     'Previous Page' : 'Pagina Anterioară',
     'First Page' : 'Prima Pagină',
     'Last Page': 'Ultima Pagină',
+    'Page': 'Pagină',
     
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
