@@ -7,6 +7,7 @@ var i18n = require('../Locale/i18nContent');
 var i18nComponent = require('../Locale/i18nComponent');
 var TextArea = require('enyo/TextArea');
 var Image = require('../Image');
+var utils = require('enyo/utils');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -28,6 +29,7 @@ module.exports = kind({
     bibleString: null,
     ezCopy: false,
     shareContent: null,
+    actuallyShowDialogForce: false,
     
     titleComponents: [
         {classes: 'header', components: [
@@ -82,7 +84,7 @@ module.exports = kind({
         var actuallyShowDialog = navigator.share ? false : true;
 
         if(is) {
-            if(actuallyShowDialog) {
+            if(actuallyShowDialog || this.actuallyShowDialogForce) {
                 this.populate(); 
             } else {                
                 this.app.set('shareShowing', false);
@@ -90,6 +92,11 @@ module.exports = kind({
                 this.copy();
             }
         }
+    },
+    forceShowing: function() {
+        this.actuallyShowDialogForce = true;
+        this.app.set('shareShowing', true);
+        this.actuallyShowDialogForce = false;
     },
     populate: function() {
         var title = document.title,
@@ -185,6 +192,9 @@ module.exports = kind({
             return;
         }
 
+        return this.copyHelper();
+    },
+    copyHelper: function() {
         return this.app._copyComponentContent(this.$.CopyArea, 'content');
     },
     share: function() {
@@ -199,11 +209,15 @@ module.exports = kind({
                 this.app.debug && this.log('Successful share');
             }), 
             utils.bind(this, function() {
-                this.app.debug && this.log('Failed to share');
+                this.app.debug && this.log('Failed to share 1');
+                // Use our generic dialog in case the browser share dialog fails
+                this.forceShowing();
             }));
 
             promise.catch(utils.bind(this, function(error) {
-                this.app.debug && this.log('Failed to share');
+                this.app.debug && this.log('Failed to share 2');
+                // Use our generic dialog in case the browser share dialog fails
+                this.forceShowing();
             }));
             
             return true;

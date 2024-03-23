@@ -56,12 +56,12 @@ module.exports = kind({
 				{
 					name: 'Button',
 					classes: 'bss_pseudo_select_button',
-					ontap: 'handleVisableTap',
+					// ontap: 'handleVisableTap',
 					components: [
 						{
 							name: 'ButtonLabel',
 							tag: 'span', 
-							ontap: 'handleVisableTap',
+							// ontap: 'handleVisableTap',
 							content: "▼"
 						}
 					]
@@ -165,7 +165,8 @@ module.exports = kind({
 		}
 	},
 	handleVisableTap: function() {
-		this.set('toggled', !this.get('toggled'));
+		this.log();
+        this.set('toggled', !this.get('toggled'));
 	}, 
 	valueChanged: function(was, is) {
 		var controls = this.$.Toggle.getClientControls(),

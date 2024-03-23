@@ -17,6 +17,10 @@ module.exports = kind({
     nextChapterText: '&#9654;&#xFE0E;',
     nextBookText: '&#9654;&#xFE0E;|',
 
+    linkClasses: 'styleable',
+    classesActive: 'active',
+    classesInactive: 'inactive',
+
     components: [
         {kind: Signal, onBibleChange: 'handleBibleChange', _onAutoClick: 'handleAutoClick', isChrome: true}
     ],
@@ -45,6 +49,8 @@ module.exports = kind({
             pc_text = null,
             cc_text = null,
             bookName = null,
+            cla = this.linkClasses + ' ' + this.classesActive,
+            cli = this.linkClasses + ' ' + this.classesInactive,
             bible = (this.bibles) ? this.bibles : '';
 
         // Next Book
@@ -88,7 +94,7 @@ module.exports = kind({
             href:  pb_link,
             title: pb_text,
             allowHtml: true,
-            classes: (pb_link) ? 'active' : 'inactive',
+            classes: (pb_link) ? cla : cli,
             content: this.prevBookText
         });        
 
@@ -98,7 +104,7 @@ module.exports = kind({
             href:  pc_link,
             title: pc_text,
             allowHtml: true,
-            classes: (pc_link) ? 'active' : 'inactive',
+            classes: (pc_link) ? cla : cli,
             content: this.prevChapterText
         });        
 
@@ -108,7 +114,7 @@ module.exports = kind({
             href:  cc_link,
             title: cc_text,
             allowHtml: true,
-            classes: (cc_link) ? 'active' : 'inactive',
+            classes: (cc_link) ? cla : cli,
             content: this.currentChapterText
         });        
 
@@ -118,7 +124,7 @@ module.exports = kind({
             href:  nc_link,
             title: nc_text,
             allowHtml: true,
-            classes: (nc_link) ? 'active' : 'inactive',
+            classes: (nc_link) ? cla : cli,
             content: this.nextChapterText
         });        
 
@@ -128,7 +134,7 @@ module.exports = kind({
             href:  nb_link,
             title: nb_text,
             allowHtml: true,
-            classes: (nb_link) ? 'active' : 'inactive',
+            classes: (nb_link) ? cla : cli,
             content: this.nextBookText
         });
     },

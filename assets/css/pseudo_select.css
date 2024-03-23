@@ -66,6 +66,8 @@
 	white-space: nowrap;
 	padding: 1px 5px;
 
+/*    background-color: green;*/
+
     /* Doesn't work - Less complies it as 80%!! */
     /* max-width: calc(100% - 20px);*/
     
@@ -79,6 +81,16 @@
 	padding-right: 3px;
 	padding-top: 2px;
 	font-size: 12px;
+
+/*    background-color: orange;*/
+}
+
+.bss_pseudo_select_button span {
+/*    background-color: yellow;*/
+/*    padding-right: 3px;
+    padding-top: 2px;*/
+    display: inline-block;
+    user-select: none;
 }
 
 .bss_is_mobile .bss_pseudo_select_button {

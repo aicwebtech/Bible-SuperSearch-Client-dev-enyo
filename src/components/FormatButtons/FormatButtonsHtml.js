@@ -388,7 +388,7 @@ module.exports = kind({
                 ontap: 'handleBookmarkCurrent',
                 attributes: {title: 'Bookmark'},
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'bookmark'}
+                    {tag: 'span', classes: 'material-icons icon', content: 'bookmark_add'}
                 ],
             },            
             {

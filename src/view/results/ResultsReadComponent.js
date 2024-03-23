@@ -176,6 +176,17 @@ module.exports = kind({
                         navVisible = true;
                     }
                 } else {                    
+                    // Prevent side buttons showing if (only) Testament or Reference showing 
+                    if(this.$.TestamentRow && this._isElementPartiallyInViewport(this.$.TestamentRow.hasNode())) {
+                        this.log('TestamentRow Showing');
+                        navVisible = true;
+                    }                    
+
+                    if(this.$.ReferenceRow && this._isElementPartiallyInViewport(this.$.ReferenceRow.hasNode())) {
+                        this.log('ReferenceRow Showing');
+                        navVisible = true;
+                    }
+
                     if(this.navButton_1 && this._isElementPartiallyInViewport(this.navButton_1.hasNode(), navVisOffset1)) {
                         navVisible = true;
                     }        

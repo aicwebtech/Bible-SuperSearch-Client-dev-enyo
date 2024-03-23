@@ -8,6 +8,7 @@ var i18nComponent = require('../Locale/i18nComponent');
 var TextArea = require('enyo/TextArea');
 var Input = require('enyo/Input');
 var Image = require('../Image');
+var utils = require('enyo/utils');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -127,10 +128,13 @@ module.exports = kind({
             return;
         }
 
-        return this.app._copyComponentContent(this.$.FullUrl, 'value');
+        return this.copyFullUrlHelper();
     },    
     copyShortUrl: function() {
         return this.app._copyComponentContent(this.$.ShortUrl, 'value');
+    },
+    copyFullUrlHelper: function() {
+        return this.app._copyComponentContent(this.$.FullUrl, 'value');
     },
     share: function() {
         if(navigator.share) {
@@ -143,11 +147,15 @@ module.exports = kind({
                 this.app.debug && this.log('Successful share');
             }), 
             utils.bind(this, function() {
-                this.app.debug && this.log('Failed to share');
+                this.app.debug && this.log('Failed to share 1');
+                // Use our generic copy in case the browser share dialog fails
+                this.copyFullUrlHelper();
             }));
 
             promise.catch(utils.bind(this, function(error) {
-                this.app.debug && this.log('Failed to share');
+                this.app.debug && this.log('Failed to share 2');
+                // Use our generic copy in case the browser share dialog fails
+                this.copyFullUrlHelper();
             }));
             
             return true;

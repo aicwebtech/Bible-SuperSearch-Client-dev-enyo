@@ -655,7 +655,6 @@ module.exports = kind({
         }
     },
     handleGenericReposition: function(inSender, inEvent) {
-        this.log();
         this.determineActiveComponent();
     },
     determineActiveComponent: function() {

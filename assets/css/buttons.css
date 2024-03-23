@@ -294,7 +294,16 @@
     line-height: 29px;
     border: 1px solid #656565;
     background-color: #a7c9f9;
-    font-size: 16px !important;
+}
+
+.html_nav_buttons a.styleable {
+    font-size: 18px !important;
+/*    font-size: 16px !important;*/
+    font-family: 'Free Sans';
+}
+
+.html_nav_buttons a.material-icons {
+    font-size: 24px !important;
 }
 
 .html_nav_buttons a.active:link, .html_nav_buttons a.active:visited {
@@ -309,6 +318,17 @@
 .html_nav_buttons a.inactive {
     background-color: #dddddd;
     /*background-color: transparent;*/
+}
+
+.html_nav_buttons a.inactive:hover {
+    /* don't do anything, link is inactive */
+    background-color: #dddddd;
+    text-decoration: none;
+    /*background-color: transparent;*/
+}
+
+.html_nav_buttons a {
+    text-decoration: none;
 }
 
 .biblesupersearch_copy_settings .presets button {

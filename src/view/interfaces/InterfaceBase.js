@@ -20,6 +20,7 @@ var NavButtons = require('../../components/NavButtons/NavClassic');
 var FormatButtons = require('../../components/FormatButtons/FormatButtonsHtml');
 var Pager = require('../../components/Pagers/ClassicPager');
 var MaterialIconsStyle = require('../../components/Styles/MaterialIcons');
+var FreeSansStyle = require('../../components/Styles/FreeSans');
 
 // Base kind for all Application views
 module.exports = kind({
@@ -69,6 +70,7 @@ module.exports = kind({
         this.addRemoveClass('bss_is_desktop', !client.isMobile);
 
         this.createComponent({kind: MaterialIconsStyle});
+        this.createComponent({kind: FreeSansStyle});
 
         this._dialogCreateHelper(SettingsDialog, 'SettingsDialog');
 
