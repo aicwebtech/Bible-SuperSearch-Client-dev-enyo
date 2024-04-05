@@ -59,17 +59,26 @@
 
 .biblesupersearch_expanding_form .input_row_wide {
     text-align: center;
-    margin-bottom: 5px;
+/*    margin-bottom: 5px;*/
+/*    background-color: grey;*/
+    width: 85%;
+    margin: 0 auto 5px;
 }
 
 .biblesupersearch_expanding_form .input_row_wide textarea, 
 .biblesupersearch_expanding_form .input_row_wide .bible, 
 .biblesupersearch_expanding_form .input_row_wide input,
+.biblesupersearch_expanding_form .input_row_wide select,
 .biblesupersearch_expanding_form .input_row_wide .bss_pseudo_autocomplete 
 {
-    width: 85%;
-    margin: 0 auto;
+    width: 100%;
+/*    margin: 0 auto;*/
     padding: 0;
+}
+
+.biblesupersearch_expanding_form .input_row_wide input {
+    width: calc(~'100% - 2px');
+    padding: 1px;
 }
 
 .biblesupersearch_expanding_form .input_row_wide button {
@@ -223,6 +232,13 @@
 }*/
 
 @media only screen and (max-width: 380px) {
+    .biblesupersearch_expanding_form .input_row {
+        width: 85%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 10px;
+    }
+
     .biblesupersearch_expanding_form .input_row .label {
         display: block;
         vertical-align: top;
@@ -234,13 +250,18 @@
 
     .biblesupersearch_expanding_form .input_row .element {
         display: block;
-        width: 99%;
+        width: 100%;
         max-width: initial;
     }
 
     .biblesupersearch_expanding_form .input_row_wide textarea {
 /*        width: 100%;
         max-width: 498px;*/
+    }
+
+    .biblesupersearch_expanding_form .input_row_checkbox {
+        line-height: 25px;
+        text-align: right;
     }
 
     .biblesupersearch_expanding_form .input_row .element input {
@@ -253,5 +274,6 @@
     .biblesupersearch_expanding_form  .input_row_checkbox .checkbox_container {
         display: block;
         width: 100%;
+        text-align: right;
     }
 }

@@ -14,7 +14,7 @@ var easing = require('layout/easing');
 // var app = require('../../app');
 // var i18n = require('enyo/i18n');
 var i18n = require('../../components/i18n');
-var LocaleSelector = require('../../components/Locale/LocaleSelector');
+var LocaleSelector = require('../../components/Locale/LocaleSelectorOld');
 var inc = require('../../components/Locale/i18nComponent');
 var i18n = require('../../components/Locale/i18nContent');
 var Autocomplete = require('../../components/PseudoSelect/PseudoAutocompleteReference');
@@ -29,11 +29,63 @@ module.exports = kind({
             classes: 'biblesupersearch_expanding_form expanding',
             components: [
                 // {classes: 'input_row_wide', components: [
-                //     {name: 'Locale', kind: LocaleSelector}
+                //     {name: 'Locale', kind: LocaleSelector, _style: "width:100%; max-width:500px"}
+                // ]},
+
+                // {classes: 'input_row_wide', components: [
+                //     {classes:'biblesupersearch_multiselect bible', components: [
+                //         {components: [
+                //             {name: 'Locale', kind: LocaleSelector, style: "width:100%; max-width:500px"}
+                //         ]}
+                //     ]}
+                // ]},                        
+                // {classes: 'input_row_wide', components: [
+                //     {_classes:'biblesupersearch_multiselect bible', components: [
+                //         {components: [
+                //             {name: 'Locale', kind: LocaleSelector, style: "width:100%; max-width:500px"}
+                //         ]}
+                //     ]}
+                // ]},                         
+                // {classes: 'input_row_wide', components: [
+                //     {classes:'biblesupersearch_multiselect', components: [
+                //         {components: [
+                //             {name: 'Locale', kind: LocaleSelector, style: "width:100%; max-width:500px"}
+                //         ]}
+                //     ]}
+                // ]},                    
+                // {classes: 'input_row_wide', components: [
+                //     {classes:'bible', components: [
+                //         {components: [
+                //             {name: 'Locale', kind: LocaleSelector, style: "width:100%; max-width:500px"}
+                //         ]}
+                //     ]}
+                // ]},                       
+                // {classes: 'input_row_wide', components: [
+                //     {classes:' bible ', components: [
+                //         {components: [
+                //             {name: 'Locale', kind: LocaleSelector, style: "width:100%; max-width:500px"}
+                //         ]}
+
+                //     ]}
                 // ]},                  
                 {classes: 'input_row_wide', components: [
-                    {name: 'request', kind: Autocomplete, placeholder: 'Enter search keyword(s) or passage reference(s)', enterSubmit: true},
-                ]},                                    
+                    {
+                        name: 'request', 
+                        kind: Autocomplete, 
+                        // kind: Input,
+                        placeholder: 'Enter search keyword(s) or passage reference(s)', 
+                        enterSubmit: true
+                    },
+                ]},                    
+                // {classes: 'input_row_wide', components: [
+                //     {
+                //         name: 'lunch', 
+                //         // kind: Autocomplete, 
+                //         kind: Input,
+                //         placeholder: 'Enter search bacon or ham sandwhich(es)', 
+                //         enterSubmit: true
+                //     },
+                // ]},                                    
                 {classes: 'input_row_wide', components: [
                     {classes: 'element', components: [
                         {

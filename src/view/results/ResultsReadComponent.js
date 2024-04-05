@@ -14,6 +14,7 @@ module.exports = kind({
     navButton_1: null,
     navButton_2: null,
     sideButtons: false,
+    passage: null,
 
     // Published
     singleVerse: false,
@@ -44,8 +45,22 @@ module.exports = kind({
             classes: 'bss_side_swipe_button_container',
 
             components: [
-                {classes: 'bss_side_swipe_button', content: '&lt;', allowHtml: true, style: 'float:left', ontap: 'clickPrev'},
-                {classes: 'bss_side_swipe_button', content: '&gt;', allowHtml: true, style: 'float:right', ontap: 'clickNext'},
+                {
+                    name: 'SideButtonPrev', 
+                    classes: 'bss_side_swipe_button', 
+                    content: '&lt;', 
+                    allowHtml: true, 
+                    style: 'float:left', 
+                    ontap: 'clickPrev'
+                },
+                {
+                    name: 'SideButtonNext', 
+                    classes: 'bss_side_swipe_button', 
+                    content: '&gt;', 
+                    allowHtml: true, 
+                    style: 'float:right', 
+                    ontap: 'clickNext'
+                },
             ]
         }
     ],
@@ -142,15 +157,28 @@ module.exports = kind({
         this.scrolling = false;
     },
     handleGenericReposition: function(inSender, inEvent) {
-        this.log();
-
         var visible = false
             navVisible = false,
             hasPaging = this.owner.hasPaging,
             navVisOffset1 = 30 + parseInt(this.app.configs.sideSwipeNavHideThresholdTop, 10),
             navVisOffset2 = 30 + parseInt(this.app.configs.sideSwipeNavHideThresholdBottom, 10),
             copyMode = this.app.UserConfig.get('copy') || false,
-            pagVisOffset = 5;
+            pagVisOffset = 5,
+            navType = null,
+            nav = null;
+
+        if(hasPaging) {
+            nav = this.owner.paging;
+            navType = 'paging';
+            this.$.SideButtonPrev.set('showing', nav.current_page != 1);
+            this.$.SideButtonNext.set('showing', nav.current_page != nav.last_page);
+
+        } else if (this.passage && this.passage.nav) {
+            nav = this.passage.nav;
+            navType = 'browsing';
+            this.$.SideButtonPrev.set('showing', nav.pcb != null);
+            this.$.SideButtonNext.set('showing', nav.ncb != null);
+        } 
 
         if(this.app.configs.sideSwipePageChapter && this.app.configs.sideSwipePageChapter != 'false') {
             // todo, make with with search pagination

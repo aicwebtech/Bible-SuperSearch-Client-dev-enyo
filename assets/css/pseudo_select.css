@@ -49,11 +49,11 @@
 }
 */
 .bss_pseudo_input input {
-    width: 99%;
+    width: 100%;
 }
 
 .bss_pseudo_autocomplete_input {
-    width: 99%;
+    width: 100%;
     box-sizing: border-box;
 }
 

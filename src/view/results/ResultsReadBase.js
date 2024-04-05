@@ -19,7 +19,7 @@ module.exports = kind({
     // Single verse, multi Bible
     renderSingleVerseParallelBible: function(pd) {
         // this.log();
-        var Container = this._createContainer();
+        var Container = this._createContainer(pd);
         var addBibleHeader = false,
             addReferenceRow = false,
             renderStyle = this.renderStyle;
@@ -146,7 +146,7 @@ module.exports = kind({
     // Multi verse, single Bible
     renderPassageParallelBible: function(pd) {
         // this.log();
-        var Container = this._createContainer();
+        var Container = this._createContainer(pd);
         // this.singleVerseCount = 0;
         // this.singleVerseBibleHeaderNext = true;
 

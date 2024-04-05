@@ -88,6 +88,7 @@ module.exports = kind({
 
         if(!this.preventDefaultSubmit && ref && ref != '') {
             var formData = {};
+            ref = this.app.vt(ref);
 
             if(this.$.reference) {
                 formData.reference = ref;

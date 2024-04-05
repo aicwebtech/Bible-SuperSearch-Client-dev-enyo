@@ -275,11 +275,19 @@ module.exports = kind({
         {from: 'app.UserConfig.page_limit', to: '$.page_limit.value', oneWay: false, transform: function(value, dir) {
             // console.log('Settings page_limit', value, dir);
             return value;
+        }},        
+        // We hide the render style selector when in copy mode, re: it will collide with the pre-set copy settingss
+        // Users can assess it under the 'custom' copy settings
+        {from: 'app.UserConfig.copy', to: '$.render_style.showing', oneWay: true, transform: function(value, dir) {
+            console.log('Settings COPY renderstyle', value, dir);
+            return value ? false : true;
         }},
+
         {from: 'app.UserConfig.render_style', to: 'renderStyle', oneWay: false, transform: function(value, dir) {
             // console.log('SETTINGS renderStyle', value, dir);
 
             if(dir == 1 && this.$[value]) {
+            // if( this.$[value]) {
                 this.$.render_style.set('active', this.$[value]); //.render();
                 this.$[value].set('checked', true);
             }
@@ -342,7 +350,11 @@ module.exports = kind({
         var value = (inEvent.active) ? inEvent.active.name : null;       
 
         if(inEvent.originator.name == 'render_style') {
-            this.set('renderStyle', value);
+            if(!this.app.UserConfig.get('copy')) {
+                this.set('renderStyle', value);
+            } else {
+                this.set('renderStyle', this.get('renderStyle'));
+            }
         }             
 
         if(inEvent.originator.name == 'font') {

@@ -383,10 +383,11 @@ module.exports = kind({
 
         return false;
     },
-    _createContainer: function() {
+    _createContainer: function(passage) {
         return this.createComponent({
             kind: ResCom,
             tag: 'table',
+            passage: passage || null,
             // attributes:{border: 1},
             classes: 'biblesupersearch_render_table'
         });
