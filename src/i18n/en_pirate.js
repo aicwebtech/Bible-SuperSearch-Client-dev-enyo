@@ -323,7 +323,7 @@ module.exports = {
     'Salvation by faith, not works': 'Lifee by faithe, not workies',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Yare life experience',
     'Christ the suffering servant': 'Capitan Christ ye deck servant',
-    'Christ’s crucifixion foretold': 'Capitan Christ fortoold deatih',
+    'Christ\'s crucifixion foretold': 'Capitan Christ fortoold deatih',
 
     // Bible downloads dialog
     'Select Bible(s)' : 'Choose ye Sworde(s)',

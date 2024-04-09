@@ -41,7 +41,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.4.0',
+    applicationVersion: '5.5.0rc5',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -69,6 +69,7 @@ var App = Application.kind({
         os: null,
         browser: null,
         isMobile: false,
+        isWebkit: false,
     },
     preventRedirect: false,
     shortHashUrl: '',
@@ -133,8 +134,6 @@ var App = Application.kind({
         // Older rootDir code, retaining for now
         this.rootDir = (typeof biblesupersearch_root_directory == 'string') ? biblesupersearch_root_directory : '/biblesupersearch';
         
-        this.detectClient();
-
         if(typeof biblesupersearch != 'object' || biblesupersearch == null) {
             biblesupersearch = {
                 app: this,
@@ -211,27 +210,63 @@ var App = Application.kind({
         else if(navigator.userAgent.indexOf('Android') !== -1) {
             this.client.os = 'Andriod';
             this.client.isMobile = true;
+        } else if(navigator.userAgent.indexOf('Linix') !== -1) {
+            this.client.os = 'Linux';
+            this.client.isMobile = true;
         }
 
         // todo: Mac OS / iOS detection, the below are just guesses
-        else if (navigator.userAgent.indexOf('OSX') !== -1 || navigator.userAgent.indexOf('MacOS') !== -1) {
-            this.client.os = 'MacOS';
-        } else if (navigator.userAgent.indexOf('iOS') !== -1) {
+        else if (navigator.userAgent.indexOf('iPad') !== -1 || navigator.userAgent.indexOf('iPhone') !== -1) {
             this.client.os = 'iOS';
             this.client.isMobile = true;
+        }
+        else if (navigator.userAgent.indexOf('Macintosh') !== -1 || navigator.userAgent.indexOf('Mac OS') !== -1) {
+            this.client.os = 'MacOS';
+        } 
+
+        if(navigator.userAgent.indexOf('WebKit') !== -1) {
+            this.client.isWebkit = true; // Chrome, Safari, Edge, ect
         }
 
         if(navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > -1) {
             this.client.browser = 'IE'; // MS IE no longer officially supported ... 
             window.console && console.log('Using Internet Explorer ... some minor functionality may be disabled ...');
         } else if(navigator.userAgent.indexOf('Firefox') !== -1) {
-            this.client.browser = 'Firefox';
-        } else if(navigator.userAgent.indexOf('WebKit') !== -1) {
-            this.client.browser = 'WebKit'; // Chrome, Safari, Edge, ect
+            this.client.browser = 'Firefox';           
+        } else if(navigator.userAgent.indexOf('Samsung') !== -1) {
+            this.client.browser = 'Samsung'; // Webkit      
+        }         
+        else if(navigator.userAgent.indexOf('Edg/') !== -1) {
+            this.client.browser = 'Edge'; // Webkit       
+        }              
+        else if(navigator.userAgent.indexOf('OPR/') !== -1) {
+            this.client.browser = 'Opera';  // Webkit       
+        }               
+        else if(navigator.userAgent.indexOf('Chrome') !== -1) {
+            this.client.browser = 'Chrome'; // Webkit - 2nd to last
+        }         
+        else if(navigator.userAgent.indexOf('Safari') !== -1) {
+            this.client.browser = 'Safari'; // Webkit - LAST     
+        } 
+        else if(navigator.userAgent.indexOf('WebKit') !== -1) {
+            this.client.browser = 'WebKit'; // Webkit - other (generic)
+        } else {
+            this.client.browser = 'unknown';
         }
 
         this.clientBrowser = this.client.browser;
         this.debug && this.log('client', this.client);
+
+        if(this.debug) {
+            // var msg = [];
+
+            // msg.push(this.client.isMobile ? 'IS MOBILE' : 'Not mobile');
+            // msg.push('Browser: ' + this.client.browser);
+            // msg.push('OS: ' + this.client.os);
+            // msg.push('User Agent: ' + navigator.userAgent);
+
+            // alert(msg.join('\n'));
+        }
     },
     createInstance: function(container, configs) {
         var inst = new App;
@@ -400,6 +435,8 @@ var App = Application.kind({
         if(this.configs.debug) {
             this.debug = this.configs.debug;
         }
+
+        this.detectClient();
 
         //window.biblesupersearch_configs_final = this.configs;
 

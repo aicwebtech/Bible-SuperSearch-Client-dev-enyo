@@ -68,6 +68,9 @@ module.exports = kind({
 
         this.addRemoveClass('bss_is_mobile', client.isMobile);
         this.addRemoveClass('bss_is_desktop', !client.isMobile);
+        this.addRemoveClass('bss_browser_is_webkit', client.isWebkit);
+        this.addClass('bss_os_' + client.os.toLowerCase());
+        this.addClass('bss_browser_' + client.browser.toLowerCase());
 
         this.createComponent({kind: MaterialIconsStyle});
         this.createComponent({kind: FreeSansStyle});

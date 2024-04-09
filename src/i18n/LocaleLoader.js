@@ -1,5 +1,5 @@
 module.exports = {
-    // ar: require('./ar'),
+    // ar: require('./ar'), // NEW, trans works, UI needs some work to support RTL languages
     en: require('./en'),
     // en_US: require('./en_US'),
     en_pirate: require('./en_pirate'),
@@ -8,6 +8,7 @@ module.exports = {
     fr: require('./fr'),
     hi: require('./hi'),
     lv: require('./lv'),
+    pt: require('./pt'), // NEW
     ro: require('./ro'),
     ru: require('./ru'),
     zh_TW: require('./zh_TW'),

@@ -321,7 +321,7 @@ module.exports = {
     'Salvation by faith, not works': 'Спасение по вере, а не по сделанных дел',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Христианская жизнь и опыт. Как Апостол Павел следовал за Иисусом Христом.',
     'Christ the suffering servant': 'Служение и страдания Иисуса Христа',
-    'Christ’s crucifixion foretold': 'Пророчества о распятии Иисуса Христа',
+    'Christ\'s crucifixion foretold': 'Пророчества о распятии Иисуса Христа',
 
     // Bible downloads dialog
     'Download': 'Скачать',

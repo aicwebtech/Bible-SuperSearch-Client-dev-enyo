@@ -9,6 +9,30 @@
 	cursor: default;
 }
 
+/*.bss_browser_chrome .bss_pseudo_select {
+    background-color: green;
+}
+
+.bss_browser_edge .bss_pseudo_select {
+    background-color: orange;
+}
+
+.bss_browser_samsung .bss_pseudo_select {
+    background-color: blue;
+}
+
+.bss_browser_firefox .bss_pseudo_select {
+    background-color: yellow;
+}
+
+.bss_browser_safari .bss_pseudo_select {
+    background-color: pink;
+}
+
+.bss_browser_webkit .bss_pseudo_select {
+    background-color: red;
+}
+*/
 .bss_pseudo_autocomplete {
     position: relative;
     display: inline-block;
@@ -31,7 +55,7 @@
 	width: 100%;
 	text-align: left;
 	z-index: 1000001;
-	border: 1px solid #aaaaaa;
+	border: 1px solid #999999;
 	min-height: 10px;
 	max-height: 200px; /* this shoule be responsive */
 	overflow-y: auto;
@@ -94,7 +118,7 @@
 }
 
 .bss_is_mobile .bss_pseudo_select_button {
-    padding-top: 1px;
+    padding-top: 0px;
     font-size: 0.9em;
 }
 

@@ -313,7 +313,7 @@ module.exports = {
     'Salvation by faith, not works': 'Salvación por fe, no por obras',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Vida y experiencia cristianas. &nbsp; El apóstol Pablo renunció a las credenciales bajo la ley del Antiguo Testamento para seguir a Cristo',
     'Christ the suffering servant': 'Cristo el siervo que sufre',
-    'Christ’s crucifixion foretold': 'Se predice la crucifixión de Cristo',
+    'Christ\'s crucifixion foretold': 'Se predice la crucifixión de Cristo',
 
     // Bible downloads dialog
     'Download': 'Descargar',

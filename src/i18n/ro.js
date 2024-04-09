@@ -320,7 +320,7 @@ module.exports = {
     'Salvation by faith, not works': 'Mântuirea prin credință, nu fapte',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Viața și experiența lui Cristos. &nbsp;Apostolul Pavel a renunțat la acreditările conform Legii Vechiului Testament pentru a-L urma pe Cristos',
     'Christ the suffering servant': 'Cristos un Servitor în suferințe',
-    'Christ’s crucifixion foretold': 'Prezicerea cruificării lui Cristos',
+    'Christ\'s crucifixion foretold': 'Prezicerea cruificării lui Cristos',
 
     // Bible downloads dialog
     'Download': 'Descărcați',

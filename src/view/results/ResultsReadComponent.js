@@ -38,31 +38,6 @@ module.exports = kind({
             onkeyup: 'handleKey', // Keyboard events need to be handled by Signal per docs
             isChrome: true
         },
-        {
-            name: 'SideSwipeButtons',
-            isChrome: true,
-            showing: true,
-            classes: 'bss_side_swipe_button_container',
-
-            components: [
-                {
-                    name: 'SideButtonPrev', 
-                    classes: 'bss_side_swipe_button', 
-                    content: '&lt;', 
-                    allowHtml: true, 
-                    style: 'float:left', 
-                    ontap: 'clickPrev'
-                },
-                {
-                    name: 'SideButtonNext', 
-                    classes: 'bss_side_swipe_button', 
-                    content: '&gt;', 
-                    allowHtml: true, 
-                    style: 'float:right', 
-                    ontap: 'clickNext'
-                },
-            ]
-        }
     ],
 
     rendered: function() {
@@ -148,12 +123,10 @@ module.exports = kind({
         }
     },
     handleGlobalScroll: function(inSender, inEvent) {
-        this.log();
         this.scrolling = true;
         this.handleGenericReposition(inSender, inEvent);
     },    
     handleGlobalScrollEnd: function(inSender, inEvent) {
-        this.log();
         this.scrolling = false;
     },
     handleGenericReposition: function(inSender, inEvent) {
@@ -170,19 +143,17 @@ module.exports = kind({
         if(hasPaging) {
             nav = this.owner.paging;
             navType = 'paging';
-            this.$.SideButtonPrev.set('showing', nav.current_page != 1);
-            this.$.SideButtonNext.set('showing', nav.current_page != nav.last_page);
+            this.owner.$.SideButtonPrev.set('showing', nav.current_page != 1);
+            this.owner.$.SideButtonNext.set('showing', nav.current_page != nav.last_page);
 
         } else if (this.passage && this.passage.nav) {
             nav = this.passage.nav;
             navType = 'browsing';
-            this.$.SideButtonPrev.set('showing', nav.pcb != null);
-            this.$.SideButtonNext.set('showing', nav.ncb != null);
+            this.owner.$.SideButtonPrev.set('showing', nav.pcb != null);
+            this.owner.$.SideButtonNext.set('showing', nav.ncb != null);
         } 
 
         if(this.app.configs.sideSwipePageChapter && this.app.configs.sideSwipePageChapter != 'false') {
-            // todo, make with with search pagination
-            // need to ensure buttons only appear ONCE though
 
             if(!this.get('active') || copyMode) {
                 this.set('sideButtons', false);
@@ -194,7 +165,6 @@ module.exports = kind({
                 }
 
                 // NEED TO DETERMINE IF NAV/PAGING IS ACCESIBLE (IE TOP LEVEL).  IF IT'S IN THE VIEWPORT BUT NOT ACCESSIBLE, THEN THE BUTTONS SHOLD SHOW!
-
                 if(hasPaging) {
                     if(this.owner.$.Pager_1 && this._isElementPartiallyInViewport(this.owner.$.Pager_1.hasNode())) {
                         navVisible = true;
@@ -249,39 +219,6 @@ module.exports = kind({
     activeChanged: function(was, is) {
         this.addRemoveClass('bss_render_active', is);
     },
-    clickNext: function() {
-        this.app.debug && this.log();
-
-        if(!this._canPrevNext()) {
-            return;
-        }
-
-        this.waterfall('onAutoClick', {button: '_next'});
-        Signal.send('onAutoClick', {button: '_next'});
-    },
-    clickPrev: function() {
-        this.app.debug && this.log();
-
-        if(!this._canPrevNext()) {
-            return;
-        }
-
-        this.waterfall('onAutoClick', {button: '_prev'});
-        Signal.send('onAutoClick', {button: '_prev'});
-    }, 
-
-    _canPrevNext: function() {
-        if(this.get('active')) {
-            return true;
-        }
-
-        if(this.owner.hasPaging) {
-            return true;
-        }
-
-        return false;
-    },
-
     isVisible: function() {
         if(!this.hasNode()) {
             return false;
@@ -355,8 +292,10 @@ module.exports = kind({
     },
     sideButtonsChanged: function(was, is) {
         // this.$.SideSwipeButtons.set('showing', !!is);
+        this.owner.set('sideButtons', is);
 
-        this.$.SideSwipeButtons.addRemoveClass('fadein', !!is);
+        // this.owner.$.SideSwipeButtons.addRemoveClass('fadein', !!is);
+        // this.$.SideSwipeButtons.set('showing', is);
 
         // if(is) {
         //     // this.$.SideSwipeButtons.set('showing', true);
@@ -366,6 +305,5 @@ module.exports = kind({
         //     // this.$.SideSwipeButtons.set('showing', false);
         // }
     }
-
 });
 

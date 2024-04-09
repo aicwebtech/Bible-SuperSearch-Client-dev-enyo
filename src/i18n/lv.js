@@ -319,7 +319,7 @@ module.exports = {
     'Salvation by faith, not works': 'Pestīšana pēc ticības, nevis darbiem',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Kristīgā dzīve un pieredze. Apustuļa Pāvila sekošana Jēzum Kristum.',
     'Christ the suffering servant': 'Jēzus Kristus kalpošana un ciešanas',
-    'Christ’s crucifixion foretold': 'Pravietojumi par Jēzus Kristus krustā sišanu',
+    'Christ\'s crucifixion foretold': 'Pravietojumi par Jēzus Kristus krustā sišanu',
 
     // Bible downloads dialog
     'Download': 'Lejupielādēt',

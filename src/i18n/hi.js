@@ -322,7 +322,7 @@ module.exports = {
     'Salvation by faith, not works': 'विश्वास से मुक्ति, कर्म से नहीं',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'ईसाई जीवन और अनुभव. &nbsp;प्रेषित पॉल ने मसीह का अनुसरण करने के लिए ओटी कानून के तहत प्रमाण-पत्र त्याग दिए',
     'Christ the suffering servant': 'मसीह पीड़ित सेवक',
-    'Christ’s crucifixion foretold': 'मसीह के सूली पर चढ़ने की भविष्यवाणी की गई',
+    'Christ\'s crucifixion foretold': 'मसीह के सूली पर चढ़ने की भविष्यवाणी की गई',
 
     // Bible downloads dialog
     'Download': 'डाउनलोड करना',

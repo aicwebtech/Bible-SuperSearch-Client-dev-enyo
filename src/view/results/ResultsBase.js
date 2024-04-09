@@ -35,6 +35,7 @@ module.exports = kind({
     renderStyle: 'passage',
     _localeChangeRender: false,
     activeComponent: null,
+    sideButtons: false,
 
     published: {
         resultsData: null,
@@ -66,7 +67,36 @@ module.exports = kind({
         },
         {name: 'DialogsContainer', components: [
             {name: 'StrongsHover', kind: StrongsHoverDialog}
-        ]}
+        ]},
+        {
+            name: 'SideSwipeButtons',
+            isChrome: true,
+            showing: true,
+            classes: 'bss_side_swipe_button_container',
+
+            components: [
+                {
+                    name: 'SideButtonPrev', 
+                    classes: 'bss_side_swipe_button', 
+                    content: '&lt;', 
+                    allowHtml: true, 
+                    style: 'float:left', 
+                    // onmouseover: 'sideButtonMouseOver',
+                    // onmouseout: 'sideButtonMouseOut',
+                    ontap: 'clickPrev'
+                },
+                {
+                    name: 'SideButtonNext', 
+                    classes: 'bss_side_swipe_button', 
+                    content: '&gt;', 
+                    allowHtml: true, 
+                    style: 'float:right', 
+                    // onmouseover: 'sideButtonMouseOver',
+                    // onmouseout: 'sideButtonMouseOut',
+                    ontap: 'clickNext'
+                },
+            ]
+        }
     ],
 
     // observers: [
@@ -677,6 +707,43 @@ module.exports = kind({
     handleLocaleChange: function(inSender, inEvent) {
         this._localeChangeRender = true;
         this.renderResults();
+    },
+    clickNext: function() {
+        this.app.debug && this.log();
+        this.activeComponent.waterfall('onAutoClick', {button: '_next'});
+        Signal.send('onAutoClick', {button: '_next'});
+    },
+    clickPrev: function() {
+        this.app.debug && this.log();
+        this.activeComponent.waterfall('onAutoClick', {button: '_prev'});
+        Signal.send('onAutoClick', {button: '_prev'});
+    },
+    sideButtonsChanged: function(was, is) {
+        var isfr = is; // is for real
+
+        // Prevent racing coindition between one componet turning buttons off and another turning them on
+        if(this.activeComponent && this.activeComponent.get('sideButtons')) {
+            isfr = true;
+            this.sideButtons = isfr;
+        }
+
+        if(isfr == was) {
+            return; // if no change, do nothing further
+        }
+
+        // this.log();
+        // this.$.SideSwipeButtons.set('showing', !!is);
+
+        this.$.SideSwipeButtons.addRemoveClass('fadein', !!isfr);
+        // this.$.SideSwipeButtons.set('showing', is);
+
+        // if(is) {
+        //     // this.$.SideSwipeButtons.set('showing', true);
+        //     this.$.SideSwipeButtons.hasNode().classList.toggle('fadein');
+        // } else {
+        //     this.$.SideSwipeButtons.hasNode().classList.toggle('fadein');
+        //     // this.$.SideSwipeButtons.set('showing', false);
+        // }
     }
 
 });

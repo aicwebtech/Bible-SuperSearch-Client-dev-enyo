@@ -29,7 +29,7 @@ module.exports = {
     'Parallel Bible #': '',
     'Select a Bible': '',
     'Add Bible': '',
-    'Remove Bible': '', // 5.2
+    'Remove Bible': '', 
     'Random Chapter': '',
     'Random Verse': '',
     'Passages': '',
@@ -45,8 +45,8 @@ module.exports = {
     'Find verses containing': '',
     'Restrict search to': '', 
     'Word Search': '',
-    'Clear Form': '', // 4.5
-    'Select Book and Chapter:' : '', // 5.2
+    'Clear Form': '', 
+    'Select Book and Chapter:' : '', 
 
     // Context Links
     'Show full chapter': '',
@@ -66,10 +66,10 @@ module.exports = {
     'Old Testament': '',
     'New Testament': '',
     'Law': '',
-    'History Books': '', // 5.5 Can translate as 'History'
+    'History Books': '', // Can translate as 'History'
     'History': '',
     'Wisdom & Poetry': '',
-    'Prophets Books': '', // 5.5 Can translate as 'Prophets'
+    'Prophets Books': '', // Can translate as 'Prophets'
     'Prophets': '',
     'Major Prophets': '',
     'Minor Prophets': '',
@@ -77,8 +77,6 @@ module.exports = {
     'Epistles': '',
     'Pauline Epistles': '',
     'General Epistles': '',
-
-    // 5.5 part 1
     'End Times Prophecy': '',
     
     // Shortcut Aliases
@@ -93,7 +91,6 @@ module.exports = {
     'Paul': '',
     'General': '',
     'Last Days': '',
-    // End 5.5 part 1
 
     'Look up Passage(s)': '',
     'Enter passage(s)' : '',
@@ -151,8 +148,8 @@ module.exports = {
     'Shrink Text': '',
     'Verse Display': '',
     'Paragraph Display': '',
-    'Passage Display': '', // 4.5
-    'Verse as Passage Display': '', // 5.3
+    'Passage Display': '', 
+    'Verse as Passage Display': '', 
     'EZ Copy': '',  // 'Easy Copy'
     'Read Display': '',
     'Italics': '',                    // * Button text, please keep translation short!
@@ -173,48 +170,49 @@ module.exports = {
     'Advanced': '',
 
     // Descriptions of special formatting features
-    'Formatting': '',  // 5.3
-    'Supported Bibles Only': '',  // 5.3
+    'Formatting': '',  
+    'Supported Bibles Only': '', 
     
-    'strongs_numbers_description': 'Strong\'s Concordance Numbers indicate the underlying Hebrew or Greek words.',  // 5.3
-    'italics_description': 'Italics indicate words added in translating that were not in the original language.',    // 5.3
-    'red_letter_description': 'Words of Christ in Red.', // 5.3
-    'highlight_description': 'Highlighting (bold) of keywords in searches.',  // 5.3
+    // Translate the right-side strings here
+    'strongs_numbers_description': 'Strong\'s Concordance Numbers indicate the underlying Hebrew or Greek words.',  
+    'italics_description': 'Italics indicate words added in translating that were not in the original language.',  
+    'red_letter_description': 'Words of Christ in Red.', 
+    'highlight_description': 'Highlighting (bold) of keywords in searches.', 
 
 
     // Verse Cherry-picking
-    'Select All': '', // 5.0
-    'Select None': '', // 5.0
-    'Select': '', // 5.0
-    'Unselect': '', // 5.0
+    'Select All': '', 
+    'Select None': '', 
+    'Select': '', 
+    'Unselect': '', 
     
     // Copy format options
-    'Copy Format': '', // 5.0
-    'Word Processor': '', // 5.0
-    'Outline' : '', // 5.0
-    'Custom': '', // 5.0
+    'Copy Format': '', 
+    'Word Processor': '', 
+    'Outline' : '', 
+    'Custom': '', 
 
-    'Single Verses': '', // 5.0
-    'Reference - Text': '', // 5.0
-    'Text - Reference': '', // 5.0
-    'Text Only': '', // 5.0
-    'Separate Line': '', // 5.0
+    'Single Verses': '', 
+    'Reference - Text': '', 
+    'Text - Reference': '', 
+    'Text Only': '', 
+    'Separate Line': '', 
 
-    'Multi-verse Passages': '', // 5.0
-    'Reference - Passage': '', // 5.0
-    'Passage - Reference': '', // 5.0
-    'Passage Only': '', // 5.0
-    'Show Verse Number': '', // 5.0
+    'Multi-verse Passages': '', 
+    'Reference - Passage': '', 
+    'Passage - Reference': '', 
+    'Passage Only': '', 
+    'Show Verse Number': '', 
 
-    'Other': '', // 5.0
-    'Abbreviate Books': '', // 5.0
-    'Omit Extra Line Breaks': '', // 5.0
+    'Other': '', 
+    'Abbreviate Books': '', 
+    'Omit Extra Line Breaks': '', 
 
     // Settings Dialog
-    'Settings' : '', // 5.0
-    'Language' : '', // 5.0
-    'Text Display': '', // 5.0
-    'Font Style': '', // 5.0
+    'Settings' : '', 
+    'Language' : '', 
+    'Text Display': '', 
+    'Font Style': '', 
 
     // Result and error messages
     
@@ -324,7 +322,7 @@ module.exports = {
     'Salvation by faith, not works': '',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': '',
     'Christ the suffering servant': '',
-    'Christ’s crucifixion foretold': '',
+    'Christ\'s crucifixion foretold': '',
 
     // Bible downloads dialog
     'Download': '',
@@ -356,9 +354,9 @@ module.exports = {
     'Copy with Text': '',
     'Share Link': '',
     'Share' : '',
-    'Link' : '', // 4.5
-    'Copied to clipboard': '', // 5.2.3
-    'Failed to copy': '', // 5.2.3
+    'Link' : '', 
+    'Copied to clipboard': '', 
+    'Failed to copy': '', 
 
     // Quick Start Help Dialog
     'Quick Start Guide': '',
@@ -398,7 +396,6 @@ module.exports = {
     'words': '',
     'truth': '',
 
-    // 5.5 part 2
     // Searching across language
 
     // Parallel search multi language error messages
@@ -437,8 +434,6 @@ module.exports = {
     'Passages': '',
     'Alias': '',
     'You cannot search for these common words': '',
-    // End 5.5 part 2
-
 
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  

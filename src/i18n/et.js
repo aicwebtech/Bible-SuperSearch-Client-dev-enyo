@@ -350,7 +350,7 @@ module.exports = {
     'Salvation by faith, not works': 'Pääste usust, mitte tegudest',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Kristlik elu ja kogemus. &nbsp;Apostel Paulus loobus VT seadusest tulenevatest volikirjadest, et järgida Kristust',
     'Christ the suffering servant': 'Kristus, kannatav sulane',
-    'Christ’s crucifixion foretold': 'Kristuse ristilöömine on ette kuulutatud',
+    'Christ\'s crucifixion foretold': 'Kristuse ristilöömine on ette kuulutatud',
 
 
     // Bible downloads dialog

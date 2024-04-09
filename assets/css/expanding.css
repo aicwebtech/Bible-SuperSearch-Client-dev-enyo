@@ -47,7 +47,6 @@
 
 .biblesupersearch_expanding_form .input_row .element textarea {
     width: 100%; 
-    /*width: calc(100% - 2px);*/
     height: 16px;
     padding: 0;
     margin: 0;
@@ -76,8 +75,9 @@
     padding: 0;
 }
 
-.biblesupersearch_expanding_form .input_row_wide input {
-    width: calc(~'100% - 2px');
+.biblesupersearch_expanding_form .input_row_wide input,
+.biblesupersearch_expanding_form .input_row_wide select {
+/*    width: calc(~'100% - 2px');*/
     padding: 1px;
 }
 

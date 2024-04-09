@@ -84,10 +84,14 @@ module.exports = kind({
         this.submitDefault();
     },
     submitDefault: function() {
+        this.app.debug && this.log();
         var ref = this.app.configs.landingReference || null;
 
         if(!this.preventDefaultSubmit && ref && ref != '') {
-            var formData = {};
+            var formData = {
+                // bible: this.app.getSelectedBiblesString()
+            };
+            
             ref = this.app.vt(ref);
 
             if(this.$.reference) {
@@ -99,7 +103,10 @@ module.exports = kind({
             this.defaultSubmitting = true;
             this.app.set('scrollMode', 'container_top');
             this._submitFormHelper(formData, false);
+            return true;
         }
+
+        return false;
     },
     clearForm: function() {
         this.set('formData', {});
@@ -190,6 +197,20 @@ module.exports = kind({
         
         formData = this.beforeSubmitForm(formData);
         formData = this.processDefaults(formData);
+
+        if(!this.defaultSubmitting && 
+            (!formData.reference || formData.reference == '') && 
+            (!formData.request || formData.request == '') && 
+            (!formData.search || formData.search == '')
+        ) {
+            this.requestPending = false;
+
+            if(this.submitDefault()) {
+                return;
+            } else {
+                this.requestPending = true;
+            }
+        }
 
         this.app.debug && this.log('Submitted formData', formData);
 
@@ -310,6 +331,8 @@ module.exports = kind({
         this.maxPage = (inResponse.paging && inResponse.paging.last_page) ? inResponse.paging.last_page : null;
         this.page = (inResponse.paging && inResponse.paging.current_page) ? inResponse.paging.current_page : null;
         // this.app.UserConfig.set('copy', false); // force EZ-Copy disabled when submitting the form - make a config for this?
+
+        this.preventDefaultSubmit = false;
 
         if(this.manualRequest) {
             this.updateHash();

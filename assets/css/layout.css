@@ -877,10 +877,6 @@ tr.bss_render_reference_row th {
     color: white;
 }
 
-.bss_render_active {
-/*    background-color: green;*/
-}
-
 .bss_bookmark_edit_dialog .bss_dialog_content {
     overflow-y: hidden;
 }

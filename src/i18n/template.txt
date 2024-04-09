@@ -29,7 +29,7 @@ module.exports = {
     'Parallel Bible #': '',
     'Select a Bible': '',
     'Add Bible': '',
-    'Remove Bible': '', // 5.2
+    'Remove Bible': '', 
     'Random Chapter': '',
     'Random Verse': '',
     'Passages': '',
@@ -45,8 +45,8 @@ module.exports = {
     'Find verses containing': '',
     'Restrict search to': '', 
     'Word Search': '',
-    'Clear Form': '', // 4.5
-    'Select Book and Chapter:' : '', // 5.2
+    'Clear Form': '', 
+    'Select Book and Chapter:' : '', 
 
     // Context Links
     'Show full chapter': '',
@@ -54,17 +54,22 @@ module.exports = {
     'Show this verse': '',
     'Show in context': '',
     'Context': '',
+    'In Context': '',
 
     'Limit Search To': '',
     'Limit search to': '', // Watch case!
     'Entire Bible': '',
     'Passage(s) listed below': '',
     'Passage(s) listed above': '',
+    
+    // Shortcuts
     'Old Testament': '',
     'New Testament': '',
     'Law': '',
+    'History Books': '', // Can translate as 'History'
     'History': '',
     'Wisdom & Poetry': '',
+    'Prophets Books': '', // Can translate as 'Prophets'
     'Prophets': '',
     'Major Prophets': '',
     'Minor Prophets': '',
@@ -72,6 +77,20 @@ module.exports = {
     'Epistles': '',
     'Pauline Epistles': '',
     'General Epistles': '',
+    'End Times Prophecy': '',
+    
+    // Shortcut Aliases
+    'OT': '',
+    'NT': '',
+    'Torah': '',
+    'Wisdom': '',
+    'Major': '',
+    'Minor': '',
+    'Passion': '',
+    'Doctrine': '',
+    'Paul': '',
+    'General': '',
+    'Last Days': '',
 
     'Look up Passage(s)': '',
     'Enter passage(s)' : '',
@@ -116,6 +135,7 @@ module.exports = {
     'Previous Page' : '',
     'First Page' : '',
     'Last Page': '',
+    'Page': '',
     
     // Formatting and dialog buttons
     'A': '',     // First letter in given language
@@ -128,8 +148,8 @@ module.exports = {
     'Shrink Text': '',
     'Verse Display': '',
     'Paragraph Display': '',
-    'Passage Display': '', // 4.5
-    'Verse as Passage Display': '', // 5.3
+    'Passage Display': '', 
+    'Verse as Passage Display': '', 
     'EZ Copy': '',  // 'Easy Copy'
     'Read Display': '',
     'Italics': '',                    // * Button text, please keep translation short!
@@ -150,48 +170,49 @@ module.exports = {
     'Advanced': '',
 
     // Descriptions of special formatting features
-    'Formatting': '',  // 5.3
-    'Supported Bibles Only': '',  // 5.3
+    'Formatting': '',  
+    'Supported Bibles Only': '', 
     
-    'strongs_numbers_description': 'Strong\'s Concordance Numbers indicate the underlying Hebrew or Greek words.',  // 5.3
-    'italics_description': 'Italics indicate words added in translating that were not in the original language.',    // 5.3
-    'red_letter_description': 'Words of Christ in Red.', // 5.3
-    'highlight_description': 'Highlighting (bold) of keywords in searches.',  // 5.3
+    // Translate the right-side strings here
+    'strongs_numbers_description': 'Strong\'s Concordance Numbers indicate the underlying Hebrew or Greek words.',  
+    'italics_description': 'Italics indicate words added in translating that were not in the original language.',  
+    'red_letter_description': 'Words of Christ in Red.', 
+    'highlight_description': 'Highlighting (bold) of keywords in searches.', 
 
 
     // Verse Cherry-picking
-    'Select All': '', // 5.0
-    'Select None': '', // 5.0
-    'Select': '', // 5.0
-    'Unselect': '', // 5.0
+    'Select All': '', 
+    'Select None': '', 
+    'Select': '', 
+    'Unselect': '', 
     
     // Copy format options
-    'Copy Format': '', // 5.0
-    'Word Processor': '', // 5.0
-    'Outline' : '', // 5.0
-    'Custom': '', // 5.0
+    'Copy Format': '', 
+    'Word Processor': '', 
+    'Outline' : '', 
+    'Custom': '', 
 
-    'Single Verses': '', // 5.0
-    'Reference - Text': '', // 5.0
-    'Text - Reference': '', // 5.0
-    'Text Only': '', // 5.0
-    'Separate Line': '', // 5.0
+    'Single Verses': '', 
+    'Reference - Text': '', 
+    'Text - Reference': '', 
+    'Text Only': '', 
+    'Separate Line': '', 
 
-    'Multi-verse Passages': '', // 5.0
-    'Reference - Passage': '', // 5.0
-    'Passage - Reference': '', // 5.0
-    'Passage Only': '', // 5.0
-    'Show Verse Number': '', // 5.0
+    'Multi-verse Passages': '', 
+    'Reference - Passage': '', 
+    'Passage - Reference': '', 
+    'Passage Only': '', 
+    'Show Verse Number': '', 
 
-    'Other': '', // 5.0
-    'Abbreviate Books': '', // 5.0
-    'Omit Extra Line Breaks': '', // 5.0
+    'Other': '', 
+    'Abbreviate Books': '', 
+    'Omit Extra Line Breaks': '', 
 
     // Settings Dialog
-    'Settings' : '', // 5.0
-    'Language' : '', // 5.0
-    'Text Display': '', // 5.0
-    'Font Style': '', // 5.0
+    'Settings' : '', 
+    'Language' : '', 
+    'Text Display': '', 
+    'Font Style': '', 
 
     // Result and error messages
     
@@ -301,7 +322,7 @@ module.exports = {
     'Salvation by faith, not works': '',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': '',
     'Christ the suffering servant': '',
-    'Christ’s crucifixion foretold': '',
+    'Christ\'s crucifixion foretold': '',
 
     // Bible downloads dialog
     'Download': '',
@@ -333,9 +354,9 @@ module.exports = {
     'Copy with Text': '',
     'Share Link': '',
     'Share' : '',
-    'Link' : '', // 4.5
-    'Copied to clipboard': '', // 5.2.3
-    'Failed to copy': '', // 5.2.3
+    'Link' : '', 
+    'Copied to clipboard': '', 
+    'Failed to copy': '', 
 
     // Quick Start Help Dialog
     'Quick Start Guide': '',
@@ -375,6 +396,44 @@ module.exports = {
     'words': '',
     'truth': '',
 
+    // Searching across language
+
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': '',
+    'You cannot search across Bibles of different languages with the selected search type.' : '',
+
+    // General dialogs
+    'Name': '',
+    'Save': '',
+    'Cancel': '',
+    'Edit': '',
+    'Delete': '',
+    'Clear': '',
+    'Restore': '',
+    'Add': '',
+    'Okay': '',
+    'Old': '',
+    'New': '',
+
+    'Are you sure?': '',
+    'Are you sure you want to delete': '',
+
+    // Bookmarks/History
+    'This will delete all history.': '',
+    'This will delete all bookmarks.': '',
+    'Move to Current': '',
+
+    'Bookmark': '',
+    'Bookmarks': '',
+
+    'Please delete some bookmarks before adding more.': '',
+    'This bookmark name already exists.': '',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': '',
+    'Passages': '',
+    'Alias': '',
+    'You cannot search for these common words': '',
 
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  
