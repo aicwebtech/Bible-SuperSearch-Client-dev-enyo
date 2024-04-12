@@ -16,6 +16,7 @@ var defaultConfig = {
     "arrowKeysPageChapter": false,
     "textDisplayDefault": 'passage',
     "parallelBibleStartSuperceedsDefaultBibles": false,
+    'landingReferenceDefault': false,
     'hoverDelayThreshold': 500,
     'strongsDialogSearchLink': false,
     'legacyManual': false,

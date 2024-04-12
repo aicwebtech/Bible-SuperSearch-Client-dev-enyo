@@ -148,6 +148,9 @@ var biblesupersearch_config_options = {
     // Form will remain blank, and URL will not change.
     "landingReference": '',
 
+    // If a search is executed with no search keywords or references, should we use the landing passage?
+    'landingReferenceDefault': false,
+
     // Autocomplete Settings
 
     // Whether to enable auto-complete

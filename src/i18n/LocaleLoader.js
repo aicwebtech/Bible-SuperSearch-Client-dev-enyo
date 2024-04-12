@@ -13,6 +13,7 @@ module.exports = {
     pt: require('./pt'), // NEW
     ro: require('./ro'),
     ru: require('./ru'),
+    th: require('./th'),
     zh_TW: require('./zh_TW'),
     zh_CN: require('./zh_CN'),
 

@@ -1,7 +1,7 @@
 <?php
 
 error_reporting(E_ALL);
-$interface = $_REQUEST['interface'] ?: 'expanding';
+$interface = $_REQUEST['interface'] ?: 'Expanding';
 $interfaces = getInterfaces();
 
 $config = file_get_contents('config.js');
@@ -10,12 +10,8 @@ $config = file_get_contents('config.js');
 // var_dump(json_last_error());
 //$config['interface'] = $interface;
 
-// $config = preg_replace('/"interface"\s+:\s+"[A-ZaZ]+"/', '"interface":"' . $interface . '"', $config);
-//$config = str_replace('"interface": "Expanding"', '"interface":"' . $interface . '"', $config);
-
-// echo('<pre>');
-// print_r($config);
-// echo('</pre>');
+// $config = str_replace('"interface": "Expanding"', '"interface":"' . $interface . '"', $config);
+$config = str_replace('"interface":', '"interface":"' . $interface . '", //', $config);
 
 ?>
 
@@ -26,33 +22,41 @@ $config = file_get_contents('config.js');
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Bible SuperSearch</title>
         <link rel="stylesheet" href="biblesupersearch.css">
-        <script type='JavaScript'>
-            <?php echo $config; ?>
+        <style>
+            #selector {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto 0;
+            }
+
+            #selector label, #selector input {
+                display: inline-block;
+                width: 40px;
+            }
+
+            #selector select {
+                width: calc(100% - 100px);
+            }
+        </style>
+        <script>
+            <?php echo $config; ?>;
         </script>
         <script src="biblesupersearch.js"></script>
     </head>
     <body>
 
-        <form>
-            <table>
-                <tr>
-                    <td>Interface</td>
-                    <td>
-                        <select name='interface'>
-                            <?php foreach($interfaces as $key => $i): ?>
-                                <?php $selected = $key == $interface ? " selected='selected'" : ''; ?>
+        <form id='selector'>
+            <label>Skin: </label>
+            <select name='interface'>
+                <?php foreach($interfaces as $key => $i): ?>
+                    <?php $selected = $key == $interface ? " selected='selected'" : ''; ?>
 
-                                <option value='<?php echo $key;?>' <?php echo $selected;?> >
-                                    <?php echo $i['name']; ?>        
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </td>
-                    <td>
-                        <input type='Submit'>
-                    </td>
-                </tr>
-            </table>
+                    <option value='<?php echo $key;?>' <?php echo $selected;?> >
+                        <?php echo $i['name']; ?>        
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <input type='submit' value='GO' />
         </form>
 
         <hr />

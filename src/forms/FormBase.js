@@ -83,6 +83,25 @@ module.exports = kind({
     handleAppLoaded: function() {
         this.submitDefault();
     },
+    applyDefaultReference: function(formData) {
+        this.app.debug && this.log();
+        var ref = this.app.configs.landingReference || null;
+
+        if(ref && ref != '') {
+
+            ref = this.app.vt(ref);
+
+            if(this.$.reference) {
+                formData.reference = ref;
+            } else {
+                formData.request = ref;
+            }
+
+            return true;
+        }
+
+        return false;
+    },
     submitDefault: function() {
         this.app.debug && this.log();
         var ref = this.app.configs.landingReference || null;
@@ -91,7 +110,7 @@ module.exports = kind({
             var formData = {
                 // bible: this.app.getSelectedBiblesString()
             };
-            
+
             ref = this.app.vt(ref);
 
             if(this.$.reference) {
@@ -185,8 +204,6 @@ module.exports = kind({
             return;
         }
 
-        // this.log('submitting form: ' + this.name);
-
         var ajax = new Ajax({
             url: this.app.configs.apiUrl,
             method: 'GET'
@@ -198,18 +215,12 @@ module.exports = kind({
         formData = this.beforeSubmitForm(formData);
         formData = this.processDefaults(formData);
 
-        if(!this.defaultSubmitting && 
+        if(!this.defaultSubmitting && this.app.configs.landingReferenceDefault && this.app.configs.landingReferenceDefault != 'false' &&
             (!formData.reference || formData.reference == '') && 
             (!formData.request || formData.request == '') && 
             (!formData.search || formData.search == '')
         ) {
-            this.requestPending = false;
-
-            if(this.submitDefault()) {
-                return;
-            } else {
-                this.requestPending = true;
-            }
+            this.applyDefaultReference(formData);
         }
 
         this.app.debug && this.log('Submitted formData', formData);

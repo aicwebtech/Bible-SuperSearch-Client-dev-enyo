@@ -442,332 +442,332 @@ module.exports = {
         {
           "id": 1,
           "name": "Genesis",
-          "shortname": "Gen"
+          "shortname": ""
         },
         {
           "id": 2,
           "name": "Exodus",
-          "shortname": "Ex"
+          "shortname": ""
         },
         {
           "id": 3,
           "name": "Leviticus",
-          "shortname": "Lev"
+          "shortname": ""
         },
         {
           "id": 4,
           "name": "Numbers",
-          "shortname": "Num"
+          "shortname": ""
         },
         {
           "id": 5,
           "name": "Deuteronomy",
-          "shortname": "Deut"
+          "shortname": ""
         },
         {
           "id": 6,
           "name": "Joshua",
-          "shortname": "Josh"
+          "shortname": ""
         },
         {
           "id": 7,
           "name": "Judges",
-          "shortname": "Judg"
+          "shortname": ""
         },
         {
           "id": 8,
           "name": "Ruth",
-          "shortname": "Ru"
+          "shortname": ""
         },
         {
           "id": 9,
           "name": "1 Samuel",
-          "shortname": "1 Sam"
+          "shortname": ""
         },
         {
           "id": 10,
           "name": "2 Samuel",
-          "shortname": "2 Sam"
+          "shortname": ""
         },
         {
           "id": 11,
           "name": "1 Kings",
-          "shortname": "1 Ki"
+          "shortname": ""
         },
         {
           "id": 12,
           "name": "2 Kings",
-          "shortname": "2 Ki"
+          "shortname": ""
         },
         {
           "id": 13,
           "name": "1 Chronicles",
-          "shortname": "1 Chron"
+          "shortname": ""
         },
         {
           "id": 14,
           "name": "2 Chronicles",
-          "shortname": "2 Chron"
+          "shortname": ""
         },
         {
           "id": 15,
           "name": "Ezra",
-          "shortname": "Ezra"
+          "shortname": ""
         },
         {
           "id": 16,
           "name": "Nehemiah",
-          "shortname": "Neh"
+          "shortname": ""
         },
         {
           "id": 17,
           "name": "Esther",
-          "shortname": "Esth"
+          "shortname": ""
         },
         {
           "id": 18,
           "name": "Job",
-          "shortname": "Job"
+          "shortname": ""
         },
         {
           "id": 19,
           "name": "Psalms",
-          "shortname": "Ps"
+          "shortname": ""
         },
         {
           "id": 20,
           "name": "Proverbs",
-          "shortname": "Prov"
+          "shortname": ""
         },
         {
           "id": 21,
           "name": "Ecclesiastes",
-          "shortname": "Ecc"
+          "shortname": ""
         },
         {
           "id": 22,
           "name": "Song of Solomon",
-          "shortname": "SOS"
+          "shortname": ""
         },
         {
           "id": 23,
           "name": "Isaiah",
-          "shortname": "Isa"
+          "shortname": ""
         },
         {
           "id": 24,
           "name": "Jeremiah",
-          "shortname": "Jer"
+          "shortname": ""
         },
         {
           "id": 25,
           "name": "Lamentations",
-          "shortname": "Lam"
+          "shortname": ""
         },
         {
           "id": 26,
           "name": "Ezekiel",
-          "shortname": "Eze"
+          "shortname": ""
         },
         {
           "id": 27,
           "name": "Daniel",
-          "shortname": "Dan"
+          "shortname": ""
         },
         {
           "id": 28,
           "name": "Hosea",
-          "shortname": "Hos"
+          "shortname": ""
         },
         {
           "id": 29,
           "name": "Joel",
-          "shortname": "Joel"
+          "shortname": ""
         },
         {
           "id": 30,
           "name": "Amos",
-          "shortname": "Amos"
+          "shortname": ""
         },
         {
           "id": 31,
           "name": "Obadiah",
-          "shortname": "Obad"
+          "shortname": ""
         },
         {
           "id": 32,
           "name": "Jonah",
-          "shortname": "Jon"
+          "shortname": ""
         },
         {
           "id": 33,
           "name": "Micah",
-          "shortname": "Micah"
+          "shortname": ""
         },
         {
           "id": 34,
           "name": "Nahum",
-          "shortname": "Nah"
+          "shortname": ""
         },
         {
           "id": 35,
           "name": "Habakkuk",
-          "shortname": "Hab"
+          "shortname": ""
         },
         {
           "id": 36,
           "name": "Zephaniah",
-          "shortname": "Zeph"
+          "shortname": ""
         },
         {
           "id": 37,
           "name": "Haggai",
-          "shortname": "Hag"
+          "shortname": ""
         },
         {
           "id": 38,
           "name": "Zechariah",
-          "shortname": "Zech"
+          "shortname": ""
         },
         {
           "id": 39,
           "name": "Malachi",
-          "shortname": "Mal"
+          "shortname": ""
         },
         {
           "id": 40,
           "name": "Matthew",
-          "shortname": "Matt"
+          "shortname": ""
         },
         {
           "id": 41,
           "name": "Mark",
-          "shortname": "Mark"
+          "shortname": ""
         },
         {
           "id": 42,
           "name": "Luke",
-          "shortname": "Luke"
+          "shortname": ""
         },
         {
           "id": 43,
           "name": "John",
-          "shortname": "John"
+          "shortname": ""
         },
         {
           "id": 44,
           "name": "Acts",
-          "shortname": "Acts"
+          "shortname": ""
         },
         {
           "id": 45,
           "name": "Romans",
-          "shortname": "Rom"
+          "shortname": ""
         },
         {
           "id": 46,
           "name": "1 Corinthians",
-          "shortname": "1 Cor"
+          "shortname": ""
         },
         {
           "id": 47,
           "name": "2 Corinthians",
-          "shortname": "2 Cor"
+          "shortname": ""
         },
         {
           "id": 48,
           "name": "Galatians",
-          "shortname": "Gal"
+          "shortname": ""
         },
         {
           "id": 49,
           "name": "Ephesians",
-          "shortname": "Eph"
+          "shortname": ""
         },
         {
           "id": 50,
           "name": "Philippians",
-          "shortname": "Phil"
+          "shortname": ""
         },
         {
           "id": 51,
           "name": "Colossians",
-          "shortname": "Col"
+          "shortname": ""
         },
         {
           "id": 52,
           "name": "1 Thessalonians",
-          "shortname": "1 Thess"
+          "shortname": ""
         },
         {
           "id": 53,
           "name": "2 Thessalonians",
-          "shortname": "2 Thess"
+          "shortname": ""
         },
         {
           "id": 54,
           "name": "1 Timothy",
-          "shortname": "1 Tim"
+          "shortname": ""
         },
         {
           "id": 55,
           "name": "2 Timothy",
-          "shortname": "2 Tim"
+          "shortname": ""
         },
         {
           "id": 56,
           "name": "Titus",
-          "shortname": "Titus"
+          "shortname": ""
         },
         {
           "id": 57,
           "name": "Philemon",
-          "shortname": "Phm"
+          "shortname": ""
         },
         {
           "id": 58,
           "name": "Hebrews",
-          "shortname": "Heb"
+          "shortname": ""
         },
         {
           "id": 59,
           "name": "James",
-          "shortname": "Jas"
+          "shortname": ""
         },
         {
           "id": 60,
           "name": "1 Peter",
-          "shortname": "1 Pet"
+          "shortname": ""
         },
         {
           "id": 61,
           "name": "2 Peter",
-          "shortname": "2 Pet"
+          "shortname": ""
         },
         {
           "id": 62,
           "name": "1 John",
-          "shortname": "1 John"
+          "shortname": ""
         },
         {
           "id": 63,
           "name": "2 John",
-          "shortname": "2 John"
+          "shortname": ""
         },
         {
           "id": 64,
           "name": "3 John",
-          "shortname": "3 John"
+          "shortname": ""
         },
         {
           "id": 65,
           "name": "Jude",
-          "shortname": "Jude"
+          "shortname": ""
         },
         {
           "id": 66,
           "name": "Revelation",
-          "shortname": "Rev"
+          "shortname": ""
         }
     ],
 };
