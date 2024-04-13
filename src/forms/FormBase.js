@@ -88,7 +88,6 @@ module.exports = kind({
         var ref = this.app.configs.landingReference || null;
 
         if(ref && ref != '') {
-
             ref = this.app.vt(ref);
 
             if(this.$.reference) {
@@ -107,9 +106,7 @@ module.exports = kind({
         var ref = this.app.configs.landingReference || null;
 
         if(!this.preventDefaultSubmit && ref && ref != '') {
-            var formData = {
-                // bible: this.app.getSelectedBiblesString()
-            };
+            var formData = {};
 
             ref = this.app.vt(ref);
 
@@ -215,14 +212,6 @@ module.exports = kind({
         formData = this.beforeSubmitForm(formData);
         formData = this.processDefaults(formData);
 
-        if(!this.defaultSubmitting && this.app.configs.landingReferenceDefault && this.app.configs.landingReferenceDefault != 'false' &&
-            (!formData.reference || formData.reference == '') && 
-            (!formData.request || formData.request == '') && 
-            (!formData.search || formData.search == '')
-        ) {
-            this.applyDefaultReference(formData);
-        }
-
         this.app.debug && this.log('Submitted formData', formData);
 
         ajax.go(formData); // for GET
@@ -252,6 +241,14 @@ module.exports = kind({
         
         this._formDataAsSubmitted = utils.clone(formData);
 
+        if(!this.defaultSubmitting && this.app.configs.landingReferenceDefault && this.app.configs.landingReferenceDefault != 'false' &&
+            (!formData.reference || formData.reference == '') && 
+            (!formData.request || formData.request == '') && 
+            (!formData.search || formData.search == '')
+        ) {
+            this.applyDefaultReference(formData);
+        }
+
         if(formData.reference) {
             formData.reference = this.mapPassages(formData.reference, false);
         }        
@@ -259,7 +256,6 @@ module.exports = kind({
         if(formData.request) {
             formData.request = this.mapPassages(formData.request, true);
         }
-
 
         formData.bible = JSON.stringify(formData.bible);
         formData.highlight = true;
@@ -568,19 +564,12 @@ module.exports = kind({
         var resp = this.app.get('responseData'),
             results = resp.results.results;
 
-        this.log(results);
-
         var passage = this.app.getLocaleBookName(results[0].book_id, results[0].book_name) + ' ' + results[0].chapter_verse;
             passage = passage.trim();
-
-        this.log(passage);
 
         return passage;
     },
     formDataChanged: function(was, is) {
-        // this.log('was', was);
-        // this.log('is', is);
-
         if(!this.$.reference) {
             this.formData.reference = null; // Fix issues with random on forms with no 'reference' input
         }
@@ -621,6 +610,7 @@ module.exports = kind({
 
         if(this.$.reference && this.$.reference_booksel) {
             this.app.debug && this.log('here');
+
             if(field == 'reference') {
                 this.app.debug && this.log('ref');
                 if(dir == 2) {
@@ -710,7 +700,6 @@ module.exports = kind({
         if(inEvent.key == 'Enter' || inEvent.keyCode && inEvent.keyCode == 13) {
             var textarea = inSender._openTag.match(/<textarea/);
             var input = inSender._openTag.match(/<input/);
-            // this.log('is input', input);
             var enterSubmit = (!textarea || (inSender.enterSubmit && inSender.enterSubmit == true)) ? true : false;
             // var enterSubmit = (input || (inSender.enterSubmit && inSender.enterSubmit == true)) ? true : false;
 
@@ -731,8 +720,6 @@ module.exports = kind({
         }
     },
     handleReferenceClick: function(inSender, inEvent) {
-        // this.log(inEvent);
-
         var formData = {};
 
         if(this.$.request) {
@@ -742,7 +729,6 @@ module.exports = kind({
             formData.reference = inEvent.reference;
         }
 
-        this.log('formData', formData);
         this.set('formData', {});
         this.set('formData', utils.clone(formData));
         this.submitFormManual();
@@ -750,7 +736,6 @@ module.exports = kind({
     _generateHashFromData: function() {
         if(!this.isShortHashable()) {
             this.app.debug && this.log('NOT short hashable');
-
             return null;
         }
 
@@ -771,7 +756,6 @@ module.exports = kind({
         var searchExtras = '';
         var se = [];
         var hasSe = false;
-        // this.log('inputs', pas, pasSubmit);
 
         if(pasSubmit == 'Random Chapter' || pasSubmit == 'Random Verse') {
             // :todo actual_random make this a config?

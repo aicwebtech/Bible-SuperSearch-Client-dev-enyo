@@ -41,7 +41,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.5.0rc7',
+    applicationVersion: '5.5.0rc8',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -145,7 +145,6 @@ var App = Application.kind({
         // Set biblesupersearch_root_directory for best performance
         if(typeof biblesupersearch_root_directory == 'string') {
             this.rootDir = biblesupersearch_root_directory;
-            // this.log('rootDir - using biblesupersearch_root_directory');
         }
         else {        
             var dir = null;
@@ -158,7 +157,6 @@ var App = Application.kind({
                 var dirParts = path.split('/'); 
                 var name = dirParts.pop();
                 dir = dirParts.join('/') || null;
-                // this.log('rootDir - using script path');
             }
 
             if(!dir) {
@@ -166,18 +164,13 @@ var App = Application.kind({
                 dirParts = hashParts[0].split('/'); 
                 name = dirParts.pop();
                 dir = dirParts.join('/') || hashParts[0];
-                // this.log('rootDir - using window location');
             }
             
-            // dir = dir.replace('/'+name,"");
-            // this.log('bss script dir', dir, dirParts, path, hashParts, dirParts, name, window.location.href);
             this.rootDir = dir;
         }
 
-        // this.log('rootDir - FINAL', this.rootDir);
         var urlParts = window.location.href.split('#');
         this.baseUrl = urlParts[0];
-        // this.log('baseUrl - FINAL', this.baseUrl);
 
         // If user provided a config path, use it.
         var config_path = (typeof biblesupersearch_config_path == 'string') ? biblesupersearch_config_path + '/config.json' : this.rootDir + '/config.json';
@@ -275,7 +268,6 @@ var App = Application.kind({
         configs.target = container;
         inst.configs = configs;
         inst.renderInto(container);
-        // this.log('New instance:', inst);
         biblesupersearch.instances[container] = inst;
     },
     handleConfigError: function() {
@@ -1010,8 +1002,6 @@ var App = Application.kind({
             return b != 0 && b != null;
         });
 
-        this.log('bibles', bibles);
-
         for(i in bibles) {
             if(!this.statics.bibles[bibles[i]]) {
                 this.log('no bible', bibles[i]);
@@ -1199,7 +1189,7 @@ var App = Application.kind({
             return;
         }
 
-        this.log('locale', locale);
+        this.debug && this.log('locale', locale);
 
         this._initLocaleShortcuts(locale, localeData);
         
@@ -1278,7 +1268,6 @@ var App = Application.kind({
 
         var shortcuts = Locales.en.shortcuts;
         localeData.shortcuts = [];
-        // this.log('shortcuts', )
 
         for(i in shortcuts) {
             var sc = utils.clone(shortcuts[i]),
@@ -1298,7 +1287,7 @@ var App = Application.kind({
             });
         }
 
-        this.log('shortcuts', locale, localeData.shortcuts);
+        this.debug && this.log('locale shortcuts', locale, localeData.shortcuts);
     },
     _fmtBookNameMatch: function(name, locale) {
         if(!name) {
@@ -1510,7 +1499,7 @@ var App = Application.kind({
             return s.fn == refFmt || s.sn1 == refFmt;
         });
 
-        this.log(sc, locale, refFmt, reference, Shortcuts, this.localeDatasets[locale]);
+        // this.log(sc, locale, refFmt, reference, Shortcuts, this.localeDatasets[locale]);
         return sc ? this.vt(sc.reference) : reference;
     },
     pushHistory: function() {

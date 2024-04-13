@@ -1,12 +1,13 @@
 Bible SuperSearch Universal Client Changelog
 
-= 5.5.0 Mar 23, 2024
+= 5.5.0 Apr 13, 2024
 * Added bookmarks dialog
 * History items now persist between page loads
 * Ablility to control what languages show in language list
 * Random chapter / Verse now repopulates URL/page title to returned item
 * Shortcut aliases are now included (and translated) in the quick start dialog
 * Side browsing buttons
+* Config to default search to landing reference if blank.
 
 = 5.4.0 Jan 11, 2024
 * Dialog improvements and better responsiveness

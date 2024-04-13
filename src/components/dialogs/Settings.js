@@ -279,7 +279,7 @@ module.exports = kind({
         // We hide the render style selector when in copy mode, re: it will collide with the pre-set copy settingss
         // Users can assess it under the 'custom' copy settings
         {from: 'app.UserConfig.copy', to: '$.render_style.showing', oneWay: true, transform: function(value, dir) {
-            console.log('Settings COPY renderstyle', value, dir);
+            // console.log('Settings COPY renderstyle', value, dir);
             return value ? false : true;
         }},
 

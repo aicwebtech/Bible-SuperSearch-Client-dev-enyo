@@ -53,12 +53,7 @@ module.exports = kind({
                 value = this.get('value'),
                 resetValue = false;
 
-            this.log(this.app.getSelectedBiblesString(), showIt);
-
-            // this.log(components);
-                
             components.forEach(function(com) {
-                // this.log('bibleChange', com.get('content'), com.get('multiLang'), showIt);
 
                 if(!com.get('multiLang')) {
                     if(!showIt && com.get('value') == value) {

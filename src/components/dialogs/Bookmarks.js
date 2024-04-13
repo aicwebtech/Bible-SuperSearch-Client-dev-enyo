@@ -67,8 +67,6 @@ module.exports = kind({
             kind: ConfirmDialog,
             showing: false
         });
-
-        this.log('localstor', localStorage.getItem('BibleSuperSearchBookmarks'));
     },
 
     close: function() {
@@ -99,10 +97,8 @@ module.exports = kind({
         this.$.EditDialog.openNew();
     },
     edit: function(inSender, inEvent) {
-        this.log('pk', inSender.get('pk'));
+        this.app.debug && this.log('pk', inSender.get('pk'));
         this.$.EditDialog.openEdit(inSender.get('pk'));
-
-        // this.app.bookmarks.list();
     },
     delete: function(inSender, inEvent) {
 

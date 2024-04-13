@@ -103,10 +103,6 @@ module.exports = kind({
         }
     }, 
     handleTouch: function(inSender, inEvent) {
-        this.log('event type', inEvent.type);
-        // this.log(inSender, inEvent);
-        this.log('client', this.app.client);
-
         if(this.app.client.isMobile) {
             this.app.alert('handleTouch mobile touched!' + inEvent.type);
         }
@@ -176,12 +172,12 @@ module.exports = kind({
                 } else {                    
                     // Prevent side buttons showing if (only) Testament or Reference showing 
                     if(this.$.TestamentRow && this._isElementPartiallyInViewport(this.$.TestamentRow.hasNode())) {
-                        this.log('TestamentRow Showing');
+                        // this.log('TestamentRow Showing');
                         navVisible = true;
                     }                    
 
                     if(this.$.ReferenceRow && this._isElementPartiallyInViewport(this.$.ReferenceRow.hasNode())) {
-                        this.log('ReferenceRow Showing');
+                        // this.log('ReferenceRow Showing');
                         navVisible = true;
                     }
 
@@ -211,10 +207,10 @@ module.exports = kind({
         }
     },
     handleFocus: function(inSender, inEvent) {
-        this.log();
+        // this.log();
     },    
     handleBlur: function(inSender, inEvent) {
-        this.log();
+        // this.log();
     },
     activeChanged: function(was, is) {
         this.addRemoveClass('bss_render_active', is);
@@ -289,6 +285,16 @@ module.exports = kind({
         } else {
             this.log('TOO MANY NAVBUTTONS');
         }
+    },
+    clickNext: function() {
+        this.app.debug && this.log();
+        this.waterfall('onAutoClick', {button: '_next'});
+        Signal.send('onAutoClick', {button: '_next'});
+    },
+    clickPrev: function() {
+        this.app.debug && this.log();
+        this.waterfall('onAutoClick', {button: '_prev'});
+        Signal.send('onAutoClick', {button: '_prev'});
     },
     sideButtonsChanged: function(was, is) {
         // this.$.SideSwipeButtons.set('showing', !!is);

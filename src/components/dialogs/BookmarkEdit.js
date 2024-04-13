@@ -30,12 +30,12 @@ module.exports = kind({
 
     bindings: [
         {from: 'controller.title', to: '$.Title.value', oneWay: false, transform: function(value, dir) {
-            console.log('Bookmark title', value, dir);
+            // console.log('Bookmark title', value, dir);
             return value || null;
         }},                
 
         {from: 'controller.pageTitle', to: '$.PageTitle.value', oneWay: true, transform: function(value, dir) {
-            console.log('Bookmark pageTitle', value, dir);
+            // console.log('Bookmark pageTitle', value, dir);
             return value || null;
         }}
     ],
@@ -146,7 +146,6 @@ module.exports = kind({
                     this.app.t('Please delete some bookmarks before adding more.')
 
             this.$.ConfirmDialog.alert(msg, this.close);
-            // this.close();
             return;
         }
         
@@ -156,19 +155,13 @@ module.exports = kind({
         this.controller.set('link', url);
         this.previous = {};
 
-        // this.model = new Model;
-        // this.model.set('title', title);
-        // this.model.set('link', url);
-
-        // this.log(this.controller.model.raw());
-
         this._openHelper(null);
     },
     openEdit: function(pk) {
         this.set('isNew', false);
         this.set('moving', false);
         this.setTitle('Edit');
-        this.log(pk);
+        this.app.debug && this.log(pk);
 
         var model = this.app.bookmarks.find(function(model) {
             return model.get('pk') == pk;
@@ -180,8 +173,6 @@ module.exports = kind({
 
         this.controller.set('model', model);
         this.previous = model.raw();
-
-        // this.controller.set('model', utils.clone(model));
         this._openHelper(pk);
     },
     openMove: function(pk) {
@@ -198,8 +189,6 @@ module.exports = kind({
         this.previous = model.raw();
 
         this.moveToCurrent();
-
-        // this.controller.set('model', utils.clone(model));
         this._openHelper(pk);
     },
     openCurrent: function() {

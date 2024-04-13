@@ -111,15 +111,11 @@ module.exports = kind({
         this.set('showing', true);
     },
     handleButtonTap: function(inSender, inEvent) {
-        this.log(inSender, inEvent);
-
         var value = inSender.get('value');
 
         if(this.isConfirming) {
             value = (value == 'cancel') ? false : true;
         }
-
-        this.log(value);
 
         this.callback && this.callback(value);
         this.close();

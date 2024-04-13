@@ -12,8 +12,6 @@ module.exports = kind({
     current: null,
 
     parse: function(data) {
-        console.log(data);
-
         return data;
     },
     addOne: function(model) {
@@ -53,13 +51,10 @@ module.exports = kind({
     },
     limitReached: function() {
         var limit = this.app.configs.bookmarkLimit || 20;
-
-        this.log(limit, this.length);
-
         return this.length >= limit;
     },
     list: function() {
-        console.log(this.raw());
+        // console.log(this.raw());
     },
     findByPk: function(pk) {
         var model = this.app.bookmarks.find(function(model) {
