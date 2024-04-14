@@ -9,7 +9,7 @@ module.exports = {
     de: require('./de'),
     hi: require('./hi'),
     lv: require('./lv'),
-    //lt: require('./lt'), // translation corrupted with extra ?
+    lt: require('./lt'), 
     pt: require('./pt'), // NEW
     ro: require('./ro'),
     ru: require('./ru'),

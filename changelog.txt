@@ -8,6 +8,11 @@ Bible SuperSearch Universal Client Changelog
 * Shortcut aliases are now included (and translated) in the quick start dialog
 * Side browsing buttons
 * Config to default search to landing reference if blank.
+* New User Interface translations:
+    * Portuguese
+    * German
+    * Thai
+    * Lithuanian
 
 = 5.4.0 Jan 11, 2024
 * Dialog improvements and better responsiveness
