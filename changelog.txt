@@ -1,6 +1,6 @@
 Bible SuperSearch Universal Client Changelog
 
-= 5.5.0 Apr 13, 2024
+= 5.5.0 Apr 20, 2024
 * Added bookmarks dialog
 * History items now persist between page loads
 * Ablility to control what languages show in language list
