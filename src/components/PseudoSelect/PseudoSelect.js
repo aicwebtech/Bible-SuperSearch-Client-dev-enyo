@@ -165,7 +165,6 @@ module.exports = kind({
 		}
 	},
 	handleVisableTap: function() {
-		this.log();
         this.set('toggled', !this.get('toggled'));
 	}, 
 	valueChanged: function(was, is) {
@@ -184,8 +183,6 @@ module.exports = kind({
             return;
         }
 
-        // this.log(inSender, inEvent);
-
         var code = inEvent.keyCode || null;
 
         if(code != 13 && code != 38 && code != 40) {
@@ -198,8 +195,6 @@ module.exports = kind({
         if(!this.get('toggled')) {
             return;
         }
-
-        // this.log(inSender, inEvent);
 
         var code = inEvent.keyCode || null;
 
@@ -234,10 +229,10 @@ module.exports = kind({
 
         selNew = selNew >= 0 ? selNew : -1;
 
-        this.log('dir', dir);
-        this.log('raw Sel', this.get('keyboardSelected'));
+        // this.log('dir', dir);
+        // this.log('raw Sel', this.get('keyboardSelected'));
 
-        this.log(dir, sel, selNew);
+        // this.log(dir, sel, selNew);
 
         this.setKeyboardSelected(selNew);
 
@@ -297,7 +292,6 @@ module.exports = kind({
             var idx = this.valueIdxMap[ this.get('value') ];
 
             idx = parseInt(idx, 10);
-            this.log('selected', idx);
             this.set('keyboardSelected', idx);
             this.set('keyboardSelectedInit', idx);
             this.set('keyboardScrollIdx', idx);
