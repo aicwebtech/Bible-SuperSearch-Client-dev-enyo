@@ -1,8 +1,12 @@
 module.exports = {
     meta: {
-        lang_name_en: 'Spanish',
-        lang_name: 'Español',
+        code: 'es',
+        nameEn: 'Spanish',
+        name: 'Español',
         isRtl: false,
+        isFluent: true,     
+        translatedBy: 'Frank Delgado', 
+        translatedEmail: 'fdelgadotax@aol.com', 
     },
 
     'Bible SuperSearch': '',

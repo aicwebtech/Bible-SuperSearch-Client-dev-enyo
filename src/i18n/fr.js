@@ -1,8 +1,12 @@
 module.exports = {
     meta: {
-        lang_name: 'Français',      // Native name of language (endonymn)
-        lang_name_en: 'French',     // Name of language, in English
+        code: 'fr',
+        name: 'Français',      // Native name of language (endonymn)
+        nameEn: 'French',     // Name of language, in English
         isRtl: false,               // Whether language is read Right-to-left
+        isFluent: true,     
+        translatedBy: 'Shelby Pereira', 
+        translatedEmail: 'shelby.pereira@gmail.com', 
     },
     
     // The actual translation data

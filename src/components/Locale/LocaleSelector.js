@@ -37,12 +37,12 @@ module.exports = kind({
     },
 
     _createLocaleHelper: function(i) {
-        if(!Locales[i] || !Locales[i].meta || !Locales[i].meta.lang_name_en) {
+        if(!Locales[i] || !Locales[i].meta || !Locales[i].meta.nameEn) {
             return;
         }
 
         var ldb = Locales[i].meta.debug || false;
-        var langName = Locales[i].meta.lang_name || Locales[i].meta.lang_name_en;
+        var langName = Locales[i].meta.name || Locales[i].meta.nameEn;
 
         if(ldb && !this.app.debug && !this.app.configs.debugLocale) {
             return;

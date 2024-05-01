@@ -1,8 +1,12 @@
 module.exports = {
     meta: {
-        lang_name: 'Lietuvių Kalba',      // Native name of language (endonymn)
-        lang_name_en: 'Lithuanian',   // Name of language, in English
+        code: 'lt',
+        name: 'Lietuvių Kalba',      // Native name of language (endonymn)
+        nameEn: 'Lithuanian',   // Name of language, in English
         isRtl: false,       // Whether language is read Right-to-left
+        isFluent: false,     
+        translatedBy: 'Google Translate', 
+        translatedEmail: null, 
     },
     
     // The actual translation data

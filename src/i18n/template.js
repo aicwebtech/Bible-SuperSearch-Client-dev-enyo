@@ -1,8 +1,26 @@
 module.exports = {
     meta: {
-        lang_name: '',      // Native name of language (endonymn)
-        lang_name_en: '',   // Name of language, in English
-        isRtl: false,       // Whether language is read Right-to-left
+        // 2 or 3 character language code, lower-case, ie 'es'
+        // Note: This filename name must be [code].js ie 'es.js'
+        code: '',
+
+        // Native name of language (endonymn): ie 'Español'
+        name: '',    
+
+        // English name of language, ie 'Spanish'
+        nameEn: '',       
+
+        // Whether language is read Right-to-left
+        isRtl: false,           
+       
+        // true if done by person fluent in both English and this language, false if using Google translate or other software
+        isFluent: false,     
+
+        // Name of individulal or software used to translate
+        translatedBy: 'Google Translate', 
+        
+        // Email address of translator, if fluent
+        translatedEmail: null, 
     },
     
     // The actual translation data
@@ -437,7 +455,7 @@ module.exports = {
 
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  
-    // The short name should be the most common abbreviation of the book name in the specified language.
+    // The short name should be the most common abbreviation of the book name in the given language.
     'bibleBooks': [
         {
           "id": 1,

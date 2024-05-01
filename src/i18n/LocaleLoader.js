@@ -7,15 +7,20 @@ module.exports = {
     et: require('./et'),
     fr: require('./fr'),
     de: require('./de'),
+    ja: require('./ja'),
     hi: require('./hi'),
+    hu: require('./hu'),
+    it: require('./it'),
     lv: require('./lv'),
     lt: require('./lt'), 
-    pt: require('./pt'), // NEW
+    pt: require('./pt'),
     ro: require('./ro'),
     ru: require('./ru'),
     th: require('./th'),
     zh_TW: require('./zh_TW'),
     zh_CN: require('./zh_CN'),
+
+
 
     // Translation strings that allow partial matches.
     // For best results, put longest at top of list

@@ -1,9 +1,13 @@
 module.exports = {
     meta: {
-        lang_name: 'Anglyshe - Pyratee',
-        lang_name_en: 'English - Pirate',
+        code: 'en_pirate',
+        name: 'Anglyshe - Pyratee',
+        nameEn: 'English - Pirate',
         isRtl: false,
-        debug: true
+        isFluent: true,     
+        translatedBy: 'Matey Lukey', 
+        translatedEmail: null, 
+        debug: true // This 'language' is for debug purposes only
     },
     
     'Bible SuperSearch': 'Bibl SupahTreasah',

@@ -1,12 +1,16 @@
 // Produced using Google translate
 module.exports = {
     meta: {
-        lang_name_en: 'Arabic',
-        lang_name: 'العربية',
+        code: 'ar',
+        nameEn: 'Arabic',
+        name: 'العربية',
         isRtl: true,
+        isFluent: false,     
+        translatedBy: 'Google Translate', 
+        translatedEmail: null, 
     },
 
-// The actual translation data
+    // The actual translation data
 
     // Notes:
     // * Please place the corresponding translation text between '' (single quotes) on each line below.

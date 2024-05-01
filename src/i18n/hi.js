@@ -1,9 +1,12 @@
 module.exports = {
     meta: {
-        lang_name: 'हिन्दी, हिंदी',      // Native name of language (endonymn)
-        lang_name_en: 'Hindi',   // Name of language, in English
+        code: 'hi',
+        name: 'हिन्दी, हिंदी',      // Native name of language (endonymn)
+        nameEn: 'Hindi',   // Name of language, in English
         isRtl: false,       // Whether language is read Right-to-left
-        source: 'Google Translate',
+        isFluent: false,     
+        translatedBy: 'Google Translate', 
+        translatedEmail: null, 
     },
     
     // The actual translation data

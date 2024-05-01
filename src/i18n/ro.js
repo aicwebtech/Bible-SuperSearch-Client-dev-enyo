@@ -1,8 +1,12 @@
 module.exports = {
     meta: {
-        lang_name: 'Română',      // Native name of language (endonymn)
-        lang_name_en: 'Romanian',   // Name of language, in English
+        code: 'ro',
+        name: 'Română',      // Native name of language (endonymn)
+        nameEn: 'Romanian',   // Name of language, in English
         isRtl: false,       // Whether language is read Right-to-left
+        isFluent: false,     
+        translatedBy: 'Google Translate', 
+        translatedEmail: null, 
     },
     
     // The actual translation data

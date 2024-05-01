@@ -1,8 +1,12 @@
 module.exports = {
     meta: {
-        lang_name: 'Português',      // Native name of language (endonymn)
-        lang_name_en: 'Portuguese',   // Name of language, in English
+        code: 'pt',
+        name: 'Português',      // Native name of language (endonymn)
+        nameEn: 'Portuguese',   // Name of language, in English
         isRtl: false,       // Whether language is read Right-to-left
+        isFluent: false,     
+        translatedBy: 'Google Translate', 
+        translatedEmail: null, 
     },
        // The actual translation data
 

@@ -1,8 +1,12 @@
 module.exports = {
     meta: {
-        lang_name: 'Русский',      // Native name of language (endonymn)
-        lang_name_en: 'Russian',   // Name of language, in English
+        code: 'ru',
+        name: 'Русский',      // Native name of language (endonymn)
+        nameEn: 'Russian',   // Name of language, in English
         isRtl: false,       // Whether language is read Right-to-left
+        isFluent: true,     
+        translatedBy: 'Andris Bušs-Boss ', 
+        translatedEmail: 'neoandris@gmail.com', 
     },
     
     // The actual translation data

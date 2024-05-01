@@ -1,8 +1,12 @@
 module.exports = {
     meta: {
-        lang_name: '繁體中文', // Native name of language (endonymn)
-        lang_name_en: 'Traditional Chinese',   // Name of language, in English
+        code: 'zh_TW',
+        name: '繁體中文', // Native name of language (endonymn)
+        nameEn: 'Traditional Chinese',   // Name of language, in English
         isRtl: false,       // Whether language is read Right-to-left
+        isFluent: true,     
+        translatedBy: 'undisclosed', 
+        translatedEmail: null, // undisclosed
     },
     
      // The actual translation data

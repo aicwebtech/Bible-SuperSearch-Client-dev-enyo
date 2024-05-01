@@ -1,5 +1,12 @@
 Bible SuperSearch Universal Client Changelog
 
+= 5.6.0 TBD
+* New User Interface translations:
+    ** Hungarian
+    ** Italian
+    ** Japanese
+    
+
 = 5.5.0 Apr 16, 2024
 * Added bookmarks dialog
 * History items now persist between page loads

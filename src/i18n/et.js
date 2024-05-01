@@ -1,12 +1,16 @@
 module.exports = {
     meta: {
-        lang_name: 'Eesti',      // Native name of language (endonymn)
-        lang_name_en: 'Estonian',   // Name of language, in English
+        code: 'et',
+        name: 'Eesti',      // Native name of language (endonymn)
+        nameEn: 'Estonian',   // Name of language, in English
         isRtl: false,       // Whether language is read Right-to-left
+        isFluent: false,     
+        translatedBy: 'Google Translate', 
+        translatedEmail: null, 
     },
     
-    // The actual translation data
 
+    // The actual translation data
 
     // Notes:
     // * Please place the corresponding translation text between '' (single quotes) on each line below.

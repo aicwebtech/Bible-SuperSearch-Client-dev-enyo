@@ -1,9 +1,13 @@
 module.exports = {
-    // Intentionally empty?
+    // English - Intentionally empty?
     meta: {
-        lang_name: 'English',
-        lang_name_en: 'English',
+        code: 'en',
+        name: 'English',
+        nameEn: 'English',
         isRtl: false,
+        isFluent: true,     
+        translatedBy: 'Bible SuperSearch team', 
+        translatedEmail: null, 
     },
 
     // Descriptions of special features

@@ -1,8 +1,12 @@
 module.exports = {
     meta: {
-        lang_name: 'ไทย',      // Native name of language (endonymn)
-        lang_name_en: 'Thai',   // Name of language, in English
+        code: 'th',
+        name: 'ไทย',      // Native name of language (endonymn)
+        nameEn: 'Thai',   // Name of language, in English
         isRtl: false,       // Whether language is read Right-to-left
+        isFluent: false,     
+        translatedBy: 'Google Translate', 
+        translatedEmail: null, 
     },
     
     // The actual translation data

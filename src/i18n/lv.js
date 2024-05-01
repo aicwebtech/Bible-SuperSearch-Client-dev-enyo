@@ -1,8 +1,12 @@
 module.exports = {
     meta: {
-        lang_name: 'Latviešu',      // Native name of language (endonymn)
-        lang_name_en: 'Latvian',   // Name of language, in English
+        code: 'lv',
+        name: 'Latviešu',      // Native name of language (endonymn)
+        nameEn: 'Latvian',   // Name of language, in English
         isRtl: false,       // Whether language is read Right-to-left
+        isFluent: true,     
+        translatedBy: 'Andris Bušs-Boss', 
+        translatedEmail: 'neoandris@gmail.com',  
     },
     
     // The actual translation data
