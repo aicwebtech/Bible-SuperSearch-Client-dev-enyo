@@ -1,7 +1,10 @@
 <?php
 
+session_start();
 error_reporting(E_ALL);
-$interface = $_REQUEST['interface'] ?: 'Expanding';
+$interface = $_REQUEST['interface'] ?: $_SESSION['interface'];
+$interface = $interface ?: 'Expanding';
+$_SESSION['interface'] = $interface;
 $interfaces = getInterfaces();
 
 $config = file_get_contents('config.js');

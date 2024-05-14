@@ -52,7 +52,7 @@ module.exports = kind({
                 value = this.get('value'),
                 resetValue = false;
 
-                this.log(this.app.getSelectedBiblesString(), showIt);
+                // this.log(this.app.getSelectedBiblesString(), showIt);
                 
             components.forEach(function(com) {
                 if(!com.get('multiLang')) {
@@ -65,7 +65,6 @@ module.exports = kind({
             }, this);
 
             if(resetValue) {
-                this.log('resetValue');
                 this.app.alertPrompt('You cannot search across Bibles of different languages with the selected search type.');
                 this.setSelected(this.defaultSelection);
             }

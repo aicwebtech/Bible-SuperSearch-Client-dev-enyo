@@ -66,8 +66,8 @@ var App = Application.kind({
     baseUrl: null,
     clientBrowser: null, // legacy
     client: {
-        os: null,
-        browser: null,
+        os: 'unknown',
+        browser: 'unknown',
         isMobile: false,
         isWebkit: false,
     },
@@ -203,9 +203,9 @@ var App = Application.kind({
         else if(navigator.userAgent.indexOf('Android') !== -1) {
             this.client.os = 'Andriod';
             this.client.isMobile = true;
-        } else if(navigator.userAgent.indexOf('Linix') !== -1) {
+        } else if(navigator.userAgent.indexOf('Linux') !== -1) {
             this.client.os = 'Linux';
-            this.client.isMobile = true;
+            this.client.isMobile = false;
         }
 
         // todo: Mac OS / iOS detection, the below are just guesses

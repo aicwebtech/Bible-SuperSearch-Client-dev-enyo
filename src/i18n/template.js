@@ -13,13 +13,13 @@ module.exports = {
         // Whether language is read Right-to-left
         isRtl: false,           
        
-        // true if done by person fluent in both English and this language, false if using Google translate or other software
+        // true if done by person fluent in both English and this language, false if using translation software
         isFluent: false,     
 
         // Name of individulal or software used to translate
         translatedBy: 'Google Translate', 
         
-        // Email address of translator, if fluent
+        // Email address of translator, if fluent (not software)
         translatedEmail: null, 
     },
     
@@ -453,9 +453,19 @@ module.exports = {
     'Alias': '',
     'You cannot search for these common words': '',
 
+
+
     // Bible Books
-    // For each book in the list below, please specify the (full) name and short name.  
+    // For each book in the list below, please specify the (full) name.  Please also provide short name if known.
     // The short name should be the most common abbreviation of the book name in the given language.
+    //
+    // NOTE: If you are using translation software, please first Google for book lists already translated into the given language.
+    // REASON: If we can find the book list already translated, it's probably a better translation than what the software would do.
+    // Hint: You can often find these on the leading Bible website gateway when looking for Bibles in the given language.
+    // Under avaliable versions, just search for the language, select one of the Bibles that shows up, and copy the Book names.
+    //
+    // If you cannot find a pre-translated list of the books, then and only then use the translation software to translate them.
+
     'bibleBooks': [
         {
           "id": 1,
