@@ -252,7 +252,14 @@ module.exports = kind({
             // var content = '<h5>' + bible_info.name + ' (' + bible_info.shortname + ')</h5>' + bible_info.copyright_statement;
             
             var components = [
-                {tag: 'h5', content: bible_info.name + ' (' + bible_info.shortname + ')'},
+                {
+                    tag: 'h5', 
+                    content: bible_info.name + ' (' + bible_info.shortname + ')', 
+                    ontap: 'handleBibleInfoTap', 
+                    module: mod, 
+                    owner: this,
+                    classes: 'bss_clickable'
+                },
                 {kind: i18n, content: bible_info.copyright_statement, allowHtml: true}
             ];
 
@@ -273,7 +280,10 @@ module.exports = kind({
 
         this.showingCopyrightBottom = true;
     },
-
+    handleBibleInfoTap: function(inSender, inEvent) {
+        var mod = inSender.get('module');
+        this.log(mod);
+    },
     _getBibleDisplayName: function(bible) {
         if(this.bibles.length <= 1) {
             return bible.name;

@@ -164,8 +164,8 @@ module.exports = {
     'Enlarge Text': 'Panua Maandishi',
     'Default Text Size': 'Ukubwa wa Maandishi Chaguomsingi',
     'Shrink Text': 'Punguza Maandishi',
-    'Verse Display': 'Maonyesho ya Aya',//check translation with paragraph display
-    'Paragraph Display': 'Maonyesho ya Aya',//check translation with verse display
+    'Verse Display': 'Maonyesho ya Aya',
+    'Paragraph Display': 'Onyesho la Sehemu',// 'Section Display' as apparently Paragraph and Verse translate to same word
     'Passage Display': 'Onyesho la kifungu', 
     'Verse as Passage Display': 'Aya kama Onyesho la Kifungu', 
     'EZ Copy': 'Nakala Rahisi',  // 'Easy Copy'

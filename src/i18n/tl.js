@@ -44,12 +44,12 @@ module.exports = {
     'Whole words only': 'Buong salita lang',
     'Whole words': 'Buong salita',
     'Exact Case': 'Eksaktong Kaso',
-    'Parallel Bible #': 'Parallel Bible #',//check translation
+    'Parallel Bible #': 'Bibliya #',
     'Select a Bible': 'Pumili ng Bibliya',
     'Add Bible': 'Magdagdag ng Bibliya',
     'Remove Bible': 'Alisin ang Bibliya', 
     'Random Chapter': 'Random na Kabanata',
-    'Random Verse': 'Random Verse',//check translation
+    'Random Verse': 'Random na Taludtod',
     'Passages': 'Mga sipi',
     'Passage': 'Daanan',
     'The book of': 'Ang aklat ng',
@@ -100,10 +100,10 @@ module.exports = {
     // Shortcut Aliases
     'OT': 'LT',
     'NT': 'BT',
-    'Torah': 'Torah',//check translation
+    'Torah': 'Torah', // correct apparently
     'Wisdom': 'Karunungan',
-    'Major': 'Major',//check translation
-    'Minor': 'menor de edad',
+    'Major': 'Malaki',
+    'Minor': 'Maliit',
     'Passion': 'Simbuyo ng damdamin',
     'Doctrine': 'Doktrina',
     'Paul': 'Paul',
@@ -125,7 +125,7 @@ module.exports = {
     'Words Within 5 Verses': 'Mga Salita sa Loob ng 5 Verses',
     'Words Within Same Chapter': 'Mga Salita sa Iisang Kabanata',
     'Words Within Same Book': 'Mga Salita sa Iisang Aklat',
-    'Boolean Expression': 'Boolean Expression',//check translation
+    'Boolean Expression': 'Boolean Pagpapahayag',
     'Regular Expression': 'Regular na Pagpapahayag',
     'Select one ...' : 'Mamili ng isa ...',
 
@@ -136,8 +136,8 @@ module.exports = {
     'Boolean Search': 'Paghahanap sa Boolean',
     'Passage Retrieval': 'Pagkuha ng Passage',
     'Find words within': 'Maghanap ng mga salita sa loob',
-    'Proximity Search': 'Proximity Search',//check translation
-    'Power Search': 'Power Search',//check translation
+    'Proximity Search': 'Pagiging malapit Maghanap',
+    'Power Search': 'KapangyarihanMaghanap',
 
     // <b> ... </b> is HTML for bold text, please ensure that your translation maintains the bold
     '<b>All</b> of the words' : '<b>Lahat</b> ng mga salita',
@@ -181,18 +181,18 @@ module.exports = {
     'Highlight': 'I-highlight',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Huwag paganahin ang Pag-highlight ng mga Keyword',
     'Enable Highlighting of Keywords': 'Paganahin ang Pag-highlight ng mga Keyword',
-    'Print': 'Print',//check translation
-    'Printer Friendly': 'Printer Friendly',//check translation
+    'Print': 'Ilimbag',
+    'Printer Friendly': 'Tagalimbag Palakaibigan',
     'Help': 'Tulong',
-    'Basic': 'Basic',//check translation
-    'Advanced': 'Advanced',//check translation
+    'Basic': 'Basic',// corrrect?
+    'Advanced': 'Advanced',// corrrect?
 
     // Descriptions of special formatting features
     'Formatting': 'Pag-format',  
     'Supported Bibles Only': 'Mga Sinusuportahang Bibliya Lamang', 
     
     // Translate the right-side strings here
-    'strongs_numbers_description': 'Ipinapahiwatig ng Strong's Concordance Numbers ang pinagbabatayan ng mga salitang Hebreo o Griyego.',  
+    'strongs_numbers_description': 'Ipinapahiwatig ng Strong\'s Concordance Numbers ang pinagbabatayan ng mga salitang Hebreo o Griyego.',  
     'italics_description': 'Ang mga Italic ay nagpapahiwatig ng mga salitang idinagdag sa pagsasalin na wala sa orihinal na wika.',  
     'red_letter_description': 'Mga Salita ni Kristo sa Pula.', 
     'highlight_description': 'Pagha-highlight (bold) ng mga keyword sa mga paghahanap.', 
@@ -206,9 +206,9 @@ module.exports = {
     
     // Copy format options
     'Copy Format': 'Kopyahin ang Format', 
-    'Word Processor': 'Word Processor',//check translation 
+    'Word Processor': 'Tagaproseso ng Salita',
     'Outline' : 'Balangkas', 
-    'Custom': 'Custom',//check translation 
+    'Custom': 'Pasadya',
 
     'Single Verses': 'Mga Iisang Talata', 
     'Reference - Text': 'Sanggunian - Teksto', 
@@ -216,7 +216,7 @@ module.exports = {
     'Text Only': 'Teksto lamang', 
     'Separate Line': 'Hiwalay na Linya', 
 
-    'Multi-verse Passages': 'Multi-verse Passages',//check translation 
+    'Multi-verse Passages': 'Mga Sipi ng Multiverse',
     'Reference - Passage': 'Sanggunian - Passage', 
     'Passage - Reference': 'Passage - Sanggunian', 
     'Passage Only': 'Passage Lamang', 
@@ -297,7 +297,7 @@ module.exports = {
     'Bitter or Critical': 'Mapait o Kritikal',
     'Conscious of Sin': 'Mulat sa Kasalanan',
     'Defeated': 'Natalo',
-    'Depressed': 'Depressed',//check translation 
+    'Depressed': 'Nalulumbay',
     'Disaster Threatens': 'Nagbabanta ang Kalamidad',
     'Discouraged': 'Panghinaan ng loob',
     'Doubting': 'Nagdududa',
@@ -306,7 +306,7 @@ module.exports = {
     'Friends Fail': 'Nabigo ang mga kaibigan', 
     'Hopeless': 'Walang pag-asa',
     'Leaving Home': 'Pag-alis ng Bahay',
-    'Lonely': 'Lonely',//check translation
+    'Lonely': 'Aag-iisa',
     'Needing God\'s protection': 'Nangangailangan ng proteksyon ng Diyos',
     'Needing Guidance': 'Nangangailangan ng Patnubay',
     'Needing Peace': 'Nangangailangan ng Kapayapaan',
@@ -356,9 +356,9 @@ module.exports = {
     'Please select at least one Bible': 'Mangyaring pumili ng kahit isang Bibliya',
     'Please select a format': 'Mangyaring pumili ng isang format',
     'Are you sure you want to exit?  This will end the current download.': 'Sigurado ka bang gusto mong lumabas? Tatapusin nito ang kasalukuyang pag-download.',
-    'Plain Text' : 'Plain Text',//check translation
-    'Machine-readable Plain Text' : 'Plain Text na nababasa ng makina',
-    'Spreadsheet' : 'Spreadsheet',//check translation
+    'Plain Text' : 'Simpleng Teksto',
+    'Machine-readable Plain Text' : 'Simpleng Teksto na nababasa ng makina',
+    'Spreadsheet' : 'Spreadsheet', // cprrect
     'Databases': 'Mga database',
 
     'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF - Compact Text, Sulat, Mga Salita ni Kristo na Pula',
@@ -379,12 +379,12 @@ module.exports = {
     // Quick Start Help Dialog
     'Quick Start Guide': 'Gabay sa Mabilis na Pagsisimula',
     'User\'s Manual': 'Manwal ng Gumagamit',
-    'Wildcard': 'Wildcard',//check translation
+    'Wildcard': 'Ligaw na baraha',
     'Basic Searches' : 'Pangunahing Paghahanap',
     'Advanced Searches using Boolean': 'Mga Advanced na Paghahanap gamit ang Boolean',
     'Select' : 'Pumili',
     'Operators': 'Mga operator',
-    'Operator': 'Operator',//check translation
+    'Operator': 'Operator', // keep
     'Aliases': 'Mga alias',
     'Description': 'Paglalarawan',
     'Match both': 'Magtugma pareho',
@@ -441,7 +441,7 @@ module.exports = {
     'This will delete all bookmarks.': 'Tatanggalin nito ang lahat ng mga bookmark.',
     'Move to Current': 'Ilipat sa Kasalukuyan',
 
-    'Bookmark': 'Bookmark',//check translation
+    'Bookmark': 'Bookmark',
     'Bookmarks': 'Mga bookmark',
 
     'Please delete some bookmarks before adding more.': 'Mangyaring tanggalin ang ilang mga bookmark bago magdagdag ng higit pa.',

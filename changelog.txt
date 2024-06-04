@@ -1,5 +1,13 @@
 Bible SuperSearch Universal Client Changelog
 
+= 5.6.0.pre3???
+* Added languages
+    ** Swahili
+    ** Indonesian
+    ** Polish
+    ** Tagalog
+    ** Vietnamese
+
 = 5.5.1 May 13, 2024
 
 * Emergency bug: Not working in Linux OS

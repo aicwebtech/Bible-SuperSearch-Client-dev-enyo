@@ -55,7 +55,7 @@ module.exports = {
     'The book of': 'Cuốn sách của',
     'Look for': 'Tìm kiếm',
     'Look up': 'Tra cứu',
-    'in': 'trong'//check caps,
+    'in': 'trong',
     'verse': 'thơ',
     'verses': 'câu thơ',
     'A Chapter': 'Một chương',
@@ -241,7 +241,7 @@ module.exports = {
     
     // Showing results [1] to [30]
     'Showing Results': 'Hiển thị kết quả',
-    'to' : 'ĐẾN',//check caps
+    'to' : 'đến',
     
     // Your search produced no results in [name of Bible version]
     'Your search produced no results in': 'Tìm kiếm của bạn không mang lại kết quả nào trong', 

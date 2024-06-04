@@ -12,6 +12,7 @@ var SettingsDialog = require('../../components/dialogs/Settings');
 
 var Dialogs = {
     'HistoryDialog': require('../../components/dialogs/History'),
+    'BibleInfo': require('../../components/dialogs/BibleInfo'),
     'BookmarkDialog': require('../../components/dialogs/Bookmarks'),
     'BookmarkEditCurrentDialog': require('../../components/dialogs/BookmarkEditCurrent')
 };
@@ -76,6 +77,7 @@ module.exports = kind({
         this.createComponent({kind: FreeSansStyle});
 
         this._dialogCreateHelper(SettingsDialog, 'SettingsDialog');
+        this._dialogCreateHelper(Dialogs.BibleInfo, 'BibleInfo');
 
         // if(!this.$.HelpDialog) {
         //     this.createComponent({

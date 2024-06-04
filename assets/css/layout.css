@@ -903,3 +903,6 @@ tr.bss_render_reference_row th {
     background-color: #ccc;
 }
 
+.bss_clickable {
+    cursor: pointer;
+}
