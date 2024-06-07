@@ -290,7 +290,7 @@ module.exports = {
     'Disaster Threatens': 'تهدد الكارثة',
     'Discouraged': 'محبط',
     'Doubting': 'الشك',
-    'Facing a Crisis': 'Facing a Crisis',
+    'Facing a Crisis': 'مواجهة الأزمة',
     'Faith Fails': 'الإيمان يفشل',
     'Friends Fail': 'الأصدقاء يفشلون', 
     'Hopeless': 'ميئوس منه',

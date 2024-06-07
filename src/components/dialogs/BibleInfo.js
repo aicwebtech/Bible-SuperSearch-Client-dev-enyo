@@ -16,26 +16,28 @@ var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 module.exports = kind({
     name: 'BibleInfoDialog',
     kind: Dialog,
-    maxWidth: '350px',
+    maxWidth: '800px',
     height: '575px',
-    classes: 'help_dialog bible_settings',
+    classes: 'help_dialog',
     bibleString: null,
 
-    handlers: {
-        // onActiveChanged: 'handleActiveChanged'
-    },
-    
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, classes: 'bss_dialog_title', content: 'Settings'}, 
+            {kind: i18n, classes: 'bss_dialog_title', name: 'title', content: 'Settings'}, 
         ]}
     ],
 
     bodyComponents: [
         {
             name: 'container',
+            style: 'text-align: justify',
+            classes: 'bss_bible_info_container',
             allowHtml: true,
         },    
+        {
+            kind: Signal,
+            onBibleInfo: 'handleOpen'
+        }
     ],
 
     buttonComponents: [
@@ -44,24 +46,24 @@ module.exports = kind({
         ]}
     ],
 
-    bindings: [    
-
-    ],
-
-    handlers: {
-        onLocaleChange: 'localeChanged',
-    },
-
-    create: function() {
-        this.inherited(arguments);
-    },
     close: function() {
-        //this.app.set('bibleInfoShowing', false);
+        this.app.setDialogShowing('BibleInfo', false);
     },
-    showingChanged: function(was, is) {
-        this.inherited(arguments);
-    },
-    localeChanged: function(inSender, inEvent) {
-        // this.render();
-    },
+    handleOpen: function(inSender, inEvent) {
+        var mod = inEvent.module || null;
+
+        if(!mod || typeof this.app.statics.bibles[mod] == 'undefined') {
+            return;
+        }
+        
+        var bibleInfo = this.app.statics.bibles[mod];
+
+        if(typeof bibleInfo.description == 'undefined') {
+            return;  // don't display if no description
+        }
+
+        this.$.title.set('content', bibleInfo.name);
+        this.$.container.set('content', bibleInfo.description);
+        this.app.setDialogShowing('BibleInfo', true);
+    }
 });

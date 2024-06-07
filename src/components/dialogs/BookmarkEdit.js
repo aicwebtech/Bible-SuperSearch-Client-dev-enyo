@@ -219,7 +219,7 @@ module.exports = kind({
         }
     },
     setTitle: function(title) {
-        this.$.TitleBar.$.Header.set('content', this.app.t('Bookmark') + ': ' + this.app.t(title));
+        this.$.Header.set('content', this.app.t('Bookmark') + ': ' + this.app.t(title));
     },
     save: function(inSender, inEvent) {
         var t = this,

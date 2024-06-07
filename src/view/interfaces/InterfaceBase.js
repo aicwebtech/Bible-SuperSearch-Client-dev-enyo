@@ -78,14 +78,6 @@ module.exports = kind({
 
         this._dialogCreateHelper(SettingsDialog, 'SettingsDialog');
         this._dialogCreateHelper(Dialogs.BibleInfo, 'BibleInfo');
-
-        // if(!this.$.HelpDialog) {
-        //     this.createComponent({
-        //         name: 'HelpDialog',
-        //         kind: HelpDialog,
-        //         showing: false
-        //     });
-        // }
     },
     rendered: function() {
         this.inherited(arguments);

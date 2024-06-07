@@ -35,7 +35,7 @@ module.exports = kind({
             {label: 'Doubting', verses: 'Matthew 8:26; Hebrews 11'},
             {label: 'Facing a Crisis', verses: 'Psalms 121; Matthew 6:25-34; Hebrews 4:16'},
             {label: 'Faith Fails', verses: 'Psalms 42:5; Hebrews 11'},
-            {label: 'Friends Fail', verses: 'Psalms 41:9-13; Luke 17:3-4; Rom 12:14,17,19,21; 2 Timothy 4:16-18', newColumn: true},
+            {label: 'Friends Fail', verses: 'Psalms 41:9-13; Luke 17:3-4; Romans 12:14,17,19,21; 2 Timothy 4:16-18', newColumn: true},
             {label: 'Hopeless', verses: 'Psalms 71:5; Psalms 42; Lamentations 3:18-26; 1 Peter 1:3, 21'},
             {label: 'Leaving Home', verses: 'Psalms 121; Matthew 10:16-20'},
             {label: 'Lonely', verses: 'Psalms 23; Hebrews 13:5-6'},
@@ -53,7 +53,7 @@ module.exports = kind({
             {label: 'Traveling', verses: 'Psalms 121'},
             {label: 'Trouble, In', verses: 'Psalms 16; Psalms 31; John 14:1-4; Hebrews 7:25'},
             {label: 'Troubled', verses: 'John 14:1-3, 27; John 16:33; 2 Corinthians 4:8-10'},
-            {label: 'Weary', verses: 'Psalms 90; Matthew 11:28-30; 1 Corinthians 15:58; Gal 6:9-10'},
+            {label: 'Weary', verses: 'Psalms 90; Matthew 11:28-30; 1 Corinthians 15:58; Galatians 6:9-10'},
             {label: 'Worried', verses: 'Matthew 6:19-34; 1 Peter 5:6-7'}
         ]
     },
@@ -147,6 +147,24 @@ module.exports = kind({
                 });
             }
 
+            // if(this.app.rtl) {
+            //     var comp = [
+            //         {classes: 'verses bss_float_left', components: [
+            //             {kind: Anchor, href: url, _title: versesTranslated, content: versesTranslated, ontap: 'handleVerseTap'}
+            //         ]},
+            //         {classes: 'label bss_float_right', content: label},
+            //         {classes: 'clear-both'}
+            //     ];
+            // } else {
+            //     var comp = [
+            //         {classes: 'label bss_float_left', content: label},
+            //         {classes: 'verses bss_float_right', components: [
+            //             {kind: Anchor, href: url, _title: versesTranslated, content: versesTranslated, ontap: 'handleVerseTap'}
+            //         ]},
+            //         {classes: 'clear-both'}
+            //     ];
+            // }
+
             this.$.ListContainer.$[colName].createComponent({
                 verses: item.verses,
                 owner: this,
@@ -156,7 +174,7 @@ module.exports = kind({
                         {kind: Anchor, href: url, _title: versesTranslated, content: versesTranslated, ontap: 'handleVerseTap'}
                     ]},
                     {classes: 'clear-both'}
-                ]
+                ],
             });
         }, this);
     },

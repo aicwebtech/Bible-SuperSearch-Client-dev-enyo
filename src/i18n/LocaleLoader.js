@@ -1,5 +1,5 @@
 module.exports = {
-    // ar: require('./ar'), // NEW, translation works, UI needs some work to support RTL languages
+    ar: require('./ar'), // NEW, translation works, UI needs some work to support RTL languages
     en: require('./en'),
     // en_US: require('./en_US'),
     en_pirate: require('./en_pirate'),

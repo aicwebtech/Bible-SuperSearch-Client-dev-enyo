@@ -12,32 +12,33 @@ module.exports = kind({
         return reference + '  ' + this.processText(verse.text);
     },
     processAssemblePassageVerse: function(reference, verse) {
-        // var processed = '<td class=\'ver\'><sup>' + reference + '</sup></td><td class=\'txt\'>' + this.processText(verse.text) + '</td>';
-        // var processed = '<td><sup class=\'ver\'>' + reference + '</sup><span class=\'txt\'>' + this.processText(verse.text) + '</span></td>';
         var dirClass = this.selectedBible.rtl ? 'rtl' : 'ltr';
         var text = this.processText(verse.text);
         
         // Table within table - this is ugly!
-        if(this.app.isRtl) {
-            if(this.selectedBible.rtl) {
-                // var processed = '<td><table><tr><td class=\'ver\'><sup>' + reference + '</sup></td><td class=\'txt rtl\'>' + text + '</td></tr></table></td>';
-                // var processed = '<td><table class=\'rtl\'><tr><td class=\'txt rtl\'>' + text + '</td><td class=\'ver\'><sup>' + reference + '</sup></td></tr></table></td>';
-                var processed = '<td><table><tr><td class=\'ver rtl\'><sup>' + reference + '</sup></td><td class=\'txt ltr\'>' + text + '</td></tr></table></td>';
-            }
-            else {
-                var processed = '<td><table class=\'ltr\'><tr><td class=\'txt ltr\'>' + text + '</td><td class=\'ver\'><sup>' + reference + '</sup></td></tr></table></td>';
-                // var processed = '<td><table><tr><td class=\'ver ltr\'><sup>' + reference + '</sup></td><td class=\'txt ltr\'>' + text + '</td></tr></table></td>';
-            }
-        }
-        else {        
-            if(this.selectedBible.rtl) {
-                var processed = '<td><table class=\'rtl\'><tr><td class=\'txt rtl\'>' + text + '</td><td class=\'ver\'><sup>' + reference + '</sup></td></tr></table></td>';
-            }
-            else {
-                var processed = '<td><table class=\'ltr\'><tr><td class=\'ver\'><sup>' + reference + '</sup></td><td class=\'txt ltr\'>' + text + '</td></tr></table></td>';
-            }            
-        }
+        var verTd = '<td class=\'ver ' + dirClass + '\'><sup>' + reference + '</sup></td>';
+        var txtTd = '<td class=\'txt ' + dirClass + '\'>' + text + '</td>';
 
+        // if(this.app.isRtl && this.selectedBible.rtl || !this.app.isRtl && !this.selectedBible.rtl) {
+        // if(!this.app.isRtl  && !this.selectedBible.rtl || this.app.isRtl && this.selectedBible.rtl) {
+        // if(!this.selectedBible.rtl && !this.app.isRtl) {
+        //     var verTxt = verTd + txtTd;
+        // } 
+        
+        // if(!this.selectedBible.rtl && this.app.isRtl) {
+        //     // var verTxt = txtTd + verTd; // bad
+        //     var verTxt = verTd + txtTd;
+        // } 
+            
+
+        // // else {
+        // //     var verTxt = txtTd + verTd;
+        // // }
+
+        var verTxt = verTd + txtTd;
+        
+        var processed = '<td class=\'bss_' + dirClass + '\'><table class=\'bss_' + dirClass + '\'><tr>' + verTxt + '</tr></table></td>';
+        // var processed = '<td><table><tr>' + verTxt + '</tr></table></td>';
 
         return processed;
     },

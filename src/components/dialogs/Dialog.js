@@ -46,7 +46,7 @@ module.exports = kind({
         this.processDimensions();
 
         if(this.titleComponents.length > 0) {
-            this.$.TitleBar.createComponents(this.titleComponents);
+            this.$.TitleBar.createComponents(this.titleComponents, {owner: this});
             this.$.TitleBar.set('showing', true);
         }
 

@@ -249,7 +249,6 @@ module.exports = kind({
             }
             
             var bible_info = this.app.statics.bibles[mod];
-            // var content = '<h5>' + bible_info.name + ' (' + bible_info.shortname + ')</h5>' + bible_info.copyright_statement;
             
             var components = [
                 {
@@ -264,7 +263,6 @@ module.exports = kind({
             ];
 
             if(bible_info.research) {
-                // content += '<br /><br />This Bible is provided for research purposes only.';
                 components.push({tag: 'br'});
                 components.push({tag: 'br'});
                 components.push({kind: i18n, content: 'This Bible is provided for research purposes only.'});
@@ -281,8 +279,7 @@ module.exports = kind({
         this.showingCopyrightBottom = true;
     },
     handleBibleInfoTap: function(inSender, inEvent) {
-        var mod = inSender.get('module');
-        this.log(mod);
+        Signal.send('onBibleInfo', {module: inSender.get('module')});
     },
     _getBibleDisplayName: function(bible) {
         if(this.bibles.length <= 1) {

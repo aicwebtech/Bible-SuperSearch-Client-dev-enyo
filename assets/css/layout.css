@@ -93,19 +93,19 @@ div.biblesupersearch_content {
 }
 
 .biblesupersearch_bible_selector_multi {
-    margin-right: 2px;
-    margin-left:  2px;
+    margin-inline-end: 2px;
+    margin-inline-start:  2px;
 }
 
 .biblesupersearch_center_element {
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
 }
 
 .biblesupersearch_error_view {
     padding: 20px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
     text-align: center;
     min-width: 100px;
     max-width: 75%;
@@ -139,8 +139,8 @@ table.biblesupersearch_render_table {
 .biblesupersearch_copy_pane button {
     display: block;
     max-width: 100px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
 }
 
 .biblesupersearch_copy_pane p {
@@ -166,10 +166,10 @@ table.biblesupersearch_render_table {
     width: 20px;
     /*max-width: 20px;*/
     /*min-width: 15px;*/
-    text-align: right;
+    text-align: end;
     display: inline-block;
     /*vertical-align: top;*/
-    margin-right: 3px;
+    margin-inline-end: 3px;
     font-size: .80em;
     float: left;
 }
@@ -192,6 +192,7 @@ table.biblesupersearch_render_table {
 
 .biblesupersearch_render_table td.txt {
     text-align: justify;
+/*    text-align: start;*/
 }
 
 .biblesupersearch_render_table td.ltr, p.ltr {
@@ -202,8 +203,16 @@ table.biblesupersearch_render_table {
     direction: rtl;
 }
 
+.bss_ltr {
+    direction: ltr;
+}
+
+.bss_rtl {
+    direction: rtl;
+}
+
 .biblesupersearch_render_table td table.rtl {
-    margin-left: auto;
+    margin-inline-start: auto;
 }
 
 .biblesupersearch_render_table sup {
@@ -214,7 +223,7 @@ table.biblesupersearch_render_table {
 
 .biblesupersearch_render_table td table td.ver {
     width: 20px;
-    text-align: right;
+    text-align: end;
     vertical-align: top;
 }
 
@@ -239,13 +248,13 @@ table.biblesupersearch_render_table {
 
 .biblesupersearch_main .format_buttons {
     text-align: center;
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
 }
 
 .biblesupersearch_pager {
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
     text-align: center;
 }
 
@@ -301,15 +310,15 @@ div.biblesupersearch_dialog {
 
 .biblesupersearch_main label.left_label {
     display: inline-block;
-    margin-right: 5px;
-    text-align: right;
+    margin-inline-end: 5px;
+    text-align: end;
     min-width: 100px;
 }
 
 .biblesupersearch_main label.resp_left_label {
     display: inline-block;
-    margin-right: 5px;
-    text-align: right;
+    margin-inline-end: 5px;
+    text-align: end;
     min-width: 100px;
     width: 98%; 
 }
@@ -344,15 +353,15 @@ div.biblesupersearch_dialog {
     .biblesupersearch_main label.resp_left_label {
         text-align: center;
         display: block;
-        margin-left: auto;
-        margin-right: auto;
+        margin-inline-start: auto;
+        margin-inline-end: auto;
         max-width: initial;
     }
 
     .biblesupersearch_main .resp_input {
         display: block;
-        margin-left: auto;
-        margin-right: auto;
+        margin-inline-start: auto;
+        margin-inline-end: auto;
         width: 60%; 
         max-width: initial;
     }
@@ -557,18 +566,18 @@ div.alert_dialog {
 }
 
 .help_dialog.help table tr td.op {
-    text-align: right;
+    text-align: end;
 }
 
 .help_dialog.help table tr td.desc {
-    text-align: left;
+    text-align: start;
 }
 
 .bible_sos .sos_item .label {
-    float: left;
+    float: inline-start;
     display: inline-block;
     font-weight: bold;
-    text-align: left;
+    text-align: start;
     font-size: 0.9em;
 }
 
@@ -577,7 +586,7 @@ div.alert_dialog {
 }
 
 .bss_history_item {
-    text-align: left;
+    text-align: start;
     font-size: 0.9em;
     padding: 3px 8px;
     height: 24px;
@@ -596,7 +605,7 @@ div.alert_dialog {
     font-size: 22px;
     cursor: pointer;
 /*    border: 1px solid #333;*/
-    margin-left: 10px;
+    margin-inline-start: 10px;
 }
 
 .share_dialog .link_share_container {
@@ -611,13 +620,12 @@ div.alert_dialog {
 }
 
 .bible_sos .sos_item .verses {
-    float: right;
-    /*background-color: green;*/
+    float: inline-end;
     cursor: pointer;
     display: inline-block;
     max-width: 70%;
     font-size: 0.8em;
-    text-align: right;
+    text-align: end;
 }
 
 .bible_start .start_item {
@@ -625,29 +633,29 @@ div.alert_dialog {
 }
 
 .bible_start .start_item .num {
-    float: left;
+    float: inline-start;
     cursor: pointer;
     display: inline-block;
     font-size: 0.8em;
-    text-align: right;
+    text-align: end;
     width: 22px;
-    margin-right: 5px;
+    margin-inline-end: 5px;
 }
 
 .bible_start .start_item .verses {
-    float: left;
+    float: inline-start;
     cursor: pointer;
     display: inline-block;
     font-weight: bold;
     font-size: 0.8em;
-    text-align: left;
+    text-align: start;
 }
 
 .bible_start .start_item .desc {
-    float: right;
+    float: inline-end;
     display: inline-block;
     max-width: 80%;
-    text-align: right;
+    text-align: end;
     font-size: 0.9em;
 }
 
@@ -669,13 +677,13 @@ div.alert_dialog {
 }
 
 .bible_download .render_list {
-    text-align: left;
+    text-align: start;
 }
 
 .bible_download .render_list .name {
     display: inline-block;
-    float: left;
-    text-align: left;
+    float: inline-start;
+    text-align: start;
     width: 75%;
     overflow: hidden;
     white-space: nowrap;
@@ -684,8 +692,8 @@ div.alert_dialog {
 
 .bible_download .render_list .status {
     display: inline-block;
-    float: right;
-    text-align: right;
+    float: inline-end;
+    text-align: end;
 }
 
 .bible_download .render_list .status .success {
@@ -704,8 +712,16 @@ div.alert_dialog {
     height: 100px;
 }
 
-.clear-both, .clear_both {
+.clear-both, .clear_both, .bss_clear_both {
     clear: both;
+}
+
+.bss_float_left {
+    float: inline-start;  /* RTL */
+}
+
+.bss_float_left {
+    float: inline-end; /* RTL */
 }
 
 .biblesupersearch_bible_selector option.label {
@@ -895,7 +911,7 @@ tr.bss_render_reference_row th {
 }
 
 .bss_shortcuts_table tr td {
-    text-align: left;
+    text-align: start;
     padding: 3px;
 }
 
@@ -905,4 +921,9 @@ tr.bss_render_reference_row th {
 
 .bss_clickable {
     cursor: pointer;
+}
+
+.bss_bible_info_container {
+    text-align: justify;
+    padding: 0 15px;
 }
