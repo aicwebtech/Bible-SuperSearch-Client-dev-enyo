@@ -142,7 +142,7 @@
 {
     height: 4px;
     display: block;
-    text-align: left;
+    text-align: start;
     position: relative;
     top: -6px;
     white-space: nowrap;
@@ -221,7 +221,7 @@
 
 .format_buttons_html .block_enabled, .format_buttons_html .block_disabled {
     display: inline-block;
-    margin-right: 3px;
+    margin-inline-end: 3px;
     height: 11px;
     width: 11px;
     border: 1px solid #222222;
@@ -243,7 +243,7 @@
 .bible_settings .settings_toggle {
     width: 200px;
     margin: 0 auto 10px;
-    text-align: left;
+    text-align: start;
     cursor: pointer;
 }
 
@@ -258,12 +258,12 @@
 .bible_settings .settings_container {
     width: 250px;
     margin: 0 auto 10px;
-    text-align: left;
+    text-align: start;
     cursor: pointer;
 }
 
 .bible_settings .settings_container label {
-    margin-left: 5px;
+    margin-inline-start: 5px;
     cursor: pointer;
 }
 
@@ -346,7 +346,7 @@
 }
 
 .biblesupersearch_copy_settings .section label {
-    margin-left: 7px;
+    margin-inline-start: 7px;
 }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {

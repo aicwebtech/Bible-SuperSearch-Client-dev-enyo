@@ -133,12 +133,12 @@ module.exports = kind({
                             title: title, 
                             pk: item.get('pk'),
                             ontap: 'handleBookmarkTap',
-                            style: 'float: left',
+                            style: 'float: inline-start',
                         }, 
                         {
                             kind: i18n,
                             ontap: 'edit',
-                            style: 'float: right',
+                            style: 'float: inline-end',
                             attributes: {title: 'Edit'},
                             pk: item.get('pk'),
                             components: [
@@ -148,7 +148,7 @@ module.exports = kind({
                         {
                             kind: i18n,
                             ontap: 'move',
-                            style: 'float: right',
+                            style: 'float: inline-end',
                             attributes: {title: 'Move to Current'},
                             pk: item.get('pk'),
                             components: [
@@ -158,7 +158,7 @@ module.exports = kind({
                         {
                             kind: i18n,
                             ontap: 'delete',
-                            style: 'float: right',
+                            style: 'float: inline-end',
                             attributes: {title: 'Delete'},
                             pk: item.get('pk'),
                             components: [

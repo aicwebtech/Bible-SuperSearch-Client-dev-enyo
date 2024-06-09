@@ -18,6 +18,7 @@ module.exports = kind({
     numPageLinks: 10, // maximum number of individual page links to display at once,
     includeTotals: false,
     visibilityOffset: 5,
+    swapOnRtl: false,
 
     // settings:
     firstPageText:  '<<<',
@@ -37,7 +38,8 @@ module.exports = kind({
 
     handlers: {
         onLinkTap: 'handleTap',
-        onAutoClick: 'handleAutoClick'
+        onAutoClick: 'handleAutoClick',
+        onLocaleChange: 'handleLocaleChange'
     },
 
     create: function() {
@@ -58,6 +60,7 @@ module.exports = kind({
         var displayRangeEn = page * this.perPage;
         var showing = (this.lastPage > 1) ? true : false;
         var urlBase = this.getLinkBase();
+        var swap = this.app.isRtl && this.swapOnRtl; 
 
         displayRangeEn = (displayRangeEn > this.totalResults) ? this.totalResults : displayRangeEn;
 
@@ -93,14 +96,17 @@ module.exports = kind({
 
         var LinkContainer = this.createComponent({
             name: 'LinkContainer',
-            classes: 'links'
+            classes: 'links',
+            attributes: {
+                dir: this.app.isRtl ? 'rtl' : 'ltr'
+            }
         });
         
         if(this.lastPage) {        
             LinkContainer.createComponent({
                 kind: Link,
                 classes: (page == 1) ? 'std_link disabled' : 'std_link',
-                content: this.firstPageText,
+                content: swap ? this.lastPageText : this.firstPageText,
                 name: 'first_page',
                 allowHtml: true,
                 href: (page == 1) ? null : this.makeLink('1'),
@@ -112,7 +118,7 @@ module.exports = kind({
             kind: Link,
             classes: (page == 1) ? 'std_link disabled' : 'std_link',
             href: (page == 1) ? null : this.makeLink( prevPage.toString() ),
-            content: this.prevPageText,
+            content: swap ? this.nextPageText : this.prevPageText,
             name: 'prev_page',
             allowHtml: true,
             title: 'Previous Page'
@@ -150,7 +156,7 @@ module.exports = kind({
             classes: (page == this.lastPage) ? 'std_link disabled' : 'std_link',
             kind: Link,
             href: (page == this.lastPage) ? null : this.makeLink( nextPage.toString() ),
-            content: this.nextPageText,
+            content: swap ? this.prevPageText : this.nextPageText,
             name: 'next_page',
             allowHtml: true,
             title: 'Next Page'
@@ -161,7 +167,7 @@ module.exports = kind({
                 classes: (page == this.lastPage) ? 'std_link disabled' : 'std_link',
                 kind: Link,
                 allowHtml: true,
-                content: this.lastPageText,
+                content: swap ? this.firstPageText : this.lastPageText,
                 name: 'last_page',
                 href: (page == this.lastPage) ? null : this.makeLink( this.lastPage.toString() ),
                 title: 'Last Page'
@@ -259,6 +265,9 @@ module.exports = kind({
         if(c && c != 'false') {
             this.rebuild();
         }
+    },
+    handleLocaleChange: function(inSender, inEvent) {
+        this.rebuild();
     },
     getLinkBase: function() {
         var cache = this.get('cacheHash');

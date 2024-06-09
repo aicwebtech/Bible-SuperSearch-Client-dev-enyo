@@ -22,8 +22,8 @@
     vertical-align: top;
     width: 165px;
     /*max-width: 140px;*/
-    text-align: right;
-    margin-right: 5px;
+    text-align: end;
+    margin-inline-end: 5px;
     padding: 0;
     white-space: nowrap;
 }
@@ -92,7 +92,7 @@
 
 .biblesupersearch_expanding_form .expander_row {
     width: 100%;
-    text-align: right;
+    text-align: end;
     padding-right: 10px;
 }
 
@@ -109,9 +109,9 @@
 .biblesupersearch_expanding_form  .input_row_checkbox .checkbox_container .label {
     display: inline-block;
     /*width: 140px;*/
-    margin-right: 6px;
+    margin-inline-end: 6px;
     /*background-color: yellow;*/
-    text-align: right;
+    text-align: end;
 }
 .biblesupersearch_expanding_form  .input_row_checkbox .checkbox_container .element {
     display: inline-block;
@@ -152,8 +152,8 @@
     max-width: 400px;
     width: 98%;
     height: 60px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
 }
 
 .interface_expanding .strongs_hover {
@@ -234,8 +234,8 @@
 @media only screen and (max-width: 380px) {
     .biblesupersearch_expanding_form .input_row {
         width: 85%;
-        margin-right: auto;
-        margin-left: auto;
+        margin-inline-end: auto;
+        margin-inline-start: auto;
         margin-bottom: 10px;
     }
 
@@ -245,7 +245,7 @@
         width: 100%;
         max-width: none;
         text-align: center;
-        margin-right: 0px;
+        margin-inline-end: 0px;
     }
 
     .biblesupersearch_expanding_form .input_row .element {
@@ -261,7 +261,7 @@
 
     .biblesupersearch_expanding_form .input_row_checkbox {
         line-height: 25px;
-        text-align: right;
+        text-align: end;
     }
 
     .biblesupersearch_expanding_form .input_row .element input {
@@ -274,6 +274,6 @@
     .biblesupersearch_expanding_form  .input_row_checkbox .checkbox_container {
         display: block;
         width: 100%;
-        text-align: right;
+        text-align: end;
     }
 }

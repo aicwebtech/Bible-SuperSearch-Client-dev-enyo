@@ -147,24 +147,6 @@ module.exports = kind({
                 });
             }
 
-            // if(this.app.rtl) {
-            //     var comp = [
-            //         {classes: 'verses bss_float_left', components: [
-            //             {kind: Anchor, href: url, _title: versesTranslated, content: versesTranslated, ontap: 'handleVerseTap'}
-            //         ]},
-            //         {classes: 'label bss_float_right', content: label},
-            //         {classes: 'clear-both'}
-            //     ];
-            // } else {
-            //     var comp = [
-            //         {classes: 'label bss_float_left', content: label},
-            //         {classes: 'verses bss_float_right', components: [
-            //             {kind: Anchor, href: url, _title: versesTranslated, content: versesTranslated, ontap: 'handleVerseTap'}
-            //         ]},
-            //         {classes: 'clear-both'}
-            //     ];
-            // }
-
             this.$.ListContainer.$[colName].createComponent({
                 verses: item.verses,
                 owner: this,

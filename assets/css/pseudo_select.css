@@ -53,7 +53,7 @@
 	margin-top: 0;
     left: 0;
 	width: 100%;
-	text-align: left;
+	text-align: start;
 	z-index: 1000001;
 	border: 1px solid #999999;
 	min-height: 10px;
@@ -61,7 +61,7 @@
 	overflow-y: auto;
     -webkit-user-select: none; /* Safari */
     user-select: none; /* Standard syntax */
-    margin-left: -1px;
+    margin-inline-start: -1px;
 }
 
 .bss_pseudo_input, .bss_pseudo_input .bss_pseudo_autocomplete_visible {
@@ -83,8 +83,8 @@
 
 .bss_pseudo_select_placeholder {
 	display: inline-block;
-	float: left;
-	text-align: left;
+	float: inline-start;
+	text-align: start;
 	vertical-align: middle;
 	overflow: hidden;
 	white-space: nowrap;
@@ -101,8 +101,8 @@
 
 .bss_pseudo_select_button {
 	display: inline-block;
-	float: right;
-	padding-right: 3px;
+	float: inline-end;
+	padding-inline-end: 3px;
 	padding-top: 2px;
 	font-size: 12px;
 
@@ -111,7 +111,7 @@
 
 .bss_pseudo_select_button span {
 /*    background-color: yellow;*/
-/*    padding-right: 3px;
+/*    padding-inline-end: 3px;
     padding-top: 2px;*/
     display: inline-block;
     user-select: none;
@@ -135,12 +135,12 @@
 }
 
 .bss_pseudo_optgroup {
-    padding-left: 5px;
+    padding-inline-start: 5px;
     margin-top: 2px;
 }
 
 .bss_pseudo_option {
-	padding-left: 20px;
+	padding-inline-start: 20px;
 	text-indent: -15px;
     margin-top: 2px;
 }
@@ -150,7 +150,7 @@
 }
 
 .bss_pseudo_option.bss_pseudo_option_grouped {
-    padding-left: 40px;
+    padding-inline-start: 40px;
 }
 
 .bss_pseudo_option.bss_pseudo_selected {

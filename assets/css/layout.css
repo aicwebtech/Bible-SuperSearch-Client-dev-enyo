@@ -211,6 +211,8 @@ table.biblesupersearch_render_table {
     direction: rtl;
 }
 
+
+
 .biblesupersearch_render_table td table.rtl {
     margin-inline-start: auto;
 }
@@ -722,6 +724,10 @@ div.alert_dialog {
 
 .bss_float_left {
     float: inline-end; /* RTL */
+}
+
+.bss_center {
+    text-align: center;
 }
 
 .biblesupersearch_bible_selector option.label {

@@ -1,12 +1,15 @@
 Bible SuperSearch Universal Client Changelog
 
-= 5.6.0.pre3???
+= 5.6.0.pre
+* Implemented RTL support for UI languages (we already supported this for Bibles)
 * Added languages
     ** Swahili
     ** Indonesian
     ** Polish
     ** Tagalog
     ** Vietnamese
+    ** Dutch/Flemish
+    ** Arabic
 
 = 5.5.1 May 13, 2024
 

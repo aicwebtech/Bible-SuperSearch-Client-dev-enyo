@@ -411,7 +411,7 @@ module.exports = {
     'You cannot search across Bibles of different languages with the selected search type.' : 'لا يمكنك البحث في كتب مقدسة بلغات مختلفة باستخدام نوع البحث المحدد.',
 
     // General dialogs
-    'Name': 'Name',
+    'Name': 'اسم',
     'Save': 'يحفظ',
     'Cancel': 'يلغي',
     'Edit': 'يحرر',

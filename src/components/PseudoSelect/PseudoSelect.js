@@ -73,7 +73,8 @@ module.exports = kind({
 			name: 'Toggle',
 			classes: 'bss_pseudo_select_toggle',
 			showing: false,
-			defaultKind: Opt
+			defaultKind: Opt,
+            attributes: {dir: 'auto'}
 		}, 
         {
             kind: Signal,

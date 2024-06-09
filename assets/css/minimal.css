@@ -6,8 +6,8 @@
 .interface_minimal .form .single_line, .interface_minimal .form .single_line_bible {
     width: 100%; 
     max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
 }
 
 .interface_minimal .form .single_line input, 
@@ -38,8 +38,8 @@
 }
 
 .interface_minimal_wide .form .bible_selector {
-    margin-right: 15px;
-    margin-left: 15px;
+    margin-inline-end: 15px;
+    margin-inline-start: 15px;
 }
 
 .interface_minimal_wide .form .single_line, .interface_minimal_wide .form .single_line_bible {
@@ -57,7 +57,7 @@
 
 .interface_minimal_wide .form .single_line_bible button {
     width: initial !important; 
-    margin-left: 15px;
+    margin-inline-start: 15px;
     text-align: center;
 }
 
@@ -115,8 +115,8 @@
     text-align: center;
     width: 100%; 
     max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
 }
 
 .interface_minimal .form .single_line_go input,

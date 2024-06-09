@@ -16,29 +16,13 @@ module.exports = kind({
         var text = this.processText(verse.text);
         
         // Table within table - this is ugly!
-        var verTd = '<td class=\'ver ' + dirClass + '\'><sup>' + reference + '</sup></td>';
-        var txtTd = '<td class=\'txt ' + dirClass + '\'>' + text + '</td>';
+        // var verTd = '<td class=\'ver ' + dirClass + '\'><sup>' + reference + '</sup></td>';
+        // var txtTd = '<td class=\'txt ' + dirClass + '\'>' + text + '</td>';        
+        var verTd = '<td class=\'ver\'><sup>' + reference + '</sup></td>';
+        var txtTd = '<td class=\'txt\'>' + text + '</td>';
 
-        // if(this.app.isRtl && this.selectedBible.rtl || !this.app.isRtl && !this.selectedBible.rtl) {
-        // if(!this.app.isRtl  && !this.selectedBible.rtl || this.app.isRtl && this.selectedBible.rtl) {
-        // if(!this.selectedBible.rtl && !this.app.isRtl) {
-        //     var verTxt = verTd + txtTd;
-        // } 
-        
-        // if(!this.selectedBible.rtl && this.app.isRtl) {
-        //     // var verTxt = txtTd + verTd; // bad
-        //     var verTxt = verTd + txtTd;
-        // } 
-            
-
-        // // else {
-        // //     var verTxt = txtTd + verTd;
-        // // }
-
-        var verTxt = verTd + txtTd;
-        
-        var processed = '<td class=\'bss_' + dirClass + '\'><table class=\'bss_' + dirClass + '\'><tr>' + verTxt + '</tr></table></td>';
-        // var processed = '<td><table><tr>' + verTxt + '</tr></table></td>';
+        // var processed = '<td class=\'bss_' + dirClass + '\'><table class=\'bss_' + dirClass + '\'><tr>' + verTxt + '</tr></table></td>'; // known working
+        var processed = '<td class=\'bss_' + dirClass + '\'><table><tr>' + verTd + txtTd + '</tr></table></td>';
 
         return processed;
     },

@@ -77,20 +77,20 @@ module.exports = kind({
             components: [
                 {
                     name: 'SideButtonPrev', 
-                    classes: 'bss_side_swipe_button', 
+                    classes: 'bss_side_swipe_button bss_float_right', 
                     content: '&lt;', 
                     allowHtml: true, 
-                    style: 'float:left', 
+                    // style: 'float: inline-start', 
                     // onmouseover: 'sideButtonMouseOver',
                     // onmouseout: 'sideButtonMouseOut',
                     ontap: 'clickPrev'
                 },
                 {
                     name: 'SideButtonNext', 
-                    classes: 'bss_side_swipe_button', 
+                    classes: 'bss_side_swipe_button bss_float_left', 
                     content: '&gt;', 
                     allowHtml: true, 
-                    style: 'float:right', 
+                    // style: 'float:right', 
                     // onmouseover: 'sideButtonMouseOver',
                     // onmouseout: 'sideButtonMouseOut',
                     ontap: 'clickNext'
@@ -257,9 +257,14 @@ module.exports = kind({
                     ontap: 'handleBibleInfoTap', 
                     module: mod, 
                     owner: this,
-                    classes: 'bss_clickable'
+                    classes: 'bss_clickable bss_center'
                 },
-                {kind: i18n, content: bible_info.copyright_statement, allowHtml: true}
+                {
+                    kind: i18n, 
+                    content: bible_info.copyright_statement, 
+                    allowHtml: true, 
+                    attributes: {dir: 'auto'},
+                }
             ];
 
             if(bible_info.research) {

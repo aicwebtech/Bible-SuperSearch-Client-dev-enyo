@@ -24,8 +24,8 @@ span.red_letter {
     padding: 5px;
     margin: 5px;
     max-width: 400px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
     background-color: orange;
 }
 
@@ -45,8 +45,8 @@ span.red_letter {
 }
 
 .random_verse_widget button {
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
     text-align: center;
     font-size: .7em;
     display: block;

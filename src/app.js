@@ -81,6 +81,7 @@ var App = Application.kind({
     localeDatasetsRaw: Locales,
     localeDatasets: {},
     localeBibleBooks: {},
+    isRtl: false,
     validate: Validators,
     AlertDialog: AlertDialog,
     responseCollection: ResponseCollection,

@@ -40,7 +40,13 @@ module.exports = kind({
     bodyComponents: [
         // {kind: Signal, onFormResponseSuccess: 'handleFormResponse', onFormResponseError: 'handleFormError'},
         {classes: 'link_share_container', components: [
-            {kind: TextArea, name: 'CopyArea', classes: 'link_share', _style: 'width: 98%'}
+            {
+                kind: TextArea, 
+                name: 'CopyArea', 
+                classes: 'link_share', 
+                attributes: {dir: 'auto'},
+                _style: 'width: 98%'
+            }
         ]},
         // {tag: 'br'}
     ],

@@ -2,7 +2,7 @@ var kind = require('enyo/kind');
 var Opt = require('./PseudoOption');
 var i18n = require('../Locale/i18nComponent');
 // var PseudoSelect = require('./PseudoSelect');
-var Input = require('enyo/Input');
+var Input = require('../../components/Locale/i18nInput');
 var TextArea = require('enyo/TextArea');
 var Signal = require('../../components/Signal');
 
@@ -39,7 +39,7 @@ module.exports = kind({
 
 	bindings: [
         // {from: 'app.hasMouse', to: 'hasMouse'},
-        {from: 'placeholder', to: '$.Input.placeholder'},
+        {from: 'placeholder', to: '$.Input.placeholderString'},
         {from: 'value', to: '$.Input.value', oneWay: false, transform: function(value, dir) {
             if(dir == 2) {
                 this.showAutocomplete(value);

@@ -48,7 +48,7 @@ module.exports = kind({
                 owner: this.container,
                 name: name,
                 displayedBible: displayedBible,
-                classes: (this.selectedBible.rtl) ? 'biblesupersearch_copy_pane rtl' : 'biblesupersearch_copy_pane ltr'
+                classes: this.selectedBible.rtl ? 'rtl' : 'ltr'
             });
         }
 
@@ -216,10 +216,6 @@ module.exports = kind({
         bookName = this.app.getLocaleBookName(passage.book_id, bookName, this.app.UserConfig.get('copy_abbr_book'));
 
         var ref = '';
-
-        // if(this.app.UserConfig.get('copy_testament')) {
-        //     ref += this.app.t( this.app.getTestamentByBookId(passage.book_id) ) + ' ';
-        // }
 
         ref += bookName + ' ' + verse.chapter + ':' + verse.verse;
         return ref;

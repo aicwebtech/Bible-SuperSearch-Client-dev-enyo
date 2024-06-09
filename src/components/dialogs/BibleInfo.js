@@ -33,6 +33,7 @@ module.exports = kind({
             style: 'text-align: justify',
             classes: 'bss_bible_info_container',
             allowHtml: true,
+            attributes: {dir: 'auto'},
         },    
         {
             kind: Signal,

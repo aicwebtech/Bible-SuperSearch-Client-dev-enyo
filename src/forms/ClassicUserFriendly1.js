@@ -1,7 +1,7 @@
 var kind = require('enyo/kind');
 var FormBase = require('./FormBase');
 var Button = require('enyo/Button');
-var Input = require('enyo/Input');
+var Input = require('enyo/Input'); // Need custom extension for placeholder
 var TextArea = require('enyo/TextArea');
 var Checkbox = require('enyo/Checkbox');
 var BibleSelect = require('../components/BibleSelect/MultiSelect');
