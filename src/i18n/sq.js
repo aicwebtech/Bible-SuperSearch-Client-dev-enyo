@@ -163,7 +163,7 @@ module.exports = {
     'Monospace': 'Monohapësirë',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Zmadhoni tekstin',
     'Default Text Size': 'Madhësia e parazgjedhur e tekstit',
-    'Shrink Text': 'Shrink Text',//check translation
+    'Shrink Text': 'Tkurr tekstin',
     'Verse Display': 'Shfaqja e vargjeve',
     'Paragraph Display': 'Paraqitja e paragrafit',
     'Passage Display': 'Ekrani i kalimit', 
@@ -347,7 +347,7 @@ module.exports = {
     'Bible Downloads': 'Shkarkimet e Biblës',
     'Select Bible(s)' : 'Zgjidh Biblën(at)',
     'Select a Format': 'Zgjidhni një Format',
-    'Rendering': 'Rendering',//check translation
+    'Rendering': 'Pasqyrimi',
     'Rendering Bibles, this may take some time': 'Përkthimi i Biblave, kjo mund të marrë pak kohë',
     'Rendering is Complete': 'Renderimi është i plotë',
     'Your download should begin shortly': 'Shkarkimi juaj duhet të fillojë së shpejti',
@@ -379,7 +379,7 @@ module.exports = {
     // Quick Start Help Dialog
     'Quick Start Guide': 'Udhëzues për fillimin e shpejtë',
     'User\'s Manual': 'Manuali i përdoruesit',
-    'Wildcard': 'Wildcard',//check translation
+    'Wildcard': 'Kartë e egër',
     'Basic Searches' : 'Kërkimet bazë',
     'Advanced Searches using Boolean': 'Kërkime të avancuara duke përdorur Boolean',
     'Select' : 'Kërkime të avancuara duke përdorur Boolean',
@@ -450,7 +450,7 @@ module.exports = {
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Kufizimi i Kërkimeve',
     'Passages': 'Pasazhe',
-    'Alias': 'Alias',//check translation
+    'Alias': 'Pseudonimi',
     'You cannot search for these common words': 'Ju nuk mund të kërkoni për këto fjalë të zakonshme',
 
 

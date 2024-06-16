@@ -157,13 +157,13 @@ module.exports = {
     
     // Formatting and dialog buttons
     'A': 'آ',     // First letter in given language
-    'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized //check translation
+    'Abc': 'آ',  // First 3 letters in given language, with 1st capitalized 
     'Serif' : 'سریف',                     // * Button text, please keep translation short!
     'Sans-Serif': 'بدون دندانه',                 // * Button text, please keep translation short!
     'Monospace': 'تک فضا',                  // * Button text, please keep translation short!
     'Enlarge Text': 'بزرگ کردن متن',
     'Default Text Size': 'اندازه متن پیش فرض',
-    'Shrink Text': 'Shrink Text',// check translation
+    'Shrink Text': 'متن را کوچک کنید',
     'Verse Display': 'نمایش آیه',
     'Paragraph Display': 'نمایش پاراگراف',
     'Passage Display': 'نمایش پاساژ', 
@@ -367,7 +367,7 @@ module.exports = {
     'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF - متن فشرده، A4، کلمات مسیح که زیر آنها خط کشیده شده است',
 
     // Copy / Share / Link dialogs
-    'Copy': 'کپی 🀄',//check translation
+    'Copy': 'کپی ',
     'Copy Link': 'لینک را کپی کنید',
     'Copy with Text': 'کپی با متن',
     'Share Link': 'لینک را به اشتراک بگذارید',
@@ -444,7 +444,7 @@ module.exports = {
     'Bookmark': 'نشانک',
     'Bookmarks': 'نشانک ها',
 
-    'Please delete some bookmarks before adding more.': 'لطفاً قبل از افزودن موارد دیگر، برخی از نشانک‌ها را حذف کنید.',
+    'Please delete some bookmarks before adding more.': 'لطفاً قبل از افزودن موارد دیگر، برخی از نشانکها را حذف کنید.',
     'This bookmark name already exists.': 'این نام نشانک از قبل وجود دارد.',
 
     // Quick start dialog: Limiting searches

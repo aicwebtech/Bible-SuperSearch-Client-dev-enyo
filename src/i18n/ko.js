@@ -5,10 +5,10 @@ module.exports = {
         code: 'ko',
 
         // Native name of language (endonymn): ie 'Español'
-        name: 'Tiếng Việt',    
+        name: '한국어',    
 
         // English name of language, ie 'Spanish'
-        nameEn: '한국어',       
+        nameEn: 'Korean',       
 
         // Whether language is read Right-to-left
         isRtl: false,           

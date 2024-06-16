@@ -2,7 +2,7 @@ module.exports = {
     meta: {
         // 2 or 3 character language code, lower-case, ie 'es'
         // Note: This filename name must be [code].js ie 'es.js'
-        code: he'',
+        code: 'he',
 
         // Native name of language (endonymn): ie 'Español'
         name: 'עברית',    
@@ -98,8 +98,8 @@ module.exports = {
     'End Times Prophecy': 'נבואת סוף הימים',
     
     // Shortcut Aliases
-    'OT': 'OT',//check translation
-    'NT': 'NT',//check translation
+    'OT': 'ישן',
+    'NT': 'חָדָשׁ',
     'Torah': 'תוֹרָה',
     'Wisdom': 'חוכמה',
     'Major': 'גדול',
