@@ -700,7 +700,7 @@ module.exports = {
         },
         {
           "id": 52,
-          "name": " Tesalonikiečiams",
+          "name": "1 Tesalonikiečiams",
           "shortname": ""
         },
         {
