@@ -208,6 +208,8 @@ module.exports = {
     'Show Verse Number': 'श्लोक संख्या दिखाएँ', // 5.0
 
     'Other': 'अन्य', // 5.0
+    'Include Testament': 'वसीयतनामा शामिल करें'
+    'Testament': 'नियम'
     'Abbreviate Books': 'संक्षिप्त पुस्तकें', // 5.0
     'Omit Extra Line Breaks': 'अतिरिक्त लाइन ब्रेक हटाएं', // 5.0
 

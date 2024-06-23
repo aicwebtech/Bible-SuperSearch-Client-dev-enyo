@@ -216,6 +216,8 @@ module.exports = {
     'Show Verse Number': 'Shew ye jewwel numbre', // 5.0
 
     'Other': 'Orther', // 5.0
+    'Include Testament': ''
+    'Testament': ''
     'Abbreviate Books': 'Fsorten the booke', // 5.0
     'Omit Extra Line Breaks': 'Less ye line slicee', // 5.0
 

@@ -2,13 +2,13 @@ module.exports = {
     meta: {
         // 2 or 3 character language code, lower-case, ie 'es'
         // Note: This filename name must be [code].js ie 'es.js'
-        code: '',
+        code: 'fi',
 
         // Native name of language (endonymn): ie 'Español'
-        name: '',    
+        name: 'Suomi',    
 
         // English name of language, ie 'Spanish'
-        nameEn: '',       
+        nameEn: 'Finnish',       
 
         // Whether language is read Right-to-left
         isRtl: false,           
@@ -30,59 +30,59 @@ module.exports = {
     // * Please maintain capitalization and punctuation, if possible.
     // * Any ' (single quote) in the translation MUST be preceded by a \ (backslash).
 
-    'Bible SuperSearch': '',
-    'Loading, please wait': '',
+    'Bible SuperSearch': 'Raamatun superhaku',
+    'Loading, please wait': 'Ladataan, odota',
 
     // Search Forms
-    'Select Bible version(s)': '',
-    'Search': '',
-    'Search the Bible': '',
-    'Go': '',
-    'Bible Search': '',
-    'Bible': '',
-    'Whole Words Only': '',
-    'Whole words only': '',
-    'Whole words': '',
-    'Exact Case': '',
-    'Parallel Bible #': '',
-    'Select a Bible': '',
-    'Add Bible': '',
-    'Remove Bible': '', 
-    'Random Chapter': '',
-    'Random Verse': '',
-    'Passages': '',
-    'Passage': '',
-    'The book of': '',
-    'Look for': '',
-    'Look up': '',
-    'in': '',
-    'verse': '',
-    'verses': '',
-    'A Chapter': '',
-    'Chapters': '',
-    'Find verses containing': '',
-    'Restrict search to': '', 
-    'Word Search': '',
-    'Clear Form': '', 
-    'Select Book and Chapter:' : '', 
+    'Select Bible version(s)': 'Valitse Raamatun versio(t)',
+    'Search': 'Hae',
+    'Search the Bible': 'Etsi Raamatusta',
+    'Go': 'Mennä',
+    'Bible Search': 'Raamatun haku',
+    'Bible': 'Raamattu',
+    'Whole Words Only': 'Vain Konaiset Sanat',
+    'Whole words only': 'Vain kokonaisia sanoja',
+    'Whole words': 'Kokonaisia Sanoja',
+    'Exact Case': 'Tarkka Tapaus',
+    'Parallel Bible #': 'Rinnakkais Raamattu #',
+    'Select a Bible': 'Valitse Raamattu',
+    'Add Bible': 'Lisää Raamattu',
+    'Remove Bible': 'Poista Raamattu', 
+    'Random Chapter': 'Satunnainen Luku',
+    'Random Verse': 'Satunnainen Säe',
+    'Passages': 'Kohdat',
+    'Passage': 'Kulku',
+    'The book of': 'Kirja',
+    'Look for': 'Etsiä',
+    'Look up': 'Katso ylös',
+    'in': 'sisään',
+    'verse': 'jae',
+    'verses': 'säkeet',
+    'A Chapter': 'Luku',
+    'Chapters': 'Luvut',
+    'Find verses containing': 'Etsi säkeitä, jotka sisältävät',
+    'Restrict search to': 'Rajoita haku kohteeseen', 
+    'Word Search': 'Sanahaku',
+    'Clear Form': 'Selkeä Lomake', 
+    'Select Book and Chapter:' : 'Valitse Kirja ja Luku', 
 
     // Context Links
-    'Show full chapter': '',
-    'Chapter': '',
-    'Show this verse': '',
-    'Show in context': '',
-    'Context': '',
-    'In Context': '',
+    'Show full chapter': 'Näytä koko luku',
+    'Chapter': 'Luku',
+    'Show this verse': 'Näytä tämä säe',
+    'Show in context': 'Näytä kontekstissa',
+    'Context': 'Konteksti',
+    'In Context': 'Asiayhteydessä; kontekstissa',
 
-    'Limit Search To': '',
-    'Limit search to': '', // Watch case!
-    'Entire Bible': '',
-    'Passage(s) listed below': '',
-    'Passage(s) listed above': '',
+    'Limit Search To': 'Rajoita Haku Kohteeseen',
+    'Limit search to': 'Rajoita haku kohteeseen', // Watch case!
+    'Entire Bible': 'Koko Raamattu',
+    'Passage(s) listed below': 'Alla luetellut kohdat',
+    'Passage(s) listed above': 'Yllä luetellut kohdat',
     
     // Shortcuts
-    'Old Testament': '',
-    'New Testament': '',
+    'Old Testament': 'Vanha Testamentti',
+    'New Testament': 'Uusi Testamentti',
     'Law': '',
     'History Books': '', // Can translate as 'History'
     'History': '',
@@ -98,8 +98,8 @@ module.exports = {
     'End Times Prophecy': '',
     
     // Shortcut Aliases
-    'OT': '',
-    'NT': '',
+    'OT': 'VT',
+    'NT': 'UT',
     'Torah': '',
     'Wisdom': '',
     'Major': '',

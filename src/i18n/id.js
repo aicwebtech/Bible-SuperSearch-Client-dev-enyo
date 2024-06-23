@@ -62,7 +62,7 @@ module.exports = {
     'Chapters': 'bab',
     'Find verses containing': 'Temukan ayat-ayat yang mengandung',
     'Restrict search to': 'Batasi pencarian hanya pada', 
-    'Word Search': 'Pencarian kata',
+    'Word Search': 'Pencarian Kata',
     'Clear Form': 'Hapus Formulir', 
     'Select Book and Chapter:' : 'Pilih Buku dan Bab', 
 
@@ -84,7 +84,7 @@ module.exports = {
     'Old Testament': 'Perjanjian Lama',
     'New Testament': 'Perjanjian Baru',
     'Law': 'Hukum',
-    'History Books': 'Buku sejarah', // Can translate as 'History'
+    'History Books': 'Buku Sejarah', // Can translate as 'History'
     'History': 'Sejarah',
     'Wisdom & Poetry': 'Kebijaksanaan dan Puisi',
     'Prophets Books': 'Buku Nabi', // Can translate as 'Prophets'
@@ -99,8 +99,8 @@ module.exports = {
     
     // Shortcut Aliases
     'OT': 'PL',
-    'NT': 'tidak',
-    'Torah': 'Torah',
+    'NT': 'PB',
+    'Torah': 'Torah',//check translation
     'Wisdom': 'Kebijaksanaan',
     'Major': 'Besar',
     'Minor': 'Minor',
@@ -108,7 +108,7 @@ module.exports = {
     'Doctrine': 'Doktrin',
     'Paul': 'Paulus',
     'General': 'Umum',
-    'Last Days': 'Hari-hari terakhir',
+    'Last Days': 'Hari-hari Terakhir',
 
     'Look up Passage(s)': 'Cari Bagian',
     'Enter passage(s)' : 'Masukkan bagian',
@@ -117,8 +117,8 @@ module.exports = {
 
     'Search for' : 'Pencarian untuk',
     'Match': 'Cocok',
-    'All Words': 'Semua kata',
-    'Any Word': 'Kata apapun',
+    'All Words': 'Semua Kata',
+    'Any Word': 'Kata Apapun',
     'Exact Phrase': 'Frase yang tepat',
     'Only One Word': 'Hanya Satu Kata',
     'Two or More Words': 'Dua Kata atau Lebih',
@@ -149,10 +149,10 @@ module.exports = {
     'Bible #': 'Alkitab #', // downloads
 
     // Pagination
-    'Next Page' : 'Halaman selanjutnya',
-    'Previous Page' : 'Halaman sebelumnya',
-    'First Page' : 'Halaman pertama',
-    'Last Page': 'Halaman terakhir',
+    'Next Page' : 'Halaman Selanjutnya',
+    'Previous Page' : 'Halaman Sebelumnya',
+    'First Page' : 'Halaman Pertama',
+    'Last Page': 'Halaman Terakhir',
     'Page': 'Halaman',
     
     // Formatting and dialog buttons
@@ -168,14 +168,14 @@ module.exports = {
     'Paragraph Display': 'Tampilan Paragraf',
     'Passage Display': 'Tampilan Bagian', 
     'Verse as Passage Display': 'Ayat sebagai Tampilan Bagian', 
-    'EZ Copy': 'Salinan EZ',  // 'Easy Copy'
+    'EZ Copy': 'Salinan Mudah',  // 'Easy Copy'
     'Read Display': 'Baca Tampilan',
     'Italics': 'Huruf miring',                    // * Button text, please keep translation short!
     'Disable Italization of Added Words' : 'Nonaktifkan Italisasi Kata yang Ditambahkan',
     'Enable Italization of Added Words': 'Aktifkan Italisasi Kata yang Ditambahkan',
     'Disable Strong\'s Numbers': 'Nonaktifkan Nomor Kuat',
     'Enable Strong\'s Numbers': 'Aktifkan Nomor Kuat',
-    'Red Letter': 'Surat merah',
+    'Red Letter': 'Surat Merah',
     'Disable Red Letter': 'Nonaktifkan Huruf Merah',
     'Enable Red Letter': 'Aktifkan Huruf Merah',
     'Highlight': 'Menyorot',                   // * Button text, please keep translation short!
@@ -206,7 +206,7 @@ module.exports = {
     
     // Copy format options
     'Copy Format': 'Salin Format', 
-    'Word Processor': 'Pengolah kata', 
+    'Word Processor': 'Pengolah Kata', 
     'Outline' : 'Garis besar', 
     'Custom': 'Kebiasaan', 
 
@@ -223,6 +223,8 @@ module.exports = {
     'Show Verse Number': 'Tampilkan Nomor Ayat', 
 
     'Other': 'Lainnya', 
+    'Include Testament': 'Sertakan Perjanjian'
+    'Testament': 'Perjanjian'
     'Abbreviate Books': 'Buku Singkatan', 
     'Omit Extra Line Breaks': 'Hilangkan Jeda Baris Ekstra', 
 
@@ -358,8 +360,8 @@ module.exports = {
     'Are you sure you want to exit?  This will end the current download.': 'Apakah Anda yakin ingin keluar? Ini akan mengakhiri pengunduhan saat ini.',
     'Plain Text' : 'Teks Biasa',
     'Machine-readable Plain Text' : 'Teks Biasa yang dapat dibaca mesin',
-    'Spreadsheet' : 'lembar bentang',
-    'Databases': 'Basis Data',
+    'Spreadsheet' : 'Lembar bentang',
+    'Databases': 'Basis Data',//check translation
 
     'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF - Teks Ringkas, Surat, Kata-kata Kristus Berwarna Merah',
     'PDF - Compact Text, A4, Words of Christ in Red': 'PDF - Teks Ringkas, A4, Kata-kata Kristus Berwarna Merah',
@@ -368,9 +370,9 @@ module.exports = {
 
     // Copy / Share / Link dialogs
     'Copy': 'Menyalin',
-    'Copy Link': 'Salin tautan',
+    'Copy Link': 'Salin Tautan',
     'Copy with Text': 'Salin dengan Teks',
-    'Share Link': 'Membagikan tautan',
+    'Share Link': 'Membagikan Tautan',
     'Share' : 'Membagikan',
     'Link' : 'Tautan', 
     'Copied to clipboard': 'Disalin ke papan klip', 
@@ -379,7 +381,7 @@ module.exports = {
     // Quick Start Help Dialog
     'Quick Start Guide': 'Panduan Memulai Cepat',
     'User\'s Manual': 'Panduan pengguna',
-    'Wildcard': 'karakter pengganti',
+    'Wildcard': 'Karakter pengganti',
     'Basic Searches' : 'Pencarian Dasar',
     'Advanced Searches using Boolean': 'Pencarian Lanjutan menggunakan Boolean',
     'Select' : 'Pilih',

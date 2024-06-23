@@ -213,6 +213,8 @@ module.exports = {
 
     'Other': 'آخر', // 5.0
     'Abbreviate Books': 'اختصار الكتب', // 5.0
+    'Include testament': 'تضمين العهد'
+    'Testament': 'العهد'
     'Omit Extra Line Breaks': 'حذف فواصل الأسطر الإضافية', // 5.0
 
     // Settings Dialog

@@ -223,6 +223,8 @@ module.exports = {
     'Show Verse Number': '절 번호 표시', 
 
     'Other': '다른', 
+    'Include Testament': '유언 포함'
+    'Testament': '성서'
     'Abbreviate Books': '도서 약어', 
     'Omit Extra Line Breaks': '추가 줄바꿈 생략', 
 

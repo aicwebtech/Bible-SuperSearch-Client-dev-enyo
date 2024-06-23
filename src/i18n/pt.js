@@ -25,7 +25,7 @@ module.exports = {
     'Go': 'Ir',
     'Bible Search': 'Pesquisa Bíblica',
     'Bible': 'Bíblia',
-    'Whole Words Only': 'Apenas palavras inteiras',
+    'Whole Words Only': 'Apenas Palavras Inteiras',
     'Whole words only': 'Apenas palavras inteiras',
     'Whole words': 'Palavras inteiras',
     'Exact Case': 'Caso exato',
@@ -210,6 +210,8 @@ module.exports = {
     'Show Verse Number': 'Mostrar número do versículo', // 5.0
 
     'Other': 'Outro', // 5.0
+    'Include Testament': 'Incluir Testamento'
+    'Testament': 'Testamento'
     'Abbreviate Books': 'Livros abreviados', // 5.0
     'Omit Extra Line Breaks': 'Omitir quebras de linha extras', // 5.0
 
