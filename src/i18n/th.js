@@ -209,6 +209,8 @@ module.exports = {
     'Show Verse Number': 'แสดงหมายเลขข้อ', 
 
     'Other': 'อื่น', 
+    'Include Testament': 'รวมพินัยกรรม',
+    'Testament': 'พินัยกรรม',
     'Abbreviate Books': 'หนังสือย่อ', 
     'Omit Extra Line Breaks': 'ละเว้นตัวแบ่งบรรทัดพิเศษ', 
 

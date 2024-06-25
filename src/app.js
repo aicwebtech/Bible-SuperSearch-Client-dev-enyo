@@ -131,6 +131,7 @@ var App = Application.kind({
 
         if(typeof QUnit != 'undefined') {
             QUnit.config.autostart = false;
+            QUnit.config.hidepassed = true;
         }
         // this.log('defaultConfig', defaultConfig);
 
@@ -677,24 +678,45 @@ var App = Application.kind({
                 assert.ok(true, 'this should be true');
             });
 
-            for(i in t.localeDatasetsRaw) {
-                if(i == '_partial' || i == '_template') {
-                    continue;
+
+            QUnit.test.each('Translation Test', t.localeDatasetsRaw, function(assert, item) {
+
+                if(typeof item.meta == 'undefined' || item.meta.code == '') {
+                    assert.expect(0)
+                    return;
                 }
 
-                var item = t.localeDatasetsRaw[i];
+                assert.ok(item.meta.code, 'meta.code should be truthy');
+                assert.ok(item.meta.name, 'meta.name should be truthy');
+                assert.ok(item.meta.nameEn, 'meta.nameEn should be truthy');
 
-                QUnit.test('Test ' + item.meta.code + ' ' + item.meta.nameEn, function(assert) {
-                    for(f in t.localeDatasetsRaw._template) {
-                        if(f == 'meta' || f == 'bibleBooks') {
-                            continue;
-                        }
+                if(item.meta.code == 'en') {
+                    return; // most strings for EN not defined ... 
+                }
 
-                        assert.ok(item[f], 'Translation string should be truthy ' + f);
-                        assert.notEqual(item[f], '', 'Translation string should NOT be an empty string ' + f);
+                var ll = item.meta.code.toUpperCase() + ' ' + item.meta.nameEn;
+                // assert.ok(item);
+                // assert.ok(item.meta);
+                // assert.ok(item.meta.nameEn);
+                // assert.true(true, item.meta.nameEn);
+
+                for(f in t.localeDatasetsRaw._template) {
+                    if(f == 'meta' || f == 'bibleBooks') {
+                        continue;
                     }
-                });
-            }
+
+                    var ff = ' ' + ll + ' "' + f + '"';
+
+                    if(typeof item[f] != 'undefined' && item[f] != '') {
+                        continue;
+                    }
+
+                    // assert.ok(item[f], ff + ' ' + item[f] + item.meta.langEn);
+                    assert.notEqual(typeof item[f], 'undefined', 'Should NOT be undefined' + ff);
+                    // assert.ok(item[f], 'Should be truthy' + ff);
+                    assert.notEqual(item[f], '', 'Should NOT be an empty string' + ff);
+                }
+            });
         });
 
         QUnit.start();

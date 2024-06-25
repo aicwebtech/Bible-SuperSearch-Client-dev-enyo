@@ -16,6 +16,8 @@ module.exports = {
     'red_letter_description': 'Words of Christ in Red.', // 5.3
     'highlight_description': 'Highlighting (bold) of keywords in searches.',  // 5.3
 
+    'Testament': '',
+
     'History Books': 'History',
     'Prophets Books': 'Prophets',
 

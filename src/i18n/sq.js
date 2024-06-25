@@ -40,7 +40,7 @@ module.exports = {
     'Go': 'Shkoni',
     'Bible Search': 'Kërkimi i Biblës',
     'Bible': 'Bibla',
-    'Whole Words Only': 'Vetëm fjalë të plota',
+    'Whole Words Only': 'Vetëm Fjalë të Plota',
     'Whole words only': 'Vetëm fjalë të plota',
     'Whole words': 'Fjalë të tëra',
     'Exact Case': 'Rasti i saktë',
@@ -223,6 +223,8 @@ module.exports = {
     'Show Verse Number': 'Trego numrin e vargut', 
 
     'Other': 'Të tjera', 
+    'Include Testament': 'Përfshi Testamentin',
+    'Testament': 'Testamenti',
     'Abbreviate Books': 'Librat e shkurtuar', 
     'Omit Extra Line Breaks': 'Hiqni ndërprerjet shtesë të linjës', 
 

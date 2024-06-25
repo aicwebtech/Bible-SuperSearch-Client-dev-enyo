@@ -201,6 +201,8 @@ module.exports = {
     'Show Verse Number': '顯示經句編號',   // 5.0
 
     'Other': '其他',   // 5.0
+    'Include Testament': '包括遺囑',
+    'Testament': '遺囑',
     'Abbreviate Books': '書卷名稱縮寫',   // 5.0
     'Omit Extra Line Breaks': '省略多餘的換行符號',   // 5.0
 

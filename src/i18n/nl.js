@@ -40,7 +40,7 @@ module.exports = {
     'Go': 'Gaan',
     'Bible Search': 'Bijbel zoeken',
     'Bible': 'Bijbel',
-    'Whole Words Only': 'Alleen hele woorden',
+    'Whole Words Only': 'Alleen Hele Woorden',
     'Whole words only': 'Alleen hele woorden',
     'Whole words': 'Hele woorden',
     'Exact Case': 'Exact geval',
@@ -223,6 +223,8 @@ module.exports = {
     'Show Verse Number': 'Toon versnummer', 
 
     'Other': 'Ander', 
+    'Include Testament': 'Inclusief Testament',
+    'Testament': 'Testament',
     'Abbreviate Books': 'Boeken verkorten', 
     'Omit Extra Line Breaks': 'Laat extra regeleinden weg', 
 

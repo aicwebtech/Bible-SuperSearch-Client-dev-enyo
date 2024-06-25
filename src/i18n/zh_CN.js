@@ -208,6 +208,8 @@ module.exports = {
     'Show Verse Number': '显示经句编号', // 5.0
 
     'Other': '其他', // 5.0
+    'Include Testament': '包括遗嘱',
+    'Testament': '遗嘱',
     'Abbreviate Books': '书卷名称缩写', // 5.0
     'Omit Extra Line Breaks': '省略多余的换行符号', // 5.0
 

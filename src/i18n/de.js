@@ -26,13 +26,13 @@ module.exports = {
     'Go': 'Gehen',
     'Bible Search': 'Bibelsuche',
     'Bible': 'Bibel',
-    'Whole Words Only': 'Nur ganze Wörter',
+    'Whole Words Only': 'Nur Ganze Wörter',
     'Whole words only': 'Nur ganze Wörter',
     'Whole words': 'Ganze Wörter',
     'Exact Case': 'Genauer Fall',
     'Parallel Bible #': 'Parallelbibel #',
     'Select a Bible': 'Wählen Sie eine Bibel aus',
-    'Add Bible': 'Bibel hinzufügen',
+    'Add Bible': 'Bibel Hinzufügen',
     'Remove Bible': 'Bibel entfernen', // 5.2
     'Random Chapter': 'Zufälliges Kapitel',
     'Random Verse': 'Zufälliger Vers',
@@ -49,8 +49,8 @@ module.exports = {
     'Find verses containing': 'Finden Sie Verse, die enthalten',
     'Restrict search to': 'Suche beschränken auf', 
     'Word Search': 'Wortsuche',
-    'Clear Form': 'Clear Form', // 4.5
-    'Select Book and Chapter:' : 'Buch und Kapitel auswählen:', // 5.2
+    'Clear Form': 'Klare Form', // 4.5
+    'Select Book and Chapter:' : 'Buch und Kapitel Auswählen:', // 5.2
 
     // Context Links
     'Show full chapter': 'Show full chapter',
@@ -60,7 +60,7 @@ module.exports = {
     'Context': 'Kontext',
     'In Context': 'Im Zusammenhang',
 
-    'Limit Search To': 'Suche beschränken auf',
+    'Limit Search To': 'Suche Beschränken Auf',
     'Limit search to': 'Suche beschränken auf', // Watch case!
     'Entire Bible': 'Ganze Bibel',
     'Passage(s) listed below': 'Passage(n) unten aufgeführt',
@@ -80,7 +80,7 @@ module.exports = {
     'Gospels': 'Evangelien',
     'Epistles': 'Briefe',
     'Pauline Epistles': 'Paulusbriefe',
-    'General Epistles': 'General Epistles',
+    'General Epistles': 'Allgemeine Briefe',
 
     // 5.5 part 1
     'End Times Prophecy': 'Endzeitprophezeiung',
@@ -99,8 +99,8 @@ module.exports = {
     'Last Days': 'Letzten Tage',
     // End 5.5 part 1
 
-    'Look up Passage(s)': 'Passage(n) nachschlagen',
-    'Enter passage(s)' : 'Passage(n) eingeben',
+    'Look up Passage(s)': 'Passage(n) Nachschlagen',
+    'Enter passage(s)' : 'Passage(n) Eingeben',
     'Enter word(s), phrase(s) or expression(s)' : 'Geben Sie Wörter, Phrasen oder Ausdrücke ein.',
     'Example': 'Beispiel',
 
@@ -110,10 +110,10 @@ module.exports = {
     'Any Word': 'Jedes Wort',
     'Exact Phrase': 'Exakte Formulierung',
     'Only One Word': 'Nur ein Wort',
-    'Two or More Words': 'Zwei oder mehr Wörter',
-    'Words Within 5 Verses': 'Wörter innerhalb von 5 Versen',
-    'Words Within Same Chapter': 'Wörter innerhalb desselben Kapitels',
-    'Words Within Same Book': 'Wörter im selben Buch',
+    'Two or More Words': 'Zwei oder Mehr Wörter',
+    'Words Within 5 Verses': 'Wörter Innerhalb von 5 Versen',
+    'Words Within Same Chapter': 'Wörter innerhalb Desselben Kapitels',
+    'Words Within Same Book': 'Wörter Im Selben Buch',
     'Boolean Expression': 'Boolescher Ausdruck',
     'Regular Expression': 'Regulären Ausdruck',
     'Select one ...' : 'Wähle eins ...',
@@ -150,23 +150,23 @@ module.exports = {
     'Serif' : 'Serife',                     // * Button text, please keep translation short!
     'Sans-Serif': 'Serifenlos',                 // * Button text, please keep translation short!
     'Monospace': 'Monospace',                  // * Button text, please keep translation short!
-    'Enlarge Text': 'Text vergrößern',
+    'Enlarge Text': 'Text Vergrößern',
     'Default Text Size': 'Standardtextgröße',
-    'Shrink Text': 'Text verkleinern',
+    'Shrink Text': 'Text Verkleinern',
     'Verse Display': 'Versanzeige',
     'Paragraph Display': 'Absatzanzeige',
     'Passage Display': 'Durchgangsanzeige', // 4.5
     'Verse as Passage Display': 'Vers als Passage-Anzeige', // 5.3
-    'EZ Copy': 'Ich kopiere',  // 'Easy Copy'
-    'Read Display': 'Anzeige lesen',
+    'EZ Copy': 'Ich Kopiere',  // 'Easy Copy'
+    'Read Display': 'Anzeige Lesen',
     'Italics': 'Kursivschrift',                    // * Button text, please keep translation short!
-    'Disable Italization of Added Words' : 'Deaktivieren Sie die Italisierung hinzugefügter Wörter',
-    'Enable Italization of Added Words': 'Aktivieren Sie die Italisierung hinzugefügter Wörter',
+    'Disable Italization of Added Words' : 'Deaktivieren Sie die Italisierung Hinzugefügter Wörter',
+    'Enable Italization of Added Words': 'Aktivieren Sie die Italisierung Hinzugefügter Wörter',
     'Disable Strong\'s Numbers': 'Deaktivieren Sie die Strong-Nummern',
-    'Enable Strong\'s Numbers': 'Aktivieren Sie Strong\'s Numbers',
+    'Enable Strong\'s Numbers': 'Aktivieren Sie Strong\'s Numbers',//check translation
     'Red Letter': 'Roter Brief',
-    'Disable Red Letter': 'Red Letter deaktivieren',
-    'Enable Red Letter': 'Aktivieren Sie Red Letter',
+    'Disable Red Letter': 'Red Letter Deaktivieren',
+    'Enable Red Letter': 'Red Letter aktivieren',//check translation
     'Highlight': 'Markieren',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Deaktivieren Sie die Hervorhebung von Schlüsselwörtern',
     'Enable Highlighting of Keywords': 'Aktivieren Sie die Hervorhebung von Schlüsselwörtern',
@@ -178,7 +178,7 @@ module.exports = {
 
     // Descriptions of special formatting features
     'Formatting': 'Formatierung',  // 5.3
-    'Supported Bibles Only': 'Nur unterstützte Bibeln',  // 5.3
+    'Supported Bibles Only': 'Nur Unterstützte Bibeln',  // 5.3
     
     'strongs_numbers_description': 'Die Konkordanzzahlen von Strong geben die zugrunde liegenden hebräischen oder griechischen Wörter an.',  // 5.3
     'italics_description': 'Kursivschrift kennzeichnet Wörter, die bei der Übersetzung hinzugefügt wurden und nicht in der Originalsprache enthalten waren.',    // 5.3
@@ -188,12 +188,12 @@ module.exports = {
 
     // Verse Cherry-picking
     'Select All': 'Wählen Sie Alle', // 5.0
-    'Select None': 'Nichts ausgewählt', // 5.0
-    'Select': 'Select', // 5.0
+    'Select None': 'Nichts Ausgewählt', // 5.0
+    'Select': 'Wählen', // 5.0
     'Unselect': 'Auswahl aufheben', // 5.0
     
     // Copy format options
-    'Copy Format': 'Format kopieren', // 5.0
+    'Copy Format': 'Format Kopieren', // 5.0
     'Word Processor': 'Textverarbeitungssystem', // 5.0
     'Outline' : 'Gliederung', // 5.0
     'Custom': 'Brauch', // 5.0
@@ -208,11 +208,13 @@ module.exports = {
     'Reference - Passage': 'Referenz - Passage', // 5.0
     'Passage - Reference': 'Passage - Referenz', // 5.0
     'Passage Only': 'Nur Durchgang', // 5.0
-    'Show Verse Number': 'Versnummer anzeigen', // 5.0
+    'Show Verse Number': 'Versnummer Anzeigen', // 5.0
 
     'Other': 'Andere', // 5.0
+    'Include Testament': 'Testament Einschließen',//check translation
+    'Testament': 'Testament',//check translation
     'Abbreviate Books': 'Abgekürzte Bücher', // 5.0
-    'Omit Extra Line Breaks': 'Lassen Sie zusätzliche Zeilenumbrüche weg', // 5.0
+    'Omit Extra Line Breaks': 'Lassen Sie Zusätzliche Zeilenumbrüche Weg', // 5.0
 
     // Settings Dialog
     'Settings' : 'Einstellungen', // 5.0
@@ -225,7 +227,7 @@ module.exports = {
     // Your search produced (number of verses) results
     'Your search produced' : 'Ihre Suche wurde durchgeführt',  
     // (total number of verses)
-    'results' : 'Ergebnisse',
+    'results' : 'ergebnisse',
     
     // Showing results [1] to [30]
     'Showing Results': 'Ergebnisse werden angezeigt',
@@ -242,7 +244,7 @@ module.exports = {
     'Please remove it, or use it\'s lower case equivalent.': 'Bitte entfernen Sie es oder verwenden Sie es als Kleinbuchstabenäquivalent.',
 
     // Your search for [attempted keywords] is invalid...
-    'Your search for': 'Ihre Suche nach',
+    'Your search for': 'Ihre suche nach',
     'is invalid, and appears to be a passage reference.': 'ist ungültig und scheint ein Passagenverweis zu sein.',
     'is invalid.': 'ist ungültig.',
 
@@ -282,23 +284,23 @@ module.exports = {
     'Anxious': 'Ängstlich',
     'Backsliding': 'Zurückrutschen',
     'Bereaved': 'Hinterbliebene',
-    'Bitter or Critical': 'Bitter oder kritisch',
-    'Conscious of Sin': 'Sich der Sünde bewusst',
+    'Bitter or Critical': 'Bitter oder Kritisch',
+    'Conscious of Sin': 'Sich der Sünde Bewusst',
     'Defeated': 'Besiegt',
     'Depressed': 'Deprimiert', 
-    'Disaster Threatens': 'Katastrophe droht',
+    'Disaster Threatens': 'Katastrophe Droht',
     'Discouraged': 'Entmutigt',
     'Doubting': 'Zweifelnd',
     'Facing a Crisis': 'Angesichts einer Krise',
-    'Faith Fails': 'Der Glaube scheitert',
-    'Friends Fail': 'Freunde scheitern', 
+    'Faith Fails': 'Der Glaube Scheitert',
+    'Friends Fail': 'Freunde Scheitern', 
     'Hopeless': 'Hoffnungslos',
     'Leaving Home': 'Das Zuhause verlassen',
     'Lonely': 'Einsam',
     'Needing God\'s protection': 'Ich brauche Gottes Schutz',
     'Needing Guidance': 'Brauche Anleitung',
     'Needing Peace': 'Brauche Frieden',
-    'Needing Rules for Living': 'Regeln zum Leben brauchen', 
+    'Needing Rules for Living': 'Regeln zum Leben Brauchen', 
     'Overcome': 'Überwinden',
     'Prayerful': 'Gebetsvoll',
     'Protected': 'Geschützt',
@@ -318,7 +320,7 @@ module.exports = {
     'New to the Bible?': 'Neu in der Bibel?',
     'Not Sure Where to Begin?' : 'Sie wissen nicht, wo Sie anfangen sollen?',
     'Life and Teachings of Jesus Christ': 'Leben und Lehren Jesu Christi',
-    'Basic Christian Beliefs': 'Grundlegende christliche Überzeugungen',
+    'Basic Christian Beliefs': 'Grundlegende Christliche Überzeugungen',
     'Creation and the Fall of Man': 'Schöpfung und Sündenfall',
     'Birth of Christ / Life of Christ': 'Geburt Christi / Leben Christi',
     'Imperfection in Churches and Believers': 'Unvollkommenheit in Kirchen und Gläubigen',
@@ -337,7 +339,7 @@ module.exports = {
     'Select a Format': 'Wählen Sie ein Format aus',
     'Rendering': 'Rendern',
     'Rendering Bibles, this may take some time': 'Das Rendern von Bibeln kann einige Zeit dauern',
-    'Rendering is Complete': 'Das Rendern ist abgeschlossen',
+    'Rendering is Complete': 'Das Rendern ist Abgeschlossen',
     'Your download should begin shortly': 'Ihr Download sollte in kürze beginnen',
     'If not, please click on the below link': 'Wenn nicht, klicken Sie bitte auf den untenstehenden Link',
     'Manual Download': 'Manueller Download',
@@ -345,7 +347,7 @@ module.exports = {
     'Please select a format': 'Bitte wählen Sie ein Format aus',
     'Are you sure you want to exit?  This will end the current download.': 'Sie sind sicher, dass Sie beenden wollen? Dadurch wird der aktuelle Download beendet.',
     'Plain Text' : 'Klartext',
-    'Machine-readable Plain Text' : 'Machine-readable Plain Text',
+    'Machine-readable Plain Text' : 'Maschinenlesbarer Klartext',
     'Spreadsheet' : 'Kalkulationstabelle',
     'Databases': 'Datenbanken',
 
@@ -356,9 +358,9 @@ module.exports = {
 
     // Copy / Share / Link dialogs
     'Copy': 'Kopieren',
-    'Copy Link': 'Link kopieren',
-    'Copy with Text': 'Mit Text kopieren',
-    'Share Link': 'Einen Link teilen',
+    'Copy Link': 'Link Kopieren',
+    'Copy with Text': 'Mit Text Kopieren',
+    'Share Link': 'Einen Link Teilen',
     'Share' : 'Aktie',
     'Link' : 'Verknüpfung', // 4.5
     'Copied to clipboard': 'In die Zwischenablage kopiert', // 5.2.3
@@ -397,7 +399,7 @@ module.exports = {
     'joy': 'Freude',
     'preserved' : 'konserviert',
     'preserve' : 'bewahren',
-    'stand' : 'Stand',
+    'stand' : 'Stand',//check translation
     'word': 'Wort',
     'words': 'Wörter',
     'truth': 'Wahrheit',
@@ -418,7 +420,7 @@ module.exports = {
     'Clear': 'Klar',
     'Restore': 'Wiederherstellen',
     'Add': 'Hinzufügen',
-    'Okay': 'Okay',
+    'Okay': 'Okay',//check translation
     'Old': 'Alt',
     'New': 'Neu',
 
@@ -431,7 +433,7 @@ module.exports = {
     'Move to Current': 'Zu „Aktuell“ wechseln',
 
     'Bookmark': 'Lesezeichen',
-    'Bookmarks': 'Lesezeichen',
+    'Bookmarks': 'Merkliste',
 
     'Please delete some bookmarks before adding more.': 'Bitte löschen Sie einige Lesezeichen, bevor Sie weitere hinzufügen.',
     'This bookmark name already exists.': 'Dieser Lesezeichenname existiert bereits.',
@@ -439,7 +441,7 @@ module.exports = {
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Einschränken von Suchen',
     'Passages': 'Passagen',
-    'Alias': 'Alias',
+    'Alias': 'Alias',//check translation
     'You cannot search for these common words': 'Sie können nicht nach diesen gebräuchlichen Wörtern suchen',
     // End 5.5 part 2
 

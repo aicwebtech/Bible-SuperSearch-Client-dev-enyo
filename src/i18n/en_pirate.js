@@ -64,10 +64,10 @@ module.exports = {
     'Old Testament': 'Olde Testamonie',
     'New Testament': 'Newa Testamonie',
     'Law': 'Legalese',
-    'history_books': 'Bookes Historie',
+    'History Books': 'Bookes Historie',
     'History': 'Historyans',
     'Wisdom & Poetry': 'Wisdome ande Poems',
-    'prophets_books': 'Bookes Profites',
+    'Prophets Books': 'Bookes Profites',
     'Prophets': 'Profites',
     'Major Prophets': 'Big Profites',
     'Minor Prophets': 'Little Profites',
@@ -216,9 +216,9 @@ module.exports = {
     'Show Verse Number': 'Shew ye jewwel numbre', // 5.0
 
     'Other': 'Orther', // 5.0
-    'Abbreviate Books': 'Fsorten the booke', // 5.0
     'Include Testament': 'Farray Testamonie',
     'Testament': 'Testamonie',
+    'Abbreviate Books': 'Fsorten the booke', // 5.0
     'Omit Extra Line Breaks': 'Less ye line slicee', // 5.0
 
     // Settings Dialog
