@@ -64,7 +64,7 @@ var App = Application.kind({
     baseTitle: null,
     bssTitle: null,
     baseUrl: null,
-    clientBrowser: null, // legacy
+    clientBrowser: 'unknown', // legacy
     client: {
         os: 'unknown',
         browser: 'unknown',
@@ -128,6 +128,10 @@ var App = Application.kind({
         this.system = systemConfig;
         this.set('baseTitle', document.title);
         var t = this;
+
+        if(typeof QUnit != 'undefined') {
+            QUnit.config.autostart = false;
+        }
         // this.log('defaultConfig', defaultConfig);
 
         window.console && console.log('BibleSuperSearch client version', this.applicationVersion);
@@ -515,7 +519,6 @@ var App = Application.kind({
         return true;
     },
     _handleStaticsLoad: function(statics, view) {
-        this.test();
         this.set('statics', statics);
         this.processBiblesDisplayed();
 
@@ -644,23 +647,66 @@ var App = Application.kind({
 
     /*  Used to run unit tests within app */
     test: function() {
-        if(!this.testing || !QUnit) {
+        // if(this.testing) {
+        //     this.log('Already running tests, aborting.');
+        //     return;
+        // }
+
+        if(typeof QUnit == 'undefined') {
+            this.log('QUnit not defined, aborting.');
             return;
         }
+
+        this.testing = true;
 
         this.log();
         var t = this;
 
-        //QUnit && QUnit.module("Basic Tests");
+        function add(a, b) {return a + b;}
 
-        QUnit.test( "Post Rendering", function( assert ) {
-            assert.ok( t.viewReady, "The view should be rendered by the time we get here" );
+        QUnit.module("Basic Tests Part", function() {
+            QUnit.test( "Post Rendering", function( assert ) {
+                assert.ok( t.viewReady, "The view should be rendered by the time we get here" );
+                assert.true(true, 'this should be true');
+                assert.false(false, 'this should be false');
+            });
         });
+
+        QUnit.module('Localization Test', function() {
+            QUnit.test('Loc Init', function(assert) {
+                assert.ok(true, 'this should be true');
+            });
+
+            for(i in t.localeDatasetsRaw) {
+                if(i == '_partial' || i == '_template') {
+                    continue;
+                }
+
+                var item = t.localeDatasetsRaw[i];
+
+                QUnit.test('Test ' + item.meta.code + ' ' + item.meta.nameEn, function(assert) {
+                    for(f in t.localeDatasetsRaw._template) {
+                        if(f == 'meta' || f == 'bibleBooks') {
+                            continue;
+                        }
+
+                        assert.ok(item[f], 'Translation string should be truthy ' + f);
+                        assert.notEqual(item[f], '', 'Translation string should NOT be an empty string ' + f);
+                    }
+                });
+            }
+        });
+
+        QUnit.start();
 
         // Test form stuff
 
         // Test AJAX calls
+
+        this.testing = false;
     },
+
+
     handleHashGeneric: function(hash) {
         if(!this.appLoaded) {
             return;

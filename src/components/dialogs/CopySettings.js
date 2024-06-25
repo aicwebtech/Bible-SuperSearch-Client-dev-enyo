@@ -177,16 +177,14 @@ module.exports = kind({
                             ]},
                             {kind: i18n, tag: 'label', attributes: {for: 'abbr_book'}, classes: 'label', content: 'Abbreviate Books'}
                         ]},                        
-                        // {classes: 'checkbox_container checkbox_first', components: [
-                        //     {classes: 'element', components: [
-                        //         {kind: Checkbox, name: 'testament', id: 'testament'}
-                        //     ]},
-                        //     {tag: 'label', attributes: {for: 'testament'}, classes: 'label', components: [
-                        //         {kind: i18n, content: 'Old Testament'},
-                        //         {tag: 'br', _content: ' / '},
-                        //         {kind: i18n, content: 'New Testament'},
-                        //     ]}
-                        // ]},
+                        {classes: 'checkbox_container checkbox_first', components: [
+                            {classes: 'element', components: [
+                                {kind: Checkbox, name: 'testament', id: 'testament'}
+                            ]},
+                            {tag: 'label', attributes: {for: 'testament'}, classes: 'label', components: [
+                                {kind: i18n, content: 'Include Testament'},
+                            ]}
+                        ]},
                         {classes: 'checkbox_container checkbox_first', components: [
                             {classes: 'element', components: [
                                 {kind: Checkbox, name: 'omit_extra_br', id: 'omit_extra_br'}

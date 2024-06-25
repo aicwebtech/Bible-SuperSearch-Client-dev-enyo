@@ -217,6 +217,8 @@ module.exports = {
 
     'Other': 'Orther', // 5.0
     'Abbreviate Books': 'Fsorten the booke', // 5.0
+    'Include Testament': 'Farray Testamonie',
+    'Testament': 'Testamonie',
     'Omit Extra Line Breaks': 'Less ye line slicee', // 5.0
 
     // Settings Dialog
