@@ -206,6 +206,8 @@ module.exports = {
     'Show Verse Number': 'Rādīt Panta Numuru', // 5.0
 
     'Other': 'Citi Iestatījumi', // 5.0
+    'Include Testament': 'Iekļauts Testaments'
+    'Testament': 'Testaments'
     'Abbreviate Books': 'Saīsināt Grāmatu Nosaukumus', // 5.0 ???
     'Omit Extra Line Breaks': 'Noņemt Tukšās Rindas', // 5.0
 

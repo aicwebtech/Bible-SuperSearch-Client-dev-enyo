@@ -40,7 +40,7 @@ module.exports = {
     'Go': 'Iść',
     'Bible Search': 'Wyszukiwanie Biblii',
     'Bible': 'Biblia',
-    'Whole Words Only': 'Tylko pełne słowa',
+    'Whole Words Only': 'Tylko Pełne Słowa',
     'Whole words only': 'Tylko pełne słowa',
     'Whole words': 'Całe słowa',
     'Exact Case': 'Dokładny przypadek',
@@ -223,6 +223,8 @@ module.exports = {
     'Show Verse Number': 'Pokaż numer wersetu', 
 
     'Other': 'Inny', 
+    'Include Testament': 'Dołącz Testament'
+    'Testament': 'Testament'
     'Abbreviate Books': 'Skróć książki', 
     'Omit Extra Line Breaks': 'Pomiń dodatkowe podziały wierszy', 
 

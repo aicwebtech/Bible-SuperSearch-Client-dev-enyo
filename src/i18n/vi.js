@@ -40,7 +40,7 @@ module.exports = {
     'Go': 'Đi',
     'Bible Search': 'Tìm kiếm Kinh Thánh',
     'Bible': 'Kinh Thánh',
-    'Whole Words Only': 'Toàn bộ từ chỉ',
+    'Whole Words Only': 'Toàn Bộ Từ Chỉ',
     'Whole words only': 'Toàn bộ từ chỉ',
     'Whole words': 'Toàn bộ từ',
     'Exact Case': 'Trường hợp chính xác',
@@ -223,6 +223,8 @@ module.exports = {
     'Show Verse Number': 'Hiển thị số câu', 
 
     'Other': 'Khác', 
+    'Include Testament': 'Bao gồm di chúc'
+    'Testament': 'Di chúc'
     'Abbreviate Books': 'Sách viết tắt', 
     'Omit Extra Line Breaks': 'Bỏ qua ngắt dòng bổ sung', 
 

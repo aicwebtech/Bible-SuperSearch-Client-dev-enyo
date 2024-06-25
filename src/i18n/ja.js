@@ -209,6 +209,8 @@ module.exports = {
     'Show Verse Number': '節番号を表示', 
 
     'Other': '他の', 
+    'Include Testament': '遺言書を含める'
+    'Testament': '遺言'
     'Abbreviate Books': '本の略語', 
     'Omit Extra Line Breaks': '余分な改行を省略する', 
 

@@ -24,18 +24,18 @@ module.exports = {
     'Search': 'Keresés',
     'Search the Bible': 'Keresd a Bibliát',
     'Go': 'Megy',
-    'Bible Search': 'Biblia keresése',
+    'Bible Search': 'Biblia Keresése',
     'Bible': 'Biblia',
-    'Whole Words Only': 'Csak egész szavak',
+    'Whole Words Only': 'Csak Egész Szavak',
     'Whole words only': 'Csak egész szavak',
     'Whole words': 'Egész szavak',
-    'Exact Case': 'Pontos eset',
+    'Exact Case': 'Pontos Eset',
     'Parallel Bible #': 'Párhuzamos Biblia #',
     'Select a Bible': 'Válassz egy Bibliát',
     'Add Bible': 'Add hozzá a Bibliát',
     'Remove Bible': 'Távolítsa el a Bibliát', 
-    'Random Chapter': 'Véletlenszerű fejezet',
-    'Random Verse': 'Véletlen vers',
+    'Random Chapter': 'Véletlenszerű Fejezet',
+    'Random Verse': 'Véletlen Vers',
     'Passages': 'Átjárók',
     'Passage': 'Átjáró, átkelés',
     'The book of': 'A könyv a',
@@ -44,7 +44,7 @@ module.exports = {
     'in': 'ban ben',
     'verse': 'vers',
     'verses': 'verseket',
-    'A Chapter': 'Egy fejezet',
+    'A Chapter': 'Egy Fejezet',
     'Chapters': 'Fejezetek',
     'Find verses containing': 'Keressen verseket tartalmazó',
     'Restrict search to': 'Keresés korlátozása erre:', 
@@ -60,7 +60,7 @@ module.exports = {
     'Context': 'Kontextus',
     'In Context': 'Szövegkörnyezetben',
 
-    'Limit Search To': 'Keresés korlátozása erre',
+    'Limit Search To': 'Keresés Korlátozása Erre',
     'Limit search to': 'Keresés szűkítése erre:', // Watch case!
     'Entire Bible': 'A teljes Biblia',
     'Passage(s) listed below': 'Az alábbiakban felsorolt szövegrész(ek).',
@@ -72,29 +72,29 @@ module.exports = {
     'Law': 'Törvény',
     'History Books': 'Történelemkönyvek', // Can translate as 'History'
     'History': 'Történelem',
-    'Wisdom & Poetry': 'Bölcsesség és költészet',
-    'Prophets Books': 'Próféták könyvei', // Can translate as 'Prophets'
+    'Wisdom & Poetry': 'Bölcsesség és Költészet',
+    'Prophets Books': 'Próféták Könyvei', // Can translate as 'Prophets'
     'Prophets': 'Próféták',
-    'Major Prophets': 'Fő próféták',
+    'Major Prophets': 'Fő Próféták',
     'Minor Prophets': 'Kispróféták',
-    'Gospels': 'evangéliumok',
+    'Gospels': 'Evangéliumok',
     'Epistles': 'Levelek',
-    'Pauline Epistles': 'Pálos levelei',
-    'General Epistles': 'Általános levelek',
-    'End Times Prophecy': 'Végidők próféciája',
+    'Pauline Epistles': 'Pálos Levelei',
+    'General Epistles': 'Általános Levelek',
+    'End Times Prophecy': 'Végidők Próféciája',
     
     // Shortcut Aliases
     'OT': 'OT',
-    'NT': 'NT',
+    'NT': 'ÚT',
     'Torah': 'Tóra',
     'Wisdom': 'Bölcsesség',
     'Major': 'Jelentősebb',
     'Minor': 'Kisebb',
     'Passion': 'Szenvedély',
-    'Doctrine': 'doktrína',
+    'Doctrine': 'Doktrína',
     'Paul': 'Pál',
     'General': 'Tábornok',
-    'Last Days': 'Utolsó napok',
+    'Last Days': 'Utolsó Napok',
 
     'Look up Passage(s)': 'Nézze meg az átjáró(ka)t',
     'Enter passage(s)' : 'Írja be a szakasz(oka)t',
@@ -102,28 +102,28 @@ module.exports = {
     'Example': 'Példa',
 
     'Search for' : 'Keressen rá',
-    'Match': 'mérkőzés',
-    'All Words': 'Minden szó',
-    'Any Word': 'Bármelyik szó',
-    'Exact Phrase': 'Pontos kifejezés',
-    'Only One Word': 'Csak egy Szó',
-    'Two or More Words': 'Két vagy több szó',
-    'Words Within 5 Verses': 'Szavak 5 versen belül',
-    'Words Within Same Chapter': 'Szavak ugyanabban a fejezetben',
-    'Words Within Same Book': 'Szavak ugyanabban a könyvben',
-    'Boolean Expression': 'Logikai kifejezés',
-    'Regular Expression': 'Reguláris kifejezés',
-    'Select one ...' : 'Válassz egyet ...',
+    'Match': 'Mérkőzés',
+    'All Words': 'Minden Szó',
+    'Any Word': 'Bármelyik Szó',
+    'Exact Phrase': 'Pontos Kifejezés',
+    'Only One Word': 'Csak Egy Szó',
+    'Two or More Words': 'Két vagy Több Szó',
+    'Words Within 5 Verses': 'Szavak 5 Versen Belül',
+    'Words Within Same Chapter': 'Szavak Ugyanabban A Fejezetben',
+    'Words Within Same Book': 'Szavak Ugyanabban A Könyvben',
+    'Boolean Expression': 'Logikai Kifejezés',
+    'Regular Expression': 'Reguláris Kifejezés',
+    'Select one ...' : 'Válassz Egyet ...',
 
     'Enter search keyword(s) or passage reference(s)': 'Írja be a keresési kulcsszó(ka)t vagy hivatkozási szövegrész(eke)t"',
     'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'Tipp: Ha egy részt és egy keresési lekérdezést is megad, a keresés a megadott szövegrész(ek)re korlátozódik.',
     
     // Advanced Search
-    'Boolean Search': 'Logikai keresés',
-    'Passage Retrieval': 'Referencia visszakeresés',
+    'Boolean Search': 'Logikai Keresés',
+    'Passage Retrieval': 'Referencia Visszakeresés',
     'Find words within': 'Keressen szavakat belül',
-    'Proximity Search': 'Szavak közeli versekben keresés',
-    'Power Search': 'Hosszú keresési lekérdezés',
+    'Proximity Search': 'Szavak Közeli Versekben Keresés',
+    'Power Search': 'Hosszú Keresési Lekérdezés',
 
     // <b> ... </b> is HTML for bold text, please ensure that your translation maintains the bold
     '<b>All</b> of the words' : '<b>Minden</b> szó',
@@ -135,35 +135,35 @@ module.exports = {
     'Bible #': 'Biblia #', // downloads
 
     // Pagination
-    'Next Page' : 'Következő oldal',
-    'Previous Page' : 'Előző oldal',
-    'First Page' : 'Első oldal',
-    'Last Page': 'Utolsó oldal',
-    'Page': 'oldal',
+    'Next Page' : 'Következő Oldal',
+    'Previous Page' : 'Előző Oldal',
+    'First Page' : 'Első Oldal',
+    'Last Page': 'Utolsó Oldal',
+    'Page': 'Oldal',
     
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
     'Abc': 'ABC',  // First 3 letters in given language, with 1st capitalized
     'Serif' : 'Serif',                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sans-Serif',                 // * Button text, please keep translation short!
-    'Monospace': 'Monospace',                  // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans Serif',                 // * Button text, please keep translation short!
+    'Monospace': 'Monospace',//check translation                  // * Button text, please keep translation short!
     'Enlarge Text': 'Szöveg nagyítása',
-    'Default Text Size': 'Alapértelmezett szövegméret',
-    'Shrink Text': 'Szöveg zsugorítása',
-    'Verse Display': 'Vers megjelenítése',
-    'Paragraph Display': 'Bekezdés megjelenítése',
-    'Passage Display': 'Verscsoport megjelenítése', 
-    'Verse as Passage Display': 'Vers mint átjáró kijelző', 
-    'EZ Copy': 'Könnyű másolás',  // 'Easy Copy'
-    'Read Display': 'Olvassa ki a kijelzőt',
+    'Default Text Size': 'Alapértelmezett Szövegméret',
+    'Shrink Text': 'Szöveg Zsugorítása',
+    'Verse Display': 'Vers Megjelenítése',
+    'Paragraph Display': 'Bekezdés Megjelenítése',
+    'Passage Display': 'Verscsoport Megjelenítése', 
+    'Verse as Passage Display': 'Vers mint átjáró Kijelző', 
+    'EZ Copy': 'Könnyű Másolás',  // 'Easy Copy'
+    'Read Display': 'Olvassa ki a Kijelzőt',
     'Italics': 'Dőlt betűs',                    // * Button text, please keep translation short!
-    'Disable Italization of Added Words' : 'A hozzáadott szavak dőlésszögének letiltása',
-    'Enable Italization of Added Words': 'A hozzáadott szavak dőlésszögének engedélyezése',
+    'Disable Italization of Added Words' : 'A Hozzáadott szavak Dőlésszögének Letiltása',
+    'Enable Italization of Added Words': 'A Hozzáadott szavak Dőlésszögének Engedélyezése',
     'Disable Strong\'s Numbers': 'Az erős számok letiltása',
     'Enable Strong\'s Numbers': 'Engedélyezze a Strong\'s Numbers funkciót',
     'Red Letter': 'Piros levél',
-    'Disable Red Letter': 'A Red Letter letiltása',
-    'Enable Red Letter': 'Piros betű engedélyezése',
+    'Disable Red Letter': 'A Red Letter letiltása',//check translation
+    'Enable Red Letter': 'Piros Betű Engedélyezése',
     'Highlight': 'Kiemel',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'A kulcsszavak kiemelésének letiltása',
     'Enable Highlighting of Keywords': 'Kulcsszavak kiemelésének engedélyezése',
@@ -175,7 +175,7 @@ module.exports = {
 
     // Descriptions of special formatting features
     'Formatting': 'Formázás',  
-    'Supported Bibles Only': 'Csak támogatott Bibliák', 
+    'Supported Bibles Only': 'Csak Támogatott Bibliák', 
     
     // Translate the right-side strings here
     'strongs_numbers_description': 'Az erős konkordancia számok a mögöttes héber vagy görög szavakat jelzik.',  
@@ -185,38 +185,40 @@ module.exports = {
 
 
     // Verse Cherry-picking
-    'Select All': 'Mindet kiválaszt', 
-    'Select None': 'Válassza a Nincs lehetőséget', 
+    'Select All': 'Mindet Kiválaszt', 
+    'Select None': 'Válassza a Nincs Lehetőséget', 
     'Select': 'Válassza ki', 
     'Unselect': 'Törölje a kijelölést', 
     
     // Copy format options
-    'Copy Format': 'Másolás formátum', 
+    'Copy Format': 'Másolás Formátum', 
     'Word Processor': 'Szövegszerkesztő', 
     'Outline' : 'Vázlat', 
     'Custom': 'Egyedi', 
 
-    'Single Verses': 'Egyetlen versek', 
+    'Single Verses': 'Egyetlen Versek', 
     'Reference - Text': 'Hivatkozás - Szöveg', 
     'Text - Reference': 'Szöveg - Referencia', 
-    'Text Only': 'Csak szöveg', 
-    'Separate Line': 'Külön sor', 
+    'Text Only': 'Csak Szöveg', 
+    'Separate Line': 'Külön Sor', 
 
-    'Multi-verse Passages': 'Több versszakos szakaszok', 
+    'Multi-verse Passages': 'Több versszakos Szakaszok', 
     'Reference - Passage': 'Hivatkozás – átjáró', 
     'Passage - Reference': 'Passzus – Referencia', 
     'Passage Only': 'Csak átjárás', 
-    'Show Verse Number': 'Versszám megjelenítése', 
+    'Show Verse Number': 'Versszám Megjelenítése', 
 
     'Other': 'Egyéb', 
-    'Abbreviate Books': 'Könyvek rövidítése', 
-    'Omit Extra Line Breaks': 'Az extra sortörések kihagyása', 
+    'Include Testament': 'Tartalmazza a Testamentumot'
+    'Testament': 'Végrendelet'
+    'Abbreviate Books': 'Könyvek Rövidítése', 
+    'Omit Extra Line Breaks': 'Az Extra Sortörések Kihagyása',//check translation 
 
     // Settings Dialog
     'Settings' : 'Beállítások', 
     'Language' : 'Nyelv', 
-    'Text Display': 'Szöveg megjelenítése', 
-    'Font Style': 'Betű stílus', 
+    'Text Display': 'Szöveg Megjelenítése', 
+    'Font Style': 'Betű Stílus', 
 
     // Result and error messages
     
@@ -226,7 +228,7 @@ module.exports = {
     'results' : 'eredmények',
     
     // Showing results [1] to [30]
-    'Showing Results': 'Eredmények megjelenítése',
+    'Showing Results': 'Eredmények Megjelenítése',
     'to' : 'nak nek',
     
     // Your search produced no results in [name of Bible version]
@@ -248,7 +250,7 @@ module.exports = {
     'Your search was limited to': 'Keresése erre korlátozódott',
     'Please refine your search if necessary': 'Kérjük, finomítsa a keresést, ha szükséges',
 
-    'This Bible is in the Public Domain.': 'Ez a Biblia nyilvánosan elérhető.',
+    'This Bible is in the Public Domain.': 'Ez a Biblia Nyilvánosan Elérhető.',
     'This Bible is provided for research purposes only.': 'Ez a Biblia csak kutatási célokat szolgál.',
     'An unknown error has occurred.' : 'Ismeretlen hiba lépett fel.',
     'An error has occurred, please try again later.': 'Hiba történt. Kérem próbálja újra később.',
@@ -274,24 +276,24 @@ module.exports = {
 
     // Bible SOS dialog
     'Bible SOS': 'Biblia SOS',
-    'Emergency Help from the Bible': 'Sürgősségi segítség a Bibliából',
+    'Emergency Help from the Bible': 'Sürgősségi Segítség a Bibliából',
     'Where to go When ...': 'Hova menjen Mikor...',
     'Afraid': 'Félek',
     'Anxious': 'Aggódó',
     'Backsliding': 'Hátracsúszás',
     'Bereaved': 'Gyászoló',
-    'Bitter or Critical': 'Keserű vagy kritikus',
+    'Bitter or Critical': 'Keserű vagy Kritikus',
     'Conscious of Sin': 'A bűn tudatában',
     'Defeated': 'Legyőzött',
     'Depressed': 'Nyomott', 
-    'Disaster Threatens': 'Katasztrófa fenyeget',
+    'Disaster Threatens': 'Katasztrófa Fenyeget',
     'Discouraged': 'Elcsüggedt',
     'Doubting': 'Kételkedni',
-    'Facing a Crisis': 'Szembenézni a válsággal',
+    'Facing a Crisis': 'Szembenézni a Válsággal',
     'Faith Fails': 'A hit elbukik',
     'Friends Fail': 'A barátok kudarcot vallanak', 
     'Hopeless': 'Reménytelen',
-    'Leaving Home': 'Elmenni otthonról',
+    'Leaving Home': 'Elmenni Otthonról',
     'Lonely': 'Magányos',
     'Needing God\'s protection': 'Isten oltalmára van szüksége',
     'Needing Guidance': 'Útmutatásra van szükség',
@@ -300,7 +302,7 @@ module.exports = {
     'Overcome': 'Legyőzni',
     'Prayerful': 'Imádságos',
     'Protected': 'Védett',
-    'Sick or in Pain': 'Beteg vagy fájdalmas',
+    'Sick or in Pain': 'Beteg vagy Fájdalmas',
     'Sorrowful': 'Szomorú',
     'Tempted': 'Megkísértett', 
     'Thankful': 'Hálás',
@@ -312,14 +314,14 @@ module.exports = {
 
     // Bible Start dialog
     'Start': 'Rajt',
-    'Bible Start Guide': 'Biblia kezdési útmutató',
+    'Bible Start Guide': 'Biblia Kezdési útmutató',
     'New to the Bible?': 'Új a Biblia?',
     'Not Sure Where to Begin?' : 'Nem tudja, hol kezdje?',
-    'Life and Teachings of Jesus Christ': 'Jézus Krisztus élete és tanításai',
-    'Basic Christian Beliefs': 'Alapvető keresztény hitek',
+    'Life and Teachings of Jesus Christ': 'Jézus Krisztus élete és Tanításai',
+    'Basic Christian Beliefs': 'Alapvető Keresztény Hitek',
     'Creation and the Fall of Man': 'A teremtés és az ember bukása',
-    'Birth of Christ / Life of Christ': 'Krisztus születése / Krisztus élete',
-    'Imperfection in Churches and Believers': 'Tökéletlenség az egyházakban és a hívőkben',
+    'Birth of Christ / Life of Christ': 'Krisztus Születése / Krisztus élete',
+    'Imperfection in Churches and Believers': 'Tökéletlenség az Egyházakban és a Hívőkben',
     'Early human history, especially that of Israel': 'A korai emberi történelem, különösen Izraelé',
     'The relationship between the Old Testament Law and the Church': 'Az ószövetségi törvény és az egyház kapcsolata',
     'History and Law': 'Történelem és Jog',
@@ -330,19 +332,19 @@ module.exports = {
 
     // Bible downloads dialog
     'Download': 'Letöltés',
-    'Bible Downloads': 'Biblia letöltések',
-    'Select Bible(s)' : 'Biblia(ok) kiválasztása',
-    'Select a Format': 'Válasszon egy formátumot',
+    'Bible Downloads': 'Biblia Letöltések',
+    'Select Bible(s)' : 'Biblia(ok) Kiválasztása',
+    'Select a Format': 'Válasszon egy Formátumot',
     'Rendering': 'Renderelés',
     'Rendering Bibles, this may take some time': 'Bibliák megjelenítése, ez eltarthat egy ideig',
     'Rendering is Complete': 'A renderelés befejeződött',
     'Your download should begin shortly': 'A letöltésnek hamarosan el kell kezdődnie',
     'If not, please click on the below link': 'Ha nem, kérjük, kattintson az alábbi linkre',
-    'Manual Download': 'Kézi letöltés',
+    'Manual Download': 'Kézi Letöltés',
     'Please select at least one Bible': 'Kérjük, válasszon ki legalább egy Bibliát',
     'Please select a format': 'Kérjük, válasszon formátumot',
     'Are you sure you want to exit?  This will end the current download.': 'Biztos ki akarsz lépni? Ezzel leállítja az aktuális letöltést.',
-    'Plain Text' : 'Egyszerű szöveg',
+    'Plain Text' : 'Egyszerű Szöveg',
     'Machine-readable Plain Text' : 'Géppel olvasható egyszerű szöveg',
     'Spreadsheet' : 'Táblázat',
     'Databases': 'Adatbázisok',
@@ -354,9 +356,9 @@ module.exports = {
 
     // Copy / Share / Link dialogs
     'Copy': 'Másolat',
-    'Copy Link': 'Link másolása',
-    'Copy with Text': 'Másolás szöveggel',
-    'Share Link': 'Hivatkozás megosztása',
+    'Copy Link': 'Link Másolása',
+    'Copy with Text': 'Másolás Szöveggel',
+    'Share Link': 'Hivatkozás Megosztása',
     'Share' : 'Ossza meg',
     'Link' : 'Link', 
     'Copied to clipboard': 'Vágólapra másolva', 
@@ -366,7 +368,7 @@ module.exports = {
     'Quick Start Guide': 'Gyors üzembe helyezési útmutató',
     'User\'s Manual': 'Felhasználói Útmutató',
     'Wildcard': 'Helyettesítő karakter',
-    'Basic Searches' : 'Alapvető keresések',
+    'Basic Searches' : 'Alapvető Keresések',
     'Advanced Searches using Boolean': 'Speciális keresések Boolean használatával',
     'Select' : 'Válassza ki',
     'Operators': 'Üzemeltetők',
@@ -389,7 +391,7 @@ module.exports = {
     // Keywords for sample searches
     'Jesus': 'Jézus',
     'Christ': 'Krisztus',
-    'Lord': 'Lord',
+    'Lord': 'Lord',//check translation
     'faith': 'hit',
     'hope': 'remény',
     'joy': 'öröm',
@@ -419,7 +421,7 @@ module.exports = {
     'Old': 'Régi',
     'New': 'Új',
 
-    'Are you sure?': 'biztos vagy ebben?',
+    'Are you sure?': 'Biztos vagy ebben?',
     'Are you sure you want to delete': 'Biztos vagy benne, hogy törölni akarod',
 
     // Bookmarks/History
@@ -434,7 +436,7 @@ module.exports = {
     'This bookmark name already exists.': 'Ez a könyvjelzőnév már létezik.',
 
     // Quick start dialog: Limiting searches
-    'Limiting Searches': 'Keresések korlátozása',
+    'Limiting Searches': 'Keresések Korlátozása',
     'Passages': 'Átjárók',
     'Alias': 'Álnév',
     'You cannot search for these common words': 'Nem lehet keresni ezekre a gyakori szavakra',

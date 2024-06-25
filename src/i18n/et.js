@@ -18,7 +18,7 @@ module.exports = {
     // * Any ' (single quote) in the translation MUST be preceded by a \ (backslash).
 
 
-    'Bible SuperSearch': 'Piibli superotsing',
+    'Bible SuperSearch': 'Piibli Superotsing',
     'Loading, please wait': 'Laadimine, palun oodake',
 
 
@@ -27,18 +27,18 @@ module.exports = {
     'Search': 'Otsi',
     'Search the Bible': 'Otsi Piiblist',
     'Go': 'Mine',
-    'Bible Search': 'Piibli otsing',
+    'Bible Search': 'Piibli Otsing',
     'Bible': 'Piibel',
-    'Whole Words Only': 'Otsi kõiki sõnu',
+    'Whole Words Only': 'Otsi Kõiki Sõnu',
     'Whole words only': 'Otsi kõiki sõnu',
     'Whole words': 'Kõik sõnad',
-    'Exact Case': 'Täpne fraas',
+    'Exact Case': 'Täpne Fraas',
     'Parallel Bible #': 'Paralleel Piibel#',
     'Select a Bible': 'Vali Piibel',
     'Add Bible': 'Lisa Piibel',
     'Remove Bible': 'Eemalda Piibel', // 5.2
-    'Random Chapter': 'Juhuslik peatükk',
-    'Random Verse': 'Juhuslik salm',
+    'Random Chapter': 'Juhuslik Peatükk',
+    'Random Verse': 'Juhuslik Salm',
     'Passages': 'Lõigud',
     'Passage': 'Lõik',
     'The book of': 'Raamat aastast',
@@ -51,21 +51,21 @@ module.exports = {
     'Chapters': 'Peatükid',
     'Find verses containing': 'Otsige salme, mis sisaldavad',
     'Restrict search to': 'Piira otsing kuni', 
-    'Word Search': 'Otsi sõna',
-    'Clear Form': 'Puhasta vorm', // 4.5
-    'Select Book and Chapter:' : 'Vali raamat ja petükk', // 5.2
+    'Word Search': 'Otsi Sõna',
+    'Clear Form': 'Puhasta Vorm', // 4.5
+    'Select Book and Chapter:' : 'Vali Raamat ja Petükk', // 5.2
 
 
     // Context Links
     'Show full chapter': 'Näita tervet peatükki',
-    'Chapter': 'peatükk',
+    'Chapter': 'Peatükk',
     'Show this verse': 'Näita seda salmi',
     'Show in context': 'Näita konteksti',
     'Context': 'Kontekst',
     'In Context': 'Kontekstis',
 
 
-    'Limit Search To': 'Piira otsingut',
+    'Limit Search To': 'Piira Otsingut',
     'Limit search to': 'Piira otsingut', // Watch case!
     'Entire Bible': 'Kogu Piiblist',
     'Passage(s) listed below': 'Allpool loetletud lõigud',
@@ -76,17 +76,17 @@ module.exports = {
     'New Testament': 'Uus Testament',
     'Law': 'Seadused',
     'History': 'Ajalugu',
-    'History Books': 'Ajaloo raamatud', // 5.5 Can translate as 'History'
-    'Wisdom & Poetry': 'Tarkus ja luule',
+    'History Books': 'Ajaloo Raamatud', // 5.5 Can translate as 'History'
+    'Wisdom & Poetry': 'Tarkus ja Luule',
     'Prophets': 'Prohvetid',
-    'Prophets Books': 'Prohvetite raamatud', // 5.5 Can translate as 'Prophets'
-    'Major Prophets': 'Peamised prohvetid',
-    'Minor Prophets': 'Väikesed prohvetid',
+    'Prophets Books': 'Prohvetite Raamatud', // 5.5 Can translate as 'Prophets'
+    'Major Prophets': 'Peamised Prohvetid',
+    'Minor Prophets': 'Väikesed Prohvetid',
     'Gospels': 'Evangeeliumid',
     'Epistles': 'Kirjad',
-    'Pauline Epistles': 'Pauluse kirjad',
-    'General Epistles': 'Üldised kirjad',
-    'End Times Prophecy': 'Lõpuaegade ennustus',
+    'Pauline Epistles': 'Pauluse Kirjad',
+    'General Epistles': 'Üldised Kirjad',
+    'End Times Prophecy': 'Lõpuaegade Ennustus',
 
     // Shortcut Aliases
     'OT': 'VT',
@@ -96,12 +96,12 @@ module.exports = {
     'Major': 'Major',
     'Minor': 'Alaealine',
     'Passion': 'Kirg',
-    'Doctrine': 'doktriin',
+    'Doctrine': 'Doktriin',
     'Paul': 'Paul',
     'General': 'Kindral',
-    'Last Days': 'Viimased päevad',
+    'Last Days': 'Viimased Päevad',
 
-    'Look up Passage(s)': 'Otsige üles lõik(gud)',
+    'Look up Passage(s)': 'Otsige üles Lõik(gud)',
     'Enter passage(s)' : 'Sisesta lõik(ud)',
     'Enter word(s), phrase(s) or expression(s)' : 'Sisestage sõna(d), fraas(id) või väljend(id)',
     'Example': 'Näide',
@@ -111,13 +111,13 @@ module.exports = {
     'Match': 'Vasted',
     'All Words': 'Kõik Sõnad',
     'Any Word': 'Ükskõik milline Sõna',
-    'Exact Phrase': 'Täpne fraas',
+    'Exact Phrase': 'Täpne Fraas',
     'Only One Word': 'Ainult Üks Sõna',
-    'Two or More Words': 'Kaks või enam sõna',
-    'Words Within 5 Verses': 'Sõnad 5 salmi sees',
-    'Words Within Same Chapter': 'Sõnad samas peatükis',
-    'Words Within Same Book': 'Sõnad samas raamatus',
-    'Boolean Expression': 'Tõesed avaldised',
+    'Two or More Words': 'Kaks või Enam sõna',
+    'Words Within 5 Verses': 'Sõnad 5 Salmi Sees',
+    'Words Within Same Chapter': 'Sõnad Samas Peatükis',
+    'Words Within Same Book': 'Sõnad Samas Raamatus',
+    'Boolean Expression': 'Tõesed Avaldised',
     'Regular Expression': 'Regulaaravaldis',
     'Select one ...' : 'Vali üks...',
 
@@ -126,11 +126,11 @@ module.exports = {
     'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'Näpunäide. Nii lõigu kui ka otsingupäringu sisestamine piirab otsingut määratud lõigu(kude)ga.',
     
     // Advanced Search
-    'Boolean Search': 'Tõene otsing',
-    'Passage Retrieval': 'Lõikude otsimine',
+    'Boolean Search': 'Tõene Otsing',
+    'Passage Retrieval': 'Lõikude Otsimine',
     'Find words within': 'Otsige üles sõnu',
-    'Proximity Search': 'Sarnasuse otsing',
-    'Power Search': 'Võimas otsing',
+    'Proximity Search': 'Sarnasuse Otsing',
+    'Power Search': 'Võimas Otsing',
 
 
     // <b> ... </b> is HTML for bold text, please ensure that your translation maintains the bold
@@ -145,47 +145,47 @@ module.exports = {
 
 
     // Pagination
-    'Next Page' : 'Järgmine lehekülg',
-    'Previous Page' : 'Eelmine lehekülg',
-    'First Page' : 'Esimene lehekülg',
-    'Last Page': 'Viimane lehekülg',
+    'Next Page' : 'Järgmine Lehekülg',
+    'Previous Page' : 'Eelmine Lehekülg',
+    'First Page' : 'Esimene Lehekülg',
+    'Last Page': 'Viimane Lehekülg',
     'Page': 'Lehekülg',
     
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
     'Serif' : 'Seif',                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sans-Serif',                 // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif',//check translation                 // * Button text, please keep translation short!
     'Monospace': 'Monoruum',                  // * Button text, please keep translation short!
-    'Enlarge Text': 'Suurenda teksti',
-    'Default Text Size': 'Vaiketeksti suurus',
-    'Shrink Text': 'Kahanda tekst',
-    'Verse Display': 'Salmide kuvamine',
-    'Paragraph Display': 'Lõigu kuvamine',
-    'Passage Display': 'Näita lõiku', // 4.5
-    'Verse as Passage Display': 'Salm lõigukuvana', // 5.3
-    'EZ Copy': 'Lihtne kopeerimine',  // 'Easy Copy'
-    'Read Display': 'Lugege ekraanilt',
+    'Enlarge Text': 'Suurenda Teksti',
+    'Default Text Size': 'Vaiketeksti Suurus',
+    'Shrink Text': 'Kahanda Tekst',
+    'Verse Display': 'Salmide Kuvamine',
+    'Paragraph Display': 'Lõigu Kuvamine',
+    'Passage Display': 'Näita Lõiku', // 4.5
+    'Verse as Passage Display': 'Salm Lõigukuvana', // 5.3
+    'EZ Copy': 'Lihtne Kopeerimine',  // 'Easy Copy'
+    'Read Display': 'Lugege Ekraanilt',
     'Italics': 'Kaldkiri',                    // * Button text, please keep translation short!
-    'Disable Italization of Added Words' : 'Lisatud sõnade kaldkirja keelamine',
-    'Enable Italization of Added Words': 'Lisatud sõnade kaldkirja lubamine',
-    'Disable Strong\'s Numbers': 'Keela Strong\'i numbrid',
-    'Enable Strong\'s Numbers': 'Luba Strong\'i numbrid',
-    'Red Letter': 'Punased tähed',
-    'Disable Red Letter': 'Keela puased tähed',
-    'Enable Red Letter': 'Luba punased tähed',
+    'Disable Italization of Added Words' : 'Lisatud Sõnade Kaldkirja Keelamine',
+    'Enable Italization of Added Words': 'Lisatud Sõnade Kaldkirja Lubamine',
+    'Disable Strong\'s Numbers': 'Keela Strong\'i Numbrid',
+    'Enable Strong\'s Numbers': 'Luba Strong\'i Numbrid',
+    'Red Letter': 'Punased Tähed',
+    'Disable Red Letter': 'Keela Puased Tähed',
+    'Enable Red Letter': 'Luba Punased Tähed',
     'Highlight': 'Tõsta esile',                   // * Button text, please keep translation short!
-    'Disable Highlighting of Keywords': 'Keela märksõnade esiletõstmine',
-    'Enable Highlighting of Keywords': 'Luba märksõnade esiletõstmine',
+    'Disable Highlighting of Keywords': 'Keela Märksõnade Esiletõstmine',
+    'Enable Highlighting of Keywords': 'Luba Märksõnade Esiletõstmine',
     'Print': 'Trüki',
-    'Printer Friendly': 'Prindi sõbralik',
+    'Printer Friendly': 'Prindi Sõbralik',
     'Help': 'Abi',
     'Basic': 'Põhiline',
     'Advanced': 'Täiustatud',
 
     // Descriptions of special formatting features
     'Formatting': 'Vormindamine',  // 5.3
-    'Supported Bibles Only': 'Ainult toetatud piiblid',  // 5.3
+    'Supported Bibles Only': 'Ainult Toetatud Piiblid',  // 5.3
     
     'strongs_numbers_description': 'Strong\'i konkordansi numbrid näitavad aluseks olevaid heebrea või kreeka sõnu.',  // 5.3
     'italics_description': 'Kaldkiri tähistab tõlkes lisatud sõnu, mis ei olnud originaalkeeles.',    // 5.3
@@ -195,35 +195,37 @@ module.exports = {
 
 
     // Verse Cherry-picking
-    'Select All': 'Vali kõik', // 5.0
-    'Select None': 'Ei vali ühtegi', // 5.0
+    'Select All': 'Vali Kõik', // 5.0
+    'Select None': 'Ei Vali ühtegi', // 5.0
     'Select': 'Vali', // 5.0
-    'Unselect': 'Tühista valik', // 5.0
+    'Unselect': 'Tühista Valik', // 5.0
     
     // Copy format options
-    'Copy Format': 'Kopeeri vorming', // 5.0
+    'Copy Format': 'Kopeeri Vorming', // 5.0
     'Word Processor': 'Tekstitöötlus', // 5.0
     'Outline' : 'Ülevaade', // 5.0
     'Custom': 'Kohandatud', // 5.0
 
 
-    'Single Verses': 'Üksikud salmid', // 5.0
-    'Reference - Text': 'Viide – tekst', // 5.0
-    'Text - Reference': 'Tekst – viide', // 5.0
-    'Text Only': 'Ainult tekst', // 5.0
-    'Separate Line': 'Eraldi rida', // 5.0
+    'Single Verses': 'Üksikud Salmid', // 5.0
+    'Reference - Text': 'Viide – Tekst', // 5.0
+    'Text - Reference': 'Tekst – Viide', // 5.0
+    'Text Only': 'Ainult Tekst', // 5.0
+    'Separate Line': 'Eraldi Rida', // 5.0
 
 
-    'Multi-verse Passages': 'Mitme-salmilised lõigud', // 5.0
-    'Reference - Passage': 'Viide – lõik', // 5.0
-    'Passage - Reference': 'Lõik – viide', // 5.0
-    'Passage Only': 'Ainult lõik', // 5.0
-    'Show Verse Number': 'Näita salmi numbrit', // 5.0
+    'Multi-verse Passages': 'Mitme-salmilised Lõigud', // 5.0
+    'Reference - Passage': 'Viide – Lõik', // 5.0
+    'Passage - Reference': 'Lõik – Viide', // 5.0
+    'Passage Only': 'Ainult Lõik', // 5.0
+    'Show Verse Number': 'Näita Salmi Numbrit', // 5.0
 
 
     'Other': 'Muu', // 5.0
-    'Abbreviate Books': 'Raamatute lühend', // 5.0
-    'Omit Extra Line Breaks': 'Jäta väljale täiendavad reavahed', // 5.0
+    'Include Testament': 'Kaasake Testament'
+    'Testament': 'Testament'//check translation
+    'Abbreviate Books': 'Raamatute Lühend', // 5.0
+    'Omit Extra Line Breaks': 'Jäta Väljale Täiendavad Reavahed', // 5.0
 
 
     // Settings Dialog
@@ -250,7 +252,7 @@ module.exports = {
     'results' : '(salmide koguarv) tulemused',
     
     // Showing results [1] to [30]
-    'Showing Results': 'Tulemuste kuvamine',
+    'Showing Results': 'Tulemuste Kuvamine',
     'to' : 'kuni', //////
     
     // Your search produced no results in [name of Bible version]
@@ -274,7 +276,7 @@ module.exports = {
     'Your search was limited to': 'Teie otsing on piiratud',
     'Please refine your search if necessary': 'Vajadusel täpsustage oma otsingut',
 
-    'This Bible is in the Public Domain.': 'See Piibel on avalikus omandis.',
+    'This Bible is in the Public Domain.': 'See Piibel on Avalikus Omandis.',
     'This Bible is provided for research purposes only.': 'See Piibel on mõeldud ainult uurimiseesmärkidel.',
     'An unknown error has occurred.' : 'Ilmnes tundmatu viga.',
     'An error has occurred, please try again later.': 'On ilmnenud viga. Palun proovige hiljem uuesti.',
@@ -302,55 +304,55 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Piibli SOS',
     'Emergency Help from the Bible': 'Hädaabi Piiblist',
-    'Where to go When ...': 'Kuhu minna kui ...',
-    'Afraid': 'sa kardad',
-    'Anxious': 'sa oled mures',
-    'Backsliding': 'sa oled tagasilangenud',
-    'Bereaved': 'sa leinad',
-    'Bitter or Critical': 'sa oled kibestunud või kriitiline',
-    'Conscious of Sin': 'sa oled teadlik patust',
-    'Defeated': 'sa oled lüüasaanud',
-    'Depressed': 'sa oled masenduses', 
-    'Disaster Threatens': 'oled katastroofi äärel',
-    'Discouraged': 'sa oled heidutatud',
-    'Doubting': 'sa kahtled',
-    'Facing a Crisis': 'sa seisad silmitsi kriisiga',
-    'Faith Fails': 'su usk ebaõnnestub',
-    'Friends Fail': 'su sõbrad ebaõnnestuvad', 
-    'Hopeless': 'sa oled lootusetu',
-    'Leaving Home': 'sa lahkud kodust',
-    'Lonely': 'sa tunned end üksikuna',
-    'Needing God\'s protection': 'sa vajad Jumala kaitset',
-    'Needing Guidance': 'sa vajad juhatust',
-    'Needing Peace': 'sa vajad rahu',
-    'Needing Rules for Living': 'sa vajad reegleid elamiseks', 
-    'Overcome': 'et saada üle',
-    'Prayerful': 'vajad palvet',
-    'Protected': 'vajad kaitset',
-    'Sick or in Pain': 'oled haige või valudes',
-    'Sorrowful': 'sa oled kurb',
-    'Tempted': 'oled kiusatud', 
-    'Thankful': 'sa oled tänulik',
-    'Traveling': 'sa reisid',
-    'Trouble, In': 'sa oled hädades',
-    'Troubled': 'sa oled hädas',
-    'Weary': 'sa oled väsinud',
-    'Worried': 'sa muretsed',
+    'Where to go When ...': 'Kuhu Minna Kui ...',
+    'Afraid': 'Sa Kardad',
+    'Anxious': 'Sa Oled Mures',
+    'Backsliding': 'Sa Oled Tagasilangenud',
+    'Bereaved': 'Sa Leinad',
+    'Bitter or Critical': 'Sa Oled Kibestunud või Kriitiline',
+    'Conscious of Sin': 'Sa Oled Teadlik Patust',
+    'Defeated': 'Sa Oled Lüüasaanud',
+    'Depressed': 'Sa Oled Masenduses', 
+    'Disaster Threatens': 'Oled Katastroofi äärel',
+    'Discouraged': 'Sa Oled Heidutatud',
+    'Doubting': 'Sa kahtled',
+    'Facing a Crisis': 'Sa seisad Silmitsi Kriisiga',
+    'Faith Fails': 'Su Usk Ebaõnnestub',
+    'Friends Fail': 'Su sõbrad Ebaõnnestuvad', 
+    'Hopeless': 'Sa Oled Lootusetu',
+    'Leaving Home': 'Sa Lahkud Kodust',
+    'Lonely': 'Sa Tunned End üksikuna',
+    'Needing God\'s protection': 'Sa Vajad Jumala Kaitset',
+    'Needing Guidance': 'Sa Vajad Juhatust',
+    'Needing Peace': 'Sa Vajad Rahu',
+    'Needing Rules for Living': 'Sa Vajad Reegleid Elamiseks', 
+    'Overcome': 'Et Saada üle',
+    'Prayerful': 'Vajad Palvet',
+    'Protected': 'Vajad Kaitset',
+    'Sick or in Pain': 'Oled Haige Või Valudes',
+    'Sorrowful': 'Sa Oled Kurb',
+    'Tempted': 'Oled Kiusatud', 
+    'Thankful': 'Sa Oled Tänulik',
+    'Traveling': 'Sa Reisid',
+    'Trouble, In': 'Sa Oled Hädades',
+    'Troubled': 'Sa Oled Hädas',
+    'Weary': 'Sa Oled Väsinud',
+    'Worried': 'Sa Muretsed',
 
 
     // Bible Start dialog
     'Start': 'Alusta',
-    'Bible Start Guide': 'Piibli algusjuhend',
-    'New to the Bible?': 'Piibel on sulle uus',
-    'Not Sure Where to Begin?' : 'Pole kindel, kust alsutada?',
-    'Life and Teachings of Jesus Christ': 'Jeesuse Kristuse elu ja õpetused',
-    'Basic Christian Beliefs': 'Põhilised kristlikud tõekspidamised',
-    'Creation and the Fall of Man': '`Inimese loomine ja langemine',
-    'Birth of Christ / Life of Christ': 'Kristuse sünd / Kristuse elu',
-    'Imperfection in Churches and Believers': 'Ebatäiuslikkus kirikutes ja usklikes',
+    'Bible Start Guide': 'Piibli Algusjuhend',
+    'New to the Bible?': 'Piibel on Sulle uus',
+    'Not Sure Where to Begin?' : 'Pole Kindel, Kust Alsutada?',
+    'Life and Teachings of Jesus Christ': 'Jeesuse Kristuse Elu ja õpetused',
+    'Basic Christian Beliefs': 'Põhilised Kristlikud Tõekspidamised',
+    'Creation and the Fall of Man': '`Inimese Loomine ja Langemine',
+    'Birth of Christ / Life of Christ': 'Kristuse Sünd / Kristuse Elu',
+    'Imperfection in Churches and Believers': 'Ebatäiuslikkus Kirikutes ja Usklikes',
     'Early human history, especially that of Israel': 'Inimkonna varajane ajalugu, eriti Iisraeli oma',
     'The relationship between the Old Testament Law and the Church': 'Vana Testamendi seaduse ja kiriku suhe',
-    'History and Law': 'Ajalugu ja seadus',
+    'History and Law': 'Ajalugu ja Seadus',
     'Salvation by faith, not works': 'Pääste usust, mitte tegudest',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Kristlik elu ja kogemus. &nbsp;Apostel Paulus loobus VT seadusest tulenevatest volikirjadest, et järgida Kristust',
     'Christ the suffering servant': 'Kristus, kannatav sulane',
@@ -359,35 +361,35 @@ module.exports = {
 
     // Bible downloads dialog
     'Download': 'Lae alla',
-    'Bible Downloads': 'Piibli allalaadimine',
-    'Select Bible(s)' : 'Valige piibel(lid)',
-    'Select a Format': 'Valige vorming',
+    'Bible Downloads': 'Piibli Allalaadimine',
+    'Select Bible(s)' : 'Valige Piibel(lid)',
+    'Select a Format': 'Valige Vorming',
     'Rendering': 'Renderdamine',
-    'Rendering Bibles, this may take some time': 'Piiblite renderdamine võib võtta aega',
-    'Rendering is Complete': 'Renderdamine on lõpetatud',
+    'Rendering Bibles, this may take some time': 'Piiblite Renderdamine võib võtta aega',
+    'Rendering is Complete': 'Renderdamine on Lõpetatud',
     'Your download should begin shortly': 'Teie allalaadimine peaks peagi algama',
     'If not, please click on the below link': 'Kui ei, klõpsake alloleval lingil',
-    'Manual Download': 'Käsitsi allalaadimine',
-    'Please select at least one Bible': 'Valige vähemalt üks piibel',
+    'Manual Download': 'Käsitsi Allalaadimine',
+    'Please select at least one Bible': 'Valige vähemalt üks Piibel',
     'Please select a format': 'Valige vorming',
     'Are you sure you want to exit?  This will end the current download.': 'Kas olete kindel, et soovite väljuda? See lõpetab praeguse allalaadimise.',
     'Plain Text' : 'Lihttekst',
-    'Machine-readable Plain Text' : 'Masinloetav lihttekst',
+    'Machine-readable Plain Text' : 'Masinloetav Lihttekst',
     'Spreadsheet' : 'Arvutustabel',
     'Databases': 'Andmebaasid',
 
 
-    'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF – kompaktne tekst, kiri, Kristuse sõnad punases',
-    'PDF - Compact Text, A4, Words of Christ in Red': 'PDF – kompakttekst, A4, Kristuse sõnad punases',
-    'PDF - Compact Text, Letter, Words of Christ Underlined': 'PDF – kompaktne tekst, kiri, Kristuse sõnad allajoonitud',
-    'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF – kompakttekst, A4, Kristuse sõnad allajoonitud',
+    'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF – Kompaktne Tekst, Kiri, Kristuse sõnad Punases',
+    'PDF - Compact Text, A4, Words of Christ in Red': 'PDF – Kompakttekst, A4, Kristuse sõnad Punases',
+    'PDF - Compact Text, Letter, Words of Christ Underlined': 'PDF – Kompaktne Tekst, Kiri, Kristuse sõnad Allajoonitud',
+    'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF – Kompakttekst, A4, Kristuse sõnad Allajoonitud',
 
 
     // Copy / Share / Link dialogs
     'Copy': 'Kopeeri',
-    'Copy Link': 'Kopeeri link',
-    'Copy with Text': 'Kopeeri tekstiga',
-    'Share Link': 'Jaga linki',
+    'Copy Link': 'Kopeeri Link',
+    'Copy with Text': 'Kopeeri Tekstiga',
+    'Share Link': 'Jaga Linki',
     'Share' : 'Jaga',
     'Link' : 'Link', // 4.5
     'Copied to clipboard': 'Kopeeriti lõikelauale', // 5.2.3
@@ -395,11 +397,11 @@ module.exports = {
 
 
     // Quick Start Help Dialog
-    'Quick Start Guide': 'Lühike juhend',
+    'Quick Start Guide': 'Lühike Juhend',
     'User\'s Manual': 'Kasutusjuhend',
     'Wildcard': 'Metamärk',
     'Basic Searches' : 'Põhiotsingud',
-    'Advanced Searches using Boolean': 'Täpsemad otsingud Booleani abil',
+    'Advanced Searches using Boolean': 'Täpsemad Otsingud Booleani abil',
     'Select' : 'Vali',
     'Operators': 'Operaatorid',
     'Operator': 'Operaator',
@@ -414,7 +416,7 @@ module.exports = {
     'Matches words in the same book, and within N verses of each other': 'Sobivad sõnad samas raamatus ja N salmi sees üksteisest',
     'Matches words in the same chapter, and within N verses of each other': 'Sobitab sõnu samas peatükis ja N salmi sees üksteisest',
     'For details, please see the User\'s Manual': 'Üksikasjad leiate kasutusjuhendist',
-    'Special Proximity Operators': 'Spetsiaalsed lähedusoperaatorid',
+    'Special Proximity Operators': 'Spetsiaalsed Lähedusoperaatorid',
     'Matches unlimited characters': 'Sobib piiramatule tähemärgile',
     'searched for': 'otsitud',
 
@@ -452,7 +454,7 @@ module.exports = {
     'Old': 'Vana',
     'New': 'Uus',
 
-    'Are you sure?': 'Oled sa kindel​',
+    'Are you sure?': 'Oled sa kindel',
     'Are you sure you want to delete': 'Kas soovite kindlasti kustutada?',
 
     // Bookmarks/History
@@ -467,7 +469,7 @@ module.exports = {
     'This bookmark name already exists.': 'See järjehoidja nimi on juba olemas',
 
     // Quick start dialog: Limiting searches
-    'Limiting Searches': 'Otsingute piiramine',
+    'Limiting Searches': 'Otsingute Piiramine',
     'Passages': 'Lõigud',
     'Alias': 'Teise nimega',
     'You cannot search for these common words': 'Te ei saa neid levinud sõnu otsida',

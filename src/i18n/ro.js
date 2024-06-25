@@ -207,6 +207,8 @@ module.exports = {
     'Show Verse Number': 'Numerotați Versetele', // 5.0
 
     'Other': 'Altele', // 5.0
+    'Include Testament': 'Includeți Testamentul'
+    'Testament': 'Testament'
     'Abbreviate Books': 'Abreviați Numele Cărților', // 5.0
     'Omit Extra Line Breaks': 'Omite rândurile goale', // 5.0
 
