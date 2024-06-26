@@ -274,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Nuk ofrohen kushte për pyetje. Ju lutemi specifikoni termat e kërkimit dhe/ose referencë(at) e pasazhit.',
     'Your search produced no results.' : 'Kërkimi juaj nuk dha rezultate.',
     'Maximum hits has been reached for today for this domain / IP address': 'Numri maksimal i goditjeve është arritur sot për këtë domen / adresë IP',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Asnjë Bibël nuk është aktivizuar. Ju lutemi kontaktoni administratorin e faqes.',
+    'No Bibles are enabled. Please contact site administrator.': 'Asnjë Bibël nuk është aktivizuar. Ju lutemi kontaktoni administratorin e faqes.',
     'Cannot retrieve multiple books at once.': 'Nuk mund të merren disa libra në të njëjtën kohë.',
     'Bible text not found': 'Teksti biblik nuk u gjet',
     'Invalid book in book range': 'Libër i pavlefshëm në gamën e librave',

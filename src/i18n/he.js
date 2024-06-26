@@ -274,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'לא סופקו תנאי שאילתה. נא לציין מונחי חיפוש ו/או התייחסות לקטעים.',
     'Your search produced no results.' : 'החיפוש שלך לא הניב תוצאות.',
     'Maximum hits has been reached for today for this domain / IP address': 'ההתאמות המקסימליות הושגו להיום עבור דומיין / כתובת IP זה',
-    'No Bibles are enabled. Please contact site adminstrator.': 'אין תנ"ך מופעלים. אנא צור קשר עם מנהל האתר.',
+    'No Bibles are enabled. Please contact site administrator.': 'אין תנ"ך מופעלים. אנא צור קשר עם מנהל האתר.',
     'Cannot retrieve multiple books at once.': 'לא ניתן לאחזר מספר ספרים בבת אחת.',
     'Bible text not found': 'טקסט התנ"ך לא נמצא',
     'Invalid book in book range': 'ספר לא חוקי בטווח הספרים',

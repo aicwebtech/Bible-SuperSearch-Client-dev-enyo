@@ -274,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Nie podano warunków zapytania. Proszę podać wyszukiwane hasła i/lub odniesienia do fragmentów.',
     'Your search produced no results.' : 'Twoje wyszukiwanie nie przyniosło żadnych rezultatów.',
     'Maximum hits has been reached for today for this domain / IP address': 'Maksymalna liczba trafień na dzisiaj dla tej domeny/adresu IP została osiągnięta',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Żadne Biblie nie są włączone. Prosimy o kontakt z administratorem serwisu.',
+    'No Bibles are enabled. Please contact site administrator.': 'Żadne Biblie nie są włączone. Prosimy o kontakt z administratorem serwisu.',
     'Cannot retrieve multiple books at once.': 'Nie można pobrać wielu książek na raz.',
     'Bible text not found': 'Nie znaleziono tekstu biblijnego',
     'Invalid book in book range': 'Nieprawidłowa książka w zakresie książek',

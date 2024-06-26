@@ -248,7 +248,7 @@ module.exports = {
 
     // Your search was limited to [number of] verses
     'Your search was limited to': 'la nostra ricerca si è limitata a',
-    'Please refine your search if necessary': '',
+    'Please refine your search if necessary': 'Se necessario, perfeziona la ricerca',
 
     'This Bible is in the Public Domain.': 'Questa Bibbia è di Pubblico Dominio.',
     'This Bible is provided for research purposes only.': 'la sua Bibbia viene fornita solo a scopo di ricerca.',
@@ -260,7 +260,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Nessun termine di ricerca fornito. Si prega di specificare il/i termine/i di ricerca e/o il/i riferimento/i al passaggio.',
     'Your search produced no results.' : 'La tua ricerca non ha prodotto risultati.',
     'Maximum hits has been reached for today for this domain / IP address': 'Per oggi è stato raggiunto il numero massimo di risultati per questo dominio/indirizzo IP',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Nessuna Bibbia è abilitata. Si prega di contattare l\'amministratore del sito.',
+    'No Bibles are enabled. Please contact site administrator.': 'Nessuna Bibbia è abilitata. Si prega di contattare l\'amministratore del sito.',
     'Cannot retrieve multiple books at once.': 'Impossibile recuperare più libri contemporaneamente.',
     'Bible text not found': 'Testo biblico non trovato',
     'Invalid book in book range': 'Libro non valido nell\'intervallo di libri',

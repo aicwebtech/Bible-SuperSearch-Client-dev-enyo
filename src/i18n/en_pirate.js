@@ -257,7 +257,7 @@ module.exports = {
     'is invalid, and appears to be a passage reference.': 'no goode, and lookes like they reference.',
     'is invalid.': 'noo goode',
     'Your search for': 'Yar query afor',
-    'No Bibles are enabled. Please contact site adminstrator.': 'No Bookes to plunder, holler at the admiral.',
+    'No Bibles are enabled. Please contact site administrator.': 'No Bookes to plunder, holler at the admiral.',
     'Cannot retrieve multiple books at once.': 'Whatch ye plunderin\', save some for the othern',
     'Bible text not found': 'Yarr, no Booke here',
     'Invalid book in book range': 'Yar ranges no goode book',
@@ -422,7 +422,7 @@ module.exports = {
     'This will delete all bookmarks.': 'Drowneth all barkmates?',
     'Move to Current': 'Marke yer bearin\'',
 
-    'viewing_history': '',
+    // 'Viewing History': 'Spyin\' Herstrty',
     'Bookmark': 'Barkmate',
     'Bookmarks': 'Barkmates',
 
@@ -438,10 +438,10 @@ module.exports = {
 
     // Bible books - these are auto populated from the API based on selected language
     // Specifying here not reccommended, as these names would need to match those on the API for things to actually work.
-    'Matthew' : 'Goode News Accordin\' to me matey Mahhew',
-    'Mark' : 'Goode News Accordin\' to me matey Markus',
-    'Luke' : 'Goode News Accordin\' to me matey Lukey',
-    'John' : 'Goode News Accordin\' to me matey Long John',
+    // 'Matthew' : 'Goode News Accordin\' to me matey Mahhew',
+    // 'Mark' : 'Goode News Accordin\' to me matey Markus',
+    // 'Luke' : 'Goode News Accordin\' to me matey Lukey',
+    // 'John' : 'Goode News Accordin\' to me matey Long John',
 
     'bibleBooks': [
         {id: 1, name: 'Geneisiser', shortname: 'Genes'},

@@ -286,7 +286,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Päringutingimusi pole esitatud. Palun täpsustage otsingutermin(id) ja/või lõigu viide(ted).',
     'Your search produced no results.' : 'Teie otsing ei andnud tulemusi.',
     'Maximum hits has been reached for today for this domain / IP address': 'Selle domeeni/IP-aadressi puhul on tänaseks saavutatud maksimaalne arv',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Ükski piibel pole lubatud. Võtke ühendust saidi administraatoriga.',
+    'No Bibles are enabled. Please contact site administrator.': 'Ükski piibel pole lubatud. Võtke ühendust saidi administraatoriga.',
     'Cannot retrieve multiple books at once.': 'Mitut raamatut ei saa korraga näidata.',
     'Bible text not found': 'Piibli teksti ei leitud',
     'Invalid book in book range': 'Raamatuvalikus on kehtetu raamat',

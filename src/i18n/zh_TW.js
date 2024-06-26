@@ -251,7 +251,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': '您沒有提供查詢條件,  請提供搜索詞和(或)章節。 ',
     'Your search produced no results.' : '您的搜索沒有結果。 ',
     'Maximum hits has been reached for today for this domain / IP address': '這個域名/IP位址,   已經達到單日可以點擊率的最大使用限制。 ',
-    'No Bibles are enabled. Please contact site adminstrator.': '無任何聖經被啟用。 請聯繫網站管理員。 ',
+    'No Bibles are enabled. Please contact site administrator.': '無任何聖經被啟用。 請聯繫網站管理員。 ',
     'Cannot retrieve multiple books at once.': '不能一次檢索多本書。 ',
     'Bible text not found': '找不到經文',
     'Invalid book in book range': '在書卷範圍內找不到這書',
@@ -317,7 +317,7 @@ module.exports = {
     'The relationship between the Old Testament Law and the Church': '舊約律法與教會的關係',
     'History and Law': '歷史和律法',
     'Salvation by faith, not works': '因信得救, 而非行為',
-    'Christian life and experience. &nbsp; The Apostle Paul gave up credentials under the OT Law to follow Christ': '基督徒的生活和經歷。  &nbsp; 使徒保羅放棄了舊約之下的憑據來跟隨基督』',
+    'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': '基督徒的生活和經歷。  &nbsp; 使徒保羅放棄了舊約之下的憑據來跟隨基督』',
     'Christ the suffering servant': '基督受苦的僕人',
     'Christ\'s crucifixion foretold': '基督被釘在十字架上的預言',
 

@@ -262,7 +262,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Keine Suchbegriffe angegeben. Bitte geben Sie Suchbegriff(e) und/oder Passagenverweise(n) an.',
     'Your search produced no results.' : 'Ihre Suche ergab keine Ergebnisse.',
     'Maximum hits has been reached for today for this domain / IP address': 'Für diese Domain/IP-Adresse wurde heute die maximale Trefferanzahl erreicht',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Es sind keine Bibeln aktiviert. Bitte wenden Sie sich an den Site-Administrator.',
+    'No Bibles are enabled. Please contact site administrator.': 'Es sind keine Bibeln aktiviert. Bitte wenden Sie sich an den Site-Administrator.',
     'Cannot retrieve multiple books at once.': 'Es können nicht mehrere Bücher gleichzeitig abgerufen werden.',
     'Bible text not found': 'Bibeltext nicht gefunden',
     'Invalid book in book range': 'Ungültiges Buch im Buchbereich',
@@ -330,7 +330,7 @@ module.exports = {
     'Salvation by faith, not works': 'Erlösung durch Glauben, nicht durch Werke',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Christliches Leben und Erleben. &nbsp;Der Apostel Paulus gab seine Berechtigung unter dem alttestamentlichen Gesetz auf, um Christus nachzufolgen',
     'Christ the suffering servant': 'Christus, der leidende Diener',
-    'Christ’s crucifixion foretold': 'Die Kreuzigung Christi wurde vorhergesagt',
+    'Christ\'s crucifixion foretold': 'Die Kreuzigung Christi wurde vorhergesagt',
 
     // Bible downloads dialog
     'Download': 'Herunterladen',

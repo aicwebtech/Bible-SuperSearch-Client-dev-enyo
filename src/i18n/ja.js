@@ -260,7 +260,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'クエリ用語は提供されていません。 検索用語や文章参照を指定してください。',
     'Your search produced no results.' : '検索では結果がありませんでした。',
     'Maximum hits has been reached for today for this domain / IP address': 'このドメイン/IP アドレスでは、今日の最大ヒット数に達しました',
-    'No Bibles are enabled. Please contact site adminstrator.': '有効な聖書はありません。 サイト管理者にお問い合わせください。',
+    'No Bibles are enabled. Please contact site administrator.': '有効な聖書はありません。 サイト管理者にお問い合わせください。',
     'Cannot retrieve multiple books at once.': '一度に複数の本を取り出すことはできません。',
     'Bible text not found': '聖書本文が見つかりません',
     'Invalid book in book range': '書籍範囲内の無効な書籍',

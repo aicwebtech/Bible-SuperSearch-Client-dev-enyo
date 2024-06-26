@@ -134,7 +134,7 @@ module.exports = {
     '<b>None</b> of the words' : '<b>Nenhuma</b> das palavras',
     'The <b>exact phrase</b>': 'A <b>frase exata</b>',
 
-    'Bible #': '', // downloads
+    'Bible #': 'Bíblia #', // downloads
 
     // Pagination
     'Next Page' : 'Próxima página',
@@ -261,7 +261,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Nenhum termo de consulta fornecido. Especifique o(s) termo(s) de pesquisa e/ou referência(s) de passagem.',
     'Your search produced no results.' : 'Sua pesquisa não produziu resultados.',
     'Maximum hits has been reached for today for this domain / IP address': 'O máximo de acessos foi atingido hoje para este domínio/endereço IP',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Nenhuma Bíblia está habilitada. Entre em contato com o administrador do site.',
+    'No Bibles are enabled. Please contact site administrator.': 'Nenhuma Bíblia está habilitada. Entre em contato com o administrador do site.',
     'Cannot retrieve multiple books at once.': 'Não é possível recuperar vários livros de uma vez.',
     'Bible text not found': 'Texto bíblico não encontrado',
     'Invalid book in book range': 'Livro inválido no intervalo de livros',
@@ -329,7 +329,7 @@ module.exports = {
     'Salvation by faith, not works': 'Salvação pela fé, não pelas obras',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Vida e experiência cristã. O Apóstolo Paulo abriu mão das credenciais da Lei do Antigo Testamento para seguir a Cristo',
     'Christ the suffering servant': 'Cristo, o servo sofredor',
-    'Christâ€™s crucifixion foretold': 'A crucificação de Cristo predita',
+    'Christ\'s crucifixion foretold': 'A crucificação de Cristo predita',
 
     // Bible downloads dialog
     'Download': 'Download',

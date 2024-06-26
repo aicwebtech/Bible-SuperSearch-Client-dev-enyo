@@ -260,7 +260,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Užklausos sąlygos nepateiktos. Nurodykite paieškos terminą (-us) ir (arba) ištraukos nuorodą (-as).',
     'Your search produced no results.' : 'Jūsų paieška nedavė jokių rezultatų.',
     'Maximum hits has been reached for today for this domain / IP address': 'Šiandien pasiektas didžiausias šio domeno / IP adreso paspaudimų skaičius',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Biblijos neįjungtos. Susisiekite su svetainės administratoriumi.',
+    'No Bibles are enabled. Please contact site administrator.': 'Biblijos neįjungtos. Susisiekite su svetainės administratoriumi.',
     'Cannot retrieve multiple books at once.': 'Negalima gauti kelių knygų vienu metu.',
     'Bible text not found': 'Biblijos tekstas nerastas',
     'Invalid book in book range': 'Neteisinga knyga knygų asortimente',

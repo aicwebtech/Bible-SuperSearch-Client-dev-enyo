@@ -274,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Nebyly zadány žádné dotazy. Upřesněte hledané výrazy a/nebo odkazy na pasáže.',
     'Your search produced no results.' : 'Vaše hledání nepřineslo žádné výsledky.',
     'Maximum hits has been reached for today for this domain / IP address': 'Pro tuto doménu / IP adresu bylo za dnešek dosaženo maximálního počtu požadavků',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Nejsou povoleny žádné Bible. Kontaktujte prosím správce webu.',
+    'No Bibles are enabled. Please contact site administrator.': 'Nejsou povoleny žádné Bible. Kontaktujte prosím správce webu.',
     'Cannot retrieve multiple books at once.': 'Nelze načíst více knih najednou.',
     'Bible text not found': 'Text Bible nebyl nalezen',
     'Invalid book in book range': 'Neplatná kniha v knižním rozsahu',

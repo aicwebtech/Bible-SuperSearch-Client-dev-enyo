@@ -274,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': '검색어가 제공되지 않았습니다. 검색어 및/또는 구절 참조를 지정하십시오.',
     'Your search produced no results.' : '검색 결과가 없습니다.',
     'Maximum hits has been reached for today for this domain / IP address': '이 도메인/IP 주소에 대해 오늘 최대 조회수에 도달했습니다.',
-    'No Bibles are enabled. Please contact site adminstrator.': '활성화된 성경이 없습니다. 사이트 관리자에게 문의하세요.',
+    'No Bibles are enabled. Please contact site administrator.': '활성화된 성경이 없습니다. 사이트 관리자에게 문의하세요.',
     'Cannot retrieve multiple books at once.': '한 번에 여러 권의 책을 검색할 수 없습니다.',
     'Bible text not found': '성경 본문을 찾을 수 없습니다',
     'Invalid book in book range': '도서 범위에 잘못된 도서가 있습니다.',

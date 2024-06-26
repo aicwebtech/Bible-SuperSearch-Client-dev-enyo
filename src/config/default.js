@@ -25,6 +25,8 @@ var defaultConfig = {
     'sideSwipeNavHideThresholdBottom': 0,
     'historyLimit': 50,
     'bookmarkLimit': 20,
+    'testOnLoad': false,
+    'testVerbose': false,
 
 
     _urlDefaultNotice: function() {

@@ -259,7 +259,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'कोई क्वेरी शर्तें प्रदान नहीं की गईं. कृपया खोज शब्द और/या अनुच्छेद संदर्भ निर्दिष्ट करें।',
     'Your search produced no results.' : 'आपकी खोज का कोई परिणाम नहीं निकला।',
     'Maximum hits has been reached for today for this domain / IP address': 'इस डोमेन/आईपी पते के लिए आज अधिकतम हिट प्राप्त हो चुकी है',
-    'No Bibles are enabled. Please contact site adminstrator.': 'कोई बाइबिल सक्षम नहीं है. कृपया साइट व्यवस्थापक से संपर्क करें.',
+    'No Bibles are enabled. Please contact site administrator.': 'कोई बाइबिल सक्षम नहीं है. कृपया साइट व्यवस्थापक से संपर्क करें.',
     'Cannot retrieve multiple books at once.': 'एक साथ अनेक पुस्तकें पुनर्प्राप्त नहीं की जा सकतीं.',
     'Bible text not found': 'बाइबिल पाठ नहीं मिला',
     'Invalid book in book range': 'Invalid book in book range',

@@ -274,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': '',
     'Your search produced no results.' : '',
     'Maximum hits has been reached for today for this domain / IP address': '',
-    'No Bibles are enabled. Please contact site adminstrator.': '',
+    'No Bibles are enabled. Please contact site administrator.': '',
     'Cannot retrieve multiple books at once.': '',
     'Bible text not found': '',
     'Invalid book in book range': '',

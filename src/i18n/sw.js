@@ -274,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Hakuna masharti ya hoja yaliyotolewa. Tafadhali taja maneno ya utafutaji na/au marejeleo ya kifungu.',
     'Your search produced no results.' : 'Utafutaji wako haukuzaa matokeo.',
     'Maximum hits has been reached for today for this domain / IP address': 'Idadi ya juu zaidi ya mapigo imefikiwa kwa leo kwa kikoa hiki / anwani ya IP',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Hakuna Biblia zilizowezeshwa. Tafadhali wasiliana na msimamizi wa tovuti.',
+    'No Bibles are enabled. Please contact site administrator.': 'Hakuna Biblia zilizowezeshwa. Tafadhali wasiliana na msimamizi wa tovuti.',
     'Cannot retrieve multiple books at once.': 'Haiwezi kurejesha vitabu vingi kwa wakati mmoja.',
     'Bible text not found': 'Maandishi ya Biblia hayakupatikana',
     'Invalid book in book range': 'Kitabu batili katika safu ya vitabu',

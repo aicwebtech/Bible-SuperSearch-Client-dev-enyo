@@ -274,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Karekau he kupu patai i homai. Tauwhāitihia ngā kupu rapu me/rānei ngā tohutoro ira.',
     'Your search produced no results.' : 'Ko to rapunga kaore he hua.',
     'Maximum hits has been reached for today for this domain / IP address': 'Kua tae ki te nuinga o nga tohu mo tenei ra mo tenei rohe / wahitau IP',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Karekau he Paipera e taea. Tena koa whakapā atu ki te kaiwhakahaere o te pae.',
+    'No Bibles are enabled. Please contact site administrator.': 'Karekau he Paipera e taea. Tena koa whakapā atu ki te kaiwhakahaere o te pae.',
     'Cannot retrieve multiple books at once.': 'Kaore e taea te tiki pukapuka maha i te wa kotahi.',
     'Bible text not found': 'Aita te irava Bibilia i itehia',
     'Invalid book in book range': 'He pukapuka muhu i te awhe pukapuka',
