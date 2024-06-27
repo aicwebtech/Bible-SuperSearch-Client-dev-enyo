@@ -274,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'هیچ شرایط پرس و جو ارائه نشده است. لطفاً عبارت(های) جستجو و/یا مرجع(های) متن را مشخص کنید.',
     'Your search produced no results.' : 'جستجوی شما نتیجه ای نداشت.',
     'Maximum hits has been reached for today for this domain / IP address': 'حداکثر بازدید برای امروز برای این دامنه / آدرس IP به دست آمده است',
-    'No Bibles are enabled. Please contact site adminstrator.': 'هیچ کتاب مقدسی فعال نیست. لطفا با مدیر سایت تماس بگیرید',
+    'No Bibles are enabled. Please contact site administrator.': 'هیچ کتاب مقدسی فعال نیست. لطفا با مدیر سایت تماس بگیرید',
     'Cannot retrieve multiple books at once.': 'نمی توان چندین کتاب را همزمان بازیابی کرد.',
     'Bible text not found': 'متن کتاب مقدس یافت نشد',
     'Invalid book in book range': 'کتاب نامعتبر در محدوده کتاب',

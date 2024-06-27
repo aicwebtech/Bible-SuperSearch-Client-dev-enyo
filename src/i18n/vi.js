@@ -274,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Không có điều khoản truy vấn được cung cấp. Vui lòng chỉ định (các) thuật ngữ tìm kiếm và/hoặc (các) tài liệu tham khảo đoạn văn.',
     'Your search produced no results.' : 'Tìm kiếm của bạn sản xuất không có kết quả.',
     'Maximum hits has been reached for today for this domain / IP address': 'Đã đạt đến số lượt truy cập tối đa trong ngày hôm nay đối với tên miền / địa chỉ IP này',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Không có Kinh Thánh nào được kích hoạt. Vui lòng liên hệ với quản trị viên trang web.',
+    'No Bibles are enabled. Please contact site administrator.': 'Không có Kinh Thánh nào được kích hoạt. Vui lòng liên hệ với quản trị viên trang web.',
     'Cannot retrieve multiple books at once.': 'Không thể truy xuất nhiều sách cùng một lúc.',
     'Bible text not found': 'Không tìm thấy văn bản Kinh Thánh',
     'Invalid book in book range': 'Sách không hợp lệ trong phạm vi sách',

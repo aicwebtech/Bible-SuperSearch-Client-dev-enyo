@@ -260,7 +260,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Nincsenek megadva lekérdezési feltételek. Kérjük, adja meg a keresett kifejezés(eke)t és/vagy hivatkozás(ok)at.',
     'Your search produced no results.' : 'A keresés nem hozott eredményt.',
     'Maximum hits has been reached for today for this domain / IP address': 'A mai napon elérte a maximális lekérést ehhez a domainhez/IP-címhez',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Nincs engedélyezve Biblia. Kérjük, forduljon a webhely rendszergazdájához.',
+    'No Bibles are enabled. Please contact site administrator.': 'Nincs engedélyezve Biblia. Kérjük, forduljon a webhely rendszergazdájához.',
     'Cannot retrieve multiple books at once.': 'Nem lehet egyszerre több könyvet letölteni.',
     'Bible text not found': 'A bibliai szöveg nem található',
     'Invalid book in book range': 'Érvénytelen könyv a könyvtartományban',

@@ -263,7 +263,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'لم يتم توفير شروط الاستعلام. يرجى تحديد مصطلح (مصطلحات) البحث و/أو مرجع (مراجع) المقطع.',
     'Your search produced no results.' : 'بحثك لا يوجد به أي نتائج.',
     'Maximum hits has been reached for today for this domain / IP address': 'تم الوصول إلى الحد الأقصى من الزيارات لهذا اليوم لهذا المجال / عنوان IP',
-    'No Bibles are enabled. Please contact site adminstrator.': 'لم يتم تمكين أي الأناجيل. يرجى الاتصال بمسؤول الموقع.',
+    'No Bibles are enabled. Please contact site administrator.': 'لم يتم تمكين أي الأناجيل. يرجى الاتصال بمسؤول الموقع.',
     'Cannot retrieve multiple books at once.': 'لا يمكن استرداد كتب متعددة في وقت واحد.',
     'Bible text not found': 'لم يتم العثور على نص الكتاب المقدس',
     'Invalid book in book rangeلم يتم العثور على نص الكتاب المقدس': '',

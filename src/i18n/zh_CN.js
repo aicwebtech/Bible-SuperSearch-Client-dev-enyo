@@ -258,7 +258,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': '您没有提供查询条件, 请提供搜索词和(或)章节。',
     'Your search produced no results.' : '您的搜索没有结果。',
     'Maximum hits has been reached for today for this domain / IP address': '这个域名/IP地址, 已经达到单日可以点击率的最大使用限制。',
-    'No Bibles are enabled. Please contact site adminstrator.': '无任何圣经被启用。请联系网站管理员。',
+    'No Bibles are enabled. Please contact site administrator.': '无任何圣经被启用。请联系网站管理员。',
     'Cannot retrieve multiple books at once.': '不能一次检索多本书。',
     'Bible text not found': '找不到经文',
     'Invalid book in book range': '在书卷范围内找不到这书',

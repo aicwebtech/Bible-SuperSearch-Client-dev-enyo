@@ -252,7 +252,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Aucun terme de recherche fourni.  Merci de fournir les mots et/ou passage(s) de éférence.',
     'Your search produced no results.' : 'Votre requête n\'a produit aucun résultat',
     'Maximum hits has been reached for today for this domain / IP address': 'Le nombre maximum de hits est atteint aujourd\'hui pour ce domaine/affresse IP',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Aucun Biblie est activée.  Contactez l\'administrateur du site.',
+    'No Bibles are enabled. Please contact site administrator.': 'Aucun Biblie est activée.  Contactez l\'administrateur du site.',
     'Cannot retrieve multiple books at once.': 'Impossible de récupérer plusieurs livres en même temps',
     'Bible text not found': 'text de la Bible non trouvé',
     'Invalid book in book range': 'Livre invalid dans la plage de livres',

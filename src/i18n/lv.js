@@ -257,7 +257,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Meklējamie atslēgas vārdi nav norādīti. Lūdzu, ievadiet meklējamo atslēgas vārdu(-us) un/vai rakstvietas(-tu) atsauci(-es).',
     'Your search produced no results.' : 'Jūsu meklēšana nedeva nekādus rezultātus.',
     'Maximum hits has been reached for today for this domain / IP address': 'Šim domēnam/IP adresei šodien ir sasniegts maksimālais iniciēto meklēšanu skaits',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Neviena Bībeles versija nav iespējota. Lūdzu, sazinieties ar vietnes administratoru.',
+    'No Bibles are enabled. Please contact site administrator.': 'Neviena Bībeles versija nav iespējota. Lūdzu, sazinieties ar vietnes administratoru.',
     'Cannot retrieve multiple books at once.': 'Nevar atvērt vairākas grāmatas vienlaikus.',
     'Bible text not found': 'Bībeles teksts nav atrasts',
     'Invalid book in book range': 'Grāmatu diapazonā ir neatbilstoša grāmata',

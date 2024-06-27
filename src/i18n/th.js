@@ -260,7 +260,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'ไม่ใช่แคช ไม่มีข้อกำหนดในการสืบค้น โปรดระบุคำค้นหาและ/หรือการอ้างอิงข้อความ',
     'Your search produced no results.' : 'การค้นหาของคุณไม่มีผลลัพธ์',
     'Maximum hits has been reached for today for this domain / IP address': 'ถึงจำนวนการเข้าถึงสูงสุดในวันนี้สำหรับโดเมน / ที่อยู่ IP นี้',
-    'No Bibles are enabled. Please contact site adminstrator.': 'ไม่มีการเปิดใช้งานพระคัมภีร์ โปรดติดต่อผู้ดูแลเว็บไซต์',
+    'No Bibles are enabled. Please contact site administrator.': 'ไม่มีการเปิดใช้งานพระคัมภีร์ โปรดติดต่อผู้ดูแลเว็บไซต์',
     'Cannot retrieve multiple books at once.': 'ไม่สามารถดึงหนังสือหลายเล่มพร้อมกันได้',
     'Bible text not found': 'ไม่พบข้อความในพระคัมภีร์',
     'Invalid book in book range': 'หนังสือในช่วงหนังสือไม่ถูกต้อง',

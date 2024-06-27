@@ -259,7 +259,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Ключевые слова для поиска не указаны. Пожалуйста, введите ключевые слова или ссылки на отрывки, которые вы хотите найти.',
     'Your search produced no results.' : 'Ваш поиск не дал результатов.',
     'Maximum hits has been reached for today for this domain / IP address': 'Достигнуто максимальное количество поисковых запросов на сегодняшний день для этого домена/IP-адреса',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Не одна Библия не включена. Пожалуйста, свяжитесь с администратором сайта.',
+    'No Bibles are enabled. Please contact site administrator.': 'Не одна Библия не включена. Пожалуйста, свяжитесь с администратором сайта.',
     'Cannot retrieve multiple books at once.': 'Невозможно открыть несколько книг одновременно.',
     'Bible text not found': 'Текст Библии не найден',
     'Invalid book in book range': 'Неподходящая книга в диапазоне книг',

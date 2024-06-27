@@ -258,7 +258,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Termeni de căutare nespecificați. Vă rugăm să specificați un termen(i) un pasaj(e) sau o referință(e).',
     'Your search produced no results.' : 'Căutarea Dvs. nu a generat nici un rezultat.',
     'Maximum hits has been reached for today for this domain / IP address': 'Limita zilnică pentru această adresă IP / Domeniu a fost atinsă',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Ne este disponibilă nici o Biblie. Vă rugăm să contactați Administratorul site-ului',
+    'No Bibles are enabled. Please contact site administrator.': 'Ne este disponibilă nici o Biblie. Vă rugăm să contactați Administratorul site-ului',
     'Cannot retrieve multiple books at once.': 'Nu se pot afișa cărți multiple deodată.',
     'Bible text not found': 'Textul Biblic lipsește',
     'Invalid book in book range': 'Carte invalidă în raza de cărți',

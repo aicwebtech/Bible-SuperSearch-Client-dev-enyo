@@ -274,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Ei kyselyehtoja. Määritä hakutermit ja/tai viittaukset kohtiin.',
     'Your search produced no results.' : 'Hakusi ei tuottanut tulosta.',
     'Maximum hits has been reached for today for this domain / IP address': 'Tämän verkkotunnuksen/IP-osoitteen osumien enimmäismäärä on saavutettu tänään',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Mikään Raamattu ei ole käytössä. Ota yhteyttä sivuston ylläpitäjään.',
+    'No Bibles are enabled. Please contact site administrator.': 'Mikään Raamattu ei ole käytössä. Ota yhteyttä sivuston ylläpitäjään.',
     'Cannot retrieve multiple books at once.': 'Useita kirjoja ei voi hakea kerralla.',
     'Bible text not found': 'Raamatun tekstiä ei löydy',
     'Invalid book in book range': 'Virheellinen kirja kirjavalikoimassa',

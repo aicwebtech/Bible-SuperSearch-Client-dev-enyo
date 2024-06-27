@@ -251,7 +251,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': '您沒有提供查詢條件,  請提供搜索詞和(或)章節。 ',
     'Your search produced no results.' : '您的搜索沒有結果。 ',
     'Maximum hits has been reached for today for this domain / IP address': '這個域名/IP位址,   已經達到單日可以點擊率的最大使用限制。 ',
-    'No Bibles are enabled. Please contact site adminstrator.': '無任何聖經被啟用。 請聯繫網站管理員。 ',
+    'No Bibles are enabled. Please contact site administrator.': '無任何聖經被啟用。 請聯繫網站管理員。 ',
     'Cannot retrieve multiple books at once.': '不能一次檢索多本書。 ',
     'Bible text not found': '找不到經文',
     'Invalid book in book range': '在書卷範圍內找不到這書',

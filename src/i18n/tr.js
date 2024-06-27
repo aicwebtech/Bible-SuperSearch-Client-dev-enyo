@@ -274,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Hiçbir sorgu terimi sağlanmadı. Lütfen arama terimini/terimlerini ve/veya pasaj referansını/referanslarını belirtin.',
     'Your search produced no results.' : 'Aramanız sonuç vermedi.',
     'Maximum hits has been reached for today for this domain / IP address': 'Bu alan adı/IP adresi için bugün için maksimum isabete ulaşıldı',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Hiçbir İncil etkin değil. Lütfen site yöneticisiyle iletişime geçin.',
+    'No Bibles are enabled. Please contact site administrator.': 'Hiçbir İncil etkin değil. Lütfen site yöneticisiyle iletişime geçin.',
     'Cannot retrieve multiple books at once.': 'Aynı anda birden fazla kitap alınamıyor.',
     'Bible text not found': 'İncil metni bulunamadı',
     'Invalid book in book range': 'Kitap aralığında geçersiz kitap',

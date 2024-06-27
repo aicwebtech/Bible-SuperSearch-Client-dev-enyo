@@ -257,7 +257,7 @@ module.exports = {
     'is invalid, and appears to be a passage reference.': 'no goode, and lookes like they reference.',
     'is invalid.': 'noo goode',
     'Your search for': 'Yar query afor',
-    'No Bibles are enabled. Please contact site adminstrator.': 'No Bookes to plunder, holler at the admiral.',
+    'No Bibles are enabled. Please contact site administrator.': 'No Bookes to plunder, holler at the admiral.',
     'Cannot retrieve multiple books at once.': 'Whatch ye plunderin\', save some for the othern',
     'Bible text not found': 'Yarr, no Booke here',
     'Invalid book in book range': 'Yar ranges no goode book',

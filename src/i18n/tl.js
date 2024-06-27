@@ -274,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Walang ibinigay na mga tuntunin sa query. Mangyaring tukuyin ang (mga) termino para sa paghahanap at/o (mga) sanggunian ng sipi.',
     'Your search produced no results.' : 'Walang resulta ang iyong paghahanap.',
     'Maximum hits has been reached for today for this domain / IP address': 'Naabot na ang maximum na mga hit para sa araw na ito para sa domain / IP address na ito',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Walang mga Bibliya na pinagana. Mangyaring makipag-ugnayan sa administrator ng site.',
+    'No Bibles are enabled. Please contact site administrator.': 'Walang mga Bibliya na pinagana. Mangyaring makipag-ugnayan sa administrator ng site.',
     'Cannot retrieve multiple books at once.': 'Hindi mabawi ang maraming aklat nang sabay-sabay.',
     'Bible text not found': 'Hindi natagpuan ang teksto sa Bibliya',
     'Invalid book in book range': 'Di-wastong aklat sa hanay ng aklat',

@@ -274,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Tidak ada istilah kueri yang disediakan. Silakan tentukan istilah pencarian dan/atau referensi bagian.',
     'Your search produced no results.' : 'Pencarian Anda tidak membuahkan hasil.',
     'Maximum hits has been reached for today for this domain / IP address': 'Hit maksimum telah tercapai hari ini untuk domain/alamat IP ini',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Tidak ada Alkitab yang diaktifkan. Silakan hubungi administrator situs.',
+    'No Bibles are enabled. Please contact site administrator.': 'Tidak ada Alkitab yang diaktifkan. Silakan hubungi administrator situs.',
     'Cannot retrieve multiple books at once.': 'Tidak dapat mengambil banyak buku sekaligus.',
     'Bible text not found': 'Teks Alkitab tidak ditemukan',
     'Invalid book in book range': 'Buku tidak valid dalam rentang buku',
