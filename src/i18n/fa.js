@@ -223,8 +223,8 @@ module.exports = {
     'Show Verse Number': 'نمایش شماره آیه', 
 
     'Other': 'دیگر', 
-    'Include Testament': 'شامل عهدنامه'
-    'Testament': 'وصیت نامه'
+    'Include Testament': 'شامل عهدنامه',
+    'Testament': 'وصیت نامه',
     'Abbreviate Books': 'کتاب های مخفف', 
     'Omit Extra Line Breaks': 'حذف خطوط اضافی', 
 

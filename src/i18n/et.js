@@ -222,8 +222,8 @@ module.exports = {
 
 
     'Other': 'Muu', // 5.0
-    'Include Testament': 'Kaasake Testament'
-    'Testament': 'Testament'//check translation
+    'Include Testament': 'Kaasake Testament',
+    'Testament': 'Testament',//check translation
     'Abbreviate Books': 'Raamatute Lühend', // 5.0
     'Omit Extra Line Breaks': 'Jäta Väljale Täiendavad Reavahed', // 5.0
 

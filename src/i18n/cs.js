@@ -224,8 +224,8 @@ module.exports = {
 
     'Other': 'Jiný', 
     'Abbreviate Books': 'Zkrácené Knihy',
-    'Include Testament': 'Zahrnout Testament'//check translation
-    'Testament': 'Testament'//check translation
+    'Include Testament': 'Zahrnout Testament', //check translation
+    'Testament': 'Testament', //check translation
     'Omit Extra Line Breaks': 'Vynechejte Přestávky Navíc', 
 
     // Settings Dialog

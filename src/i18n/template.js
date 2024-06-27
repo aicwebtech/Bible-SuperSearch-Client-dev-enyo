@@ -224,8 +224,8 @@ module.exports = {
 
     'Other': '', 
     'Abbreviate Books': '', 
-    'Include Testament': '',
-    'Testament': '',
+    'Include Testament': '', // v5.6.0
+    'Testament': '', // v5.6.0
     'Omit Extra Line Breaks': '', 
 
     // Settings Dialog

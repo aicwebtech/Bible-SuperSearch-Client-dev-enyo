@@ -223,8 +223,8 @@ module.exports = {
     'Show Verse Number': 'Tampilkan Nomor Ayat', 
 
     'Other': 'Lainnya', 
-    'Include Testament': 'Sertakan Perjanjian'
-    'Testament': 'Perjanjian'
+    'Include Testament': 'Sertakan Perjanjian',
+    'Testament': 'Perjanjian',
     'Abbreviate Books': 'Buku Singkatan', 
     'Omit Extra Line Breaks': 'Hilangkan Jeda Baris Ekstra', 
 

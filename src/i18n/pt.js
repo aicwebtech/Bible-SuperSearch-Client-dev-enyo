@@ -134,7 +134,7 @@ module.exports = {
     '<b>None</b> of the words' : '<b>Nenhuma</b> das palavras',
     'The <b>exact phrase</b>': 'A <b>frase exata</b>',
 
-    'Bible #': '', // downloads
+    'Bible #': 'Bíblia #', // downloads
 
     // Pagination
     'Next Page' : 'Próxima Página',
@@ -329,7 +329,7 @@ module.exports = {
     'Salvation by faith, not works': 'Salvação pela fé, não pelas obras',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Vida e experiência cristã. O Apóstolo Paulo abriu mão das credenciais da Lei do Antigo Testamento para seguir a Cristo',
     'Christ the suffering servant': 'Cristo, o servo sofredor',
-    'Christâ€™s crucifixion foretold': 'A crucificação de Cristo predita',
+    'Christ\'s crucifixion foretold': 'A crucificação de Cristo predita',
 
     // Bible downloads dialog
     'Download': 'Download',//check translation

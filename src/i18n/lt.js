@@ -209,8 +209,8 @@ module.exports = {
     'Show Verse Number': 'Rodyti Eilutės Numerį', 
 
     'Other': 'Kita', 
-    'Include Testament': 'Įtraukti Testamentą'
-    'Testament': 'Testamentas'
+    'Include Testament': 'Įtraukti Testamentą',
+    'Testament': 'Testamentas',
     'Abbreviate Books': 'Sutrumpinti Knygas', 
     'Omit Extra Line Breaks': 'Praleiskite Papildomų Eilučių Pertraukas', 
 

@@ -223,8 +223,8 @@ module.exports = {
     'Show Verse Number': 'Hiển thị số câu', 
 
     'Other': 'Khác', 
-    'Include Testament': 'Bao gồm di chúc'
-    'Testament': 'Di chúc'
+    'Include Testament': 'Bao gồm di chúc',
+    'Testament': 'Di chúc',
     'Abbreviate Books': 'Sách viết tắt', 
     'Omit Extra Line Breaks': 'Bỏ qua ngắt dòng bổ sung', 
 

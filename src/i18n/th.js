@@ -209,8 +209,8 @@ module.exports = {
     'Show Verse Number': 'แสดงหมายเลขข้อ', 
 
     'Other': 'อื่น', 
-    'Include Testament': 'รวมพินัยกรรม'
-    'Testament': 'พินัยกรรม'
+    'Include Testament': 'รวมพินัยกรรม',
+    'Testament': 'พินัยกรรม',
     'Abbreviate Books': 'หนังสือย่อ', 
     'Omit Extra Line Breaks': 'ละเว้นตัวแบ่งบรรทัดพิเศษ', 
 
@@ -229,7 +229,7 @@ module.exports = {
     
     // Showing results [1] to [30]
     'Showing Results': 'กำลังแสดงผลลัพธ์',
-    'to' : '',
+    'to' : 'ถึง',
     
     // Your search produced no results in [name of Bible version]
     'Your search produced no results in': 'การค้นหาของคุณไม่มีผลลัพธ์ใดๆ', 

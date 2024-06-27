@@ -20,5 +20,8 @@
     "assets/css/*.css"
   ],
   "devAssets": [],
-  "moduleDir": "src"
+  "moduleDir": "src",
+  "devDependencies": {
+    "qunit": "^2.21.0"
+  }
 }

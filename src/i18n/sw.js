@@ -223,8 +223,8 @@ module.exports = {
     'Show Verse Number': 'Onyesha Nambari ya Aya', 
 
     'Other': 'Nyingine', 
-    'Include Testament': 'Jumuisha Agano'
-    'Testament': 'Agano'
+    'Include Testament': 'Jumuisha Agano',
+    'Testament': 'Agano',
     'Abbreviate Books': 'Vifupisho Vitabu', 
     'Omit Extra Line Breaks': 'Acha Kuvunja Mstari wa Ziada', 
 

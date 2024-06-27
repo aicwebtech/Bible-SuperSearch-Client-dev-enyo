@@ -209,8 +209,8 @@ module.exports = {
     'Show Verse Number': 'Versszám Megjelenítése', 
 
     'Other': 'Egyéb', 
-    'Include Testament': 'Tartalmazza a Testamentumot'
-    'Testament': 'Végrendelet'
+    'Include Testament': 'Tartalmazza a Testamentumot',
+    'Testament': 'Végrendelet',
     'Abbreviate Books': 'Könyvek Rövidítése', 
     'Omit Extra Line Breaks': 'Az Extra Sortörések Kihagyása',//check translation 
 

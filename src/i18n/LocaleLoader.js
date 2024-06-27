@@ -30,6 +30,7 @@ module.exports = {
     zh_CN: require('./zh_CN'),
 
 
+    _template: require('./template'),
 
     // Translation strings that allow partial matches.
     // For best results, put longest at top of list

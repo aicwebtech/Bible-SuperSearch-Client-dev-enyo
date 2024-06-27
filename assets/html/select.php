@@ -1,21 +1,24 @@
 <?php
 
-session_start();
-error_reporting(E_ALL);
-$interface = $_REQUEST['interface'] ?: $_SESSION['interface'];
-$interface = $interface ?: 'Expanding';
-$_SESSION['interface'] = $interface;
-$interfaces = getInterfaces();
+    session_start();
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    $default_interface = $_SESSION['interface'] ?? 'Expanding';
+    $interface = $_REQUEST['interface'] ?? $default_interface;
+    $_SESSION['interface'] = $interface;
+    $interfaces = getInterfaces();
 
-$config = file_get_contents('config.js');
-// $config = substr($config, 38);
-//$config = json_decode(trim($config));
-// var_dump(json_last_error());
-//$config['interface'] = $interface;
+    $config = file_get_contents('config.js');
+    // $config = substr($config, 38);
+    //$config = json_decode(trim($config));
+    // var_dump(json_last_error());
+    //$config['interface'] = $interface;
 
-// $config = str_replace('"interface": "Expanding"', '"interface":"' . $interface . '"', $config);
-$config = str_replace('"interface":', '"interface":"' . $interface . '", //', $config);
+    // $config = str_replace('"interface": "Expanding"', '"interface":"' . $interface . '"', $config);
+    // $config = str_replace('"interface":', '"interface":"' . $interface . '", //', $config);
 
+    $test = isset($_REQUEST['test']) ? (bool) $_REQUEST['test'] : false;
+    $testVerbose = isset($_REQUEST['test_verbose']) ? (bool) $_REQUEST['test_verbose'] : false;
 ?>
 
 <html>
@@ -32,7 +35,7 @@ $config = str_replace('"interface":', '"interface":"' . $interface . '", //', $c
                 margin: 0 auto 0;
             }
 
-            #selector label, #selector input {
+            #selector label.s, #selector input.s {
                 display: inline-block;
                 width: 40px;
             }
@@ -43,13 +46,23 @@ $config = str_replace('"interface":', '"interface":"' . $interface . '", //', $c
         </style>
         <script>
             <?php echo $config; ?>;
+
+            biblesupersearch_config_options.interface = '<?php echo $interface; ?>';
+            biblesupersearch_config_options.testOnLoad = <?php echo $test ? 'true' : 'false'; ?>;
+            biblesupersearch_config_options.testVerbose = <?php echo $testVerbose ? 'true' : 'false'; ?>;
+
+            <?php if($test): ?>
+                biblesupersearch_config_options.landingReference = null; // disable landing reference if testing
+            <?php endif; ?>
+
         </script>
         <script src="biblesupersearch.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.21.0.css">
+        <script src="https://code.jquery.com/qunit/qunit-2.21.0.js"></script>
     </head>
     <body>
-
         <form id='selector'>
-            <label>Skin: </label>
+            <label class='s'>Skin: </label>
             <select name='interface'>
                 <?php foreach($interfaces as $key => $i): ?>
                     <?php $selected = $key == $interface ? " selected='selected'" : ''; ?>
@@ -59,8 +72,16 @@ $config = str_replace('"interface":', '"interface":"' . $interface . '", //', $c
                     </option>
                 <?php endforeach; ?>
             </select>
-            <input type='submit' value='GO' />
+            <input type='submit' value='GO' /><br />
+
+            <input type='checkbox' name='test' id='test' value='1' <?php if($test) echo "checked=checked" ?> />
+            <label for='test'><small>Run Tests</small></label>            
+            <input type='checkbox' name='test_verbose' id='test_verbose' value='1' <?php if($testVerbose) echo "checked=checked" ?> />
+            <label for='test_verbose'><small>Verbose Tests</small></label>
         </form>
+
+        <div id="qunit" style='position: relative;'></div>
+        <div id="qunit-fixture"></div>
 
         <hr />
 

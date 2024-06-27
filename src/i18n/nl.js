@@ -393,6 +393,7 @@ module.exports = {
     'Match either': 'Match een van beide',
     'Match only one': 'Overeenkomen met slechts één',
     'Does not match': 'Komt niet overeen',
+    'Matches words in the same chapter': 'Komt overeen met woorden in hetzelfde hoofdstuk',
     'Matches words in the same book': 'Komt overeen met woorden in hetzelfde boek',
     'Matches words in the same book, and within N verses of each other': 'Komt overeen met woorden in hetzelfde boek',
     'Matches words in the same chapter, and within N verses of each other': 'Komt overeen met woorden in hetzelfde hoofdstuk en binnen N verzen van elkaar',

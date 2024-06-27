@@ -211,8 +211,8 @@ module.exports = {
     'Show Verse Number': 'Versnummer Anzeigen', // 5.0
 
     'Other': 'Andere', // 5.0
-    'Include Testament': 'Testament Einschließen'//check translation
-    'Testament': 'Testament'//check translation
+    'Include Testament': 'Testament Einschließen',//check translation
+    'Testament': 'Testament',//check translation
     'Abbreviate Books': 'Abgekürzte Bücher', // 5.0
     'Omit Extra Line Breaks': 'Lassen Sie Zusätzliche Zeilenumbrüche Weg', // 5.0
 
@@ -330,7 +330,7 @@ module.exports = {
     'Salvation by faith, not works': 'Erlösung durch Glauben, nicht durch Werke',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Christliches Leben und Erleben. &nbsp;Der Apostel Paulus gab seine Berechtigung unter dem alttestamentlichen Gesetz auf, um Christus nachzufolgen',
     'Christ the suffering servant': 'Christus, der leidende Diener',
-    'Christ’s crucifixion foretold': 'Die Kreuzigung Christi wurde vorhergesagt',
+    'Christ\'s crucifixion foretold': 'Die Kreuzigung Christi wurde vorhergesagt',
 
     // Bible downloads dialog
     'Download': 'Herunterladen',

@@ -199,8 +199,8 @@ module.exports = {
     'Show Verse Number': 'Mostrar Número de Versículo', // 5.0
 
     'Other': 'Otro', // 5.0
-    'Include Testament': 'Incluir Testamento'
-    'Testament': 'Testamento'
+    'Include Testament': 'Incluir Testamento',
+    'Testament': 'Testamento',
     'Abbreviate Books': 'Libros Abreviados', // 5.0
     'Omit Extra Line Breaks': 'Omitir Saltos de Línea Adicionales', // 5.0
 

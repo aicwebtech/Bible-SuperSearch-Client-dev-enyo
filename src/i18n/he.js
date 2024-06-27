@@ -223,8 +223,8 @@ module.exports = {
     'Show Verse Number': 'הצג מספר פסוק', 
 
     'Other': 'אַחֵר', 
-    'Include Testament': 'כלול ברית'
-    'Testament': 'בְּרִית'
+    'Include Testament': 'כלול ברית',
+    'Testament': 'בְּרִית',
     'Abbreviate Books': 'קיצור ספרים', 
     'Omit Extra Line Breaks': 'השמט הפסקות שורות נוספות', 
 

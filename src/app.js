@@ -50,6 +50,9 @@ var App = Application.kind({
     // view: Loading, // Loading will be replaced with actual UI
     renderOnStart: false,       // We need to load configs first
     rootDir: null,
+    testInit: false, // whether to init the QUnit tests
+    testOnLoad: false,
+    testVerbose: false,
     testing: false,             // Indicates unit tests are running
     debug: false,
     statics: {},
@@ -64,7 +67,7 @@ var App = Application.kind({
     baseTitle: null,
     bssTitle: null,
     baseUrl: null,
-    clientBrowser: null, // legacy
+    clientBrowser: 'unknown', // legacy
     client: {
         os: 'unknown',
         browser: 'unknown',
@@ -128,6 +131,11 @@ var App = Application.kind({
         this.system = systemConfig;
         this.set('baseTitle', document.title);
         var t = this;
+
+        if(typeof QUnit != 'undefined') {
+            QUnit.config.autostart = false;
+            QUnit.config.hidepassed = true;
+        }
         // this.log('defaultConfig', defaultConfig);
 
         window.console && console.log('BibleSuperSearch client version', this.applicationVersion);
@@ -429,6 +437,18 @@ var App = Application.kind({
             this.debug = this.configs.debug;
         }
 
+        if(typeof QUnit == 'object') {            
+            this.testInit = true;
+
+            if(this.configs.testOnLoad) {
+                this.testOnLoad = this.configs.testOnLoad;
+            }        
+
+            if(this.configs.testVerbose) {
+                this.testVerbose = this.configs.testVerbose;
+            }
+        }
+
         this.detectClient();
 
         //window.biblesupersearch_configs_final = this.configs;
@@ -515,7 +535,6 @@ var App = Application.kind({
         return true;
     },
     _handleStaticsLoad: function(statics, view) {
-        this.test();
         this.set('statics', statics);
         this.processBiblesDisplayed();
 
@@ -554,6 +573,10 @@ var App = Application.kind({
 
         if(this.configs.query_string) {
             this.handleHashGeneric(this.configs.query_string);
+        }
+
+        if(this.testOnLoad) {
+            this.test();
         }
     },
     processBiblesDisplayed: function() {
@@ -644,22 +667,105 @@ var App = Application.kind({
 
     /*  Used to run unit tests within app */
     test: function() {
-        if(!this.testing || !QUnit) {
+        if(this.testing) {
+            this.log('Already ran tests, aborting.');
             return;
         }
 
+        if(typeof QUnit == 'undefined') {
+            this.log('QUnit not defined, aborting.');
+            return;
+        }
+
+        this.testing = true;
         this.log();
         var t = this;
 
-        //QUnit && QUnit.module("Basic Tests");
-
-        QUnit.test( "Post Rendering", function( assert ) {
-            assert.ok( t.viewReady, "The view should be rendered by the time we get here" );
+        QUnit.module("Basic Tests", function() {
+            QUnit.test( "Post Rendering", function( assert ) {
+                assert.ok( t.viewReady, "The view should be rendered by the time we get here" );
+            });
         });
+
+        QUnit.module('Localization Test', function() {
+            QUnit.test.each('Translation Test', t.localeDatasetsRaw, function(assert, item) {
+
+                if(typeof item.meta == 'undefined' || item.meta.code == '') {
+                    assert.expect(0)
+                    return;
+                }
+
+                assert.ok(item.meta.code, 'meta.code should be truthy');
+                assert.ok(item.meta.name, 'meta.name should be truthy');
+                assert.ok(item.meta.nameEn, 'meta.nameEn should be truthy');
+
+                if(item.meta.code == 'en') {
+                    return; // most strings for EN not defined ... 
+                }
+
+                var ll = item.meta.code.toUpperCase() + ' ' + item.meta.nameEn;
+                // assert.ok(item);
+                // assert.ok(item.meta);
+                // assert.ok(item.meta.nameEn);
+                // assert.true(true, item.meta.nameEn);
+
+                for(f in t.localeDatasetsRaw._template) {
+                    if(f == 'meta' || f == 'bibleBooks') {
+                        continue;
+                    }
+
+                    var ff = ' ' + ll + ' "' + f + '"';
+
+                    if(!t.testVerbose && typeof item[f] != 'undefined' && item[f] != '') {
+                        continue; // Until I figure out how to assert quietly for passing assertions, skipping items that will pass
+                    }
+
+                    // assert.ok(item[f], ff + ' ' + item[f] + item.meta.langEn);
+                    assert.notEqual(typeof item[f], 'undefined', 'Should NOT be undefined' + ff);
+                    // assert.ok(item[f], 'Should be truthy' + ff);
+                    assert.notEqual(item[f], '', 'Should NOT be an empty string' + ff);
+                }
+            });
+
+            QUnit.test.each('Inverse Translation Test', t.localeDatasetsRaw, function(assert, item) {
+                if(typeof item.meta == 'undefined' || item.meta.code == '') {
+                    assert.expect(0)
+                    return;
+                }
+
+                var code = item.meta.code;
+                var ll = code.toUpperCase() + ' ' + item.meta.nameEn;
+                assert.true(true);
+
+                for(f in item) {
+
+                    if(code == 'en' && f == 'shortcuts') {
+                        continue; // Only exists in EN
+                    }
+
+                    if(
+                        (code == 'lv' || code == 'ru') && 
+                        f == 'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.') 
+                    {
+                        continue; // only exists in RU/LV
+                    }
+
+                    if(!t.testVerbose && typeof t.localeDatasetsRaw._template[f] != 'undefined') {
+                        continue; // Until I figure out how to assert quietly for passing assertions, skipping items that will pass
+                    }
+
+                    var ff = ' ' + ll + ' "' + f + '"';
+                    assert.notEqual(typeof t.localeDatasetsRaw._template[f], 'undefined', 'Item defined in locale should NOT be undefined in template' + ff);
+                }
+            });
+        });
+
+        QUnit.start();
 
         // Test form stuff
 
         // Test AJAX calls
+
     },
     handleHashGeneric: function(hash) {
         if(!this.appLoaded) {

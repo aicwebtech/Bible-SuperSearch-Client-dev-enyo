@@ -209,8 +209,8 @@ module.exports = {
     'Show Verse Number': 'Mostra il Numero del Versetto', 
 
     'Other': 'Altro', 
-    'Include Testament': 'Includi Testamento'
-    'Testament': 'Testamento'
+    'Include Testament': 'Includi Testamento',
+    'Testament': 'Testamento',
     'Abbreviate Books': 'Abbreviare i Libri', 
     'Omit Extra Line Breaks': 'Ometti Interruzioni di Riga Extra',//check translation
 
@@ -248,7 +248,7 @@ module.exports = {
 
     // Your search was limited to [number of] verses
     'Your search was limited to': 'la nostra ricerca si è limitata a',
-    'Please refine your search if necessary': '',
+    'Please refine your search if necessary': 'Se necessario, perfeziona la ricerca',
 
     'This Bible is in the Public Domain.': 'Questa Bibbia è di Pubblico Dominio.',
     'This Bible is provided for research purposes only.': 'la sua Bibbia viene fornita solo a scopo di ricerca.',

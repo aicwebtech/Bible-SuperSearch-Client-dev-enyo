@@ -223,8 +223,8 @@ module.exports = {
     'Show Verse Number': 'Ipakita ang Numero ng Talata', 
 
     'Other': 'Iba pa', 
-    'Include Testament': 'Isama ang Testamento'
-    'Testament': 'Tipan'
+    'Include Testament': 'Isama ang Testamento',
+    'Testament': 'Tipan',
     'Abbreviate Books': 'Dinaglat ang mga Aklat', 
     'Omit Extra Line Breaks': 'Alisin ang mga Extra Line Break',//check translation 
 

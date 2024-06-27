@@ -223,8 +223,8 @@ module.exports = {
     'Show Verse Number': 'Whakaatu Tau Whiti', 
 
     'Other': 'Ētahi atu', 
-    'Include Testament': 'Whakaurua te Kawenata'
-    'Testament': 'Kawenata'
+    'Include Testament': 'Whakaurua te Kawenata',
+    'Testament': 'Kawenata',
     'Abbreviate Books': 'Pukapuka Whakapoto', 
     'Omit Extra Line Breaks': 'Waiho Nga Wehenga Raina Ake', 
 

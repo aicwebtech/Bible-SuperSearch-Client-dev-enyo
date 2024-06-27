@@ -11,6 +11,7 @@ module.exports = {
     
     // The actual translation data
 
+    'Bible SuperSearch': 'Super Recherchez Biblique',
     'Loading, please wait': 'Téléchargement en cours, patientez',
 
     // Search Forms
@@ -200,8 +201,8 @@ module.exports = {
     'Show Verse Number': 'Afficher le Numéro du Verset', // 5.0
 
     'Other': 'Autre', // 5.0
-    'Include Testament': 'Inclure le Testament'
-    'Testament': 'Testament'
+    'Include Testament': 'Inclure le Testament',
+    'Testament': 'Testament',
     'Abbreviate Books': 'Livres Abrégés', // 5.0
     'Omit Extra Line Breaks': 'Omettre les sauts de ligne supplémentaires', // 5.0
 

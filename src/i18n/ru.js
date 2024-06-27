@@ -208,8 +208,8 @@ module.exports = {
     'Show Verse Number': 'Показать Номер Стиха', // 5.0
 
     'Other': 'Другие Настройки', // 5.0
-    'Include Testament': 'Включить Завет'
-    'Testament': 'Завещание'
+    'Include Testament': 'Включить Завет',
+    'Testament': 'Завещание',
     'Abbreviate Books': 'Сократить Названия Книги', // 5.0
     'Omit Extra Line Breaks': 'Удалить Пустые Строки', // 5.0
 

@@ -114,7 +114,7 @@ module.exports = {
     'Two or More Words': 'كلمتين أو أكثر',
     'Words Within 5 Verses': 'كلمات في 5 آيات',
     'Words Within Same Chapter': 'كلمات داخل نفس الفصل',
-    'Words Within Same Book': '',
+    'Words Within Same Book': 'كلمات في نفس الكتاب',
     'Boolean Expression': 'تعبير منطقي',
     'Regular Expression': 'تعبير عادي',
     'Select one ...' : 'اختر واحدة...',
@@ -213,8 +213,8 @@ module.exports = {
 
     'Other': 'آخر', // 5.0
     'Abbreviate Books': 'اختصار الكتب', // 5.0
-    'Include testament': 'تضمين العهد'
-    'Testament': 'العهد'
+    'Include Testament': 'تضمين العهد',
+    'Testament': 'العهد',
     'Omit Extra Line Breaks': 'حذف فواصل الأسطر الإضافية', // 5.0
 
     // Settings Dialog
@@ -266,7 +266,7 @@ module.exports = {
     'No Bibles are enabled. Please contact site administrator.': 'لم يتم تمكين أي الأناجيل. يرجى الاتصال بمسؤول الموقع.',
     'Cannot retrieve multiple books at once.': 'لا يمكن استرداد كتب متعددة في وقت واحد.',
     'Bible text not found': 'لم يتم العثور على نص الكتاب المقدس',
-    'Invalid book in book rangeلم يتم العثور على نص الكتاب المقدس': '',
+    'Invalid book in book range': 'كتاب غير صالح في نطاق الكتاب',
     'Book not found': 'لم يتم العثور على الكتاب',
     'Your parentheses are mismatched.': 'الأقواس غير متطابقة.',
     'Your parentheses are mismatched, or you have a proximity operator inside of parentheses.': 'الأقواس غير متطابقة، أو لديك عامل تقارب داخل الأقواس.',

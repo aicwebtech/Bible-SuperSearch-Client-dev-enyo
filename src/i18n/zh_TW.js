@@ -201,8 +201,8 @@ module.exports = {
     'Show Verse Number': '顯示經句編號',   // 5.0
 
     'Other': '其他',   // 5.0
-    'Include Testament': '包括遺囑'
-    'Testament': '遺囑'
+    'Include Testament': '包括遺囑',
+    'Testament': '遺囑',
     'Abbreviate Books': '書卷名稱縮寫',   // 5.0
     'Omit Extra Line Breaks': '省略多餘的換行符號',   // 5.0
 
@@ -317,7 +317,7 @@ module.exports = {
     'The relationship between the Old Testament Law and the Church': '舊約律法與教會的關係',
     'History and Law': '歷史和律法',
     'Salvation by faith, not works': '因信得救, 而非行為',
-    'Christian life and experience. &nbsp; The Apostle Paul gave up credentials under the OT Law to follow Christ': '基督徒的生活和經歷。  &nbsp; 使徒保羅放棄了舊約之下的憑據來跟隨基督』',
+    'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': '基督徒的生活和經歷。  &nbsp; 使徒保羅放棄了舊約之下的憑據來跟隨基督』',
     'Christ the suffering servant': '基督受苦的僕人',
     'Christ\'s crucifixion foretold': '基督被釘在十字架上的預言',
 

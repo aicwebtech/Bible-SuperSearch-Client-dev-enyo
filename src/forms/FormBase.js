@@ -3,6 +3,7 @@ var Ajax = require('enyo/Ajax');
 var utils = require('enyo/utils');
 var Signal = require('../components/Signal');
 var Bindings = require('./FormBindings');
+var FormTests = require('./FormTests');
 var Passage = require('../components/Passage');
 
 module.exports = kind({
@@ -32,6 +33,9 @@ module.exports = kind({
     _referenceChangeHelperIgnore: false,
     defaultSubmitting: false,
     preventDefaultSubmit: false,
+
+    successHandle: null,
+    errorHandle: null,
 
     Passage: Passage,
 
@@ -79,6 +83,10 @@ module.exports = kind({
         // Break references to formData on other forms?
         this.clearForm(); 
         this.populateDefaults();
+
+        if(this.app.testInit) {
+            this.testInit();
+        }
     },
     handleAppLoaded: function() {
         this.submitDefault();
@@ -354,6 +362,7 @@ module.exports = kind({
         this.app.pushHistory();
         this.manualRequest = false;
         this.app.set('hasAjaxSuccess', true);
+        this.successHandle && this.successHandle(responseData);
     },
     handleError: function(inSender, inResponse) {
         // this.app.set('ajaxLoading', false);
@@ -366,6 +375,7 @@ module.exports = kind({
         }
         catch (error) {
             this.app.displayInitError();
+            this.errorHandle && this.errorHandle();
             return;
         }
 
@@ -381,6 +391,7 @@ module.exports = kind({
             this.bubble('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
             Signal.send('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
             this.manualRequest = false;
+            this.errorHandle && this.errorHandle({formData: this._formDataAsSubmitted, response: response});
         }
         else {
             this.handleResponse(inSender, response);
@@ -801,6 +812,10 @@ module.exports = kind({
                 // Regexp to detect single verses and single verse ranges
                 matches = cv.match(/^([0-9]+):([0-9]+)(-([0-9]+))?$/);
 
+            if(!book) {
+                return null;
+            }
+
             if(matches && matches.length > 0) {
                 reference = book.name + '/' + matches[1].trim() + '/' + matches[2].trim();
 
@@ -914,5 +929,136 @@ module.exports = kind({
 
         Signal.send('onBibleChange', e);
         this.waterfall('onBibleChange', e);
+    },
+    testInit: function() {
+        var t = this;
+
+        QUnit.module('Form Submission', function() {
+            QUnit.test.each('Success', FormTests.success, function(assert, item) {
+                var done = assert.async();
+
+                t.successHandle = function(responseData) {
+                    assert.true(true, 'success');
+
+                    if(item.resultsContain) {
+                        assert.propContains(responseData.results, item.resultsContain);
+                    }
+
+                    done();
+                };
+
+                t.errorHandle = function() {
+                    assert.false(true, 'error');
+                    done();
+                }
+
+                t.clearForm();
+
+                var fd = utils.clone(item.formData);
+                fd[t.referenceField] = fd._reference || null;
+                fd[t.searchField] = fd._search || null;
+                delete fd._search;
+                delete fd._reference;
+
+                t.set('formData', fd);
+                t.submitForm();
+            });
+
+            QUnit.test.each('Error', FormTests.error, function(assert, item) {
+                var done = assert.async();
+
+                t.successHandle = function(responseData) {
+                    assert.false(true, 'success');
+                    done();
+                };
+
+                t.errorHandle = function() {
+                    assert.true(true, 'successful error');
+                    done();
+                }
+
+                t.clearForm();
+
+                var fd = utils.clone(item.formData);
+                fd[t.referenceField] = fd._reference || null;
+                fd[t.searchField] = fd._search || null;
+                delete fd._search;
+                delete fd._reference;
+
+                t.set('formData', fd);
+                t.submitForm();
+            });
+
+            // QUnit.test( "Basic Reference", function( assert ) {
+            //     var done = assert.async();
+
+            //     t.successHandle = function() {
+            //         assert.true(true, 'success');
+            //         done();
+            //     };
+
+            //     t.errorHandle = null;
+
+            //     t.clearForm();
+            //     t.$[t.referenceField].set('value', 'Romans 1');
+
+            //     t.submitForm();
+            // });
+
+            // QUnit.test( "Basic Search", function( assert ) {
+            //     var done = assert.async();
+
+            //     t.successHandle = function() {
+            //         assert.true(true, 'success');
+            //         done();
+            //     };
+
+            //     t.errorHandle = null;
+
+            //     t.clearForm();
+            //     t.$[t.searchField].set('value', 'faith');
+
+            //     t.submitForm();
+            // });
+
+            // QUnit.test( "Basic Search Error", function( assert ) {
+            //     var done = assert.async();
+
+            //     t.successHandle = function() {
+            //         assert.true(false, 'success');
+            //         done();
+            //     };
+
+            //     t.errorHandle = function() {
+            //         assert.true(true, 'successfull error');
+            //         done();
+            //     }
+
+            //     t.clearForm();
+            //     t.$[t.searchField].set('value', 'aabbcc');
+
+            //     t.submitForm();
+            // });            
+
+            // QUnit.test( "Basic Reference Error", function( assert ) {
+            //     var done = assert.async();
+
+            //     t.successHandle = function() {
+            //         assert.true(false, 'success');
+            //         done();
+            //     };
+
+            //     t.errorHandle = function() {
+            //         assert.true(true, 'successfull error');
+            //         done();
+            //     }
+
+            //     t.clearForm();
+            //     t.$[t.referenceField].set('value', '2 Hesitations 1:3');
+
+            //     t.submitForm();
+            // });
+        });
+
     }
  });
