@@ -43,28 +43,28 @@ module.exports = {
     'Whole Words Only': 'Alleen Hele Woorden',
     'Whole words only': 'Alleen hele woorden',
     'Whole words': 'Hele woorden',
-    'Exact Case': 'Exact geval',
+    'Exact Case': 'Exact Geval',
     'Parallel Bible #': 'Parallelle Bijbel #',
     'Select a Bible': 'Selecteer een Bijbel',
-    'Add Bible': 'Bijbel toevoegen',
-    'Remove Bible': 'Bijbel verwijderen', 
-    'Random Chapter': 'Willekeurig hoofdstuk',
-    'Random Verse': 'Willekeurig vers',
-    'Passages': 'Passages',
-    'Passage': 'Passage',
+    'Add Bible': 'Bijbel Toevoegen',
+    'Remove Bible': 'Bijbel Verwijderen', 
+    'Random Chapter': 'Willekeurig Hoofdstuk',
+    'Random Verse': 'Willekeurig Vers',
+    'Passages': 'Passages',//check translation
+    'Passage': 'Passage',//check translation
     'The book of': 'Het boek van',
     'Look for': 'Zoeken',
     'Look up': 'Opzoeken',
     'in': 'in',
     'verse': 'vers',
     'verses': 'verzen',
-    'A Chapter': 'Een hoofdstuk',
+    'A Chapter': 'Een Hoofdstuk',
     'Chapters': 'Hoofdstukken',
     'Find verses containing': 'Vind verzen die bevatten',
     'Restrict search to': 'Zoekopdracht beperken tot', 
-    'Word Search': 'Woorden zoeken',
-    'Clear Form': 'Duidelijk formulier', 
-    'Select Book and Chapter:' : 'Selecteer boek en hoofdstuk:', 
+    'Word Search': 'Woorden Zoeken',
+    'Clear Form': 'Duidelijk Formulier', 
+    'Select Book and Chapter:' : 'Selecteer Boek en Hoofdstuk:', 
 
     // Context Links
     'Show full chapter': 'Toon het volledige hoofdstuk',
@@ -72,10 +72,10 @@ module.exports = {
     'Show this verse': 'Laat dit vers zien',
     'Show in context': 'Toon in context',
     'Context': 'Context',
-    'In Context': 'In context',
+    'In Context': 'In context',//check translation
 
-    'Limit Search To': 'Zoekopdracht beperken tot',
-    'Limit search to': 'Zoekopdracht beperken tot', // Watch case!
+    'Limit Search To': 'Zoekopdracht Beperken tot',
+    'Limit search to': 'Zoekopdracht Beperken tot', // Watch case!
     'Entire Bible': 'Hele Bijbel',
     'Passage(s) listed below': 'Passage(s) hieronder vermeld',
     'Passage(s) listed above': 'Passage(s) hierboven vermeld',
@@ -87,18 +87,18 @@ module.exports = {
     'History Books': 'Geschiedenisboeken', // Can translate as 'History'
     'History': 'Geschiedenis',
     'Wisdom & Poetry': 'Wijsheid en poëzie',
-    'Prophets Books': 'Profeten boeken', // Can translate as 'Prophets'
+    'Prophets Books': 'Profeten Boeken', // Can translate as 'Prophets'
     'Prophets': 'Profeten',
-    'Major Prophets': 'Grote profeten',
-    'Minor Prophets': 'Kleine profeten',
+    'Major Prophets': 'Grote Profeten',
+    'Minor Prophets': 'Kleine Profeten',
     'Gospels': 'Evangeliën',
     'Epistles': 'Brieven',
-    'Pauline Epistles': 'brieven van Paulus',
-    'General Epistles': 'Algemene brieven',
+    'Pauline Epistles': 'Brieven van Paulus',
+    'General Epistles': 'Algemene Brieven',
     'End Times Prophecy': 'Eindtijdprofetie',
     
     // Shortcut Aliases
-    'OT': 'O.T',
+    'OT': 'OT',
     'NT': 'NT',
     'Torah': 'Thora',
     'Wisdom': 'Wijsheid',
@@ -108,7 +108,7 @@ module.exports = {
     'Doctrine': 'Leer',
     'Paul': 'Paulus',
     'General': 'Algemeen',
-    'Last Days': 'Laatste dagen',
+    'Last Days': 'Laatste Dagen',
 
     'Look up Passage(s)': 'Passage(s) opzoeken',
     'Enter passage(s)' : 'Ga passage(s) binnen',
@@ -117,27 +117,27 @@ module.exports = {
 
     'Search for' : 'Zoeken',
     'Match': 'Overeenkomst',
-    'All Words': 'Alle woorden',
-    'Any Word': 'Elk woord',
-    'Exact Phrase': 'Exacte zin',
+    'All Words': 'Alle Woorden',
+    'Any Word': 'Elk Woord',
+    'Exact Phrase': 'Exacte Zin',
     'Only One Word': 'Slechts één woord',
-    'Two or More Words': 'Twee of meer woorden',
-    'Words Within 5 Verses': 'Woorden binnen 5 verzen',
-    'Words Within Same Chapter': 'Woorden binnen hetzelfde hoofdstuk',
-    'Words Within Same Book': 'Woorden in hetzelfde boek',
-    'Boolean Expression': 'Booleaanse expressie',
-    'Regular Expression': 'Reguliere expressie',
+    'Two or More Words': 'Twee of Meer Woorden',
+    'Words Within 5 Verses': 'Woorden Binnen 5 Verzen',
+    'Words Within Same Chapter': 'Woorden Binnen Hetzelfde Hoofdstuk',
+    'Words Within Same Book': 'Woorden in Hetzelfde Boek',
+    'Boolean Expression': 'Booleaanse Expressie',
+    'Regular Expression': 'Reguliere Expressie',
     'Select one ...' : 'Kies een ...',
 
     'Enter search keyword(s) or passage reference(s)': 'Voer zoekwoord(en) of passagereferentie(s) in',
     'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'Tip: Als u zowel een passage als een zoekopdracht invoert, wordt de zoekopdracht beperkt tot de opgegeven passage(s).',
     
     // Advanced Search
-    'Boolean Search': 'Booleaanse zoekopdracht',
-    'Passage Retrieval': 'Passage ophalen',
+    'Boolean Search': 'Booleaanse Zoekopdracht',
+    'Passage Retrieval': 'Passage Ophalen',
     'Find words within': 'Vind woorden binnenin',
-    'Proximity Search': 'Nabijheid zoeken',
-    'Power Search': 'Krachtig zoeken',
+    'Proximity Search': 'Nabijheid Zoeken',
+    'Power Search': 'Krachtig Zoeken',
 
     // <b> ... </b> is HTML for bold text, please ensure that your translation maintains the bold
     '<b>All</b> of the words' : '<b>Alle</b> woorden',
@@ -149,33 +149,33 @@ module.exports = {
     'Bible #': 'Bijbel #', // downloads
 
     // Pagination
-    'Next Page' : 'Volgende bladzijde',
-    'Previous Page' : 'Vorige bladzijde',
-    'First Page' : 'Eerste pagina',
-    'Last Page': 'Laatste pagina',
+    'Next Page' : 'Volgende Bladzijde',
+    'Previous Page' : 'Vorige Bladzijde',
+    'First Page' : 'Eerste Pagina',
+    'Last Page': 'Laatste Pagina',
     'Page': 'Bladzijde',
     
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
     'Serif' : 'Serif',                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sans-Serif',                 // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif',//check translation                 // * Button text, please keep translation short!
     'Monospace': 'Monoruimte',                  // * Button text, please keep translation short!
-    'Enlarge Text': 'Vergroot tekst',
-    'Default Text Size': 'Standaard tekstgrootte',
-    'Shrink Text': 'Tekst verkleinen',
+    'Enlarge Text': 'Vergroot Tekst',
+    'Default Text Size': 'Standaard Tekstgrootte',
+    'Shrink Text': 'Tekst Verkleinen',
     'Verse Display': 'Versweergave',
     'Paragraph Display': 'Paragraafweergave',
     'Passage Display': 'Passage-display', 
-    'Verse as Passage Display': 'Vers als passageweergave', 
-    'EZ Copy': 'EZ-kopie',  // 'Easy Copy'
-    'Read Display': 'Lees weergave',
+    'Verse as Passage Display': 'Vers als Passageweergave', 
+    'EZ Copy': 'Gemakkelijk kopiëren',  // 'Easy Copy'
+    'Read Display': 'Lees Weergave',
     'Italics': 'Cursief',                    // * Button text, please keep translation short!
     'Disable Italization of Added Words' : 'Schakel italisatie van toegevoegde woorden uit',
     'Enable Italization of Added Words': 'Schakel italisatie van toegevoegde woorden in',
-    'Disable Strong\'s Numbers': 'Schakel Strong\'s nummers uit',
-    'Enable Strong\'s Numbers': 'Schakel Strong\'s Numbers in',
-    'Red Letter': 'Rode brief',
+    'Disable Strong\'s Numbers': 'Schakel Strong\'s Nummers Uit',
+    'Enable Strong\'s Numbers': 'Schakel Strong\'s Numbers In',//check translation
+    'Red Letter': 'Rode Brief',
     'Disable Red Letter': 'Schakel de rode letter uit',
     'Enable Red Letter': 'Schakel Rode Letter in',
     'Highlight': 'Hoogtepunt',                   // * Button text, please keep translation short!
@@ -189,7 +189,7 @@ module.exports = {
 
     // Descriptions of special formatting features
     'Formatting': 'Opmaak',  
-    'Supported Bibles Only': 'Alleen ondersteunde bijbels', 
+    'Supported Bibles Only': 'Alleen Ondersteunde Bijbels', 
     
     // Translate the right-side strings here
     'strongs_numbers_description': 'Strong\'s Concordantienummers geven de onderliggende Hebreeuwse of Griekse woorden aan.',  
@@ -199,34 +199,34 @@ module.exports = {
 
 
     // Verse Cherry-picking
-    'Select All': 'Selecteer alles', 
+    'Select All': 'Selecteer Alles', 
     'Select None': 'Selecteer Geen', 
     'Select': 'Selecteer', 
     'Unselect': 'Deselecteer', 
     
     // Copy format options
-    'Copy Format': 'Kopieer formaat', 
+    'Copy Format': 'Kopieer Formaat', 
     'Word Processor': 'Tekstverwerker', 
     'Outline' : 'Overzicht', 
     'Custom': 'Aangepast', 
 
-    'Single Verses': 'Enkele verzen', 
+    'Single Verses': 'Enkele Verzen', 
     'Reference - Text': 'Referentie - Tekst', 
     'Text - Reference': 'Tekst - Referentie', 
-    'Text Only': 'Alleen tekst', 
-    'Separate Line': 'Aparte lijn', 
+    'Text Only': 'Alleen Tekst', 
+    'Separate Line': 'Aparte Lijn', 
 
     'Multi-verse Passages': 'Passages met meerdere verzen', 
     'Reference - Passage': 'Referentie - Doorgang', 
     'Passage - Reference': 'Passage - Referentie', 
-    'Passage Only': 'Alleen doorgang', 
-    'Show Verse Number': 'Toon versnummer', 
+    'Passage Only': 'Alleen Doorgang', 
+    'Show Verse Number': 'Toon Versnummer', 
 
     'Other': 'Ander', 
-    'Include Testament': 'Inclusief Testament',
-    'Testament': 'Testament',
-    'Abbreviate Books': 'Boeken verkorten', 
-    'Omit Extra Line Breaks': 'Laat extra regeleinden weg', 
+    'Include Testament': 'Inclusief Testament'
+    'Testament': 'Testament'
+    'Abbreviate Books': 'Boeken Verkorten', 
+    'Omit Extra Line Breaks': 'Laat Extra Regeleinden Weg', 
 
     // Settings Dialog
     'Settings' : 'Instellingen', 
@@ -242,7 +242,7 @@ module.exports = {
     'results' : 'resultaten',
     
     // Showing results [1] to [30]
-    'Showing Results': 'Resultaten weergeven',
+    'Showing Results': 'Resultaten Weergeven',
     'to' : 'naar',
     
     // Your search produced no results in [name of Bible version]
@@ -264,7 +264,7 @@ module.exports = {
     'Your search was limited to': 'Uw zoekopdracht was beperkt tot',
     'Please refine your search if necessary': 'lease verfijn uw zoekopdracht indien nodig',
 
-    'This Bible is in the Public Domain.': 'Deze Bijbel bevindt zich in het publieke domein.',
+    'This Bible is in the Public Domain.': 'Deze Bijbel bevindt zich in het Publieke Domein.',
     'This Bible is provided for research purposes only.': 'Deze Bijbel is uitsluitend bedoeld voor onderzoeksdoeleinden.',
     'An unknown error has occurred.' : 'Er is een onbekende fout opgetreden.',
     'An error has occurred, please try again later.': 'Er is een fout opgetreden. Probeer het later opnieuw.',
@@ -289,53 +289,53 @@ module.exports = {
     'Close': 'Dichtbij', 
 
     // Bible SOS dialog
-    'Bible SOS': 'Bijbel SOS',
+    'Bible SOS': 'Bijbel Noodgeval',
     'Emergency Help from the Bible': 'Noodhulp uit de Bijbel',
     'Where to go When ...': 'Waar te gaan Wanneer...',
     'Afraid': 'Bang',
     'Anxious': 'Gespannen',
     'Backsliding': 'Terugvallen',
     'Bereaved': 'Nabestaanden',
-    'Bitter or Critical': 'Bitter of kritisch',
-    'Conscious of Sin': 'Bewust van zonde',
+    'Bitter or Critical': 'Bitter of Kritisch',
+    'Conscious of Sin': 'Bewust van Zonde',
     'Defeated': 'Verslagen',
     'Depressed': 'Depressief', 
     'Disaster Threatens': 'Er dreigt een ramp',
     'Discouraged': 'Ontmoedigd',
     'Doubting': 'Twijfelen',
     'Facing a Crisis': 'Geconfronteerd met een crisis',
-    'Faith Fails': 'Geloof faalt',
-    'Friends Fail': 'Vrienden falen', 
+    'Faith Fails': 'Geloof Faalt',
+    'Friends Fail': 'Vrienden Falen', 
     'Hopeless': 'Hopeloos',
     'Leaving Home': 'Van huis weggaan',
     'Lonely': 'Alleen',
     'Needing God\'s protection': 'Gods bescherming nodig',
-    'Needing Guidance': 'Begeleiding nodig',
-    'Needing Peace': 'Vrede nodig',
+    'Needing Guidance': 'Begeleiding Nodig',
+    'Needing Peace': 'Vrede Nodig',
     'Needing Rules for Living': 'Regels nodig hebben om te leven', 
     'Overcome': 'Overwinnen',
     'Prayerful': 'Gebedsvol',
     'Protected': 'Beschermd',
-    'Sick or in Pain': 'Ziek of pijn',
+    'Sick or in Pain': 'Ziek of Pijn',
     'Sorrowful': 'Treurig',
     'Tempted': 'Verleid', 
     'Thankful': 'Dankbaar',
     'Traveling': 'Op reis',
-    'Trouble, In': 'Problemen, binnen',
+    'Trouble, In': 'Problemen, Binnen',
     'Troubled': 'Verontrust',
     'Weary': 'Vermoeidheid',
     'Worried': 'Bezorgd',
 
     // Bible Start dialog
-    'Start': 'Begin',
+    'Start': 'Begin',//check translation
     'Bible Start Guide': 'Bijbel Startgids',
     'New to the Bible?': 'Nieuw bij de Bijbel?',
     'Not Sure Where to Begin?' : 'Weet u niet zeker waar u moet beginnen?',
-    'Life and Teachings of Jesus Christ': 'Leven en leringen van Jezus Christus',
-    'Basic Christian Beliefs': 'Fundamentele christelijke overtuigingen',
+    'Life and Teachings of Jesus Christ': 'Leven en Leringen van Jezus Christus',
+    'Basic Christian Beliefs': 'Fundamentele Christelijke Overtuigingen',
     'Creation and the Fall of Man': 'Schepping en de val van de mens',
     'Birth of Christ / Life of Christ': 'Geboorte van Christus / Leven van Christus',
-    'Imperfection in Churches and Believers': 'Imperfectie in kerken en gelovigen',
+    'Imperfection in Churches and Believers': 'Imperfectie in Kerken en Gelovigen',
     'Early human history, especially that of Israel': 'Vroege menselijke geschiedenis, vooral die van Israël',
     'The relationship between the Old Testament Law and the Church': 'De relatie tussen de oudtestamentische wet en de Kerk',
     'History and Law': 'Geschiedenis en Recht',
@@ -346,33 +346,33 @@ module.exports = {
 
     // Bible downloads dialog
     'Download': 'Downloaden',
-    'Bible Downloads': 'Bijbel downloaden',
+    'Bible Downloads': 'Bijbel Downloaden',
     'Select Bible(s)' : 'Selecteer Bijbel(s)',
-    'Select a Format': 'Selecteer een formaat',
+    'Select a Format': 'Selecteer een Formaat',
     'Rendering': 'Weergave',
     'Rendering Bibles, this may take some time': 'Bij het weergeven van Bijbels kan dit enige tijd duren',
-    'Rendering is Complete': 'Het renderen is voltooid',
+    'Rendering is Complete': 'Het Renderen is Voltooid',
     'Your download should begin shortly': 'Uw download zou binnenkort moeten beginnen',
     'If not, please click on the below link': 'Indien dit niet het geval is, klik dan op onderstaande link',
-    'Manual Download': 'Handmatig downloaden',
+    'Manual Download': 'Handmatig Downloaden',
     'Please select at least one Bible': 'Selecteer minimaal één Bijbel',
     'Please select a format': 'Selecteer een formaat',
     'Are you sure you want to exit?  This will end the current download.': 'Weet u zeker dat u wilt afsluiten? Hiermee wordt de huidige download beëindigd.',
-    'Plain Text' : 'Platte tekst',
-    'Machine-readable Plain Text' : 'Machineleesbare platte tekst',
-    'Spreadsheet' : 'Spreadsheet',
-    'Databases': 'Databases',
+    'Plain Text' : 'Platte Tekst',
+    'Machine-readable Plain Text' : 'Machineleesbare Platte Tekst',
+    'Spreadsheet' : 'Spreadsheet',//check translation
+    'Databases': 'Databases',//check translation
 
-    'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF - Compacte tekst, brief, woorden van Christus in rood',
-    'PDF - Compact Text, A4, Words of Christ in Red': 'PDF - Compacte tekst, A4, Woorden van Christus in rood',
-    'PDF - Compact Text, Letter, Words of Christ Underlined': 'PDF - Compacte tekst, brief, woorden van Christus onderstreept',
-    'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF - Compacte tekst, A4, woorden van Christus onderstreept',
+    'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF - Compacte Tekst, Brief, Woorden van Christus in Rood',
+    'PDF - Compact Text, A4, Words of Christ in Red': 'PDF - Compacte Tekst, A4, Woorden van Christus in Rood',
+    'PDF - Compact Text, Letter, Words of Christ Underlined': 'PDF - Compacte Tekst, Brief, Woorden van Christus Onderstreept',
+    'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF - Compacte Tekst, A4, Woorden van Christus Onderstreept',
 
     // Copy / Share / Link dialogs
     'Copy': 'Kopiëren',
-    'Copy Link': 'Kopieer link',
-    'Copy with Text': 'Kopiëren met tekst',
-    'Share Link': 'Deel link',
+    'Copy Link': 'Kopieer Link',
+    'Copy with Text': 'Kopiëren met Tekst',
+    'Share Link': 'Deel Link',
     'Share' : 'Deel',
     'Link' : 'Koppeling', 
     'Copied to clipboard': 'Gekopieerd naar het klembord', 
@@ -451,8 +451,8 @@ module.exports = {
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Zoekopdrachten beperken',
-    'Passages': 'Passages',
-    'Alias': 'Alias',
+    'Passages': 'Passages',//check translation
+    'Alias': 'Alias',//check translation
     'You cannot search for these common words': 'U kunt niet zoeken naar deze veel voorkomende woorden',
 
     // Bible Books

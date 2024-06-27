@@ -98,9 +98,9 @@ module.exports = {
     'End Times Prophecy': 'Lời tiên tri về thời kỳ cuối cùng',
     
     // Shortcut Aliases
-    'OT': 'DCM',
-    'NT': 'DCC',
-    'Torah': 'kinh Torah',
+    'OT': 'DCC',
+    'NT': 'DCM',
+    'Torah': 'Kinh Torah',
     'Wisdom': 'Khôn ngoan',
     'Major': 'Lớn lao',
     'Minor': 'Người vị thành niên',
@@ -158,7 +158,7 @@ module.exports = {
     // Formatting and dialog buttons
     'A': 'MỘT',     // First letter in given language
     'Abc': 'ABC',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif',                     // * Button text, please keep translation short!
+    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
     'Sans-Serif': 'Sans serif',                 // * Button text, please keep translation short!
     'Monospace': 'Không gian đơn',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Phóng to văn bản',
@@ -214,7 +214,7 @@ module.exports = {
     'Reference - Text': 'Tham khảo - Văn bản', 
     'Text - Reference': 'Văn bản - Tài liệu tham khảo', 
     'Text Only': 'Chỉ văn bản', 
-    'Separate Line': 'Dòng riêng', 
+    'Separate Line': 'Dòng Riêng', 
 
     'Multi-verse Passages': 'Đoạn văn nhiều câu', 
     'Reference - Passage': 'Tài liệu tham khảo - Đoạn văn', 
@@ -289,7 +289,7 @@ module.exports = {
     'Close': 'Đóng', 
 
     // Bible SOS dialog
-    'Bible SOS': 'Kinh Thánh SOS',
+    'Bible SOS': 'Kinh Thánh Khẩn Cấp',
     'Emergency Help from the Bible': 'Sự trợ giúp khẩn cấp từ Kinh Thánh',
     'Where to go When ...': 'Đi đâu Khi...',
     'Afraid': 'Sợ',

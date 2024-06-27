@@ -277,7 +277,7 @@ module.exports = {
     'Close': 'Schließen', 
 
     // Bible SOS dialog
-    'Bible SOS': 'Bibel SOS',
+    'Bible SOS': 'Bibelnotstand',
     'Emergency Help from the Bible': 'Nothilfe aus der Bibel',
     'Where to go When ...': 'Wohin gehen, wenn ...',
     'Afraid': 'Besorgt',

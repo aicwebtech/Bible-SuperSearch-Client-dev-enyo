@@ -302,7 +302,7 @@ module.exports = {
 
 
     // Bible SOS dialog
-    'Bible SOS': 'Piibli SOS',
+    'Bible SOS': 'Piibli Hädaolukord',
     'Emergency Help from the Bible': 'Hädaabi Piiblist',
     'Where to go When ...': 'Kuhu Minna Kui ...',
     'Afraid': 'Sa Kardad',

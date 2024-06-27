@@ -275,7 +275,7 @@ module.exports = {
     'Close': 'Uždaryti', 
 
     // Bible SOS dialog
-    'Bible SOS': 'Biblija SOS',
+    'Bible SOS': 'Biblijos Nepaprastoji Padėtis',
     'Emergency Help from the Bible': 'Skubi pagalba iš Biblijos',
     'Where to go When ...': 'Kur eiti Kada...',
     'Afraid': 'Išsigandęs',

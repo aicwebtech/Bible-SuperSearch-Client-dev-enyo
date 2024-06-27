@@ -30,7 +30,7 @@ module.exports = {
     // * Please maintain capitalization and punctuation, if possible.
     // * Any ' (single quote) in the translation MUST be preceded by a \ (backslash).
 
-    'Bible SuperSearch': 'SuperSearch ng Bibliya',
+    'Bible SuperSearch': 'SuperSearch ng Bibliya',//check translation
     'Loading, please wait': 'Naglo-load, mangyaring maghintay',
 
     // Search Forms
@@ -137,7 +137,7 @@ module.exports = {
     'Passage Retrieval': 'Pagkuha ng Passage',
     'Find words within': 'Maghanap ng mga salita sa loob',
     'Proximity Search': 'Pagiging malapit Maghanap',
-    'Power Search': 'KapangyarihanMaghanap',
+    'Power Search': 'Power Search',//check translation
 
     // <b> ... </b> is HTML for bold text, please ensure that your translation maintains the bold
     '<b>All</b> of the words' : '<b>Lahat</b> ng mga salita',
@@ -149,22 +149,22 @@ module.exports = {
     'Bible #': 'Bibliya #', // downloads
 
     // Pagination
-    'Next Page' : 'Susunod na pahina',
-    'Previous Page' : 'Nakaraang pahina',
-    'First Page' : 'Unang pahina',
-    'Last Page': 'Huling pahina',
+    'Next Page' : 'Susunod na Pahina',
+    'Previous Page' : 'Nakaraang Pahina',
+    'First Page' : 'Unang Pahina',
+    'Last Page': 'Huling Pahina',
     'Page': 'Pahina',
     
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif',                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sans-Serif',                 // * Button text, please keep translation short!
-    'Monospace': 'Monospace',                  // * Button text, please keep translation short!
+    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif',//check translation                 // * Button text, please keep translation short!
+    'Monospace': 'Monospace',//check translation                  // * Button text, please keep translation short!
     'Enlarge Text': 'Palakihin ang Teksto',
     'Default Text Size': 'Default na Laki ng Teksto',
     'Shrink Text': 'Paliitin ang Teksto',
-    'Verse Display': 'Pagpapakita ng taludtod',
+    'Verse Display': 'Pagpapakita ng Taludtod',
     'Paragraph Display': 'Pagpapakita ng Talata',
     'Passage Display': 'Pagpapakita ng Passage', 
     'Verse as Passage Display': 'Talata bilang Pagpapakita ng Sipi', 
@@ -173,11 +173,11 @@ module.exports = {
     'Italics': 'Italiko',                    // * Button text, please keep translation short!
     'Disable Italization of Added Words' : 'Huwag paganahin ang Italization ng mga Idinagdag na Salita',
     'Enable Italization of Added Words': 'I-enable ang Italization ng mga Idinagdag na Salita',
-    'Disable Strong\'s Numbers': 'Huwag paganahin ang Strong\'s Numbers',
-    'Enable Strong\'s Numbers': 'Paganahin ang Strong\'s Numbers',
+    'Disable Strong\'s Numbers': 'Huwag paganahin ang Strong\'s Numbers',//check translation
+    'Enable Strong\'s Numbers': 'Paganahin ang Strong\'s Numbers',//check translation
     'Red Letter': 'Pulang Liham',
-    'Disable Red Letter': 'Huwag paganahin ang Red Letter',
-    'Enable Red Letter': 'Paganahin ang Red Letter',
+    'Disable Red Letter': 'Huwag paganahin ang Red Letter',//check translation
+    'Enable Red Letter': 'Paganahin ang Red Letter',//check translation
     'Highlight': 'I-highlight',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Huwag paganahin ang Pag-highlight ng mga Keyword',
     'Enable Highlighting of Keywords': 'Paganahin ang Pag-highlight ng mga Keyword',
@@ -199,7 +199,7 @@ module.exports = {
 
 
     // Verse Cherry-picking
-    'Select All': 'Piliin lahat', 
+    'Select All': 'Piliin Lahat', 
     'Select None': 'Piliin ang Wala', 
     'Select': 'Pumili', 
     'Unselect': 'Alisin sa pagkakapili', 
@@ -213,7 +213,7 @@ module.exports = {
     'Single Verses': 'Mga Iisang Talata', 
     'Reference - Text': 'Sanggunian - Teksto', 
     'Text - Reference': 'Teksto - Sanggunian', 
-    'Text Only': 'Teksto lamang', 
+    'Text Only': 'Teksto Lamang', 
     'Separate Line': 'Hiwalay na Linya', 
 
     'Multi-verse Passages': 'Mga Sipi ng Multiverse',
@@ -226,7 +226,7 @@ module.exports = {
     'Include Testament': 'Isama ang Testamento',
     'Testament': 'Tipan',
     'Abbreviate Books': 'Dinaglat ang mga Aklat', 
-    'Omit Extra Line Breaks': 'Alisin ang mga Extra Line Break', 
+    'Omit Extra Line Breaks': 'Alisin ang mga Extra Line Break',//check translation 
 
     // Settings Dialog
     'Settings' : 'Mga setting', 
@@ -264,36 +264,36 @@ module.exports = {
     'Your search was limited to': 'Ang iyong paghahanap ay limitado sa',
     'Please refine your search if necessary': 'Mangyaring pinuhin ang iyong paghahanap kung kinakailangan',
 
-    'This Bible is in the Public Domain.': '',
-    'This Bible is provided for research purposes only.': '',
-    'An unknown error has occurred.' : '',
-    'An error has occurred, please try again later.': '',
-    'Error' : '',
-    'Success': '',
-    'Cache not found': '',
-    'No query terms provided. Please specify search term(s) and/or passage reference(s).': '',
-    'Your search produced no results.' : '',
-    'Maximum hits has been reached for today for this domain / IP address': '',
-    'No Bibles are enabled. Please contact site administrator.': '',
-    'Cannot retrieve multiple books at once.': '',
-    'Bible text not found': '',
-    'Invalid book in book range': '',
-    'Book not found': '',
-    'Your parentheses are mismatched.': '',
-    'Your parentheses are mismatched, or you have a proximity operator inside of parentheses.': '',
-    'Proximity operators such as PROX and CHAP can only be used with boolean searches' : '',
-    'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets': '',
-    'Your access to this API has been revoked.  Please contact system administrator.': '',
+    'This Bible is in the Public Domain.': 'Ang Bibliyang ito ay nasa Pampublikong Domain.',
+    'This Bible is provided for research purposes only.': 'Ang Bibliyang ito ay ibinigay para sa mga layunin ng pananaliksik lamang.',
+    'An unknown error has occurred.' : 'May naganap na hindi kilalang error.',
+    'An error has occurred, please try again later.': 'May naganap na error. Mangyaring subukan muli sa ibang pagkakataon.',
+    'Error' : 'Error',//check translation
+    'Success': 'Tagumpay',
+    'Cache not found': 'Hindi nahanap ang cache',
+    'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Walang ibinigay na mga tuntunin sa query. Mangyaring tukuyin ang (mga) termino para sa paghahanap at/o (mga) sanggunian ng sipi.',
+    'Your search produced no results.' : 'Walang resulta ang iyong paghahanap.',
+    'Maximum hits has been reached for today for this domain / IP address': 'Naabot na ang maximum na mga hit para sa araw na ito para sa domain / IP address na ito',
+    'No Bibles are enabled. Please contact site administrator.': 'Walang mga Bibliya na pinagana. Mangyaring makipag-ugnayan sa administrator ng site.',
+    'Cannot retrieve multiple books at once.': 'Hindi mabawi ang maraming aklat nang sabay-sabay.',
+    'Bible text not found': 'Hindi natagpuan ang teksto sa Bibliya',
+    'Invalid book in book range': 'Di-wastong aklat sa hanay ng aklat',
+    'Book not found': 'Hindi nahanap ang aklat',
+    'Your parentheses are mismatched.': 'Ang iyong mga panaklong ay hindi tugma.',
+    'Your parentheses are mismatched, or you have a proximity operator inside of parentheses.': 'Ang iyong mga panaklong ay hindi magkatugma, o mayroon kang isang proximity operator sa loob ng mga panaklong.',
+    'Proximity operators such as PROX and CHAP can only be used with boolean searches' : 'Magagamit lang ang mga proximity operator gaya ng PROX at CHAP sa mga boolean na paghahanap',
+    'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets': 'Tandaan: Ang mga operator ng PROX / CHAP ay hindi maaaring isama sa loob ng mga panaklong o bracket',
+    'Your access to this API has been revoked.  Please contact system administrator.': 'Ang iyong access sa API na ito ay binawi. Mangyaring makipag-ugnayan sa administrator ng system.',
 
     // Dialogs - general
     'Close': 'Isara', 
 
     // Bible SOS dialog
-    'Bible SOS': 'SOS ng Bibliya',
+    'Bible SOS': 'Emergency sa Bibliya'//check translation,
     'Emergency Help from the Bible': 'Emergency na Tulong mula sa Bibliya',
     'Where to go When ...': 'Saan pupunta Kapag...',
     'Afraid': 'Takot',
-    'Anxious': 'balisa',
+    'Anxious': 'Balisa',
     'Backsliding': 'Pag-urong',
     'Bereaved': 'Nangungulila',
     'Bitter or Critical': 'Mapait o Kritikal',
@@ -360,7 +360,7 @@ module.exports = {
     'Are you sure you want to exit?  This will end the current download.': 'Sigurado ka bang gusto mong lumabas? Tatapusin nito ang kasalukuyang pag-download.',
     'Plain Text' : 'Simpleng Teksto',
     'Machine-readable Plain Text' : 'Simpleng Teksto na nababasa ng makina',
-    'Spreadsheet' : 'Spreadsheet', // cprrect
+    'Spreadsheet' : 'Spreadsheet', // correct
     'Databases': 'Mga database',
 
     'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF - Compact Text, Sulat, Mga Salita ni Kristo na Pula',
@@ -374,7 +374,7 @@ module.exports = {
     'Copy with Text': 'Kopyahin gamit ang Text',
     'Share Link': 'Ibahagi ang Link',
     'Share' : 'Ibahagi',
-    'Link' : 'Link', 
+    'Link' : 'Link',//check translation 
     'Copied to clipboard': 'Kinopya sa clipboard', 
     'Failed to copy': 'Nabigong kopyahin', 
 

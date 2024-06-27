@@ -275,7 +275,7 @@ module.exports = {
     'Close': 'Vicino', 
 
     // Bible SOS dialog
-    'Bible SOS': 'Bibbia SOS',
+    'Bible SOS': 'Emergenza Bibbia',
     'Emergency Help from the Bible': 'Aiuto d\'emergenza dalla Bibbia',
     'Where to go When ...': 'Dove andare Quando...',
     'Afraid': 'Paura',

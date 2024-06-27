@@ -16,7 +16,7 @@ module.exports = {
     // * Please maintain capitalization and punctuation, if possible.
     // * Any ' (single quote) in the translation MUST be preceded by a \ (backslash).
 
-    'Bible SuperSearch': 'Bible SuperSearch',
+    'Bible SuperSearch': 'Super Căutare Biblică',
     'Loading, please wait': 'Se procesează',
 
     // Search Forms
@@ -44,21 +44,21 @@ module.exports = {
     'in': 'în',
     'verse': 'verset',
     'verses': 'versete',
-    'A Chapter': 'Un capitol',
+    'A Chapter': 'Un Capitol',
     'Chapters': 'Capitole',
     'Find verses containing': 'Găsiți versete care conțin',
     'Restrict search to': 'Limitați Căutarea', 
     'Word Search': 'Căutați ',
     'Clear Form': 'Resetați Forma', // 4.5
-    'Select Book and Chapter:' : 'Selectați Carte și capitol:', // 5.2
+    'Select Book and Chapter:' : 'Selectați Carte și Capitol:', // 5.2
 
     // Context Links
     'Show full chapter': 'Afișați întregul capitol',
     'Chapter': 'Capitol',
     'Show this verse': 'Afișați acest verset',
     'Show in context': 'Afișați în context',
-    'Context': 'Context',
-    'In Context': 'In context', // ????
+    'Context': 'Context',//check translation
+    'In Context': 'In context',//check translation // ????
 
     'Limit Search To': 'Limitați Căutarea',
     'Limit search to': 'Limitați căutarea', // Watch case!
@@ -71,7 +71,7 @@ module.exports = {
     'New Testament': 'Noul Testament',
     'Law': 'Lege',
     'History': 'Istorie',
-    'History Books': 'Cărți de istorie', // 5.5 Can translate as 'History'
+    'History Books': 'Cărți de Istorie', // 5.5 Can translate as 'History'
     'Wisdom & Poetry': 'Înțelepciune & Poezie',
     'Prophets': 'Profeți',
     'Prophets Books': 'Cărțile Profeților', // 5.5 Can translate as 'Prophets'
@@ -81,19 +81,19 @@ module.exports = {
     'Epistles': 'Epistole',
     'Pauline Epistles': 'Epistolele Pauline',
     'General Epistles': 'Epistolele Generale',
-    'End Times Prophecy': 'Profeția Sfârșitului timpurilor',
+    'End Times Prophecy': 'Profeția Sfârșitului Timpurilor',
 
     // Shortcut Aliases
-    'OT': 'OT',
+    'OT': 'VT',
     'NT': 'NT',
     'Torah': 'Tora',
     'Wisdom': 'Înţelepciune',
-    'Major': 'Major',
-    'Minor': 'Minor',
+    'Major': 'Major',//check translation
+    'Minor': 'Minor',//check translation
     'Passion': 'Pasiune',
     'Doctrine': 'Doctrină',
-    'Paul': 'Paul',
-    'General': 'General',
+    'Paul': 'Paul',//check translation
+    'General': 'General',//check translation
     'Last Days': 'Ultimele zile',
 
     'Look up Passage(s)': 'Căutați Pasajul(ele)',
@@ -101,8 +101,8 @@ module.exports = {
     'Enter word(s), phrase(s) or expression(s)' : 'Introduceți cuvântul(intele), fraza(ele) sau expresia(ile)',
     'Example': 'Exemplu',
 
-    'Search for' : 'Căutați',
-    'Match': 'Căutați',
+    'Search for' : 'Caută',
+    'Match': 'Meci',
     'All Words': 'Toate Cuvintele',
     'Any Word': 'Oricare Cuvintele',
     'Exact Phrase': 'Frază Exactă',
@@ -153,8 +153,8 @@ module.exports = {
     'Verse Display': 'Afișați Versetul',
     'Paragraph Display': 'Afișați Paragraful',
     'Passage Display': 'Afișați Pasajul',
-    'Verse as Passage Display': 'Versetul ca afișare a pasajului', // 5.3
-    'EZ Copy': 'Copiere Ușoară',  // 'Easy Copy'
+    'Verse as Passage Display': 'Versetul ca Afișare a Pasajului', // 5.3
+    'EZ Copy': 'Copiere ușoară',  // 'Easy Copy'
     'Read Display': 'Citiți Afișajul',
     'Italics': 'Text Cursiv',
     'Disable Italization of Added Words' : 'Dezactivați Textul Cursiv pentru Cuvintele Adăugate',
@@ -175,7 +175,7 @@ module.exports = {
 
     // Descriptions of special formatting features
     'Formatting': 'Formatare',  // 5.3
-    'Supported Bibles Only': 'Doar Biblii acceptate',  // 5.3
+    'Supported Bibles Only': 'Doar Biblii Acceptate',  // 5.3
     
     'strongs_numbers_description': 'Numerele de concordanță ale lui Strong indică cuvintele ebraice sau grecești subiacente.',  // 5.3
     'italics_description': 'Cuvintele lui Hristos în roșu.',    // 5.3
@@ -200,23 +200,23 @@ module.exports = {
     'Text Only': 'Doar Text', // 5.0
     'Separate Line': ' Linii Separate', // 5.0
 
-    'Multi-verse Passages': 'Versete-multiple', // 5.0
+    'Multi-verse Passages': 'Pasaje cu mai Multe Versuri', // 5.0
     'Reference - Passage': 'Referință - Pasaj', // 5.0
     'Passage - Reference': 'Pasaj - Referință', // 5.0
     'Passage Only': 'Doar Pasajul', // 5.0
     'Show Verse Number': 'Numerotați Versetele', // 5.0
 
     'Other': 'Altele', // 5.0
-    'Include Testament': 'Includeți Testamentul',
-    'Testament': 'Testament',
+    'Include Testament': 'Includeți Testamentul'
+    'Testament': 'Testament'//check translation
     'Abbreviate Books': 'Abreviați Numele Cărților', // 5.0
     'Omit Extra Line Breaks': 'Omite rândurile goale', // 5.0
 
     // Settings Dialog
     'Settings' : 'Setări', // 5.0
     'Language' : 'Limba', // 5.0
-    'Text Display': 'Afișare text', // 5.0
-    'Font Style': 'Stilul fontului', // 5.0
+    'Text Display': 'Afișare Text', // 5.0
+    'Font Style': 'Stilul Fontului', // 5.0
 
     // Result and error messages
     
@@ -226,7 +226,7 @@ module.exports = {
     'results' : 'rezultat(e)',
     
     // Showing results [1] to [30]
-    'Showing Results': 'Se afișează rezultatele',
+    'Showing Results': 'Se Afișează Rezultatele',
     'to' : 'din',
     
     // Your search produced no results in [name of Bible version]
@@ -240,7 +240,7 @@ module.exports = {
     'Please remove it, or use it\'s lower case equivalent.': 'Vă rugăm să îi eliminați sau să-îi utilizați echivalentul în minuscule',
 
     // Your search for [attempted keywords] is invalid...
-    'Your search for': 'Căutarea Dvs. pentru',
+    'Your search for': 'Căutarea dvs. pentru',
     'is invalid, and appears to be a passage reference.': 'este invalidă, și pare să fie o referință sau un pasaj.',
     'is invalid.': 'este invalidă',
 
@@ -273,7 +273,7 @@ module.exports = {
     'Close': 'Închidere', 
 
     // Bible SOS dialog
-    'Bible SOS': 'Ajutor Din Biblie',
+    'Bible SOS': 'Urgență Biblică',
     'Emergency Help from the Bible': 'Ajutor De Urgență din Biblie',
     'Where to go When ...': 'Unde să deschizi Când ...',
     'Afraid': 'Ești Speriat',
@@ -412,7 +412,7 @@ module.exports = {
     'Cancel': 'Anulare',
     'Edit': 'Editați | ×',
     'Delete': 'Șterge',
-    'Clear': 'clar',
+    'Clear': 'Clar',
     'Restore': 'Restabili',
     'Add': 'Adăuga',
     'Okay': 'Bine',

@@ -289,7 +289,7 @@ module.exports = {
     'Close': 'Menutup', 
 
     // Bible SOS dialog
-    'Bible SOS': 'SOS Alkitab',
+    'Bible SOS': 'Darurat Alkitab',
     'Emergency Help from the Bible': 'Bantuan Darurat dari Alkitab',
     'Where to go When ...': 'Ke mana harus pergi Kapan ...',
     'Afraid': 'Takut',

@@ -69,14 +69,14 @@ module.exports = {
     // Context Links
     'Show full chapter': 'Onyesha sura kamili',
     'Chapter': 'Sura',
-    'Show this verse': 'Show this verse',
+    'Show this verse': 'Onyesha aya hii',
     'Show in context': 'Onyesha katika muktadha',
     'Context': 'Muktadha',
     'In Context': 'Katika Muktadha',
 
     'Limit Search To': 'Punguza Utafutaji Kwa',
     'Limit search to': 'Punguza utafutaji kwa', // Watch case!
-    'Entire Bible': 'Biblia nzima',
+    'Entire Bible': 'Biblia Nzima',
     'Passage(s) listed below': 'Vifungu vilivyoorodheshwa hapa chini',
     'Passage(s) listed above': 'Vifungu vilivyoorodheshwa hapo juu',
     
@@ -118,10 +118,10 @@ module.exports = {
     'Search for' : 'Tafuta',
     'Match': 'Mechi',
     'All Words': 'Maneno Yote',
-    'Any Word': 'Neno lolote',
+    'Any Word': 'Neno Lolote',
     'Exact Phrase': 'Neno Halisi',
-    'Only One Word': 'Neno Moja tu',
-    'Two or More Words': 'Maneno mawili au zaidi',
+    'Only One Word': 'Neno Moja Tu',
+    'Two or More Words': 'Maneno Mawili au Zaidi',
     'Words Within 5 Verses': 'Maneno Ndani ya Mistari 5',
     'Words Within Same Chapter': 'Maneno Ndani Ya Sura Moja',
     'Words Within Same Book': 'Maneno Ndani Ya Kitabu Kimoja',
@@ -134,7 +134,7 @@ module.exports = {
     
     // Advanced Search
     'Boolean Search': 'Utafutaji wa Boolean',
-    'Passage Retrieval': 'Urejeshaji wa kifungu',
+    'Passage Retrieval': 'Urejeshaji wa Kifungu',
     'Find words within': 'Tafuta maneno ndani',
     'Proximity Search': 'Utafutaji wa Karibu',
     'Power Search': 'Utafutaji wa Nguvu',
@@ -149,7 +149,7 @@ module.exports = {
     'Bible #': 'Biblia #', // downloads
 
     // Pagination
-    'Next Page' : 'Ukurasa unaofuata',
+    'Next Page' : 'Ukurasa Unaofuata',
     'Previous Page' : 'Ukurasa Uliopita',
     'First Page' : 'Ukurasa wa Kwanza',
     'Last Page': 'Ukurasa wa Mwisho',
@@ -158,15 +158,15 @@ module.exports = {
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif',                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sans-Serif',                 // * Button text, please keep translation short!
+    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif',//check translation                 // * Button text, please keep translation short!
     'Monospace': 'Nafasi moja',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Panua Maandishi',
     'Default Text Size': 'Ukubwa wa Maandishi Chaguomsingi',
     'Shrink Text': 'Punguza Maandishi',
     'Verse Display': 'Maonyesho ya Aya',
     'Paragraph Display': 'Onyesho la Sehemu',// 'Section Display' as apparently Paragraph and Verse translate to same word
-    'Passage Display': 'Onyesho la kifungu', 
+    'Passage Display': 'Onyesho la Kifungu', 
     'Verse as Passage Display': 'Aya kama Onyesho la Kifungu', 
     'EZ Copy': 'Nakala Rahisi',  // 'Easy Copy'
     'Read Display': 'Soma Onyesho',
@@ -214,7 +214,7 @@ module.exports = {
     'Reference - Text': 'Rejea - Maandishi', 
     'Text - Reference': 'Maandishi - Rejea', 
     'Text Only': 'Maandishi Pekee', 
-    'Separate Line': 'Mstari tofauti', 
+    'Separate Line': 'Mstari Tofauti', 
 
     'Multi-verse Passages': 'Vifungu vya Aya nyingi', 
     'Reference - Passage': 'Rejea - Kifungu', 
@@ -231,7 +231,7 @@ module.exports = {
     // Settings Dialog
     'Settings' : 'Mipangilio', 
     'Language' : 'Lugha', 
-    'Text Display': 'Onyesho la maandishi', 
+    'Text Display': 'Onyesho la Maandishi', 
     'Font Style': 'Mtindo wa Fonti', 
 
     // Result and error messages
@@ -289,7 +289,7 @@ module.exports = {
     'Close': 'Funga', 
 
     // Bible SOS dialog
-    'Bible SOS': 'Biblia SOS',
+    'Bible SOS': 'Dharura ya Biblia',
     'Emergency Help from the Bible': 'Msaada wa Dharura kutoka kwa Biblia',
     'Where to go When ...': 'Mahali pa kwenda Wakati ...',
     'Afraid': 'Hofu',
