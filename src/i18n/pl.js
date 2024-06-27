@@ -43,13 +43,13 @@ module.exports = {
     'Whole Words Only': 'Tylko Pełne Słowa',
     'Whole words only': 'Tylko pełne słowa',
     'Whole words': 'Całe słowa',
-    'Exact Case': 'Dokładny przypadek',
-    'Parallel Bible #': 'Biblia równoległa #',
+    'Exact Case': 'Dokładny Przypadek',
+    'Parallel Bible #': 'Biblia Równoległa #',
     'Select a Bible': 'Wybierz Biblię',
     'Add Bible': 'Dodaj Biblię',
     'Remove Bible': 'Usuń Biblię', 
-    'Random Chapter': 'Losowy rozdział',
-    'Random Verse': 'Losowy werset',
+    'Random Chapter': 'Losowy Rozdział',
+    'Random Verse': 'Losowy Werset',
     'Passages': 'Intymny stosunek dwojga ludzi',
     'Passage': 'Przejście',
     'The book of': 'Książka pt',
@@ -72,9 +72,9 @@ module.exports = {
     'Show this verse': 'Pokaż ten werset',
     'Show in context': 'Pokaż w kontekście',
     'Context': 'Kontekst',
-    'In Context': 'W kontekście',
+    'In Context': 'W Kontekście',
 
-    'Limit Search To': 'Zawęź wyszukiwanie do',
+    'Limit Search To': 'Zawęź Wyszukiwanie Do',
     'Limit search to': 'Zawęź wyszukiwanie do', // Watch case!
     'Entire Bible': 'Cała Biblia',
     'Passage(s) listed below': 'Poniżej znajduje się lista fragmentów',
@@ -84,21 +84,21 @@ module.exports = {
     'Old Testament': 'Stary Testament',
     'New Testament': 'Nowy Testament',
     'Law': 'Prawo',
-    'History Books': 'Książki historyczne', // Can translate as 'History'
+    'History Books': 'Książki Historyczne', // Can translate as 'History'
     'History': 'Historia',
-    'Wisdom & Poetry': 'Mądrość i poezja',
+    'Wisdom & Poetry': 'Mądrość i Poezja',
     'Prophets Books': 'Księgi Proroków', // Can translate as 'Prophets'
     'Prophets': 'Prorocy',
-    'Major Prophets': 'Główni prorocy',
-    'Minor Prophets': 'Mali prorocy',
+    'Major Prophets': 'Główni Prorocy',
+    'Minor Prophets': 'Mali Prorocy',
     'Gospels': 'Ewangelie',
     'Epistles': 'Listy',
     'Pauline Epistles': 'Listy Pawła',
-    'General Epistles': 'Listy ogólne',
-    'End Times Prophecy': 'Proroctwo czasów ostatecznych',
+    'General Epistles': 'Listy Ogólne',
+    'End Times Prophecy': 'Proroctwo Czasów Ostatecznych',
     
     // Shortcut Aliases
-    'OT': 'OT',
+    'OT': 'ST',
     'NT': 'NT',
     'Torah': 'Tora',
     'Wisdom': 'Mądrość',
@@ -108,36 +108,36 @@ module.exports = {
     'Doctrine': 'Doktryna',
     'Paul': 'Paweł',
     'General': 'Ogólny',
-    'Last Days': 'Ostatnie dni',
+    'Last Days': 'Ostatnie Dni',
 
-    'Look up Passage(s)': 'Wyszukaj fragmenty',
+    'Look up Passage(s)': 'Wyszukaj Fragmenty',
     'Enter passage(s)' : 'Wprowadź fragment(y)',
     'Enter word(s), phrase(s) or expression(s)' : 'Wpisz słowa), frazy) lub wyrażenia)',
     'Example': 'Przykład',
 
     'Search for' : 'Szukaj',
     'Match': 'Mecz',
-    'All Words': 'Wszystkie słowa',
+    'All Words': 'Wszystkie Słowa',
     'Any Word': 'Dowolne Słowo',
-    'Exact Phrase': 'Dokładna fraza',
+    'Exact Phrase': 'Dokładna Fraza',
     'Only One Word': 'Tylko Jedno Słowo',
-    'Two or More Words': 'Dwa lub więcej słów',
+    'Two or More Words': 'Dwa lub Więcej Słów',
     'Words Within 5 Verses': 'Słowa w 5 wersetach',
     'Words Within Same Chapter': 'Słowa w tym samym rozdziale',
     'Words Within Same Book': 'Słowa w tej samej książce',
-    'Boolean Expression': 'Wyrażenie logiczne',
-    'Regular Expression': 'Wyrażenie regularne',
+    'Boolean Expression': 'Wyrażenie Logiczne',
+    'Regular Expression': 'Wyrażenie Regularne',
     'Select one ...' : 'Wybierz jeden ...',
 
     'Enter search keyword(s) or passage reference(s)': 'Wprowadź słowa kluczowe lub odniesienia do fragmentów',
     'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'Wskazówka: Wprowadzenie zarówno fragmentu, jak i zapytania spowoduje ograniczenie wyszukiwania do określonego fragmentu(ów).',
     
     // Advanced Search
-    'Boolean Search': 'Wyszukiwanie logiczne',
-    'Passage Retrieval': 'Odzyskiwanie przejścia',
+    'Boolean Search': 'Wyszukiwanie Logiczne',
+    'Passage Retrieval': 'Odzyskiwanie Przejścia',
     'Find words within': 'Znajdź w sobie słowa',
-    'Proximity Search': 'Wyszukiwanie zbliżeniowe',
-    'Power Search': 'Wyszukiwanie mocy',
+    'Proximity Search': 'Wyszukiwanie Zbliżeniowe',
+    'Power Search': 'Wyszukiwanie Mocy',
 
     // <b> ... </b> is HTML for bold text, please ensure that your translation maintains the bold
     '<b>All</b> of the words' : '<b>Wszystkie</b> słowa',
@@ -149,10 +149,10 @@ module.exports = {
     'Bible #': 'Biblia #', // downloads
 
     // Pagination
-    'Next Page' : 'Następna strona',
-    'Previous Page' : 'Poprzednia strona',
-    'First Page' : 'Pierwsza strona',
-    'Last Page': 'Ostatnia strona',
+    'Next Page' : 'Następna Strona',
+    'Previous Page' : 'Poprzednia Strona',
+    'First Page' : 'Pierwsza Strona',
+    'Last Page': 'Ostatnia Strona',
     'Page': 'Strona',
     
     // Formatting and dialog buttons
@@ -161,26 +161,26 @@ module.exports = {
     'Serif' : 'Szeryf',                     // * Button text, please keep translation short!
     'Sans-Serif': 'Bezszeryfowy',                 // * Button text, please keep translation short!
     'Monospace': 'Monoprzestrzeń',                  // * Button text, please keep translation short!
-    'Enlarge Text': 'Powiększ tekst',
-    'Default Text Size': 'Domyślny rozmiar tekstu',
-    'Shrink Text': 'Zmniejsz tekst',
-    'Verse Display': 'Wyświetlanie wersetów',
-    'Paragraph Display': 'Wyświetlanie akapitu',
-    'Passage Display': 'Wyświetlacz przejścia', 
+    'Enlarge Text': 'Powiększ Tekst',
+    'Default Text Size': 'Domyślny Rozmiar Tekstu',
+    'Shrink Text': 'Zmniejsz Tekst',
+    'Verse Display': 'Wyświetlanie Wersetów',
+    'Paragraph Display': 'Wyświetlanie Akapitu',
+    'Passage Display': 'Wyświetlacz Przejścia', 
     'Verse as Passage Display': 'Werset jako przedstawienie fragmentu', 
-    'EZ Copy': 'Łatwa kopia',  // 'Easy Copy'
-    'Read Display': 'Przeczytaj wyświetlacz',
+    'EZ Copy': 'Łatwa Kopia',  // 'Easy Copy'
+    'Read Display': 'Przeczytaj Wyświetlacz',
     'Italics': 'Kursywa',                    // * Button text, please keep translation short!
-    'Disable Italization of Added Words' : 'Wyłącz italizację dodanych słów',
-    'Enable Italization of Added Words': 'Włącz italizację dodanych słów',
-    'Disable Strong\'s Numbers': 'Wyłącz silne liczby',
-    'Enable Strong\'s Numbers': 'Włącz silne liczby',
-    'Red Letter': 'Czerwony list',
-    'Disable Red Letter': 'Wyłącz czerwoną literę',
-    'Enable Red Letter': 'Włącz czerwoną literę',
+    'Disable Italization of Added Words' : 'Wyłącz Italizację Dodanych Słów',
+    'Enable Italization of Added Words': 'Włącz Italizację Dodanych Słów',
+    'Disable Strong\'s Numbers': 'Wyłącz Silne Liczby',
+    'Enable Strong\'s Numbers': 'Włącz Silne Liczby',
+    'Red Letter': 'Czerwony List',
+    'Disable Red Letter': 'Wyłącz Czerwoną Literę',
+    'Enable Red Letter': 'Włącz Czerwoną Literę',
     'Highlight': 'Atrakcja',                   // * Button text, please keep translation short!
-    'Disable Highlighting of Keywords': 'Wyłącz wyróżnianie słów kluczowych',
-    'Enable Highlighting of Keywords': 'Włącz wyróżnianie słów kluczowych',
+    'Disable Highlighting of Keywords': 'Wyłącz Wyróżnianie słów Kluczowych',
+    'Enable Highlighting of Keywords': 'Włącz Wyróżnianie słów Kluczowych',
     'Print': 'Wydrukować',
     'Printer Friendly': 'Przyjazny dla drukarki',
     'Help': 'Pomoc',
@@ -189,7 +189,7 @@ module.exports = {
 
     // Descriptions of special formatting features
     'Formatting': 'Formatowanie',  
-    'Supported Bibles Only': 'Tylko obsługiwane Biblie', 
+    'Supported Bibles Only': 'Tylko Obsługiwane Biblie', 
     
     // Translate the right-side strings here
     'strongs_numbers_description': 'Liczby zgodności Stronga wskazują podstawowe słowa hebrajskie lub greckie.',  
@@ -199,40 +199,40 @@ module.exports = {
 
 
     // Verse Cherry-picking
-    'Select All': 'Zaznacz wszystko', 
+    'Select All': 'Zaznacz Wszystko', 
     'Select None': 'Wybierz opcję Brak', 
     'Select': 'Wybierać', 
     'Unselect': 'Odznacz', 
     
     // Copy format options
-    'Copy Format': 'Kopiuj format', 
-    'Word Processor': 'Edytor tekstu', 
+    'Copy Format': 'Kopiuj Format', 
+    'Word Processor': 'Edytor Tekstu', 
     'Outline' : 'Zarys', 
     'Custom': 'Zwyczaj', 
 
-    'Single Verses': 'Pojedyncze wersety', 
-    'Reference - Text': 'Odniesienie - tekst', 
-    'Text - Reference': 'Tekst - odniesienie', 
-    'Text Only': 'Tylko tekst', 
-    'Separate Line': 'Oddzielna linia', 
+    'Single Verses': 'Pojedyncze Wersety', 
+    'Reference - Text': 'Odniesienie - Tekst', 
+    'Text - Reference': 'Tekst - Odniesienie', 
+    'Text Only': 'Tylko Tekst', 
+    'Separate Line': 'Oddzielna Linia', 
 
-    'Multi-verse Passages': 'Fragmenty wielowierszowe', 
+    'Multi-verse Passages': 'Fragmenty Wielowierszowe', 
     'Reference - Passage': 'Odniesienie - Przejście', 
-    'Passage - Reference': 'Przejście - odniesienie', 
-    'Passage Only': 'Tylko przejście', 
-    'Show Verse Number': 'Pokaż numer wersetu', 
+    'Passage - Reference': 'Przejście - Odniesienie', 
+    'Passage Only': 'Tylko Przejście', 
+    'Show Verse Number': 'Pokaż Numer Wersetu', 
 
     'Other': 'Inny', 
     'Include Testament': 'Dołącz Testament'
     'Testament': 'Testament'
-    'Abbreviate Books': 'Skróć książki', 
-    'Omit Extra Line Breaks': 'Pomiń dodatkowe podziały wierszy', 
+    'Abbreviate Books': 'Skróć Książki', 
+    'Omit Extra Line Breaks': 'Pomiń Dodatkowe Podziały Wierszy', 
 
     // Settings Dialog
     'Settings' : 'Ustawienia', 
     'Language' : 'Język', 
-    'Text Display': 'Wyświetlanie tekstu', 
-    'Font Style': 'Styl czcionki', 
+    'Text Display': 'Wyświetlanie Tekstu', 
+    'Font Style': 'Styl Czcionki', 
 
     // Result and error messages
     
@@ -242,7 +242,7 @@ module.exports = {
     'results' : 'wyniki',
     
     // Showing results [1] to [30]
-    'Showing Results': 'Wyświetlanie wyników',
+    'Showing Results': 'Wyświetlanie Wyników',
     'to' : 'do',
     
     // Your search produced no results in [name of Bible version]
@@ -289,14 +289,14 @@ module.exports = {
     'Close': 'Zamknąć', 
 
     // Bible SOS dialog
-    'Bible SOS': 'Biblijne SOS',
+    'Bible SOS': 'Biblijny Nagły Wypadek',
     'Emergency Help from the Bible': 'Pomoc w nagłych wypadkach z Biblii',
     'Where to go When ...': 'Gdzie jechać Kiedy...',
     'Afraid': 'Przestraszony',
     'Anxious': 'Niespokojny',
     'Backsliding': 'Cofanie się',
     'Bereaved': 'Pogrążony w smutku',
-    'Bitter or Critical': 'Gorzki lub krytyczny',
+    'Bitter or Critical': 'Gorzki lub Krytyczny',
     'Conscious of Sin': 'Świadomy grzechu',
     'Defeated': 'Pokonany',
     'Depressed': 'Przygnębiony', 
@@ -304,14 +304,14 @@ module.exports = {
     'Discouraged': 'Zniechęcony',
     'Doubting': 'Wątpienie',
     'Facing a Crisis': 'W obliczu kryzysu',
-    'Faith Fails': 'Wiara zawodzi',
+    'Faith Fails': 'Wiara Zawodzi',
     'Friends Fail': 'Przyjaciele ponoszą porażkę', 
     'Hopeless': 'Beznadziejny',
-    'Leaving Home': 'Opuszczać dom',
+    'Leaving Home': 'Opuszczać Dom',
     'Lonely': 'Samotny',
-    'Needing God\'s protection': 'Potrzebujący Bożej ochrony',
-    'Needing Guidance': 'Potrzebuje wskazówek',
-    'Needing Peace': 'Potrzebujący pokoju',
+    'Needing God\'s protection': 'Potrzebujący Bożej Ochrony',
+    'Needing Guidance': 'Potrzebuje Wskazówek',
+    'Needing Peace': 'Potrzebujący Pokoju',
     'Needing Rules for Living': 'Potrzebne zasady życia', 
     'Overcome': 'Pokonać',
     'Prayerful': 'Modlitewny',
@@ -331,14 +331,14 @@ module.exports = {
     'Bible Start Guide': 'Przewodnik po Biblii',
     'New to the Bible?': 'Nowy w Biblii?',
     'Not Sure Where to Begin?' : 'Nie wiesz od czego zacząć?',
-    'Life and Teachings of Jesus Christ': 'Życie i nauczanie Jezusa Chrystusa',
-    'Basic Christian Beliefs': 'Podstawowe wierzenia chrześcijańskie',
+    'Life and Teachings of Jesus Christ': 'Życie i Nauczanie Jezusa Chrystusa',
+    'Basic Christian Beliefs': 'Podstawowe Wierzenia Chrześcijańskie',
     'Creation and the Fall of Man': 'Stworzenie i upadek człowieka',
     'Birth of Christ / Life of Christ': 'Narodziny Chrystusa / Życie Chrystusa',
-    'Imperfection in Churches and Believers': 'Niedoskonałość w Kościołach i wierzących',
+    'Imperfection in Churches and Believers': 'Niedoskonałość w Kościołach i Wierzących',
     'Early human history, especially that of Israel': 'Wczesna historia ludzkości, zwłaszcza Izraela',
     'The relationship between the Old Testament Law and the Church': 'Relacja między Prawem Starego Testamentu a Kościołem',
-    'History and Law': 'Historia i prawo',
+    'History and Law': 'Historia i Prawo',
     'Salvation by faith, not works': 'Zbawienie przez wiarę, a nie uczynki',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Życie i doświadczenie chrześcijańskie. &nbsp;Apostoł Paweł zrezygnował z wiarygodności wynikającej ze Starego Prawa, aby naśladować Chrystusa',
     'Christ the suffering servant': 'Chrystus, cierpiący sługa',
@@ -354,14 +354,14 @@ module.exports = {
     'Rendering is Complete': 'Renderowanie zostało ukończone',
     'Your download should begin shortly': 'Pobieranie powinno się wkrótce zacząć',
     'If not, please click on the below link': 'Jeśli nie, kliknij poniższy link',
-    'Manual Download': 'Pobieranie ręczne',
+    'Manual Download': 'Pobieranie Ręczne',
     'Please select at least one Bible': 'Proszę wybrać przynajmniej jedną Biblię',
     'Please select a format': 'Wybierz format',
     'Are you sure you want to exit?  This will end the current download.': 'Czy jesteś pewny że chcesz wyjść?   To zakończy bieżące pobieranie.',
-    'Plain Text' : 'Zwykły tekst',
+    'Plain Text' : 'Zwykły Tekst',
     'Machine-readable Plain Text' : 'Zwykły tekst do odczytu maszynowego',
     'Spreadsheet' : 'Arkusz',
-    'Databases': 'Databases',
+    'Databases': 'Bazy danych',
 
     'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF - Tekst kompaktowy, list, słowa Chrystusa w kolorze czerwonym',
     'PDF - Compact Text, A4, Words of Christ in Red': 'PDF - Tekst kompaktowy, A4, Słowa Chrystusa w kolorze czerwonym',
@@ -370,20 +370,20 @@ module.exports = {
 
     // Copy / Share / Link dialogs
     'Copy': 'Kopiuj',
-    'Copy Link': 'Skopiuj link',
-    'Copy with Text': 'Kopiuj z tekstem',
-    'Share Link': 'Udostępnij link',
+    'Copy Link': 'Skopiuj Link',
+    'Copy with Text': 'Kopiuj z Tekstem',
+    'Share Link': 'Udostępnij Link',
     'Share' : 'Udział',
     'Link' : 'Połączyć', 
     'Copied to clipboard': 'Skopiowane do schowka', 
     'Failed to copy': 'Nie udało się skopiować', 
 
     // Quick Start Help Dialog
-    'Quick Start Guide': 'Skrócona instrukcja obsługi',
-    'User\'s Manual': 'Instrukcja obsługi',
+    'Quick Start Guide': 'Skrócona Instrukcja Obsługi',
+    'User\'s Manual': 'Instrukcja Obsługi',
     'Wildcard': 'Dzika karta',
-    'Basic Searches' : 'Podstawowe wyszukiwania',
-    'Advanced Searches using Boolean': 'Zaawansowane wyszukiwanie przy użyciu wartości logicznych',
+    'Basic Searches' : 'Podstawowe Wyszukiwania',
+    'Advanced Searches using Boolean': 'Zaawansowane Wyszukiwanie przy użyciu Wartości logicznych',
     'Select' : 'Wybierać',
     'Operators': 'Operatorzy',
     'Operator': 'Operator',
@@ -398,7 +398,7 @@ module.exports = {
     'Matches words in the same book, and within N verses of each other': 'Dopasowuje słowa z tej samej książki i w odległości N wersetów od siebie',
     'Matches words in the same chapter, and within N verses of each other': 'Dopasowuje słowa z tego samego rozdziału i znajdujące się w odległości N wersetów od siebie',
     'For details, please see the User\'s Manual': 'Aby uzyskać szczegółowe informacje, zapoznaj się z instrukcją obsługi',
-    'Special Proximity Operators': 'Specjalne operatory zbliżeniowe',
+    'Special Proximity Operators': 'Specjalne Operatory Zbliżeniowe',
     'Matches unlimited characters': 'Dopasowuje nieograniczoną liczbę znaków',
     'searched for': 'szukałem',
 
@@ -452,7 +452,7 @@ module.exports = {
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Ograniczanie wyszukiwań',
     'Passages': 'Intymny stosunek dwojga ludzi',
-    'Alias': 'Alias',
+    'Alias': 'Alias',//check translation
     'You cannot search for these common words': 'Nie możesz wyszukiwać tych popularnych słów',
 
 

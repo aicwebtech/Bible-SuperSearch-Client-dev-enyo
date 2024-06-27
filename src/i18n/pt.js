@@ -28,7 +28,7 @@ module.exports = {
     'Whole Words Only': 'Apenas Palavras Inteiras',
     'Whole words only': 'Apenas palavras inteiras',
     'Whole words': 'Palavras inteiras',
-    'Exact Case': 'Caso exato',
+    'Exact Case': 'Caso Exato',
     'Parallel Bible #': 'Bíblia Paralela #',
     'Select a Bible': 'Selecione uma Bíblia',
     'Add Bible': 'Adicionar Bíblia',
@@ -43,12 +43,12 @@ module.exports = {
     'in': 'em',
     'verse': 'verse',
     'verses': 'versos',
-    'A Chapter': 'Um capítulo',
+    'A Chapter': 'Um Capítulo',
     'Chapters': 'Capítulos',
     'Find verses containing': 'Encontre versículos contendo',
     'Restrict search to': 'Restringir a pesquisa a', 
     'Word Search': 'Procura de palavras',
-    'Clear Form': 'Forma limpa', // 4.5
+    'Clear Form': 'Forma Limpa', // 4.5
     'Select Book and Chapter:' : 'Selecione Livro e Capítulo', // 5.2
 
     // Context Links
@@ -56,12 +56,12 @@ module.exports = {
     'Chapter': 'Capítulo',
     'Show this verse': 'Mostre este versículo',
     'Show in context': 'Mostrar no contexto',
-    'Context': 'Context',
-    'In Context': 'No contexto',
+    'Context': 'Contexto',
+    'In Context': 'No Contexto',
 
     'Limit Search To': 'Limitar a pesquisa a',
     'Limit search to': 'Limitar a pesquisa a', // Watch case!
-    'Entire Bible': 'Bíblia inteira',
+    'Entire Bible': 'Bíblia Inteira',
     'Passage(s) listed below': 'Passagens listadas abaixo',
     'Passage(s) listed above': 'Passagens listadas acima',
     
@@ -95,26 +95,26 @@ module.exports = {
     'Doctrine': 'Doutrina',
     'Paul': 'Paulo',
     'General': 'Em geral',
-    'Last Days': 'Últimos dias',
+    'Last Days': 'Últimos Dias',
     // End 5.5 part 1
 
-    'Look up Passage(s)': 'Procure passagem(s)',
-    'Enter passage(s)' : 'Insira a(s) passagem(s)',
+    'Look up Passage(s)': 'Procure Passagem(s)',
+    'Enter passage(s)' : 'Insira a(s) Passagem(s)',
     'Enter word(s), phrase(s) or expression(s)' : 'Insira palavra(s), frase(s) ou expressão(ões)',
-    'Example': 'Example',
+    'Example': 'Exemplo',
 
     'Search for' : 'Procurar',
     'Match': 'Corresponder',
-    'All Words': 'Todas as palavras',
-    'Any Word': 'Qualquer palavra',
-    'Exact Phrase': 'Frase exata',
-    'Only One Word': 'Apenas uma palavra',
-    'Two or More Words': 'Duas ou mais palavras',
-    'Words Within 5 Verses': 'Palavras em 5 versículos',
-    'Words Within Same Chapter': 'Palavras dentro do mesmo capítulo',
-    'Words Within Same Book': 'Palavras dentro do mesmo livro',
+    'All Words': 'Todas as Palavras',
+    'Any Word': 'Qualquer Palavra',
+    'Exact Phrase': 'Frase Exata',
+    'Only One Word': 'Apenas Uma Palavra',
+    'Two or More Words': 'Duas ou Mais Palavras',
+    'Words Within 5 Verses': 'Palavras Em 5 Versículos',
+    'Words Within Same Chapter': 'Palavras Dentro do Mesmo Capítulo',
+    'Words Within Same Book': 'Palavras Dentro do Mesmo Livro',
     'Boolean Expression': 'Expressão Booleana',
-    'Regular Expression': 'Expressão regular',
+    'Regular Expression': 'Expressão Regular',
     'Select one ...' : 'Selecione um ...',
 
     'Enter search keyword(s) or passage reference(s)': 'Insira palavras-chave de pesquisa ou referências de passagens',
@@ -122,10 +122,10 @@ module.exports = {
     
     // Advanced Search
     'Boolean Search': 'Pesquisa Booleana',
-    'Passage Retrieval': 'Recuperação de passagem',
+    'Passage Retrieval': 'Recuperação de Passagem',
     'Find words within': 'Encontre palavras dentro',
-    'Proximity Search': 'Pesquisa por proximidade',
-    'Power Search': 'Pesquisa poderosa',
+    'Proximity Search': 'Pesquisa por Proximidade',
+    'Power Search': 'Pesquisa Poderosa',
 
     // <b> ... </b> is HTML for bold text, please ensure that your translation maintains the bold
     '<b>All</b> of the words' : '<b>Todas</b> as palavras',
@@ -137,27 +137,27 @@ module.exports = {
     'Bible #': '', // downloads
 
     // Pagination
-    'Next Page' : 'Próxima página',
-    'Previous Page' : 'Página anterior',
-    'First Page' : 'Primeira página',
-    'Last Page': 'Last Page',
+    'Next Page' : 'Próxima Página',
+    'Previous Page' : 'Página Anterior',
+    'First Page' : 'Primeira Página',
+    'Last Page': 'Última Página',
     'Page': 'Página',
     
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif',                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sem serifa',                 // * Button text, please keep translation short!
+    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
+    'Sans-Serif': 'Sem Serifa',                 // * Button text, please keep translation short!
     'Monospace': 'Monoespaçado',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Ampliar Texto',
-    'Default Text Size': 'Tamanho de texto padrão',
-    'Shrink Text': 'Encolher texto',
-    'Verse Display': 'Exibição de versículos',
-    'Paragraph Display': 'Exibição de parágrafo',
-    'Passage Display': 'Exibição de passagem', // 4.5
-    'Verse as Passage Display': 'Versículo como exibição de passagem', // 5.3
-    'EZ Copy': 'Eu copiei',  // 'Easy Copy'
-    'Read Display': 'Ler exibição',
+    'Default Text Size': 'Tamanho de Texto Padrão',
+    'Shrink Text': 'Encolher Texto',
+    'Verse Display': 'Exibição de Versículos',
+    'Paragraph Display': 'Exibição de Parágrafo',
+    'Passage Display': 'Exibição de Passagem', // 4.5
+    'Verse as Passage Display': 'Versículo como Exibição de Passagem', // 5.3
+    'EZ Copy': 'Cópia Fácil',  // 'Easy Copy'
+    'Read Display': 'Ler Exibição',
     'Italics': 'Itálico',                    // * Button text, please keep translation short!
     'Disable Italization of Added Words' : 'Desativar itálico de palavras adicionadas',
     'Enable Italization of Added Words': 'Habilitar itálico de palavras adicionadas',
@@ -186,40 +186,40 @@ module.exports = {
 
 
     // Verse Cherry-picking
-    'Select All': 'Selecionar tudo', // 5.0
-    'Select None': 'Selecione nenhum', // 5.0
+    'Select All': 'Selecionar Tudo', // 5.0
+    'Select None': 'Selecione Nenhum', // 5.0
     'Select': 'Selecione', // 5.0
     'Unselect': 'Desmarcar', // 5.0
     
     // Copy format options
-    'Copy Format': 'Formato de cópia', // 5.0
-    'Word Processor': 'Processador de palavras', // 5.0
+    'Copy Format': 'Formato de Cópia', // 5.0
+    'Word Processor': 'Processador de Palavras', // 5.0
     'Outline' : 'Contorno', // 5.0
     'Custom': 'Personalizado', // 5.0
 
     'Single Verses': 'Versos Únicos', // 5.0
     'Reference - Text': 'Referência - Texto', // 5.0
     'Text - Reference': 'Texto - Referência', // 5.0
-    'Text Only': 'Somente texto', // 5.0
+    'Text Only': 'Somente Texto', // 5.0
     'Separate Line': 'Linha Separada', // 5.0
 
-    'Multi-verse Passages': 'Passagens multiversos', // 5.0
+    'Multi-verse Passages': 'Passagens Multiversos', // 5.0
     'Reference - Passage': 'Referência - Passagem', // 5.0
     'Passage - Reference': 'Passagem - Referência', // 5.0
     'Passage Only': 'Somente Passagem', // 5.0
-    'Show Verse Number': 'Mostrar número do versículo', // 5.0
+    'Show Verse Number': 'Mostrar Número do Versículo', // 5.0
 
     'Other': 'Outro', // 5.0
     'Include Testament': 'Incluir Testamento'
     'Testament': 'Testamento'
-    'Abbreviate Books': 'Livros abreviados', // 5.0
-    'Omit Extra Line Breaks': 'Omitir quebras de linha extras', // 5.0
+    'Abbreviate Books': 'Livros Abreviados', // 5.0
+    'Omit Extra Line Breaks': 'Omitir Quebras de Linha Extras', // 5.0
 
     // Settings Dialog
     'Settings' : 'Configurações', // 5.0
     'Language' : 'Language', // 5.0
-    'Text Display': 'Exibição de texto', // 5.0
-    'Font Style': 'Estilo de fonte', // 5.0
+    'Text Display': 'Exibição de Texto', // 5.0
+    'Font Style': 'Estilo de Fonte', // 5.0
 
     // Result and error messages
     
@@ -229,7 +229,7 @@ module.exports = {
     'results' : 'resultados',
     
     // Showing results [1] to [30]
-    'Showing Results': 'Mostrando resultados',
+    'Showing Results': 'Mostrando Resultados',
     'to' : 'para',
     
     // Your search produced no results in [name of Bible version]
@@ -251,7 +251,7 @@ module.exports = {
     'Your search was limited to': 'Sua pesquisa foi limitada a',
     'Please refine your search if necessary': 'Por favor, refine sua pesquisa se necessário',
 
-    'This Bible is in the Public Domain.': 'Esta Bíblia está em domínio público.',
+    'This Bible is in the Public Domain.': 'Esta Bíblia está em Domínio Público.',
     'This Bible is provided for research purposes only.': 'Esta Bíblia é fornecida apenas para fins de pesquisa.',
     'An unknown error has occurred.' : 'Um erro desconhecido ocorreu.',
     'An error has occurred, please try again later.': 'Ocorreu um erro, tente novamente mais tarde.',
@@ -276,7 +276,7 @@ module.exports = {
     'Close': 'Fechar', 
 
     // Bible SOS dialog
-    'Bible SOS': 'Bíblia SOS',
+    'Bible SOS': 'Emergência Bíblica',
     'Emergency Help from the Bible': 'Ajuda de emergência da Bíblia',
     'Where to go When ...': 'Para onde ir Quando...',
     'Afraid': 'Com medo',
@@ -287,19 +287,19 @@ module.exports = {
     'Conscious of Sin': 'Consciente do Pecado',
     'Defeated': 'Derrotado',
     'Depressed': 'Deprimido', 
-    'Disaster Threatens': 'Ameaça de desastre',
+    'Disaster Threatens': 'Ameaça de Desastre',
     'Discouraged': 'Desanimado',
     'Doubting': 'Duvidando',
-    'Facing a Crisis': 'Enfrentando uma crise',
-    'Faith Fails': 'A fé falha',
-    'Friends Fail': 'Amigos falham', 
+    'Facing a Crisis': 'Enfrentando uma Crise',
+    'Faith Fails': 'A fé Falha',
+    'Friends Fail': 'Amigos Falham', 
     'Hopeless': 'Desesperado',
     'Leaving Home': 'Deixando o lar',
     'Lonely': 'Sozinho',
-    'Needing God\'s protection': 'Precisando da proteção de Deus',
-    'Needing Guidance': 'Needing Guidance',
+    'Needing God\'s protection': 'Precisando da Proteção de Deus',
+    'Needing Guidance': 'Needing Guidance',//check translation
     'Needing Peace': 'Precisando de paz',
-    'Needing Rules for Living': 'Precisando de regras para viver', 
+    'Needing Rules for Living': 'Precisando de Regras Para Viver', 
     'Overcome': 'Superar',
     'Prayerful': 'Em oração',
     'Protected': 'Protegido',
@@ -308,20 +308,20 @@ module.exports = {
     'Tempted': 'Tentado', 
     'Thankful': 'Grato',
     'Traveling': 'Viajando',
-    'Trouble, In': 'Problema, em',
+    'Trouble, In': 'Problema, Em',
     'Troubled': 'Perturbado',
     'Weary': 'Cansado',
     'Worried': 'Preocupado',
 
     // Bible Start dialog
     'Start': 'Começar',
-    'Bible Start Guide': 'Guia de início da Bíblia',
-    'New to the Bible?': 'New to the Bible?',
+    'Bible Start Guide': 'Guia de Início da Bíblia',
+    'New to the Bible?': 'New to the Bible?',//check translation
     'Not Sure Where to Begin?' : 'Não sabe por onde começar?',
     'Life and Teachings of Jesus Christ': 'Vida e Ensinamentos de Jesus Cristo',
     'Basic Christian Beliefs': 'Crenças Cristãs Básicas',
     'Creation and the Fall of Man': 'Criação e a Queda do Homem',
-    'Birth of Christ / Life of Christ': 'Birth of Christ / Life of Christ',
+    'Birth of Christ / Life of Christ': 'Nascimento de Cristo / Vida de Cristo',
     'Imperfection in Churches and Believers': 'Imperfeição nas Igrejas e nos Crentes',
     'Early human history, especially that of Israel': 'História humana primitiva, especialmente o de Israel',
     'The relationship between the Old Testament Law and the Church': 'A relação entre a Lei do Antigo Testamento e a Igreja',
@@ -332,20 +332,20 @@ module.exports = {
     'Christâ€™s crucifixion foretold': 'A crucificação de Cristo predita',
 
     // Bible downloads dialog
-    'Download': 'Download',
+    'Download': 'Download',//check translation
     'Bible Downloads': 'Downloads da Bíblia',
     'Select Bible(s)' : 'Selecione Bíblia(s)',
     'Select a Format': 'Selecione um formato',
     'Rendering': 'Renderização',
     'Rendering Bibles, this may take some time': 'Renderizando Bíblias, isso pode levar algum tempo',
-    'Rendering is Complete': 'A renderização está concluída',
+    'Rendering is Complete': 'A Renderização está Concluída',
     'Your download should begin shortly': 'Seu download deve começar em breve',
     'If not, please click on the below link': 'Caso contrário, clique no link abaixo',
-    'Manual Download': 'Download manual',
+    'Manual Download': 'Download Manual',//check translation
     'Please select at least one Bible': 'Selecione pelo menos uma Bíblia',
     'Please select a format': 'Selecione um formato',
     'Are you sure you want to exit?  This will end the current download.': 'Você tem certeza que quer sair? Isso encerrará o download atual.',
-    'Plain Text' : 'Texto simples',
+    'Plain Text' : 'Texto Simples',
     'Machine-readable Plain Text' : 'Texto simples legível por máquina',
     'Spreadsheet' : 'Planilha',
     'Databases': 'Bancos de dados',
@@ -356,12 +356,12 @@ module.exports = {
     'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF - Texto Compacto, A4, Palavras de Cristo Sublinhadas',
 
     // Copy / Share / Link dialogs
-    'Copy': 'cópia de',
-    'Copy Link': 'Link de cópia',
-    'Copy with Text': 'Copiar com texto',
-    'Share Link': 'Compartilhar link',
+    'Copy': 'Cópia de',
+    'Copy Link': 'Link de Cópia',
+    'Copy with Text': 'Copiar com Texto',
+    'Share Link': 'Compartilhar Link',
     'Share' : 'Compartilhar',
-    'Link' : 'Link', // 4.5
+    'Link' : 'Link',//check translation // 4.5
     'Copied to clipboard': 'Copiado para a área de transferência', // 5.2.3
     'Failed to copy': 'Falha ao copiar', // 5.2.3
 
@@ -370,10 +370,10 @@ module.exports = {
     'User\'s Manual': 'Manual do usuário',
     'Wildcard': 'Curinga',
     'Basic Searches' : 'Pesquisas básicas',
-    'Advanced Searches using Boolean': 'Pesquisas avançadas usando booleano',
+    'Advanced Searches using Boolean': 'Pesquisas Avançadas usando Booleano',
     'Select' : 'Selecione',
     'Operators': 'Operadores',
-    'Operator': 'Operator',
+    'Operator': 'Operador',
     'Aliases': 'Apelido',
     'Description': 'Descrição',
     'Match both': 'Combine ambos',
@@ -438,9 +438,9 @@ module.exports = {
     'This bookmark name already exists.': 'Este nome de marcador já existe.',
 
     // Quick start dialog: Limiting searches
-    'Limiting Searches': 'Limitando pesquisas',
+    'Limiting Searches': 'Limitando Pesquisas',
     'Passages': 'Passagens',
-    'Alias': 'Alias',
+    'Alias': 'Alias',//check translation
     'You cannot search for these common words': 'Você não pode pesquisar essas palavras comuns',
     // End 5.5 part 2
 

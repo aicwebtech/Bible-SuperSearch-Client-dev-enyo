@@ -30,7 +30,7 @@ module.exports = {
     // * Please maintain capitalization and punctuation, if possible.
     // * Any ' (single quote) in the translation MUST be preceded by a \ (backslash).
 
-    'Bible SuperSearch': 'Raamatun superhaku',
+    'Bible SuperSearch': 'Raamatun Superhaku',
     'Loading, please wait': 'Ladataan, odota',
 
     // Search Forms
@@ -38,7 +38,7 @@ module.exports = {
     'Search': 'Hae',
     'Search the Bible': 'Etsi Raamatusta',
     'Go': 'Mennä',
-    'Bible Search': 'Raamatun haku',
+    'Bible Search': 'Raamatun Haku',
     'Bible': 'Raamattu',
     'Whole Words Only': 'Vain Konaiset Sanat',
     'Whole words only': 'Vain kokonaisia sanoja',
@@ -83,377 +83,377 @@ module.exports = {
     // Shortcuts
     'Old Testament': 'Vanha Testamentti',
     'New Testament': 'Uusi Testamentti',
-    'Law': '',
-    'History Books': '', // Can translate as 'History'
-    'History': '',
-    'Wisdom & Poetry': '',
-    'Prophets Books': '', // Can translate as 'Prophets'
-    'Prophets': '',
-    'Major Prophets': '',
-    'Minor Prophets': '',
-    'Gospels': '',
-    'Epistles': '',
-    'Pauline Epistles': '',
-    'General Epistles': '',
-    'End Times Prophecy': '',
+    'Law': 'Laki',
+    'History Books': 'Historian Kirjat', // Can translate as 'History'
+    'History': 'Historia',
+    'Wisdom & Poetry': 'Viisaus ja Runous',
+    'Prophets Books': 'Profeetat Kirjat', // Can translate as 'Prophets'
+    'Prophets': 'Profeetat',
+    'Major Prophets': 'Suuret Profeetat',
+    'Minor Prophets': 'Pienet Profeetat',
+    'Gospels': 'Evankeliumit',
+    'Epistles': 'Kirjeitä',
+    'Pauline Epistles': 'Paavalin Kirjeet',
+    'General Epistles': 'Yleiset Kirjeet',
+    'End Times Prophecy': 'Lopun Aikojen Profetia',
     
     // Shortcut Aliases
     'OT': 'VT',
     'NT': 'UT',
-    'Torah': '',
-    'Wisdom': '',
-    'Major': '',
-    'Minor': '',
-    'Passion': '',
-    'Doctrine': '',
-    'Paul': '',
-    'General': '',
-    'Last Days': '',
+    'Torah': 'Toora',
+    'Wisdom': 'Viisaus',
+    'Major': 'Suuri',
+    'Minor': 'Pieni',
+    'Passion': 'Intohimo',
+    'Doctrine': 'Oppi',
+    'Paul': 'Paul',
+    'General': 'Kenraali',
+    'Last Days': 'Viimeiset Päivät',
 
-    'Look up Passage(s)': '',
-    'Enter passage(s)' : '',
-    'Enter word(s), phrase(s) or expression(s)' : '',
-    'Example': '',
+    'Look up Passage(s)': 'Etsi Kohdat',
+    'Enter passage(s)' : 'Anna Kohdat',
+    'Enter word(s), phrase(s) or expression(s)' : 'Kirjoita sanoja), lauseita) tai ilmaisuja)',
+    'Example': 'Esimerkki',
 
-    'Search for' : '',
-    'Match': '',
-    'All Words': '',
-    'Any Word': '',
-    'Exact Phrase': '',
-    'Only One Word': '',
-    'Two or More Words': '',
-    'Words Within 5 Verses': '',
-    'Words Within Same Chapter': '',
-    'Words Within Same Book': '',
-    'Boolean Expression': '',
-    'Regular Expression': '',
-    'Select one ...' : '',
+    'Search for' : 'Etsiä',
+    'Match': 'Ottelu',
+    'All Words': 'Kaikki Sanat',
+    'Any Word': 'Mikä Tahansa Sana',
+    'Exact Phrase': 'Tarkka lause',
+    'Only One Word': 'Vain Yksi Sana',
+    'Two or More Words': 'Kaksi tai Useampi Sana',
+    'Words Within 5 Verses': 'Sanat 5 Säkeessä',
+    'Words Within Same Chapter': 'Sanat Samassa Luvussa',
+    'Words Within Same Book': 'Sanat Samassa Kirjassa',
+    'Boolean Expression': 'Boolen Lauseke',
+    'Regular Expression': 'Tavallinen Ilme',
+    'Select one ...' : 'Valitse yksi ...',
 
-    'Enter search keyword(s) or passage reference(s)': '',
-    'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': '',
+    'Enter search keyword(s) or passage reference(s)': 'Syötä hakusana(t) tai viittaus kohtiin',
+    'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'Vihje: Sekä kohdan että hakukyselyn syöttäminen johtaa haun rajoittamiseen tiettyihin kohtiin.',
     
     // Advanced Search
-    'Boolean Search': '',
-    'Passage Retrieval': '',
-    'Find words within': '',
-    'Proximity Search': '',
-    'Power Search': '',
+    'Boolean Search': 'Boolen Haku',
+    'Passage Retrieval': 'Kohdan Haku',
+    'Find words within': 'Etsi sanoja sisältä',
+    'Proximity Search': 'Läheisyyshaku',
+    'Power Search': 'Tehohaku',
 
     // <b> ... </b> is HTML for bold text, please ensure that your translation maintains the bold
-    '<b>All</b> of the words' : '',
-    '<b>Any</b> of the words' : '',
-    '<b>Only one</b> of the words': '',
-    '<b>None</b> of the words' : '',
-    'The <b>exact phrase</b>': '',
+    '<b>All</b> of the words' : '<b>Kaikki</b> sanat',
+    '<b>Any</b> of the words' : '<b>Mikä tahansa</b> sanoista',
+    '<b>Only one</b> of the words': '<b>Vain yksi</b> sanoista',
+    '<b>None</b> of the words' : '<b>Ei mikään</b> sanoista',
+    'The <b>exact phrase</b>': '<b>Tarkka ilmaus</b>',
 
-    'Bible #': '', // downloads
+    'Bible #': 'Raamattu #', // downloads
 
     // Pagination
-    'Next Page' : '',
-    'Previous Page' : '',
-    'First Page' : '',
-    'Last Page': '',
-    'Page': '',
+    'Next Page' : 'Seuraava Sivu',
+    'Previous Page' : 'Edellinen Sivu',
+    'First Page' : 'Ensimmäinen Sivu',
+    'Last Page': 'Viimeinen Sivu',
+    'Page': 'Sivu',
     
     // Formatting and dialog buttons
-    'A': '',     // First letter in given language
-    'Abc': '',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : '',                     // * Button text, please keep translation short!
-    'Sans-Serif': '',                 // * Button text, please keep translation short!
-    'Monospace': '',                  // * Button text, please keep translation short!
-    'Enlarge Text': '',
-    'Default Text Size': '',
-    'Shrink Text': '',
-    'Verse Display': '',
-    'Paragraph Display': '',
-    'Passage Display': '', 
-    'Verse as Passage Display': '', 
-    'EZ Copy': '',  // 'Easy Copy'
-    'Read Display': '',
-    'Italics': '',                    // * Button text, please keep translation short!
-    'Disable Italization of Added Words' : '',
-    'Enable Italization of Added Words': '',
-    'Disable Strong\'s Numbers': '',
-    'Enable Strong\'s Numbers': '',
-    'Red Letter': '',
-    'Disable Red Letter': '',
-    'Enable Red Letter': '',
-    'Highlight': '',                   // * Button text, please keep translation short!
-    'Disable Highlighting of Keywords': '',
-    'Enable Highlighting of Keywords': '',
-    'Print': '',
-    'Printer Friendly': '',
-    'Help': '',
-    'Basic': '',
-    'Advanced': '',
+    'A': 'A',     // First letter in given language
+    'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
+    'Serif' : 'Serif',                     // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif',                 // * Button text, please keep translation short!
+    'Monospace': 'Monospace',                  // * Button text, please keep translation short!
+    'Enlarge Text': 'Suurenna Tekstiä',
+    'Default Text Size': 'Tekstin Oletuskoko',
+    'Shrink Text': 'Pienennä Tekstiä',
+    'Verse Display': 'Jakeen Näyttö',
+    'Paragraph Display': 'Kappaleen Näyttö',
+    'Passage Display': 'Kulkunäyttö', 
+    'Verse as Passage Display': 'Jae Kohdan Näyttönä', 
+    'EZ Copy': 'Helppo Kopio',  // 'Easy Copy'
+    'Read Display': 'Lue Näyttö',
+    'Italics': 'Kursivointi',                    // * Button text, please keep translation short!
+    'Disable Italization of Added Words' : 'Poista Lisättyjen Sanojen Kursivointi Käytöstä',
+    'Enable Italization of Added Words': 'Ota Lisättyjen Sanojen Kursointi Käyttöön',
+    'Disable Strong\'s Numbers': 'Poista Strongin Numerot Käytöstä',
+    'Enable Strong\'s Numbers': 'Ota Strongs Numbers Käyttöön',//check translation
+    'Red Letter': 'Punainen Kirjain',
+    'Disable Red Letter': 'Poista Punainen Kirjain Käytöstä',
+    'Enable Red Letter': 'Ota Red Letter Käyttöön',//check translation
+    'Highlight': 'Kohokohta',                   // * Button text, please keep translation short!
+    'Disable Highlighting of Keywords': 'Poista Avainsanojen Korostus Käytöstä',
+    'Enable Highlighting of Keywords': 'Ota Avainsanojen Korostus Käyttöön',
+    'Print': 'Tulosta',
+    'Printer Friendly': 'Tulostinystävällinen',
+    'Help': 'Auta',
+    'Basic': 'Perus',
+    'Advanced': 'Pitkälle kehittynyt',
 
     // Descriptions of special formatting features
-    'Formatting': '',  
-    'Supported Bibles Only': '', 
+    'Formatting': 'Muotoilu',  
+    'Supported Bibles Only': 'Vain Tuetut Raamatut', 
     
     // Translate the right-side strings here
-    'strongs_numbers_description': 'Strong\'s Concordance Numbers indicate the underlying Hebrew or Greek words.',  
-    'italics_description': 'Italics indicate words added in translating that were not in the original language.',  
-    'red_letter_description': 'Words of Christ in Red.', 
-    'highlight_description': 'Highlighting (bold) of keywords in searches.', 
+    'strongs_numbers_description': 'Vahvat Konkordanssiluvut Osoittavat taustalla olevat Heprean tai Kreikan sanat.',  
+    'italics_description': 'Kursivoimalla tarkoitetaan käännöksessä lisättyjä sanoja, jotka eivät olleet alkuperäisellä kielellä.',  
+    'red_letter_description': 'Kristuksen Sanat Punaisella.', 
+    'highlight_description': 'Avainsanojen korostaminen (lihavoitu) hauissa.', 
 
 
     // Verse Cherry-picking
-    'Select All': '', 
-    'Select None': '', 
-    'Select': '', 
-    'Unselect': '', 
+    'Select All': 'Valitse Kaikki', 
+    'Select None': 'Älä Valitse Mitään', 
+    'Select': 'Valitse', 
+    'Unselect': 'Poista valinta', 
     
     // Copy format options
-    'Copy Format': '', 
-    'Word Processor': '', 
-    'Outline' : '', 
-    'Custom': '', 
+    'Copy Format': 'Kopioi Muoto', 
+    'Word Processor': 'Tekstinkäsittelyohjelma', 
+    'Outline' : 'Outline',//check translation 
+    'Custom': 'Mukautettu', 
 
-    'Single Verses': '', 
-    'Reference - Text': '', 
-    'Text - Reference': '', 
-    'Text Only': '', 
-    'Separate Line': '', 
+    'Single Verses': 'Yksittäisiä Säkeitä', 
+    'Reference - Text': 'Viite - Teksti', 
+    'Text - Reference': 'Teksti - Viite', 
+    'Text Only': 'Vain Tekstiä', 
+    'Separate Line': 'Erillinen Rivi', 
 
-    'Multi-verse Passages': '', 
-    'Reference - Passage': '', 
-    'Passage - Reference': '', 
-    'Passage Only': '', 
-    'Show Verse Number': '', 
+    'Multi-verse Passages': 'Monen Jakeen Kohdat', 
+    'Reference - Passage': 'Viite - Kohta', 
+    'Passage - Reference': 'Kohta - Viite', 
+    'Passage Only': 'Vain Läpikulku', 
+    'Show Verse Number': 'Näytä Säkeen Numero', 
 
-    'Other': '', 
-    'Abbreviate Books': '', 
-    'Include Testament': '',
-    'Testament': '',
-    'Omit Extra Line Breaks': '', 
+    'Other': 'Muut', 
+    'Abbreviate Books': 'Lyhennä Kirjat', 
+    'Include Testament': 'Sisällytä Testamentti',
+    'Testament': 'Testamentti',
+    'Omit Extra Line Breaks': 'Jätä Ylimääräiset Rivikatkot Pois', 
 
     // Settings Dialog
-    'Settings' : '', 
-    'Language' : '', 
-    'Text Display': '', 
-    'Font Style': '', 
+    'Settings' : 'Asetukset', 
+    'Language' : 'Kieli', 
+    'Text Display': 'Tekstinäyttö', 
+    'Font Style': 'Fonttityyli', 
 
     // Result and error messages
     
     // Your search produced (number of verses) results
-    'Your search produced' : '',  
+    'Your search produced' : 'Hakusi tuotti',  
     // (total number of verses)
-    'results' : '',
+    'results' : 'tuloksia',
     
     // Showing results [1] to [30]
-    'Showing Results': '',
-    'to' : '',
+    'Showing Results': 'Näytetään Tulokset',
+    'to' : 'to',//check translation
     
     // Your search produced no results in [name of Bible version]
-    'Your search produced no results in': '', 
-    'However, verses from this Bible have been included for comparison.': '',
+    'Your search produced no results in': 'Hakusi ei tuottanut tulosta', 
+    'However, verses from this Bible have been included for comparison.': 'Kuitenkin jakeita tästä Raamatusta on sisällytetty vertailun vuoksi.',
     
     // Operators such as [boolean operator] cannot be at the (beginning|end) of your search
-    'Operators such as': '',
-    'cannot be at the beginning of your search.': '',
-    'cannot be at the end of your search.': '',
-    'Please remove it, or use it\'s lower case equivalent.': '',
+    'Operators such as': 'Operaattorit, kuten',
+    'cannot be at the beginning of your search.': 'ei voi olla haun alussa.',
+    'cannot be at the end of your search.': 'ei voi olla haun lopussa.',
+    'Please remove it, or use it\'s lower case equivalent.': 'Poista se tai käytä sitä pienillä kirjaimilla.',
 
     // Your search for [attempted keywords] is invalid...
-    'Your search for': '',
-    'is invalid, and appears to be a passage reference.': '',
-    'is invalid.': '',
+    'Your search for': 'Hakusi',
+    'is invalid, and appears to be a passage reference.': 'on virheellinen ja näyttää olevan viittaus kohtiin.',
+    'is invalid.': 'ei kelpaa.',
 
     // Your search was limited to [number of] verses
-    'Your search was limited to': '',
-    'Please refine your search if necessary': '',
+    'Your search was limited to': 'Hakusi rajoittui kohteeseen',
+    'Please refine your search if necessary': 'Tarkenna hakuasi tarvittaessa',
 
-    'This Bible is in the Public Domain.': '',
-    'This Bible is provided for research purposes only.': '',
-    'An unknown error has occurred.' : '',
-    'An error has occurred, please try again later.': '',
-    'Error' : '',
-    'Success': '',
-    'Cache not found': '',
-    'No query terms provided. Please specify search term(s) and/or passage reference(s).': '',
-    'Your search produced no results.' : '',
-    'Maximum hits has been reached for today for this domain / IP address': '',
-    'No Bibles are enabled. Please contact site adminstrator.': '',
-    'Cannot retrieve multiple books at once.': '',
-    'Bible text not found': '',
-    'Invalid book in book range': '',
-    'Book not found': '',
-    'Your parentheses are mismatched.': '',
-    'Your parentheses are mismatched, or you have a proximity operator inside of parentheses.': '',
-    'Proximity operators such as PROX and CHAP can only be used with boolean searches' : '',
-    'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets': '',
-    'Your access to this API has been revoked.  Please contact system administrator.': '',
+    'This Bible is in the Public Domain.': 'Tämä Raamattu on Julkisessa Käytössä.',
+    'This Bible is provided for research purposes only.': 'Tämä Raamattu on tarkoitettu vain tutkimustarkoituksiin.',
+    'An unknown error has occurred.' : 'Tuntematon virhe on tapahtunut.',
+    'An error has occurred, please try again later.': 'Tapahtui virhe, yritä myöhemmin uudelleen.',
+    'Error' : 'Virhe',
+    'Success': 'Menestys',
+    'Cache not found': 'Välimuistia ei löydy',
+    'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Ei kyselyehtoja. Määritä hakutermit ja/tai viittaukset kohtiin.',
+    'Your search produced no results.' : 'Hakusi ei tuottanut tulosta.',
+    'Maximum hits has been reached for today for this domain / IP address': 'Tämän verkkotunnuksen/IP-osoitteen osumien enimmäismäärä on saavutettu tänään',
+    'No Bibles are enabled. Please contact site adminstrator.': 'Mikään Raamattu ei ole käytössä. Ota yhteyttä sivuston ylläpitäjään.',
+    'Cannot retrieve multiple books at once.': 'Useita kirjoja ei voi hakea kerralla.',
+    'Bible text not found': 'Raamatun tekstiä ei löydy',
+    'Invalid book in book range': 'Virheellinen kirja kirjavalikoimassa',
+    'Book not found': 'Kirjaa ei löydy',
+    'Your parentheses are mismatched.': 'Sulut eivät täsmää.',
+    'Your parentheses are mismatched, or you have a proximity operator inside of parentheses.': 'Sulut eivät täsmää, tai suluissa on läheisyysoperaattori.',
+    'Proximity operators such as PROX and CHAP can only be used with boolean searches' : 'Läheisyysoperaattoreita, kuten PROX ja CHAP, voidaan käyttää vain loogisissa hauissa',
+    'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets': 'Huomautus: PROX / CHAP-operaattoreita ei voida sulkea sulkeisiin tai hakasulkeisiin',
+    'Your access to this API has been revoked.  Please contact system administrator.': 'Käyttöoikeutesi tähän sovellusliittymään on peruutettu. Ota yhteyttä järjestelmänvalvojaan.',
 
     // Dialogs - general
-    'Close': '', 
+    'Close': 'Kiinni', 
 
     // Bible SOS dialog
-    'Bible SOS': '',
-    'Emergency Help from the Bible': '',
-    'Where to go When ...': '',
-    'Afraid': '',
-    'Anxious': '',
-    'Backsliding': '',
-    'Bereaved': '',
-    'Bitter or Critical': '',
-    'Conscious of Sin': '',
-    'Defeated': '',
-    'Depressed': '', 
-    'Disaster Threatens': '',
-    'Discouraged': '',
-    'Doubting': '',
-    'Facing a Crisis': '',
-    'Faith Fails': '',
-    'Friends Fail': '', 
-    'Hopeless': '',
-    'Leaving Home': '',
-    'Lonely': '',
-    'Needing God\'s protection': '',
-    'Needing Guidance': '',
-    'Needing Peace': '',
-    'Needing Rules for Living': '', 
-    'Overcome': '',
-    'Prayerful': '',
-    'Protected': '',
-    'Sick or in Pain': '',
-    'Sorrowful': '',
-    'Tempted': '', 
-    'Thankful': '',
-    'Traveling': '',
-    'Trouble, In': '',
-    'Troubled': '',
-    'Weary': '',
-    'Worried': '',
+    'Bible SOS': 'Raamatun Hätätila',
+    'Emergency Help from the Bible': 'Hätäapu Raamatusta',
+    'Where to go When ...': 'Minne mennä Milloin...',
+    'Afraid': 'Peloissaan',
+    'Anxious': 'Ahdistunut',
+    'Backsliding': 'Takaistuminen',
+    'Bereaved': 'Surullinen',
+    'Bitter or Critical': 'Katkera tai Kriittinen',
+    'Conscious of Sin': 'Tietoinen Synnistä',
+    'Defeated': 'Voitettu',
+    'Depressed': 'Masentunut', 
+    'Disaster Threatens': 'Katastrofi Uhkaa',
+    'Discouraged': 'Masentunut',
+    'Doubting': 'Epäilen',
+    'Facing a Crisis': 'Kriisin Edessä',
+    'Faith Fails': 'Usko Epäonnistuu',
+    'Friends Fail': 'Ystävät Epäonnistuvat', 
+    'Hopeless': 'Toivoton',
+    'Leaving Home': 'Lähdössä Kotoa',
+    'Lonely': 'Yksinäinen',
+    'Needing God\'s protection': 'Tarvitsee Jumalan Suojelusta',
+    'Needing Guidance': 'Ohjausta Kaivataan',
+    'Needing Peace': 'Rauhaa Kaipaa',
+    'Needing Rules for Living': 'Sääntöjä Tarvitaan Elämään', 
+    'Overcome': 'Voittaa',
+    'Prayerful': 'Rukoileva',
+    'Protected': 'Suojattu',
+    'Sick or in Pain': 'Sairas tai Kipeänä',
+    'Sorrowful': 'Surullinen',
+    'Tempted': 'Kiusattu', 
+    'Thankful': 'Kiitollinen',
+    'Traveling': 'Matkustaminen',
+    'Trouble, In': 'Ongelma, In',
+    'Troubled': 'Ongelmia',
+    'Weary': 'Väsynyt',
+    'Worried': 'Huolestunut',
 
     // Bible Start dialog
-    'Start': '',
-    'Bible Start Guide': '',
-    'New to the Bible?': '',
-    'Not Sure Where to Begin?' : '',
-    'Life and Teachings of Jesus Christ': '',
-    'Basic Christian Beliefs': '',
-    'Creation and the Fall of Man': '',
-    'Birth of Christ / Life of Christ': '',
-    'Imperfection in Churches and Believers': '',
-    'Early human history, especially that of Israel': '',
-    'The relationship between the Old Testament Law and the Church': '',
-    'History and Law': '',
-    'Salvation by faith, not works': '',
-    'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': '',
-    'Christ the suffering servant': '',
-    'Christ\'s crucifixion foretold': '',
+    'Start': 'Alkaa',
+    'Bible Start Guide': 'Raamatun Aloitusopas',
+    'New to the Bible?': 'Uusi Raamattu?',
+    'Not Sure Where to Begin?' : 'Etkö Ole Varma Mistä Aloittaa?',
+    'Life and Teachings of Jesus Christ': 'Jeesuksen Kristuksen Elämä Ja Opetukset',
+    'Basic Christian Beliefs': 'Kristilliset Perususkot',
+    'Creation and the Fall of Man': 'Luominen ja Ihmisen Lankeemus',
+    'Birth of Christ / Life of Christ': 'Kristuksen Syntymä / Kristuksen Elämä',
+    'Imperfection in Churches and Believers': 'Epätäydellisyys Kirkoissa ja Uskovissa',
+    'Early human history, especially that of Israel': 'Ihmiskunnan varhainen historia, erityisesti Israelin historia',
+    'The relationship between the Old Testament Law and the Church': 'Vanhan Testamentin Lain ja Kirkon Suhde',
+    'History and Law': 'Historia ja Laki',
+    'Salvation by faith, not works': 'Pelastus uskosta, ei teoista',
+    'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Kristillinen elämä ja kokemus. &nbsp;Apostoli Paavali luopui VT:n lain mukaisista valtuuksista seuratakseen Kristusta',
+    'Christ the suffering servant': 'Kristus kärsivä palvelija',
+    'Christ\'s crucifixion foretold': 'Kristuksen ristiinnaulitseminen ennustettiin',
 
     // Bible downloads dialog
-    'Download': '',
-    'Bible Downloads': '',
-    'Select Bible(s)' : '',
-    'Select a Format': '',
-    'Rendering': '',
-    'Rendering Bibles, this may take some time': '',
-    'Rendering is Complete': '',
-    'Your download should begin shortly': '',
-    'If not, please click on the below link': '',
-    'Manual Download': '',
-    'Please select at least one Bible': '',
-    'Please select a format': '',
-    'Are you sure you want to exit?  This will end the current download.': '',
-    'Plain Text' : '',
-    'Machine-readable Plain Text' : '',
-    'Spreadsheet' : '',
-    'Databases': '',
+    'Download': 'Ladata',
+    'Bible Downloads': 'Raamatun Lataukset',
+    'Select Bible(s)' : 'Valitse Raamattu(t)',
+    'Select a Format': 'Valitse Muoto',
+    'Rendering': 'Renderöinti',
+    'Rendering Bibles, this may take some time': 'Raamattujen kääntäminen, tämä voi kestää jonkin aikaa',
+    'Rendering is Complete': 'Renderöinti on Valmis',
+    'Your download should begin shortly': 'Latauksen pitäisi alkaa pian',
+    'If not, please click on the below link': 'Jos ei, napsauta alla olevaa linkkiä',
+    'Manual Download': 'Manuaalinen Lataus',
+    'Please select at least one Bible': 'Valitse vähintään yksi Raamattu',
+    'Please select a format': 'Valitse Muoto',
+    'Are you sure you want to exit?  This will end the current download.': 'Oletko varma, että haluat poistua? Tämä lopettaa nykyisen latauksen.',
+    'Plain Text' : 'Pelkkä Teksti',
+    'Machine-readable Plain Text' : 'Koneluettava Teksti',
+    'Spreadsheet' : 'Laskentataulukko',
+    'Databases': 'Tietokannat',
 
-    'PDF - Compact Text, Letter, Words of Christ in Red': '',
-    'PDF - Compact Text, A4, Words of Christ in Red': '',
-    'PDF - Compact Text, Letter, Words of Christ Underlined': '',
-    'PDF - Compact Text, A4, Words of Christ Underlined': '',
+    'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF - Kompakti Teksti, Kirje, Kristuksen Sanat Punaisella',
+    'PDF - Compact Text, A4, Words of Christ in Red': 'PDF - Kompakti Teksti, A4, Kristuksen Sanat Punaisella',
+    'PDF - Compact Text, Letter, Words of Christ Underlined': 'PDF - Kompakti Teksti, Kirje, Kristuksen Sanat Alleviivattuina',
+    'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF - Kompakti Teksti, A4, Kristuksen Sanat Alleviivattu',
 
     // Copy / Share / Link dialogs
-    'Copy': '',
-    'Copy Link': '',
-    'Copy with Text': '',
-    'Share Link': '',
-    'Share' : '',
-    'Link' : '', 
-    'Copied to clipboard': '', 
-    'Failed to copy': '', 
+    'Copy': 'Kopio',
+    'Copy Link': 'Kopioi Linkki',
+    'Copy with Text': 'Kopioi Tekstillä',
+    'Share Link': 'Jaa Linkki',
+    'Share' : 'Jaa',
+    'Link' : 'Linkki', 
+    'Copied to clipboard': 'Kopioitu Leikepöydälle', 
+    'Failed to copy': 'Kopiointi Epäonnistui', 
 
     // Quick Start Help Dialog
-    'Quick Start Guide': '',
-    'User\'s Manual': '',
-    'Wildcard': '',
-    'Basic Searches' : '',
-    'Advanced Searches using Boolean': '',
-    'Select' : '',
-    'Operators': '',
-    'Operator': '',
-    'Aliases': '',
-    'Description': '',
-    'Match both': '',
-    'Match either': '',
-    'Match only one': '',
-    'Does not match': '',
-    'Matches words in the same chapter': '',
-    'Matches words in the same book': '',
-    'Matches words in the same book, and within N verses of each other': '',
-    'Matches words in the same chapter, and within N verses of each other': '',
-    'For details, please see the User\'s Manual': '',
-    'Special Proximity Operators': '',
-    'Matches unlimited characters': '',
-    'searched for': '',
+    'Quick Start Guide': 'Pikaopas',
+    'User\'s Manual': 'Käyttöohje',
+    'Wildcard': 'Jokerimerkki',
+    'Basic Searches' : 'Perushaut',
+    'Advanced Searches using Boolean': 'Tarkennetut haut Boolen Avulla',
+    'Select' : 'Valitse',
+    'Operators': 'Operaattorit',
+    'Operator': 'Operaattori',
+    'Aliases': 'Aliakset',
+    'Description': 'Kuvaus',
+    'Match both': 'Yhdistä molemmat',
+    'Match either': 'Ottelu joko',
+    'Match only one': 'Yhdistä vain yksi',
+    'Does not match': 'Ei sovi yhteen',
+    'Matches words in the same chapter': 'Vastaa sanoja samassa luvussa',
+    'Matches words in the same book': 'Vastaa sanoja samassa kirjassa',
+    'Matches words in the same book, and within N verses of each other': 'Vastaa sanoja samassa kirjassa ja N jakeessa toisistaan',
+    'Matches words in the same chapter, and within N verses of each other': 'Vastaa sanoja samassa luvussa ja N jakeessa toisistaan',
+    'For details, please see the User\'s Manual': 'Katso Lisätietoja Käyttöoppaasta',
+    'Special Proximity Operators': 'Erityiset läheisyysoperaattorit',
+    'Matches unlimited characters': 'Vastaa rajattomasti merkkejä',
+    'searched for': 'etsitty',
 
     // Keywords for sample searches
-    'Jesus': '',
-    'Christ': '',
-    'Lord': '',
-    'faith': '',
-    'hope': '',
-    'joy': '',
-    'preserved' : '',
-    'preserve' : '',
-    'stand' : '',
-    'word': '',
-    'words': '',
-    'truth': '',
+    'Jesus': 'Jeesus',
+    'Christ': 'Kristus',
+    'Lord': 'Herra',
+    'faith': 'uskoa',
+    'hope': 'toivoa',
+    'joy': 'ilo',
+    'preserved' : 'säilytetty',
+    'preserve' : 'suojella',
+    'stand' : 'seisomaan',
+    'word': 'sana',
+    'words': 'sanat',
+    'truth': 'totuus',
 
     // Searching across language
 
     // Parallel search multi language error messages
-    'You cannot search across Bibles of different languages.': '',
-    'You cannot search across Bibles of different languages with the selected search type.' : '',
+    'You cannot search across Bibles of different languages.': 'Et voi tehdä hakuja erikielisistä Raamatuista.',
+    'You cannot search across Bibles of different languages with the selected search type.' : 'Et voi tehdä hakuja erikielisistä raamattuista valitulla hakutyypillä.',
 
     // General dialogs
-    'Name': '',
-    'Save': '',
-    'Cancel': '',
-    'Edit': '',
-    'Delete': '',
-    'Clear': '',
-    'Restore': '',
-    'Add': '',
-    'Okay': '',
-    'Old': '',
-    'New': '',
+    'Name': 'Nimi',
+    'Save': 'Tallentaa',
+    'Cancel': 'Peruuttaa',
+    'Edit': 'Muokata',
+    'Delete': 'Poistaa',
+    'Clear': 'Asia selvä',
+    'Restore': 'Palauttaa',
+    'Add': 'Lisätä',
+    'Okay': 'Okei',
+    'Old': 'Vanha',
+    'New': 'Uusi',
 
-    'Are you sure?': '',
-    'Are you sure you want to delete': '',
+    'Are you sure?': 'Oletko varma?',
+    'Are you sure you want to delete': 'Haluatko varmasti poistaa',
 
     // Bookmarks/History
-    'This will delete all history.': '',
-    'This will delete all bookmarks.': '',
-    'Move to Current': '',
+    'This will delete all history.': 'Tämä poistaa kaiken historian.',
+    'This will delete all bookmarks.': 'Tämä poistaa kaikki kirjanmerkit.',
+    'Move to Current': 'Siirrä Nykyiseen',
 
-    'Bookmark': '',
-    'Bookmarks': '',
+    'Bookmark': 'Kirjanmerkki',
+    'Bookmarks': 'Kirjanmerkit',
 
-    'Please delete some bookmarks before adding more.': '',
-    'This bookmark name already exists.': '',
+    'Please delete some bookmarks before adding more.': 'Poista joitakin kirjanmerkkejä ennen kuin lisäät niitä.',
+    'This bookmark name already exists.': 'Tämä kirjanmerkin nimi on jo olemassa.',
 
     // Quick start dialog: Limiting searches
-    'Limiting Searches': '',
-    'Passages': '',
-    'Alias': '',
-    'You cannot search for these common words': '',
+    'Limiting Searches': 'Hakujen Rajoittaminen',
+    'Passages': 'Kohdat',
+    'Alias': 'Alias',
+    'You cannot search for these common words': 'Et voi etsiä näitä yleisiä sanoja',
 
 
 
@@ -471,87 +471,87 @@ module.exports = {
     'bibleBooks': [
         {
           "id": 1,
-          "name": "Genesis",
+          "name": "Ensimmäinen Mooseksen",
           "shortname": ""
         },
         {
           "id": 2,
-          "name": "Exodus",
+          "name": "Toinen Mooseksen",
           "shortname": ""
         },
         {
           "id": 3,
-          "name": "Leviticus",
+          "name": "Kolmas Mooseksen",
           "shortname": ""
         },
         {
           "id": 4,
-          "name": "Numbers",
+          "name": "Neljäs Mooseksen",
           "shortname": ""
         },
         {
           "id": 5,
-          "name": "Deuteronomy",
+          "name": "Viides Mooseksen",
           "shortname": ""
         },
         {
           "id": 6,
-          "name": "Joshua",
+          "name": "Joosua",
           "shortname": ""
         },
         {
           "id": 7,
-          "name": "Judges",
+          "name": "Tuomarien Kirja",
           "shortname": ""
         },
         {
           "id": 8,
-          "name": "Ruth",
+          "name": "Ruut",
           "shortname": ""
         },
         {
           "id": 9,
-          "name": "1 Samuel",
+          "name": "Ensimmäinen Samuelin Kirja",
           "shortname": ""
         },
         {
           "id": 10,
-          "name": "2 Samuel",
+          "name": "Toinen Samuelin Kirja",
           "shortname": ""
         },
         {
           "id": 11,
-          "name": "1 Kings",
+          "name": "Ensimmäinen Kuningasten Kirja",
           "shortname": ""
         },
         {
           "id": 12,
-          "name": "2 Kings",
+          "name": "Toinen Kuningasten Kirja",
           "shortname": ""
         },
         {
           "id": 13,
-          "name": "1 Chronicles",
+          "name": "Ensimmäinen Aikakirja",
           "shortname": ""
         },
         {
           "id": 14,
-          "name": "2 Chronicles",
+          "name": "Toinen Aikakirja",
           "shortname": ""
         },
         {
           "id": 15,
-          "name": "Ezra",
+          "name": "Esra",
           "shortname": ""
         },
         {
           "id": 16,
-          "name": "Nehemiah",
+          "name": "Nehemia",
           "shortname": ""
         },
         {
           "id": 17,
-          "name": "Esther",
+          "name": "Ester",
           "shortname": ""
         },
         {
@@ -561,42 +561,42 @@ module.exports = {
         },
         {
           "id": 19,
-          "name": "Psalms",
+          "name": "Psalmit",
           "shortname": ""
         },
         {
           "id": 20,
-          "name": "Proverbs",
+          "name": "Sananlaskut",
           "shortname": ""
         },
         {
           "id": 21,
-          "name": "Ecclesiastes",
+          "name": "Saarnaaja",
           "shortname": ""
         },
         {
           "id": 22,
-          "name": "Song of Solomon",
+          "name": "Korkea Veisu",
           "shortname": ""
         },
         {
           "id": 23,
-          "name": "Isaiah",
+          "name": "Jesaja",
           "shortname": ""
         },
         {
           "id": 24,
-          "name": "Jeremiah",
+          "name": "Jeremia",
           "shortname": ""
         },
         {
           "id": 25,
-          "name": "Lamentations",
+          "name": "Valitusvirret",
           "shortname": ""
         },
         {
           "id": 26,
-          "name": "Ezekiel",
+          "name": "Hesekiel",
           "shortname": ""
         },
         {
@@ -606,47 +606,47 @@ module.exports = {
         },
         {
           "id": 28,
-          "name": "Hosea",
+          "name": "Hoosea",
           "shortname": ""
         },
         {
           "id": 29,
-          "name": "Joel",
+          "name": "Jooel",
           "shortname": ""
         },
         {
           "id": 30,
-          "name": "Amos",
+          "name": "Aamos",
           "shortname": ""
         },
         {
           "id": 31,
-          "name": "Obadiah",
+          "name": "Obadja",
           "shortname": ""
         },
         {
           "id": 32,
-          "name": "Jonah",
+          "name": "Joona",
           "shortname": ""
         },
         {
           "id": 33,
-          "name": "Micah",
+          "name": "Miika",
           "shortname": ""
         },
         {
           "id": 34,
-          "name": "Nahum",
+          "name": "Naahum",
           "shortname": ""
         },
         {
           "id": 35,
-          "name": "Habakkuk",
+          "name": "Habakuk",
           "shortname": ""
         },
         {
           "id": 36,
-          "name": "Zephaniah",
+          "name": "Sefanja",
           "shortname": ""
         },
         {
@@ -656,147 +656,147 @@ module.exports = {
         },
         {
           "id": 38,
-          "name": "Zechariah",
+          "name": "Sakarja",
           "shortname": ""
         },
         {
           "id": 39,
-          "name": "Malachi",
+          "name": "Malakia",
           "shortname": ""
         },
         {
           "id": 40,
-          "name": "Matthew",
+          "name": "Matteuksen",
           "shortname": ""
         },
         {
           "id": 41,
-          "name": "Mark",
+          "name": "Markuksen",
           "shortname": ""
         },
         {
           "id": 42,
-          "name": "Luke",
+          "name": "Luukkaan",
           "shortname": ""
         },
         {
           "id": 43,
-          "name": "John",
+          "name": "Johanneksen",
           "shortname": ""
         },
         {
           "id": 44,
-          "name": "Acts",
+          "name": "Apostolien Teot",
           "shortname": ""
         },
         {
           "id": 45,
-          "name": "Romans",
+          "name": "Kirje Roomalaisille",
           "shortname": ""
         },
         {
           "id": 46,
-          "name": "1 Corinthians",
+          "name": "Ensimmäinen Kirje Korinttilaisille",
           "shortname": ""
         },
         {
           "id": 47,
-          "name": "2 Corinthians",
+          "name": "Toinen Kirje Korinttilaisille",
           "shortname": ""
         },
         {
           "id": 48,
-          "name": "Galatians",
+          "name": "Kirje Galatalaisille",
           "shortname": ""
         },
         {
           "id": 49,
-          "name": "Ephesians",
+          "name": "Kirje Efesolaisille",
           "shortname": ""
         },
         {
           "id": 50,
-          "name": "Philippians",
+          "name": "Kirje Filippiläisille",
           "shortname": ""
         },
         {
           "id": 51,
-          "name": "Colossians",
+          "name": "Kirje Kolossalaisille",
           "shortname": ""
         },
         {
           "id": 52,
-          "name": "1 Thessalonians",
+          "name": "Ensimmäinen Kirje Tessalonikalaisille",
           "shortname": ""
         },
         {
           "id": 53,
-          "name": "2 Thessalonians",
+          "name": "Toinen Kirje Tessalonikalaisille",
           "shortname": ""
         },
         {
           "id": 54,
-          "name": "1 Timothy",
+          "name": "Ensimmäinen Kirje Timoteukselle",
           "shortname": ""
         },
         {
           "id": 55,
-          "name": "2 Timothy",
+          "name": "Toinen Kirje Timoteukselle",
           "shortname": ""
         },
         {
           "id": 56,
-          "name": "Titus",
+          "name": "Kirje Titukselle",
           "shortname": ""
         },
         {
           "id": 57,
-          "name": "Philemon",
+          "name": "Kirje Filemonille",
           "shortname": ""
         },
         {
           "id": 58,
-          "name": "Hebrews",
+          "name": "Kirje Heprealaisille",
           "shortname": ""
         },
         {
           "id": 59,
-          "name": "James",
+          "name": "Jaakobin Kirje",
           "shortname": ""
         },
         {
           "id": 60,
-          "name": "1 Peter",
+          "name": "Ensimmäinen Pietarin Kirje",
           "shortname": ""
         },
         {
           "id": 61,
-          "name": "2 Peter",
+          "name": "Toinen Pietarin Kirje",
           "shortname": ""
         },
         {
           "id": 62,
-          "name": "1 John",
+          "name": "Ensimmäinen Johanneksen Kirje",
           "shortname": ""
         },
         {
           "id": 63,
-          "name": "2 John",
+          "name": "Toinen Johanneksen Kirje",
           "shortname": ""
         },
         {
           "id": 64,
-          "name": "3 John",
+          "name": "Kolmas Johanneksen Kirje",
           "shortname": ""
         },
         {
           "id": 65,
-          "name": "Jude",
+          "name": "Juudaksen Kirje",
           "shortname": ""
         },
         {
           "id": 66,
-          "name": "Revelation",
+          "name": "Johanneksen Ilmestys",
           "shortname": ""
         }
     ],

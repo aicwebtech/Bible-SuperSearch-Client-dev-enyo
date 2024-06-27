@@ -289,7 +289,7 @@ module.exports = {
     'Close': 'بستن', 
 
     // Bible SOS dialog
-    'Bible SOS': 'کتاب مقدس SOS',
+    'Bible SOS': 'اورژانس کتاب مقدس',
     'Emergency Help from the Bible': 'کمک اضطراری از کتاب مقدس',
     'Where to go When ...': 'کجا بریم وقتی ...',
     'Afraid': 'می ترسد',
