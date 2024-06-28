@@ -41,7 +41,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.5.1',
+    applicationVersion: '5.6.0.pre5',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -575,6 +575,10 @@ var App = Application.kind({
             this.handleHashGeneric(this.configs.query_string);
         }
 
+        if(this.testInit) {
+            this.initTests();
+        }
+
         if(this.testOnLoad) {
             this.test();
         }
@@ -667,17 +671,24 @@ var App = Application.kind({
 
     /*  Used to run unit tests within app */
     test: function() {
+
         if(this.testing) {
-            this.log('Already ran tests, aborting.');
+            this.log('Running tests tests, aborting.');
             return;
         }
+
+        //this.testing = true;
+
+        QUnit.start();
+    },
+
+    initTests: function() {
 
         if(typeof QUnit == 'undefined') {
             this.log('QUnit not defined, aborting.');
             return;
         }
 
-        this.testing = true;
         this.log();
         var t = this;
 
@@ -760,7 +771,7 @@ var App = Application.kind({
             });
         });
 
-        QUnit.start();
+
 
         // Test form stuff
 

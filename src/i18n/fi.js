@@ -174,10 +174,10 @@ module.exports = {
     'Disable Italization of Added Words' : 'Poista Lisättyjen Sanojen Kursivointi Käytöstä',
     'Enable Italization of Added Words': 'Ota Lisättyjen Sanojen Kursointi Käyttöön',
     'Disable Strong\'s Numbers': 'Poista Strongin Numerot Käytöstä',
-    'Enable Strong\'s Numbers': 'Ota Strongs Numbers Käyttöön',//check translation
+    'Enable Strong\'s Numbers': 'Ota Strongin Numerot Käyttöön'
     'Red Letter': 'Punainen Kirjain',
     'Disable Red Letter': 'Poista Punainen Kirjain Käytöstä',
-    'Enable Red Letter': 'Ota Red Letter Käyttöön',//check translation
+    'Enable Red Letter': 'Ota Punainen Kirjain Käyttöön',
     'Highlight': 'Kohokohta',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Poista Avainsanojen Korostus Käytöstä',
     'Enable Highlighting of Keywords': 'Ota Avainsanojen Korostus Käyttöön',
@@ -207,7 +207,7 @@ module.exports = {
     // Copy format options
     'Copy Format': 'Kopioi Muoto', 
     'Word Processor': 'Tekstinkäsittelyohjelma', 
-    'Outline' : 'Outline',//check translation 
+    'Outline' : 'Outline',//correct
     'Custom': 'Mukautettu', 
 
     'Single Verses': 'Yksittäisiä Säkeitä', 
@@ -243,7 +243,7 @@ module.exports = {
     
     // Showing results [1] to [30]
     'Showing Results': 'Näytetään Tulokset',
-    'to' : 'to',//check translation
+    'to' : '-',
     
     // Your search produced no results in [name of Bible version]
     'Your search produced no results in': 'Hakusi ei tuottanut tulosta', 

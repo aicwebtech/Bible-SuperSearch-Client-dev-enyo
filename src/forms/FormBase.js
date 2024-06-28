@@ -944,11 +944,13 @@ module.exports = kind({
                         assert.propContains(responseData.results, item.resultsContain);
                     }
 
+                    t.clearHash();
                     done();
                 };
 
                 t.errorHandle = function() {
                     assert.false(true, 'error');
+                    t.clearHash();
                     done();
                 }
 
@@ -969,11 +971,13 @@ module.exports = kind({
 
                 t.successHandle = function(responseData) {
                     assert.false(true, 'success');
+                    t.clearHash();
                     done();
                 };
 
                 t.errorHandle = function() {
                     assert.true(true, 'successful error');
+                    t.clearHash();
                     done();
                 }
 
@@ -989,75 +993,7 @@ module.exports = kind({
                 t.submitForm();
             });
 
-            // QUnit.test( "Basic Reference", function( assert ) {
-            //     var done = assert.async();
 
-            //     t.successHandle = function() {
-            //         assert.true(true, 'success');
-            //         done();
-            //     };
-
-            //     t.errorHandle = null;
-
-            //     t.clearForm();
-            //     t.$[t.referenceField].set('value', 'Romans 1');
-
-            //     t.submitForm();
-            // });
-
-            // QUnit.test( "Basic Search", function( assert ) {
-            //     var done = assert.async();
-
-            //     t.successHandle = function() {
-            //         assert.true(true, 'success');
-            //         done();
-            //     };
-
-            //     t.errorHandle = null;
-
-            //     t.clearForm();
-            //     t.$[t.searchField].set('value', 'faith');
-
-            //     t.submitForm();
-            // });
-
-            // QUnit.test( "Basic Search Error", function( assert ) {
-            //     var done = assert.async();
-
-            //     t.successHandle = function() {
-            //         assert.true(false, 'success');
-            //         done();
-            //     };
-
-            //     t.errorHandle = function() {
-            //         assert.true(true, 'successfull error');
-            //         done();
-            //     }
-
-            //     t.clearForm();
-            //     t.$[t.searchField].set('value', 'aabbcc');
-
-            //     t.submitForm();
-            // });            
-
-            // QUnit.test( "Basic Reference Error", function( assert ) {
-            //     var done = assert.async();
-
-            //     t.successHandle = function() {
-            //         assert.true(false, 'success');
-            //         done();
-            //     };
-
-            //     t.errorHandle = function() {
-            //         assert.true(true, 'successfull error');
-            //         done();
-            //     }
-
-            //     t.clearForm();
-            //     t.$[t.referenceField].set('value', '2 Hesitations 1:3');
-
-            //     t.submitForm();
-            // });
         });
 
     }

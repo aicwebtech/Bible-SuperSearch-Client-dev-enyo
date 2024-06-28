@@ -30,7 +30,7 @@ module.exports = {
     // * Please maintain capitalization and punctuation, if possible.
     // * Any ' (single quote) in the translation MUST be preceded by a \ (backslash).
 
-    'Bible SuperSearch': 'Super hledání Bible',//check translation
+    'Bible SuperSearch': 'Silné hledání Bible',
     'Loading, please wait': 'Načítání prosím čekejte',
 
     // Search Forms
@@ -136,8 +136,8 @@ module.exports = {
     'Boolean Search': 'Booleovské Vyhledávání',
     'Passage Retrieval': 'Vyhledání Průchodu',
     'Find words within': 'Najděte slova uvnitř',
-    'Proximity Search': 'Hledání Blízkosti',//check translation
-    'Power Search': 'Power Search',//check translation
+    'Proximity Search': 'Hledání Blízkosti',
+    'Power Search': 'Hledání Energie',
 
     // <b> ... </b> is HTML for bold text, please ensure that your translation maintains the bold
     '<b>All</b> of the words' : '<b>Všechna</b> slova',
@@ -158,8 +158,8 @@ module.exports = {
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Bezpatkové',                 // * Button text, please keep translation short!
+    'Serif' : 'Serif',  //correct?                  // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif', //correct?               // * Button text, please keep translation short!
     'Monospace': 'Jednoprostorový',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Zvětšit Text',
     'Default Text Size': 'Výchozí Velikost Textu',
@@ -211,21 +211,21 @@ module.exports = {
     'Custom': 'Zvyk', 
 
     'Single Verses': 'Jednotlivé Verše', 
-    'Reference - Text': 'Reference - Text',//check translation 
-    'Text - Reference': 'Text - Reference',//check translation
+    'Reference - Text': 'Reference - Text',//correct?
+    'Text - Reference': 'Text - Reference',//correct?
     'Text Only': 'Pouze Text', 
     'Separate Line': 'Samostatná Linka', 
 
     'Multi-verse Passages': 'Víceveršové Pasáže', 
-    'Reference - Passage': 'Reference - Průchod',//check translation
-    'Passage - Reference': 'Průchod - Reference',//check translation
+    'Reference - Passage': 'Reference - Průchod',//correct?
+    'Passage - Reference': 'Průchod - Reference',//correct?
     'Passage Only': 'Pouze Průchod', 
     'Show Verse Number': 'Ukaž Číslo Verše', 
 
     'Other': 'Jiný', 
     'Abbreviate Books': 'Zkrácené Knihy',
-    'Include Testament': 'Zahrnout Testament', //check translation
-    'Testament': 'Testament', //check translation
+    'Include Testament': 'Zahrnout Zákon', 
+    'Testament': 'Zákon',
     'Omit Extra Line Breaks': 'Vynechejte Přestávky Navíc', 
 
     // Settings Dialog
@@ -327,7 +327,7 @@ module.exports = {
     'Worried': 'Ustaraný',
 
     // Bible Start dialog
-    'Start': 'Start',//check translation
+    'Start': 'Úvodní',
     'Bible Start Guide': 'Úvodní Příručka Bible',
     'New to the Bible?': 'Nový v Bibli?',
     'Not Sure Where to Begin?' : 'Nejste si Jisti, Kde Začít?',
@@ -471,27 +471,27 @@ module.exports = {
     'bibleBooks': [
         {
           "id": 1,
-          "name": "Mojžišova",
+          "name": "1 Mojžišova",
           "shortname": ""
         },
         {
           "id": 2,
-          "name": "Mojžišova",
+          "name": "2 Mojžišova",
           "shortname": ""
         },
         {
           "id": 3,
-          "name": "Mojžišova",
+          "name": "3 Mojžišova",
           "shortname": ""
         },
         {
           "id": 4,
-          "name": "Mojžišova",
+          "name": "4 Mojžišova",
           "shortname": ""
         },
         {
           "id": 5,
-          "name": "Mojžišova",
+          "name": "5 Mojžišova",
           "shortname": ""
         },
         {

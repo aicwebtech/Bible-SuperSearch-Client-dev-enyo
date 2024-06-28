@@ -223,8 +223,8 @@ module.exports = {
     'Show Verse Number': 'Toon Versnummer', 
 
     'Other': 'Ander', 
-    'Include Testament': 'Inclusief Testament'
-    'Testament': 'Testament'
+    'Include Testament': 'Inclusief Testament',
+    'Testament': 'Testament',
     'Abbreviate Books': 'Boeken Verkorten', 
     'Omit Extra Line Breaks': 'Laat Extra Regeleinden Weg', 
 

@@ -223,8 +223,8 @@ module.exports = {
     'Show Verse Number': 'Trego Numrin e Vargut', 
 
     'Other': 'Të tjera', 
-    'Include Testament': 'Përfshi Testamentin'
-    'Testament': 'Testamenti'
+    'Include Testament': 'Përfshi Testamentin',
+    'Testament': 'Testamenti',
     'Abbreviate Books': 'Librat e Shkurtuar', 
     'Omit Extra Line Breaks': 'Hiqni Ndërprerjet Shtesë të Linjës', 
 

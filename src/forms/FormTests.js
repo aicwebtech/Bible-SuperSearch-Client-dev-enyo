@@ -2,7 +2,8 @@ module.exports = {
     success: {
         'Basic Reference': {
             formData: {
-                '_reference': 'Romans 1'
+                '_reference': 'Romans 1',
+                bible: ['kjv']
             },
             resultsContain: {
                 results: {               
@@ -17,6 +18,7 @@ module.exports = {
             formData: {
                 '_search': 'faith',
                 page_limit: 30,
+                bible: ['kjv']
             },
             resultsContain: {
                 paging: {
@@ -49,7 +51,8 @@ module.exports = {
         'Search and Reference': {
             formData: {
                 '_search': 'faith',
-                '_reference': 'Romans'
+                '_reference': 'Romans',
+                bible: ['kjv']
             },
             resultsContain: {
                 paging: {
@@ -66,12 +69,14 @@ module.exports = {
     error: {
         'Basic Reference': {
             formData: {
-                '_reference': '1 Hesitations 3'
+                '_reference': '1 Hesitations 3',
+                bible: ['kjv'],
             }
         },
         'Basic Search': {
             formData: {
-                '_search': 'aabbcc'
+                '_search': 'aabbcc',
+                bible: ['kjv']
             } 
         }
     },

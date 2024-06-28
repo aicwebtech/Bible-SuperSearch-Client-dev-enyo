@@ -30,7 +30,7 @@ module.exports = {
     // * Please maintain capitalization and punctuation, if possible.
     // * Any ' (single quote) in the translation MUST be preceded by a \ (backslash).
 
-    'Bible SuperSearch': 'SuperSearch ng Bibliya',//check translation
+    'Bible SuperSearch': 'Mahusay na Paghahanap sa Bibliya',
     'Loading, please wait': 'Naglo-load, mangyaring maghintay',
 
     // Search Forms
@@ -137,7 +137,7 @@ module.exports = {
     'Passage Retrieval': 'Pagkuha ng Passage',
     'Find words within': 'Maghanap ng mga salita sa loob',
     'Proximity Search': 'Pagiging malapit Maghanap',
-    'Power Search': 'Power Search',//check translation
+    'Power Search': 'Malakas na Paghahanap',
 
     // <b> ... </b> is HTML for bold text, please ensure that your translation maintains the bold
     '<b>All</b> of the words' : '<b>Lahat</b> ng mga salita',
@@ -158,9 +158,9 @@ module.exports = {
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sans-Serif',//check translation                 // * Button text, please keep translation short!
-    'Monospace': 'Monospace',//check translation                  // * Button text, please keep translation short!
+    'Serif' : 'Serif',                     // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif',                // * Button text, please keep translation short!
+    'Monospace': 'Monospace',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Palakihin ang Teksto',
     'Default Text Size': 'Default na Laki ng Teksto',
     'Shrink Text': 'Paliitin ang Teksto',
@@ -173,26 +173,26 @@ module.exports = {
     'Italics': 'Italiko',                    // * Button text, please keep translation short!
     'Disable Italization of Added Words' : 'Huwag paganahin ang Italization ng mga Idinagdag na Salita',
     'Enable Italization of Added Words': 'I-enable ang Italization ng mga Idinagdag na Salita',
-    'Disable Strong\'s Numbers': 'Huwag paganahin ang Strong\'s Numbers',//check translation
-    'Enable Strong\'s Numbers': 'Paganahin ang Strong\'s Numbers',//check translation
+    'Disable Strong\'s Numbers': 'Huwag paganahin ang Mga Numero ng Keyword',
+    'Enable Strong\'s Numbers': 'Paganahin ang Mga Numero ng Keyword',
     'Red Letter': 'Pulang Liham',
-    'Disable Red Letter': 'Huwag paganahin ang Red Letter',//check translation
-    'Enable Red Letter': 'Paganahin ang Red Letter',//check translation
-    'Highlight': 'I-highlight',                   // * Button text, please keep translation short!
+    'Disable Red Letter': 'Huwag paganahin ang Mga Salita sa Pula',
+    'Enable Red Letter': 'Paganahin ang Mga Salita sa Pula',
+    'Highlight': 'Highlight', //correct                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Huwag paganahin ang Pag-highlight ng mga Keyword',
     'Enable Highlighting of Keywords': 'Paganahin ang Pag-highlight ng mga Keyword',
     'Print': 'Ilimbag',
     'Printer Friendly': 'Tagalimbag Palakaibigan',
     'Help': 'Tulong',
-    'Basic': 'Basic',// corrrect?
-    'Advanced': 'Advanced',// corrrect?
+    'Basic': 'Saligan',
+    'Advanced': 'Advanced',// apparently corrrect?
 
     // Descriptions of special formatting features
     'Formatting': 'Pag-format',  
     'Supported Bibles Only': 'Mga Sinusuportahang Bibliya Lamang', 
     
     // Translate the right-side strings here
-    'strongs_numbers_description': 'Ipinapahiwatig ng Strong\'s Concordance Numbers ang pinagbabatayan ng mga salitang Hebreo o Griyego.',  
+    'strongs_numbers_description': 'Ang mga Keyword Number ay nagpapahiwatig ng pinagbabatayan ng mga salitang Hebreo o Griyego',
     'italics_description': 'Ang mga Italic ay nagpapahiwatig ng mga salitang idinagdag sa pagsasalin na wala sa orihinal na wika.',  
     'red_letter_description': 'Mga Salita ni Kristo sa Pula.', 
     'highlight_description': 'Pagha-highlight (bold) ng mga keyword sa mga paghahanap.', 
@@ -226,7 +226,7 @@ module.exports = {
     'Include Testament': 'Isama ang Testamento',
     'Testament': 'Tipan',
     'Abbreviate Books': 'Dinaglat ang mga Aklat', 
-    'Omit Extra Line Breaks': 'Alisin ang mga Extra Line Break',//check translation 
+    'Omit Extra Line Breaks': 'Alisin ang Mga Dagdag na Linebreak',
 
     // Settings Dialog
     'Settings' : 'Mga setting', 
@@ -268,7 +268,7 @@ module.exports = {
     'This Bible is provided for research purposes only.': 'Ang Bibliyang ito ay ibinigay para sa mga layunin ng pananaliksik lamang.',
     'An unknown error has occurred.' : 'May naganap na hindi kilalang error.',
     'An error has occurred, please try again later.': 'May naganap na error. Mangyaring subukan muli sa ibang pagkakataon.',
-    'Error' : 'Error',//check translation
+    'Error' : 'Nagkakamali',
     'Success': 'Tagumpay',
     'Cache not found': 'Hindi nahanap ang cache',
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Walang ibinigay na mga tuntunin sa query. Mangyaring tukuyin ang (mga) termino para sa paghahanap at/o (mga) sanggunian ng sipi.',
@@ -289,7 +289,7 @@ module.exports = {
     'Close': 'Isara', 
 
     // Bible SOS dialog
-    'Bible SOS': 'Emergency sa Bibliya'//check translation,
+    'Bible SOS': 'Emerhensiya ng Bibliya',
     'Emergency Help from the Bible': 'Emergency na Tulong mula sa Bibliya',
     'Where to go When ...': 'Saan pupunta Kapag...',
     'Afraid': 'Takot',
@@ -374,7 +374,7 @@ module.exports = {
     'Copy with Text': 'Kopyahin gamit ang Text',
     'Share Link': 'Ibahagi ang Link',
     'Share' : 'Ibahagi',
-    'Link' : 'Link',//check translation 
+    'Link' : 'Link', //correct?
     'Copied to clipboard': 'Kinopya sa clipboard', 
     'Failed to copy': 'Nabigong kopyahin', 
 
