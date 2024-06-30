@@ -20,6 +20,11 @@ module.exports = {
                 page_limit: 30,
                 bible: ['kjv']
             },
+            willFailOnInterface: [
+                // Browsing interfaces will fail on any test that performs a search
+                'BrowsingBookSelector',
+                'BrowsingBookSelectorHorizontal'
+            ],
             resultsContain: {
                 paging: {
                     "current_page": 1,
@@ -28,6 +33,24 @@ module.exports = {
                     "from": 1,
                     "to": 30,
                     "total": 338
+                }
+            }
+        },         
+        'Proximity Search: Mixed Limits': {
+            formData: {
+                '_search': 'faith PROX(2) joy PROX(5) love',
+                page_limit: 30,
+                search_type: 'boolean',
+                bible: ['kjv']
+            },
+            willFailOnInterface: [
+                // Browsing interfaces will fail on any test that performs a search
+                'BrowsingBookSelector',
+                'BrowsingBookSelectorHorizontal',
+            ],
+            resultsContain: {
+                paging: {
+                    "total": 37
                 }
             }
         },        
@@ -54,6 +77,20 @@ module.exports = {
                 '_reference': 'Romans',
                 bible: ['kjv']
             },
+            willFailOnInterface: [
+                // Browsing interfaces will fail on any test that performs a search
+                // 'BrowsingBookSelector',
+                // 'BrowsingBookSelectorHorizontal',
+                // // Minimal interfaces will fail on any test combining search and reference
+                // 'Minimal',
+                // 'MinimalWithBible',
+                // 'MinimalWithBibleWide',
+                // 'MinimalWithShortBible',
+                // 'MinimalWithParallelBible',
+                // 'MinimalGoRandom',
+                // 'MinimalGoRandomBible',
+                // 'MinimalGoRandomParallelBible',
+            ],
             resultsContain: {
                 paging: {
                     "current_page": 1,

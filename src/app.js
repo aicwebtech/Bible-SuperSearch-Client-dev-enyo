@@ -671,14 +671,12 @@ var App = Application.kind({
 
     /*  Used to run unit tests within app */
     test: function() {
-
         if(this.testing) {
-            this.log('Running tests tests, aborting.');
+            this.log('Tests aready ran, aborting.');
             return;
         }
 
-        //this.testing = true;
-
+        this.testing = true;
         QUnit.start();
     },
 
