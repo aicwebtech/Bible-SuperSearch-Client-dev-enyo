@@ -908,15 +908,15 @@ tr.bss_render_reference_row th {
     max-width: 350px;
 }
 
-.bss_shortcuts_table {
-    width: 100%;
+.bss_generic_table, .bss_shortcuts_table {
+    width: 99%;
 }
 
-.bss_shortcuts_table tbody tr:nth-child(even) {
+.bss_generic_table tbody tr:nth-child(even), .bss_shortcuts_table tbody tr:nth-child(even) {
     background-color: #ddd;
 }
 
-.bss_shortcuts_table tr td {
+.bss_generic_table tr td, .bss_shortcuts_table tr td {
     text-align: start;
     padding: 3px;
 }

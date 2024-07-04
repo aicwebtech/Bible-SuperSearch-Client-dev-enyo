@@ -1,5 +1,9 @@
 Bible SuperSearch Universal Client Changelog
 
+* Quick start links now reflect what form fields appear on the given skin.
+    ** On Minimal forms, “Romans, searched for faith no longer appears under Basic Searches.
+    ** On Browsing with Book Selector forms, only the Passage Retrieval and Formatting sections appear.
+
 = 5.6.0.pre4
 * Added languages
     ** Albanian

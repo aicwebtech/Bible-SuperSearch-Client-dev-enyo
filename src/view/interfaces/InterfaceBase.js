@@ -227,6 +227,19 @@ module.exports = kind({
         return false;
     },
     _formHasFieldStandard: function(fieldName) {
+        if(fieldName == 'search_and_reference') {
+            var has = 0;
+            has += this._formHasFieldStandard('search') ? 1 : 0;
+            has += this._formHasFieldStandard('reference') ? 1 : 0;
+            has += this._formHasFieldStandard('request') ? 1 : 0;
+
+            return (has >= 2);
+        } else if(fieldName == '_reference') {
+            return this._formHasFieldStandard('reference') || this._formHasFieldStandard('request') || this._formHasFieldStandard('reference_booksel');
+        } else if(fieldName == '_search') {
+            return this._formHasFieldStandard('search') || this._formHasFieldStandard('request');
+        }
+
         if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view && this.$.Content.$.FormController.view.$) {
             return (this.$.Content.$.FormController.view.$[fieldName]) ? true : false;
         }

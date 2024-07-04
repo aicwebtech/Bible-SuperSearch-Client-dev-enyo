@@ -829,9 +829,6 @@ module.exports = kind({
             refId = 'p';
         }
 
-        // this.app.debug && this.log(reference, search, request, passages);
-
-        // Todo - convert space to something more aesthetic.  _ or .?
         // UNSAFE IN URL: /,;-
 
         if(reference && !search && !request) {
@@ -849,10 +846,10 @@ module.exports = kind({
             // hash = '#/s/' + bibles + '/' + request; // Also works
         }
 
-        if(!reference && !search && request) {
-            hash = '#/q/' + bibles + '/' + request;
+        // if(!reference && !search && request) {
+            // hash = '#/q/' + bibles + '/' + request;
             // hash = '#/s/' + bibles + '/' + request; // Also works
-        }
+        // }
 
         if(!hash) {
             return null;
