@@ -718,21 +718,44 @@ var App = Application.kind({
                 // assert.ok(item.meta.nameEn);
                 // assert.true(true, item.meta.nameEn);
 
+                var bookNameNoMatchEn = 0;
+
+                // Check Bible Books
+                for(b in t.localeDatasetsRaw._template.bibleBooks) {
+                    var bookNameEn = t.localeDatasetsRaw._template.bibleBooks[b].name;
+
+                    if(item.bibleBooks[b].name != bookNameEn) {
+                        bookNameNoMatchEn ++;
+                    }
+
+                    if(!t.testVerbose && item.bibleBooks[b] && item.bibleBooks[b].name) {
+                        continue; // non verbose skip
+                    }
+
+                    assert.ok(item.bibleBooks[b], 'Must have Bible book: ' + bookNameEn);
+                    assert.ok(item.bibleBooks[b].name, 'Book name must not be empty');
+                }
+
+                // We check book names against English ones, at least ONE must not match
+                // Probably not the best way
+                assert.notEqual(bookNameNoMatchEn, 0, 'Book names must not be in English - at least some should NOT match.');
+
                 for(f in t.localeDatasetsRaw._template) {
                     if(f == 'meta' || f == 'bibleBooks') {
                         continue;
                     }
 
+                    var en = t.localeDatasetsRaw._template[en];
                     var ff = ' ' + ll + ' "' + f + '"';
 
-                    if(!t.testVerbose && typeof item[f] != 'undefined' && item[f] != '') {
-                        continue; // Until I figure out how to assert quietly for passing assertions, skipping items that will pass
+                    if(!t.testVerbose && typeof item[f] != 'undefined' && item[f] && item[f] != '' && item[f] != en) {
+                        continue; // non verbose skip
                     }
 
-                    // assert.ok(item[f], ff + ' ' + item[f] + item.meta.langEn);
-                    assert.notEqual(typeof item[f], 'undefined', 'Should NOT be undefined' + ff);
-                    // assert.ok(item[f], 'Should be truthy' + ff);
-                    assert.notEqual(item[f], '', 'Should NOT be an empty string' + ff);
+                    assert.notEqual(typeof item[f], 'undefined', 'Must NOT be undefined' + ff);
+                    assert.ok(item[f], 'Must be truthy' + ff);
+                    assert.notEqual(item[f], '', 'Must NOT be an empty string' + ff);
+                    assert.notEqual(item[f], en, 'Should NOT match English string');
                 }
             });
 
@@ -756,7 +779,7 @@ var App = Application.kind({
                         (code == 'lv' || code == 'ru') && 
                         f == 'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.') 
                     {
-                        continue; // only exists in RU/LV
+                        continue; // only exists in RU/LV, for now
                     }
 
                     if(!t.testVerbose && typeof t.localeDatasetsRaw._template[f] != 'undefined') {
