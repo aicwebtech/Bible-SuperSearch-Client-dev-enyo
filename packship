@@ -23,3 +23,12 @@ cp -R ../ui-standalone/assets/extras/* ../ui-wordpress/com_test/js/app/assets/ex
 cp  ../ui-standalone/biblesupersearch.js ../ui-wordpress/com_test/js/app/
 cp  ../ui-standalone/biblesupersearch.css ../ui-wordpress/com_test/js/app/
 cp assets/html/user_guide.html ../ui-wordpress/com_test/js/app/
+
+# 'ship' to Bethie Sandbox
+cp -R ../ui-standalone/assets/images/* ../sandboxes/client/assets/images
+cp -R ../ui-standalone/assets/fonts/* ../sandboxes/client/assets/fonts
+cp -R ../ui-standalone/assets/extras/* ../sandboxes/client/assets/extras
+cp  ../ui-standalone/biblesupersearch.js ../sandboxes/client
+cp  ../ui-standalone/biblesupersearch.css ../sandboxes/client
+cp assets/html/user_guide.html ../sandboxes/client
+cp assets/html/select.php ../sandboxes/client/select.php

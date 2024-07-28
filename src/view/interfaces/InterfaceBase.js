@@ -13,6 +13,7 @@ var SettingsDialog = require('../../components/dialogs/Settings');
 var Dialogs = {
     'HistoryDialog': require('../../components/dialogs/History'),
     'BibleInfo': require('../../components/dialogs/BibleInfo'),
+    'Statistics': require('../../components/dialogs/Statistics'),
     'BookmarkDialog': require('../../components/dialogs/Bookmarks'),
     'BookmarkEditCurrentDialog': require('../../components/dialogs/BookmarkEditCurrent')
 };
@@ -78,6 +79,7 @@ module.exports = kind({
 
         this._dialogCreateHelper(SettingsDialog, 'SettingsDialog');
         this._dialogCreateHelper(Dialogs.BibleInfo, 'BibleInfo');
+        this._dialogCreateHelper(Dialogs.Statistics, 'Statistics');
     },
     rendered: function() {
         this.inherited(arguments);

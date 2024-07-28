@@ -84,6 +84,10 @@ module.exports = kind({
         this.clearForm(); 
         this.populateDefaults();
 
+        if(!this.app.statics.access.diff && this.$.DiffContainer) {
+            this.$.DiffContainer.destroy();
+        } 
+
         if(this.app.testInit) {
             this.testInit();
         }

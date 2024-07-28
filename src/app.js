@@ -104,6 +104,10 @@ var App = Application.kind({
     navigationButtonsView: null,
     pagerView: null,
 
+    accessible: [
+        'diff', 'statistics'
+    ],
+
     published: {
         ajaxLoading: false,
         ajaxLoadingDelay: false
@@ -563,6 +567,14 @@ var App = Application.kind({
         if(view && view != null) {
             this.set('view', view);
             this.set('viewCache', view);
+        }
+
+        for(i in this.accessible) {
+            var a = this.accessible[i];
+
+            if(typeof this.statics.access[a] == 'undefined') {
+                this.statics.access[a] = false;
+            }
         }
         
         this.render();
@@ -1489,6 +1501,12 @@ var App = Application.kind({
             Signal.send('onChangeLocaleManual');
             this.set('localeManual', false);
         }
+    },
+    // Sends signal into app
+    s: function(onSignal, onEvent) {
+        this.log(onSignal, onEvent);
+
+        Signal.send(onSignal, onEvent);
     },
     // Translate
     t: function(string) {

@@ -16,6 +16,15 @@ module.exports = {
             return (value && value != 0 && value != false) ? true : false;
         // }
         // return value || null;
+    }},            
+    diff: {from: 'formData.diff', to: '$.diff.checked', oneWay: false, shortLink: false, transform: function(value, dir) {
+        // this.log('diff', value, dir);
+        this.bubble('onFormFieldChanged', {field: 'diff', value: value, dir: dir});
+
+        // if(dir == 1) {
+            return (value && value != 0 && value != false) ? true : false;
+        // }
+        // return value || null;
     }},        
     
     // Special request bindings - ignored if not needed
