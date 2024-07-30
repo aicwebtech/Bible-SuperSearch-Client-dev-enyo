@@ -35,6 +35,8 @@ module.exports = kind({
             classes: 'bss_bible_info_container',
             allowHtml: true,
             attributes: {dir: 'auto'},
+            tag: 'table',
+            attributes: {border: 1}
         },    
         {
             kind: Signal,
@@ -79,21 +81,116 @@ module.exports = kind({
     },
     renderResults: function(results) {
         this.$.container.destroyClientControls();
+        var bibleHeader = [];
 
         for(bible in results) {
             var bibleInfo = this.app.statics.bibles[bible];
 
-            var comp = this.$.container.createComponent({});
-            comp.createComponent({tag: 'h2', content: bibleInfo.name});
-
-            this._renderResultsHelper(comp, 'full', 'Full', results[bible]);
-            this._renderResultsHelper(comp, 'book', 'Book', results[bible]);
-            this._renderResultsHelper(comp, 'chapter', 'Chapter', results[bible]);
-            this._renderResultsHelper(comp, 'passage', 'Passage', results[bible]);
+            // bibleHeader.push(bibleInfo.name);
+            bibleHeader.push(bibleInfo.shortname);
         }
 
+        if(bibleHeader.length > 1) {
+            var header = '<th>&nbsp;</th><th>' + bibleHeader.join('</th><th>') + '</th>';
+        } else {
+            var header = '<th colspan=\'2\'>' + bibleHeader[0] + '</th>';
+        }
+        this.$.container.createComponent({tag: 'tr', content: header, allowHtml: true});
+
+        this._renderResultsHelper('passage', 'Passage', results, bibleHeader.length);
+        this._renderResultsHelper('chapter', 'Chapter', results, bibleHeader.length);
+        this._renderResultsHelper('book', 'Book', results, bibleHeader.length);
+        this._renderResultsHelper('full', 'Full', results, bibleHeader.length);
     },
-    _renderResultsHelper: function(comp, section, label, data) {
+    _renderResultsHelper: function(section, label, results, numBibles) {
+
+        var rows = [];
+        var possible = [
+            ['num_books', 'Books'],
+            ['num_chapters', 'Chapters'],
+            ['num_verses', 'Verses'],
+            ['book_position', 'Book Position'],
+            ['chapter_position', 'Chapter Position'],
+            ['verse_position', 'Verse Position'],
+        ];
+
+        var hasReference = false,
+            reference = null;
+
+        for(bible in results) {
+            if(typeof results[bible][section] == 'undefined') {
+                return;
+            }
+
+            if(results[bible][section].reference) {
+                reference = this._assembleReference(results[bible][section].reference, results[bible][section].type);
+                break;
+            }
+        }
+
+        if(reference) {
+            rows.push('<th>' + this.app.t(label) + '</th><td colspan=\'' + numBibles + '\'>' + reference + '</td>');
+        } else {
+            rows.push('<th>' + this.app.t(label) + '</th>');
+        }
+
+        for(i in possible) {            
+            var row = [];
+            var idx = possible[i][0];
+            var label = this.app.t(possible[i][1]);
+            var has = false;
+
+            for(bible in results) {
+                if(typeof results[bible][section] == 'undefined') {
+                    return;
+                }
+
+                if(!results[bible][section][idx]) {
+                    row.push('&nbsp;');
+                } else {
+                    row.push(results[bible][section][idx]);
+                    has = true;
+                }
+            }
+
+            if(has) {                
+                row.unshift(label);
+                rows.push('<td>' + row.join('</td><td>') + '</td>');
+            }
+        }
+
+        for(i in rows) {
+            this.$.container.createComponent({tag: 'tr', content: rows[i], allowHtml: true});
+        }
+    },
+
+    _assembleReference: function(reference, type) {
+        switch(type) {
+            case 'chapter':
+            case 'passage':
+                var book = this.app.getLocaleBookName(reference.book);
+                break;
+            case 'book':
+                var book = this.app.getLocaleBookName(reference.book_st);
+
+                if(reference.book_en) {
+                    book += ' - ' + this.app.getLocaleBookName(reference.book_en);
+                }
+
+                break;
+            case 'full':
+            default:
+                var book = null;
+        }
+
+        if(!book) {
+            return '';
+        }
+
+        return reference.chapter_verse ? book + ' ' + reference.chapter_verse : book;
+    },
+
+    _renderResultsHelperVertical: function(comp, section, label, data) {
         if(typeof data[section] == 'undefined') {
             return;
         }

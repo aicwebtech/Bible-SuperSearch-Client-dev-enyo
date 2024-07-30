@@ -180,6 +180,14 @@ module.exports = kind({
             });        
         }
 
+        var bookName = this.app.getLocaleBookName(pd.book_id, pd.book_name);
+        var refContent = bookName + ' ' + pd.chapter_verse;
+
+        if(this.app.statics.access.statistics) {
+            var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
+            refContent += '&nbsp; <sup>' + '<a href="' + sl + '" title="' + refContent + '" class="std_link">' + this.app.t('Statistics') + '</a></sup>';
+        }
+
         Container.createComponent({
             name: 'ReferenceRow',
             classes: 'bss_render_reference_row',
@@ -188,7 +196,8 @@ module.exports = kind({
                 {
                     tag: 'th', 
                     attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
-                    content: this.app.getLocaleBookName(pd.book_id, pd.book_name) + ' ' + pd.chapter_verse
+                    content: refContent,
+                    allowHtml: true
                 }
             ]
         });
