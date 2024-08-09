@@ -7,6 +7,7 @@ var Dialog = require('./Dialog');
 var LinkBuilder = require('../Link/LinkBuilder');
 var i18n = require('../Locale/i18nContent');
 var inc = require('../../components/Locale/i18nComponent');
+var FormBase = require('../../forms/FormBase');
 var Ajax = require('enyo/Ajax');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
@@ -35,9 +36,12 @@ module.exports = kind({
             classes: 'bss_bible_info_container',
             allowHtml: true,
             attributes: {dir: 'auto'},
+            // attributes: {border: 1}
             tag: 'table',
-            attributes: {border: 1}
         },    
+        {
+            name: 'FormBase', kind: FormBase,
+        },
         {
             kind: Signal,
             onStatistics: 'handleOpen'
@@ -56,59 +60,84 @@ module.exports = kind({
     handleOpen: function(inSender, inEvent) {
         this.$.title.set('content', inEvent.reference);
 
-        this.log(inEvent);
-
         var ajax = new Ajax({
             url: this.app.configs.apiUrl + '/statistics',
             method: 'GET'
         });
         
         var formData = inEvent;
+        formData.reference = this.$.FormBase.mapPassages(formData.reference, false);
         formData.bible = JSON.stringify(this.app.getSelectedBibles());
+
+        this.app.set('ajaxLoadingDelay', 100);
 
         ajax.go(formData); // for GET
         ajax.response(this, 'handleResponse');
         ajax.error(this, 'handleError');
     },
     handleResponse: function(inSender, inEvent) {
-        this.log(inSender, inEvent);
+        this.app.set('ajaxLoadingDelay', false);
         this.renderResults(inEvent.results);
         this.$.container.render();
         this.app.setDialogShowing('Statistics', true);
     },
     handleError: function(inSender, inEvent) {
-        this.log(inSender, inEvent);
+        this.app.set('ajaxLoadingDelay', false);
     },
     renderResults: function(results) {
         this.$.container.destroyClientControls();
+        var numBibles = 0;
         var bibleHeader = [];
+
+        for(bible in results) {
+            numBibles ++;
+        }
+
+        var compact = numBibles > 3;
 
         for(bible in results) {
             var bibleInfo = this.app.statics.bibles[bible];
 
-            // bibleHeader.push(bibleInfo.name);
-            bibleHeader.push(bibleInfo.shortname);
+            if(compact) {
+                bibleHeader.push(bibleInfo.shortname);
+            } else {
+                bibleHeader.push(bibleInfo.name);
+            }
         }
 
-        if(bibleHeader.length > 1) {
+        if(!compact) {
+            var width = Math.floor(99 / numBibles);
+            var props = 'colspan=\'2\' style=\'width:' + width + '%\' class=\'bss_center\'';
+            var header = '<th ' + props + '>' + bibleHeader.join('</th><th ' + props + '>') + '</th>';
+        } else if(bibleHeader.length > 1) {
             var header = '<th>&nbsp;</th><th>' + bibleHeader.join('</th><th>') + '</th>';
         } else {
             var header = '<th colspan=\'2\'>' + bibleHeader[0] + '</th>';
         }
+        
         this.$.container.createComponent({tag: 'tr', content: header, allowHtml: true});
 
-        this._renderResultsHelper('passage', 'Passage', results, bibleHeader.length);
-        this._renderResultsHelper('chapter', 'Chapter', results, bibleHeader.length);
-        this._renderResultsHelper('book', 'Book', results, bibleHeader.length);
-        this._renderResultsHelper('full', 'Full', results, bibleHeader.length);
+        this._renderResultsHelper('passage', 'Passage', results, bibleHeader.length, compact);
+        this._renderResultsHelper('chapter', 'Chapter', results, bibleHeader.length, compact);
+        this._renderResultsHelper('book', 'Book', results, bibleHeader.length, compact);
+        this._renderResultsHelper('full', 'Full', results, bibleHeader.length, compact);
     },
-    _renderResultsHelper: function(section, label, results, numBibles) {
+    _renderResultsHelper: function(section, label, results, numBibles, compact) {
 
         var rows = [];
         var possible = [
             ['num_books', 'Books'],
             ['num_chapters', 'Chapters'],
             ['num_verses', 'Verses'],
+
+            ['num_length', 'Characters'],
+            ['num_letters', 'Letters'],
+            ['num_words', 'Words'],
+            ['num_syllables', 'Syllables'],
+            ['num_sentences', 'Sentences'],
+            // ['read_fk_ease', 'Flesch-Kincaid Reading Ease'],
+            // ['read_fk_grade_level', 'Flesch-Kincaid Grade Level'],
+
             ['book_position', 'Book Position'],
             ['chapter_position', 'Chapter Position'],
             ['verse_position', 'Verse Position'],
@@ -128,11 +157,29 @@ module.exports = kind({
             }
         }
 
-        if(reference) {
-            rows.push('<th>' + this.app.t(label) + '</th><td colspan=\'' + numBibles + '\'>' + reference + '</td>');
+        if(compact) {
+            var blankRow = '<td colspan=\'' + (numBibles + 1) + '\'>&nbsp;</td>';
         } else {
-            rows.push('<th>' + this.app.t(label) + '</th>');
+            var blankRow = '<td colspan=\'' + (numBibles * 2) + '\'>&nbsp;</td>';
         }
+
+        rows.push(blankRow);
+
+        if(compact) {
+            if(reference) {
+                rows.push('<th>' + this.app.t(label) + '</th><td colspan=\'' + numBibles + '\'>' + reference + '</td>');
+            } else {
+                rows.push('<th>' + this.app.t(label) + '</th>');
+            }
+        } else {
+            if(reference) {
+                rows.push('<th>' + this.app.t(label) + '</th><td colspan=\'' + (numBibles * 2 - 1) + '\'>' + reference + '</td>');
+            } else {
+                rows.push('<th>' + this.app.t(label) + '</th>');
+            }
+        }
+
+        rows.push(blankRow);
 
         for(i in possible) {            
             var row = [];
@@ -145,6 +192,10 @@ module.exports = kind({
                     return;
                 }
 
+                if(!compact) {
+                    row.push(label);
+                }
+
                 if(!results[bible][section][idx]) {
                     row.push('&nbsp;');
                 } else {
@@ -154,7 +205,7 @@ module.exports = kind({
             }
 
             if(has) {                
-                row.unshift(label);
+                compact && row.unshift(label);
                 rows.push('<td>' + row.join('</td><td>') + '</td>');
             }
         }
