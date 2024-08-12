@@ -84,6 +84,10 @@ module.exports = kind({
         this.clearForm(); 
         this.populateDefaults();
 
+        if(!this.app.statics.access.diff && this.$.DiffContainer) {
+            this.$.DiffContainer.destroy();
+        } 
+
         if(this.app.testInit) {
             this.testInit();
         }
@@ -829,9 +833,6 @@ module.exports = kind({
             refId = 'p';
         }
 
-        // this.app.debug && this.log(reference, search, request, passages);
-
-        // Todo - convert space to something more aesthetic.  _ or .?
         // UNSAFE IN URL: /,;-
 
         if(reference && !search && !request) {
@@ -849,10 +850,10 @@ module.exports = kind({
             // hash = '#/s/' + bibles + '/' + request; // Also works
         }
 
-        if(!reference && !search && request) {
-            hash = '#/q/' + bibles + '/' + request;
+        // if(!reference && !search && request) {
+            // hash = '#/q/' + bibles + '/' + request;
             // hash = '#/s/' + bibles + '/' + request; // Also works
-        }
+        // }
 
         if(!hash) {
             return null;
@@ -930,11 +931,70 @@ module.exports = kind({
         Signal.send('onBibleChange', e);
         this.waterfall('onBibleChange', e);
     },
+    clearHandlers: function() {
+        this.successHandle = null;
+        this.errorHandle = null;
+    },
     testInit: function() {
+        if(this.app.testing) {
+            return; //tests already ran, bail
+        }
+
         var t = this;
 
         QUnit.module('Form Submission', function() {
             QUnit.test.each('Success', FormTests.success, function(assert, item) {
+                var skip = false, 
+                    fd = utils.clone(item.formData),
+                    r = fd._reference || null,
+                    s = fd._search || null;
+                
+                if(t.referenceField == t.referenceField && s && r) {
+                    skip = true;
+                }
+
+                if(s) {
+                    fd[t.searchField] = s;
+                    if(!t.$[t.searchField]) {
+                        skip = true;
+                    }
+                } else if (r) {
+                    if(!t.$[t.referenceField]) {
+                        skip = true;
+                    }
+                    fd[t.referenceField] = r;
+                }
+
+                delete fd._search;
+                delete fd._reference;
+
+                if(!skip) {                    
+                    for(i in fd) {
+                        if(i == 'bible' || i == 'search_type' || i == 'page' || i == 'page_limit') {
+                            continue; // these fields default, and will work if not present on form
+                        }
+
+                        switch(i) {
+                            case 'search':
+                                ia = t.searchField; 
+                                break;
+                            case 'reference':
+                                is = t.referenceField
+                        }
+
+                        if(t.standardBindings[i] && !t.$[i]) {
+                            // field does not exist on this form, skip
+                            skip = true;
+                            break;
+                        }
+                    }
+                }
+
+                if(skip || item.willFailOnInterface && item.willFailOnInterface.indexOf(t.app.configs.interface) != -1) {
+                    assert.true(true, 'Skipped, this interface lacks needed fields or other items ...');
+                    return;
+                }
+
                 var done = assert.async();
 
                 t.successHandle = function(responseData) {
@@ -944,21 +1004,20 @@ module.exports = kind({
                         assert.propContains(responseData.results, item.resultsContain);
                     }
 
+                    t.clearHash();
+                    t.clearHandlers();
                     done();
                 };
 
                 t.errorHandle = function() {
                     assert.false(true, 'error');
+                    t.clearHash();
+                    t.clearHandlers();
                     done();
                 }
 
                 t.clearForm();
-
-                var fd = utils.clone(item.formData);
-                fd[t.referenceField] = fd._reference || null;
-                fd[t.searchField] = fd._search || null;
-                delete fd._search;
-                delete fd._reference;
+                t.clearHash();
 
                 t.set('formData', fd);
                 t.submitForm();
@@ -969,15 +1028,20 @@ module.exports = kind({
 
                 t.successHandle = function(responseData) {
                     assert.false(true, 'success');
+                    t.clearHash();
+                    t.clearHandlers();
                     done();
                 };
 
                 t.errorHandle = function() {
                     assert.true(true, 'successful error');
+                    t.clearHash();
+                    t.clearHandlers();
                     done();
                 }
 
                 t.clearForm();
+                t.clearHash();
 
                 var fd = utils.clone(item.formData);
                 fd[t.referenceField] = fd._reference || null;
@@ -989,75 +1053,7 @@ module.exports = kind({
                 t.submitForm();
             });
 
-            // QUnit.test( "Basic Reference", function( assert ) {
-            //     var done = assert.async();
 
-            //     t.successHandle = function() {
-            //         assert.true(true, 'success');
-            //         done();
-            //     };
-
-            //     t.errorHandle = null;
-
-            //     t.clearForm();
-            //     t.$[t.referenceField].set('value', 'Romans 1');
-
-            //     t.submitForm();
-            // });
-
-            // QUnit.test( "Basic Search", function( assert ) {
-            //     var done = assert.async();
-
-            //     t.successHandle = function() {
-            //         assert.true(true, 'success');
-            //         done();
-            //     };
-
-            //     t.errorHandle = null;
-
-            //     t.clearForm();
-            //     t.$[t.searchField].set('value', 'faith');
-
-            //     t.submitForm();
-            // });
-
-            // QUnit.test( "Basic Search Error", function( assert ) {
-            //     var done = assert.async();
-
-            //     t.successHandle = function() {
-            //         assert.true(false, 'success');
-            //         done();
-            //     };
-
-            //     t.errorHandle = function() {
-            //         assert.true(true, 'successfull error');
-            //         done();
-            //     }
-
-            //     t.clearForm();
-            //     t.$[t.searchField].set('value', 'aabbcc');
-
-            //     t.submitForm();
-            // });            
-
-            // QUnit.test( "Basic Reference Error", function( assert ) {
-            //     var done = assert.async();
-
-            //     t.successHandle = function() {
-            //         assert.true(false, 'success');
-            //         done();
-            //     };
-
-            //     t.errorHandle = function() {
-            //         assert.true(true, 'successfull error');
-            //         done();
-            //     }
-
-            //     t.clearForm();
-            //     t.$[t.referenceField].set('value', '2 Hesitations 1:3');
-
-            //     t.submitForm();
-            // });
         });
 
     }

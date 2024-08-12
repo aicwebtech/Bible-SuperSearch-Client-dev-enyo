@@ -128,9 +128,14 @@ module.exports = kind({
             }
         }
 
-        if(!omitExtraBr) {        
+        var nls = '';
+
+        nls += (this.isParagraphView) ? this.newLine : '';
+        nls += (!omitExtraBr) ? this.newLine : '';
+
+        if(nls != '') {        
             for(i in this.bibles) {
-                this._appendBibleComponent(this.newLine, i);
+                this._appendBibleComponent(nls, i);
             }
         }
     },    

@@ -223,8 +223,8 @@ module.exports = {
     'Show Verse Number': 'Pokaż Numer Wersetu', 
 
     'Other': 'Inny', 
-    'Include Testament': 'Dołącz Testament'
-    'Testament': 'Testament'
+    'Include Testament': 'Dołącz Testament',
+    'Testament': 'Testament',
     'Abbreviate Books': 'Skróć Książki', 
     'Omit Extra Line Breaks': 'Pomiń Dodatkowe Podziały Wierszy', 
 

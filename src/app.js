@@ -41,7 +41,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.5.1',
+    applicationVersion: '5.6.0.pre5',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -103,6 +103,10 @@ var App = Application.kind({
     formatButtonsView: null,
     navigationButtonsView: null,
     pagerView: null,
+
+    accessible: [
+        'diff', 'statistics'
+    ],
 
     published: {
         ajaxLoading: false,
@@ -564,6 +568,14 @@ var App = Application.kind({
             this.set('view', view);
             this.set('viewCache', view);
         }
+
+        for(i in this.accessible) {
+            var a = this.accessible[i];
+
+            if(typeof this.statics.access[a] == 'undefined') {
+                this.statics.access[a] = false;
+            }
+        }
         
         this.render();
         this.appLoaded = true;
@@ -573,6 +585,10 @@ var App = Application.kind({
 
         if(this.configs.query_string) {
             this.handleHashGeneric(this.configs.query_string);
+        }
+
+        if(this.testInit) {
+            this.initTests();
         }
 
         if(this.testOnLoad) {
@@ -668,16 +684,21 @@ var App = Application.kind({
     /*  Used to run unit tests within app */
     test: function() {
         if(this.testing) {
-            this.log('Already ran tests, aborting.');
+            this.log('Tests aready ran, aborting.');
             return;
         }
+
+        this.testing = true;
+        QUnit.start();
+    },
+
+    initTests: function() {
 
         if(typeof QUnit == 'undefined') {
             this.log('QUnit not defined, aborting.');
             return;
         }
 
-        this.testing = true;
         this.log();
         var t = this;
 
@@ -709,21 +730,44 @@ var App = Application.kind({
                 // assert.ok(item.meta.nameEn);
                 // assert.true(true, item.meta.nameEn);
 
+                var bookNameNoMatchEn = 0;
+
+                // Check Bible Books
+                for(b in t.localeDatasetsRaw._template.bibleBooks) {
+                    var bookNameEn = t.localeDatasetsRaw._template.bibleBooks[b].name;
+
+                    if(item.bibleBooks[b].name != bookNameEn) {
+                        bookNameNoMatchEn ++;
+                    }
+
+                    if(!t.testVerbose && item.bibleBooks[b] && item.bibleBooks[b].name) {
+                        continue; // non verbose skip
+                    }
+
+                    assert.ok(item.bibleBooks[b], 'Must have Bible book: ' + bookNameEn);
+                    assert.ok(item.bibleBooks[b].name, 'Book name must not be empty');
+                }
+
+                // We check book names against English ones, at least ONE must not match
+                // Probably not the best way
+                assert.notEqual(bookNameNoMatchEn, 0, 'Book names must not be in English - at least some should NOT match.');
+
                 for(f in t.localeDatasetsRaw._template) {
                     if(f == 'meta' || f == 'bibleBooks') {
                         continue;
                     }
 
+                    var en = t.localeDatasetsRaw._template[en];
                     var ff = ' ' + ll + ' "' + f + '"';
 
-                    if(!t.testVerbose && typeof item[f] != 'undefined' && item[f] != '') {
-                        continue; // Until I figure out how to assert quietly for passing assertions, skipping items that will pass
+                    if(!t.testVerbose && typeof item[f] != 'undefined' && item[f] && item[f] != '' && item[f] != en) {
+                        continue; // non verbose skip
                     }
 
-                    // assert.ok(item[f], ff + ' ' + item[f] + item.meta.langEn);
-                    assert.notEqual(typeof item[f], 'undefined', 'Should NOT be undefined' + ff);
-                    // assert.ok(item[f], 'Should be truthy' + ff);
-                    assert.notEqual(item[f], '', 'Should NOT be an empty string' + ff);
+                    assert.notEqual(typeof item[f], 'undefined', 'Must NOT be undefined' + ff);
+                    assert.ok(item[f], 'Must be truthy' + ff);
+                    assert.notEqual(item[f], '', 'Must NOT be an empty string' + ff);
+                    assert.notEqual(item[f], en, 'Should NOT match English string');
                 }
             });
 
@@ -747,7 +791,7 @@ var App = Application.kind({
                         (code == 'lv' || code == 'ru') && 
                         f == 'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.') 
                     {
-                        continue; // only exists in RU/LV
+                        continue; // only exists in RU/LV, for now
                     }
 
                     if(!t.testVerbose && typeof t.localeDatasetsRaw._template[f] != 'undefined') {
@@ -760,7 +804,7 @@ var App = Application.kind({
             });
         });
 
-        QUnit.start();
+
 
         // Test form stuff
 
@@ -1457,6 +1501,12 @@ var App = Application.kind({
             Signal.send('onChangeLocaleManual');
             this.set('localeManual', false);
         }
+    },
+    // Sends signal into app
+    s: function(onSignal, onEvent) {
+        this.log(onSignal, onEvent);
+
+        Signal.send(onSignal, onEvent);
     },
     // Translate
     t: function(string) {

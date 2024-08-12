@@ -441,7 +441,7 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'ਇਹ ਸਾਰਾ ਇਤਿਹਾਸ ਮਿਟਾ ਦੇਵੇਗਾ।',
     'This will delete all bookmarks.': 'ਇਹ ਸਾਰੇ ਬੁੱਕਮਾਰਕਸ ਨੂੰ ਮਿਟਾ ਦੇਵੇਗਾ।',
-    'Move to Current': '',
+    'Move to Current': 'ਵਰਤਮਾਨ ਵਿੱਚ ਭੇਜੋ',
 
     'Bookmark': 'ਬੁੱਕਮਾਰਕ',
     'Bookmarks': 'ਬੁੱਕਮਾਰਕਸ',

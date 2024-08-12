@@ -136,6 +136,12 @@ module.exports = kind({
                                 {classes: 'element', components: [
                                     {kind: Checkbox, name: 'exact_case', id: 'exact_case'}
                                 ]}
+                            ]},                           
+                            {classes: 'checkbox_container', name: 'DiffContainer', components: [
+                                {kind: i18n, tag: 'label', attributes: {for: 'diff'}, classes: 'label', content: 'Diff:'},
+                                {classes: 'element', components: [
+                                    {kind: Checkbox, name: 'diff', id: 'diff'}
+                                ]}
                             ]},
                         ]},
                         {classes: 'input_row_wide', components: [

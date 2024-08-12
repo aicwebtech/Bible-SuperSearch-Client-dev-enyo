@@ -100,7 +100,7 @@ module.exports = {
     // Shortcut Aliases
     'OT': 'KT',
     'NT': 'KH',
-    'Torah': 'Torah',//check translation
+    'Torah': 'Torah',
     'Wisdom': 'Te whakaaro nui',
     'Major': 'Meiha',
     'Minor': 'Te iti',
@@ -158,7 +158,7 @@ module.exports = {
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
+    'Serif' : 'Serif',                     // * Button text, please keep translation short!
     'Sans-Serif': 'Sans serif',                 // * Button text, please keep translation short!
     'Monospace': 'Minivan',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Whakarahi Kuputuhi',
@@ -167,7 +167,7 @@ module.exports = {
     'Verse Display': 'Whakaatu Whiti',
     'Paragraph Display': 'Whakaaturanga Kowae',
     'Passage Display': 'Whakaaturanga Whakawhiti', 
-    'Verse as Passage Display': 'Verse as Passage Whakaatu',//check translation 
+    'Verse as Passage Display': 'Te Whakaaturanga Irarangi',
     'EZ Copy': 'Tārua Ngawari',  // 'Easy Copy'
     'Read Display': 'Panui Whakaaturanga',
     'Italics': 'Titaha',                    // * Button text, please keep translation short!
@@ -182,7 +182,7 @@ module.exports = {
     'Disable Highlighting of Keywords': 'Monokia te Whakaaturanga o nga Kupumatua',
     'Enable Highlighting of Keywords': 'Whakahohehia te miramira o nga kupu matua',
     'Print': 'Taa',
-    'Printer Friendly': 'Pūreretā Friendly',//check translation
+    'Printer Friendly': 'Pūreretā',
     'Help': 'Awhina',
     'Basic': 'Taketake',
     'Advanced': 'Arā atu',

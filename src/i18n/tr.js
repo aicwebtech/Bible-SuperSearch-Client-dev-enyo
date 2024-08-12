@@ -302,7 +302,7 @@ module.exports = {
     'Depressed': 'Bunalımlı', 
     'Disaster Threatens': 'Afet Tehditleri',
     'Discouraged': 'Cesareti kırılmış',
-    'Doubting': 'şüphe duymak',//check translation cap
+    'Doubting': 'Şüphe Duymak',
     'Facing a Crisis': 'Bir Krizle Karşı Karşıyayız',
     'Faith Fails': 'İnanç Başarısız Olur',
     'Friends Fail': 'Arkadaşlar Başarısız', 
@@ -403,8 +403,8 @@ module.exports = {
     'searched for': 'arandı',
 
     // Keywords for sample searches
-    'Jesus': 'Isa',//check translation
-    'Christ': 'İsa',
+    'Jesus': 'İsa',
+    'Christ': 'Mesih',
     'Lord': 'Kral',
     'faith': 'inanç',
     'hope': 'umut',

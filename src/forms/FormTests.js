@@ -2,7 +2,8 @@ module.exports = {
     success: {
         'Basic Reference': {
             formData: {
-                '_reference': 'Romans 1'
+                '_reference': 'Romans 1',
+                bible: ['kjv']
             },
             resultsContain: {
                 results: {               
@@ -17,7 +18,13 @@ module.exports = {
             formData: {
                 '_search': 'faith',
                 page_limit: 30,
+                bible: ['kjv']
             },
+            willFailOnInterface: [
+                // Browsing interfaces will fail on any test that performs a search
+                'BrowsingBookSelector',
+                'BrowsingBookSelectorHorizontal'
+            ],
             resultsContain: {
                 paging: {
                     "current_page": 1,
@@ -26,6 +33,24 @@ module.exports = {
                     "from": 1,
                     "to": 30,
                     "total": 338
+                }
+            }
+        },         
+        'Proximity Search: Mixed Limits': {
+            formData: {
+                '_search': 'faith PROX(2) joy PROX(5) love',
+                page_limit: 30,
+                search_type: 'boolean',
+                bible: ['kjv']
+            },
+            willFailOnInterface: [
+                // Browsing interfaces will fail on any test that performs a search
+                'BrowsingBookSelector',
+                'BrowsingBookSelectorHorizontal',
+            ],
+            resultsContain: {
+                paging: {
+                    "total": 37
                 }
             }
         },        
@@ -49,8 +74,23 @@ module.exports = {
         'Search and Reference': {
             formData: {
                 '_search': 'faith',
-                '_reference': 'Romans'
+                '_reference': 'Romans',
+                bible: ['kjv']
             },
+            willFailOnInterface: [
+                // Browsing interfaces will fail on any test that performs a search
+                // 'BrowsingBookSelector',
+                // 'BrowsingBookSelectorHorizontal',
+                // // Minimal interfaces will fail on any test combining search and reference
+                // 'Minimal',
+                // 'MinimalWithBible',
+                // 'MinimalWithBibleWide',
+                // 'MinimalWithShortBible',
+                // 'MinimalWithParallelBible',
+                // 'MinimalGoRandom',
+                // 'MinimalGoRandomBible',
+                // 'MinimalGoRandomParallelBible',
+            ],
             resultsContain: {
                 paging: {
                     "current_page": 1,
@@ -66,12 +106,14 @@ module.exports = {
     error: {
         'Basic Reference': {
             formData: {
-                '_reference': '1 Hesitations 3'
+                '_reference': '1 Hesitations 3',
+                bible: ['kjv'],
             }
         },
         'Basic Search': {
             formData: {
-                '_search': 'aabbcc'
+                '_search': 'aabbcc',
+                bible: ['kjv']
             } 
         }
     },

@@ -80,4 +80,12 @@ div.biblesupersearch_main optgroup, div.biblesupersearch_main option {
     /*padding: 2px;*/
 }
 
+.bss_diff_add {
+    background-color: #97e6ac;
+}
+
+.bss_diff_rem {
+    background-color: #edb9af;
+}
+
 /* End Cross-browser formatting */
