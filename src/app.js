@@ -699,7 +699,6 @@ var App = Application.kind({
             return;
         }
 
-        this.log();
         var t = this;
 
         QUnit.module("Basic Tests", function() {

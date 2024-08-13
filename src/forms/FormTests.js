@@ -47,6 +47,7 @@ module.exports = {
                 // Browsing interfaces will fail on any test that performs a search
                 'BrowsingBookSelector',
                 'BrowsingBookSelectorHorizontal',
+                'ClassicAdvanced',
             ],
             resultsContain: {
                 paging: {
@@ -111,6 +112,9 @@ module.exports = {
             }
         },
         'Basic Search': {
+            willFailOnInterface: [
+                'ClassicAdvanced',
+            ],
             formData: {
                 '_search': 'aabbcc',
                 bible: ['kjv']

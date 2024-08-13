@@ -53,10 +53,10 @@ module.exports = {
     'Passages': 'Wuta',
     'Passage': 'Wucewa',
     'The book of': 'Littafin',
-    'Look for': 'Nemo',
+    'Look for': 'Nemi',
     'Look up': 'Duba sama',
-    'in': 'in',//check translation
-    'verse': 'aya',
+    'in': 'a',
+    'verse': 'ayar',
     'verses': 'ayoyi',
     'A Chapter': 'A Babi',
     'Chapters': 'Babi',
@@ -321,7 +321,7 @@ module.exports = {
     'Tempted': 'Jarabawa', 
     'Thankful': 'Godiya',
     'Traveling': 'Tafiya',
-    'Trouble, In': 'Matsala, In',//check translation
+    'Trouble, In': 'Cikin Wahala',
     'Troubled': 'Matsala',
     'Weary': 'Gajiya',
     'Worried': 'Damuwa',
@@ -340,7 +340,7 @@ module.exports = {
     'The relationship between the Old Testament Law and the Church': 'Dangantaka tsakanin Dokar Tsohon Alkawari da Ikilisiya',
     'History and Law': 'Tarihi da Doka',
     'Salvation by faith, not works': 'Ceto ta wurin bangaskiya, ba ayyuka ba',
-    'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the TA Law to follow Christ': 'Rayuwar Kirista da gogewa. &nbsp;Manzo Bulus ya bar takaddun shaida a ƙarƙashin Dokar OT don bin Kristi',
+    'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Rayuwar Kirista da gogewa. &nbsp;Manzo Bulus ya bar takaddun shaida a ƙarƙashin Dokar TA don bin Kristi',
     'Christ the suffering servant': 'Almasihu bawa mai wahala',
     'Christ\'s crucifixion foretold': 'An annabta gicciye Almasihu',
 
@@ -361,7 +361,7 @@ module.exports = {
     'Plain Text' : 'Rubutun Babba',
     'Machine-readable Plain Text' : 'Rubutun Filayen da za a iya karantawa na inji',
     'Spreadsheet' : 'Rubutun rubutu',
-    'Databases': 'Databases',//check translation
+    'Databases': 'Databases',
 
     'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF - Karamin Rubutu, Wasika, Kalmomin Kristi cikin Ja',
     'PDF - Compact Text, A4, Words of Christ in Red': 'PDF - Karamin Rubutu, A4, Kalmomin Kristi cikin Ja',
@@ -370,9 +370,9 @@ module.exports = {
 
     // Copy / Share / Link dialogs
     'Copy': 'Kwafi',
-    'Copy Link': 'Kwafi Link',//check translation
+    'Copy Link': 'Kwafi Mahada',
     'Copy with Text': 'Kwafi da Rubutu',
-    'Share Link': 'Share Link',//check translation
+    'Share Link': 'Share Mahada',
     'Share' : 'Raba',
     'Link' : 'Mahada', 
     'Copied to clipboard': 'An kwafi zuwa allo', 
@@ -427,8 +427,8 @@ module.exports = {
     'Save': 'Ajiye',
     'Cancel': 'Soke',
     'Edit': 'Gyara',
-    'Delete': 'Share',//check translation
-    'Clear': 'Share',//check translation
+    'Delete': 'Share',
+    'Clear': 'Bayyananne',
     'Restore': 'Maida',
     'Add': 'Ƙara',
     'Okay': 'Lafiya',
