@@ -21,10 +21,11 @@ Bible SuperSearch Universal Client Changelog
 ** Somali
 ** Swahili
 ** Tagalog
-** Tajiki / Tajik
-** Tamil
-** Telugu
+** Tajiki / Tajik (Bible only)
+** Tamil (Bible only)
+** Telugu (Bible only)
 ** Tibetan
+** Turkish
 ** Urdu
 ** Uyghur
 ** Vietnamese

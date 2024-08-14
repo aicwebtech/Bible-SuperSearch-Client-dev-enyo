@@ -29,6 +29,7 @@ module.exports = {
     ru: require('./ru'),
     sq: require('./sq'),
     sw: require('./sw'),
+    tr: require('./tr'),
     ur: require('./ur'),
     vi: require('./vi'),
     th: require('./th'),
