@@ -20,7 +20,8 @@ module.exports = kind({
     bindings: [],
     autoApplyStandardBindings: true,
     standardBindings: Bindings,
-    formContainer: false,
+    formContainer: false, // Indicates that this 'form' contains muliple form instances
+    formNames: [], // The internal names of each form instance, if multiple
     referenceField: 'reference',
     searchField: 'search',
     defaultSearchType: 'and',
@@ -935,14 +936,25 @@ module.exports = kind({
         this.successHandle = null;
         this.errorHandle = null;
     },
+    
     testInit: function() {
+        if(this.formContainer) {            
+            for(i in this.formNames) {
+                this.$[ this.formNames[i] ] && this.$[ this.formNames[i] ]._testInitHelper('Form Submission: ' + this.formNames[i]);
+            }
+        } else {
+            this._testInitHelper('Form Submission');
+        }
+    },
+
+    _testInitHelper: function(label) {
         if(this.app.testing) {
             return; //tests already ran, bail
         }
 
         var t = this;
 
-        QUnit.module('Form Submission', function() {
+        QUnit.module(label, function() {
             QUnit.test.each('Success', FormTests.success, function(assert, item) {
                 var skip = false, 
                     fd = utils.clone(item.formData),
@@ -1052,9 +1064,11 @@ module.exports = kind({
                 t.set('formData', fd);
                 t.submitForm();
             });
-
-
         });
-
+    }, 
+    _testInitMultiForm: function() {
+        for(i in this.formNames) {
+            this.$[ this.formNames[i] ] && this.$[ this.formNames[i] ].testInit();
+        }
     }
  });
