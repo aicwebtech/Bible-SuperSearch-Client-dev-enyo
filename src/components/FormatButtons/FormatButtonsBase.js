@@ -25,7 +25,7 @@ module.exports = kind({
 
     observers: [
         {method: 'watchRenderStyle', path: ['uc.render_style']},
-        {method: 'watchStyleFlags', path: ['uc.paragraph', 'uc.single_line']}
+        {method: 'watchStyleFlags', path: ['uc.paragraph', 'uc.single_line', 'uc.passages']}
     ],
 
     create: function() {
@@ -56,12 +56,10 @@ module.exports = kind({
     handleFontChange: function(inSender, inEvent) {
         val = inSender.val || 'serif';
         this.app.UserConfig.set('font', val);
-        // this.log(this.app.UserConfig.getAttributes());
     },    
     handleRenderStyle: function(inSender, inEvent) {
         val = inSender.val || 'passage';
         this.app.UserConfig.set('render_style', val);
-        // this.log(this.app.UserConfig.getAttributes());
     },
     handleSizeChange: function(inSender, inEvent) {
         var curVal = this.app.UserConfig.get('text_size');
@@ -99,6 +97,15 @@ module.exports = kind({
     },    
     handleLink: function(inSender, inEvent) {
         this.app.set('linkShowing', true);
+    },        
+    handleHistory: function(inSender, inEvent) {
+        this.app.setDialogShowing('HistoryDialog', true);
+    },        
+    handleBookmark: function(inSender, inEvent) {
+        this.app.setDialogShowing('BookmarkDialog', true);
+    },       
+    handleBookmarkCurrent: function(inSender, inEvent) {
+        this.app.setDialogShowing('BookmarkEditCurrentDialog', true);
     },    
     handleSettings: function(inSender, inEvent) {
         this.app.set('settingsShowing', true);
@@ -107,25 +114,35 @@ module.exports = kind({
         Signal.send('onClearForm');
     },
     handleCopyInstant: function(inSender, inEvent) {
+        var copy = this.app.UserConfig.get('copy');
+
         this.app.UserConfig.set('copy', true);
         Signal.send('onTriggerCopy', {inSender: inSender, inEvent: inEvent});
-        this.app.UserConfig.set('copy', false);
+        this.app.UserConfig.set('copy', copy);
     },
     handkeKey: function(inSender, inEvent) {
         this.log(inEvent);
     },
     watchRenderStyle: function(pre, cur, prop) {
-        if(cur == 'verse') {
-            this.app.UserConfig.set('single_verses', true);
-        }
-        else {
-            this.app.UserConfig.set('single_verses', false);
-            this.app.UserConfig.set('paragraph', !!(cur == 'paragraph'));
-        }
+        // switch(cur) {
+        //     case 'verse':
+        //         this.app.UserConfig.set('passages', false);
+        //         this.app.UserConfig.set('single_verses', true);
+        //         break;            
+        //     case 'verse_passage':
+        //         this.app.UserConfig.set('passages', true);
+        //         this.app.UserConfig.set('single_verses', true);
+        //         break;
+        //     default:
+        //         this.app.UserConfig.set('single_verses', false);
+        //         this.app.UserConfig.set('passages', false);
+        //         this.app.UserConfig.set('paragraph', !!(cur == 'paragraph'));
+        // }
 
         this.$.renderstyle_paragraph && this.$.renderstyle_paragraph.addRemoveClass('selected', cur == 'paragraph');
         this.$.renderstyle_passage && this.$.renderstyle_passage.addRemoveClass('selected', cur == 'passage');
         this.$.renderstyle_verse && this.$.renderstyle_verse.addRemoveClass('selected', cur == 'verse');
+        this.$.renderstyle_verse_passage && this.$.renderstyle_verse_passage.addRemoveClass('selected', cur == 'verse_passage');
     },    
     watchStyleFlags: function(pre, cur, prop) {
         this.app.debug && this.log(pre, cur, prop);

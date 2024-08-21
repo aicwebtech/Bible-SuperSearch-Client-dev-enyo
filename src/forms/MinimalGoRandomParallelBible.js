@@ -4,6 +4,7 @@ var Button = require('enyo/Button');
 var Input = require('../components/Locale/i18nInput');
 var i18n = require('../components/Locale/i18nContent');
 var Bible = require('../components/BibleSelect/MultiSelect');
+var Autocomplete = require('../components/PseudoSelect/PseudoAutocompleteReference');
 
 module.exports = kind({
     name: 'MinimalGoRandomParallelBible',
@@ -11,7 +12,7 @@ module.exports = kind({
 
     components: [
         { classes: 'single_line_go', components: [
-            {kind: Input, name: 'request', classes: 'request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
+            {kind: Autocomplete, name: 'request', classes: 'request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
         ]},        
         { classes: 'single_line_go', components: [
             {kind: Bible, name: 'bible', parallelLimit: 4, width: 300},

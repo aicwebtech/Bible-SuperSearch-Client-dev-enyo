@@ -2,7 +2,7 @@ var kind = require('enyo/kind');
 var Input = require('enyo/Input');
 
 module.exports = kind({
-    name: 'i18nContent',
+    name: 'i18nInput',
     kind: Input,
     containsVerses: false,
 

@@ -156,7 +156,7 @@ module.exports = kind({
                                         {kind: Checkbox, name: 'passage_only', id: 'passage_only', type: 'radio'}
                                     ]},
                                     {kind: i18n, tag: 'label', attributes: {for: 'passage_only'}, classes: 'label', content: 'Passage Only'}
-                                ]}
+                                ]}                                
                             ]
                         },        
                         {classes: 'checkbox_container checkbox_first', components: [
@@ -176,6 +176,14 @@ module.exports = kind({
                                 {kind: Checkbox, name: 'abbr_book', id: 'abbr_book'}
                             ]},
                             {kind: i18n, tag: 'label', attributes: {for: 'abbr_book'}, classes: 'label', content: 'Abbreviate Books'}
+                        ]},                        
+                        {classes: 'checkbox_container checkbox_first', components: [
+                            {classes: 'element', components: [
+                                {kind: Checkbox, name: 'testament', id: 'testament'}
+                            ]},
+                            {tag: 'label', attributes: {for: 'testament'}, classes: 'label', components: [
+                                {kind: i18n, content: 'Include Testament'},
+                            ]}
                         ]},
                         {classes: 'checkbox_container checkbox_first', components: [
                             {classes: 'element', components: [
@@ -202,22 +210,28 @@ module.exports = kind({
                             components: [
                                 {classes: 'checkbox_container checkbox_first', components: [
                                     {classes: 'element', components: [
-                                        {kind: Checkbox, name: 'paragraph', id: 'paragraph', type: 'radio'}
+                                        {kind: Checkbox, name: 'paragraph', id: 'copy_settings_paragraph', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'paragraph'}, classes: 'label', content: 'Paragraph Display'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_paragraph'}, classes: 'label', content: 'Paragraph Display'}
                                 ]},                
                                 {classes: 'checkbox_container checkbox_first', components: [
                                     {classes: 'element', components: [
-                                        {kind: Checkbox, name: 'passage', id: 'passage', type: 'radio'}
+                                        {kind: Checkbox, name: 'passage', id: 'copy_settings_passage', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'passage'}, classes: 'label', content: 'Passage Display'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_passage'}, classes: 'label', content: 'Passage Display'}
                                 ]},                
                                 {classes: 'checkbox_container checkbox_first', components: [
                                     {classes: 'element', components: [
-                                        {kind: Checkbox, name: 'verse', id: 'verse', type: 'radio'}
+                                        {kind: Checkbox, name: 'verse', id: 'copy_settings_verse', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'verse'}, classes: 'label', content: 'Verse Display'}
-                                ]},                
+                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_verse'}, classes: 'label', content: 'Verse Display'}
+                                ]},     
+                                {classes: 'checkbox_container checkbox_first', components: [
+                                    {classes: 'element', components: [
+                                        {kind: Checkbox, name: 'verse_passage', id: 'copy_settings_verse_passage', type: 'radio'}
+                                    ]},
+                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_verse_passage'}, classes: 'label', content: 'Verse as Passage Display'}
+                                ]},              
                             ]
                         }      
                     ]
@@ -242,6 +256,10 @@ module.exports = kind({
         }},            
         {from: 'app.UserConfig.copy_passage_verse_number', to: '$.passage_verse_number.checked', oneWay: false, transform: function(value, dir) {
             // console.log('Copy passage_verse_number', value, dir);
+            return value;
+        }},                  
+        {from: 'app.UserConfig.copy_testament', to: '$.testament.checked', oneWay: false, transform: function(value, dir) {
+            // console.log('Copy testament', value, dir);
             return value;
         }},             
         {from: 'app.UserConfig.copy_text_format', to: 'textFormat', oneWay: false, transform: function(value, dir) {

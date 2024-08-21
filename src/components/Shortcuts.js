@@ -27,6 +27,10 @@ module.exports = kind({
         }
 
         for(i in shortcuts) {
+            if(!this.app.configs.shortcutsShowHidden && shortcuts[i].display == '0') {
+                continue;
+            }
+
             this.createComponent({
                 content: shortcuts[i].name,
                 value: shortcuts[i].reference,

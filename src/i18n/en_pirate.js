@@ -1,9 +1,13 @@
 module.exports = {
     meta: {
-        lang_name: 'Anglyshe - Pyratee',
-        lang_name_en: 'English - Pirate',
+        code: 'en_pirate',
+        name: 'Anglyshe - Pyratee',
+        nameEn: 'English - Pirate',
         isRtl: false,
-        debug: true
+        isFluent: true,     
+        translatedBy: 'Matey Lukey', 
+        translatedEmail: null, 
+        debug: true // This 'language' is for debug purposes only
     },
     
     'Bible SuperSearch': 'Bibl SupahTreasah',
@@ -23,6 +27,7 @@ module.exports = {
     'Parallel Bible #': 'Parlay Sword No. ',
     'Select a Bible': 'Choose yar Sworde',
     'Add Bible': 'Arr! New Sworde',
+    'Remove Bible': 'Overboarde Sworde', // 5.2
     'Random Chapter': 'Try for Big Plunder',
     'Random Verse': 'Try for Small Plunder',
     'Passages': 'Partes',
@@ -47,17 +52,22 @@ module.exports = {
     'Show this verse': 'Reveale jewelle',
     'Show in context': 'Reveale jewewell with its mateys',
     'Context': 'Jewwel Mateys',
+    'In Context': 'Withe Jewwel Mateys',
 
     'Limit Search To': 'Plunder in',
     'Limit search to': 'Plunder in',
     'Entire Bible': 'Whole Ocean Booke',
     'Passage(s) listed below': 'Partes knowne below deck',
     'Passage(s) listed above': 'Partes knowne above deck',
+
+    // Shortcuts
     'Old Testament': 'Olde Testamonie',
     'New Testament': 'Newa Testamonie',
     'Law': 'Legalese',
+    'History Books': 'Bookes Historie',
     'History': 'Historyans',
     'Wisdom & Poetry': 'Wisdome ande Poems',
+    'Prophets Books': 'Bookes Profites',
     'Prophets': 'Profites',
     'Major Prophets': 'Big Profites',
     'Minor Prophets': 'Little Profites',
@@ -65,6 +75,21 @@ module.exports = {
     'Epistles': 'Olde Letters',
     'Pauline Epistles': 'Ye matey Paule\'s Olde Letters',
     'General Epistles': 'Olde Letters by other mateys',
+    'End Times Prophecy': 'Ende Tymes Profites',
+    
+    
+    // Shortcut Aliases
+    'OT': 'OO TT',
+    'NT': 'NN TT',
+    'Torah': 'Toreah',
+    'Wisdom': 'Wisdome',
+    'Major': 'Maygor',
+    'Minor': 'Mynar',
+    'Passion': 'Payssione',
+    'Doctrine': 'Dock yer Ship',
+    'Paul': 'Mayte Paule',
+    'General': 'Matey olde',
+    'Last Days': 'Layste Dayes',
 
     'Look up Passage(s)': 'Select ye headings',
     'Enter passage(s)' : 'Select ye headings',
@@ -108,6 +133,7 @@ module.exports = {
     'Previous Page' : 'Sheet Lasto',
     'First Page' : 'Sheet Firsta',
     'Last Page': 'Sheet Endo',
+    'Page': 'Sheeto',
     
     // Formatting and dialog buttons
     'A': 'Aye',     // First letter in given language
@@ -121,6 +147,7 @@ module.exports = {
     'Verse Display': 'Line up booty in rows',
     'Paragraph Display': 'Group booty into paragraphs',
     'Passage Display': 'Group booty into paysaggage', // 4.5
+    'Verse as Passage Display': 'Group booty into piles of nonsense', // 5.3
     'EZ Copy': 'Lazy Pirate',
     'Read Display': 'Readin\' It',
     'Italics': 'Slante',
@@ -146,6 +173,14 @@ module.exports = {
     'Basic': 'Ye simpeel',
     'Advanced': 'Arrdvancede',
 
+    'Formatting': 'Appeayrance',  // 5.3
+    'Supported Bibles Only': 'Onlee certain swordes',  // 5.3
+    'strongs_numbers_description': 'Keyes to the ooriginal treasureth.',  // 5.3
+    'italics_description': 'Slante wordes not in ooriginal treasureth.',    // 5.3
+    'red_letter_description': 'Wordes of Christth in Bloode.', // 5.3
+    'highlight_description': 'Markes on ye foundes treasures.',  // 5.3
+
+
     // Verse Cherry-picking
     'Select All': 'Picme ye all', // 5.0
     'Select None': 'Picme ye non', // 5.0
@@ -159,6 +194,8 @@ module.exports = {
     'Share Link': 'Give to ye mateys',
     'Share' : 'Givem',
     'Link' : 'Chaine', // 4.5
+    'Copied to clipboard': 'Pirated to scrawboard',
+    'Failed to copy': 'Fayled to pirate', // 5.2.3
 
     // Copy format options
     'Copy Format': 'Pirate likeness', // 5.0
@@ -179,6 +216,8 @@ module.exports = {
     'Show Verse Number': 'Shew ye jewwel numbre', // 5.0
 
     'Other': 'Orther', // 5.0
+    'Include Testament': 'Farray Testamonie',
+    'Testament': 'Testamonie',
     'Abbreviate Books': 'Fsorten the booke', // 5.0
     'Omit Extra Line Breaks': 'Less ye line slicee', // 5.0
 
@@ -218,7 +257,7 @@ module.exports = {
     'is invalid, and appears to be a passage reference.': 'no goode, and lookes like they reference.',
     'is invalid.': 'noo goode',
     'Your search for': 'Yar query afor',
-    'No Bibles are enabled. Please contact site adminstrator.': 'No Bookes to plunder, holler at the admiral.',
+    'No Bibles are enabled. Please contact site administrator.': 'No Bookes to plunder, holler at the admiral.',
     'Cannot retrieve multiple books at once.': 'Whatch ye plunderin\', save some for the othern',
     'Bible text not found': 'Yarr, no Booke here',
     'Invalid book in book range': 'Yar ranges no goode book',
@@ -290,7 +329,7 @@ module.exports = {
     'Salvation by faith, not works': 'Lifee by faithe, not workies',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Yare life experience',
     'Christ the suffering servant': 'Capitan Christ ye deck servant',
-    'Christ’s crucifixion foretold': 'Capitan Christ fortoold deatih',
+    'Christ\'s crucifixion foretold': 'Capitan Christ fortoold deatih',
 
     // Bible downloads dialog
     'Select Bible(s)' : 'Choose ye Sworde(s)',
@@ -353,12 +392,63 @@ module.exports = {
     'words': 'vwordes',
     'truth': 'tryuth',
 
+
+    // 5.5 part 2
+    // Searching across language
+
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': 'Ye cannote be searchin\' across Chestes of differente flavors.',
+    // 'You cannot search across Bibles of different languages using the selected search type.': 'Ye cannote be searchin\' across Chestes of differente flavors with tye searche thype.',
+    'You cannot search across Bibles of different languages with the selected search type.' : 'Ye canot plunder with swordes of dyfferent manre of speech with tye searche thype.',
+
+    // General dialogs
+    'Name': 'Namer',
+    'Save': 'Preserv',
+    'Cancel': 'Baile oute',
+    'Edit': 'Changeth',
+    'Delete': 'Drown',
+    'Clear': 'Overboarde',
+    'Restore': 'Fixeth',
+    'Add': 'New matey',
+    'Okay': 'Aheade',
+    'Old': 'Ye Olde',
+    'New': 'Neweth',
+
+    'Are you sure?': 'Yar really?',
+    'Are you sure you want to delete': 'Yar really drown',
+
+    // Bookmarks/History
+    'This will delete all history.': 'Drowneth all historey?',
+    'This will delete all bookmarks.': 'Drowneth all barkmates?',
+    'Move to Current': 'Marke yer bearin\'',
+
+    // 'Viewing History': 'Spyin\' Herstrty',
+    'Bookmark': 'Barkmate',
+    'Bookmarks': 'Barkmates',
+
+    'Please delete some bookmarks before adding more.': 'Pleaseth drown shome barkmate before addign new matey.',
+    'This bookmark name already exists.': 'Yar barkmate is arready a matey.',
+
+    // Quick start dialog: Limitins searches
+    'Limiting Searches': 'Refinin\' yer plunderin\'',
+    'Passages': 'Ye posyten',
+    'Alias': 'Alylias',
+    'You cannot search for these common words': 'Yarr, no searcheyt for scurvey dog wordes',
+    // End 5.5 part 2
+
     // Bible books - these are auto populated from the API based on selected language
     // Specifying here not reccommended, as these names would need to match those on the API for things to actually work.
+<<<<<<< HEAD
     'Matthew' : 'Goode News Accordin\' to me matey Mahhew',
     'Mark' : 'Goode News Accordin\' to me matey Markus',
     'Luke' : 'Goode News Accordin\' to me matey Lukey',
     'John' : 'Goode News Accordin\' to me matey Long John',
+=======
+    // 'Matthew' : 'Goode News Accordin\' to me matey Mahhew',
+    // 'Mark' : 'Goode News Accordin\' to me matey Markus',
+    // 'Luke' : 'Goode News Accordin\' to me matey Lukey',
+    // 'John' : 'Goode News Accordin\' to me matey Long John',
+>>>>>>> master
 
     'bibleBooks': [
         {id: 1, name: 'Geneisiser', shortname: 'Genes'},
@@ -367,6 +457,7 @@ module.exports = {
         {id: 4, name: 'Numbares', shortname: 'Nume'},
         {id: 5, name: 'Duteroonomy', shortname: 'Dute'},
         {id: 6, name: 'Jehousua', shortname: ''},
+<<<<<<< HEAD
         {id: 7, name: 'Cheste 7', shortname: ''},
         {id: 8, name: 'Cheste 8', shortname: ''},
         {id: 9, name: 'Cheste 9', shortname: ''},
@@ -427,5 +518,67 @@ module.exports = {
         {id: 64, name: 'Chestera 64', shortname: ''},
         {id: 65, name: 'Chestera 65', shortname: ''},
         {id: 66, name: 'Chestera 66', shortname: ''}
+=======
+        {id: 7, name: '7 Cheste' , shortname: ''},
+        {id: 8, name: '8 Cheste' , shortname: ''},
+        {id: 9, name: '9 Cheste' , shortname: ''},
+        {id: 10, name: '10 Cheste', shortname: ''},
+        {id: 11, name: '11 Chesete', shortname: ''},
+        {id: 12, name: '12 Chesete', shortname: ''},
+        {id: 13, name: '13 Chesete', shortname: ''},
+        {id: 14, name: '14 Chesete', shortname: ''},
+        {id: 15, name: '15 Chesete', shortname: ''},
+        {id: 16, name: '16 Chesete', shortname: ''},
+        {id: 17, name: '17 Chesete', shortname: ''},
+        {id: 18, name: '18 Chesete', shortname: ''},
+        {id: 19, name: '19 Chesete', shortname: ''},
+        {id: 20, name: '20 Chesete', shortname: ''},
+        {id: 21, name: '21 Chesete', shortname: ''},
+        {id: 22, name: '22 Chesete', shortname: ''},
+        {id: 23, name: '23 Chesete', shortname: ''},
+        {id: 24, name: '24 Chesete', shortname: ''},
+        {id: 25, name: '25 Chesete', shortname: ''},
+        {id: 26, name: '26 Chesete', shortname: ''},
+        {id: 27, name: '27 Chesete', shortname: ''},
+        {id: 28, name: '28 Chesete', shortname: ''},
+        {id: 29, name: '29 Chesete', shortname: ''},
+        {id: 30, name: '30 Chesete', shortname: ''},
+        {id: 31, name: '31 Chestera', shortname: ''},
+        {id: 32, name: '32 Chestera', shortname: ''},
+        {id: 33, name: '33 Chestera', shortname: ''},
+        {id: 34, name: '34 Chestera', shortname: ''},
+        {id: 35, name: '35 Chestera', shortname: ''},
+        {id: 36, name: '36 Chestera', shortname: ''},
+        {id: 37, name: '37 Chestera', shortname: ''},
+        {id: 38, name: '38 Chestera', shortname: ''},
+        {id: 39, name: '39 Chestera', shortname: ''},
+        {id: 40, name: 'Goode News Accordin\' to me matey Mahhew', shortname: 'Mahhew'},
+        {id: 41, name: 'Goode News Accordin\' to me matey Markus', shortname: 'Markus'},
+        {id: 42, name: 'Goode News Accordin\' to me matey Lukey', shortname: 'Lukey'},
+        {id: 43, name: 'Goode News Accordin\' to me matey Long John', shortname: 'Long John'},
+        {id: 44, name: 'Axe of ye Apostiles', shortname: 'Axe'},
+        {id: 45, name: '45 Chestera', shortname: ''},
+        {id: 46, name: '46 Chestera', shortname: ''},
+        {id: 47, name: '47 Chestera', shortname: ''},
+        {id: 48, name: '48 Chestera', shortname: ''},
+        {id: 49, name: '49 Chestera', shortname: ''},
+        {id: 50, name: '50 Chestera', shortname: ''},
+        {id: 51, name: '51 Chestera', shortname: ''},
+        {id: 52, name: '52 Chestera', shortname: ''},
+        {id: 53, name: '53 Chestera', shortname: ''},
+        {id: 54, name: '54 Chestera', shortname: ''},
+        {id: 55, name: '55 Chestera', shortname: ''},
+        {id: 56, name: '56 Chestera', shortname: ''},
+        {id: 57, name: '57 Chestera', shortname: ''},
+        {id: 58, name: '58 Chestera', shortname: ''},
+        {id: 59, name: '59 Chestera', shortname: ''},
+        {id: 60, name: '60 Chestera', shortname: ''},
+        {id: 61, name: '61 Chestera', shortname: ''},
+        {id: 62, name: '62 Chestera', shortname: ''},
+        {id: 63, name: '63 Chestera', shortname: ''},
+        {id: 64, name: '64 Chestera', shortname: ''},
+        {id: 65, name: '65 Chestera', shortname: ''},
+        {id: 66, name: '66 Chestera', shortname: ''}
+>>>>>>> master
     ]
 };

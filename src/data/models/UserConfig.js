@@ -15,10 +15,16 @@ module.exports = kind({
         paragraph: false,       //  - Paragraph render on or off
         copy: false,            //  - Render mode: copy if true, read if false
         single_verses: false,   //  - Force rendering as single verses
+        passage: false,         //  - Force rendering as passages
         text_size: 0,           //  - Text size: translated to ...
         font: 'sans-serif',     //  - Font: serif, sans-serif, or monospace
         advanced_toggle: false, //  - (Classic interfaces): indicates if the advanced form is toggled to display
-        render_style: 'passage', // Maps to paragraph and single verse flags 
+        
+        // Maps to paragraph and single verse flags 
+        // Options: paragraph, passage, verse, verse_passage
+        render_style: 'passage', 
+        copy_render_style: 'paragraph', // Cache of render style from copy view
+        read_render_style: 'paragraph', // Cache of render style from read view
         italics: true,
         strongs: true,
         red_letter: true,
@@ -31,7 +37,8 @@ module.exports = kind({
         copy_text_format: 'reference_text',
         copy_passage_format: 'reference_passage',
         copy_passage_verse_number: true,
-        copy_preset: 'word_processor'
+        copy_preset: 'word_processor',
+        copy_testament: false
     },
 
     getUrl: function() {

@@ -1,11 +1,103 @@
 Bible SuperSearch Universal Client Changelog
 
+= 5.6.0
+* Added Languages:
+** Albanian
+** Arabic
+** Bengali
+** Burmese
+** Dutch/Flemish
+** Hausa
+** Hebrew (Modern)
+** Indonesian
+** Gujarti
+** Kannada
+** Korean
+** Marathi
+** Nepali
+** Persian
+** Polish
+** Punjabi
+** Somali
+** Swahili
+** Tagalog
+** Tajiki / Tajik (Bible only)
+** Tamil (Bible only)
+** Telugu (Bible only)
+** Tibetan
+** Turkish
+** Urdu
+** Uyghur
+** Vietnamese
+** Wolof
+
+* Quick start links now reflect what form fields appear on the given skin.
+    ** On Minimal forms, “Romans, searched for faith no longer appears under Basic Searches.
+    ** On Browsing with Book Selector forms, only the Passage Retrieval and Formatting sections appear.
+
+* Implemented RTL support for UI languages (we already supported this for Bibles)
+
+= 5.5.1 May 13, 2024
+
+* Emergency bug: Not working in Linux OS
+
+* New User Interface translations:
+    ** Hungarian
+    ** Italian
+    ** Japanese
+    
+
+= 5.5.0 Apr 16, 2024
+* Added bookmarks dialog
+* History items now persist between page loads
+* Ablility to control what languages show in language list
+* Random chapter / Verse now repopulates URL/page title to returned item
+* Shortcut aliases are now included (and translated) in the quick start dialog
+* Side browsing buttons
+* Config to default search to landing reference if blank.
+* New User Interface translations:
+    * Portuguese
+    * German
+    * Thai
+    * Lithuanian
+
+= 5.4.0 Jan 11, 2024
+* Dialog improvements and better responsiveness
+* Using native share dialog on mobile devices
+* New history dialog
+* Strong's hover tooltip improvements 
+** Option to open via clicking
+** Hover intent delay with configurable threshold
+* Passage autocomplete  
+* Touchscreen swipe to navigate between chapters and search 
+
+= 5.3.0 Nov 11, 2023
+* Added config to control maximum parallel Bibles based on screen width
+* Added new 'Verse as Passage' display
+* Hindi UI translation
+
+= 5.2.4 Aug 12, 2023
+* Added custom select menus (these only appear in one custom interface)
+* Fixed scrolling to scroll down to results when using paging/browsing buttons
+* Fixed a bug in the navigation / hash parsing where having a . in a 
+		book name was causing the book to not be found.
+* Misc bug fixes
+
+= 5.2.0 April 8, 2023
+* Added "Remove Bible" to paralell Bible selector
+* Added ability to have multiple default Bibles
+* Added descripive text for Strongs, Red Letter, Highlight and Italics
+* Added UI language support: Latvian, Russian
+* Bug fix: Capitalizing first letter in language name on UI.
+* Bug fix: Clearing out certain form fields when using random chapter or verse.
+* Misc bug other fixes.
+
 = 5.1.2
 * Fixed setting default Bible with single Bible selector when clearing form
 * Added ability to specify Bible book list as part of locale translation file.
 * Config to select Bible Book list langauge source - defaults to selected UI language
 
-= 5.1.1
+= 5.1.1 
 * Adding ability to competely hide extra buttons
 * Adding new custom interface
 * Adding landing reference config
@@ -23,10 +115,10 @@ Bible SuperSearch Universal Client Changelog
 * Added new format button options.
 * Replaced paragraph toggle with paragraph / passage / verse selector (Stylable format buttons only).
 * Added format options for the copying text.
+* Added (instant) copy button
 * Added copy link dialog
 * Added Interface: Expanding Large Input
 * Added Romanian UI translation
-* Updated Spanish UI tranlation
 * Improvement: Added ability to toggle keyword highlighting.
 * Improvement: Added 'Clear Form' button.
 * Improvement: Displaying short name of Bibles with long name when in parallel mode.

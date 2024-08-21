@@ -6,12 +6,23 @@ var StartDialog = require('../../components/dialogs/Start');
 var DownloadDialog = require('../../components/dialogs/Download');
 var HelpDialog = require('../../components/dialogs/Help');
 var ShareDialog = require('../../components/dialogs/Share');
+var HistoryDialog = require('../../components/dialogs/History');
 var LinkDialog = require('../../components/dialogs/Link');
 var SettingsDialog = require('../../components/dialogs/Settings');
+
+var Dialogs = {
+    'HistoryDialog': require('../../components/dialogs/History'),
+    'BibleInfo': require('../../components/dialogs/BibleInfo'),
+    'Statistics': require('../../components/dialogs/Statistics'),
+    'BookmarkDialog': require('../../components/dialogs/Bookmarks'),
+    'BookmarkEditCurrentDialog': require('../../components/dialogs/BookmarkEditCurrent')
+};
+
 var NavButtons = require('../../components/NavButtons/NavClassic');
 var FormatButtons = require('../../components/FormatButtons/FormatButtonsHtml');
 var Pager = require('../../components/Pagers/ClassicPager');
 var MaterialIconsStyle = require('../../components/Styles/MaterialIcons');
+var FreeSansStyle = require('../../components/Styles/FreeSans');
 
 // Base kind for all Application views
 module.exports = kind({
@@ -32,7 +43,10 @@ module.exports = kind({
         onFormResponseError: 'handleFormResponse',
         onFormResponseSuccess: 'handleFormResponse',
         onFormViewChanged: 'handleFormViewChanged',
-        onkeydown: 'handleKey',
+        onmouseover: 'handleMouseEvent',
+        onmouseout: 'handleMouseEvent',
+        onkeydown: 'handleKey'
+        // ontap: 'handleTap'
     },
 
     published: {
@@ -52,15 +66,69 @@ module.exports = kind({
 
         this.addRemoveClass('rtl', this.app.isRtl);
 
-        this.createComponent({kind: MaterialIconsStyle});
+        client = this.app.get('client');
 
-        // if(!this.$.HelpDialog) {
-        //     this.createComponent({
-        //         name: 'HelpDialog',
-        //         kind: HelpDialog,
-        //         showing: false
-        //     });
-        // }
+        this.addRemoveClass('bss_is_mobile', client.isMobile);
+        this.addRemoveClass('bss_is_desktop', !client.isMobile);
+        this.addRemoveClass('bss_browser_is_webkit', client.isWebkit);
+        this.addClass('bss_os_' + client.os.toLowerCase());
+        this.addClass('bss_browser_' + client.browser.toLowerCase());
+
+        this.createComponent({kind: MaterialIconsStyle});
+        this.createComponent({kind: FreeSansStyle});
+
+        this._dialogCreateHelper(SettingsDialog, 'SettingsDialog');
+        this._dialogCreateHelper(Dialogs.BibleInfo, 'BibleInfo');
+        this._dialogCreateHelper(Dialogs.Statistics, 'Statistics');
+    },
+    rendered: function() {
+        this.inherited(arguments);
+        var t = this;
+
+        document.body.addEventListener('click', function(e) {
+            t.handleTap(null, e);
+        });         
+
+        document.body.addEventListener('keydown', function(e) {
+            t.handleKey(null, e);
+        });         
+
+        document.addEventListener('scroll', function(e) {
+            t.handleScroll(null, e);
+        });         
+
+        document.addEventListener('scrollend', function(e) {
+            t.handleScrollEnd(null, e);
+        });         
+
+        this.hasNode().addEventListener('scroll', function(e) {
+            t.handleScroll(null, e);
+        });         
+
+        this.hasNode().addEventListener('scrollend', function(e) {
+            t.handleScrollEnd(null, e);
+        }); 
+    },
+    handleTap: function(inSender, inEvent) {
+        this.waterfall('onGlobalTap', {sender: inSender, e: inEvent});
+    },
+    handleKey: function(inSender, inEvent) {
+        if(inEvent.code == 'Escape') {
+            this.waterfall('onGlobalEscape');
+        }
+    },
+    handleScroll: function(inSender, inEvent) {
+        this.waterfall('onGlobalScroll')
+    },    
+    handleScrollEnd: function(inSender, inEvent) {
+        this.waterfall('onGlobalScrollEnd')
+    },
+    handleMouseEvent: function(inSender, inEvent) {
+        //this.log(inSender);
+        // this.log(inEvent);
+        this.app.set('hasMouse', true)
+
+        //this.addClass('bss_has_mouse');
     },
     ajaxLoadingChanged: function(was, is) {
         if(!this.$.LoadingDialog) {
@@ -126,6 +194,9 @@ module.exports = kind({
     settingsShowingChanged: function(was, is) {
         this._dialogShowingHelper(SettingsDialog, 'SettingsDialog', is);
     },
+    setDialogShowing: function(dialog, showing) {
+        this._dialogShowingHelper(Dialogs[dialog], dialog, showing);
+    },
     _dialogShowingHelper: function(kind, name, showing) {
         if(!this.$[name]) {
             this.createComponent({
@@ -136,6 +207,15 @@ module.exports = kind({
         }
 
         this.$[name].set('showing', showing);
+    },    
+    _dialogCreateHelper: function(kind, name) {
+        if(!this.$[name]) {
+            this.createComponent({
+                name: name,
+                kind: kind,
+                showing: false
+            }); //.render();
+        }
     },
     formHasField: function(fieldName) {
         // For special interfaces, implement on child!
@@ -149,6 +229,19 @@ module.exports = kind({
         return false;
     },
     _formHasFieldStandard: function(fieldName) {
+        if(fieldName == 'search_and_reference') {
+            var has = 0;
+            has += this._formHasFieldStandard('search') ? 1 : 0;
+            has += this._formHasFieldStandard('reference') ? 1 : 0;
+            has += this._formHasFieldStandard('request') ? 1 : 0;
+
+            return (has >= 2);
+        } else if(fieldName == '_reference') {
+            return this._formHasFieldStandard('reference') || this._formHasFieldStandard('request') || this._formHasFieldStandard('reference_booksel');
+        } else if(fieldName == '_search') {
+            return this._formHasFieldStandard('search') || this._formHasFieldStandard('request');
+        }
+
         if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view && this.$.Content.$.FormController.view.$) {
             return (this.$.Content.$.FormController.view.$[fieldName]) ? true : false;
         }
@@ -170,12 +263,12 @@ module.exports = kind({
         this.addRemoveClass('rtl', this.app.isRtl);
     },
     handleFormResponse: function(inSender, inEvent) {
-        this.scrollToTop();
+        // this.scrollToTop();
     },
     handleFormViewChanged: function(inSender, inEvent) {
-        this.scrollToTop();
+        //this.scrollToTop();
     },
     handkeKey: function(inSender, inEvent) {
         this.log(inEvent);
-    },
+    }
 });

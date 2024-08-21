@@ -15,7 +15,8 @@ module.exports = kind({
     ],
 
     handlers: {
-        onLocaleChange: 'localeChanged'
+        onLocaleChange: 'localeChanged',
+        onClearFormWaterfall: 'clear'
     },
 
     defaultBook: 1,
@@ -149,7 +150,11 @@ module.exports = kind({
 
         var Passage = Passages.shift();
 
-        this.$.Book.setSelectedByContent(Passage.book);
+        if(!Passage) {
+            return;
+        }
+
+        Passage.book && this.$.Book.setSelectedByContent(Passage.book);
 
         var cv = Passage.chapter_verse.split(':');
         var chapter = cv[0];
@@ -186,6 +191,10 @@ module.exports = kind({
         this.set('value', Book.name + ' ' + inSender.get('value'));
         this._internalSet = false;
     }, 
+
+    clear: function() {
+        this._initDefault();
+    },
     
     _getBookList: function() {
         var locale = this.app.get('locale');

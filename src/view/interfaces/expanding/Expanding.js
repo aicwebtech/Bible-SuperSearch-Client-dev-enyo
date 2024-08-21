@@ -5,7 +5,7 @@ module.exports = kind({
     name: 'Expanding',
     kind: Base,
     // formView: formView,
-    advancedFormView: null //advancedFormView,
+    advancedFormView: null,
     // classes: 'interface_expanding',
 
     // create: function() {
@@ -19,4 +19,8 @@ module.exports = kind({
     //         displayFormOnCreate: true
     //     });        
     // }
+    create: function() {
+        // this.app.set('useNewSelectors', true);
+        this.inherited(arguments);
+    }
 });

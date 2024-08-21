@@ -11,8 +11,6 @@ var i18nComponent = require('../Locale/i18nComponent');
 var Signal = require('enyo/Signals');
 var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 
-
-
 module.exports = kind({
     name: 'HelpDialog',    
     kind: Dialog,
@@ -20,6 +18,7 @@ module.exports = kind({
     height: '475px',
     classes: 'help_dialog help',
     bibleString: null,
+    titleBarHeight: 64,
     
     published: {
         section: null
@@ -61,8 +60,57 @@ module.exports = kind({
             {content: 'Rom 3:23, 6:23, 5:8, 10:9,13;', link: 'passage'},
             {content: 'Ephesians 2:8,9; Acts 4:12; John 8:31-32,36', link: 'passage'},
             {content: 'John 13:36 - 14:3', link: 'passage'},
-
         ],
+
+        // :todo - add shortcut list here!
+        limitingSearches: [
+            {tag: 'h3', kind: i18n, content: 'Limiting Searches'},
+            // {tag: 'h4', kind: i18n, content: 'Preset Limits'},
+            {tag: 'table', classes: 'bss_generic_table', components: [
+                {tag: 'thead', components: [
+                    {tag: 'th', kind: i18n, content: 'Name'},
+                    {tag: 'th', kind: i18n, content: 'Alias'},
+                    {tag: 'th', kind: i18n, content: 'Passages'},
+                ]},
+                {name: 'Shortcuts', tag: 'tbody', components: []}
+            ]},
+            // {tag: 'h4', kind: i18n, content: 'Custom Limits'},
+        ],
+
+        specialFormatting: [
+            {tag: 'h3', content: 'Formatting'},
+            
+            {tag: 'h4', content: 'Highlight'},
+            {tag: 'div', components: [
+                {tag: 'span', kind: i18n, content: 'highlight_description'},
+            ]},            
+
+            {tag: 'h4', content: 'Red Letter'},
+            {tag: 'div', components: [
+                {tag: 'span', kind: i18n, content: 'red_letter_description'},
+                {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;('},
+                {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
+                {tag: 'span', content: '.)'}
+            ]},            
+
+            {tag: 'h4', content: 'Italics'},
+            {tag: 'div', components: [
+                {tag: 'span', kind: i18n, content: 'italics_description'},
+                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;('},
+                {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
+                {tag: 'span', content: '.)'}
+            ]},            
+
+            {tag: 'h4', content: 'Strong\'s'},
+            {tag: 'div', components: [
+                {tag: 'span', kind: i18n, content: 'strongs_numbers_description'},
+                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;('},
+                {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
+                {tag: 'span', content: '.)'}
+            ]},
+        ],
+        // Note, for forms that do NOT have the Search Type option, Boolean search 'should' still work.
+        // Reason: 'All Words' is basically just Boolean search in disguise
         boolSearch: [
             {tag: 'h3', content: 'Advanced Searches using Boolean'},
             {tag: 'div', components: [
@@ -72,54 +120,58 @@ module.exports = kind({
                 {tag: 'span', content: '\''}
             ]},
             {tag: 'br'},
-            {tag: 'table', classes: 'biblesupersearch_center_element',components: [
-                {tag: 'tr', components: [
-                    {tag: 'th', kind: i18n, content: 'Operators', attributes: {colspan: 3}}
+            {tag: 'table', classes: 'bss_generic_table',components: [
+                {tag: 'thead', components: [
+                    {tag: 'tr', components: [
+                        {tag: 'th', kind: i18n, content: 'Operators', attributes: {colspan: 3}}
+                    ]},
+                    {tag: 'tr', components: [
+                        {tag: 'th', kind: i18n, content: 'Operator'},
+                        {tag: 'th', kind: i18n, content: 'Alias'},
+                        {tag: 'th', kind: i18n, content: 'Description'},
+                    ]},
                 ]},
-                {tag: 'tr', components: [
-                    {tag: 'th', kind: i18n, content: 'Operator'},
-                    {tag: 'th', kind: i18n, content: 'Aliases'},
-                    {tag: 'th', kind: i18n, content: 'Description'},
-                ]},
-                {tag: 'tr', components: [
-                    {tag: 'td', content: 'AND'},
-                    {tag: 'td', content: '&'},
-                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Match both'}
-                ]},
-                {tag: 'tr', components: [
-                    {tag: 'td', content: 'OR'},
-                    {tag: 'td', content: '|'},
-                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Match either'}
-                ]},
-                {tag: 'tr', components: [
-                    {tag: 'td', content: 'XOR'},
-                    {tag: 'td', content: '^'},
-                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Match only one'}
-                ]},
-                {tag: 'tr', components: [
-                    {tag: 'td', content: 'NOT'},
-                    {tag: 'td', content: '-'},
-                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Does not match'}
-                ]},
-                {tag: 'tr', components: [
-                    {tag: 'td', content: 'CHAP'},
-                    {tag: 'td', content: ''},
-                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same chapter'}
-                ]},                     
-                {tag: 'tr', components: [
-                    {tag: 'td', content: 'BOOK'},
-                    {tag: 'td', content: ''},
-                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same book'}
-                ]},                
-                {tag: 'tr', components: [
-                    {tag: 'td', content: 'PROX(N)'},
-                    {tag: 'td', content: ''},
-                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same book, and within N verses of each other'}
-                ]},                
-                {tag: 'tr', components: [
-                    {tag: 'td', content: 'PROC(N)'},
-                    {tag: 'td', content: ''},
-                    {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same chapter, and within N verses of each other'}
+                {tag: 'tbody', components: [
+                    {tag: 'tr', components: [
+                        {tag: 'td', content: 'AND'},
+                        {tag: 'td', content: '&'},
+                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Match both'}
+                    ]},
+                    {tag: 'tr', components: [
+                        {tag: 'td', content: 'OR'},
+                        {tag: 'td', content: '|'},
+                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Match either'}
+                    ]},
+                    {tag: 'tr', components: [
+                        {tag: 'td', content: 'XOR'},
+                        {tag: 'td', content: '^'},
+                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Match only one'}
+                    ]},
+                    {tag: 'tr', components: [
+                        {tag: 'td', content: 'NOT'},
+                        {tag: 'td', content: '-'},
+                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Does not match'}
+                    ]},
+                    {tag: 'tr', components: [
+                        {tag: 'td', content: 'CHAP'},
+                        {tag: 'td', content: ''},
+                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same chapter'}
+                    ]},                     
+                    {tag: 'tr', components: [
+                        {tag: 'td', content: 'BOOK'},
+                        {tag: 'td', content: ''},
+                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same book'}
+                    ]},                
+                    {tag: 'tr', components: [
+                        {tag: 'td', content: 'PROX(N)'},
+                        {tag: 'td', content: ''},
+                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same book, and within N verses of each other'}
+                    ]},                
+                    {tag: 'tr', components: [
+                        {tag: 'td', content: 'PROC(N)'},
+                        {tag: 'td', content: ''},
+                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same chapter, and within N verses of each other'}
+                    ]}
                 ]}
             ]},
 
@@ -137,16 +189,15 @@ module.exports = kind({
             {tag: 'br'},
             {content: 'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets.'},
             {tag: 'br'},
-            {content: 'For details, please see the User\'s Manual.'},
-            {tag: 'br'},
+            // {content: 'For details, please see the User\'s Manual.'},
+            // {tag: 'br'},
         ],
-
     },
 
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, tag: 'h3', content: 'Bible SuperSearch'}, 
-            {kind: i18n, tag: 'h4', content: 'Quick Start Guide'}
+            {kind: i18n, classes: 'bss_dialog_title', content: 'Bible SuperSearch'}, 
+            {kind: i18n, classes: 'bss_dialog_subtitle', content: 'Quick Start Guide'}
         ]}
     ],
 
@@ -160,10 +211,10 @@ module.exports = kind({
     ],
 
     buttonComponents: [
-        {name: 'UsersManual', kind: Button, ontap: 'usersManual', components: [
+        {name: 'UsersManual', kind: Button, ontap: 'usersManual', showing: false, components: [
             {kind: i18n, content: 'User\'s Manual'},
         ]},
-        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'}, 
+        {name: 'UmSpacer', tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;', showing: false}, 
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'},
         ]}
@@ -180,7 +231,37 @@ module.exports = kind({
         }
 
         this.inherited(arguments);
+
+        var statics = this.app.get('statics'),
+            shortcuts = statics.shortcuts;
+            limSearchIdx = 1;
+
+        this.sections.limitingSearches[limSearchIdx].components[1].components = [];
+
+        for(i in shortcuts) {
+            if(!this.app.configs.shortcutsShowHidden && shortcuts[i].display == '0') {
+                continue;
+            }
+
+            this.sections.limitingSearches[limSearchIdx].components[1].components.push({
+                tag: 'tr',
+                components: [
+                    {tag: 'td', kind: i18n, content: shortcuts[i].name},
+                    {tag: 'td', kind: i18n, content: shortcuts[i].short1}, // not returned by API
+                    {tag: 'td', kind: i18n, content: shortcuts[i].reference, containsVerses: true},
+                ]
+            })
+        }
+
+        if(this.app.configs.legacyManual) {
+            this.$.UsersManual.set('showing', true);
+            this.$.UmSpacer.set('showing', true);
+        }
+    },
+    rendered: function() {
+        this.inherited(arguments);
         this.populateList();
+        this.$.ListContainer.render();
     },
     close: function() {
         this.set('showing', false);
@@ -210,17 +291,43 @@ module.exports = kind({
     populateList: function() {
         this.$.ListContainer.destroyClientControls();
         
-        if(this.section && this.sections[section]) {
-            return this._populateListSection(this.sections[section]);
+        if(this.section && this.sections[this.section]) {
+            return this._populateListSection(this.sections[this.section], this.section);
         }
 
         for(i in this.sections) {
-            this._populateListSection(this.sections[i]);
+            this._populateListSection(this.sections[i], i);
         }
     },
-    _populateListSection: function(section) {
+    _populateListSection: function(section, idx) {
         var col = 1;
             colName = 'Col_1';
+
+        if((idx == 'basicSearch' || idx == 'boolSearch') && !this.app.formHasField('_search')) {
+            return;
+        }        
+
+        if((idx == 'basicLookup') && !this.app.formHasField('_reference')) {
+            return;
+        }        
+
+        if((idx == 'limitingSearches') && !this.app.formHasField('search_and_reference')) {
+            return;
+        }
+
+        if(!this.app.formHasField('_search')) {
+            // delete this.sections.basicSearch;
+            // delete this.sections.boolSearch;
+        }
+
+        if(!this.app.formHasField('_reference')) {
+            // delete this.sections.basicLookup;
+        }
+
+        if(!this.app.formHasField('search_and_reference')) {
+            // delete this.sections.limitingSearches;
+
+        }
 
         this.bibleString = this.app.getSelectedBiblesString();
         var passageUrlBase = '#/r/' + this.bibleString + '/';
@@ -233,14 +340,33 @@ module.exports = kind({
                     kind: i18nComponent
                 },
                 url = null,
-                linkType = item.link || null;
+                linkType = item.link || null,
+                field = null;
 
+            switch(linkType) {
+                case 'passage':
+                    field = '_reference';
+                    break;
+                case 'search':
+                    field = '_search';
+                    break;
+                case 'both':
+                    field = 'search_and_reference';
+                    break;
+                default:
+                    field = linkType;
+            }
+
+            if(field && !t.app.formHasField(field)) {
+                return;
+            }
 
             if(item.tag) {
                 component.tag = item.tag;
                 component.content = this.app.t(item.content);
                 component.components = item.components;
                 component.classes = item.classes;
+                component.allowHtml = item.allowHtml || false;
             }
             else {
                 component.content = this.app.vt(item.content);

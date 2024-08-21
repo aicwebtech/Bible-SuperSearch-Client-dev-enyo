@@ -1,5 +1,6 @@
 var kind = require('enyo/kind');
 var GridView = require('./GridView');
+var ResCom = require('./ResultsReadComponent');
 var Signal = require('../../components/Signal');
 var Pager = require('../../components/Pagers/ClassicPager');
 // var Pager = require('../../components/Pagers/CleanPager');
@@ -24,12 +25,17 @@ module.exports = kind({
     paging: null,
     linkBuilder: LinkBuilder,
     selectedBible: null, // Bible we're currently processing
+    lastHoverIntentTarget: null,
     lastHoverTarget: null,
     lastHoverX: 0,
     lastHoverY: 0,
     navigationButtonsView: Nav,
     pagerView: Pager,
     showingCopyrightBottom: false,
+    renderStyle: 'passage',
+    _localeChangeRender: false,
+    activeComponent: null,
+    sideButtons: false,
 
     published: {
         resultsData: null,
@@ -42,7 +48,10 @@ module.exports = kind({
         onmouseover: 'handleHover',
         onmouseout: 'handleMouseOut',
         onLocaleChange: 'handleLocaleChange',
-        ontap: 'handleClick'
+        onGlobalScroll: 'handleGenericReposition',
+        onGlobalScrollEnd: 'handleGenericReposition',
+        ontap: 'handleClick',
+        // onGlobalTap: 'handleClick'
     },
 
     components: [
@@ -58,7 +67,36 @@ module.exports = kind({
         },
         {name: 'DialogsContainer', components: [
             {name: 'StrongsHover', kind: StrongsHoverDialog}
-        ]}
+        ]},
+        {
+            name: 'SideSwipeButtons',
+            isChrome: true,
+            showing: true,
+            classes: 'bss_side_swipe_button_container',
+
+            components: [
+                {
+                    name: 'SideButtonPrev', 
+                    classes: 'bss_side_swipe_button bss_float_right', 
+                    content: '&lt;', 
+                    allowHtml: true, 
+                    // style: 'float: inline-start', 
+                    // onmouseover: 'sideButtonMouseOver',
+                    // onmouseout: 'sideButtonMouseOut',
+                    ontap: 'clickPrev'
+                },
+                {
+                    name: 'SideButtonNext', 
+                    classes: 'bss_side_swipe_button bss_float_left', 
+                    content: '&gt;', 
+                    allowHtml: true, 
+                    // style: 'float:right', 
+                    // onmouseover: 'sideButtonMouseOver',
+                    // onmouseout: 'sideButtonMouseOut',
+                    ontap: 'clickNext'
+                },
+            ]
+        }
     ],
 
     // observers: [
@@ -90,20 +128,29 @@ module.exports = kind({
 
         // this.navigationButtonsView = this.app.getSubControl('');
     },
+    rendered: function() {
+        this.inherited(arguments);
+        
+        var e = {
+            localeChange: this._localeChangeRender,
+        };
+
+        this.bubble('onResultsRendered', e);
+        this._localeChangeRender = false;
+    },
     formDataChanged: function(was, is) {
         this.bibles = [];
 
         for(i in this.formData.bible) {
-            var module = this.formData.bible[i];
+            var mod = this.formData.bible[i];
 
-            if(typeof this.app.statics.bibles[module] == 'undefined') {
+            if(typeof this.app.statics.bibles[mod] == 'undefined') {
                 continue;
             }
 
-            this.bibles.push(module);
+            this.bibles.push(mod);
         }
 
-        // this.log(this.bibles);
         this.bibleCount = this.bibles.length;
         this.biblesStr = this.bibles.join(',');
         this.multiBibles = (this.bibleCount > 1) ? true : false;
@@ -153,6 +200,8 @@ module.exports = kind({
         }
 
         this.render();
+
+        this.determineActiveComponent();
     },
     renderPassage: function(passage) {        
         this.showingCopyrightBottom = false;
@@ -193,22 +242,32 @@ module.exports = kind({
     },
     _renderCopyRightBottomHelper: function(Container) {
         for(i in this.bibles) {
-            var module = this.bibles[i];
+            var mod = this.bibles[i];
 
-            if(typeof this.app.statics.bibles[module] == 'undefined') {
+            if(typeof this.app.statics.bibles[mod] == 'undefined') {
                 continue;
             }
             
-            var bible_info = this.app.statics.bibles[module];
-            // var content = '<h5>' + bible_info.name + ' (' + bible_info.shortname + ')</h5>' + bible_info.copyright_statement;
+            var bible_info = this.app.statics.bibles[mod];
             
             var components = [
-                {tag: 'h5', content: bible_info.name + ' (' + bible_info.shortname + ')'},
-                {kind: i18n, content: bible_info.copyright_statement, allowHtml: true}
+                {
+                    tag: 'h5', 
+                    content: bible_info.name + ' (' + bible_info.shortname + ')', 
+                    ontap: 'handleBibleInfoTap', 
+                    module: mod, 
+                    owner: this,
+                    classes: 'bss_clickable bss_center'
+                },
+                {
+                    kind: i18n, 
+                    content: bible_info.copyright_statement, 
+                    allowHtml: true, 
+                    attributes: {dir: 'auto'},
+                }
             ];
 
             if(bible_info.research) {
-                // content += '<br /><br />This Bible is provided for research purposes only.';
                 components.push({tag: 'br'});
                 components.push({tag: 'br'});
                 components.push({kind: i18n, content: 'This Bible is provided for research purposes only.'});
@@ -224,12 +283,14 @@ module.exports = kind({
 
         this.showingCopyrightBottom = true;
     },
-
+    handleBibleInfoTap: function(inSender, inEvent) {
+        Signal.send('onBibleInfo', {module: inSender.get('module')});
+    },
     _getBibleDisplayName: function(bible) {
         if(this.bibles.length <= 1) {
             return bible.name;
         }
-
+        
         return bible.name.length > 30 ? bible.shortname : bible.name;
     },
 
@@ -249,7 +310,6 @@ module.exports = kind({
         return verse.verse;
     },
     processSingleVerseContent: function(passage, verse) {
-        // passage.book_name + ' ' + passage.chapter_verse + '  ' + verse.text;
         var ref = this.proccessSingleVerseReference(passage, verse);
         return this.processAssembleSingleVerse(ref, verse);
     },
@@ -262,6 +322,10 @@ module.exports = kind({
         return this.processAssemblePassageVerse(ref, verse);
     },
     proccessPassageVerseReference: function(passage, verse) {
+        if(this.renderStyle == 'verse_passage') {
+            return this.proccessSingleVerseReference(passage, verse);
+        }
+
         return verse.verse;
     },
     processAssembleSingleVerse: function(reference, verse) {
@@ -299,7 +363,12 @@ module.exports = kind({
             text = text.replace(/[GHgh][0-9]+/g, utils.bind(this, function(match, offset, string) {
                 // This link not working for a URL that ends in a file (ie biblesupersearch.html)
                 var url = '#/strongs/' + this.biblesStr + '/' + match;
-                return '<a class="strongs" href="' + url + '">' + match + '</a>';
+
+                if(this.getStrongsOpenClick()) {
+                    return '<a class="strongs" href="' + url + '" onclick="return false;">' + match + '</a>';
+                } else {
+                    return '<a class="strongs" href="' + url + '">' + match + '</a>';
+                }
             }));
         }
         else {
@@ -356,14 +425,33 @@ module.exports = kind({
 
         return false;
     },
-    _createContainer: function() {
+    _createContainer: function(passage) {
         return this.createComponent({
+            kind: ResCom,
             tag: 'table',
+            passage: passage || null,
             // attributes:{border: 1},
             classes: 'biblesupersearch_render_table'
         });
     },
+    getStrongsOpenClick: function() {
+        var strongsOpenClick = this.app.configs.strongsOpenClick;
 
+        switch(strongsOpenClick) {
+            case 'mobile':
+                strongsOpenClick = this.app.client.isMobile;
+                break;
+            case 'always':
+                strongsOpenClick = true;
+                break;
+            case 'none':
+            default:
+                strongsOpenClick = false;
+                break;
+        }
+
+        return strongsOpenClick;
+    },
     watchRenderable: function(pre, cur, prop) {
         this.renderResults();
     },
@@ -376,9 +464,15 @@ module.exports = kind({
         }
 
         includeTotals = includeTotals || false;
+        var name = includeTotals ? 'Pager_1' : 'Pager_2';
+
+        if(this.$[name]) {
+            return;
+        }
 
         this.createComponent({
             kind: this.pagerView,
+            name: name,
             currentPage: this.paging.current_page,
             lastPage: this.paging.last_page,
             perPage: this.paging.per_page,
@@ -388,17 +482,37 @@ module.exports = kind({
             includeTotals: includeTotals
         });
     },
-    selectBible: function(module) {
-        this.selectedBible = (typeof this.app.statics.bibles[module] == 'undefined') ? null : this.app.statics.bibles[module];
+    selectBible: function(mod) {
+        this.selectedBible = (typeof this.app.statics.bibles[mod] == 'undefined') ? null : this.app.statics.bibles[mod];
         return this.selectedBible;
     },
     handleHover: function(inSender, inEvent) {
         var target = inEvent.target;
+        var hoverIntent = false;
         var x = inEvent.x;
         var y = inEvent.y;
         var lastX = this.lastHoverX;
         var lastY = this.lastHoverY;
-        var thres = 5;
+        var lastTarget = this.lastHoverTarget;
+        var thres = 50;
+        var hoverIntentThres = this.app.configs.hoverDelayThreshold;
+        var strongsOpenClick = this.getStrongsOpenClick();
+        // var strongsOpenClick = false; // debugging ONLY as handleHover and handleClick with collide if both are active!
+
+        this.app.debug && this.log('hoverIntentThres', hoverIntentThres, strongsOpenClick);
+
+        target.bssType = null;
+
+        if(target.tagName == 'A' && target.className == 'strongs') {
+            target.bssType = 'strongs';
+        }
+
+        if(target.bssType == 'strongs') {
+            if(strongsOpenClick) {
+                return; // If strongs is opened via click, don't open via hover!
+            }
+            this.$.StrongsHover.cancelHide();
+        }
 
         if((
             (x - thres <= lastX) && 
@@ -407,18 +521,19 @@ module.exports = kind({
             (y + thres >= lastY)
         )) {
             // return;
-        }
+        } 
 
         if(target != this.lastHoverTarget) {
-            // this.hideHoverDialogs();
             this.lastHoverTarget = target;
             this.lastHoverX = x;
             this.lastHoverY = y;
-            // this.log('inSender', inSender);
-            // this.app.debug && this.log('hover inEvent', inEvent);
 
             var mouseX = inEvent.clientX; //inEvent.screenX + inEvent.offsetX;
             var mouseY = inEvent.clientY; // + inEvent.offsetY;
+
+            if(target.bssType == 'strongs') {
+                this.app.debug && this.log('raw mouse', mouseX, mouseY);
+            }
 
             if(this.app.clientBrowser == 'IE') {
                 // apparently, do nothing - seems to position correctly?
@@ -428,25 +543,41 @@ module.exports = kind({
                 mouseY += window.scrollY;
             }
 
-            var parentWidth = inEvent.target.parentNode.offsetWidth;
+            var parentWidth  = inEvent.target.parentNode.offsetWidth;
             var parentHeight = inEvent.target.parentNode.offsetHeight;
-            // var parentHeight = this.hasNode().scrollHeight;
-            // var parentWidth  = this.hasNode().scrollWidth;
-            // var mouseX = inEvent.offsetX;
-            // var mouseY = inEvent.offsetY;
 
-
-            if(target.tagName == 'A' && target.className == 'strongs') {
-                // this.log('mouseY options', inEvent.offsetY, inEvent.y, inEvent.pageY, inEvent.movementY, inEvent.screenY);
-                // this.hideHoverDialogs(); // uncomment in production
-                // this.log('offset', inEvent.offsetY);
-                // this.log('pWidth', parentWidth);
-                // this.log('pHeight', parentHeight);
-                // this.log('inEvent', inEvent);
-                // this.log('mouseY', mouseY);
-                this.$.StrongsHover.displayPosition(mouseX, mouseY, target.innerHTML, parentWidth, parentHeight);
+            // Experimental!
+            // If user mouses off of Strongs link, close dialog
+            // make this a config?
+            if(!strongsOpenClick && lastTarget && lastTarget.bssType == 'strongs') {
+                // this.$.StrongsHover.set('showing', false);
+                this.$.StrongsHover.hideDelay();
             }
 
+            var t = this;
+            
+            setTimeout(function() {
+                if(target != t.lastHoverTarget) {
+                    return;
+                }
+
+                if(target.bssType == 'strongs') {
+                    if(strongsOpenClick) {
+                        return; // If strongs is opened via click, don't open via hover!
+                    }
+
+                    // t.log('mouseX raw', inEvent.clientX);
+                    // t.log('mouseX', mouseX);
+                    // t.log('mouseY raw', inEvent.clientY);
+                    // t.log('mouseY', mouseY);
+                    // t.log('target.innerHTML', target.innerHTML);
+                    // t.log('parentWidth', parentWidth);
+                    // t.log('parentHeight', parentHeight);
+
+                    // this.hideHoverDialogs(); // uncomment in production
+                    t.$.StrongsHover && t.$.StrongsHover.displayPosition(mouseX, mouseY, target.innerHTML, parentWidth, parentHeight, false);
+                }
+            }, hoverIntentThres);
         }
     },
     handleMouseOut: function(inSender, inEvent) {
@@ -455,16 +586,68 @@ module.exports = kind({
         }
     },
     handleClick: function(inSender, inEvent) {
+        var strongsOpenClick = this.getStrongsOpenClick();
+        target = inEvent.target;
+
+        if(strongsOpenClick && target.tagName == 'A' && target.className == 'strongs') {
+            inEvent.preventDefault();
+            // inEvent.stopPropagation();
+            inEvent.bubbling = false;
+
+            this.app.debug && this.log('raw mouse', inEvent);
+
+            // var mouseX = Math.round(inEvent.clientX); 
+            // var mouseY = Math.round(inEvent.clientY); 
+
+            var mouseX = Math.round(inEvent.srcEvent.clientX); 
+            var mouseY = Math.round(inEvent.srcEvent.clientY); 
+
+            this.app.debug && this.log('raw mouse client', mouseX, mouseY);
+            // this.log('raw mouse srcEvent client', inEvent.srcEvent.clientX, inEvent.srcEvent.clientY);
+
+            if(this.app.clientBrowser == 'IE') {
+                // apparently, do nothing - seems to position correctly?
+            }
+            else {
+                mouseX += window.scrollX
+                mouseY += window.scrollY;
+            }
+
+            var parentWidth  = inEvent.target.parentNode.offsetWidth;
+            var parentHeight = inEvent.target.parentNode.offsetHeight;
+            
+            // this.log('mouseX raw', inEvent.clientX);
+            // this.log('mouseX', mouseX);
+            // this.log('mouseY raw', inEvent.clientY);
+            // this.log('mouseY', mouseY);
+            // this.log('target.innerHTML', target.innerHTML);
+            // this.log('parentWidth', parentWidth);
+            // this.log('parentHeight', parentHeight);
+
+            // this.hideHoverDialogs(); // uncomment in production
+            this.$.StrongsHover && this.$.StrongsHover.displayPosition(mouseX, mouseY, target.innerHTML, parentWidth, parentHeight, true);
+            this.app.debug && this.$.StrongsHover && this.log('displaying Strongs dialog');
+            return true;
+        }
+
+
+        // no longer relavant
         if(inSender.name != 'DialogsContainer') {
-            this.hideHoverDialogs();
+            // this.hideHoverDialogs();
         }
     },
     handleKey: function(inSender, inEvent) {
-        // this.log(inEvent);
-
         if(inEvent.code == 'Escape') {
             this.hideHoverDialogs();
         }
+
+        // this.waterfall('onKeyWaterfall', inEvent);
+        //this.waterfall('onType', inEvent);
+        // return false;
+    },
+    hideEverything: function() {
+        this.hideHoverDialogs();
+        Signal.send('onHideEverything');
     },
     hideHoverDialogs: function() {
         this.$.StrongsHover.set('showing', false);
@@ -514,8 +697,65 @@ module.exports = kind({
             alert('Could not open print friendly window.  Is your browser blocking popups?');
         }
     },
+    handleGenericReposition: function(inSender, inEvent) {
+        this.determineActiveComponent();
+    },
+    determineActiveComponent: function() {
+        var comp = this.getClientControls(),
+            visible = comp.filter(function(item) {
+                return item.isVisible && item.isVisible();
+            });
+
+        if(this.activeComponent) {
+            this.activeComponent.set('active', false);
+            this.activeComponent = null;
+        }
+
+        if(visible.length == 1 || this.hasPaging && visible.length > 0) {
+            this.activeComponent = visible[0];
+            this.activeComponent.set('active', true);
+        }
+    },
     handleLocaleChange: function(inSender, inEvent) {
+        this._localeChangeRender = true;
         this.renderResults();
+    },
+    clickNext: function() {
+        this.app.debug && this.log();
+        this.activeComponent.waterfall('onAutoClick', {button: '_next'});
+        Signal.send('onAutoClick', {button: '_next'});
+    },
+    clickPrev: function() {
+        this.app.debug && this.log();
+        this.activeComponent.waterfall('onAutoClick', {button: '_prev'});
+        Signal.send('onAutoClick', {button: '_prev'});
+    },
+    sideButtonsChanged: function(was, is) {
+        var isfr = is; // is for real
+
+        // Prevent racing coindition between one componet turning buttons off and another turning them on
+        if(this.activeComponent && this.activeComponent.get('sideButtons')) {
+            isfr = true;
+            this.sideButtons = isfr;
+        }
+
+        if(isfr == was) {
+            return; // if no change, do nothing further
+        }
+
+        // this.log();
+        // this.$.SideSwipeButtons.set('showing', !!is);
+
+        this.$.SideSwipeButtons.addRemoveClass('fadein', !!isfr);
+        // this.$.SideSwipeButtons.set('showing', is);
+
+        // if(is) {
+        //     // this.$.SideSwipeButtons.set('showing', true);
+        //     this.$.SideSwipeButtons.hasNode().classList.toggle('fadein');
+        // } else {
+        //     this.$.SideSwipeButtons.hasNode().classList.toggle('fadein');
+        //     // this.$.SideSwipeButtons.set('showing', false);
+        // }
     }
 
 });

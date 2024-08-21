@@ -5,13 +5,17 @@ var utils = require('enyo/utils');
 var Image = require('../Image');
 var StrongsView = require('../../view/results/StrongsView');
 
+var Button = require('enyo/Button');
+var Anchor = require('enyo/Anchor');
+var LinkBuilder = require('../Link/LinkBuilder');
+var i18n = require('../Locale/i18nContent');
+
 module.exports = kind({
     name: 'StongsHoverDialog',
     kind: Dialog,
     showing: false,
     classes: 'strongs_hover',
-    // style: '',
-    width: 300,
+    width: 400,
     height: 300,
 
     strongsCache: {},
@@ -28,13 +32,39 @@ module.exports = kind({
                 },
                 {content: 'Loading, please wait ...', style: 'padding: 10px; font-weight: bold'},
             ]},
-            {name: 'ContentContainer', style: 'width: 400px', kind: StrongsView}
+            //{style: 'padding: 50px', classes: 'hover_dialog', components: [
+                {name: 'ContentContainer', kind: StrongsView},
+                {
+                    name: 'ButtonContainer',
+                    classes: 'bss_dialog_buttons biblesupersearch_center_element',
+                    components: [
+                        {name: 'Link', kind: Button, ontap: 'followLink', components: [
+                            {kind: i18n, content: 'Search for'},
+                            {tag: 'span', content: '&nbsp;', allowHtml: true},
+                            {tag: 'span', name: 'SearchFor'}
+                        ]},
+                        {name: 'LinkSpacer', tag: 'span', classes: 'spacer'},
+                        {name: 'Close', kind: Button, ontap: 'close', components: [
+                            {kind: i18n, content: 'Close'},
+                        ]}     
+                    ]
+                }
+            //]}
         ]}
     ],
 
-    displayPosition: function(top, left, content, parentWidth, parentHeight) {
+    bindings: [
+        {from: 'strongsRaw', to: '$.SearchFor.content'}
+    ],
+
+    create: function() {
         this.inherited(arguments);
-        this.strongsRaw = content;
+        this.$.Link.set('showing', this.app.configs.strongsDialogSearchLink);
+        this.$.LinkSpacer.set('showing', this.app.configs.strongsDialogSearchLink);
+    },
+    displayPosition: function(top, left, content, parentWidth, parentHeight, showButtons) {
+        this.inherited(arguments);
+        this.set('strongsRaw', content);
 
         if(this._loadFromCache(content)) {
             this.showContent();
@@ -45,7 +75,8 @@ module.exports = kind({
         this.showLoading();
 
         var postBody = {
-            strongs: content
+            strongs: content,
+            key: this.app.configs.apiKey || null
         };
 
         var ajax = new Ajax({
@@ -59,7 +90,10 @@ module.exports = kind({
         ajax.error(this, 'handleError');
     },
     handleResponse: function(inSender, inResponse) {
+        this.set('showing', true);
+
         if(!this.get('showing')) {
+            this.app.debug && this.log('Strongs dialog not showing, exiting');
             return;
         }
 
@@ -85,5 +119,11 @@ module.exports = kind({
         this.$.ContentContainer._addStrongs(this.strongsCache[strongs]);
         this.$.ContentContainer.render();
         return true;
+    },
+    followLink: function() {
+        //http://ui-dev.bss.plsv/#/strongs/kjv_strongs/H5612
+
+        var url = '#/strongs/' + this.app.getSelectedBiblesString() + '/' + this.strongsRaw;
+        window.location = url;
     }
 });

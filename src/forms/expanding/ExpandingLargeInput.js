@@ -17,6 +17,7 @@ var i18n = require('../../components/i18n');
 var LocaleSelector = require('../../components/Locale/LocaleSelector');
 var inc = require('../../components/Locale/i18nComponent');
 var i18n = require('../../components/Locale/i18nContent');
+var Autocomplete = require('../../components/PseudoSelect/PseudoAutocompleteReference');
 
 module.exports = kind({
     name: 'Expanding',
@@ -26,14 +27,15 @@ module.exports = kind({
         {
             kind: FormSection,
             classes: 'biblesupersearch_expanding_form expanding',
-            components: [                
+            components: [                               
                 {classes: 'input_row_wide', components: [
                     {
                         name: 'request', 
-                        kind: TextArea, 
+                        kind: Autocomplete, 
                         placeholder: 'Enter search keyword(s) or passage reference(s)', 
                         enterSubmit: false,
-                        style: 'height: 60px'
+                        useTextArea: true,
+                        inputStyle: 'height: 60px'
                     },
                 ]},                 
                 {classes: 'input_row_wide', components: [
@@ -70,7 +72,7 @@ module.exports = kind({
                         {name: 'PassageContainer', showing: false, classes: 'input_row', components: [
                             {kind: i18n, classes: 'label', content: 'Passages:'},
                             {classes: 'element', components: [
-                                {kind: TextArea, name: 'reference', enterSubmit: false, style: 'height: 30px'}
+                                {kind: Autocomplete, name: 'reference', enterSubmit: false, inputStyle: 'height: 30px', useTextArea: true}
                             ]}
                         ]},                                     
                         {classes: 'input_row_checkbox', components: [

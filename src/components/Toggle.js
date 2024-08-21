@@ -1,5 +1,6 @@
 var kind = require('enyo/kind');
 var Image = require('./Image');
+var Help = require('./ContextHelp');
 
 module.exports = kind({
     name: 'Toggle',
@@ -8,6 +9,10 @@ module.exports = kind({
     falseImage: null, // Image that displays when value = false,
     trueAlt: '',
     falseAlt: '',
+
+    help: false,
+    helpComponents: [],
+
     // ontap: 'toggleValue',
 
     published: {
@@ -40,6 +45,14 @@ module.exports = kind({
             // ontap: this.toggleValue,
             showing: this.value
         });
+
+        if(this.help)  {
+            this.createComponent({
+                kind: Help,
+                name: 'Help',
+                helpComponents: this.helpComponents,
+            });
+        }
     },
 
     valueChanged: function(was, is) {

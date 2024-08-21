@@ -18,8 +18,11 @@ var i18n = require('enyo/i18n');
 var Loading = require('./components/LoadingInline');
 var Locales = require('./i18n/LocaleLoader');
 var Validators = require('./lib/Validators');
+var Utils = require('./lib/Utils');
 var AlertDialog = require('./components/dialogs/Alert');
 var ResponseCollection = require('./data/collections/ResponseCollection');
+var BookmarkCollection = require('./data/collections/BookmarkCollection');
+var StorageManager = require('./data/LocalStorageManager');
 var ErrorView = require('./view/ErrorView');
 
 //var MainView = require('./view/Content');
@@ -38,7 +41,11 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
+<<<<<<< HEAD
     applicationVersion: '5.1.2',
+=======
+    applicationVersion: '5.6.0',
+>>>>>>> master
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -47,37 +54,66 @@ var App = Application.kind({
     // view: Loading, // Loading will be replaced with actual UI
     renderOnStart: false,       // We need to load configs first
     rootDir: null,
+    testInit: false, // whether to init the QUnit tests
+    testOnLoad: false,
+    testVerbose: false,
     testing: false,             // Indicates unit tests are running
     debug: false,
     statics: {},
     maximumBiblesDisplayed: 8,  // The absolute maximum number of parallel bibles that can be possibly displayed
     bibleDisplayLimit: 8,       // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
     defaultBibles: [],
+<<<<<<< HEAD
+=======
+    history: [],
+    bookmarks: null,
+>>>>>>> master
     resetView: true,
     appLoaded: false,
     ajaxLoadingDelayTimer: null,
     baseTitle: null,
     bssTitle: null,
     baseUrl: null,
-    clientBrowser: null,
+    clientBrowser: 'unknown', // legacy
+    client: {
+        os: 'unknown',
+        browser: 'unknown',
+        isMobile: false,
+        isWebkit: false,
+    },
     preventRedirect: false,
     shortHashUrl: '',
     biblesDisplayed: [],
     locale: 'en',
     defaultLocale: 'en', // hardcoded
+    localeManual: false, // whether locale has been manually changed
     localeData: Locales.en,
     localeDatasetsRaw: Locales,
     localeDatasets: {},
     localeBibleBooks: {},
+    isRtl: false,
     validate: Validators,
     AlertDialog: AlertDialog,
     responseCollection: ResponseCollection,
+    storage: StorageManager,
+    utils: Utils,
     hasAjaxSuccess: false,
+    hasMouse: false, // use mouse events to detect
+
+    useNewSelectors: false,
+
+    // 'container_top' or 'results_top'
+    scrollMode: 'container_top',   // Ensures default loading page does NOT scroll down
+    scrollModeDefault: 'results_top',
     
     // Selectable sub-views:
     formatButtonsView: null,
     navigationButtonsView: null,
     pagerView: null,
+
+    accessible: [
+        'diff', 'statistics'
+    ],
 
     published: {
         ajaxLoading: false,
@@ -95,7 +131,8 @@ var App = Application.kind({
     ],
 
     observers: [
-        {method: 'watchSingleVerses', path: ['UserConfig.single_verses']}
+        //{method: 'watchSingleVerses', path: ['UserConfig.single_verses', 'UserConfig.passages']}
+        {method: 'watchRenderStyle', path: ['UserConfig.render_style']}
     ],
 
     create: function() {
@@ -104,6 +141,12 @@ var App = Application.kind({
         this.build = buildConfig;
         this.system = systemConfig;
         this.set('baseTitle', document.title);
+        var t = this;
+
+        if(typeof QUnit != 'undefined') {
+            QUnit.config.autostart = false;
+            QUnit.config.hidepassed = true;
+        }
         // this.log('defaultConfig', defaultConfig);
 
         window.console && console.log('BibleSuperSearch client version', this.applicationVersion);
@@ -111,11 +154,6 @@ var App = Application.kind({
         // Older rootDir code, retaining for now
         this.rootDir = (typeof biblesupersearch_root_directory == 'string') ? biblesupersearch_root_directory : '/biblesupersearch';
         
-        if(navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > -1) {
-            this.clientBrowser = 'IE';
-            window.console && console.log('Using Internet Explorer ... some minor functionality may be disabled ...');
-        }
-
         if(typeof biblesupersearch != 'object' || biblesupersearch == null) {
             biblesupersearch = {
                 app: this,
@@ -123,12 +161,10 @@ var App = Application.kind({
             }
         }
         
-        // Experimental code for determining root dir from script
-        // Appears to be working
+        // Code for determining root dir from script
         // Set biblesupersearch_root_directory for best performance
         if(typeof biblesupersearch_root_directory == 'string') {
             this.rootDir = biblesupersearch_root_directory;
-            // this.log('rootDir - using biblesupersearch_root_directory');
         }
         else {        
             var dir = null;
@@ -141,7 +177,6 @@ var App = Application.kind({
                 var dirParts = path.split('/'); 
                 var name = dirParts.pop();
                 dir = dirParts.join('/') || null;
-                // this.log('rootDir - using script path');
             }
 
             if(!dir) {
@@ -149,18 +184,13 @@ var App = Application.kind({
                 dirParts = hashParts[0].split('/'); 
                 name = dirParts.pop();
                 dir = dirParts.join('/') || hashParts[0];
-                // this.log('rootDir - using window location');
             }
             
-            // dir = dir.replace('/'+name,"");
-            // this.log('bss script dir', dir, dirParts, path, hashParts, dirParts, name, window.location.href);
             this.rootDir = dir;
         }
 
-        // this.log('rootDir - FINAL', this.rootDir);
         var urlParts = window.location.href.split('#');
         this.baseUrl = urlParts[0];
-        // this.log('baseUrl - FINAL', this.baseUrl);
 
         // If user provided a config path, use it.
         var config_path = (typeof biblesupersearch_config_path == 'string') ? biblesupersearch_config_path + '/config.json' : this.rootDir + '/config.json';
@@ -184,19 +214,80 @@ var App = Application.kind({
         loader.response(this, 'handleConfigLoad');
         loader.error(this, 'handleConfigError');
     },
-    talk: function() {
-        alert('Hello')
-    }, 
+    detectClient: function() {
+        this.debug && this.log('navigator', navigator);
+
+        if(navigator.platform == 'Win32' || navigator.userAgent.indexOf('Windows') !== -1) {
+            this.client.os = 'Windows';
+        } 
+        else if(navigator.userAgent.indexOf('Android') !== -1) {
+            this.client.os = 'Andriod';
+            this.client.isMobile = true;
+        } else if(navigator.userAgent.indexOf('Linux') !== -1) {
+            this.client.os = 'Linux';
+            this.client.isMobile = false;
+        }
+
+        // todo: Mac OS / iOS detection, the below are just guesses
+        else if (navigator.userAgent.indexOf('iPad') !== -1 || navigator.userAgent.indexOf('iPhone') !== -1) {
+            this.client.os = 'iOS';
+            this.client.isMobile = true;
+        }
+        else if (navigator.userAgent.indexOf('Macintosh') !== -1 || navigator.userAgent.indexOf('Mac OS') !== -1) {
+            this.client.os = 'MacOS';
+        } 
+
+        if(navigator.userAgent.indexOf('WebKit') !== -1) {
+            this.client.isWebkit = true; // Chrome, Safari, Edge, ect
+        }
+
+        if(navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > -1) {
+            this.client.browser = 'IE'; // MS IE no longer officially supported ... 
+            window.console && console.log('Using Internet Explorer ... some minor functionality may be disabled ...');
+        } else if(navigator.userAgent.indexOf('Firefox') !== -1) {
+            this.client.browser = 'Firefox';           
+        } else if(navigator.userAgent.indexOf('Samsung') !== -1) {
+            this.client.browser = 'Samsung'; // Webkit      
+        }         
+        else if(navigator.userAgent.indexOf('Edg/') !== -1) {
+            this.client.browser = 'Edge'; // Webkit       
+        }              
+        else if(navigator.userAgent.indexOf('OPR/') !== -1) {
+            this.client.browser = 'Opera';  // Webkit       
+        }               
+        else if(navigator.userAgent.indexOf('Chrome') !== -1) {
+            this.client.browser = 'Chrome'; // Webkit - 2nd to last
+        }         
+        else if(navigator.userAgent.indexOf('Safari') !== -1) {
+            this.client.browser = 'Safari'; // Webkit - LAST     
+        } 
+        else if(navigator.userAgent.indexOf('WebKit') !== -1) {
+            this.client.browser = 'WebKit'; // Webkit - other (generic)
+        } else {
+            this.client.browser = 'unknown';
+        }
+
+        this.clientBrowser = this.client.browser;
+        this.debug && this.log('client', this.client);
+
+        if(this.debug) {
+            // var msg = [];
+
+            // msg.push(this.client.isMobile ? 'IS MOBILE' : 'Not mobile');
+            // msg.push('Browser: ' + this.client.browser);
+            // msg.push('OS: ' + this.client.os);
+            // msg.push('User Agent: ' + navigator.userAgent);
+
+            // alert(msg.join('\n'));
+        }
+    },
     createInstance: function(container, configs) {
         var inst = new App;
-        // var inst = utils.clone(new App);
-        // var inst = utils.clone(this);
 
         configs = configs || this.configs;
         configs.target = container;
         inst.configs = configs;
         inst.renderInto(container);
-        this.log('New instance:', inst);
         biblesupersearch.instances[container] = inst;
     },
     handleConfigError: function() {
@@ -205,7 +296,6 @@ var App = Application.kind({
     },
     handleConfigLoad: function(inSender, inResponse) {
         utils.mixin(this.configs, inResponse);
-        // this.log('configs - loaded', utils.clone(this.configs));
         this.handleConfigFinal();
     },
     handleConfigFinal: function() {
@@ -215,12 +305,11 @@ var App = Application.kind({
 
         var view = null;
         this.UserConfig.newModel(0);
+        this.initBookmarks();
 
         if(this.configs.interface) {
-            // this.log('Interface ', this.configs.interface);
 
             if(Interfaces[this.configs.interface]) {
-                // this.log('secondary view found', this.configs.interface);
                 view = Interfaces[this.configs.interface];
             }
             else {
@@ -253,25 +342,144 @@ var App = Application.kind({
             this.defaultBibles = ['kjv'];
         }
 
+<<<<<<< HEAD
+=======
+        this.defaultBiblesRaw = utils.clone(this.defaultBibles);
+
+        if(this.configs.pageScrollTopPadding) {
+            if(typeof this.configs.pageScrollTopPadding == 'string') {
+                this.configs.pageScrollTopPadding = parseInt(this.configs.pageScrollTopPadding, 10);
+            }
+        }
+
+        if(this.configs.textDisplayDefault && this.configs.textDisplayDefault != 'passage') {
+            this.UserConfig.set('render_style', this.configs.textDisplayDefault);
+            this.UserConfig.set('read_render_style', this.configs.textDisplayDefault);
+        }
+
+        if(
+            this.configs.parallelBibleLimitByWidth && 
+            Array.isArray(this.configs.parallelBibleLimitByWidth) &&
+            this.configs.parallelBibleLimitByWidth.length > 0
+        ) {
+
+            var pMax = 0,
+                bMax = 1,
+                bLast = 0,
+                gMaxReached = false,
+                hasError = false,
+                hasZeroPixel = false;
+
+            for(i in this.configs.parallelBibleLimitByWidth) {
+                if(gMaxReached) {
+                    this.log('Error: parallelBibleLimitByWidth has values past the global maximum');
+                    hasError = true;
+                    continue;
+                }
+
+                pLimit = this.configs.parallelBibleLimitByWidth[i];
+
+                pLim = parseInt(pLimit.minWidth, 10);
+                bLim = parseInt(pLimit.maxBibles, 10);
+                bMin = parseInt(pLimit.minBibles, 10);
+                bStart = parseInt(pLimit.startBibles, 10);
+
+                if(bStart < bMin) {
+                    this.log('Error: parallelBibleLimitByWidth: startBibles must be equal or greater than minBibles!');
+                    hasError = true;
+                }                
+
+                if(bStart > bLim) {
+                    this.log('Error: parallelBibleLimitByWidth: startBibles must be equal or less than maxBibles!');
+                    hasError = true;
+                }
+
+                this.debug && this.log('parallel', pLimit, pLim, bLim);
+
+                if(!this.configs.parallelBibleLimitByWidth[i].minBibles) {
+                    this.configs.parallelBibleLimitByWidth[i].minBibles = 1;
+                }
+
+                if(i == 0 && pLim == 0) {
+                    hasZeroPixel = true;
+                }
+
+                if(pLimit.maxBibles == 'max') {
+                    this.configs.parallelBibleLimitByWidth[i].maxBibles = bLim = 9999;
+                    gMaxReached = true;
+                } 
+
+                // if(pLim < pMax || bLim < bMax) {
+                if(pLim < pMax) {
+                    //this.log('Error: parallelBibleLimitByWidth has values out of order, width and Bible limits must be in ascending order!');
+                    this.log('Error: parallelBibleLimitByWidth has values out of order, width limits must be in ascending order!');
+                    hasError = true;
+                }
+
+                this.configs.parallelBibleLimitByWidth[i].minWidth = pLim;
+                this.configs.parallelBibleLimitByWidth[i].maxBibles = bLim;
+                this.configs.parallelBibleLimitByWidth[i].minBibles = bMin;
+                this.configs.parallelBibleLimitByWidth[i].startBibles = bStart;
+
+                pMax = pLim;
+                bMax = bLim;
+            }
+
+            if(hasError) {
+                this.configs.parallelBibleLimitByWidth = false;
+            } else {            
+                if(!hasZeroPixel) {
+                    this.configs.parallelBibleLimitByWidth.unshift({'minWidth' : 0, 'maxBibles' : 1});
+                }
+            }
+        } else {
+            this.configs.parallelBibleLimitByWidth = false;
+        }
+
+        this.debug && this.log('parallelBibleLimitByWidth', this.configs.parallelBibleLimitByWidth);
+
+>>>>>>> master
         // Render 'Loading' view
         // Todo - set css style based on selected interface
         this.set('view', Loading);
         this.render();
 
         this.configs.apiUrl = this.configs.apiUrl.replace(/\/+$/, '') + '/api';
+        this.configs.apiKeyStr = (this.configs.apiKey && this.configs.apiKey != '') ? '&key=' + this.configs.apiKey : '';
         
         if(this.configs.debug) {
             this.debug = this.configs.debug;
         }
 
+        if(typeof QUnit == 'object') {            
+            this.testInit = true;
+
+            if(this.configs.testOnLoad) {
+                this.testOnLoad = this.configs.testOnLoad;
+            }        
+
+            if(this.configs.testVerbose) {
+                this.testVerbose = this.configs.testVerbose;
+            }
+        }
+
+        this.detectClient();
+
+        //window.biblesupersearch_configs_final = this.configs;
+
         if(typeof biblesupersearch_statics == 'object' && biblesupersearch_statics != null) {
-            this._handleStaticsLoad(biblesupersearch_statics, view);
-            return;
+            if(this._validateStatics(biblesupersearch_statics)) {            
+                this.debug && this.log('Using provided biblesupersearch_statics');
+                this._handleStaticsLoad(biblesupersearch_statics, view);
+                return;
+            } else {
+                this.log('ERROR: Provided biblesupersearch_statics is not valid, defaulting to API-provided statics.');
+            }
         }
 
         // Load Static Data (Bibles, Books, ect)
         var ajax = new Ajax({
-            url: this.configs.apiUrl + '/statics?language=en',
+            url: this.configs.apiUrl + '/statics?language=en' + this.configs.apiKeyStr,
             method: 'GET'
         });
 
@@ -309,8 +517,38 @@ var App = Application.kind({
 
         return (groupOrder) ? groupOrder + '|' + this.configs.bibleSorting : this.configs.bibleSorting;
     },
+    _validateStatics: function(statics) {
+        var strings = ['name', 'version', 'environment'];
+            arrays = ['books', 'search_types', 'shortcuts', 'download_formats'];
+            objects = ['bibles'];
+
+        for(i in strings) {
+            item = strings[i];
+
+            if(typeof statics[item] !== 'string') {
+                return false;
+            }
+        }        
+
+        for(i in arrays) {
+            item = arrays[i];
+
+            if(typeof statics[item] == 'undefined' || !Array.isArray(statics[item])) {
+                return false;
+            }
+        }
+
+        for(i in objects) {
+            item = objects[i];
+
+            if(typeof statics[item] !== 'object' || Array.isArray(statics[item]) || statics[item] === null) {
+                return false;
+            }
+        }
+
+        return true;
+    },
     _handleStaticsLoad: function(statics, view) {
-        this.test();
         this.set('statics', statics);
         this.processBiblesDisplayed();
 
@@ -318,26 +556,53 @@ var App = Application.kind({
             defaultConfig._downloadDisabledNotice();
         }
 
-        this.localeBibleBooks.en = statics.books;
+        //this.localeBibleBooks.en = statics.books; // prepopulate the English book list
+
+        var localeData = {}; // empty like my mind
+
+        // Init some statics / English language items
+        this._initLocaleShortcuts('en', localeData);
+        this._initLocaleBibleBooks('en', localeData, statics.books, 'statics');
+        statics.books = this.localeBibleBooks.en;
+        statics.shortcuts = localeData.shortcuts;
+
+        this.debug && this.log('Config language locale', this.configs.language);
         this.configs.language && this.set('locale', this.configs.language);
         this.waterfall('onStaticsLoaded');
 
         window.console && console.log('BibleSuperSearch API version', this.statics.version);
 
-        this.configs.apiUrl == defaultConfig.apiUrl ? defaultConfig._urlDefaultNotice() : defaultConfig._urlLocalNotice();
+        this.configs.apiUrl == defaultConfig.apiUrl + '/api' ? defaultConfig._urlDefaultNotice() : defaultConfig._urlLocalNotice();
 
         if(view && view != null) {
             this.set('view', view);
             this.set('viewCache', view);
+        }
+
+        for(i in this.accessible) {
+            var a = this.accessible[i];
+
+            if(typeof this.statics.access[a] == 'undefined') {
+                this.statics.access[a] = false;
+            }
         }
         
         this.render();
         this.appLoaded = true;
         this.$.Router.trigger();
 
+        this.waterfall('onAppLoaded');
+
         if(this.configs.query_string) {
-            this.log(this.configs.query_string);
             this.handleHashGeneric(this.configs.query_string);
+        }
+
+        if(this.testInit) {
+            this.initTests();
+        }
+
+        if(this.testOnLoad) {
+            this.test();
         }
     },
     processBiblesDisplayed: function() {
@@ -346,16 +611,25 @@ var App = Application.kind({
         var bibles = this.statics.bibles,
             displayed = [],
             enabled = this.configs.enabledBibles,
-            orderBy = this._getBibleOrderBy().split('|');
+            orderBy = this._getBibleOrderBy().split('|'),
+            t = this,
+
+            processBible = function(bible) {
+                bible.lang = t.utils.ucfirst(bible.lang);
+                bible.lang_native = t.utils.ucfirst(bible.lang_native);
+                displayed.push(bible);
+            };
 
         if(Array.isArray(enabled) && enabled.length) {
             for(i in enabled) {
-                bibles[enabled[i]] && displayed.push(bibles[enabled[i]]);
+                //bibles[enabled[i]] && displayed.push(bibles[enabled[i]]);
+                bibles[enabled[i]] && processBible(bibles[enabled[i]]);
             }
         }
         else {        
             for(i in bibles) {
-                displayed.push(bibles[i]);
+                //displayed.push(bibles[i]);
+                processBible(bibles[i]);
             }
         } 
 
@@ -397,31 +671,154 @@ var App = Application.kind({
             return 0;
         });
 
-        this.biblesDisplayed = displayed;
+        if(this.configs.bibleDefaultLanguageTop) {
+            var lang = this.configs.language;
+
+            var displayed_top = displayed.filter(function(bible) {
+                return bible.lang_short == lang;
+            });
+
+            var displayed_bottom = displayed.filter(function(bible) {
+                return bible.lang_short != lang;
+            });
+
+            this.biblesDisplayed = [].concat(displayed_top, displayed_bottom);
+        } else {
+            this.biblesDisplayed = displayed;
+        }
     },
     rendered: function() {
         this.inherited(arguments);
-        // this.log('view node', this.view.hasNode());
     },
 
     /*  Used to run unit tests within app */
     test: function() {
-        if(!this.testing || !QUnit) {
+        if(this.testing) {
+            this.log('Tests aready ran, aborting.');
             return;
         }
 
-        this.log();
+        this.testing = true;
+        QUnit.start();
+    },
+
+    initTests: function() {
+
+        if(typeof QUnit == 'undefined') {
+            this.log('QUnit not defined, aborting.');
+            return;
+        }
+
         var t = this;
 
-        //QUnit && QUnit.module("Basic Tests");
-
-        QUnit.test( "Post Rendering", function( assert ) {
-            assert.ok( t.viewReady, "The view should be rendered by the time we get here" );
+        QUnit.module("Basic Tests", function() {
+            QUnit.test( "Post Rendering", function( assert ) {
+                assert.ok( t.viewReady, "The view should be rendered by the time we get here" );
+            });
         });
+
+        QUnit.module('Localization Test', function() {
+            QUnit.test.each('Translation Test', t.localeDatasetsRaw, function(assert, item) {
+
+                if(typeof item.meta == 'undefined' || item.meta.code == '') {
+                    assert.expect(0)
+                    return;
+                }
+
+                assert.ok(item.meta.code, 'meta.code should be truthy');
+                assert.ok(item.meta.name, 'meta.name should be truthy');
+                assert.ok(item.meta.nameEn, 'meta.nameEn should be truthy');
+
+                if(item.meta.code == 'en') {
+                    return; // most strings for EN not defined ... 
+                }
+
+                var ll = item.meta.code.toUpperCase() + ' ' + item.meta.nameEn;
+                // assert.ok(item);
+                // assert.ok(item.meta);
+                // assert.ok(item.meta.nameEn);
+                // assert.true(true, item.meta.nameEn);
+
+                var bookNameNoMatchEn = 0;
+
+                // Check Bible Books
+                for(b in t.localeDatasetsRaw._template.bibleBooks) {
+                    var bookNameEn = t.localeDatasetsRaw._template.bibleBooks[b].name;
+
+                    if(item.bibleBooks[b].name != bookNameEn) {
+                        bookNameNoMatchEn ++;
+                    }
+
+                    if(!t.testVerbose && item.bibleBooks[b] && item.bibleBooks[b].name) {
+                        continue; // non verbose skip
+                    }
+
+                    assert.ok(item.bibleBooks[b], 'Must have Bible book: ' + bookNameEn);
+                    assert.ok(item.bibleBooks[b].name, 'Book name must not be empty');
+                }
+
+                // We check book names against English ones, at least ONE must not match
+                // Probably not the best way
+                assert.notEqual(bookNameNoMatchEn, 0, 'Book names must not be in English - at least some should NOT match.');
+
+                for(f in t.localeDatasetsRaw._template) {
+                    if(f == 'meta' || f == 'bibleBooks') {
+                        continue;
+                    }
+
+                    var en = t.localeDatasetsRaw._template[en];
+                    var ff = ' ' + ll + ' "' + f + '"';
+
+                    if(!t.testVerbose && typeof item[f] != 'undefined' && item[f] && item[f] != '' && item[f] != en) {
+                        continue; // non verbose skip
+                    }
+
+                    assert.notEqual(typeof item[f], 'undefined', 'Must NOT be undefined' + ff);
+                    assert.ok(item[f], 'Must be truthy' + ff);
+                    assert.notEqual(item[f], '', 'Must NOT be an empty string' + ff);
+                    assert.notEqual(item[f], en, 'Should NOT match English string');
+                }
+            });
+
+            QUnit.test.each('Inverse Translation Test', t.localeDatasetsRaw, function(assert, item) {
+                if(typeof item.meta == 'undefined' || item.meta.code == '') {
+                    assert.expect(0)
+                    return;
+                }
+
+                var code = item.meta.code;
+                var ll = code.toUpperCase() + ' ' + item.meta.nameEn;
+                assert.true(true);
+
+                for(f in item) {
+
+                    if(code == 'en' && f == 'shortcuts') {
+                        continue; // Only exists in EN
+                    }
+
+                    if(
+                        (code == 'lv' || code == 'ru') && 
+                        f == 'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.') 
+                    {
+                        continue; // only exists in RU/LV, for now
+                    }
+
+                    if(!t.testVerbose && typeof t.localeDatasetsRaw._template[f] != 'undefined') {
+                        continue; // Until I figure out how to assert quietly for passing assertions, skipping items that will pass
+                    }
+
+                    var ff = ' ' + ll + ' "' + f + '"';
+                    assert.notEqual(typeof t.localeDatasetsRaw._template[f], 'undefined', 'Item defined in locale should NOT be undefined in template' + ff);
+                }
+            });
+        });
+
+
 
         // Test form stuff
 
         // Test AJAX calls
+
     },
     handleHashGeneric: function(hash) {
         if(!this.appLoaded) {
@@ -611,18 +1008,6 @@ var App = Application.kind({
 
         return formData;
     },
-    handleCacheHash: function(inSender, inEvent) {
-        this.log('not used');
-        // this.log(arguments);
-        // this.log(inSender);
-        // this.log(inEvent);
-    },    
-    handlePassageHash: function(inSender, inEvent) {
-        this.log('not used');
-        // this.log(arguments);
-        // this.log(inSender);
-        // this.log(inEvent);
-    },
     ajaxLoadingChanged: function(was, is) {
         if(this.view && this.view.set) {
             this.view.set('ajaxLoading', is);
@@ -661,6 +1046,11 @@ var App = Application.kind({
     helpShowingChanged: function(was, is) {
         if(this.view && this.view.set) {
             this.view.set('helpShowing', is);
+        }
+    },
+    setDialogShowing: function(dialog, showing) {
+        if(this.view && this.view.set) {
+            this.view.setDialogShowing(dialog, showing);
         }
     },
     showHelp: function(section) {
@@ -702,11 +1092,50 @@ var App = Application.kind({
         
         return false;
     },
+    setScroll: function(scroll) {
+        var beh = this.configs.pageScroll || null,
+            pad = this.configs.pageScrollTopPadding || 0;
+
+        if(!beh || beh == 'none' || beh == 'false') {
+            return;
+        }
+
+        this.debug && this.log('requested scroll', scroll);
+        this.debug && this.log('pad', pad);
+
+        if(this.view.hasNode() && this.view.hasClass('bss_no_global_scrollbar')) {
+            // In this case, if scroll == 0, we assume we want to scroll to the very top of the page
+            // Therefore, we don't add to the scroll
+            if(scroll != 0) {
+                scroll += this.view.hasNode().getBoundingClientRect().top + window.scrollY;
+                scroll += pad;
+            }
+
+            window.scrollTo({
+                top: scroll, 
+                left: 0, 
+                behavior: beh
+            });
+        } else {        
+            scroll += pad;
+
+            this.view.hasNode() && this.view.hasNode().scrollTo({
+                top: scroll, 
+                left: 0, 
+                behavior: beh
+            });
+        }
+
+        this.debug && this.log('delivered scroll', scroll);
+    },
+    resetScrollMode: function() {
+        this.set('scrollMode', this.get('scrollModeDefault'));
+    }, 
     getSelectedBibles: function() {
         var bibles = this.getFormFieldValue('bible');
 
         if(!bibles || bibles.length == 0 || bibles.length == 1 && bibles[0] == null) {
-            bibles = [this.configs.defaultBible];
+            bibles = this.configs.defaultBible;
         }
 
         if(!Array.isArray(bibles)) {
@@ -724,6 +1153,34 @@ var App = Application.kind({
         var bibleString = bibles.join(',');
         return bibleString;
     },
+    selectedBiblesMultipleLanguages: function() {
+        var bibles = this.getSelectedBibles(),
+            lang = null,
+            langCur = null;
+
+        bibles = bibles.filter(function(b) {
+            return b != 0 && b != null;
+        });
+
+        for(i in bibles) {
+            if(!this.statics.bibles[bibles[i]]) {
+                this.log('no bible', bibles[i]);
+                continue;
+            }
+
+            lang = this.statics.bibles[ bibles[i] ].lang_short || null;
+
+            if(lang != langCur) {
+                if(langCur == null) {
+                    langCur = lang;
+                } else {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    },
     // TO DO - apply this to the following:
     //   Pager, Nav Buttons (done), Format Buttons
     getSubControl: function(name) {
@@ -738,7 +1195,13 @@ var App = Application.kind({
         return this.statics.books[id - 1] || null;
     },
     getLocaleBookName: function(id, fallbackName, useShortname) {
+<<<<<<< HEAD
         if(this.configs.bibleBooksLanguageSource == 'bible') {
+=======
+
+        if(this.configs.bibleBooksLanguageSource == 'bible') {
+            this.log('bible source, using fallbackName');
+>>>>>>> master
             return fallbackName;
         }
 
@@ -747,6 +1210,7 @@ var App = Application.kind({
         // Option 2: Display book names in language of First selected Bible (Legacy - not fully implemented)
 
         var locale = this.get('locale');
+<<<<<<< HEAD
         useShortname = useShortname || false;
         var nameField = useShortname ? 'shortname' : 'name';
 
@@ -756,6 +1220,44 @@ var App = Application.kind({
 
         var book = this.localeBibleBooks[locale][id - 1];
         book = book || this.getBook(id);
+=======
+
+        if(typeof this.localeDatasets[locale] == 'undefined') {
+            // Quick hack to get this working on WordPress for English
+            if(locale == 'en') {
+                var book = this.localeBibleBooks.en[id - 1];
+
+                if(book && useShortname) {
+                    return book.shortname || book.name;
+                }
+
+                return book ? book.name : fallbackName;
+            }
+
+            this.log('falling back to English!');
+            locale = 'en'; // ??
+        }
+        // else {
+        //     this.log('NOT falling fallbackName');
+        // }
+
+        useShortname = useShortname || false;
+        var nameField = useShortname ? 'shortname' : 'name';
+
+        if(locale == 'en' || this.localeDatasets[locale] && this.localeDatasets[locale].bibleBooksSource == 'api') {
+            //return fallbackName;
+        }
+
+        var book = null;
+
+        if(!this.localeDatasets[locale].bibleBooks[id - 1]) {
+            this.log('BOOK MISSING FROM LOCALE, falling back to English');
+            book = this.getBook(id);
+        } else {
+            book = this.localeDatasets[locale].bibleBooks[id - 1];
+            book = book || this.getBook(id);
+        }
+>>>>>>> master
 
         if(book && useShortname) {
             return book.shortname || book.name;
@@ -763,6 +1265,20 @@ var App = Application.kind({
 
         return book ? book.name : fallbackName;
     },
+<<<<<<< HEAD
+=======
+    getTestamentByBookId: function(bookId) {
+        if(bookId >= 1 && bookId <= 39) {
+            return 'Old Testament';
+        }
+
+        if(bookId >= 40 && bookId <= 66) {
+            return 'New Testament';
+        }
+
+        return false;
+    },
+>>>>>>> master
     getNumberOfEnabledBibles: function() {
         if(this.numberOfEnabledBibles) {
             return this.numberOfEnabledBibles;
@@ -812,6 +1328,9 @@ var App = Application.kind({
     logAnon: function() {
         window.console && console.log(arguments);
     },
+    getLocaleLanguage: function() {
+        return this.get('locale').split('_')[0];
+    },
     localeChanged: function(was, is) {
         var defaultLocale = this.defaultLocale || 'en';
         var locale = is || defaultLocale;
@@ -848,6 +1367,10 @@ var App = Application.kind({
             this.set('locale', defaultLocale);
             return;
         }
+
+        this.debug && this.log('locale', locale);
+
+        this._initLocaleShortcuts(locale, localeData);
         
         if(found && locale != defaultLocale) {
             if(localeData.bibleBooks && localeData.bibleBooks.length >= 66) {
@@ -857,7 +1380,7 @@ var App = Application.kind({
 
             // Load Bible book list
             var ajax = new Ajax({
-                url: this.configs.apiUrl + '/books?language=' + language,
+                url: this.configs.apiUrl + '/books?language=' + language + this.configs.apiKeyStr,
                 method: 'GET'
             });
 
@@ -865,6 +1388,7 @@ var App = Application.kind({
             ajax.go(ajaxData);
             ajax.response(this, function(inSender, inResponse) {
                 this._initLocaleBibleBooks(locale, localeData, inResponse.results, 'api');
+<<<<<<< HEAD
                 return;
 
                 this.localeBibleBooks[locale] = inResponse.results; // ??
@@ -880,6 +1404,8 @@ var App = Application.kind({
 
                 this.localeDatasets[locale] = utils.clone(localeData);
                 this._localeChangedHelper(locale);
+=======
+>>>>>>> master
             });    
 
             ajax.error(this, function(inSender, inResponse) {
@@ -893,6 +1419,7 @@ var App = Application.kind({
         this._localeChangedHelper(locale);
     },
     _initLocaleBibleBooks: function(locale, localeData, bookList, source) {
+<<<<<<< HEAD
 
         for(key in bookList) {
             var book = bookList[key],
@@ -905,27 +1432,155 @@ var App = Application.kind({
             if(source == 'locale') {
                 bookList[key].chapters = bookEn.chapters;
                 // bookList[key].chapter_verses = bookEn.chapter_verses;
+=======
+        for(key in bookList) {
+            var book = bookList[key],
+                bookEn = null;
+
+            book.fn = this._fmtBookNameMatch(book.name, locale);
+            book.sn = this._fmtBookNameMatch(book.shortname, locale);
+
+            if(locale != 'en') {
+                bookEn = this.localeBibleBooks.en[key] || null;
+            }
+
+            if(Array.isArray(book.matching)) {
+                for(mk in book.matching) {
+                    book.matching[mk] = this._fmtBookNameMatch(book.matching[mk], locale);
+                }
+            }
+
+            if(bookEn) {            
+                if(typeof localeData[ bookEn.name ] == 'undefined') {
+                    localeData[ bookEn.name ] = book.name;
+                }
+
+                if(source == 'locale') {
+                    bookList[key].chapters = bookEn.chapters;
+                    // bookList[key].chapter_verses = bookEn.chapter_verses;
+                }
+>>>>>>> master
             }
         }
 
         localeData.bibleBooksSource = source;
         this.localeBibleBooks[locale] = bookList;
+<<<<<<< HEAD
         this.localeDatasets[locale] = utils.clone(localeData);
         this._localeChangedHelper(locale);
+=======
+
+        if(locale == 'en' && source == 'statics') {
+            // do something special?
+        } else {   
+            this.localeDatasets[locale] = utils.clone(localeData);
+            this._localeChangedHelper(locale);
+        }
+    },
+    _initLocaleShortcuts: function(locale, localeData) {
+        if(localeData.shortcuts || locale == 'en') {
+            // return;
+        }
+
+        var shortcuts = Locales.en.shortcuts;
+        localeData.shortcuts = [];
+
+        for(i in shortcuts) {
+            var sc = utils.clone(shortcuts[i]),
+                name = localeData[sc.name] || sc.name,
+                short1 = localeData[sc.short1] || sc.short1;
+
+            localeData.shortcuts.push({
+                id: sc.id,
+                name: name,
+                short1: short1,
+                // short2: this.t(sc.short2 || null),
+                // short3: this.t(sc.short3 || null),
+                reference: sc.reference, // will translate elsewhere
+                fn: this._fmtBookNameMatch( name, locale ),
+                sn1: this._fmtBookNameMatch( short1, locale ),
+                display: sc.display
+            });
+        }
+
+        this.debug && this.log('locale shortcuts', locale, localeData.shortcuts);
+    },
+    _fmtBookNameMatch: function(name, locale) {
+        if(!name) {
+            return '';
+        }
+
+        locale = typeof locale == 'undefined' ? locale : this.get('locale');
+        var localeFmt = this._fmtLocaleName(locale);
+
+        switch(localeFmt) {
+            // :todo make sure all locales/sublocales are using the ISO standard
+            // case 'zh_TW':
+            // case 'zh_CN':
+            case 'en_pirate': // NOT an ISO locale 
+            case 'en-PIRATE': // NOT an ISO locale 
+                var fmt = name.toLowerCase();
+                break;
+            default:
+                var fmt = name.toLocaleLowerCase(localeFmt);
+        }
+
+        switch(locale) {
+            case 'lv':
+                fmt = fmt.replace(/ā/g, 'a');
+                fmt = fmt.replace(/č/g, 'c');
+                fmt = fmt.replace(/ē/g, 'e');
+                fmt = fmt.replace(/ģ/g, 'g');
+                fmt = fmt.replace(/ī/g, 'i');
+                fmt = fmt.replace(/ķ/g, 'k');
+                fmt = fmt.replace(/ļ/g, 'l');
+                fmt = fmt.replace(/ņ/g, 'n');
+                fmt = fmt.replace(/š/g, 's');
+                fmt = fmt.replace(/ū/g, 'u');
+                fmt = fmt.replace(/ž/g, 'z');
+                break;
+        }
+
+        return fmt.trim();
+    },
+    _fmtLocaleName: function(locale) {
+        var parts = locale.split('_'),
+            fmt = parts[0].toUpperCase();
+
+        if(parts[1]) {
+            fmt += '-' + parts[1].toUpperCase();
+        }
+
+        return fmt;
+>>>>>>> master
     },
     _localeChangedHelper: function(locale) {
+        this.debug && this.log(locale);
         this.localeData = utils.clone(this.localeDatasets[locale]);
         var localeData = this.localeData;
         this.isRtl = localeData.meta.isRtl || false;
 
         Signal.send('onLocaleChange');
         this.waterfall('onLocaleChange');
+
+        if(this.get('localeManual')) {
+            Signal.send('onChangeLocaleManual');
+            this.set('localeManual', false);
+        }
+    },
+    // Sends signal into app
+    s: function(onSignal, onEvent) {
+        this.log(onSignal, onEvent);
+
+        Signal.send(onSignal, onEvent);
     },
     // Translate
     t: function(string) {
         if(!string || string == '' || typeof string != 'string') {
             return '';
         }
+
+        string = string.trim();
 
         var Locale = this.get('localeData'),
             trans = Locale[string] || string;
@@ -969,9 +1624,14 @@ var App = Application.kind({
         }
 
         var t = this;
-            
+
         var trans = string.replace(/([0-9] )?[A-Za-z][A-Za-z ]*[A-Za-z]/g, function(match) {
             return t.t(match);
+        });
+
+        trans = trans.replace(/[0-9]+B/g, function(match) {
+            var bookId = parseInt(match);
+            return t.getLocaleBookName(bookId, match, false);
         });
 
         return trans;
@@ -987,20 +1647,139 @@ var App = Application.kind({
         var trans = string.replace(/[A-Za-z]+/g, function(match) {
             return t.t(match);
         });
-
+        
         return trans;
+    },
+    findBookByName: function(bookName) {
+        this.debug && this.log(bookName);
+        var locale = this.get('locale');
+        bookName = this._fmtBookNameMatch(bookName, locale);
+        var BookList = this.localeBibleBooks[locale] || this.statics.books;
+
+        // Pass 1: Exact match
+        var book = BookList.find(function(bookItem) {
+            if(bookName == bookItem.fn || bookName == bookItem.sn) {
+                return true;
+            }
+
+            if(bookItem.matching && bookItem.matching.includes && bookItem.matching.includes(bookName)) {
+                return true;
+            }
+
+            var namePeriodToSpace = bookItem.fn.replace(/\./g,' ');
+
+            if(bookName == namePeriodToSpace) {
+                return true;
+            }
+
+            return false;
+        });
+
+        // Pass 2: Partial match
+        if(!book) {
+            book = BookList.find(function(bookItem) {
+                if(bookItem.fn.indexOf(bookName) == 0) {
+                    return true;
+                }                
+
+                if(bookItem.sn.indexOf(bookName) == 0) {
+                    return true;
+                }
+
+                return false;
+            });
+        }
+
+        // Pass 3: (Experimental) Partial match, ignoring pumctuation
+        if(!book) {
+            var bookNameNoPunc = bookName.replace(/[ .;:]/g, ' ');
+
+            book = BookList.find(function(bookItem) {
+                var biNameNoPunc = bookItem.fn.replace(/[ .;:]/g, ' ');
+                var biShortameNoPunc = bookItem.sn.replace(/[ .;:]/g, ' ');
+
+                if(biNameNoPunc.indexOf(bookNameNoPunc) == 0) {
+                    return true;
+                }                
+
+                if(biShortameNoPunc.indexOf(bookNameNoPunc) == 0) {
+                    return true;
+                }
+
+                return false;
+            });
+        }
+
+        return book;
+    },
+    findShortcutByName: function(reference) {
+        var locale = this.get('locale'),
+            Shortcuts = this.localeDatasets[locale] ? this.localeDatasets[locale].shortcuts : this.statics.shortcuts,
+            sc = null,
+            refFmt = this._fmtBookNameMatch(reference, locale);
+
+        sc = Shortcuts.find(function(s) {
+            return s.fn == refFmt || s.sn1 == refFmt;
+        });
+
+        // this.log(sc, locale, refFmt, reference, Shortcuts, this.localeDatasets[locale]);
+        return sc ? this.vt(sc.reference) : reference;
+    },
+    pushHistory: function() {
+        var title = this.get('bssTitle'),
+            url = document.location.href,
+            limit = this.configs.historyLimit || 50;
+
+        if(this.history.length == 0 || this.history[0].title != title) {
+            this.history.unshift({title: title, url: url});
+
+            if(this.history.length > limit) {
+                this.history = this.history.slice(0, limit);
+            }
+
+            localStorage.setItem('BibleSuperSearchHistory', JSON.stringify(this.history));
+        }
+    },
+    clearHistory: function() {
+        this.history = [];
+        localStorage.setItem('BibleSuperSearchHistory', '[]');
     },
     alert: function(string, inSender, inEvent) {
         // todo - make some sort of custom alert dialog here!
-        // alert(string);
+        var tstr = this.t(string);
+
         if(inSender && inEvent) {
-            Signal.send('onPositionedAlert', {alert: string, inSender: inSender, inEvent: inEvent});
+            Signal.send('onPositionedAlert', {alert: tstr, inSender: inSender, inEvent: inEvent});
         }
         else {
-            Signal.send('onAlert', {alert: string});
+            Signal.send('onAlert', {alert: tstr});
         }
-        // this.AlertDialog.set('showing', true);
-        // this.AlertDialog.set('alert', alert);
+    },
+    confirm: function(string, callback) {
+        var tstr = this.t(string);
+
+        Signal.send('onConfirm', {message: tstr, callback: callback});
+
+        // var confirm = window.confirm(tstr);
+        // callback && callback(confirm);
+    },
+    alertPrompt: function(string, callback) {
+        var tstr = this.t(string);
+
+        Signal.send('onPromptAlert', {message: tstr, callback: callback});
+    },
+    displayInitError: function(message, code) {
+        window.console && console.log('BibleSuperSearch error: ' + message);
+        window.console && console.log('BibleSuperSearch error code: ' + code);
+
+        for(i = 2; i < arguments.length; i++) {
+            var num = i - 1;
+            window.console && console.log('BibleSuperSearch error details #' + num, arguments[i]);
+        }
+
+        this.set('view', ErrorView);
+        // this.view.set('message', message);
+        this.render();
     },
     displayInitError: function(message, code) {
         if(this.hasAjaxSuccess) {
@@ -1021,39 +1800,110 @@ var App = Application.kind({
         this.render();
     },
     responseDataChanged: function(was, is) {
-        this.UserConfig.get('single_verses') && this._checkSingleVerses();
+        if(this.UserConfig.get('single_verses') || this.UserConfig.get('passages')) {
+            this._checkRenderStyle();
+        }
     },
     watchSingleVerses: function(pre, cur, prop)  {
-        this._checkSingleVerses();
+        //this._checkRenderStyle();
     },
-    _checkSingleVerses: function() {
+    watchRenderStyle: function(pre, cur, prop) {
+        var crs = false;
+
+        switch(cur) {
+            case 'verse':
+                this.UserConfig.set('passages', false);
+                this.UserConfig.set('single_verses', true);
+                this.UserConfig.set('paragraph', false);
+                crs = true;
+                break;            
+            case 'verse_passage':
+                this.UserConfig.set('passages', false);
+                //this.UserConfig.set('passages', true);
+                //this.UserConfig.set('single_verses', true);
+                this.UserConfig.set('single_verses', false);
+                this.UserConfig.set('paragraph', false);
+                crs = true;
+                break;
+            default:
+                this.UserConfig.set('single_verses', false);
+                this.UserConfig.set('passages', false);
+                this.UserConfig.set('paragraph', !!(cur == 'paragraph'));
+        }
+
+        switch(pre) {
+            case 'verse':
+            case 'verse_passage':
+                crs = true;
+            break;
+        }
+
+        this.debug && this.log('checking render style', crs, pre, cur);
+        crs && this._checkRenderStyle();
+    },
+    _checkRenderStyle: function() {
         if(!this.get('responseData')) {
             return;
         }
 
+        var passages = this.UserConfig.get('passages') || false;
+
         if(this.UserConfig.get('single_verses')) {
             var responseDataNew = utils.clone(this.get('responseData'));
             responseDataNew.results = utils.clone(responseDataNew.results);
-            responseDataNew.results.results = this.responseCollection.toVerses( utils.clone(responseDataNew.results.results) );
+            responseDataNew.results.results 
+                = this.responseCollection.toVerses( utils.clone(responseDataNew.results.results), passages );
+        }
+        else if(passages) {
+            var responseDataNew = utils.clone(this.get('responseData'));
+            responseDataNew.results = utils.clone(responseDataNew.results);
+            responseDataNew.results.results 
+                = this.responseCollection.toMultiversePassages( utils.clone(responseDataNew.results.results) );
         }
         else {
-            // responseDataNew.results.results = utils.clone(responseDataNew.results.results);
-            var responseDataNew = this.get('responseData');
+            var responseDataNew = utils.clone( this.get('responseData') );
         }
 
         this.waterfall('onFormResponseSuccess', responseDataNew);
         Signal.send('onFormResponseSuccess', responseDataNew);
     },
-    _copyComponentContent: function(Component, contentField) {
+    _copyComponentContent: function(Component, contentField, share, shareContent) {
         if(!Component) {
             return;
         }
 
         var contentField = contentField || 'content',
+            share = share || false,
+            share = navigator.share ? share : false,
             content = Component.get(contentField),
+            shareContent = shareContent || content,
+            tag = Component.get('tag'),
             n = Component.hasNode();
 
         if(!n || !content) {
+            return;
+        }
+
+        // If share requested, attempt to use system share dialog
+        // This requires HTTPS  
+        if(share) {
+            var promise = navigator.share({
+                text: shareContent,
+                title: document.title,
+                url: window.location.href
+            });
+
+            promise.then(utils.bind(this, function() {
+                this.debug && this.log('Successful share');
+            }), 
+            utils.bind(this, function() {
+                this.debug && this.log('Failed to share');
+            }));
+
+            promise.catch(utils.bind(this, function(error) {
+                this.debug && this.log('Failed to share');
+            }));
+            
             return;
         }
 
@@ -1072,10 +1922,9 @@ var App = Application.kind({
             window.getSelection().addRange(div); // EXPERIMENTAL! Supported ALL
         }
 
-
         // Attempt to use modern clipboard API
         // This requires HTTPS
-        if(navigator && navigator.clipboard && navigator.clipboard.writeText) {
+        if((tag == 'p' || tag == 'div') && navigator && navigator.clipboard && navigator.clipboard.writeText) {
             var selected = window.getSelection().toString();
             var promise = navigator.clipboard.writeText(selected);
             this.debug && this.log('Using clipboard API');
@@ -1083,6 +1932,7 @@ var App = Application.kind({
             promise.then(utils.bind(this, function() {
                 this.alert('Copied to clipboard');
             }), 
+            
             utils.bind(this, function() {
                 this.alert('Failed to copy');
             }));
@@ -1115,6 +1965,22 @@ var App = Application.kind({
             }
         }
 
+    },
+    initBookmarks: function() {
+        this.bookmarks = new BookmarkCollection;
+        this.bookmarks.app = this;
+        this.bookmarks.fetch();
+
+        var hist = localStorage.getItem('BibleSuperSearchHistory') || null;
+
+        this.history = hist ? JSON.parse(hist) : [];
+    },
+    copyHistoryToBookmarks: function() {
+        this.history.forEach(function(item) {
+            item.link = item.url;
+
+            this.bookmarks.add(item);
+        }, this);
     }
 });
 

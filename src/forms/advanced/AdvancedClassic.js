@@ -12,6 +12,7 @@ module.exports = kind({
     kind: FormBase,
     autoApplyStandardBindings: false,
     formContainer: true,
+    formNames: ['AdvWord', 'AdvProximity', 'AdvPower'],
 
     components: [
         {

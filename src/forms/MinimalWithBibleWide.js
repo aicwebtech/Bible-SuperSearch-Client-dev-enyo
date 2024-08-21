@@ -4,6 +4,10 @@ var Button = require('enyo/Button');
 var Input = require('../components/Locale/i18nInput');
 var i18n = require('../components/Locale/i18nContent');
 var Bible = require('../components/BibleSelect/MultiSelect');
+<<<<<<< HEAD
+=======
+var Autocomplete = require('../components/PseudoSelect/PseudoAutocompleteReference');
+>>>>>>> master
 
 module.exports = kind({
     name: 'MinimalWithBibleWide',
@@ -11,7 +15,7 @@ module.exports = kind({
 
     components: [
         { classes: 'single_line_bible', components: [
-            {kind: Input, name: 'request', classes: 'request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
+            {kind: Autocomplete, name: 'request', classes: 'request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
             {tag: 'span', classes: 'bible_selector', components: [
                 {
                     kind: Bible, 

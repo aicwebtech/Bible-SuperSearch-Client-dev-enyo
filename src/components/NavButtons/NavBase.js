@@ -1,6 +1,9 @@
 var kind = require('enyo/kind');
 var ImageLink = require('../LinkImage');
 var LinkBuilder = require('../Link/LinkBuilder');
+var Signal = require('../Signal');
+
+// WARNING:  NavHtml (stylable buttons) does NOT extend NavBase!!!!!
 
 module.exports = kind({
     name: 'NavBase',
@@ -8,6 +11,7 @@ module.exports = kind({
     classes: 'biblesupersearch_nav_buttons',
     nav: {}, // navigation data
     bibles: [],
+    swapOnRtl: true,
     iconDir: '',
     prevBook: 'pb.gif',
     prevBookDisabled: 'pb_nl.gif',
@@ -20,14 +24,28 @@ module.exports = kind({
     currentChapter: 'sc.gif',
     currentChapterDisabled: 'sc_nl.gif',
 
+    components: [
+        {kind: Signal, onBibleChange: 'handleBibleChange', _onAutoClick: 'handleAutoClick', isChrome: true}
+    ],
+
+    handlers: {
+        ontap: 'handleTap',
+        onAutoClick: 'handleAutoClick'
+    },
+
     create: function() {
         this.inherited(arguments);
+        this.buildLinks();
+    },
+    buildLinks: function() {
+        this.destroyClientControls();
 
-        var pb_icon = this.iconDir + this.prevBookDisabled,
-            nb_icon = this.iconDir + this.nextBookDisabled,
-            nc_icon = this.iconDir + this.nextChapterDisabled,
-            pc_icon = this.iconDir + this.prevChapterDisabled,
-            cc_icon = this.iconDir + this.currentChapterDisabled,
+        var swap = this.app.isRtl && this.swapOnRtl,
+            pb_icon = swap ? this.nextBookDisabled : this.prevBookDisabled,
+            nb_icon = swap ? this.prevBookDisabled :  this.nextBookDisabled,
+            nc_icon = swap ? this.prevChapterDisabled : this.nextChapterDisabled,
+            pc_icon = swap ? this.nextBookDisabled : this.prevChapterDisabled,
+            cc_icon = this.currentChapterDisabled,
             pb_link = null,
             nb_link = null,
             nc_link = null,
@@ -39,13 +57,21 @@ module.exports = kind({
             pc_text = null,
             cc_text = null,
             bookName = null,
+<<<<<<< HEAD
+=======
+            swap = this.app.isRtl && this.swapOnRtl,
+>>>>>>> master
             bible = (this.bibles) ? this.bibles : '';
 
         // Next Book
         if(typeof this.nav.nb != 'undefined' && this.nav.nb != null) {
             bookName = this.app.getLocaleBookName(this.nav.nb, this.nav.next_book);
             nb_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, 1);
+<<<<<<< HEAD
             nb_icon = this.iconDir + this.nextBook;
+=======
+            nb_icon = swap ? this.prevBook : this.nextBook;
+>>>>>>> master
             nb_text = bookName;
         }         
 
@@ -53,7 +79,11 @@ module.exports = kind({
         if(typeof this.nav.pb != 'undefined' && this.nav.pb != null) {
             bookName = this.app.getLocaleBookName(this.nav.pb, this.nav.prev_book);
             pb_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, 1);
+<<<<<<< HEAD
             pb_icon = this.iconDir + this.prevBook;
+=======
+            pb_icon = swap ? this.nextBook : this.prevBook;
+>>>>>>> master
             pb_text = bookName;
         }         
 
@@ -61,7 +91,11 @@ module.exports = kind({
         if(typeof this.nav.pcc != 'undefined' && this.nav.pcc != null) {
             bookName = this.app.getLocaleBookName(this.nav.pcb, this.nav.pcb_name);
             pc_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, this.nav.pcc);
+<<<<<<< HEAD
             pc_icon = this.iconDir + this.prevChapter;
+=======
+            pc_icon = swap ? this.nextChapter : this.prevChapter;
+>>>>>>> master
             pc_text = bookName + ' ' + this.nav.pcc;
         }         
 
@@ -69,15 +103,25 @@ module.exports = kind({
         if(typeof this.nav.ncc != 'undefined' && this.nav.ncc != null) {
             bookName = this.app.getLocaleBookName(this.nav.ncb, this.nav.ncb_name);
             nc_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, this.nav.ncc);
+<<<<<<< HEAD
             nc_icon = this.iconDir + this.nextChapter;
+=======
+            nc_icon = swap ? this.prevChapter : this.nextChapter;
+>>>>>>> master
             nc_text = bookName + ' ' + this.nav.ncc;
         }         
 
         // Current Chapter
         if(typeof this.nav.ccc != 'undefined' && this.nav.ccc != null) {
+<<<<<<< HEAD
             ookName = this.app.getLocaleBookName(this.nav.ccb, this.nav.ccb_name);
             cc_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, this.nav.ccc);
             cc_icon = this.iconDir + this.currentChapter;
+=======
+            bookName = this.app.getLocaleBookName(this.nav.ccb, this.nav.ccb_name);
+            cc_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, this.nav.ccc);
+            cc_icon = this.currentChapter;
+>>>>>>> master
             cc_text = bookName + ' ' + this.nav.ccc;
         }
 
@@ -85,7 +129,7 @@ module.exports = kind({
         this.createComponent({
             kind:  ImageLink,
             name:  'pb',
-            src:   pb_icon,
+            src:   this.iconDir + pb_icon,
             href:  pb_link,
             title: pb_text,
         });        
@@ -93,7 +137,7 @@ module.exports = kind({
         this.createComponent({
             kind:  ImageLink,
             name:  'pc',
-            src:   pc_icon,
+            src:   this.iconDir + pc_icon,
             href:  pc_link,
             title: pc_text,
         });        
@@ -101,7 +145,7 @@ module.exports = kind({
         this.createComponent({
             kind:  ImageLink,
             name:  'cc',
-            src:   cc_icon,
+            src:   this.iconDir + cc_icon,
             href:  cc_link,
             title: cc_text,
         });        
@@ -109,7 +153,7 @@ module.exports = kind({
         this.createComponent({
             kind:  ImageLink,
             name:  'nc',
-            src:   nc_icon,
+            src:   this.iconDir + nc_icon,
             href:  nc_link,
             title: nc_text,
         });        
@@ -117,9 +161,41 @@ module.exports = kind({
         this.createComponent({
             kind:  ImageLink,
             name:  'nb',
-            src:   nb_icon,
+            src:   this.iconDir + nb_icon,
             href:  nb_link,
             title: nb_text,
         });
+    },
+    
+    handleBibleChange: function(inSender, inEvent) {
+        var c = this.app.configs.bibleChangeUpdateNavigation || false;
+
+        if(c && c != 'false') {
+            this.bibles = inEvent.bibles;
+            this.buildLinks();
+            this.render();
+        }
+    },
+
+    handleTap: function(inSender, inEvent) {
+        if(inSender.href) {
+            // If clicking on an active link, set scroll mode
+            this.app.set('scrollMode', 'results_top');
+        }
+    },
+    handleAutoClick: function(inSender, inEvent) {
+        button = inEvent.button || null;
+        
+        // Handle special cases.
+        switch(button) {
+            case '_prev':
+                button = 'pc';
+                break;
+            case '_next':
+                button = 'nc';
+                break;
+        }
+
+        button && this.$[button] && this.$[button].hasNode().click();
     }
 });

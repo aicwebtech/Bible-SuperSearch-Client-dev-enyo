@@ -1,12 +1,17 @@
 module.exports = {
     meta: {
-        lang_name: 'Français',      // Native name of language (endonymn)
-        lang_name_en: 'French',     // Name of language, in English
+        code: 'fr',
+        name: 'Français',      // Native name of language (endonymn)
+        nameEn: 'French',     // Name of language, in English
         isRtl: false,               // Whether language is read Right-to-left
+        isFluent: true,     
+        translatedBy: 'Shelby Pereira', 
+        translatedEmail: 'shelby.pereira@gmail.com', 
     },
     
     // The actual translation data
 
+    'Bible SuperSearch': 'Super Recherchez Biblique',
     'Loading, please wait': 'Téléchargement en cours, patientez',
 
     // Search Forms
@@ -20,26 +25,27 @@ module.exports = {
     'Whole words only': 'Mots entiers seulement',
     'Whole words': 'Mots entiers',
     'Exact Case': 'Sensible à la casse',
-    'Parallel Bible #': 'Bible en parallèle',
+    'Parallel Bible #': 'Bible en Parallèle',
     'Select a Bible': 'Choisir une Bible',
     'Add Bible': 'Ajoutez une Bible',
+    'Remove Bible': 'Supprimer la Bible',
     'Random Chapter': 'Chapitre Aléatoire',
     'Random Verse': 'Verset Aléatoire',
     'Passages': 'Passages',
     'Passage': 'Passage',
-    'The book of': 'Le livre de',
+    'The book of': 'Le Livre de',
     'Look for': 'Cherchez pour',
     'Look up': 'Cherchez',
     'in': 'dans',
     'verse': 'verset',
     'verses': 'versets',
-    'A Chapter': 'Un chapitre',
+    'A Chapter': 'Un Chapitre',
     'Chapters': 'Chapitres',
     'Find verses containing': 'Cherhez un verset qui contient',
     'Restrict search to': 'Restreindre la rechrech à', 
-    'Word Search': 'cherchez par mot',
-    'Clear Form': 'Forme claire', // 4.5
-    'Select Book and Chapter:' : 'Sélectionnez le livre et le chapitre:', // 5.2
+    'Word Search': 'Cherchez par mot',
+    'Clear Form': 'Forme Claire', // 4.5
+    'Select Book and Chapter:' : 'Sélectionnez le Livre et le Chapitre:', // 5.2
 
     // Context Links
     'Show full chapter': 'Afficher le chapitre complet',
@@ -47,40 +53,59 @@ module.exports = {
     'Show this verse': 'Montrez ce verset',
     'Show in context': 'Afficher en contexte',
     'Context': 'Contexte',
+    'In Context': 'Dans le Contexte',
 
-    'Limit Search To': 'Limitez la Recherche à',
+    'Limit Search To': 'Limitez La Recherche à',
     'Limit search to': 'Limitez la recherche à', // Watch case!
-    'Entire Bible': 'La bible entière',
-    'Passage(s) listed below': 'Les passages ci-dessous',
-    'Passage(s) listed above': 'Les passages ci-dessus',
+    'Entire Bible': 'La Bible Entière',
+    'Passage(s) listed below': 'Les Passages ci-dessous',
+    'Passage(s) listed above': 'Les Passages ci-dessus',
+    
+    // Shortcuts
     'Old Testament': 'Ancien Testament',
     'New Testament': 'Nouveau Testament',
     'Law': 'Loi',
     'History': 'Histoire',
+    'History Books': 'Livres d\'Histoire', // 5.5 Can translate as 'History'
     'Wisdom & Poetry': 'Sagesse & Poésie',
     'Prophets': 'Prophètes',
+    'Prophets Books': 'Livres de Prophètes', // 5.5 Can translate as 'Prophets'
     'Major Prophets': 'Prophètes Majeurs',
     'Minor Prophets': 'Prophètes Mineurs',
     'Gospels': 'Évangiles',
     'Epistles': 'Épitres',
     'Pauline Epistles': 'Épitres de Paul',
     'General Epistles': 'Épitres',
+    'End Times Prophecy': 'Prophétie de la fin des temps',
 
-    'Look up Passage(s)': 'Recherche de passages',
+    // Shortcut Aliases
+    'OT': 'AT',
+    'NT': 'NT',
+    'Torah': 'Torah',
+    'Wisdom': 'Sagesse',
+    'Major': 'Majeur',
+    'Minor': 'Mineure',
+    'Passion': 'Passion',
+    'Doctrine': 'Doctrine',
+    'Paul': 'Paul',
+    'General': 'Général',
+    'Last Days': 'Derniers Jours',
+
+    'Look up Passage(s)': 'Recherche de Passages',
     'Enter passage(s)' : 'Entrez le(s) passage',
     'Enter word(s), phrase(s) or expression(s)' : 'Entrez mot(s), phrase(s) ou expression(s)',
     'Example': 'Exemple',
 
     'Search for' : 'Reherchez',
     'Match': 'Match',
-    'All Words': 'Tout le mots',
+    'All Words': 'Tout le ots',
     'Any Word': 'n\'importe quel mot',
-    'Exact Phrase': 'Phrase exacte',
-    'Only One Word': 'Juste un mote',
-    'Two or More Words': '2 mots ou plus',
+    'Exact Phrase': 'Phrase Exacte',
+    'Only One Word': 'Juste Un Mote',
+    'Two or More Words': '2 Mots ou Plus',
     'Words Within 5 Verses': 'Mots dans les 5 prochains versets',
-    'Words Within Same Chapter': 'Mots dans le même chapitre',
-    'Words Within Same Book': 'Mots dans le même livre',
+    'Words Within Same Chapter': 'Mots Dans le Même Chapitre',
+    'Words Within Same Book': 'Mots Dans le Même Livre',
     'Boolean Expression': 'Expression Boolean',
     'Regular Expression': 'Expression Régulière',
     'Select one ...' : 'Choisir une...',
@@ -90,10 +115,10 @@ module.exports = {
     
     // Advanced Search
     'Boolean Search': 'Recherche Boolean',
-    'Passage Retrieval': 'Récupérer un passage',
+    'Passage Retrieval': 'Récupérer un Passage',
     'Find words within': 'Trouvez de mots à proximité',
     'Proximity Search': 'Recherche Proximité',
-    'Power Search': 'Recherche avancée',
+    'Power Search': 'Recherche Avancée',
 
     '<b>All</b> of the words' : '<b>Tout</b> les mots',
     '<b>Any</b> of the words' : '<b>Un</b> des mots',
@@ -108,6 +133,7 @@ module.exports = {
     'Previous Page' : 'Page précédente',
     'First Page' : 'Première page',
     'Last Page': 'Dernière page',
+    'Page': 'Page',
     
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
@@ -116,21 +142,22 @@ module.exports = {
     'Sans-Serif': 'Sans-Serif',
     'Monospace': 'Monospace',
     'Enlarge Text': 'Text Agrandi',
-    'Default Text Size': 'Taille texte par défaut',
-    'Shrink Text': 'Réduire la taille du texte',
-    'Verse Display': 'Affichage du text',
-    'Paragraph Display': 'Affichage du paragraph',
-    'Passage Display': 'Affichage des passages', // 4.5
+    'Default Text Size': 'Taille Texte par Défaut',
+    'Shrink Text': 'Réduire la taille du Texte',
+    'Verse Display': 'Affichage du Text',
+    'Paragraph Display': 'Affichage du Paragraph',
+    'Passage Display': 'Affichage des Passages', // 4.5
+    'Verse as Passage Display': 'Verset Comme Affichage de Passage', // 5.3
     'EZ Copy': 'Copie Facile',
     'Read Display': 'Lisez l\'affichage',
     'Italics': 'Italics',
-    'Disable Italization of Added Words' : 'Désactiver italics des mots ajoutés',
-    'Enable Italization of Added Words': 'Activer italics des mots ajoutés',
-    'Disable Strong\'s Numbers': 'Désactiver les numéros Strong',
-    'Enable Strong\'s Numbers': 'Activer les numéros Strong',
+    'Disable Italization of Added Words' : 'Désactiver Italics des Mots Ajoutés',
+    'Enable Italization of Added Words': 'Activer Italics des Mots Ajoutés',
+    'Disable Strong\'s Numbers': 'Désactiver les Numéros Strong',
+    'Enable Strong\'s Numbers': 'Activer les Numéros Strong',
     'Red Letter': 'Lettre Rouge',
-    'Disable Red Letter': 'Désactiver lettre rouge',
-    'Enable Red Letter': 'Activer lettre rouge',
+    'Disable Red Letter': 'Désactiver Lettre Rouge',
+    'Enable Red Letter': 'Activer Lettre Rouge',
     'Highlight': 'Surligner',
     'Disable Highlighting of Keywords': 'Désactiver la mise en évidence des mots clés',
     'Enable Highlighting of Keywords': 'Activer la mise en évidence des mots clés',
@@ -140,9 +167,18 @@ module.exports = {
     'Basic': 'De base',
     'Advanced': 'Avancée',
 
+    // Descriptions of special formatting features
+    'Formatting': 'Mise en page',  // 5.3
+    'Supported Bibles Only': 'Bibles prises en charge uniquement',  // 5.3
+    
+    'strongs_numbers_description': 'Les numéros de concordance de Strong indiquent les mots hébreux ou grecs sous-jacents.',  // 5.3
+    'italics_description': 'Les italiques indiquent les mots ajoutés lors de la traduction qui n\'étaient pas dans la langue d\'origine.',    // 5.3
+    'red_letter_description': 'Paroles du Christ en rouge.', // 5.3
+    'highlight_description': 'Mise en évidence (gras) des mots-clés dans les recherches.',  // 5.3
+
     // Verse Cherry-picking
-    'Select All': 'Tout sélectionner', // 5.0
-    'Select None': 'Ne rien sélectionner', // 5.0
+    'Select All': 'Tout Sélectionner', // 5.0
+    'Select None': 'Ne rien Sélectionner', // 5.0
     'Select': 'Sélectionner', // 5.0
     'Unselect': 'Désélectionner', // 5.0
     
@@ -152,20 +188,22 @@ module.exports = {
     'Outline' : 'Contour', // 5.0
     'Custom': 'Personnalisé', // 5.0
 
-    'Single Verses': 'Versets simples', // 5.0
+    'Single Verses': 'Versets Simples', // 5.0
     'Reference - Text': 'Référence - Texte', // 5.0
     'Text - Reference': 'Texte - Référence', // 5.0
     'Text Only': 'Text Only', // 5.0
-    'Separate Line': 'Ligne séparée', // 5.0
+    'Separate Line': 'Ligne Séparée', // 5.0
 
-    'Multi-verse Passages': 'Passages multi-vers', // 5.0
+    'Multi-verse Passages': 'Passages Multi-vers', // 5.0
     'Reference - Passage': 'Référence - Passage', // 5.0
     'Passage - Reference': 'Passage - Référence', // 5.0
-    'Passage Only': 'Passage seulement', // 5.0
-    'Show Verse Number': 'Afficher le numéro du verset', // 5.0
+    'Passage Only': 'Passage Seulement', // 5.0
+    'Show Verse Number': 'Afficher le Numéro du Verset', // 5.0
 
     'Other': 'Autre', // 5.0
-    'Abbreviate Books': 'Livres abrégés', // 5.0
+    'Include Testament': 'Inclure le Testament',
+    'Testament': 'Testament',
+    'Abbreviate Books': 'Livres Abrégés', // 5.0
     'Omit Extra Line Breaks': 'Omettre les sauts de ligne supplémentaires', // 5.0
 
     // Settings Dialog
@@ -205,7 +243,7 @@ module.exports = {
     'Your search was limited to': 'Votre requête était limité à',
     'Please refine your search if necessary': 'Merci de restreindre la recherche si nécessaire',
 
-    'This Bible is in the Public Domain.': 'Cette Bible est en domaine publique',
+    'This Bible is in the Public Domain.': 'Cette Bible est en Domaine Publique',
     'This Bible is provided for research purposes only.': 'Cette Bible est fourni uniquement dans le cadre de la recherhe',
     'An unknown error has occurred.' : 'Erreur inconnue',
     'An error has occurred, please try again later.': 'Un erreur est survenue, veuillez réessayer plus tard.',
@@ -215,7 +253,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Aucun terme de recherche fourni.  Merci de fournir les mots et/ou passage(s) de éférence.',
     'Your search produced no results.' : 'Votre requête n\'a produit aucun résultat',
     'Maximum hits has been reached for today for this domain / IP address': 'Le nombre maximum de hits est atteint aujourd\'hui pour ce domaine/affresse IP',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Aucun Biblie est activée.  Contactez l\'administrateur du site.',
+    'No Bibles are enabled. Please contact site administrator.': 'Aucun Biblie est activée.  Contactez l\'administrateur du site.',
     'Cannot retrieve multiple books at once.': 'Impossible de récupérer plusieurs livres en même temps',
     'Bible text not found': 'text de la Bible non trouvé',
     'Invalid book in book range': 'Livre invalid dans la plage de livres',
@@ -237,7 +275,7 @@ module.exports = {
     'Anxious': 'Anxieux',
     'Backsliding': 'Rétrogradation',
     'Bereaved': 'dépossédé',
-    'Bitter or Critical': 'Amer ou critique',
+    'Bitter or Critical': 'Amer ou Critique',
     'Conscious of Sin': 'Conscient du péché',
     'Defeated': 'Vaincu',
     'Depressed': 'Déprimé', 
@@ -270,7 +308,7 @@ module.exports = {
     // Bible Start dialog
     'Start': 'Début',
     'Bible Start Guide': 'Guide de départ pour la Bible',
-    'New to the Bible?': 'Nouveau à la bible?',
+    'New to the Bible?': 'Nouveau à la Bible?',
     'Not Sure Where to Begin?' : 'Vous ne savez pas où commencer?',
     'Life and Teachings of Jesus Christ': 'La vie et enseignements de Jésus Christ',
     'Basic Christian Beliefs': 'Croyances Chétiennes de base',
@@ -283,7 +321,7 @@ module.exports = {
     'Salvation by faith, not works': 'Salut par la foi et non par les oeuvres',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Vie chrétienne et expérience. & nbsp; L\'apôtre Paul a renoncé à ses lettres de créance en vertu de la loi de l\'Ancien Testament pour suivre le Christ',
     'Christ the suffering servant': 'Christ le serviteur souffrant',
-    'Christ’s crucifixion foretold': 'La crucifixion du Christ annoncée',
+    'Christ\'s crucifixion foretold': 'La crucifixion du Christ annoncée',
 
     // Bible downloads dialog
     'Download': 'Téléchargement',
@@ -316,6 +354,8 @@ module.exports = {
     'Share Link': 'Partager le lien',
     'Share' : 'Partager',
     'Link': 'le lien', // 4.5
+    'Copied to clipboard': 'Copié dans le presse-papier', // 5.2.3
+    'Failed to copy': 'Échec de la copie', // 5.2.3
 
     // Quick Start Help Dialog
     'Quick Start Guide': 'Guide de démarrage rapide',
@@ -355,6 +395,48 @@ module.exports = {
     'words': 'mots',
     'truth': 'vérité',
 
+<<<<<<< HEAD
+=======
+     // Searching across language
+
+     // Parallel search multi language error messages
+     'You cannot search across Bibles of different languages.': 'Vous ne pouvez pas effectuer de recherche dans des Bibles de différentes langues',
+     'You cannot search across Bibles of different languages with the selected search type.' : 'Vous ne pouvez pas effectuer de recherche dans des Bibles de différentes langues avec le type de recherche sélectionné',
+
+     // General dialogs
+     'Name': 'Nom',
+     'Save': 'Sauvegarder',
+     'Cancel': 'Annuler',
+     'Edit': 'Modifier',
+     'Delete': 'Supprimer',
+     'Clear': 'Clair',
+     'Restore': 'Restaurer',
+     'Add': 'Ajouter',
+     'Okay': 'D\'accord',
+     'Old': 'Vieux',
+     'New': 'Nouveau',
+
+     'Are you sure?': 'Es-tu sûr?',
+     'Are you sure you want to delete': 'Etes-vous sûr que vous voulez supprimer',
+
+     // Bookmarks/History
+     'This will delete all history.': 'Cela supprimera tout l\'historique',
+     'This will delete all bookmarks.': 'Cela supprimera tous les favoris',
+     'Move to Current': 'Passer à l\'actuel',
+
+     'Bookmark': 'Signet',
+     'Bookmarks': 'Signets',
+
+     'Please delete some bookmarks before adding more.': 'Veuillez supprimer certains favoris avant d\'en ajouter d\'autres.',
+     'This bookmark name already exists.': 'Ce nom de favori existe déjà',
+
+     // Quick start dialog: Limiting searches
+     'Limiting Searches': 'Limiter les recherches',
+     'Passages': 'Passages',
+     'Alias': 'Alias',
+     'You cannot search for these common words': 'Vous ne pouvez pas rechercher ces mots courants',
+
+>>>>>>> master
     'bibleBooks': [
         {
           "id": 1,

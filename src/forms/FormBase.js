@@ -3,6 +3,7 @@ var Ajax = require('enyo/Ajax');
 var utils = require('enyo/utils');
 var Signal = require('../components/Signal');
 var Bindings = require('./FormBindings');
+var FormTests = require('./FormTests');
 var Passage = require('../components/Passage');
 
 module.exports = kind({
@@ -19,7 +20,8 @@ module.exports = kind({
     bindings: [],
     autoApplyStandardBindings: true,
     standardBindings: Bindings,
-    formContainer: false,
+    formContainer: false, // Indicates that this 'form' contains muliple form instances
+    formNames: [], // The internal names of each form instance, if multiple
     referenceField: 'reference',
     searchField: 'search',
     defaultSearchType: 'and',
@@ -31,12 +33,17 @@ module.exports = kind({
 
     _referenceChangeHelperIgnore: false,
     defaultSubmitting: false,
+    preventDefaultSubmit: false,
+
+    successHandle: null,
+    errorHandle: null,
 
     Passage: Passage,
 
     handlers: {
         onCacheChange: 'handleCacheChange',
         onHashRunForm: 'handleHashRunForm',
+        onAppLoaded: 'handleAppLoaded',
         onkeyup: 'keyPress'
     },
 
@@ -44,6 +51,7 @@ module.exports = kind({
         kind: Signal,
         onClickReference: 'handleReferenceClick',
         onPageChange: 'handlePageChange',
+        onChangeLocaleManual: 'changeLocaleManual',
         onClearForm: 'clearFormManual'
     },
 
@@ -76,13 +84,47 @@ module.exports = kind({
         // Break references to formData on other forms?
         this.clearForm(); 
         this.populateDefaults();
+<<<<<<< HEAD
+=======
+
+        if(!this.app.statics.access.diff && this.$.DiffContainer) {
+            this.$.DiffContainer.destroy();
+        } 
+
+        if(this.app.testInit) {
+            this.testInit();
+        }
+    },
+    handleAppLoaded: function() {
+>>>>>>> master
         this.submitDefault();
     },
-    submitDefault: function() {
+    applyDefaultReference: function(formData) {
+        this.app.debug && this.log();
         var ref = this.app.configs.landingReference || null;
 
         if(ref && ref != '') {
+            ref = this.app.vt(ref);
+
+            if(this.$.reference) {
+                formData.reference = ref;
+            } else {
+                formData.request = ref;
+            }
+
+            return true;
+        }
+
+        return false;
+    },
+    submitDefault: function() {
+        this.app.debug && this.log();
+        var ref = this.app.configs.landingReference || null;
+
+        if(!this.preventDefaultSubmit && ref && ref != '') {
             var formData = {};
+
+            ref = this.app.vt(ref);
 
             if(this.$.reference) {
                 formData.reference = ref;
@@ -91,8 +133,12 @@ module.exports = kind({
             }
 
             this.defaultSubmitting = true;
+            this.app.set('scrollMode', 'container_top');
             this._submitFormHelper(formData, false);
+            return true;
         }
+
+        return false;
     },
     clearForm: function() {
         this.set('formData', {});
@@ -107,6 +153,14 @@ module.exports = kind({
         this.populateDefaults();
         
     },
+<<<<<<< HEAD
+=======
+    changeLocaleManual: function() {
+        this.app.debug && this.log();
+        this.clearFormManual();
+        //this.submitDefault();
+    },
+>>>>>>> master
     populateDefaults: function() {
         //this.$.Bible && this.$.Bible.set('value', ['tr', 'kjv', 'tyndale']);
     },
@@ -129,7 +183,7 @@ module.exports = kind({
         }
 
         this._submitFormHelper(formData, true);
-        return true;
+        //return true;
     },    
     submitFormAuto: function() {
         return this._submitFormHelper(utils.clone(this.get('formData')), false);
@@ -146,6 +200,7 @@ module.exports = kind({
         this.manualRequest = manual || false;
 
         if(this.manualRequest) {
+            this.app.set('scrollMode', 'results_top');
             formData.page = null;
             // this.formData.page = null;
             this.page = null;
@@ -164,8 +219,6 @@ module.exports = kind({
             window.location = destUrl;
             return;
         }
-
-        // this.log('submitting form: ' + this.name);
 
         var ajax = new Ajax({
             url: this.app.configs.apiUrl,
@@ -186,8 +239,8 @@ module.exports = kind({
     },
     
     processDefaults: function(formData) {
-        var defaultBible = this.app.configs.defaultBible;
-        formData.bible = (formData.bible && formData.bible != '0' && formData.bible != [] && formData.bible.length != 0) ? formData.bible : [defaultBible];
+        var defaultBibles = this.app.defaultBibles;
+        formData.bible = (formData.bible && formData.bible != '0' && formData.bible != [] && formData.bible.length != 0) ? formData.bible : defaultBibles;
         
         if(!Array.isArray(formData.bible)) {
             formData.bible = [formData.bible];
@@ -196,15 +249,40 @@ module.exports = kind({
         if(!formData.search_type || formData.search_type == '') {
             formData.search_type = this.defaultSearchType;
         }
+
+        if(this.$.bible) {
+            var maxBibles = this.$.bible.get('parallelLimit');
+
+            if(formData.bible.length > maxBibles) {
+                formData.bible = formData.bible.slice(0, maxBibles);
+            }
+        }
         
         this._formDataAsSubmitted = utils.clone(formData);
 
+<<<<<<< HEAD
         if(formData.reference) {
             formData.reference = this.mapPassages(formData.reference);
         }        
 
         if(formData.request) {
             formData.request = this.mapPassages(formData.request);
+=======
+        if(!this.defaultSubmitting && this.app.configs.landingReferenceDefault && this.app.configs.landingReferenceDefault != 'false' &&
+            (!formData.reference || formData.reference == '') && 
+            (!formData.request || formData.request == '') && 
+            (!formData.search || formData.search == '')
+        ) {
+            this.applyDefaultReference(formData);
+        }
+
+        if(formData.reference) {
+            formData.reference = this.mapPassages(formData.reference, false);
+        }        
+
+        if(formData.request) {
+            formData.request = this.mapPassages(formData.request, true);
+>>>>>>> master
         }
 
         formData.bible = JSON.stringify(formData.bible);
@@ -212,13 +290,18 @@ module.exports = kind({
         formData.data_format = 'passage';
         // formData.data_format = 'lite';
         formData.markup = 'raw';
+        formData.language = this.app.getLocaleLanguage();
         formData.context_range = this.app.UserConfig.get('context_range');
         formData.page_limit = this.app.UserConfig.get('page_limit');
+        formData.key = this.app.configs.apiKey || null;
+        
+        //formData.group_passage_search_results = true; // experimental
         
         // formData.page = this.get('page');
         return formData;
     },
 
+<<<<<<< HEAD
     mapPassages: function(reference) {
         var locale = this.app.get('locale');
 
@@ -227,6 +310,26 @@ module.exports = kind({
         }
 
         var passages = this.Passage.explodeReferences(reference, true);
+=======
+    mapPassages: function(reference, isRequest) {
+        var locale = this.app.get('locale');
+
+        if(locale == 'en' || this.app.localeDatasets[locale].bibleBooksSource == 'api') {
+            // return reference;
+        }
+
+        if(isRequest && !this.Passage.isPassage(reference)) {
+            return reference;
+        }
+
+        var ref = this.Passage.explodeReferences(reference, false);
+
+        for(i in ref) {
+            ref[i] = this.app.findShortcutByName(ref[i]);
+        }
+
+        var passages = this.Passage.explodeReferences(ref.join('; '), true);
+>>>>>>> master
 
         if(passages.length == 0) {
             return reference;
@@ -236,6 +339,7 @@ module.exports = kind({
         var BookList = this.app.localeBibleBooks[locale] || this.app.statics.books;
 
         passages.forEach(function(item) {
+<<<<<<< HEAD
             // Pass 1: Exact match
             var book = BookList.find(function(bookItem) {
                 if(item.book == bookItem.name || item.book == bookItem.shortname) {
@@ -263,6 +367,24 @@ module.exports = kind({
             var bookName = book ? book.id + 'B' : item.book;
             referenceNew += bookName + ' ' + item.chapter_verse + '; ';
         });
+=======
+            item = this.Passage.parseBook(item);
+
+            if(item.isBookRange) {
+                var bookSt = this.app.findBookByName(item.bookSt);
+                var bookEn = this.app.findBookByName(item.bookEn);
+                var bookNameSt = bookSt ? bookSt.id + 'B' : item.bookSt;
+                var bookNameEn = bookEn ? bookEn.id + 'B' : item.bookEn;
+                var ref = bookNameSt + ' - ' + bookNameEn + ' ' + item.chapter_verse;
+            } else {
+                var book = this.app.findBookByName(item.book);
+                var bookName = book ? book.id + 'B' : item.book;
+                var ref = bookName + ' ' + item.chapter_verse;
+            }
+
+            referenceNew += ref.trim() + '; ';
+        }, this);
+>>>>>>> master
 
         return referenceNew;
     },
@@ -279,11 +401,14 @@ module.exports = kind({
         this.app.set('shortHashUrl', '#/c/' + this.get('cacheHash'));
         var responseData = {formData: this._formDataAsSubmitted, results: inResponse, success: true};
         this.bubble('onFormResponseSuccess', responseData);
+        this.waterfall('onFormResponseSuccessWaterfall', responseData);
         Signal.send('onFormResponseSuccess', responseData);
         this.app.set('responseData', responseData)
         this.maxPage = (inResponse.paging && inResponse.paging.last_page) ? inResponse.paging.last_page : null;
         this.page = (inResponse.paging && inResponse.paging.current_page) ? inResponse.paging.current_page : null;
         // this.app.UserConfig.set('copy', false); // force EZ-Copy disabled when submitting the form - make a config for this?
+
+        this.preventDefaultSubmit = false;
 
         if(this.manualRequest) {
             this.updateHash();
@@ -295,8 +420,10 @@ module.exports = kind({
         }
 
         this.updateTitle();
+        this.app.pushHistory();
         this.manualRequest = false;
         this.app.set('hasAjaxSuccess', true);
+        this.successHandle && this.successHandle(responseData);
     },
     handleError: function(inSender, inResponse) {
         // this.app.set('ajaxLoading', false);
@@ -309,6 +436,7 @@ module.exports = kind({
         }
         catch (error) {
             this.app.displayInitError();
+            this.errorHandle && this.errorHandle();
             return;
         }
 
@@ -320,9 +448,11 @@ module.exports = kind({
             }
             
             this.updateTitle();
+            this.app.pushHistory();
             this.bubble('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
             Signal.send('onFormResponseError', {formData: this._formDataAsSubmitted, response: response});
             this.manualRequest = false;
+            this.errorHandle && this.errorHandle({formData: this._formDataAsSubmitted, response: response});
         }
         else {
             this.handleResponse(inSender, response);
@@ -331,6 +461,10 @@ module.exports = kind({
     submitRandom: function(inSender, inEvent) {
         var randomType = inSender.random_type || null;
         var formData = utils.clone(this.get('formData'));
+
+        this.$.reference && this.$.reference.set('value', '');
+        this.$.request && this.$.request.set('value', '');
+        this.$.search && this.$.search.set('value', '');
         
         var submitData = {
             bible: formData.bible,
@@ -361,7 +495,7 @@ module.exports = kind({
     },
     loadCache: function(hash, extraFormData) {
         this._extraFormData = extraFormData || {};
-        var url = this.app.configs.apiUrl + '/readcache?hash=' + hash;
+        var url = this.app.configs.apiUrl + '/readcache?hash=' + hash + this.app.configs.apiKeyStr;
 
         if(this.requestPending) {
             // this.log('pending cache request, skipping');
@@ -423,6 +557,7 @@ module.exports = kind({
         }
 
         // this.clearForm();
+        this.preventDefaultSubmit = true;
         var fd = utils.clone(inEvent.formData);
         fd.shortcut = fd.shortcut || 0;
         this.setFormDataWithMapping(fd);
@@ -437,8 +572,6 @@ module.exports = kind({
         }
     },
     _subformSafe: function() {
-        //return !(this.containsSubforms || this.subForm && !this.defaultForm);
-
         return (!this.containsSubforms && (!this.subForm || this.defaultForm));
     },
     updateHash: function() {
@@ -463,18 +596,29 @@ module.exports = kind({
             baseTitle = this.app.get('baseTitle'),
             baseFirst = false,
             formData = this.get('_formDataAsSubmitted'),
-            fields = Array('request','reference','search','search_all','search_any','search_one','search_none','search_phrase'),
+            fields = Array('request','reference','search','search_all','search_any','search_one','search_none','search_phrase', 'page'),
             values = Array();
 
         fields.forEach(function(field) {
             if(formData[field] && formData[field] != '') {
                 if(formData[field] == 'Random Chapter' || formData[field] == 'Random Verse') {
-                    values.push(this.app.t(formData[field]));
+                    values.push(this.getActualRandomPassage());
+
+                    // :todo actual_random make this a config?
+                    // values.push(this.app.t(formData[field]));
                 } else {
-                    values.push(formData[field]);
+                    if(field == 'page') {
+                        values.push(this.app.t('Page') + ' ' + formData[field]);
+                    } else {
+                        values.push(formData[field]);
+                    }
                 }
             }
         }, this);
+
+        if(formData.context == true) {
+            values.push( this.app.t('In Context') );
+        }
 
         var bssTitle = values.join(' | ');
 
@@ -488,10 +632,16 @@ module.exports = kind({
         this.app.set('bssTitle', bssTitle);
         document.title = newTitle;
     },
-    formDataChanged: function(was, is) {
-        // this.log('was', was);
-        // this.log('is', is);
+    getActualRandomPassage: function() {
+        var resp = this.app.get('responseData'),
+            results = resp.results.results;
 
+        var passage = this.app.getLocaleBookName(results[0].book_id, results[0].book_name) + ' ' + results[0].chapter_verse;
+            passage = passage.trim();
+
+        return passage;
+    },
+    formDataChanged: function(was, is) {
         if(!this.$.reference) {
             this.formData.reference = null; // Fix issues with random on forms with no 'reference' input
         }
@@ -532,6 +682,7 @@ module.exports = kind({
 
         if(this.$.reference && this.$.reference_booksel) {
             this.app.debug && this.log('here');
+
             if(field == 'reference') {
                 this.app.debug && this.log('ref');
                 if(dir == 2) {
@@ -616,9 +767,17 @@ module.exports = kind({
         return nonPassageChars ? true : false;
     },
     keyPress: function(inSender, inEvent) {
+        this.app.debug && this.log(inSender, inEvent);
+
         if(inEvent.key == 'Enter' || inEvent.keyCode && inEvent.keyCode == 13) {
             var textarea = inSender._openTag.match(/<textarea/);
+            var input = inSender._openTag.match(/<input/);
             var enterSubmit = (!textarea || (inSender.enterSubmit && inSender.enterSubmit == true)) ? true : false;
+            // var enterSubmit = (input || (inSender.enterSubmit && inSender.enterSubmit == true)) ? true : false;
+
+            if(inSender.enterSubmitPrevent && inSender.enterSubmitPrevent == true) {
+                enterSubmit = false;
+            }
 
             if(enterSubmit && (!textarea || !inEvent.shiftKey)) {
                 if(textarea) {
@@ -627,13 +786,12 @@ module.exports = kind({
                     inSender.set('value', val);
                 }
 
+                this.waterfall('onGlobalEscape');
                 this.submitForm(); // Submit form if user presses 'enter'
             }
         }
     },
     handleReferenceClick: function(inSender, inEvent) {
-        // this.log(inEvent);
-
         var formData = {};
 
         if(this.$.request) {
@@ -643,7 +801,6 @@ module.exports = kind({
             formData.reference = inEvent.reference;
         }
 
-        this.log('formData', formData);
         this.set('formData', {});
         this.set('formData', utils.clone(formData));
         this.submitFormManual();
@@ -651,7 +808,6 @@ module.exports = kind({
     _generateHashFromData: function() {
         if(!this.isShortHashable()) {
             this.app.debug && this.log('NOT short hashable');
-
             return null;
         }
 
@@ -662,14 +818,23 @@ module.exports = kind({
         var search = this.$.search ? this.$.search.get('value') : null;
         var request = this.$.request ? this.$.request.get('value') : null;
         var searchType = this.$.search_type ? this.$.search_type.get('value') : this.defaultSearchType;
+        var formDataSubmitted = this.get('_formDataAsSubmitted');
+        var pasSubmit = formDataSubmitted.reference || formDataSubmitted.request;
+            pasSubmit = pasSubmit ? pasSubmit.trim() : null;
 
         var pas = reference ? reference : request;
-        var passages = this.Passage.explodeReferences(pas, true);
         var refId = 'r';
         var page = this.page || 1;
         var searchExtras = '';
         var se = [];
         var hasSe = false;
+
+        if(pasSubmit == 'Random Chapter' || pasSubmit == 'Random Verse') {
+            // :todo actual_random make this a config?
+            pas = this.getActualRandomPassage();
+        }
+
+        var passages = this.Passage.explodeReferences(pas, true);
 
         var searchValues = [
             {field: 'reference',    value: reference,  default: ''},
@@ -701,13 +866,30 @@ module.exports = kind({
                 request = null;
             }
 
-            reference = passages[0].book + '/' + passages[0].chapter_verse;
+            var cv = passages[0].chapter_verse.trim(),
+                cv = cv.replace(/\s/g, ''), // remove all whitespace
+                book = this.app.findBookByName(passages[0].book),
+
+                // Regexp to detect single verses and single verse ranges
+                matches = cv.match(/^([0-9]+):([0-9]+)(-([0-9]+))?$/);
+
+            if(!book) {
+                return null;
+            }
+
+            if(matches && matches.length > 0) {
+                reference = book.name + '/' + matches[1].trim() + '/' + matches[2].trim();
+
+                if(matches[4]) {
+                    reference += '-' + matches[4].trim();
+                }
+            } else {
+                reference = book.name + '/' + cv;
+            }
+
             refId = 'p';
         }
 
-        // this.app.debug && this.log(reference, search, request, passages);
-
-        // Todo - convert space to something more aesthetic.  _ or .?
         // UNSAFE IN URL: /,;-
 
         if(reference && !search && !request) {
@@ -724,6 +906,11 @@ module.exports = kind({
             hash = '#/q/' + bibles + '/' + request + searchExtras;
             // hash = '#/s/' + bibles + '/' + request; // Also works
         }
+
+        // if(!reference && !search && request) {
+            // hash = '#/q/' + bibles + '/' + request;
+            // hash = '#/s/' + bibles + '/' + request; // Also works
+        // }
 
         if(!hash) {
             return null;
@@ -788,5 +975,156 @@ module.exports = kind({
         }, this );
 
         return sh;
+    },
+    signalBibleChange: function(value, dir) {
+        if(value && value.filter) {        
+            value = value.filter(function(item) {
+                return item && item != 0;
+            });
+        }
+
+        var e = {bibles: value, dir: dir};
+
+        Signal.send('onBibleChange', e);
+        this.waterfall('onBibleChange', e);
+    },
+    clearHandlers: function() {
+        this.successHandle = null;
+        this.errorHandle = null;
+    },
+    
+    testInit: function() {
+        if(this.formContainer) {            
+            for(i in this.formNames) {
+                this.$[ this.formNames[i] ] && this.$[ this.formNames[i] ]._testInitHelper('Form Submission: ' + this.formNames[i]);
+            }
+        } else {
+            this._testInitHelper('Form Submission');
+        }
+    },
+
+    _testInitHelper: function(label) {
+        if(this.app.testing) {
+            return; //tests already ran, bail
+        }
+
+        var t = this;
+
+        QUnit.module(label, function() {
+            QUnit.test.each('Success', FormTests.success, function(assert, item) {
+                var skip = false, 
+                    fd = utils.clone(item.formData),
+                    r = fd._reference || null,
+                    s = fd._search || null;
+                
+                if(t.referenceField == t.referenceField && s && r) {
+                    skip = true;
+                }
+
+                if(s) {
+                    fd[t.searchField] = s;
+                    if(!t.$[t.searchField]) {
+                        skip = true;
+                    }
+                } else if (r) {
+                    if(!t.$[t.referenceField]) {
+                        skip = true;
+                    }
+                    fd[t.referenceField] = r;
+                }
+
+                delete fd._search;
+                delete fd._reference;
+
+                if(!skip) {                    
+                    for(i in fd) {
+                        if(i == 'bible' || i == 'search_type' || i == 'page' || i == 'page_limit') {
+                            continue; // these fields default, and will work if not present on form
+                        }
+
+                        switch(i) {
+                            case 'search':
+                                ia = t.searchField; 
+                                break;
+                            case 'reference':
+                                is = t.referenceField
+                        }
+
+                        if(t.standardBindings[i] && !t.$[i]) {
+                            // field does not exist on this form, skip
+                            skip = true;
+                            break;
+                        }
+                    }
+                }
+
+                if(skip || item.willFailOnInterface && item.willFailOnInterface.indexOf(t.app.configs.interface) != -1) {
+                    assert.true(true, 'Skipped, this interface lacks needed fields or other items ...');
+                    return;
+                }
+
+                var done = assert.async();
+
+                t.successHandle = function(responseData) {
+                    assert.true(true, 'success');
+
+                    if(item.resultsContain) {
+                        assert.propContains(responseData.results, item.resultsContain);
+                    }
+
+                    t.clearHash();
+                    t.clearHandlers();
+                    done();
+                };
+
+                t.errorHandle = function() {
+                    assert.false(true, 'error');
+                    t.clearHash();
+                    t.clearHandlers();
+                    done();
+                }
+
+                t.clearForm();
+                t.clearHash();
+
+                t.set('formData', fd);
+                t.submitForm();
+            });
+
+            QUnit.test.each('Error', FormTests.error, function(assert, item) {
+                var done = assert.async();
+
+                t.successHandle = function(responseData) {
+                    assert.false(true, 'success');
+                    t.clearHash();
+                    t.clearHandlers();
+                    done();
+                };
+
+                t.errorHandle = function() {
+                    assert.true(true, 'successful error');
+                    t.clearHash();
+                    t.clearHandlers();
+                    done();
+                }
+
+                t.clearForm();
+                t.clearHash();
+
+                var fd = utils.clone(item.formData);
+                fd[t.referenceField] = fd._reference || null;
+                fd[t.searchField] = fd._search || null;
+                delete fd._search;
+                delete fd._reference;
+
+                t.set('formData', fd);
+                t.submitForm();
+            });
+        });
+    }, 
+    _testInitMultiForm: function() {
+        for(i in this.formNames) {
+            this.$[ this.formNames[i] ] && this.$[ this.formNames[i] ].testInit();
+        }
     }
  });

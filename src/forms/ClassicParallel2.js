@@ -10,6 +10,7 @@ var Shortcuts = require('../components/Shortcuts');
 var FormSection = require('./FormSection');
 var i18nContent = require('../components/Locale/i18nContent');
 var i18n = require('../components/Locale/i18nComponent');
+var Autocomplete = require('../components/PseudoSelect/PseudoAutocompleteReference');
 
 module.exports = kind({
     name: 'ClassicParallel2',
@@ -30,6 +31,7 @@ module.exports = kind({
                             kind: BibleSelect, 
                             parallelLimit: 4, 
                             parallelStart: 4, 
+                            parallelMinium: 4, 
                             selectorWidth: 300,
                             selectorShortWidth: 150,
                             selectorShortWidthThreshold: 650
@@ -39,7 +41,7 @@ module.exports = kind({
                         {kind: i18nContent, content: 'Passage'}
                     ]},
                     {tag: 'td', classes: 'nowrap', attributes: {colspan: 2}, components: [
-                        {name: 'reference', kind: Input, onblur: 'referenceTyped', style: 'width: 300px;'},
+                        {name: 'reference', kind: Autocomplete, onblur: 'referenceTyped', style: 'width: 303px;', isComponent: true},
                         {tag: 'span', content: ' '},
                         {kind: Button, ontap: 'submitForm', style: 'width:70px;font-size:70%', components: [
                             {kind: i18nContent, content: 'Look up'}

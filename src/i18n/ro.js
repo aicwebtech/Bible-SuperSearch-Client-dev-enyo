@@ -1,8 +1,12 @@
 module.exports = {
     meta: {
-        lang_name: 'Română',      // Native name of language (endonymn)
-        lang_name_en: 'Romanian',   // Name of language, in English
+        code: 'ro',
+        name: 'Română',      // Native name of language (endonymn)
+        nameEn: 'Romanian',   // Name of language, in English
         isRtl: false,       // Whether language is read Right-to-left
+        isFluent: false,     
+        translatedBy: 'Google Translate', 
+        translatedEmail: null, 
     },
     
     // The actual translation data
@@ -12,7 +16,7 @@ module.exports = {
     // * Please maintain capitalization and punctuation, if possible.
     // * Any ' (single quote) in the translation MUST be preceded by a \ (backslash).
 
-    'Bible SuperSearch': 'Bible SuperSearch',
+    'Bible SuperSearch': 'Super Căutare Biblică',
     'Loading, please wait': 'Se procesează',
 
     // Search Forms
@@ -29,6 +33,7 @@ module.exports = {
     'Parallel Bible #': 'Biblie Paralelă #',
     'Select a Bible': 'Selectați o Biblie',
     'Add Bible': 'Adăugați Biblie',
+    'Remove Bible': 'Îndepărtați Biblie',
     'Random Chapter': 'Capitol Aleator',
     'Random Verse': 'Verset Aleator',
     'Passages': 'Pasaje',
@@ -39,46 +44,65 @@ module.exports = {
     'in': 'în',
     'verse': 'verset',
     'verses': 'versete',
-    'A Chapter': 'Un capitol',
+    'A Chapter': 'Un Capitol',
     'Chapters': 'Capitole',
     'Find verses containing': 'Găsiți versete care conțin',
     'Restrict search to': 'Limitați Căutarea', 
     'Word Search': 'Căutați ',
     'Clear Form': 'Resetați Forma', // 4.5
-    'Select Book and Chapter:' : 'Selectați Carte și capitol:', // 5.2
+    'Select Book and Chapter:' : 'Selectați Carte și Capitol:', // 5.2
 
     // Context Links
     'Show full chapter': 'Afișați întregul capitol',
     'Chapter': 'Capitol',
     'Show this verse': 'Afișați acest verset',
     'Show in context': 'Afișați în context',
-    'Context': 'Context',
+    'Context': 'Context',//check translation
+    'In Context': 'In context',//check translation // ????
 
     'Limit Search To': 'Limitați Căutarea',
     'Limit search to': 'Limitați căutarea', // Watch case!
     'Entire Bible': 'Întreaga Biblie',
     'Passage(s) listed below': 'Pasajul(ele) menționate mai jos',
     'Passage(s) listed above': 'Pasajul(ele) menționate mai sus',
+    
+    // Shortcuts
     'Old Testament': 'Vechiul Testament',
     'New Testament': 'Noul Testament',
     'Law': 'Lege',
     'History': 'Istorie',
+    'History Books': 'Cărți de Istorie', // 5.5 Can translate as 'History'
     'Wisdom & Poetry': 'Înțelepciune & Poezie',
     'Prophets': 'Profeți',
+    'Prophets Books': 'Cărțile Profeților', // 5.5 Can translate as 'Prophets'
     'Major Prophets': 'Profeții Majori',
     'Minor Prophets': 'Profeții Minori',
     'Gospels': 'Evanghelii',
     'Epistles': 'Epistole',
     'Pauline Epistles': 'Epistolele Pauline',
     'General Epistles': 'Epistolele Generale',
+    'End Times Prophecy': 'Profeția Sfârșitului Timpurilor',
+
+    // Shortcut Aliases
+    'OT': 'VT',
+    'NT': 'NT',
+    'Torah': 'Tora',
+    'Wisdom': 'Înţelepciune',
+    'Major': 'Major',//check translation
+    'Minor': 'Minor',//check translation
+    'Passion': 'Pasiune',
+    'Doctrine': 'Doctrină',
+    'Paul': 'Paul',//check translation
+    'General': 'General',//check translation
+    'Last Days': 'Ultimele zile',
 
     'Look up Passage(s)': 'Căutați Pasajul(ele)',
     'Enter passage(s)' : 'Introduceți Pasajul(ele)',
     'Enter word(s), phrase(s) or expression(s)' : 'Introduceți cuvântul(intele), fraza(ele) sau expresia(ile)',
     'Example': 'Exemplu',
 
-    'Search for' : 'Căutați',
-    'Match': 'Căutați',
+    'Search for' : 'Caută',
+    'Match': 'Meci',
     'All Words': 'Toate Cuvintele',
     'Any Word': 'Oricare Cuvintele',
     'Exact Phrase': 'Frază Exactă',
@@ -115,6 +139,7 @@ module.exports = {
     'Previous Page' : 'Pagina Anterioară',
     'First Page' : 'Prima Pagină',
     'Last Page': 'Ultima Pagină',
+    'Page': 'Pagină',
     
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
@@ -128,7 +153,8 @@ module.exports = {
     'Verse Display': 'Afișați Versetul',
     'Paragraph Display': 'Afișați Paragraful',
     'Passage Display': 'Afișați Pasajul',
-    'EZ Copy': 'Copiere Ușoară',  // 'Easy Copy'
+    'Verse as Passage Display': 'Versetul ca Afișare a Pasajului', // 5.3
+    'EZ Copy': 'Copiere ușoară',  // 'Easy Copy'
     'Read Display': 'Citiți Afișajul',
     'Italics': 'Text Cursiv',
     'Disable Italization of Added Words' : 'Dezactivați Textul Cursiv pentru Cuvintele Adăugate',
@@ -146,6 +172,15 @@ module.exports = {
     'Help': 'Ajtor',
     'Basic': 'Esenţial',
     'Advanced': 'Avansat',
+
+    // Descriptions of special formatting features
+    'Formatting': 'Formatare',  // 5.3
+    'Supported Bibles Only': 'Doar Biblii Acceptate',  // 5.3
+    
+    'strongs_numbers_description': 'Numerele de concordanță ale lui Strong indică cuvintele ebraice sau grecești subiacente.',  // 5.3
+    'italics_description': 'Cuvintele lui Hristos în roșu.',    // 5.3
+    'red_letter_description': 'Words of Christ in Red.', // 5.3
+    'highlight_description': 'Evidențierea (aldine) a cuvintelor cheie în căutări.',  // 5.3
 
     // Verse Cherry-picking
     'Select All': 'Selectați Tot', // 5.0
@@ -165,21 +200,23 @@ module.exports = {
     'Text Only': 'Doar Text', // 5.0
     'Separate Line': ' Linii Separate', // 5.0
 
-    'Multi-verse Passages': 'Versete-multiple', // 5.0
+    'Multi-verse Passages': 'Pasaje cu mai Multe Versuri', // 5.0
     'Reference - Passage': 'Referință - Pasaj', // 5.0
     'Passage - Reference': 'Pasaj - Referință', // 5.0
     'Passage Only': 'Doar Pasajul', // 5.0
     'Show Verse Number': 'Numerotați Versetele', // 5.0
 
     'Other': 'Altele', // 5.0
+    'Include Testament': 'Includeți Testamentul',
+    'Testament': 'Testament', //check translation
     'Abbreviate Books': 'Abreviați Numele Cărților', // 5.0
     'Omit Extra Line Breaks': 'Omite rândurile goale', // 5.0
 
     // Settings Dialog
     'Settings' : 'Setări', // 5.0
     'Language' : 'Limba', // 5.0
-    'Text Display': 'Afișare text', // 5.0
-    'Font Style': 'Stilul fontului', // 5.0
+    'Text Display': 'Afișare Text', // 5.0
+    'Font Style': 'Stilul Fontului', // 5.0
 
     // Result and error messages
     
@@ -189,7 +226,7 @@ module.exports = {
     'results' : 'rezultat(e)',
     
     // Showing results [1] to [30]
-    'Showing Results': 'Se afișează rezultatele',
+    'Showing Results': 'Se Afișează Rezultatele',
     'to' : 'din',
     
     // Your search produced no results in [name of Bible version]
@@ -203,7 +240,7 @@ module.exports = {
     'Please remove it, or use it\'s lower case equivalent.': 'Vă rugăm să îi eliminați sau să-îi utilizați echivalentul în minuscule',
 
     // Your search for [attempted keywords] is invalid...
-    'Your search for': 'Căutarea Dvs. pentru',
+    'Your search for': 'Căutarea dvs. pentru',
     'is invalid, and appears to be a passage reference.': 'este invalidă, și pare să fie o referință sau un pasaj.',
     'is invalid.': 'este invalidă',
 
@@ -221,7 +258,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Termeni de căutare nespecificați. Vă rugăm să specificați un termen(i) un pasaj(e) sau o referință(e).',
     'Your search produced no results.' : 'Căutarea Dvs. nu a generat nici un rezultat.',
     'Maximum hits has been reached for today for this domain / IP address': 'Limita zilnică pentru această adresă IP / Domeniu a fost atinsă',
-    'No Bibles are enabled. Please contact site adminstrator.': 'Ne este disponibilă nici o Biblie. Vă rugăm să contactați Administratorul site-ului',
+    'No Bibles are enabled. Please contact site administrator.': 'Ne este disponibilă nici o Biblie. Vă rugăm să contactați Administratorul site-ului',
     'Cannot retrieve multiple books at once.': 'Nu se pot afișa cărți multiple deodată.',
     'Bible text not found': 'Textul Biblic lipsește',
     'Invalid book in book range': 'Carte invalidă în raza de cărți',
@@ -236,7 +273,7 @@ module.exports = {
     'Close': 'Închidere', 
 
     // Bible SOS dialog
-    'Bible SOS': 'Ajutor Din Biblie',
+    'Bible SOS': 'Urgență Biblică',
     'Emergency Help from the Bible': 'Ajutor De Urgență din Biblie',
     'Where to go When ...': 'Unde să deschizi Când ...',
     'Afraid': 'Ești Speriat',
@@ -289,7 +326,7 @@ module.exports = {
     'Salvation by faith, not works': 'Mântuirea prin credință, nu fapte',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Viața și experiența lui Cristos. &nbsp;Apostolul Pavel a renunțat la acreditările conform Legii Vechiului Testament pentru a-L urma pe Cristos',
     'Christ the suffering servant': 'Cristos un Servitor în suferințe',
-    'Christ’s crucifixion foretold': 'Prezicerea cruificării lui Cristos',
+    'Christ\'s crucifixion foretold': 'Prezicerea cruificării lui Cristos',
 
     // Bible downloads dialog
     'Download': 'Descărcați',
@@ -322,6 +359,8 @@ module.exports = {
     'Share Link': 'Distribuiți Link-ul',
     'Share' : 'Distribuiți',
     'Link': 'Link-ul',
+    'Copied to clipboard': 'Copiat în clipboard', // 5.2.3
+    'Failed to copy': 'Copierea eșuată', // 5.2.3
 
     // Quick Start Help Dialog
     'Quick Start Guide': 'Ghid Rapid',
@@ -361,6 +400,48 @@ module.exports = {
     'words': 'cuvinte',
     'truth': 'adevăr',
 
+<<<<<<< HEAD
+=======
+    // Searching across language
+
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': 'Nu puteți căuta în Biblii în diferite limbi',
+    'You cannot search across Bibles of different languages with the selected search type.' : 'Nu puteți căuta în Biblii din diferite limbi cu ajutorul tipul de căutare selectat',
+
+    // General dialogs
+    'Name': 'Nume',
+    'Save': 'Salvați',
+    'Cancel': 'Anulare',
+    'Edit': 'Editați | ×',
+    'Delete': 'Șterge',
+    'Clear': 'Clar',
+    'Restore': 'Restabili',
+    'Add': 'Adăuga',
+    'Okay': 'Bine',
+    'Old': 'Vechi',
+    'New': 'Nou',
+
+    'Are you sure?': 'Esti sigur',
+    'Are you sure you want to delete': 'ești sigur că vrei să ștergi',
+
+    // Bookmarks/History
+    'This will delete all history.': 'Aceasta va șterge tot istoricul',
+    'This will delete all bookmarks.': 'Aceasta va șterge toate marcajele',
+    'Move to Current': 'Mutați la Actual',
+
+    'Bookmark': 'Marcaj',
+    'Bookmarks': 'Marcaje',
+
+    'Please delete some bookmarks before adding more.': 'Vă rugăm să ștergeți câteva marcaje înainte de a adăuga altele',
+    'This bookmark name already exists.': 'Acest nume de marcaj există deja',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': 'Limitarea căutărilor',
+    'Passages': 'pasaje',
+    'Alias': 'Alias',
+    'You cannot search for these common words': 'Nu puteți căuta aceste cuvinte comune',
+
+>>>>>>> master
     'bibleBooks': [
         {
           "id": 1,

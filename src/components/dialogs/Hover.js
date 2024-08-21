@@ -11,6 +11,8 @@ module.exports = kind({
     // style: '',
     width: 300,
     height: 300,
+    smallScreenThresholdHeight: 400,
+    smallScreenThresholdWidth: 600,
     mouseX: null,
     mouseY: null,
     offsetX: 10,
@@ -21,9 +23,18 @@ module.exports = kind({
     parentHeight: null,
     parentWidth: null,
     widthMin: 400,
+    hideTimeout: null,
+    preventHide: false,
+
+    _lastTapTarget: null, // private
+    _showButtons: false, // private
 
     handlers: {
-        onmouseout: 'mouseOutHandler'
+        onmouseout: 'mouseOutHandler',
+        onmouseover: 'mouseOverHandler',
+        ontap: 'handleTap',
+        onGlobalTap: 'handleGlobalTap',
+        onmousedown: 'handleClick',
     },
 
     components: [
@@ -39,7 +50,9 @@ module.exports = kind({
         {name: 'ContentContainer'}
     ],
 
-    displayPosition: function(mouseX, mouseY, content, parentWidth, parentHeight) {
+    displayPosition: function(mouseX, mouseY, content, parentWidth, parentHeight, showButtons) {
+        this._showButtons = showButtons || false;
+
         // this.log('content', content);
         this.app.debug && this.log('mouseX', mouseX);
         this.app.debug && this.log('mouseY', mouseY);
@@ -84,28 +97,143 @@ module.exports = kind({
 
         this.$.ContentContainer.set('content', content);
 
-        this.applyStyle('left', left + 'px');
-        this.applyStyle('top', top + 'px');
-        this.set('showing', true);
+        // this.applyStyle('left', left + 'px');
+        // this.applyStyle('top', top + 'px');
+        // this.set('showing', true);
     },
     showLoading: function() {
         this.$.LoadingContainer && this.$.LoadingContainer.set('showing', true);
         this.$.ContentContainer && this.$.ContentContainer.set('showing', false);
+        this.$.ButtonContainer && this.$.ButtonContainer.set('showing', false);
         this.reposition();
     },    
     showContent: function() {
         this.$.LoadingContainer && this.$.LoadingContainer.set('showing', false);
         this.$.ContentContainer && this.$.ContentContainer.set('showing', true);
+        this.app.debug && this.log('_showButtons', this._showButtons);
+        this.$.ButtonContainer && this.$.ButtonContainer.set('showing', this._showButtons);
         this.reposition();
     },
     reposition: function() {
+        if(!this.owner) {
+            return;
+        };
+
+        this.app.debug && this.log();
+
+        var containerBounds = this.getOwnerBounds(),
+            myBounds = this.hasNode().getBoundingClientRect(),
+            viewportHeight = window.innerHeight,
+            viewportWidth = window.innerWidth,
+            posX = this.mouseX,
+            posY = posYContainer = this.mouseY,
+            maxX = Math.min(containerBounds.width, viewportWidth),
+            maxYcontainer = containerBounds.topOrig + containerBounds.height,
+            maxYviewport = viewportHeight,
+            maxY = Math.min(maxYviewport, maxYcontainer),
+            smallScreen = false,
+            width = myBounds.width || this.width,
+            height = myBounds.height || this.height;
+
+        var posYtoContainerBottom = containerBounds.rect.height - posY;
+            posYViewport = posY + containerBounds.rect.top;
+
+        if(viewportHeight < this.smallScreenThresholdHeight || viewportWidth < this.smallScreenThresholdWidth) {
+            smallScreen = true;
+        }
+
+        if(myBounds.height == 0) {
+            // this.render();
+            this.set('showing', true);
+            myBounds = this.hasNode().getBoundingClientRect();
+            height = myBounds.height;
+            this.set('showing', false);
+
+            if(height == 0) {
+                // Brute force attempt to get actual height before using default height
+                if(this.waitCount >= 10) {
+                    this.app.debug && this.log('USING DEFAULT HEIGHT OF ' + this.height);
+                    height = this.height;
+                } else {
+                    this.app.debug && this.log('WAITING FOR HEIGHT');
+
+                    window.setTimeout(utils.bind(this, function() {
+                        if(this.waitCount < 10) {
+                            this.waitCount ++;
+                            this.reposition();
+                        } else {
+                            this.waitCount = 0;
+                        }
+                    }), 100);
+
+                    return;
+                }
+            }
+        }
+
+        this.waitCount = 0;
+
+        this.app.debug && this.log('mouse X,Y', this.mouseX, this.mouseY);
+        // this.log('containerBounds', containerBounds);
+        this.app.debug && this.log('viewport', viewportWidth, viewportHeight);
+        this.app.debug && this.log('width/height', width, height);
+        this.app.debug && this.log('posYViewport', posYViewport, height, posYViewport + height);
+        this.app.debug && this.log('maxY', maxY, maxYcontainer, maxYviewport);
+        // this.log('posY', posY, height, posY + height);
+        // this.app.debug && this.log('smallScreen', smallScreen);
+
+        // var displayAbove = posYContainer + height > containerBounds.height || posYViewport + height > viewportHeight;
+
+        if(smallScreen) {
+            width = 320;
+            posX = (maxX - width)  / 2;
+            // posY = (maxY - height) / 2; // centers against page, not placing it where we want
+
+            // if(posY + height > maxY) {
+            if(posYContainer + height > containerBounds.height || posYViewport + height > viewportHeight) {
+                posY = posY - height;
+            }
+        } else {            
+            if(posX + width > maxX) {
+                // posX = maxX - width;
+                posX = posX - width;
+            }
+
+            // if(posY + height > maxY) {
+            if(posYContainer + height > containerBounds.height || posYViewport + height > viewportHeight) {
+            // if(posYViewport + height > viewportHeight) {
+                posY = posY - height;
+            }
+        }
+
         this.set('showing', true);
-        var w = this.widthMin; // this.hasNode().scrollWidth;
+        this.app.debug && this.log('pos X,Y', posX, posY);
+        this.applyStyle('left', posX + 'px');
+        this.applyStyle('top', posY + 'px');
+        this.applyStyle('width', width + 'px');
+        this.render();
+    },
+
+    repositionOld: function() {
+        this.set('showing', true);
+        var w = widthNew = this.widthMin; // this.hasNode().scrollWidth;
         var h = this.hasNode().scrollHeight;
         var myBounds = this.hasNode().getBoundingClientRect();
+        var bodyWidth = document.body.clientWidth;
+        var bodyHeight = document.body.clientHeight;
+
+        var docWidth = document.documentElement.clientWidth,
+            docHeight = document.documentElement.clientHeight,
+            maxHeightDoc = docHeight - 10;
+            style = '',
+            height = parseInt(this.height, 10),
+            headerHeight = 0,
+            smallScreen = false,
+            n = this.name;
        
         w = myBounds.width;
         h = Math.min(h, myBounds.height);
+        hRaw = myBounds.height;
 
         var bounds = this.getOwnerBounds();
 
@@ -119,11 +247,31 @@ module.exports = kind({
 
         var wMax = bounds.width || this.owner.hasNode().clientWidth + window.scrollX;
         var hMax = bounds.height || this.owner.hasNode().clientHeight + window.scrollY;
+        // var yMax = document.body.clientHeight + window.scrollY;
+        var yMax = window.innerHeight;
 
-        if(window.innerHeight < hMax) {
-            this.app.debug && this.log('hMax adjusted due to windowHeight');
-            hMax = window.innerHeight - bounds.top;
-        }
+
+        // if(window.innerHeight < hMax) {
+        //     this.app.debug && this.log('hMax adjusted due to windowHeight');
+        //     hMax = window.innerHeight - bounds.top;
+        // }
+
+        this.log('yMax START -------');
+        this.log('yMax mouseY', this.mouseY);
+        this.log('yMax document.body.clientHeight', document.body.clientHeight);
+        this.log('yMax window.scrollY', window.scrollY);
+        this.log('yMax window.innerHeight', window.innerHeight);
+        this.log('yMax END -------');
+
+        // this.log('hMax START -------------');
+        // this.log('hMax bounds.height', bounds.height);
+        // this.log('hMax owner clientHeight', this.owner.hasNode().clientHeight);
+        // this.log('hMax window.scrollY', window.scrollY);
+        // this.log('hMax window.innerHeight', window.innerHeight);
+        // this.log('hMax bounds.height', bounds.height);
+        // this.log('hMax bounds.top', bounds.top);
+        // this.log('hMax', hMax);
+        // this.log('hMax END -------------');
 
         if(w == 0 || h == 0) {
             window.setTimeout(utils.bind(this, function() {
@@ -137,6 +285,7 @@ module.exports = kind({
         }
 
         this.waitCount = 0;
+
         var xOuter = this.mouseX + w;
         var yOuter = this.mouseY + h;
         this.app.debug && this.log('mouseX', this.mouseX, 'w', w, 'wMax', wMax, 'xOuter', xOuter);
@@ -148,6 +297,21 @@ module.exports = kind({
             this.app.debug && this.log('X adjusted');
             // posX = wMax - w - this.offsetX;
             posX = this.mouseX - w - this.offsetX;
+        }
+
+        if(bodyWidth < widthNew) {
+            posX = 0;
+            widthNew = bodyWidth;
+        }
+
+        posX = (posX < 0) ? 0 : posX;
+
+        if(posX + widthNew > bodyWidth) {
+            posX = bodyWidth - widthNew;
+        }
+
+        if(posY + hRaw > yMax) {
+            poxY = yMax - hRaw;
         }
 
         if(yOuter > hMax) {
@@ -166,15 +330,68 @@ module.exports = kind({
         }
 
         this.app.debug && this.log('posX', posX);
-        this.app.debug && this.log('posY', posY);
+        this.app.debug && this.log('posY', posY, 'yMax', yMax, 'h', h, 'bounds', bounds.height, this.owner.hasNode().clientHeight + window.scrollY);
 
         this.applyStyle('left', posX + 'px');
         this.applyStyle('top', posY + 'px');
-        this.applyStyle('width', this.widthMin + 'px');
+        this.applyStyle('width', widthNew + 'px');
         this.render();
     },
     mouseOutHandler: function(inSender, inEvent) {
-        // this.set('showing', false);
+        this.set('showing', false);
+    },
+    mouseOverHandler: function(inSender, inEvent) {
+        this.cancelHide();
+        this.set('showing', true);
+    },
+    hideDelay: function() {
+        var t = this;
+
+        this.cancelHide();
+        this.preventHide = false;
+
+        this.hideTimeout = setTimeout(function() {
+            t.set('showing', false);
+        }, 1000);
+    },
+    cancelHide: function() {
+        this.hideTimeout && clearTimeout(this.hideTimeout);
+    },
+    handleTap: function(inSender, inEvent) {
+        this._lastTapTarget = inEvent.target;
+    },
+    hidePrevent: function() {
+        this.cancelHide();
+
+        this.preventHide = true;
+        var t = this;
+
+        this.hideTimeout = setTimeout(function() {
+            t.preventHide = false;
+        }, 1000);
+    },
+    handleGlobalTap: function(inSender, inEvent) {
+        if(inEvent.e.target == this._lastTapTarget) {
+            // do nothing, tap was within the hover dialog, keep it open!
+        } else if(inEvent.e.target.tagName == 'A' && inEvent.e.target.className == 'strongs') {
+            // do nothing, tap was on a hover dialog link
+            this._lastTapTarget = null;
+        } else {
+            this._lastTapTarget = null;
+            this.set('showing', false);
+        }
+    },
+    handleClick: function(inSender, inEvent) {
+        // this.log('button', inEvent.button);
+        // this.log('buttons', inEvent.buttons);
+        // this.log('which', inEvent.which);
+        // this.log(this.app.client);
+
+        if(inEvent.which == 3 && this.app.client.browser == 'Firefox') {
+            this.hidePrevent();
+            // inEvent.preventDefault();
+            // return true;
+        }
     },
     getOwnerBounds: function() {
         if(!this.owner) {
@@ -188,8 +405,22 @@ module.exports = kind({
         return { 
             top: rect.top + scrollTop, 
             left: rect.left + scrollLeft,
+            topOrig: rect.top,
+            leftOrig: rect.left,
             width: rect.width || null,
-            height: rect.height || null
+            height: rect.height || null,
+            rect: rect
         };
+    },
+    close: function() {
+        this.set('showing', false);
+    },
+    set: function(name, value) {
+        // Ugly Firefox hack :P
+        if(this.preventHide && name == 'showing' && value == false) {
+            return;
+        }
+
+        this.inherited(arguments);
     }
 });

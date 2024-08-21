@@ -7,7 +7,9 @@ var Base = require('./FormatButtonsBase');
 var Toggle = require('../ToggleHtml');
 var Image = require('../Image');
 var i18n = require('../Locale/i18nContent');
-var LocaleSelector = require('../Locale/LocaleSelector');
+
+var LocaleSelectorNew = require('../Locale/LocaleSelector');
+var LocaleSelectorOld = require('../Locale/LocaleSelectorOld');
 
 module.exports = kind({
     name: 'FormatButtonsHtml',
@@ -132,7 +134,7 @@ module.exports = kind({
                 tag: 'span',
                 ontap: 'handleRenderStyle',
                 components: [
-                    {tag: 'span', content: '&nbsp;---- -', allowHtml: true},
+                    {tag: 'span', content: '&nbsp;&nbsp;---- -', allowHtml: true},
                     {tag: 'span', content: '', allowHtml: true},
                     {tag: 'span', content: '- -------', allowHtml: true},
                     {tag: 'span', content: '- -------', allowHtml: true},
@@ -162,23 +164,30 @@ module.exports = kind({
                 attributes: {
                     title: 'Verse Display'
                 }
+            },            
+            {
+                kind: i18n,
+                classes: 'item renderstyle verse_passage',
+                name: 'renderstyle_verse_passage',
+                val: 'verse_passage',
+                tag: 'span',
+                ontap: 'handleRenderStyle',
+                components: [
+                    {tag: 'span', content: '&nbsp; &nbsp;---- -', allowHtml: true},
+                    {tag: 'span', content: '----------', allowHtml: true},
+                    {tag: 'span', content: '&nbsp; &nbsp;---- -', allowHtml: true},
+                    {tag: 'span', content: '----------', allowHtml: true},
+                    {tag: 'span', content: '&nbsp; &nbsp;---- -', allowHtml: true},
+                    {tag: 'span', content: '----------', allowHtml: true},
+                    {tag: 'span', content: '', allowHtml: true},
+                ],
+                attributes: {
+                    title: 'Verse as Passage Display'
+                }
             },
 
         ]},
         
-        // TODO - FUTURE - copy instantly button
-        // {tag: 'span', components: [
-        //     {
-        //         classes: 'item',
-        //         name: 'copy_instant',
-        //         kind: i18n,
-        //         content: 'Copy',
-        //         ontap: 'handleCopyInstant',
-        //         style: 'position: relative',
-        //         title: 'Copy with given copy settings'
-        //     },
-        // ]},
-              
         {classes: 'bss_button_group', name: 'TextEmbGroup1', components: [
             {
                 classes: 'item italics_toggle',
@@ -262,6 +271,28 @@ module.exports = kind({
             },    
         ]},
         {classes: 'bss_button_group', name: 'SmallButtonsGroup1', components: [
+            // copy instantly button
+            {tag: 'span', components: [
+                {
+                    classes: 'item',
+                    name: 'copy_instant',
+                    kind: i18n,
+                    content: 'Copy',
+                    ontap: 'handleCopyInstant',
+                    style: 'position: relative',
+                    // title: 'Copy with given copy settings', 
+                    attributes: {title: 'Copy'},
+                    components: [
+                        {
+                            kind: i18n, 
+                            tag: 'span', 
+                            classes: 'material-icons icon', 
+                            content: 'content_copy',
+                            // title: 'Copy'
+                        }
+                    ]
+                },
+            ]},
             {
                 classes: 'item copy_toggle_new',
                 name: 'copy_toggle',
@@ -301,7 +332,7 @@ module.exports = kind({
             },  
             {
                 kind: i18n,
-                classes: 'item clear',
+                classes: 'item clear_form',
                 name: 'clear',
                 tag: 'span',
                 ontap: 'handleClearForm',
@@ -338,6 +369,36 @@ module.exports = kind({
                 attributes: {title: 'Link'},
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'link'}
+                ],
+            },            
+            {
+                kind: i18n,
+                classes: 'item link text_only',
+                name: 'history_button',
+                ontap: 'handleHistory',
+                attributes: {title: 'History'},
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'history'}
+                ],
+            },            
+            {
+                kind: i18n,
+                classes: 'item link text_only',
+                name: 'bookmark_add_button',
+                ontap: 'handleBookmarkCurrent',
+                attributes: {title: 'Bookmark'},
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'bookmark_add'}
+                ],
+            },            
+            {
+                kind: i18n,
+                classes: 'item link text_only',
+                name: 'bookmark_button',
+                ontap: 'handleBookmark',
+                attributes: {title: 'Bookmarks'},
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'bookmarks'}
                 ],
             },
             {
@@ -406,9 +467,9 @@ module.exports = kind({
         {
             classes: 'item language',
             name: 'language_selector',
-            components: [
-                {name: 'Locale', kind: LocaleSelector}
-            ]
+            // components: [
+            //     {name: 'Locale', kind: LocaleSelector}
+            // ]
         }
 
         // {classes: 'input_row_wide', components: [
@@ -467,6 +528,21 @@ module.exports = kind({
         if(!this.app.statics.download_enabled) {
             this.$.download_button.set('showing', false);
         }
+
+        if(!this.app.configs.bookmarksEnable || this.app.configs.bookmarksEnable == 'false') {
+            this.$.bookmark_add_button.set('showing', false);
+            this.$.bookmark_button.set('showing', false);
+        }
+
+        // todo - use new selector for locale selector here (needs styling)
+        //var LS = this.app.get('useNewSelectors') ? LocaleSelectorNew : LocaleSelectorOld;
+        var LS = LocaleSelectorOld;
+
+        this.$.language_selector.createComponent({
+            name: 'Locale',
+            kind: LS,
+            owner: this
+        });
     }, 
     rendered: function() {
         this.inherited(arguments);

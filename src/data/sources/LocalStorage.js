@@ -5,14 +5,17 @@ module.exports = kind({
     name: 'LocalStorage',
     kind: Source,
 
-    commit: function(model, opts) {
+    // commit: function(model, opts) {
 
-    },
-    destroy: function(model, opts) {
+    // },
+    // destroy: function(model, opts) {
 
-    },
-    fetch: function(model, opts) {
+    // },
+    // fetch: function(model, opts) {
 
-    }
+    // },    
+    // find: function(model, opts) {
+
+    // }
 });
 

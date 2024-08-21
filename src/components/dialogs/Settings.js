@@ -4,12 +4,14 @@ var Anchor = require('enyo/Anchor');
 var Input = require('enyo/Input');
 var Checkbox = require('enyo/Checkbox');
 var Group = require('enyo/Group');
-var LanguageSelector = require('../Locale/LocaleSelector');
+var LanguageSelectorNew = require('../Locale/LocaleSelector');
+var LanguageSelector = require('../Locale/LocaleSelectorOld');
 var Dialog = require('./Dialog');
 var LinkBuilder = require('../Link/LinkBuilder');
 var i18n = require('../Locale/i18nContent');
 var inc = require('../../components/Locale/i18nComponent');
 var Toggle = require('../ToggleHtml');
+var ContextHelp = require('../ContextHelp');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -17,10 +19,10 @@ var Signal = require('enyo/Signals');
 var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 
 module.exports = kind({
-    name: 'StartDialog',
+    name: 'SettingsDialog',
     kind: Dialog,
     maxWidth: '350px',
-    height: '475px',
+    height: '575px',
     classes: 'help_dialog bible_settings',
     bibleString: null,
 
@@ -30,17 +32,15 @@ module.exports = kind({
     
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, tag: 'h3', content: 'Settings'}, 
-            // {tag: 'h4', content: 'Here\'s a reading list to get you started'}, 
+            {kind: i18n, classes: 'bss_dialog_title', content: 'Settings'}, 
         ]}
     ],
 
     bodyComponents: [
-        {tag: 'br'},
         {components: [
             {kind: i18n, tag: 'span', content: 'Language'},
-            {tag: 'span', allowHtml: true, content: ':&nbsp;'},
-            {name: 'Language', kind: LanguageSelector},
+            {tag: 'br'},
+            {name: 'Language', kind: LanguageSelector, style: 'width:250px'},
         ]},
         {tag: 'br'},
         {
@@ -51,7 +51,6 @@ module.exports = kind({
             falseTitle: 'Enable Highlighting of Keywords',
             trueComponent: {
                 components: [
-                    // {kind: Checkbox, checked: true, ntap: 'ignoreTap', disabled: true},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Highlight'}
@@ -59,12 +58,15 @@ module.exports = kind({
             },        
             falseComponent: {
                 components: [
-                    // {kind: Checkbox, checked: false, ntap: 'ignoreTap', disabled: true},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Highlight'}
                 ]
-            }
+            },
+            help: true,
+            helpComponents: [
+                {kind: i18n, tag: 'span', content: 'highlight_description'}
+            ]
         },    
         {
             classes: 'settings_toggle redletter_toggle',
@@ -74,7 +76,6 @@ module.exports = kind({
             falseTitle: 'Enable Red Letter', 
             trueComponent: {
                 components: [
-                    // {kind: Checkbox, checked: true, ontap: 'ignoreTap'},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Red Letter'}
@@ -82,12 +83,18 @@ module.exports = kind({
             },        
             falseComponent: {
                 components: [
-                    // {kind: Checkbox, checked: false, ontap: 'ignoreTap'},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Red Letter'}
                 ]
-            }
+            },
+            help: true,
+            helpComponents: [
+                {tag: 'span', kind: i18n, content: 'red_letter_description'},
+                {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;('},
+                {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
+                {tag: 'span', content: '.)'}
+            ]
         },
         {
             classes: 'settings_toggle italics_toggle',
@@ -97,7 +104,6 @@ module.exports = kind({
             falseTitle: 'Enable Italization of Added Words',
             trueComponent: {
                 components: [
-                    // {kind: Checkbox, checked: true, ontap: 'ignoreTap'},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Italics'}
@@ -105,12 +111,18 @@ module.exports = kind({
             },        
             falseComponent: {
                 components: [
-                    // {kind: Checkbox, checked: false, ontap: 'ignoreTap'},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Italics'}
                 ]
-            }
+            },
+            help: true,
+            helpComponents: [
+                {tag: 'span', kind: i18n, content: 'italics_description'},
+                {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;('},
+                {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
+                {tag: 'span', content: '.)'}
+            ]
         },        
         {
             classes: 'settings_toggle strongs_toggle',
@@ -120,7 +132,6 @@ module.exports = kind({
             falseTitle: 'Enable Strong\'s Numbers',
             trueComponent: {
                 components: [
-                    // {kind: Checkbox, checked: true, ontap: 'ignoreTap'},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
@@ -128,12 +139,18 @@ module.exports = kind({
             },        
             falseComponent: {
                 components: [
-                    // {kind: Checkbox, checked: false, ontap: 'ignoreTap'},
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
-                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
-                    {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
+                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},       
+                    {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}         
                 ]
-            }
+            },
+            help: true,
+            helpComponents: [
+                {tag: 'span', kind: i18n, content: 'strongs_numbers_description'},
+                {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;('},
+                {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
+                {tag: 'span', content: '.)'}
+            ]
         },       
         {tag: 'br'},
         {
@@ -163,6 +180,12 @@ module.exports = kind({
                                 {kind: Checkbox, name: 'verse', id: 'verse', type: 'radio'}
                             ]},
                             {kind: i18n, tag: 'label', attributes: {for: 'verse'}, classes: 'label', content: 'Verse Display'}
+                        ]},                         
+                        {classes: 'checkbox_container checkbox_first', components: [
+                            {classes: 'element', components: [
+                                {kind: Checkbox, name: 'verse_passage', id: 'verse_passage', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'verse_passage'}, classes: 'label', content: 'Verse as Passage Display'}
                         ]},                
                     ]
                 }      
@@ -219,7 +242,7 @@ module.exports = kind({
         //    {kind: i18n, content: 'verses'}     
         // ]},        
         // {tag: 'br'},
-        {tag: 'br'}
+        // {tag: 'br'}
     ],
 
     buttonComponents: [
@@ -252,12 +275,20 @@ module.exports = kind({
         {from: 'app.UserConfig.page_limit', to: '$.page_limit.value', oneWay: false, transform: function(value, dir) {
             // console.log('Settings page_limit', value, dir);
             return value;
+        }},        
+        // We hide the render style selector when in copy mode, re: it will collide with the pre-set copy settingss
+        // Users can assess it under the 'custom' copy settings
+        {from: 'app.UserConfig.copy', to: '$.render_style.showing', oneWay: true, transform: function(value, dir) {
+            // console.log('Settings COPY renderstyle', value, dir);
+            return value ? false : true;
         }},
+
         {from: 'app.UserConfig.render_style', to: 'renderStyle', oneWay: false, transform: function(value, dir) {
             // console.log('SETTINGS renderStyle', value, dir);
 
             if(dir == 1 && this.$[value]) {
-                this.$.render_style.set('active', this.$[value]);
+            // if( this.$[value]) {
+                this.$.render_style.set('active', this.$[value]); //.render();
                 this.$[value].set('checked', true);
             }
 
@@ -284,6 +315,10 @@ module.exports = kind({
             this.width = '1200px';
         }
 
+        if(this.app.get('useNewSelectors')) {
+            this.bodyComponents[0].components[2].kind = LanguageSelectorNew;
+        }
+
         this.inherited(arguments);
     },
     close: function() {
@@ -294,6 +329,7 @@ module.exports = kind({
 
         if(is) {
             this.$.Language.handleLocaleChange();
+            //this.$.render_style.render(); // :X
         }
     },
     listChanged: function(was, is) {
@@ -314,7 +350,11 @@ module.exports = kind({
         var value = (inEvent.active) ? inEvent.active.name : null;       
 
         if(inEvent.originator.name == 'render_style') {
-            this.set('renderStyle', value);
+            if(!this.app.UserConfig.get('copy')) {
+                this.set('renderStyle', value);
+            } else {
+                this.set('renderStyle', this.get('renderStyle'));
+            }
         }             
 
         if(inEvent.originator.name == 'font') {

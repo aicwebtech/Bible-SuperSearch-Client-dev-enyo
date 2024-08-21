@@ -8,6 +8,7 @@ var i18nComponent = require('../Locale/i18nComponent');
 var TextArea = require('enyo/TextArea');
 var Input = require('enyo/Input');
 var Image = require('../Image');
+var utils = require('enyo/utils');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -20,24 +21,23 @@ module.exports = kind({
     name: 'LinkDialog',    
     kind: Dialog,
     maxWidth: '400px',
-    height: '475px',
+    height: '140px',
     classes: 'help_dialog link_dialog',
     bibleString: null,
     ezCopy: false,
     
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, tag: 'h3', content: 'Link'}, 
+            {kind: i18n, classes: 'bss_dialog_title', content: 'Link'}, 
         ]}
     ],
 
     bodyComponents: [
-        {tag: 'br'},
         {name: 'FullUrlContainer', classes: 'copy-link-containr', components: [
             {kind: Input, name: 'FullUrl'},
-            {kind: Button, onclick: 'copyFullUrl', components: [
-                {kind: i18n, content: 'Copy'}
-            ]}
+            // {kind: Button, onclick: 'copyFullUrl', components: [
+            //     {kind: i18n, content: 'Copy'}
+            // ]}
         ]},
         {name: 'ShortUrlContainer', classes: 'copy-link-containr', components: [
             {tag: 'br'},
@@ -45,11 +45,14 @@ module.exports = kind({
             {kind: Button, onclick: 'copyShortUrl', components: [
                 {kind: i18n, content: 'Copy'}
             ]}
-        ]},
-        {tag: 'br'}
+        ]}
     ],
 
     buttonComponents: [
+        {name: 'Copy', kind: Button, ontap: 'copy', components: [
+            {kind: i18n, content: 'Copy'}
+        ]},          
+        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp; &nbsp; &nbsp;'},
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'}
         ]}
@@ -74,6 +77,14 @@ module.exports = kind({
         }
     },
     populate: function() {
+        var title = document.title,
+            url = window.location.href;
+
+        this.$.FullUrl.set('value', url);
+        this.$.FullUrlContainer.set('showing', true);
+        this.$.ShortUrlContainer.set('showing', false);
+    },
+    populateOld: function() {
         var title = document.title,
             url = window.location.href,
             shortHash = this.app.get('shortHashUrl'),
@@ -109,11 +120,48 @@ module.exports = kind({
     localeChanged: function(inSender, inEvent) {
 
     },
+    copy: function() {
+        return this.copyFullUrl()
+    },
     copyFullUrl: function() {
-        return this.app._copyComponentContent(this.$.FullUrl, 'value');
+        if(this.share()) {
+            return;
+        }
+
+        return this.copyFullUrlHelper();
     },    
     copyShortUrl: function() {
         return this.app._copyComponentContent(this.$.ShortUrl, 'value');
+    },
+    copyFullUrlHelper: function() {
+        return this.app._copyComponentContent(this.$.FullUrl, 'value');
+    },
+    share: function() {
+        if(navigator.share) {
+            var promise = navigator.share({
+                title: document.title,
+                url: window.location.href
+            });
+
+            promise.then(utils.bind(this, function() {
+                this.app.debug && this.log('Successful share');
+            }), 
+            utils.bind(this, function() {
+                this.app.debug && this.log('Failed to share 1');
+                // Use our generic copy in case the browser share dialog fails
+                this.copyFullUrlHelper();
+            }));
+
+            promise.catch(utils.bind(this, function(error) {
+                this.app.debug && this.log('Failed to share 2');
+                // Use our generic copy in case the browser share dialog fails
+                this.copyFullUrlHelper();
+            }));
+            
+            return true;
+        }
+
+        return false;
     }
 
 });

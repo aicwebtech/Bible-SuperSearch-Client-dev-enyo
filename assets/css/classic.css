@@ -4,12 +4,12 @@
 .biblesupersearch_main.interface_classic {
     min-height: 100px;
     /*max-height: 80vh;*/
-    overflow-y: auto;
+/*    overflow-y: auto;*/
 }
 
 .biblesupersearch_classic_form {
-    margin-left:auto;
-    margin-right:auto; 
+    margin-inline-start:auto;
+    margin-inline-end:auto; 
     padding:5px; 
     background-color:tan;
     margin-bottom: 20px;
@@ -166,24 +166,19 @@
     font-family: serif;
 }
 
-.interface_classic .help_dialog .dialog {
+.interface_classic .help_dialog .bss_dialog_container {
     background-color: #702424;
     color: white;
 }
 
-.interface_classic .help_dialog .dialog .content {
+.interface_classic .help_dialog .bss_dialog_container .bss_dialog_content {
     background-color: #d2b48c;
     color: black;
 }
 
-.interface_classic .help_dialog .item:nth-child(odd) {
+.interface_classic .help_dialog .item:nth-child(odd), .interface_classic .bss_list_item:nth-child(odd),  {
     background-color: #edd9be;
 }
-
-/*.interface_classic a.strongs:link, .interface_classic a.strongs:visited, .interface_classic a.strongs:hover {
-    color: black;
-    text-decoration: none;
-}*/
 
 /* Emulate a 'classic' format button without creating a new image for it */
 .format_buttons_classic {

@@ -1,8 +1,12 @@
 module.exports = {
     meta: {
-        lang_name: '简体中文',      // Native name of language (endonymn)
-        lang_name_en: 'Simplified Chinese',   // Name of language, in English
+        code: 'zh_CN',
+        name: '简体中文',      // Native name of language (endonymn)
+        nameEn: 'Simplified Chinese',   // Name of language, in English
         isRtl: false,       // Whether language is read Right-to-left
+        isFluent: true,     
+        translatedBy: 'undisclosed', 
+        translatedEmail: null, // undisclosed
     },
     
     // The actual translation data
@@ -29,6 +33,7 @@ module.exports = {
     'Parallel Bible #': '平行圣经编号#',
     'Select a Bible': '选择一种圣经',
     'Add Bible': '增加圣经',
+    'Remove Bible': '删除圣经',
     'Random Chapter': '随机章节',
     'Random Verse': '随机经文',
     'Passages': '一些经句章节',
@@ -54,24 +59,43 @@ module.exports = {
     'Show this verse': '显示这节经文',
     'Show in context': '在上下文中显示',
     'Context': '上下文',
+    'In Context': '在上下文中',
 
     'Limit Search To': '限制搜索于',
     'Limit search to': '搜索限于, 注意大小写 !', // 注意大小写 !
     'Entire Bible': '整本圣经',
     'Passage(s) listed below': '经文章节列在下面',
     'Passage(s) listed above': '经文章节列在上面',
+    
+    // Shortcuts
     'Old Testament': '旧约',
     'New Testament': '新约',
     'Law': '律法书',
     'History': '历史书',
+    'History Books': '历史书籍', // 5.5 Can translate as 'History'
     'Wisdom & Poetry': '智慧书与诗歌',
     'Prophets': '先知书',
+    'Prophets Books': '先知书', // 5.5 Can translate as 'Prophets'
     'Major Prophets': '大先知书',
     'Minor Prophets': '小先知书',
     'Gospels': '福音书',
     'Epistles': '书信',
     'Pauline Epistles': '保罗书信',
     'General Epistles': '一般书信',
+    'End Times Prophecy': '末日预言',
+
+    // Shortcut Aliases
+    'OT': '奥特',
+    'NT': '新台币',
+    'Torah': '妥拉',
+    'Wisdom': '智慧',
+    'Major': '主要的',
+    'Minor': '次要的',
+    'Passion': 'Passion',
+    'Doctrine': '教义',
+    'Paul': '保罗',
+    'General': '一般的',
+    'Last Days': '最后一天',
 
     'Look up Passage(s)': '查找经文章节',
     'Enter passage(s)' : '输入章节',
@@ -116,6 +140,7 @@ module.exports = {
     'Previous Page' : '上一页',
     'First Page' : '第一页',
     'Last Page': '最后一页',
+    'Page': '页',
     
     // Formatting and dialog buttons
     'A': '特定语言的第一个字母',     // First letter in given language
@@ -129,6 +154,7 @@ module.exports = {
     'Verse Display': '经文显示',
     'Paragraph Display': '段落显示',
     'Passage Display': '章节显示', // 4.5
+    'Verse as Passage Display': '作为段落显示的诗句', // 5.3
     'EZ Copy': '简易复制',  // 'Easy Copy'
     'Read Display': '阅读显示',
     'Italics': '斜体字',
@@ -147,6 +173,15 @@ module.exports = {
     'Help': '帮助',
     'Basic': '基本的',
     'Advanced': '进阶的',
+
+    // Descriptions of special formatting features
+    'Formatting': '格式化',  // 5.3
+    'Supported Bibles Only': '仅支持圣经',  // 5.3
+    
+    'strongs_numbers_description': 'Strong 的索引编号表示潜在的希伯来语或希腊语单词。',  // 5.3
+    'italics_description': '斜体表示在翻译中添加的不是原始语言的单词。',    // 5.3
+    'red_letter_description': '红色的基督的话。', // 5.3
+    'highlight_description': '在搜索中突出显示（粗体）关键字。',  // 5.3
 
     // Verse Cherry-picking
     'Select All': '全选', // 5.0
@@ -173,6 +208,8 @@ module.exports = {
     'Show Verse Number': '显示经句编号', // 5.0
 
     'Other': '其他', // 5.0
+    'Include Testament': '包括遗嘱',
+    'Testament': '遗嘱',
     'Abbreviate Books': '书卷名称缩写', // 5.0
     'Omit Extra Line Breaks': '省略多余的换行符号', // 5.0
 
@@ -221,7 +258,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': '您没有提供查询条件, 请提供搜索词和(或)章节。',
     'Your search produced no results.' : '您的搜索没有结果。',
     'Maximum hits has been reached for today for this domain / IP address': '这个域名/IP地址, 已经达到单日可以点击率的最大使用限制。',
-    'No Bibles are enabled. Please contact site adminstrator.': '无任何圣经被启用。请联系网站管理员。',
+    'No Bibles are enabled. Please contact site administrator.': '无任何圣经被启用。请联系网站管理员。',
     'Cannot retrieve multiple books at once.': '不能一次检索多本书。',
     'Bible text not found': '找不到经文',
     'Invalid book in book range': '在书卷范围内找不到这书',
@@ -322,6 +359,8 @@ module.exports = {
     'Share Link': '分享链接',
     'Share' : '分享',
     'Link' : '链接', // 4.5
+    'Copied to clipboard': '已复制到剪贴板', // 5.2.3
+    'Failed to copy': '复制失败', // 5.2.3
 
     // Quick Start Help Dialog
     'Quick Start Guide': '快速入门指南',
@@ -361,6 +400,48 @@ module.exports = {
     'words': '話语',
     'truth': '真理',
 
+<<<<<<< HEAD
+=======
+    // Searching across language
+
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': '您无法搜索不同语言的圣经',
+    'You cannot search across Bibles of different languages with the selected search type.' : '您无法使用以下命令搜索不同语言的圣经选定的搜索类型',
+
+    // General dialogs
+    'Name': '姓名',
+    'Save': '节省',
+    'Cancel': '取消',
+    'Edit': '编辑',
+    'Delete': '删除',
+    'Clear': '清除',
+    'Restore': '恢复',
+    'Add': '添加',
+    'Okay': '好的',
+    'Old': '老的',
+    'New': '新的',
+
+    'Are you sure?': '你确定吗？',
+    'Are you sure you want to delete': '你确定你要删除',
+
+    // Bookmarks/History
+    'This will delete all history.': '这将删除所有历史记录。',
+    'This will delete all bookmarks.': '这将删除所有书签',
+    'Move to Current': '移至当前',
+
+    'Bookmark': '书签',
+    'Bookmarks': '书签',
+
+    'Please delete some bookmarks before adding more.': '请先删除一些书签，然后再添加更多书签',
+    'This bookmark name already exists.': '该书签名称已存在',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': 'Limiting Searches',
+    'Passages': '段落',
+    'Alias': '别名',
+    'You cannot search for these common words': '这些常用词你无法搜索',
+
+>>>>>>> master
     'bibleBooks': [
         {
           "id": 1,

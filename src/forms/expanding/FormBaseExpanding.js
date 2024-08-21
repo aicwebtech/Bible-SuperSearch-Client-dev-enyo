@@ -49,6 +49,7 @@ module.exports = kind({
         // if(bibset && !is) {
         if(bibset) {
             this.$.bible && this.$.bible.set('parallelLimit', bibset.parallelLimit);
+            this.$.bible && this.$.bible.set('parallelLimitInterface', bibset.parallelLimit);
             this.$.bible && this.$.bible.set('parallelStart', bibset.parallelStart);
         }
 

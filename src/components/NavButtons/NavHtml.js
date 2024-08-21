@@ -2,6 +2,7 @@ var kind = require('enyo/kind');
 var Link = require('enyo/Anchor');
 var ImageLink = require('../LinkImage');
 var LinkBuilder = require('../Link/LinkBuilder');
+var Signal = require('../Signal');
 
 module.exports = kind({
     name: 'NavHtml',
@@ -10,14 +11,36 @@ module.exports = kind({
     nav: {}, // navigation data
     bibles: [],
 
-    prevBookText: '|&#9664;&#xFE0E;',
-    prevChapterText: '&#9664;&#xFE0E;',
+    pswapBookText: '|&#9664;&#xFE0E;',
+    pswapChapterText: '&#9664;&#xFE0E;',
     currentChapterText: '&ndash;&#xFE0E;',
     nextChapterText: '&#9654;&#xFE0E;',
     nextBookText: '&#9654;&#xFE0E;|',
 
+    linkClasses: 'styleable',
+    classesActive: 'active',
+    classesInactive: 'inactive',
+    swapOnRtl: true,
+
+    // attributes: {dir: 'auto'},
+
+    components: [
+        {kind: Signal, onBibleChange: 'handleBibleChange', _onAutoClick: 'handleAutoClick', isChrome: true}
+    ],
+
+    handlers: {
+        ontap: 'handleTap',
+        onAutoClick: 'handleAutoClick',
+        onLocaleChanged: 'handleLocaleChange'
+    },
+
     create: function() {
         this.inherited(arguments);
+        this.buildLinks();
+    },
+
+    buildLinks: function() {
+        this.destroyClientControls();
 
         var pb_link = null,
             nb_link = null,
@@ -30,6 +53,12 @@ module.exports = kind({
             pc_text = null,
             cc_text = null,
             bookName = null,
+<<<<<<< HEAD
+=======
+            cla = this.linkClasses + ' ' + this.classesActive,
+            cli = this.linkClasses + ' ' + this.classesInactive,
+            swap = this.app.isRtl && this.swapOnRtl,
+>>>>>>> master
             bible = (this.bibles) ? this.bibles : '';
 
         // Next Book
@@ -39,14 +68,24 @@ module.exports = kind({
             nb_text = bookName;
         }         
 
+<<<<<<< HEAD
         // Prev Book
         if(typeof this.nav.pb != 'undefined' && this.nav.pb != null) {
             bookName = this.app.getLocaleBookName(this.nav.pb, this.nav.prev_book);
+=======
+        // Pswap Book
+        if(typeof this.nav.pb != 'undefined' && this.nav.pb != null) {
+            bookName = this.app.getLocaleBookName(this.nav.pb, this.nav.pswap_book);
+>>>>>>> master
             pb_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, 1);
             pb_text = bookName;
         }         
 
+<<<<<<< HEAD
         // Prev Chapter
+=======
+        // Pswap Chapter
+>>>>>>> master
         if(typeof this.nav.pcc != 'undefined' && this.nav.pcc != null) {
             bookName = this.app.getLocaleBookName(this.nav.pcb, this.nav.pcb_name);
             pc_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, this.nav.pcc);
@@ -73,8 +112,8 @@ module.exports = kind({
             href:  pb_link,
             title: pb_text,
             allowHtml: true,
-            classes: (pb_link) ? 'active' : 'inactive',
-            content: this.prevBookText
+            classes: (pb_link) ? cla : cli,
+            content: swap ? this.nextBookText : this.pswapBookText
         });        
 
         this.createComponent({
@@ -83,8 +122,8 @@ module.exports = kind({
             href:  pc_link,
             title: pc_text,
             allowHtml: true,
-            classes: (pc_link) ? 'active' : 'inactive',
-            content: this.prevChapterText
+            classes: (pc_link) ? cla : cli,
+            content: swap ? this.nextChapterText : this.pswapChapterText
         });        
 
         this.createComponent({
@@ -93,7 +132,7 @@ module.exports = kind({
             href:  cc_link,
             title: cc_text,
             allowHtml: true,
-            classes: (cc_link) ? 'active' : 'inactive',
+            classes: (cc_link) ? cla : cli,
             content: this.currentChapterText
         });        
 
@@ -103,8 +142,8 @@ module.exports = kind({
             href:  nc_link,
             title: nc_text,
             allowHtml: true,
-            classes: (nc_link) ? 'active' : 'inactive',
-            content: this.nextChapterText
+            classes: (nc_link) ? cla : cli,
+            content: swap ? this.pswapChapterText : this.nextChapterText
         });        
 
         this.createComponent({
@@ -113,8 +152,42 @@ module.exports = kind({
             href:  nb_link,
             title: nb_text,
             allowHtml: true,
-            classes: (nb_link) ? 'active' : 'inactive',
-            content: this.nextBookText
+            classes: (nb_link) ? cla : cli,
+            content: swap ? this.pswapBookText : this.nextBookText
         });
+    },
+    handleTap: function(inSender, inEvent) {
+        if(inSender.href) {
+            // If clicking on an active link, set scroll mode
+            this.app.set('scrollMode', 'results_top');
+        }
+    },
+    handleBibleChange: function(inSender, inEvent) {
+        var c = this.app.configs.bibleChangeUpdateNavigation || false;
+
+        if(c && c != 'false') {
+            this.bibles = inEvent.bibles;
+            this.buildLinks();
+            this.render();
+        }
+    },
+    handleLocaleChange: function(inSender, inEvent) {
+        this.buildLinks();
+        this.render();
+    },
+    handleAutoClick: function(inSender, inEvent) {
+        button = inEvent.button || null;
+
+        // Handle special cases.
+        switch(button) {
+            case '_pswap':
+                button = 'pc';
+                break;
+            case '_next':
+                button = 'nc';
+                break;
+        }
+
+        button && this.$[button] && this.$[button].hasNode().click();
     }
 });

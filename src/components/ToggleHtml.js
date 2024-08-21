@@ -1,10 +1,10 @@
 var kind = require('enyo/kind');
 var Image = require('./Image');
+var Help = require('./ContextHelp');
 var i18n = require('./Locale/i18nContent');
 
 module.exports = kind({
     name: 'ToggleHtml',
-    // tag: 'span',
     classes: 'is_false',
     
     trueComponent: {},  // Component that displays when value = true
@@ -12,14 +12,18 @@ module.exports = kind({
     trueContent: '',
     falseContent: '',    
     trueTitle: '',
-    falseTitle: '',    
+    falseTitle: '',   
+
+    help: false,
+    helpComponents: [], 
 
     published: {
         value: false,
     },
 
     handlers: {
-        ontap: 'toggleValue'
+        ontap: 'handleTap',
+        onmouseout: 'handleMouseOut'
     },
 
     create: function() {
@@ -44,13 +48,28 @@ module.exports = kind({
         vt.addClass('true');  
 
         if(this.falseTitle) {
-            // vf.setAttribute('title', this.falseTitle);
             vf.set('titleString', this.falseTitle);
         }        
 
         if(this.trueTitle) {
-            // vt.setAttribute('title', this.trueTitle);
             vt.set('titleString', this.trueTitle);
+        }
+
+        if(this.help)  {
+            this.createComponent({
+                tag: 'sup',
+                content: '?',
+                classes: 'biblesupersearch_toggle_help',
+                onmouseover: 'handleMouseOver',
+                ontap: 'handleHelpTab'
+            });
+
+            this.createComponent({
+                name: 'Help',
+                showing: false,
+                classes: 'biblesupersearch_toggle_help',
+                components: this.helpComponents,
+            });
         }
     },
 
@@ -60,7 +79,20 @@ module.exports = kind({
         this.$.ViewTrue && this.$.ViewTrue.set('showing', !!is);
         this.$.ViewFalse && this.$.ViewFalse.set('showing', !is);
     },
+    handleTap: function() {
+        this.toggleValue();
+    },
+    handleHelpTab: function() {
+        this.$.Help && this.$.Help.set('showing', true);
+        return true;
+    },
     toggleValue: function() {
         this.set('value', !this.get('value'));
+    },
+    handleMouseOver: function() {
+        this.$.Help && this.$.Help.set('showing', true);
+    }, 
+    handleMouseOut: function() {
+        this.$.Help && this.$.Help.set('showing', false);
     }
 });

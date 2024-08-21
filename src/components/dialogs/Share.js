@@ -7,6 +7,7 @@ var i18n = require('../Locale/i18nContent');
 var i18nComponent = require('../Locale/i18nComponent');
 var TextArea = require('enyo/TextArea');
 var Image = require('../Image');
+var utils = require('enyo/utils');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -15,39 +16,48 @@ var Signal = require('enyo/Signals');
 
 // Todo - format clean up!
 
+// Todo: Use Web Share API to use native device share dialogs!
+// https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
+// https://stackoverflow.com/questions/32176004/share-button-for-mobile-website-to-invoke-ios-android-system-share-dialogs
+
 module.exports = kind({
     name: 'ShareDialog',    
     kind: Dialog,
     maxWidth: '400px',
-    height: '475px',
+    height: '320px',
     classes: 'help_dialog share_dialog',
     bibleString: null,
     ezCopy: false,
+    shareContent: null,
+    actuallyShowDialogForce: false,
     
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, tag: 'h3', content: 'Share'}, 
+            {kind: i18n, classes: 'bss_dialog_title', content: 'Share'}, 
         ]}
     ],
 
     bodyComponents: [
         // {kind: Signal, onFormResponseSuccess: 'handleFormResponse', onFormResponseError: 'handleFormError'},
-        {classes: 'list start_list', name: 'ListContainer'}, 
         {classes: 'link_share_container', components: [
-            {kind: TextArea, name: 'CopyArea', classes: 'link_share'}
+            {
+                kind: TextArea, 
+                name: 'CopyArea', 
+                classes: 'link_share', 
+                attributes: {dir: 'auto'},
+                _style: 'width: 98%'
+            }
         ]},
-        {tag: 'br'}
+        // {tag: 'br'}
     ],
 
     buttonComponents: [
         {name: 'Copy', kind: Button, ontap: 'copy', components: [
-            {kind: i18n, content: 'Copy'},
+            {kind: i18n, content: 'Copy'}
+            // {tag: 'span', content: '&nbsp;', allowHtml: true},
+            // {tag: 'span', classes: 'material-icons icon material-icons-small-button', content: 'share'}
         ]},          
-        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
-        // {name: 'CopyWithText', kind: Button, ontap: 'copyWithText', components: [
-        //     {kind: i18n, content: 'Copy with Text'},
-        // ]},        
-        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
+        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp; &nbsp; &nbsp;'},
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'},
         ]}
@@ -77,25 +87,41 @@ module.exports = kind({
     showingChanged: function(was, is) {
         this.inherited(arguments);
 
+        var actuallyShowDialog = navigator.share ? false : true;
+
         if(is) {
-            this.populate(); 
-            this.$.ListContainer.render();
+            if(actuallyShowDialog || this.actuallyShowDialogForce) {
+                this.populate(); 
+            } else {                
+                this.app.set('shareShowing', false);
+                this.populate(); 
+                this.copy();
+            }
         }
+    },
+    forceShowing: function() {
+        this.actuallyShowDialogForce = true;
+        this.app.set('shareShowing', true);
+        this.actuallyShowDialogForce = false;
     },
     populate: function() {
         var title = document.title,
             url = window.location.href,
             responseData = this.app.get('responseData'),
-            limit = 7,
+            // limit = 7,
+            limit = 0, // unlimited
             count = 0,
             content = '',
             bibleName = '',
             singleVerse = false,
             maxReached = false;
 
+        this.shareContent = null;
+
         if(responseData.success) {
             var passages = responseData.results.results,
-                bible = null;
+                bible = null,
+                references = [];
 
             mainLoop:
             for(var i in passages) {
@@ -116,7 +142,13 @@ module.exports = kind({
                     }
                 }
 
-                content += (p.single_verse) ? '' : p.book_name + ' ' + p.chapter_verse + '\n\n';
+                var book_name = this.app.getLocaleBookName(p.book_id, p.book_name);
+
+                content += (p.single_verse) ? '' : book_name + ' ' + p.chapter_verse + '\n\n';
+
+                if(!p.single_verse) {
+                    references.push(book_name + ' ' + p.chapter_verse);
+                }
 
                 for(var c in p.verse_index) {
                     for(var idx in p.verse_index[c]) {
@@ -124,10 +156,15 @@ module.exports = kind({
                         var v = p.verse_index[c][idx];
                         var verse = p.verses[bible][c][v];
 
-                        content += (p.single_verse) ? p.book_name + ' ' + p.chapter_verse + '\n' : verse.verse + ' ';
+                        content += (p.single_verse) ? book_name + ' ' + p.chapter_verse + '\n' : verse.verse + ' ';
+
+                        if(p.single_verse) {
+                            references.push(book_name + ' ' + p.chapter_verse);
+                        }
+
                         content += this.processText(verse.text);
                         
-                        if(count >= limit) {
+                        if(limit > 0 && count >= limit) {
                             content += (p.single_verse) ? '\n\n…' : ' …';
                             maxReached = true;
                             break mainLoop;
@@ -143,7 +180,10 @@ module.exports = kind({
         }
 
         content += (maxReached) ? '\n\n' : ''; // same regardles of singleVerse
-        content += '\n' + bibleName + '\n\n\n' + title + '\n' + url;
+        //content += '\n' + bibleName + '\n\n\n' + title + '\n' + url;
+        //this.shareContent = content;
+
+        content += '\n' + bibleName + '\n\n\n' + references.join('; ') + ' - ' + this.app.t('Bible SuperSearch') + '\n' + url;
         this.$.CopyArea.set('content', content.trim());
     },
 
@@ -154,47 +194,42 @@ module.exports = kind({
 
     },
     copy: function() {
-        return this.app._copyComponentContent(this.$.CopyArea);
-
-        var n = this.$.CopyArea.hasNode();
-
-        if(!n) {
+        if(this.share()) {
             return;
         }
 
-        // This code for selection all text in a HTML element was migrated from Bible SuperSearch version 3.0
-        // This works, but there is probably a better way
-        if (document.selection) {
-            var div = document.body.createTextRange();
-            div.moveToElementText(n);
-            div.select();
-        }
-        else {
-            var div = document.createRange();
-            div.setStartBefore(n);
-            div.setEndAfter(n);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(div);
-        }
-
-        try {
-            var success = document.execCommand('copy'); // depricated 
-
-            if(success) {
-                this.app.alert('Copied to clipboard');
-            }
-            else {
-                this.app.alert('Failed to copy');
-            }
-        }
-        catch (e) {
-           this.app.alert('Failed to copy');
-        }
+        return this.copyHelper();
     },
-    copyWithText: function() {
-        this.set('ezCopy', true);
-        // todo - enable link on EZ Copy here
-        this.close();
+    copyHelper: function() {
+        return this.app._copyComponentContent(this.$.CopyArea, 'content');
+    },
+    share: function() {
+        if(navigator.share) {
+            var promise = navigator.share({
+                // text: this.shareContent,
+                text: this.$.CopyArea.get('content'),
+                title: document.title
+            });
+
+            promise.then(utils.bind(this, function() {
+                this.app.debug && this.log('Successful share');
+            }), 
+            utils.bind(this, function() {
+                this.app.debug && this.log('Failed to share 1');
+                // Use our generic dialog in case the browser share dialog fails
+                this.forceShowing();
+            }));
+
+            promise.catch(utils.bind(this, function(error) {
+                this.app.debug && this.log('Failed to share 2');
+                // Use our generic dialog in case the browser share dialog fails
+                this.forceShowing();
+            }));
+            
+            return true;
+        }
+
+        return false;
     },
     processText: function(text) {
         text = text.replace(/<[^<>]+>/g, ''); // strip HTML

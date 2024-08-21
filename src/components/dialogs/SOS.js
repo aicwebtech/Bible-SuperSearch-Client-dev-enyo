@@ -18,6 +18,7 @@ module.exports = kind({
     height: '475px',
     classes: 'help_dialog bible_sos',
     bibleString: null,
+    titleBarHeight: 64,
     
     published: {
         list: [
@@ -34,7 +35,7 @@ module.exports = kind({
             {label: 'Doubting', verses: 'Matthew 8:26; Hebrews 11'},
             {label: 'Facing a Crisis', verses: 'Psalms 121; Matthew 6:25-34; Hebrews 4:16'},
             {label: 'Faith Fails', verses: 'Psalms 42:5; Hebrews 11'},
-            {label: 'Friends Fail', verses: 'Psalms 41:9-13; Luke 17:3-4; Rom 12:14,17,19,21; 2 Timothy 4:16-18', newColumn: true},
+            {label: 'Friends Fail', verses: 'Psalms 41:9-13; Luke 17:3-4; Romans 12:14,17,19,21; 2 Timothy 4:16-18', newColumn: true},
             {label: 'Hopeless', verses: 'Psalms 71:5; Psalms 42; Lamentations 3:18-26; 1 Peter 1:3, 21'},
             {label: 'Leaving Home', verses: 'Psalms 121; Matthew 10:16-20'},
             {label: 'Lonely', verses: 'Psalms 23; Hebrews 13:5-6'},
@@ -52,17 +53,15 @@ module.exports = kind({
             {label: 'Traveling', verses: 'Psalms 121'},
             {label: 'Trouble, In', verses: 'Psalms 16; Psalms 31; John 14:1-4; Hebrews 7:25'},
             {label: 'Troubled', verses: 'John 14:1-3, 27; John 16:33; 2 Corinthians 4:8-10'},
-            {label: 'Weary', verses: 'Psalms 90; Matthew 11:28-30; 1 Corinthians 15:58; Gal 6:9-10'},
+            {label: 'Weary', verses: 'Psalms 90; Matthew 11:28-30; 1 Corinthians 15:58; Galatians 6:9-10'},
             {label: 'Worried', verses: 'Matthew 6:19-34; 1 Peter 5:6-7'}
         ]
     },
 
     titleComponents: [
         {classes: 'header', components: [
-            // {tag: 'br'},
-            // {tag: 'h2', content: 'Bible SOS'}, 
-            {kind: i18n, tag: 'h3', content: 'Emergency Help from the Bible'}, 
-            {kind: i18n, tag: 'h4', content: 'Where to go When ...'}, 
+            {kind: i18n, classes: 'bss_dialog_title', content: 'Emergency Help from the Bible'}, 
+            {kind: i18n, classes: 'bss_dialog_subtitle', content: 'Where to go When ...'}, 
         ]}
     ],
 
@@ -157,7 +156,7 @@ module.exports = kind({
                         {kind: Anchor, href: url, _title: versesTranslated, content: versesTranslated, ontap: 'handleVerseTap'}
                     ]},
                     {classes: 'clear-both'}
-                ]
+                ],
             });
         }, this);
     },

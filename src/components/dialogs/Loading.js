@@ -8,7 +8,9 @@ module.exports = kind({
     name: 'LoadingDialog',
     kind: Dialog,
     width: '200px',
-    height: '130px',
+    height: '160px',
+    titleBarHeight: 0, // private
+    buttonBarHeight: 0, // private
 
     bodyComponents: [
         {

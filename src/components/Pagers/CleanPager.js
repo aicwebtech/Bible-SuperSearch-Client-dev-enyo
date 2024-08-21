@@ -5,6 +5,7 @@ var ClassicPager = require('./ClassicPager');
 module.exports = kind({
     name: 'CleanPager',
     kind: ClassicPager,
+    swapOnRtl: true,
     firstPageText:  '|&#8678',
     prevPageText: '&#8678',
     nextPageText: '&#8680',

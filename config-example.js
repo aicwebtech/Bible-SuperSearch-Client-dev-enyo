@@ -1,17 +1,47 @@
 var biblesupersearch_config_options = {
+   
     
+    // URL of Bible SuperSearch API         (string)
+    //      Note:  You can install the Bible SuperSearch API on your own server
+    //             If you do, you will need to change this
+    //             Default: https://api.biblesupersearch.com
+    
+    "apiUrl": "https://api.biblesupersearch.com",
+
+
+    // API Key, if needed.  (Not required.)
+    "apiKey": '',
+
     // Language code for user interface language
-    // If language is not supported, English will display
+    // If language selected is not supported, English will display
     // Supported language:
     // * en : English
     // * es : Español / Spanish
+    // * et : Eesti / Estonian
     // * fr: Français / French
+    // * fr: हिन्दी, हिंदी / Hindi
+    // * lv: Latviešu / Latvian
     // * ro: Română / Romanian
+    // * ru: Русский / Russian
     // * zh_TW: 繁體中文 / Chinese - Traditional
     // * zh_CN: 简体中文 / Chinese - Simplfied
 
     'language' : 'en',
 
+<<<<<<< HEAD
+=======
+    // Languages available to be selected by user
+    // Comment out to show all available languages.
+    // See supported languages above
+    'languageList': ['en', 'ru', 'lv', 'es'],
+
+
+    // Common words not allowed as search terms for each language.  
+    'commonWords': {
+        'en': ['a', 'an', 'the'],
+    },
+
+>>>>>>> master
     // Bible books language source
     // 'ui': Display book names in language selected in UI (Reccomended) (Default)
     // 'bible' : Display book names in language of First selected Bible (Legacy - was never fully implemented)
@@ -35,7 +65,13 @@ var biblesupersearch_config_options = {
     //      See the API documentation for a list of available Bibles
     //          https://api.biblesupersearch.com/documentation
 
-    // "enabledBibles": ["kjv", "tr", "bishops"],    
+    // "enabledBibles": ["kjv", "tr", "bishops"], 
+
+    // Bible Change Update Navigation (v5.3)
+    // Whether to update navigation (ie paging and browsing buttons) immediately when the selected 
+    // Bible(s) are changed to reflect the new Bible selections.
+    // Otherwise, the navication will not update until the search or look up is performed.
+    "bibleChangeUpdateNavigation": false,
 
     // Bible List Grouping
     // Options: 
@@ -55,7 +91,59 @@ var biblesupersearch_config_options = {
     // 'rank' - Rank / Sort Order specified on API
 
     // Default: 'rank|name',
-    "bibleSorting": 'rank|name',          
+    "bibleSorting": 'rank|name',       
+
+    // If bible list is being sorted or grouped by language, 
+    // this places the default langauge at top of Bible list.
+    "bibleDefaultLanguageTop": false,
+
+    // If the parallel Bible limit is dynamically changed (ie by an expanding interface, or by limits set by parallelBibleLimitByWidth below)
+    // should we remove Bible selections above the new limit?
+    'parallelBibleCleanUpForce': false,
+
+    // If true, the number of parallel Bible selectors displayed initially ALWAYS equals the start Bibles number
+    // Regardless to the number of Bibles selected as default
+    'parallelBibleStartSuperceedsDefaultBibles': false,
+
+    // Controls the number of parallel Bibles available based on screen width
+    // set to false to completely disable.
+    // minWidth and maxBibles must be in ascending order across each config, otherwise the entire config is ignored
+    "parallelBibleLimitByWidth": [
+        // {
+        //     'minWidth': 0,       // Minimum width, in pixels.  Default: 0,
+        //     'maxBibles': 2,     // Maximum number of parallel Bible selectors displayed.  Default: 1.
+        //     'minBibles': 1,     // Minimum number of parallel Bible selectors displayed.  Default: 1.
+        //     'startBibles': 1    // Number of parallel Bible selectors to be displayed when first page first loaded.  Default: 1.
+        // },
+        // {
+        //     'minWidth': 250, 
+        //     'maxBibles': 3,
+        //     'minBibles': 1,
+        //     'startBibles': 1
+        // },
+        // {
+        //     'minWidth': 500, 
+        //     'maxBibles': 4,
+        //     'minBibles': 1,
+        //     'startBibles': 2
+        // },        
+        // {
+        //     'minWidth': 1000, 
+        //     'maxBibles': 6,
+        //     'minBibles': 2,
+        //     'startBibles': 2
+        // },
+        // {
+        //     'minWidth': 1500, 
+        //     'maxBibles': 'max',   // 'max' presents the maximim parallel Bibles allowed by the selected skin
+        //     'minBibles': 2,
+        //     'startBibles': 4
+        // },
+    ],
+
+
+    // Include Testament ("Old Testament" or "New Testament") in some references
+    "includeTestament": false,  // true or false   
 
     // Landing Reference(s), 
     // Any valid Bible reference, ie 'John 3:16; Romans 3:23; Genesis 1'
@@ -63,6 +151,26 @@ var biblesupersearch_config_options = {
     // Form will remain blank, and URL will not change.
     "landingReference": '',
 
+    // If a search is executed with no search keywords or references, should we use the landing passage?
+    'landingReferenceDefault': false,
+
+    // Autocomplete Settings
+
+    // Whether to enable auto-complete
+    "autocompleteEnable": false,
+
+    // Minimum characters for autocomplete to be triggered
+    "autocompleteThreshold": 2,
+
+    // Whether to match anywhere in the given option / Book name
+    // If false, we only match at the beginning of the name
+    "autocompleteMatchAnywhere": true,
+
+    // Maximum number of autocomplete options to show at once.
+    "autocompleteMaximumOptions": 10,
+
+    // Show hidden shortcuts (ie End Times)
+    "shortcutsShowHidden": false,
 
     // Bible SuperSearch skin / interface   (string)
     //      Select an interface below by uncommenting the one that you want to use
@@ -78,7 +186,7 @@ var biblesupersearch_config_options = {
             // "interface": 'Expanding',
 
             // Expanding form having larger text entry boxes
-            // "interface": 'ExpandingLargeInput',
+            "interface": 'ExpandingLargeInput',
 
         // Bible Browsing / reading interfaces.
         //      Modern interfaces designed for reading and browsing the Bible.
@@ -143,7 +251,7 @@ var biblesupersearch_config_options = {
             //      Advanced form used by classic forms
             // "interface": 'ClassicAdvanced',
 
-        // Custom Forms - made per customer request
+        // Custom Forms and Interfaces - made per customer request
         
             // Classic User Friendly 2 with Book Selector
             // "interface": 'CustomUserFriendly2BookSel', 
@@ -190,12 +298,71 @@ var biblesupersearch_config_options = {
     //      default for skin default
     //      Classic
     //      Clean
-    "pager": 'default',                          
+    "pager": 'default',         
+
+    // Page Scroll 
+    //      When the page loads or query executes, 
+    //      how to scroll the page up to top of results
+    //      instant (default)
+    //      smooth
+    //      none (no scroll)
+    'pageScroll' : 'instant',                   
+
+    // Page Scroll Top Padding
+    //      When page scrolls, scroll down by this amount 
+    //      Usefull to prevent hiding behind menus, ect
+    'pageScrollTopPadding': 0,           
     
+    // Default Text Display.
+    // Users can change this via general settings or copy settings
+    // Options: paragraph, passage, verse, verse_passage
+    'textDisplayDefault': 'passage',
+
+    // Enable changing chapter and search page via horizontal touchscreen swipe gesture 
+    "swipePageChapter": false,
+
+    // Enable changing chapter and search page via horizontal arrow keys
+    'arrowKeysPageChapter': false,
+
+    // Enable changing chapter and search page via fade-in side buttons
+    'sideSwipePageChapter': true,    
+
+    // Hide side swipe buttons when navigation buttons are showing
+    'sideSwipeHideWithNavigationButtons': true,
+
+    // When sideSwipeHideWithNavigationButtons = true, use these to adjust values position where the buttons appear/disappear
+    'sideSwipeNavHideThresholdTop': 0,  // pixels from navication buttons
+    'sideSwipeNavHideThresholdBottom': 0, // pixels from navigation buttons
+
+    // Time, in milliseconds, to wait after hovering before opening a hover dialog (ie Strongs)
+    'hoverDelayThreshold': 500,
+
+    // Click to open Strong's dialog
+    // Whether clicking on Strong's number will open the dialog, otherwise clicking the link will search for the Strong's
+    // Options: 
+    //  'none': Clicking link always searches
+    //  'mobile': Clicking link opens dialog for mobile devices only
+    //  'always': Clicking link always opens dialog
+    'strongsOpenClick': 'mobile',
+
+    // When clicking the Strongs # opens the dialog, should we show a button to access the original search by Strongs # link?
+    'strongsDialogSearchLink': false,
+
+    'historyLimit': 50, // Maximum number of history items.
+
+    // Bookmarks
+    'bookmarksEnable': true,  // Whether to enable the bookmark functionality
+
+    'bookmarkLimit': 20, // Maximum number of bookmarks.
+
+
     // Include toggling to an 'advanced search' form
     // Some interfaces may force this to false
     // Also, this is disabled when formatButtonsToggle above is true
     'toggleAdvanced': false,  
+
+    // Whether to include a link to the legacy User's Manual (English only) from the quick start dialog
+    'legacyManual': false,
     
     // id of target HTML div tag            (string)
     
@@ -205,13 +372,6 @@ var biblesupersearch_config_options = {
     'formStyles': {
         // 'background-color': '#dddddd'
     },
-    
-    // URL of Bible SuperSearch API         (string)
-    //      Note:  You can install the Bible SuperSearch API on your own server
-    //             If you do, you will need to change this
-    //             Default: https://api.biblesupersearch.com
-    
-    "apiUrl": "https://api.biblesupersearch.com",
 
     // URL of destination page
     // If specified, you will be redirected here after submitting form to see results.

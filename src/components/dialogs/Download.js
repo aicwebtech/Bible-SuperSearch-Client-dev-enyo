@@ -8,8 +8,9 @@ var Image = require('../Image');
 var i18n = require('../Locale/i18nContent');
 
 var Ajax = require('enyo/Ajax');
-var BibleSelector = require('../BibleSelect/MultiSelect.js');
-var FormatSelector = require('../DownloadSelect.js')
+var BibleSelector = require('../BibleSelect/MultiSelect');
+var FormatSelector = require('../DownloadSelect')
+var FormatSelectorNew = require('../DownloadSelectNew')
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -20,7 +21,7 @@ module.exports = kind({
     name: 'DownloadDialog',
     kind: Dialog,
     maxWidth: '500px',
-    height: '410px',
+    height: '420px',
     classes: 'help_dialog bible_download',
     bibleString: null,
     formData: null,
@@ -29,12 +30,13 @@ module.exports = kind({
     
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, tag: 'h3', content: 'Bible Downloads'}
+            {kind: i18n, classes: 'bss_dialog_title', content: 'Bible Downloads'}
         ]}
     ],
     bodyComponents: [
         {classes: 'list start_list', name: 'ListContainer'},
-        {kind: i18n, tag: 'h5', content: 'Select Bible(s)'},
+        // {kind: i18n, tag: 'h5', content: 'Select Bible(s)'},
+        {kind: i18n, classes: 'biblesupersearch_h5', content: 'Select Bible(s)'},
         {components: [
             {
                 name: 'BibleSelect', 
@@ -46,7 +48,7 @@ module.exports = kind({
                 onValueChanged: '_formChanged'
             },
         ]},        
-        {kind: i18n, tag: 'h5', content: 'Select a Format'},
+        {kind: i18n, classes: 'biblesupersearch_h5', content: 'Select a Format'},
         // {tag: 'br'},
         {components: [
             {name: 'FormatSelect', kind: FormatSelector, style: 'width: 100%; max-width: 350px', onchange: '_formChanged'},
@@ -86,6 +88,10 @@ module.exports = kind({
     ],
 
     create: function() {
+        if(this.app.get('useNewSelectors')) {
+            this.bodyComponents[4].components[0].kind = FormatSelectorNew;
+        }
+        
         this.inherited(arguments);
 
         if(this.app.statics.download_limit) {
@@ -145,7 +151,8 @@ module.exports = kind({
 
         var formData = {
             bible: JSON.stringify(bibles),
-            format: format
+            format: format,
+            key: this.app.configs.apiKey || null
         }
 
         if(bibles.length == 0) {
@@ -225,7 +232,7 @@ module.exports = kind({
         this.$.DownloadPending.set('showing', true);
         this.set('requestPending', false);
         var bibles = JSON.stringify(this.formData.bible);
-        var url = this.app.configs.apiUrl + '/download?format=' + this.formData.format + '&bible=' + bibles;
+        var url = this.app.configs.apiUrl + '/download?format=' + this.formData.format + '&bible=' + bibles  + this.app.configs.apiKeyStr;
         this.$.DownloadLink.set('href', url);
         // this.$.DownloadLink.set('content', url); // We need a cleaner URL format - maybe a hash or something
         this.app.debug && this.log('download url', url);
@@ -260,7 +267,8 @@ module.exports = kind({
 
         var formData = {
             bible: bible,
-            format: this.formData.format
+            format: this.formData.format,
+            key: this.app.configs.apiKey || null
         };
 
         var comp = this.$.RenderStatusContainer.createComponent({

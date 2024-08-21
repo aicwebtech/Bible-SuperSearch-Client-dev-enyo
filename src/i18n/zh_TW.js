@@ -1,8 +1,12 @@
 module.exports = {
     meta: {
-        lang_name: '繁體中文', // Native name of language (endonymn)
-        lang_name_en: 'Traditional Chinese',   // Name of language, in English
+        code: 'zh_TW',
+        name: '繁體中文', // Native name of language (endonymn)
+        nameEn: 'Traditional Chinese',   // Name of language, in English
         isRtl: false,       // Whether language is read Right-to-left
+        isFluent: true,     
+        translatedBy: 'undisclosed', 
+        translatedEmail: null, // undisclosed
     },
     
      // The actual translation data
@@ -28,6 +32,7 @@ module.exports = {
     'Parallel Bible #': '平行聖經編號#',
     'Select a Bible': '選擇一種聖經',
     'Add Bible': '增加聖經',
+    'Remove Bible': '刪除聖經',
     'Random Chapter': '隨機章節',
     'Random Verse': '隨機經文',
     'Passages': '一些經句章節',
@@ -52,23 +57,43 @@ module.exports = {
     'Show this verse': '顯示這節經文',
     'Show in context': '在上下文中顯示',
     'Context': '上下文',
+    'In Context': '在上下文中',
     'Limit Search To': '限制搜索於',
     'Limit search to': '搜索限於, 注意大小寫!', // 注意大小寫 ！
     'Entire Bible': '整本聖經',
     'Passage(s) listed below': '經文章節列在下面',
     'Passage(s) listed above': '經文章節列在上面',
+    
+    // Shortcuts
     'Old Testament': '舊約',
     'New Testament': '新約',
     'Law': '律法書',
     'History': '歷史書',
+    'History Books': '歷史書籍', // 5.5 Can translate as 'History'
     'Wisdom & Poetry': '智慧書與詩歌',
     'Prophets': '先知書',
+    'Prophets Books': '先知書', // 5.5 Can translate as 'Prophets'
     'Major Prophets': '大先知書',
     'Minor Prophets': '小先知書',
     'Gospels': '福音書',
     'Epistles': '書信',
     'Pauline Epistles': '保羅書信',
     'General Epistles': '一般書信',
+    'End Times Prophecy': '末日預言',
+
+    // Shortcut Aliases
+    'OT': '奧特',
+    'NT': '新台幣',
+    'Torah': '妥拉',
+    'Wisdom': '智慧',
+    'Major': '主要的',
+    'Minor': '次要的',
+    'Passion': '熱情',
+    'Doctrine': '教義',
+    'Paul': '保羅',
+    'General': '一般的',
+    'Last Days': '最後一天',
+
     'Look up Passage(s)': '查找經文章節',
     'Enter passage(s)' : '輸入章節',
     'Enter word(s), phrase(s) or expression(s)' : '輸入單字、句子或邏輯表達式',
@@ -109,6 +134,8 @@ module.exports = {
     'Previous Page' : '上一頁',
     'First Page' : '第一頁',
     'Last Page': '最後一頁',    
+    'Page': '頁',
+
       // Formatting and dialog buttons
     'A': '特定語言的第一個字母',     // First letter in given language
     'Abc': '前3個字母(第一字大寫)',   // First 3 letters in given language, with 1st capitalized
@@ -121,6 +148,7 @@ module.exports = {
     'Verse Display': '經文顯示',
     'Paragraph Display': '段落顯示',
     'Passage Display': '章節顯示', // 4.5
+    'Verse as Passage Display': '作為段落顯示的詩句', // 5.3
     'EZ Copy': '簡易複製', // ' Easy Copy'
     'Read Display': '閱讀顯示',
     'Italics': '斜體字',
@@ -139,6 +167,15 @@ module.exports = {
     'Help': '説明',
     'Basic': '基本的',
     'Advanced': '進階的',
+
+    // Descriptions of special formatting features
+    'Formatting': '格式化',  // 5.3
+    'Supported Bibles Only': '僅支持聖經',  // 5.3
+    
+    'strongs_numbers_description': 'Strong 的索引編號表示潛在的希伯來語或希臘語單詞。',  // 5.3
+    'italics_description': '斜體表示在翻譯中添加的不是原始語言的單詞。',    // 5.3
+    'red_letter_description': '紅色的基督的話。', // 5.3
+    'highlight_description': '在搜索中突出顯示（粗體）關鍵字。',  // 5.3
 
     // Verse Cherry-picking
     'Select All': '全選',   // 5.0
@@ -164,6 +201,8 @@ module.exports = {
     'Show Verse Number': '顯示經句編號',   // 5.0
 
     'Other': '其他',   // 5.0
+    'Include Testament': '包括遺囑',
+    'Testament': '遺囑',
     'Abbreviate Books': '書卷名稱縮寫',   // 5.0
     'Omit Extra Line Breaks': '省略多餘的換行符號',   // 5.0
 
@@ -212,7 +251,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': '您沒有提供查詢條件,  請提供搜索詞和(或)章節。 ',
     'Your search produced no results.' : '您的搜索沒有結果。 ',
     'Maximum hits has been reached for today for this domain / IP address': '這個域名/IP位址,   已經達到單日可以點擊率的最大使用限制。 ',
-    'No Bibles are enabled. Please contact site adminstrator.': '無任何聖經被啟用。 請聯繫網站管理員。 ',
+    'No Bibles are enabled. Please contact site administrator.': '無任何聖經被啟用。 請聯繫網站管理員。 ',
     'Cannot retrieve multiple books at once.': '不能一次檢索多本書。 ',
     'Bible text not found': '找不到經文',
     'Invalid book in book range': '在書卷範圍內找不到這書',
@@ -278,7 +317,7 @@ module.exports = {
     'The relationship between the Old Testament Law and the Church': '舊約律法與教會的關係',
     'History and Law': '歷史和律法',
     'Salvation by faith, not works': '因信得救, 而非行為',
-    'Christian life and experience. &nbsp; The Apostle Paul gave up credentials under the OT Law to follow Christ': '基督徒的生活和經歷。  &nbsp; 使徒保羅放棄了舊約之下的憑據來跟隨基督』',
+    'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': '基督徒的生活和經歷。  &nbsp; 使徒保羅放棄了舊約之下的憑據來跟隨基督』',
     'Christ the suffering servant': '基督受苦的僕人',
     'Christ\'s crucifixion foretold': '基督被釘在十字架上的預言',
 
@@ -313,6 +352,8 @@ module.exports = {
     'Share Link': '分享連結',
     'Share' : '分享',
     'Link' : '連結', // 4.5
+    'Copied to clipboard': '已復製到剪貼板', // 5.2.3
+    'Failed to copy': '複製失敗', // 5.2.3
 
      // Quick Start Help Dialog
     'Quick Start Guide': '快速入門指南',
@@ -352,6 +393,48 @@ module.exports = {
     'words': '話語',
     'truth': '真理',
 
+<<<<<<< HEAD
+=======
+    // Searching across language
+
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': '您無法搜尋不同語言的聖經',
+    'You cannot search across Bibles of different languages with the selected search type.' : '您無法使用以下命令搜尋不同語言的聖經選定的搜尋類型',
+
+    // General dialogs
+    'Name': '姓名',
+    'Save': '節省',
+    'Cancel': '取消',
+    'Edit': '編輯',
+    'Delete': '刪除',
+    'Clear': '清除',
+    'Restore': '恢復',
+    'Add': '添加',
+    'Okay': '好的',
+    'Old': '老的',
+    'New': '新的',
+
+    'Are you sure?': '你確定嗎？',
+    'Are you sure you want to delete': '你確定你要刪除',
+
+    // Bookmarks/History
+    'This will delete all history.': '這將刪除所有歷史記錄。',
+    'This will delete all bookmarks.': '這將刪除所有書籤。',
+    'Move to Current': '移至目前',
+
+    'Bookmark': '書籤',
+    'Bookmarks': '書籤',
+
+    'Please delete some bookmarks before adding more.': '請先刪除一些書籤，然後再加入更多書籤。',
+    'This bookmark name already exists.': '書籤名稱已存在。',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': '限制搜尋',
+    'Passages': '段落',
+    'Alias': '別名',
+    'You cannot search for these common words': '這些常用詞你無法搜尋',
+
+>>>>>>> master
     'bibleBooks': [
         {
           "id": 1,

@@ -24,8 +24,8 @@ span.red_letter {
     padding: 5px;
     margin: 5px;
     max-width: 400px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
     background-color: orange;
 }
 
@@ -45,8 +45,8 @@ span.red_letter {
 }
 
 .random_verse_widget button {
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
     text-align: center;
     font-size: .7em;
     display: block;
@@ -78,6 +78,14 @@ div.biblesupersearch_main optgroup {
 
 div.biblesupersearch_main optgroup, div.biblesupersearch_main option {
     /*padding: 2px;*/
+}
+
+.bss_diff_add {
+    background-color: #97e6ac;
+}
+
+.bss_diff_rem {
+    background-color: #edb9af;
 }
 
 /* End Cross-browser formatting */

@@ -10,6 +10,8 @@ module.exports = kind({
     // kind: HoverDialog,
     width: '400px',
     height: '50px',
+    titleBarHeight: 0, // private
+    buttonBarHeight: 0, // private
     classes: 'alert_dialog',
     showing: false,
     alert: '',
@@ -99,7 +101,7 @@ module.exports = kind({
         this.timer = window.setTimeout( function() {
             t.set('showing', false);
             t.pComponent && t.pComponent.destroy();
-        }, 400);
+        }, 1000);
 
     }
 });

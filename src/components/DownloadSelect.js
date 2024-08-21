@@ -11,9 +11,6 @@ module.exports = kind({
 
         var statics = this.app.get('statics'),
             formats = statics.download_formats,
-            configs = this.app.get('configs'),
-            enabled = configs.enabledBibles,
-            noSelectLabel = 'Select a Bible',
             width = (this.isShort) ? this.shortWidthWidth : this.width;
 
         this.createComponent({

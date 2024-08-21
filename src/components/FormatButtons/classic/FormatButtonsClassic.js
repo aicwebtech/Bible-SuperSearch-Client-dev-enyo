@@ -172,16 +172,23 @@ module.exports = kind({
         },
     ],
 
-    bindings: [
-        // {from: 'app.UserConfig.paragraph', to: '$.paragraph.checked', oneWay: false, transform: function(value, dir) {
-        //     console.log('paragraph', value, dir);
+    bindings: [      
+        // {from: 'app.UserConfig.paragraph', to: '$.paragraph_toggle.value', oneWay: false, transform: function(value, dir) {
+        //     // console.log('paragraph_toggle', value, dir);
         //     return value;
         //     // return (value && value != 0 && value != false) ? true : false;
-        // }},         
-        {from: 'app.UserConfig.paragraph', to: '$.paragraph_toggle.value', oneWay: false, transform: function(value, dir) {
-            // console.log('paragraph_toggle', value, dir);
+        // }},             
+
+        {from: 'app.UserConfig.render_style', to: '$.paragraph_toggle.value', oneWay: false, transform: function(value, dir) {
+            // console.log('render_style <=> paragraph_toggle', value, dir);
+
+            if(dir == 1) {
+                value = value == 'paragraph';
+            } else {
+                value = value ? 'paragraph' : 'passage';
+            }
+
             return value;
-            // return (value && value != 0 && value != false) ? true : false;
         }},         
         {from: 'app.UserConfig.copy', to: '$.copy_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('copy_toggle', value, dir);

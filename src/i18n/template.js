@@ -1,8 +1,26 @@
 module.exports = {
     meta: {
-        lang_name: '',      // Native name of language (endonymn)
-        lang_name_en: '',   // Name of language, in English
-        isRtl: false,       // Whether language is read Right-to-left
+        // 2 or 3 character language code, lower-case, ie 'es'
+        // Note: This filename name must be [code].js ie 'es.js'
+        code: '',
+
+        // Native name of language (endonymn): ie 'Español'
+        name: '',    
+
+        // English name of language, ie 'Spanish'
+        nameEn: '',       
+
+        // Whether language is read Right-to-left
+        isRtl: false,           
+       
+        // true if done by person fluent in both English and this language, false if using translation software
+        isFluent: false,     
+
+        // Name of individulal or software used to translate
+        translatedBy: 'Google Translate', 
+        
+        // Email address of translator, if fluent (not software)
+        translatedEmail: null, 
     },
     
     // The actual translation data
@@ -29,6 +47,7 @@ module.exports = {
     'Parallel Bible #': '',
     'Select a Bible': '',
     'Add Bible': '',
+    'Remove Bible': '', 
     'Random Chapter': '',
     'Random Verse': '',
     'Passages': '',
@@ -44,8 +63,8 @@ module.exports = {
     'Find verses containing': '',
     'Restrict search to': '', 
     'Word Search': '',
-    'Clear Form': '', // 4.5
-    'Select Book and Chapter:' : '', // 5.2
+    'Clear Form': '', 
+    'Select Book and Chapter:' : '', 
 
     // Context Links
     'Show full chapter': '',
@@ -53,17 +72,22 @@ module.exports = {
     'Show this verse': '',
     'Show in context': '',
     'Context': '',
+    'In Context': '',
 
     'Limit Search To': '',
     'Limit search to': '', // Watch case!
     'Entire Bible': '',
     'Passage(s) listed below': '',
     'Passage(s) listed above': '',
+    
+    // Shortcuts
     'Old Testament': '',
     'New Testament': '',
     'Law': '',
+    'History Books': '', // Can translate as 'History'
     'History': '',
     'Wisdom & Poetry': '',
+    'Prophets Books': '', // Can translate as 'Prophets'
     'Prophets': '',
     'Major Prophets': '',
     'Minor Prophets': '',
@@ -71,6 +95,20 @@ module.exports = {
     'Epistles': '',
     'Pauline Epistles': '',
     'General Epistles': '',
+    'End Times Prophecy': '',
+    
+    // Shortcut Aliases
+    'OT': '',
+    'NT': '',
+    'Torah': '',
+    'Wisdom': '',
+    'Major': '',
+    'Minor': '',
+    'Passion': '',
+    'Doctrine': '',
+    'Paul': '',
+    'General': '',
+    'Last Days': '',
 
     'Look up Passage(s)': '',
     'Enter passage(s)' : '',
@@ -115,22 +153,24 @@ module.exports = {
     'Previous Page' : '',
     'First Page' : '',
     'Last Page': '',
+    'Page': '',
     
     // Formatting and dialog buttons
     'A': '',     // First letter in given language
     'Abc': '',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : '',
-    'Sans-Serif': '',
-    'Monospace': '',
+    'Serif' : '',                     // * Button text, please keep translation short!
+    'Sans-Serif': '',                 // * Button text, please keep translation short!
+    'Monospace': '',                  // * Button text, please keep translation short!
     'Enlarge Text': '',
     'Default Text Size': '',
     'Shrink Text': '',
     'Verse Display': '',
     'Paragraph Display': '',
-    'Passage Display': '', // 4.5
+    'Passage Display': '', 
+    'Verse as Passage Display': '', 
     'EZ Copy': '',  // 'Easy Copy'
     'Read Display': '',
-    'Italics': '',
+    'Italics': '',                    // * Button text, please keep translation short!
     'Disable Italization of Added Words' : '',
     'Enable Italization of Added Words': '',
     'Disable Strong\'s Numbers': '',
@@ -138,7 +178,7 @@ module.exports = {
     'Red Letter': '',
     'Disable Red Letter': '',
     'Enable Red Letter': '',
-    'Highlight': '',
+    'Highlight': '',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': '',
     'Enable Highlighting of Keywords': '',
     'Print': '',
@@ -147,39 +187,52 @@ module.exports = {
     'Basic': '',
     'Advanced': '',
 
+    // Descriptions of special formatting features
+    'Formatting': '',  
+    'Supported Bibles Only': '', 
+    
+    // Translate the right-side strings here
+    'strongs_numbers_description': 'Strong\'s Concordance Numbers indicate the underlying Hebrew or Greek words.',  
+    'italics_description': 'Italics indicate words added in translating that were not in the original language.',  
+    'red_letter_description': 'Words of Christ in Red.', 
+    'highlight_description': 'Highlighting (bold) of keywords in searches.', 
+
+
     // Verse Cherry-picking
-    'Select All': '', // 5.0
-    'Select None': '', // 5.0
-    'Select': '', // 5.0
-    'Unselect': '', // 5.0
+    'Select All': '', 
+    'Select None': '', 
+    'Select': '', 
+    'Unselect': '', 
     
     // Copy format options
-    'Copy Format': '', // 5.0
-    'Word Processor': '', // 5.0
-    'Outline' : '', // 5.0
-    'Custom': '', // 5.0
+    'Copy Format': '', 
+    'Word Processor': '', 
+    'Outline' : '', 
+    'Custom': '', 
 
-    'Single Verses': '', // 5.0
-    'Reference - Text': '', // 5.0
-    'Text - Reference': '', // 5.0
-    'Text Only': '', // 5.0
-    'Separate Line': '', // 5.0
+    'Single Verses': '', 
+    'Reference - Text': '', 
+    'Text - Reference': '', 
+    'Text Only': '', 
+    'Separate Line': '', 
 
-    'Multi-verse Passages': '', // 5.0
-    'Reference - Passage': '', // 5.0
-    'Passage - Reference': '', // 5.0
-    'Passage Only': '', // 5.0
-    'Show Verse Number': '', // 5.0
+    'Multi-verse Passages': '', 
+    'Reference - Passage': '', 
+    'Passage - Reference': '', 
+    'Passage Only': '', 
+    'Show Verse Number': '', 
 
-    'Other': '', // 5.0
-    'Abbreviate Books': '', // 5.0
-    'Omit Extra Line Breaks': '', // 5.0
+    'Other': '', 
+    'Abbreviate Books': '', 
+    'Include Testament': '', // v5.6.0
+    'Testament': '', // v5.6.0
+    'Omit Extra Line Breaks': '', 
 
     // Settings Dialog
-    'Settings' : '', // 5.0
-    'Language' : '', // 5.0
-    'Text Display': '', // 5.0
-    'Font Style': '', // 5.0
+    'Settings' : '', 
+    'Language' : '', 
+    'Text Display': '', 
+    'Font Style': '', 
 
     // Result and error messages
     
@@ -221,7 +274,7 @@ module.exports = {
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': '',
     'Your search produced no results.' : '',
     'Maximum hits has been reached for today for this domain / IP address': '',
-    'No Bibles are enabled. Please contact site adminstrator.': '',
+    'No Bibles are enabled. Please contact site administrator.': '',
     'Cannot retrieve multiple books at once.': '',
     'Bible text not found': '',
     'Invalid book in book range': '',
@@ -289,7 +342,7 @@ module.exports = {
     'Salvation by faith, not works': '',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': '',
     'Christ the suffering servant': '',
-    'Christ’s crucifixion foretold': '',
+    'Christ\'s crucifixion foretold': '',
 
     // Bible downloads dialog
     'Download': '',
@@ -321,7 +374,9 @@ module.exports = {
     'Copy with Text': '',
     'Share Link': '',
     'Share' : '',
-    'Link' : '', // 4.5
+    'Link' : '', 
+    'Copied to clipboard': '', 
+    'Failed to copy': '', 
 
     // Quick Start Help Dialog
     'Quick Start Guide': '',
@@ -361,6 +416,7 @@ module.exports = {
     'words': '',
     'truth': '',
 
+<<<<<<< HEAD
 
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  
@@ -370,331 +426,650 @@ module.exports = {
           "id": 1,
           "name": "Genesis",
           "shortname": "Gen"
+=======
+    // Searching across language
+
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': '',
+    'You cannot search across Bibles of different languages with the selected search type.' : '',
+
+    // General dialogs
+    'Name': '',
+    'Save': '',
+    'Cancel': '',
+    'Edit': '',
+    'Delete': '',
+    'Clear': '',
+    'Restore': '',
+    'Add': '',
+    'Okay': '',
+    'Old': '',
+    'New': '',
+
+    'Are you sure?': '',
+    'Are you sure you want to delete': '',
+
+    // Bookmarks/History
+    'This will delete all history.': '',
+    'This will delete all bookmarks.': '',
+    'Move to Current': '',
+
+    'Bookmark': '',
+    'Bookmarks': '',
+
+    'Please delete some bookmarks before adding more.': '',
+    'This bookmark name already exists.': '',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': '',
+    'Passages': '',
+    'Alias': '',
+    'You cannot search for these common words': '',
+
+
+
+    // Bible Books
+    // For each book in the list below, please specify the (full) name.  Please also provide short name if known.
+    // The short name should be the most common abbreviation of the book name in the given language.
+    //
+    // NOTE: If you are using translation software, please first Google for book lists already translated into the given language.
+    // REASON: If we can find the book list already translated, it's probably a better translation than what the software would do.
+    // Hint: You can often find these on the leading Bible website gateway when looking for Bibles in the given language.
+    // Under avaliable versions, just search for the language, select one of the Bibles that shows up, and copy the Book names.
+    //
+    // If you cannot find a pre-translated list of the books, then and only then use the translation software to translate them.
+
+    'bibleBooks': [
+        {
+          "id": 1,
+          "name": "Genesis",
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 2,
           "name": "Exodus",
+<<<<<<< HEAD
           "shortname": "Ex"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 3,
           "name": "Leviticus",
+<<<<<<< HEAD
           "shortname": "Lev"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 4,
           "name": "Numbers",
+<<<<<<< HEAD
           "shortname": "Num"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 5,
           "name": "Deuteronomy",
+<<<<<<< HEAD
           "shortname": "Deut"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 6,
           "name": "Joshua",
+<<<<<<< HEAD
           "shortname": "Josh"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 7,
           "name": "Judges",
+<<<<<<< HEAD
           "shortname": "Judg"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 8,
           "name": "Ruth",
+<<<<<<< HEAD
           "shortname": "Ru"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 9,
           "name": "1 Samuel",
+<<<<<<< HEAD
           "shortname": "1 Sam"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 10,
           "name": "2 Samuel",
+<<<<<<< HEAD
           "shortname": "2 Sam"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 11,
           "name": "1 Kings",
+<<<<<<< HEAD
           "shortname": "1 Ki"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 12,
           "name": "2 Kings",
+<<<<<<< HEAD
           "shortname": "2 Ki"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 13,
           "name": "1 Chronicles",
+<<<<<<< HEAD
           "shortname": "1 Chron"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 14,
           "name": "2 Chronicles",
+<<<<<<< HEAD
           "shortname": "2 Chron"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 15,
           "name": "Ezra",
+<<<<<<< HEAD
           "shortname": "Ezra"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 16,
           "name": "Nehemiah",
+<<<<<<< HEAD
           "shortname": "Neh"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 17,
           "name": "Esther",
+<<<<<<< HEAD
           "shortname": "Esth"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 18,
           "name": "Job",
+<<<<<<< HEAD
           "shortname": "Job"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 19,
           "name": "Psalms",
+<<<<<<< HEAD
           "shortname": "Ps"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 20,
           "name": "Proverbs",
+<<<<<<< HEAD
           "shortname": "Prov"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 21,
           "name": "Ecclesiastes",
+<<<<<<< HEAD
           "shortname": "Ecc"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 22,
           "name": "Song of Solomon",
+<<<<<<< HEAD
           "shortname": "SOS"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 23,
           "name": "Isaiah",
+<<<<<<< HEAD
           "shortname": "Isa"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 24,
           "name": "Jeremiah",
+<<<<<<< HEAD
           "shortname": "Jer"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 25,
           "name": "Lamentations",
+<<<<<<< HEAD
           "shortname": "Lam"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 26,
           "name": "Ezekiel",
+<<<<<<< HEAD
           "shortname": "Eze"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 27,
           "name": "Daniel",
+<<<<<<< HEAD
           "shortname": "Dan"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 28,
           "name": "Hosea",
+<<<<<<< HEAD
           "shortname": "Hos"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 29,
           "name": "Joel",
+<<<<<<< HEAD
           "shortname": "Joel"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 30,
           "name": "Amos",
+<<<<<<< HEAD
           "shortname": "Amos"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 31,
           "name": "Obadiah",
+<<<<<<< HEAD
           "shortname": "Obad"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 32,
           "name": "Jonah",
+<<<<<<< HEAD
           "shortname": "Jon"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 33,
           "name": "Micah",
+<<<<<<< HEAD
           "shortname": "Micah"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 34,
           "name": "Nahum",
+<<<<<<< HEAD
           "shortname": "Nah"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 35,
           "name": "Habakkuk",
+<<<<<<< HEAD
           "shortname": "Hab"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 36,
           "name": "Zephaniah",
+<<<<<<< HEAD
           "shortname": "Zeph"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 37,
           "name": "Haggai",
+<<<<<<< HEAD
           "shortname": "Hag"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 38,
           "name": "Zechariah",
+<<<<<<< HEAD
           "shortname": "Zech"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 39,
           "name": "Malachi",
+<<<<<<< HEAD
           "shortname": "Mal"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 40,
           "name": "Matthew",
+<<<<<<< HEAD
           "shortname": "Matt"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 41,
           "name": "Mark",
+<<<<<<< HEAD
           "shortname": "Mark"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 42,
           "name": "Luke",
+<<<<<<< HEAD
           "shortname": "Luke"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 43,
           "name": "John",
+<<<<<<< HEAD
           "shortname": "John"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 44,
           "name": "Acts",
+<<<<<<< HEAD
           "shortname": "Acts"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 45,
           "name": "Romans",
+<<<<<<< HEAD
           "shortname": "Rom"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 46,
           "name": "1 Corinthians",
+<<<<<<< HEAD
           "shortname": "1 Cor"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 47,
           "name": "2 Corinthians",
+<<<<<<< HEAD
           "shortname": "2 Cor"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 48,
           "name": "Galatians",
+<<<<<<< HEAD
           "shortname": "Gal"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 49,
           "name": "Ephesians",
+<<<<<<< HEAD
           "shortname": "Eph"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 50,
           "name": "Philippians",
+<<<<<<< HEAD
           "shortname": "Phil"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 51,
           "name": "Colossians",
+<<<<<<< HEAD
           "shortname": "Col"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 52,
           "name": "1 Thessalonians",
+<<<<<<< HEAD
           "shortname": "1 Thess"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 53,
           "name": "2 Thessalonians",
+<<<<<<< HEAD
           "shortname": "2 Thess"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 54,
           "name": "1 Timothy",
+<<<<<<< HEAD
           "shortname": "1 Tim"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 55,
           "name": "2 Timothy",
+<<<<<<< HEAD
           "shortname": "2 Tim"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 56,
           "name": "Titus",
+<<<<<<< HEAD
           "shortname": "Titus"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 57,
           "name": "Philemon",
+<<<<<<< HEAD
           "shortname": "Phm"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 58,
           "name": "Hebrews",
+<<<<<<< HEAD
           "shortname": "Heb"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 59,
           "name": "James",
+<<<<<<< HEAD
           "shortname": "Jas"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 60,
           "name": "1 Peter",
+<<<<<<< HEAD
           "shortname": "1 Pet"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 61,
           "name": "2 Peter",
+<<<<<<< HEAD
           "shortname": "2 Pet"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 62,
           "name": "1 John",
+<<<<<<< HEAD
           "shortname": "1 John"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 63,
           "name": "2 John",
+<<<<<<< HEAD
           "shortname": "2 John"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 64,
           "name": "3 John",
+<<<<<<< HEAD
           "shortname": "3 John"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 65,
           "name": "Jude",
+<<<<<<< HEAD
           "shortname": "Jude"
+=======
+          "shortname": ""
+>>>>>>> master
         },
         {
           "id": 66,
           "name": "Revelation",
+<<<<<<< HEAD
           "shortname": "Rev"
+=======
+          "shortname": ""
+>>>>>>> master
         }
     ],
 };

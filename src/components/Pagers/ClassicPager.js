@@ -17,6 +17,8 @@ module.exports = kind({
     totalResults: null,
     numPageLinks: 10, // maximum number of individual page links to display at once,
     includeTotals: false,
+    visibilityOffset: 5,
+    swapOnRtl: false,
 
     // settings:
     firstPageText:  '<<<',
@@ -28,6 +30,16 @@ module.exports = kind({
 
     events: {
         onPageChange: ''
+    },
+
+    components: [
+        {kind: Signal, onBibleChange: 'handleBibleChange', onAutoClick: 'handleAutoClick', isChrome: true}
+    ],
+
+    handlers: {
+        onLinkTap: 'handleTap',
+        onAutoClick: 'handleAutoClick',
+        onLocaleChange: 'handleLocaleChange'
     },
 
     create: function() {
@@ -48,6 +60,7 @@ module.exports = kind({
         var displayRangeEn = page * this.perPage;
         var showing = (this.lastPage > 1) ? true : false;
         var urlBase = this.getLinkBase();
+        var swap = this.app.isRtl && this.swapOnRtl; 
 
         displayRangeEn = (displayRangeEn > this.totalResults) ? this.totalResults : displayRangeEn;
 
@@ -83,14 +96,18 @@ module.exports = kind({
 
         var LinkContainer = this.createComponent({
             name: 'LinkContainer',
-            classes: 'links'
+            classes: 'links',
+            attributes: {
+                dir: this.app.isRtl ? 'rtl' : 'ltr'
+            }
         });
         
         if(this.lastPage) {        
             LinkContainer.createComponent({
                 kind: Link,
                 classes: (page == 1) ? 'std_link disabled' : 'std_link',
-                content: this.firstPageText,
+                content: swap ? this.lastPageText : this.firstPageText,
+                name: 'first_page',
                 allowHtml: true,
                 href: (page == 1) ? null : this.makeLink('1'),
                 title: 'First Page'
@@ -101,7 +118,8 @@ module.exports = kind({
             kind: Link,
             classes: (page == 1) ? 'std_link disabled' : 'std_link',
             href: (page == 1) ? null : this.makeLink( prevPage.toString() ),
-            content: this.prevPageText,
+            content: swap ? this.nextPageText : this.prevPageText,
+            name: 'prev_page',
             allowHtml: true,
             title: 'Previous Page'
         });
@@ -129,6 +147,7 @@ module.exports = kind({
                     href: (i == page) ? null : this.makeLink( i.toString() ),
                     classes: (i == page) ? 'std_link current_page' : 'std_link',
                     content: i.toString()
+                    //onLinkTap: 'handleTap'
                 });
             }
         }
@@ -137,7 +156,8 @@ module.exports = kind({
             classes: (page == this.lastPage) ? 'std_link disabled' : 'std_link',
             kind: Link,
             href: (page == this.lastPage) ? null : this.makeLink( nextPage.toString() ),
-            content: this.nextPageText,
+            content: swap ? this.prevPageText : this.nextPageText,
+            name: 'next_page',
             allowHtml: true,
             title: 'Next Page'
         });        
@@ -147,7 +167,8 @@ module.exports = kind({
                 classes: (page == this.lastPage) ? 'std_link disabled' : 'std_link',
                 kind: Link,
                 allowHtml: true,
-                content: this.lastPageText,
+                content: swap ? this.firstPageText : this.lastPageText,
+                name: 'last_page',
                 href: (page == this.lastPage) ? null : this.makeLink( this.lastPage.toString() ),
                 title: 'Last Page'
             });
@@ -177,7 +198,10 @@ module.exports = kind({
         this._pageChangeHelper(inSender.get('page'));
     },
     _pageChangeHelper: function(newPage) {
+        this.log(newPage);
+
         if(this.get('currentPage') != newPage) {
+            this.app.set('scrollMode', 'results_top');
             this.set('currentPage', newPage);
             var data = {page: this.get('currentPage')};
             this.log('changing', data);
@@ -235,9 +259,41 @@ module.exports = kind({
         cacheLink = cacheLink.replace(/\s+/g, '.');
         return cacheLink;
     },
+    handleBibleChange: function(inSender, inEvent) {
+        var c = this.app.configs.bibleChangeUpdateNavigation || false;
+
+        if(c && c != 'false') {
+            this.rebuild();
+        }
+    },
+    handleLocaleChange: function(inSender, inEvent) {
+        this.rebuild();
+    },
     getLinkBase: function() {
         var cache = this.get('cacheHash');
         return '#/c/' + cache + '/';
-    }
+    },
+    handleTap: function(inSender, inEvent) {
+        //this.log(inSender, inEvent);
 
+        if(inEvent.sender && inEvent.sender.href) {
+            // If clicking on an active link, set scroll mode
+            this.app.set('scrollMode', 'results_top');
+        }
+    },
+    handleAutoClick: function(inSender, inEvent) {
+        button = inEvent.button || null;
+
+        // Handle special cases.
+        switch(button) {
+            case '_prev':
+                button = 'prev_page';
+                break;
+            case '_next':
+                button = 'next_page';
+                break;
+        }
+
+        button && this.$.LinkContainer.$[button] && this.$.LinkContainer.$[button].hasNode().click();
+    }
 });

@@ -6,6 +6,7 @@ var BibleSelect = require('../../components/BibleSelect/MultiSelect');
 var FormSection = require('../FormSection');
 var i18n = require('../../components/Locale/i18nComponent');
 var i18nContent = require('../../components/Locale/i18nContent');
+var Autocomplete = require('../../components/PseudoSelect/PseudoAutocompleteReference');
 
 module.exports = kind({
     name: 'AdvancedPower',
@@ -33,7 +34,7 @@ module.exports = kind({
             {
                 components: [
                     {kind: i18n, allowHtml: true, content: 'Passage Retrieval:'},
-                    {kind: TextArea, name: 'reference', style: 'width: 98%; height: 50px;'}
+                    {kind: Autocomplete, name: 'reference', inputStyle: 'width: 98%; height: 50px;', useTextArea: true}
                 ]
             },
             {tag: 'br'},

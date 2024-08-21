@@ -1,13 +1,32 @@
 var defaultConfig = {
     'target': 'biblesupersearch_container',             // id of HTML div tag
     "apiUrl": "https://api.biblesupersearch.com",       // URL to Bible SuperSearch API
+    "apiKey": null,                                     // API access key
     "defaultBible": "kjv",                              // Default Bible selected in first Bible selector
     "bibleGrouping": 'language',                        // Default Bible list grouping
     "bibleSorting": 'rank|name',                        // Default Bible list sorting
+    "bibleDefaultLanguageTop": false,                   // Default Bible list sorting
     "defaultLanguage": "en",                            // (future) Default Language 
     "enabledBibles": [],                                // Order indicates order Bibles will appear
     "interface": "twentytwenty",                        // Bible SuperSearch skin / interface
     "useJSONP": false,                                  // (Future) Use JSONP for cross-site API calls
+    "pageScroll": 'instant',
+    "pageScrollTopPadding": 0,
+    "swipePageChapter": false,
+    "arrowKeysPageChapter": false,
+    "textDisplayDefault": 'passage',
+    "parallelBibleStartSuperceedsDefaultBibles": false,
+    'landingReferenceDefault': false,
+    'hoverDelayThreshold': 500,
+    'strongsDialogSearchLink': false,
+    'legacyManual': false,
+    'strongsOpenClick': 'mobile',
+    'sideSwipeNavHideThresholdTop': 0,
+    'sideSwipeNavHideThresholdBottom': 0,
+    'historyLimit': 50,
+    'bookmarkLimit': 20,
+    'testOnLoad': false,
+    'testVerbose': false,
 
 
     _urlDefaultNotice: function() {

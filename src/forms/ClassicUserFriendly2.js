@@ -11,6 +11,7 @@ var FormSection = require('./FormSection');
 var EtcButtons = require('../components/DialogEtcButtons/DialogEtcButtonsHtml');
 var i18nContent = require('../components/Locale/i18nContent');
 var i18n = require('../components/Locale/i18nComponent');
+var Autocomplete = require('../components/PseudoSelect/PseudoAutocompleteReference');
 
 module.exports = kind({
     name: 'ClassicUserFriendly2',
@@ -27,13 +28,13 @@ module.exports = kind({
                     {
                         name: 'bible', 
                         kind: BibleSelect, 
-                        parallelLimit: 4, 
+                        parallelLimit: 8, 
                         parallelStart: 4, 
                         selectorWidth: 300
                     },
                     {tag: 'br'},
                     {kind: i18n, content: 'Enter passage(s):'},
-                    {name: 'reference', kind: Input, style: 'width: 100%; max-width: 300px', onblur: 'referenceTyped'},
+                    {name: 'reference', kind: Autocomplete, style: 'width: 100%; max-width: 300px', onblur: 'referenceTyped', isComponent: true},
                     { components: [
                         {kind: i18nContent, tag: 'small', content: 'Example:'},
                         {kind: i18nContent, tag: 'small', containsVerses: true, content: ' John 4; Romans 5:8;'}

@@ -24,6 +24,8 @@ module.exports = {
         'BrowsingBookSelector': require('./interfaces/browsing/BookSelector'),
         // Has a down selector to select book, then chapter.   Fields listed horizontally
         'BrowsingBookSelectorHorizontal': require('./interfaces/browsing/BookSelectorHorizontal'),
+        
+        // 'BrowsingBookList': require('./interfaces/browsing/BrowsingBookList'), // DNE
 
     
     // Minimal interfaces
@@ -33,6 +35,9 @@ module.exports = {
         //      Form with only a text input and a submit button
         'Minimal' : require('./interfaces/minimal/MinimalBase'),
         
+        // No visible form
+        'NoForm' : require('./interfaces/minimal/NoForm'),          
+
         // Minimal form with Bible selector (varying size)
         'MinimalWithBible' : require('./interfaces/minimal/MinimalWithBible'),        
 

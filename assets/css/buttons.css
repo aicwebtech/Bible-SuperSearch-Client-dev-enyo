@@ -37,32 +37,11 @@
     background-color: #d1cf45;
 }
 
-.format_buttons_html .item.size_plus {
-    /*font-weight: bold;*/
-    /*font-size: 16px;*/
-}
-
-.format_buttons_html .item.size_reg {
-/*    font-weight: bold;
-    text-decoration: underline overline;*/
-    /*width: 20px;*/
-    /*font-size: 18px;*/
-
-}
-
 .format_buttons_html .item.size_reg span {
-    /*border-bottom: 2px solid black;*/
     text-decoration: underline;
     text-decoration-thickness: 2px;
-    /*font-weight: bold;*/
     display: inline-block;
     height: 14px;
-}
-
-.format_buttons_html .item.size_minus {
-    /*font-weight: bold;*/
-    /*width: 20px;*/
-    /*font-size: 16px;*/
 }
 
 .format_buttons_html .item.font span {
@@ -93,6 +72,20 @@
     text-align: center;
 }
 
+.format_buttons_html .item.language {
+    overflow: visible;
+}
+
+.format_buttons_html .item.language .bss_pseudo_select {
+    width: 150px;
+    background-color: transparent;
+}
+
+/* OLD */
+.format_buttons_html .item.language select {
+    border: 0;
+}
+
 /*@import "https://fonts.googleapis.com/icon?family=Material+Icons+Outlined";*/
 
 .material-icons {
@@ -120,6 +113,11 @@
   font-feature-settings: 'liga';
 }
 
+/* for use within small <button> elements */
+.material-icons-small-button {
+    font-size: 13px;
+}
+
 .format_buttons_html .item .icon {
     font-size: 18px;
     line-height: 18px;
@@ -139,11 +137,12 @@
 .format_buttons_html .item.single_verse_toggle .true span, 
 .format_buttons_html .item.single_verse_toggle .false span,
 .format_buttons_html .item.renderstyle.verse span,
+.format_buttons_html .item.renderstyle.verse_passage span,
 .format_buttons_html .item.renderstyle.passage span
 {
     height: 4px;
     display: block;
-    text-align: left;
+    text-align: start;
     position: relative;
     top: -6px;
     white-space: nowrap;
@@ -222,7 +221,7 @@
 
 .format_buttons_html .block_enabled, .format_buttons_html .block_disabled {
     display: inline-block;
-    margin-right: 3px;
+    margin-inline-end: 3px;
     height: 11px;
     width: 11px;
     border: 1px solid #222222;
@@ -242,9 +241,9 @@
 }
 
 .bible_settings .settings_toggle {
-    width: 150px;
+    width: 200px;
     margin: 0 auto 10px;
-    text-align: left;
+    text-align: start;
     cursor: pointer;
 }
 
@@ -259,12 +258,12 @@
 .bible_settings .settings_container {
     width: 250px;
     margin: 0 auto 10px;
-    text-align: left;
+    text-align: start;
     cursor: pointer;
 }
 
 .bible_settings .settings_container label {
-    margin-left: 5px;
+    margin-inline-start: 5px;
     cursor: pointer;
 }
 
@@ -295,10 +294,19 @@
     line-height: 29px;
     border: 1px solid #656565;
     background-color: #a7c9f9;
-    font-size: 16px !important;
 }
 
-.html_nav_buttons a.active:link, .interface_expanding a.active:visited {
+.html_nav_buttons a.styleable {
+    font-size: 18px !important;
+/*    font-size: 16px !important;*/
+    font-family: 'Free Sans';
+}
+
+.html_nav_buttons a.material-icons {
+    font-size: 24px !important;
+}
+
+.html_nav_buttons a.active:link, .html_nav_buttons a.active:visited {
     text-decoration: none;
     color: #444444;
 }
@@ -310,6 +318,17 @@
 .html_nav_buttons a.inactive {
     background-color: #dddddd;
     /*background-color: transparent;*/
+}
+
+.html_nav_buttons a.inactive:hover {
+    /* don't do anything, link is inactive */
+    background-color: #dddddd;
+    text-decoration: none;
+    /*background-color: transparent;*/
+}
+
+.html_nav_buttons a {
+    text-decoration: none;
 }
 
 .biblesupersearch_copy_settings .presets button {
@@ -327,7 +346,7 @@
 }
 
 .biblesupersearch_copy_settings .section label {
-    margin-left: 7px;
+    margin-inline-start: 7px;
 }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {

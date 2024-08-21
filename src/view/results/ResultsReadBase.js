@@ -19,8 +19,17 @@ module.exports = kind({
     // Single verse, multi Bible
     renderSingleVerseParallelBible: function(pd) {
         // this.log();
-        var Container = this._createContainer();
-        var addBibleHeader = false;
+        var Container = this._createContainer(pd);
+        var addBibleHeader = false,
+            addReferenceRow = false,
+            renderStyle = this.renderStyle;
+
+        Container.set('singleVerse', true);
+
+        if(renderStyle == 'verse_passage') {
+            addBibleHeader = true;
+            addReferenceRow = true;
+        }
 
         if(this.multiBibles && (this.singleVerseBibleHeaderNext || this.singleVerseCount >= this.singleVerseBibleHeaderThreshold)) {
             addBibleHeader = true;
@@ -28,20 +37,42 @@ module.exports = kind({
             this.singleVerseCount = 0;
         }
 
-        // Container.createComponent({
-        //     name: 'ReferenceRow',
-        //     tag: 'tr'
-        // });
+        if(addReferenceRow) {        
+            if(this.app.configs.includeTestament) {        
+                Container.createComponent({
+                    name: 'TestamentRow',
+                    classes: 'bss_render_testament_row',
+                    tag: 'tr',
+                    components: [
+                        {
+                            tag: 'th', 
+                            attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
+                            components: [
+                                {tag: 'h3', content: this.app.t( this.app.getTestamentByBookId(pd.book_id))}
+                            ]
+                        }
+                    ]
+                });        
+            }
+
+            Container.createComponent({
+                name: 'ReferenceRow',
+                classes: 'bss_render_reference_row',
+                tag: 'tr'
+            });
+        }
 
         if(addBibleHeader) {        
             Container.createComponent({
                 name: 'BibleRow',
+                class: 'bss_render_bible_row bss_bacon',
                 tag: 'tr'
             });
         }
 
         Container.createComponent({
             name: 'VerseRow',
+            class: 'bss_render_verse_row',
             tag: 'tr'
         });
 
@@ -51,18 +82,18 @@ module.exports = kind({
         for(chapter in pd.verse_index) {
             pd.verse_index[chapter].forEach(function(verse) {
                 for(i in this.bibles) {
-                    var module = this.bibles[i];
+                    var mod = this.bibles[i];
                     var content = '';
-                    var bible_info = this.selectBible(module);
+                    var bible_info = this.selectBible(mod);
 
                     if(!bible_info) {
                         continue;
                     }
 
-                    if(pd.verses[module] && pd.verses[module][chapter] && pd.verses[module][chapter][verse]) {
-                        content = pd.verses[module][chapter][verse].text || '';
+                    if(pd.verses[mod] && pd.verses[mod][chapter] && pd.verses[mod][chapter][verse]) {
+                        content = pd.verses[mod][chapter][verse].text || '';
                         haveText = (content != '') ? true : haveText;
-                        content = this.processSingleVerseContent(pd, pd.verses[module][chapter][verse]);
+                        content = this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]);
                     }
 
                     Container.$.VerseRow.createComponent({
@@ -78,25 +109,31 @@ module.exports = kind({
 
         if(haveText) {            
             for(i in this.bibles) {
-                var module = this.bibles[i];
+                var mod = this.bibles[i];
 
-                if(typeof this.app.statics.bibles[module] == 'undefined') {
+                if(typeof this.app.statics.bibles[mod] == 'undefined') {
                     continue;
                 }
 
-                var bible_info = this.app.statics.bibles[module];
+                var bible_info = this.app.statics.bibles[mod];
                 
-                // Container.$.ReferenceRow.createComponent({
-                //     tag: 'th',
-                //     content: pd.book_name + ' ' + pd.chapter_verse
-                // });
-
                 if(addBibleHeader) {                
                     Container.$.BibleRow.createComponent({
                         tag: 'th',
                         content: this._getBibleDisplayName(bible_info)
                     });
                 }
+            }
+
+            if(addReferenceRow) {                
+                var bookName = this.app.getLocaleBookName(pd.book_id, pd.book_name);
+
+                Container.$.ReferenceRow.createComponent({
+                    tag: 'th',
+                    allowHtml: true,
+                    attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
+                    content: bookName + ' ' + pd.chapter_verse
+                });
             }
         }
 
@@ -109,11 +146,16 @@ module.exports = kind({
     // Multi verse, single Bible
     renderPassageParallelBible: function(pd) {
         // this.log();
-        var Container = this._createContainer();
+        var Container = this._createContainer(pd);
         // this.singleVerseCount = 0;
         // this.singleVerseBibleHeaderNext = true;
 
-        var addBibleHeader = false;
+        var addBibleHeader = false,
+            renderStyle = this.renderStyle;
+
+        if(this.renderStyle == 'verse_passage') {
+            addBibleHeader = true;
+        }
 
         if(this.multiBibles && (this.singleVerseBibleHeaderNext || this.singleVerseCount >= this.singleVerseBibleHeaderThreshold)) {
             addBibleHeader = true;
@@ -121,14 +163,45 @@ module.exports = kind({
             this.singleVerseCount = 0;
         }
 
+        if(this.app.configs.includeTestament) {        
+            Container.createComponent({
+                name: 'TestamentRow',
+                classes: 'bss_render_testament_row',
+                tag: 'tr',
+                components: [
+                    {
+                        tag: 'th', 
+                        attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
+                        components: [
+                            {tag: 'h3', content: this.app.t( this.app.getTestamentByBookId(pd.book_id))}
+                        ]
+                    }
+                ]
+            });        
+        }
+
+        var bookName = this.app.getLocaleBookName(pd.book_id, pd.book_name);
+        var refContent = bookName + ' ' + pd.chapter_verse;
+
+        if(this.app.statics.access.statistics) {
+            var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
+            refContent += '&nbsp; <sup>' + '<a href="' + sl + '" title="' + refContent + '" class="std_link">' + this.app.t('Statistics') + '</a></sup>';
+        }
+
         Container.createComponent({
             name: 'ReferenceRow',
+            classes: 'bss_render_reference_row',
             tag: 'tr',
             components: [
                 {
                     tag: 'th', 
                     attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
+<<<<<<< HEAD
                     content: this.app.getLocaleBookName(pd.book_id, pd.book_name) + ' ' + pd.chapter_verse
+=======
+                    content: refContent,
+                    allowHtml: true
+>>>>>>> master
                 }
             ]
         });
@@ -142,13 +215,13 @@ module.exports = kind({
             });
 
             for(i in this.bibles) {
-                var module = this.bibles[i];
+                var mod = this.bibles[i];
 
-                if(typeof this.app.statics.bibles[module] == 'undefined') {
+                if(typeof this.app.statics.bibles[mod] == 'undefined') {
                     continue;
                 }
                 
-                var bible_info = this.app.statics.bibles[module];
+                var bible_info = this.app.statics.bibles[mod];
 
                 Container.$.BibleRow.createComponent({
                     tag: 'th',
@@ -158,22 +231,38 @@ module.exports = kind({
             }
         }
 
+        var VerseContainer = Container.createComponent({
+            tag: 'tbody',
+            name: 'VerseContainer'
+        });
+
         for(chapter in pd.verse_index) {
             pd.verse_index[chapter].forEach(function(verse) {
                 var html = '';
                 this.singleVerseCount ++;
 
+                var addBibleHeader = (this.singleVerseCount > 1 && this.singleVerseCount % 10 == 1);
+
+                if(addBibleHeader && renderStyle == 'verse_passage') {
+                    this._addBibleHeader(VerseContainer);
+                }
+
                 for(i in this.bibles) {
-                    var module = this.bibles[i];
+                    var mod = this.bibles[i];
                     var content = '';
-                    var bible_info = this.selectBible(module);
+                    var bible_info = this.selectBible(mod);
 
                     if(!bible_info) {
                         continue;
                     }
 
-                    if(pd.verses[module] && pd.verses[module][chapter] && pd.verses[module][chapter][verse]) {
-                        var processed = this.processPassageVerseContent(pd, pd.verses[module][chapter][verse]);
+                    if(pd.verses[mod] && pd.verses[mod][chapter] && pd.verses[mod][chapter][verse]) {
+                        if(renderStyle == 'verse_passage') {
+                            var processed = '<td>' + this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]) + '</td>';
+                        } else {
+                            var processed = this.processPassageVerseContent(pd, pd.verses[mod][chapter][verse]);
+                        }
+
                         html += processed;
                     }
                     else {
@@ -181,7 +270,7 @@ module.exports = kind({
                     }
                 }
 
-                Container.createComponent({
+                VerseContainer.createComponent({
                     tag: 'tr',
                     allowHtml: true,
                     content: html
@@ -228,16 +317,28 @@ module.exports = kind({
         return processed;
     },
     proccessSingleVerseReference: function(passage, verse) {
+<<<<<<< HEAD
         var book = this.app.getBook(passage.book_id);
+=======
+>>>>>>> master
         var bookName = this.app.getLocaleBookName(passage.book_id, passage.book_name);
         var verseLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, bookName, verse.chapter, verse.verse);
         var chapterLink = this.linkBuilder.buildReferenceLink('p', this.formData.bible, bookName, verse.chapter);
         var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, bookName, verse.chapter, verse.verse);
 
+<<<<<<< HEAD
         var html =  '<a href="' + chapterLink + '" title="Show this Chapter" class="std_link">' + bookName + ' ' + verse.chapter + '</a>:';
             html += '<a href="' + contextLink + '" title="Show in Context" class="std_link">' + verse.verse + '</a>';
+=======
+        var includeContextLinks = true;
 
-        // return html; 
+        if(!passage.single_verse && (passage.nav && !passage.nav.ccc || passage.chapter_verse.indexOf(':') == -1)) {
+            includeContextLinks = false;
+        }
+>>>>>>> master
+
+        var html =  '<a href="' + chapterLink + '" title="Show this Chapter" class="std_link">' + bookName + ' ' + verse.chapter + '</a>:';
+            html += '<a href="' + contextLink + '" title="Show in Context" class="std_link">' + verse.verse + '</a>';
 
         // verse.linksHtml = '<br /><small>'; // future use?
 
@@ -249,12 +350,31 @@ module.exports = kind({
 
         var html = '';
             html += '<a href="' + verseLink + '" title="' + verseTitle + '" class="std_link">' + bookName + ' ' + verse.chapter + ':' + verse.verse + '</a>';
+<<<<<<< HEAD
             html += '&nbsp; <sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + contextText + '</a></sup>';           
             html += '&nbsp; <sup>' + '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a></sup>';
             // verse.linksHtml += '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a>&nbsp; &nbsp;';
             // verse.linksHtml += '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + contextText + '</a>';
             // future? 
             // html += '&nbsp;&nbsp;<sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + 'Statistics' + '</a></sup>';
+=======
+            
+            if(includeContextLinks) {            
+                html += '&nbsp; <sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + contextText + '</a></sup>';           
+                html += '&nbsp; <sup>' + '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a></sup>';
+
+
+                if(this.app.statics.access.statistics) {
+                    var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, verse.chapter, verse.verse);
+                    html += '&nbsp; <sup>' + '<a href="' + sl + '" title="' + chapterTitle + '" class="std_link">' + this.app.t('Statistics') + '</a></sup>';
+                }
+
+                // verse.linksHtml += '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a>&nbsp; &nbsp;';
+                // verse.linksHtml += '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + contextText + '</a>';
+                // future? 
+                // html += '&nbsp;&nbsp;<sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + 'Statistics' + '</a></sup>';
+            }
+>>>>>>> master
 
         // verse.linksHtml += '</small>';
 
@@ -265,19 +385,52 @@ module.exports = kind({
     },
     _addNavButtons: function(Container, passage) {
         if(typeof passage.nav == 'object') {
-            var NavButtons = this.app.getSubControl('NavButtons');
+            var NavButtons = this.app.getSubControl('NavButtons')
+                NavName = 'NavButtons_' + Math.floor(Math.random() * 10000);
 
             if(NavButtons) {
-                Container.createComponent({
+                var comp = Container.createComponent({
                     tag: 'tr', 
                     components: [
                         {tag: 'td', attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
                         components: [
-                            { nav: passage.nav, kind: NavButtons, bibles: this.bibles }
+                            {name: NavName, nav: passage.nav, kind: NavButtons, bibles: this.bibles }
                         ]}
                     ]
                 });
+
+                Container._pushNavButtons(comp);
+                // Container._pushNavButtons(comp.$[NavName]);
+                //Container._pushNavButtons(comp.components[0].components[0]);
             }
+        }
+    },
+    _addBibleHeader: function(Container, name) {
+        if(name) {
+            var BibleRow = Container.createComponent({
+                name: name,
+                tag: 'tr'
+            });
+        } else {
+            var BibleRow = Container.createComponent({
+                tag: 'tr'
+            });
+        }
+
+        for(i in this.bibles) {
+            var mod = this.bibles[i];
+
+            if(typeof this.app.statics.bibles[mod] == 'undefined') {
+                continue;
+            }
+            
+            var bible_info = this.app.statics.bibles[mod];
+
+            BibleRow.createComponent({
+                tag: 'th',
+                attributes: {colspan: this.passageColumnsPerBible},
+                content: this._getBibleDisplayName(bible_info)
+            });
         }
     }
 });

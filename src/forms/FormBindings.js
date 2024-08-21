@@ -16,6 +16,15 @@ module.exports = {
             return (value && value != 0 && value != false) ? true : false;
         // }
         // return value || null;
+    }},            
+    diff: {from: 'formData.diff', to: '$.diff.checked', oneWay: false, shortLink: false, transform: function(value, dir) {
+        // this.log('diff', value, dir);
+        this.bubble('onFormFieldChanged', {field: 'diff', value: value, dir: dir});
+
+        // if(dir == 1) {
+            return (value && value != 0 && value != false) ? true : false;
+        // }
+        // return value || null;
     }},        
     
     // Special request bindings - ignored if not needed
@@ -56,7 +65,7 @@ module.exports = {
         return value || null;
     }},
     shortcut: {from: 'formData.shortcut', to: '$.shortcut.value', oneWay: false, shortLink: true, transform: function(value, dir) {
-        // this.log('shortcut', value, dir);
+        //this.log('shortcut', value, dir);
         this.bubble('onFormFieldChanged', {field: 'shortcut', value: value, dir: dir});
 
         if(dir === 1) {
@@ -86,11 +95,34 @@ module.exports = {
     }},           
     search_type: {from: 'formData.search_type', to: '$.search_type.value', oneWay: false, shortLink: true, transform: function(value, dir) {
         this.bubble('onFormFieldChanged', {field: 'search_type', value: value, dir: dir});
+        // this.log('search_type', value, dir);
 
-        if(this.$.search_type.setSelected) {
-            // this.log('search_type', value, dir);
+        if(dir == 1) {
+            value = value || 'and';
+        }
+
+        // if(this.$.search_type.setSelected) {
+        //     // this.log('search_type', value, dir);
+        //     if(dir == 1) {
+        //         this.$.search_type.setSelectedByValue(value, 0);
+        //     }
+        //     else {
+        //         if(!value || value == '') {
+        //             this.$.search_type.setSelected(0); // Hack to prevent selector from showing 'blank'
+        //         }
+        //     }
+        // }
+
+        return value || null;
+    }},      
+    // test field, temporarary!
+    search_type_2: {from: 'formData.search_type_2', to: '$.search_type_2.value', oneWay: false, shortLink: false, transform: function(value, dir) {
+        this.bubble('onFormFieldChanged', {field: 'search_type_2', value: value, dir: dir});
+        this.log('search_type_2 (you should not be here!)', value, dir);
+
+        if(this.$.search_type_2.setSelected) {
             if(dir == 1) {
-                this.$.search_type.setSelectedByValue(value, 0);
+                this.$.search_type_2.setSelectedByValue(value, 0);
             }
             else {
                 if(!value || value == '') {
@@ -137,6 +169,7 @@ module.exports = {
         return value || null;
     }},
     bible: {from: 'formData.bible', to: '$.bible.value', oneWay: false, shortLink: true, transform: function(value, dir) {
+<<<<<<< HEAD
         // this.log('biblesel', value, dir);
         if(!value) {
             //return 'tyndale,tr,kjv';
@@ -144,6 +177,12 @@ module.exports = {
         }
         
         this.bubble('onFormFieldChanged', {field: 'bible', value: value, dir: dir});
+=======
+        // this.log('default biblesel', value, dir);
+        
+        this.bubble('onFormFieldChanged', {field: 'bible', value: value, dir: dir});
+        this.signalBibleChange(value, dir);
+>>>>>>> master
 
         return value || null;
     }}

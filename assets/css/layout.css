@@ -8,13 +8,26 @@ div.biblesupersearch_main {
     max-height: 90vh;
     max-width: 1000px;
     position: relative;
+
+    /* todo - get rid of this scrollbar?? */
     overflow-y: auto;
     overflow-x: hidden;
     margin: 0 auto;
 }
 
+div.biblesupersearch_main.bss_no_global_scrollbar {
+    overflow-y: visible;
+    overflow-x: visible;
+    height: initial;
+    max-height: initial;
+}
+
 div.biblesupersearch_main.rtl {
     direction: rtl;
+}
+
+div.biblesupersearch_main * {
+    box-sizing: content-box;
 }
 
 .biblesupersearch_render_table, .biblesupersearch_render_table td table {
@@ -44,9 +57,17 @@ div.biblesupersearch_content {
     height: 100%;
     /*min-height: 300px;*/
 /*    text-align: center;*/
-    overflow-y: auto;
+/*    overflow-y: auto;*/
     /*overflow-x: hidden;*/
     min-width: 100px;
+}
+
+.biblesupersearch_h5 {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 20px;
 }
 
 .biblesupersearch_layout_button {
@@ -63,24 +84,28 @@ div.biblesupersearch_content {
     height: 100%;
 }
 
+.biblesupersearch_multiselect button {
+    margin: 4px 2px 0;
+}
+
 .biblesupersearch_bible_selector {
 
 }
 
 .biblesupersearch_bible_selector_multi {
-    margin-right: 2px;
-    margin-left:  2px;
+    margin-inline-end: 2px;
+    margin-inline-start:  2px;
 }
 
 .biblesupersearch_center_element {
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
 }
 
 .biblesupersearch_error_view {
     padding: 20px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
     text-align: center;
     min-width: 100px;
     max-width: 75%;
@@ -114,14 +139,15 @@ table.biblesupersearch_render_table {
 .biblesupersearch_copy_pane button {
     display: block;
     max-width: 100px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
 }
 
 .biblesupersearch_copy_pane p {
     width: 99%;
-    min-height: 100px;
-    max-height: 300px;
+/*    min-height: 100px;
+    max-height: 300px;*/
+    height: 300px;
     white-space: pre-wrap;
     border: 2px inset #adadad;
     overflow-y: auto;
@@ -140,10 +166,10 @@ table.biblesupersearch_render_table {
     width: 20px;
     /*max-width: 20px;*/
     /*min-width: 15px;*/
-    text-align: right;
+    text-align: end;
     display: inline-block;
     /*vertical-align: top;*/
-    margin-right: 3px;
+    margin-inline-end: 3px;
     font-size: .80em;
     float: left;
 }
@@ -166,6 +192,7 @@ table.biblesupersearch_render_table {
 
 .biblesupersearch_render_table td.txt {
     text-align: justify;
+/*    text-align: start;*/
 }
 
 .biblesupersearch_render_table td.ltr, p.ltr {
@@ -176,8 +203,18 @@ table.biblesupersearch_render_table {
     direction: rtl;
 }
 
+.bss_ltr {
+    direction: ltr;
+}
+
+.bss_rtl {
+    direction: rtl;
+}
+
+
+
 .biblesupersearch_render_table td table.rtl {
-    margin-left: auto;
+    margin-inline-start: auto;
 }
 
 .biblesupersearch_render_table sup {
@@ -188,7 +225,7 @@ table.biblesupersearch_render_table {
 
 .biblesupersearch_render_table td table td.ver {
     width: 20px;
-    text-align: right;
+    text-align: end;
     vertical-align: top;
 }
 
@@ -213,13 +250,13 @@ table.biblesupersearch_render_table {
 
 .biblesupersearch_main .format_buttons {
     text-align: center;
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
 }
 
 .biblesupersearch_pager {
-    margin-right: auto;
-    margin-left: auto;
+    margin-inline-end: auto;
+    margin-inline-start: auto;
     text-align: center;
 }
 
@@ -247,6 +284,7 @@ div.biblesupersearch_dialog {
     width: 100%;
     height: 100%; 
     z-index: 100000;
+/*    padding: 0;*/
     background-color: rgba(0, 0, 0, 0.5); 
     /*vertical-align: middle;*/
     text-align: center;
@@ -274,15 +312,15 @@ div.biblesupersearch_dialog {
 
 .biblesupersearch_main label.left_label {
     display: inline-block;
-    margin-right: 5px;
-    text-align: right;
+    margin-inline-end: 5px;
+    text-align: end;
     min-width: 100px;
 }
 
 .biblesupersearch_main label.resp_left_label {
     display: inline-block;
-    margin-right: 5px;
-    text-align: right;
+    margin-inline-end: 5px;
+    text-align: end;
     min-width: 100px;
     width: 98%; 
 }
@@ -317,34 +355,25 @@ div.biblesupersearch_dialog {
     .biblesupersearch_main label.resp_left_label {
         text-align: center;
         display: block;
-        margin-left: auto;
-        margin-right: auto;
+        margin-inline-start: auto;
+        margin-inline-end: auto;
         max-width: initial;
     }
 
     .biblesupersearch_main .resp_input {
         display: block;
-        margin-left: auto;
-        margin-right: auto;
+        margin-inline-start: auto;
+        margin-inline-end: auto;
         width: 60%; 
         max-width: initial;
     }
 }
 
-
 div.alert_dialog {
-    /*background-color: green;*/
-/*    text-align: center;
-    position: sticky;
-    top: 20px;
-    z-index: 40000000;*/
-    /*border: 1px solid black;*/
     z-index: 10000000;
 }
 
-
-
-.alert_dialog .content {
+.alert_dialog .bss_dialog_content {
     padding: 5px 10px;
 }
 
@@ -363,7 +392,7 @@ div.alert_dialog {
     position: absolute;
     border: 2px solid black;
     background-color: #dddddd;
-    z-index: 97;
+    z-index: 1000000;
     box-shadow: 10px 10px 5px #444;
     display: block;
 }
@@ -431,12 +460,49 @@ div.alert_dialog {
     margin-top: 20px;
 }
 
-.dialog .buttons span.spacer {
+.biblesupersearch_dialog .super_container {
+/*    position: relative;*/
+}
+
+.biblesupersearch_dialog .bss_dialog_container .bss_dialog_title {
+    padding: 8px;
+}
+
+.biblesupersearch_dialog .bss_dialog_title, .biblesupersearch_dialog .bss_dialog_subtitle {
+    font-weight: bold;
+    display: block;
+}
+
+.biblesupersearch_dialog .bss_dialog_title {
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.biblesupersearch_dialog .bss_dialog_subtitle {
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 12px;
+}
+
+.bss_dialog_container .bss_dialog_content {
+    overflow-y: auto;
+}
+
+.bss_dialog_container .bss_dialog_buttons span.spacer, .hover_dialog .bss_dialog_buttons span.spacer {
     display: inline-block;
-    width: 40px;
+    width: 10%;
+    max-width: 40px;
 } 
 
-.help_dialog .dialog {
+/*.bss_dialog_container .bss_dialog_buttons button, .hover_dialog .bss_dialog_buttons button {
+    display: inline-block;
+    width: 10%;
+    max-width: 40px;
+} 
+*/
+
+
+.help_dialog .bss_dialog_container {
     margin: 10px;
 }
 
@@ -444,7 +510,7 @@ div.alert_dialog {
     padding-top: 5px;
 }
 
-.help_dialog .buttons {
+.help_dialog .bss_dialog_buttons, .hover_dialog .bss_dialog_buttons {
     /*min-height: 30px;*/
     padding: 8px 0 8px;
 }
@@ -456,7 +522,7 @@ div.alert_dialog {
 .help_dialog .list .col {
     padding: 0 15px;
     display: inline-block;
-    height: 320px;
+/*    height: 320px;*/
     overflow-y: auto;
 }
 
@@ -465,18 +531,16 @@ div.alert_dialog {
     padding: 2px;
 }
 
+.bss_list_item:nth-child(odd) {
+    background-color: #ddd;
+}
+
 .help_dialog .item:nth-child(odd) {
     background-color: #ddd;
 }
 
-.help_dialog .dialog {
+.help_dialog .bss_dialog_container {
     padding-top: 2px;
-}
-
-.help_dialog.help .content {
-/*    height: 400px;
-    overflow-y: auto;
-    margin-bottom: 10px;*/
 }
 
 .help_dialog.help table {
@@ -485,11 +549,11 @@ div.alert_dialog {
     border-collapse: collapse;
 }
 
-.help_dialog.help .content .link {
+.help_dialog.help .bss_dialog_content .link {
     margin-bottom: 10px;
 }
 
-.help_dialog.help .content .col div {
+.help_dialog.help .bss_dialog_content .col div {
     font-size: 0.9em;
 }
 
@@ -504,39 +568,66 @@ div.alert_dialog {
 }
 
 .help_dialog.help table tr td.op {
-    text-align: right;
+    text-align: end;
 }
 
 .help_dialog.help table tr td.desc {
-    text-align: left;
+    text-align: start;
 }
 
 .bible_sos .sos_item .label {
-    float: left;
-    /*background-color: yellow;*/
+    float: inline-start;
     display: inline-block;
     font-weight: bold;
-    text-align: left;
+    text-align: start;
     font-size: 0.9em;
+}
+
+.bss_history_list {
+    max-height: 220px;
+}
+
+.bss_history_item {
+    text-align: start;
+    font-size: 0.9em;
+    padding: 3px 8px;
+    height: 24px;
+    line-height: 24px;
+}
+
+/* todo: use text-overflow: elippsis here */
+/*.bss_history_item a {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 70%;
+}*/
+
+.bss_history_item .material-icons {
+    font-size: 22px;
+    cursor: pointer;
+/*    border: 1px solid #333;*/
+    margin-inline-start: 10px;
 }
 
 .share_dialog .link_share_container {
     padding: 5px;
 }
 
-.share_dialog textarea.link_share {
-    width: 99%;
+.share_dialog .link_share_container textarea.link_share {
+    width: 100%;
     height: 200px;
+    margin: 0 !important;
+    box-sizing: border-box;
 }
 
 .bible_sos .sos_item .verses {
-    float: right;
-    /*background-color: green;*/
+    float: inline-end;
     cursor: pointer;
     display: inline-block;
     max-width: 70%;
     font-size: 0.8em;
-    text-align: right;
+    text-align: end;
 }
 
 .bible_start .start_item {
@@ -544,32 +635,29 @@ div.alert_dialog {
 }
 
 .bible_start .start_item .num {
-    float: left;
-    /*background-color: orange;*/
+    float: inline-start;
     cursor: pointer;
     display: inline-block;
     font-size: 0.8em;
-    text-align: right;
+    text-align: end;
     width: 22px;
-    margin-right: 5px;
+    margin-inline-end: 5px;
 }
 
 .bible_start .start_item .verses {
-    float: left;
-    /*background-color: green;*/
+    float: inline-start;
     cursor: pointer;
     display: inline-block;
     font-weight: bold;
     font-size: 0.8em;
-    text-align: left;
+    text-align: start;
 }
 
 .bible_start .start_item .desc {
-    float: right;
-    /*background-color: yellow;*/
+    float: inline-end;
     display: inline-block;
     max-width: 80%;
-    text-align: right;
+    text-align: end;
     font-size: 0.9em;
 }
 
@@ -580,24 +668,24 @@ div.alert_dialog {
     margin-bottom: 0;
 }
 
-.bible_download .content {
+.bible_download .bss_dialog_content {
     height: 290px;
     overflow-y: auto;
     padding: 0 15px 15px;
 }
 
-.bible_download .buttons {
+.bible_download .bss_dialog_buttons {
     padding-top: 8px;
 }
 
 .bible_download .render_list {
-    text-align: left;
+    text-align: start;
 }
 
 .bible_download .render_list .name {
     display: inline-block;
-    float: left;
-    text-align: left;
+    float: inline-start;
+    text-align: start;
     width: 75%;
     overflow: hidden;
     white-space: nowrap;
@@ -606,8 +694,8 @@ div.alert_dialog {
 
 .bible_download .render_list .status {
     display: inline-block;
-    float: right;
-    text-align: right;
+    float: inline-end;
+    text-align: end;
 }
 
 .bible_download .render_list .status .success {
@@ -622,8 +710,24 @@ div.alert_dialog {
     background-color: #ddd;
 }
 
-.clear-both, .clear_both {
+.bible_download .bss_pseudo_select_toggle {
+    height: 100px;
+}
+
+.clear-both, .clear_both, .bss_clear_both {
     clear: both;
+}
+
+.bss_float_left {
+    float: inline-start;  /* RTL */
+}
+
+.bss_float_left {
+    float: inline-end; /* RTL */
+}
+
+.bss_center {
+    text-align: center;
 }
 
 .biblesupersearch_bible_selector option.label {
@@ -632,7 +736,7 @@ div.alert_dialog {
     color: black;
 }
 
-.biblesupersearch_dialog .dialog {
+.biblesupersearch_dialog .bss_dialog_container {
     opacity: 1;
     background-color: white; 
 }
@@ -646,12 +750,14 @@ div.alert_dialog {
     display: inline;
 }
 
+.checkbox_container label {
+    white-space: normal;
+}
+
 .biblesupersearch_copy_settings .settings {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-/*    margin-left: auto;
-    margin-right: auto;*/
     font-size: .85em;
 }
 
@@ -684,6 +790,10 @@ div.alert_dialog {
     margin-bottom: 5px;
 }
 
+.link_dialog .bss_dialog_content {
+    padding: 20px;
+}
+
 .link_dialog .copy-link-containr input {
     max-width: 300px;
     width: 90%;
@@ -696,4 +806,130 @@ div.alert_dialog {
     font-size: 10px;
     padding: 0px;
     height: 17px;
+}
+
+.biblesupersearch_context_help {
+    position: relative;
+}
+
+div.biblesupersearch_context_help_container {
+    position: absolute;
+    background-color: yellow;
+    z-index: 1000001;
+}
+
+div.biblesupersearch_toggle_help {
+    padding-left: 26px;
+    font-size: 0.7em;
+    display: block;
+}
+
+span.biblesupersearch_toggle_help {
+    padding-left: 26px;
+    font-size: 0.8em;
+    display: inline;
+}
+
+.biblesupersearch_dialog.help_dialog .bss_dialog_container .bss_dialog_title .header h4 {
+    padding: 0 5px;
+}
+
+tr.bss_render_testament_row th {
+    padding-top: 15px;
+}
+
+tr.bss_render_reference_row th {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.biblesupersearch_strongs_view {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.biblesupersearch_strongs_body {
+    max-height: 200px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.biblesupersearch_render_table {
+    z-index: 1001;
+}
+
+.bss_side_swipe_button_container {
+/*    background-color: transparent;*/
+/*        background-color: rgba(0, 0, 0, 0.3); */
+    position: fixed;
+/*    position: absolute;*/
+    z-index: 1002;
+    top: 48vh;
+/*    top-margin: 48%;*/
+/*    width: 50%;*/
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 1s;
+    pointer-events: none; 
+}
+
+.bss_side_swipe_button_container.fadein {
+    opacity: 1;
+}
+
+.bss_side_swipe_button {
+    width: 30px;
+    height: 30px;
+    font-family: Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: #dddddd;
+    font-size: 26px;
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    pointer-events: auto; 
+    line-height: initial;
+}
+
+.bss_side_swipe_button:hover {
+    background-color: rgba(10, 10, 10, 1); 
+    color: white;
+}
+
+.bss_bookmark_edit_dialog .bss_dialog_content {
+    overflow-y: hidden;
+}
+
+.bss_bookmark_edit_dialog input {
+    width: 90%;
+    max-width: 350px;
+}
+
+.bss_generic_table, .bss_shortcuts_table {
+    width: 99%;
+}
+
+.bss_generic_table tbody tr:nth-child(even), .bss_shortcuts_table tbody tr:nth-child(even) {
+    background-color: #ddd;
+}
+
+.bss_generic_table tr td, .bss_shortcuts_table tr td {
+    text-align: start;
+    padding: 3px;
+}
+
+.biblesupersearch_main input.bss_readonly {
+    background-color: #ccc;
+}
+
+.bss_clickable {
+    cursor: pointer;
+}
+
+.bss_bible_info_container {
+    text-align: justify;
+    padding: 0 15px;
 }

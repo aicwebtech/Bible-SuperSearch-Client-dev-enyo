@@ -17,6 +17,7 @@ module.exports = kind({
     height: '475px',
     classes: 'help_dialog bible_start',
     bibleString: null,
+    titleBarHeight: 64,
     
     published: {
         list: [
@@ -34,15 +35,14 @@ module.exports = kind({
             {verse: 'Ephesians', desc: 'Salvation by faith, not works', linkVerse: 'Ephesians/1'},
             {verse: 'Philippians', desc: 'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ', linkVerse: 'Philippians/1'},
             {verse: 'Isaiah 53', desc: 'Christ the suffering servant', linkVerse: 'Isaiah/53'},
-            {verse: 'Psalms 22', desc: 'Christ’s crucifixion foretold', linkVerse: 'Psalms/22'},
+            {verse: 'Psalms 22', desc: 'Christ\'s crucifixion foretold', linkVerse: 'Psalms/22'},
         ]
     },
 
     titleComponents: [
         {classes: 'header', components: [
-            {kind: i18n, tag: 'h3', content: 'New to the Bible?'}, 
-            {kind: i18n, tag: 'h4', content: 'Not Sure Where to Begin?'}, 
-            // {tag: 'h4', content: 'Here\'s a reading list to get you started'}, 
+            {kind: i18n, classes: 'bss_dialog_title', content: 'New to the Bible?'}, 
+            {kind: i18n, classes: 'bss_dialog_subtitle', content: 'Not Sure Where to Begin?'}, 
         ]}
     ],
 
