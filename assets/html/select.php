@@ -7,6 +7,16 @@
     $interface = $_REQUEST['interface'] ?? $default_interface;
     $_SESSION['interface'] = $interface;
     $interfaces = getInterfaces();
+    $int_keys = array_keys($interfaces);
+
+    $idx = array_search($interface, $int_keys);
+
+    $first_interface = $int_keys[0];
+    $next_interface = null;
+
+    if($idx !== false && isset($int_keys[$idx + 1])) {
+        $next_interface = $int_keys[$idx + 1];
+    }
 
     $config = file_get_contents('config.js');
     // $config = substr($config, 38);
@@ -19,6 +29,7 @@
 
     $test = isset($_REQUEST['test']) ? (bool) $_REQUEST['test'] : false;
     $testVerbose = isset($_REQUEST['test_verbose']) ? (bool) $_REQUEST['test_verbose'] : false;
+    $testSkin = isset($_REQUEST['test_skin']) ? (bool) $_REQUEST['test_skin'] : false;
 ?>
 
 <html>
@@ -45,8 +56,9 @@
             }
         </style>
         <script>
+            var firstInterface = '<?php echo $first_interface ?>';
+            var nextInterface = <?php echo $next_interface ? "'" . $next_interface . "'" : 'null' ?>;
             <?php echo $config; ?>;
-
             biblesupersearch_config_options.interface = '<?php echo $interface; ?>';
             biblesupersearch_config_options.testOnLoad = <?php echo $test ? 'true' : 'false'; ?>;
             biblesupersearch_config_options.testVerbose = <?php echo $testVerbose ? 'true' : 'false'; ?>;
@@ -55,21 +67,29 @@
                 biblesupersearch_config_options.landingReference = null; // disable landing reference if testing
             <?php endif; ?>
 
-            // document.addEventListener('DOMContentLoaded', function() {
-            //     if(typeof QUnit != 'undefined') {
+            document.addEventListener('DOMContentLoaded', function() {
+                if(typeof QUnit != 'undefined') {
 
-            //         QUnit.on('runEnd', function(re) {
+                    QUnit.on('runEnd', function(re) {
+                        if(re.testCounts.failed == 0) {
+                            var cont = document.getElementById('test_skin').checked;
 
-            //             if(re.testCounts.failed == 0) {
-            //                 // :todo move to next skin if all tests passed ...
+                            if(cont && nextInterface) {
+                                document.getElementById('interface').value = nextInterface;
+                                document.getElementById("selector").submit();
+                            }
+                        } else {
+                            alert('Tests failed');
+                        }
+                    });
+                }
+            });
 
-            //                 alert('all passed');
-            //             } else {
-            //                 alert('u fail');
-            //             }
-            //         });
-            //     }
-            // });
+            function formSubmitManual() {
+                if(document.getElementById('test').checked && document.getElementById('test_skin').checked && firstInterface) {
+                    document.getElementById('interface').value = firstInterface;
+                }
+            }
 
         </script>
         <script src="biblesupersearch.js"></script>
@@ -79,7 +99,7 @@
     <body>
         <form id='selector'>
             <label class='s'>Skin: </label>
-            <select name='interface'>
+            <select name='interface' id='interface'>
                 <?php foreach($interfaces as $key => $i): ?>
                     <?php $selected = $key == $interface ? " selected='selected'" : ''; ?>
 
@@ -88,10 +108,12 @@
                     </option>
                 <?php endforeach; ?>
             </select>
-            <input type='submit' value='GO' /><br />
+            <input type='submit' value='GO' onclick='formSubmitManual()' /><br />
 
             <input type='checkbox' name='test' id='test' value='1' <?php if($test) echo "checked=checked" ?> />
             <label for='test'><small>Run Tests</small></label>            
+            <input type='checkbox' name='test_skin' id='test_skin' value='1' <?php if($testSkin) echo "checked=checked" ?> />
+            <label for='test_skin'><small>Test all Skins</small></label>            
             <input type='checkbox' name='test_verbose' id='test_verbose' value='1' <?php if($testVerbose) echo "checked=checked" ?> />
             <label for='test_verbose'><small>Verbose Tests</small></label>
         </form>
