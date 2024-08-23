@@ -1,12 +1,11 @@
-// Produced using Google translate
 module.exports = {
     meta: {
         code: 'ar',
         nameEn: 'Arabic',
         name: 'العربية',
         isRtl: true,
-        isFluent: false,     
-        translatedBy: 'Google Translate', 
+        isFluent: true,     
+        translatedBy: 'Hany Danial', 
         translatedEmail: null, 
     },
 
@@ -17,18 +16,18 @@ module.exports = {
     // * Please maintain capitalization and punctuation, if possible.
     // * Any ' (single quote) in the translation MUST be preceded by a \ (backslash).
 
-    'Bible SuperSearch': 'بحث الكتاب المقدس سوبر',
+    'Bible SuperSearch': 'البحث المتطور في الكتاب المُقدس',
     'Loading, please wait': 'جاري التحميل الرجاءالانتظار',
 
     // Search Forms
-    'Select Bible version(s)': 'اختر نسخة (نسخ) الكتاب المقدس',
+    'Select Bible version(s)': 'اختر الترجمة المُفضله للكتاب المقدس',
     'Search': 'يبحث',
     'Search the Bible': 'ابحث في الكتاب المقدس',
-    'Go': 'يذهب',
+    'Go': 'ابحث',
     'Bible Search': 'بحث الكتاب المقدس',
     'Bible': 'الكتاب المقدس',
-    'Whole Words Only': 'الكلمة بالكامل فقط',
-    'Whole words only': 'الكلمة بالكامل فقط',
+    'Whole Words Only': 'الكلمة / كلمات بحث',
+    'Whole words only': 'الكلمة / كلمات بحث',
     'Whole words': 'كلمات كاملة',
     'Exact Case': 'الحالة بالضبط',
     'Parallel Bible #': 'الكتاب المقدس الموازي #',
@@ -37,25 +36,25 @@ module.exports = {
     'Remove Bible': 'إزالة الكتاب المقدس', // 5.2
     'Random Chapter': 'الفصل عشوائي',
     'Random Verse': 'الآية عشوائية',
-    'Passages': 'الممرات',
-    'Passage': 'ممر',
+    'Passages': 'فقرات',
+    'Passage': 'فقره',
     'The book of': 'كتاب',
     'Look for': 'بحث',
     'Look up': 'ابحث عن',
     'in': 'في',
-    'verse': 'بيت شعر',
-    'verses': 'الآيات',
+    'verse': 'عدد',
+    'verses': 'آيات',
     'A Chapter': 'فصل',
     'Chapters': 'فصول',
     'Find verses containing': 'البحث عن الآيات التي تحتوي على',
-    'Restrict search to': 'تقييد البحث على', 
+    'Restrict search to': 'تحديد البحث على', 
     'Word Search': 'بحث كلمة',
     'Clear Form': 'شكل واضح', // 4.5
-    'Select Book and Chapter:' : 'حدد الكتاب والفصل', // 5.2
+    'Select Book and Chapter:' : 'حدد الكتاب والأصحاح', // 5.2
 
     // Context Links
-    'Show full chapter': 'عرض الفصل كاملا',
-    'Chapter': 'الفصل',
+    'Show full chapter': 'عرض الأصحاح بالكامل',
+    'Chapter': 'اصحاح',
     'Show this verse': 'اعرض هذه الآية',
     'Show in context': 'عرض في السياق',
     'Context': 'سياق',
@@ -64,8 +63,8 @@ module.exports = {
     'Limit Search To': 'تقييد البحث على',
     'Limit search to': 'تقييد البحث على', // Watch case!
     'Entire Bible': 'الكتاب المقدس بأكمله',
-    'Passage(s) listed below': 'الممر (الممرات) المذكورة أدناه',
-    'Passage(s) listed above': 'المقطع (الممرات) المذكورة أعلاه',
+    'Passage(s) listed below': 'الفقره (الفقرات) المذكورة أدناه',
+    'Passage(s) listed above': 'الفقره (الفقرات) المذكورة أعلاه',
     
     // Shortcuts
     'Old Testament': 'العهد القديم',
@@ -95,18 +94,18 @@ module.exports = {
     'Minor': 'صغير',
     'Passion': 'عاطفة',
     'Doctrine': 'عقيدة',
-    'Paul': 'بول',
+    'Paul': 'بولس',
     'General': 'عام',
     'Last Days': 'الأيام الأخيرة',
     // End 5.5 part 1
 
-    'Look up Passage(s)': 'البحث عن المقطع (المقاطع)',
-    'Enter passage(s)' : 'أدخل المقطع (المقاطع)',
+    'Look up Passage(s)': 'البحث عن فقره (فقرات)',
+    'Enter passage(s)' : 'أدخل الفقره (الفقرات)',
     'Enter word(s), phrase(s) or expression(s)' : 'أدخل كلمة (كلمات)، عبارة (عبارات) أو تعبير (تعبيرات)',
     'Example': 'مثال',
 
     'Search for' : 'بحث عن',
-    'Match': 'مباراة',
+    'Match': 'مُتطابقة',
     'All Words': 'جميع الكلمات',
     'Any Word': 'أي كلمة',
     'Exact Phrase': 'العبارة بالضبط',
@@ -119,7 +118,7 @@ module.exports = {
     'Regular Expression': 'تعبير عادي',
     'Select one ...' : 'اختر واحدة...',
 
-    'Enter search keyword(s) or passage reference(s)': 'أدخل كلمة (كلمات) البحث الرئيسية أو مرجع (مراجع) المقطع',
+    'Enter search keyword(s) or passage reference(s)': 'أدخل كلمة (كلمات) البحث الرئيسية أو فقره (فقرات) المقطع',
     'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'نصيحة: سيؤدي إدخال كل من المقطع واستعلام البحث إلى قصر البحث على المقطع (المقاطع) المحددة.',
     
     // Advanced Search
@@ -127,7 +126,7 @@ module.exports = {
     'Passage Retrieval': 'استرجاع المرور',
     'Find words within': 'البحث عن الكلمات داخل',
     'Proximity Search': 'بحث القرب',
-    'Power Search': 'بحث القوة',
+    'Power Search': 'بحث بعمق',
 
     // <b> ... </b> is HTML for bold text, please ensure that your translation maintains the bold
     '<b>All</b> of the words' : '<b>جميع</b> الكلمات',
@@ -293,8 +292,8 @@ module.exports = {
     'Discouraged': 'محبط',
     'Doubting': 'الشك',
     'Facing a Crisis': 'مواجهة الأزمة',
-    'Faith Fails': 'الإيمان يفشل',
-    'Friends Fail': 'الأصدقاء يفشلون', 
+    'Faith Fails': 'إيمان صاقط',
+    'Friends Fail': 'أصدقاء صاقطون', 
     'Hopeless': 'ميئوس منه',
     'Leaving Home': 'ترك المنزل',
     'Lonely': 'وحيد',
@@ -392,7 +391,7 @@ module.exports = {
     'searched for': 'بحثت عنه',
 
     // Keywords for sample searches
-    'Jesus': 'عيسى',
+    'Jesus': 'يسوع',
     'Christ': 'السيد المسيح',
     'Lord': 'رب',
     'faith': 'إيمان',
@@ -441,9 +440,9 @@ module.exports = {
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'الحد من عمليات البحث',
-    'Passages': 'الممرات',
+    'Passages': 'فقرات',
     'Alias': 'الاسم المستعار',
-    'You cannot search for these common words': 'لا يمكنك البحث عن هذه الكلمات الشائعة',
+    'You cannot search for these common words': 'لا يمكنك البحث عن هذه الكلمات المتداولة',
     // End 5.5 part 2
 
 
@@ -453,332 +452,332 @@ module.exports = {
     'bibleBooks': [
         {
           "id": 1,
-          "name": "﻿ﻦﻳﻮﻜﺗ ",
+          "name": "تكوين ",
           "shortname": null
         },
         {
           "id": 2,
-          "name": "ﺝﻭﺮﺨﻟﺍ ",
+          "name": "خروج ",
           "shortname": null
         },
         {
           "id": 3,
-          "name": "ﻲﻳﻭﻼﻟﺍ ",
+          "name": "لاويين ",
           "shortname": null
         },
         {
           "id": 4,
-          "name": "ﺩﺪﻌﻟﺍ ",
+          "name": "عدد ",
           "shortname": null
         },
         {
           "id": 5,
-          "name": "ﺔﻴﻨﺜﺘﻟﺍ ",
+          "name": "تثنية ",
           "shortname": null
         },
         {
           "id": 6,
-          "name": "ﻉﻮﺸﻳ ",
+          "name": "يشوع ",
           "shortname": null
         },
         {
           "id": 7,
-          "name": "ﺓﺎﻀﻘﻟﺍ ",
+          "name": "قضاه ",
           "shortname": null
         },
         {
           "id": 8,
-          "name": "ﺙﻮﻋﺍﺭ ",
+          "name": "راعوث ",
           "shortname": null
         },
         {
           "id": 9,
-          "name": "ﻝﻭﻷﺍ ﻞﻴﺋﻮﻤﺻ ",
+          "name": "صموئيل أول ",
           "shortname": null
         },
         {
           "id": 10,
-          "name": "ﻲﻧﺎﺜﻟﺍ ﻞﻴﺋﻮﻤﺻ ",
+          "name": "صموئيل ثاني",
           "shortname": null
         },
         {
           "id": 11,
-          "name": "ﻭﻷﺍ ﻙﻮﻠﻤﻟﺍ ",
+          "name": "ملوك أول ",
           "shortname": null
         },
         {
           "id": 12,
-          "name": "ﻲﻧﺎﺜﻟﺍ ﻙﻮﻠﻤﻟﺍ ",
+          "name": "ملوك ثاني ",
           "shortname": null
         },
         {
           "id": 13,
-          "name": "ﻷﺍ ﻡﺎﻳﻷﺍ ﺭﺎﺒﺧﺃ ",
+          "name": "أخبار أيام أول ",
           "shortname": null
         },
         {
           "id": 14,
-          "name": "ﻥﺎﺜﻟﺍ ﻡﺎﻳﻷﺍ ﺭﺎﺒﺧﺃ ",
+          "name": "أخبار أيام ثاني ",
           "shortname": null
         },
         {
           "id": 15,
-          "name": "ﺍﺭﺰﻋ ",
+          "name": "عزرا ",
           "shortname": null
         },
         {
           "id": 16,
-          "name": "ﺎﻴﻤﺤﻧ ",
+          "name": "نحميا ",
           "shortname": null
         },
         {
           "id": 17,
-          "name": "ﺮﻴﺘﺳﺃ ",
+          "name": "أستير ",
           "shortname": null
         },
         {
           "id": 18,
-          "name": "ﺏﻮﻳﺃ ",
+          "name": "أيوب ",
           "shortname": null
         },
         {
           "id": 19,
-          "name": "ﺮﻴﻣﺍﺰﻤﻟﺍ ",
+          "name": "مزامير ",
           "shortname": null
         },
         {
           "id": 20,
-          "name": "ﻝﺎﺜﻣﺃ ",
+          "name": "أمثال ",
           "shortname": null
         },
         {
           "id": 21,
-          "name": "ﺔﻌﻣﺎﺠﻟﺍ ",
+          "name": "الجامعة ",
           "shortname": null
         },
         {
           "id": 22,
-          "name": "ﺎﺸﻧﻷﺍ ﺪﻴﺸﻧ ",
+          "name": "نشيد الأنشاد ",
           "shortname": null
         },
         {
           "id": 23,
-          "name": "ءﺎﻴﻌﺷﺃ ",
+          "name": "إشعياء ",
           "shortname": null
         },
         {
           "id": 24,
-          "name": "ءﺎﻴﻣﺭﺃ ",
+          "name": "إرميا ",
           "shortname": null
         },
         {
           "id": 25,
-          "name": "ﺎﻴﻣﺭﺇ ﻲﺛﺍﺮﻣ ",
+          "name": "مراثي إرميا ",
           "shortname": null
         },
         {
           "id": 26,
-          "name": "ﻝﺎﻴﻗﺰﺣ ",
+          "name": "حزقيال ",
           "shortname": null
         },
         {
           "id": 27,
-          "name": "ﻝﺎﻴﻧﺍﺩ ",
+          "name": "دانيال ",
           "shortname": null
         },
         {
           "id": 28,
-          "name": "ﻊﺷﻮﻫ ",
+          "name": "هوشع ",
           "shortname": null
         },
         {
           "id": 29,
-          "name": "ﻞﻴﺋﻮﻳ ",
+          "name": "يوئيل ",
           "shortname": null
         },
         {
           "id": 30,
-          "name": "ﺱﻮﻣﺎﻋ ",
+          "name": "عاموس ",
           "shortname": null
         },
         {
           "id": 31,
-          "name": "ﺎﻳﺪﺑﻮﻋ ",
+          "name": "عوبديا ",
           "shortname": null
         },
         {
           "id": 32,
-          "name": "ﻥﺎﻧﻮﻳ ",
+          "name": "يونان ",
           "shortname": null
         },
         {
           "id": 33,
-          "name": "ﺎﺨﻴﻣ ",
+          "name": "ميخا ",
           "shortname": null
         },
         {
           "id": 34,
-          "name": "ﻡﻮﺣﺎﻧ ",
+          "name": "ناحوم ",
           "shortname": null
         },
         {
           "id": 35,
-          "name": "ﻕﻮﻘﺒﺣ ",
+          "name": "حبقوق ",
           "shortname": null
         },
         {
           "id": 36,
-          "name": "ﺎﻴﻨﻔﺻ ",
+          "name": "صفنيا ",
           "shortname": null
         },
         {
           "id": 37,
-          "name": "ﻲﺠﺣ ",
+          "name": "حجي ",
           "shortname": null
         },
         {
           "id": 38,
-          "name": "ﺎﻳﺮﻛﺯ ",
+          "name": "زكريا ",
           "shortname": null
         },
         {
           "id": 39,
-          "name": "ﺥﻼﻣ ",
+          "name": "ملاخي ",
           "shortname": null
         },
         {
           "id": 40,
-          "name": "ﻰﺘﻣ ",
+          "name": "متى ",
           "shortname": null
         },
         {
           "id": 41,
-          "name": "ﺲﻗﺮﻣ ",
+          "name": "مرقس ",
           "shortname": null
         },
         {
           "id": 42,
-          "name": "ﺎﻗﻮﻟ ",
+          "name": "لوقا ",
           "shortname": null
         },
         {
           "id": 43,
-          "name": "ﺎﻨﺣﻮﻳ ",
+          "name": "يوحنا ",
           "shortname": null
         },
         {
           "id": 44,
-          "name": "ﻞﺳﺮﻟﺍ ﻝﺎﻤﻋﺍ ",
+          "name": "أعمال الرسل ",
           "shortname": null
         },
         {
           "id": 45,
-          "name": "ﺔﻴﻣﻭﺭ ",
+          "name": "الرسالة إلى أهل رومية ",
           "shortname": null
         },
         {
           "id": 46,
-          "name": "ﻝﻭﻻﺍ ﺱﻮﺜﻧﺭﻮﻛ ",
+          "name": "الرسالة الأولى إلى أهل كورنثوس ",
           "shortname": null
         },
         {
           "id": 47,
-          "name": "ﺔﻴﻧﺎﺜﻟﺍ ﺱﻮﺜﻧﺭﻮﻛ ",
+          "name": "الرسالة الثانية إلى أهل كورنثوس ",
           "shortname": null
         },
         {
           "id": 48,
-          "name": "ﻲﻃﻼﻏ ",
+          "name": "الرسالة إلى أهل غلاطية ",
           "shortname": null
         },
         {
           "id": 49,
-          "name": "ﺲﺴﻓﺃ ",
+          "name": "الرسالة إلى أهل أفسس ",
           "shortname": null
         },
         {
           "id": 50,
-          "name": "ﻲﺒﻴﻠﻴﻓ ",
+          "name": "الرسالة إلى أهل فيلبي ",
           "shortname": null
         },
         {
           "id": 51,
-          "name": "ﻲﺳﻮﻟﻮﻛ ",
+          "name": "الرسالة إلى أهل كولوسي ",
           "shortname": null
         },
         {
           "id": 52,
-          "name": "ﻲﻜﻴﻧﻮﻟﺎﺴﺗ ﻝﻭﻻﺍ ",
+          "name": "الرسالة الأولى إلى أهل تسالونيكي ",
           "shortname": null
         },
         {
           "id": 53,
-          "name": "ﻲﻜﻴﻧﻮﻟﺎﺴﺗ ﺔﻴﻧﺎﺜﻟﺍ ",
+          "name": "الرسالة الثانية إلى أهل تسالونيكي ",
           "shortname": null
         },
         {
           "id": 54,
-          "name": "ﺱﻭﺎﺛﻮﻤﻴﺗ ﻝﻭﻻﺍ ",
+          "name": "الرسالة الأولى إلى تيموثاوس ",
           "shortname": null
         },
         {
           "id": 55,
-          "name": "ﺱﻭﺎﺛﻮﻤﻴﺗ ﺔﻴﻧﺎﺜﻟﺍ ",
+          "name": "الرسالة الثانية إلى تثموثاوس ",
           "shortname": null
         },
         {
           "id": 56,
-          "name": "ﺲﻄﻴﺗ ",
+          "name": "الرسالة إلى تيطس ",
           "shortname": null
         },
         {
           "id": 57,
-          "name": "ﻥﻮﻤﻴﻠﻓ ",
+          "name": "الرسالة إلى فليمون ",
           "shortname": null
         },
         {
           "id": 58,
-          "name": "ﻦﻴﻴﻧﺍﺮﺒﻌﻟﺍ ",
+          "name": "الرسالة إلى عبرانيين ",
           "shortname": null
         },
         {
           "id": 59,
-          "name": "ﺏﻮﻘﻌﻳ ",
+          "name": "رسالة يعقوب الرسول ",
           "shortname": null
         },
         {
           "id": 60,
-          "name": "ﻝﻭﻻﺍ ﺱﺮﻄﺑ ",
+          "name": "رسالة بطرس الأولى ",
           "shortname": null
         },
         {
           "id": 61,
-          "name": "ﺔﻴﻧﺎﺜﻟﺍ ﺱﺮﻄﺑ ",
+          "name": "رسالة بطرس الثانية ",
           "shortname": null
         },
         {
           "id": 62,
-          "name": "ﻝﻭﻻﺍ ﺎﻨﺣﻮﻳ ",
+          "name": "رسالة يوحنا الأولى ",
           "shortname": null
         },
         {
           "id": 63,
-          "name": "ﺔﻴﻧﺎﺜﻟﺍ ﺎﻨﺣﻮﻳ ",
+          "name": "رسالة يوحنا الثانية ",
           "shortname": null
         },
         {
           "id": 64,
-          "name": "ﺔﺜﻟﺎﺜﻟﺍ ﺎﻨﺣﻮﻳ ",
+          "name": "رسالة يوحنا الثالثة ",
           "shortname": null
         },
         {
           "id": 65,
-          "name": "ﺍﺫﻮﻬﻳ ",
+          "name": "رسالة يهوذا ",
           "shortname": null
         },
         {
           "id": 66,
-          "name": "ﺎﻳﺅﺭ ﺎﻨﺣﻮﻳ ",
+          "name": "سفر رؤيا يوحنا ",
           "shortname": null
         }
     ]
