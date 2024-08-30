@@ -959,7 +959,8 @@ module.exports = kind({
                 var skip = false, 
                     fd = utils.clone(item.formData),
                     r = fd._reference || null,
-                    s = fd._search || null;
+                    s = fd._search || null,
+                    hasSearchType = false;
                 
                 if(t.referenceField == t.referenceField && s && r) {
                     skip = true;
@@ -982,6 +983,10 @@ module.exports = kind({
 
                 if(!skip) {                    
                     for(i in fd) {
+                        if(i == 'search_type') {
+                            hasSearchType = true;
+                        }
+
                         if(i == 'bible' || i == 'search_type' || i == 'page' || i == 'page_limit') {
                             continue; // these fields default, and will work if not present on form
                         }
@@ -1031,7 +1036,20 @@ module.exports = kind({
                 t.clearForm();
                 t.clearHash();
 
-                t.set('formData', fd);
+                // t.setFormDataWithMapping(fd);
+                t.set('formData', utils.clone(fd));
+
+                // Verify formData matches what we set
+                var fdLive = t.get('formData');
+
+                if(hasSearchType) {
+                    assert.ok(fd.search_type, 'test search_type truthy');
+                    assert.ok(fdLive.search_type, 'live search_type truthy');
+                    assert.equal(fdLive.search_type, fd.search_type, 'search_type equal');
+                }
+
+                assert.propContains(fdLive, fd);
+
                 t.submitForm();
             });
 
