@@ -4,6 +4,7 @@ var Anchor = require('enyo/Anchor');
 var Dialog = require('./Dialog');
 var LinkBuilder = require('../Link/LinkBuilder');
 var i18n = require('../Locale/i18nContent');
+var Checkbox = require('enyo/Checkbox');
 var i18nComponent = require('../Locale/i18nComponent');
 var TextArea = require('enyo/TextArea');
 var Image = require('../Image');
@@ -30,7 +31,8 @@ module.exports = kind({
     ezCopy: false,
     shareContent: null,
     actuallyShowDialogForce: false,
-    
+    populated: false,
+
     titleComponents: [
         {classes: 'header', components: [
             {kind: i18n, classes: 'bss_dialog_title', content: 'Share'}, 
@@ -52,14 +54,49 @@ module.exports = kind({
     ],
 
     buttonComponents: [
-        {name: 'Copy', kind: Button, ontap: 'copy', components: [
-            {kind: i18n, content: 'Copy'}
-            // {tag: 'span', content: '&nbsp;', allowHtml: true},
-            // {tag: 'span', classes: 'material-icons icon material-icons-small-button', content: 'share'}
-        ]},          
-        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp; &nbsp; &nbsp;'},
-        {name: 'Close', kind: Button, ontap: 'close', components: [
-            {kind: i18n, content: 'Close'},
+        {
+            components: [
+                {
+                    kind: i18n, 
+                    tag: 'label', 
+                    content: 'Include Link',
+                    attributes: {for: 'bss_share_inc_link'}
+                },
+                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
+                {
+                    kind: Checkbox, 
+                    name: 'inc_link', 
+                    id: 'bss_share_inc_link',
+                    checked: true
+                },            
+                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
+                {
+                    kind: i18n, 
+                    tag: 'label',
+                    content: 'Include Formatting',
+                    attributes: {for: 'bss_share_inc_format'}
+                },
+                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
+                {
+                    kind: Checkbox, 
+                    name: 'inc_format', 
+                    id: 'bss_share_inc_format'
+                },
+            ]
+        },
+
+        {tag: 'br'},
+        
+        {components: [
+            {name: 'Copy', kind: Button, ontap: 'copy', components: [
+                {kind: i18n, content: 'Copy'}
+                // {tag: 'span', content: '&nbsp;', allowHtml: true},
+                // {tag: 'span', classes: 'material-icons icon material-icons-small-button', content: 'share'}
+            ]},          
+            {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp; &nbsp; &nbsp;'},
+            {name: 'Close', kind: Button, ontap: 'close', components: [
+                {kind: i18n, content: 'Close'},
+            ]}
         ]}
     ],
 
@@ -72,6 +109,10 @@ module.exports = kind({
         {from: 'app.UserConfig.copy', to: 'ezCopy', oneWay: false, transform: function(value, dir) {
             return value;
         }},             
+    ],
+
+    observers: [
+        {method: 'watchRenderStyle', path: ['$.inc_format.checked', '$.inc_link.checked']},
     ],
 
     create: function() {
@@ -87,7 +128,14 @@ module.exports = kind({
     showingChanged: function(was, is) {
         this.inherited(arguments);
 
-        var actuallyShowDialog = navigator.share ? false : true;
+        var actuallyShowDialog = true;
+        this.populated = false;
+
+        // this.app && this.log('use nav share', this.useNavigationShare());
+
+        if(this.useNavigationShare()) {
+            actuallyShowDialog = navigator.share ? false : true;
+        }
 
         if(is) {
             if(actuallyShowDialog || this.actuallyShowDialogForce) {
@@ -104,11 +152,30 @@ module.exports = kind({
         this.app.set('shareShowing', true);
         this.actuallyShowDialogForce = false;
     },
+    useNavigationShare: function() {
+        var useNavShare = this.app.get('configs').useNavigationShare || 'never',
+            client = this.app.get('client');
+
+        switch(useNavShare) {
+            case 'always':
+                return true;
+                break;
+            case 'mobile':
+                return client.isMobile;
+                break;
+            case 'never':
+            default :
+                return false;
+        }
+    },
+    watchRenderStyle: function(pre, cur, prop) {
+        this.populated && this.populate();
+    },
     populate: function() {
         var title = document.title,
             url = window.location.href,
             responseData = this.app.get('responseData'),
-            // limit = 7,
+            incLink = this.$.inc_link ? this.$.inc_link.get('checked') : true,
             limit = 0, // unlimited
             count = 0,
             content = '',
@@ -183,8 +250,14 @@ module.exports = kind({
         //content += '\n' + bibleName + '\n\n\n' + title + '\n' + url;
         //this.shareContent = content;
 
-        content += '\n' + bibleName + '\n\n\n' + references.join('; ') + ' - ' + this.app.t('Bible SuperSearch') + '\n' + url;
+        content += bibleName;
+
+        if(incLink) {
+            content += '\n\n\n' + references.join('; ') + ' - ' + this.app.t('Bible SuperSearch') + '\n' + url;
+        }
+
         this.$.CopyArea.set('content', content.trim());
+        this.populated = true;
     },
 
     handleVerseTap: function(inSender, inEvent) {
@@ -233,6 +306,7 @@ module.exports = kind({
     },
     processText: function(text) {
         text = text.replace(/<[^<>]+>/g, ''); // strip HTML
+        var incFormat = this.$.inc_format ? this.$.inc_format.get('checked') : true;
 
         // red letter - ERROR - using <> for red letter will COLLIDE with highlighting which sends back HTML!
         // U+2039, U+203A Single angle quotation marks (NOT <>)
@@ -245,7 +319,7 @@ module.exports = kind({
         }
 
         // strongs
-        if(this.app.UserConfig.get('strongs')) {
+        if(incFormat && this.app.UserConfig.get('strongs')) {
             // do nothing
         }
         else {
@@ -254,7 +328,7 @@ module.exports = kind({
         }
 
         // italics
-        if(this.app.UserConfig.get('italics')) {
+        if(incFormat && this.app.UserConfig.get('italics')) {
             // do nothing
         }
         else {

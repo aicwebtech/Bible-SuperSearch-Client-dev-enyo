@@ -436,6 +436,12 @@ module.exports = {
     'You cannot search for these common words': 'Yarr, no searcheyt for scurvey dog wordes',
     // End 5.5 part 2
 
+    // 5.7
+    'Include Link': 'Include Ye Linketh',
+    'Include Formatting': 'Includee For Mathe',
+
+    
+
     // Bible books - these are auto populated from the API based on selected language
     // Specifying here not reccommended, as these names would need to match those on the API for things to actually work.
     // 'Matthew' : 'Goode News Accordin\' to me matey Mahhew',

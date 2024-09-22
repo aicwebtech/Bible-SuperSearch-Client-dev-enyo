@@ -331,6 +331,14 @@ var biblesupersearch_config_options = {
     'sideSwipeNavHideThresholdTop': 0,  // pixels from navication buttons
     'sideSwipeNavHideThresholdBottom': 0, // pixels from navigation buttons
 
+    // When sharing, whether to ue the system share dialog (if available) or our generic share dialog
+    // Options: 
+    // 'never':  always use generic share dialog
+    // 'mobile': use system share dialog on mobile, use generic share dialog on desktop
+    // 'always': Always use system share dialog (if available), otherwise use generic share dialog (Experimental)
+    // NOTE: System share dialog is ONLY available when the website is secure (HTTPS) 
+    'useNavigationShare': 'never',
+
     // Time, in milliseconds, to wait after hovering before opening a hover dialog (ie Strongs)
     'hoverDelayThreshold': 500,
 

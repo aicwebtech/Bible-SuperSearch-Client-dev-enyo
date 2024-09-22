@@ -23,6 +23,7 @@ var defaultConfig = {
     'strongsOpenClick': 'mobile',
     'sideSwipeNavHideThresholdTop': 0,
     'sideSwipeNavHideThresholdBottom': 0,
+    'useNavigationShare': 'never',
     'historyLimit': 50,
     'bookmarkLimit': 20,
     'testOnLoad': false,

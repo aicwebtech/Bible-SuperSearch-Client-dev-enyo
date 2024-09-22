@@ -455,6 +455,10 @@ module.exports = {
     'Alias': '',
     'You cannot search for these common words': '',
 
+    // 5.7:
+    'Include Link': '',
+    'Include Formatting': '',
+
 
 
     // Bible Books
