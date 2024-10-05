@@ -499,7 +499,7 @@ module.exports = kind({
         var strongsOpenClick = this.getStrongsOpenClick();
         // var strongsOpenClick = false; // debugging ONLY as handleHover and handleClick with collide if both are active!
 
-        this.app.debug && this.log('hoverIntentThres', hoverIntentThres, strongsOpenClick);
+        // this.app.debug && this.log('hoverIntentThres', hoverIntentThres, strongsOpenClick);
 
         target.bssType = null;
 

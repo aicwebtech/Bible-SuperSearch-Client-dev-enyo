@@ -152,11 +152,11 @@ module.exports = kind({
         headerHeight = headerHeight < minHeaderHeight ? minHeaderHeight : headerHeight;
 
         // height = height > docHeight ? docHeight : height;
-        this.app.debug && this.log(n, 'headerHeight', headerHeight);
+        // this.app.debug && this.log(n, 'headerHeight', headerHeight);
 
         var bodyHeight = height - headerHeight;
 
-        this.app.debug && this.log(n, 'adusted h', height);
+        // this.app.debug && this.log(n, 'adusted h', height);
 
         if(this.varyingHeight) {
             height = headerHeight + contentHeight;

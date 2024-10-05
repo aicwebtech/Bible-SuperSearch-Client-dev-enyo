@@ -1819,26 +1819,26 @@ var App = Application.kind({
 
         // If share requested, attempt to use system share dialog
         // This requires HTTPS  
-        if(share) {
-            var promise = navigator.share({
-                text: shareContent,
-                title: document.title,
-                url: window.location.href
-            });
+        // if(share) {
+        //     var promise = navigator.share({
+        //         text: shareContent,
+        //         title: document.title,
+        //         url: window.location.href
+        //     });
 
-            promise.then(utils.bind(this, function() {
-                this.debug && this.log('Successful share');
-            }), 
-            utils.bind(this, function() {
-                this.debug && this.log('Failed to share');
-            }));
+        //     promise.then(utils.bind(this, function() {
+        //         this.debug && this.log('Successful share');
+        //     }), 
+        //     utils.bind(this, function() {
+        //         this.debug && this.log('Failed to share');
+        //     }));
 
-            promise.catch(utils.bind(this, function(error) {
-                this.debug && this.log('Failed to share');
-            }));
+        //     promise.catch(utils.bind(this, function(error) {
+        //         this.debug && this.log('Failed to share');
+        //     }));
             
-            return;
-        }
+        //     return;
+        // }
 
         // This code for selection all text in a HTML element was migrated from Bible SuperSearch version 3.0
         // This works, but there is probably a better way

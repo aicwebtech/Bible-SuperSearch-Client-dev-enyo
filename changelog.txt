@@ -1,5 +1,11 @@
 Bible SuperSearch Universal Client Changelog
 
+= 5.7.0
+* Fixed and improved share dialog
+** Added config to determine when to use the system share dialog (ie mobile) vs the generic share dialog.
+** Added settings on dialog for including the link and formatting.
+* Fixed "Verse as Passage Display" formatting in copy mode to be consistent with "Verse as Passage Display" in read mode.
+
 = 5.6.1
 ** Replaced Arabic with fluent translation
 

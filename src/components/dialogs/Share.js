@@ -277,7 +277,7 @@ module.exports = kind({
         return this.app._copyComponentContent(this.$.CopyArea, 'content');
     },
     share: function() {
-        if(navigator.share) {
+        if(this.useNavigationShare() && navigator.share) {
             var promise = navigator.share({
                 // text: this.shareContent,
                 text: this.$.CopyArea.get('content'),

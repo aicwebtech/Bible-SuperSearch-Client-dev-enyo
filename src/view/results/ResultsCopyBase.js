@@ -62,6 +62,11 @@ module.exports = kind({
         this.renderSingleVerseParallelBible(passage);
     },    
     renderSingleVerseParallelBible: function(passage) {
+        if(this.app.UserConfig.get('render_style') == 'verse_passage') {
+            this.renderPassageParallelBible(passage);
+            return;
+        }
+
         for(chapter in passage.verse_index) {
             passage.verse_index[chapter].forEach(function(verse) {
                 for(i in this.bibles) {
