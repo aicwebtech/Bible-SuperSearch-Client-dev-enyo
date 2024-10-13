@@ -1305,7 +1305,8 @@ var App = Application.kind({
     localeChanged: function(was, is) {
         var defaultLocale = this.defaultLocale || 'en';
         var locale = is || defaultLocale;
-        var fallbackLocale = locale.substring(0, 2);
+
+        var fallbackLocale = this.getLocaleLanguage(locale);
         var found = false;
 
         if(typeof this.localeDatasets[locale] == 'undefined') {
@@ -1318,7 +1319,7 @@ var App = Application.kind({
     _initLocale: function(locale) {
         var defaultLocale = this.defaultLocale || 'en';
         var locale = locale || defaultLocale;
-        var fallbackLocale = language = locale.substring(0, 2);
+        var fallbackLocale = language = this.getLocaleLanguage(locale);
         var found = false,
             localData = {};
 

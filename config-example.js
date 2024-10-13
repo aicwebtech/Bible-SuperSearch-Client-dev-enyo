@@ -366,6 +366,10 @@ var biblesupersearch_config_options = {
     // Also, this is disabled when formatButtonsToggle above is true
     'toggleAdvanced': false,  
 
+    // Limit Search to Reference only if manually selected
+    // Otherwise, search will automatically be limited by reference if a reference has been provided.
+    'limitSearchManual': false,
+
     // Whether to include a link to the legacy User's Manual (English only) from the quick start dialog
     'legacyManual': false,
     

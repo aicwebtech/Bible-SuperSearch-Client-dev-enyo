@@ -19,6 +19,7 @@ var defaultConfig = {
     'landingReferenceDefault': false,
     'hoverDelayThreshold': 500,
     'strongsDialogSearchLink': false,
+    'limitSearchManual': false,
     'legacyManual': false,
     'strongsOpenClick': 'mobile',
     'sideSwipeNavHideThresholdTop': 0,

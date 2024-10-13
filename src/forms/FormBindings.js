@@ -77,17 +77,19 @@ module.exports = {
             }
         }
         else {
-            this.$.reference_booksel && this.$.reference_booksel.set('value', null);
+            if(!this.app.configs.limitSearchManual) {
+                this.$.reference_booksel && this.$.reference_booksel.set('value', null);
 
-            if(value && value != '0' && value != '1') {
-                this.$.reference && this.$.reference.set('value', value);
-            }
-            else if (value != '1') {
-                this.$.reference && this.$.reference.set('value', null);
-            }
-            
-            if(!value || value == '') {
-                this.$.shortcut.setSelected(0); // Hack to prevent selector from showing 'blank'
+                if(value && value != '0' && value != '1') {
+                    this.$.reference && this.$.reference.set('value', value);
+                }
+                else if (value != '1') {
+                    this.$.reference && this.$.reference.set('value', null);
+                }
+                
+                if(!value || value == '') {
+                    this.$.shortcut.setSelected(0); // Hack to prevent selector from showing 'blank'
+                }
             }
         }
 

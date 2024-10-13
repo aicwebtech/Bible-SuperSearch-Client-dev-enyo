@@ -262,12 +262,35 @@ module.exports = kind({
             this.applyDefaultReference(formData);
         }
 
+        var isSearch = formData.search || formData.request && !this.Passage.isPassage(formData.request);
+
         if(formData.reference) {
             formData.reference = this.mapPassages(formData.reference, false);
+        }           
+
+        if(formData.shortcut) {
+            formData.shortcut = this.mapPassages(formData.shortcut, false);
         }        
 
         if(formData.request) {
             formData.request = this.mapPassages(formData.request, true);
+        }
+
+        if(isSearch && this.app.configs.limitSearchManual) {
+            switch(formData.shortcut) {
+            case 0:
+            case '0':
+                // search whole Bible, so delete/ignore reference
+                delete formData.reference;
+                break;
+            case 1:
+            case '1':
+                // do nothing, use reference as is
+                break;
+            default:
+                // Use reference from shortcut
+                formData.reference = formData.shortcut;
+            }
         }
 
         formData.bible = JSON.stringify(formData.bible);
@@ -646,13 +669,15 @@ module.exports = kind({
             return; // bail if IE ... yuck!
         }
 
-        if(value && value != '0' && value != '') {
-            if(!this.$.shortcut.setSelectedByValue(value, 1)) {
-                // this.$.shortcut.set('selected', 1);
+        if(!this.app.configs.limitSearchManual) {
+            if(value && value != '0' && value != '') {
+                if(!this.$.shortcut.setSelectedByValue(value, 1)) {
+                    // this.$.shortcut.set('selected', 1);
+                }
             }
-        }
-        else {
-            this.$.shortcut.set('selected', 0);
+            else {
+                this.$.shortcut.set('selected', 0);
+            }
         }
 
         this._referenceChangeHelperIgnore = false;
