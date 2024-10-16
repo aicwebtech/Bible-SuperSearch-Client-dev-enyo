@@ -2,7 +2,7 @@
 dist/
 builds/
 node_modules/
-src/i18n/template.txt
+src/i18n/*.txt
 config.json
 config.js
 *.orig

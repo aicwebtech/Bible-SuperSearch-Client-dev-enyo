@@ -98,8 +98,8 @@ module.exports = {
     'End Times Prophecy': 'ಎಂಡ್ ಟೈಮ್ಸ್ ಪ್ರೊಫೆಸಿ',
     
     // Shortcut Aliases
-    'OT': 'OT',//check translation
-    'NT': 'NT',//check translation
+    'OT': 'ಹ ಸ',
+    'NT': 'ಹ ಒ',
     'Torah': 'ಟೋರಾ',
     'Wisdom': 'ಬುದ್ಧಿವಂತಿಕೆ',
     'Major': 'ಮೇಜರ್',
@@ -363,10 +363,10 @@ module.exports = {
     'Spreadsheet' : 'ಸ್ಪ್ರೆಡ್ಶೀಟ್',
     'Databases': 'ಡೇಟಾಬೇಸ್ಗಳು',
 
-    'PDF - Compact Text, Letter, Words of Christ in Red': 'ಪಿಡಿಎಫ್ - ಕಾಂಪ್ಯಾಕ್ಟ್ ಟೆಕ್ಸ್ಟ್, ಲೆಟರ್, ವರ್ಡ್ಸ್ ಆಫ್ ಕ್ರೈಸ್ಟ್ ಇನ್ ರೆಡ್',
-    'PDF - Compact Text, A4, Words of Christ in Red': 'PDF - ಕಾಂಪ್ಯಾಕ್ಟ್ ಟೆಕ್ಸ್ಟ್, A4, ವರ್ಡ್ಸ್ ಆಫ್ ಕ್ರೈಸ್ಟ್ ಇನ್ ರೆಡ್',//check translation
-    'PDF - Compact Text, Letter, Words of Christ Underlined': 'PDF - ಕಾಂಪ್ಯಾಕ್ಟ್ ಟೆಕ್ಸ್ಟ್, ಲೆಟರ್, ವರ್ಡ್ಸ್ ಆಫ್ ಕ್ರೈಸ್ಟ್ ಅಂಡರ್ಲೈನ್ ಮಾಡಲಾಗಿದೆ',//check translation
-    'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF - ಕಾಂಪ್ಯಾಕ್ಟ್ ಟೆಕ್ಸ್ಟ್, A4, ವರ್ಡ್ಸ್ ಆಫ್ ಕ್ರೈಸ್ಟ್ ಅಂಡರ್ಲೈನ್ಡ್',//check translation
+    'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF - ಕಾಂಪ್ಯಾಕ್ಟ್ ಟೆಕ್ಸ್ಟ್, ಲೆಟರ್, ವರ್ಡ್ಸ್ ಆಫ್ ಕ್ರೈಸ್ಟ್ ಇನ್ ರೆಡ್',
+    'PDF - Compact Text, A4, Words of Christ in Red': 'PDF - ಕಾಂಪ್ಯಾಕ್ಟ್ ಟೆಕ್ಸ್ಟ್, A4, ವರ್ಡ್ಸ್ ಆಫ್ ಕ್ರೈಸ್ಟ್ ಇನ್ ರೆಡ್',
+    'PDF - Compact Text, Letter, Words of Christ Underlined': 'PDF - ಕಾಂಪ್ಯಾಕ್ಟ್ ಟೆಕ್ಸ್ಟ್, ಲೆಟರ್, ವರ್ಡ್ಸ್ ಆಫ್ ಕ್ರೈಸ್ಟ್ ಅಂಡರ್ಲೈನ್ ಮಾಡಲಾಗಿದೆ',
+    'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF - ಕಾಂಪ್ಯಾಕ್ಟ್ ಟೆಕ್ಸ್ಟ್, A4, ವರ್ಡ್ಸ್ ಆಫ್ ಕ್ರೈಸ್ಟ್ ಅಂಡರ್ಲೈನ್ಡ್',
 
     // Copy / Share / Link dialogs
     'Copy': 'ನಕಲು ಮಾಡಿ',

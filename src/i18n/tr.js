@@ -441,7 +441,7 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Bu, tüm geçmişi silecektir.',
     'This will delete all bookmarks.': 'Bu, tüm yer işaretlerini siler.',
-    'Move to Current': '',
+    'Move to Current': 'Mevcut duruma geç',
 
     'Bookmark': 'Yer imi',
     'Bookmarks': 'Yer imleri',

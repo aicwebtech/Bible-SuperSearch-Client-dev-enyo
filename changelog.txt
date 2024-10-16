@@ -1,32 +1,44 @@
 Bible SuperSearch Universal Client Changelog
 
-= 5.6.0.pre5
-* Added Language:
-    ** Punjabi
-    ** Urdu
-    ** Gujarati
+= 5.6.1
+** Replaced Arabic with fluent translation
+
+= 5.6.0
+* Added Languages:
+** Albanian
+** Arabic
+** Bengali
+** Burmese
+** Dutch/Flemish
+** Hausa
+** Hebrew (Modern)
+** Indonesian
+** Gujarti
+** Kannada
+** Korean
+** Marathi
+** Nepali
+** Persian
+** Polish
+** Punjabi
+** Somali
+** Swahili
+** Tagalog
+** Tajiki / Tajik (Bible only)
+** Tamil (Bible only)
+** Telugu (Bible only)
+** Tibetan
+** Turkish
+** Urdu
+** Uyghur
+** Vietnamese
+** Wolof
 
 * Quick start links now reflect what form fields appear on the given skin.
     ** On Minimal forms, “Romans, searched for faith no longer appears under Basic Searches.
     ** On Browsing with Book Selector forms, only the Passage Retrieval and Formatting sections appear.
 
-= 5.6.0.pre4
-* Added languages
-    ** Albanian
-    ** Korean
-    ** Hebrew
-    ** Persian
-
-= 5.6.0.pre3
 * Implemented RTL support for UI languages (we already supported this for Bibles)
-* Added languages
-    ** Swahili
-    ** Indonesian
-    ** Polish
-    ** Tagalog
-    ** Vietnamese
-    ** Dutch/Flemish
-    ** Arabic
 
 = 5.5.1 May 13, 2024
 

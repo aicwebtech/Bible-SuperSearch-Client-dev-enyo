@@ -98,8 +98,8 @@ module.exports = {
     'End Times Prophecy': 'अन्त टाइम्स भविष्यवाणी',
     
     // Shortcut Aliases
-    'OT': 'OT',//check translation
-    'NT': 'NT',//check translation
+    'OT': 'पु नि',
+    'NT': 'न नि',
     'Torah': 'टोराह',
     'Wisdom': 'बुद्धि',
     'Major': 'मेजर',
@@ -156,10 +156,10 @@ module.exports = {
     'Page': 'पृष्ठ',
     
     // Formatting and dialog buttons
-    'A': 'ए',     // First letter in given language
-    'Abc': 'Abc',//check translation  // First 3 letters in given language, with 1st capitalized
+    'A': 'क',     // First letter in given language
+    'Abc': 'कखग',  // First 3 letters in given language, with 1st capitalized
     'Serif' : 'सेरिफ',                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sans-Serif',//check translation                 // * Button text, please keep translation short!
+    'Sans-Serif': 'बिना सेरिफ',                 // * Button text, please keep translation short!
     'Monospace': 'मोनोस्पेस',                  // * Button text, please keep translation short!
     'Enlarge Text': 'पाठ विस्तार गर्नुहोस्',
     'Default Text Size': 'पूर्वनिर्धारित पाठ आकार',

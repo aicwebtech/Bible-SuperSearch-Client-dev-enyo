@@ -55,6 +55,22 @@
                 biblesupersearch_config_options.landingReference = null; // disable landing reference if testing
             <?php endif; ?>
 
+            // document.addEventListener('DOMContentLoaded', function() {
+            //     if(typeof QUnit != 'undefined') {
+
+            //         QUnit.on('runEnd', function(re) {
+
+            //             if(re.testCounts.failed == 0) {
+            //                 // :todo move to next skin if all tests passed ...
+
+            //                 alert('all passed');
+            //             } else {
+            //                 alert('u fail');
+            //             }
+            //         });
+            //     }
+            // });
+
         </script>
         <script src="biblesupersearch.js"></script>
         <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.21.0.css">
