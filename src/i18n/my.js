@@ -1,0 +1,803 @@
+module.exports = {
+    meta: {
+        // 2 or 3 character language code, lower-case, ie 'es'
+        // Note: This filename name must be [code].js ie 'es.js'
+        code: 'my',
+
+        // Native name of language (endonymn): ie 'Español'
+        name: 'ဗမာစာ',    
+
+        // English name of language, ie 'Spanish'
+        nameEn: 'Burmese / Myanmar',       
+
+        // Whether language is read Right-to-left
+        isRtl: false,           
+       
+        // true if done by person fluent in both English and this language, false if using translation software
+        isFluent: false,     
+
+        // Name of individulal or software used to translate
+        translatedBy: 'Google Translate', 
+        
+        // Email address of translator, if fluent (not software)
+        translatedEmail: null, 
+    },
+    
+    // The actual translation data
+
+    // Notes:
+    // * Please place the corresponding translation text between '' (single quotes) on each line below.
+    // * Please maintain capitalization and punctuation, if possible.
+    // * Any ' (single quote) in the translation MUST be preceded by a \ (backslash).
+
+    'Bible SuperSearch': 'သမ္မာကျမ်းစာစူပါရှာဖွေမှု',
+    'Loading, please wait': 'တင်နေသည်၊ ခဏစောင့်ပါ။',
+
+    // Search Forms
+    'Select Bible version(s)': 'သမ္မာကျမ်းစာဗားရှင်း(များ)ကို ရွေးပါ',
+    'Search': 'ရှာရန်',
+    'Search the Bible': 'သမ္မာကျမ်းစာကို ရှာဖွေပါ။',
+    'Go': 'သွားတော့',
+    'Bible Search': 'သမ္မာကျမ်းစာရှာဖွေမှု',
+    'Bible': 'ကျမ်းစာ',
+    'Whole Words Only': 'စကားလုံးများသာ',//check translation
+    'Whole words only': 'စကားလုံးတွေချည်းပဲ။',//check translation
+    'Whole words': 'စကားလုံး',//check translation
+    'Exact Case': 'ဖြစ်ရပ်မှန်',//check translation
+    'Parallel Bible #': 'မျဉ်းပြိုင်ကျမ်းစာ #',
+    'Select a Bible': 'သမ္မာကျမ်းစာကို ရွေးပါ။',//check translation
+    'Add Bible': 'သမ္မာကျမ်းစာထည့်ပါ။',//check translation
+    'Remove Bible': 'သမ္မာကျမ်းစာကို ဖယ်ရှားပါ။', 
+    'Random Chapter': 'ကျပန်းအခန်း',//check translation
+    'Random Verse': 'ကြုံသလို ပိုဒ်',
+    'Passages': 'Passages',//check translation
+    'Passage': 'Passage',//check translation
+    'The book of': '၏စာအုပ်',
+    'Look for': 'ကိုလိုက်ရှာနေသည်',
+    'Look up': 'ဦးမော့လာသည်',
+    'in': '၌',//check translation
+    'verse': 'ပိုဒ်',
+    'verses': 'အခန်းငယ်များ',
+    'A Chapter': 'အခန်းတစ်ခု',//check translation
+    'Chapters': 'အခန်းများ',//check translation
+    'Find verses containing': 'ပါဝင်သောအခန်းငယ်များကိုရှာပါ။',//check translation
+    'Restrict search to': 'ရှာဖွေမှုကို ကန့်သတ်ပါ။', 
+    'Word Search': 'စကားလုံးရှာဖွေမှု',
+    'Clear Form': 'ဖောင်ရှင်းပါ။', 
+    'Select Book and Chapter:' : 'စာအုပ်နှင့် အခန်းကို ရွေးပါ။', 
+
+    // Context Links
+    'Show full chapter': 'အခန်း အပြည့်အစုံကို ပြပါ။',
+    'Chapter': 'အခန်း',//check translation
+    'Show this verse': 'ဤကျမ်းပိုဒ်ကို ပြပါ။',
+    'Show in context': 'ဆက်စပ်ဖော်ပြပါ။',
+    'Context': 'စကားစပ်',
+    'In Context': 'စကားစပ်',
+
+    'Limit Search To': 'ရှာဖွေမှုကို ကန့်သတ်ပါ။',
+    'Limit search to': 'ရှာဖွေမှုကို ကန့်သတ်ပါ။', // Watch case!
+    'Entire Bible': 'သမ္မာကျမ်းစာတစ်ခုလုံး',
+    'Passage(s) listed below': 'အောက်တွင်ဖော်ပြထားသော လမ်းကြောင်း(များ)',//check translation
+    'Passage(s) listed above': 'အထက်ဖော်ပြပါ လမ်းကြောင်း(များ)',//check translation
+    
+    // Shortcuts
+    'Old Testament': 'ဓမ္မဟောင်း',
+    'New Testament': 'ဓမ္မသစ်',
+    'Law': 'ဥပဒေ',
+    'History Books': 'သမိုင်းစာအုပ်များ', // Can translate as 'History'
+    'History': 'သမိုင်း',
+    'Wisdom & Poetry': 'ပညာနှင့် ကဗျာ',
+    'Prophets Books': 'အနာဂတ္တိကျမ်းများ', // Can translate as 'Prophets'
+    'Prophets': 'အနာဂတ္တိကျမ်း',
+    'Major Prophets': 'အနာဂတ္တိဆရာကြီးများ',
+    'Minor Prophets': 'အသေးအမွှားအနာဂတ္တိ',
+    'Gospels': 'ခရစ်ဝင်ကျမ်းများ',
+    'Epistles': 'ဝက်ဝံများ',
+    'Pauline Epistles': 'ပေါလု၏စာတို',//check translation
+    'General Epistles': 'အထွေထွေစာတိုများ',
+    'End Times Prophecy': 'အဆုံးအချိန်များ ပရောဖက်ပြုချက်',
+    
+    // Shortcut Aliases
+    'OT': 'ဓမ္မဟောင်း',
+    'NT': 'ဓမ္မသစ်',
+    'Torah': 'တိုရာ',
+    'Wisdom': 'ဉာဏ်ပညာ',
+    'Major': 'မေဂျာ',
+    'Minor': 'အသေးအဖွဲ',//check translation
+    'Passion': 'ကိလေသာ',
+    'Doctrine': 'အယူဝါဒ',
+    'Paul': 'ပေါလု',
+    'General': 'အထွေထွေ',
+    'Last Days': 'နောက်ဆုံးရက်များ',//check translation
+
+    'Look up Passage(s)': 'လမ်းကြောင်း(များ)ကို ရှာပါ',//check translation
+    'Enter passage(s)' : 'စာပိုဒ်(များ) ထည့်ပါ',//check translation
+    'Enter word(s), phrase(s) or expression(s)' : 'စကားလုံးများ)၊ စကားစုများ) သို့မဟုတ် အသုံးအနှုန်းများကို ထည့်ပါ)',
+    'Example': 'ဥပမာ',//check translation
+
+    'Search for' : 'အားရှာဖွေခြင်း',
+    'Match': 'တစ်ပွဲ',//check translation
+    'All Words': 'စကားအားလုံး',
+    'Any Word': 'မည်သည့်စကားလုံး',
+    'Exact Phrase': 'စကားစု အတိအကျ',
+    'Only One Word': 'တစ်ခုတည်းသောစကား',
+    'Two or More Words': 'စကားလုံးနှစ်လုံး သို့မဟုတ် ထို့ထက်ပိုသည်။',
+    'Words Within 5 Verses': '5 ပိုဒ်အတွင်းစကားလုံးများ',//check translation
+    'Words Within Same Chapter': 'တူညီသောအခန်းအတွင်းမှစကားလုံးများ',
+    'Words Within Same Book': 'တူညီသောစာအုပ်အတွင်းမှစကားလုံးများ',
+    'Boolean Expression': 'ဘူလီယံ စကားရပ်',
+    'Regular Expression': 'ပုံမှန်ဖော်ပြချက်',
+    'Select one ...' : 'တစ်ခုရွေးပါ...',
+
+    'Enter search keyword(s) or passage reference(s)': 'ရှာဖွေမှုသော့ချက်စာလုံး(များ) သို့မဟုတ် စာပိုဒ်ကိုးကား(များ) ထည့်ပါ',//check translation
+    'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'အကြံပြုချက်- စာပိုဒ်တစ်ပိုဒ်နှင့် ရှာဖွေမှုနှစ်ခုစလုံးကို ထည့်သွင်းခြင်းသည် သတ်မှတ်ထားသော စာပိုဒ်(များ)သို့ ရှာဖွေမှုအား ကန့်သတ်ချက် ဖြစ်စေသည်။',
+    
+    // Advanced Search
+    'Boolean Search': 'ဘူလီယံ ရှာရန်',
+    'Passage Retrieval': 'လမ်းကြောင်းပြန်လည်ရယူခြင်း။',//check translation
+    'Find words within': 'အတွင်းစကားလုံးများကိုရှာပါ။',//check transaltion
+    'Proximity Search': 'အနီးနားရှာဖွေမှု',//check translation
+    'Power Search': 'ပါဝါရှာဖွေမှု',//check translation
+
+    // <b> ... </b> is HTML for bold text, please ensure that your translation maintains the bold
+    '<b>All</b> of the words' : 'စကားလုံးများ၏ <b>အားလုံး</b>',
+    '<b>Any</b> of the words' : 'စကားလုံးများ၏ <b>မည်သည့်</b>',
+    '<b>Only one</b> of the words': 'စကားလုံးများ၏ <b>တစ်ခုသာ</b>',
+    '<b>None</b> of the words' : 'စကားလုံးများ၏ <b>မရှိ</b>',//check translation
+    'The <b>exact phrase</b>': '<b>တိကျသောစကားစု</b>',
+
+    'Bible #': 'သမ္မာကျမ်းစာ #', // downloads
+
+    // Pagination
+    'Next Page' : 'နောက်စာမျက်နှာ',
+    'Previous Page' : 'ယခင်စာမျက်နှာ',
+    'First Page' : 'ပထမစာမျက်နှာ',
+    'Last Page': 'နောက်ဆုံးစာမျက်နှာ',
+    'Page': 'စာမျက်နှာ',
+    
+    // Formatting and dialog buttons
+    'A': 'တစ်',//check translation     // First letter in given language
+    'Abc': 'တစ်ခဂ',//check translation  // First 3 letters in given language, with 1st capitalized
+    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif',//check translation                // * Button text, please keep translation short!
+    'Monospace': 'မိုနိုစပေ့',                  // * Button text, please keep translation short!
+    'Enlarge Text': 'စာသားကိုချဲ့ပါ။',
+    'Default Text Size': 'မူရင်းစာသားအရွယ်အစား',
+    'Shrink Text': 'စာသားကို လျှော့ပါ။',
+    'Verse Display': 'အခန်းငယ်ပြကွက်',//check translation
+    'Paragraph Display': 'စာပိုဒ်ပြသခြင်း။',//
+    'Passage Display': 'လမ်းကြောင်းပြကွက်', 
+    'Verse as Passage Display': 'Passage Display အဖြစ် အခန်းငယ်',//check translation 
+    'EZ Copy': 'အလွယ်ကူးယူပါ။',  // 'Easy Copy'//check translation
+    'Read Display': 'Display ကိုဖတ်ပါ။',//check translation
+    'Italics': 'စာလုံးစောင်း',                    // * Button text, please keep translation short!
+    'Disable Italization of Added Words' : 'Added Words ၏ Italization ကို ပိတ်ပါ။',//check translation
+    'Enable Italization of Added Words': 'Added Words ၏ Italization ကိုဖွင့်ပါ။',//check translation
+    'Disable Strong\'s Numbers': 'ညီညွတ်သောနံပါတ်များကို ပိတ်ပါ။',
+    'Enable Strong\'s Numbers': 'ကိုက်ညီသောနံပါတ်များကိုဖွင့်ပါ။',
+    'Red Letter': 'အနီရောင်စာ',//check translation
+    'Disable Red Letter': 'အနီရောင်စာလုံးကို ပိတ်ပါ။',
+    'Enable Red Letter': 'အနီရောင်စာလုံးကိုဖွင့်ပါ။',//check translation
+    'Highlight': 'အသားပေး',//check translation                   // * Button text, please keep translation short!
+    'Disable Highlighting of Keywords': 'သော့ချက်စာလုံးများကို အသားပေးဖော်ပြခြင်းကို ပိတ်ပါ။',
+    'Enable Highlighting of Keywords': 'သော့ချက်စာလုံးများကို အသားပေးဖော်ပြခြင်းကို ဖွင့်ပါ။',
+    'Print': 'ညောင်ပင်',//check translation
+    'Printer Friendly': 'ပရင်တာ အဆင်ပြေတယ်။',//check translation
+    'Help': 'ကူညီကြပါ',
+    'Basic': 'အခြေခံ',
+    'Advanced': 'အဆင့်မြင့်သည်။',
+
+    // Descriptions of special formatting features
+    'Formatting': 'ပုံစံချခြင်း။',//check translation  
+    'Supported Bibles Only': 'ပံ့ပိုးထားသော သမ္မာကျမ်းစာများသာ', 
+    
+    // Translate the right-side strings here
+    'strongs_numbers_description': 'Strong\'s Concordance Numbers indicate the underlying Hebrew or Greek words.',//check translation  
+    'italics_description': 'မူရင်းဘာသာစကားတွင်မဟုတ်သော ဘာသာပြန်ရာတွင် ထည့်သွင်းထားသော စာလုံးစောင်းများကို ညွှန်ပြသည်။',  
+    'red_letter_description': 'အနီရောင်ဖြင့် ခရစ်တော်၏ နှုတ်ကပတ်တော်များ။',
+    'highlight_description': 'ရှာဖွေမှုများတွင် အဓိကစကားလုံးများ၏ (ရဲရင့်မှု) ကို မီးမောင်းထိုးပြခြင်း။', 
+
+
+    // Verse Cherry-picking
+    'Select All': 'အားလုံးကို ရွေးပါ။', 
+    'Select None': 'ရွေးချယ်ပါ။ တစ်ခုမှ', 
+    'Select': 'ရွေးချယ်ပါ။', 
+    'Unselect': 'ရွေးဖြုတ်ပါ။', 
+    
+    // Copy format options
+    'Copy Format': 'ဖော်မတ်ကို ကူးယူပါ။', 
+    'Word Processor': 'စကားလုံး ပရိုဆက်ဆာ', 
+    'Outline' : 'ကောက်ကြောင်း', 
+    'Custom': 'စိတ်ကြိုက်', 
+
+    'Single Verses': '',//check translation
+    'Reference - Text': 'ကိုးကား - စာသား', 
+    'Text - Reference': 'စာသား - အကိုးအကား', 
+    'Text Only': 'စာသားသက်သက်', 
+    'Separate Line': 'သီးခြားလိုင်း', 
+
+    'Multi-verse Passages': '',//check translation 
+    'Reference - Passage': '',//check translation 
+    'Passage - Reference': '',//check translation 
+    'Passage Only': '',//check translation 
+    'Show Verse Number': 'အခန်းငယ်နံပါတ်ကိုပြပါ။', 
+
+    'Other': 'တခြား', 
+    'Abbreviate Books': 'အတိုကောက်စာအုပ်များ',//check translation
+    'Include Testament': 'ဓမ္မစာရီ ပါ၀င်သည်',//check translation // v5.6.0
+    'Testament': 'သေတမ်းစာ', // v5.6.0
+    'Omit Extra Line Breaks': 'အပိုလိုင်းခွဲမှုများကို ချန်လှပ်ထားပါ။', 
+
+    // Settings Dialog
+    'Settings' : 'ဆက်တင်များ', 
+    'Language' : 'ဘာသာစကား', 
+    'Text Display': 'စာသားပြသမှု', 
+    'Font Style': 'ဖောင့်ပုံစံ', 
+
+    // Result and error messages
+    
+    // Your search produced (number of verses) results
+    'Your search produced' : 'မင်းရဲ့ရှာဖွေမှုကို ထုတ်ပေးတယ်။',//check translation 
+    // (total number of verses)
+    'results' : 'ရလဒ်များ',
+    
+    // Showing results [1] to [30]
+    'Showing Results': 'ရလဒ်များကိုပြသသည်။',
+    'to' : 'ရန်',//check translation
+    
+    // Your search produced no results in [name of Bible version]
+    'Your search produced no results in': 'သင့်ရှာဖွေမှုတွင် ရလဒ်များထွက်မလာပါ။', 
+    'However, verses from this Bible have been included for comparison.': 'သို့ရာတွင်၊ ဤကျမ်းစာမှအခန်းငယ်များကို နှိုင်းယှဉ်ရန်အတွက် ထည့်သွင်းထားပါသည်။',
+    
+    // Operators such as [boolean operator] cannot be at the (beginning|end) of your search
+    'Operators such as': 'အစရှိတဲ့ အော်ပရေတာများ၊',
+    'cannot be at the beginning of your search.': 'သင့်ရှာဖွေမှု၏အစတွင် မဖြစ်နိုင်ပါ။',//check translation
+    'cannot be at the end of your search.': 'သင်၏ရှာဖွေမှု၏အဆုံးတွင် မဖြစ်နိုင်ပါ။',//check translation
+    'Please remove it, or use it\'s lower case equivalent.': '၎င်းကို ဖယ်ရှားပါ၊ သို့မဟုတ် ၎င်းနှင့်ညီမျှသော စာလုံးအသေးကို အသုံးပြုပါ။',
+
+    // Your search for [attempted keywords] is invalid...
+    'Your search for': 'သင်၏ရှာဖွေမှု',//check translation
+    'is invalid, and appears to be a passage reference.': 'မမှန်ပါ၊ ကျမ်းပိုဒ်ကိုးကားပုံပေါ်သည်။',//check translation
+    'is invalid.': 'မမှန်ပါ။',//check translation
+
+    // Your search was limited to [number of] verses
+    'Your search was limited to': 'သင်၏ရှာဖွေမှုကို ကန့်သတ်ထားသည်။',//check translation
+    'Please refine your search if necessary': 'လိုအပ်ပါက သင်၏ရှာဖွေမှုကို ပြန်လည်ပြင်ဆင်ပါ။',
+
+    'This Bible is in the Public Domain.': 'ဤကျမ်းစာသည် အများသူငှာ ဒိုမိန်းတွင်ဖြစ်သည်။',//check translation
+    'This Bible is provided for research purposes only.': 'ဤကျမ်းစာသည် သုတေသနပြုလုပ်ရန်သာ ရည်ရွယ်ပါသည်။',//check translation
+    'An unknown error has occurred.' : 'အမည်မသိ အမှားတစ်ခု ဖြစ်ပွားခဲ့သည်။',
+    'An error has occurred, please try again later.': 'အမှားဖြစ်သွားသည်၊ ကျေးဇူးပြု၍ နောက်မှ ထပ်ကြိုးစားပါ။',
+    'Error' : 'အမှား',
+    'Success': 'အောင်မြင်မှု',
+    'Cache not found': 'ကက်ရှ် ရှာမတွေ့ပါ။',
+    'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'မေးမြန်းမှု စည်းကမ်းချက်များ ပေးမထားပါ။ ကျေးဇူးပြု၍ ရှာဖွေမှု စကားလုံး(များ) နှင့်/သို့မဟုတ် စာပိုဒ် ကိုးကား(များ) ကို သတ်မှတ်ပါ။',//check translation
+    'Your search produced no results.' : 'သင်၏ရှာဖွေမှုရလဒ်များ မထုတ်ပေးပါ။',
+    'Maximum hits has been reached for today for this domain / IP address': 'ဤဒိုမိန်း / IP လိပ်စာအတွက် ယနေ့အတွက် အများဆုံး hit များရောက်ရှိသွားပါပြီ။',
+    'No Bibles are enabled. Please contact site administrator.': 'သမ္မာကျမ်းစာများကို ဖွင့်ထားခြင်းမရှိပါ။ ကျေးဇူးပြု၍ ဆိုက်စီမံခန့်ခွဲသူကို ဆက်သွယ်ပါ။',//check translation
+    'Cannot retrieve multiple books at once.': 'စာအုပ်များစွာကို တစ်ပြိုင်နက် ထုတ်ယူ၍မရပါ။',//check translation
+    'Bible text not found': 'ကျမ်းစာစာသားကို ရှာမတွေ့ပါ။',
+    'Invalid book in book range': 'စာအုပ်အပိုင်းအခြားရှိ စာအုပ်မမှန်ကန်ပါ။',
+    'Book not found': 'စာအုပ်မတွေ့ပါ။',
+    'Your parentheses are mismatched.': 'သင့်ကွင်းစဥ်များ မကိုက်ညီပါ။',//check translation
+    'Your parentheses are mismatched, or you have a proximity operator inside of parentheses.': 'သင့်ကွင်းစဥ်များ မကိုက်ညီပါ သို့မဟုတ် သင့်တွင် ကွင်းအတွင်း အနီးနားအော်ပရေတာတစ်ခု ရှိသည်။',
+    'Proximity operators such as PROX and CHAP can only be used with boolean searches' : 'PROX နှင့် CHAP ကဲ့သို့သော အနီးနားအော်ပရေတာများကို boolean ရှာဖွေမှုများတွင်သာ အသုံးပြုနိုင်ပါသည်။',
+    'Note: PROX / CHAP operators cannot be enclosed within parentheses or brackets': ''//check translation,
+    'Your access to this API has been revoked.  Please contact system administrator.': 'ဤ API သို့ သင်၏ဝင်ရောက်ခွင့်ကို ရုပ်သိမ်းလိုက်ပါပြီ။ စနစ်စီမံခန့်ခွဲသူကို ဆက်သွယ်ပါ။',
+
+    // Dialogs - general
+    'Close': 'ပိတ်လိုက်', 
+
+    // Bible SOS dialog
+    'Bible SOS': 'ကျမ်းစာအရေးပေါ်',
+    'Emergency Help from the Bible': 'သမ္မာကျမ်းစာမှ အရေးပေါ်အကူအညီ',
+    'Where to go When ...': 'ဘယ်အချိန်သွားရမလဲ...',//check translation
+    'Afraid': 'ကြောက်တယ်။',
+    'Anxious': 'စိတ်စောတယ်။',
+    'Backsliding': 'ဖောက်ပြန်',//check translation
+    'Bereaved': 'ကျန်ရစ်သူ',//check translation
+    'Bitter or Critical': 'ခါးသီးသော သို့မဟုတ် ဝေဖန်ပိုင်းခြားနိုင်သည်။',//check translation
+    'Conscious of Sin': 'အပြစ်ကို သတိထားပါ။',//check translation
+    'Defeated': 'ရှုံးတယ်။',//check translation
+    'Depressed': 'စိတ်ဓာတ်ကျတယ်။', 
+    'Disaster Threatens': 'ဘေးအန္တရာယ် ခြိမ်းခြောက်မှု',
+    'Discouraged': 'စိတ်ဓာတ်ကျတယ်။',//check translation
+    'Doubting': 'သံသယဖြစ်ခြင်း။',//check translation
+    'Facing a Crisis': 'အကြပ်အတည်းတစ်ခုရင်ဆိုင်ပါ။',
+    'Faith Fails': 'ယုံကြည်ခြင်း ပျက်ကွက်ခြင်း။',
+    'Friends Fail': 'သူငယ်ချင်း သစ္စာဖောက်', 
+    'Hopeless': 'မျှော်လင့်ချက်မဲ့',
+    'Leaving Home': 'အိမ်မှ ထွက်ခွာခြင်း။',
+    'Lonely': 'နယ်မှာ',//check translation
+    'Needing God\'s protection': 'ဘုရားသခင်ရဲ့ အကာအကွယ်ကို လိုအပ်တယ်။',
+    'Needing Guidance': 'လမ်းညွှန်မှုလိုတယ်။',
+    'Needing Peace': 'ငြိမ်းချမ်းရေးလိုတယ်။',
+    'Needing Rules for Living': 'နေထိုင်ရန် စည်းကမ်းများ လိုအပ်သည်။',//check translation
+    'Overcome': 'ကျော်လွှားပါ။',
+    'Prayerful': 'ဆုတောင်းပြည့်',//check translations
+    'Protected': 'ကာကွယ်ထားသည်။',
+    'Sick or in Pain': 'ဖျားနာခြင်း သို့မဟုတ် နာကျင်ခြင်း။',
+    'Sorrowful': 'ဝမ်းနည်းစရာ',
+    'Tempted': 'စုံစမ်းပါ။',//cherck translation
+    'Thankful': 'ကျေးဇူးသိတတ်၏။',//check translation
+    'Traveling': 'ခရီးသွားခြင်း။',
+    'Trouble, In': 'ဒုက္ခ၊ In',
+    'Troubled': 'ဒုက္ခ',//check translation
+    'Weary': 'ပင်ပန်းသည်။',//check translation
+    'Worried': 'စိတ်ပူတယ်။',
+
+    // Bible Start dialog
+    'Start': 'စတင်ပါ။',
+    'Bible Start Guide': 'သမ္မာကျမ်းစာစတင်လမ်းညွှန်',
+    'New to the Bible?': 'သမ္မာကျမ်းစာအတွက် အသစ်လား။',
+    'Not Sure Where to Begin?' : 'ဘယ်မှာစရမယ်ဆိုတာ မသေချာဘူး။',
+    'Life and Teachings of Jesus Christ': 'ယေရှုခရစ်၏ အသက်တာနှင့် သွန်သင်ချက်များ',
+    'Basic Christian Beliefs': 'အခြေခံခရစ်ယာန်ယုံကြည်ချက်များ',
+    'Creation and the Fall of Man': 'ဖန်ဆင်းခြင်းနှင့် လူသား၏ကျဆုံးခြင်း',
+    'Birth of Christ / Life of Christ': 'ခရစ်တော်မွေးဖွားခြင်း / ခရစ်တော်၏အသက်',
+    'Imperfection in Churches and Believers': 'အသင်းတော်များနှင့် ယုံကြည်သူများ၌ မစုံလင်မှု',
+    'Early human history, especially that of Israel': 'အစောပိုင်း လူ့သမိုင်း၊ အထူးသဖြင့် အစ္စရေးနိုင်ငံ',
+    'The relationship between the Old Testament Law and the Church': 'ဓမ္မဟောင်းဥပဒေနှင့် အသင်းတော်ကြား ဆက်ဆံရေး',
+    'History and Law': 'သမိုင်းနှင့်ဥပဒေ',
+    'Salvation by faith, not works': 'အကျင့်အားဖြင့်မဟုတ်ဘဲ ယုံကြည်ခြင်းအားဖြင့် ကယ်တင်ခြင်းဖြစ်သည်။',
+    'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'ခရစ်ယာန်အသက်တာနှင့် အတွေ့အကြုံ။ &nbsp;တမန်တော်ပေါလုသည် ခရစ်တော်နောက်လိုက်ရန် OT ဥပဒေအောက်တွင် အထောက်အထားများကို စွန့်လွှတ်ခဲ့သည်။',
+    'Christ the suffering servant': 'ဆင်းရဲဒုက္ခခံကျွန် ခရစ်တော်',
+    'Christ\'s crucifixion foretold': 'ခရစ်တော်၏ ကားစင်တင်သတ်ခြင်းကို ကြိုဟောထားသည်။',//check translation
+
+    // Bible downloads dialog
+    'Download': 'ဒေါင်းလုဒ်လုပ်ပါ။',
+    'Bible Downloads': 'သမ္မာကျမ်းစာ ဒေါင်းလုဒ်များ',
+    'Select Bible(s)' : 'သမ္မာကျမ်းစာ(များ)ကို ရွေးပါ',
+    'Select a Format': 'Format တစ်ခုကို ရွေးပါ။',//check translation
+    'Rendering': 'ပုံဖေါ်ခြင်း။',
+    'Rendering Bibles, this may take some time': 'သမ္မာကျမ်းစာကို ပြန်ဆိုခြင်းမှာ အချိန်အနည်းငယ်ကြာနိုင်သည်။',//check transaltion
+    'Rendering is Complete': 'Rendering ပြီးပါပြီ။',//check translation
+    'Your download should begin shortly': 'သင်၏ဒေါင်းလုဒ်ကို မကြာမီစတင်သင့်သည်။',
+    'If not, please click on the below link': 'အဆင်မပြေပါက အောက်ပါ link ကိုနှိပ်ပါ။',//check translation
+    'Manual Download': 'ကိုယ်တိုင်ဒေါင်းလုဒ်လုပ်ပါ။',
+    'Please select at least one Bible': 'အနည်းဆုံး သမ္မာကျမ်းစာတစ်အုပ်ကို ရွေးပါ။',
+    'Please select a format': 'ကျေးဇူးပြု၍ ဖော်မတ်တစ်ခုကို ရွေးပါ။',
+    'Are you sure you want to exit?  This will end the current download.': 'ထွက်လိုသည်မှာ သေချာပါသလား။ ၎င်းသည် လက်ရှိဒေါင်းလုဒ်ကို အဆုံးသတ်ပါမည်။',
+    'Plain Text' : 'ရိုးရိုးစာသား',
+    'Machine-readable Plain Text' : 'စက်ဖြင့်ဖတ်နိုင်သော ရိုးရိုးစာသား',
+    'Spreadsheet' : 'စာရင်းဇယား',//check translation
+    'Databases': 'ဒီထဲမှာ',//check translation
+
+    'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF - ကျစ်ကျစ်လစ်လစ် စာသား၊ ပေးစာ၊ အနီရောင်ဖြင့် ခရစ်တော်၏ နှုတ်ကပတ်တော်များ',//check translation
+    'PDF - Compact Text, A4, Words of Christ in Red': 'PDF - သေးငယ်သောစာသား၊ A4၊ အနီရောင်ဖြင့်ခရစ်တော်၏စကားလုံးများ',
+    'PDF - Compact Text, Letter, Words of Christ Underlined': 'PDF - သေးငယ်သော စာသား၊ ပေးစာ၊ ခရစ်တော်၏ နှုတ်ကပတ်တော်များကို မျဉ်းသားထားသည်။',
+    'PDF - Compact Text, A4, Words of Christ Underlined': 'PDF - သေးငယ်သောစာသား၊ A4၊ ခရစ်တော်၏စကားလုံးများကို မျဉ်းသားထားသည်။',
+
+    // Copy / Share / Link dialogs
+    'Copy': 'ကော်ပီ',
+    'Copy Link': 'လင့်ခ်ကို ကူးယူပါ။',
+    'Copy with Text': 'စာသားဖြင့်ကူးယူပါ။',
+    'Share Link': 'လင့်ခ်ကို မျှဝေပါ။',
+    'Share' : 'မျှဝေပါ။',
+    'Link' : 'လင့်', 
+    'Copied to clipboard': 'ကလစ်ဘုတ်သို့ ကူးယူထားသည်။', 
+    'Failed to copy': 'ကူးယူ၍မရပါ။', 
+
+    // Quick Start Help Dialog
+    'Quick Start Guide': 'အမြန်စတင်လမ်းညွှန်',
+    'User\'s Manual': 'အသုံးပြုသူ၏လက်စွဲ',
+    'Wildcard': 'သင်္ကေတ',//check translation
+    'Basic Searches' : 'အခြေခံရှာဖွေမှုများ',
+    'Advanced Searches using Boolean': 'Boolean ကို အသုံးပြု၍ အဆင့်မြင့်ရှာဖွေမှုများ',//check translation
+    'Select' : 'ရွေးချယ်ပါ။',
+    'Operators': 'လုပ်ငန်းရှင်များ',//check translation
+    'Operator': 'အော်',//check translation
+    'Aliases': 'နာမည်များ',//check translation
+    'Description': 'ဖော်ပြချက်',
+    'Match both': 'နှစ်ခုစလုံးကို ယှဉ်ပါ။',//check translation
+    'Match either': 'ယှဉ်၍သော်လည်းကောင်း၊',//check translation
+    'Match only one': 'တစ်ပွဲသာ',//check translation
+    'Does not match': 'မကိုက်ညီဘူး။',
+    'Matches words in the same chapter': 'တူညီသောအခန်းရှိ စကားလုံးများကို တူညီသည်။',
+    'Matches words in the same book': 'တစ်အုပ်တည်းရှိ စကားလုံးများနှင့် ကိုက်ညီသည်။',//check translation
+    'Matches words in the same book, and within N verses of each other': 'တူညီသောစာအုပ်တစ်အုပ်ရှိ စကားလုံးများနှင့် N အခန်းငယ်တစ်ခုစီအတွင်း တူညီသည်။',//check translation
+    'Matches words in the same chapter, and within N verses of each other': 'တူညီသောအခန်းရှိ စကားလုံးများနှင့် N အခန်းငယ်တစ်ခုစီအတွင်း တူညီသည်။',//check translation
+    'For details, please see the User\'s Manual': 'အသေးစိတ်အတွက်၊ အသုံးပြုသူ၏လက်စွဲကို ကြည့်ပါ။',
+    'Special Proximity Operators': 'အထူးအနီးကပ်အော်ပရေတာများ',
+    'Matches unlimited characters': 'အကန့်အသတ်မရှိ ဇာတ်ကောင်များနှင့် ကိုက်ညီသည်။',
+    'searched for': 'ရှာဖွေခဲ့သည်။',//check translation
+
+    // Keywords for sample searches
+    'Jesus': 'ယေရှု',
+    'Christ': 'ခရစ်တော်',
+    'Lord': 'သခင်',
+    'faith': 'ယုံကြည်ခြင်း',
+    'hope': 'မျှော်လင့်ချက်',
+    'joy': 'ပျော်ရွှင်မှု',
+    'preserved' : 'ထိန်းသိမ်းထားသည်။',
+    'preserve' : 'ထိန်းသိမ်းပါ။',
+    'stand' : 'ရပ်ပါ။',//check translation
+    'word': 'စကားလုံး',
+    'words': 'စကားလုံးများ',
+    'truth': 'အမှန်တရား',
+
+    // Searching across language
+
+    // Parallel search multi language error messages
+    'You cannot search across Bibles of different languages.': 'ဘာသာစကားအမျိုးမျိုးရှိသော သမ္မာကျမ်းစာများကို သင်ရှာဖွေ၍မရပါ။',//check translation
+    'You cannot search across Bibles of different languages with the selected search type.' : 'ရွေးချယ်ထားသော ရှာဖွေမှုအမျိုးအစားဖြင့် မတူညီသောဘာသာစကားများ၏ သမ္မာကျမ်းစာများကို သင်ရှာဖွေ၍မရနိုင်ပါ။',
+
+    // General dialogs
+    'Name': 'နာမည်',//check translation
+    'Save': 'သိမ်းဆည်းပါ။',
+    'Cancel': 'မလုပ်တော့',//check translation
+    'Edit': 'တည်းဖြတ်ပါ။',
+    'Delete': 'ဖျက်ပါ။',
+    'Clear': 'ရှင်းပါတယ်။',//check translation
+    'Restore': 'ပြန်ယူပါ။',//check translation
+    'Add': 'ထည့်ပါ။',
+    'Okay': 'ဟုတ်ပြီ',//check translation
+    'Old': 'အဟောင်း',
+    'New': 'အသစ်',
+
+    'Are you sure?': 'သေချာလား?',
+    'Are you sure you want to delete': 'you want to delete',
+
+    // Bookmarks/History
+    'This will delete all history.': '၎င်းသည် မှတ်တမ်းအားလုံးကို ဖျက်ပါမည်။',
+    'This will delete all bookmarks.': '၎င်းသည် စာညှပ်များအားလုံးကို ဖျက်ပါမည်။',
+    'Move to Current': 'လက်ရှိသို့ ရွှေ့ပါ။',//check translation
+
+    'Bookmark': 'ညှပ်',//check translation
+    'Bookmarks': 'ညှပ်',//check translation
+
+    'Please delete some bookmarks before adding more.': 'နောက်ထပ်မထည့်မီ စာညှပ်အချို့ကို ဖျက်ပါ။',
+    'This bookmark name already exists.': 'ဤစာညှပ်အမည် ရှိနှင့်ပြီးဖြစ်သည်။',
+
+    // Quick start dialog: Limiting searches
+    'Limiting Searches': 'ရှာဖွေမှုများကို ကန့်သတ်ခြင်း။',
+    'Passages': 'လမ်းကြောင်းများ',//check translation
+    'Alias': 'နာမည်များ',//check translation
+    'You cannot search for these common words': 'ဤအသုံးများသောစကားလုံးများကို သင်ရှာဖွေ၍မရပါ။',
+
+
+
+    // Bible Books
+    // For each book in the list below, please specify the (full) name.  Please also provide short name if known.
+    // The short name should be the most common abbreviation of the book name in the given language.
+    //
+    // NOTE: If you are using translation software, please first Google for book lists already translated into the given language.
+    // REASON: If we can find the book list already translated, it's probably a better translation than what the software would do.
+    // Hint: You can often find these on the leading Bible website gateway when looking for Bibles in the given language.
+    // Under avaliable versions, just search for the language, select one of the Bibles that shows up, and copy the Book names.
+    //
+    // If you cannot find a pre-translated list of the books, then and only then use the translation software to translate them.
+
+    'bibleBooks': [
+        {
+          "id": 1,
+          "name": "ကမ္ဘာဦးကျမ်း",
+          "shortname": ""
+        },
+        {
+          "id": 2,
+          "name": "ထွက်မြောက်ရာကျမ်း။",
+          "shortname": ""
+        },
+        {
+          "id": 3,
+          "name": "ဝတ်ပြုရာကျမ်း",
+          "shortname": ""
+        },
+        {
+          "id": 4,
+          "name": "တောလည်ရာကျမ်း",
+          "shortname": ""
+        },
+        {
+          "id": 5,
+          "name": "တရားဟောရာကျမ်း",
+          "shortname": ""
+        },
+        {
+          "id": 6,
+          "name": "ယောရှုမှတ်စာ။",
+          "shortname": ""
+        },
+        {
+          "id": 7,
+          "name": "တရားသူကြီးမှတ်စာ",
+          "shortname": ""
+        },
+        {
+          "id": 8,
+          "name": "ရုသဝတ္ထု။",
+          "shortname": ""
+        },
+        {
+          "id": 9,
+          "name": "ဓမ္မရာဇဝင်ပဋ္ဌမစောင်",
+          "shortname": ""
+        },
+        {
+          "id": 10,
+          "name": "ဓမ္မရာဇဝင်ဒုတိယစောင်။",
+          "shortname": ""
+        },
+        {
+          "id": 11,
+          "name": "ဓမ္မရာဇဝင်တတိယစောင်။",
+          "shortname": ""
+        },
+        {
+          "id": 12,
+          "name": "ဓမ္မရာဇဝင်စတုတ္ထစောင်။",
+          "shortname": ""
+        },
+        {
+          "id": 13,
+          "name": "ရာဇဝင်ချုပ်ပဌမစောင်။",
+          "shortname": ""
+        },
+        {
+          "id": 14,
+          "name": "ရာဇဝင်ချုပ်ဒုတိယစောင်။",
+          "shortname": ""
+        },
+        {
+          "id": 15,
+          "name": "ဧဇရမှတ်စာ။",
+          "shortname": ""
+        },
+        {
+          "id": 16,
+          "name": "နေဟမိမှတ်စာ။",
+          "shortname": ""
+        },
+        {
+          "id": 17,
+          "name": "ဧသတာဝတ္ထု။",
+          "shortname": ""
+        },
+        {
+          "id": 18,
+          "name": "ယောဘဝတ္ထု။",
+          "shortname": ""
+        },
+        {
+          "id": 19,
+          "name": "ဆာလံကျမ်း",
+          "shortname": ""
+        },
+        {
+          "id": 20,
+          "name": "သုတ္တံကျမ်း။",
+          "shortname": ""
+        },
+        {
+          "id": 21,
+          "name": "ဒေသနာကျမ်း။",
+          "shortname": ""
+        },
+        {
+          "id": 22,
+          "name": "ရှောလမုန်သီချင်း။",
+          "shortname": ""
+        },
+        {
+          "id": 23,
+          "name": "ဟေရှာယအနာဂတ္တိကျမ်း။",
+          "shortname": ""
+        },
+        {
+          "id": 24,
+          "name": "ယေရမိအနာဂတ္တိကျမ်း။",
+          "shortname": ""
+        },
+        {
+          "id": 25,
+          "name": "ယေရမိမြည်တမ်းစကား။",
+          "shortname": ""
+        },
+        {
+          "id": 26,
+          "name": "ယေဇကျေလအနာဂတ္တိကျမ်း။ ၁",
+          "shortname": ""
+        },
+        {
+          "id": 27,
+          "name": "ဒံယေလအနာဂတ္တိကျမ်း။",
+          "shortname": ""
+        },
+        {
+          "id": 28,
+          "name": "ဟောရှေအနာဂတ္တိကျမ်း",
+          "shortname": ""
+        },
+        {
+          "id": 29,
+          "name": "ယောလအနာဂတ္တိကျမ်း။",
+          "shortname": ""
+        },
+        {
+          "id": 30,
+          "name": "အာမုတ်အနာဂတ္တိကျမ်း။",
+          "shortname": ""
+        },
+        {
+          "id": 31,
+          "name": "ဩဗဒိဗျာဒိတ်ရူပါရုံ",
+          "shortname": ""
+        },
+        {
+          "id": 32,
+          "name": "ယောနဝတ္ထု၊",
+          "shortname": ""
+        },
+        {
+          "id": 33,
+          "name": "မိက္ခာအနာဂတ္တိကျမ်း။",
+          "shortname": ""
+        },
+        {
+          "id": 34,
+          "name": "နာဟုံအနာဂတ္တိကျမ်း",
+          "shortname": ""
+        },
+        {
+          "id": 35,
+          "name": "ဟဗက္ကုတ်အနာဂတ္တိကျမ်း",
+          "shortname": ""
+        },
+        {
+          "id": 36,
+          "name": "ဇေဖနိအနာဂတ္တိကျမ်း",
+          "shortname": ""
+        },
+        {
+          "id": 37,
+          "name": "ဟဂ္ဂဲအနာဂတ္တိကျမ်း",
+          "shortname": ""
+        },
+        {
+          "id": 38,
+          "name": "ဇာခရိအနာဂတ္တိကျမ်း",
+          "shortname": ""
+        },
+        {
+          "id": 39,
+          "name": "မာလခိအနာဂတ္တိကျမ်း",
+          "shortname": ""
+        },
+        {
+          "id": 40,
+          "name": "ရှင်မဿဲခရစ်ဝင်။",
+          "shortname": ""
+        },
+        {
+          "id": 41,
+          "name": "ရှင်မာကုခရစ်ဝင်။",
+          "shortname": ""
+        },
+        {
+          "id": 42,
+          "name": "ရှင်လုကာခရစ်ဝင်။",
+          "shortname": ""
+        },
+        {
+          "id": 43,
+          "name": "ရှင်ယောဟန်ခရစ်ဝင်။",
+          "shortname": ""
+        },
+        {
+          "id": 44,
+          "name": "တမန်တော်ဝတ္ထု။",
+          "shortname": ""
+        },
+        {
+          "id": 45,
+          "name": "ရောမဩဝါဒစာ။",
+          "shortname": ""
+        },
+        {
+          "id": 46,
+          "name": "ကောရိန္သုဩဝါဒစာပဌမစောင်။",
+          "shortname": ""
+        },
+        {
+          "id": 47,
+          "name": "ကောရိန္သုဩဝါသစာဒုတိယစောင်။",
+          "shortname": ""
+        },
+        {
+          "id": 48,
+          "name": "ဂလာတိဩဝါဒစာ။",
+          "shortname": ""
+        },
+        {
+          "id": 49,
+          "name": "ဧဖက်ဩဝါဒစာ။",
+          "shortname": ""
+        },
+        {
+          "id": 50,
+          "name": "ဖိလိပ္ပိဩဝါဒစာ။",
+          "shortname": ""
+        },
+        {
+          "id": 51,
+          "name": "ကောလောသဲဩဝါဒစာ",
+          "shortname": ""
+        },
+        {
+          "id": 52,
+          "name": "သက်သာလောနိတ်ဩဝါဒစာပဋ္ဌမစောင်",
+          "shortname": ""
+        },
+        {
+          "id": 53,
+          "name": "သက်သာလောနိတ်ဩဝါဒစာဒုတိယစောင်",
+          "shortname": ""
+        },
+        {
+          "id": 54,
+          "name": "တိမောသေဩဝါဒစာပဋ္ဌမစောင်",
+          "shortname": ""
+        },
+        {
+          "id": 55,
+          "name": "2 တိမောသေဩဝါဒစာဒုတိယစောင်",
+          "shortname": ""
+        },
+        {
+          "id": 56,
+          "name": "တိတုဩဝါဒစာ",
+          "shortname": ""
+        },
+        {
+          "id": 57,
+          "name": "ဖိလေမုန်ဩဝါဒစာ။",
+          "shortname": ""
+        },
+        {
+          "id": 58,
+          "name": "ဟေဗြဲဩဝါဒစာ။",
+          "shortname": ""
+        },
+        {
+          "id": 59,
+          "name": "ရှင်ယာကုပ်ဩဝါဒစာ။",
+          "shortname": ""
+        },
+        {
+          "id": 60,
+          "name": "ရှင်ပေတရုဩဝါဒစာပဌမစောင်။",
+          "shortname": ""
+        },
+        {
+          "id": 61,
+          "name": "ရှင်ပေတရုဩဝါဒစာဒုတိယစောင်။",
+          "shortname": ""
+        },
+        {
+          "id": 62,
+          "name": "ရှင်ယောဟန်ဩဝါဒစာပဌမစောင်။",
+          "shortname": ""
+        },
+        {
+          "id": 63,
+          "name": "ရှင်ယောဟန်ဩဝါဒစာဒုတိယစောင်။",
+          "shortname": ""
+        },
+        {
+          "id": 64,
+          "name": "ရှင်ယောဟန်ဩဝါဒစာတတိယစောင်။",
+          "shortname": ""
+        },
+        {
+          "id": 65,
+          "name": "ရှင်ယုဒဩဝါဒစာ။",
+          "shortname": ""
+        },
+        {
+          "id": 66,
+          "name": "ဗျာဒိတ်ကျမ်း။",
+          "shortname": ""
+        }
+    ],
+};
