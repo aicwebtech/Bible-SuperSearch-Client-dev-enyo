@@ -23,6 +23,7 @@ module.exports = {
     lt: require('./lt'), 
     mi: require('./mi'), 
     mr: require('./mr'), // 5.7 
+    my: require('./my'), // 5.7 
     ne: require('./ne'), 
     nl: require('./nl'), 
     pa: require('./pa'),

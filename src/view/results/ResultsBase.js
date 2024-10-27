@@ -183,6 +183,7 @@ module.exports = kind({
         this.app.debug && this.log('Rendering Results!');
         this.renderPager(true);
         this.renderHeader();
+        this.renderList();
 
         resultsData.results.forEach(function(passage) {
             this.renderPassage(passage);
@@ -296,6 +297,16 @@ module.exports = kind({
 
     renderHeader: function() {}, // Called before results are rendered, not required
     renderFooter: function() {}, // Called after results are rendered, not required
+    renderList: function() {
+        var resultsData = this.get('resultsData');
+
+        if(!this.app.configs.resultsList || !resultsData.list || resultsData.list.length == 0) {
+            this.log('NOT Rendering list');
+            return;
+        }
+
+        this.log('Rendering list');
+    },
 
     processText: function(verse) {
         return verse.text;

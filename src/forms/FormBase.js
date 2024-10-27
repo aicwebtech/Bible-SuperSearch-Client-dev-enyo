@@ -302,6 +302,8 @@ module.exports = kind({
         formData.context_range = this.app.UserConfig.get('context_range');
         formData.page_limit = this.app.UserConfig.get('page_limit');
         formData.key = this.app.configs.apiKey || null;
+
+        formData.results_list = this.app.configs.resultsList;
         
         //formData.group_passage_search_results = true; // experimental
         
@@ -441,6 +443,8 @@ module.exports = kind({
         return this._submitFormHelper(submitData, true);
     },
     setFormDataWithMapping: function(formData) {
+        var combined = formData.search && formData.reference;
+
         if(formData.search && this.searchField != 'search') {
             formData[this.searchField] = formData.search;
             delete formData.search;
@@ -456,6 +460,8 @@ module.exports = kind({
             formData[requestField] = formData.request;
             delete formData.request;
         }
+
+        formData.shortcut = combined ? '1' : '0';
 
         this.set('formData', {});
         this.set('formData', utils.clone(formData));
@@ -646,12 +652,10 @@ module.exports = kind({
 
         this.app.debug && this.log(value, field, dir);
         this._referenceChangeHelperIgnore = true;
+        var hasValue = (value && value != '0' && value != '');
 
         if(this.$.reference && this.$.reference_booksel) {
-            this.app.debug && this.log('here');
-
             if(field == 'reference') {
-                this.app.debug && this.log('ref');
                 if(dir == 2) {
                     this.$.reference_booksel.set('value', '');
                 } else {
@@ -663,20 +667,34 @@ module.exports = kind({
             }
         }
 
+        // IE is no longer officially supported (by Microsoft or us), keeping this here for legacy purposes
         if(this.app.get('clientBrowser') == 'IE') {
             this.submitFormOnReferenceChange && this.submitForm();
             this.log('Using IE, no good!  Skipping some minor code that breaks IE ... ');
+            this._referenceChangeHelperIgnore = false;
             return; // bail if IE ... yuck!
         }
 
-        if(!this.app.configs.limitSearchManual) {
-            if(value && value != '0' && value != '') {
-                if(!this.$.shortcut.setSelectedByValue(value, 1)) {
-                    // this.$.shortcut.set('selected', 1);
+        if(this.$.shortcut) {
+            shortcut = this.$.shortcut.get('value');
+            this.log('shortcut', shortcut);
+
+            if(this.app.configs.limitSearchManual) {
+                // if(hasValue && shortcut == '0') {
+                //     this.$.search && this.$.search.set('value', null);
+                // } else if(hasValue && shortcut != '1') {
+                //     this.$.shortcut.set('selected', 0);
+                //     this.$.search && this.$.search.set('value', null);
+                // }
+            } else {
+                if(hasValue) {
+                    if(!this.$.shortcut.setSelectedByValue(value, 1)) {
+                        // this.$.shortcut.set('selected', 1);
+                    }
                 }
-            }
-            else {
-                this.$.shortcut.set('selected', 0);
+                else {
+                    this.$.shortcut.set('selected', 0);
+                }
             }
         }
 
@@ -736,13 +754,10 @@ module.exports = kind({
         return nonPassageChars ? true : false;
     },
     keyPress: function(inSender, inEvent) {
-        this.app.debug && this.log(inSender, inEvent);
-
         if(inEvent.key == 'Enter' || inEvent.keyCode && inEvent.keyCode == 13) {
             var textarea = inSender._openTag.match(/<textarea/);
             var input = inSender._openTag.match(/<input/);
             var enterSubmit = (!textarea || (inSender.enterSubmit && inSender.enterSubmit == true)) ? true : false;
-            // var enterSubmit = (input || (inSender.enterSubmit && inSender.enterSubmit == true)) ? true : false;
 
             if(inSender.enterSubmitPrevent && inSender.enterSubmitPrevent == true) {
                 enterSubmit = false;

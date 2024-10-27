@@ -295,7 +295,10 @@ var biblesupersearch_config_options = {
     //      default for skin default
     //      Classic
     //      Clean
-    "pager": 'default',         
+    "pager": 'default',      
+
+    // Whether to show a list of all results
+    'resultsList': false,   
 
     // Page Scroll 
     //      When the page loads or query executes, 
