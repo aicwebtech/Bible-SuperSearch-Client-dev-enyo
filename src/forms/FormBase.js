@@ -37,6 +37,7 @@ module.exports = kind({
 
     successHandle: null,
     errorHandle: null,
+    fieldLastChanged: null,
 
     Passage: Passage,
 
@@ -192,6 +193,7 @@ module.exports = kind({
     },
     _submitFormHelper: function(formData, manual) {
         this.manualRequest = manual || false;
+        this.fieldLastChanged = null;
 
         if(this.manualRequest) {
             this.app.set('scrollMode', 'results_top');
@@ -919,6 +921,25 @@ module.exports = kind({
         }
 
         return val;
+    },
+    formFieldChanged: function(field, value, dir) {
+        value = (!value || value == '') ? null : value;
+
+        if(this.app.configs.limitSearchManual && this.fieldLastChanged && this.$.shortcut) {
+            var l = this.fieldLastChanged,
+                sc = this.$.shortcut.get('value');
+
+            if(dir == 2 && l.dir == 2 && value && sc != '1' && (
+                    (field == 'reference' || field == 'reference_booksel') && (l.field == 'search' || l.field == 'request') ||
+                    (l.field == 'reference' || l.field == 'reference_booksel') && (field == 'search' || field == 'request')
+                )
+            )
+            {
+                this.$[l.field].set('value', null);
+            }
+        }
+
+        this.fieldLastChanged = {field: field, value: value, dir: dir};
     },
     isShortHashable: function() {
         var pass = ['request', 'reference', 'search', 'search_type'];
