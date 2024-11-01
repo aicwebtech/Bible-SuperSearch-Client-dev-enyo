@@ -929,13 +929,21 @@ module.exports = kind({
             var l = this.fieldLastChanged,
                 sc = this.$.shortcut.get('value');
 
-            if(dir == 2 && l.dir == 2 && value && sc != '1' && (
+            if(dir == 2 && l.dir == 2 && value && sc != '1') {
+                if( value && (
                     (field == 'reference' || field == 'reference_booksel') && (l.field == 'search' || l.field == 'request') ||
                     (l.field == 'reference' || l.field == 'reference_booksel') && (field == 'search' || field == 'request')
-                )
-            )
-            {
-                this.$[l.field].set('value', null);
+                )) {
+                    this.$[l.field].set('value', null);
+                } else if(field == 'reference' || field == 'reference_booksel' || field == 'search' || field == 'request') {
+                    if(value) {
+                        if(!this.$.shortcut.setSelectedByValue(value, 1)) {
+                            // this.$.shortcut.set('selected', 1);
+                        }
+                    } else {
+                        this.$.shortcut.set('selected', 0);
+                    }
+                }
             }
         }
 
