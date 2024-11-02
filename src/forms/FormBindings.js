@@ -77,12 +77,15 @@ module.exports = {
         }
         else {
             // if(!this.app.configs.limitSearchManual) {
-                this.$.reference_booksel && this.$.reference_booksel.set('value', null);
 
                 if(value && value != '0' && value != '1') {
+                    // Handle Preset Selection
+                    this.$.reference_booksel && this.$.reference_booksel.set('value', null);
                     this.$.reference && this.$.reference.set('value', this.app.vt(value) );
                 }
                 else if (value != '1') {
+                    // Handle "Entire Bible" Selection
+                    this.$.reference_booksel && this.$.reference_booksel.set('value', null);
                     this.$.reference && this.$.reference.set('value', null);
                 }
                 

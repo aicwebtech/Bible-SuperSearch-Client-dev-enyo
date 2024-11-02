@@ -132,26 +132,23 @@ module.exports = kind({
             this._populateFromValueHelper(is);
         }
     },
-
     _populateFromValueHelper: function(value) {
         this.app.debug && this.log('value', value);
 
         if(!value || value == '') {
-            this._initDefault();
-            this.render();
-            return;
+            return this._initDefaultRender();
         }
 
         var Passages = this.Passage.explodeReferences(value, true);
 
-        if(!Passages) {
-            return;
+        if(!Passages || Passages.length > 1) {
+            return this._selectNoneRender();
         }
 
         var Passage = Passages.shift();
 
-        if(!Passage) {
-            return;
+        if(!Passage || !Passage.chapter_verse || Passage.chapter_verse.match(/[;,:-]/)) {
+            return this._selectNoneRender();
         }
 
         Passage.book && this.$.Book.setSelectedByContent(Passage.book);
@@ -226,5 +223,21 @@ module.exports = kind({
         this._internalSet = true;
         this.set('value', val);
         this._internalSet = false;
+    },
+    _initDefaultRender: function() {
+        this._initDefault();
+        this.render();
+    },
+    _selectNone: function() {
+        this.$.Book.resetValue();
+        this._createChapterList();
+    
+        this._internalSet = true;
+        this.set('value', '');
+        this._internalSet = false;
+    },
+    _selectNoneRender: function() {
+        this._selectNone();
+        this.render();
     }
 });
