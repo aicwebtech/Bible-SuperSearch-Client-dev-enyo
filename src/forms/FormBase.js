@@ -926,38 +926,20 @@ module.exports = kind({
     formFieldChanged: function(field, value, dir) {
         value = (!value || value == '') ? null : value;
 
-        if(this.app.configs.limitSearchManual && this.fieldLastChanged && this.$.shortcut) {
+        // this.log(field, value, dir);
+
+        if(this.app.configs.limitSearchManual && this.$.shortcut) {
             var l = this.fieldLastChanged,
                 sc = this.$.shortcut.get('value') || '0';
 
-            if(dir == 2 && l.dir == 2 && value && sc == '0') {
-                if(field == 'reference' || field == 'reference_booksel') {
+            if(dir == 2 && value) {
+                if(sc != '1' && (field == 'reference' || field == 'reference_booksel')) {
                     this.$.search && this.$.search.set('value', null);
                     this.$.request && this.$.request.set('value', null);
-                } else if(field == 'search' || field == 'request') {
+                } else if(sc == '0' && (field == 'search' || field == 'request')) {
                     this.$.reference && this.$.reference.set('value', null);
                     this.$.reference_booksel && this.$.reference_booksel.set('value', null);
                 }
-
-
-                // if( value && (
-                //     (field == 'reference' || field == 'reference_booksel') && (l.field == 'search' || l.field == 'request') ||
-                //     (l.field == 'reference' || l.field == 'reference_booksel') && (field == 'search' || field == 'request')
-                // )) {
-                //     this.$[l.field].set('value', null);
-                // } else if(field == 'reference' || field == 'reference_booksel' || field == 'search' || field == 'request') {
-                    // the whole point of 'limitSearchManual' is to force the users to make a selection in the shortcut
-                    // the code below defeats that purpose!
-
-                    // if(value) {
-                    //     if(!this.$.shortcut.setSelectedByValue(value, 1)) {
-                    //         // this.$.shortcut.set('selected', 1);
-                    //     }
-                    // } else {
-                    //     this.$.shortcut.set('selected', 0);
-                    // }
-
-                // }
             }
         }
 
