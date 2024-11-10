@@ -64,7 +64,8 @@ module.exports = {
         return value || null;
     }},
     shortcut: {from: 'formData.shortcut', to: '$.shortcut.value', oneWay: false, shortLink: true, transform: function(value, dir) {
-        this.log('shortcut', value, dir);
+        // this.log('shortcut', value, dir);
+        this.formFieldChanged('shortcut', value, dir);
         this.bubble('onFormFieldChanged', {field: 'shortcut', value: value, dir: dir});
 
         if(dir === 1) {
@@ -77,6 +78,7 @@ module.exports = {
         }
         else {
             // if(!this.app.configs.limitSearchManual) {
+            this.autoFieldEntries = true;
 
                 if(value && value != '0' && value != '1') {
                     // Handle Preset Selection
@@ -93,6 +95,8 @@ module.exports = {
                     this.$.shortcut.setSelected(0); // Hack to prevent selector from showing 'blank'
                 }
             // }
+
+            this.autoFieldEntries = false;
         }
 
         return value || null;

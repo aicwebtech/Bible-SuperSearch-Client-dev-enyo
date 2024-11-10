@@ -38,6 +38,7 @@ module.exports = kind({
     successHandle: null,
     errorHandle: null,
     fieldLastChanged: null,
+    autoFieldEntries: false,
 
     Passage: Passage,
 
@@ -928,18 +929,26 @@ module.exports = kind({
 
         // this.log(field, value, dir);
 
-        if(this.app.configs.limitSearchManual && this.$.shortcut) {
+        if(this.app.configs.limitSearchManual && this.$.shortcut && !this.autoFieldEntries) {
             var l = this.fieldLastChanged,
                 sc = this.$.shortcut.get('value') || '0';
 
             if(dir == 2 && value) {
+                this.autoFieldEntries = true;
+
                 if(sc != '1' && (field == 'reference' || field == 'reference_booksel')) {
                     this.$.search && this.$.search.set('value', null);
                     this.$.request && this.$.request.set('value', null);
+
+                    if(sc != '0') {
+                        this.$.shortcut.setSelectedByValue('0');
+                    }
                 } else if(sc == '0' && (field == 'search' || field == 'request')) {
                     this.$.reference && this.$.reference.set('value', null);
                     this.$.reference_booksel && this.$.reference_booksel.set('value', null);
                 }
+
+                this.autoFieldEntries = false;
             }
         }
 

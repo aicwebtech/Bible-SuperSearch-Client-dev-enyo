@@ -1,5 +1,6 @@
 var kind = require('enyo/kind');
 var GridView = require('./GridView');
+var ResultsList = require('./ResultsList');
 var ResCom = require('./ResultsReadComponent');
 var Signal = require('../../components/Signal');
 var Pager = require('../../components/Pagers/ClassicPager');
@@ -306,6 +307,12 @@ module.exports = kind({
         }
 
         this.log('Rendering list');
+
+        this.createComponent({
+            kind: ResultsList,
+            name: 'ResultsList',
+            list: resultsData.list
+        });
     },
 
     processText: function(verse) {
