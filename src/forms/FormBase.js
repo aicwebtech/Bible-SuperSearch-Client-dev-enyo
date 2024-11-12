@@ -944,8 +944,8 @@ module.exports = kind({
                         this.$.shortcut.setSelectedByValue('0');
                     }
                 } else if(sc == '0' && (field == 'search' || field == 'request')) {
-                    this.$.reference && this.$.reference.set('value', null);
                     this.$.reference_booksel && this.$.reference_booksel.set('value', null);
+                    this.$.reference && this.$.reference.set('value', null);
                 }
 
                 this.autoFieldEntries = false;

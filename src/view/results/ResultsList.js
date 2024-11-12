@@ -1,7 +1,7 @@
 var kind = require('enyo/kind');
 var GridView = require('./GridView');
-var Link = require('enyo/Anchor');
 var LinkBuilder = require('../../components/Link/LinkBuilder');
+var Link = require('../../components/Link/VisitLink');
 
 
 var utils = require('enyo/utils');
@@ -9,6 +9,7 @@ var i18n = require('../../components/Locale/i18nComponent');
 
 var ResultsListItem = kind({
     classes: 'bss_results_list_item',
+    visitedClasses: 'bss_results_list_item_visited',
     // kind: i18n,
     kind: Link,
     linkBuilder: LinkBuilder,
@@ -24,16 +25,21 @@ var ResultsListItem = kind({
     },
 
     create: function() {
+        var bible = this.app.getSelectedBibles();
+        this.visited = this.item.showing;
+        this.absHref =  this.linkBuilder.buildReferenceLink('p', bible, this.item.book + 'B', this.item.chapter, this.item.verse);
+
         this.inherited(arguments);
         this.addRemoveClass('bss_results_list_item_showing', this.item.showing);
+
         this.makeLink();
     },
     makeLink: function() {
         var bible = this.app.getSelectedBibles();
         var bookNameShort = this.app.getLocaleBookName(this.item.book, null, true);
         var bookName = this.app.getLocaleBookName(this.item.book, null);
-        // link = this.linkBuilder.buildReferenceLink('p', bible, bookName, this.item.chapter, this.item.verse);
-        link = this.linkBuilder.buildReferenceLink('p', bible, this.item.book + 'B', this.item.chapter, this.item.verse);
+        link = this.linkBuilder.buildReferenceLink('p', bible, bookName, this.item.chapter, this.item.verse);
+        // link = this.linkBuilder.buildReferenceLink('p', bible, this.item.book + 'B', this.item.chapter, this.item.verse);
 
         this.setAttribute('href', link);
         this.setContent(bookNameShort + ' ' + this.item.chapter + ':' + this.item.verse + ';');

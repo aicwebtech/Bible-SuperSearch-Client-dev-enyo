@@ -60,6 +60,7 @@ var App = Application.kind({
     bibleDisplayLimit: 8,       // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
     defaultBibles: [],
     history: [],
+    visited: [],
     bookmarks: null,
     resetView: true,
     appLoaded: false,
@@ -1677,6 +1678,39 @@ var App = Application.kind({
     clearHistory: function() {
         this.history = [];
         localStorage.setItem('BibleSuperSearchHistory', '[]');
+    },    
+    pushVisited: function(url) {
+        var url = url || document.location.href;
+        // var found = this.visited.find((item) => item == url);
+
+        var found = this.visited.find(function(item) {
+            return item == url;
+        });
+
+        if(!found) {
+            this.visited.push(url);
+            localStorage.setItem('BibleSuperSearchVisited', JSON.stringify(this.visited));
+        }
+    },
+    remVisited: function(url) {
+        var url = url || document.location.href;
+            // found = this.visited.find(item => item == url);
+
+        var found = this.visited.find(function(item) {
+            return item == url;
+        });
+
+        if(found) {
+            this.visited = this.visited.filter(function(item) {
+                return item != url;
+            });
+
+            localStorage.setItem('BibleSuperSearchVisited', JSON.stringify(this.visited));
+        }
+    },
+    clearVisited: function() {
+        this.visited = [];
+        localStorage.setItem('BibleSuperSearchVisited', '[]');
     },
     alert: function(string, inSender, inEvent) {
         // todo - make some sort of custom alert dialog here!
@@ -1906,8 +1940,10 @@ var App = Application.kind({
         this.bookmarks.fetch();
 
         var hist = localStorage.getItem('BibleSuperSearchHistory') || null;
+        var visited = localStorage.getItem('BibleSuperSearchVisited') || null;
 
         this.history = hist ? JSON.parse(hist) : [];
+        this.visited = visited ? JSON.parse(visited) : [];
     },
     copyHistoryToBookmarks: function() {
         this.history.forEach(function(item) {
