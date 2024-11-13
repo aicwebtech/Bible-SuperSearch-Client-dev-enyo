@@ -1711,6 +1711,7 @@ var App = Application.kind({
     clearVisited: function() {
         this.visited = [];
         localStorage.setItem('BibleSuperSearchVisited', '[]');
+        Signal.send('onVisitedClear');
     },
     alert: function(string, inSender, inEvent) {
         // todo - make some sort of custom alert dialog here!

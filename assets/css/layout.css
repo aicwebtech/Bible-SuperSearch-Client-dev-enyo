@@ -942,6 +942,7 @@ tr.bss_render_reference_row th {
     margin: 15px 0;
     border: 1px solid #111;
     padding: 7px 10px;
+    position: relative;
 }
 
 .bss_results_list_item {

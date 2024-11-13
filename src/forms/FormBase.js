@@ -927,7 +927,7 @@ module.exports = kind({
     formFieldChanged: function(field, value, dir) {
         value = (!value || value == '') ? null : value;
 
-        // this.log(field, value, dir);
+        this.log(field, value, dir);
 
         if(this.app.configs.limitSearchManual && this.$.shortcut && !this.autoFieldEntries) {
             var l = this.fieldLastChanged,
@@ -935,6 +935,7 @@ module.exports = kind({
 
             if(dir == 2 && value) {
                 this.autoFieldEntries = true;
+                this._referenceChangeHelperIgnore = true;
 
                 if(sc != '1' && (field == 'reference' || field == 'reference_booksel')) {
                     this.$.search && this.$.search.set('value', null);
@@ -949,6 +950,7 @@ module.exports = kind({
                 }
 
                 this.autoFieldEntries = false;
+                this._referenceChangeHelperIgnore = false;
             }
         }
 

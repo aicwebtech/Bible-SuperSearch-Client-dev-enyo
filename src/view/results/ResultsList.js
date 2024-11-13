@@ -2,10 +2,9 @@ var kind = require('enyo/kind');
 var GridView = require('./GridView');
 var LinkBuilder = require('../../components/Link/LinkBuilder');
 var Link = require('../../components/Link/VisitLink');
-
-
 var utils = require('enyo/utils');
 var i18n = require('../../components/Locale/i18nComponent');
+var Signal = require('enyo/Signals');
 
 var ResultsListItem = kind({
     classes: 'bss_results_list_item',
@@ -23,6 +22,14 @@ var ResultsListItem = kind({
     handlers: {
         onLocaleChange: 'localeChanged',
     },
+    
+    components: [
+        {
+            kind: Signal, 
+            onVisitedClear: 'handleVisitedClear', 
+            isChrome: true
+        },
+    ],
 
     create: function() {
         var bible = this.app.getSelectedBibles();
@@ -53,25 +60,74 @@ var ResultsListItem = kind({
     localeChanged: function() {
         this.makeLink();
         // this.render();
+    },
+    handleVisitedClear: function() {
+        // if(!this.item.showing) {
+            this.set('visited', false);
+        // }
     }
 });
 
 module.exports = kind({
     name: 'ResultsList',
     classes: 'bss_results_list',
+    scrollTo: null,
 
     list: [],
 
     create: function() {
         this.inherited(arguments);
-
         var t = this;
 
         this.list.forEach(function(item) {
-            t.createComponent({
+            var c = t.createComponent({
                 kind: ResultsListItem,
                 item: item
             });
+
+            if(item.showing && !t.scrollTo) {
+                t.scrollTo = c;
+            }
         });
+
+        // this.scrollToItem();
+    },
+    rendered: function() {
+        this.inherited(arguments);
+        this.scrollToItem();
+    }, 
+    scrollToItem: function() {
+        if(!this.scrollTo || !this.scrollTo.hasNode()) {
+            return;
+        }
+
+        var offsetTop = this.scrollTo.hasNode().offsetTop;
+
+        this.log('offsetTop', offsetTop, this.scrollTo.get('content'));
+
+        this.hasNode() && this.hasNode().scrollTo({
+            top: offsetTop - 2, 
+            left: 0, 
+            behavior: 'instant' // intentionally hardcoded
+        });
+
+        // var styles = window.getComputedStyle(this.scrollTo.hasNode());
+        //     margin =    parseFloat(styles['marginTop']) +
+        //                 parseFloat(styles['marginBottom']);
+        // return;
+        //     height = this.scrollTo.hasNode().offsetHeight;
+
+        // this.log('styles', styles);
+        // this.log('offsetHeight', offsetHeight);
+
+        // // this.hasNode() && this.hasNode().scrollTo({
+        // //     // top: 1300, 
+        // //     top: top, 
+        // //     left: 0, 
+        // //     behavior: 'instant' // intentionally hardcoded
+        // // });
+
+        // // this.scrollTo = null;
+        // return;
     }
 });
