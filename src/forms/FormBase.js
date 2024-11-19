@@ -665,7 +665,7 @@ module.exports = kind({
                 } else {
                     this.$.reference_booksel.set('value', value);
                 }
-            } else {
+            } else if(field == 'reference_booksel') {
                 this.app.debug && this.log('booksel');
                 this.$.reference.set('value', value || null);
             }
