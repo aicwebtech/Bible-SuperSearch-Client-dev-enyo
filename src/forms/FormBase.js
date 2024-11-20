@@ -654,6 +654,7 @@ module.exports = kind({
         }
 
         this.app.debug && this.log(value, field, dir);
+        this.log('procede');
         this._referenceChangeHelperIgnore = true;
         var hasValue = (value && value != '0' && value != '');
 
@@ -666,7 +667,7 @@ module.exports = kind({
                     this.$.reference_booksel.set('value', value);
                 }
             } else if(field == 'reference_booksel') {
-                this.app.debug && this.log('booksel');
+                // this.app.debug && this.log('booksel');
                 this.$.reference.set('value', value || null);
             }
         }
@@ -681,7 +682,7 @@ module.exports = kind({
 
         if(this.$.shortcut) {
             shortcut = this.$.shortcut.get('value');
-            this.log('shortcut', shortcut);
+            // this.log('shortcut', shortcut);
 
             if(this.app.configs.limitSearchManual) {
                 // if(hasValue && shortcut == '0') {
@@ -929,7 +930,9 @@ module.exports = kind({
 
         this.log(field, value, dir);
 
-        if(this.app.configs.limitSearchManual && this.$.shortcut && !this.autoFieldEntries) {
+        if(this.app.configs.limitSearchManual && this.$.shortcut && !this._referenceChangeHelperIgnore) {
+            this.log('procede');
+
             var l = this.fieldLastChanged,
                 sc = this.$.shortcut.get('value') || '0';
 
@@ -1011,8 +1014,7 @@ module.exports = kind({
     clearHandlers: function() {
         this.successHandle = null;
         this.errorHandle = null;
-    },
-    
+    }, 
     testInit: function() {
         if(this.formContainer) {            
             for(i in this.formNames) {
@@ -1022,7 +1024,6 @@ module.exports = kind({
             this._testInitHelper('Form Submission');
         }
     },
-
     _testInitHelper: function(label) {
         if(this.app.testing) {
             return; //tests already ran, bail
