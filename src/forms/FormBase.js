@@ -38,7 +38,8 @@ module.exports = kind({
     successHandle: null,
     errorHandle: null,
     fieldLastChanged: null,
-    autoFieldEntries: false,
+    shortcutChangeIgnore: false,
+    searchChangeIgnore: false,
 
     Passage: Passage,
 
@@ -928,32 +929,32 @@ module.exports = kind({
     formFieldChanged: function(field, value, dir) {
         value = (!value || value == '') ? null : value;
 
-        this.log(field, value, dir);
+        this.app.debug && this.log(field, value, dir);
 
-        if(this.app.configs.limitSearchManual && this.$.shortcut && !this._referenceChangeHelperIgnore) {
-            this.log('procede');
-
+        if(this.app.configs.limitSearchManual && this.$.shortcut) {
             var l = this.fieldLastChanged,
                 sc = this.$.shortcut.get('value') || '0';
 
             if(dir == 2 && value) {
-                this.autoFieldEntries = true;
-                this._referenceChangeHelperIgnore = true;
-
                 if(sc != '1' && (field == 'reference' || field == 'reference_booksel')) {
-                    this.$.search && this.$.search.set('value', null);
-                    this.$.request && this.$.request.set('value', null);
-
-                    if(sc != '0') {
-                        this.$.shortcut.setSelectedByValue('0');
+                    if(!this.searchChangeIgnore) {
+                        this.searchChangeIgnore = true;
+                        this.$.search && this.$.search.set('value', null);
+                        this.$.request && this.$.request.set('value', null);
+                        this.searchChangeIgnore = false;
                     }
-                } else if(sc == '0' && (field == 'search' || field == 'request')) {
+
+                    if(sc != '0' && !this.shortcutChangeIgnore) {
+                        this.shortcutChangeIgnore = true;
+                        this.$.shortcut.setSelectedByValue('0');
+                        this.shortcutChangeIgnore = false;
+                    }
+                } else if(sc == '0' && !this._referenceChangeHelperIgnore && (field == 'search' || field == 'request')) {
+                    this._referenceChangeHelperIgnore = true;
                     this.$.reference_booksel && this.$.reference_booksel.set('value', null);
                     this.$.reference && this.$.reference.set('value', null);
+                    this._referenceChangeHelperIgnore = false;
                 }
-
-                this.autoFieldEntries = false;
-                this._referenceChangeHelperIgnore = false;
             }
         }
 

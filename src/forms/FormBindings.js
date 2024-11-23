@@ -76,9 +76,9 @@ module.exports = {
                 this.$.shortcut.setSelected(0);
             }
         }
-        else {
+        else if (!this.shortcutChangeIgnore) {
             // if(!this.app.configs.limitSearchManual) {
-            this.autoFieldEntries = true;
+            this.shortcutChangeIgnore = true;
 
                 if(value && value != '0' && value != '1') {
                     // Handle Preset Selection
@@ -96,7 +96,7 @@ module.exports = {
                 }
             // }
 
-            this.autoFieldEntries = false;
+            this.shortcutChangeIgnore = false;
         }
 
         return value || null;
