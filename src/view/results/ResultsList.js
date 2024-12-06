@@ -13,11 +13,8 @@ var ResultsListItem = kind({
     kind: Link,
     linkBuilder: LinkBuilder,
     containsVerses: true,
+    textShowing: false,
     item: {},
-
-    attributes: {
-        target: '_NEW'
-    },
 
     handlers: {
         onLocaleChange: 'localeChanged',
@@ -27,6 +24,8 @@ var ResultsListItem = kind({
         {
             kind: Signal, 
             onVisitedClear: 'handleVisitedClear', 
+            onShowingClear: 'handleShowingClear', 
+            onShowingChange: 'handleShowingChange', 
             isChrome: true
         },
     ],
@@ -37,7 +36,8 @@ var ResultsListItem = kind({
         this.absHref =  this.linkBuilder.buildReferenceLink('p', bible, this.item.book + 'B', this.item.chapter, this.item.verse);
 
         this.inherited(arguments);
-        this.addRemoveClass('bss_results_list_item_showing', this.item.showing);
+        // this.addRemoveClass('bss_results_list_item_showing', this.item.showing);
+        // this.set('showing', this.item.showing || false);
 
         this.makeLink();
     },
@@ -45,8 +45,7 @@ var ResultsListItem = kind({
         var bible = this.app.getSelectedBibles();
         var bookNameShort = this.app.getLocaleBookName(this.item.book, null, true);
         var bookName = this.app.getLocaleBookName(this.item.book, null);
-        link = this.linkBuilder.buildReferenceLink('p', bible, bookName, this.item.chapter, this.item.verse);
-        // link = this.linkBuilder.buildReferenceLink('p', bible, this.item.book + 'B', this.item.chapter, this.item.verse);
+        link = this.linkBuilder.buildReferenceLink('sl/' + this.app.get('resultsListCacheId'), bible, bookName, this.item.chapter, this.item.verse);
 
         this.setAttribute('href', link);
         this.setContent(bookNameShort + ' ' + this.item.chapter + ':' + this.item.verse + ';');
@@ -65,6 +64,22 @@ var ResultsListItem = kind({
         // if(!this.item.showing) {
             this.set('visited', false);
         // }
+    },
+    handleShowingClear: function() {
+        this.set('textShowing', false);
+    },
+    handleShowingChange: function(s, e) {
+        var i = this.item;
+
+        if(i.book == e.book && i.chapter == e.chapter && i.verse == e.verse) {
+            this.log(i.book, i.chapter, i.verse);
+
+            this.set('textShowing', e.showing || true);
+            this.set('visited', true);
+        }
+    },
+    textShowingChanged: function(was, is) {
+        this.addRemoveClass('bss_results_list_item_showing', is);
     }
 });
 
@@ -72,7 +87,6 @@ module.exports = kind({
     name: 'ResultsList',
     classes: 'bss_results_list',
     scrollTo: null,
-
     list: [],
 
     create: function() {
@@ -97,13 +111,23 @@ module.exports = kind({
         this.scrollToItem();
     }, 
     scrollToItem: function() {
-        if(!this.scrollTo || !this.scrollTo.hasNode()) {
+        // if(!this.scrollTo || !this.scrollTo.hasNode()) {
+        //     return;
+        // }
+
+        // this.log();
+
+        var scrollTo = this.getClientControls().find(function(c) {
+            return c.get('textShowing');
+        });
+
+        if(!scrollTo || !scrollTo.hasNode()) {
             return;
         }
 
-        var offsetTop = this.scrollTo.hasNode().offsetTop;
+        var offsetTop = scrollTo.hasNode().offsetTop;
 
-        this.log('offsetTop', offsetTop, this.scrollTo.get('content'));
+        // this.log('offsetTop', offsetTop, scrollTo.get('content'));
 
         this.hasNode() && this.hasNode().scrollTo({
             top: offsetTop - 2, 

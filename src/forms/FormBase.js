@@ -202,6 +202,7 @@ module.exports = kind({
             formData.page = null;
             // this.formData.page = null;
             this.page = null;
+            this.app.clearVisited();
         }
 
         if(this.requestPending) {
@@ -222,6 +223,12 @@ module.exports = kind({
             url: this.app.configs.apiUrl,
             method: 'GET'
         });
+
+        this.app.set('resultListRequestedCacheId', formData.list_cache_id || null);
+
+        if(this.app.get('resultListRequestedCacheId') == this.app.get('resultListCacheId')) {
+            delete formData.list_cache_id; // If the list is already stored in memory, don't make API query for it again
+        }
 
         this.app.set('ajaxLoadingDelay', 100);
         this.requestPending = true;
@@ -371,6 +378,7 @@ module.exports = kind({
         this.app.set('ajaxLoadingDelay', false);
         this.requestPending = false;
         this.set('cacheHash', inResponse.hash);
+        this.app.set('cacheId', this.get('cacheHash'));
         this.app.set('shortHashUrl', '#/c/' + this.get('cacheHash'));
         var responseData = {formData: this._formDataAsSubmitted, results: inResponse, success: true};
         this.bubble('onFormResponseSuccess', responseData);

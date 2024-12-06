@@ -77,6 +77,10 @@ var App = Application.kind({
     },
     preventRedirect: false,
     shortHashUrl: '',
+    cacheId: null, // most recent cache id
+    resultListRequestedCacheId: null,
+    resultsListCacheId: null, // most recent search results cache id
+    resultsList: [], // most recent search results list
     biblesDisplayed: [],
     locale: 'en',
     defaultLocale: 'en', // hardcoded
@@ -841,6 +845,9 @@ var App = Application.kind({
                     break;
                 case 's':   // Search string
                     return this._hashSearch(parts);
+                    break;                      
+                case 'sl':   // Link to passage within search results list
+                    return this._hashSearchLink(parts);
                     break;                
                 case 'context': // Contextual lookup
                     return this._hashContext(parts);
@@ -888,6 +895,13 @@ var App = Application.kind({
     _hashPassage: function(parts) {
         var partsObj = this._explodeHashPassage(parts);
         var formData = this._assembleHashPassage(partsObj);
+        this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
+    },    
+    _hashSearchLink: function(parts) {
+        var uuid = parts.shift();
+        var partsObj = this._explodeHashPassage(parts);
+        var formData = this._assembleHashPassage(partsObj);
+        formData.list_cache_id = uuid;
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
     },    
     _hashStrongs: function(parts) {
@@ -1122,8 +1136,9 @@ var App = Application.kind({
     resetScrollMode: function() {
         this.set('scrollMode', this.get('scrollModeDefault'));
     }, 
-    getSelectedBibles: function() {
+    getSelectedBibles: function(filter) {
         var bibles = this.getFormFieldValue('bible');
+        filter = (typeof filter == 'undefined') ? false : filter;
 
         if(!bibles || bibles.length == 0 || bibles.length == 1 && bibles[0] == null) {
             bibles = this.configs.defaultBible;
@@ -1131,6 +1146,12 @@ var App = Application.kind({
 
         if(!Array.isArray(bibles)) {
             bibles = [bibles];
+        }
+
+        if(filter) {
+            bibles = bibles.filter(function(b) {
+                return b != 0 && b != null;
+            });
         }
 
         return bibles;

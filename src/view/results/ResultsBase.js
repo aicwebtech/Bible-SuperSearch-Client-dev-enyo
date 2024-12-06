@@ -138,6 +138,8 @@ module.exports = kind({
 
         this.bubble('onResultsRendered', e);
         this._localeChangeRender = false;
+
+        this.$.ResultsList && this.$.ResultsList.scrollToItem();
     },
     formDataChanged: function(was, is) {
         this.bibles = [];
@@ -227,6 +229,10 @@ module.exports = kind({
     renderPassageParallelBible: function(passage) {},       // Must implement on child kind!
     renderPassageSingleBible: function(passage) {},         // Must implement on child kind!
 
+    signalVerseShowing: function(book, chapter, verse) {
+        Signal.send('onShowingChange', {book: book, chapter: chapter, verse: verse, showing: true});
+    },
+
     renderCopyrightBottom: function() {
         this.createComponent({
             tag: 'hr'
@@ -299,19 +305,32 @@ module.exports = kind({
     renderHeader: function() {}, // Called before results are rendered, not required
     renderFooter: function() {}, // Called after results are rendered, not required
     renderList: function() {
-        var resultsData = this.get('resultsData');
+        var resultsData = this.get('resultsData'),
+            hasList = false,
+            list = null;
 
-        if(!this.app.configs.resultsList || !resultsData.list || resultsData.list.length == 0) {
-            this.log('NOT Rendering list');
-            return;
+        if(!this.app.configs.resultsList) {
+            return false;
         }
 
-        this.log('Rendering list');
+        if(resultsData.list && resultsData.list.length > 0) {
+            hasList = true;
+            list = resultsData.list;
+            this.app.set('resultsListCacheId', resultsData.hash);
+            this.app.set('resultsList', resultsData.list);
+        } else if(this.app.get('resultsListCacheId') == this.app.get('resultListRequestedCacheId')) {
+            list = this.app.get('resultsList');
+            hasList = true;
+        }
+
+        if(!hasList || !list || list.length == 0) {
+            return;
+        }
 
         this.createComponent({
             kind: ResultsList,
             name: 'ResultsList',
-            list: resultsData.list
+            list: list
         });
     },
 

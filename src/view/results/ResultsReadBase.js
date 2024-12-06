@@ -94,6 +94,7 @@ module.exports = kind({
                         content = pd.verses[mod][chapter][verse].text || '';
                         haveText = (content != '') ? true : haveText;
                         content = this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]);
+                        this.signalVerseShowing(pd.book_id, chapter, verse);
                     }
 
                     Container.$.VerseRow.createComponent({
@@ -238,6 +239,7 @@ module.exports = kind({
                 this.singleVerseCount ++;
 
                 var addBibleHeader = (this.singleVerseCount > 1 && this.singleVerseCount % 10 == 1);
+                var verseShowing = false;
 
                 if(addBibleHeader && renderStyle == 'verse_passage') {
                     this._addBibleHeader(VerseContainer);
@@ -260,11 +262,14 @@ module.exports = kind({
                         }
 
                         html += processed;
+                        verseShowing = true;
                     }
                     else {
                         html += this.blankPassageVerse;
                     }
                 }
+                
+                verseShowing && this.signalVerseShowing(pd.book_id, chapter, verse);
 
                 VerseContainer.createComponent({
                     tag: 'tr',
