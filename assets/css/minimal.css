@@ -104,7 +104,7 @@
     background-color: #c4caff;
 }
 
-.interface_minimal .biblesupersearch_pager a.current_page {
+.interface_minimal .biblesupersearch_pager a.current_page, .interface_minimal .bss_results_list_item_showing {
     font-weight: bold;
     color: #ff8c00;
     background-color: transparent;

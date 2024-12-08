@@ -37,6 +37,7 @@ module.exports = kind({
     _localeChangeRender: false,
     activeComponent: null,
     sideButtons: false,
+    list: null,
 
     published: {
         resultsData: null,
@@ -139,7 +140,7 @@ module.exports = kind({
         this.bubble('onResultsRendered', e);
         this._localeChangeRender = false;
 
-        this.$.ResultsList && this.$.ResultsList.scrollToItem();
+        this.$.ResultsList && this.$.ResultsList.scrollToItemDelay();
     },
     formDataChanged: function(was, is) {
         this.bibles = [];
@@ -182,6 +183,8 @@ module.exports = kind({
             this.log('Error: results are not an array');
             return;
         }
+
+        this.preRenderList();
         
         this.app.debug && this.log('Rendering Results!');
         this.renderPager(true);
@@ -304,33 +307,33 @@ module.exports = kind({
 
     renderHeader: function() {}, // Called before results are rendered, not required
     renderFooter: function() {}, // Called after results are rendered, not required
-    renderList: function() {
-        var resultsData = this.get('resultsData'),
-            hasList = false,
-            list = null;
+    
+    preRenderList: function() {
+        var resultsData = this.get('resultsData');
+        this.list = null;
 
         if(!this.app.configs.resultsList) {
             return false;
         }
 
         if(resultsData.list && resultsData.list.length > 0) {
-            hasList = true;
-            list = resultsData.list;
+            this.list = resultsData.list;
+            this.log('cacheId data', resultsData);
             this.app.set('resultsListCacheId', resultsData.hash);
             this.app.set('resultsList', resultsData.list);
         } else if(this.app.get('resultsListCacheId') == this.app.get('resultListRequestedCacheId')) {
-            list = this.app.get('resultsList');
-            hasList = true;
+            this.list = this.app.get('resultsList');
         }
-
-        if(!hasList || !list || list.length == 0) {
+    },
+    renderList: function() {
+        if(!this.list || this.list.length == 0) {
             return;
         }
 
         this.createComponent({
             kind: ResultsList,
             name: 'ResultsList',
-            list: list
+            list: this.list
         });
     },
 

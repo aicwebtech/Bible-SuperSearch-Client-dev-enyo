@@ -14,6 +14,7 @@ var ResultsListItem = kind({
     linkBuilder: LinkBuilder,
     containsVerses: true,
     textShowing: false,
+    showBookName: true,
     item: {},
 
     handlers: {
@@ -45,12 +46,15 @@ var ResultsListItem = kind({
         var bible = this.app.getSelectedBibles();
         var bookNameShort = this.app.getLocaleBookName(this.item.book, null, true);
         var bookName = this.app.getLocaleBookName(this.item.book, null);
-        link = this.linkBuilder.buildReferenceLink('sl/' + this.app.get('resultsListCacheId'), bible, bookName, this.item.chapter, this.item.verse);
+        var mode = 'sl/' + this.app.get('resultsListCacheId');
+        link = this.linkBuilder.buildReferenceLink(mode, bible, bookName, this.item.chapter, this.item.verse);
 
         this.setAttribute('href', link);
-        this.setContent(bookNameShort + ' ' + this.item.chapter + ':' + this.item.verse + ';');
+
+        var content = (this.showBookName) ? bookNameShort + ' ' : '';
+        this.setContent(content + this.item.chapter + ':' + this.item.verse);
         
-        if(bookName != bookNameShort) {
+        if(!this.showBookName || bookName != bookNameShort) {
             this.setAttribute('title', bookName + ' ' + this.item.chapter + ':' + this.item.verse);
         } else {
             this.setAttribute('title', null);
@@ -87,21 +91,103 @@ module.exports = kind({
     name: 'ResultsList',
     classes: 'bss_results_list',
     scrollTo: null,
+    scrollDelay: null,
     list: [],
+
+    listComponents: [],
+
+    components: [
+        // { components: [
+        //     {name: 'SearchLink', kind: Link, content: 'Return to Search'}
+        // ]}
+        {tag: 'table', name: 'Table'}
+    ],
 
     create: function() {
         this.inherited(arguments);
         var t = this;
+        var lastBook = null;
+
+        // this.$.SearchLink.set('href', '#/c/' + this.app.get('resultsListCacheId'));
 
         this.list.forEach(function(item) {
-            var c = t.createComponent({
-                kind: ResultsListItem,
-                item: item
-            });
+            var cont = 'Container_' + item.book,
+                colcont =  'Column_' + item.book;
 
-            if(item.showing && !t.scrollTo) {
-                t.scrollTo = c;
+            // if(!t.$[cont]) {
+            //     t.createComponent({
+            //         name: cont,
+            //         classes: 'bss_results_list_container',
+            //     });
+            // }
+
+            // t.$[cont].createComponent({
+            //     kind: ResultsListItem,
+            //     item: item,
+            //     owner: t
+            // });
+
+            if(!t.$.Table.$[cont]) {
+                t.$.Table.createComponent({
+                    name: cont, 
+                    tag: 'tr',
+                    components: [
+                        {
+                            kind: i18n,
+                            tag: 'td',
+                            style: 'white-space: nowrap; padding-right: 5px; vertical-align: top',
+                            content: item.book + 'B',
+                            containsVerses: true
+                        }, 
+                        {
+                            name: colcont,
+                            tag: 'td'
+                        }
+                    ]
+                });
+
             }
+
+            t.log('component', t.$.Table.$[cont]);
+
+            // if(t.$.Table.$[cont] && t.$.Table.$[cont].$[colcont]) {                
+                var lc = t.$.Table.$[colcont].createComponent({
+                    kind: ResultsListItem,
+                    item: item,
+                    showBookName: false, 
+                    owner: t
+                });
+
+                t.listComponents.push(lc);
+            // }
+
+            // // if(lastBook && lastBook != item.book) {
+            // //     t.createComponent({tag: 'br'});
+            // //     t.createComponent({tag: 'br'});
+            // // }
+
+            // // if(lastBook != item.book) {
+            // //     t.createComponent({
+            // //         kind: i18n,
+            // //         // tag: 'span',
+            // //         style: 'width: 150px; display: inline-block',
+            // //         content: item.book + 'B',
+            // //         containsVerses: true
+            // //     });
+            // // }
+
+            // // var c = t.createComponent({
+            // //     kind: ResultsListItem,
+            // //     item: item,
+            // //     showBookName: false
+            // //     // showBookName: lastBook != item.book
+            // // });
+
+            // lastBook = item.book;
+
+            // // if(item.showing && !t.scrollTo) {
+            // //     t.scrollTo = c;
+            // // }
         });
 
         // this.scrollToItem();
@@ -110,16 +196,45 @@ module.exports = kind({
         this.inherited(arguments);
         this.scrollToItem();
     }, 
+    
+    scrollToItemDelay: function() {
+        var t = this;
+
+        if(this.scrollDelay) {
+            window.clearTimeout(this.scrollDelay);
+        }
+
+        this.scrollDelay = window.setTimeout(function() {
+            window.clearTimeout(t.scrollDelay);
+            t.scrollDelay = null;
+            t.scrollToItem();
+        }, 1000)
+    },
+
     scrollToItem: function() {
+        this.log();
+        var t = this;
+        // return;
+
         // if(!this.scrollTo || !this.scrollTo.hasNode()) {
         //     return;
         // }
 
         // this.log();
 
-        var scrollTo = this.getClientControls().find(function(c) {
-            return c.get('textShowing');
+        var scrollTo = this.listComponents.find(function(c) {
+            // Get ACTUAL component
+            cc = t.$[c.get('name')];
+
+            return cc.get('textShowing');
         });
+
+        // this.log('scrollToOrig', scrollTo.get('name'));
+
+        var sc = 'Column_' + scrollTo.item.book;
+        scrollTo = this.$.Table.$[sc] || scrollTo;
+
+        // this.log('scrollToNew', scrollTo.get('name'));
 
         if(!scrollTo || !scrollTo.hasNode()) {
             return;

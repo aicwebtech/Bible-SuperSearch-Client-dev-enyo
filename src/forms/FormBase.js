@@ -224,10 +224,13 @@ module.exports = kind({
             method: 'GET'
         });
 
-        this.app.set('resultListRequestedCacheId', formData.list_cache_id || null);
+        this.app.set('resultListRequestedCacheId', formData.results_list_cache_id || null);
 
-        if(this.app.get('resultListRequestedCacheId') == this.app.get('resultListCacheId')) {
-            delete formData.list_cache_id; // If the list is already stored in memory, don't make API query for it again
+        this.log('resultListRequestedCacheId', this.app.get('resultListRequestedCacheId'));
+        this.log('resultsListCacheId', this.app.get('resultsListCacheId'));
+
+        if(this.app.get('resultListRequestedCacheId') == this.app.get('resultsListCacheId')) {
+            delete formData.results_list_cache_id; // If the list is already stored in memory, don't make API query for it again
         }
 
         this.app.set('ajaxLoadingDelay', 100);

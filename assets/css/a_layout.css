@@ -935,30 +935,39 @@ tr.bss_render_reference_row th {
 }
 
 .bss_results_list {
-    width: 100%;
-    max-height: 100px;
+    max-width: 98%;
+    height: 100px;
     overflow-y: auto;
     background-color: #ddd;
-    margin: 15px 0;
+/*    background: linear-gradient(135deg,#0ff 0,#0ff 94%,#fff 95%);
+    scrollbar-width: thin;*/
+    margin: 15px auto;
     border: 1px solid #111;
     padding: 7px 10px;
     position: relative;
+    resize: both;
+}
+
+.bss_results_list_container {
+    display: inline-block;
+    width: 200px;
 }
 
 .bss_results_list_item {
     font-size: 0.8em;
     margin-right: 5px;
     margin-bottom: 3px;
-    text-decoration: underline;
+    display: inline-block;
+    width: 50px;
 }
 
-.bss_results_list_item_visited {
-    color: purple !important;
+
+a.bss_results_list_item_visited {
+    color: purple;
     font-weight: bold;
 }
 
 .bss_results_list_item_showing {
     font-weight: bold;
-    text-decoration: underline;
-    background-color: #fff;
+/*    background-color: #fff;*/
 }

@@ -901,7 +901,7 @@ var App = Application.kind({
         var uuid = parts.shift();
         var partsObj = this._explodeHashPassage(parts);
         var formData = this._assembleHashPassage(partsObj);
-        formData.list_cache_id = uuid;
+        formData.results_list_cache_id = uuid;
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
     },    
     _hashStrongs: function(parts) {
