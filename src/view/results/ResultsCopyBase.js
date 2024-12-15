@@ -18,6 +18,27 @@ module.exports = kind({
         });
     },
 
+    renderTopPlaceholder: function() {
+        // do nothing?
+    },
+
+    populateTopPlaceholder: function() {
+        var r = this.app.get('altResponseData') || null;
+
+        if(!r) {
+            return;
+        }
+
+        this._clearBibleComponents();
+        var pd = r.results[0];
+        this.renderSingleVerseParallelBible(pd);
+    },
+
+    hideTopPlaceholder: function() {
+        this.app.set('altResponseData', null);
+        this.render(); 
+    },
+
     renderHeader: function() {
         this.app.debug && this.log();
         this.container = this._createContainer();
@@ -153,6 +174,12 @@ module.exports = kind({
     _appendBibleComponent: function(content, index) {
         var compName = this._getBibleComponentName(index);
         this.container.$[compName] && this.container.$[compName].appendText(content);    
+    },
+    _clearBibleComponents: function() {
+        for(i in this.bibles) {
+            var compName = this._getBibleComponentName(i);
+            this.container.$[compName] && this.container.$[compName].clearText();
+        }
     },
     processAssembleVerse: function(reference, verse) {
         var format = this.app.UserConfig.get('copy_text_format'),

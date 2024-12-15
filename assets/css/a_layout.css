@@ -948,9 +948,21 @@ tr.bss_render_reference_row th {
     resize: both;
 }
 
+.bss_results_list hr {
+    margin: 2px 1px;
+}
+
 .bss_results_list_container {
     display: inline-block;
     width: 200px;
+}
+
+.bss_results_list_label {
+    width: 20%;
+    max-width: 120px; 
+    padding-right: 5px; 
+    vertical-align: top;
+    font-size: 0.8em;
 }
 
 .bss_results_list_item {
@@ -958,9 +970,8 @@ tr.bss_render_reference_row th {
     margin-right: 5px;
     margin-bottom: 3px;
     display: inline-block;
-    width: 50px;
+    width: 100px;
 }
-
 
 a.bss_results_list_item_visited {
     color: purple;

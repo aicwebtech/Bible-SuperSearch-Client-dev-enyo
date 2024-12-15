@@ -15,6 +15,7 @@ module.exports = kind({
     navButton_2: null,
     sideButtons: false,
     passage: null,
+    type: 'normal',
 
     // Published
     singleVerse: false,
@@ -22,6 +23,7 @@ module.exports = kind({
     handlers: {
         onGlobalScroll: 'handleGlobalScroll',
         onGlobalScrollEnd: 'handleGlobalScrollEnd',
+        onResultsComponentShowingChange: 'handleShowingChange',
         blur: 'handleBlur',
         focus: 'handleFocus'
     },
@@ -117,6 +119,13 @@ module.exports = kind({
                 this.clickPrev();
             }
         }
+    },
+    handleShowingChange: function(s, e) {
+        if(e.type != this.type) {
+            return;
+        }
+
+        this.set('showing', !!e.showing);
     },
     handleGlobalScroll: function(inSender, inEvent) {
         this.scrolling = true;

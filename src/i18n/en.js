@@ -253,7 +253,7 @@ module.exports = {
         {
           "id": 13,
           "name": "1 Chronicles",
-          "shortname": "1 Chron",
+          "shortname": "1 Chr",
           "matching": [
                 "1Chronicles", 
                 "First Chronicles", 
@@ -264,7 +264,7 @@ module.exports = {
         {
           "id": 14,
           "name": "2 Chronicles",
-          "shortname": "2 Chron",
+          "shortname": "2 Chr",
           "matching": [
                 "2Chronicles", 
                 "Second Chronicles", 
@@ -285,7 +285,7 @@ module.exports = {
         {
           "id": 17,
           "name": "Esther",
-          "shortname": "Esth"
+          "shortname": "Est"
         },
         {
           "id": 18,
@@ -475,13 +475,13 @@ module.exports = {
         {
           "id": 52,
           "name": "1 Thessalonians",
-          "shortname": "1 Thess",
+          "shortname": "1 Th",
           "matching": ["1Thessalonians", "First Thessalonians", "I Thessalonians", "1st Thessalonians"]
         },
         {
           "id": 53,
           "name": "2 Thessalonians",
-          "shortname": "2 Thess",
+          "shortname": "2 Th",
           "matching": ["2Thessalonians", "Second Thessalonians", "II Thessalonians", "2nd Thessalonians"]
         },
         {
@@ -534,19 +534,19 @@ module.exports = {
         {
           "id": 62,
           "name": "1 John",
-          "shortname": "1 John",
+          "shortname": "1 Jn",
           "matching": ["1Jn", "1 Jn", "1John", "1st Jn", "I John", "First John", "1st John"]
         },
         {
           "id": 63,
           "name": "2 John",
-          "shortname": "2 John",
+          "shortname": "2 Jn",
           "matching": ["2Jn", "2 Jn", "2John", "2nd Jn", "II John", "Second John", "2nd John"]
         },
         {
           "id": 64,
           "name": "3 John",
-          "shortname": "3 John",
+          "shortname": "3 Jn",
           "matching": ["3Jn", "3 Jn", "3John", "3rd Jn", "III John", "Third John", "3rd John"]
         },
         {

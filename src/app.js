@@ -80,7 +80,11 @@ var App = Application.kind({
     cacheId: null, // most recent cache id
     resultListRequestedCacheId: null,
     resultsListCacheId: null, // most recent search results cache id
+    resultsListPage: 1, 
     resultsList: [], // most recent search results list
+    resultsListWidth: null,
+    resultsListHeight: null,
+    altResultsData: null,
     biblesDisplayed: [],
     locale: 'en',
     defaultLocale: 'en', // hardcoded
@@ -899,9 +903,12 @@ var App = Application.kind({
     },    
     _hashSearchLink: function(parts) {
         var uuid = parts.shift();
+        // var page = parts.shift();
         var partsObj = this._explodeHashPassage(parts);
         var formData = this._assembleHashPassage(partsObj);
         formData.results_list_cache_id = uuid;
+        // formData.results_list_page = page;
+        // this.set('resultsListPage', page);
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
     },    
     _hashStrongs: function(parts) {
@@ -1225,6 +1232,10 @@ var App = Application.kind({
                 var book = this.localeBibleBooks.en[id - 1];
 
                 if(book && useShortname) {
+                    if(useShortname == 'strict') {
+                        return book.shortname || fallbackName;
+                    }
+
                     return book.shortname || book.name;
                 }
 
@@ -1256,6 +1267,10 @@ var App = Application.kind({
         }
 
         if(book && useShortname) {
+            if(useShortname == 'strict') {
+                return book.shortname || fallbackName;
+            }
+
             return book.shortname || book.name;
         }
 

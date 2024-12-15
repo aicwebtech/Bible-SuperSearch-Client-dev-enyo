@@ -11,6 +11,7 @@ var Nav = require('../../components/NavButtons/NavHtml');
 var HoverDialog = require('../../components/dialogs/Hover');
 var StrongsHoverDialog = require('../../components/dialogs/StrongsHover');
 var utils = require('enyo/utils');
+var Ajax = require('enyo/Ajax');
 var i18n = require('../../components/Locale/i18nComponent');
 
 module.exports = kind({
@@ -37,6 +38,8 @@ module.exports = kind({
     _localeChangeRender: false,
     activeComponent: null,
     sideButtons: false,
+    resultsShowing: true,
+    specialResultsShowing: false,
     list: null,
 
     published: {
@@ -52,6 +55,7 @@ module.exports = kind({
         onLocaleChange: 'handleLocaleChange',
         onGlobalScroll: 'handleGenericReposition',
         onGlobalScrollEnd: 'handleGenericReposition',
+        onResultsLinkTap: 'handleResultsLinkTap',
         ontap: 'handleClick',
         // onGlobalTap: 'handleClick'
     },
@@ -188,8 +192,10 @@ module.exports = kind({
         
         this.app.debug && this.log('Rendering Results!');
         this.renderPager(true);
-        this.renderHeader();
         this.renderList();
+
+        this.renderHeader();
+        this.renderTopPlaceholder();
 
         resultsData.results.forEach(function(passage) {
             this.renderPassage(passage);
@@ -207,7 +213,7 @@ module.exports = kind({
         }
 
         this.render();
-
+        this.populateTopPlaceholder();
         this.determineActiveComponent();
     },
     renderPassage: function(passage) {        
@@ -227,6 +233,7 @@ module.exports = kind({
         }
     },
 
+    renderTopPlaceholder: function() {},                    // Must implement on child kind!
     renderSingleVerseSingleBible: function(passage) {},     // Must implement on child kind!
     renderSingleVerseParallelBible: function(passage) {},   // Must implement on child kind!
     renderPassageParallelBible: function(passage) {},       // Must implement on child kind!
@@ -318,8 +325,8 @@ module.exports = kind({
 
         if(resultsData.list && resultsData.list.length > 0) {
             this.list = resultsData.list;
-            this.log('cacheId data', resultsData);
             this.app.set('resultsListCacheId', resultsData.hash);
+            this.app.set('resultsListPage', resultsData.paging.current_page || 1);
             this.app.set('resultsList', resultsData.list);
         } else if(this.app.get('resultsListCacheId') == this.app.get('resultListRequestedCacheId')) {
             this.list = this.app.get('resultsList');
@@ -337,6 +344,36 @@ module.exports = kind({
         });
     },
 
+    handleResultsLinkTap: function(s, e) {
+        var t = this;
+
+        var bible = this.app.getSelectedBibles();
+        var bible = (bible) ? bible.filter(function(b) {return b != 0 && b != null}) : [];
+
+        var fd = {
+            bible: JSON.stringify(bible),
+            reference: e.item.book + 'B ' + e.item.chapter + ':' + e.item.verse
+        };
+
+        var ajax = new Ajax({
+            url: this.app.configs.apiUrl,
+            method: 'GET'
+        });
+
+        this.app.set('ajaxLoadingDelay', 100);
+
+        ajax.go(fd); // for GET
+        ajax.response(this, function(s, r) {
+            t.app.set('ajaxLoadingDelay', false);
+            t.app.set('altResponseData', r);
+            t.populateTopPlaceholder();
+        });
+
+        ajax.error(this, function(s, r) {
+            t.app.set('ajaxLoadingDelay', false);
+            t.populateTopPlaceholder();
+        });
+    },
     processText: function(verse) {
         return verse.text;
     },
@@ -465,10 +502,11 @@ module.exports = kind({
 
         return false;
     },
-    _createContainer: function(passage) {
+    _createContainer: function(passage, name) {
         return this.createComponent({
             kind: ResCom,
             tag: 'table',
+            name: name || null,
             passage: passage || null,
             // attributes:{border: 1},
             classes: 'biblesupersearch_render_table'
@@ -629,6 +667,10 @@ module.exports = kind({
         var strongsOpenClick = this.getStrongsOpenClick();
         target = inEvent.target;
 
+        if(target.tagName == 'A' && target.className == 'top_placeholder_hide') {
+            this.hideTopPlaceholder();
+        }
+
         if(strongsOpenClick && target.tagName == 'A' && target.className == 'strongs') {
             inEvent.preventDefault();
             // inEvent.stopPropagation();
@@ -669,7 +711,6 @@ module.exports = kind({
             this.app.debug && this.$.StrongsHover && this.log('displaying Strongs dialog');
             return true;
         }
-
 
         // no longer relavant
         if(inSender.name != 'DialogsContainer') {

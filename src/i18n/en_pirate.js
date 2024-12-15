@@ -439,6 +439,7 @@ module.exports = {
     // 5.7
     'Include Link': 'Include Ye Linketh',
     'Include Formatting': 'Includee For Mathe',
+    'Resume Search': 'Returneth to ye plunderin\'',
 
     
 

@@ -1,5 +1,6 @@
 var kind = require('enyo/kind');
 var ResultsBase = require('./ResultsBase');
+var Link = require('../../components/Link/Link');
 
 module.exports = kind({
     name: 'ResultsReadBase',
@@ -11,15 +12,57 @@ module.exports = kind({
     singleVerseBibleHeaderThreshold: 10,
     singleVerseBibleHeaderNext: true,
 
+    renderTopPlaceholder: function() {
+        var Container = this._createContainer(null, 'TopPlaceholder');
+        Container.set('showing', false);
+        Container.set('type', 'top_placeholder');
+    },
+    populateTopPlaceholder: function() {
+        var r = this.app.get('altResponseData') || null;
+
+        if(!r) {
+            return;
+        }
+
+        var Container = this.$['TopPlaceholder'];
+        Container.destroyClientControls();
+
+        // if(e.type == 'resultsListVerse') {
+            var pd = r.results[0];
+            this.renderSingleVerseParallelBible(pd, Container);
+        // }
+
+        Container.createComponent({
+            components: [
+                {
+                    kind: Link, 
+                    classes: 'top_placeholder_hide', 
+                    content: 'Resume Search', 
+                    href: 'javascript:void(0)'
+                }
+            ]
+        });
+
+        Container.render();
+        Container.set('showing', true);
+        this.waterfall('onResultsComponentShowingChange', {type: 'normal', showing: false})
+    },
+
+    hideTopPlaceholder: function() {
+        this.app.set('altResponseData', null);
+        this.waterfall('onResultsComponentShowingChange', {type: 'top_placeholder', showing: false});
+        this.waterfall('onResultsComponentShowingChange', {type: 'normal', showing: true});
+    },
+
     // NOTA Single verse, single Bible
     renderSingleVerseSingleBible: function(pd) {
         // this.log();
         this.renderSingleVerseParallelBible(pd);
     },
     // Single verse, multi Bible
-    renderSingleVerseParallelBible: function(pd) {
+    renderSingleVerseParallelBible: function(pd, Container) {
         // this.log();
-        var Container = this._createContainer(pd);
+        var Container = Container || this._createContainer(pd);
         var addBibleHeader = false,
             addReferenceRow = false,
             renderStyle = this.renderStyle;

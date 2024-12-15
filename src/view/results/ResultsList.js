@@ -9,16 +9,23 @@ var Signal = require('enyo/Signals');
 var ResultsListItem = kind({
     classes: 'bss_results_list_item',
     visitedClasses: 'bss_results_list_item_visited',
+    name: 'ResultsListItem',
     // kind: i18n,
     kind: Link,
     linkBuilder: LinkBuilder,
     containsVerses: true,
     textShowing: false,
     showBookName: true,
+    shortNameOnly: true,
     item: {},
 
     handlers: {
         onLocaleChange: 'localeChanged',
+        ontap: 'handleTap'
+    },
+
+    attributes: {
+        onclick: "return false;"
     },
     
     components: [
@@ -44,14 +51,15 @@ var ResultsListItem = kind({
     },
     makeLink: function() {
         var bible = this.app.getSelectedBibles();
-        var bookNameShort = this.app.getLocaleBookName(this.item.book, null, true);
+        var bookNameShort = this.app.getLocaleBookName(this.item.book, null, this.shortNameOnly ? 'strict' : true);
         var bookName = this.app.getLocaleBookName(this.item.book, null);
-        var mode = 'sl/' + this.app.get('resultsListCacheId');
+
+        var mode = 'sl/' + this.app.get('resultsListCacheId'); // + '/' + this.app.get('resultsListPage');
         link = this.linkBuilder.buildReferenceLink(mode, bible, bookName, this.item.chapter, this.item.verse);
 
         this.setAttribute('href', link);
 
-        var content = (this.showBookName) ? bookNameShort + ' ' : '';
+        var content = (this.showBookName && bookNameShort) ? bookNameShort + ' ' : '';
         this.setContent(content + this.item.chapter + ':' + this.item.verse);
         
         if(!this.showBookName || bookName != bookNameShort) {
@@ -82,6 +90,15 @@ var ResultsListItem = kind({
             this.set('visited', true);
         }
     },
+    handleTap: function(s, e) {
+        this.inherited(arguments);
+        e.preventDefault();
+        // e.stopPropagation();
+        this.log(e);
+
+        this.bubble('onResultsLinkTap', {item: this.item});
+        return true;
+    },
     textShowingChanged: function(was, is) {
         this.addRemoveClass('bss_results_list_item_showing', is);
     }
@@ -97,22 +114,41 @@ module.exports = kind({
     listComponents: [],
 
     components: [
+        {
+            kind: Signal, 
+            resize: 'handleResize', 
+            isChrome: true
+        },
         // { components: [
         //     {name: 'SearchLink', kind: Link, content: 'Return to Search'}
         // ]}
         {tag: 'table', name: 'Table'}
     ],
 
+    // handlers: {
+    //     resize: 'handleResize'
+    // },
+
     create: function() {
         this.inherited(arguments);
         var t = this;
         var lastBook = null;
+        var bookCount = 0;
+
+        if(this.app.get('resultsListWidth')) {
+            this.applyStyle('width', this.app.get('resultsListWidth') + 'px');
+        }        
+
+        if(this.app.get('resultsListHeight')) {
+            this.applyStyle('height', this.app.get('resultsListHeight') + 'px');
+        }
 
         // this.$.SearchLink.set('href', '#/c/' + this.app.get('resultsListCacheId'));
 
         this.list.forEach(function(item) {
             var cont = 'Container_' + item.book,
-                colcont =  'Column_' + item.book;
+                colcont =  'Column_' + item.book,
+                bccont = 'BookCount_' + item.book;
 
             // if(!t.$[cont]) {
             //     t.createComponent({
@@ -128,16 +164,31 @@ module.exports = kind({
             // });
 
             if(!t.$.Table.$[cont]) {
+                lastBook && t.$.Table.createComponent({
+                    tag: 'tr',
+                    allowHtml: true,
+                    content: '<td colspan="2"><hr /></td>'
+                });
+
                 t.$.Table.createComponent({
                     name: cont, 
                     tag: 'tr',
                     components: [
                         {
-                            kind: i18n,
                             tag: 'td',
-                            style: 'white-space: nowrap; padding-right: 5px; vertical-align: top',
-                            content: item.book + 'B',
-                            containsVerses: true
+                            classes: 'bss_results_list_label',
+                            components: [
+                                {
+                                    kind: i18n,
+                                    tag: 'span',
+                                    content: item.book + 'B',
+                                    containsVerses: true
+                                }, 
+                                {
+                                    tag: 'span',
+                                    name: bccont
+                                }
+                            ]
                         }, 
                         {
                             name: colcont,
@@ -146,6 +197,9 @@ module.exports = kind({
                     ]
                 });
 
+                bookCount = 1;
+            } else {
+                bookCount ++;
             }
 
             t.log('component', t.$.Table.$[cont]);
@@ -154,11 +208,13 @@ module.exports = kind({
                 var lc = t.$.Table.$[colcont].createComponent({
                     kind: ResultsListItem,
                     item: item,
-                    showBookName: false, 
+                    showBookName: true, 
                     owner: t
                 });
 
                 t.listComponents.push(lc);
+
+                t.$.Table.$[bccont].set('content', ' (' + bookCount + ')');
             // }
 
             // // if(lastBook && lastBook != item.book) {
@@ -183,7 +239,7 @@ module.exports = kind({
             // //     // showBookName: lastBook != item.book
             // // });
 
-            // lastBook = item.book;
+            lastBook = item.book;
 
             // // if(item.showing && !t.scrollTo) {
             // //     t.scrollTo = c;
@@ -194,8 +250,19 @@ module.exports = kind({
     },
     rendered: function() {
         this.inherited(arguments);
+        var t = this;
+
+        this.RO = new ResizeObserver(function() {
+            t.app.set('resultsListHeight', t.hasNode().offsetHeight - 16); // padding =  7 * 2, border = 1 * 2 
+            t.app.set('resultsListWidth', t.hasNode().offsetWidth - 22);   // padding = 10 * 2, border = 1 * 2
+        }).observe(this.hasNode());
+
         this.scrollToItem();
     }, 
+
+    handleResize: function() {
+        this.log();
+    },
     
     scrollToItemDelay: function() {
         var t = this;
@@ -206,6 +273,7 @@ module.exports = kind({
 
         this.scrollDelay = window.setTimeout(function() {
             window.clearTimeout(t.scrollDelay);
+            t.log('scrollTo Delay over');
             t.scrollDelay = null;
             t.scrollToItem();
         }, 1000)
@@ -214,6 +282,11 @@ module.exports = kind({
     scrollToItem: function() {
         this.log();
         var t = this;
+
+        if(!this.$) {
+            this.log('NO $ for components');
+            return; // what on earth?
+        }
         // return;
 
         // if(!this.scrollTo || !this.scrollTo.hasNode()) {
@@ -223,24 +296,31 @@ module.exports = kind({
         // this.log();
 
         var scrollTo = this.listComponents.find(function(c) {
+            if(c.get('textShowing')) {
+                return true;
+            }
+
             // Get ACTUAL component
             cc = t.$[c.get('name')];
 
-            return cc.get('textShowing');
+            return cc ? cc.get('textShowing') : false;
         });
 
         // this.log('scrollToOrig', scrollTo.get('name'));
 
-        var sc = 'Column_' + scrollTo.item.book;
-        scrollTo = this.$.Table.$[sc] || scrollTo;
-
-        // this.log('scrollToNew', scrollTo.get('name'));
-
         if(!scrollTo || !scrollTo.hasNode()) {
+            this.log('No component to scroll to');
             return;
         }
 
+        var sc = 'Column_' + scrollTo.item.book;
+        scrollTo = this.$.Table ? this.$.Table.$[sc] : scrollTo;
+
+        // this.log('scrollToNew', scrollTo.get('name'));
+
         var offsetTop = scrollTo.hasNode().offsetTop;
+
+        this.log('scrolling', offsetTop);
 
         // this.log('offsetTop', offsetTop, scrollTo.get('content'));
 

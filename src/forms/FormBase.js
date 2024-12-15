@@ -387,7 +387,8 @@ module.exports = kind({
         this.bubble('onFormResponseSuccess', responseData);
         this.waterfall('onFormResponseSuccessWaterfall', responseData);
         Signal.send('onFormResponseSuccess', responseData);
-        this.app.set('responseData', responseData)
+        this.app.set('responseData', responseData);
+        this.app.set('altResponseData', null);
         this.maxPage = (inResponse.paging && inResponse.paging.last_page) ? inResponse.paging.last_page : null;
         this.page = (inResponse.paging && inResponse.paging.current_page) ? inResponse.paging.current_page : null;
         // this.app.UserConfig.set('copy', false); // force EZ-Copy disabled when submitting the form - make a config for this?
@@ -754,12 +755,10 @@ module.exports = kind({
             field = 'search';
         }
 
-
         // matches = value.match(/([123] )?[]/gi);
         return field;
 
     },
-
     _containsNonPassageCharacters: function(str) {
         // migrated from PHP API.
         if(!str || !str.match) {
