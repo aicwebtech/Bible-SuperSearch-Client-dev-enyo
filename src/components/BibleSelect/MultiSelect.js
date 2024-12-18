@@ -98,7 +98,7 @@ module.exports = kind({
         }
 
         this.app.defaultBibles = defaultBibles;
-        this.app.debug && this.log('default', defaultBibles);
+        // this.app.debug && this.log('default', defaultBibles);
         this.bubble('onSpecialBibleChange', {value: defaultBibles});
         this.setValue(defaultBibles);        
 
@@ -122,8 +122,8 @@ module.exports = kind({
         var classes = (this.selectorClasses && typeof this.selectorClasses == 'string') ? this.selectorClasses : '';
         var style = '';
 
-        this.app.debug && this.log('parallelNumber', this.parallelNumber);
-        this.app.debug && this.log('parallelLimit', this.parallelLimit);
+        // this.app.debug && this.log('parallelNumber', this.parallelNumber);
+        // this.app.debug && this.log('parallelLimit', this.parallelLimit);
 
         if(this.parallelNumber >= this.parallelLimit) {
             this.$.Add && this.$.Add.set('showing', false);

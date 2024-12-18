@@ -121,8 +121,10 @@ module.exports = kind({
         this.app.debug && this.log();
         var ref = this.app.configs.landingReference || null;
 
-        if(!this.preventDefaultSubmit && ref && ref != '') {
+        if(!this.preventDefaultSubmit && !this.app.get('loadingPagePrevent') && ref && ref != '') {
             var formData = {};
+
+            this.log('submitting default');
 
             ref = this.app.vt(ref);
 
@@ -377,6 +379,7 @@ module.exports = kind({
         return formData;
     },
     handleResponse: function(inSender, inResponse) {
+        this.app.debug && this.log();
         // this.app.set('ajaxLoading', false);
         this.app.set('ajaxLoadingDelay', false);
         this.requestPending = false;
@@ -384,11 +387,13 @@ module.exports = kind({
         this.app.set('cacheId', this.get('cacheHash'));
         this.app.set('shortHashUrl', '#/c/' + this.get('cacheHash'));
         var responseData = {formData: this._formDataAsSubmitted, results: inResponse, success: true};
+        this.app.set('responseData', responseData);
+        this.app.set('altResponseData', null);
+        this.app.set('resultsShowing', []);
+        this.app.set('altResultsShowing', []);
         this.bubble('onFormResponseSuccess', responseData);
         this.waterfall('onFormResponseSuccessWaterfall', responseData);
         Signal.send('onFormResponseSuccess', responseData);
-        this.app.set('responseData', responseData);
-        this.app.set('altResponseData', null);
         this.maxPage = (inResponse.paging && inResponse.paging.last_page) ? inResponse.paging.last_page : null;
         this.page = (inResponse.paging && inResponse.paging.current_page) ? inResponse.paging.current_page : null;
         // this.app.UserConfig.set('copy', false); // force EZ-Copy disabled when submitting the form - make a config for this?
@@ -978,13 +983,11 @@ module.exports = kind({
         // Todo - work in progress!
 
         this.bindings.forEach(function(item, idx) {
-            this.app.debug && console.log('formItem to', item.to);
+            // this.app.debug && console.log('formItem to', item.to);
 
             if(item.shortLink) {
                 return;
             }
-
-            // console.log('formItem', item);
 
             var p = item.to.split('.'),
                 field = p[1],
@@ -997,9 +1000,9 @@ module.exports = kind({
 
             var value = this.$[field].get(property);
 
-            this.app.debug && console.log('formItem field', field);
-            this.app.debug && console.log('formItem property', property);
-            this.app.debug && console.log('formItem value', value);
+            // this.app.debug && console.log('formItem field', field);
+            // this.app.debug && console.log('formItem property', property);
+            // this.app.debug && console.log('formItem value', value);
             // if(item.from = 'formData.' +)
 
             if(value && value != '' && value != 0) {

@@ -85,6 +85,8 @@ var App = Application.kind({
     resultsListWidth: null,
     resultsListHeight: null,
     altResultsData: null,
+    resultsShowing: null,
+    altResultsShowing: null,
     biblesDisplayed: [],
     locale: 'en',
     defaultLocale: 'en', // hardcoded
@@ -99,6 +101,7 @@ var App = Application.kind({
     responseCollection: ResponseCollection,
     storage: StorageManager,
     utils: Utils,
+    loadingPagePrevent: false,
     hasAjaxSuccess: false,
     hasMouse: false, // use mouse events to detect
 
@@ -829,6 +832,7 @@ var App = Application.kind({
             hash = hash.replace(/\./g, ' ');
             var parts = hash.split('/');
             var mode  = parts.shift();
+            this.loadingPagePrevent = false;
 
             if(mode == '') {
                 var mode = parts.shift();
@@ -854,6 +858,7 @@ var App = Application.kind({
                     return this._hashSearchLink(parts);
                     break;                
                 case 'context': // Contextual lookup
+                    this.loadingPagePrevent = true;
                     return this._hashContext(parts);
                     break;
                 case 'strongs': // Strongs lookup

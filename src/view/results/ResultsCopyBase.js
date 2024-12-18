@@ -2,6 +2,7 @@ var kind = require('enyo/kind');
 var ResultsBase = require('./ResultsBase');
 var CopyPane = require('./CopyPane');
 var CopySettings = require('../../components/dialogs/CopySettings');
+var Signal = require('enyo/Signals');
 
 module.exports = kind({
     name: 'ResultsCopyBase',
@@ -21,7 +22,6 @@ module.exports = kind({
     renderTopPlaceholder: function() {
         // do nothing?
     },
-
     populateTopPlaceholder: function() {
         var r = this.app.get('altResponseData') || null;
 
@@ -33,12 +33,11 @@ module.exports = kind({
         var pd = r.results[0];
         this.renderSingleVerseParallelBible(pd);
     },
-
     hideTopPlaceholder: function() {
+        Signal.send('onShowingReset');
         this.app.set('altResponseData', null);
         this.render(); 
     },
-
     renderHeader: function() {
         this.app.debug && this.log();
         this.container = this._createContainer();

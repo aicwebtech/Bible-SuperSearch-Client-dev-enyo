@@ -21,6 +21,7 @@ var ResultsListItem = kind({
 
     handlers: {
         onLocaleChange: 'localeChanged',
+        onResetShowing: 'resetShowing',
         ontap: 'handleTap'
     },
 
@@ -33,7 +34,8 @@ var ResultsListItem = kind({
             kind: Signal, 
             onVisitedClear: 'handleVisitedClear', 
             onShowingClear: 'handleShowingClear', 
-            onShowingChange: 'handleShowingChange', 
+            onShowingReset: 'showingResetItem', 
+            // onFormResponseSuccess: 'handleShowingClear',
             isChrome: true
         },
     ],
@@ -44,8 +46,8 @@ var ResultsListItem = kind({
         this.absHref =  this.linkBuilder.buildReferenceLink('p', bible, this.item.book + 'B', this.item.chapter, this.item.verse);
 
         this.inherited(arguments);
-        // this.addRemoveClass('bss_results_list_item_showing', this.item.showing);
-        // this.set('showing', this.item.showing || false);
+        this.addRemoveClass('bss_results_list_item_showing', this.item.showing);
+        this.set('textShowing', this.item.showing || false);
 
         this.makeLink();
     },
@@ -78,29 +80,62 @@ var ResultsListItem = kind({
         // }
     },
     handleShowingClear: function() {
+        this.log();
         this.set('textShowing', false);
+    },
+    showingResetItem: function() {
+        this.set('textShowing', !!this.item.showing);
     },
     handleShowingChange: function(s, e) {
         var i = this.item;
 
-        if(i.book == e.book && i.chapter == e.chapter && i.verse == e.verse) {
-            this.log(i.book, i.chapter, i.verse);
+        // if(i.book == e.book && i.chapter == e.chapter && i.verse == e.verse) {
+        //     this.log(i.book, i.chapter, i.verse);
 
-            this.set('textShowing', e.showing || true);
-            this.set('visited', true);
-        }
+        //     this.set('textShowing', e.showing || true);
+        //     this.set('visited', true);
+        // }
     },
     handleTap: function(s, e) {
+        this.log();
         this.inherited(arguments);
         e.preventDefault();
         // e.stopPropagation();
+        Signal.send('onShowingClear');
+        this.set('textShowing', true);
         this.log(e);
 
         this.bubble('onResultsLinkTap', {item: this.item});
         return true;
     },
+    isTextShowing: function() {
+        // if(this.get('textShowing') === null) {
+        //     var t = this;
+        //     var s = this.app.get('resultsShowing') || [];
+        //     var a = this.app.get('altResultsShowing') || [];
+        //     var u = (a && a.length > 0) ? a : s;
+
+        //     // this.log('resultsShowing', s);
+        //     // this.log('alTresultsShowing', a);
+
+        //     var found = u.find(function(item) {
+        //         return t.item.book == item.book && t.item.chapter == item.chapter && t.item.verse == item.verse;
+        //     });
+
+        //     this.log('found', found);
+
+        //     this.set('textShowing', !!found);
+        // }
+
+        return this.get('textShowing');
+    },
     textShowingChanged: function(was, is) {
         this.addRemoveClass('bss_results_list_item_showing', is);
+
+        is && this.set('visited', true);
+    },
+    resetShowing: function() {
+        // this.set('textShowing', null);
     }
 });
 
@@ -117,6 +152,7 @@ module.exports = kind({
         {
             kind: Signal, 
             resize: 'handleResize', 
+            onShowingReset: 'scrollToItemDelay',
             isChrome: true
         },
         // { components: [
@@ -202,7 +238,7 @@ module.exports = kind({
                 bookCount ++;
             }
 
-            t.log('component', t.$.Table.$[cont]);
+            // t.log('component', t.$.Table.$[cont]);
 
             // if(t.$.Table.$[cont] && t.$.Table.$[cont].$[colcont]) {                
                 var lc = t.$.Table.$[colcont].createComponent({
@@ -253,6 +289,10 @@ module.exports = kind({
         var t = this;
 
         this.RO = new ResizeObserver(function() {
+            if(!t.app || !t.app.set) {
+                return;
+            }
+
             t.app.set('resultsListHeight', t.hasNode().offsetHeight - 16); // padding =  7 * 2, border = 1 * 2 
             t.app.set('resultsListWidth', t.hasNode().offsetWidth - 22);   // padding = 10 * 2, border = 1 * 2
         }).observe(this.hasNode());
@@ -287,38 +327,35 @@ module.exports = kind({
             this.log('NO $ for components');
             return; // what on earth?
         }
-        // return;
-
-        // if(!this.scrollTo || !this.scrollTo.hasNode()) {
-        //     return;
-        // }
-
-        // this.log();
 
         var scrollTo = this.listComponents.find(function(c) {
-            if(c.get('textShowing')) {
-                return true;
-            }
-
             // Get ACTUAL component
             cc = t.$[c.get('name')];
 
-            return cc ? cc.get('textShowing') : false;
+            return cc ? cc.isTextShowing() : false;
         });
 
-        // this.log('scrollToOrig', scrollTo.get('name'));
+        scrollToAc = scrollTo ? this.$[scrollTo.get('name')] || null : null;
 
-        if(!scrollTo || !scrollTo.hasNode()) {
-            this.log('No component to scroll to');
-            return;
-        }
+        // this.log('scrollToOrig', scrollTo.get('name'), scrollTo.get('item'));
+        // this.log('scrollToAc', scrollToAc.get('name'), scrollToAc.get('item'));
+
+        // if(!scrollTo || !scrollTo.hasNode()) {
+        //     this.log('No component to scroll to');
+        //     return;
+        // }
 
         var sc = 'Column_' + scrollTo.item.book;
-        scrollTo = this.$.Table ? this.$.Table.$[sc] : scrollTo;
+        section = this.$.Table ? this.$.Table.$[sc] : null;
+
+        var sNode = section ? section.hasNode() : null;
+            cNode = scrollToAc ? scrollToAc.hasNode() : null; 
 
         // this.log('scrollToNew', scrollTo.get('name'));
 
-        var offsetTop = scrollTo.hasNode().offsetTop;
+        var offsetTop = 0;
+            offsetTop += sNode ? sNode.offsetTop : 0;
+            offsetTop += sNode && cNode ? cNode.offsetTop : 0;
 
         this.log('scrolling', offsetTop);
 
@@ -329,24 +366,5 @@ module.exports = kind({
             left: 0, 
             behavior: 'instant' // intentionally hardcoded
         });
-
-        // var styles = window.getComputedStyle(this.scrollTo.hasNode());
-        //     margin =    parseFloat(styles['marginTop']) +
-        //                 parseFloat(styles['marginBottom']);
-        // return;
-        //     height = this.scrollTo.hasNode().offsetHeight;
-
-        // this.log('styles', styles);
-        // this.log('offsetHeight', offsetHeight);
-
-        // // this.hasNode() && this.hasNode().scrollTo({
-        // //     // top: 1300, 
-        // //     top: top, 
-        // //     left: 0, 
-        // //     behavior: 'instant' // intentionally hardcoded
-        // // });
-
-        // // this.scrollTo = null;
-        // return;
     }
 });

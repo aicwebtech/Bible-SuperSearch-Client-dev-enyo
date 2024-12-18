@@ -240,6 +240,10 @@ module.exports = kind({
     renderPassageSingleBible: function(passage) {},         // Must implement on child kind!
 
     signalVerseShowing: function(book, chapter, verse) {
+        this.app.get('resultsShowing').push({book: book, chapter: chapter, verse: verse, showing: true});
+
+        // this.log('showme', this.app.get('resultsShowing'));
+
         Signal.send('onShowingChange', {book: book, chapter: chapter, verse: verse, showing: true});
     },
 
@@ -352,7 +356,9 @@ module.exports = kind({
 
         var fd = {
             bible: JSON.stringify(bible),
-            reference: e.item.book + 'B ' + e.item.chapter + ':' + e.item.verse
+            reference: e.item.book + 'B ' + e.item.chapter + ':' + e.item.verse,
+            // search: 'faith',
+            // highlight: true
         };
 
         var ajax = new Ajax({

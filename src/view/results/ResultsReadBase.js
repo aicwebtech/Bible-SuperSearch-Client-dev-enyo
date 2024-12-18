@@ -1,6 +1,7 @@
 var kind = require('enyo/kind');
 var ResultsBase = require('./ResultsBase');
 var Link = require('../../components/Link/Link');
+var Signal = require('enyo/Signals');
 
 module.exports = kind({
     name: 'ResultsReadBase',
@@ -34,6 +35,7 @@ module.exports = kind({
 
         Container.createComponent({
             components: [
+                {tag: 'br'},
                 {
                     kind: Link, 
                     classes: 'top_placeholder_hide', 
@@ -50,6 +52,7 @@ module.exports = kind({
 
     hideTopPlaceholder: function() {
         this.app.set('altResponseData', null);
+        Signal.send('onShowingReset');
         this.waterfall('onResultsComponentShowingChange', {type: 'top_placeholder', showing: false});
         this.waterfall('onResultsComponentShowingChange', {type: 'normal', showing: true});
     },
