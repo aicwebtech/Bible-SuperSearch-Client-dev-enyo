@@ -83,7 +83,7 @@ module.exports = kind({
             components: [
                 {
                     name: 'SideButtonPrev', 
-                    classes: 'bss_side_swipe_button bss_float_right', 
+                    classes: 'bss_side_swipe_button bss_float_left', 
                     content: '&lt;', 
                     allowHtml: true, 
                     // style: 'float: inline-start', 
@@ -93,7 +93,7 @@ module.exports = kind({
                 },
                 {
                     name: 'SideButtonNext', 
-                    classes: 'bss_side_swipe_button bss_float_left', 
+                    classes: 'bss_side_swipe_button bss_float_right', 
                     content: '&gt;', 
                     allowHtml: true, 
                     // style: 'float:right', 
@@ -373,6 +373,11 @@ module.exports = kind({
             t.app.set('ajaxLoadingDelay', false);
             t.app.set('altResponseData', r);
             t.populateTopPlaceholder();
+
+            // Scroll to tapped item
+            if(t.app.configs.resultsListClickScroll) {
+                t.$.ResultsList.scrollToItem();
+            }
         });
 
         ajax.error(this, function(s, r) {
@@ -801,6 +806,8 @@ module.exports = kind({
         if(visible.length == 1 || this.hasPaging && visible.length > 0) {
             this.activeComponent = visible[0];
             this.activeComponent.set('active', true);
+
+            this.app.debug && this.log('activeComponent', this.activeComponent.get('name'));
         }
     },
     handleLocaleChange: function(inSender, inEvent) {
@@ -820,7 +827,7 @@ module.exports = kind({
     sideButtonsChanged: function(was, is) {
         var isfr = is; // is for real
 
-        // Prevent racing coindition between one componet turning buttons off and another turning them on
+        // Prevent racing condition between one componet turning buttons off and another turning them on
         if(this.activeComponent && this.activeComponent.get('sideButtons')) {
             isfr = true;
             this.sideButtons = isfr;
@@ -830,19 +837,7 @@ module.exports = kind({
             return; // if no change, do nothing further
         }
 
-        // this.log();
-        // this.$.SideSwipeButtons.set('showing', !!is);
-
         this.$.SideSwipeButtons.addRemoveClass('fadein', !!isfr);
-        // this.$.SideSwipeButtons.set('showing', is);
-
-        // if(is) {
-        //     // this.$.SideSwipeButtons.set('showing', true);
-        //     this.$.SideSwipeButtons.hasNode().classList.toggle('fadein');
-        // } else {
-        //     this.$.SideSwipeButtons.hasNode().classList.toggle('fadein');
-        //     // this.$.SideSwipeButtons.set('showing', false);
-        // }
     }
 
 });

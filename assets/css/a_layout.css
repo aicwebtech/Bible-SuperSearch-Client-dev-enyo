@@ -212,6 +212,8 @@ table.biblesupersearch_render_table {
 }
 
 
+.bss_float_left
+
 
 .biblesupersearch_render_table td table.rtl {
     margin-inline-start: auto;
@@ -722,7 +724,7 @@ div.alert_dialog {
     float: inline-start;  /* RTL */
 }
 
-.bss_float_left {
+.bss_float_right {
     float: inline-end; /* RTL */
 }
 

@@ -30,6 +30,7 @@ var defaultConfig = {
     'testOnLoad': false,
     'testVerbose': false,
     'resultsList': false,
+    'resultsListClickScroll': false,
 
 
     _urlDefaultNotice: function() {

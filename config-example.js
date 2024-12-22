@@ -297,8 +297,11 @@ var biblesupersearch_config_options = {
     //      Clean
     "pager": 'default',      
 
-    // Whether to show a list of all results
+    // Whether to show a list of all results (5.7)
     'resultsList': false,   
+
+    // Whether to scroll to results list item when clicking on it (5.7)
+    'resultsListClickScroll': false,   
 
     // Page Scroll 
     //      When the page loads or query executes, 
