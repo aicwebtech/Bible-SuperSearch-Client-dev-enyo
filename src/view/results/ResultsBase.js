@@ -357,8 +357,8 @@ module.exports = kind({
         var fd = {
             bible: JSON.stringify(bible),
             reference: e.item.book + 'B ' + e.item.chapter + ':' + e.item.verse,
-            // search: 'faith',
-            // highlight: true
+            search: this.app.getFormSearch(),
+            highlight: true
         };
 
         var ajax = new Ajax({
@@ -382,7 +382,29 @@ module.exports = kind({
 
         ajax.error(this, function(s, r) {
             t.app.set('ajaxLoadingDelay', false);
-            t.populateTopPlaceholder();
+
+            try {
+                var response = JSON.parse(s.xhrResponse.body);
+            }
+            catch (error) {
+                this.app.displayInitError();
+                this.errorHandle && this.errorHandle();
+                return;
+            }
+
+            if(response.error_level == 4) {
+                // actual error, do something?
+            }
+            else {
+                // Treat like success
+                t.app.set('altResponseData', response);
+                t.populateTopPlaceholder();
+
+                // Scroll to tapped item
+                if(t.app.configs.resultsListClickScroll) {
+                    t.$.ResultsList.scrollToItem();
+                }
+            }
         });
     },
     processText: function(verse) {
@@ -806,8 +828,7 @@ module.exports = kind({
         if(visible.length == 1 || this.hasPaging && visible.length > 0) {
             this.activeComponent = visible[0];
             this.activeComponent.set('active', true);
-
-            this.app.debug && this.log('activeComponent', this.activeComponent.get('name'));
+            // this.app.debug && this.log('activeComponent', this.activeComponent.get('name'));
         }
     },
     handleLocaleChange: function(inSender, inEvent) {

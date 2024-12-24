@@ -10,7 +10,6 @@ var ResultsListItem = kind({
     classes: 'bss_results_list_item',
     visitedClasses: 'bss_results_list_item_visited',
     name: 'ResultsListItem',
-    // kind: i18n,
     kind: Link,
     linkBuilder: LinkBuilder,
     containsVerses: true,
@@ -35,7 +34,6 @@ var ResultsListItem = kind({
             onVisitedClear: 'handleVisitedClear', 
             onShowingClear: 'handleShowingClear', 
             onShowingReset: 'showingResetItem', 
-            // onFormResponseSuccess: 'handleShowingClear',
             isChrome: true
         },
     ],
@@ -75,32 +73,18 @@ var ResultsListItem = kind({
         // this.render();
     },
     handleVisitedClear: function() {
-        // if(!this.item.showing) {
-            this.set('visited', false);
-        // }
+        this.set('visited', false);
     },
     handleShowingClear: function() {
-        this.log();
         this.set('textShowing', false);
     },
     showingResetItem: function() {
         this.set('textShowing', !!this.item.showing);
     },
-    handleShowingChange: function(s, e) {
-        var i = this.item;
-
-        // if(i.book == e.book && i.chapter == e.chapter && i.verse == e.verse) {
-        //     this.log(i.book, i.chapter, i.verse);
-
-        //     this.set('textShowing', e.showing || true);
-        //     this.set('visited', true);
-        // }
-    },
     handleTap: function(s, e) {
         this.log();
         this.inherited(arguments);
         e.preventDefault();
-        // e.stopPropagation();
         Signal.send('onShowingClear');
         this.set('textShowing', true);
         this.log(e);
@@ -109,24 +93,6 @@ var ResultsListItem = kind({
         return true;
     },
     isTextShowing: function() {
-        // if(this.get('textShowing') === null) {
-        //     var t = this;
-        //     var s = this.app.get('resultsShowing') || [];
-        //     var a = this.app.get('altResultsShowing') || [];
-        //     var u = (a && a.length > 0) ? a : s;
-
-        //     // this.log('resultsShowing', s);
-        //     // this.log('alTresultsShowing', a);
-
-        //     var found = u.find(function(item) {
-        //         return t.item.book == item.book && t.item.chapter == item.chapter && t.item.verse == item.verse;
-        //     });
-
-        //     this.log('found', found);
-
-        //     this.set('textShowing', !!found);
-        // }
-
         return this.get('textShowing');
     },
     textShowingChanged: function(was, is) {
@@ -155,15 +121,8 @@ module.exports = kind({
             onShowingReset: 'scrollToItemDelay',
             isChrome: true
         },
-        // { components: [
-        //     {name: 'SearchLink', kind: Link, content: 'Return to Search'}
-        // ]}
         {tag: 'table', name: 'Table'}
     ],
-
-    // handlers: {
-    //     resize: 'handleResize'
-    // },
 
     create: function() {
         this.inherited(arguments);
@@ -179,25 +138,10 @@ module.exports = kind({
             this.applyStyle('height', this.app.get('resultsListHeight') + 'px');
         }
 
-        // this.$.SearchLink.set('href', '#/c/' + this.app.get('resultsListCacheId'));
-
         this.list.forEach(function(item) {
             var cont = 'Container_' + item.book,
                 colcont =  'Column_' + item.book,
                 bccont = 'BookCount_' + item.book;
-
-            // if(!t.$[cont]) {
-            //     t.createComponent({
-            //         name: cont,
-            //         classes: 'bss_results_list_container',
-            //     });
-            // }
-
-            // t.$[cont].createComponent({
-            //     kind: ResultsListItem,
-            //     item: item,
-            //     owner: t
-            // });
 
             if(!t.$.Table.$[cont]) {
                 lastBook && t.$.Table.createComponent({
@@ -237,52 +181,20 @@ module.exports = kind({
             } else {
                 bookCount ++;
             }
+              
+            var lc = t.$.Table.$[colcont].createComponent({
+                kind: ResultsListItem,
+                item: item,
+                showBookName: true, 
+                owner: t
+            });
 
-            // t.log('component', t.$.Table.$[cont]);
+            t.listComponents.push(lc);
 
-            // if(t.$.Table.$[cont] && t.$.Table.$[cont].$[colcont]) {                
-                var lc = t.$.Table.$[colcont].createComponent({
-                    kind: ResultsListItem,
-                    item: item,
-                    showBookName: true, 
-                    owner: t
-                });
-
-                t.listComponents.push(lc);
-
-                t.$.Table.$[bccont].set('content', ' (' + bookCount + ')');
-            // }
-
-            // // if(lastBook && lastBook != item.book) {
-            // //     t.createComponent({tag: 'br'});
-            // //     t.createComponent({tag: 'br'});
-            // // }
-
-            // // if(lastBook != item.book) {
-            // //     t.createComponent({
-            // //         kind: i18n,
-            // //         // tag: 'span',
-            // //         style: 'width: 150px; display: inline-block',
-            // //         content: item.book + 'B',
-            // //         containsVerses: true
-            // //     });
-            // // }
-
-            // // var c = t.createComponent({
-            // //     kind: ResultsListItem,
-            // //     item: item,
-            // //     showBookName: false
-            // //     // showBookName: lastBook != item.book
-            // // });
+            t.$.Table.$[bccont].set('content', ' (' + bookCount + ')');
 
             lastBook = item.book;
-
-            // // if(item.showing && !t.scrollTo) {
-            // //     t.scrollTo = c;
-            // // }
         });
-
-        // this.scrollToItem();
     },
     rendered: function() {
         this.inherited(arguments);
@@ -345,8 +257,13 @@ module.exports = kind({
         //     return;
         // }
 
-        var sc = 'Column_' + scrollTo.item.book;
-        section = this.$.Table ? this.$.Table.$[sc] : null;
+        var book = scrollTo && scrollTo.item ? scrollTo.item.book || null : null;
+        var section = null;
+
+        if(book) {            
+            var sc = 'Column_' + scrollTo.item.book;
+            section = this.$.Table ? this.$.Table.$[sc] : null;
+        }
 
         var sNode = section ? section.hasNode() : null;
             cNode = scrollToAc ? scrollToAc.hasNode() : null; 

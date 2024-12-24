@@ -1102,6 +1102,15 @@ var App = Application.kind({
         
         return false;
     },    
+    getFormSearch: function() {
+        if(this.formHasField('search')) {
+            return this.getFormFieldValue('search');
+        } else if(this.formHasField('request')) {
+            return this.getFormFieldValue('request');
+        }
+
+        return false;
+    },
     formIsShortHashable: function() {
         if(this.view && this.view._formIsShortHashable) {
             return this.view._formIsShortHashable();
