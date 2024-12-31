@@ -967,12 +967,22 @@ tr.bss_render_reference_row th {
     font-size: 0.8em;
 }
 
+.bss_results_list_label div {
+    position: sticky;
+    top: 3px;
+}
+
 .bss_results_list_item {
     font-size: 0.8em;
     margin-right: 5px;
     margin-bottom: 3px;
     display: inline-block;
-    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 22%;
+    max-width: 60px;
+    min-width: 50px;
 }
 
 a.bss_results_list_item_visited {
@@ -982,5 +992,4 @@ a.bss_results_list_item_visited {
 
 .bss_results_list_item_showing {
     font-weight: bold;
-/*    background-color: #fff;*/
 }

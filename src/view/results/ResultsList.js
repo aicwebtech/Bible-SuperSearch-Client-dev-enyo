@@ -46,6 +46,7 @@ var ResultsListItem = kind({
         this.inherited(arguments);
         this.addRemoveClass('bss_results_list_item_showing', this.item.showing);
         this.set('textShowing', this.item.showing || false);
+        this.applyStyle('text-overflow', '\'' + this.item.chapter + ':' + this.item.verse + '\'');
 
         this.makeLink();
     },
@@ -53,16 +54,17 @@ var ResultsListItem = kind({
         var bible = this.app.getSelectedBibles();
         var bookNameShort = this.app.getLocaleBookName(this.item.book, null, this.shortNameOnly ? 'strict' : true);
         var bookName = this.app.getLocaleBookName(this.item.book, null);
+        var showBookName = this.showBookName;
 
-        var mode = 'sl/' + this.app.get('resultsListCacheId'); // + '/' + this.app.get('resultsListPage');
+        var mode = 'p'; // 'sl/' + this.app.get('resultsListCacheId'); // + '/' + this.app.get('resultsListPage');
         link = this.linkBuilder.buildReferenceLink(mode, bible, bookName, this.item.chapter, this.item.verse);
 
         this.setAttribute('href', link);
 
-        var content = (this.showBookName && bookNameShort) ? bookNameShort + ' ' : '';
+        var content = (showBookName && bookNameShort) ? bookNameShort + ' ' : '';
         this.setContent(content + this.item.chapter + ':' + this.item.verse);
         
-        if(!this.showBookName || bookName != bookNameShort) {
+        if(!showBookName || bookName != bookNameShort) {
             this.setAttribute('title', bookName + ' ' + this.item.chapter + ':' + this.item.verse);
         } else {
             this.setAttribute('title', null);
@@ -158,16 +160,18 @@ module.exports = kind({
                             tag: 'td',
                             classes: 'bss_results_list_label',
                             components: [
-                                {
-                                    kind: i18n,
-                                    tag: 'span',
-                                    content: item.book + 'B',
-                                    containsVerses: true
-                                }, 
-                                {
-                                    tag: 'span',
-                                    name: bccont
-                                }
+                                {components: [
+                                    {
+                                        kind: i18n,
+                                        tag: 'span',
+                                        content: item.book + 'B',
+                                        containsVerses: true
+                                    }, 
+                                    {
+                                        tag: 'span',
+                                        name: bccont
+                                    }
+                                ]}
                             ]
                         }, 
                         {
@@ -185,7 +189,7 @@ module.exports = kind({
             var lc = t.$.Table.$[colcont].createComponent({
                 kind: ResultsListItem,
                 item: item,
-                showBookName: true, 
+                showBookName: false, 
                 owner: t
             });
 
