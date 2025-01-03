@@ -617,8 +617,8 @@ var App = Application.kind({
             t = this,
 
             processBible = function(bible) {
-                bible.lang = t.utils.ucfirst(bible.lang);
-                bible.lang_native = t.utils.ucfirst(bible.lang_native);
+                bible.lang = bible.lang ? t.utils.ucfirst(bible.lang) : null;
+                bible.lang_native = bible.lang_native ? t.utils.ucfirst(bible.lang_native) : null;
                 displayed.push(bible);
             };
 
