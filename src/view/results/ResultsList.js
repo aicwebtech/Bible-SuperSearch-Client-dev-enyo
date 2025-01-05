@@ -35,7 +35,7 @@ var ResultsListItem = kind({
             onShowingClear: 'handleShowingClear', 
             onShowingReset: 'showingResetItem', 
             isChrome: true
-        },
+        }
     ],
 
     create: function() {
@@ -123,7 +123,16 @@ module.exports = kind({
             onShowingReset: 'scrollToItemDelay',
             isChrome: true
         },
-        {tag: 'table', name: 'Table'}
+        // {classes: 'bss_results_list', components: [
+        //     {tag: 'table', name: 'Table'},
+        // ]},
+        {tag: 'table', name: 'Table'},
+        // {
+        //     name: 'Handle',
+        //     classes: 'bss_results_list_handle',
+        //     // ondragstart: 'resizeDragStart',
+        //     // dragend: 'resizeDragEnd'
+        // }
     ],
 
     create: function() {
@@ -214,10 +223,28 @@ module.exports = kind({
         }).observe(this.hasNode());
 
         this.scrollToItem();
+
+        // Attempt to build custom drag/drop handle for resize.
+        // This will take me one day plus to actually build
+        // NOT doing this for free lol
+        // this.$.Handle.hasNode().addEventListener('dragstart', function(e) {
+        //     t.log('drag start', e);
+        // });        
+
+        // this.$.Handle.hasNode().addEventListener('dragend', function(e) {
+        //     t.log('drag end', e);
+        // });
     }, 
 
     handleResize: function() {
         this.log();
+    },
+
+    resizeDragStart: function(s, e) {
+        this.log(s, e);
+    },
+    resizeDragEnd: function(s, e) {
+        this.log(s, e);
     },
     
     scrollToItemDelay: function() {

@@ -950,6 +950,20 @@ tr.bss_render_reference_row th {
     resize: both;
 }
 
+.bss_results_list table {
+    width: 99%;
+}
+
+.bss_results_list_handle {
+    background-color: green;
+    width: 20px;
+    height: 20px;
+/*    position: absolute;
+    right: 0;
+    bottom: 0;*/
+    cursor: se-resize;
+}
+
 .bss_results_list hr {
     margin: 2px 1px;
 }
