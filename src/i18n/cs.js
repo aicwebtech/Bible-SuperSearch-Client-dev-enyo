@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'Přezdívka',
     'You cannot search for these common words': 'Tato běžná slova nemůžete hledat',
 
+    'Include Link': 'Zahrnout Odkaz',
+    'Include Formatting': 'Zahrnout Formátování',
+    'Resume Search': 'Obnovit Hledání',
+
 
 
     // Bible Books

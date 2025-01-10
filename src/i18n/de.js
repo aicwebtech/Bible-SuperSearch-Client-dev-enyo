@@ -445,6 +445,10 @@ module.exports = {
     'You cannot search for these common words': 'Sie können nicht nach diesen gebräuchlichen Wörtern suchen',
     // End 5.5 part 2
 
+    'Include Link': 'Hyperling Einschließen',
+    'Include Formatting': 'Formatierung Einschließen',
+    'Resume Search': 'Suche Fortsetzen',
+
 
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  

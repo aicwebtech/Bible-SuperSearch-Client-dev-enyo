@@ -474,6 +474,10 @@ module.exports = {
     'Alias': 'Teise nimega',
     'You cannot search for these common words': 'Te ei saa neid levinud sõnu otsida',
 
+    'Include Link': 'Kaasa Hüperlink',
+    'Include Formatting': 'Kaasa Vormindamine',
+    'Resume Search': 'Jätka Otsingut',
+
 
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  

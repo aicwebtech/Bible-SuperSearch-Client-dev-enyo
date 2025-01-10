@@ -441,6 +441,10 @@ module.exports = {
     'Alias': 'Álnév',
     'You cannot search for these common words': 'Nem lehet keresni ezekre a gyakori szavakra',
 
+    'Include Link': 'Hiperhivatkozás Felvétele',
+    'Include Formatting': 'Formázás Belefoglalása',
+    'Resume Search': 'Önéletrajz Keresés',
+
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  
     // The short name should be the most common abbreviation of the book name in the specified language.

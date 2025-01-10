@@ -439,6 +439,10 @@ module.exports = {
     'Alias': '别名',
     'You cannot search for these common words': '这些常用词你无法搜索',
 
+    'Include Link': '包括链接',
+    'Include Formatting': '包括格式化',
+    'Resume Search': '简历搜索',
+
     'bibleBooks': [
         {
           "id": 1,

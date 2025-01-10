@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'Lakabu',
     'You cannot search for these common words': 'Huwezi kutafuta maneno haya ya kawaida',
 
+    'Include Link': 'Jumuisha Kiungo',
+    'Include Formatting': 'Jumuisha Uumbizaji',
+    'Resume Search': 'Rejesha Utafutaji',
+
 
 
     // Bible Books

@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'alyas',
     'You cannot search for these common words': 'Hindi mo maaaring hanapin ang mga karaniwang salitang ito',
 
+    'Include Link': 'Isama ang Link',
+    'Include Formatting': 'Isama ang Pag-format',
+    'Resume Search': 'Ipagpatuloy ang Paghahanap',
+
 
 
     // Bible Books

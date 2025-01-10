@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'Pseudonimi',
     'You cannot search for these common words': 'Ju nuk mund të kërkoni për këto fjalë të zakonshme',
 
+    'Include Link': 'Përfshini lidhjen',
+    'Include Formatting': 'Përfshini formatimin',
+    'Resume Search': 'Rifilloni kërkimin',
+
 
 
     // Bible Books

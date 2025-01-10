@@ -433,6 +433,10 @@ module.exports = {
     'Alias': 'Alias',
     'You cannot search for these common words': 'No puedes buscar estas palabras comunes.',
 
+    'Include Link': 'Incluir Enlace',
+    'Include Formatting': 'Incluir Formato',
+    'Resume Search': 'Reanudar la Búsqueda',
+
 
     'bibleBooks': [
         {

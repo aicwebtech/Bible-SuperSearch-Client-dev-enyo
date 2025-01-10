@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'ተለዋጭ ስም',
     'You cannot search for these common words': 'You cannot search for these common words',
 
+    'Include Link': 'አገናኝን ያካትቱ።',
+    'Include Formatting': 'ቅርጸት መስራትን ያካትቱ።',
+    'Resume Search': 'የቀጠለ ፍለጋ',
+
 
 
     // Bible Books

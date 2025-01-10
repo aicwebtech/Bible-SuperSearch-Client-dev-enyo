@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'మారుపేరు',
     'You cannot search for these common words': 'మీరు ఈ సాధారణ పదాల కోసం వెతకలేరు',
 
+    'Include Link': 'లింక్ చేర్చండి',
+    'Include Formatting': 'ఫార్మాటింగ్ ను చేర్చండి',
+    'Resume Search': 'శోధనను పునఃప్రారంభించండి',
+
 
 
     // Bible Books

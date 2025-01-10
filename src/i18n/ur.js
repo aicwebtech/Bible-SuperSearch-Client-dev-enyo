@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'عرف',
     'You cannot search for these common words': 'آپ ان عام الفاظ کو تلاش نہیں کر سکتے',
 
+    'Include Link': 'لنک شامل کریں',
+    'Include Formatting': 'فارمیٹنگ شامل کریں',
+    'Resume Search': 'تلاش دوبارہ شروع کریں۔',
+
 
 
     // Bible Books

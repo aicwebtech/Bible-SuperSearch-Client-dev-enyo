@@ -441,6 +441,10 @@ module.exports = {
     'Alias': 'Alias',//check translation
     'You cannot search for these common words': 'Non è possibile cercare queste parole comuni',
 
+    'Include Link': 'Includi Collegamento',
+    'Include Formatting': 'Includi Formattazione',
+    'Resume Search': 'Riprendi ricerca',
+
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  
     // The short name should be the most common abbreviation of the book name in the specified language.

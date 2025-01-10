@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'Alias',//check translation
     'You cannot search for these common words': 'Nie możesz wyszukiwać tych popularnych słów',
 
+    'Include Link': 'Dołącz Hiperłącze',
+    'Include Formatting': 'Dołącz Formatowanie',
+    'Resume Search': 'Wznów Wyszukiwanie',
+
 
 
     // Bible Books

@@ -441,6 +441,10 @@ module.exports = {
     'Alias': 'Pseudonimas',
     'You cannot search for these common words': 'Negalite ieškoti šių bendrų žodžių',
 
+    'Include Link': 'Įtraukti Nuorodą',
+    'Include Formatting': 'Įtraukti Formatavimą',
+    'Resume Search': 'Tęsti Paiešką',
+
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  
     // The short name should be the most common abbreviation of the book name in the specified language.

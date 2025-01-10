@@ -441,6 +441,10 @@ module.exports = {
     'Alias': 'エイリアス',
     'You cannot search for these common words': 'これらの一般的な単語は検索できません',
 
+    'Include Link': 'リンクを含める',
+    'Include Formatting': 'フォーマットを含めます',
+    'Resume Search': '検索を再開します',
+
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  
     // The short name should be the most common abbreviation of the book name in the specified language.

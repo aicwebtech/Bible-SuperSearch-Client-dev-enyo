@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'Takma ad',
     'You cannot search for these common words': 'Bu yaygın kelimeleri arayamazsınız',
 
+    'Include Link': 'Bağlantıyı Dahil Et',
+    'Include Formatting': 'Biçimlendirmeyi Dahil Et',
+    'Resume Search': 'Aramaya Devam Et',
+
 
 
     // Bible Books
