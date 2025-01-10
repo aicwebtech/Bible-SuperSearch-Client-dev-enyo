@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'နာမည်များ',
     'You cannot search for these common words': 'ဤအသုံးများသောစကားလုံးများကို သင်ရှာဖွေ၍မရပါ။',
 
+    'Include Link': 'လင့်ခ်ကို ထည့်သွင်းပါ',
+    'Include Formatting': 'ဖော်မတ်ထည့်သွင်းခြင်း',
+    'Resume Search': 'ရှာဖွေမှုကို ပြန်လည်စတင်ပါ',
+
 
 
     // Bible Books

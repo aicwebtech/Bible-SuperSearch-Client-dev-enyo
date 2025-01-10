@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'Alias',//check translation
     'You cannot search for these common words': 'U kunt niet zoeken naar deze veel voorkomende woorden',
 
+    'Include Link': 'Hyperlink Opnemen',
+    'Include Formatting': 'Opmaak Opnemen',
+    'Resume Search': 'Hervat Zoeken',
+
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  
     // The short name should be the most common abbreviation of the book name in the specified language.

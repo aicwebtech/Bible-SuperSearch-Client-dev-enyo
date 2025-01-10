@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'উপনাম',
     'You cannot search for these common words': 'আপনি এই সাধারণ শব্দগুলির জন্য অনুসন্ধান করতে পারবেন না',
 
+    'Include Link': 'লিঙ্ক অন্তর্ভুক্ত করুন',
+    'Include Formatting': 'বিন্যাস অন্তর্ভুক্ত',
+    'Resume Search': 'অনুসন্ধান পুনরায় শুরু করুন',
+
 
 
     // Bible Books

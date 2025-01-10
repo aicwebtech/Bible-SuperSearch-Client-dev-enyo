@@ -440,6 +440,10 @@ module.exports = {
     'Alias': 'उपनाम',
     'You cannot search for these common words': 'आप इन सामान्य शब्दों को नहीं खोज सकते',
 
+    'Include Link': 'लिंक शामिल करें',
+    'Include Formatting': 'फ़ॉर्मेटिंग शामिल करें',
+    'Resume Search': 'खोज फिर से शुरू करें',
+
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  
     // The short name should be the most common abbreviation of the book name in the specified language.

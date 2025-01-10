@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'כינוי',
     'You cannot search for these common words': 'אתה לא יכול לחפש את המילים הנפוצות האלה',
 
+    'Include Link': 'כלול קישור',
+    'Include Formatting': 'כלול עיצוב',
+    'Resume Search': 'המשך חיפוש',
+
 
 
     // Bible Books

@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'Bí danh',
     'You cannot search for these common words': 'Bạn không thể tìm kiếm những từ thông dụng này',
 
+    'Include Link': 'Bao gồm liên kết',
+    'Include Formatting': 'Bao gồm Định dạng',
+    'Resume Search': 'Tìm kiếm sơ yếu lý lịch',
+
 
 
     // Bible Books

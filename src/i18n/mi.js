@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'Ingoa ingoa',
     'You cannot search for these common words': 'Kaore e taea e koe te rapu mo enei kupu noa',
 
+    'Include Link': 'Whakauru Hononga',
+    'Include Formatting': 'Whakauruhia te Whakahōputu',
+    'Resume Search': 'Rapu Anō',
+
 
 
     // Bible Books

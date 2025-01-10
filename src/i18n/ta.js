@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'மாற்றுப்பெயர்',
     'You cannot search for these common words': 'இந்த பொதுவான வார்த்தைகளை நீங்கள் தேட முடியாது',
 
+    'Include Link': 'இணைப்பைச் சேர்க்கவும்',
+    'Include Formatting': 'வடிவமைத்தல் அடங்கும்',
+    'Resume Search': 'தேடலை மீண்டும் தொடரவும்',
+
 
 
     // Bible Books

@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'Alias',
     'You cannot search for these common words': 'Anda tidak dapat mencari kata-kata umum ini',
 
+    'Include Link': 'Sertakan Tautan',
+    'Include Formatting': 'Sertakan Pemformatan',
+    'Resume Search': 'Lanjutkan Pencarian',
+
 
 
     // Bible Books

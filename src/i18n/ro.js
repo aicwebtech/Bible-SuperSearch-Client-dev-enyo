@@ -439,6 +439,10 @@ module.exports = {
     'Alias': 'Alias',
     'You cannot search for these common words': 'Nu puteți căuta aceste cuvinte comune',
 
+    'Include Link': 'Includeți Linkul',
+    'Include Formatting': 'Includeți Formatarea',
+    'Resume Search': 'Reluați Sear',
+
     'bibleBooks': [
         {
           "id": 1,

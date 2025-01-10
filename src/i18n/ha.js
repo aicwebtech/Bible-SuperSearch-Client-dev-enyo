@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'Laƙabi',
     'You cannot search for these common words': 'Ba za ku iya bincika waɗannan kalmomin gama gari ba',
 
+    'Include Link': 'Saka Hanyar Haɗi',
+    'Include Formatting': 'Haɗa Tsara',
+    'Resume Search': 'Ci gaba da Bincike',
+
 
 
     // Bible Books

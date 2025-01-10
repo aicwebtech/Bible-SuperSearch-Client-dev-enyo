@@ -456,6 +456,10 @@ module.exports = {
     'Alias': 'Alias',
     'You cannot search for these common words': 'Et voi etsiä näitä yleisiä sanoja',
 
+    'Include Link': 'Sisällytä Linkki',
+    'Include Formatting': 'Sisällytä Muotoilu',
+    'Resume Search': 'Jatka Hakua',
+
 
 
     // Bible Books

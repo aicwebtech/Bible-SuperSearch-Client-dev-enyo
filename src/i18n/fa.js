@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'نام مستعار',
     'You cannot search for these common words': 'شما نمی توانید این کلمات رایج را جستجو کنید',
 
+    'Include Link': 'شامل پیوند',
+    'Include Formatting': 'شامل قالببندی',
+    'Resume Search': 'جستجوی رزومه',
+
 
 
     // Bible Books

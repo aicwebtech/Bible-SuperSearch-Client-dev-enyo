@@ -432,6 +432,10 @@ module.exports = {
     'Alias': '別名',
     'You cannot search for these common words': '這些常用詞你無法搜尋',
 
+    'Include Link': '包括連結',
+    'Include Formatting': '包括格式化',
+    'Resume Search': '繼續搜尋',
+
     'bibleBooks': [
         {
           "id": 1,

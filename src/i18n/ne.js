@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'उपनाम',
     'You cannot search for these common words': 'तपाईंले यी सामान्य शब्दहरू खोज्न सक्नुहुन्न',
 
+    'Include Link': 'लिङ्क समावेश गर्नुहोस्',
+    'Include Formatting': 'ढाँचा समावेश गर्नुहोस्',
+    'Resume Search': 'खोज पुन: सुरु गर्नुहोस्',
+
 
 
     // Bible Books

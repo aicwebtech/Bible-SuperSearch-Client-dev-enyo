@@ -455,6 +455,10 @@ module.exports = {
     'Alias': 'Magac loo yaqaan',
     'You cannot search for these common words': 'Ma raadin kartid erayadan caadiga ah',
 
+    'Include Link': 'Ku dar Xiriiriye',
+    'Include Formatting': 'Ku dar Qaabaynta',
+    'Resume Search': 'Dib u Raadi',
+
 
 
     // Bible Books

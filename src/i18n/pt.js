@@ -444,6 +444,10 @@ module.exports = {
     'You cannot search for these common words': 'Você não pode pesquisar essas palavras comuns',
     // End 5.5 part 2
 
+    'Include Link': 'Incluir Hiperlink',
+    'Include Formatting': 'Incluir Formatação',
+    'Resume Search': 'Retomar Pesquisa',
+
 
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  
