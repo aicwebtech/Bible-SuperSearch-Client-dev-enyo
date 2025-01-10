@@ -943,6 +943,8 @@ tr.bss_render_reference_row th {
     background-color: #ddd;
 /*    background: linear-gradient(135deg,#0ff 0,#0ff 94%,#fff 95%);
     scrollbar-width: thin;*/
+/*    scrollbar-color: black white;
+    scrollbar-gutter: stable;*/
     margin: 15px auto;
     border: 1px solid #111;
     padding: 7px 10px;

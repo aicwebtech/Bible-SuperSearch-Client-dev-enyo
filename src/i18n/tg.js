@@ -1,3 +1,4 @@
+// 3 Checks
 module.exports = {
     meta: {
         // 2 or 3 character language code, lower-case, ie 'es'
@@ -5,7 +6,9 @@ module.exports = {
         code: 'tg',
 
         // Native name of language (endonymn): ie 'Español'
-        name: 'тоҷикӣ, toçikī, تاجیکی’',    
+        name: 'тоҷикӣ',    
+        
+        // nameOrig: 'тоҷикӣ, toçikī, تاجیکی’',    
 
         // English name of language, ie 'Spanish'
         nameEn: 'Tajiki / Tajik',       
@@ -98,8 +101,8 @@ module.exports = {
     'End Times Prophecy': 'Пешгӯии охири замон',
     
     // Shortcut Aliases
-    'OT': 'OT',//check translation
-    'NT': 'NT',//check translaton
+    'OT': 'АҚ',
+    'NT': 'АҶ',
     'Torah': 'Таврот',
     'Wisdom': 'Хирад',
     'Major': 'Майор',
@@ -156,8 +159,8 @@ module.exports = {
     'Page': 'Саҳифа',
     
     // Formatting and dialog buttons
-    'A': 'A',//check translation     // First letter in given language
-    'Abc': 'Abc',//check translation  // First 3 letters in given language, with 1st capitalized
+    'A': 'A',    // First letter in given language
+    'Abc': 'Абв',  // First 3 letters in given language, with 1st capitalized
     'Serif' : 'Сериф',                     // * Button text, please keep translation short!
     'Sans-Serif': 'Санс-Сериф',                 // * Button text, please keep translation short!
     'Monospace': 'Монофазоӣ',                  // * Button text, please keep translation short!
@@ -458,7 +461,7 @@ module.exports = {
     // 5.7:
     'Include Link': 'Истинодро дохил кунед',
     'Include Formatting': 'Форматро дар бар гиред',
-    'Resume Search': 'Ҷустуҷӯи дубора'
+    'Resume Search': 'Ҷустуҷӯи дубора',
 
 
 

@@ -36,11 +36,12 @@ module.exports = {
     sw: require('./sw'),
     ta: require('./ta'), // 5.7 
     te: require('./te'), // 5.7 
+    tg: require('./tg'), // 5.7 
+    th: require('./th'),
+    tl: require('./tl'),
     tr: require('./tr'),
     ur: require('./ur'),
     vi: require('./vi'),
-    th: require('./th'),
-    tl: require('./tl'),
     zh_TW: require('./zh_TW'),
     zh_CN: require('./zh_CN'),
 
