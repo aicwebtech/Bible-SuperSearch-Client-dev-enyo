@@ -1,5 +1,7 @@
 var kind = require('enyo/kind');
 var ResultsBase = require('./ResultsBase');
+var Link = require('../../components/Link/Link');
+var Signal = require('enyo/Signals');
 
 module.exports = kind({
     name: 'ResultsReadBase',
@@ -11,15 +13,59 @@ module.exports = kind({
     singleVerseBibleHeaderThreshold: 10,
     singleVerseBibleHeaderNext: true,
 
+    renderTopPlaceholder: function() {
+        var Container = this._createContainer(null, 'TopPlaceholder');
+        Container.set('showing', false);
+        Container.set('type', 'top_placeholder');
+    },
+    populateTopPlaceholder: function() {
+        var r = this.app.get('altResponseData') || null;
+
+        if(!r) {
+            return;
+        }
+
+        var Container = this.$['TopPlaceholder'];
+        Container.destroyClientControls();
+
+        // if(e.type == 'resultsListVerse') {
+            var pd = r.results[0];
+            this.renderSingleVerseParallelBible(pd, Container);
+        // }
+
+        Container.createComponent({
+            components: [
+                {tag: 'br'},
+                {
+                    kind: Link, 
+                    classes: 'top_placeholder_hide', 
+                    content: 'Resume Search', 
+                    href: 'javascript:void(0)'
+                }
+            ]
+        });
+
+        Container.render();
+        Container.set('showing', true);
+        this.waterfall('onResultsComponentShowingChange', {type: 'normal', showing: false})
+    },
+
+    hideTopPlaceholder: function() {
+        this.app.set('altResponseData', null);
+        Signal.send('onShowingReset');
+        this.waterfall('onResultsComponentShowingChange', {type: 'top_placeholder', showing: false});
+        this.waterfall('onResultsComponentShowingChange', {type: 'normal', showing: true});
+    },
+
     // NOTA Single verse, single Bible
     renderSingleVerseSingleBible: function(pd) {
         // this.log();
         this.renderSingleVerseParallelBible(pd);
     },
     // Single verse, multi Bible
-    renderSingleVerseParallelBible: function(pd) {
+    renderSingleVerseParallelBible: function(pd, Container) {
         // this.log();
-        var Container = this._createContainer(pd);
+        var Container = Container || this._createContainer(pd);
         var addBibleHeader = false,
             addReferenceRow = false,
             renderStyle = this.renderStyle;
@@ -94,6 +140,7 @@ module.exports = kind({
                         content = pd.verses[mod][chapter][verse].text || '';
                         haveText = (content != '') ? true : haveText;
                         content = this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]);
+                        this.signalVerseShowing(pd.book_id, chapter, verse);
                     }
 
                     Container.$.VerseRow.createComponent({
@@ -238,6 +285,7 @@ module.exports = kind({
                 this.singleVerseCount ++;
 
                 var addBibleHeader = (this.singleVerseCount > 1 && this.singleVerseCount % 10 == 1);
+                var verseShowing = false;
 
                 if(addBibleHeader && renderStyle == 'verse_passage') {
                     this._addBibleHeader(VerseContainer);
@@ -260,11 +308,14 @@ module.exports = kind({
                         }
 
                         html += processed;
+                        verseShowing = true;
                     }
                     else {
                         html += this.blankPassageVerse;
                     }
                 }
+                
+                verseShowing && this.signalVerseShowing(pd.book_id, chapter, verse);
 
                 VerseContainer.createComponent({
                     tag: 'tr',

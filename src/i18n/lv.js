@@ -441,6 +441,11 @@ module.exports = {
     // Custom
     'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Ieteikums: Lai aktivizētu izvēlētās Bībeles versijas, atveriet rakstvietu, pāršķiriet nodaļu vai veiciet meklēšanu.',
 
+    // 5.7:
+    'Include Link': 'Iekļaut Saiti',
+    'Include Formatting': 'Iekļaut Formatējumu',
+    'Resume Search': 'Atsākt Meklēšanu',
+
     // Bible Books
     // For each book in the list below, please specify the (full) name and short name.  
     // The short name should be the most common abbreviation of the book name in the specified language.

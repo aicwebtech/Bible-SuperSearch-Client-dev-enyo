@@ -298,66 +298,6 @@ module.exports = kind({
             this.set('keyboardScrollIdx', idx);
 
             this._toggleScrollHelper(idx);
-
-            // var controls = this.$.Toggle.getClientControls();
-            // var top = 0;
-            // var margin = 5;
-            // var client = this.app.get('client');
-            // var optGroups = 0;
-            // var isOptGroup = false;
-
-
-            // for(var i = 0; i < idx; i++) {
-            //     if(controls[i].hasNode()) {
-            //         if(controls[i].hasClass('bss_pseudo_optgroup')) {
-            //             isOptGroup = true;
-            //             optGroups ++;
-            //         }
-
-            //         styles = window.getComputedStyle(controls[i].hasNode());
-            //         margin =    parseFloat(styles['marginTop']) +
-            //                     parseFloat(styles['marginBottom']);
-            //         height = controls[i].hasNode().offsetHeight;
-
-            //         // this.log(controls[i].get('content'));
-            //         // this.log('height', height);
-            //         // this.log('margin', margin);
-            //         // this.log('total', height + margin);
-
-            //         if(client.isMobile) {
-            //             if(isOptGroup && optGroups > 1) {
-            //                 height += 0.35;
-            //             }
-
-            //             if(!isOptGroup) {                        
-            //                 if(height > 15) {
-            //                     mult = Math.floor(height / 15);
-            //                     height -= mult * 2;
-            //                 } else {
-            //                     //height -= 2;
-            //                 }
-            //             }
-            //         }
-
-            //         //this.log('node', controls[i].hasNode().offsetHeight, height, margin);
-
-            //         top += height + margin;
-            //     }
-            // } 
-
-
-            // // if(client.isMobile) {
-            // //     top += 4;
-            // // }
-
-            // this.app.debug && this.log(idx, top);
-
-            // this.$.Toggle.hasNode() && this.$.Toggle.hasNode().scrollTo({
-            //     // top: 1300, 
-            //     top: top, 
-            //     left: 0, 
-            //     behavior: 'instant' // intentionally hardcoded
-            // });
         }
 	},
     _toggleScrollHelper: function(idx) {
@@ -380,11 +320,6 @@ module.exports = kind({
                             parseFloat(styles['marginBottom']);
                 height = controls[i].hasNode().offsetHeight;
 
-                // this.log(controls[i].get('content'));
-                // this.log('height', height);
-                // this.log('margin', margin);
-                // this.log('total', height + margin);
-
                 if(client.isMobile) {
                     if(isOptGroup && optGroups > 1) {
                         height += 0.35;
@@ -399,8 +334,6 @@ module.exports = kind({
                         }
                     }
                 }
-
-                //this.log('node', controls[i].hasNode().offsetHeight, height, margin);
 
                 top += height + margin;
             }
@@ -472,7 +405,6 @@ module.exports = kind({
             // IE hack fix :P  make sure it has get()
             if(controls[i].get && controls[i].get('value') == value) {
                 this.setSelected(i);
-                this.setValue(value);
                 return true;
                 break;
             }
@@ -492,7 +424,6 @@ module.exports = kind({
             // IE hack fix :P  make sure it has get()
             if(controls[i].get && controls[i].get('content') == content) {
                 this.setSelected(i);
-                this.setValue(controls[i].get('value'));
                 return true;
                 break;
             }

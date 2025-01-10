@@ -98,8 +98,8 @@ module.exports = {
     'End Times Prophecy': 'ఎండ్ టైమ్స్ జోస్యం',
     
     // Shortcut Aliases
-    'OT': 'OT',//check translation
-    'NT': 'NT',//check translation
+    'OT': 'పాత',
+    'NT': 'కొత్త',
     'Torah': 'తోరా',
     'Wisdom': 'జ్ఞానం',
     'Major': 'మేజర్',
@@ -157,7 +157,7 @@ module.exports = {
     
     // Formatting and dialog buttons
     'A': 'ఎ',     // First letter in given language
-    'Abc': 'Abc',//check translation  // First 3 letters in given language, with 1st capitalized
+    'Abc': 'ఆఆ',  // First 3 letters in given language, with 1st capitalized
     'Serif' : 'సెరిఫ్',                     // * Button text, please keep translation short!
     'Sans-Serif': 'సాన్స్-సెరిఫ్',                 // * Button text, please keep translation short!
     'Monospace': 'మోనోస్పేస్',                  // * Button text, please keep translation short!

@@ -1,5 +1,6 @@
 var kind = require('enyo/kind');
 var GridView = require('./GridView');
+var ResultsList = require('./ResultsList');
 var ResCom = require('./ResultsReadComponent');
 var Signal = require('../../components/Signal');
 var Pager = require('../../components/Pagers/ClassicPager');
@@ -10,6 +11,7 @@ var Nav = require('../../components/NavButtons/NavHtml');
 var HoverDialog = require('../../components/dialogs/Hover');
 var StrongsHoverDialog = require('../../components/dialogs/StrongsHover');
 var utils = require('enyo/utils');
+var Ajax = require('enyo/Ajax');
 var i18n = require('../../components/Locale/i18nComponent');
 
 module.exports = kind({
@@ -36,6 +38,9 @@ module.exports = kind({
     _localeChangeRender: false,
     activeComponent: null,
     sideButtons: false,
+    resultsShowing: true,
+    specialResultsShowing: false,
+    list: null,
 
     published: {
         resultsData: null,
@@ -50,6 +55,7 @@ module.exports = kind({
         onLocaleChange: 'handleLocaleChange',
         onGlobalScroll: 'handleGenericReposition',
         onGlobalScrollEnd: 'handleGenericReposition',
+        onResultsLinkTap: 'handleResultsLinkTap',
         ontap: 'handleClick',
         // onGlobalTap: 'handleClick'
     },
@@ -77,7 +83,7 @@ module.exports = kind({
             components: [
                 {
                     name: 'SideButtonPrev', 
-                    classes: 'bss_side_swipe_button bss_float_right', 
+                    classes: 'bss_side_swipe_button bss_float_left', 
                     content: '&lt;', 
                     allowHtml: true, 
                     // style: 'float: inline-start', 
@@ -87,7 +93,7 @@ module.exports = kind({
                 },
                 {
                     name: 'SideButtonNext', 
-                    classes: 'bss_side_swipe_button bss_float_left', 
+                    classes: 'bss_side_swipe_button bss_float_right', 
                     content: '&gt;', 
                     allowHtml: true, 
                     // style: 'float:right', 
@@ -137,6 +143,8 @@ module.exports = kind({
 
         this.bubble('onResultsRendered', e);
         this._localeChangeRender = false;
+
+        this.$.ResultsList && this.$.ResultsList.scrollToItemDelay();
     },
     formDataChanged: function(was, is) {
         this.bibles = [];
@@ -179,10 +187,15 @@ module.exports = kind({
             this.log('Error: results are not an array');
             return;
         }
+
+        this.preRenderList();
         
         this.app.debug && this.log('Rendering Results!');
         this.renderPager(true);
+        this.renderList();
+
         this.renderHeader();
+        this.renderTopPlaceholder();
 
         resultsData.results.forEach(function(passage) {
             this.renderPassage(passage);
@@ -200,7 +213,7 @@ module.exports = kind({
         }
 
         this.render();
-
+        this.populateTopPlaceholder();
         this.determineActiveComponent();
     },
     renderPassage: function(passage) {        
@@ -220,10 +233,19 @@ module.exports = kind({
         }
     },
 
+    renderTopPlaceholder: function() {},                    // Must implement on child kind!
     renderSingleVerseSingleBible: function(passage) {},     // Must implement on child kind!
     renderSingleVerseParallelBible: function(passage) {},   // Must implement on child kind!
     renderPassageParallelBible: function(passage) {},       // Must implement on child kind!
     renderPassageSingleBible: function(passage) {},         // Must implement on child kind!
+
+    signalVerseShowing: function(book, chapter, verse) {
+        this.app.get('resultsShowing').push({book: book, chapter: chapter, verse: verse, showing: true});
+
+        // this.log('showme', this.app.get('resultsShowing'));
+
+        Signal.send('onShowingChange', {book: book, chapter: chapter, verse: verse, showing: true});
+    },
 
     renderCopyrightBottom: function() {
         this.createComponent({
@@ -296,7 +318,95 @@ module.exports = kind({
 
     renderHeader: function() {}, // Called before results are rendered, not required
     renderFooter: function() {}, // Called after results are rendered, not required
+    
+    preRenderList: function() {
+        var resultsData = this.get('resultsData');
+        this.list = null;
 
+        if(!this.app.configs.resultsList) {
+            return false;
+        }
+
+        if(resultsData.list && resultsData.list.length > 0) {
+            this.list = resultsData.list;
+            this.app.set('resultsListCacheId', resultsData.hash);
+            this.app.set('resultsListPage', resultsData.paging.current_page || 1);
+            this.app.set('resultsList', resultsData.list);
+        } else if(this.app.get('resultsListCacheId') == this.app.get('resultListRequestedCacheId')) {
+            this.list = this.app.get('resultsList');
+        }
+    },
+    renderList: function() {
+        if(!this.list || this.list.length == 0) {
+            return;
+        }
+
+        this.createComponent({
+            kind: ResultsList,
+            name: 'ResultsList',
+            list: this.list
+        });
+    },
+
+    handleResultsLinkTap: function(s, e) {
+        var t = this;
+
+        var bible = this.app.getSelectedBibles();
+        var bible = (bible) ? bible.filter(function(b) {return b != 0 && b != null}) : [];
+
+        var fd = {
+            bible: JSON.stringify(bible),
+            reference: e.item.book + 'B ' + e.item.chapter + ':' + e.item.verse,
+            search: this.app.getFormSearch(),
+            highlight: true
+        };
+
+        var ajax = new Ajax({
+            url: this.app.configs.apiUrl,
+            method: 'GET'
+        });
+
+        this.app.set('ajaxLoadingDelay', 100);
+
+        ajax.go(fd); // for GET
+        ajax.response(this, function(s, r) {
+            t.app.set('ajaxLoadingDelay', false);
+            t.app.set('altResponseData', r);
+            t.populateTopPlaceholder();
+
+            // Scroll to tapped item
+            if(t.app.configs.resultsListClickScroll) {
+                t.$.ResultsList.scrollToItem();
+            }
+        });
+
+        ajax.error(this, function(s, r) {
+            t.app.set('ajaxLoadingDelay', false);
+
+            try {
+                var response = JSON.parse(s.xhrResponse.body);
+            }
+            catch (error) {
+                this.app.displayInitError();
+                this.errorHandle && this.errorHandle();
+                return;
+            }
+
+            if(response.error_level == 4) {
+                // actual error, do something?
+            }
+            else {
+                // Treat like success
+                t.app.set('altResponseData', response);
+                t.populateTopPlaceholder();
+
+                // Scroll to tapped item
+                if(t.app.configs.resultsListClickScroll) {
+                    t.$.ResultsList.scrollToItem();
+                }
+            }
+        });
+    },
     processText: function(verse) {
         return verse.text;
     },
@@ -425,10 +535,11 @@ module.exports = kind({
 
         return false;
     },
-    _createContainer: function(passage) {
+    _createContainer: function(passage, name) {
         return this.createComponent({
             kind: ResCom,
             tag: 'table',
+            name: name || null,
             passage: passage || null,
             // attributes:{border: 1},
             classes: 'biblesupersearch_render_table'
@@ -589,6 +700,10 @@ module.exports = kind({
         var strongsOpenClick = this.getStrongsOpenClick();
         target = inEvent.target;
 
+        if(target.tagName == 'A' && target.className == 'top_placeholder_hide') {
+            this.hideTopPlaceholder();
+        }
+
         if(strongsOpenClick && target.tagName == 'A' && target.className == 'strongs') {
             inEvent.preventDefault();
             // inEvent.stopPropagation();
@@ -629,7 +744,6 @@ module.exports = kind({
             this.app.debug && this.$.StrongsHover && this.log('displaying Strongs dialog');
             return true;
         }
-
 
         // no longer relavant
         if(inSender.name != 'DialogsContainer') {
@@ -714,6 +828,7 @@ module.exports = kind({
         if(visible.length == 1 || this.hasPaging && visible.length > 0) {
             this.activeComponent = visible[0];
             this.activeComponent.set('active', true);
+            // this.app.debug && this.log('activeComponent', this.activeComponent.get('name'));
         }
     },
     handleLocaleChange: function(inSender, inEvent) {
@@ -733,7 +848,7 @@ module.exports = kind({
     sideButtonsChanged: function(was, is) {
         var isfr = is; // is for real
 
-        // Prevent racing coindition between one componet turning buttons off and another turning them on
+        // Prevent racing condition between one componet turning buttons off and another turning them on
         if(this.activeComponent && this.activeComponent.get('sideButtons')) {
             isfr = true;
             this.sideButtons = isfr;
@@ -743,19 +858,7 @@ module.exports = kind({
             return; // if no change, do nothing further
         }
 
-        // this.log();
-        // this.$.SideSwipeButtons.set('showing', !!is);
-
         this.$.SideSwipeButtons.addRemoveClass('fadein', !!isfr);
-        // this.$.SideSwipeButtons.set('showing', is);
-
-        // if(is) {
-        //     // this.$.SideSwipeButtons.set('showing', true);
-        //     this.$.SideSwipeButtons.hasNode().classList.toggle('fadein');
-        // } else {
-        //     this.$.SideSwipeButtons.hasNode().classList.toggle('fadein');
-        //     // this.$.SideSwipeButtons.set('showing', false);
-        // }
     }
 
 });

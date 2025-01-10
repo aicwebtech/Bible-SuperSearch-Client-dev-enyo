@@ -29,6 +29,8 @@ var defaultConfig = {
     'bookmarkLimit': 20,
     'testOnLoad': false,
     'testVerbose': false,
+    'resultsList': false,
+    'resultsListClickScroll': false,
 
 
     _urlDefaultNotice: function() {

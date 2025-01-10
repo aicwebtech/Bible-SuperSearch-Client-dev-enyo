@@ -60,6 +60,7 @@ var App = Application.kind({
     bibleDisplayLimit: 8,       // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
     defaultBibles: [],
     history: [],
+    visited: [],
     bookmarks: null,
     resetView: true,
     appLoaded: false,
@@ -76,6 +77,16 @@ var App = Application.kind({
     },
     preventRedirect: false,
     shortHashUrl: '',
+    cacheId: null, // most recent cache id
+    resultListRequestedCacheId: null,
+    resultsListCacheId: null, // most recent search results cache id
+    resultsListPage: 1, 
+    resultsList: [], // most recent search results list
+    resultsListWidth: null,
+    resultsListHeight: null,
+    altResultsData: null,
+    resultsShowing: null,
+    altResultsShowing: null,
     biblesDisplayed: [],
     locale: 'en',
     defaultLocale: 'en', // hardcoded
@@ -90,6 +101,7 @@ var App = Application.kind({
     responseCollection: ResponseCollection,
     storage: StorageManager,
     utils: Utils,
+    loadingPagePrevent: false,
     hasAjaxSuccess: false,
     hasMouse: false, // use mouse events to detect
 
@@ -605,8 +617,8 @@ var App = Application.kind({
             t = this,
 
             processBible = function(bible) {
-                bible.lang = t.utils.ucfirst(bible.lang);
-                bible.lang_native = t.utils.ucfirst(bible.lang_native);
+                bible.lang = bible.lang ? t.utils.ucfirst(bible.lang) : null;
+                bible.lang_native = bible.lang_native ? t.utils.ucfirst(bible.lang_native) : null;
                 displayed.push(bible);
             };
 
@@ -820,6 +832,7 @@ var App = Application.kind({
             hash = hash.replace(/\./g, ' ');
             var parts = hash.split('/');
             var mode  = parts.shift();
+            this.loadingPagePrevent = false;
 
             if(mode == '') {
                 var mode = parts.shift();
@@ -840,8 +853,12 @@ var App = Application.kind({
                     break;
                 case 's':   // Search string
                     return this._hashSearch(parts);
+                    break;                      
+                case 'sl':   // Link to passage within search results list
+                    return this._hashSearchLink(parts);
                     break;                
                 case 'context': // Contextual lookup
+                    this.loadingPagePrevent = true;
                     return this._hashContext(parts);
                     break;
                 case 'strongs': // Strongs lookup
@@ -887,6 +904,16 @@ var App = Application.kind({
     _hashPassage: function(parts) {
         var partsObj = this._explodeHashPassage(parts);
         var formData = this._assembleHashPassage(partsObj);
+        this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
+    },    
+    _hashSearchLink: function(parts) {
+        var uuid = parts.shift();
+        // var page = parts.shift();
+        var partsObj = this._explodeHashPassage(parts);
+        var formData = this._assembleHashPassage(partsObj);
+        formData.results_list_cache_id = uuid;
+        // formData.results_list_page = page;
+        // this.set('resultsListPage', page);
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
     },    
     _hashStrongs: function(parts) {
@@ -1075,6 +1102,15 @@ var App = Application.kind({
         
         return false;
     },    
+    getFormSearch: function() {
+        if(this.formHasField('search')) {
+            return this.getFormFieldValue('search');
+        } else if(this.formHasField('request')) {
+            return this.getFormFieldValue('request');
+        }
+
+        return false;
+    },
     formIsShortHashable: function() {
         if(this.view && this.view._formIsShortHashable) {
             return this.view._formIsShortHashable();
@@ -1121,8 +1157,9 @@ var App = Application.kind({
     resetScrollMode: function() {
         this.set('scrollMode', this.get('scrollModeDefault'));
     }, 
-    getSelectedBibles: function() {
+    getSelectedBibles: function(filter) {
         var bibles = this.getFormFieldValue('bible');
+        filter = (typeof filter == 'undefined') ? false : filter;
 
         if(!bibles || bibles.length == 0 || bibles.length == 1 && bibles[0] == null) {
             bibles = this.configs.defaultBible;
@@ -1130,6 +1167,12 @@ var App = Application.kind({
 
         if(!Array.isArray(bibles)) {
             bibles = [bibles];
+        }
+
+        if(filter) {
+            bibles = bibles.filter(function(b) {
+                return b != 0 && b != null;
+            });
         }
 
         return bibles;
@@ -1203,6 +1246,10 @@ var App = Application.kind({
                 var book = this.localeBibleBooks.en[id - 1];
 
                 if(book && useShortname) {
+                    if(useShortname == 'strict') {
+                        return book.shortname || fallbackName;
+                    }
+
                     return book.shortname || book.name;
                 }
 
@@ -1234,6 +1281,10 @@ var App = Application.kind({
         }
 
         if(book && useShortname) {
+            if(useShortname == 'strict') {
+                return book.shortname || fallbackName;
+            }
+
             return book.shortname || book.name;
         }
 
@@ -1677,6 +1728,40 @@ var App = Application.kind({
     clearHistory: function() {
         this.history = [];
         localStorage.setItem('BibleSuperSearchHistory', '[]');
+    },    
+    pushVisited: function(url) {
+        var url = url || document.location.href;
+        // var found = this.visited.find((item) => item == url);
+
+        var found = this.visited.find(function(item) {
+            return item == url;
+        });
+
+        if(!found) {
+            this.visited.push(url);
+            localStorage.setItem('BibleSuperSearchVisited', JSON.stringify(this.visited));
+        }
+    },
+    remVisited: function(url) {
+        var url = url || document.location.href;
+            // found = this.visited.find(item => item == url);
+
+        var found = this.visited.find(function(item) {
+            return item == url;
+        });
+
+        if(found) {
+            this.visited = this.visited.filter(function(item) {
+                return item != url;
+            });
+
+            localStorage.setItem('BibleSuperSearchVisited', JSON.stringify(this.visited));
+        }
+    },
+    clearVisited: function() {
+        this.visited = [];
+        localStorage.setItem('BibleSuperSearchVisited', '[]');
+        Signal.send('onVisitedClear');
     },
     alert: function(string, inSender, inEvent) {
         // todo - make some sort of custom alert dialog here!
@@ -1906,8 +1991,10 @@ var App = Application.kind({
         this.bookmarks.fetch();
 
         var hist = localStorage.getItem('BibleSuperSearchHistory') || null;
+        var visited = localStorage.getItem('BibleSuperSearchVisited') || null;
 
         this.history = hist ? JSON.parse(hist) : [];
+        this.visited = visited ? JSON.parse(visited) : [];
     },
     copyHistoryToBookmarks: function() {
         this.history.forEach(function(item) {

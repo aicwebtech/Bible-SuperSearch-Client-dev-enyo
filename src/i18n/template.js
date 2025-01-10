@@ -458,6 +458,7 @@ module.exports = {
     // 5.7:
     'Include Link': '',
     'Include Formatting': '',
+    'Resume Search': '',
 
 
 

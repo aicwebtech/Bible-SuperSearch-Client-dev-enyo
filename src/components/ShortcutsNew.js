@@ -36,7 +36,7 @@ module.exports = kind({
                 value: shortcuts[i].reference,
                 titleVerses: true,
                 titleString: shortcuts[i].reference,
-                valueTranslate: true,
+                valueTranslate: false,
                 valueVerses: true,
                 // attributes: {
                 //     title: shortcuts[i].reference

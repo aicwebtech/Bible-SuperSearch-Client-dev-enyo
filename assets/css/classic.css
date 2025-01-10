@@ -93,7 +93,11 @@
     text-decoration: none;
 }
 
-.interface_classic .biblesupersearch_pager a.current_page {
+.interface_classic a.bss_results_list_item_visited {
+    color: purple;
+}
+
+.interface_classic .biblesupersearch_pager a.current_page, .interface_classic a.bss_results_list_item_showing {
     font-weight: bold;
     color: #ff8c00;
     background-color: transparent;

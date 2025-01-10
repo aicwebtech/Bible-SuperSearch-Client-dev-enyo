@@ -136,6 +136,7 @@ module.exports = kind({
         this.$.ConfirmDialog.confirm(msg, function(confirm) {
             if(confirm) {
                 t.app.clearHistory();
+                t.app.clearVisited();
                 t.close();
             }
         });

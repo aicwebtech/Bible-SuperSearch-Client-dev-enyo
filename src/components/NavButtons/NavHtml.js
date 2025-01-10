@@ -65,14 +65,14 @@ module.exports = kind({
             nb_text = bookName;
         }         
 
-        // Pswap Book
+        // Prev Book
         if(typeof this.nav.pb != 'undefined' && this.nav.pb != null) {
-            bookName = this.app.getLocaleBookName(this.nav.pb, this.nav.pswap_book);
+            bookName = this.app.getLocaleBookName(this.nav.pb, this.nav.prev_book);
             pb_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, 1);
             pb_text = bookName;
         }         
 
-        // Pswap Chapter
+        // Prev Chapter
         if(typeof this.nav.pcc != 'undefined' && this.nav.pcc != null) {
             bookName = this.app.getLocaleBookName(this.nav.pcb, this.nav.pcb_name);
             pc_link = this.linkBuilder.buildReferenceLink('p', bible, bookName, this.nav.pcc);

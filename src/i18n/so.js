@@ -48,8 +48,8 @@ module.exports = {
     'Select a Bible': 'Dooro Kitaabka Qudduuska ah',
     'Add Bible': 'Kudar Baybalka',
     'Remove Bible': 'Ka saar Baybalka', 
-    'Random Chapter': 'Qaybta Random',//check translation
-    'Random Verse': 'Aayadda Random',//check translation
+    'Random Chapter': 'Qaybta Random',
+    'Random Verse': 'Aayadda Random',
     'Passages': 'Maraqyada',
     'Passage': 'Marmar',
     'The book of': 'Buuga',
@@ -93,7 +93,7 @@ module.exports = {
     'Minor Prophets': 'Nabiyada Yaryar',
     'Gospels': 'Injiillada',
     'Epistles': 'Warqado',
-    'Pauline Epistles': 'Pauline Epistles',//check translation
+    'Pauline Epistles': 'Warqadaha Bawlos',
     'General Epistles': 'Warqadaha Guud',
     'End Times Prophecy': 'Waxsii sheegista Waqtiyada Dhammaadka',
     
@@ -133,7 +133,7 @@ module.exports = {
     'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'Talo: Gelida marinka iyo weydiinta raadinta labadaba waxay keenaysaa xaddididda raadinta tuducyada cayiman.',
     
     // Advanced Search
-    'Boolean Search': 'Boolean Search',//check translation
+    'Boolean Search': 'Boolean Raadinta',
     'Passage Retrieval': 'Soo Celinta Marinka',
     'Find words within': 'Ka dhex hel ereyo',
     'Proximity Search': 'Raadinta u Dhowaanshaha',
@@ -158,9 +158,9 @@ module.exports = {
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sans-Serif',//check translation                 // * Button text, please keep translation short!
-    'Monospace': 'Monospace',//check translation                  // * Button text, please keep translation short!
+    'Serif' : 'Serif',                    // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif',                 // * Button text, please keep translation short!
+    'Monospace': 'Monospace',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Balaadhin Qoraalka',
     'Default Text Size': 'Cabbirka Qoraalka Ee Caadiga Ah',
     'Shrink Text': 'Iska yaree qoraalka',
@@ -182,7 +182,7 @@ module.exports = {
     'Disable Highlighting of Keywords': 'Dami Iftiiminta Ereyada Furaha',
     'Enable Highlighting of Keywords': 'Dari Iftiiminta Ereyada Furaha',
     'Print': 'Daabac',
-    'Printer Friendly': 'Printer Friendly',//check translation
+    'Printer Friendly': 'Daabacaadda saaxiibtinimo',
     'Help': 'Caawin',
     'Basic': 'Aasaaska',
     'Advanced': 'Sareeye',
@@ -192,7 +192,7 @@ module.exports = {
     'Supported Bibles Only': 'Baybalka la Taageeray Keliya', 
     
     // Translate the right-side strings here
-    'strongs_numbers_description': 'Nambarada Concordance ee xoogga leh waxay muujinayaan ereyada Cibraaniga ama Giriigga hoose.',//check translation  
+    'strongs_numbers_description': 'Nambarada Concordance ee xoogga leh waxay muujinayaan ereyada Cibraaniga ama Giriigga hoose.',
     'italics_description': 'Farta farriimaha ayaa tilmaamaya ereyo lagu daray tarjumaada oo aan ku jirin luqaddii asalka ahayd.',  
     'red_letter_description': 'Erayada Masiixa ee Cas.', 
     'highlight_description': 'Iftiiminta ( geesinimada leh) ereyada muhiimka ah ee raadinta.', 
@@ -206,7 +206,7 @@ module.exports = {
     
     // Copy format options
     'Copy Format': 'Nuqulka Qaabka', 
-    'Word Processor': 'Processor-ka Word',//check translation 
+    'Word Processor': 'Processor Word',
     'Outline' : 'Dulmar', 
     'Custom': 'Caadiyan', 
 
@@ -232,7 +232,7 @@ module.exports = {
     'Settings' : 'Dejinta', 
     'Language' : 'Luuqad', 
     'Text Display': 'Bandhiga Qoraalka', 
-    'Font Style': 'Qaabka Font',//check translation 
+    'Font Style': 'Habka Xarafka',
 
     // Result and error messages
     
@@ -346,7 +346,7 @@ module.exports = {
 
     // Bible downloads dialog
     'Download': 'Download',
-    'Bible Downloads': 'Downloads Kitaabka Quduuska ah',//check translation
+    'Bible Downloads': 'Soodejinta Kitaabka Quduuska ah',
     'Select Bible(s)' : 'Dooro Baybalka(yada)',
     'Select a Format': 'Dooro Qaab',
     'Rendering': 'Bandhigga',
@@ -361,7 +361,7 @@ module.exports = {
     'Plain Text' : 'Qoraal Cad',
     'Machine-readable Plain Text' : 'Qoraalka cad ee mashiinka-akhriska',
     'Spreadsheet' : 'Xaashida faafinta',
-    'Databases': 'Databases',//check translation
+    'Databases': 'Databases',
 
     'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF - Qoraal kooban, Warqad, Erayada Masiixa ee Casaanka ah',
     'PDF - Compact Text, A4, Words of Christ in Red': 'PDF - Qoraal kooban, A4, Erayada Masiixa ee Cas',

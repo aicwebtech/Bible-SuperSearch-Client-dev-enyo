@@ -37,6 +37,9 @@ module.exports = kind({
 
     successHandle: null,
     errorHandle: null,
+    fieldLastChanged: null,
+    shortcutChangeIgnore: false,
+    searchChangeIgnore: false,
 
     Passage: Passage,
 
@@ -118,8 +121,10 @@ module.exports = kind({
         this.app.debug && this.log();
         var ref = this.app.configs.landingReference || null;
 
-        if(!this.preventDefaultSubmit && ref && ref != '') {
+        if(!this.preventDefaultSubmit && !this.app.get('loadingPagePrevent') && ref && ref != '') {
             var formData = {};
+
+            this.log('submitting default');
 
             ref = this.app.vt(ref);
 
@@ -172,7 +177,7 @@ module.exports = kind({
 
         // Custom code - Make this a config??
         if(this.$.reference_booksel) {        
-            this.$.reference_booksel.set('value', null);
+            // this.$.reference_booksel.set('value', null); // why?
             this.$.reference && this.$.reference.set('value', formData.reference || null);
         }
 
@@ -192,12 +197,14 @@ module.exports = kind({
     },
     _submitFormHelper: function(formData, manual) {
         this.manualRequest = manual || false;
+        this.fieldLastChanged = null;
 
         if(this.manualRequest) {
             this.app.set('scrollMode', 'results_top');
             formData.page = null;
             // this.formData.page = null;
             this.page = null;
+            this.app.clearVisited();
         }
 
         if(this.requestPending) {
@@ -218,6 +225,15 @@ module.exports = kind({
             url: this.app.configs.apiUrl,
             method: 'GET'
         });
+
+        this.app.set('resultListRequestedCacheId', formData.results_list_cache_id || null);
+
+        this.log('resultListRequestedCacheId', this.app.get('resultListRequestedCacheId'));
+        this.log('resultsListCacheId', this.app.get('resultsListCacheId'));
+
+        if(this.app.get('resultListRequestedCacheId') == this.app.get('resultsListCacheId')) {
+            delete formData.results_list_cache_id; // If the list is already stored in memory, don't make API query for it again
+        }
 
         this.app.set('ajaxLoadingDelay', 100);
         this.requestPending = true;
@@ -302,6 +318,8 @@ module.exports = kind({
         formData.context_range = this.app.UserConfig.get('context_range');
         formData.page_limit = this.app.UserConfig.get('page_limit');
         formData.key = this.app.configs.apiKey || null;
+
+        formData.results_list = this.app.configs.resultsList;
         
         //formData.group_passage_search_results = true; // experimental
         
@@ -361,16 +379,21 @@ module.exports = kind({
         return formData;
     },
     handleResponse: function(inSender, inResponse) {
+        this.app.debug && this.log();
         // this.app.set('ajaxLoading', false);
         this.app.set('ajaxLoadingDelay', false);
         this.requestPending = false;
         this.set('cacheHash', inResponse.hash);
+        this.app.set('cacheId', this.get('cacheHash'));
         this.app.set('shortHashUrl', '#/c/' + this.get('cacheHash'));
         var responseData = {formData: this._formDataAsSubmitted, results: inResponse, success: true};
+        this.app.set('responseData', responseData);
+        this.app.set('altResponseData', null);
+        this.app.set('resultsShowing', []);
+        this.app.set('altResultsShowing', []);
         this.bubble('onFormResponseSuccess', responseData);
         this.waterfall('onFormResponseSuccessWaterfall', responseData);
         Signal.send('onFormResponseSuccess', responseData);
-        this.app.set('responseData', responseData)
         this.maxPage = (inResponse.paging && inResponse.paging.last_page) ? inResponse.paging.last_page : null;
         this.page = (inResponse.paging && inResponse.paging.current_page) ? inResponse.paging.current_page : null;
         // this.app.UserConfig.set('copy', false); // force EZ-Copy disabled when submitting the form - make a config for this?
@@ -441,6 +464,8 @@ module.exports = kind({
         return this._submitFormHelper(submitData, true);
     },
     setFormDataWithMapping: function(formData) {
+        var combined = formData.search && formData.reference;
+
         if(formData.search && this.searchField != 'search') {
             formData[this.searchField] = formData.search;
             delete formData.search;
@@ -456,6 +481,8 @@ module.exports = kind({
             formData[requestField] = formData.request;
             delete formData.request;
         }
+
+        formData.shortcut = combined ? '1' : '0';
 
         this.set('formData', {});
         this.set('formData', utils.clone(formData));
@@ -645,38 +672,52 @@ module.exports = kind({
         }
 
         this.app.debug && this.log(value, field, dir);
+        this.log('procede');
         this._referenceChangeHelperIgnore = true;
+        var hasValue = (value && value != '0' && value != '');
 
         if(this.$.reference && this.$.reference_booksel) {
-            this.app.debug && this.log('here');
-
             if(field == 'reference') {
-                this.app.debug && this.log('ref');
                 if(dir == 2) {
-                    this.$.reference_booksel.set('value', '');
+                    // this.$.reference_booksel.set('value', '');
+                    this.$.reference_booksel.set('value', value);
                 } else {
                     this.$.reference_booksel.set('value', value);
                 }
-            } else {
-                this.app.debug && this.log('booksel');
+            } else if(field == 'reference_booksel') {
+                // this.app.debug && this.log('booksel');
                 this.$.reference.set('value', value || null);
             }
         }
 
+        // IE is no longer officially supported (by Microsoft or us), keeping this here for legacy purposes
         if(this.app.get('clientBrowser') == 'IE') {
             this.submitFormOnReferenceChange && this.submitForm();
             this.log('Using IE, no good!  Skipping some minor code that breaks IE ... ');
+            this._referenceChangeHelperIgnore = false;
             return; // bail if IE ... yuck!
         }
 
-        if(!this.app.configs.limitSearchManual) {
-            if(value && value != '0' && value != '') {
-                if(!this.$.shortcut.setSelectedByValue(value, 1)) {
-                    // this.$.shortcut.set('selected', 1);
+        if(this.$.shortcut) {
+            shortcut = this.$.shortcut.get('value');
+            // this.log('shortcut', shortcut);
+
+            if(this.app.configs.limitSearchManual) {
+                // if(hasValue && shortcut == '0') {
+                //     this.$.search && this.$.search.set('value', null);
+                // } else if(hasValue && shortcut != '1') {
+                //     this.$.shortcut.set('selected', 0);
+                //     this.$.search && this.$.search.set('value', null);
+                // }
+            } else {
+                if(hasValue) {
+                    if(!this.$.shortcut.setSelectedByValue(value, 1)) {
+                        // this.$.shortcut.set('selected', 1);
+                    }
                 }
-            }
-            else {
-                this.$.shortcut.set('selected', 0);
+                else {
+                    this.$.shortcut.set('selected', 0);
+                }
             }
         }
 
@@ -719,12 +760,10 @@ module.exports = kind({
             field = 'search';
         }
 
-
         // matches = value.match(/([123] )?[]/gi);
         return field;
 
     },
-
     _containsNonPassageCharacters: function(str) {
         // migrated from PHP API.
         if(!str || !str.match) {
@@ -736,13 +775,10 @@ module.exports = kind({
         return nonPassageChars ? true : false;
     },
     keyPress: function(inSender, inEvent) {
-        this.app.debug && this.log(inSender, inEvent);
-
         if(inEvent.key == 'Enter' || inEvent.keyCode && inEvent.keyCode == 13) {
             var textarea = inSender._openTag.match(/<textarea/);
             var input = inSender._openTag.match(/<input/);
             var enterSubmit = (!textarea || (inSender.enterSubmit && inSender.enterSubmit == true)) ? true : false;
-            // var enterSubmit = (input || (inSender.enterSubmit && inSender.enterSubmit == true)) ? true : false;
 
             if(inSender.enterSubmitPrevent && inSender.enterSubmitPrevent == true) {
                 enterSubmit = false;
@@ -905,6 +941,40 @@ module.exports = kind({
 
         return val;
     },
+    formFieldChanged: function(field, value, dir) {
+        value = (!value || value == '') ? null : value;
+
+        this.app.debug && this.log(field, value, dir);
+
+        if(this.app.configs.limitSearchManual && this.$.shortcut) {
+            var l = this.fieldLastChanged,
+                sc = this.$.shortcut.get('value') || '0';
+
+            if(dir == 2 && value) {
+                if(sc != '1' && (field == 'reference' || field == 'reference_booksel')) {
+                    if(!this.searchChangeIgnore) {
+                        this.searchChangeIgnore = true;
+                        this.$.search && this.$.search.set('value', null);
+                        this.$.request && this.$.request.set('value', null);
+                        this.searchChangeIgnore = false;
+                    }
+
+                    if(sc != '0' && !this.shortcutChangeIgnore) {
+                        this.shortcutChangeIgnore = true;
+                        this.$.shortcut.setSelectedByValue('0');
+                        this.shortcutChangeIgnore = false;
+                    }
+                } else if(sc == '0' && !this._referenceChangeHelperIgnore && (field == 'search' || field == 'request')) {
+                    this._referenceChangeHelperIgnore = true;
+                    this.$.reference_booksel && this.$.reference_booksel.set('value', null);
+                    this.$.reference && this.$.reference.set('value', null);
+                    this._referenceChangeHelperIgnore = false;
+                }
+            }
+        }
+
+        this.fieldLastChanged = {field: field, value: value, dir: dir};
+    },
     isShortHashable: function() {
         var pass = ['request', 'reference', 'search', 'search_type'];
         var sh = true;
@@ -913,13 +983,11 @@ module.exports = kind({
         // Todo - work in progress!
 
         this.bindings.forEach(function(item, idx) {
-            this.app.debug && console.log('formItem to', item.to);
+            // this.app.debug && console.log('formItem to', item.to);
 
             if(item.shortLink) {
                 return;
             }
-
-            // console.log('formItem', item);
 
             var p = item.to.split('.'),
                 field = p[1],
@@ -932,9 +1000,9 @@ module.exports = kind({
 
             var value = this.$[field].get(property);
 
-            this.app.debug && console.log('formItem field', field);
-            this.app.debug && console.log('formItem property', property);
-            this.app.debug && console.log('formItem value', value);
+            // this.app.debug && console.log('formItem field', field);
+            // this.app.debug && console.log('formItem property', property);
+            // this.app.debug && console.log('formItem value', value);
             // if(item.from = 'formData.' +)
 
             if(value && value != '' && value != 0) {
@@ -960,8 +1028,7 @@ module.exports = kind({
     clearHandlers: function() {
         this.successHandle = null;
         this.errorHandle = null;
-    },
-    
+    }, 
     testInit: function() {
         if(this.formContainer) {            
             for(i in this.formNames) {
@@ -971,7 +1038,6 @@ module.exports = kind({
             this._testInitHelper('Form Submission');
         }
     },
-
     _testInitHelper: function(label) {
         if(this.app.testing) {
             return; //tests already ran, bail

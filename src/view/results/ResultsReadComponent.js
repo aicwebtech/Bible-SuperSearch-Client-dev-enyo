@@ -15,6 +15,7 @@ module.exports = kind({
     navButton_2: null,
     sideButtons: false,
     passage: null,
+    type: 'normal',
 
     // Published
     singleVerse: false,
@@ -22,6 +23,7 @@ module.exports = kind({
     handlers: {
         onGlobalScroll: 'handleGlobalScroll',
         onGlobalScrollEnd: 'handleGlobalScrollEnd',
+        onResultsComponentShowingChange: 'handleShowingChange',
         blur: 'handleBlur',
         focus: 'handleFocus'
     },
@@ -117,6 +119,13 @@ module.exports = kind({
                 this.clickPrev();
             }
         }
+    },
+    handleShowingChange: function(s, e) {
+        if(e.type != this.type) {
+            return;
+        }
+
+        this.set('showing', !!e.showing);
     },
     handleGlobalScroll: function(inSender, inEvent) {
         this.scrolling = true;
@@ -216,7 +225,7 @@ module.exports = kind({
         this.addRemoveClass('bss_render_active', is);
     },
     isVisible: function() {
-        if(!this.hasNode()) {
+        if(this.type != 'normal' || !this.get('showing') || !this.hasNode()) {
             return false;
         } else {
             return this._isElementPartiallyInViewport(this.hasNode());
@@ -261,21 +270,6 @@ module.exports = kind({
                 rect.left > offset && rect.right < w
             )
         );        
-
-        // return (
-        //     (
-        //         rect.top >= 0 && rect.top <= h ||
-        //         rect.bottom >= 0 && rect.bottom <= h ||
-        //         rect.top < 0 && rect.bottom > h ||
-        //         rect.top > 0 && rect.bottom < h
-        //     ) && 
-        //     (
-        //         rect.left >= 0 && rect.left <= w ||
-        //         rect.right >= 0 && rect.right <= w ||
-        //         rect.left < 0 && rect.right > w ||
-        //         rect.left > 0 && rect.right < w
-        //     )
-        // );
     },
     _pushNavButtons: function(component) {
         if(!this.navButton_1) {

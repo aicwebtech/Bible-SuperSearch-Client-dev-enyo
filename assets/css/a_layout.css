@@ -212,6 +212,8 @@ table.biblesupersearch_render_table {
 }
 
 
+.bss_float_left
+
 
 .biblesupersearch_render_table td table.rtl {
     margin-inline-start: auto;
@@ -722,7 +724,7 @@ div.alert_dialog {
     float: inline-start;  /* RTL */
 }
 
-.bss_float_left {
+.bss_float_right {
     float: inline-end; /* RTL */
 }
 
@@ -932,4 +934,76 @@ tr.bss_render_reference_row th {
 .bss_bible_info_container {
     text-align: justify;
     padding: 0 15px;
+}
+
+.bss_results_list {
+    max-width: 98%;
+    height: 100px;
+    overflow-y: auto;
+    background-color: #ddd;
+/*    background: linear-gradient(135deg,#0ff 0,#0ff 94%,#fff 95%);
+    scrollbar-width: thin;*/
+    margin: 15px auto;
+    border: 1px solid #111;
+    padding: 7px 10px;
+    position: relative;
+    resize: both;
+}
+
+.bss_results_list table {
+    width: 99%;
+}
+
+.bss_results_list_handle {
+    background-color: green;
+    width: 20px;
+    height: 20px;
+/*    position: absolute;
+    right: 0;
+    bottom: 0;*/
+    cursor: se-resize;
+}
+
+.bss_results_list hr {
+    margin: 2px 1px;
+}
+
+.bss_results_list_container {
+    display: inline-block;
+    width: 200px;
+}
+
+.bss_results_list_label {
+    width: 20%;
+    max-width: 120px; 
+    padding-right: 5px; 
+    vertical-align: top;
+    font-size: 0.8em;
+}
+
+.bss_results_list_label div {
+    position: sticky;
+    top: 3px;
+}
+
+.bss_results_list_item {
+    font-size: 0.8em;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 22%;
+    max-width: 60px;
+    min-width: 50px;
+}
+
+a.bss_results_list_item_visited {
+    color: purple;
+    font-weight: bold;
+}
+
+.bss_results_list_item_showing {
+    font-weight: bold;
 }

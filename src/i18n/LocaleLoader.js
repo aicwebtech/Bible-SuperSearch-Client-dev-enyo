@@ -1,6 +1,8 @@
 module.exports = {
     en_pirate: require('./en_pirate'),
+    am: require('./am'), // 5.7
     ar: require('./ar'), 
+    bn: require('./bn'), // 5.7 
     de: require('./de'),
     en: require('./en'),
     es: require('./es'),
@@ -20,6 +22,8 @@ module.exports = {
     lv: require('./lv'),
     lt: require('./lt'), 
     mi: require('./mi'), 
+    mr: require('./mr'), // 5.7 
+    my: require('./my'), // 5.7 
     ne: require('./ne'), 
     nl: require('./nl'), 
     pa: require('./pa'),
@@ -27,8 +31,11 @@ module.exports = {
     pt: require('./pt'),
     ro: require('./ro'),
     ru: require('./ru'),
+    so: require('./so'), // 5.7
     sq: require('./sq'),
     sw: require('./sw'),
+    ta: require('./ta'), // 5.7 
+    te: require('./te'), // 5.7 
     tr: require('./tr'),
     ur: require('./ur'),
     vi: require('./vi'),

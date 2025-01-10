@@ -218,7 +218,7 @@
     /*font-weight: bold;*/
 }
 
-.interface_expanding .biblesupersearch_pager a.current_page {
+.interface_expanding .biblesupersearch_pager a.current_page, .interface_expanding .bss_results_list_item_showing {
     color: #369336;
     font-weight: bold;
 }
