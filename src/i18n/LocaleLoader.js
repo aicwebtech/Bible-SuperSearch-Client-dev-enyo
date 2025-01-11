@@ -1,6 +1,7 @@
 module.exports = {
     en_pirate: require('./en_pirate'),
     am: require('./am'), // 5.7
+    af: require('./af'), // 5.7 
     ar: require('./ar'), 
     bn: require('./bn'), // 5.7 
     de: require('./de'),
@@ -40,6 +41,7 @@ module.exports = {
     th: require('./th'),
     tl: require('./tl'),
     tr: require('./tr'),
+    ug: require('./ug'),
     ur: require('./ur'),
     vi: require('./vi'),
     zh_TW: require('./zh_TW'),

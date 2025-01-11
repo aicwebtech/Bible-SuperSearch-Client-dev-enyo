@@ -1,4 +1,3 @@
-// 3 Checks
 module.exports = {
     meta: {
         // 2 or 3 character language code, lower-case, ie 'es'

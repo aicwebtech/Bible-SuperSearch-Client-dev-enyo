@@ -41,7 +41,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.6.1',
+    applicationVersion: '5.6.10beta1',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -174,8 +174,6 @@ var App = Application.kind({
         else {        
             var dir = null;
             var script = document.querySelector('script[src*="biblesupersearch.js"]');
-
-            // script = null;
 
             if(script) {
                 var path = script.getAttribute('src');

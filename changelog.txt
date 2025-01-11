@@ -1,11 +1,25 @@
 Bible SuperSearch Universal Client Changelog
 
-= 5.7.0
+= 5.6.10
+
+* Search results reference summary list
+* Option to Limit Search to Reference only if manually selected
 * Fixed and improved share dialog
 ** Added config to determine when to use the system share dialog (ie mobile) vs the generic share dialog.
 ** Added settings on dialog for including the link and formatting.
 * Fixed "Verse as Passage Display" formatting in copy mode to be consistent with "Verse as Passage Display" in read mode.
 * Fixed language fallback.  Previously, it would simply grab the first 2 charaters of the locale, resulting in erroneous selection.
+
+* Added User Interface Language translations:
+** Amharic
+** Afrikaans
+** Bengali
+** Burmese / Myanmar
+** Somali
+** Tamil
+** Telugu
+** Tajiki / Tajik
+** Uyghur
 
 = 5.6.1
 ** Replaced Arabic with fluent translation
@@ -37,7 +51,7 @@ Bible SuperSearch Universal Client Changelog
 ** Tibetan
 ** Turkish
 ** Urdu
-** Uyghur
+** Uyghur (Bible only)
 ** Vietnamese
 ** Wolof
 

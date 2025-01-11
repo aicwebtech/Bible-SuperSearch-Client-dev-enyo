@@ -1,6 +1,4 @@
 module.exports = {
-    // 25 checks
-
     meta: {
         // 2 or 3 character language code, lower-case, ie 'es'
         // Note: This filename name must be [code].js ie 'es.js'
@@ -132,7 +130,7 @@ module.exports = {
     'Select one ...' : 'Kies een...',
 
     'Enter search keyword(s) or passage reference(s)': 'Voer soek sleutelwoord(s) of deurgangsverwysing(s) in',
-    'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'Wenk: Om beide 'n gedeelte en 'n soeknavraag in te voer, sal lei tot die beperking van die soektog na die gespesifiseerde gedeelte(s).',
+    'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'Wenk: Om beide \'n gedeelte en \'n soeknavraag in te voer, sal lei tot die beperking van die soektog na die gespesifiseerde gedeelte(s).',
     
     // Advanced Search
     'Boolean Search': 'Boolese Soek',
@@ -175,17 +173,17 @@ module.exports = {
     'Italics': 'Kursief',                    // * Button text, please keep translation short!
     'Disable Italization of Added Words' : 'Skakel Kuralisasie van Bygevoegde Woorde',
     'Enable Italization of Added Words': 'Aktiveer Kurisering van Bygevoegde Woorde',
-    'Disable Strong\'s Numbers': 'Skakel Strong\ se nommers uit',
-    'Enable Strong\'s Numbers': 'Aktiveer Strong\ se nommers',
+    'Disable Strong\'s Numbers': 'Skakel Strong se nommers uit',
+    'Enable Strong\'s Numbers': 'Aktiveer Strong se nommers',
     'Red Letter': 'Rooi Brief',
     'Disable Red Letter': 'Skakel Rooi Brief uit',
-    'Enable Red Letter': 'Aktiveer Red Letter',//check translation
+    'Enable Red Letter': 'Aktiveer Rooi Brief',
     'Highlight': 'Hoogtepunt',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Skakel Hoogtepunte van Sleutelwoorde',
     'Enable Highlighting of Keywords': 'Aktiveer die klem van Sleutelwoorde',
     'Print': 'Druk',
     'Printer Friendly': 'Drukker Vriendelik',
-    'Help': 'Help',//check translation
+    'Help': 'Help',
     'Basic': 'Basies',
     'Advanced': 'Gevorderde',
 
@@ -198,7 +196,6 @@ module.exports = {
     'italics_description': 'Kursief dui woorde aan wat in vertaling bygevoeg is wat nie in die oorspronklike taal was nie.',  
     'red_letter_description': 'Woorde van Christus in Rooi.', 
     'highlight_description': 'Verlig (vet) sleutelwoorde in soektogte.', 
-
 
     // Verse Cherry-picking
     'Select All': 'Kies Alle', 
@@ -218,7 +215,7 @@ module.exports = {
     'Text Only': 'Slegs Teks', 
     'Separate Line': 'Aparte Lyn', 
 
-    'Multi-verse Passages': 'Multi-vers Passasies',//check translations 
+    'Multi-verse Passages': 'Multi-vers Passasies',
     'Reference - Passage': 'Verwysing - Passasie',
     'Passage - Reference': 'Passasie - Verwysing', 
     'Passage Only': 'Slegs Deurgang', 
@@ -227,14 +224,14 @@ module.exports = {
     'Other': 'Ander', 
     'Abbreviate Books': 'Afkort Boeke', 
     'Include Testament': 'Sluit Testament in', // v5.6.0
-    'Testament': 'Testament',//check translation // v5.6.0
-    'Omit Extra Line Breaks': 'Weglaat Ekstra Line Breek',//check translation 
+    'Testament': 'Testament', // v5.6.0
+    'Omit Extra Line Breaks': 'Laat ekstra lynbreuke weg',
 
     // Settings Dialog
     'Settings' : 'Instellings', 
     'Language' : 'Taal', 
     'Text Display': 'Teks Vertoon', 
-    'Font Style': 'Font Styl',//check translation 
+    'Font Style': 'Font Styl',
 
     // Result and error messages
     
@@ -244,8 +241,8 @@ module.exports = {
     'results' : 'resultate',
     
     // Showing results [1] to [30]
-    'Showing Results': 'Wys resultate',//check translation
-    'to' : 'aan',//check translation
+    'Showing Results': 'Wys resultate',
+    'to' : 'aan',
     
     // Your search produced no results in [name of Bible version]
     'Your search produced no results in': 'Jou soektog het geen resultate opgelewer nie', 
@@ -255,7 +252,7 @@ module.exports = {
     'Operators such as': 'Operateurs soos',
     'cannot be at the beginning of your search.': 'kan nie aan die begin van jou soektog wees nie.',
     'cannot be at the end of your search.': 'kan nie aan die einde van jou soektog wees nie.',
-    'Please remove it, or use it\'s lower case equivalent.': 'Verwyder dit asseblief, of gebruik dit\ se kleinletter-ekwivalent.',
+    'Please remove it, or use it\'s lower case equivalent.': 'Verwyder dit asseblief, of gebruik dit se kleinletter-ekwivalent.',
 
     // Your search for [attempted keywords] is invalid...
     'Your search for': 'Jou soektog na',
@@ -298,7 +295,7 @@ module.exports = {
     'Anxious': 'Angstig',
     'Backsliding': 'Afkerigheid',
     'Bereaved': 'Bedroefde',
-    'Bitter or Critical': 'Bitter of Krities',//check translation
+    'Bitter or Critical': 'Bitter of Kritiek',
     'Conscious of Sin': 'Bewus van Sonde',
     'Defeated': 'Verslaan',
     'Depressed': 'Depressief', 
@@ -320,7 +317,7 @@ module.exports = {
     'Protected': 'Beskerm',
     'Sick or in Pain': 'Siek of in Pyn',
     'Sorrowful': 'Hartseer',
-    'Tempted': 'Versoek',//check translation 
+    'Tempted': 'Gelok',
     'Thankful': 'Dankbaar',
     'Traveling': 'Op reis',//check traveling
     'Trouble, In': 'Moeilikheid, In',
@@ -329,10 +326,10 @@ module.exports = {
     'Worried': 'Bekommerd',
 
     // Bible Start dialog
-    'Start': 'Begin',//check translation
-    'Bible Start Guide': 'Bybel Begin Gids',//check translation
+    'Start': 'Begin',
+    'Bible Start Guide': 'Bybel Begin Gids',
     'New to the Bible?': 'Nuut by die Bybel?',
-    'Not Sure Where to Begin?' : 'Nie seker waar om te begin nie?',//check translation
+    'Not Sure Where to Begin?' : 'Nie seker waar om te begin nie?',
     'Life and Teachings of Jesus Christ': 'Lewe en Leringe van Jesus Christus',
     'Basic Christian Beliefs': 'Basiese Christelike Oortuigings',
     'Creation and the Fall of Man': 'Skepping en die val van die mens',
@@ -344,7 +341,7 @@ module.exports = {
     'Salvation by faith, not works': 'Verlossing deur geloof, nie werke nie',
     'Christian life and experience. &nbsp;The Apostle Paul gave up credentials under the OT Law to follow Christ': 'Christelike lewe en ervaring. &nbsp;Die apostel Paulus het geloofsbriewe onder die OT-wet prysgegee om Christus te volg',
     'Christ the suffering servant': 'Christus die lydende Dienaar',
-    'Christ\'s crucifixion foretold': 'Christus\ se kruisiging voorspel',
+    'Christ\'s crucifixion foretold': 'Christus se kruisiging voorspel',
 
     // Bible downloads dialog
     'Download': 'Laai af',
@@ -360,8 +357,8 @@ module.exports = {
     'Please select at least one Bible': 'Kies asseblief ten minste een Bybel',
     'Please select a format': 'Kies asseblief \'n formaat',
     'Are you sure you want to exit?  This will end the current download.': 'Is jy seker jy wil ophou? Dit sal die huidige aflaai beëindig.',
-    'Plain Text' : 'Gewone Teks',//check translation
-    'Machine-readable Plain Text' : 'Masjienleesbare Gewone Teks',//check translation
+    'Plain Text' : 'Gewone Teks',
+    'Machine-readable Plain Text' : 'Masjienleesbare Gewone Teks',
     'Spreadsheet' : 'Sigblad',
     'Databases': 'Databasisse',
 
@@ -375,7 +372,7 @@ module.exports = {
     'Copy Link': 'Kopieer Skakel',
     'Copy with Text': 'Kopieer met Teks',
     'Share Link': 'Deel Skakel',
-    'Share' : 'Deel',//check translation
+    'Share' : 'Share',
     'Link' : 'Skakel', 
     'Copied to clipboard': 'Gekopieer na knipbord', 
     'Failed to copy': 'Kon nie kopieer nie', 
@@ -389,12 +386,12 @@ module.exports = {
     'Select' : 'Kies',
     'Operators': 'Operateurs',
     'Operator': 'Operateur',
-    'Aliases': 'Aliases',//check translation
+    'Aliases': 'Aliases',
     'Description': 'Beskrywing',
-    'Match both': 'Pas albei by',
-    'Match either': 'Pas ook by',//check translation
-    'Match only one': 'Pas slegs een by',//check translation
-    'Does not match': 'Stem nie ooreen nie',
+    'Match both': 'Vind beide',
+    'Match either': 'Vind óf',
+    'Match only one': 'Vind net een',
+    'Does not match': 'Vind nie',
     'Matches words in the same chapter': 'Vind woorde in dieselfde hoofstuk',
     'Matches words in the same book': 'Vind woorde in dieselfde boek',
     'Matches words in the same book, and within N verses of each other': 'Vind woorde in dieselfde boek, en binne N verse van mekaar',
@@ -407,11 +404,11 @@ module.exports = {
     // Keywords for sample searches
     'Jesus': 'Jesus',
     'Christ': 'Christus',
-    'Lord': 'Here',//check translation
+    'Lord': 'Meester',
     'faith': 'geloof',
     'hope': 'hoop',
     'joy': 'vreugde',
-    'preserved' : 'bewaar'
+    'preserved' : 'bewaar',
     'preserve' : 'bewaar',
     'stand' : 'staan',
     'word': 'woord',
@@ -426,14 +423,14 @@ module.exports = {
 
     // General dialogs
     'Name': 'Naam',
-    'Save': 'Stoor',//check translation
+    'Save': 'Stoor',
     'Cancel': 'Kanselleer',
     'Edit': 'Wysig',
     'Delete': 'Skrap',
-    'Clear': 'Duidelik',//check translation
-    'Restore': 'Herstel',//check translation
+    'Clear': 'Maak Vorm skoon',
+    'Restore': 'Stel terug',
     'Add': 'Voeg',
-    'Okay': 'Goed',//check translation
+    'Okay': 'Oukei',
     'Old': 'Oud',
     'New': 'Nuwe',
 
@@ -456,13 +453,10 @@ module.exports = {
     'Passages': 'Passasies',
     'Alias': 'Alias',
     'You cannot search for these common words': 'Jy kan nie vir hierdie algemene woorde soek nie',
-
     // 5.7:
-    'Include Link': 'Sluit Hyperlink in',//check translation
+    'Include Link': 'Sluit skakel in',
     'Include Formatting': 'Sluit Formatering in',
     'Resume Search': 'Hervat Soek',
-
-
 
     // Bible Books
     // For each book in the list below, please specify the (full) name.  Please also provide short name if known.

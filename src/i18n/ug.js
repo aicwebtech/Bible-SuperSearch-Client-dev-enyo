@@ -6,7 +6,9 @@ module.exports = {
         code: 'ug',
 
         // Native name of language (endonymn): ie 'Español'
-        name: 'ئۇيغۇرچە, Uyghurche',    
+        name: 'ئۇيغۇرچە,',    
+        
+        nameOrig: 'ئۇيغۇرچە, Uyghurche',    
 
         // English name of language, ie 'Spanish'
         nameEn: 'Uyghur',       
@@ -97,7 +99,6 @@ module.exports = {
     'Pauline Epistles': 'پاۋلۇسنىڭ خېتى',
     'General Epistles': 'ئادەتتىكى خەتلەر',
     'End Times Prophecy': 'ئاخىرقى دەۋر بېشارىتى',
-    
     // Shortcut Aliases
     'OT': 'كونا ئەھدە',
     'NT': 'يېڭى ئەھدە',
@@ -126,7 +127,7 @@ module.exports = {
     'Words Within 5 Verses': '5 ئايەت ئىچىدىكى سۆزلەر',
     'Words Within Same Chapter': 'ئوخشاش بابتىكى سۆزلەر',
     'Words Within Same Book': 'ئوخشاش كىتاب ئىچىدىكى سۆزلەر',
-    'Boolean Expression': 'Boolean Expression',//check translation
+    'Boolean Expression': 'لوگىكىلىق ئىپادىلەش',
     'Regular Expression': 'دائىملىق ئىپادىلەش',
     'Select one ...' : 'بىرنى تاللاڭ...',
 
@@ -134,8 +135,8 @@ module.exports = {
     'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'تەكلىپ: بىر بۆلەك ۋە ئىزدەش سوئالىغا كىرىش ئىزدەشنىڭ بەلگىلەنگەن بۆلەك (لەر) بىلەن چەكلىنىشىنى كەلتۈرۈپ چىقىرىدۇ.',
     
     // Advanced Search
-    'Boolean Search': 'Boolean Search',//check translation
-    'Passage Retrieval': 'Passage Retrieval',//check translation
+    'Boolean Search': 'لوگىكىلىق ئىزدەش',
+    'Passage Retrieval': 'بۆلەكلەرنى ئىزدەڭ',
     'Find words within': 'ئىچىدىكى سۆزلەرنى تېپىڭ',
     'Proximity Search': 'يېقىن ئىزدەش',
     'Power Search': 'توك ئىزدەش',
@@ -147,7 +148,7 @@ module.exports = {
     '<b>None</b> of the words' : '<b> سۆزلەرنىڭ ھېچقايسىسى </b>',
     'The <b>exact phrase</b>': '<b> ئېنىق جۈملە </b>',
 
-    'Bible #': 'Bible #',//check translation // downloads
+    'Bible #': 'ئىنجىل #',
 
     // Pagination
     'Next Page' : 'كېيىنكى بەت',
@@ -157,18 +158,18 @@ module.exports = {
     'Page': 'ئاخىرقى بەت',
     
     // Formatting and dialog buttons
-    'A': 'A',//check translation     // First letter in given language
-    'Abc': 'Abc',//check translation  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sans-Serif',//check translation                 // * Button text, please keep translation short!
-    'Monospace': 'Monospace',//check translation                  // * Button text, please keep translation short!
+    'A': 'أ',     // First letter in given language
+    'Abc': 'اي بي سي',  // First 3 letters in given language, with 1st capitalized
+    'Serif' : 'Serif',//retranslate?                    // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif',//retranslate?                 // * Button text, please keep translation short!
+    'Monospace': 'Monospace',//retranslate?                 // * Button text, please keep translation short!
     'Enlarge Text': 'چوڭ تېكىست',
     'Default Text Size': 'سۈكۈتتىكى تېكىست چوڭلۇقى',
-    'Shrink Text': 'تېكىستنى ئازايتىش',//check translation
+    'Shrink Text': 'تېكىستنى ئازايتىش',
     'Verse Display': 'ئايەت كۆرسىتىش',
     'Paragraph Display': 'ئابزاس كۆرسىتىش',
-    'Passage Display': 'Passage Display',//check translation 
-    'Verse as Passage Display': 'Passage Display غا قاراڭ',//check translation 
+    'Passage Display': 'بۆلەك كۆرسىتىش',
+    'Verse as Passage Display': 'ئايەت بۆلەك سۈپىتىدە كۆرسىتىلىدۇ', 
     'EZ Copy': 'ئاسان كۆچۈرۈڭ',  // 'Easy Copy'
     'Read Display': 'كۆرسىتىش',
     'Italics': 'ئىتالىيە',                    // * Button text, please keep translation short!
@@ -185,7 +186,7 @@ module.exports = {
     'Print': 'بېسىش',
     'Printer Friendly': 'پرىنتېر دوستانە',
     'Help': 'ياردەم',
-    'Basic': 'Basic',//check translation
+    'Basic': 'ئاددىي',
     'Advanced': 'ئىلغار',
 
     // Descriptions of special formatting features
@@ -218,8 +219,8 @@ module.exports = {
     'Separate Line': 'ئايرىم ', 
 
     'Multi-verse Passages': 'كۆپ ئايەت', 
-    'Reference - Passage': 'پايدىلىنىش-ئۆتۈشمە يول', 
-    'Passage - Reference': 'Passage - Reference',//check translation 
+    'Reference - Passage': 'پايدىلىنىش - بۆلەك', 
+    'Passage - Reference': 'بۆلەك –  پايدىلىنىش', 
     'Passage Only': 'پەقەت ئۆتكەل', 
     'Show Verse Number': 'ئايەت نومۇرىنى كۆرسىتىڭ', 
 
@@ -244,7 +245,7 @@ module.exports = {
     
     // Showing results [1] to [30]
     'Showing Results': 'نەتىجىنى كۆرسىتىش',
-    'to' : 'to',//check translation
+    'to' : ' - ',
     
     // Your search produced no results in [name of Bible version]
     'Your search produced no results in': 'ئىزدىشىڭىز ھېچقانداق نەتىجىگە ئېرىشەلمىدى', 
@@ -274,7 +275,7 @@ module.exports = {
     'Cache not found': 'غەملەك تېپىلمىدى',
     'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'سوئال شەرتلىرى تەمىنلەنمىگەن. ئىزدەش ئاتالغۇسى ۋە/ياكى بۆلەك پايدىلىنىش ماتېرىيالى (لارنى) بەلگىلەڭ.',
     'Your search produced no results.' : 'ئىزدىشىڭىز ھېچقانداق نەتىجىگە ئېرىشەلمىدى.',
-    'Maximum hits has been reached for today for this domain / IP address': 'بۇ دائىرە/IP ئادرېسى ئۈچۈن بۈگۈنگە قەدەر ئەڭ يۇقىرى چەككە يەتتى',//check translation
+    'Maximum hits has been reached for today for this domain / IP address': 'بۇ دائىرە/IP ئادرېسى ئۈچۈن بۈگۈنگە قەدەر ئەڭ يۇقىرى چەككە يەتتى',
     'No Bibles are enabled. Please contact site administrator.': 'ھېچقانداق ئىنجىل قوزغىتىلمىغان. تور بېكەت باشقۇرغۇچى بىلەن ئالاقىلىشىڭ.',
     'Cannot retrieve multiple books at once.': 'بىرلا ۋاقىتتا كۆپ كىتابنى ئالالمايسىز.',
     'Bible text not found': 'ئىنجىل تېكىستى تېپىلمىدى',
@@ -350,9 +351,9 @@ module.exports = {
     'Bible Downloads': 'ئىنجىل چۈشۈرۈش',
     'Select Bible(s)' : 'ئىنجىل (لارنى) تاللاڭ',
     'Select a Format': 'فورماتنى تاللاڭ',
-    'Rendering': 'Rendering',//check translation
-    'Rendering Bibles, this may take some time': 'ئىنجىللارنى كۆرسىتىش ئۈچۈن بۇنىڭغا بىر ئاز ۋاقىت كېتىشى مۇمكىن',
-    'Rendering is Complete': 'كۆرسىتىش تولۇق',
+    'Rendering': 'ئىنجىللارنى ئىشلەش',
+    'Rendering Bibles, this may take some time': 'ئىنجىل ئىشلەپچىقىرىش ئۈچۈن بۇنىڭغا بىر ئاز ۋاقىت كېتىشى مۇمكىن',
+    'Rendering is Complete': 'ئىشلەنگەن ئىنجىللار',
     'Your download should begin shortly': 'چۈشۈرۈش ۋاقتىڭىز قىسقا ۋاقىت ئىچىدە باشلىنىشى كېرەك',
     'If not, please click on the below link': 'ئەگەر ئۇنداق بولمىسا، تۆۋەندىكى ئۇلىنىشنى چېكىڭ',
     'Manual Download': 'قولدا چۈشۈرۈش',
@@ -382,13 +383,13 @@ module.exports = {
     // Quick Start Help Dialog
     'Quick Start Guide': 'تېز باشلاش قوللانمىسى',
     'User\'s Manual': 'ئىشلەتكۈچى قوللانمىسى',
-    'Wildcard': 'ئىشلەتكۈچى قوللانمىسى',//check translation
+    'Wildcard': 'ياۋا كارتا',
     'Basic Searches' : 'ئاساسىي ئىزدەش',
-    'Advanced Searches using Boolean': 'Boolean ئارقىلىق ئىلغار ئىزدەش',//check translation
+    'Advanced Searches using Boolean': 'لوگىكا ئارقىلىق ئىلغار ئىزدەشلەر',
     'Select' : 'تاللاڭ',
     'Operators': 'تىجارەتچىلەر',
     'Operator': 'تىجارەتچى',
-    'Aliases': 'Aliases',//check translation
+    'Aliases': 'لەقەم',
     'Description': 'چۈشەندۈرۈش',
     'Match both': 'ھەر ئىككىسى',
     'Match either': 'ماس كېلىدۇ',
@@ -453,14 +454,13 @@ module.exports = {
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'ئىزدەشنى چەكلەش',
     'Passages': 'بۆلەكلەر',
-    'Alias': 'Alias',//check translation
+    'Alias': 'لەقەم',
     'You cannot search for these common words': 'بۇ ئورتاق سۆزلەرنى ئىزدىمەيسىز',
 
     // 5.7:
     'Include Link': 'ئۇلىنىشنى ئۆز ئىچىگە ئالىدۇ',
     'Include Formatting': 'فورماتلاشنى ئۆز ئىچىگە ئالىدۇ',
-    'Resume Search': 'ئەسلىگە كەلتۈرۈش ئىزدەش'
-
+    'Resume Search': 'ئەسلىگە كەلتۈرۈش ئىزدەش',
 
 
     // Bible Books
