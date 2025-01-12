@@ -440,7 +440,7 @@ module.exports = {
 
     // Bookmarks/History
     'This will delete all history.': 'Tani waxay tirtiri doontaa dhammaan taariikhda.',
-    'This will delete all bookmarks.': '',
+    'This will delete all bookmarks.': 'Tani waxay tirtiri doontaa dhammaan bookmarks.',
     'Move to Current': 'U Guuri Hadda',
 
     'Bookmark': 'Bookmark',

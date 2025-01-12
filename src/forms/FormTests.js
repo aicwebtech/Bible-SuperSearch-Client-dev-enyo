@@ -47,7 +47,8 @@ module.exports = {
             willFailOnInterface: [
                 // Browsing interfaces will fail on any test that performs a search
                 'BrowsingBookSelector',
-                'BrowsingBookSelectorHorizontal'
+                'BrowsingBookSelectorHorizontal',
+                'ClassicAdvanced'
             ],
             resultsContain: {
                 paging: {

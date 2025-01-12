@@ -400,7 +400,7 @@ module.exports = {
     'For details, please see the User\'s Manual': 'समान अध्यायातील शब्द आणि एकमेकांच्या N श्लोकांशी जुळते',
     'Special Proximity Operators': 'विशेष प्रॉक्सिमिटी ऑपरेटर',
     'Matches unlimited characters': 'अमर्यादित वर्ण जुळतात',
-    'searched for': '',
+    'searched for': 'शोधले',
 
     // Keywords for sample searches
     'Jesus': 'येशू',

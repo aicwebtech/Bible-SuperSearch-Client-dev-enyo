@@ -507,7 +507,7 @@ module.exports = {
         },
         {
           "id": 7,
-          "name": "",
+          "name": "باتۇر ھاكىملار",
           "shortname": ""
         },
         {
