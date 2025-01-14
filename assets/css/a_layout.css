@@ -941,16 +941,23 @@ tr.bss_render_reference_row th {
     height: 100px;
     overflow-y: auto;
     background-color: #ddd;
-/*    background: linear-gradient(135deg,#0ff 0,#0ff 94%,#fff 95%);
-    scrollbar-width: thin;*/
-/*    scrollbar-color: black transparent;
-    scrollbar-width: 30px;
-    scrollbar-gutter: stable;*/
+/*    background: linear-gradient(135deg,#0ff 0,#0ff 94%,#fff 95%); */
+
     margin: 15px auto;
     border: 1px solid #111;
     padding: 7px 10px;
     position: relative;
     resize: both;
+}
+
+.bss_is_mobile .bss_results_list {
+    scrollbar-color: black transparent;
+}
+
+@media screen and (max-width: 600px)  {
+    .bss_results_list {
+        scrollbar-color: black transparent;
+    }
 }
 
 .bss_results_list table {
