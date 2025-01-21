@@ -84,12 +84,10 @@ var ResultsListItem = kind({
         this.set('textShowing', !!this.item.showing);
     },
     handleTap: function(s, e) {
-        this.log();
         this.inherited(arguments);
         e.preventDefault();
         Signal.send('onShowingClear');
         this.set('textShowing', true);
-        this.log(e);
 
         this.bubble('onResultsLinkTap', {item: this.item});
         return true;
@@ -256,14 +254,12 @@ module.exports = kind({
 
         this.scrollDelay = window.setTimeout(function() {
             window.clearTimeout(t.scrollDelay);
-            t.log('scrollTo Delay over');
             t.scrollDelay = null;
             t.scrollToItem();
         }, 1000)
     },
 
     scrollToItem: function() {
-        this.log();
         var t = this;
 
         if(!this.$) {
@@ -280,14 +276,6 @@ module.exports = kind({
 
         scrollToAc = scrollTo ? this.$[scrollTo.get('name')] || null : null;
 
-        // this.log('scrollToOrig', scrollTo.get('name'), scrollTo.get('item'));
-        // this.log('scrollToAc', scrollToAc.get('name'), scrollToAc.get('item'));
-
-        // if(!scrollTo || !scrollTo.hasNode()) {
-        //     this.log('No component to scroll to');
-        //     return;
-        // }
-
         var book = scrollTo && scrollTo.item ? scrollTo.item.book || null : null;
         var section = null;
 
@@ -299,15 +287,9 @@ module.exports = kind({
         var sNode = section ? section.hasNode() : null;
             cNode = scrollToAc ? scrollToAc.hasNode() : null; 
 
-        // this.log('scrollToNew', scrollTo.get('name'));
-
         var offsetTop = 0;
             offsetTop += sNode ? sNode.offsetTop : 0;
             offsetTop += sNode && cNode ? cNode.offsetTop : 0;
-
-        this.log('scrolling', offsetTop);
-
-        // this.log('offsetTop', offsetTop, scrollTo.get('content'));
 
         this.hasNode() && this.hasNode().scrollTo({
             top: offsetTop - 2, 

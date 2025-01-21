@@ -124,8 +124,6 @@ module.exports = kind({
         if(!this.preventDefaultSubmit && !this.app.get('loadingPagePrevent') && ref && ref != '') {
             var formData = {};
 
-            this.log('submitting default');
-
             ref = this.app.vt(ref);
 
             if(this.$.reference) {
@@ -227,9 +225,6 @@ module.exports = kind({
         });
 
         this.app.set('resultListRequestedCacheId', formData.results_list_cache_id || null);
-
-        this.log('resultListRequestedCacheId', this.app.get('resultListRequestedCacheId'));
-        this.log('resultsListCacheId', this.app.get('resultsListCacheId'));
 
         if(this.app.get('resultListRequestedCacheId') == this.app.get('resultsListCacheId')) {
             delete formData.results_list_cache_id; // If the list is already stored in memory, don't make API query for it again
@@ -672,7 +667,6 @@ module.exports = kind({
         }
 
         this.app.debug && this.log(value, field, dir);
-        this.log('procede');
         this._referenceChangeHelperIgnore = true;
         var hasValue = (value && value != '0' && value != '');
 
