@@ -597,6 +597,19 @@ module.exports = kind({
         this.selectedBible = (typeof this.app.statics.bibles[mod] == 'undefined') ? null : this.app.statics.bibles[mod];
         return this.selectedBible;
     },
+    getSelectedBibleClasses: function() {
+        if(!this.selectedBible) {
+            return null;
+        }
+
+        var classes = [];
+
+        classes.push('bss_bible_text');
+        classes.push('bss_bible_' + this.selectedBible.module);
+        classes.push(this.selectedBible.rtl ? 'bss_rtl' : 'bss_ltr');
+
+        return classes.join(' ');
+    },
     handleHover: function(inSender, inEvent) {
         var target = inEvent.target;
         var hoverIntent = false;

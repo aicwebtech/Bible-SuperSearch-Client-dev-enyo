@@ -57,14 +57,12 @@ module.exports = kind({
         this.waterfall('onResultsComponentShowingChange', {type: 'normal', showing: true});
     },
 
-    // NOTA Single verse, single Bible
+    // Single verse, single Bible
     renderSingleVerseSingleBible: function(pd) {
-        // this.log();
         this.renderSingleVerseParallelBible(pd);
     },
     // Single verse, multi Bible
     renderSingleVerseParallelBible: function(pd, Container) {
-        // this.log();
         var Container = Container || this._createContainer(pd);
         var addBibleHeader = false,
             addReferenceRow = false,
@@ -140,7 +138,7 @@ module.exports = kind({
                         content = pd.verses[mod][chapter][verse].text || '';
                         haveText = (content != '') ? true : haveText;
                         content = this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]);
-                        this.signalVerseShowing(pd.book_id, chapter, verse);
+                        // this.signalVerseShowing(pd.book_id, chapter, verse);
                     }
 
                     Container.$.VerseRow.createComponent({
@@ -148,7 +146,7 @@ module.exports = kind({
                         content: content,
                         attributes: {valign: 'top'},
                         allowHtml: true,
-                        classes: (this.selectedBible.rtl) ? 'rtl' : 'ltr'
+                        classes: this.getSelectedBibleClasses()
                     });
                 }
             }, this);
@@ -302,7 +300,8 @@ module.exports = kind({
 
                     if(pd.verses[mod] && pd.verses[mod][chapter] && pd.verses[mod][chapter][verse]) {
                         if(renderStyle == 'verse_passage') {
-                            var processed = '<td>' + this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]) + '</td>';
+                            var classes = this.getSelectedBibleClasses();
+                            var processed = '<td class="' + classes + '">' + this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]) + '</td>';
                         } else {
                             var processed = this.processPassageVerseContent(pd, pd.verses[mod][chapter][verse]);
                         }
@@ -344,6 +343,10 @@ module.exports = kind({
         }
     },
     processAssembleSingleVerse: function(reference, verse) {
+        return '<div class="bss_ver">' + reference + '</div><div class="bss_txt">' + this.processText(verse.text) + '</div>';
+
+
+
         return reference + '<br />' + this.processText(verse.text);
         // return reference + '<br />' + this.processText(verse.text) + verse.linksHtml;
     },

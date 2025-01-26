@@ -54,6 +54,34 @@
             #selector select {
                 width: calc(100% - 100px);
             }
+
+            /* Temporary demonstratoins */
+            
+            /* Style the text for JUST the Latvian Gluck 8 Bible */
+            .bss_bible_lv_gluck_8 .bss_txt  {
+                color: green; /* Note: If red-letter text, the red letter will override your color here */
+                font-family: Arial Black;
+            }
+
+            /* Style the references for JUST the Latvian Gluck 8 Bible */
+            .bss_bible_lv_gluck_8 .bss_ver  {
+                color: orange; /* Note: if the reference is a link, the link colors will override your colors here */
+                text-decoration: overline underline;
+                font-weight: bold;
+            }
+
+            /* Style the text for JUST the Russian Synodal Bible */
+            .bss_bible_synodal .bss_txt  {
+                color: purple; /* Note: If red-letter text, the red letter will override your color here */
+                font-family: Courier New;
+            }
+
+            /* Style the references for JUST the Russian Synodal Bible */
+            .bss_bible_synodal .bss_ver  {
+                color: white; /* Note: if the reference is a link, the link colors will override your colors here */
+                font-weight: bold;
+                background-color: grey;
+            }
         </style>
         <script>
             var firstInterface = '<?php echo $first_interface ?>';

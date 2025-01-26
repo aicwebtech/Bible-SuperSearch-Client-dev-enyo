@@ -13,7 +13,20 @@ module.exports = kind({
 
         pk && model.fetch({});
         this.set('model', model);
+    },
+    clear: function() {
+        this.newModel(0);
+        this.save();
+    },
+    load: function() {
+        var userConfigs = localStorage.getItem('BibleSuperSearchUserConfig') || null;
+
+        if(userConfigs) {
+            var userConfigs = userConfigs ? JSON.parse(userConfigs) : {};
+            this.model.set(userConfigs);
+        }
+    }, 
+    save: function() {
+        localStorage.setItem('BibleSuperSearchHistory', this.model.toJSON());
     }
-
 });
-

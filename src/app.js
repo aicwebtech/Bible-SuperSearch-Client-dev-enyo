@@ -137,6 +137,7 @@ var App = Application.kind({
 
     observers: [
         //{method: 'watchSingleVerses', path: ['UserConfig.single_verses', 'UserConfig.passages']}
+        // {method: 'userConfigChanged', path: ['UserConfig.status']},
         {method: 'watchRenderStyle', path: ['UserConfig.render_style']}
     ],
 
@@ -147,6 +148,8 @@ var App = Application.kind({
         this.system = systemConfig;
         this.set('baseTitle', document.title);
         var t = this;
+
+        this.$.UserConfig.on('change', utils.bindSafely(this, 'userConfigChanged'));
 
         if(typeof QUnit != 'undefined') {
             QUnit.config.autostart = false;
@@ -2000,6 +2003,9 @@ var App = Application.kind({
 
             this.bookmarks.add(item);
         }, this);
+    },
+    userConfigChanged: function(pre, cur, prop) {
+        this.log(arguments);
     }
 });
 

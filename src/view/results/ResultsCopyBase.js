@@ -63,12 +63,14 @@ module.exports = kind({
                 });
             }
 
+            var classes = this.getSelectedBibleClasses();
+
             copyComponents.push({
                 kind: CopyPane,
                 owner: this.container,
                 name: name,
                 displayedBible: displayedBible,
-                classes: this.selectedBible.rtl ? 'rtl' : 'ltr'
+                classes: classes
             });
         }
 

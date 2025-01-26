@@ -17,7 +17,7 @@ module.exports = kind({
     },
     processAssemblePassageVerse: function(reference, verse) {
         // No special RTL formatting needed - direction: rtl will display it correctly!
-        var processed = '<sup>' + reference + '</sup>' + this.processText(verse.text) + '  ';
+        var processed = '<sup class="bss_ver">' + reference + '</sup><span class="bss_txt">' + this.processText(verse.text) + '</span>  ';
 
         if(this.isNewParagraph(verse)) {
             processed = this.newLine + this.newLine + processed;
@@ -117,8 +117,9 @@ module.exports = kind({
         bibleHtml.forEach(function(bhtml, idx) {
             var module = this.bibles[idx];
             var bible_info = this.selectBible(module);
-            var dc = this.selectedBible.rtl ? 'rtl' : 'ltr';
-            html += '<td class=\'txt ' + dc + '\'>' + bhtml + '</td>';
+            var dc = this.selectedBible.rtl ? 'bss_rtl' : 'bss_ltr';
+            var classes = this.getSelectedBibleClasses();
+            html += '<td class=\' txt ' + classes + '\'>' + bhtml + '</td>';
         }, this);
 
         Container.createComponent({

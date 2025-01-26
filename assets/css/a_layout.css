@@ -132,15 +132,17 @@ table.biblesupersearch_render_table {
     position: relative;
 }
 
-.biblesupersearch_copy_pane {
-
+.biblesupersearch_copy_pane div {
+    text-align: center;
 }
 
 .biblesupersearch_copy_pane button {
-    display: block;
+/*    display: block;*/
     max-width: 100px;
-    margin-inline-end: auto;
-    margin-inline-start: auto;
+/*    margin-left: auto;
+    margin-right: auto;*/
+/*    margin-inline-end: auto;*/
+/*    margin-inline-start: auto;*/
 }
 
 .biblesupersearch_copy_pane p {
@@ -210,10 +212,6 @@ table.biblesupersearch_render_table {
 .bss_rtl {
     direction: rtl;
 }
-
-
-.bss_float_left
-
 
 .biblesupersearch_render_table td table.rtl {
     margin-inline-start: auto;

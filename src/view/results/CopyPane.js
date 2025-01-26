@@ -15,7 +15,7 @@ module.exports = kind({
                 {kind: i18n, content: 'Copy'}
             ]},
         ]},
-        {name: 'CopyText', tag: 'p', allowHtml: true, style: 'z-index: 500'}
+        {name: 'CopyText', tag: 'p', allowHtml: true, style: 'z-index: 500', classes: 'bss_txt'}
     ],
     handleCopy: function(inSender, inEvent) {        
         this.log('elementID', this.$.CopyText.id);
