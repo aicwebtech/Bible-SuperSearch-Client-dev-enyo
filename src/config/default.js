@@ -31,6 +31,7 @@ var defaultConfig = {
     'testVerbose': false,
     'resultsList': false,
     'resultsListClickScroll': false,
+    'changeLanguageClearForm': true,
 
 
     _urlDefaultNotice: function() {

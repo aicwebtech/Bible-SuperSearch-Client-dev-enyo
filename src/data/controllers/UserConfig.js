@@ -6,6 +6,7 @@ module.exports = kind({
     name: 'UserConfig',
     kind: Controller,
     pk: null, // primary key of the model
+    lsUrl: 'BibleSuperSearchUserConfig',
 
     newModel: function(pk) {
         this.pk = pk;
@@ -13,20 +14,36 @@ module.exports = kind({
 
         pk && model.fetch({});
         this.set('model', model);
+        this._updateDefaults();
     },
     clear: function() {
         this.newModel(0);
-        this.save();
+        // this.save();
     },
     load: function() {
-        var userConfigs = localStorage.getItem('BibleSuperSearchUserConfig') || null;
+        var userConfigs = localStorage.getItem( this.lsUrl ) || null;
 
         if(userConfigs) {
-            var userConfigs = userConfigs ? JSON.parse(userConfigs) : {};
-            this.model.set(userConfigs);
+            try {                
+                var userConfigs = userConfigs ? JSON.parse(userConfigs) : {};
+                this.model.set(userConfigs);
+            } 
+            catch(e) {
+                console.log('error loading configs', e);
+                this.clear();
+            }
         }
     }, 
     save: function() {
-        localStorage.setItem('BibleSuperSearchHistory', this.model.toJSON());
+        localStorage.setItem(this.lsUrl, JSON.stringify( this.model.raw() ));
+    },
+    /*
+     * @private
+     */
+    _updateDefaults: function() {
+        if(this.app.configs.textDisplayDefault && this.app.configs.textDisplayDefault != 'passage') {
+            this.set('render_style', this.app.configs.textDisplayDefault);
+            this.set('read_render_style', this.app.configs.textDisplayDefault);
+        }
     }
 });

@@ -12,6 +12,7 @@ var i18n = require('../Locale/i18nContent');
 var inc = require('../../components/Locale/i18nComponent');
 var Toggle = require('../ToggleHtml');
 var ContextHelp = require('../ContextHelp');
+var ConfirmDialog = require('./Confirm');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -155,6 +156,7 @@ module.exports = kind({
         {tag: 'br'},
         {
             classes: 'section', 
+            name: 'RenderStyleContainer',
             components: [
                 {kind: inc, content: 'Text Display', classes: 'header'},
                 {
@@ -242,10 +244,22 @@ module.exports = kind({
         //    {kind: i18n, content: 'verses'}     
         // ]},        
         // {tag: 'br'},
-        // {tag: 'br'}
+        // {tag: 'br'},
+
+        // {classes: 'bss_center', components: [            
+        //     {name: 'Reset', kind: Button, ontap: 'close', components: [
+        //         {kind: i18n, content: 'Reset'},
+        //     ]}
+        // ]}
     ],
 
     buttonComponents: [
+        {name: 'Reset', kind: Button, ontap: 'reset', components: [
+            {kind: i18n, content: 'Reset'},
+        ]},
+        {tag: 'span', classes: 'spacer'}, 
+        {tag: 'span', classes: 'spacer'}, 
+        {tag: 'span', classes: 'spacer'}, 
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'},
         ]}
@@ -278,7 +292,7 @@ module.exports = kind({
         }},        
         // We hide the render style selector when in copy mode, re: it will collide with the pre-set copy settingss
         // Users can assess it under the 'custom' copy settings
-        {from: 'app.UserConfig.copy', to: '$.render_style.showing', oneWay: true, transform: function(value, dir) {
+        {from: 'app.UserConfig.copy', to: '$.RenderStyleContainer.showing', oneWay: true, transform: function(value, dir) {
             // console.log('Settings COPY renderstyle', value, dir);
             return value ? false : true;
         }},
@@ -320,9 +334,26 @@ module.exports = kind({
         }
 
         this.inherited(arguments);
+
+        this.createComponent({
+            name: 'ConfirmDialog',
+            kind: ConfirmDialog,
+            showing: false
+        });
     },
     close: function() {
         this.app.set('settingsShowing', false);
+    },
+    reset: function() {
+        var t = this,
+            msg = this.app.t('Are you sure?') + ' ' +
+                this.app.t('This will reset settings to defaults.');
+
+        this.$.ConfirmDialog.confirm(msg, function(confirm) {
+            if(confirm) {
+                t.app.UserConfig.clear();
+            }
+        });
     },
     showingChanged: function(was, is) {
         this.inherited(arguments);

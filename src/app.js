@@ -65,6 +65,7 @@ var App = Application.kind({
     resetView: true,
     appLoaded: false,
     ajaxLoadingDelayTimer: null,
+    configSaveDelayTimer: null,
     baseTitle: null,
     bssTitle: null,
     baseUrl: null,
@@ -148,8 +149,6 @@ var App = Application.kind({
         this.system = systemConfig;
         this.set('baseTitle', document.title);
         var t = this;
-
-        this.$.UserConfig.on('change', utils.bindSafely(this, 'userConfigChanged'));
 
         if(typeof QUnit != 'undefined') {
             QUnit.config.autostart = false;
@@ -310,7 +309,7 @@ var App = Application.kind({
         }
 
         var view = null;
-        this.UserConfig.newModel(0);
+        this.initUserConfig();
         this.initBookmarks();
 
         if(this.configs.interface) {
@@ -356,10 +355,10 @@ var App = Application.kind({
             }
         }
 
-        if(this.configs.textDisplayDefault && this.configs.textDisplayDefault != 'passage') {
-            this.UserConfig.set('render_style', this.configs.textDisplayDefault);
-            this.UserConfig.set('read_render_style', this.configs.textDisplayDefault);
-        }
+        // if(this.configs.textDisplayDefault && this.configs.textDisplayDefault != 'passage') {
+        //     this.UserConfig.set('render_style', this.configs.textDisplayDefault);
+        //     this.UserConfig.set('read_render_style', this.configs.textDisplayDefault);
+        // }
 
         if(
             this.configs.parallelBibleLimitByWidth && 
@@ -501,6 +500,8 @@ var App = Application.kind({
 
             this.displayInitError(msg, 2, inSender, inResponse);
         });    
+
+        this.initUserConfigEvents();
     },
     _getBibleOrderBy: function() {
         var groupOrder = null;
@@ -1830,6 +1831,8 @@ var App = Application.kind({
     watchRenderStyle: function(pre, cur, prop) {
         var crs = false;
 
+        this.log('watchRenderStyle', cur);
+
         switch(cur) {
             case 'verse':
                 this.UserConfig.set('passages', false);
@@ -1866,21 +1869,27 @@ var App = Application.kind({
             return;
         }
 
+        var renderStyle = this.UserConfig.get('render_style');
+        this.log('_checkRenderStyle', renderStyle);
         var passages = this.UserConfig.get('passages') || false;
 
-        if(this.UserConfig.get('single_verses')) {
+        if(renderStyle == 'verse' || this.UserConfig.get('single_verses')) {
+            this.log('_checkRenderStyle verse');
+
             var responseDataNew = utils.clone(this.get('responseData'));
             responseDataNew.results = utils.clone(responseDataNew.results);
             responseDataNew.results.results 
                 = this.responseCollection.toVerses( utils.clone(responseDataNew.results.results), passages );
         }
-        else if(passages) {
+        else if(renderStyle == 'verse_passage' || passages) {
+            this.log('_checkRenderStyle verse_passage');
             var responseDataNew = utils.clone(this.get('responseData'));
             responseDataNew.results = utils.clone(responseDataNew.results);
             responseDataNew.results.results 
                 = this.responseCollection.toMultiversePassages( utils.clone(responseDataNew.results.results) );
         }
         else {
+            this.log('_checkRenderStyle other');
             var responseDataNew = utils.clone( this.get('responseData') );
         }
 
@@ -1994,8 +2003,29 @@ var App = Application.kind({
         var hist = localStorage.getItem('BibleSuperSearchHistory') || null;
         var visited = localStorage.getItem('BibleSuperSearchVisited') || null;
 
-        this.history = hist ? JSON.parse(hist) : [];
-        this.visited = visited ? JSON.parse(visited) : [];
+        try {            
+            this.history = hist ? JSON.parse(hist) : [];
+
+            if(!Array.isArray(this.history)) {
+                this.clearHistory();
+            }
+        } 
+        catch(e) {
+            this.log('error initing history');
+            this.clearHistory();
+        }        
+
+        try {            
+            this.visited = visited ? JSON.parse(visited) : [];
+
+            if(!Array.isArray(this.history)) {
+                this.clearVisited();
+            }
+        } 
+        catch(e) {
+            this.log('error initing visited');
+            this.clearVisited();
+        }
     },
     copyHistoryToBookmarks: function() {
         this.history.forEach(function(item) {
@@ -2004,8 +2034,25 @@ var App = Application.kind({
             this.bookmarks.add(item);
         }, this);
     },
+    initUserConfig: function() {
+        this.UserConfig.newModel(0);
+        this.UserConfig.load();
+    },
+    initUserConfigEvents: function() {
+        this.UserConfig.on('change', utils.bindSafely(this, 'userConfigChanged'));
+    },
     userConfigChanged: function(pre, cur, prop) {
         this.log(arguments);
+
+        var t = this;
+
+        this.ajaxLoadingDelay = false;
+        window.clearTimeout(this.configSaveDelayTimer);
+
+        this.configSaveDelayTimer = window.setTimeout(function() {
+            t.log('user config saving');
+            t.UserConfig.save();
+        }, 1000);
     }
 });
 

@@ -155,7 +155,10 @@ module.exports = kind({
     },
     changeLocaleManual: function() {
         this.app.debug && this.log();
-        this.clearFormManual();
+        
+        if(this.app.configs.changeLanguageClearForm) {
+            this.clearFormManual();
+        }
         //this.submitDefault();
     },
     populateDefaults: function() {

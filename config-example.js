@@ -70,6 +70,9 @@ var biblesupersearch_config_options = {
     // Otherwise, the navication will not update until the search or look up is performed.
     "bibleChangeUpdateNavigation": false,
 
+    // Clear the form if the user changes the language
+    'changeLanguageClearForm': true,
+
     // Bible List Grouping
     // Options: 
     // 'language' - Group by language (endonym) (Not supported if API version is < 4.2, and will fall back to English name)
