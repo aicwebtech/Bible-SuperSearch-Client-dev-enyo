@@ -1877,16 +1877,30 @@ var App = Application.kind({
             this.log('_checkRenderStyle verse');
 
             var responseDataNew = utils.clone(this.get('responseData'));
-            responseDataNew.results = utils.clone(responseDataNew.results);
-            responseDataNew.results.results 
-                = this.responseCollection.toVerses( utils.clone(responseDataNew.results.results), passages );
+
+            if(responseDataNew.results) {                
+                responseDataNew.results = utils.clone(responseDataNew.results);
+
+                responseDataNew.results.results 
+                    = this.responseCollection.toVerses( utils.clone(responseDataNew.results.results, passages) );
+            }
+            else {
+                return false;
+            }
         }
         else if(renderStyle == 'verse_passage' || passages) {
             this.log('_checkRenderStyle verse_passage');
             var responseDataNew = utils.clone(this.get('responseData'));
-            responseDataNew.results = utils.clone(responseDataNew.results);
-            responseDataNew.results.results 
-                = this.responseCollection.toMultiversePassages( utils.clone(responseDataNew.results.results) );
+            
+            if(responseDataNew.results) {   
+                responseDataNew.results = utils.clone(responseDataNew.results);
+
+                responseDataNew.results.results 
+                    = this.responseCollection.toMultiversePassages( utils.clone(responseDataNew.results.results) );
+            }
+            else {
+                return false;
+            }
         }
         else {
             this.log('_checkRenderStyle other');
