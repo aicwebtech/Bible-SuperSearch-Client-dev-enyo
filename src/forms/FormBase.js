@@ -389,9 +389,18 @@ module.exports = kind({
         this.app.set('altResponseData', null);
         this.app.set('resultsShowing', []);
         this.app.set('altResultsShowing', []);
-        this.bubble('onFormResponseSuccess', responseData);
-        this.waterfall('onFormResponseSuccessWaterfall', responseData);
-        Signal.send('onFormResponseSuccess', responseData);
+        
+        var renderStyle = this.app.UserConfig.get('render_style');
+        // Certain render styles reformat the responseData, then send these events again
+        // This is causing issues, so not sending them here for these renders styles.
+        // :todo clean this up  (cache raw responseData, reformat if needed, send events)
+
+        if(renderStyle != 'verse') {            
+            this.bubble('onFormResponseSuccess', responseData);
+            this.waterfall('onFormResponseSuccessWaterfall', responseData);
+            Signal.send('onFormResponseSuccess', responseData);
+        }
+
         this.maxPage = (inResponse.paging && inResponse.paging.last_page) ? inResponse.paging.last_page : null;
         this.page = (inResponse.paging && inResponse.paging.current_page) ? inResponse.paging.current_page : null;
         // this.app.UserConfig.set('copy', false); // force EZ-Copy disabled when submitting the form - make a config for this?

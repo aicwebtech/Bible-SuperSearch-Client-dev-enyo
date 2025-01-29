@@ -40,7 +40,6 @@ module.exports = kind({
     ],
 
     bodyComponents: [
-        // {kind: Signal, onFormResponseSuccess: 'handleFormResponse', onFormResponseError: 'handleFormError'},
         {classes: 'link_share_container', components: [
             {
                 kind: TextArea, 
@@ -50,7 +49,6 @@ module.exports = kind({
                 _style: 'width: 98%'
             }
         ]},
-        // {tag: 'br'}
     ],
 
     buttonComponents: [
@@ -101,8 +99,7 @@ module.exports = kind({
     ],
 
     handlers: {
-        onLocaleChange: 'localeChanged',
-        // onFormResponseSuccess: 'handleFormResponse'
+        onLocaleChange: 'localeChanged'
     },
 
     bindings: [

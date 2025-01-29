@@ -18,7 +18,6 @@ module.exports = kind({
     },
     clear: function() {
         this.newModel(0);
-        // this.save();
     },
     load: function() {
         var userConfigs = localStorage.getItem( this.lsUrl ) || null;
@@ -35,6 +34,7 @@ module.exports = kind({
         }
     }, 
     save: function() {
+        this.set('locale', this.app.get('locale'));
         localStorage.setItem(this.lsUrl, JSON.stringify( this.model.raw() ));
     },
     /*
@@ -45,5 +45,7 @@ module.exports = kind({
             this.set('render_style', this.app.configs.textDisplayDefault);
             this.set('read_render_style', this.app.configs.textDisplayDefault);
         }
+
+        this.set('locale', this.app.configs.language);
     }
 });

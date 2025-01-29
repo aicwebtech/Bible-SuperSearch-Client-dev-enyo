@@ -2,7 +2,7 @@ module.exports = {
     // Mutate the results data structure so that each verse is placed in it's own passage.
     toVerses: function(results, asMultiverse) {
         var resultsNew = [],
-            singleVerse = (typeof asMultiverse == 'undefined' || !asMultiverse) ? true : false;
+            singleVerse = true; //(typeof asMultiverse == 'undefined' || !asMultiverse) ? true : false;
 
         for(i in results) {
             var p = results[i];
@@ -29,7 +29,7 @@ module.exports = {
                         chapter_verse: chapter + ':' + verse,
                         single_verse: singleVerse,
                         verse_index: {},
-                        nav: this.generateNav(p.book_id, chapter, verse),
+                        // nav: this.generateNav(p.book_id, chapter, verse),
                         verses: {},
                         verse_count: 1,
                     };

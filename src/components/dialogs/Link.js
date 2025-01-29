@@ -59,8 +59,7 @@ module.exports = kind({
     ],
 
     handlers: {
-        onLocaleChange: 'localeChanged',
-        // onFormResponseSuccess: 'handleFormResponse'
+        onLocaleChange: 'localeChanged'
     },
 
     create: function() {

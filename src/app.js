@@ -570,8 +570,9 @@ var App = Application.kind({
         statics.books = this.localeBibleBooks.en;
         statics.shortcuts = localeData.shortcuts;
 
-        this.debug && this.log('Config language locale', this.configs.language);
-        this.configs.language && this.set('locale', this.configs.language);
+        var uLocale = this.UserConfig.get('locale');
+        uLocale && this.set('locale', uLocale);
+
         this.waterfall('onStaticsLoaded');
 
         window.console && console.log('BibleSuperSearch API version', this.statics.version);
@@ -1554,6 +1555,8 @@ var App = Application.kind({
             Signal.send('onChangeLocaleManual');
             this.set('localeManual', false);
         }
+
+        this.userConfigChanged();
     },
     // Sends signal into app
     s: function(onSignal, onEvent) {
@@ -1717,7 +1720,7 @@ var App = Application.kind({
             url = document.location.href,
             limit = this.configs.historyLimit || 50;
 
-        if(this.history.length == 0 || this.history[0].title != title) {
+        if(title && (this.history.length == 0 || this.history[0].title != title)) {
             this.history.unshift({title: title, url: url});
 
             if(this.history.length > limit) {
@@ -1821,7 +1824,9 @@ var App = Application.kind({
         this.render();
     },
     responseDataChanged: function(was, is) {
-        if(this.UserConfig.get('single_verses') || this.UserConfig.get('passages')) {
+        var renderStyle = this.UserConfig.get('render_style');
+
+        if(renderStyle == 'verse' || this.UserConfig.get('single_verses') || this.UserConfig.get('passages')) {
             this._checkRenderStyle();
         }
     },
@@ -1830,8 +1835,6 @@ var App = Application.kind({
     },
     watchRenderStyle: function(pre, cur, prop) {
         var crs = false;
-
-        this.log('watchRenderStyle', cur);
 
         switch(cur) {
             case 'verse':
@@ -1870,11 +1873,10 @@ var App = Application.kind({
         }
 
         var renderStyle = this.UserConfig.get('render_style');
-        this.log('_checkRenderStyle', renderStyle);
         var passages = this.UserConfig.get('passages') || false;
 
         if(renderStyle == 'verse' || this.UserConfig.get('single_verses')) {
-            this.log('_checkRenderStyle verse');
+            passages = false;
 
             var responseDataNew = utils.clone(this.get('responseData'));
 
@@ -1883,13 +1885,11 @@ var App = Application.kind({
 
                 responseDataNew.results.results 
                     = this.responseCollection.toVerses( utils.clone(responseDataNew.results.results, passages) );
-            }
-            else {
+            } else {
                 return false;
             }
         }
         else if(renderStyle == 'verse_passage' || passages) {
-            this.log('_checkRenderStyle verse_passage');
             var responseDataNew = utils.clone(this.get('responseData'));
             
             if(responseDataNew.results) {   
@@ -1897,13 +1897,11 @@ var App = Application.kind({
 
                 responseDataNew.results.results 
                     = this.responseCollection.toMultiversePassages( utils.clone(responseDataNew.results.results) );
-            }
-            else {
+            } else {
                 return false;
             }
         }
         else {
-            this.log('_checkRenderStyle other');
             var responseDataNew = utils.clone( this.get('responseData') );
         }
 
@@ -2055,9 +2053,7 @@ var App = Application.kind({
     initUserConfigEvents: function() {
         this.UserConfig.on('change', utils.bindSafely(this, 'userConfigChanged'));
     },
-    userConfigChanged: function(pre, cur, prop) {
-        this.log(arguments);
-
+    userConfigChanged: function() {
         var t = this;
 
         this.ajaxLoadingDelay = false;
