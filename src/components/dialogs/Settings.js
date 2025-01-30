@@ -347,7 +347,7 @@ module.exports = kind({
     reset: function() {
         var t = this,
             msg = this.app.t('Are you sure?') + ' ' +
-                this.app.t('This will reset settings to defaults.');
+                this.app.t('This will reset the settings to defaults.');
 
         this.$.ConfirmDialog.confirm(msg, function(confirm) {
             if(confirm) {

@@ -224,23 +224,19 @@ module.exports = kind({
     save: function(inSender, inEvent) {
         var t = this,
             model = this.controller.get('model'),
-            title = this.$.Title.get('value'),
+            title = this.$.Title.get('value') || null,
             pk = this.get('pk'),
             sameTitle = this.app.bookmarks.find(function(item) {
                 return title == item.get('title') && pk != item.get('pk');
             });
 
+        if(!title) {
+            this.$.ConfirmDialog.alert('Bookmark name is required.');
+            return;
+        }
+
         if(sameTitle) {
             this.$.ConfirmDialog.alert('This bookmark name already exists.');
-
-            // msg = this.app.t('This title already exists.  Okay to update existing bookmark?');
-
-            // this.app.confirm(msg, function(confirm) {
-            //     if(confirm) {
-            //         t.
-            //     }
-            // });
-
             return;
         }
 

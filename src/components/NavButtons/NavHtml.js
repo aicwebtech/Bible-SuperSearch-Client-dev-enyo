@@ -167,13 +167,15 @@ module.exports = kind({
 
         // Handle special cases.
         switch(button) {
-            case '_pswap':
+            case '_prev':
                 button = 'pc';
                 break;
             case '_next':
                 button = 'nc';
                 break;
         }
+
+        this.log(button);
 
         button && this.$[button] && this.$[button].hasNode().click();
     }

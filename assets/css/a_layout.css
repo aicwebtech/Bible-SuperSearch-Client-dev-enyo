@@ -859,23 +859,20 @@ tr.bss_render_reference_row th {
 }
 
 .bss_side_swipe_button_container {
-/*    background-color: transparent;*/
-/*        background-color: rgba(0, 0, 0, 0.3); */
     position: fixed;
-/*    position: absolute;*/
     z-index: 1002;
     top: 48vh;
-/*    top-margin: 48%;*/
-/*    width: 50%;*/
     left: 0;
     right: 0;
     opacity: 0;
     transition: opacity 1s;
     pointer-events: none; 
+    cursor: default;
 }
 
 .bss_side_swipe_button_container.fadein {
     opacity: 1;
+    cursor: pointer;
 }
 
 .bss_side_swipe_button {
@@ -889,7 +886,6 @@ tr.bss_render_reference_row th {
     position: relative;
     text-align: center;
     vertical-align: middle;
-    cursor: pointer;
     pointer-events: auto; 
     line-height: initial;
 }

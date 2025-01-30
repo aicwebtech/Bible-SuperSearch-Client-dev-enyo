@@ -233,6 +233,7 @@ module.exports = {
     'Language' : '', 
     'Text Display': '', 
     'Font Style': '', 
+    'This will reset the settings to defaults.':'', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +435,7 @@ module.exports = {
     'Okay': '',
     'Old': '',
     'New': '',
+    'Reset': '', // 5.6.20
 
     'Are you sure?': '',
     'Are you sure you want to delete': '',
@@ -448,6 +450,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': '',
     'This bookmark name already exists.': '',
+    'Bookmark name is required.': '', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': '',

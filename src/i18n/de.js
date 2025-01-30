@@ -420,7 +420,7 @@ module.exports = {
     'Clear': 'Klar',
     'Restore': 'Wiederherstellen',
     'Add': 'Hinzufügen',
-    'Okay': 'Okay',//check translation
+    'Okay': 'Okay',//apparently correct translation
     'Old': 'Alt',
     'New': 'Neu',
 

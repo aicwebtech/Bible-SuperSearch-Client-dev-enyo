@@ -86,9 +86,6 @@ module.exports = kind({
                     classes: 'bss_side_swipe_button bss_float_left', 
                     content: '&lt;', 
                     allowHtml: true, 
-                    // style: 'float: inline-start', 
-                    // onmouseover: 'sideButtonMouseOver',
-                    // onmouseout: 'sideButtonMouseOut',
                     ontap: 'clickPrev'
                 },
                 {
@@ -96,9 +93,6 @@ module.exports = kind({
                     classes: 'bss_side_swipe_button bss_float_right', 
                     content: '&gt;', 
                     allowHtml: true, 
-                    // style: 'float:right', 
-                    // onmouseover: 'sideButtonMouseOver',
-                    // onmouseout: 'sideButtonMouseOut',
                     ontap: 'clickNext'
                 },
             ]
@@ -175,6 +169,7 @@ module.exports = kind({
     },
     renderResults: function() {
         this.destroyClientControls();
+        this.beforeRender();
 
         var resultsData = this.get('resultsData'),
             formData = this.get('formData');
@@ -215,6 +210,13 @@ module.exports = kind({
         this.render();
         this.populateTopPlaceholder();
         this.determineActiveComponent();
+        this.afterRender();
+    },
+    beforeRender: function() {
+        // hook called before rendering
+    },
+    afterRender: function() {
+
     },
     renderPassage: function(passage) {        
         this.showingCopyrightBottom = false;
@@ -849,11 +851,19 @@ module.exports = kind({
         this.renderResults();
     },
     clickNext: function() {
+        if(!this.sideButtons) {
+            return; // buttons not showing, bail
+        }
+
         this.app.debug && this.log();
         this.activeComponent.waterfall('onAutoClick', {button: '_next'});
         Signal.send('onAutoClick', {button: '_next'});
     },
     clickPrev: function() {
+        if(!this.sideButtons) {
+            return; // buttons not showing, bail
+        }
+
         this.app.debug && this.log();
         this.activeComponent.waterfall('onAutoClick', {button: '_prev'});
         Signal.send('onAutoClick', {button: '_prev'});

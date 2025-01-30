@@ -13,6 +13,10 @@ module.exports = kind({
     singleVerseBibleHeaderThreshold: 10,
     singleVerseBibleHeaderNext: true,
 
+    beforeRender: function() {
+        this.inherited(arguments);
+        this.singleVerseCount = 0;
+    },
     renderTopPlaceholder: function() {
         var Container = this._createContainer(null, 'TopPlaceholder');
         Container.set('showing', false);
@@ -165,7 +169,7 @@ module.exports = kind({
                 if(addBibleHeader) {                
                     Container.$.BibleRow.createComponent({
                         tag: 'th',
-                        content: this._getBibleDisplayName(bible_info)
+                        content: this._getBibleDisplayName(bible_info) + ' BR'
                     });
                 }
             }
