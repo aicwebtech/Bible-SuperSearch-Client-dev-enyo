@@ -218,6 +218,7 @@ module.exports = {
     'Language' : 'Язык Интерфейса (Language)', // 5.0
     'Text Display': 'Вид Отображаемого Текста', // 5.0
     'Font Style': 'Стиль Шрифта', // 5.0
+    'This will reset the settings to defaults.':'Это сбросит настройки на значения по умолчанию.', // 5.6.20
 
     // Result and error messages
     
@@ -447,6 +448,7 @@ module.exports = {
     'Okay': 'Да',
     'Old': 'Предыдущий',
     'New': 'Новый',
+    'Reset': 'Перезагрузить', // 5.6.20
 
     'Are you sure?': 'Вы уверены?',
     'Are you sure you want to delete': 'Вы уверены, что хотите удалить',
@@ -461,6 +463,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Чтобы добавить новую, удалите одну из старых закладок.',
     'This bookmark name already exists.': 'Такое название закладки уже существует.',
+    'Bookmark name is required.': 'Укажите имя закладки.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Ограничение Поиска',

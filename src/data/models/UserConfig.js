@@ -19,7 +19,7 @@ module.exports = kind({
         text_size: 0,           //  - Text size: translated to ...
         font: 'sans-serif',     //  - Font: serif, sans-serif, or monospace
         advanced_toggle: false, //  - (Classic interfaces): indicates if the advanced form is toggled to display
-
+        parallel_search_error_suppress: false,
         locale: null,           // Language
         
         // Maps to paragraph and single verse flags 

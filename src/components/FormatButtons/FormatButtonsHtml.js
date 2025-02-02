@@ -400,6 +400,16 @@ module.exports = kind({
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'bookmarks'}
                 ],
+            },            
+            {
+                kind: i18n,
+                classes: 'item link text_only',
+                name: 'settings_reset_button',
+                ontap: 'handleResetSetting',
+                attributes: {title: 'Reset'},
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'restart_alt'}
+                ],
             },
             {
                 kind: i18n,

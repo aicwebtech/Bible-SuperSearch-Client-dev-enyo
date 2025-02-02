@@ -310,6 +310,13 @@ module.exports = kind({
         formData.bible = JSON.stringify(formData.bible);
         formData.highlight = true;
         formData.data_format = 'passage';
+
+        if(this.app.configs.parallelSearchErrorSuppressUserConfig) {
+            var parallelSurpress = this.app.UserConfig.get('parallel_search_error_suppress') || false;
+        } else {
+            var parallelSurpress = this.app.configs.parallelSearchErrorSuppress || false;
+        }
+
         // formData.data_format = 'lite';
         formData.markup = 'raw';
         formData.language = this.app.getLocaleLanguage();
@@ -317,6 +324,7 @@ module.exports = kind({
         formData.page_limit = this.app.UserConfig.get('page_limit');
         formData.key = this.app.configs.apiKey || null;
 
+        formData.parallel_search_error_suppress = parallelSurpress;
         formData.results_list = this.app.configs.resultsList;
         
         //formData.group_passage_search_results = true; // experimental

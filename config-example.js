@@ -105,6 +105,15 @@ var biblesupersearch_config_options = {
     // Regardless to the number of Bibles selected as default
     'parallelBibleStartSuperceedsDefaultBibles': false,
 
+    // When true, the "verses from this Bible have been included for comparison" errors won\'t show. 
+    // (since v 5.6.20)
+    'parallelSearchErrorSuppress': false,
+
+    // When true, uses will be able to decide whether to show the "verses from this Bible have been included for comparison" errors
+    // If true, parallelSearchErrorSuppress will be the default value
+    // (since v 5.6.20)
+    'parallelSearchErrorSuppressUserConfig': false, 
+
     // Controls the number of parallel Bibles available based on screen width
     // set to false to completely disable.
     // minWidth and maxBibles must be in ascending order across each config, otherwise the entire config is ignored

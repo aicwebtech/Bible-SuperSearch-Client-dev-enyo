@@ -169,7 +169,7 @@ module.exports = kind({
                 if(addBibleHeader) {                
                     Container.$.BibleRow.createComponent({
                         tag: 'th',
-                        content: this._getBibleDisplayName(bible_info) + ' BR'
+                        content: this._getBibleDisplayName(bible_info)
                     });
                 }
             }

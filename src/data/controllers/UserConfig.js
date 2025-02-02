@@ -47,5 +47,14 @@ module.exports = kind({
         }
 
         this.set('locale', this.app.configs.language);
+        this.app.get('appLoaded') && this.app.set('locale', this.app.configs.language);
+
+        this.set('parallel_search_error_suppress', this.app.configs.parallelSearchErrorSuppress);
+
+        //         if(this.app.parallelSearchErrorSuppressUserConfig) {
+        //     var parallelSurpress = this.app.UserConfig.get('parallel_search_error_suppress') || false;
+        // } else {
+        //     var parallelSurpress = this.app.configs.parallelSearchErrorSuppress || false;
+        // }
     }
 });

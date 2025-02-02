@@ -216,6 +216,7 @@ module.exports = {
     'Language' : 'Saskarnes Valoda (Language)', // 5.0
     'Text Display': 'Attēlotā Teksta Skats', // 5.0
     'Font Style': 'Fonta Stils', // 5.0
+    'This will reset the settings to defaults.':'Iestatījumi tiks atiestatīti uz noklusējuma iestatījumiem.', // 5.6.20
 
     // Result and error messages
     
@@ -417,6 +418,7 @@ module.exports = {
     'Okay': 'Jā',
     'Old': 'Iepriekšējais',
     'New': 'Jaunais',
+    'Reset': 'Atiestatīt', // 5.6.20
 
     'Are you sure?': 'Vai esat drošs?',
     'Are you sure you want to delete': 'Vai tiešām vēlaties izdzēst',
@@ -431,6 +433,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Lai pievienotu jaunu, lūdzu izdzēsiet kādu no vecajām grāmatzīmēm.',
     'This bookmark name already exists.': 'Šāds grāmatzīmes nosaukums jau eksistē.',
+    'Bookmark name is required.': 'Grāmatzīmes nosaukums ir obligāts.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Meklēšanas Ierobežošana',

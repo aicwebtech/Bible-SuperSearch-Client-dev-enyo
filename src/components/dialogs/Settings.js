@@ -152,6 +152,34 @@ module.exports = kind({
                 {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
                 {tag: 'span', content: '.)'}
             ]
+        },               
+        {
+            classes: 'settings_toggle parallel_search_error_toggle',
+            name: 'parallel_search_error_toggle',
+            kind: Toggle,        
+            showing: false,
+            trueTitle: 'Show Parallel Search Errors',
+            falseTitle: 'Hide Parallel Search Errors',
+            trueComponent: {
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
+                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
+                    {tag: 'small', kind: i18n, content: 'Hide Parallel Search Errors', allowHtml: true}
+                ]
+            },        
+            falseComponent: {
+                components: [
+                    {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
+                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},       
+                    {tag: 'small', kind: i18n, content: 'Hide Parallel Search Errors', allowHtml: true}         
+                ]
+            },
+            help: true,
+            helpComponents: [
+                {tag: 'span', content: '"'},
+                {tag: 'span', kind: i18n, content: 'However, verses from this Bible have been included for comparison.'},
+                {tag: 'span', content: '"'}
+            ]
         },       
         {tag: 'br'},
         {
@@ -282,10 +310,14 @@ module.exports = kind({
             // console.log('FormatButtons red_letter', value, dir);
             return value;
         }},        
+        {from: 'app.UserConfig.parallel_search_error_suppress', to: '$.parallel_search_error_toggle.value', oneWay: false, transform: function(value, dir) {
+            // console.log('Settings parallel_search_error_suppress', value, dir);
+            return value;
+        }},
         {from: 'app.UserConfig.context_range', to: '$.context_range.value', oneWay: false, transform: function(value, dir) {
             // console.log('Settings context_range', value, dir);
             return value;
-        }},
+        }},        
         {from: 'app.UserConfig.page_limit', to: '$.page_limit.value', oneWay: false, transform: function(value, dir) {
             // console.log('Settings page_limit', value, dir);
             return value;
@@ -334,6 +366,8 @@ module.exports = kind({
         }
 
         this.inherited(arguments);
+
+        this.$.parallel_search_error_toggle.set('showing', this.app.configs.parallelSearchErrorSuppressUserConfig);
 
         this.createComponent({
             name: 'ConfirmDialog',

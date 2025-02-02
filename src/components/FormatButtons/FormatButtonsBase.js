@@ -5,6 +5,7 @@ var TextArea = require('enyo/TextArea');
 var Checkbox = require('enyo/Checkbox');
 var Signal = require('../Signal');
 var Help = require('../dialogs/Help');
+var Confirm = require('../dialogs/Confirm');
 
 module.exports = kind({
     name: 'FormatButtonsBase',
@@ -33,7 +34,8 @@ module.exports = kind({
 
         this.createComponent({
             name: 'Dialogs', components: [
-                {name: 'HelpDialog', kind: Help, showing: false}
+                {name: 'HelpDialog', kind: Help, showing: false},
+                {name: 'ConfirmDialog', kind: Confirm, showing: false}
             ]
         });
     },
@@ -106,7 +108,18 @@ module.exports = kind({
     },       
     handleBookmarkCurrent: function(inSender, inEvent) {
         this.app.setDialogShowing('BookmarkEditCurrentDialog', true);
-    },    
+    },
+    handleResetSetting: function(inSender, inEvent) {
+        var t = this,
+            msg = this.app.t('Are you sure?') + ' ' +
+                this.app.t('This will reset the settings to defaults.');
+
+        this.$.ConfirmDialog.confirm(msg, function(confirm) {
+            if(confirm) {
+                t.app.UserConfig.clear();
+            }
+        });
+    }, 
     handleSettings: function(inSender, inEvent) {
         this.app.set('settingsShowing', true);
     },

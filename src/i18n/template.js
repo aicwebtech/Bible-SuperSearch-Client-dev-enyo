@@ -181,6 +181,8 @@ module.exports = {
     'Highlight': '',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': '',
     'Enable Highlighting of Keywords': '',
+    'Hide Parallel Search Errors': '', // 5.6.20
+    'Show Parallel Search Errors': '', // 5.6.20
     'Print': '',
     'Printer Friendly': '',
     'Help': '',
