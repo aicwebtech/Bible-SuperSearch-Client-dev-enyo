@@ -349,12 +349,6 @@ var App = Application.kind({
 
         this.defaultBiblesRaw = utils.clone(this.defaultBibles);
 
-        if(this.configs.pageScrollTopPadding) {
-            if(typeof this.configs.pageScrollTopPadding == 'string') {
-                this.configs.pageScrollTopPadding = parseInt(this.configs.pageScrollTopPadding, 10);
-            }
-        }
-
         // if(this.configs.textDisplayDefault && this.configs.textDisplayDefault != 'passage') {
         //     this.UserConfig.set('render_style', this.configs.textDisplayDefault);
         //     this.UserConfig.set('read_render_style', this.configs.textDisplayDefault);
@@ -466,6 +460,20 @@ var App = Application.kind({
         }
 
         this.detectClient();
+
+        if(this.client.isMobile && this.configs.pageScrollTopPaddingMobile) {
+            if(typeof this.configs.pageScrollTopPaddingMobile == 'string') {
+                this.configs.pageScrollTopPadding = parseInt(this.configs.pageScrollTopPaddingMobile, 10);
+            } else {             
+                this.configs.pageScrollTopPadding = this.configs.pageScrollTopPaddingMobile;
+            }
+        } else {
+            if(this.configs.pageScrollTopPadding) {
+                if(typeof this.configs.pageScrollTopPadding == 'string') {
+                    this.configs.pageScrollTopPadding = parseInt(this.configs.pageScrollTopPadding, 10);
+                }
+            }
+        }
 
         //window.biblesupersearch_configs_final = this.configs;
 

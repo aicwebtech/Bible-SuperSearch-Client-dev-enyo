@@ -323,10 +323,15 @@ var biblesupersearch_config_options = {
     //      none (no scroll)
     'pageScroll' : 'instant',                   
 
-    // Page Scroll Top Padding
+    // Page Scroll Top Padding (Desktop / Global)
     //      When page scrolls, scroll down by this amount 
     //      Usefull to prevent hiding behind menus, ect
     'pageScrollTopPadding': 0,           
+
+    // Page Scroll Top Padding (Mobile)
+    //      Page Scroll Top Padding for mobile devices
+    //      Overrides pageScrollTopPadding
+    'pageScrollTopPaddingMobile': 0,         
     
     // Default Text Display.
     // Users can change this via general settings or copy settings

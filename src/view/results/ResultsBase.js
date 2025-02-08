@@ -360,7 +360,8 @@ module.exports = kind({
             bible: JSON.stringify(bible),
             reference: e.item.book + 'B ' + e.item.chapter + ':' + e.item.verse,
             search: this.app.getFormSearch(),
-            highlight: true
+            highlight: true,
+            markup: 'raw'
         };
 
         var ajax = new Ajax({

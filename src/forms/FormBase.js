@@ -121,6 +121,12 @@ module.exports = kind({
         this.app.debug && this.log();
         var ref = this.app.configs.landingReference || null;
 
+        // :todo BSS-195
+        // if(this.app.history[0]) {
+        //     window.location.href = this.app.history[0].url;
+        //     return;
+        // }
+
         if(!this.preventDefaultSubmit && !this.app.get('loadingPagePrevent') && ref && ref != '') {
             var formData = {};
 

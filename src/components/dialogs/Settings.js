@@ -53,15 +53,15 @@ module.exports = kind({
             trueComponent: {
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
-                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
-                    {kind: i18n, tag: 'span', content: 'Highlight'}
+                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;', noTap: true},
+                    {kind: i18n, tag: 'span', content: 'Highlight', noTap: true}
                 ]
             },        
             falseComponent: {
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
-                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
-                    {kind: i18n, tag: 'span', content: 'Highlight'}
+                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;', noTap: true},
+                    {kind: i18n, tag: 'span', content: 'Highlight', noTap: true}
                 ]
             },
             help: true,
@@ -78,15 +78,15 @@ module.exports = kind({
             trueComponent: {
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
-                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
-                    {kind: i18n, tag: 'span', content: 'Red Letter'}
+                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;', helpTap: true},
+                    {kind: i18n, tag: 'span', content: 'Red Letter', helpTap: true}
                 ]
             },        
             falseComponent: {
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
-                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
-                    {kind: i18n, tag: 'span', content: 'Red Letter'}
+                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;', helpTap: true},
+                    {kind: i18n, tag: 'span', content: 'Red Letter', helpTap: true}
                 ]
             },
             help: true,

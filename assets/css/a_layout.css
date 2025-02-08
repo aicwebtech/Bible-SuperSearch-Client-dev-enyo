@@ -818,10 +818,20 @@ div.biblesupersearch_context_help_container {
     z-index: 1000001;
 }
 
+.bss_toggle {
+    position: relative
+}
+
 div.biblesupersearch_toggle_help {
-    padding-left: 26px;
+    margin-left: 26px;
+    padding: 2px;
     font-size: 0.7em;
     display: block;
+    position: absolute;
+    width: 100%;
+    opacity: 1;
+    background-color: yellow;
+    z-index: 101;
 }
 
 span.biblesupersearch_toggle_help {

@@ -5,7 +5,7 @@ var i18n = require('./Locale/i18nContent');
 
 module.exports = kind({
     name: 'ToggleHtml',
-    classes: 'is_false',
+    classes: 'bss_toggle is_false',
     
     trueComponent: {},  // Component that displays when value = true
     falseComponent: {}, // Component that displays when value = false,
@@ -79,11 +79,22 @@ module.exports = kind({
         this.$.ViewTrue && this.$.ViewTrue.set('showing', !!is);
         this.$.ViewFalse && this.$.ViewFalse.set('showing', !is);
     },
-    handleTap: function() {
+    handleTap: function(inSender, inEvent) {
+        if(inEvent.originator) {
+            if(inEvent.originator.noTap) {
+                return true;
+            }
+
+            if(inEvent.originator.helpTap) {
+                this.handleHelpTab();
+                return true;
+            }
+        }
+        
         this.toggleValue();
     },
     handleHelpTab: function() {
-        this.$.Help && this.$.Help.set('showing', true);
+        this.$.Help && this.$.Help.set('showing', !this.$.Help.get('showing'));
         return true;
     },
     toggleValue: function() {

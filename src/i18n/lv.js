@@ -165,6 +165,8 @@ module.exports = {
     'Highlight': 'Izcelt (Bold)',               // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Atspējot Meklējamā, Tekstā Atrastā Atslēgas Vārda Sakrītošās Daļas Attēlošanu Treknrakstā (Bold)',
     'Enable Highlighting of Keywords': 'Iespējot Meklējamā, Tekstā Atrastā Atslēgas Vārda Sakrītošās Daļas Attēlošanu Treknrakstā (Bold)',
+    'Hide Parallel Search Errors': 'Slēpt Paralēlās Meklēšanas Kļūdas', // 5.6.20
+    'Show Parallel Search Errors': 'Rādīt Paralēlās Meklēšanas Kļūdas', // 5.6.20
     'Print': 'Drukāt',
     'Printer Friendly': 'Drukāšanai Draudzīgs',
     'Help': 'Palīdzība meklētāja rīka lietošanā',

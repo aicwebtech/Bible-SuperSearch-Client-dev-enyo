@@ -167,6 +167,8 @@ module.exports = {
     'Highlight': 'Выделить (Bold)',              // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Отключить Отображение Совпадающей Части Найденного Ключевого Слова Жирным Шрифтом (Bold)',
     'Enable Highlighting of Keywords': 'Включить Отображение Совпадающей Части Найденного Ключевого Слова Жирным Шрифтом (Bold)',
+    'Hide Parallel Search Errors': 'Скрыть Ошибки Параллельного Поиска', // 5.6.20
+    'Show Parallel Search Errors': 'Показать Ошибки Параллельного Поиска', // 5.6.20
     'Print': 'Распечатать',
     'Printer Friendly': 'Подходит для Печати',
     'Help': 'Помощь при использовании формы поиска',
