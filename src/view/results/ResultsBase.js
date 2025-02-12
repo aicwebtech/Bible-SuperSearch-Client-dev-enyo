@@ -360,6 +360,7 @@ module.exports = kind({
             bible: JSON.stringify(bible),
             reference: e.item.book + 'B ' + e.item.chapter + ':' + e.item.verse,
             search: this.app.getFormSearch(),
+            search_type: this.app.getFormFieldValue('search_type') || 'or',
             highlight: true,
             markup: 'raw'
         };
