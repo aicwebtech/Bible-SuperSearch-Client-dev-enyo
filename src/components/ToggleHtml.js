@@ -56,6 +56,9 @@ module.exports = kind({
         }
 
         if(this.help)  {
+            var c = 'biblesupersearch_toggle_help ';
+            c += this.app.configs.contextHelpInline ? 'bss_inline' : 'bss_tooltip'
+            
             this.createComponent({
                 tag: 'sup',
                 content: '?',
@@ -67,7 +70,7 @@ module.exports = kind({
             this.createComponent({
                 name: 'Help',
                 showing: false,
-                classes: 'biblesupersearch_toggle_help',
+                classes: c,
                 components: this.helpComponents,
             });
         }

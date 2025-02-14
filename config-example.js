@@ -297,6 +297,10 @@ var biblesupersearch_config_options = {
     //      none - do not display at all
     // "extraButtonsSeparate": 'default',                         
     
+    // Whether to show context help inline (relatively-positioned) to the form
+    // Otherwise, context help will be shown in a popup tooltip
+    'contextHelpInline': false,
+
     // Which navigation buttons to use?
     //      default for skin default
     //      Classic

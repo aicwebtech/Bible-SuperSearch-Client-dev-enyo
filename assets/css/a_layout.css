@@ -822,7 +822,7 @@ div.biblesupersearch_context_help_container {
     position: relative
 }
 
-div.biblesupersearch_toggle_help {
+div.biblesupersearch_toggle_help.bss_tooltip {
     margin-left: 26px;
     padding: 2px;
     font-size: 0.7em;
@@ -834,10 +834,22 @@ div.biblesupersearch_toggle_help {
     z-index: 101;
 }
 
+div.biblesupersearch_toggle_help.bss_inline {
+    padding-left: 26px;
+    font-size: 0.7em;
+    display: block;
+}
+
 span.biblesupersearch_toggle_help {
     padding-left: 26px;
     font-size: 0.8em;
     display: inline;
+}
+
+sup.biblesupersearch_toggle_help {
+    padding: 2px;
+    font-weight: bold;
+    background-color: #eae99f;
 }
 
 .biblesupersearch_dialog.help_dialog .bss_dialog_container .bss_dialog_title .header h4 {

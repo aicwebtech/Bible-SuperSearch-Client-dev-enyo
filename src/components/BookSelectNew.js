@@ -7,12 +7,14 @@ var OptGroup = require('./PseudoSelect/PseudoOptGroup');
 module.exports = kind({
     name: 'BookSelect',
     tag: 'span',
-    classes: 'bookselect',
+    classes: 'bss_bookselect',
 
     components: [
-        {name: 'Book', kind: Select, onchange: 'handleBookChange', classes: 'book'}, 
+        {name: 'Book', kind: Select, onchange: 'handleBookChange', classes: 'bss_book'}, 
         {tag: 'span', content: ''},
-        {name: 'Chapter', kind: Select, onchange: 'handleChapterChange', classes: 'chapter'}
+        {name: 'Chapter', kind: Select, onchange: 'handleChapterChange', classes: 'bss_chapter'},
+        {tag: 'span', content: ''},
+        {name: 'Verse', kind: Select, onchange: 'handleVerseChange', classes: 'bss_verse'}
     ],
 
     handlers: {
@@ -25,6 +27,7 @@ module.exports = kind({
     includeBlankValue: false,
     value: null,
     bookId: null,
+    chapter: null,
     _internalSet: false,
     Passage: Passage,
 
@@ -99,7 +102,7 @@ module.exports = kind({
                     });
                 }
             } else {            
-                var Book = this._getBookById(bookId);
+                var Book = this.app.getBook(bookId);
                 var chapters = parseInt(Book.chapters, 10);
                 
                 for(var i = 1; i <= chapters; i++) {
@@ -116,6 +119,52 @@ module.exports = kind({
 
         if(selected) {
             this.$.Chapter.setSelectedByValue(selected);
+        } else if(selected == null) {
+            //this.$.Chapter.resetValue();
+        } else {
+            //this.$.Chapter.setSelected(0);
+            //this.$.Chapter.resetValue();
+        }
+    },
+
+    _createVerseList: function(selected) {
+        var bookId = this.$.Book.get('value'),
+            chapter = this.$.Chapter.get('value');
+
+        selected = typeof selected != 'undefined' ? selected : '1';
+
+        if(chapter != this.chapter) {
+            this.$.Verse.destroyOptionControls();
+
+            if(bookId == 0 || bookId == '0') {
+                selected = null;
+
+                if(this.includeBlankValue) {
+                    selected = 0;
+
+                    this.$.Verse.createOptionComponent({
+                        content: '',
+                        value: '0',
+                    });
+                }
+            } else {            
+                var Book = this.app.getBook(bookId);
+                var verses = parseInt(Book.chapter_verses[chapter], 10);
+                
+                for(var i = 1; i <= verses; i++) {
+                    this.$.Verse.createOptionComponent({
+                        content: i + '',
+                        value: i + '',
+                    });
+                }
+            }
+
+            this.bookId = bookId;
+            this.$.Verse.initOptions();
+        }
+
+        if(selected) {
+            this.$.Verse.setSelectedByValue(selected);
         } else if(selected == null) {
             //this.$.Chapter.resetValue();
         } else {
@@ -147,7 +196,7 @@ module.exports = kind({
 
         var Passage = Passages.shift();
 
-        if(!Passage || !Passage.chapter_verse || Passage.chapter_verse.match(/[;,:-]/)) {
+        if(!Passage || !Passage.chapter_verse || Passage.chapter_verse.match(/[;,-]/)) {
             return this._selectNoneRender();
         }
 
@@ -158,6 +207,9 @@ module.exports = kind({
         this._createChapterList(chapter);
         this.$.Chapter.renderOptionComponents();
         this.$.Chapter.setSelectedByValue(chapter);
+        this._createVerseList(cv[1] || 1);
+        this.$.Verse.renderOptionComponents();
+        this.$.Verse.setSelectedByValue(cv[1] || 1);
     },
 
     handleBookChange: function(inSender, inEvent) {
@@ -171,23 +223,44 @@ module.exports = kind({
             this._createChapterList();
             this.$.Chapter.renderOptionComponents();
             this.$.Chapter.setSelectedByValue('1');
+            this._createVerseList();
+            this.$.Verse.renderOptionComponents();
+            this.$.Verse.setSelectedByValue('1');
         } else {
             this._internalSet = true;
             this.set('value', '');
             this._internalSet = false;
             this._createChapterList();
             this.$.Chapter.renderOptionComponents();
+            this._createVerseList();
+            this.$.Verse.renderOptionComponents();
+            this.$.Verse.setSelectedByValue('1');
         }
     }, 
 
     handleChapterChange: function(inSender, inEvent) {
-        var bookId = this.$.Book.get('value');
+        var bookId = this.$.Book.get('value'),
+            chapter = inSender.get('value');
         var Book = this._getBookById(bookId);
 
         this._internalSet = true;
-        this.set('value', Book.name + ' ' + inSender.get('value'));
+        this.set('value', Book.name + ' ' + chapter + ':1');
         this._internalSet = false;
+        this._createVerseList();
+        this.$.Verse.renderOptionComponents();
+        this.$.Verse.setSelectedByValue('1');
     }, 
+
+    handleVerseChange: function(inSender, inEvent) {
+        var bookId = this.$.Book.get('value'),
+            chapter = this.$.Chapter.get('value'),
+            verse = inSender.get('value');
+        var Book = this._getBookById(bookId);
+
+        this._internalSet = true;
+        this.set('value', Book.name + ' ' + chapter + ':' + verse);
+        this._internalSet = false;
+    },
 
     clear: function() {
         this._initDefault();
