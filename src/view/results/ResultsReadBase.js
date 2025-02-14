@@ -339,6 +339,10 @@ module.exports = kind({
     },
 
     processAssembleVerse: function(reference, verse) {
+        if(!this.selectedBible) {
+            return '';
+        }
+        
         if(this.selectedBible.rtl) {
             return this.processText(verse.text) + ' ' + reference;
         }

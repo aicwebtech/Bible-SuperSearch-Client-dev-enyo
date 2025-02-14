@@ -1,3 +1,4 @@
+
 var kind = require('enyo/kind');
 var Model = require('enyo/Model');
 var LocalStorageSource = require('../sources/LocalStorage');

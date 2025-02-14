@@ -91,8 +91,6 @@ module.exports = kind({
         }
 
         for(chapter in pd.verse_index) {
-            // this.log(pd.verse_index[chapter]);
-
             pd.verse_index[chapter].forEach(function(verse) {
                 for(i in this.bibles) {
                     var module = this.bibles[i];
@@ -117,7 +115,11 @@ module.exports = kind({
         bibleHtml.forEach(function(bhtml, idx) {
             var module = this.bibles[idx];
             var bible_info = this.selectBible(module);
-            var dc = this.selectedBible.rtl ? 'bss_rtl' : 'bss_ltr';
+
+            if(!bible_info) {
+                return;
+            }
+
             var classes = this.getSelectedBibleClasses();
             html += '<td class=\' txt ' + classes + '\'>' + bhtml + '</td>';
         }, this);
