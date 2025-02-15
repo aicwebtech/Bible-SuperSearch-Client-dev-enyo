@@ -852,6 +852,11 @@ sup.biblesupersearch_toggle_help {
     background-color: #eae99f;
 }
 
+.bss_is_mobile sup.biblesupersearch_toggle_help {
+    background-color: yellow;
+    padding: 5px 10px;
+}
+
 .biblesupersearch_dialog.help_dialog .bss_dialog_container .bss_dialog_title .header h4 {
     padding: 0 5px;
 }
