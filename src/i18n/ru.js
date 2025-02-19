@@ -51,6 +51,7 @@ module.exports = {
     'Word Search': 'Поиск Слова',
     'Clear Form': 'Очистить Форму', // 4.5
     'Select Book and Chapter:' : 'Выберите книгу и главу:', // 5.2
+    'Select Book, Chapter, Verse:': 'Выберите книгу, главу, стих:', // 5.6.20
 
     // Context Links
     'Show full chapter': 'Открыть всю главу',

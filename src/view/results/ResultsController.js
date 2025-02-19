@@ -39,7 +39,7 @@ module.exports = kind({
         ]},
         {method: 'watchTextSize', path: ['uc.text_size']},
         {method: 'watchFont', path: ['uc.font']},
-        {method: 'debugRenderStyle', path: ['uc.render_style', 'uc.read_render_style', 'uc.copy_render_style']}
+        {method: 'debugRenderStyle', path: ['uc.render_style', 'uc.read_render_style', 'uc.copy_render_style']},
     ],
 
     // observers not working?  why? Shouldn't have tu use bindings for this
@@ -161,6 +161,7 @@ module.exports = kind({
     },
     watchRenderable: function(pre, cur, prop) {
         this.app.debug && this.log('renderStyle', prop, cur, pre);
+        // this.view && this.view.set('_configChangeRender', true);
         
         if(prop == 'uc.copy') {
             this.copyChanged = true;
@@ -168,10 +169,10 @@ module.exports = kind({
 
         this.renderResults();
     },
-
     debugRenderStyle: function(pre, cur, prop) {
         this.app.debug && this.log(prop, cur, pre);
-
+        this.app.set('_blockAutoScroll', true);
+        // this.view && this.view.set('_configChangeRender', true);
     },
     watchCopyRenderable: function() {
         if(this.app.UserConfig.get('copy')) {

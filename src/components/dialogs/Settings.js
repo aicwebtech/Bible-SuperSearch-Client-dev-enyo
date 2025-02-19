@@ -385,6 +385,7 @@ module.exports = kind({
 
         this.$.ConfirmDialog.confirm(msg, function(confirm) {
             if(confirm) {
+                t.app.set('_blockAutoScroll', true);
                 t.app.UserConfig.clear();
             }
         });
@@ -401,9 +402,7 @@ module.exports = kind({
         this.populateList();
         this.$.ListContainer.render();
     },
-
     ignoreTap: function(inSender, inEvent) {
-        this.log();
         inEvent.preventDefault();
         return true;
     },

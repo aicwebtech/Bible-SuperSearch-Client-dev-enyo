@@ -342,6 +342,11 @@ var biblesupersearch_config_options = {
     // Options: paragraph, passage, verse, verse_passage
     'textDisplayDefault': 'passage',
 
+    // User Config settings
+    'saveUserSettings': false, // Whether to save user's settings to appear on next page load (saves to LocalStorage, not cookie)
+
+    'omitUserLanguage': false, // If saving user settings, whether to exclude the user's selected Language
+
     // Enable changing chapter and search page via horizontal touchscreen swipe gesture 
     "swipePageChapter": false,
 

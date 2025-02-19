@@ -16,6 +16,7 @@ module.exports = kind({
 
     help: false,
     helpComponents: [], 
+    helpShowing: false,
 
     published: {
         value: false,
@@ -58,14 +59,33 @@ module.exports = kind({
         if(this.help)  {
             var c = 'biblesupersearch_toggle_help ';
             c += this.app.configs.contextHelpInline ? 'bss_inline' : 'bss_tooltip'
-            
+
+            if(this.app.client.isMobile) {
+                this.createComponent({
+                    tag: 'span',
+                    content: '&nbsp;&nbsp;',
+                    allowHtml: true,
+                    noTap: true
+                });
+            }
+
             this.createComponent({
                 tag: 'sup',
                 content: '?',
                 classes: 'biblesupersearch_toggle_help',
                 onmouseover: 'handleMouseOver',
-                ontap: 'handleHelpTab'
+                ontap: 'handleHelpTab',
+                helpTap: true
             });
+
+            if(this.app.client.isMobile) {
+                this.createComponent({
+                    tag: 'span',
+                    content: '&nbsp;&nbsp;',
+                    allowHtml: true,
+                    helpTap: true
+                });
+            }
 
             this.createComponent({
                 name: 'Help',
@@ -81,6 +101,7 @@ module.exports = kind({
         this.addRemoveClass('is_false', !is);
         this.$.ViewTrue && this.$.ViewTrue.set('showing', !!is);
         this.$.ViewFalse && this.$.ViewFalse.set('showing', !is);
+        this.$.Help && this.$.Help.set('showing', false);
     },
     handleTap: function(inSender, inEvent) {
         if(inEvent.originator) {
@@ -97,6 +118,10 @@ module.exports = kind({
         this.toggleValue();
     },
     handleHelpTab: function() {
+        if(!this.$.Help) {
+            return true;
+        }
+        
         this.$.Help && this.$.Help.set('showing', !this.$.Help.get('showing'));
         return true;
     },
@@ -104,9 +129,17 @@ module.exports = kind({
         this.set('value', !this.get('value'));
     },
     handleMouseOver: function() {
+        if(this.app.client.isMobile) {
+            return true;
+        }
+        
         this.$.Help && this.$.Help.set('showing', true);
     }, 
     handleMouseOut: function() {
+        if(this.app.client.isMobile) {
+            return true;
+        }
+        
         this.$.Help && this.$.Help.set('showing', false);
     }
 });

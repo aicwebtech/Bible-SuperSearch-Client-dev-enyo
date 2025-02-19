@@ -36,6 +36,7 @@ module.exports = kind({
     showingCopyrightBottom: false,
     renderStyle: 'passage',
     _localeChangeRender: false,
+    _configChangeRender: false,
     activeComponent: null,
     sideButtons: false,
     resultsShowing: true,
@@ -133,10 +134,12 @@ module.exports = kind({
         
         var e = {
             localeChange: this._localeChangeRender,
+            configChange: this._configChangeRender
         };
 
         this.bubble('onResultsRendered', e);
         this._localeChangeRender = false;
+        this._configChangeRender = false;
 
         this.$.ResultsList && this.$.ResultsList.scrollToItemDelay();
     },

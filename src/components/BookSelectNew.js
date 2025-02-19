@@ -202,7 +202,14 @@ module.exports = kind({
         }
 
         Passage.book && this.$.Book.setSelectedByContent(Passage.book);
+        var bookId = this.$.Book.get('value');
 
+        if(!bookId || bookId == '0') {
+            this.log('Exit: No book, or book not found in selected locale');
+            return this._selectNoneRender();
+        }
+
+        var Book = this.app.getBook(bookId);
         var cv = Passage.chapter_verse.split(':');
 
         if(!this.includeAllVerses && !cv[1]) {
@@ -218,8 +225,15 @@ module.exports = kind({
             this.log('Exit: Verse match range');
             return this._selectNoneRender();
         }
-        
-        var Book = this.app.findBookByName(Passage.book);
+
+        this.log('passage book', Passage.book);
+
+
+        if(!Book) {
+            this.log('Exit: Book not found in selected locale ' + Passage.book + ' ' + bookId);
+            return this._selectNoneRender();
+        }
+
         var maxChapters = parseInt(Book.chapters, 10);
         var maxVerses = parseInt(Book.chapter_verses[chapter], 10);
         var chapterInt = parseInt(chapter, 10);

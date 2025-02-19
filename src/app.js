@@ -41,7 +41,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.6.20alpha',
+    applicationVersion: '5.6.20alpha2',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -104,6 +104,7 @@ var App = Application.kind({
     utils: Utils,
     loadingPagePrevent: false,
     hasAjaxSuccess: false,
+    _blockAutoScroll: false,
     hasMouse: false, // use mouse events to detect
 
     useNewSelectors: false,

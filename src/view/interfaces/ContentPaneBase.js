@@ -101,9 +101,9 @@ module.exports = kind({
         // }
     },
     handleResultsRendered: function(inSender, inEvent) {
-        var localeChange = inEvent && inEvent.localeChange;
-        
-        if(!localeChange) {
+        var preventScroll = this.app.get('_blockAutoScroll') || inEvent && (inEvent.localeChange || inEvent.configChange);
+
+        if(!preventScroll) {
             this.autoScroll();
         }
     },
