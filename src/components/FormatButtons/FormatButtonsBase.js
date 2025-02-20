@@ -58,10 +58,12 @@ module.exports = kind({
     handleFontChange: function(inSender, inEvent) {
         val = inSender.val || 'serif';
         this.app.UserConfig.set('font', val);
+        this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ...
     },    
     handleRenderStyle: function(inSender, inEvent) {
         val = inSender.val || 'passage';
         this.app.UserConfig.set('render_style', val);
+        this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ...
     },
     handleSizeChange: function(inSender, inEvent) {
         var curVal = this.app.UserConfig.get('text_size');
@@ -76,6 +78,7 @@ module.exports = kind({
         }
 
         this.app.UserConfig.set('text_size', newVal);
+        this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
         // this.log(this.app.UserConfig.getAttributes());
     },
     handleHelp: function(inSender, inEvent) {
@@ -116,6 +119,7 @@ module.exports = kind({
 
         this.$.ConfirmDialog.confirm(msg, function(confirm) {
             if(confirm) {
+                t.app.set('_blockAutoScroll', true);
                 t.app.UserConfig.clear();
             }
         });

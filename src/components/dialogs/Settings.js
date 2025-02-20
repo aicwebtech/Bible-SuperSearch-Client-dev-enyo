@@ -296,30 +296,38 @@ module.exports = kind({
     bindings: [    
         {from: 'app.UserConfig.italics', to: '$.italics_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons italics', value, dir);
+
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},         
         {from: 'app.UserConfig.strongs', to: '$.strongs_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons strongs', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},             
         {from: 'app.UserConfig.red_letter', to: '$.redletter_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons red_letter', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},
         {from: 'app.UserConfig.highlight', to: '$.highlight_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons red_letter', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},        
         {from: 'app.UserConfig.parallel_search_error_suppress', to: '$.parallel_search_error_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('Settings parallel_search_error_suppress', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},
         {from: 'app.UserConfig.context_range', to: '$.context_range.value', oneWay: false, transform: function(value, dir) {
             // console.log('Settings context_range', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},        
         {from: 'app.UserConfig.page_limit', to: '$.page_limit.value', oneWay: false, transform: function(value, dir) {
             // console.log('Settings page_limit', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},        
         // We hide the render style selector when in copy mode, re: it will collide with the pre-set copy settingss
@@ -338,6 +346,8 @@ module.exports = kind({
                 this.$[value].set('checked', true);
             }
 
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
+
             return value;
         }},         
         {from: 'app.UserConfig.font', to: 'font', oneWay: false, transform: function(value, dir) {
@@ -347,6 +357,8 @@ module.exports = kind({
                 this.$.font.set('active', this.$[value]);
                 this.$[value].set('checked', true);
             }
+
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
 
             return value;
         }},  

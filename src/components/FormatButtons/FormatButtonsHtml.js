@@ -501,6 +501,8 @@ module.exports = kind({
                 this.app.UserConfig.set(rscache, rs);
             }
 
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
+
             return value;
             // return (value && value != 0 && value != false) ? true : false;
         }},        
@@ -516,18 +518,22 @@ module.exports = kind({
         }},           
         {from: 'app.UserConfig.italics', to: '$.italics_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons italics', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},         
         {from: 'app.UserConfig.strongs', to: '$.strongs_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons strongs', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},             
         {from: 'app.UserConfig.red_letter', to: '$.redletter_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons red_letter', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},
         {from: 'app.UserConfig.highlight', to: '$.highlight_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons red_letter', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }}, 
         {from: 'app.UserConfig.font', to: 'font', oneWay: true, transform: function(value, dir) {
@@ -535,6 +541,7 @@ module.exports = kind({
             this.$.font_serif.addRemoveClass('selected', value == 'serif');
             this.$.font_sans_serif.addRemoveClass('selected', value == 'sans_serif' || value == 'sans-serif');
             this.$.font_monospace.addRemoveClass('selected', value == 'monospace');
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }}
     ],

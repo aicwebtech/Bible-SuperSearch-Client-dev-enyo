@@ -244,22 +244,27 @@ module.exports = kind({
     bindings: [    
         {from: 'app.UserConfig.copy_separate_line', to: '$.separate_line.checked', oneWay: false, transform: function(value, dir) {
             // console.log('Copy separate_line', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},         
         {from: 'app.UserConfig.copy_omit_extra_br', to: '$.omit_extra_br.checked', oneWay: false, transform: function(value, dir) {
             // console.log('Copy omit_extra_br', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},        
         {from: 'app.UserConfig.copy_abbr_book', to: '$.abbr_book.checked', oneWay: false, transform: function(value, dir) {
             // console.log('Copy abbr_book', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},            
         {from: 'app.UserConfig.copy_passage_verse_number', to: '$.passage_verse_number.checked', oneWay: false, transform: function(value, dir) {
             // console.log('Copy passage_verse_number', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},                  
         {from: 'app.UserConfig.copy_testament', to: '$.testament.checked', oneWay: false, transform: function(value, dir) {
             // console.log('Copy testament', value, dir);
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }},             
         {from: 'app.UserConfig.copy_text_format', to: 'textFormat', oneWay: false, transform: function(value, dir) {
@@ -270,6 +275,8 @@ module.exports = kind({
                 this.$.text_format.set('active', this.$[value]);
                 this.$[value].set('checked', true);
             }
+
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
 
             return value;
         }},
@@ -282,6 +289,8 @@ module.exports = kind({
                 this.$[value].set('checked', true);
             }
 
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
+
             return value;
         }},         
         {from: 'app.UserConfig.render_style', to: 'renderStyle', oneWay: false, transform: function(value, dir) {
@@ -291,6 +300,8 @@ module.exports = kind({
                 this.$.render_style.set('active', this.$[value]);
                 this.$[value].set('checked', true);
             }
+
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
 
             return value;
         }},        
@@ -303,6 +314,8 @@ module.exports = kind({
                 this.$.presets_group.$[value].set('checked', true);
                 this.applyPreset(value);
             }
+
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
 
             return value;
         }}
