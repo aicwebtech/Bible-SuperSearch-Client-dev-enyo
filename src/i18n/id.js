@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'Batasi pencarian hanya pada', 
     'Word Search': 'Pencarian Kata',
     'Clear Form': 'Hapus Formulir', 
-    'Select Book and Chapter:' : 'Pilih Buku dan Bab', 
+    'Select Book and Chapter:' : 'Pilih Buku dan Bab',
+    'Select Book, Chapter, Verse:' : 'Pilih Buku, Bab, Ayat:',
 
     // Context Links
     'Show full chapter': 'Tampilkan bab penuh',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'Menyorot',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Nonaktifkan Penyorotan Kata Kunci',
     'Enable Highlighting of Keywords': 'Aktifkan Penyorotan Kata Kunci',
+    'Hide Parallel Search Errors': 'Sembunyikan Kesalahan Pencarian Paralel', // 5.6.20
+    'Show Parallel Search Errors': 'Tampilkan Kesalahan Pencarian Paralel', // 5.6.20
     'Print': 'Mencetak',
     'Printer Friendly': 'Ramah Pencetak',
     'Help': 'Membantu',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'Pengaturan', 
     'Language' : 'Bahasa', 
     'Text Display': 'Tampilan Teks', 
-    'Font Style': 'Gaya tulisan', 
+    'Font Style': 'Gaya tulisan',
+    'This will reset the settings to defaults.':'Ini akan mengatur ulang pengaturan ke default.', // 5.6.20 
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'Oke',
     'Old': 'Tua',
     'New': 'Baru',
+    'Reset': 'Reset',//check translation // 5.6.20
 
     'Are you sure?': 'Apa kamu yakin?',
     'Are you sure you want to delete': 'Apakah Anda yakin ingin menghapus',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Harap hapus beberapa bookmark sebelum menambahkan lebih banyak.',
     'This bookmark name already exists.': 'Nama penanda ini sudah ada.',
+    'Bookmark name is required.': 'Nama bookmark diperlukan.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Membatasi Pencarian',

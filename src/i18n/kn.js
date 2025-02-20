@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'ಹುಡುಕಾಟವನ್ನು ನಿರ್ಬಂಧಿಸಿ', 
     'Word Search': 'ಪದ ಹುಡುಕು',
     'Clear Form': 'ಸ್ಪಷ್ಟ ರೂಪ', 
-    'Select Book and Chapter:' : 'ಪುಸ್ತಕ ಮತ್ತು ಅಧ್ಯಾಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ:', 
+    'Select Book and Chapter:' : 'ಪುಸ್ತಕ ಮತ್ತು ಅಧ್ಯಾಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ:',
+    'Select Book, Chapter, Verse:' : 'ಪುಸ್ತಕ, ಅಧ್ಯಾಯ, ಪದ್ಯ ಆಯ್ಕೆಮಾಡಿ:',
 
     // Context Links
     'Show full chapter': 'ಪೂರ್ಣ ಅಧ್ಯಾಯವನ್ನು ತೋರಿಸಿ',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'ಹೈಲೈಟ್',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'ಕೀವರ್ಡ್ಗಳ ಹೈಲೈಟ್ ಮಾಡುವುದನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ',
     'Enable Highlighting of Keywords': 'ಕೀವರ್ಡ್ಗಳ ಹೈಲೈಟ್ ಮಾಡುವುದನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ',
+    'Hide Parallel Search Errors': 'ಸಮಾನಾಂತರ ಹುಡುಕಾಟ ದೋಷಗಳನ್ನು ಮರೆಮಾಡಿ', // 5.6.20
+    'Show Parallel Search Errors': 'ಸಮಾನಾಂತರ ಹುಡುಕಾಟ ದೋಷಗಳನ್ನು ತೋರಿಸಿ', // 5.6.20
     'Print': 'ಮುದ್ರಿಸಿ',
     'Printer Friendly': 'ಮುದ್ರಕ ಸ್ನೇಹಿ',
     'Help': 'ಸಹಾಯ',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'ಸಂಯೋಜನೆಗಳು', 
     'Language' : 'ಭಾಷೆ', 
     'Text Display': 'ಪಠ್ಯ ಪ್ರದರ್ಶನ', 
-    'Font Style': 'ಅಕ್ಷರ ವಿನ್ಯಾಸ', 
+    'Font Style': 'ಅಕ್ಷರ ವಿನ್ಯಾಸ',
+    'This will reset the settings to defaults.':'ಇದು ಸೆಟ್ಟಿಂಗ್ಗಳನ್ನು ಡೀಫಾಲ್ಟ್ಗಳಿಗೆ ಮರುಹೊಂದಿಸುತ್ತದೆ.', // 5.6.20 
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'ಸರಿ',
     'Old': 'ಹಳೆಯದು',
     'New': 'ಹೊಸದು',
+    'Reset': 'ಮರುಹೊಂದಿಸಿ', // 5.6.20
 
     'Are you sure?': 'ನೀವು ಖಚಿತವಾಗಿರುವಿರಾ?',
     'Are you sure you want to delete': 'ನೀವು ಅಳಿಸಲು ಖಚಿತವಾಗಿ ಬಯಸುವಿರಾ',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'ಹೆಚ್ಚಿನದನ್ನು ಸೇರಿಸುವ ಮೊದಲು ದಯವಿಟ್ಟು ಕೆಲವು ಬುಕ್ಮಾರ್ಕ್ಗಳನ್ನು ಅಳಿಸಿ.',
     'This bookmark name already exists.': 'ಈ ಬುಕ್ಮಾರ್ಕ್ ಹೆಸರು ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ.',
+    'Bookmark name is required.': 'ಬುಕ್ಮಾರ್ಕ್ ಹೆಸರು ಅಗತ್ಯವಿದೆ.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'ಹುಡುಕಾಟಗಳನ್ನು ಮಿತಿಗೊಳಿಸುವುದು',

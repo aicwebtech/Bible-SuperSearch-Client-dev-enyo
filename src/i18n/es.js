@@ -44,6 +44,7 @@ module.exports = {
     'Word Search': 'Búsqueda de Palabras',
     'Clear Form': 'Borrar la Forma', // 4.5
     'Select Book and Chapter:' : 'Seleccionar Libro y Capítulo:', // 5.2
+    'Select Book, Chapter, Verse:' : 'Seleccione Libro, Capítulo, Verso:',
 
     // Context Links
     'Show full chapter': 'Mostrar capítulo completo',
@@ -159,6 +160,8 @@ module.exports = {
     'Highlight': 'Destacar',
     'Disable Highlighting of Keywords': 'Deshabilitar el Resaltado de Palabras Clave',
     'Enable Highlighting of Keywords': 'Habilitar el Resaltado de Palabras Clave',
+    'Hide Parallel Search Errors': 'Ocultar Errores de Búsqueda Paralela', // 5.6.20
+    'Show Parallel Search Errors': 'Mostrar Errores de Búsqueda Paralela', // 5.6.20
     'Print': 'Imprimir',
     'Printer Friendly': 'Impresora Amigable',
     'Help': 'Ayudar',
@@ -209,6 +212,7 @@ module.exports = {
     'Language' : 'Idioma', // 5.0
     'Text Display': 'Visualización de Texto', // 5.0
     'Font Style': 'Estilo De Fuente', // 5.0
+    'This will reset the settings to defaults.':'Esto restablecerá la configuración a los valores predeterminados.', // 5.6.20
     
     // Result and error messages
     
@@ -412,6 +416,7 @@ module.exports = {
     'Okay': 'Bueno',
     'Old': 'Viejo',
     'New': 'Nuevo',
+    'Reset': 'Restablecer', // 5.6.20
 
     'Are you sure?': 'Estas seguro',
     'Are you sure you want to delete': '¿Estás seguro de que quieres eliminar?',
@@ -426,6 +431,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Elimina algunos marcadores antes de agregar más.',
     'This bookmark name already exists.': 'El nombre de este marcador ya existe',
+    'Bookmark name is required.': 'Se requiere el nombre de la marca de libro.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Limitar Búsquedas',

@@ -54,6 +54,7 @@ module.exports = {
     'Word Search': 'Otsi Sõna',
     'Clear Form': 'Puhasta Vorm', // 4.5
     'Select Book and Chapter:' : 'Vali Raamat ja Petükk', // 5.2
+    'Select Book, Chapter, Verse:' : 'Valige Raamat, Peatükk, Salm:',
 
 
     // Context Links
@@ -177,6 +178,8 @@ module.exports = {
     'Highlight': 'Tõsta esile',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Keela Märksõnade Esiletõstmine',
     'Enable Highlighting of Keywords': 'Luba Märksõnade Esiletõstmine',
+    'Hide Parallel Search Errors': 'Peida Paralleelotsingu Vead', // 5.6.20
+    'Show Parallel Search Errors': 'Näita Paralleelotsingu Vigu', // 5.6.20
     'Print': 'Trüki',
     'Printer Friendly': 'Prindi Sõbralik',
     'Help': 'Abi',
@@ -233,6 +236,7 @@ module.exports = {
     'Language' : 'Keel', // 5.0
     'Text Display': 'Tekstikuva', // 5.0
     'Font Style': 'Kirjavstiil', // 5.0
+    'This will reset the settings to defaults.':'See lähtestab seaded vaikeväärtustele.', // 5.6.20
 
 
     // Result and error messages
@@ -453,6 +457,7 @@ module.exports = {
     'Okay': 'Okei',
     'Old': 'Vana',
     'New': 'Uus',
+    'Reset': 'Lähtesta', // 5.6.20
 
     'Are you sure?': 'Oled sa kindel',
     'Are you sure you want to delete': 'Kas soovite kindlasti kustutada?',
@@ -467,6 +472,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Enne järjehoidjate lisamist kustutage mõned järjehoidjad',
     'This bookmark name already exists.': 'See järjehoidja nimi on juba olemas',
+    'Bookmark name is required.': 'Järjehoidja nimi on vajalik.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Otsingute Piiramine',

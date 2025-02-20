@@ -50,7 +50,8 @@ module.exports = {
     'Restrict search to': 'จำกัดการค้นหาที่', 
     'Word Search': 'ค้นหาคำ',
     'Clear Form': 'ล้างแบบฟอร์ม', 
-    'Select Book and Chapter:' : 'เลือกหนังสือและบท', 
+    'Select Book and Chapter:' : 'เลือกหนังสือและบท',
+    'Select Book, Chapter, Verse:' : 'เลือกหนังสือ บท ข้อพระคัมภีร์:',//check translation
 
     // Context Links
     'Show full chapter': 'แสดงบทเต็ม',
@@ -167,6 +168,8 @@ module.exports = {
     'Highlight': 'ไฮไลท์',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'ปิดการใช้งานการเน้นคำสำคัญ',
     'Enable Highlighting of Keywords': 'เปิดใช้งานการเน้นคำสำคัญ',
+    'Hide Parallel Search Errors': 'ซ่อนข้อผิดพลาดในการค้นหาแบบขนาน', // 5.6.20
+    'Show Parallel Search Errors': 'แสดงข้อผิดพลาดในการค้นหาแบบขนาน', // 5.6.20
     'Print': 'พิมพ์',
     'Printer Friendly': 'เป็นมิตรกับเครื่องพิมพ์',
     'Help': 'ช่วย',
@@ -218,7 +221,8 @@ module.exports = {
     'Settings' : 'การตั้งค่า', 
     'Language' : 'ภาษา', 
     'Text Display': 'การแสดงข้อความ', 
-    'Font Style': 'รูปแบบตัวอักษร', 
+    'Font Style': 'รูปแบบตัวอักษร',
+    'This will reset the settings to defaults.':'การดําเนินการนี้จะรีเซ็ตการตั้งค่าเป็นค่าเริ่มต้น', // 5.6.20 
 
     // Result and error messages
     
@@ -420,6 +424,7 @@ module.exports = {
     'Okay': 'ตกลง',
     'Old': 'เก่า',
     'New': 'New',
+    'Reset': 'รีเซ็ต', // 5.6.20
 
     'Are you sure?': 'คุณแน่ใจไหม?',
     'Are you sure you want to delete': 'คุณแน่ใจหรือว่าต้องการลบ',
@@ -434,6 +439,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'โปรดลบบุ๊กมาร์กบางส่วนก่อนที่จะเพิ่มอีก',
     'This bookmark name already exists.': 'มีชื่อบุ๊กมาร์กนี้อยู่แล้ว',
+    'Bookmark name is required.': 'ชื่อบุ๊กมาร์กเป็นสิ่งจําเป็น', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'การจำกัดการค้นหา',

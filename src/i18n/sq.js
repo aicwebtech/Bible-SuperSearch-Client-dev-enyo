@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'Kufizoni kërkimin në', 
     'Word Search': 'Kërkimi i Fjalëve',
     'Clear Form': 'Formulari i Qartë', 
-    'Select Book and Chapter:' : 'Zgjidhni Librin dhe Kapitullin', 
+    'Select Book and Chapter:' : 'Zgjidhni Librin dhe Kapitullin',
+    'Select Book, Chapter, Verse:' : 'Zgjidhni Librin, Kapitullin, Vargun:',
 
     // Context Links
     'Show full chapter': 'Shfaq kapitullin e plotë',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'Theksoj',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Çaktivizo Theksimin e Fjalëve Kyçe',
     'Enable Highlighting of Keywords': 'Aktivizo Theksimin e Fjalëve Kyçe',
+    'Hide Parallel Search Errors': 'Fshih Gabimet Paralele të Kërkimit', // 5.6.20
+    'Show Parallel Search Errors': 'Shfaq Gabimet Paralele të Kërkimit', // 5.6.20
     'Print': 'Printo',
     'Printer Friendly': 'Printer Miqësor',
     'Help': 'Ndihmë',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'Cilësimet', 
     'Language' : 'Gjuhe', 
     'Text Display': 'Ekrani i Tekstit', 
-    'Font Style': 'Stili i Fontit', 
+    'Font Style': 'Stili i Fontit',
+    'This will reset the settings to defaults.':'Kjo do të rivendosë cilësimet në parazgjedhje.', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'Mirë',
     'Old': 'I vjetër',
     'New': 'I ri',
+    'Reset': 'Rivendos', // 5.6.20
 
     'Are you sure?': 'A je i sigurt?',
     'Are you sure you want to delete': 'Jeni të sigurt që dëshironi të fshini',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Ju lutemi fshini disa faqeshënues përpara se të shtoni më shumë.',
     'This bookmark name already exists.': 'Ky emër faqeshënuesi ekziston tashmë.',
+    'Bookmark name is required.': 'Kërkohet emri i faqeshënuesit.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Kufizimi i Kërkimeve',

@@ -51,6 +51,7 @@ module.exports = {
     'Word Search': 'بحث كلمة',
     'Clear Form': 'شكل واضح', // 4.5
     'Select Book and Chapter:' : 'حدد الكتاب والأصحاح', // 5.2
+    'Select Book, Chapter, Verse:' : 'اختر الكتاب، الفصل، الآية:',
 
     // Context Links
     'Show full chapter': 'عرض الأصحاح بالكامل',
@@ -170,6 +171,8 @@ module.exports = {
     'Highlight': 'تسليط الضوء',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'تعطيل تسليط الضوء على الكلمات الرئيسية',
     'Enable Highlighting of Keywords': 'تمكين تسليط الضوء على الكلمات الرئيسية',
+    'Hide Parallel Search Errors': 'إخفاء أخطاء البحث الموازي', // 5.6.20
+    'Show Parallel Search Errors': 'إظهار أخطاء البحث الموازي', // 5.6.20
     'Print': 'مطبعة',
     'Printer Friendly': 'صديقة للطباعة',
     'Help': 'يساعد',
@@ -221,6 +224,7 @@ module.exports = {
     'Language' : 'لغة', // 5.0
     'Text Display': 'اظهار النص', // 5.0
     'Font Style': 'نوع الخط', // 5.0
+    'This will reset the settings to defaults.':'سيؤدي هذا إلى إعادة تعيين الإعدادات إلى الإعدادات الافتراضية.', // 5.6.20
 
     // Result and error messages
     
@@ -423,6 +427,7 @@ module.exports = {
     'Okay': 'تمام',
     'Old': 'قديم',
     'New': 'جديد',
+    'Reset': 'إعادة تعيين', // 5.6.20
 
     'Are you sure?': 'هل أنت متأكد؟',
     'Are you sure you want to delete': 'هل أنت متأكد أنك تريد حذف',
@@ -437,6 +442,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'يرجى حذف بعض الإشارات المرجعية قبل إضافة المزيد.',
     'This bookmark name already exists.': 'اسم الإشارة المرجعية هذا موجود بالفعل.',
+    'Bookmark name is required.': 'اسم الإشارة المرجعية مطلوب.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'الحد من عمليات البحث',

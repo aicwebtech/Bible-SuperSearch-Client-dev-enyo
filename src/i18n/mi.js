@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'Whakawhāitihia te rapu ki', 
     'Word Search': 'Rapu Kupu',
     'Clear Form': 'Puka Maama', 
-    'Select Book and Chapter:' : 'Tīpakohia te Pukapuka me te Upoko:', 
+    'Select Book and Chapter:' : 'Tīpakohia te Pukapuka me te Upoko:',
+    'Select Book, Chapter, Verse:' : 'Tīpakohia te Pukapuka, Upoko, Irava:',
 
     // Context Links
     'Show full chapter': 'Whakaatuhia te upoko katoa',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'Miramira',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Monokia te Whakaaturanga o nga Kupumatua',
     'Enable Highlighting of Keywords': 'Whakahohehia te miramira o nga kupu matua',
+    'Hide Parallel Search Errors': 'Huna Hapa Rapu Whakarara', // 5.6.20
+    'Show Parallel Search Errors': 'Whakaatu Hapa Rapu Whakarara', // 5.6.20
     'Print': 'Taa',
     'Printer Friendly': 'Pūreretā',
     'Help': 'Awhina',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'Tautuhinga', 
     'Language' : 'Reo', 
     'Text Display': 'Whakaatu Kuputuhi', 
-    'Font Style': 'Kāhua Momotuhi', 
+    'Font Style': 'Kāhua Momotuhi',
+    'This will reset the settings to defaults.':'Ma tenei ka tautuhi ano i nga tautuhinga ki nga taunoa', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'Ka pai',
     'Old': 'Tawhito',
     'New': 'Hou',
+    'Reset': 'Reset', // 5.6.20
 
     'Are you sure?': 'Kei te tino mohio koe?',
     'Are you sure you want to delete': 'E tino hiahia ana koe ki te muku',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Please delete some bookmarks before adding more.',
     'This bookmark name already exists.': 'Kei te noho kē tenei ingoa tohuwāhi.',
+    'Bookmark name is required.': 'Me whai ingoa tohu pukapuka.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Te Whakatepe Rapu',

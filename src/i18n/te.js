@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'శోధనను పరిమితం చేయండి', 
     'Word Search': 'పద శోధన',
     'Clear Form': 'ఫారమ్ను క్లియర్ చేయండి', 
-    'Select Book and Chapter:' : 'పుస్తకం మరియు అధ్యాయాన్ని ఎంచుకోండి', 
+    'Select Book and Chapter:' : 'పుస్తకం మరియు అధ్యాయాన్ని ఎంచుకోండి',
+    'Select Book, Chapter, Verse:' : 'పుస్తకం, అధ్యాయం, పద్యం ఎంచుకోండి:',
 
     // Context Links
     'Show full chapter': 'పూర్తి అధ్యాయాన్ని చూపించు',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'హైలైట్ చేయండి',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'కీవర్డ్ల హైలైట్ చేయడాన్ని నిలిపివేయండి',
     'Enable Highlighting of Keywords': 'కీవర్డ్ల హైలైట్ చేయడాన్ని ప్రారంభించండి',
+    'Hide Parallel Search Errors': 'సమాంతర శోధన లోపాలను దాచు', // 5.6.20
+    'Show Parallel Search Errors': 'సమాంతర శోధన లోపాలను చూపించు', // 5.6.20
     'Print': 'ముద్రించు',
     'Printer Friendly': 'ప్రింటర్ ఫ్రెండ్లీ',
     'Help': 'సహాయం',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'సెట్టింగ్లు', 
     'Language' : 'భాష', 
     'Text Display': 'టెక్స్ట్ డిస్ప్లే', 
-    'Font Style': 'ఫాంట్ శైలి', 
+    'Font Style': 'ఫాంట్ శైలి',
+    'This will reset the settings to defaults.':'ఇది డిఫాల్ట్ లకు సెట్టింగ్ లను రీసెట్ చేస్తుంది.', // 5.6.20 
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'సరే',
     'Old': 'పాతది',
     'New': 'కొత్తది',
+    'Reset': 'రీసెట్',//check translation // 5.6.20
 
     'Are you sure?': 'మీరు ఖచ్చితంగా ఉన్నారా?',
     'Are you sure you want to delete': 'మీరు ఖచ్చితంగా తొలగించాలనుకుంటున్నారా',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'దయచేసి మరిన్ని జోడించే ముందు కొన్ని బుక్మార్క్లను తొలగించండి.',
     'This bookmark name already exists.': 'ఈ బుక్మార్క్ పేరు ఇప్పటికే ఉంది.',
+    'Bookmark name is required.': 'బుక్ మార్క్ పేరు అవసరం.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'శోధనలను పరిమితం చేయడం',

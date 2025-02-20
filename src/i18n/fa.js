@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'محدود کردن جستجو به', 
     'Word Search': 'جستجوی کلمه',
     'Clear Form': 'پاک کردن فرم', 
-    'Select Book and Chapter:' : 'کتاب و فصل را انتخاب کنید:', 
+    'Select Book and Chapter:' : 'کتاب و فصل را انتخاب کنید:',
+    'Select Book, Chapter, Verse:' : 'کتاب، فصل، آیه را انتخاب کنید:',
 
     // Context Links
     'Show full chapter': 'نمایش فصل کامل',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'برجسته',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'برجسته کردن کلمات کلیدی را غیرفعال کنید',
     'Enable Highlighting of Keywords': 'برجسته کردن کلمات کلیدی را فعال کنید',
+    'Hide Parallel Search Errors': 'مخفی کردن خطاهای جستجوی موازی', // 5.6.20
+    'Show Parallel Search Errors': 'نمایش خطاهای جستجوی موازی', // 5.6.20
     'Print': 'چاپ',
     'Printer Friendly': 'سازگار با چاپگر',
     'Help': 'کمک',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'تنظیمات', 
     'Language' : 'زبان', 
     'Text Display': 'نمایش متن', 
-    'Font Style': 'نوع قلم', 
+    'Font Style': 'نوع قلم',
+    'This will reset the settings to defaults.':'با این کار تنظیمات به حالت پیش فرض بازنشانی می شود.', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'باشه',
     'Old': 'قدیمی',
     'New': 'جدید',
+    'Reset': 'بازنشانی', // 5.6.20
 
     'Are you sure?': 'مطمئنی؟',
     'Are you sure you want to delete': 'آیا مطمئنید که میخواهید حذف کنید',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'لطفاً قبل از افزودن موارد دیگر، برخی از نشانکها را حذف کنید.',
     'This bookmark name already exists.': 'این نام نشانک از قبل وجود دارد.',
+    'Bookmark name is required.': 'نام نشانک الزامی است.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'محدود کردن جستجوها',

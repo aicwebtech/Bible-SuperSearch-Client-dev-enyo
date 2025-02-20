@@ -50,7 +50,8 @@ module.exports = {
     'Restrict search to': 'Limita la ricerca a', 
     'Word Search': 'Ricerca di parole',
     'Clear Form': 'Forma Chiara', 
-    'Select Book and Chapter:' : 'Seleziona Libro e Capitolo:', 
+    'Select Book and Chapter:' : 'Seleziona Libro e Capitolo:',
+    'Select Book, Chapter, Verse:' : 'Seleziona Libro, Capitolo, Versetto:',
 
     // Context Links
     'Show full chapter': 'Mostra il capitolo completo',
@@ -167,6 +168,8 @@ module.exports = {
     'Highlight': 'Evidenziare',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Disabilita l\'evidenziazione delle parole chiave',
     'Enable Highlighting of Keywords': 'Abilita l\'evidenziazione delle parole chiave',
+    'Hide Parallel Search Errors': 'Nascondi Errori di Ricerca Parallela', // 5.6.20
+    'Show Parallel Search Errors': 'Mostra Errori di Ricerca Parallela', // 5.6.20
     'Print': 'Stampa',
     'Printer Friendly': 'Stampabile',
     'Help': 'Aiuto',
@@ -218,7 +221,8 @@ module.exports = {
     'Settings' : 'Impostazioni', 
     'Language' : 'Lingua', 
     'Text Display': 'Visualizzazione del Testo', 
-    'Font Style': 'Stile Carattere', 
+    'Font Style': 'Stile Carattere',
+    'This will reset the settings to defaults.':'Ciò ripristinerà le impostazioni alle impostazioni predefinite.', // 5.6.20 
 
     // Result and error messages
     
@@ -420,6 +424,7 @@ module.exports = {
     'Okay': 'Va bene',
     'Old': 'Vecchio',
     'New': 'Nuovo',
+    'Reset': 'Ripristina', // 5.6.20
 
     'Are you sure?': 'Sei sicuro?',
     'Are you sure you want to delete': 'Sei sicuro di voler eliminare',
@@ -434,6 +439,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Elimina alcuni segnalibri prima di aggiungerne altri.',
     'This bookmark name already exists.': 'Il nome di questo segnalibro esiste già.',
+    'Bookmark name is required.': 'È richiesto il nome del segnalibro.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Limitare le ricerche',

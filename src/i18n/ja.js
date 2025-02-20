@@ -50,7 +50,8 @@ module.exports = {
     'Restrict search to': '検索を制限する', 
     'Word Search': '単語検索',
     'Clear Form': '明確な形', 
-    'Select Book and Chapter:' : '本と章を選択してください:', 
+    'Select Book and Chapter:' : '本と章を選択してください:',
+    'Select Book, Chapter, Verse:' : 'ブック、章、詩を選択します:',//check translation
 
     // Context Links
     'Show full chapter': '章全体を表示',
@@ -167,6 +168,8 @@ module.exports = {
     'Highlight': 'ハイライト',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'キーワードの強調表示を無効にする',
     'Enable Highlighting of Keywords': 'キーワードのハイライトを有効にする',
+    'Hide Parallel Search Errors': '並列検索エラーを隠す', // 5.6.20
+    'Show Parallel Search Errors': '並列検索エラーを表示します', // 5.6.20
     'Print': '印刷する',
     'Printer Friendly': 'プリンター対応',
     'Help': 'ヘルプ',
@@ -218,7 +221,8 @@ module.exports = {
     'Settings' : '設定', 
     'Language' : '言語', 
     'Text Display': 'テキスト表示', 
-    'Font Style': 'フォントスタイル', 
+    'Font Style': 'フォントスタイル',
+    'This will reset the settings to defaults.':'これにより、設定がデフォルトにリセットされます。', // 5.6.20
 
     // Result and error messages
     
@@ -420,6 +424,7 @@ module.exports = {
     'Okay': 'わかった',
     'Old': '古い',
     'New': '新しい',
+    'Reset': 'リセット', // 5.6.20
 
     'Are you sure?': '本気ですか？',
     'Are you sure you want to delete': '消去してもよろしいですか',
@@ -434,6 +439,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'さらにブックマークを追加する前に、いくつかのブックマークを削除してください。',
     'This bookmark name already exists.': 'このブックマーク名はすでに存在します。',
+    'Bookmark name is required.': 'ブックマーク名は必須です。', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': '検索の制限',

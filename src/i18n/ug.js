@@ -67,7 +67,8 @@ module.exports = {
     'Restrict search to': 'ئىزدەشنى چەكلەڭ', 
     'Word Search': 'سۆز ئىزدەش',
     'Clear Form': 'ئېنىق جەدۋەل', 
-    'Select Book and Chapter:' : 'كىتاب ۋە بابنى تاللاڭ', 
+    'Select Book and Chapter:' : 'كىتاب ۋە بابنى تاللاڭ',
+    'Select Book, Chapter, Verse:' : 'كىتاب ، باب ، ئايەتنى تاللاڭ:',
 
     // Context Links
     'Show full chapter': 'تولۇق بابنى كۆرسىتىڭ',
@@ -183,6 +184,8 @@ module.exports = {
     'Highlight': 'يارقىن نۇقتا',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'ئاچقۇچلۇق سۆزلەرنى چەكلەش',
     'Enable Highlighting of Keywords': 'ئاچقۇچلۇق سۆزلەرنى گەۋدىلەندۈرۈشكە بولىدۇ',
+    'Hide Parallel Search Errors': 'پاراللېل ئىزدەش خاتالىقىنى يوشۇرۇڭ', // 5.6.20
+    'Show Parallel Search Errors': 'پاراللېل ئىزدەش خاتالىقىنى كۆرسىتىڭ', // 5.6.20
     'Print': 'بېسىش',
     'Printer Friendly': 'پرىنتېر دوستانە',
     'Help': 'ياردەم',
@@ -234,7 +237,8 @@ module.exports = {
     'Settings' : 'تەڭشەكلەر', 
     'Language' : 'تىل', 
     'Text Display': 'تېكىست كۆرسىتىش', 
-    'Font Style': 'خەت ئۇسلۇبى', 
+    'Font Style': 'خەت ئۇسلۇبى',
+    'This will reset the settings to defaults.':'بۇ تەڭشەكلەرنى سۈكۈتتىكى ھالەتكە قايتۇرىدۇ.', // 5.6.20
 
     // Result and error messages
     
@@ -436,6 +440,7 @@ module.exports = {
     'Okay': 'ماقۇل',
     'Old': 'كونا',
     'New': 'يېڭى',
+    'Reset': 'ئەسلىگە كەلتۈرۈش', // 5.6.20
 
     'Are you sure?': 'ئىشىنەمسىز؟',
     'Are you sure you want to delete': 'ئۆچۈرمەكچىمۇ؟',
@@ -450,6 +455,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'تېخىمۇ كۆپ قوشۇشتىن بۇرۇن بەزى خەتكۈچلەرنى ئۆچۈرۈڭ.',
     'This bookmark name already exists.': 'بۇ خەتكۈچ ئىسمى ئاللىبۇرۇن مەۋجۇت.',
+    'Bookmark name is required.': 'كىتاب بەلگىسىنىڭ ئىسمى تەلەپ قىلىنىدۇ.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'ئىزدەشنى چەكلەش',

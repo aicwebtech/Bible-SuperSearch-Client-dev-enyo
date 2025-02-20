@@ -51,6 +51,7 @@ module.exports = {
     'Word Search': 'Wortsuche',
     'Clear Form': 'Klare Form', // 4.5
     'Select Book and Chapter:' : 'Buch und Kapitel Auswählen:', // 5.2
+    'Select Book, Chapter, Verse:' : 'Wählen Sie Buch, Kapitel, Vers:',
 
     // Context Links
     'Show full chapter': 'Ganzes Kapitel anzeigen',
@@ -170,6 +171,8 @@ module.exports = {
     'Highlight': 'Markieren',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Deaktivieren Sie die Hervorhebung von Schlüsselwörtern',
     'Enable Highlighting of Keywords': 'Aktivieren Sie die Hervorhebung von Schlüsselwörtern',
+    'Hide Parallel Search Errors': 'Parallelen Suchfehler Ausblenden', // 5.6.20
+    'Show Parallel Search Errors': 'Parallelen Suchfehler Anzeigen', // 5.6.20
     'Print': 'Drucken',
     'Printer Friendly': 'Druckerfreundlich',
     'Help': 'Helfen',
@@ -221,6 +224,7 @@ module.exports = {
     'Language' : 'Sprache', // 5.0
     'Text Display': 'Textanzeige', // 5.0
     'Font Style': 'Schriftstil', // 5.0
+    'This will reset the settings to defaults.':'Dadurch werden die Einstellungen auf Standardeinstellungen zurückgesetzt.', // 5.6.20
 
     // Result and error messages
     
@@ -423,6 +427,7 @@ module.exports = {
     'Okay': 'Okay',//apparently correct translation
     'Old': 'Alt',
     'New': 'Neu',
+    'Reset': 'Zurücksetzen', // 5.6.20
 
     'Are you sure?': 'Bist du sicher?',
     'Are you sure you want to delete': 'Sind Sie sicher, dass Sie löschen möchten',
@@ -437,6 +442,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Bitte löschen Sie einige Lesezeichen, bevor Sie weitere hinzufügen.',
     'This bookmark name already exists.': 'Dieser Lesezeichenname existiert bereits.',
+    'Bookmark name is required.': 'Lesezeichen Name ist erforderlich.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Einschränken von Suchen',
