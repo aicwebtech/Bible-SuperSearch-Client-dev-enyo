@@ -239,6 +239,7 @@ module.exports = kind({
             delete formData.results_list_cache_id; // If the list is already stored in memory, don't make API query for it again
         }
 
+        this.app.set('_blockAutoScroll', false);
         this.app.set('ajaxLoadingDelay', 100);
         this.requestPending = true;
         

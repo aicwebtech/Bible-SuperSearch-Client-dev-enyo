@@ -297,6 +297,10 @@ var biblesupersearch_config_options = {
     //      none - do not display at all
     // "extraButtonsSeparate": 'default',                         
     
+    // Whether to show context help inline (relatively-positioned) to the form
+    // Otherwise, context help will be shown in a popup tooltip
+    'contextHelpInline': false,
+
     // Which navigation buttons to use?
     //      default for skin default
     //      Classic
@@ -337,6 +341,11 @@ var biblesupersearch_config_options = {
     // Users can change this via general settings or copy settings
     // Options: paragraph, passage, verse, verse_passage
     'textDisplayDefault': 'passage',
+
+    // User Config settings
+    'saveUserSettings': false, // Whether to save user's settings to appear on next page load (saves to LocalStorage, not cookie)
+
+    'omitUserLanguage': false, // If saving user settings, whether to exclude the user's selected Language
 
     // Enable changing chapter and search page via horizontal touchscreen swipe gesture 
     "swipePageChapter": false,

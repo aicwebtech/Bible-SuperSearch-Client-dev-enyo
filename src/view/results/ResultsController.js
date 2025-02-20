@@ -39,7 +39,7 @@ module.exports = kind({
         ]},
         {method: 'watchTextSize', path: ['uc.text_size']},
         {method: 'watchFont', path: ['uc.font']},
-        {method: 'debugRenderStyle', path: ['uc.render_style', 'uc.read_render_style', 'uc.copy_render_style']}
+        {method: 'debugRenderStyle', path: ['uc.render_style', 'uc.read_render_style', 'uc.copy_render_style']},
     ],
 
     // observers not working?  why? Shouldn't have tu use bindings for this
@@ -92,18 +92,18 @@ module.exports = kind({
             // renderStyle = cacheSwap;
 
             if(copy) {
-                //this.app.UserConfig.set('read_render_style', renderStyle);
+                // this.app.UserConfig.set('read_render_style', renderStyle);
                 renderStyle = this.app.UserConfig.get('copy_render_style');
             } else {
-                //this.app.UserConfig.set('copy_render_style', renderStyle);
+                // this.app.UserConfig.set('copy_render_style', renderStyle);
                 renderStyle = this.app.UserConfig.get('read_render_style');
             }
 
             //this.log('render_style mid', this.app.UserConfig.get('render_style'), this.app.UserConfig.get('read_render_style'), this.app.UserConfig.get('copy_render_style'));
 
-            //this.app.UserConfig.set('render_style', renderStyle);
+            this.app.UserConfig.set('render_style', renderStyle);
 
-            this.app.debug && this.log('render_style cur', this.app.UserConfig.get('render_style'), this.app.UserConfig.get('read_render_style'), this.app.UserConfig.get('copy_render_style'));
+            // this.app.debug && this.log('render_style cur', this.app.UserConfig.get('render_style'), this.app.UserConfig.get('read_render_style'), this.app.UserConfig.get('copy_render_style'));
 
             // if(copy) {
             //     this.renderStyleCache = this.app.UserConfig.get('render_style');
@@ -160,31 +160,19 @@ module.exports = kind({
         }
     },
     watchRenderable: function(pre, cur, prop) {
+        this.app.debug && this.log('renderStyle', prop, cur, pre);
+        // this.view && this.view.set('_configChangeRender', true);
+        
         if(prop == 'uc.copy') {
             this.copyChanged = true;
-
-            // this.log('render_style prev', this.app.UserConfig.get('render_style'));
-
-            // if(pre) {
-            //     this.app.UserConfig.set('render_style', this.renderStyleCache)
-            // } else {
-            //     this.renderStyleCache = this.app.UserConfig.get('render_style');
-            // }
-
-            // this.log('render_style cur', this.app.UserConfig.get('render_style'))
         }
 
         this.renderResults();
     },
-
     debugRenderStyle: function(pre, cur, prop) {
         this.app.debug && this.log(prop, cur, pre);
-
-        if(this.get('copy')) {
-            this.app.UserConfig.set('copy_render_style', cur);
-        } else {
-            this.app.UserConfig.set('read_render_style', cur);
-        }
+        this.app.set('_blockAutoScroll', true);
+        // this.view && this.view.set('_configChangeRender', true);
     },
     watchCopyRenderable: function() {
         if(this.app.UserConfig.get('copy')) {

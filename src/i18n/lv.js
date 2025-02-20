@@ -51,6 +51,7 @@ module.exports = {
     'Word Search': 'Vārda Meklēšana',
     'Clear Form': 'Attīrīt Formu', // 4.5
     'Select Book and Chapter:' : 'Izvēlieties grāmatu un nodaļu:', // 5.2
+    'Select Book, Chapter, Verse:': 'Izvēlieties grāmatu, nodaļu, pantu:', // 5.6.20
 
     // Context Links
     'Show full chapter': 'Atvērt visu nodaļu',

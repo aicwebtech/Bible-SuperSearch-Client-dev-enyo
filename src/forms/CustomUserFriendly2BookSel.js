@@ -41,7 +41,7 @@ module.exports = kind({
                     ]},
 
                     {tag: 'hr'},
-                    {kind: i18n, content: 'Select Book and Chapter:'},
+                    {kind: i18n, content: 'Select Book, Chapter, Verse:'},
                     {
                         name: 'reference_booksel', 
                         kind: BookSelectNew,

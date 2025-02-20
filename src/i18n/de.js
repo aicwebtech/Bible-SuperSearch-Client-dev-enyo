@@ -54,7 +54,7 @@ module.exports = {
     'Select Book, Chapter, Verse:' : 'Wählen Sie Buch, Kapitel, Vers:',
 
     // Context Links
-    'Show full chapter': 'Show full chapter',
+    'Show full chapter': 'Ganzes Kapitel anzeigen',
     'Chapter': 'Kapitel',
     'Show this verse': 'Zeigen Sie diesen Vers',
     'Show in context': 'Im Kontext anzeigen',

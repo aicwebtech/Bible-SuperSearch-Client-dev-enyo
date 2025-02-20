@@ -41,7 +41,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.6.10',
+    applicationVersion: '5.6.20alpha2',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -104,6 +104,7 @@ var App = Application.kind({
     utils: Utils,
     loadingPagePrevent: false,
     hasAjaxSuccess: false,
+    _blockAutoScroll: false,
     hasMouse: false, // use mouse events to detect
 
     useNewSelectors: false,
@@ -348,11 +349,6 @@ var App = Application.kind({
         }
 
         this.defaultBiblesRaw = utils.clone(this.defaultBibles);
-
-        // if(this.configs.textDisplayDefault && this.configs.textDisplayDefault != 'passage') {
-        //     this.UserConfig.set('render_style', this.configs.textDisplayDefault);
-        //     this.UserConfig.set('read_render_style', this.configs.textDisplayDefault);
-        // }
 
         if(
             this.configs.parallelBibleLimitByWidth && 

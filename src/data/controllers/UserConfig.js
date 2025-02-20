@@ -25,7 +25,15 @@ module.exports = kind({
         if(userConfigs) {
             try {                
                 var userConfigs = userConfigs ? JSON.parse(userConfigs) : {};
+
+                // this.log('userConfigs', userConfigs);
+
+                if(this.app.configs.omitUserLanguage) {
+                    userConfigs.locale = this.app.configs.language;
+                }
+
                 this.model.set(userConfigs);
+                // this.log('render_style', this.model.get('render_style'));
             } 
             catch(e) {
                 console.log('error loading configs', e);
@@ -34,8 +42,21 @@ module.exports = kind({
         }
     }, 
     save: function() {
+        if(!this.app.configs.saveUserSettings) {
+            return;
+        }
+
+        var configs = this.model.raw();
+
+        if(configs.copy) {
+            configs.copy_render_style = configs.render_style;
+        } else {
+            configs.read_render_style = configs.render_style;
+        }
+        
+        // this.log('userConfigs', configs);
         this.set('locale', this.app.get('locale'));
-        localStorage.setItem(this.lsUrl, JSON.stringify( this.model.raw() ));
+        localStorage.setItem(this.lsUrl, JSON.stringify( configs ));
     },
     /*
      * @private

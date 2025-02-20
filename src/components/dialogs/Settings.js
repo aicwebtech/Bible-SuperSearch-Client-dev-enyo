@@ -53,15 +53,15 @@ module.exports = kind({
             trueComponent: {
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
-                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;', noTap: true},
-                    {kind: i18n, tag: 'span', content: 'Highlight', noTap: true}
+                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
+                    {kind: i18n, tag: 'span', content: 'Highlight'}
                 ]
             },        
             falseComponent: {
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
-                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;', noTap: true},
-                    {kind: i18n, tag: 'span', content: 'Highlight', noTap: true}
+                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
+                    {kind: i18n, tag: 'span', content: 'Highlight'}
                 ]
             },
             help: true,
@@ -78,15 +78,15 @@ module.exports = kind({
             trueComponent: {
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
-                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;', helpTap: true},
-                    {kind: i18n, tag: 'span', content: 'Red Letter', helpTap: true}
+                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
+                    {kind: i18n, tag: 'span', content: 'Red Letter'}
                 ]
             },        
             falseComponent: {
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
-                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;', helpTap: true},
-                    {kind: i18n, tag: 'span', content: 'Red Letter', helpTap: true}
+                    {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
+                    {kind: i18n, tag: 'span', content: 'Red Letter'}
                 ]
             },
             help: true,
@@ -385,6 +385,7 @@ module.exports = kind({
 
         this.$.ConfirmDialog.confirm(msg, function(confirm) {
             if(confirm) {
+                t.app.set('_blockAutoScroll', true);
                 t.app.UserConfig.clear();
             }
         });
@@ -401,9 +402,7 @@ module.exports = kind({
         this.populateList();
         this.$.ListContainer.render();
     },
-
     ignoreTap: function(inSender, inEvent) {
-        this.log();
         inEvent.preventDefault();
         return true;
     },

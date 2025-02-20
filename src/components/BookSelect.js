@@ -101,7 +101,7 @@ module.exports = kind({
                     });
                 }
             } else {            
-                var Book = this._getBookById(bookId);
+                var Book = this.app.getBook(bookId);
                 var chapters = parseInt(Book.chapters, 10);
                 this.$.Chapter.destroyClientControls();
                 

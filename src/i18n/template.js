@@ -65,6 +65,7 @@ module.exports = {
     'Word Search': '',
     'Clear Form': '', 
     'Select Book and Chapter:' : '', 
+    'Select Book, Chapter, Verse:' : '', // 5.6.20
 
     // Context Links
     'Show full chapter': '',

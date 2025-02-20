@@ -32,7 +32,8 @@ var defaultConfig = {
     'resultsList': false,
     'resultsListClickScroll': false,
     'changeLanguageClearForm': true,
-
+    'saveUserSettings': false,
+    'omitUserLanguage': false,
 
     _urlDefaultNotice: function() {
         if(window.console) {

@@ -493,7 +493,14 @@ module.exports = kind({
             // return (value && value != 0 && value != false) ? true : false;
         }},         
         {from: 'app.UserConfig.copy', to: '$.copy_toggle.value', oneWay: false, transform: function(value, dir) {
-            // console.log('FormatButtons copy_toggle', value, dir);
+            console.log('FormatButtons copy_toggle', value, dir);
+
+            if(dir == 2) {
+                var rscache = value ? 'read_render_style' : 'copy_render_style';
+                var rs = this.app.UserConfig.get('render_style');
+                this.app.UserConfig.set(rscache, rs);
+            }
+
             return value;
             // return (value && value != 0 && value != false) ? true : false;
         }},        
