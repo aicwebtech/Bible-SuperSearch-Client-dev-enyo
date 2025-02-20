@@ -53,6 +53,7 @@ module.exports = {
     'Word Search': 'शब्द खोज',
     'Clear Form': 'स्पष्ट प्रपत्र', // 4.5
     'Select Book and Chapter:' : 'पुस्तक और अध्याय का चयन करें', // 5.2
+    'Select Book, Chapter, Verse:' : 'पुस्तक, अध्याय, श्लोक का चयन करेंः',
 
     // Context Links
     'Show full chapter': 'पूरा अध्याय दिखाएँ',
@@ -167,6 +168,8 @@ module.exports = {
     'Highlight': 'प्रमुखता से दिखाना',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'कीवर्ड को हाइलाइट करना अक्षम करें',
     'Enable Highlighting of Keywords': 'कीवर्ड को हाइलाइट करना सक्षम करें',
+    'Hide Parallel Search Errors': 'समानांतर खोज त्रुटियाँ छिपाएँ', // 5.6.20
+    'Show Parallel Search Errors': 'समानांतर खोज त्रुटियाँ दिखाएँ', // 5.6.20
     'Print': 'छाप',
     'Printer Friendly': 'प्रिंटर अनुकूल',
     'Help': 'मदद',
@@ -218,6 +221,7 @@ module.exports = {
     'Language' : 'भाषा', // 5.0
     'Text Display': 'पाठ प्रदर्शन', // 5.0
     'Font Style': 'लिपि शैली', // 5.0
+    'This will reset the settings to defaults.':'यह सेटिंग्स को डिफ़ॉल्ट पर रीसेट कर देगा।', // 5.6.20
 
     // Result and error messages
     
@@ -419,6 +423,7 @@ module.exports = {
     'Okay': 'ठीक है',
     'Old': 'पुराना',
     'New': 'नया',
+    'Reset': 'रीसेट', // 5.6.20
 
     'Are you sure?': 'क्या आपको यकीन है',
     'Are you sure you want to delete': 'क्या आप आश्वस्त है कि आपको डिलीट करना है',
@@ -433,6 +438,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'कृपया और जोड़ने से पहले कुछ बुकमार्क हटा दें',
     'This bookmark name already exists.': 'यह बुकमार्क नाम पहले से मौजूद है',
+    'Bookmark name is required.': 'बुकमार्क नाम आवश्यक है।', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'खोजों को सीमित करना',

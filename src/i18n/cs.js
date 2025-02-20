@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'Omezit vyhledávání na', 
     'Word Search': 'Vyhledávání Slov',
     'Clear Form': 'Vymazat Formulář', 
-    'Select Book and Chapter:' : 'Vyberte Knihu a Kapitolu:', 
+    'Select Book and Chapter:' : 'Vyberte Knihu a Kapitolu:',
+    'Select Book, Chapter, Verse:' : 'Vyberte Knihu, Kapitolu, Verš:',
 
     // Context Links
     'Show full chapter': 'Zobrazit celou kapitolu',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'Zvýraznit',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Zakázat Zvýraznění Klíčových Slov',
     'Enable Highlighting of Keywords': 'Povolit Zvýraznění Klíčových Slov',
+    'Hide Parallel Search Errors': 'Skrýt Chyby Paralelního Vyhledávání', // 5.6.20
+    'Show Parallel Search Errors': 'Zobrazit Chyby Paralelního Vyhledávání', // 5.6.20
     'Print': 'Tisk',
     'Printer Friendly': 'Vhodné pro Tiskárnu',
     'Help': 'Pomoc',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'Nastavení', 
     'Language' : 'Jazyk', 
     'Text Display': 'Zobrazení Textu', 
-    'Font Style': 'Styl Fontu', 
+    'Font Style': 'Styl Fontu',
+    'This will reset the settings to defaults.':'Tím se nastavení obnoví na výchozí.', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'Dobře',
     'Old': 'Starý',
     'New': 'Nový',
+    'Reset': 'Resetovat', // 5.6.20
 
     'Are you sure?': 'Jsi si jistá?',
     'Are you sure you want to delete': 'Jste si jistí, že to chcete smazat',
@@ -441,13 +446,14 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Tím smažete veškerou historii.',
     'This will delete all bookmarks.': 'Tímto smažete všechny záložky.',
-    'Move to Current': '',
+    'Move to Current': 'Přesunout na Aktuální',
 
     'Bookmark': 'Záložka do knihy',
     'Bookmarks': 'Záložky',
 
     'Please delete some bookmarks before adding more.': 'Před přidáním dalších prosím odstraňte některé záložky.',
     'This bookmark name already exists.': 'Tento název záložky již existuje.',
+    'Bookmark name is required.': 'Název záložky je vyžadován.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Omezení Vyhledávání',

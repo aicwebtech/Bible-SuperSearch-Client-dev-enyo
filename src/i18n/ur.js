@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'تلاش کو محدود کریں۔', 
     'Word Search': 'لفظ کی تلاش',
     'Clear Form': 'فارم صاف کریں۔', 
-    'Select Book and Chapter:' : 'کتاب اور باب کا انتخاب کریں:', 
+    'Select Book and Chapter:' : 'کتاب اور باب کا انتخاب کریں:',
+    'Select Book, Chapter, Verse:' : 'کتاب، باب، آیت منتخب کریں',
 
     // Context Links
     'Show full chapter': 'پورا باب دکھائیں۔',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'نمایاں کریں۔',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'مطلوبہ الفاظ کو نمایاں کرنا غیر فعال کریں۔',
     'Enable Highlighting of Keywords': 'مطلوبہ الفاظ کو نمایاں کرنے کو فعال کریں۔',
+    'Hide Parallel Search Errors': 'متوازی تلاش کی غلطیوں کو چھپائیں', // 5.6.20
+    'Show Parallel Search Errors': 'متوازی تلاش کی غلطیاں دکھائیں', // 5.6.20
     'Print': 'پرنٹ کریں',
     'Printer Friendly': 'پرنٹر دوستانہ',
     'Help': 'مدد',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'ترتیبات', 
     'Language' : 'زبان', 
     'Text Display': 'ٹیکسٹ ڈسپلے', 
-    'Font Style': 'لکھائی کا انداز', 
+    'Font Style': 'لکھائی کا انداز',
+    'This will reset the settings to defaults.':'یہ ترتیبات کو ڈیفالٹس پر دوبارہ ترتیب دے گا۔.', // 5.6.20 
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'ٹھیک ہے',
     'Old': 'پرانا',
     'New': 'نئی',
+    'Reset': 'ری سیٹ', // 5.6.20
 
     'Are you sure?': 'کیا تمہیں یقین ہے؟',
     'Are you sure you want to delete': 'کیا آپ واقعی حذف کرنا چاہتے ہیں۔',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'مزید شامل کرنے سے پہلے براہ کرم کچھ بک مارکس کو حذف کر دیں۔',
     'This bookmark name already exists.': 'یہ بک مارک نام پہلے سے موجود ہے۔',
+    'Bookmark name is required.': 'بک مارک کا نام درکار ہے۔.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'تلاشوں کو محدود کرنا',

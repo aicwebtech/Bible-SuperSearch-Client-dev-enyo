@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'Zuia utafutaji kwa', 
     'Word Search': 'Utafutaji wa Neno',
     'Clear Form': 'Futa Fomu', 
-    'Select Book and Chapter:' : 'Chagua Kitabu na Sura', 
+    'Select Book and Chapter:' : 'Chagua Kitabu na Sura',
+    'Select Book, Chapter, Verse:' : 'Chagua Kitabu, Sura, Aya:',
 
     // Context Links
     'Show full chapter': 'Onyesha sura kamili',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'Kuonyesha',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Zima Uangaziaji wa Maneno Muhimu',
     'Enable Highlighting of Keywords': 'Washa Uangaziaji wa Maneno Muhimu',
+    'Hide Parallel Search Errors': 'Ficha Makosa Sambamba ya Utafutaji', // 5.6.20
+    'Show Parallel Search Errors': 'Onyesha Makosa Sambamba ya Utafutaji', // 5.6.20
     'Print': 'Chapisha',
     'Printer Friendly': 'Kirafiki Printer',
     'Help': 'Msaada',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'Mipangilio', 
     'Language' : 'Lugha', 
     'Text Display': 'Onyesho la Maandishi', 
-    'Font Style': 'Mtindo wa Fonti', 
+    'Font Style': 'Mtindo wa Fonti',
+    'This will reset the settings to defaults.':'Hii itaweka upya mipangilio kwa chaguo-msingi.', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'Sawa',
     'Old': 'Mzee',
     'New': 'Mpya',
+    'Reset': 'Kuweka upya', // 5.6.20
 
     'Are you sure?': 'Una uhakika?',
     'Are you sure you want to delete': 'Je, una uhakika unataka kufuta',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Tafadhali futa baadhi ya vialamisho kabla ya kuongeza zaidi.',
     'This bookmark name already exists.': 'Jina la alamisho hili tayari lipo.',
+    'Bookmark name is required.': 'Jina la alamisho linahitajika.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Kupunguza Utafutaji',

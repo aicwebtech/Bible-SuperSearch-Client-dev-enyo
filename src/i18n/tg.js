@@ -66,7 +66,8 @@ module.exports = {
     'Restrict search to': 'Ҷустуҷӯро маҳдуд кунед', 
     'Word Search': 'Ҷустуҷӯи калима',
     'Clear Form': 'Шакли равшан', 
-    'Select Book and Chapter:' : 'Китоб ва бобро интихоб кунед:', 
+    'Select Book and Chapter:' : 'Китоб ва бобро интихоб кунед:',
+    'Select Book, Chapter, Verse:' : 'Китоб, боб, оятро интихоб кунед:',
 
     // Context Links
     'Show full chapter': 'Боби пурраро нишон диҳед',
@@ -183,6 +184,8 @@ module.exports = {
     'Highlight': 'Таъкид',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Тавсифи маъюбии калимаҳои калидӣ',
     'Enable Highlighting of Keywords': 'Тавсифи калимаҳои калидӣ',
+    'Hide Parallel Search Errors': 'Хатогиҳои ҷустуҷӯи параллели пинҳон кунед', // 5.6.20
+    'Show Parallel Search Errors': 'Хатогиҳои ҷустуҷӯи параллелро нишон диҳед', // 5.6.20
     'Print': 'Чоп кардан',
     'Printer Friendly': 'Чопгар Дӯстона',
     'Help': 'Кӯмак',
@@ -234,7 +237,8 @@ module.exports = {
     'Settings' : 'Танзимоти', 
     'Language' : 'Забон', 
     'Text Display': 'Намоиши матн', 
-    'Font Style': 'Услуби шрифт', 
+    'Font Style': 'Услуби шрифт',
+    'This will reset the settings to defaults.':'Ин танзимотро ба пешфарзҳо барқарор мекунад.', // 5.6.20 
 
     // Result and error messages
     
@@ -436,6 +440,7 @@ module.exports = {
     'Okay': 'Хуб',
     'Old': 'Кӯҳна',
     'New': 'Нав',
+    'Reset': 'Баргардонидан',//check translation // 5.6.20
 
     'Are you sure?': 'Оё шумо боварӣ доред?',
     'Are you sure you want to delete': 'Оё шумо боварӣ доред, ки шумо мехоҳед нест кунед',
@@ -450,6 +455,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Лутфан пеш аз илова кардани бештар баъзе хатчӯбҳоро нест кунед.',
     'This bookmark name already exists.': 'Ин номи хатчӯб аллакай вуҷуд дорад.',
+    'Bookmark name is required.': 'Номи хатчӯб лозим аст.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Ҷустуҷӯҳои маҳдудкунанда',

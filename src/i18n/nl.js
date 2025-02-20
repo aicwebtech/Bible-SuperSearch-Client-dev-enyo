@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'Zoekopdracht beperken tot', 
     'Word Search': 'Woorden Zoeken',
     'Clear Form': 'Duidelijk Formulier', 
-    'Select Book and Chapter:' : 'Selecteer Boek en Hoofdstuk:', 
+    'Select Book and Chapter:' : 'Selecteer Boek en Hoofdstuk:',
+    'Select Book, Chapter, Verse:' : 'Selecteer Boek, Hoofdstuk, Vers:',
 
     // Context Links
     'Show full chapter': 'Toon het volledige hoofdstuk',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'Hoogtepunt',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Schakel het markeren van zoekwoorden uit',
     'Enable Highlighting of Keywords': 'Markering van trefwoorden inschakelen',
+    'Hide Parallel Search Errors': 'Parallelle Zoekfouten Verbergen', // 5.6.20
+    'Show Parallel Search Errors': 'Toon Parallelle Zoekfouten', // 5.6.20
     'Print': 'Afdrukken',
     'Printer Friendly': 'Printervriendelijk',
     'Help': 'Hulp',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'Instellingen', 
     'Language' : 'Taal', 
     'Text Display': 'Tekstweergave', 
-    'Font Style': 'Lettertype', 
+    'Font Style': 'Lettertype',
+    'This will reset the settings to defaults.':'Hierdoor worden de instellingen teruggezet naar standaardinstellingen.', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'Oké',
     'Old': 'Oud',
     'New': 'Nieuw',
+    'Reset': 'Reset',//check translation // 5.6.20
 
     'Are you sure?': 'Weet je het zeker?',
     'Are you sure you want to delete': 'Weet je zeker dat je wilt verwijderen',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Verwijder enkele bladwijzers voordat u er meer toevoegt.',
     'This bookmark name already exists.': 'Deze bladwijzernaam bestaat al.',
+    'Bookmark name is required.': 'Bladwijzernaam is verplicht.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Zoekopdrachten beperken',

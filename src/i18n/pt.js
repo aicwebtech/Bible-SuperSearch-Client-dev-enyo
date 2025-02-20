@@ -50,6 +50,7 @@ module.exports = {
     'Word Search': 'Procura de palavras',
     'Clear Form': 'Forma Limpa', // 4.5
     'Select Book and Chapter:' : 'Selecione Livro e Capítulo', // 5.2
+    'Select Book, Chapter, Verse:' : 'Selecione Livro, Capítulo, Versículo:',
 
     // Context Links
     'Show full chapter': 'Mostrar capítulo completo',
@@ -69,7 +70,7 @@ module.exports = {
     'Old Testament': 'Antigo Testamento',
     'New Testament': 'Novo Testamento',
     'Law': 'Lei',
-    'History Books': 'Livros de história', // 5.5 Can translate as 'History'
+    'History Books': 'Livros de História', // 5.5 Can translate as 'History'
     'History': 'História',
     'Wisdom & Poetry': 'Sabedoria e Poesia',
     'Prophets Books': 'Livros dos Profetas', // 5.5 Can translate as 'Prophets'
@@ -159,16 +160,18 @@ module.exports = {
     'EZ Copy': 'Cópia Fácil',  // 'Easy Copy'
     'Read Display': 'Ler Exibição',
     'Italics': 'Itálico',                    // * Button text, please keep translation short!
-    'Disable Italization of Added Words' : 'Desativar itálico de palavras adicionadas',
-    'Enable Italization of Added Words': 'Habilitar itálico de palavras adicionadas',
-    'Disable Strong\'s Numbers': 'Desativar números fortes',
-    'Enable Strong\'s Numbers': 'Ativar números fortes',
-    'Red Letter': 'Letra vermelha',
-    'Disable Red Letter': 'Desativar letra vermelha',
-    'Enable Red Letter': 'Ativar letra vermelha',
+    'Disable Italization of Added Words' : 'Desativar Itálico de Palavras Adicionadas',
+    'Enable Italization of Added Words': 'Habilitar Itálico de Palavras Adicionadas',
+    'Disable Strong\'s Numbers': 'Desativar Números Fortes',
+    'Enable Strong\'s Numbers': 'Ativar Números Fortes',
+    'Red Letter': 'LetraVvermelha',
+    'Disable Red Letter': 'Desativar Letra Vermelha',
+    'Enable Red Letter': 'Ativar Letra Vermelha',
     'Highlight': 'Destaque',                   // * Button text, please keep translation short!
-    'Disable Highlighting of Keywords': 'Desativar destaque de palavras-chave',
-    'Enable Highlighting of Keywords': 'Ativar destaque de palavras-chave',
+    'Disable Highlighting of Keywords': 'Desativar Destaque de Palavras-chave',
+    'Enable Highlighting of Keywords': 'Ativar Destaque de Palavras-chave',
+    'Hide Parallel Search Errors': 'Ocultar Erros de Pesquisa Paralela', // 5.6.20
+    'Show Parallel Search Errors': 'Mostrar os Erros de Pesquisa Paralela', // 5.6.20
     'Print': 'Imprimir',
     'Printer Friendly': 'Compatível com impressão',
     'Help': 'Ajuda',
@@ -220,6 +223,7 @@ module.exports = {
     'Language' : 'Language', // 5.0
     'Text Display': 'Exibição de Texto', // 5.0
     'Font Style': 'Estilo de Fonte', // 5.0
+    'This will reset the settings to defaults.':'Isso redefinirá as configurações para os padrões.', // 5.6.20
 
     // Result and error messages
     
@@ -303,7 +307,7 @@ module.exports = {
     'Overcome': 'Superar',
     'Prayerful': 'Em oração',
     'Protected': 'Protegido',
-    'Sick or in Pain': 'Doente ou com dor',
+    'Sick or in Pain': 'Doente ou com Dor',
     'Sorrowful': 'Triste',
     'Tempted': 'Tentado', 
     'Thankful': 'Grato',
@@ -317,7 +321,7 @@ module.exports = {
     'Start': 'Começar',
     'Bible Start Guide': 'Guia de Início da Bíblia',
     'New to the Bible?': 'New to the Bible?',//check translation
-    'Not Sure Where to Begin?' : 'Não sabe por onde começar?',
+    'Not Sure Where to Begin?' : 'Não Sabe por Onde Começar?',
     'Life and Teachings of Jesus Christ': 'Vida e Ensinamentos de Jesus Cristo',
     'Basic Christian Beliefs': 'Crenças Cristãs Básicas',
     'Creation and the Fall of Man': 'Criação e a Queda do Homem',
@@ -333,9 +337,9 @@ module.exports = {
 
     // Bible downloads dialog
     'Download': 'Download',//check translation
-    'Bible Downloads': 'Downloads da Bíblia',
+    'Bible Downloads': 'Downloads da Bíblia',//check translation
     'Select Bible(s)' : 'Selecione Bíblia(s)',
-    'Select a Format': 'Selecione um formato',
+    'Select a Format': 'Selecione um Formato',
     'Rendering': 'Renderização',
     'Rendering Bibles, this may take some time': 'Renderizando Bíblias, isso pode levar algum tempo',
     'Rendering is Complete': 'A Renderização está Concluída',
@@ -346,7 +350,7 @@ module.exports = {
     'Please select a format': 'Selecione um formato',
     'Are you sure you want to exit?  This will end the current download.': 'Você tem certeza que quer sair? Isso encerrará o download atual.',
     'Plain Text' : 'Texto Simples',
-    'Machine-readable Plain Text' : 'Texto simples legível por máquina',
+    'Machine-readable Plain Text' : 'Texto Simples Legível por Máquina',
     'Spreadsheet' : 'Planilha',
     'Databases': 'Bancos de dados',
 
@@ -366,10 +370,10 @@ module.exports = {
     'Failed to copy': 'Falha ao copiar', // 5.2.3
 
     // Quick Start Help Dialog
-    'Quick Start Guide': 'Guia rápido',
-    'User\'s Manual': 'Manual do usuário',
+    'Quick Start Guide': 'Guia Rápido',
+    'User\'s Manual': 'Manual do Usuário',
     'Wildcard': 'Curinga',
-    'Basic Searches' : 'Pesquisas básicas',
+    'Basic Searches' : 'Pesquisas Básicas',
     'Advanced Searches using Boolean': 'Pesquisas Avançadas usando Booleano',
     'Select' : 'Selecione',
     'Operators': 'Operadores',
@@ -422,6 +426,7 @@ module.exports = {
     'Okay': 'OK',
     'Old': 'Velho',
     'New': 'Novo',
+    'Reset': 'Redefinir', // 5.6.20
 
     'Are you sure?': 'Tem certeza?',
     'Are you sure you want to delete': 'Tem certeza de que deseja excluir',
@@ -436,6 +441,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Exclua alguns favoritos antes de adicionar mais.',
     'This bookmark name already exists.': 'Este nome de marcador já existe.',
+    'Bookmark name is required.': 'O nome do marcador é necessário.',//check translation // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Limitando Pesquisas',

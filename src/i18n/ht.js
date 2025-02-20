@@ -1,3 +1,5 @@
+Skipping language due to translation issues.
+
 // 96 checks
 
 module.exports = {
@@ -66,7 +68,8 @@ module.exports = {
     'Restrict search to': 'Mete restriksyon sou rechèch la',//check translation 
     'Word Search': 'Rechèch mo',
     'Clear Form': 'Fòm klè',
-    'Select Book and Chapter:' : 'Chwazi liv ak chapit:', 
+    'Select Book and Chapter:' : 'Chwazi liv ak chapit:',
+    'Select Book, Chapter, Verse:' : '',
 
     // Context Links
     'Show full chapter': 'Montre tout chapit la',
@@ -183,6 +186,8 @@ module.exports = {
     'Highlight': 'Mete aksan sou',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Enfim Sur Mot yo',//check translation
     'Enable Highlighting of Keywords': 'Pèmèt Mete aksan sou Mo kle Yo',
+    'Hide Parallel Search Errors': '', // 5.6.20
+    'Show Parallel Search Errors': '', // 5.6.20
     'Print': 'Enprime',
     'Printer Friendly': 'Enprimant Zanmitay',
     'Help': 'Ede',
@@ -234,7 +239,8 @@ module.exports = {
     'Settings' : 'Anviwònman',//check translation 
     'Language' : 'Lang', 
     'Text Display': 'Ekspozisyon tèks', 
-    'Font Style': 'Polis Style',//check translation 
+    'Font Style': 'Polis Style',//check translation
+    'This will reset the settings to defaults.':'', // 5.6.20
 
     // Result and error messages
     
@@ -436,6 +442,7 @@ module.exports = {
     'Okay': 'Oke',
     'Old': 'Ansyen',
     'New': 'Nouvo',
+    'Reset': '', // 5.6.20
 
     'Are you sure?': 'Èske w sèten?',
     'Are you sure you want to delete': 'Èske ou sèten ou vle efase',
@@ -450,6 +457,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Tanpri efase kèk signets anvan ou ajoute plis.',//check translation
     'This bookmark name already exists.': 'Non signets sa a deja egziste.',
+    'Bookmark name is required.': '', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Limite Rechèch',

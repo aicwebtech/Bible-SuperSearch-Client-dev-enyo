@@ -50,7 +50,8 @@ module.exports = {
     'Restrict search to': 'Keresés korlátozása erre:', 
     'Word Search': 'Szó keresése',
     'Clear Form': 'Tiszta forma', 
-    'Select Book and Chapter:' : 'Válassza a Könyv és fejezet lehetőséget', 
+    'Select Book and Chapter:' : 'Válassza a Könyv és fejezet lehetőséget',
+    'Select Book, Chapter, Verse:' : 'Válasszon Könyvet, Fejezetet, Verset:',//check translation 
 
     // Context Links
     'Show full chapter': 'Teljes fejezet megjelenítése',
@@ -167,6 +168,8 @@ module.exports = {
     'Highlight': 'Kiemel',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'A kulcsszavak kiemelésének letiltása',
     'Enable Highlighting of Keywords': 'Kulcsszavak kiemelésének engedélyezése',
+    'Hide Parallel Search Errors': 'Párhuzamos Keresési Hibák Elrejtése', // 5.6.20
+    'Show Parallel Search Errors': 'Párhuzamos Keresési Hibák Megjelenítése', // 5.6.20
     'Print': 'Nyomtatás',
     'Printer Friendly': 'Nyomtatóbarát',
     'Help': 'Segítség',
@@ -218,7 +221,8 @@ module.exports = {
     'Settings' : 'Beállítások', 
     'Language' : 'Nyelv', 
     'Text Display': 'Szöveg Megjelenítése', 
-    'Font Style': 'Betű Stílus', 
+    'Font Style': 'Betű Stílus',
+    'This will reset the settings to defaults.':'Ezzel visszaállítja a beállításokat az alapértelmezett értékekre.', // 5.6.20
 
     // Result and error messages
     
@@ -420,6 +424,7 @@ module.exports = {
     'Okay': 'oké',
     'Old': 'Régi',
     'New': 'Új',
+    'Reset': 'Visszaállítás', // 5.6.20
 
     'Are you sure?': 'Biztos vagy ebben?',
     'Are you sure you want to delete': 'Biztos vagy benne, hogy törölni akarod',
@@ -434,6 +439,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Kérjük, töröljön néhány könyvjelzőt, mielőtt továbbiakat adna hozzá.',
     'This bookmark name already exists.': 'Ez a könyvjelzőnév már létezik.',
+    'Bookmark name is required.': 'Könyvjelző neve szükséges.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Keresések Korlátozása',

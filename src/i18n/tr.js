@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'Aramayı şununla sınırlandır:', 
     'Word Search': 'Kelime Arama',
     'Clear Form': 'Formu Temizle', 
-    'Select Book and Chapter:' : 'Kitabı ve Bölümü Seçin:', 
+    'Select Book and Chapter:' : 'Kitabı ve Bölümü Seçin:',
+    'Select Book, Chapter, Verse:' : 'Kitap, Bölüm, Ayet Seçiniz:',
 
     // Context Links
     'Show full chapter': 'Tüm bölümü göster',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'Vurgulamak',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Anahtar Kelimelerin Vurgulanmasını Devre Dışı Bırak',
     'Enable Highlighting of Keywords': 'Anahtar Kelimelerin Vurgulanmasını Etkinleştir',
+    'Hide Parallel Search Errors': 'Paralel Arama Hatalarını Gizle', // 5.6.20
+    'Show Parallel Search Errors': 'Paralel Arama Hatalarını Göster', // 5.6.20
     'Print': 'Yazdır',
     'Printer Friendly': 'Yazıcı Dostu',
     'Help': 'Yardım',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'Ayarlar', 
     'Language' : 'Dil', 
     'Text Display': 'Metin görüntüleme', 
-    'Font Style': 'Yazı Stili', 
+    'Font Style': 'Yazı Stili',
+    'This will reset the settings to defaults.':'Bu, ayarları varsayılanlara sıfırlayacaktır.', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'Tamam',
     'Old': 'Eskimiş',
     'New': 'Yeni',
+    'Reset': 'Sıfırla', // 5.6.20
 
     'Are you sure?': 'Emin misin?',
     'Are you sure you want to delete': 'Silmek istediğine emin misin',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Lütfen daha fazlasını eklemeden önce bazı yer işaretlerini silin.',
     'This bookmark name already exists.': 'Bu yer imi adı zaten mevcut.',
+    'Bookmark name is required.': 'Yer imi adı gereklidir.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Aramaları Sınırlama',

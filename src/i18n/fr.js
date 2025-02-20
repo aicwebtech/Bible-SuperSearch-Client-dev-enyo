@@ -46,6 +46,7 @@ module.exports = {
     'Word Search': 'Cherchez par mot',
     'Clear Form': 'Forme Claire', // 4.5
     'Select Book and Chapter:' : 'Sélectionnez le Livre et le Chapitre:', // 5.2
+    'Select Book, Chapter, Verse:' : 'Sélectionnez Livre, Chapitre, Verset:',
 
     // Context Links
     'Show full chapter': 'Afficher le chapitre complet',
@@ -161,6 +162,8 @@ module.exports = {
     'Highlight': 'Surligner',
     'Disable Highlighting of Keywords': 'Désactiver la mise en évidence des mots clés',
     'Enable Highlighting of Keywords': 'Activer la mise en évidence des mots clés',
+    'Hide Parallel Search Errors': 'Masquer les Erreurs de Recherche Parallèle', // 5.6.20
+    'Show Parallel Search Errors': 'Afficher les Erreurs de Recherche Parallèle', // 5.6.20
     'Print': 'Imprimer',
     'Printer Friendly': 'Compatible à l\'impression',
     'Help': 'Aide',
@@ -211,6 +214,7 @@ module.exports = {
     'Language' : 'Langue', // 5.0
     'Text Display': 'Style de texte', // 5.0
     'Font Style': 'Le style de police', // 5.0
+    'This will reset the settings to defaults.':'Cela réinitialisera les paramètres aux valeurs par défaut.', // 5.6.20
     
     // Result and error messages
     
@@ -413,6 +417,7 @@ module.exports = {
      'Okay': 'D\'accord',
      'Old': 'Vieux',
      'New': 'Nouveau',
+     'Reset': 'Réinitialiser', // 5.6.20
 
      'Are you sure?': 'Es-tu sûr?',
      'Are you sure you want to delete': 'Etes-vous sûr que vous voulez supprimer',
@@ -427,6 +432,7 @@ module.exports = {
 
      'Please delete some bookmarks before adding more.': 'Veuillez supprimer certains favoris avant d\'en ajouter d\'autres.',
      'This bookmark name already exists.': 'Ce nom de favori existe déjà',
+     'Bookmark name is required.': 'Le nom du signet est requis.', // 5.6.20
 
      // Quick start dialog: Limiting searches
      'Limiting Searches': 'Limiter les recherches',

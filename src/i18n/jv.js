@@ -1,3 +1,5 @@
+Skipping language due to translation issues.
+
 module.exports = {
     meta: {
         // 2 or 3 character language code, lower-case, ie 'es'
@@ -64,7 +66,8 @@ module.exports = {
     'Restrict search to': 'Nggambarake panelusuran kanggo',
     'Word Search': 'Panelusuran Tembung',
     'Clear Form': 'Wangun sing cetha', 
-    'Select Book and Chapter:' : 'Pilih Buku lan Bab', 
+    'Select Book and Chapter:' : 'Pilih Buku lan Bab',
+    'Select Book, Chapter, Verse:' : '',
 
     // Context Links
     'Show full chapter': 'Tampilake bab lengkap',
@@ -181,6 +184,8 @@ module.exports = {
     'Highlight': '',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': '',
     'Enable Highlighting of Keywords': '',
+    'Hide Parallel Search Errors': '', // 5.6.20
+    'Show Parallel Search Errors': '', // 5.6.20
     'Print': '',
     'Printer Friendly': '',
     'Help': '',
@@ -232,7 +237,8 @@ module.exports = {
     'Settings' : '', 
     'Language' : '', 
     'Text Display': '', 
-    'Font Style': '', 
+    'Font Style': '',
+    'This will reset the settings to defaults.':'', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +440,7 @@ module.exports = {
     'Okay': '',
     'Old': '',
     'New': '',
+    'Reset': '', // 5.6.20
 
     'Are you sure?': '',
     'Are you sure you want to delete': '',
@@ -448,6 +455,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': '',
     'This bookmark name already exists.': '',
+    'Bookmark name is required.': '', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': '',

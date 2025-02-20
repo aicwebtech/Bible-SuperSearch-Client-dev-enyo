@@ -44,7 +44,8 @@ module.exports = {
     'Restrict search to': 'Prevent ye maties from searchin\' outside of', 
     'Word Search' : 'Pyllage ye wordes',
     'Clear Form': 'Sweepe ye Decke', // 4.5
-    'Select Book and Chapter:' : 'Select ye booke and cheste:', // 5.2
+    'Select Book and Chapter:' : 'Selecte ye booke and cheste:', // 5.2
+    'Select Book, Chapter, Verse:' : 'Selecte ye Booke, Chapteer, Veerse:',
 
     // Context Links
     'Show full chapter': 'Reveale all thee cheste contents',
@@ -161,6 +162,8 @@ module.exports = {
     'Highlight': 'Marke',
     'Disable Highlighting of Keywords': 'Remove ye marke on ye founde treasure',
     'Enable Highlighting of Keywords': 'Showe ye marke on ye founde treasure',
+    'Hide Parallel Search Errors': '', // 5.6.20
+    'Show Parallel Search Errors': '', // 5.6.20
     'Print': 'Scrawl',
     'Printer Friendly': 'Scrawl like me first mate',
     'Help': 'Halpp',
@@ -226,6 +229,7 @@ module.exports = {
     'Language' : 'Manre of Speeche', // 5.0
     'Text Display': 'Bootie Showcasee', // 5.0
     'Font Style': 'Scripble Stilen', // 5.0
+    'This will reset the settings to defaults.':'', // 5.6.20
 
     'User\'s Manual': 'Arr, how me operate this thing?',
     
@@ -413,6 +417,7 @@ module.exports = {
     'Okay': 'Aheade',
     'Old': 'Ye Olde',
     'New': 'Neweth',
+    'Reset': '', // 5.6.20
 
     'Are you sure?': 'Yar really?',
     'Are you sure you want to delete': 'Yar really drown',
@@ -428,6 +433,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Pleaseth drown shome barkmate before addign new matey.',
     'This bookmark name already exists.': 'Yar barkmate is arready a matey.',
+    'Bookmark name is required.': '', // 5.6.20
 
     // Quick start dialog: Limitins searches
     'Limiting Searches': 'Refinin\' yer plunderin\'',

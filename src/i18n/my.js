@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'ရှာဖွေမှုကို ကန့်သတ်ပါ။', 
     'Word Search': 'စကားလုံးရှာဖွေမှု',
     'Clear Form': 'ဖောင်ရှင်းပါ။', 
-    'Select Book and Chapter:' : 'စာအုပ်နှင့် အခန်းကို ရွေးပါ။', 
+    'Select Book and Chapter:' : 'စာအုပ်နှင့် အခန်းကို ရွေးပါ။',
+    'Select Book, Chapter, Verse:' : 'စာအုပ်၊ အခန်း၊ အခန်းငယ်ကို ရွေးပါ-', 
 
     // Context Links
     'Show full chapter': 'အခန်း အပြည့်အစုံကို ပြပါ။',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'မီးမောင်းထိုးပြပါ။',                  // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'သော့ချက်စာလုံးများကို အသားပေးဖော်ပြခြင်းကို ပိတ်ပါ။',
     'Enable Highlighting of Keywords': 'သော့ချက်စာလုံးများကို အသားပေးဖော်ပြခြင်းကို ဖွင့်ပါ။',
+    'Hide Parallel Search Errors': 'Parallel Search Errors များကို ဝှက်ထားပါ',//check translation // 5.6.20
+    'Show Parallel Search Errors': 'Parallel Search Errors ကိုပြသပါ',//check translation // 5.6.20
     'Print': 'ပုံနှိပ်ပါ။',
     'Printer Friendly': 'အလွယ် ပုံနှိပ်ပါ။',
     'Help': 'ကူညီကြပါ',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'ဆက်တင်များ', 
     'Language' : 'ဘာသာစကား', 
     'Text Display': 'စာသားပြသမှု', 
-    'Font Style': 'ဖောင့်ပုံစံ', 
+    'Font Style': 'ဖောင့်ပုံစံ',
+    'This will reset the settings to defaults.':'၎င်းသည် ဆက်တင်များကို ပုံသေအဖြစ် ပြန်လည်သတ်မှတ်ပါမည်။', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'ကောင်းပြီ။',
     'Old': 'အဟောင်း',
     'New': 'အသစ်',
+    'Reset': 'ပြန်ညှိ',//check translation // 5.6.20
 
     'Are you sure?': 'သေချာလား?',
     'Are you sure you want to delete': 'you want to delete',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'နောက်ထပ်မထည့်မီ စာညှပ်အချို့ကို ဖျက်ပါ။',
     'This bookmark name already exists.': 'ဤစာညှပ်အမည် ရှိနှင့်ပြီးဖြစ်သည်။',
+    'Bookmark name is required.': 'စာညှပ်အမည် လိုအပ်ပါသည်။', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'ရှာဖွေမှုများကို ကန့်သတ်ခြင်း။',

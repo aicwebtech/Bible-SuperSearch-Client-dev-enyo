@@ -51,6 +51,7 @@ module.exports = {
     'Word Search': '搜索经文',
     'Clear Form': '清除表格', // 4.5
     'Select Book and Chapter:' : '选择书籍和章节', // 5.2
+    'Select Book, Chapter, Verse:' : '择书, 章节,诗句:',
 
 
     // Context Links
@@ -168,6 +169,8 @@ module.exports = {
     'Highlight': '突显',
     'Disable Highlighting of Keywords': '禁用突显关键词',
     'Enable Highlighting of Keywords': '启用突显关键词',
+    'Hide Parallel Search Errors': '隐藏并行搜索错误', // 5.6.20
+    'Show Parallel Search Errors': '显示并行搜索错误', // 5.6.20
     'Print': '打印',
     'Printer Friendly': '友善打印',
     'Help': '帮助',
@@ -218,6 +221,7 @@ module.exports = {
     'Language' : '语言', // 5.0
     'Text Display': '文字显示', // 5.0
     'Font Style': '字体', // 5.0
+    'This will reset the settings to defaults.':'这会将设置重置为默认设置。', // 5.6.20
     // Result and error messages
     
     // Your search produced (number of verses) results
@@ -418,6 +422,7 @@ module.exports = {
     'Okay': '好的',
     'Old': '老的',
     'New': '新的',
+    'Reset': '重置', // 5.6.20
 
     'Are you sure?': '你确定吗？',
     'Are you sure you want to delete': '你确定你要删除',
@@ -432,6 +437,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': '请先删除一些书签，然后再添加更多书签',
     'This bookmark name already exists.': '该书签名称已存在',
+    'Bookmark name is required.': '需要书签名称。', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Limiting Searches',

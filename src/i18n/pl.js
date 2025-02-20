@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'Ogranicz wyszukiwanie do', 
     'Word Search': 'Szukanie słowa',
     'Clear Form': 'Czysta forma', 
-    'Select Book and Chapter:' : 'Wybierz książkę i rozdział:', 
+    'Select Book and Chapter:' : 'Wybierz książkę i rozdział:',
+    'Select Book, Chapter, Verse:' : 'Wybierz Książka, Rozdział, Werset:',
 
     // Context Links
     'Show full chapter': 'Pokaż cały rozdział',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'Atrakcja',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Wyłącz Wyróżnianie słów Kluczowych',
     'Enable Highlighting of Keywords': 'Włącz Wyróżnianie słów Kluczowych',
+    'Hide Parallel Search Errors': 'Ukryj Równoległe Błędy Wyszukiwania', // 5.6.20
+    'Show Parallel Search Errors': 'Pokaż Błędy Wyszukiwania Równoległego', // 5.6.20
     'Print': 'Wydrukować',
     'Printer Friendly': 'Przyjazny dla drukarki',
     'Help': 'Pomoc',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'Ustawienia', 
     'Language' : 'Język', 
     'Text Display': 'Wyświetlanie Tekstu', 
-    'Font Style': 'Styl Czcionki', 
+    'Font Style': 'Styl Czcionki',
+    'This will reset the settings to defaults.':'Spowoduje to zresetowanie ustawień do ustawień domyślnych.', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'Dobra',
     'Old': 'Stary',
     'New': 'Nowy',
+    'Reset': 'Zresetuj', // 5.6.20
 
     'Are you sure?': 'Jesteś pewny?',
     'Are you sure you want to delete': 'Czy na pewno chcesz usunąć',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Przed dodaniem kolejnych usuń niektóre zakładki.',
     'This bookmark name already exists.': 'Ta nazwa zakładki już istnieje.',
+    'Bookmark name is required.': 'Wymagana jest nazwa zakładki.',//check translation // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Ograniczanie wyszukiwań',

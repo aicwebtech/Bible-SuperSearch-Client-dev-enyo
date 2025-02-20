@@ -51,6 +51,7 @@ module.exports = {
     'Word Search': 'Căutați ',
     'Clear Form': 'Resetați Forma', // 4.5
     'Select Book and Chapter:' : 'Selectați Carte și Capitol:', // 5.2
+    'Select Book, Chapter, Verse:' : 'Selectați Carte, Capitol, Verset:',
 
     // Context Links
     'Show full chapter': 'Afișați întregul capitol',
@@ -167,6 +168,8 @@ module.exports = {
     'Highlight': 'Evidențiere',
     'Disable Highlighting of Keywords': 'Dezactivați Evidențierea',
     'Enable Highlighting of Keywords': 'Acivați Evidențierea',
+    'Hide Parallel Search Errors': 'Ascundeți Erorile de Căutare Paralele', // 5.6.20
+    'Show Parallel Search Errors': 'Afișați Erorile de Căutare Paralele', // 5.6.20
     'Print': 'Printați',
     'Printer Friendly': 'Printare Ușoară',
     'Help': 'Ajtor',
@@ -217,6 +220,7 @@ module.exports = {
     'Language' : 'Limba', // 5.0
     'Text Display': 'Afișare Text', // 5.0
     'Font Style': 'Stilul Fontului', // 5.0
+    'This will reset the settings to defaults.':'Aceasta va reseta setările la valorile implicite.', // 5.6.20
 
     // Result and error messages
     
@@ -418,6 +422,7 @@ module.exports = {
     'Okay': 'Bine',
     'Old': 'Vechi',
     'New': 'Nou',
+    'Reset': 'Reinițializare', // 5.6.20
 
     'Are you sure?': 'Esti sigur',
     'Are you sure you want to delete': 'ești sigur că vrei să ștergi',
@@ -432,6 +437,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Vă rugăm să ștergeți câteva marcaje înainte de a adăuga altele',
     'This bookmark name already exists.': 'Acest nume de marcaj există deja',
+    'Bookmark name is required.': 'Numele mărcii de carte este necesar.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Limitarea căutărilor',
