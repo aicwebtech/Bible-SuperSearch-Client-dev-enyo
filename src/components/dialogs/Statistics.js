@@ -20,11 +20,11 @@ module.exports = kind({
     kind: Dialog,
     maxWidth: '800px',
     height: '575px',
-    classes: 'help_dialog',
+    classes: 'bss_help_dialog',
     bibleString: null,
 
     titleComponents: [
-        {classes: 'header', components: [
+        {classes: 'bss_header', components: [
             {kind: i18n, classes: 'bss_dialog_title', name: 'title', content: 'Settings'}, 
         ]}
     ],

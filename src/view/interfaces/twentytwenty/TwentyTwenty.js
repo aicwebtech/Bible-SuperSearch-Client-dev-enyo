@@ -16,7 +16,7 @@ module.exports = kind({
     //kind: FittableRows,
     kind: InterfaceBase,
     fit: true,
-    classes: 'interface_twentytwenty',
+    classes: 'bss_interface_twentytwenty',
     handlers: [
         {'onTapMenu': 'tapMenu'}
     ],

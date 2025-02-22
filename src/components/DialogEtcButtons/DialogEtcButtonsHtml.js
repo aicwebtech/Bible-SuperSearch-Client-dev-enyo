@@ -11,13 +11,13 @@ var i18n = require('../Locale/i18nContent');
 module.exports = kind({
     name: 'DialogEtcButtonsHtml',
     kind: Base,
-    classes: 'format_buttons_html',
+    classes: 'bss_format_buttons_html',
     onlyExtraButtons: true,
     
     components: [
         {
             kind: i18n,
-            classes: 'item help',
+            classes: 'bss_item bss_help',
             name: 'help',
             tag: 'span',
             ontap: 'handleHelp',
@@ -27,8 +27,8 @@ module.exports = kind({
             ]
         },
         {
-            classes: 'item advanced_toggle',
-            name: 'advanced_toggle',
+            classes: 'bss_item bss_advanced_toggle',
+            name: 'bss_advanced_toggle',
             kind: Toggle,
             trueTitle: 'Basic',
             falseTitle: 'Advanced',
@@ -37,7 +37,7 @@ module.exports = kind({
         },
         {
             kind: i18n,
-            classes: 'item sos',
+            classes: 'bss_item bss_sos',
             name: 'sos_button',
             content: 'Bible SOS',
             ontap: 'handleSos',
@@ -45,7 +45,7 @@ module.exports = kind({
         },        
         {
             kind: i18n,
-            classes: 'item start',
+            classes: 'bss_item bss_start',
             name: 'start_button',
             content: 'Start',
             ontap: 'handleStart',
@@ -53,7 +53,7 @@ module.exports = kind({
         },        
         {
             kind: i18n,
-            classes: 'item download',
+            classes: 'bss_item bss_download',
             name: 'download_button',
             ontap: 'handleDownload',
             attributes: {title: 'Bible Downloads'},

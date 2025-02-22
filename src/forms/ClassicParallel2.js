@@ -17,9 +17,9 @@ module.exports = kind({
     kind: FormBase,
 
     components: [
-        {kind: i18n, classes: 'center', content: 'Bible SuperSearch', classes: 'biblesupersearch_classic_title'},
+        {kind: i18n, classes: 'bss_center', content: 'Bible SuperSearch', classes: 'biblesupersearch_classic_title'},
         {
-            classes: 'biblesupersearch_classic_form parallel2',
+            classes: 'biblesupersearch_classic_form bss_parallel2',
             tag: 'table',
             kind: FormSection,
 
@@ -40,7 +40,7 @@ module.exports = kind({
                     {tag: 'td', style: 'text-align:right', components: [
                         {kind: i18nContent, content: 'Passage'}
                     ]},
-                    {tag: 'td', classes: 'nowrap', attributes: {colspan: 2}, components: [
+                    {tag: 'td', classes: 'bss_nowrap', attributes: {colspan: 2}, components: [
                         {name: 'reference', kind: Autocomplete, onblur: 'referenceTyped', style: 'width: 303px;', isComponent: true},
                         {tag: 'span', content: ' '},
                         {kind: Button, ontap: 'submitForm', style: 'width:70px;font-size:70%', components: [
@@ -52,7 +52,7 @@ module.exports = kind({
                     {tag: 'td', style: 'text-align:right', components: [
                         {kind: i18nContent, content: 'Search'}
                     ]},
-                    {tag: 'td', classes: 'nowrap', attributes: {colspan: 2}, components: [
+                    {tag: 'td', classes: 'bss_nowrap', attributes: {colspan: 2}, components: [
                         {name: 'search', kind: Input, style: 'width: 300px;'},
                         {tag: 'span', content: ' '},
                         {kind: Button, ontap: 'submitForm', style: 'width:70px;font-size:70%', components: [
@@ -65,7 +65,7 @@ module.exports = kind({
                         {kind: i18nContent, content: 'Look for'},
                         {tag: 'span', content: ' '}
                     ]},
-                    {tag: 'td', classes: 'nowrap', style: 'vertical-align: top', components: [
+                    {tag: 'td', classes: 'bss_nowrap', style: 'vertical-align: top', components: [
                         {kind: SearchType, name: 'search_type', style: 'width:107px;'}, 
                         {tag: 'span', content: ' '},
                         {kind: i18nContent, content: 'in'},

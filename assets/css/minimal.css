@@ -1,116 +1,116 @@
-.interface_minimal .form {
+.bss_interface_minimal .bss_form {
     margin: 0 auto 40px;
     text-align: center;
 }
 
-.interface_minimal .form .single_line, .interface_minimal .form .single_line_bible {
+.bss_interface_minimal .bss_form .bss_single_line, .bss_interface_minimal .bss_form .bss_single_line_bible {
     width: 100%; 
     max-width: 520px;
     margin-inline-start: auto;
     margin-inline-end: auto;
 }
 
-.interface_minimal .form .single_line input, 
-.interface_minimal .form .single_line .bss_pseudo_input {
+.bss_interface_minimal .bss_form .bss_single_line input, 
+.bss_interface_minimal .bss_form .bss_single_line .bss_pseudo_input {
     width: calc(~"100% - 40px"); 
 }
 
-.interface_minimal .form .single_line button {
+.bss_interface_minimal .bss_form .bss_single_line button {
     overflow: hidden;
     text-align: center;
 }
 
-.interface_minimal .form .single_line span, .interface_minimal .form .single_line_bible span, .interface_minimal .form .single_line_short_bible span {
+.bss_interface_minimal .bss_form .bss_single_line span, .bss_interface_minimal .bss_form .bss_single_line_bible span, .bss_interface_minimal .bss_form .bss_single_line_short_bible span {
     white-space: nowrap;
 }
 
-.interface_minimal .form .single_line_bible input.request,
-.interface_minimal .form .single_line_bible .bss_pseudo_input.request input 
+.bss_interface_minimal .bss_form .bss_single_line_bible input.bss_request,
+.bss_interface_minimal .bss_form .bss_single_line_bible .bss_pseudo_input.bss_request input 
 {
     width: 100%;
     max-width: 200px;
 }
 
-.interface_minimal_wide .form .single_line_bible input.request,
-.interface_minimal_wide .form .single_line_bible .bss_pseudo_input.request input {
+.bss_interface_minimal_wide .bss_form .bss_single_line_bible input.bss_request,
+.bss_interface_minimal_wide .bss_form .bss_single_line_bible .bss_pseudo_input.bss_request input {
     width: 100%;
     max-width: 320px;
 }
 
-.interface_minimal_wide .form .bible_selector {
+.bss_interface_minimal_wide .bss_form .bss_bible_selector {
     margin-inline-end: 15px;
     margin-inline-start: 15px;
 }
 
-.interface_minimal_wide .form .single_line, .interface_minimal_wide .form .single_line_bible {
+.bss_interface_minimal_wide .bss_form .bss_single_line, .bss_interface_minimal_wide .bss_form .bss_single_line_bible {
     max-width: 1000px;
 }
 
-.interface_minimal .form .single_line_bible input.biblesupersearch_bible_selector {
+.bss_interface_minimal .bss_form .bss_single_line_bible input.biblesupersearch_bible_selector {
     /*width: calc(40% - 35px); */
 }
 
-.interface_minimal .form .single_line_bible button {
+.bss_interface_minimal .bss_form .bss_single_line_bible button {
     overflow: hidden;
     text-align: center;
 }
 
-.interface_minimal_wide .form .single_line_bible button {
+.bss_interface_minimal_wide .bss_form .bss_single_line_bible button {
     width: initial !important; 
     margin-inline-start: 15px;
     text-align: center;
 }
 
-.interface_minimal .form .single_line_short_bible input.request,
-.interface_minimal .form .single_line_short_bible .bss_pseudo_input.request input
+.bss_interface_minimal .bss_form .bss_single_line_short_bible input.bss_request,
+.bss_interface_minimal .bss_form .bss_single_line_short_bible .bss_pseudo_input.bss_request input
  {
     width: 100%;
     max-width: 340px;
 }
 
-.interface_minimal .form .single_line_short_bible input.biblesupersearch_bible_selector {
+.bss_interface_minimal .bss_form .bss_single_line_short_bible input.biblesupersearch_bible_selector {
     /*width: calc(40% - 35px); */
 }
 
-.interface_minimal .form .single_line_short_bible button {
+.bss_interface_minimal .bss_form .bss_single_line_short_bible button {
     /*max-width: 50px;*/
     overflow: hidden;
     text-align: center;
 }
 
-.interface_minimal a:link, .interface_minimal a:visited {
+.bss_interface_minimal a:link, .bss_interface_minimal a:visited {
     color: #0c17b2;
     text-decoration: none;
 }
 
-.interface_minimal a:hover {
+.bss_interface_minimal a:hover {
     text-decoration: underline overline;
 }
 
-.interface_minimal .biblesupersearch_pager a {
+.bss_interface_minimal .biblesupersearch_pager a {
     margin: 0 5px;
     padding: 0;
     text-decoration: none;
     font-weight: bold;
 }
 
-/* Weird bugfix -- move to layouts.css?? */
-.interface_minimal .biblesupersearch_pager a:after, .interface_minimal .biblesupersearch_pager a:before {
+/* Weird bugfix -- move to layouts.bss_css?? */
+.bss_interface_minimal .biblesupersearch_pager a:after, .bss_interface_minimal .biblesupersearch_pager a:before {
     display:none;
 }
 
-.interface_minimal .biblesupersearch_pager a:hover {
+.bss_interface_minimal .biblesupersearch_pager a:hover {
     text-decoration: underline overline;
     background-color: #c4caff;
 }
 
-.interface_minimal .biblesupersearch_pager a.current_page, .interface_minimal .bss_results_list_item_showing {
+.bss_interface_minimal .biblesupersearch_pager a.bss_current_page, .bss_interface_minimal .bss_results_list_item_showing {
     font-weight: bold;
     color: #ff8c00;
     background-color: transparent;
 }
 
-.interface_minimal .form .single_line_go {
+.bss_interface_minimal .bss_form .bss_single_line_go {
     margin-bottom: 20px;
     text-align: center;
     width: 100%; 
@@ -119,40 +119,40 @@
     margin-inline-end: auto;
 }
 
-.interface_minimal .form .single_line_go input,
-.interface_minimal .form .single_line_go .bss_pseudo_input input,
+.bss_interface_minimal .bss_form .bss_single_line_go input,
+.bss_interface_minimal .bss_form .bss_single_line_go .bss_pseudo_input input,
  {
     width: 90%; 
     max-width: 500px;
 }
 
-.interface_minimal .form .single_line_go input.max_wide, 
-.interface_minimal .form .single_line_go .bss_pseudo_input.max_wide input {
+.bss_interface_minimal .bss_form .bss_single_line_go input.bss_max_wide, 
+.bss_interface_minimal .bss_form .bss_single_line_go .bss_pseudo_input.bss_max_wide input {
     width: 98%; 
 }
 
-.interface_minimal .form .single_line_go button {
+.bss_interface_minimal .bss_form .bss_single_line_go button {
     margin: 0 10px;
 }
 
-.interface_minimal .strongs_hover {
+.bss_interface_minimal .bss_strongs_hover {
     padding: 10px;
     border: 1px solid #333;
     background-color: white;
 }
 
-.interface_minimal .strongs_hover .strongs_head {
+.bss_interface_minimal .bss_strongs_hover .bss_strongs_head {
     text-align: center;
 }
 
-.interface_minimal .strongs_hover .hebrew .strongs_head span {
+.bss_interface_minimal .bss_strongs_hover .bss_hebrew .bss_strongs_head span {
     font-weight: bold;
     font-size: 20pt;
     font-family: serif;
     padding-top: 5px;
 }
 
-.interface_minimal .strongs_hover .greek .strongs_head span {
+.bss_interface_minimal .bss_strongs_hover .bss_greek .bss_strongs_head span {
     font-weight: bold;
     font-size: 16pt;
     padding-top: 10px;

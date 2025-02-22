@@ -7,7 +7,7 @@ var Signal = require('../Signal');
 module.exports = kind({
     name: 'NavHtml',
     linkBuilder: LinkBuilder,
-    classes: 'html_nav_buttons',
+    classes: 'bss_html_nav_buttons',
     nav: {}, // navigation data
     bibles: [],
 
@@ -17,9 +17,9 @@ module.exports = kind({
     nextChapterText: '&#9654;&#xFE0E;',
     nextBookText: '&#9654;&#xFE0E;|',
 
-    linkClasses: 'styleable',
-    classesActive: 'active',
-    classesInactive: 'inactive',
+    linkClasses: 'bss_styleable',
+    classesActive: 'bss_active',
+    classesInactive: 'bss_inactive',
     swapOnRtl: true,
 
     // attributes: {dir: 'auto'},

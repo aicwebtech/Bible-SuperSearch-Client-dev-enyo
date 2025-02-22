@@ -21,10 +21,10 @@ module.exports = kind({
     kind: FormBase,
 
     components: [
-        {kind: i18n, classes: 'center', content: 'Bible SuperSearch', classes: 'biblesupersearch_classic_title'},
+        {kind: i18n, classes: 'bss_center', content: 'Bible SuperSearch', classes: 'biblesupersearch_classic_title'},
         {
             kind: FormSection,
-            classes: 'biblesupersearch_classic_form user_friendly custom_user_friendly_book_sel',
+            classes: 'biblesupersearch_classic_form bss_user_friendly bss_custom_user_friendly_book_sel',
             components: [
                 {classes: 'biblesupersearch_center_element', components: [
                     {kind: i18n, content: 'Select Bible version(s):'},

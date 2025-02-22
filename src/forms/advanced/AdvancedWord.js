@@ -30,39 +30,39 @@ module.exports = kind({
             {tag: 'br'},
             {
                 components: [
-                    {kind: i18nContent, tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>All</b> of the words:'},
-                    {kind: Input, classes: 'resp_input resp_input_200', name: 'search_all'}
+                    {kind: i18nContent, tag: 'label', classes: 'bss_resp_left_label bss_resp_left_label_165', allowHtml: true, content: '<b>All</b> of the words:'},
+                    {kind: Input, classes: 'bss_resp_input bss_resp_input_200', name: 'search_all'}
                 ]
             },
             {
                 components: [
-                    {kind: i18nContent, tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>Any</b> of the words:'},
-                    {kind: Input, classes: 'resp_input resp_input_200', name: 'search_any'}
+                    {kind: i18nContent, tag: 'label', classes: 'bss_resp_left_label bss_resp_left_label_165', allowHtml: true, content: '<b>Any</b> of the words:'},
+                    {kind: Input, classes: 'bss_resp_input bss_resp_input_200', name: 'search_any'}
                 ]
             },
             {
                 components: [
-                    {kind: i18nContent, tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>Only one</b> of the words:'},
-                    {kind: Input, classes: 'resp_input resp_input_200', name: 'search_one'}
+                    {kind: i18nContent, tag: 'label', classes: 'bss_resp_left_label bss_resp_left_label_165', allowHtml: true, content: '<b>Only one</b> of the words:'},
+                    {kind: Input, classes: 'bss_resp_input bss_resp_input_200', name: 'search_one'}
                 ]
             },
             {
                 components: [
-                    {kind: i18nContent, tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: '<b>None</b> of the words:'},
-                    {kind: Input, classes: 'resp_input resp_input_200', name: 'search_none'}
+                    {kind: i18nContent, tag: 'label', classes: 'bss_resp_left_label bss_resp_left_label_165', allowHtml: true, content: '<b>None</b> of the words:'},
+                    {kind: Input, classes: 'bss_resp_input bss_resp_input_200', name: 'search_none'}
                 ]
             },
             {
                 components: [
-                    {kind: i18nContent, tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: 'The <b>exact phrase</b>:'},
-                    {kind: Input, classes: 'resp_input resp_input_200', name: 'search_phrase'}
+                    {kind: i18nContent, tag: 'label', classes: 'bss_resp_left_label bss_resp_left_label_165', allowHtml: true, content: 'The <b>exact phrase</b>:'},
+                    {kind: Input, classes: 'bss_resp_input bss_resp_input_200', name: 'search_phrase'}
                 ]
             },
             {tag: 'br'},
             {
                 components: [
-                    {kind: i18nContent, tag: 'label', classes: 'resp_left_label resp_left_label_165', allowHtml: true, content: 'Restrict search to:'},
-                    {kind: Shortcuts, classes: 'resp_input resp_input_200', name: 'shortcut', style: 'max-width: 200px', selectedPassagesLabel: null},
+                    {kind: i18nContent, tag: 'label', classes: 'bss_resp_left_label bss_resp_left_label_165', allowHtml: true, content: 'Restrict search to:'},
+                    {kind: Shortcuts, classes: 'bss_resp_input bss_resp_input_200', name: 'shortcut', style: 'max-width: 200px', selectedPassagesLabel: null},
                     {kind: Input, name: 'reference', type: 'hidden'}
                 ]
             },

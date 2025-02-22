@@ -1,7 +1,7 @@
 /* Styles for classic apparence */
 
 /* Body of form */
-.biblesupersearch_main.interface_classic {
+.biblesupersearch_main.bss_interface_classic {
     min-height: 100px;
     /*max-height: 80vh;*/
 /*    overflow-y: auto;*/
@@ -15,12 +15,12 @@
     margin-bottom: 20px;
 }
 
-.biblesupersearch_classic_form.user_friendly {
+.biblesupersearch_classic_form.bss_user_friendly {
     max-width: 400px;
 }
 
 
-.biblesupersearch_classic_form.advanced {
+.biblesupersearch_classic_form.bss_advanced {
     max-width: 400px;
 }
 
@@ -52,11 +52,8 @@
     font: 13.3333px Arial;
 }
 
-.biblesupersearch_classic_form button.user_friendly_random {
-    /*width: 110px;*/
+.biblesupersearch_classic_form button.bss_user_friendly_random {
     width: 125px;
-    /*font-size: 70%;*/
-    /*font-size: 0.7em;*/
     text-align: center;
 }
 
@@ -64,7 +61,7 @@
     
 }
 
-.biblesupersearch_main.interface_classic .biblesupersearch_error_view {
+.biblesupersearch_main.bss_interface_classic .biblesupersearch_error_view {
     max-width: 800px;
 }
 
@@ -72,125 +69,125 @@
     margin: 15px auto;
 }
 
-.interface_classic a:link, .interface_classic a:visited {
+.bss_interface_classic a:link, .bss_interface_classic a:visited {
     color: #0000ee;
     text-decoration: none;
 }
 
-.interface_classic a:hover {
+.bss_interface_classic a:hover {
     text-decoration: underline overline;
 }
 
-.interface_classic .biblesupersearch_pager a {
+.bss_interface_classic .biblesupersearch_pager a {
     margin: 0 5px;
     text-decoration: none;
     font-weight: bold;
 }
 
-.interface_classic .biblesupersearch_pager a:hover {
+.bss_interface_classic .biblesupersearch_pager a:hover {
     background-color: #0000ee;
     color: #ff8c00;
     text-decoration: none;
 }
 
-.interface_classic a.bss_results_list_item_visited {
+.bss_interface_classic a.bss_results_list_item_visited {
     color: purple;
 }
 
-.interface_classic .biblesupersearch_pager a.current_page, .interface_classic a.bss_results_list_item_showing {
+.bss_interface_classic .biblesupersearch_pager a.bss_current_page, .bss_interface_classic a.bss_results_list_item_showing {
     font-weight: bold;
     color: #ff8c00;
     background-color: transparent;
 }
 
-/* Weird bugfix -- move to layouts.css?? */
-.interface_classic .biblesupersearch_pager a:after, .interface_classic .biblesupersearch_pager a:before {
+/* Weird bugfix -- move to layouts.bss_css?? */
+.bss_interface_classic .biblesupersearch_pager a:after, .bss_interface_classic .biblesupersearch_pager a:before {
     display:none;
 }
 
-.interface_classic .biblesupersearch_pager a:link, .interface_classic .biblesupersearch_pager a:visited {
+.bss_interface_classic .biblesupersearch_pager a:link, .bss_interface_classic .biblesupersearch_pager a:visited {
 
 }
 
-.interface_classic .format_buttons {
+.bss_interface_classic .bss_format_buttons {
     margin-bottom: 10px;
 }
 
-.interface_classic .format_buttons img {
+.bss_interface_classic .bss_format_buttons img {
     margin: 0 1px;
 }
 
-.biblesupersearch_classic_form.parallel2 .biblesupersearch_bible_selector_multi {
+.biblesupersearch_classic_form.bss_parallel2 .biblesupersearch_bible_selector_multi {
     margin: 2px 0 3px;
 }
 
-.biblesupersearch_classic_form.parallel2 button {
+.biblesupersearch_classic_form.bss_parallel2 button {
     text-align: center;
 }
 
-.nowrap {
+.bss_nowrap {
     white-space: nowrap;
 }
 
-.interface_classic .strongs_hover {
+.bss_interface_classic .bss_strongs_hover {
     padding: 0;
     border: 0;
     background-color: #d2b48c;
 }
 
-.interface_classic .strongs_hover .strongs_head {
+.bss_interface_classic .bss_strongs_hover .bss_strongs_head {
     background-color: #d2b48c;
     padding: 10px;
     text-align: center;
 }
 
-.interface_classic .strongs_hover .strongs_tvm {
+.bss_interface_classic .bss_strongs_hover .bss_strongs_tvm {
     background-color: #d2b48c;
     padding: 10px;
 }
 
-.interface_classic .strongs_hover .strongs_body {
+.bss_interface_classic .bss_strongs_hover .bss_strongs_body {
     background-color: #702424;
     padding:10px;
     color:white;
     text-align: justify;
 }
 
-.interface_classic .strongs_hover .hebrew .strongs_head span {
+.bss_interface_classic .bss_strongs_hover .bss_hebrew .bss_strongs_head span {
     font-weight: bold;
     font-size: 20pt;
     font-family: serif;
     padding-top: 5px;
 }
 
-.interface_classic .strongs_hover .greek .strongs_head span {
+.bss_interface_classic .bss_strongs_hover .bss_greek .bss_strongs_head span {
     font-weight: bold;
     font-size: 16pt;
     padding-top: 10px;
     font-family: serif;
 }
 
-.interface_classic .help_dialog .bss_dialog_container {
+.bss_interface_classic .bss_help_dialog .bss_dialog_container {
     background-color: #702424;
     color: white;
 }
 
-.interface_classic .help_dialog .bss_dialog_container .bss_dialog_content {
+.bss_interface_classic .bss_help_dialog .bss_dialog_container .bss_dialog_content {
     background-color: #d2b48c;
     color: black;
 }
 
-.interface_classic .help_dialog .item:nth-child(odd), .interface_classic .bss_list_item:nth-child(odd),  {
+.bss_interface_classic .bss_help_dialog .bss_item:nth-child(odd), .bss_interface_classic .bss_list_item:nth-child(odd),  {
     background-color: #edd9be;
 }
 
 /* Emulate a 'classic' format button without creating a new image for it */
-.format_buttons_classic {
+.bss_format_buttons_classic {
     line-height: 22px;
     vertical-align: top;
 }
 
-.format_buttons_classic .item {
+.bss_format_buttons_classic .bss_item {
     border-radius: 2px;
     border: 1.5px solid #a3a38b;
     background-color: #fef8de;

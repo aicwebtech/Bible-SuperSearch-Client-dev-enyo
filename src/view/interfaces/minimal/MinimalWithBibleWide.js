@@ -6,7 +6,7 @@ module.exports = kind({
     name: 'MinimalWithBible',
     kind: MinimalBase,
     formView: formView,
-    classes: 'interface_minimal_wide',
+    classes: 'bss_interface_minimal_wide',
 
     create: function() {
         this.inherited(arguments);

@@ -2,5 +2,5 @@ var kind = require('enyo/kind');
 
 module.exports = kind({
     name: 'FormatButtonsBase',
-    classes: 'format_buttons fornat_buttons_none'
+    classes: 'bss_format_buttons bss_fornat_buttons_none'
 });

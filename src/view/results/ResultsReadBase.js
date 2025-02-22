@@ -42,7 +42,7 @@ module.exports = kind({
                 {tag: 'br'},
                 {
                     kind: Link, 
-                    classes: 'top_placeholder_hide', 
+                    classes: 'bss_top_placeholder_hide', 
                     content: 'Resume Search', 
                     href: 'javascript:void(0)'
                 }

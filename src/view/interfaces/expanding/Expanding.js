@@ -6,7 +6,7 @@ module.exports = kind({
     kind: Base,
     // formView: formView,
     advancedFormView: null,
-    // classes: 'interface_expanding',
+    // classes: 'bss_interface_expanding',
 
     // create: function() {
     //     this.inherited(arguments);

@@ -8,7 +8,7 @@ var Button = require('enyo/Button');
 
 var RandomVerse = kind({
     name: 'RandomVerse',
-    classes: 'random_verse_widget',
+    classes: 'bss_random_verse_widget',
     bible: 'kjv',
     label: 'Random Verse',
     components: [

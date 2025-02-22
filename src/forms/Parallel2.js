@@ -14,7 +14,7 @@ module.exports = kind({
     kind: FormBase,
 
     components: [
-        {classes: 'center', content: 'Bible SuperSearch', classes: 'biblesupersearch_classic_title'},
+        {classes: 'bss_center', content: 'Bible SuperSearch', classes: 'biblesupersearch_classic_title'},
         {
             classes: 'biblesupersearch_classic_form',
             tag: 'table',
@@ -113,14 +113,14 @@ module.exports = kind({
                             ontap: 'submitRandom', 
                             random_type: 'Random Chapter', 
                             style: 'margin-right: 4px', 
-                            classes: 'user_friendly_random'
+                            classes: 'bss_user_friendly_random'
                         },
                         {
                             kind: Button, 
                             content: 'Random Verse', 
                             ontap: 'submitRandom', 
                             random_type: 'Random Verse', 
-                            classes: 'user_friendly_random'
+                            classes: 'bss_user_friendly_random'
                         }
                     ]},
                     {tag: 'br'},

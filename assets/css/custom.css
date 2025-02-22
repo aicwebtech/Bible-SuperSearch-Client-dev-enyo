@@ -1,17 +1,17 @@
 
-.biblesupersearch_classic_form.custom_user_friendly_book_sel .bss_bookselect {
+.biblesupersearch_classic_form.bss_custom_user_friendly_book_sel .bss_bookselect {
     width: 200px;
     margin: 0 auto 0;
 }
 
-.biblesupersearch_classic_form.custom_user_friendly_book_sel .bss_bookselect .bss_book {
+.biblesupersearch_classic_form.bss_custom_user_friendly_book_sel .bss_bookselect .bss_book {
     width: 100%;
 }
 
-.biblesupersearch_classic_form.custom_user_friendly_book_sel .bss_bookselect .bss_chapter {
+.biblesupersearch_classic_form.bss_custom_user_friendly_book_sel .bss_bookselect .bss_chapter {
     width: 100%;
 }
 
-.biblesupersearch_classic_form.custom_user_friendly_book_sel .bss_bookselect .bss_verse {
+.biblesupersearch_classic_form.bss_custom_user_friendly_book_sel .bss_bookselect .bss_verse {
     width: 100%;
 }

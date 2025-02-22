@@ -26,41 +26,41 @@ module.exports = kind({
     components: [
         {
             kind: FormSection,
-            classes: 'biblesupersearch_expanding_form expanding',
+            classes: 'biblesupersearch_expanding_form bss_expanding',
             components: [
-                // {classes: 'input_row_wide', components: [
+                // {classes: 'bss_input_row_wide', components: [
                 //     {name: 'Locale', kind: LocaleSelector, _style: "width:100%; max-width:500px"}
                 // ]},
 
-                // {classes: 'input_row_wide', components: [
-                //     {classes:'biblesupersearch_multiselect bible', components: [
+                // {classes: 'bss_input_row_wide', components: [
+                //     {classes:'biblesupersearch_multiselect bss_bible', components: [
                 //         {components: [
                 //             {name: 'Locale', kind: LocaleSelector, style: "width:100%; max-width:500px"}
                 //         ]}
                 //     ]}
                 // ]},                        
-                // {classes: 'input_row_wide', components: [
-                //     {_classes:'biblesupersearch_multiselect bible', components: [
+                // {classes: 'bss_input_row_wide', components: [
+                //     {_classes:'biblesupersearch_multiselect bss_bible', components: [
                 //         {components: [
                 //             {name: 'Locale', kind: LocaleSelector, style: "width:100%; max-width:500px"}
                 //         ]}
                 //     ]}
                 // ]},                         
-                // {classes: 'input_row_wide', components: [
+                // {classes: 'bss_input_row_wide', components: [
                 //     {classes:'biblesupersearch_multiselect', components: [
                 //         {components: [
                 //             {name: 'Locale', kind: LocaleSelector, style: "width:100%; max-width:500px"}
                 //         ]}
                 //     ]}
                 // ]},                    
-                // {classes: 'input_row_wide', components: [
-                //     {classes:'bible', components: [
+                // {classes: 'bss_input_row_wide', components: [
+                //     {classes:'bss_bible', components: [
                 //         {components: [
                 //             {name: 'Locale', kind: LocaleSelector, style: "width:100%; max-width:500px"}
                 //         ]}
                 //     ]}
                 // ]},                       
-                // {classes: 'input_row_wide', components: [
+                // {classes: 'bss_input_row_wide', components: [
                 //     {classes:' bible ', components: [
                 //         {components: [
                 //             {name: 'Locale', kind: LocaleSelector, style: "width:100%; max-width:500px"}
@@ -68,7 +68,7 @@ module.exports = kind({
 
                 //     ]}
                 // ]},                  
-                {classes: 'input_row_wide', components: [
+                {classes: 'bss_input_row_wide', components: [
                     {
                         name: 'request', 
                         kind: Autocomplete, 
@@ -77,7 +77,7 @@ module.exports = kind({
                         enterSubmit: true
                     },
                 ]},                    
-                // {classes: 'input_row_wide', components: [
+                // {classes: 'bss_input_row_wide', components: [
                 //     {
                 //         name: 'lunch', 
                 //         // kind: Autocomplete, 
@@ -86,11 +86,11 @@ module.exports = kind({
                 //         enterSubmit: true
                 //     },
                 // ]},                                    
-                {classes: 'input_row_wide', components: [
-                    {classes: 'element', components: [
+                {classes: 'bss_input_row_wide', components: [
+                    {classes: 'bss_element', components: [
                         {
                             name: 'bible', 
-                            classes: 'bible',
+                            classes: 'bss_bible',
                             kind: BibleSelect, 
                             parallelStart: 1, 
                             parallelLimit: 1,
@@ -100,78 +100,78 @@ module.exports = kind({
                 ]},      
                 {
                     name: 'Expansion', 
-                    classes: 'wrapper', 
+                    classes: 'bss_wrapper', 
                     kind: Drawer,
                     open: false, 
                     orient: 'v',
                     components: [
-                        {classes: 'input_row', components: [
-                            {kind: i18n, classes: 'label', content: 'Match:'},
-                            {classes: 'element', components: [
+                        {classes: 'bss_input_row', components: [
+                            {kind: i18n, classes: 'bss_label', content: 'Match:'},
+                            {classes: 'bss_element', components: [
                                 {kind: SearchType, name: 'search_type'}
                             ]}
                         ]},                
-                        {classes: 'input_row', components: [
-                            {kind: i18n, classes: 'label', content: 'Limit Search To:'},
-                            {classes: 'element', components: [
+                        {classes: 'bss_input_row', components: [
+                            {kind: i18n, classes: 'bss_label', content: 'Limit Search To:'},
+                            {classes: 'bss_element', components: [
                                 {kind: Shortcuts, name: 'shortcut', selectedPassagesLabel: 'Passage(s) listed below:', onchange: 'shortcutChangedHandler'}
                             ]}
                         ]},                
-                        {name: 'PassageContainer', showing: false, classes: 'input_row', components: [
-                            {kind: i18n, classes: 'label', content: 'Passages:'},
-                            {classes: 'element', components: [
+                        {name: 'PassageContainer', showing: false, classes: 'bss_input_row', components: [
+                            {kind: i18n, classes: 'bss_label', content: 'Passages:'},
+                            {classes: 'bss_element', components: [
                                 // {kind: Input, name: 'reference', enterSubmit: true}
                                 {kind: Autocomplete, name: 'reference', enterSubmit: true}
                             ]}
                         ]},                                     
-                        {classes: 'input_row_checkbox', components: [
-                            {classes: 'checkbox_container', components: [
-                                {kind: i18n, tag: 'label', attributes: {for: 'whole_words'}, classes: 'label', content: 'Whole Words Only:'},
-                                {classes: 'element', components: [
+                        {classes: 'bss_input_row_checkbox', components: [
+                            {classes: 'bss_checkbox_container', components: [
+                                {kind: i18n, tag: 'label', attributes: {for: 'whole_words'}, classes: 'bss_label', content: 'Whole Words Only:'},
+                                {classes: 'bss_element', components: [
                                     {kind: Checkbox, name: 'whole_words', id: 'whole_words'}
                                 ]}
                             ]},               
-                            {classes: 'checkbox_container', components: [
-                                {kind: i18n, tag: 'label', attributes: {for: 'exact_case'}, classes: 'label', content: 'Exact Case:'},
-                                {classes: 'element', components: [
+                            {classes: 'bss_checkbox_container', components: [
+                                {kind: i18n, tag: 'label', attributes: {for: 'exact_case'}, classes: 'bss_label', content: 'Exact Case:'},
+                                {classes: 'bss_element', components: [
                                     {kind: Checkbox, name: 'exact_case', id: 'exact_case'}
                                 ]}
                             ]},                           
-                            {classes: 'checkbox_container', name: 'DiffContainer', components: [
-                                {kind: i18n, tag: 'label', attributes: {for: 'diff'}, classes: 'label', content: 'Diff:'},
-                                {classes: 'element', components: [
+                            {classes: 'bss_checkbox_container', name: 'DiffContainer', components: [
+                                {kind: i18n, tag: 'label', attributes: {for: 'diff'}, classes: 'bss_label', content: 'Diff:'},
+                                {classes: 'bss_element', components: [
                                     {kind: Checkbox, name: 'diff', id: 'diff'}
                                 ]}
                             ]},
                         ]},
-                        {classes: 'input_row_wide', components: [
+                        {classes: 'bss_input_row_wide', components: [
                             {
                                 kind: Button, 
                                 ontap: 'submitRandom', 
                                 random_type: 'Random Chapter', 
                                 style: 'margin-right: 4px', 
-                                classes: 'random',
+                                classes: 'bss_random',
                                 components: [{kind: i18n, content: 'Random Chapter'}]
                             },
                             {
                                 kind: Button, 
                                 ontap: 'submitRandom', 
                                 random_type: 'Random Verse', 
-                                classes: 'random',
+                                classes: 'bss_random',
                                 components: [{kind: i18n, content: 'Random Verse'}]
                             }
                         ]},
                         {kind: DialogButtons}
                     ]
                 },
-                {classes: 'input_row_wide', components: [
+                {classes: 'bss_input_row_wide', components: [
                     {
                         kind: Button, 
                         ontap: 'submitForm', 
                         components: [{kind: i18n, content: 'Search'}]
                     },
                 ]},                
-                {classes: 'expander_row', components: [
+                {classes: 'bss_expander_row', components: [
                     {name: 'Expand1', kind: Button, content: "&#9660;", ontap: 'toggleExpanded', allowHtml: true},
                     {name: 'Expand0', kind: Button, content: "&#9650;", ontap: 'toggleExpanded', allowHtml: true, showing: false}
                 ]}, 

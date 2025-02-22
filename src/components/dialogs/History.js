@@ -17,7 +17,7 @@ module.exports = kind({
     kind: Dialog,
     maxWidth: '400px',
     height: '300px',
-    classes: 'help_dialog history_dialog',
+    classes: 'bss_help_dialog bss_history_dialog',
     
     titleComponents: [
         {classes: 'header', components: [
@@ -33,7 +33,7 @@ module.exports = kind({
         {name: 'Clear', kind: Button, ontap: 'clear', components: [
             {kind: i18n, content: 'Clear'},
         ]},
-        {tag: 'span', classes: 'spacer'},     
+        {tag: 'span', classes: 'bss_spacer'},     
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'},
         ]}
@@ -102,7 +102,7 @@ module.exports = kind({
                             ontap: 'handleHistoryTap'
                         }
                     ]},
-                    {classes: 'clear-both'}
+                    {classes: 'bss-clear-both'}
                 ]
             });
         }, this);

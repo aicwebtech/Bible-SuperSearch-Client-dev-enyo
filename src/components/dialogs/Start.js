@@ -15,7 +15,7 @@ module.exports = kind({
     kind: Dialog,
     maxWidth: '400px',
     height: '475px',
-    classes: 'help_dialog bible_start',
+    classes: 'bss_help_dialog bss_bible_start',
     bibleString: null,
     titleBarHeight: 64,
     
@@ -40,14 +40,14 @@ module.exports = kind({
     },
 
     titleComponents: [
-        {classes: 'header', components: [
+        {classes: 'bss_header', components: [
             {kind: i18n, classes: 'bss_dialog_title', content: 'New to the Bible?'}, 
             {kind: i18n, classes: 'bss_dialog_subtitle', content: 'Not Sure Where to Begin?'}, 
         ]}
     ],
 
     bodyComponents: [
-        {classes: 'list start_list', name: 'ListContainer'}
+        {classes: 'bss_list bss_start_list', name: 'ListContainer'}
     ],
 
     buttonComponents: [
@@ -110,13 +110,13 @@ module.exports = kind({
             this.$.ListContainer.$[colName].createComponent({
                 verses: item.verses,
                 owner: this,
-                classes: 'item start_item', components: [
-                    {classes: 'num', content: numDisplay},
-                    {classes: 'verses', components: [
+                classes: 'bss_item bss_start_item', components: [
+                    {classes: 'bss_num', content: numDisplay},
+                    {classes: 'bss_verses', components: [
                         {kind: Anchor, href: url, _title: item.verses, content: verseTrans, ontap: 'handleVerseTap'}
                     ]},
-                    {classes: 'desc', content: desc, allowHtml: true},
-                    {classes: 'clear-both'}
+                    {classes: 'bss_desc', content: desc, allowHtml: true},
+                    {classes: 'bss-clear-both'}
                 ]
             });
         }, this);

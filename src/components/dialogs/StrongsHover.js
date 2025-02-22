@@ -14,7 +14,7 @@ module.exports = kind({
     name: 'StongsHoverDialog',
     kind: Dialog,
     showing: false,
-    classes: 'strongs_hover',
+    classes: 'bss_strongs_hover',
     width: 400,
     height: 300,
 
@@ -22,7 +22,7 @@ module.exports = kind({
     strongsRaw: null,
 
     components: [
-        {classes: 'inner', components: [
+        {classes: 'bss_inner', components: [
             {name: 'LoadingContainer', showing: false, components: [
                 {
                     classes: 'biblesupersearch_center_element', style: 'width:78px',
@@ -32,7 +32,7 @@ module.exports = kind({
                 },
                 {content: 'Loading, please wait ...', style: 'padding: 10px; font-weight: bold'},
             ]},
-            //{style: 'padding: 50px', classes: 'hover_dialog', components: [
+            //{style: 'padding: 50px', classes: 'bss_hover_dialog', components: [
                 {name: 'ContentContainer', kind: StrongsView},
                 {
                     name: 'ButtonContainer',
@@ -43,7 +43,7 @@ module.exports = kind({
                             {tag: 'span', content: '&nbsp;', allowHtml: true},
                             {tag: 'span', name: 'SearchFor'}
                         ]},
-                        {name: 'LinkSpacer', tag: 'span', classes: 'spacer'},
+                        {name: 'LinkSpacer', tag: 'span', classes: 'bss_spacer'},
                         {name: 'Close', kind: Button, ontap: 'close', components: [
                             {kind: i18n, content: 'Close'},
                         ]}     

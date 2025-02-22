@@ -8,7 +8,7 @@ var Passage = require('../components/Passage');
 
 module.exports = kind({
     name: 'FormBase',
-    classes: 'form',
+    classes: 'bss_form',
     formData: {},
     _formDataAsSubmitted: {},
     _extraFormData: {},

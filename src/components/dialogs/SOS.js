@@ -16,7 +16,7 @@ module.exports = kind({
     kind: Dialog,
     maxWidth: '400px',
     height: '475px',
-    classes: 'help_dialog bible_sos',
+    classes: 'bss_help_dialog bss_bible_sos',
     bibleString: null,
     titleBarHeight: 64,
     
@@ -59,14 +59,14 @@ module.exports = kind({
     },
 
     titleComponents: [
-        {classes: 'header', components: [
+        {classes: 'bss_header', components: [
             {kind: i18n, classes: 'bss_dialog_title', content: 'Emergency Help from the Bible'}, 
             {kind: i18n, classes: 'bss_dialog_subtitle', content: 'Where to go When ...'}, 
         ]}
     ],
 
     bodyComponents: [
-        {classes: 'list sos_list', name: 'ListContainer'}
+        {classes: 'bss_list bss_sos_list', name: 'ListContainer'}
     ],
 
     buttonComponents: [

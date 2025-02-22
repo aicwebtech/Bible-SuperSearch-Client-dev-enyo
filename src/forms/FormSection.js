@@ -2,7 +2,7 @@ var kind = require('enyo/kind');
 
 module.exports = kind({
     name: 'FormSection',
-    classes: 'form_section',
+    classes: 'bss_form_section',
 
     create: function() {
         this.inherited(arguments);

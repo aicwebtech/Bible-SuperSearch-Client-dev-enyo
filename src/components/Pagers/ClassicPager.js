@@ -85,7 +85,7 @@ module.exports = kind({
                 ],
                 allowHtml: true,
                 name: 'TotalsContainer',
-                classes: 'totals'
+                classes: 'bss_totals'
             });
         }
 
@@ -96,7 +96,7 @@ module.exports = kind({
 
         var LinkContainer = this.createComponent({
             name: 'LinkContainer',
-            classes: 'links',
+            classes: 'bss_links',
             attributes: {
                 dir: this.app.isRtl ? 'rtl' : 'ltr'
             }
@@ -105,7 +105,7 @@ module.exports = kind({
         if(this.lastPage) {        
             LinkContainer.createComponent({
                 kind: Link,
-                classes: (page == 1) ? 'std_link disabled' : 'std_link',
+                classes: (page == 1) ? 'bss_std_link bss_disabled' : 'bss_std_link',
                 content: swap ? this.lastPageText : this.firstPageText,
                 name: 'first_page',
                 allowHtml: true,
@@ -116,7 +116,7 @@ module.exports = kind({
 
         LinkContainer.createComponent({
             kind: Link,
-            classes: (page == 1) ? 'std_link disabled' : 'std_link',
+            classes: (page == 1) ? 'bss_std_link bss_disabled' : 'bss_std_link',
             href: (page == 1) ? null : this.makeLink( prevPage.toString() ),
             content: swap ? this.nextPageText : this.prevPageText,
             name: 'prev_page',
@@ -145,7 +145,7 @@ module.exports = kind({
                 LinkContainer.createComponent({
                     kind: Link,
                     href: (i == page) ? null : this.makeLink( i.toString() ),
-                    classes: (i == page) ? 'std_link current_page' : 'std_link',
+                    classes: (i == page) ? 'bss_std_link bss_current_page' : 'bss_std_link',
                     content: i.toString()
                     //onLinkTap: 'handleTap'
                 });
@@ -153,7 +153,7 @@ module.exports = kind({
         }
 
         LinkContainer.createComponent({
-            classes: (page == this.lastPage) ? 'std_link disabled' : 'std_link',
+            classes: (page == this.lastPage) ? 'bss_std_link bss_disabled' : 'bss_std_link',
             kind: Link,
             href: (page == this.lastPage) ? null : this.makeLink( nextPage.toString() ),
             content: swap ? this.prevPageText : this.nextPageText,
@@ -164,7 +164,7 @@ module.exports = kind({
 
         if(this.lastPage) {        
             LinkContainer.createComponent({
-                classes: (page == this.lastPage) ? 'std_link disabled' : 'std_link',
+                classes: (page == this.lastPage) ? 'bss_std_link bss_disabled' : 'bss_std_link',
                 kind: Link,
                 allowHtml: true,
                 content: swap ? this.firstPageText : this.lastPageText,

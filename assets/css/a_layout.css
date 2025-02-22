@@ -22,7 +22,7 @@ div.biblesupersearch_main.bss_no_global_scrollbar {
     max-height: initial;
 }
 
-div.biblesupersearch_main.rtl {
+div.biblesupersearch_main.bss_rtl {
     direction: rtl;
 }
 
@@ -164,7 +164,7 @@ table.biblesupersearch_render_table {
     font-size: 1em;
 }
 
-.biblesupersearch_render_table sup.ver {
+.biblesupersearch_render_table sup.bss_ver {
     width: 20px;
     /*max-width: 20px;*/
     /*min-width: 15px;*/
@@ -176,7 +176,7 @@ table.biblesupersearch_render_table {
     float: left;
 }
 
-.biblesupersearch_render_table span.txt {
+.biblesupersearch_render_table span.bss_txt {
     display: inline-block;
     float: left;
 }
@@ -192,16 +192,16 @@ table.biblesupersearch_render_table {
     padding: 0 2px;
 }
 
-.biblesupersearch_render_table td.txt {
+.biblesupersearch_render_table td.bss_txt {
     text-align: justify;
 /*    text-align: start;*/
 }
 
-.biblesupersearch_render_table td.ltr, p.ltr {
+.biblesupersearch_render_table td.bss_ltr, p.bss_ltr {
     direction: ltr;
 }
 
-.biblesupersearch_render_table td.rtl, p.rtl {
+.biblesupersearch_render_table td.bss_rtl, p.bss_rtl {
     direction: rtl;
 }
 
@@ -213,7 +213,7 @@ table.biblesupersearch_render_table {
     direction: rtl;
 }
 
-.biblesupersearch_render_table td table.rtl {
+.biblesupersearch_render_table td table.bss_rtl {
     margin-inline-start: auto;
 }
 
@@ -223,23 +223,23 @@ table.biblesupersearch_render_table {
     font-weight: bold;
 }
 
-.biblesupersearch_render_table td table td.ver {
+.biblesupersearch_render_table td table td.bss_ver {
     width: 20px;
     text-align: end;
     vertical-align: top;
 }
 
-.biblesupersearch_render_table td table td.txt {
+.biblesupersearch_render_table td table td.bss_txt {
 
 }
 
-.biblesupersearch_render_table td.copyright_statement {
+.biblesupersearch_render_table td.bss_copyright_statement {
     padding: 5px;
     text-align: justify;
     font-size: 0.7rem;
 }
 
-.biblesupersearch_render_table td.copyright_statement h5 {
+.biblesupersearch_render_table td.bss_copyright_statement h5 {
     font-size: 0.8rem;
     margin-top: 3px;
 }
@@ -248,7 +248,7 @@ table.biblesupersearch_render_table {
     margin: 20px 0;
 }
 
-.biblesupersearch_main .format_buttons {
+.biblesupersearch_main .bss_format_buttons {
     text-align: center;
     margin-inline-end: auto;
     margin-inline-start: auto;
@@ -260,20 +260,20 @@ table.biblesupersearch_render_table {
     text-align: center;
 }
 
-.biblesupersearch_main .results {
+.biblesupersearch_main .bss_results {
     position: relative;
 }
 
 /* Standard text formatting */
-.biblesupersearch_main .results.font_serif {
+.biblesupersearch_main .bss_results.bss_font_serif {
     font-family: serif;
 }
 
-.biblesupersearch_main .results.font_san_serif {
+.biblesupersearch_main .bss_results.bss_font_san_serif {
     font-family: sans-serif;
 }
 
-.biblesupersearch_main .results.font_monospace {
+.biblesupersearch_main .bss_results.bss_font_monospace {
     font-family: monospace;
 }
 
@@ -297,7 +297,7 @@ div.biblesupersearch_dialog {
     text-align: center;
 }
 
-.biblesupersearch_render_table .html_nav_buttons {
+.biblesupersearch_render_table .bss_html_nav_buttons {
     font-family:'Helvetica Neue','Nimbus Sans L',Arial,sans-serif;
 }
 
@@ -310,14 +310,14 @@ div.biblesupersearch_dialog {
     display: inline;
 }
 
-.biblesupersearch_main label.left_label {
+.biblesupersearch_main label.bss_left_label {
     display: inline-block;
     margin-inline-end: 5px;
     text-align: end;
     min-width: 100px;
 }
 
-.biblesupersearch_main label.resp_left_label {
+.biblesupersearch_main label.bss_resp_left_label {
     display: inline-block;
     margin-inline-end: 5px;
     text-align: end;
@@ -325,34 +325,33 @@ div.biblesupersearch_dialog {
     width: 98%; 
 }
 
-.biblesupersearch_main label.resp_left_label_150 { max-width: 150px; }
-.biblesupersearch_main label.resp_left_label_165 { max-width: 165px; }
+.biblesupersearch_main label.bss_resp_left_label_150 { max-width: 150px; }
+.biblesupersearch_main label.bss_resp_left_label_165 { max-width: 165px; }
 
-.biblesupersearch_main .resp_input {
+.biblesupersearch_main .bss_resp_input {
     width: 98%; 
 }
 
 
-
-.biblesupersearch_pager .links a:before {
+.biblesupersearch_pager .bss_links a:before {
     content: ' ';
 }
 
-.biblesupersearch_pager .links a:after {
+.biblesupersearch_pager .bss_links a:after {
     content: ' ';
 }
 
-.biblesupersearch_pager a.current_page:hover, .biblesupersearch_pager a.disabled:hover {
+.biblesupersearch_pager a.bss_current_page:hover, .biblesupersearch_pager a.bss_disabled:hover {
     background-color: transparent;
 }
 
-.biblesupersearch_main .resp_input_200 { max-width: 200px; }
-.biblesupersearch_main .resp_input_210 { max-width: 210px; }
-.biblesupersearch_main .resp_input_150 { max-width: 150px; }
-.biblesupersearch_main .resp_input_100 { max-width: 100px; }
+.biblesupersearch_main .bss_resp_input_200 { max-width: 200px; }
+.biblesupersearch_main .bss_resp_input_210 { max-width: 210px; }
+.biblesupersearch_main .bss_resp_input_150 { max-width: 150px; }
+.biblesupersearch_main .bss_resp_input_100 { max-width: 100px; }
 
 @media screen and (max-width: 400px)  {
-    .biblesupersearch_main label.resp_left_label {
+    .biblesupersearch_main label.bss_resp_left_label {
         text-align: center;
         display: block;
         margin-inline-start: auto;
@@ -360,7 +359,7 @@ div.biblesupersearch_dialog {
         max-width: initial;
     }
 
-    .biblesupersearch_main .resp_input {
+    .biblesupersearch_main .bss_resp_input {
         display: block;
         margin-inline-start: auto;
         margin-inline-end: auto;
@@ -369,15 +368,15 @@ div.biblesupersearch_dialog {
     }
 }
 
-div.alert_dialog {
+div.bss_alert_dialog {
     z-index: 10000000;
 }
 
-.alert_dialog .bss_dialog_content {
+.bss_alert_dialog .bss_dialog_content {
     padding: 5px 10px;
 }
 
-.alert_dialog_container {
+.bss_alert_dialog_container {
     background-color: white;
     font-weight: bold;
     text-align: center;
@@ -385,9 +384,7 @@ div.alert_dialog {
     /*position: relative;*/
 }
 
-.hover_dialog {
-/*    width: 300px; 
-    height: 300px; */
+.bss_hover_dialog {
     max-width: 400px;
     position: absolute;
     border: 2px solid black;
@@ -397,7 +394,7 @@ div.alert_dialog {
     display: block;
 }
 
-.hover_dialog .inner {
+.bss_hover_dialog .bss_inner {
     position: relative;
     z-index: 97;
     overflow: visible;
@@ -413,7 +410,7 @@ div.alert_dialog {
     resize: vertical;
 }
 
-.strongs_inline {
+.bss_strongs_inline {
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
@@ -421,46 +418,46 @@ div.alert_dialog {
 }
 
 @media screen and (max-width: 400px)  {
-    .strongs_inline {
+    .bss_strongs_inline {
         padding: 0 20px;
     }
 }
 
-.strongs_inline .item:not(:first-child) {
+.bss_strongs_inline .bss_item:not(:first-child) {
     margin-top: 15px;
 }
 
-.strongs_inline .item .strongs_head {
+.bss_strongs_inline .bss_item .bss_strongs_head {
     font-weight: bold;
     font-family: serif;
     margin-bottom: 20px
 }
 
-.strongs_inline .hebrew .strongs_head span {
+.bss_strongs_inline .bss_hebrew .bss_strongs_head span {
     font-size: 20pt;
     padding-top: 5px;
 }
 
-.strongs_inline .greek .strongs_head span {
+.bss_strongs_inline .bss_greek .bss_strongs_head span {
     font-size: 16pt;
     padding-top: 10px;
 }
 
-.strongs_inline .item .strongs_body {
+.bss_strongs_inline .bss_item .bss_strongs_body {
     text-align: justify;
 }
 
-.disambiguation .item {
+.bss_disambiguation .bss_item {
     text-align: center;
     cursor: pointer;
     font-weight: bold;
 }
 
-.disambiguation .item:not(:first-child) {
+.bss_disambiguation .bss_item:not(:first-child) {
     margin-top: 20px;
 }
 
-.biblesupersearch_dialog .super_container {
+.biblesupersearch_dialog .bss_super_container {
 /*    position: relative;*/
 }
 
@@ -488,13 +485,13 @@ div.alert_dialog {
     overflow-y: auto;
 }
 
-.bss_dialog_container .bss_dialog_buttons span.spacer, .hover_dialog .bss_dialog_buttons span.spacer {
+.bss_dialog_container .bss_dialog_buttons span.bss_spacer, .bss_hover_dialog .bss_dialog_buttons span.bss_spacer {
     display: inline-block;
     width: 10%;
     max-width: 40px;
 } 
 
-/*.bss_dialog_container .bss_dialog_buttons button, .hover_dialog .bss_dialog_buttons button {
+/*.bss_dialog_container .bss_dialog_buttons button, .bss_hover_dialog .bss_dialog_buttons button {
     display: inline-block;
     width: 10%;
     max-width: 40px;
@@ -502,31 +499,31 @@ div.alert_dialog {
 */
 
 
-.help_dialog .bss_dialog_container {
+.bss_help_dialog .bss_dialog_container {
     margin: 10px;
 }
 
-.help_dialog {
+.bss_help_dialog {
     padding-top: 5px;
 }
 
-.help_dialog .bss_dialog_buttons, .hover_dialog .bss_dialog_buttons {
+.bss_help_dialog .bss_dialog_buttons, .bss_hover_dialog .bss_dialog_buttons {
     /*min-height: 30px;*/
     padding: 8px 0 8px;
 }
 
-.help_dialog .list {
+.bss_help_dialog .bss_list {
     vertical-align: top;
 }
 
-.help_dialog .list .col {
+.bss_help_dialog .bss_list .bss_col {
     padding: 0 15px;
     display: inline-block;
 /*    height: 320px;*/
     overflow-y: auto;
 }
 
-.bible_sos .sos_item {
+.bss_bible_sos .bss_sos_item {
     margin-bottom: 5px;
     padding: 2px;
 }
@@ -535,47 +532,47 @@ div.alert_dialog {
     background-color: #ddd;
 }
 
-.help_dialog .item:nth-child(odd) {
+.bss_help_dialog .bss_item:nth-child(odd) {
     background-color: #ddd;
 }
 
-.help_dialog .bss_dialog_container {
+.bss_help_dialog .bss_dialog_container {
     padding-top: 2px;
 }
 
-.help_dialog.help table {
+.bss_help_dialog.bss_help table {
     border: 1px solid #333;
     border-spacing: 0;
     border-collapse: collapse;
 }
 
-.help_dialog.help .bss_dialog_content .link {
+.bss_help_dialog.bss_help .bss_dialog_content .bss_link {
     margin-bottom: 10px;
 }
 
-.help_dialog.help .bss_dialog_content .col div {
+.bss_help_dialog.help .bss_dialog_content .bss_col div {
     font-size: 0.9em;
 }
 
-.help_dialog.help table tr td {
+.bss_help_dialog.bss_help table tr td {
     font-size: .9em;
     border: 1px solid #333;
 }
 
-.help_dialog.help table tr td {
+.bss_help_dialog.bss_help table tr td {
     font-size: .8em;
     border: 1px solid #333;
 }
 
-.help_dialog.help table tr td.op {
+.bss_help_dialog.bss_help table tr td.bss_op {
     text-align: end;
 }
 
-.help_dialog.help table tr td.desc {
+.bss_help_dialog.bss_help table tr td.bss_desc {
     text-align: start;
 }
 
-.bible_sos .sos_item .label {
+.bss_bible_sos .bss_sos_item .bss_label {
     float: inline-start;
     display: inline-block;
     font-weight: bold;
@@ -603,25 +600,25 @@ div.alert_dialog {
     max-width: 70%;
 }*/
 
-.bss_history_item .material-icons {
+.bss_history_item .bss-material-icons {
     font-size: 22px;
     cursor: pointer;
 /*    border: 1px solid #333;*/
     margin-inline-start: 10px;
 }
 
-.share_dialog .link_share_container {
+.bss_share_dialog .bss_link_share_container {
     padding: 5px;
 }
 
-.share_dialog .link_share_container textarea.link_share {
+.bss_share_dialog .bss_link_share_container textarea.bss_link_share {
     width: 100%;
     height: 200px;
     margin: 0 !important;
     box-sizing: border-box;
 }
 
-.bible_sos .sos_item .verses {
+.bss_bible_sos .bss_sos_item .bss_verses {
     float: inline-end;
     cursor: pointer;
     display: inline-block;
@@ -630,11 +627,11 @@ div.alert_dialog {
     text-align: end;
 }
 
-.bible_start .start_item {
+.bss_bible_start .sbss_tart_item {
     padding: 5px 2px;
 }
 
-.bible_start .start_item .num {
+.bss_bible_start .bss_start_item .bss_num {
     float: inline-start;
     cursor: pointer;
     display: inline-block;
@@ -644,7 +641,7 @@ div.alert_dialog {
     margin-inline-end: 5px;
 }
 
-.bible_start .start_item .verses {
+.bss_bible_start .bss_start_item .bss_verses {
     float: inline-start;
     cursor: pointer;
     display: inline-block;
@@ -653,7 +650,7 @@ div.alert_dialog {
     text-align: start;
 }
 
-.bible_start .start_item .desc {
+.bss_bible_start .bss_start_item .bss_desc {
     float: inline-end;
     display: inline-block;
     max-width: 80%;
@@ -661,28 +658,29 @@ div.alert_dialog {
     font-size: 0.9em;
 }
 
-.bible_download h4 {
+.bss_bible_download h4 {
     margin-top: 0;
 }
-.bible_download h5 {
+
+.bss_bible_download h5 {
     margin-bottom: 0;
 }
 
-.bible_download .bss_dialog_content {
+.bss_bible_download .bss_dialog_content {
     height: 290px;
     overflow-y: auto;
     padding: 0 15px 15px;
 }
 
-.bible_download .bss_dialog_buttons {
+.bss_bible_download .bss_dialog_buttons {
     padding-top: 8px;
 }
 
-.bible_download .render_list {
+.bss_bible_download .bss_render_list {
     text-align: start;
 }
 
-.bible_download .render_list .name {
+.bss_bible_download .bss_render_list .bss_name {
     display: inline-block;
     float: inline-start;
     text-align: start;
@@ -692,29 +690,29 @@ div.alert_dialog {
     text-overflow: ellipsis;
 }
 
-.bible_download .render_list .status {
+.bss_bible_download .bss_render_list .bss_status {
     display: inline-block;
     float: inline-end;
     text-align: end;
 }
 
-.bible_download .render_list .status .success {
+.bss_bible_download .bss_render_list .bss_status .bss_success {
     color: green;
 }
 
-.bible_download .render_list .status .error {
+.bss_bible_download .bss_render_list .bss_status .bss_error {
     color: red;
 }
 
-.bible_download .render_list .render_item:nth-child(odd) {
+.bss_bible_download .bss_render_list .bss_render_item:nth-child(odd) {
     background-color: #ddd;
 }
 
-.bible_download .bss_pseudo_select_toggle {
+.bss_bible_download .bss_pseudo_select_toggle {
     height: 100px;
 }
 
-.clear-both, .clear_both, .bss_clear_both {
+.bss-clear-both, .clear_both, .bss_clear_both {
     clear: both;
 }
 
@@ -730,7 +728,7 @@ div.alert_dialog {
     text-align: center;
 }
 
-.biblesupersearch_bible_selector option.label {
+.biblesupersearch_bible_selector option.bss_label {
     background-color: transparent;
     font-weight: bold;
     color: black;
@@ -742,59 +740,59 @@ div.alert_dialog {
 }
 
 /* Print dialog specific formatting */
-.biblesupersearch_print .biblesupersearch_nav_buttons, .biblesupersearch_print .html_nav_buttons {
+.biblesupersearch_print .biblesupersearch_nav_buttons, .biblesupersearch_print .bss_html_nav_buttons {
     display:none;
 }
 
-.checkbox_container .element {
+.bss_checkbox_container .bss_element {
     display: inline;
 }
 
-.checkbox_container label {
+.bss_checkbox_container label {
     white-space: normal;
 }
 
-.biblesupersearch_copy_settings .settings {
+.biblesupersearch_copy_settings .bss_settings {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     font-size: .85em;
 }
 
-.biblesupersearch_copy_settings .presets {
+.biblesupersearch_copy_settings .bss_presets {
     display: inline-block;
 }
 
-.biblesupersearch_copy_settings .presets_container {
+.biblesupersearch_copy_settings .bss_presets_container {
     text-align: center;
     margin-bottom: 10px;
 }
 
-.biblesupersearch_copy_settings .presets_container .label {
+.biblesupersearch_copy_settings .bss_presets_container .bss_label {
     padding: 1px 0;
     display: inline-block;
     font-weight: bold;
     font-size: 0.9em;
 }
 
-.biblesupersearch_copy_settings .section {
+.biblesupersearch_copy_settings .bss_section {
     float: left;
     margin: 7px;
     background-color: #eeeeee;
     padding: 10px;
 }
 
-.biblesupersearch_copy_settings .section .header {
+.biblesupersearch_copy_settings .bss_section .bss_header {
     text-align: center;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.link_dialog .bss_dialog_content {
+.bss_link_dialog .bss_dialog_content {
     padding: 20px;
 }
 
-.link_dialog .copy-link-containr input {
+.bss_link_dialog .bss_copy-link-containr input {
     max-width: 300px;
     width: 90%;
     font-size: 10px;
@@ -802,7 +800,7 @@ div.alert_dialog {
     height:  11px;
 }
 
-.link_dialog .copy-link-containr button {
+.bss_link_dialog .bss_copy-link-containr button {
     font-size: 10px;
     padding: 0px;
     height: 17px;
@@ -857,7 +855,7 @@ sup.biblesupersearch_toggle_help {
     padding: 5px 10px;
 }
 
-.biblesupersearch_dialog.help_dialog .bss_dialog_container .bss_dialog_title .header h4 {
+.biblesupersearch_dialog.help_dialog .bss_dialog_container .bss_dialog_title .bss_header h4 {
     padding: 0 5px;
 }
 
@@ -897,7 +895,7 @@ tr.bss_render_reference_row th {
     cursor: default;
 }
 
-.bss_side_swipe_button_container.fadein {
+.bss_side_swipe_button_container.bss_fadein {
     opacity: 1;
     cursor: pointer;
 }

@@ -6,12 +6,12 @@ var Option = require('enyo/Option');
 module.exports = kind({
     name: 'BookSelect',
     tag: 'span',
-    classes: 'bookselect',
+    classes: 'bss_bookselect',
 
     components: [
-        {name: 'Book', kind: Select, onchange: 'handleBookChange', classes: 'book'}, 
+        {name: 'Book', kind: Select, onchange: 'handleBookChange', classes: 'bss_book'}, 
         {tag: 'span', content: ''},
-        {name: 'Chapter', kind: Select, onchange: 'handleChapterChange', classes: 'chapter'}
+        {name: 'Chapter', kind: Select, onchange: 'handleChapterChange', classes: 'bss_chapter'}
     ],
 
     handlers: {

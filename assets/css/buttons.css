@@ -1,14 +1,14 @@
 /* HTML format Buttons */
 
-.format_buttons_html {
+.bss_format_buttons_html {
     margin: 13px 0;
 }
 
-.format_buttons_html_narrow {
+.bss_format_buttons_html_narrow {
     max-width: 450px;
 }
 
-.format_buttons_html .item {
+.bss_format_buttons_html .bss_item {
     display: inline-block;
     margin: 2px;
     border: 1px solid #909090;
@@ -33,62 +33,62 @@
     -ms-box-sizing: content-box; 
 }
 
-.format_buttons_html .item:hover, .format_buttons_html .item.selected {
+.bss_format_buttons_html .bss_item:hover, .bss_format_buttons_html .bss_item.bss_selected {
     background-color: #d1cf45;
 }
 
-.format_buttons_html .item.size_reg span {
+.bss_format_buttons_html .bss_item.bss_size_reg span {
     text-decoration: underline;
     text-decoration-thickness: 2px;
     display: inline-block;
     height: 14px;
 }
 
-.format_buttons_html .item.font span {
+.bss_format_buttons_html .bss_item.bss_font span {
     padding-top: 1px;
     display: inline-block;
 }
 
-.format_buttons_html .item.font_serif span {
+.bss_format_buttons_html .bss_item.bss_font_serif span {
     padding-top: 2px;
     font-family: serif;
 }
 
-.format_buttons_html .item.font_sans_serif span {
+.bss_format_buttons_html .bss_item.bss_font_sans_serif span {
     font-family: sans-serif;
 }
 
-.format_buttons_html .item.font_monospace span {
+.bss_format_buttons_html .bss_item.bss_font_monospace span {
     font-family: monospace;
 }
 
-.format_buttons_html .item.paragraph_toggle {
+.bss_format_buttons_html .bss_item.bss_paragraph_toggle {
     width: 36px;
     overflow: hidden;
 }
 
-.format_buttons_html .item.renderstyle.paragraph {
+.bss_format_buttons_html .bss_item.bss_renderstyle.bss_paragraph {
     width: 36px;
     text-align: center;
 }
 
-.format_buttons_html .item.language {
+.bss_format_buttons_html .bss_item.bss_language {
     overflow: visible;
 }
 
-.format_buttons_html .item.language .bss_pseudo_select {
+.bss_format_buttons_html .bss_item.bss_language .bss_pseudo_select {
     width: 150px;
     background-color: transparent;
 }
 
 /* OLD */
-.format_buttons_html .item.language select {
+.bss_format_buttons_html .bss_item.bss_language select {
     border: 0;
 }
 
-/*@import "https://fonts.googleapis.com/icon?family=Material+Icons+Outlined";*/
+/*@import "https://fonts.bss_googleapis.bss_com/icon?family=Material+Icons+Outlined";*/
 
-.material-icons {
+.bss-material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
@@ -101,44 +101,44 @@
   white-space: nowrap;
   direction: ltr;
 
-  /* Support for all WebKit browsers. */
+  /* Support for all WebKit browsers.bss_ */
   -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
+  /* Support for Safari and Chrome.bss_ */
   text-rendering: optimizeLegibility;
 
-  /* Support for Firefox. */
+  /* Support for Firefox.bss_ */
   -moz-osx-font-smoothing: grayscale;
 
-  /* Support for IE. */
+  /* Support for IE.bss_ */
   font-feature-settings: 'liga';
 }
 
 /* for use within small <button> elements */
-.material-icons-small-button {
+.bss-material-icons-small-button {
     font-size: 13px;
 }
 
-.format_buttons_html .item .icon {
+.bss_format_buttons_html .bss_item .bss_icon {
     font-size: 18px;
     line-height: 18px;
 }
 
-.format_buttons_html .item img.icon {
+.bss_format_buttons_html .bss_item img.bss_icon {
     height: 18px;
 }
 
-.format_buttons_html .item {
+.bss_format_buttons_html .bss_item {
     /*color:  green;*/
 }
 
-.format_buttons_html .item.paragraph_toggle .true span, 
-.format_buttons_html .item.copy_toggle .true span, 
-.format_buttons_html .item.copy_toggle .false span,  
-.format_buttons_html .item.single_verse_toggle .true span, 
-.format_buttons_html .item.single_verse_toggle .false span,
-.format_buttons_html .item.renderstyle.verse span,
-.format_buttons_html .item.renderstyle.verse_passage span,
-.format_buttons_html .item.renderstyle.passage span
+.bss_format_buttons_html .bss_item.bss_paragraph_toggle .bss_true span, 
+.bss_format_buttons_html .bss_item.bss_copy_toggle .bss_true span, 
+.bss_format_buttons_html .bss_item.bss_copy_toggle .bss_false span,  
+.bss_format_buttons_html .bss_item.bss_single_verse_toggle .bss_true span, 
+.bss_format_buttons_html .bss_item.bss_single_verse_toggle .bss_false span,
+.bss_format_buttons_html .bss_item.bss_renderstyle.bss_verse span,
+.bss_format_buttons_html .bss_item.bss_renderstyle.bss_verse_passage span,
+.bss_format_buttons_html .bss_item.bss_renderstyle.bss_passage span
 {
     height: 4px;
     display: block;
@@ -153,73 +153,73 @@
     display: inline-block;
 }
 
-.format_buttons_html .item.copy_toggle.is_false span span {
+.bss_format_buttons_html .bss_item.bss_copy_toggle.bss_is_false span span {
     background-color: #3390ff;
     position: initial;
     line-height: 4px;
 }
 
-.format_buttons_html .item.copy_toggle_new {
+.bss_format_buttons_html .bss_item.bss_copy_toggle_new {
     width: 36px;
 }
 
-.format_buttons_html .item.copy_toggle {
+.bss_format_buttons_html .bss_item.bss_copy_toggle {
     width: 40px;
 }
 
-.format_buttons_html .item.copy_toggle .false {
+.bss_format_buttons_html .bss_item.bss_copy_toggle .bss_false {
     background-color: #3390ff;
     color: white;
 }
 
-.format_buttons_html .item.copy_toggle span.buttons {
+.bss_format_buttons_html .bss_item.bss_copy_toggle span.bss_buttons {
     font-size: 8px;
     top: -1px;
 }
 
-.format_buttons_html .item.single_verse_toggle.is_false span span {
+.bss_format_buttons_html .bss_item.bss_single_verse_toggle.bss_is_false span span {
     /*background-color: #3390ff;*/
     position: initial;
     line-height: 4px;
 }
 
-.format_buttons_html .item.single_verse_toggle {
+.bss_format_buttons_html .bss_item.bss_single_verse_toggle {
     width: 40px;
 }
 
-.format_buttons_html .item.single_verse_toggle .false {
+.bss_format_buttons_html .bss_item.bss_single_verse_toggle .bss_false {
     /*color: white;*/
 }
 
-.format_buttons_html .item.single_verse_toggle span.buttons {
+.bss_format_buttons_html .bss_item.bss_single_verse_toggle span.bss_buttons {
     font-size: 8px;
     top: -1px;
 }
 
-.format_buttons_html .item.advanced_toggle {
+.bss_format_buttons_html .bss_item.bss_advanced_toggle {
     min-width: 63px;
 }
 
-.format_buttons_html .item.download {
+.bss_format_buttons_html .bss_item.bss_download {
     text-align: center;
     /*width: 76px;*/
 }
 
-.format_buttons_html .item.text_only {
+.bss_format_buttons_html .bss_item.bss_text_only {
     line-height: 18px;
 }
 
-.format_buttons_html .item.language {
+.bss_format_buttons_html .bss_item.bss_language {
     line-height: 18px;
     padding: 0 4px 2px;
 }
 
-.format_buttons_html .item.language select {
+.bss_format_buttons_html .bss_item.bss_language select {
     font-size: 10px;
     background-color: transparent;
 }
 
-.format_buttons_html .block_enabled, .format_buttons_html .block_disabled {
+.bss_format_buttons_html .bss_block_enabled, .bss_format_buttons_html .bss_block_disabled {
     display: inline-block;
     margin-inline-end: 3px;
     height: 11px;
@@ -235,19 +235,19 @@
     /*padding-top: -15px;*/
 }
     
-.format_buttons_html .block_enabled {
+.bss_format_buttons_html .bss_block_enabled {
     background-color: #43b243;
     color: white;
 }
 
-.bible_settings .settings_toggle {
+.bss_bible_settings .bss_settings_toggle {
     width: 250px;
     margin: 0 auto 10px;
     text-align: start;
     cursor: pointer;
 }
 
-.bible_settings .settings_toggle .icon {
+.bss_bible_settings .bss_settings_toggle .bss_icon {
     font-size: 16px;
     /*background-color: blue;*/
     color: green;
@@ -255,36 +255,36 @@
     top: 2px;
 }
 
-.bible_settings .settings_container {
+.bss_bible_settings .bss_settings_container {
     width: 250px;
     margin: 0 auto 10px;
     text-align: start;
     cursor: pointer;
 }
 
-.bible_settings .settings_container label {
+.bss_bible_settings .bss_settings_container label {
     margin-inline-start: 5px;
     cursor: pointer;
 }
 
-.bible_settings .section .header {
+.bss_bible_settings .bss_section .bss_header {
     /*font-weight: bold;*/
     text-decoration: underline;
     margin-bottom: 4px;
 }
 
-/*.format_buttons_html .selected {
+/*.bss_format_buttons_html .bss_selected {
     background-color: #c7b72c;
 }
 */
 
-.html_nav_buttons {
+.bss_html_nav_buttons {
     text-align: center;
     margin: 15px 0;
 }
 
 /* HTML Nav Buttons */
-.html_nav_buttons a {
+.bss_html_nav_buttons a {
     display: inline-block;
     height: 30px;
     width: 30px;
@@ -296,61 +296,61 @@
     background-color: #a7c9f9;
 }
 
-.html_nav_buttons a.styleable {
+.bss_html_nav_buttons a.bss_styleable {
     font-size: 18px !important;
 /*    font-size: 16px !important;*/
     font-family: 'Free Sans';
 }
 
-.html_nav_buttons a.material-icons {
+.bss_html_nav_buttons a.bss-material-icons {
     font-size: 24px !important;
 }
 
-.html_nav_buttons a.active:link, .html_nav_buttons a.active:visited {
+.bss_html_nav_buttons a.bss_active:link, .bss_html_nav_buttons a.bss_active:visited {
     text-decoration: none;
     color: #444444;
 }
 
-.html_nav_buttons a.active:hover  {
+.bss_html_nav_buttons a.bss_active:hover  {
     background-color: #6fa7f7;
 }
 
-.html_nav_buttons a.inactive {
+.bss_html_nav_buttons a.bss_inactive {
     background-color: #dddddd;
     /*background-color: transparent;*/
 }
 
-.html_nav_buttons a.inactive:hover {
+.bss_html_nav_buttons a.bss_inactive:hover {
     /* don't do anything, link is inactive */
     background-color: #dddddd;
     text-decoration: none;
     /*background-color: transparent;*/
 }
 
-.html_nav_buttons a {
+.bss_html_nav_buttons a {
     text-decoration: none;
 }
 
-.biblesupersearch_copy_settings .presets button {
+.biblesupersearch_copy_settings .bss_presets button {
     margin: 0 3px;
 }
 
-.biblesupersearch_copy_settings .presets button.active {
+.biblesupersearch_copy_settings .bss_presets button.bss_active {
     background-color: #444444;
     color: white;
 }
 
-.biblesupersearch_copy_settings .section {
+.biblesupersearch_copy_settings .bss_section {
     font-size: 12px;
     min-width: 140px;
 }
 
-.biblesupersearch_copy_settings .section label {
+.biblesupersearch_copy_settings .bss_section label {
     margin-inline-start: 7px;
 }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    div.copy_toggle span.false {
+    div.bss_copy_toggle span.bss_false {
         padding-top: 6px;
         display: inline-block;
     }

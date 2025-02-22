@@ -10,8 +10,8 @@ module.exports = kind({
     kind: FormBase,
 
     components: [  
-        { classes: 'single_line', components: [
-            {kind: Autocomplete, name: 'request', classes: 'request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
+        { classes: 'bss_single_line', components: [
+            {kind: Autocomplete, name: 'request', classes: 'bss_request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
             {kind: Button, ontap: 'submitForm', components: [
                 {kind: i18n, content: 'Go'}
             ]}

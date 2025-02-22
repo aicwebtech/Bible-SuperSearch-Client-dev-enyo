@@ -31,8 +31,8 @@ module.exports = kind({
                     {kind: Input, name: 'search', style: 'width: 98%'},
                     {tag: 'br'},
                     {tag: 'br'},
-                    {kind: i18nContent, tag: 'label', allowHtml: true, classes: 'resp_left_label resp_left_label_165', content: 'Find words within:'},
-                    {kind: ProximitySelect, classes: 'resp_input resp_input_100', name: 'proximity_limit', style: 'max-width: 100px'}
+                    {kind: i18nContent, tag: 'label', allowHtml: true, classes: 'bss_resp_left_label bss_resp_left_label_165', content: 'Find words within:'},
+                    {kind: ProximitySelect, classes: 'bss_resp_input bss_resp_input_100', name: 'proximity_limit', style: 'max-width: 100px'}
                 ]
             },
             {tag: 'br'},

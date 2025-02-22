@@ -29,13 +29,13 @@ module.exports = kind({
                 {
                     components: [
                         {allowHtml: true, content: 'Boolean Search:'},
-                        {kind: TextArea, name: 'search', classes: 'large_block_textarea'}
+                        {kind: TextArea, name: 'search', classes: 'bss_large_block_textarea'}
                     ]
                 },
                 {
                     components: [
                         {allowHtml: true, content: 'Passage Retrieval:'},
-                        {kind: TextArea, name: 'reference', classes: 'large_block_textarea'}
+                        {kind: TextArea, name: 'reference', classes: 'bss_large_block_textarea'}
                     ]
                 },
                 {tag: 'br'},

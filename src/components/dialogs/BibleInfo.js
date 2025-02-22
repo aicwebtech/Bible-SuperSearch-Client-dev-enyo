@@ -18,7 +18,7 @@ module.exports = kind({
     kind: Dialog,
     maxWidth: '800px',
     height: '575px',
-    classes: 'help_dialog',
+    classes: 'bss_help_dialog',
     bibleString: null,
 
     titleComponents: [

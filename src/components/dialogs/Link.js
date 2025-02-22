@@ -22,7 +22,7 @@ module.exports = kind({
     kind: Dialog,
     maxWidth: '400px',
     height: '140px',
-    classes: 'help_dialog link_dialog',
+    classes: 'bss_help_dialog bss_link_dialog',
     bibleString: null,
     ezCopy: false,
     
@@ -33,13 +33,13 @@ module.exports = kind({
     ],
 
     bodyComponents: [
-        {name: 'FullUrlContainer', classes: 'copy-link-containr', components: [
+        {name: 'FullUrlContainer', classes: 'bss-copy-link-containr', components: [
             {kind: Input, name: 'FullUrl'},
             // {kind: Button, onclick: 'copyFullUrl', components: [
             //     {kind: i18n, content: 'Copy'}
             // ]}
         ]},
-        {name: 'ShortUrlContainer', classes: 'copy-link-containr', components: [
+        {name: 'ShortUrlContainer', classes: 'bss-copy-link-containr', components: [
             {tag: 'br'},
             {kind: Input, name: 'ShortUrl'},
             {kind: Button, onclick: 'copyShortUrl', components: [

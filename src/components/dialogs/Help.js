@@ -16,7 +16,7 @@ module.exports = kind({
     kind: Dialog,
     maxWidth: '500px',
     height: '475px',
-    classes: 'help_dialog help',
+    classes: 'bss_help_dialog bss_help',
     bibleString: null,
     titleBarHeight: 64,
     
@@ -135,42 +135,42 @@ module.exports = kind({
                     {tag: 'tr', components: [
                         {tag: 'td', content: 'AND'},
                         {tag: 'td', content: '&'},
-                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Match both'}
+                        {tag: 'td', classes: 'bss_desc', kind: i18n, content: 'Match both'}
                     ]},
                     {tag: 'tr', components: [
                         {tag: 'td', content: 'OR'},
                         {tag: 'td', content: '|'},
-                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Match either'}
+                        {tag: 'td', classes: 'bss_desc', kind: i18n, content: 'Match either'}
                     ]},
                     {tag: 'tr', components: [
                         {tag: 'td', content: 'XOR'},
                         {tag: 'td', content: '^'},
-                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Match only one'}
+                        {tag: 'td', classes: 'bss_desc', kind: i18n, content: 'Match only one'}
                     ]},
                     {tag: 'tr', components: [
                         {tag: 'td', content: 'NOT'},
                         {tag: 'td', content: '-'},
-                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Does not match'}
+                        {tag: 'td', classes: 'bss_desc', kind: i18n, content: 'Does not match'}
                     ]},
                     {tag: 'tr', components: [
                         {tag: 'td', content: 'CHAP'},
                         {tag: 'td', content: ''},
-                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same chapter'}
+                        {tag: 'td', classes: 'bss_desc', kind: i18n, content: 'Matches words in the same chapter'}
                     ]},                     
                     {tag: 'tr', components: [
                         {tag: 'td', content: 'BOOK'},
                         {tag: 'td', content: ''},
-                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same book'}
+                        {tag: 'td', classes: 'bss_desc', kind: i18n, content: 'Matches words in the same book'}
                     ]},                
                     {tag: 'tr', components: [
                         {tag: 'td', content: 'PROX(N)'},
                         {tag: 'td', content: ''},
-                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same book, and within N verses of each other'}
+                        {tag: 'td', classes: 'bss_desc', kind: i18n, content: 'Matches words in the same book, and within N verses of each other'}
                     ]},                
                     {tag: 'tr', components: [
                         {tag: 'td', content: 'PROC(N)'},
                         {tag: 'td', content: ''},
-                        {tag: 'td', classes: 'desc', kind: i18n, content: 'Matches words in the same chapter, and within N verses of each other'}
+                        {tag: 'td', classes: 'bss_desc', kind: i18n, content: 'Matches words in the same chapter, and within N verses of each other'}
                     ]}
                 ]}
             ]},
@@ -202,8 +202,8 @@ module.exports = kind({
     ],
 
     bodyComponents: [
-        {classes: 'list start_list', name: 'ListContainer'},
-        { classes: 'link', components: [
+        {classes: 'bss_list bss_start_list', name: 'ListContainer'},
+        { classes: 'bss_link', components: [
             {tag: 'hr'}, 
             {tag: 'a', content: 'www.BibleSuperSearch.com', attributes: {href: 'https://www.biblesupersearch.com', target: '_NEW'}},
             {tag: 'hr'}
@@ -375,7 +375,7 @@ module.exports = kind({
             if(!this.$.ListContainer.$[colName]) {
                 this.$.ListContainer.createComponent({
                     name: colName,
-                    classes: 'col'
+                    classes: 'bss_col'
                 });
             }
 
@@ -423,7 +423,7 @@ module.exports = kind({
 
                 this.$.ListContainer.$[colName].createComponent({
                     owner: this,
-                    classes: 'link',
+                    classes: 'bss_link',
                     components: [
                         {kind: Anchor, href: url, content: trans, ontap: 'handleLinkTap'}
                     ]

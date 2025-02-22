@@ -24,7 +24,7 @@ module.exports = kind({
     kind: Dialog,
     maxWidth: '350px',
     height: '575px',
-    classes: 'help_dialog bible_settings',
+    classes: 'bss_help_dialog bss_bible_settings',
     bibleString: null,
 
     handlers: {
@@ -32,7 +32,7 @@ module.exports = kind({
     },
     
     titleComponents: [
-        {classes: 'header', components: [
+        {classes: 'bss_header', components: [
             {kind: i18n, classes: 'bss_dialog_title', content: 'Settings'}, 
         ]}
     ],
@@ -45,21 +45,21 @@ module.exports = kind({
         ]},
         {tag: 'br'},
         {
-            classes: 'settings_toggle highlight_toggle',
+            classes: 'bss_settings_toggle bss_highlight_toggle',
             name: 'highlight_toggle',
             kind: Toggle,         
             trueTitle: 'Disable Highlighting of Keywords',
             falseTitle: 'Enable Highlighting of Keywords',
             trueComponent: {
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'check_box'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Highlight'}
                 ]
             },        
             falseComponent: {
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'check_box_outline_blank'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Highlight'}
                 ]
@@ -70,21 +70,21 @@ module.exports = kind({
             ]
         },    
         {
-            classes: 'settings_toggle redletter_toggle',
+            classes: 'bss_settings_toggle bss_redletter_toggle',
             name: 'redletter_toggle',
             kind: Toggle,         
             trueTitle: 'Disable Red Letter',
             falseTitle: 'Enable Red Letter', 
             trueComponent: {
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'check_box'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Red Letter'}
                 ]
             },        
             falseComponent: {
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'check_box_outline_blank'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Red Letter'}
                 ]
@@ -98,21 +98,21 @@ module.exports = kind({
             ]
         },
         {
-            classes: 'settings_toggle italics_toggle',
+            classes: 'bss_settings_toggle bss_italics_toggle',
             name: 'italics_toggle',
             kind: Toggle,         
             trueTitle: 'Disable Italization of Added Words',
             falseTitle: 'Enable Italization of Added Words',
             trueComponent: {
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'check_box'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Italics'}
                 ]
             },        
             falseComponent: {
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'check_box_outline_blank'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {kind: i18n, tag: 'span', content: 'Italics'}
                 ]
@@ -126,21 +126,21 @@ module.exports = kind({
             ]
         },        
         {
-            classes: 'settings_toggle strongs_toggle',
+            classes: 'bss_settings_toggle bss_strongs_toggle',
             name: 'strongs_toggle',
             kind: Toggle,        
             trueTitle: 'Disable Strong\'s Numbers',
             falseTitle: 'Enable Strong\'s Numbers',
             trueComponent: {
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'check_box'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
                 ]
             },        
             falseComponent: {
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'check_box_outline_blank'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},       
                     {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}         
                 ]
@@ -154,7 +154,7 @@ module.exports = kind({
             ]
         },               
         {
-            classes: 'settings_toggle parallel_search_error_toggle',
+            classes: 'bss_settings_toggle bss_parallel_search_error_toggle',
             name: 'parallel_search_error_toggle',
             kind: Toggle,        
             showing: false,
@@ -162,14 +162,14 @@ module.exports = kind({
             falseTitle: 'Hide Parallel Search Errors',
             trueComponent: {
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'check_box'},
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'check_box'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
                     {tag: 'small', kind: i18n, content: 'Hide Parallel Search Errors', allowHtml: true}
                 ]
             },        
             falseComponent: {
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'check_box_outline_blank'},
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'check_box_outline_blank'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},       
                     {tag: 'small', kind: i18n, content: 'Hide Parallel Search Errors', allowHtml: true}         
                 ]
@@ -183,39 +183,39 @@ module.exports = kind({
         },       
         {tag: 'br'},
         {
-            classes: 'section', 
+            classes: 'bss_section', 
             name: 'RenderStyleContainer',
             components: [
-                {kind: inc, content: 'Text Display', classes: 'header'},
+                {kind: inc, content: 'Text Display', classes: 'bss_header'},
                 {
                     kind: Group,
                     name: 'render_style',
                     onActiveChanged: 'handleActiveChanged',
-                    classes: 'settings_container',
+                    classes: 'bss_settings_container',
                     components: [
-                        {classes: 'checkbox_container checkbox_first', components: [
-                            {classes: 'element', components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'paragraph', id: 'paragraph', type: 'radio'}
                             ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'paragraph'}, classes: 'label', content: 'Paragraph Display'}
+                            {kind: i18n, tag: 'label', attributes: {for: 'paragraph'}, classes: 'bss_label', content: 'Paragraph Display'}
                         ]},                
-                        {classes: 'checkbox_container checkbox_first', components: [
-                            {classes: 'element', components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'passage', id: 'passage', type: 'radio'}
                             ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'passage'}, classes: 'label', content: 'Passage Display'}
+                            {kind: i18n, tag: 'label', attributes: {for: 'passage'}, classes: 'bss_label', content: 'Passage Display'}
                         ]},                
-                        {classes: 'checkbox_container checkbox_first', components: [
-                            {classes: 'element', components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'verse', id: 'verse', type: 'radio'}
                             ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'verse'}, classes: 'label', content: 'Verse Display'}
+                            {kind: i18n, tag: 'label', attributes: {for: 'verse'}, classes: 'bss_label', content: 'Verse Display'}
                         ]},                         
-                        {classes: 'checkbox_container checkbox_first', components: [
-                            {classes: 'element', components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'verse_passage', id: 'verse_passage', type: 'radio'}
                             ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'verse_passage'}, classes: 'label', content: 'Verse as Passage Display'}
+                            {kind: i18n, tag: 'label', attributes: {for: 'verse_passage'}, classes: 'bss_label', content: 'Verse as Passage Display'}
                         ]},                
                     ]
                 }      
@@ -223,32 +223,32 @@ module.exports = kind({
         },        
         {tag: 'br'},
         {
-            classes: 'section', 
+            classes: 'bss_section', 
             components: [
-                {kind: inc, content: 'Font Style', classes: 'header'},
+                {kind: inc, content: 'Font Style', classes: 'bss_header'},
                 {
                     kind: Group,
                     name: 'font',
                     onActiveChanged: 'handleActiveChanged',
                     classes: 'settings_container',
                     components: [
-                        {classes: 'checkbox_container checkbox_first', components: [
-                            {classes: 'element', components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'serif', id: 'serif', type: 'radio'}
                             ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'serif'}, classes: 'label', content: 'Serif', style: 'font-family: Serif'}
+                            {kind: i18n, tag: 'label', attributes: {for: 'serif'}, classes: 'bss_label', content: 'Serif', style: 'font-family: Serif'}
                         ]},                
-                        {classes: 'checkbox_container checkbox_first', components: [
-                            {classes: 'element', components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'sans-serif', id: 'sans-serif', type: 'radio'}
                             ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'sans-serif'}, classes: 'label', content: 'Sans-Serif', style: 'font-family: Sans-Serif'}
+                            {kind: i18n, tag: 'label', attributes: {for: 'sans-serif'}, classes: 'bss_label', content: 'Sans-Serif', style: 'font-family: Sans-Serif'}
                         ]},                
-                        {classes: 'checkbox_container checkbox_first', components: [
-                            {classes: 'element', components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'monospace', id: 'monospace', type: 'radio'}
                             ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'monospace'}, classes: 'label', content: 'Monospace', style: 'font-family: monospace'}
+                            {kind: i18n, tag: 'label', attributes: {for: 'monospace'}, classes: 'bss_label', content: 'Monospace', style: 'font-family: monospace'}
                         ]},                
                     ]
                 }      
@@ -285,9 +285,9 @@ module.exports = kind({
         {name: 'Reset', kind: Button, ontap: 'reset', components: [
             {kind: i18n, content: 'Reset'},
         ]},
-        {tag: 'span', classes: 'spacer'}, 
-        {tag: 'span', classes: 'spacer'}, 
-        {tag: 'span', classes: 'spacer'}, 
+        {tag: 'span', classes: 'bss_spacer'}, 
+        {tag: 'span', classes: 'bss_spacer'}, 
+        {tag: 'span', classes: 'bss_spacer'}, 
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'},
         ]}

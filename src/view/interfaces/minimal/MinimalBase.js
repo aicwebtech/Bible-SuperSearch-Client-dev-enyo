@@ -11,7 +11,7 @@ module.exports = kind({
     kind: InterfaceBase,
     formView: formView,
     advancedFormView: null, //advancedFormView,
-    classes: 'interface_minimal',
+    classes: 'bss_interface_minimal',
 
     create: function() {
         this.inherited(arguments);

@@ -26,7 +26,7 @@ module.exports = kind({
     kind: Dialog,
     maxWidth: '400px',
     height: '320px',
-    classes: 'help_dialog share_dialog',
+    classes: 'bss_help_dialog bss_share_dialog',
     bibleString: null,
     ezCopy: false,
     shareContent: null,
@@ -34,17 +34,17 @@ module.exports = kind({
     populated: false,
 
     titleComponents: [
-        {classes: 'header', components: [
+        {classes: 'bss_header', components: [
             {kind: i18n, classes: 'bss_dialog_title', content: 'Share'}, 
         ]}
     ],
 
     bodyComponents: [
-        {classes: 'link_share_container', components: [
+        {classes: 'bss_link_share_container', components: [
             {
                 kind: TextArea, 
                 name: 'CopyArea', 
-                classes: 'link_share', 
+                classes: 'bss_link_share', 
                 attributes: {dir: 'auto'},
                 _style: 'width: 98%'
             }
@@ -88,8 +88,6 @@ module.exports = kind({
         {components: [
             {name: 'Copy', kind: Button, ontap: 'copy', components: [
                 {kind: i18n, content: 'Copy'}
-                // {tag: 'span', content: '&nbsp;', allowHtml: true},
-                // {tag: 'span', classes: 'material-icons icon material-icons-small-button', content: 'share'}
             ]},          
             {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp; &nbsp; &nbsp;'},
             {name: 'Close', kind: Button, ontap: 'close', components: [

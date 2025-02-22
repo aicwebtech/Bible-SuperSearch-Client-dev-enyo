@@ -11,9 +11,9 @@ module.exports = kind({
     kind: FormBase,
 
     components: [
-        { classes: 'single_line_bible', components: [
-            {kind: Autocomplete, name: 'request', classes: 'request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
-            {tag: 'span', classes: 'bible_selector', components: [
+        { classes: 'bss_single_line_bible', components: [
+            {kind: Autocomplete, name: 'request', classes: 'bss_request', placeholder: 'Enter search keyword(s) or passage reference(s)'},
+            {tag: 'span', classes: 'bss_bible_selector', components: [
                 {
                     kind: Bible, 
                     name: 'bible', 

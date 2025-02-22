@@ -5,9 +5,9 @@ module.exports = kind({
     name: 'NavMaterialButtonsKeyboard',
     kind: Base,
 
-    linkClasses: 'material-icons',
-    // classesActive: 'active material-icons icon',
-    // classesInactive: 'inactive material-icons icon',
+    linkClasses: 'bss-material-icons',
+    // classesActive: 'bss_active bss-material-icons bss_icon',
+    // classesInactive: 'bss_inactive bss-material-icons bss_icon',
 
     prevBookText: 'keyboard_double_arrow_left',
     prevChapterText: 'keyboard_arrow_left',

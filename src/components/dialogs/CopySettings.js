@@ -69,174 +69,174 @@ module.exports = kind({
 
     components: [
         {
-            classes: 'presets_container',
+            classes: 'bss_presets_container',
             components: [
                 {
                     kind: i18n,
                     content: 'Copy Format',
                     tag: 'span',
-                    classes: 'label',
+                    classes: 'bss_label',
                 },
-                {tag: 'span', content: ': &nbsp;', classes: 'label', allowHtml: true},
+                {tag: 'span', content: ': &nbsp;', classes: 'bss_label', allowHtml: true},
                 {            
-                    classes: 'presets',
+                    classes: 'bss_presets',
                     name: 'presets_group',
                     kind: Group
                 }
             ]
         },
         {
-            classes: 'settings',
+            classes: 'bss_settings',
             name: 'settings_container',
             components: [
                 {
-                    classes: 'section',
+                    classes: 'bss_section',
                     components: [
-                        {kind: inc, content: 'Single Verses', classes: 'header'},
+                        {kind: inc, content: 'Single Verses', classes: 'bss_header'},
                         {
                             kind: Group,
                             name: 'text_format',
                             components: [
-                                {classes: 'checkbox_container checkbox_first', components: [
-                                    {classes: 'element', components: [
+                                {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                                    {classes: 'bss_element', components: [
                                         {kind: Checkbox, name: 'reference_text', id: 'reference_text', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'reference_text'}, classes: 'label', content: 'Reference - Text'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'reference_text'}, classes: 'bss_label', content: 'Reference - Text'}
                                 ]},                
-                                {classes: 'checkbox_container checkbox_first', components: [
-                                    {classes: 'element', components: [
+                                {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                                    {classes: 'bss_element', components: [
                                         {kind: Checkbox, name: 'text_reference', id: 'text_reference', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'text_reference'}, classes: 'label', content: 'Text - Reference'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'text_reference'}, classes: 'bss_label', content: 'Text - Reference'}
                                 ]},                
-                                {classes: 'checkbox_container checkbox_first', components: [
-                                    {classes: 'element', components: [
+                                {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                                    {classes: 'bss_element', components: [
                                         {kind: Checkbox, name: 'text_only', id: 'text_only', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'text_only'}, classes: 'label', content: 'Text Only'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'text_only'}, classes: 'bss_label', content: 'Text Only'}
                                 ]},                
-                                // {classes: 'checkbox_container checkbox_first', components: [
-                                //     {classes: 'element', components: [
+                                // {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                                //     {classes: 'bss_element', components: [
                                 //         {kind: Checkbox, name: 'reference_only', id: 'reference_only', type: 'radio'}
                                 //     ]},
-                                //     {kind: i18n, tag: 'label', attributes: {for: 'reference_only'}, classes: 'label', content: 'Reference Only'}
+                                //     {kind: i18n, tag: 'label', attributes: {for: 'reference_only'}, classes: 'bss_label', content: 'Reference Only'}
                                 // ]}
                             ]
                         },  
-                        {classes: 'checkbox_container checkbox_first', components: [
-                            {classes: 'element', components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'separate_line', id: 'separate_line'}
                             ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'separate_line'}, classes: 'label', content: 'Separate Line'}
+                            {kind: i18n, tag: 'label', attributes: {for: 'separate_line'}, classes: 'bss_label', content: 'Separate Line'}
                         ]},        
                     ]
                 },
                 {
-                    classes: 'section',
+                    classes: 'bss_section',
                     components: [
                         {kind: inc, content: 'Multi-verse Passages', classes: 'header'},
                         {
                             kind: Group,
                             name: 'passage_format',
                             components: [
-                                {classes: 'checkbox_container checkbox_first', components: [
-                                    {classes: 'element', components: [
+                                {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                                    {classes: 'bss_element', components: [
                                         {kind: Checkbox, name: 'reference_passage', id: 'reference_passage', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'reference_passage'}, classes: 'label', content: 'Reference - Passage'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'reference_passage'}, classes: 'bss_label', content: 'Reference - Passage'}
                                 ]},                
-                                {classes: 'checkbox_container checkbox_first', components: [
-                                    {classes: 'element', components: [
+                                {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                                    {classes: 'bss_element', components: [
                                         {kind: Checkbox, name: 'passage_reference', id: 'passage_reference', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'passage_reference'}, classes: 'label', content: 'Passage - Reference'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'passage_reference'}, classes: 'bss_label', content: 'Passage - Reference'}
                                 ]},                
-                                {classes: 'checkbox_container checkbox_first', components: [
-                                    {classes: 'element', components: [
+                                {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                                    {classes: 'bss_element', components: [
                                         {kind: Checkbox, name: 'passage_only', id: 'passage_only', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'passage_only'}, classes: 'label', content: 'Passage Only'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'passage_only'}, classes: 'bss_label', content: 'Passage Only'}
                                 ]}                                
                             ]
                         },        
-                        {classes: 'checkbox_container checkbox_first', components: [
-                            {classes: 'element', components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'passage_verse_number', id: 'passage_verse_number'}
                             ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'passage_verse_number'}, classes: 'label', content: 'Show Verse Number'}
+                            {kind: i18n, tag: 'label', attributes: {for: 'passage_verse_number'}, classes: 'bss_label', content: 'Show Verse Number'}
                         ]},
                     ]
                 },
                 {
-                    classes: 'section',
+                    classes: 'bss_section',
                     components: [              
-                        {kind: inc, content: 'Other', classes: 'header'},
-                        {classes: 'checkbox_container checkbox_first', components: [
-                            {classes: 'element', components: [
+                        {kind: inc, content: 'Other', classes: 'bss_header'},
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'abbr_book', id: 'abbr_book'}
                             ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'abbr_book'}, classes: 'label', content: 'Abbreviate Books'}
+                            {kind: i18n, tag: 'label', attributes: {for: 'abbr_book'}, classes: 'bss_label', content: 'Abbreviate Books'}
                         ]},                        
-                        {classes: 'checkbox_container checkbox_first', components: [
-                            {classes: 'element', components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'testament', id: 'testament'}
                             ]},
-                            {tag: 'label', attributes: {for: 'testament'}, classes: 'label', components: [
+                            {tag: 'label', attributes: {for: 'testament'}, classes: 'bss_label', components: [
                                 {kind: i18n, content: 'Include Testament'},
                             ]}
                         ]},
-                        {classes: 'checkbox_container checkbox_first', components: [
-                            {classes: 'element', components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'omit_extra_br', id: 'omit_extra_br'}
                             ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'omit_extra_br'}, classes: 'label', content: 'Omit Extra Line Breaks'}
+                            {kind: i18n, tag: 'label', attributes: {for: 'omit_extra_br'}, classes: 'bss_label', content: 'Omit Extra Line Breaks'}
                         ]},                          
                         // NOT NEEDED?
-                        // {classes: 'checkbox_container checkbox_first', components: [
-                        //     {classes: 'element', components: [
+                        // {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                        //     {classes: 'bss_element', components: [
                         //         {kind: Checkbox, name: 'allow_html', id: 'allow_html'}
                         //     ]},
-                        //     {kind: i18n, tag: 'label', attributes: {for: 'allow_html'}, classes: 'label', content: 'Allow HTML Line Breaks'}
+                        //     {kind: i18n, tag: 'label', attributes: {for: 'allow_html'}, classes: 'bss_label', content: 'Allow HTML Line Breaks'}
                         // ]},                
                     ]
                 },                
                 {
-                    classes: 'section', 
+                    classes: 'bss_section', 
                     components: [
-                        {kind: inc, content: 'Text Display', classes: 'header'},
+                        {kind: inc, content: 'Text Display', classes: 'bss_header'},
                         {
                             kind: Group,
                             name: 'render_style',
                             components: [
-                                {classes: 'checkbox_container checkbox_first', components: [
-                                    {classes: 'element', components: [
+                                {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                                    {classes: 'bss_element', components: [
                                         {kind: Checkbox, name: 'paragraph', id: 'copy_settings_paragraph', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_paragraph'}, classes: 'label', content: 'Paragraph Display'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_paragraph'}, classes: 'bss_label', content: 'Paragraph Display'}
                                 ]},                
-                                {classes: 'checkbox_container checkbox_first', components: [
-                                    {classes: 'element', components: [
+                                {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                                    {classes: 'bss_element', components: [
                                         {kind: Checkbox, name: 'passage', id: 'copy_settings_passage', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_passage'}, classes: 'label', content: 'Passage Display'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_passage'}, classes: 'bss_label', content: 'Passage Display'}
                                 ]},                
-                                {classes: 'checkbox_container checkbox_first', components: [
-                                    {classes: 'element', components: [
+                                {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                                    {classes: 'bss_element', components: [
                                         {kind: Checkbox, name: 'verse', id: 'copy_settings_verse', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_verse'}, classes: 'label', content: 'Verse Display'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_verse'}, classes: 'bss_label', content: 'Verse Display'}
                                 ]},     
-                                {classes: 'checkbox_container checkbox_first', components: [
-                                    {classes: 'element', components: [
+                                {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                                    {classes: 'bss_element', components: [
                                         {kind: Checkbox, name: 'verse_passage', id: 'copy_settings_verse_passage', type: 'radio'}
                                     ]},
-                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_verse_passage'}, classes: 'label', content: 'Verse as Passage Display'}
+                                    {kind: i18n, tag: 'label', attributes: {for: 'copy_settings_verse_passage'}, classes: 'bss_label', content: 'Verse as Passage Display'}
                                 ]},              
                             ]
                         }      
                     ]
                 },
-                {classes: 'clear-both'}
+                {classes: 'bss-clear-both'}
             ]
         }
     ],

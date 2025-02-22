@@ -17,7 +17,7 @@ module.exports = kind({
     components: [
         {
             kind: FormSection,
-            classes: 'biblesupersearch_browsing_form book_selector_horizontal',
+            classes: 'biblesupersearch_browsing_form bss_book_selector_horizontal',
             components: [
                 {classes: 'biblesupersearch_center_element', components: [
                     {
@@ -26,11 +26,11 @@ module.exports = kind({
                         tag: 'span',
                         parallelLimit: 1,
                         selectorWidth: 300,
-                        classes: 'inline_block'
+                        classes: 'bss_inline_block'
                     },
                     {tag: 'span', style: 'white-space: nowrap;', components: [
                         {name: 'reference', kind: BookSelect},
-                        {kind: Button, ontap: 'submitForm', classes: 'submit', components: [
+                        {kind: Button, ontap: 'submitForm', classes: 'bss_submit', components: [
                             {kind: i18nContent, content: 'Go'}
                         ]}
                     ]}

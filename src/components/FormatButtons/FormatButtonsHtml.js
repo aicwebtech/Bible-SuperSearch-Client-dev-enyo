@@ -14,14 +14,14 @@ var LocaleSelectorOld = require('../Locale/LocaleSelectorOld');
 module.exports = kind({
     name: 'FormatButtonsHtml',
     kind: Base,
-    classes: 'format_buttons_html',
+    classes: 'bss_format_buttons_html',
     font: null,
     
     components: [
         {classes: 'bss_button_group', name: 'TextSizeGroup', components: [
             {
                 kind: i18n,
-                classes: 'item size size_plus',
+                classes: 'bss_item bss_size bss_size_plus',
                 name: 'size_plus',
                 tag: 'span',
                 val: 'plus',
@@ -36,7 +36,7 @@ module.exports = kind({
             },      
             {
                 kind: i18n,
-                classes: 'item size size_reg',
+                classes: 'bss_item bss_size bss_size_reg',
                 name: 'size_reg',
                 val: 'reg',
                 ontap: 'handleSizeChange',
@@ -52,7 +52,7 @@ module.exports = kind({
             },  
             {
                 kind: i18n,
-                classes: 'item size size_minus',
+                classes: 'bss_item bss_size bss_size_minus',
                 name: 'size_minus',
                 val: 'minus',
                 ontap: 'handleSizeChange',
@@ -70,7 +70,7 @@ module.exports = kind({
         {classes: 'bss_button_group', name: 'FontStyleGroup', components: [
             {
                 kind: i18n,
-                classes: 'item font font_serif',
+                classes: 'bss_item bss_font bss_font_serif',
                 name: 'font_serif',
                 ontap: 'handleFontChange',
                 val: 'serif',
@@ -84,7 +84,7 @@ module.exports = kind({
             },        
             {
                 kind: i18n,
-                classes: 'item font font_sans_serif',
+                classes: 'bss_item bss_font bss_font_sans_serif',
                 name: 'font_sans_serif',
                 ontap: 'handleFontChange',
                 val: 'sans_serif',
@@ -98,7 +98,7 @@ module.exports = kind({
             },
             {
                 kind: i18n,
-                classes: 'item font font_monospace',
+                classes: 'bss_item bss_font bss_font_monospace',
                 name: 'font_monospace',
                 ontap: 'handleFontChange',
                 val: 'monospace',
@@ -115,7 +115,7 @@ module.exports = kind({
         {classes: 'bss_button_group', name: 'TextDisplayGroup', components: [
             {
                 kind: i18n,
-                classes: 'item renderstyle paragraph',
+                classes: 'bss_item bss_renderstyle bss_paragraph',
                 name: 'renderstyle_paragraph',
                 val: 'paragraph',
                 tag: 'span',
@@ -128,7 +128,7 @@ module.exports = kind({
             },        
             {
                 kind: i18n,
-                classes: 'item renderstyle passage',
+                classes: 'bss_item bss_renderstyle bss_passage',
                 name: 'renderstyle_passage',
                 val: 'passage',
                 tag: 'span',
@@ -147,7 +147,7 @@ module.exports = kind({
             },        
             {
                 kind: i18n,
-                classes: 'item renderstyle verse',
+                classes: 'bss_item bss_renderstyle bss_verse',
                 name: 'renderstyle_verse',
                 val: 'verse',
                 tag: 'span',
@@ -167,7 +167,7 @@ module.exports = kind({
             },            
             {
                 kind: i18n,
-                classes: 'item renderstyle verse_passage',
+                classes: 'bss_item bss_renderstyle bss_verse_passage',
                 name: 'renderstyle_verse_passage',
                 val: 'verse_passage',
                 tag: 'span',
@@ -190,39 +190,39 @@ module.exports = kind({
         
         {classes: 'bss_button_group', name: 'TextEmbGroup1', components: [
             {
-                classes: 'item italics_toggle',
+                classes: 'bss_item bss_italics_toggle',
                 name: 'italics_toggle',
                 kind: Toggle,         
                 trueTitle: 'Disable Italization of Added Words',
                 falseTitle: 'Enable Italization of Added Words',
                 trueComponent: {
                     components: [
-                        {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+                        {tag: 'span', classes: 'bss_block_enabled', content: '&#10003;', allowHtml: true},
                         {kind: i18n, tag: 'span', content: 'Italics'}
                     ]
                 },        
                 falseComponent: {
                     components: [
-                        {tag: 'span', classes: 'block_disabled', allowHtml: true},
+                        {tag: 'span', classes: 'bss_block_disabled', allowHtml: true},
                         {kind: i18n, tag: 'span', content: 'Italics'}
                     ]
                 }
             },        
             {
-                classes: 'item strongs_toggle',
+                classes: 'bss_item bss_strongs_toggle',
                 name: 'strongs_toggle',
                 kind: Toggle,        
                 trueTitle: 'Disable Strong\'s Numbers',
                 falseTitle: 'Enable Strong\'s Numbers',
                 trueComponent: {
                     components: [
-                        {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+                        {tag: 'span', classes: 'bss_block_enabled', content: '&#10003;', allowHtml: true},
                         {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
                     ]
                 },        
                 falseComponent: {
                     components: [
-                        {tag: 'span', classes: 'block_disabled', allowHtml: true},
+                        {tag: 'span', classes: 'bss_block_disabled', allowHtml: true},
                         {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
                     ]
                 }
@@ -230,41 +230,41 @@ module.exports = kind({
         ]},
         {classes: 'bss_button_group', name: 'TextEmbGroup2', components: [     
             {
-                classes: 'item redletter_toggle',
+                classes: 'bss_item bss_redletter_toggle',
                 name: 'redletter_toggle',
                 kind: Toggle,         
                 trueTitle: 'Disable Red Letter',
                 falseTitle: 'Enable Red Letter', 
                 trueComponent: {
                     components: [
-                        {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
+                        {tag: 'span', classes: 'bss_block_enabled', content: '&#10003;', allowHtml: true},
                         {kind: i18n, tag: 'span', content: 'Red Letter'}
                     ]
                 },        
                 falseComponent: {
                     components: [
-                        {tag: 'span', classes: 'block_disabled', allowHtml: true},
+                        {tag: 'span', classes: 'bss_block_disabled', allowHtml: true},
                         {kind: i18n, tag: 'span', content: 'Red Letter'}
                     ]
                 }
             },
             {
-                classes: 'item highlight_toggle',
+                classes: 'bss_item bss_highlight_toggle',
                 name: 'highlight_toggle',
                 kind: Toggle,         
                 trueTitle: 'Disable Highlighting of Keywords',
                 falseTitle: 'Enable Highlighting of Keywords',
                 trueComponent: {
                     components: [
-                        {tag: 'span', classes: 'block_enabled', content: '&#10003;', allowHtml: true},
-                        // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
+                        {tag: 'span', classes: 'bss_block_enabled', content: '&#10003;', allowHtml: true},
+                        // {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'highlight'}
                         {kind: i18n, tag: 'span', content: 'Highlight'}
                     ]
                 },        
                 falseComponent: {
                     components: [
-                        {tag: 'span', classes: 'block_disabled', allowHtml: true},
-                        // {tag: 'span', classes: 'material-icons icon', content: 'highlight'}
+                        {tag: 'span', classes: 'bss_block_disabled', allowHtml: true},
+                        // {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'highlight'}
                         {kind: i18n, tag: 'span', content: 'Highlight'}
                     ]
                 }
@@ -274,7 +274,7 @@ module.exports = kind({
             // copy instantly button
             {tag: 'span', components: [
                 {
-                    classes: 'item',
+                    classes: 'bss_item',
                     name: 'copy_instant',
                     kind: i18n,
                     content: 'Copy',
@@ -286,7 +286,7 @@ module.exports = kind({
                         {
                             kind: i18n, 
                             tag: 'span', 
-                            classes: 'material-icons icon', 
+                            classes: 'bss-material-icons bss_icon', 
                             content: 'content_copy',
                             // title: 'Copy'
                         }
@@ -294,20 +294,20 @@ module.exports = kind({
                 },
             ]},
             {
-                classes: 'item copy_toggle_new',
+                classes: 'bss_item bss_copy_toggle_new',
                 name: 'copy_toggle',
                 kind: Toggle,            
                 trueTitle: 'Read Display',
                 falseTitle: 'EZ Copy',
                 trueComponent: {
                     components: [
-                        // {tag: 'span', classes: 'buttons', content: '<< < = > >>', allowHtml: true},
+                        // {tag: 'span', classes: 'bss_buttons', content: '<< < = > >>', allowHtml: true},
                         // {tag: 'span', content: '', allowHtml: true},
                         // {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true},
                         // {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true}
 
-                        {tag: 'span', classes: 'material-icons icon', content: 'book'}
-                        // {tag: 'span', classes: 'material-icons icon', content: 'bookvisibility'}
+                        {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'book'}
+                        // {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'bookvisibility'}
                     ]
                 },
                 falseComponent: {
@@ -326,100 +326,100 @@ module.exports = kind({
                         {tag: 'span', content: ''},
                         */
 
-                        {tag: 'span', classes: 'material-icons icon', content: 'content_copypageview'}
+                        {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'content_copypageview'}
                     ]
                 },
             },  
             {
                 kind: i18n,
-                classes: 'item clear_form',
+                classes: 'bss_item bss_clear_form',
                 name: 'clear',
                 tag: 'span',
                 ontap: 'handleClearForm',
                 attributes: {title: 'Clear Form'},
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'clear'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'clear'}
                 ]
             },
             {
                 kind: i18n,
-                classes: 'item print text_only',
+                classes: 'bss_item bss_print bss_text_only',
                 name: 'print_button',
                 ontap: 'handlePrint',
                 attributes: {title: 'Print'},
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'print'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'print'}
                 ],
             },        
             {
                 kind: i18n,
-                classes: 'item share text_only',
+                classes: 'bss_item bss_share bss_text_only',
                 name: 'share_button',
                 ontap: 'handleShare',
                 attributes: {title: 'Share'},
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'share'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'share'}
                 ],
             },        
             {
                 kind: i18n,
-                classes: 'item link text_only',
+                classes: 'bss_item bss_link bss_text_only',
                 name: 'link_button',
                 ontap: 'handleLink',
                 attributes: {title: 'Link'},
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'link'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'link'}
                 ],
             },            
             {
                 kind: i18n,
-                classes: 'item link text_only',
+                classes: 'bss_item bss_link bss_text_only',
                 name: 'history_button',
                 ontap: 'handleHistory',
                 attributes: {title: 'History'},
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'history'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'history'}
                 ],
             },            
             {
                 kind: i18n,
-                classes: 'item link text_only',
+                classes: 'bss_item bss_link bss_text_only',
                 name: 'bookmark_add_button',
                 ontap: 'handleBookmarkCurrent',
                 attributes: {title: 'Bookmark'},
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'bookmark_add'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'bookmark_add'}
                 ],
             },            
             {
                 kind: i18n,
-                classes: 'item link text_only',
+                classes: 'bss_item bss_link bss_text_only',
                 name: 'bookmark_button',
                 ontap: 'handleBookmark',
                 attributes: {title: 'Bookmarks'},
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'bookmarks'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'bookmarks'}
                 ],
             },            
             {
                 kind: i18n,
-                classes: 'item link text_only',
+                classes: 'bss_item bss_link bss_text_only',
                 name: 'settings_reset_button',
                 ontap: 'handleResetSetting',
                 attributes: {title: 'Reset'},
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'restart_alt'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'restart_alt'}
                 ],
             },
             {
                 kind: i18n,
                 showing: false,
-                classes: 'item settings text_only',
+                classes: 'bss_item bss_settings bss_text_only',
                 name: 'settings_button',
                 ontap: 'handleSettings',
                 attributes: {title: 'Settings'},
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'settings'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'settings'}
                 ],
             },      
         ]},
@@ -428,7 +428,7 @@ module.exports = kind({
             // 'Extra' (non-formatting) buttons
             {
                 kind: i18n,
-                classes: 'item help',
+                classes: 'bss_item bss_help',
                 name: 'help',
                 tag: 'span',
                 ontap: 'handleHelp',
@@ -438,7 +438,7 @@ module.exports = kind({
                 ]
             },
             {
-                classes: 'item advanced_toggle',
+                classes: 'bss_item bss_advanced_toggle',
                 name: 'advanced_toggle',
                 kind: Toggle,
                 trueTitle: 'Basic',
@@ -448,7 +448,7 @@ module.exports = kind({
             },
             {
                 kind: i18n,
-                classes: 'item sos',
+                classes: 'bss_item bss_sos',
                 name: 'sos_button',
                 content: 'Bible SOS',
                 ontap: 'handleSos',
@@ -456,7 +456,7 @@ module.exports = kind({
             },        
             {
                 kind: i18n,
-                classes: 'item start',
+                classes: 'bss_item bss_start',
                 name: 'start_button',
                 content: 'Start',
                 ontap: 'handleStart',
@@ -464,25 +464,25 @@ module.exports = kind({
             },        
             {
                 kind: i18n,
-                classes: 'item download',
+                classes: 'bss_item bss_download',
                 name: 'download_button',
                 ontap: 'handleDownload',
                 attributes: {title: 'Bible Downloads'},
                 components: [
-                    {tag: 'span', classes: 'material-icons icon', content: 'download'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'download'}
                 ]
             },        
             // End Extra buttons
         ]}, 
         {
-            classes: 'item language',
+            classes: 'bss_item bss_language',
             name: 'language_selector',
             // components: [
             //     {name: 'Locale', kind: LocaleSelector}
             // ]
         }
 
-        // {classes: 'input_row_wide', components: [
+        // {classes: 'bss_input_row_wide', components: [
         // ]}
     ],
 

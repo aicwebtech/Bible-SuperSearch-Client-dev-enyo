@@ -5,7 +5,7 @@ var i18n = require('./Locale/i18nContent');
 
 module.exports = kind({
     name: 'ToggleHtml',
-    classes: 'bss_toggle is_false',
+    classes: 'bss_toggle bss_is_false',
     
     trueComponent: {},  // Component that displays when value = true
     falseComponent: {}, // Component that displays when value = false,

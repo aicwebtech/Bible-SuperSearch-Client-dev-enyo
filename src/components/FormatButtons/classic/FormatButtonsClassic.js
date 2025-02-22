@@ -10,7 +10,7 @@ var Image = require('../../Image');
 module.exports = kind({
     name: 'FormatButtonsClassic',
     kind: Base,
-    classes: 'format_buttons_classic',
+    classes: 'bss_format_buttons_classic',
     
     components: [
         // {kind: Checkbox, name: 'copy'},
@@ -148,20 +148,20 @@ module.exports = kind({
             showing: false,
             components: [
                 {
-                    classes: 'item sos',
+                    classes: 'bss_item bss_sos',
                     name: 'sos_button',
                     content: 'Bible SOS',
                     ontap: 'handleSos'
                 },        
                 {
-                    classes: 'item start',
+                    classes: 'bss_item bss_start',
                     name: 'start_button',
                     content: 'Start',
                     ontap: 'handleStart',
                     attributes: {title: 'Bible Start Guide'}
                 },        
                 {
-                    classes: 'item download',
+                    classes: 'bss_item bss_download',
                     name: 'download_button',
                     content: '<b>&#10515;</b>&nbsp;Download',
                     allowHtml: true,

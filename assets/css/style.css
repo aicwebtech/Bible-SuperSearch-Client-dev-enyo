@@ -1,25 +1,25 @@
 /* Universal styling */
 /* May be overridden at the interface level */
 
-sup.strongs {
+sup.bss_strongs {
     cursor: pointer;
 }
 
-a.strongs:link, a.strongs:visited, a.strongs:hover {
+a.bss_strongs:link, a.bss_strongs:visited, a.bss_strongs:hover {
     color: black;
     text-decoration: none;
 }
 
-b a.strongs {
+b a.bss_strongs {
     font-size: 1.1em;
     font-weight: 800;
 }
 
-span.red_letter {
+span.bss_red_letter {
     color: red;
 }
 
-.random_verse_widget {
+.bss_random_verse_widget {
     border-radius: 8px;
     padding: 5px;
     margin: 5px;
@@ -29,7 +29,7 @@ span.red_letter {
     background-color: orange;
 }
 
-.random_verse_widget div {
+.bss_random_verse_widget div {
     width: 100%;
     height: 60px;
     overflow-y: auto;
@@ -39,12 +39,12 @@ span.red_letter {
     font-size: .9em;
 }
 
-.random_verse_widget h2 {
+.bss_random_verse_widget h2 {
     text-align: center;
     font-size: 1em;
 }
 
-.random_verse_widget button {
+.bss_random_verse_widget button {
     margin-inline-end: auto;
     margin-inline-start: auto;
     text-align: center;

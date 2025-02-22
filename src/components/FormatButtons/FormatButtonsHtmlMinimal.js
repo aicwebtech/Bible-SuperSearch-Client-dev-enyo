@@ -11,7 +11,7 @@ var i18n = require('../Locale/i18nContent');
 module.exports = kind({
     name: 'FormatButtonsHtmlMinimal',
     kind: Base,
-    classes: 'format_buttons_html',
+    classes: 'bss_format_buttons_html',
     font: null,
     
     create: function() {

@@ -65,8 +65,8 @@ module.exports = kind({
             {name: 'FormatButtonController', kind: FormController, view: null},
         ]},        
         {name: 'ErrorsContainer', showing: false, kind: ErrorView},
-        {name: 'StrongsContainer', showing: false, kind: StrongsView, classes: 'strongs_inline'},
-        {name: 'DisambigContainer', showing: false, kind: DisambigView, classes: 'disambiguation'},
+        {name: 'StrongsContainer', showing: false, kind: StrongsView, classes: 'bss_strongs_inline'},
+        {name: 'DisambigContainer', showing: false, kind: DisambigView, classes: 'bss_disambiguation'},
         { name: 'ResultsContainer', components: [
             {name: 'ResultsController', kind: ResultsController, view: null},
         ]} 

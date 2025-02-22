@@ -19,7 +19,7 @@ module.exports = kind({
     components: [
         {
             kind: FormSection,
-            classes: 'biblesupersearch_browsing_form book_list',
+            classes: 'biblesupersearch_browsing_form bss_book_list',
             components: [
                 {tag: 'h1', content: 'Book List'},
                 {classes: 'biblesupersearch_center_element', components: [

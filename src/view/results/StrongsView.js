@@ -11,10 +11,10 @@ module.exports = kind({
         var text = '';
 
         if(item.number.charAt(0) == "H") {
-            var classes = 'item hebrew';
+            var classes = 'bss_item bss_hebrew';
         }
         else {
-            var classes = 'item greek';
+            var classes = 'bss_item bss_greek';
         }
 
         if(item.tvm && item.tvm != '') {
@@ -23,7 +23,7 @@ module.exports = kind({
             var comp = this.createComponent({
                 classes: classes,
                 components: [
-                    {classes: 'strongs_tvm', allowHtml: true, content: item.tvm}
+                    {classes: 'bss_strongs_tvm', allowHtml: true, content: item.tvm}
                 ]
             });
         }
@@ -34,8 +34,8 @@ module.exports = kind({
             var comp = this.createComponent({
                 classes: classes,
                 components: [
-                    {classes: 'strongs_head', allowHtml: true, content: head},
-                    {classes: 'strongs_body biblesupersearch_strongs_body', allowHtml: true, content: text},
+                    {classes: 'bss_strongs_head', allowHtml: true, content: head},
+                    {classes: 'bss_strongs_body biblesupersearch_strongs_body', allowHtml: true, content: text},
                 ]
             });
         }

@@ -1,15 +1,15 @@
-.interface_expanding .biblesupersearch_expanding_form {
+.bss_interface_expanding .biblesupersearch_expanding_form {
     max-width: 400px;
     margin: 0 auto;
     padding: 10px;
 }
 
-.biblesupersearch_expanding_form .wrapper {
+.biblesupersearch_expanding_form .bss_wrapper {
     margin: 0;
     padding: 0;
 }
 
-.biblesupersearch_expanding_form .input_row {
+.biblesupersearch_expanding_form .bss_input_row {
     margin-bottom: 5px;
 }
 
@@ -17,7 +17,7 @@
     margin: 0;
 }
 
-.biblesupersearch_expanding_form .input_row .label {
+.biblesupersearch_expanding_form .bss_input_row .bss_label {
     display: inline-block;
     vertical-align: top;
     width: 165px;
@@ -28,7 +28,7 @@
     white-space: nowrap;
 }
 
-.biblesupersearch_expanding_form .input_row .element {
+.biblesupersearch_expanding_form .bss_input_row .bss_element {
     display: inline-block;
     width: 49%;
     padding: 0;
@@ -36,27 +36,27 @@
     max-width: 300px;
 }
 
-.biblesupersearch_expanding_form .input_row .element select {
+.biblesupersearch_expanding_form .bss_input_row .bss_element select {
     width: 100%;
 }
 
-.biblesupersearch_expanding_form .input_row .element input {
+.biblesupersearch_expanding_form .bss_input_row .bss_element input {
     width: calc(100% - 4px);
     margin: 0;
 }
 
-.biblesupersearch_expanding_form .input_row .element textarea {
+.biblesupersearch_expanding_form .bss_input_row .bss_element textarea {
     width: 100%; 
     height: 16px;
     padding: 0;
     margin: 0;
 }
 
-.biblesupersearch_expanding_form .input_row .element input[type=checkbox] {
+.biblesupersearch_expanding_form .bss_input_row .bss_element input[type=checkbox] {
     width: initial;
 }
 
-.biblesupersearch_expanding_form .input_row_wide {
+.biblesupersearch_expanding_form .bss_input_row_wide {
     text-align: center;
 /*    margin-bottom: 5px;*/
 /*    background-color: grey;*/
@@ -64,24 +64,24 @@
     margin: 0 auto 5px;
 }
 
-.biblesupersearch_expanding_form .input_row_wide textarea, 
-.biblesupersearch_expanding_form .input_row_wide .bible, 
-.biblesupersearch_expanding_form .input_row_wide input,
-.biblesupersearch_expanding_form .input_row_wide select,
-.biblesupersearch_expanding_form .input_row_wide .bss_pseudo_autocomplete 
+.biblesupersearch_expanding_form .bss_input_row_wide textarea, 
+.biblesupersearch_expanding_form .bss_input_row_wide .bss_bible, 
+.biblesupersearch_expanding_form .bss_input_row_wide input,
+.biblesupersearch_expanding_form .bss_input_row_wide select,
+.biblesupersearch_expanding_form .bss_input_row_wide .bss_pseudo_autocomplete 
 {
     width: 100%;
 /*    margin: 0 auto;*/
     padding: 0;
 }
 
-.biblesupersearch_expanding_form .input_row_wide input,
-.biblesupersearch_expanding_form .input_row_wide select {
+.biblesupersearch_expanding_form .bss_input_row_wide input,
+.biblesupersearch_expanding_form .bss_input_row_wide select {
 /*    width: calc(~'100% - 2px');*/
     padding: 1px;
 }
 
-.biblesupersearch_expanding_form .input_row_wide button {
+.biblesupersearch_expanding_form .bss_input_row_wide button {
     margin: 10px;
 }
 
@@ -90,42 +90,42 @@
     font-size: 12px
 }
 
-.biblesupersearch_expanding_form .expander_row {
+.biblesupersearch_expanding_form .bss_expander_row {
     width: 100%;
     text-align: end;
     padding-right: 10px;
 }
 
-.biblesupersearch_expanding_form  .input_row_checkbox {
+.biblesupersearch_expanding_form  .bss_input_row_checkbox {
     text-align: center;
 }
 
-.biblesupersearch_expanding_form  .input_row_checkbox .checkbox_container {
+.biblesupersearch_expanding_form  .bss_input_row_checkbox .bss_checkbox_container {
     display: inline-block;
     width: 49%;
     text-align: center;
 }
 
-.biblesupersearch_expanding_form  .input_row_checkbox .checkbox_container .label {
+.biblesupersearch_expanding_form  .bss_input_row_checkbox .bss_checkbox_container .bss_label {
     display: inline-block;
     /*width: 140px;*/
     margin-inline-end: 6px;
     /*background-color: yellow;*/
     text-align: end;
 }
-.biblesupersearch_expanding_form  .input_row_checkbox .checkbox_container .element {
+.biblesupersearch_expanding_form  .bss_input_row_checkbox .bss_checkbox_container .bss_element {
     display: inline-block;
 }
 
-.biblesupersearch_expanding_form  .biblesupersearch_copy_settings .section {
+.biblesupersearch_expanding_form  .biblesupersearch_copy_settings .bss_section {
     background-color: #eeeeee;
 }
 
-.interface_expanding .bible button {
-    font-size: .7em;
+.bss_interface_expanding .bss_bible button {
+    font-size: .bss_7em;
 }
 
-.interface_expanding button.random {
+.bss_interface_expanding button.bss_random {
     font-size: .7em;
     width: 110px;
     text-align: center;
@@ -133,22 +133,22 @@
 
 /*Todo - add class to 'standard links' so that only those we acutally want to style here are affected!*/
 
-.interface_expanding a.std_link:link, .interface_expanding a.std_link:visited {
+.bss_interface_expanding a.bss_std_link:link, .bss_interface_expanding a.bss_std_link:visited {
     color: #0000ee;
     text-decoration: none;
 }
 
-.interface_expanding a.std_link:hover {
+.bss_interface_expanding a.bss_std_link:hover {
     /*text-decoration: underline overline;*/
     background-color: #609bff;
 }
 
-.interface_expanding .expander_row button {
+.bss_interface_expanding .bss_expander_row button {
     background-color: transparent;
     border: 0;
 }
 
-.interface_expanding textarea.large_block_textarea {
+.bss_interface_expanding textarea.bss_large_block_textarea {
     max-width: 400px;
     width: 98%;
     height: 60px;
@@ -156,90 +156,90 @@
     margin-inline-end: auto;
 }
 
-.interface_expanding .strongs_hover {
+.bss_interface_expanding .bss_strongs_hover {
     padding: 0;
     border: 0;
     background-color: #dee4fc;
 }
 
-.interface_expanding .strongs_hover .strongs_head {
+.bss_interface_expanding .bss_strongs_hover .bss_strongs_head {
     background-color: #dee4fc;
     padding: 10px;
     text-align: center;
 }
 
-.interface_expanding .strongs_hover .strongs_tvm {
+.bss_interface_expanding .bss_strongs_hover .bss_strongs_tvm {
     background-color: #dee4fc;
     padding: 10px;
 }
 
-.interface_expanding .strongs_hover .strongs_body {
+.bss_interface_expanding .bss_strongs_hover .bss_strongs_body {
     background-color: #7690f7;
     padding:10px;
     color:white;
     text-align: justify;
 }
 
-.interface_expanding .strongs_hover .hebrew .strongs_head span {
+.bss_interface_expanding .bss_strongs_hover .bss_hebrew .bss_strongs_head span {
     font-weight: bold;
     font-size: 20pt;
     font-family: serif;
     padding-top: 5px;
 }
 
-.interface_expanding .strongs_hover .greek .strongs_head span {
+.bss_interface_expanding .bss_strongs_hover .bss_greek .bss_strongs_head span {
     font-weight: bold;
     font-size: 16pt;
     padding-top: 10px;
     font-family: serif;
 }
 
-.interface_expanding .help_dialog .bss_dialog_container {
+.bss_interface_expanding .bss_help_dialog .bss_dialog_container {
     background-color: #7690f7;
     color: white;
 }
 
-.interface_expanding .help_dialog .bss_dialog_container .bss_dialog_content {
+.bss_interface_expanding .bss_help_dialog .bss_dialog_container .bss_dialog_content {
     background-color: #dee4fc;
     color: black;
 }
 
-.interface_expanding .help_dialog .item:nth-child(odd) {
+.bss_interface_expanding .bss_help_dialog .bss_item:nth-child(odd) {
     background-color: #ccc;
 }
 
-/*.interface_expanding a.strongs:link, .interface_expanding a.strongs:visited, .interface_expanding a.strongs:hover {
+/*.bss_interface_expanding a.bss_strongs:link, .bss_interface_expanding a.bss_strongs:visited, .bss_interface_expanding a.bss_strongs:hover {
     color: black;
     text-decoration: none;
 }*/
 
-.interface_expanding .biblesupersearch_pager a {
+.bss_interface_expanding .biblesupersearch_pager a {
     margin: 0 2px;
     /*font-weight: bold;*/
 }
 
-.interface_expanding .biblesupersearch_pager a.current_page, .interface_expanding .bss_results_list_item_showing {
+.bss_interface_expanding .biblesupersearch_pager a.bss_current_page, .bss_interface_expanding .bss_results_list_item_showing {
     color: #369336;
     font-weight: bold;
 }
 
-.interface_expanding .biblesupersearch_pager a.disabled {
+.bss_interface_expanding .biblesupersearch_pager a.bss_disabled {
     color: #676767;
 }
 
-/*.interface_expanding .biblesupersearch_pager a:after, .interface_expanding .biblesupersearch_pager a:before {
+/*.bss_interface_expanding .biblesupersearch_pager a:after, .bss_interface_expanding .biblesupersearch_pager a:before {
     display:none;
 }*/
 
 @media only screen and (max-width: 380px) {
-    .biblesupersearch_expanding_form .input_row {
+    .biblesupersearch_expanding_form .bss_input_row {
         width: 85%;
         margin-inline-end: auto;
         margin-inline-start: auto;
         margin-bottom: 10px;
     }
 
-    .biblesupersearch_expanding_form .input_row .label {
+    .biblesupersearch_expanding_form .bss_input_row .bss_label {
         display: block;
         vertical-align: top;
         width: 100%;
@@ -248,30 +248,30 @@
         margin-inline-end: 0px;
     }
 
-    .biblesupersearch_expanding_form .input_row .element {
+    .biblesupersearch_expanding_form .bss_input_row .bss_element {
         display: block;
         width: 100%;
         max-width: initial;
     }
 
-    .biblesupersearch_expanding_form .input_row_wide textarea {
+    .biblesupersearch_expanding_form .bss_input_row_wide textarea {
 /*        width: 100%;
         max-width: 498px;*/
     }
 
-    .biblesupersearch_expanding_form .input_row_checkbox {
+    .biblesupersearch_expanding_form .bss_input_row_checkbox {
         line-height: 25px;
         text-align: end;
     }
 
-    .biblesupersearch_expanding_form .input_row .element input {
+    .biblesupersearch_expanding_form .bss_input_row .bss_element input {
         width: calc(100% - 2px);
         margin: 0;
     }
 }
 
 @media only screen and (max-width: 380px) {
-    .biblesupersearch_expanding_form  .input_row_checkbox .checkbox_container {
+    .biblesupersearch_expanding_form  .bss_input_row_checkbox .bss_checkbox_container {
         display: block;
         width: 100%;
         text-align: end;

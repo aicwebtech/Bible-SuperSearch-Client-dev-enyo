@@ -12,14 +12,14 @@ module.exports = kind({
     height: '50px',
     titleBarHeight: 0, // private
     buttonBarHeight: 0, // private
-    classes: 'alert_dialog',
+    classes: 'bss_alert_dialog',
     showing: false,
     alert: '',
     pComponent: null,
 
     bodyComponents: [
         {kind: Signal, onAlert: 'openAlert', onPositionedAlert: 'openPositionedAlert'},
-        {name: 'AlertContainer', allowHtml: true, tag: 'span', classes: 'alert_dialog_container'}
+        {name: 'AlertContainer', allowHtml: true, tag: 'span', classes: 'bss_alert_dialog_container'}
     ],
 
     bindings: [
@@ -65,25 +65,6 @@ module.exports = kind({
             this._openAlertHelper(inEvent.alert || 'Alert');
             this.reposition();
         }
-
-        // oSender.set('content', )
-        // this.pComponent && this.pComponent.destroy();
-
-        // this.pComponent = oSender.parent.createComponent({
-        //     classes: 'alert_dialog_container',
-        //     // tag:'span'
-        //     components: [
-        //         {                
-        //             tag: 'span',
-        //             content: inEvent.alert,
-        //             classes: 'alert_dialog',
-        //             // style: 'position: absolute; top: -5px'
-        //         }
-        //     ]
-        // });
-
-        // this.pComponent.render();
-
 
         this._timerHelper();
         // this._openAlertHelper(inEvent.alert || 'Alert');

@@ -12,7 +12,7 @@ module.exports = kind({
     formView: formView,
     advancedFormView: advancedFormView,
     FormatButtonsHideExtras: false,
-    classes: 'interface_classic',
+    classes: 'bss_interface_classic',
 
     create: function() {
         this.inherited(arguments);

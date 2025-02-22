@@ -18,10 +18,10 @@ module.exports = kind({
     kind: FormBase,
 
     components: [
-        {kind: i18n, classes: 'center', content: 'Bible SuperSearch', classes: 'biblesupersearch_classic_title'},
+        {kind: i18n, classes: 'bss_center', content: 'Bible SuperSearch', classes: 'biblesupersearch_classic_title'},
         {
             kind: FormSection,
-            classes: 'biblesupersearch_classic_form user_friendly',
+            classes: 'biblesupersearch_classic_form bss_user_friendly',
             components: [
                 {classes: 'biblesupersearch_center_element', components: [
                     {kind: i18n, content: 'Select Bible version(s):'},
@@ -82,7 +82,7 @@ module.exports = kind({
                             ontap: 'submitRandom', 
                             random_type: 'Random Chapter', 
                             style: 'margin-right: 4px', 
-                            classes: 'user_friendly_random', 
+                            classes: 'bss_user_friendly_random', 
                             components: [
                                 {kind: i18nContent, content: 'Random Chapter'}
                             ]
@@ -92,7 +92,7 @@ module.exports = kind({
                             content: 'Random Verse', 
                             ontap: 'submitRandom', 
                             random_type: 'Random Verse', 
-                            classes: 'user_friendly_random',
+                            classes: 'bss_user_friendly_random',
                             components: [
                                 {kind: i18nContent, content: 'Random Verse'}
                             ]

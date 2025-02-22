@@ -18,7 +18,7 @@ module.exports = kind({
     kind: Dialog,
     maxWidth: '400px',
     height: '300px',
-    classes: 'help_dialog history_dialog',
+    classes: 'bss_help_dialog bss_history_dialog',
     
     titleComponents: [
         {classes: 'header', components: [
@@ -142,7 +142,7 @@ module.exports = kind({
                             attributes: {title: 'Edit'},
                             pk: item.get('pk'),
                             components: [
-                                {tag: 'span', classes: 'material-icons icon', content: 'edit'}
+                                {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'edit'}
                             ],
                         },                        
                         {
@@ -152,7 +152,7 @@ module.exports = kind({
                             attributes: {title: 'Move to Current'},
                             pk: item.get('pk'),
                             components: [
-                                {tag: 'span', classes: 'material-icons icon', content: 'edit_location'}
+                                {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'edit_location'}
                             ],
                         },                        
                         {
@@ -162,7 +162,7 @@ module.exports = kind({
                             attributes: {title: 'Delete'},
                             pk: item.get('pk'),
                             components: [
-                                {tag: 'span', classes: 'material-icons icon', content: 'delete'}
+                                {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'delete'}
                             ],
                         },
                         {classes: 'clear-both'}

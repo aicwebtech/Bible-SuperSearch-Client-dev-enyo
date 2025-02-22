@@ -19,7 +19,7 @@ module.exports = kind({
     kind: Dialog,
     maxWidth: '400px',
     height: '300px',
-    classes: 'help_dialog bss_bookmark_edit_dialog',
+    classes: 'bss_help_dialog bss_bookmark_edit_dialog',
     isNew: false,
     moving: false,
     model: null,
@@ -84,19 +84,11 @@ module.exports = kind({
         {name: 'Save', kind: Button, ontap: 'save', components: [
             {kind: i18n, content: 'Save'},
         ]},        
-        // {name: 'DeleteSpacer', tag: 'span', classes: 'spacer'},
-        // {name: 'Delete', kind: Button, ontap: 'delete', components: [
-        //     {kind: i18n, content: 'Delete'},
-        // ]},
-        // {name: 'RestoreSpacer', tag: 'span', classes: 'spacer'},
-        // {name: 'Restore', kind: Button, ontap: 'restore', components: [
-        //     {kind: i18n, content: 'Restore'},
-        // ]},        
-        {name: 'MoveSpacer', tag: 'span', classes: 'spacer'},
+        {name: 'MoveSpacer', tag: 'span', classes: 'bss_spacer'},
         {name: 'Move', kind: Button, ontap: 'moveToCurrent', components: [
             {kind: i18n, content: 'Move to Current'},
         ]},
-        {tag: 'span', classes: 'spacer'},
+        {tag: 'span', classes: 'bss_spacer'},
         {name: 'Cancel', kind: Button, ontap: 'cancel', components: [
             {kind: i18n, content: 'Cancel'},
         ]}
@@ -122,11 +114,7 @@ module.exports = kind({
     showingChanged: function(was, is) {
         this.inherited(arguments);
     },
-    isNewChanged: function(was, is) {
-        // this.$.DeleteSpacer.set('showing', !is);
-        // this.$.Delete.set('showing', !is);        
-        // this.$.RestoreSpacer.set('showing', !is);
-        // this.$.Restore.set('showing', !is);        
+    isNewChanged: function(was, is) {     
         this.$.MoveSpacer.set('showing', !is);
         this.$.Move.set('showing', !is);
     },

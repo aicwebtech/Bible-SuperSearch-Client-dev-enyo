@@ -17,7 +17,7 @@ module.exports = kind({
     PagerControl: Pager,
     FormatButtonsHideExtras: true,
     FormatButtonsHideExtrasSupported: true,
-    classes: 'interface_expanding',
+    classes: 'bss_interface_expanding',
     expanded: false,
 
     create: function() {

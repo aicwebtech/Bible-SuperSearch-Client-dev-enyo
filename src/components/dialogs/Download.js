@@ -22,14 +22,14 @@ module.exports = kind({
     kind: Dialog,
     maxWidth: '500px',
     height: '420px',
-    classes: 'help_dialog bible_download',
+    classes: 'bss_help_dialog bss_bible_download',
     bibleString: null,
     formData: null,
     requestPending: false,
     hasErrors: false,
     
     titleComponents: [
-        {classes: 'header', components: [
+        {classes: 'bss_header', components: [
             {kind: i18n, classes: 'bss_dialog_title', content: 'Bible Downloads'}
         ]}
     ],
@@ -57,7 +57,7 @@ module.exports = kind({
         {name: 'Status', showing: false, components: [
             {name: 'Spinner', kind: Image, relSrc: '/Spinner.gif'},
             {kind: i18n, tag: 'h4', content: 'Rendering Bibles, this may take some time'},
-            {name: 'RenderStatusContainer', classes: 'render_list'}
+            {name: 'RenderStatusContainer', classes: 'bss_render_list'}
         ]},
         {kind: i18n, name: 'RenderingComplete', tag: 'h4', content: 'Rendering is Complete', showing: false},
         {name: 'DownloadPending', showing: false, components: [
@@ -77,11 +77,11 @@ module.exports = kind({
     ],
     buttonComponents: [
         // {name: 'PseudoDownload', kind: Button, content: 'Pseudo - Download', ontap: 'pseudoDownload'},
-        // {tag: 'span', classes: 'spacer'},
+        // {tag: 'span', classes: 'bss_spacer'},
         {name: 'DownloadButton', kind: Button, ontap: 'download', components: [
             {kind: i18n, content: 'Download'},
         ]},
-        {tag: 'span', classes: 'spacer'},
+        {tag: 'span', classes: 'bss_spacer'},
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'},
         ]}     

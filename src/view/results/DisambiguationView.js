@@ -20,14 +20,14 @@ module.exports = kind({
         }
 
         this.createComponent({
-            classes: 'item',
+            classes: 'bss_item',
             formData: item.data,
             ontap: 'handleTap',
             runForm: runForm,
             components: [
                 {
                     kind: Anchor,
-                    classes: 'std_link',
+                    classes: 'bss_std_link',
                     // content: content,
                     components: [
                         {kind: i18n, content: 'The book of'},

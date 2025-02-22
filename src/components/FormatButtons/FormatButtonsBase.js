@@ -9,7 +9,7 @@ var Confirm = require('../dialogs/Confirm');
 
 module.exports = kind({
     name: 'FormatButtonsBase',
-    classes: 'format_buttons',
+    classes: 'bss_format_buttons',
     // Whether to include the toggle button for advanced search
     // Should be disabled if already displaying the advanced search button
     includeAdvancedToggle: true,

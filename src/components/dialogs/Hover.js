@@ -6,7 +6,7 @@ var Image = require('../Image');
 module.exports = kind({
     name: 'HoverDialog',
     // kind: Dialog,
-    classes: 'hover_dialog',
+    classes: 'bss_hover_dialog',
     showing: false,
     // style: '',
     width: 300,

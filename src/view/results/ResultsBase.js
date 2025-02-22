@@ -16,7 +16,7 @@ var i18n = require('../../components/Locale/i18nComponent');
 
 module.exports = kind({
     name: 'ResultsBase',
-    classes: 'results',
+    classes: 'bss_results',
     bibles: [],
     biblesStr: null,
     multiBibles: false,
@@ -260,7 +260,7 @@ module.exports = kind({
         var Container = this.createComponent({
             name: 'CopyrightFooter',
             tag: 'table',
-            classes: 'biblesupersearch_render_table copyright_footer'
+            classes: 'biblesupersearch_render_table bss_copyright_footer'
         }).createComponent({
             tag: 'tr'
         });
@@ -303,7 +303,7 @@ module.exports = kind({
             Container.createComponent({
                 tag: 'td',
                 components: components,
-                classes: 'copyright_statement',
+                classes: 'bss_copyright_statement',
                 attributes: {colspan: this.passageColumnsPerBible}
             });
         }
