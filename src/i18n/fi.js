@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'Rajoita haku kohteeseen', 
     'Word Search': 'Sanahaku',
     'Clear Form': 'Selkeä Lomake', 
-    'Select Book and Chapter:' : 'Valitse Kirja ja Luku', 
+    'Select Book and Chapter:' : 'Valitse Kirja ja Luku',
+    'Select Book, Chapter, Verse:' : 'Valitse Kirja, Luku, Säe:',
 
     // Context Links
     'Show full chapter': 'Näytä koko luku',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'Kohokohta',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Poista Avainsanojen Korostus Käytöstä',
     'Enable Highlighting of Keywords': 'Ota Avainsanojen Korostus Käyttöön',
+    'Hide Parallel Search Errors': 'Piilota Rinnakkaishakuvirheet', // 5.6.20
+    'Show Parallel Search Errors': 'Näytä Rinnakkaishakuvirheet', // 5.6.20
     'Print': 'Tulosta',
     'Printer Friendly': 'Tulostinystävällinen',
     'Help': 'Auta',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'Asetukset', 
     'Language' : 'Kieli', 
     'Text Display': 'Tekstinäyttö', 
-    'Font Style': 'Fonttityyli', 
+    'Font Style': 'Fonttityyli',
+    'This will reset the settings to defaults.':'Tämä palauttaa asetukset oletusarvoiksi.', // 5.6.20
 
     // Result and error messages
     
@@ -435,6 +439,7 @@ module.exports = {
     'Okay': 'Okei',
     'Old': 'Vanha',
     'New': 'Uusi',
+    'Reset': 'Nollaa', // 5.6.20
 
     'Are you sure?': 'Oletko varma?',
     'Are you sure you want to delete': 'Haluatko varmasti poistaa',
@@ -449,6 +454,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Poista joitakin kirjanmerkkejä ennen kuin lisäät niitä.',
     'This bookmark name already exists.': 'Tämä kirjanmerkin nimi on jo olemassa.',
+    'Bookmark name is required.': 'Kirjanmerkin nimi vaaditaan.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Hakujen Rajoittaminen',

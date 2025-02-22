@@ -50,7 +50,8 @@ module.exports = {
     'Restrict search to': 'Apriboti paiešką iki', 
     'Word Search': 'Žodžio Paieška',
     'Clear Form': 'Švari Anketa', 
-    'Select Book and Chapter:' : 'Pasirinkite Knyga ir Skyrius', 
+    'Select Book and Chapter:' : 'Pasirinkite Knyga ir Skyrius',
+    'Select Book, Chapter, Verse:' : 'Pasirinkite knygą, skyrių, eilėraštį:',//check translation 
 
     // Context Links
     'Show full chapter': 'Rodyti visą skyrių',
@@ -167,6 +168,8 @@ module.exports = {
     'Highlight': 'Paryškinti',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Išjungti raktinių žodžių paryškinimą',
     'Enable Highlighting of Keywords': 'Įgalinti raktinių žodžių paryškinimą',
+    'Hide Parallel Search Errors': 'Slėpti Lygiagrečios Paieškos Klaidas', // 5.6.20
+    'Show Parallel Search Errors': 'Rodyti Lygiagrečios Paieškos Klaidas', // 5.6.20
     'Print': 'Spausdinti',
     'Printer Friendly': 'Tinka Spausdinti',
     'Help': 'Pagalba',
@@ -218,7 +221,8 @@ module.exports = {
     'Settings' : 'Nustatymai', 
     'Language' : 'Kalba', 
     'Text Display': 'Teksto Ekranas', 
-    'Font Style': 'Šrifto Stilius', 
+    'Font Style': 'Šrifto Stilius',
+    'This will reset the settings to defaults.':'Taip nustatymai bus nustatyti iš naujo į numatytuosius.', // 5.6.20 
 
     // Result and error messages
     
@@ -420,6 +424,7 @@ module.exports = {
     'Okay': 'Gerai',
     'Old': 'Senas',
     'New': 'Nauja',
+    'Reset': 'Atstatyti', // 5.6.20
 
     'Are you sure?': 'Ar tu tuo tikras?',
     'Are you sure you want to delete': 'Ar esate įsitikinę, kad norite ištrinti',
@@ -434,6 +439,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Prieš pridėdami daugiau, ištrinkite kai kurias žymes.',
     'This bookmark name already exists.': 'Šis žymės pavadinimas jau yra.',
+    'Bookmark name is required.': 'Privalomas knygos ženklo pavadinimas.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Paieškų Ribojimas',

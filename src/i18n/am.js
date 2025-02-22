@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'ፍለጋን ይገድቡ', 
     'Word Search': 'የቃል ፍለጋ',
     'Clear Form': 'ቅጽ አጽዳ', 
-    'Select Book and Chapter:' : 'መጽሐፍ እና ምዕራፍ ይምረጡ', 
+    'Select Book and Chapter:' : 'መጽሐፍ እና ምዕራፍ ይምረጡ',
+    'Select Book, Chapter, Verse:' : 'اختر الكتاب، الفصل، الآية:', 
 
     // Context Links
     'Show full chapter': 'ሙሉ ምዕራፍ አሳይ',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'አድምቅ',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'ቁልፍ ቃላትን ማድመቅ አሰናክል',
     'Enable Highlighting of Keywords': 'ቁልፍ ቃላትን ማድመቅ አንቃ',
+    'Hide Parallel Search Errors': 'ትይዩ የፍለጋ ስህተቶችን ደብቅ።', // 5.6.20
+    'Show Parallel Search Errors': 'ትይዩ የፍለጋ ስህተቶችን አሳይ።', // 5.6.20
     'Print': 'አትም',
     'Printer Friendly': 'አታሚ ተስማሚ',
     'Help': 'እገዛ',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'ቅንብሮች', 
     'Language' : 'ቋንቋ', 
     'Text Display': 'የጽሑፍ ማሳያ', 
-    'Font Style': 'የፊደል አጻጻፍ ስልት', 
+    'Font Style': 'የፊደል አጻጻፍ ስልት',
+    'This will reset the settings to defaults.':'ይህ ቅንብሮቹን ወደ ነባሪዎች ዳግም ያስጀምራል።', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'እሺ',
     'Old': 'አሮጌ',
     'New': 'አዲስ',
+    'Reset': 'ዳግም አስጀምር', // 5.6.20
 
     'Are you sure?': 'ኧረ',
     'Are you sure you want to delete': 'እርግጠኛ ነህ መሰረዝ ትፈልጋለህ',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'ተጨማሪ ከማከልዎ በፊት እባክዎ አንዳንድ ዕልባቶችን ይሰርዙ።',
     'This bookmark name already exists.': 'ይህ የዕልባት ስም አስቀድሞ አለ።',
+    'Bookmark name is required.': 'የዕልባት ስም ያስፈልጋል።',//check translation // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'ፍለጋዎችን መገደብ',

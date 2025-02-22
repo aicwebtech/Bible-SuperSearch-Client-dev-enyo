@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'Beperk soektog tot', 
     'Word Search': 'Woord Soek',
     'Clear Form': 'Vee vorm uit',
-    'Select Book and Chapter:' : 'Kies Boek en Hoofstuk:', 
+    'Select Book and Chapter:' : 'Kies Boek en Hoofstuk:',
+    'Select Book, Chapter, Verse:' : 'Kies Boek, Hoofstuk, Vers:',
 
     // Context Links
     'Show full chapter': 'Wys volledige hoofstuk',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'Hoogtepunt',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Skakel Hoogtepunte van Sleutelwoorde',
     'Enable Highlighting of Keywords': 'Aktiveer die klem van Sleutelwoorde',
+    'Hide Parallel Search Errors': 'Verberg Parallelle Soek Foute', // 5.6.20
+    'Show Parallel Search Errors': 'Wys Parallelle Soek Foute', // 5.6.20
     'Print': 'Druk',
     'Printer Friendly': 'Drukker Vriendelik',
     'Help': 'Help',
@@ -232,6 +235,7 @@ module.exports = {
     'Language' : 'Taal', 
     'Text Display': 'Teks Vertoon', 
     'Font Style': 'Font Styl',
+    'This will reset the settings to defaults.':'Dit sal die instellings terugstel na verstek.', // 5.6.20
 
     // Result and error messages
     
@@ -433,6 +437,7 @@ module.exports = {
     'Okay': 'Oukei',
     'Old': 'Oud',
     'New': 'Nuwe',
+    'Reset': 'Herstel', // 5.6.20
 
     'Are you sure?': 'Is jy seker?',
     'Are you sure you want to delete': 'Is jy seker jy wil uitvee',
@@ -447,6 +452,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Verwyder asseblief \'n paar boekmerke voordat u meer byvoeg.',
     'This bookmark name already exists.': 'Hierdie boekmerknaam bestaan reeds.',
+    'Bookmark name is required.': 'Boekmerk naam word vereis.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Beperk Soektogte',

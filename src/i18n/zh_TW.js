@@ -50,6 +50,7 @@ module.exports = {
     'Word Search': '搜索經文',
     'Clear Form': '清除表格', // 4.5
     'Select Book and Chapter:' : '選擇書籍和章節', // 5.2
+    'Select Book, Chapter, Verse:' : '選擇書籍、章節、詩句:',
 
       // Context Links
     'Show full chapter': '顯示完整章節',
@@ -162,6 +163,8 @@ module.exports = {
     'Highlight': '突顯',
     'Disable Highlighting of Keywords': '禁用突顯關鍵詞',
     'Enable Highlighting of Keywords': '啟用突顯關鍵詞',
+    'Hide Parallel Search Errors': '隱藏並行搜尋錯誤', // 5.6.20
+    'Show Parallel Search Errors': '顯示並行搜尋錯誤', // 5.6.20
     'Print': '列印',
     'Printer Friendly': '友善列印',
     'Help': '説明',
@@ -211,6 +214,7 @@ module.exports = {
     'Language' : '語言',   // 5.0
     'Text Display': '文字顯示',   // 5.0
     'Font Style': '字體',   // 5.0
+    'This will reset the settings to defaults.':'這會將設定重設為預設值。', // 5.6.20
 
       // Result and error messages    
      // Your search produced (number of verses) results
@@ -411,6 +415,7 @@ module.exports = {
     'Okay': '好的',
     'Old': '老的',
     'New': '新的',
+    'Reset': '重置', // 5.6.20
 
     'Are you sure?': '你確定嗎？',
     'Are you sure you want to delete': '你確定你要刪除',
@@ -425,6 +430,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': '請先刪除一些書籤，然後再加入更多書籤。',
     'This bookmark name already exists.': '書籤名稱已存在。',
+    'Bookmark name is required.': '需要書籤名稱。', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': '限制搜尋',

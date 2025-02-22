@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'Ƙuntata bincike zuwa', 
     'Word Search': 'Binciken Kalma',
     'Clear Form': 'Siffar Bayyanar', 
-    'Select Book and Chapter:' : 'Zaɓi Littafi da Babi:', 
+    'Select Book and Chapter:' : 'Zaɓi Littafi da Babi:',
+    'Select Book, Chapter, Verse:' : 'Zaɓi Littafi, Babi, Aya:',
 
     // Context Links
     'Show full chapter': 'Nuna cikakken babi',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'Haskakawa',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Kashe Haskakawa na Kalmomi',
     'Enable Highlighting of Keywords': 'Kunna Halayen Mahimman kalmomi',
+    'Hide Parallel Search Errors': 'Ɓoye Kurakurai na Bincike Daidaitacce',//check translation // 5.6.20
+    'Show Parallel Search Errors': 'Nuna Kurakurai Bincike Daidaitacce',//check translation // 5.6.20
     'Print': 'Buga',
     'Printer Friendly': 'Abokin Bugawa',
     'Help': 'Taimako',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'Saituna', 
     'Language' : 'Harshe', 
     'Text Display': 'Nuni Rubutu', 
-    'Font Style': 'Salon Rubutu', 
+    'Font Style': 'Salon Rubutu',
+    'This will reset the settings to defaults.':'Wannan zai sake saita saitunan zuwa tsoho.', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'Lafiya',
     'Old': 'Tsoho',
     'New': 'Sabo',
+    'Reset': 'Sake saita', // 5.6.20
 
     'Are you sure?': 'Ka tabbata?',
     'Are you sure you want to delete': 'Ka tabbata kana son sharewa',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Da fatan za a share wasu alamomi kafin ƙara ƙari.',
     'This bookmark name already exists.': 'Wannan sunan alamar ya riga ya wanzu.',
+    'Bookmark name is required.': 'Ana buƙatar sunan alamar shafi.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Ƙayyadaddun Bincike',

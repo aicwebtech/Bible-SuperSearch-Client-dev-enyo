@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'Giới hạn tìm kiếm ở', 
     'Word Search': 'Tìm từ',
     'Clear Form': 'Hình thức rõ ràng', 
-    'Select Book and Chapter:' : 'Chọn Sách và Chương', 
+    'Select Book and Chapter:' : 'Chọn Sách và Chương',
+    'Select Book, Chapter, Verse:' : 'Chọn Sách, Chương, Câu:',
 
     // Context Links
     'Show full chapter': 'Hiển thị toàn bộ chương',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'Điểm nổi bật',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Tắt đánh dấu từ khóa',
     'Enable Highlighting of Keywords': 'Bật đánh dấu từ khóa',
+    'Hide Parallel Search Errors': 'Ẩn lỗi tìm kiếm song song', // 5.6.20
+    'Show Parallel Search Errors': 'Hiển thị lỗi tìm kiếm song song', // 5.6.20
     'Print': 'In',
     'Printer Friendly': 'Thân thiện với máy in',
     'Help': 'Giúp đỡ',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'Cài đặt', 
     'Language' : 'Ngôn ngữ', 
     'Text Display': 'Hiển thị văn bản', 
-    'Font Style': 'Kiểu phông chữ', 
+    'Font Style': 'Kiểu phông chữ',
+    'This will reset the settings to defaults.':'Điều này sẽ đặt lại cài đặt về mặc định.', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'Đồng ý',
     'Old': 'Cũ',
     'New': 'Mới',
+    'Reset': 'Đặt lại', // 5.6.20
 
     'Are you sure?': 'Bạn có chắc không?',
     'Are you sure you want to delete': 'Bạn có chắc chắn muốn xóa',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Vui lòng xóa một số dấu trang trước khi thêm nhiều dấu trang hơn.',
     'This bookmark name already exists.': 'Tên dấu trang này đã tồn tại.',
+    'Bookmark name is required.': 'Tên dấu sách là bắt buộc.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Giới hạn tìm kiếm',

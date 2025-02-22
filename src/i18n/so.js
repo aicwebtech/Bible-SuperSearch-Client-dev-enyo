@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'Ku xaddid raadinta', 
     'Word Search': 'Raadinta Erayada',
     'Clear Form': 'Nadiifi Foomka', 
-    'Select Book and Chapter:' : 'Dooro Buug iyo Cutub', 
+    'Select Book and Chapter:' : 'Dooro Buug iyo Cutub',
+    'Select Book, Chapter, Verse:' : 'Dooro Buug, Cutub, Aayad:',
 
     // Context Links
     'Show full chapter': 'Muuji cutubka oo dhan',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'Iftiimin',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Dami Iftiiminta Ereyada Furaha',
     'Enable Highlighting of Keywords': 'Dari Iftiiminta Ereyada Furaha',
+    'Hide Parallel Search Errors': 'Qari Khaladaadka Raadinta Baybalka ee Badan',//check translation // 5.6.20
+    'Show Parallel Search Errors': 'Muuji Khaladaadka Raadinta Baybalka ee Badan',//check translation // 5.6.20
     'Print': 'Daabac',
     'Printer Friendly': 'Daabacaadda saaxiibtinimo',
     'Help': 'Caawin',
@@ -233,6 +236,7 @@ module.exports = {
     'Language' : 'Luuqad', 
     'Text Display': 'Bandhiga Qoraalka', 
     'Font Style': 'Habka Xarafka',
+    'This will reset the settings to defaults.':'Tani waxay dib u dejin doontaa dejinta si ay u noqoto mid aan caadi ahayn.',//check translation // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'Hagaag',
     'Old': 'Duq',
     'New': 'Cusub',
+    'Reset': 'Default',//check translation // 5.6.20
 
     'Are you sure?': 'Ma hubtaa?',
     'Are you sure you want to delete': 'Ma hubtaa inaad doonayso inaad tirtirto',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Fadlan tirtir bookmarks ka hor intaadan wax badan ku darin.',
     'This bookmark name already exists.': 'Magaca bookmark waa horeba u jiray.',
+    'Bookmark name is required.': 'Magaca bookmark ayaa loo baahan yahay.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Xaddidaadda Raadinta',

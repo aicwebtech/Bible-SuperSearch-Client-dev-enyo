@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'Limitahan ang paghahanap sa', 
     'Word Search': 'Paghahanap ng Salita',
     'Clear Form': 'Malinaw na Form', 
-    'Select Book and Chapter:' : 'Piliin ang Aklat at Kabanata', 
+    'Select Book and Chapter:' : 'Piliin ang Aklat at Kabanata',
+    'Select Book, Chapter, Verse:' : 'Piliin ang Aklat, Kabanata, Talata:', 
 
     // Context Links
     'Show full chapter': 'Ipakita ang buong kabanata',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'Highlight', //correct                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Huwag paganahin ang Pag-highlight ng mga Keyword',
     'Enable Highlighting of Keywords': 'Paganahin ang Pag-highlight ng mga Keyword',
+    'Hide Parallel Search Errors': 'Itago ang Maramihang Mga Error sa Paghahanap ng Bibliya', // 5.6.20
+    'Show Parallel Search Errors': 'Magpakita ng Maramihang Mga Error sa Paghahanap ng Bibliya', // 5.6.20
     'Print': 'Ilimbag',
     'Printer Friendly': 'Tagalimbag Palakaibigan',
     'Help': 'Tulong',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'Mga setting', 
     'Language' : 'Wika', 
     'Text Display': 'Pagpapakita ng Teksto', 
-    'Font Style': 'Estilo ng Font', 
+    'Font Style': 'Estilo ng Font',
+    'This will reset the settings to defaults.':'Ire-reset nito ang mga setting sa mga default.', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'Sige',
     'Old': 'Luma',
     'New': 'Bago',
+    'Reset': 'I-reset',//check translation // 5.6.20
 
     'Are you sure?': 'Sigurado ka ba?',
     'Are you sure you want to delete': 'Sigurado ka bang gusto mong tanggalin',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Mangyaring tanggalin ang ilang mga bookmark bago magdagdag ng higit pa.',
     'This bookmark name already exists.': 'Umiiral na ang pangalan ng bookmark na ito.',
+    'Bookmark name is required.': 'Kinakailangan ang pangalan ng marka ng libro.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Nililimitahan ang Mga Paghahanap',

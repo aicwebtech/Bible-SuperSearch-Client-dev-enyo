@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'खोजलाई सीमित गर्नुहोस्', 
     'Word Search': 'शब्द खोज',
     'Clear Form': 'फारम खाली गर्नुहोस्', 
-    'Select Book and Chapter:' : 'पुस्तक र अध्याय चयन गर्नुहोस्', 
+    'Select Book and Chapter:' : 'पुस्तक र अध्याय चयन गर्नुहोस्',
+    'Select Book, Chapter, Verse:' : 'पुस्तक, अध्याय, पद चयन गर्नुहोस्:',
 
     // Context Links
     'Show full chapter': 'पूरा अध्याय देखाउनुहोस्',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'हाइलाइट गर्नुहोस्',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'कुञ्जी शब्दहरूको हाइलाइटिङ असक्षम गर्नुहोस्',
     'Enable Highlighting of Keywords': 'कीवर्डहरूको हाइलाइटिङ सक्षम गर्नुहोस्',
+    'Hide Parallel Search Errors': 'समानान्तर खोज त्रुटिहरू लुकाउनुहोस्', // 5.6.20
+    'Show Parallel Search Errors': 'समानान्तर खोज त्रुटिहरू देखाउनुहोस्', // 5.6.20
     'Print': 'छाप्नुहोस्',
     'Printer Friendly': 'प्रिन्टर मैत्री',
     'Help': 'मद्दत गर्नुहोस्',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'सेटिङहरू', 
     'Language' : 'भाषा', 
     'Text Display': 'पाठ प्रदर्शन', 
-    'Font Style': 'फन्ट शैली', 
+    'Font Style': 'फन्ट शैली',
+    'This will reset the settings to defaults.':'यसले सेटिङहरूलाई पूर्वनिर्धारितहरूमा रिसेट गर्नेछ।', // 5.6.20 
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'ठीक छ',
     'Old': 'पुरानो',
     'New': 'नयाँ',
+    'Reset': 'रिसेट', // 5.6.20
 
     'Are you sure?': 'तपाईं पक्का हुनुहुन्छ?',
     'Are you sure you want to delete': 'के तपाइँ निश्चित हुनुहुन्छ कि तपाइँ मेटाउन चाहनुहुन्छ',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'थप थप्नु अघि कृपया केही बुकमार्कहरू मेटाउनुहोस्।',
     'This bookmark name already exists.': 'यो बुकमार्क नाम पहिले नै अवस्थित छ।',
+    'Bookmark name is required.': 'बुकमार्क नाम आवश्यक छ।', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'खोजहरू सीमित गर्दै',

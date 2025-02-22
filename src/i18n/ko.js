@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': '다음으로 검색 제한', 
     'Word Search': '단어 검색',
     'Clear Form': '양식 지우기', 
-    'Select Book and Chapter:' : '책과 장을 선택하세요', 
+    'Select Book and Chapter:' : '책과 장을 선택하세요',
+    'Select Book, Chapter, Verse:' : '책, 장, 구절을 선택하세요:',
 
     // Context Links
     'Show full chapter': '전체 장 표시',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': '가장 밝은 부분',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': '키워드 강조 표시 비활성화',
     'Enable Highlighting of Keywords': '키워드 강조 표시 활성화',
+    'Hide Parallel Search Errors': '병렬 검색 오류 숨기기', // 5.6.20
+    'Show Parallel Search Errors': '병렬 검색 오류 표시', // 5.6.20
     'Print': '인쇄',
     'Printer Friendly': '프린터 친화적',
     'Help': '돕다',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : '설정', 
     'Language' : '언어', 
     'Text Display': '텍스트 표시', 
-    'Font Style': '글꼴 스타일', 
+    'Font Style': '글꼴 스타일',
+    'This will reset the settings to defaults.':'그러면 설정이 기본값으로 재설정됩니다.', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': '좋아요',
     'Old': '오래된',
     'New': '새로운',
+    'Reset': '재설정', // 5.6.20
 
     'Are you sure?': '확실합니까?',
     'Are you sure you want to delete': '삭제 하시겠습니까',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': '북마크를 추가하기 전에 일부 북마크를 삭제하세요.',
     'This bookmark name already exists.': '이 북마크 이름은 이미 존재합니다.',
+    'Bookmark name is required.': '북마크 이름이 필요합니다.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': '검색 제한',

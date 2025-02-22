@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'הגבל את החיפוש ל', 
     'Word Search': 'חיפוש מילה',
     'Clear Form': 'טופס ריק', 
-    'Select Book and Chapter:' : 'בחר ספר ופרק', 
+    'Select Book and Chapter:' : 'בחר ספר ופרק',
+    'Select Book, Chapter, Verse:' : 'בחר ספר, פרק, פסוק:',
 
     // Context Links
     'Show full chapter': 'הצג את הפרק המלא',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'שִׂיא',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'השבת הדגשה של מילות מפתח',
     'Enable Highlighting of Keywords': 'אפשר הדגשה של מילות מפתח',
+    'Hide Parallel Search Errors': 'הסתר שגיאות חיפוש מקבילות', // 5.6.20
+    'Show Parallel Search Errors': 'הצג שגיאות חיפוש מקבילות', // 5.6.20
     'Print': 'הדפס',
     'Printer Friendly': 'ידידותי להדפסה',
     'Help': 'עֶזרָה',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'הגדרות', 
     'Language' : 'שפה', 
     'Text Display': 'תצוגת טקסט', 
-    'Font Style': 'סיגנון גופן', 
+    'Font Style': 'סיגנון גופן',
+    'This will reset the settings to defaults.':'פעולה זו תאפס את ההגדרות לברירות מחדל.', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'בסדר',
     'Old': 'ישן',
     'New': 'חָדָשׁ',
+    'Reset': 'איפוס', // 5.6.20
 
     'Are you sure?': 'האם אתה בטוח?',
     'Are you sure you want to delete': 'אתה בטוח שאתה רוצה למחוק',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'אנא מחק כמה סימניות לפני הוספת עוד.',
     'This bookmark name already exists.': 'שם הסימנייה הזה כבר קיים.',
+    'Bookmark name is required.': 'שם הסימניה נדרש.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'הגבלת חיפושים',

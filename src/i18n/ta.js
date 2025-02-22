@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'தேடலை வரம்பிடவும்', 
     'Word Search': 'வார்த்தை தேடல்',
     'Clear Form': 'தெளிவான படிவம்', 
-    'Select Book and Chapter:' : 'புத்தகம் மற்றும் அத்தியாயத்தைத் தேர்ந்தெடுக்கவும்', 
+    'Select Book and Chapter:' : 'புத்தகம் மற்றும் அத்தியாயத்தைத் தேர்ந்தெடுக்கவும்',
+    'Select Book, Chapter, Verse:' : 'புத்தகம், அத்தியாயம், வசனம் தேர்ந்தெடுக்கவும்:', 
 
     // Context Links
     'Show full chapter': 'முழு அத்தியாயத்தையும் காட்டு',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'முன்னிலைப்படுத்தவும்',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'முக்கிய வார்த்தைகளை முன்னிலைப்படுத்துவதை முடக்கு',
     'Enable Highlighting of Keywords': 'முக்கிய வார்த்தைகளின் சிறப்பம்சத்தை இயக்கவும்',
+    'Hide Parallel Search Errors': 'இணை தேடல் பிழைகளை மறை', // 5.6.20
+    'Show Parallel Search Errors': 'இணையான தேடல் பிழைகளைக் காட்டு', // 5.6.20
     'Print': 'அச்சிடுக',
     'Printer Friendly': 'பிரிண்டர் நட்பு',
     'Help': 'உதவி',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'அமைப்புகள்', 
     'Language' : 'மொழி', 
     'Text Display': 'உரை காட்சி', 
-    'Font Style': 'எழுத்துரு நடை', 
+    'Font Style': 'எழுத்துரு நடை',
+    'This will reset the settings to defaults.':'இது அமைப்புகளை இயல்புநிலையாக மீட்டமைக்கும்.', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'சரி',
     'Old': 'பழையது',
     'New': 'புதியது',
+    'Reset': 'மீட்டமைக்க', // 5.6.20
 
     'Are you sure?': 'நீங்கள் உறுதியாக இருக்கிறீர்களா?',
     'Are you sure you want to delete': 'நீங்கள் நிச்சயமாக நீக்க விரும்புகிறீர்களா',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'மேலும் சேர்ப்பதற்கு முன் சில புக்மார்க்குகளை நீக்கவும்.',
     'This bookmark name already exists.': 'இந்த புக்மார்க் பெயர் ஏற்கனவே உள்ளது.',
+    'Bookmark name is required.': 'புக்மார்க் பெயர் தேவை.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'தேடல்களை வரம்பிடுதல்',

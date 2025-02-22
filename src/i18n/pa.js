@@ -64,7 +64,8 @@ module.exports = {
     'Restrict search to': 'ਖੋਜ ਤੱਕ ਸੀਮਤ ਕਰੋ', 
     'Word Search': 'ਸ਼ਬਦ ਖੋਜ',
     'Clear Form': 'ਫਾਰਮ ਸਾਫ਼ ਕਰੋ', 
-    'Select Book and Chapter:' : 'ਕਿਤਾਬ ਅਤੇ ਅਧਿਆਇ ਚੁਣੋ', 
+    'Select Book and Chapter:' : 'ਕਿਤਾਬ ਅਤੇ ਅਧਿਆਇ ਚੁਣੋ',
+    'Select Book, Chapter, Verse:' : 'ਕਿਤਾਬ, ਅਧਿਆਇ, ਆਇਤ ਚੁਣੋ:', 
 
     // Context Links
     'Show full chapter': 'ਪੂਰਾ ਅਧਿਆਇ ਦਿਖਾਓ',
@@ -181,6 +182,8 @@ module.exports = {
     'Highlight': 'ਹਾਈਲਾਈਟ ਕਰੋ',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'ਕੀਵਰਡਾਂ ਦੀ ਹਾਈਲਾਈਟਿੰਗ ਨੂੰ ਅਸਮਰੱਥ ਬਣਾਓ',
     'Enable Highlighting of Keywords': 'ਕੀਵਰਡਸ ਦੀ ਹਾਈਲਾਈਟਿੰਗ ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ',
+    'Hide Parallel Search Errors': 'ਪੈਰਲਲ ਖੋਜ ਗਲਤੀਆਂ ਓਹਲੇ', // 5.6.20
+    'Show Parallel Search Errors': 'ਪੈਰਲਲ ਖੋਜ ਗਲਤੀਆਂ ਵੇਖੋ', // 5.6.20
     'Print': 'ਛਾਪੋ',
     'Printer Friendly': 'ਪ੍ਰਿੰਟਰ ਦੋਸਤਾਨਾ',
     'Help': 'ਮਦਦ ਕਰੋ',
@@ -232,7 +235,8 @@ module.exports = {
     'Settings' : 'ਸੈਟਿੰਗਾਂ', 
     'Language' : 'ਭਾਸ਼ਾ', 
     'Text Display': 'ਟੈਕਸਟ ਡਿਸਪਲੇ', 
-    'Font Style': 'ਫੌਂਟ ਸ਼ੈਲੀ', 
+    'Font Style': 'ਫੌਂਟ ਸ਼ੈਲੀ',
+    'This will reset the settings to defaults.':'ਇਹ ਸੈਟਿੰਗਾਂ ਨੂੰ ਡਿਫਾਲਟ ਵਿੱਚ ਰੀਸੈਟ ਕਰੇਗਾ।.', // 5.6.20
 
     // Result and error messages
     
@@ -434,6 +438,7 @@ module.exports = {
     'Okay': 'ਠੀਕ ਹੈ',
     'Old': 'ਪੁਰਾਣਾ',
     'New': 'ਨਵਾਂ',
+    'Reset': 'ਰੀਸੈੱਟ', // 5.6.20
 
     'Are you sure?': 'ਤੁਹਾਨੂੰ ਪੂਰਾ ਵਿਸ਼ਵਾਸ ਹੈ?',
     'Are you sure you want to delete': 'ਕੀ ਤੁਸੀਂ ਯਕੀਨਨ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ',
@@ -448,6 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'ਕਿਰਪਾ ਕਰਕੇ ਹੋਰ ਜੋੜਨ ਤੋਂ ਪਹਿਲਾਂ ਕੁਝ ਬੁੱਕਮਾਰਕਸ ਨੂੰ ਮਿਟਾਓ।',
     'This bookmark name already exists.': 'ਇਹ ਬੁੱਕਮਾਰਕ ਨਾਮ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ।',
+    'Bookmark name is required.': 'ਬੁੱਕਮਾਰਕ ਨਾਂ ਦੀ ਲੋੜ ਹੈ.', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'ਖੋਜਾਂ ਨੂੰ ਸੀਮਤ ਕਰਨਾ',
