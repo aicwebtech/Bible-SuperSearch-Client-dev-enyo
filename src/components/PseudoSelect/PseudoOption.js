@@ -30,28 +30,24 @@ module.exports = kind({
 		this.groupedChanged();
 
         if(this.valueTranslate && !this.valueUntranslated) {
-            // this.log('init valueUntranslated', this.value);
             this.valueUntranslated = this.value;
         }
 
 		//this.setAttribute('title', this.get('content'));
 	},
 	handleTap: function() {
-		this.log();
         this.bubble('onPseudoOptionTap', {value: this.value, content: this.content, string: this.string, type: 'option'});
 	},
     handleKeyDown: function(inSender, inEvent) {
-        this.log(inSender, inEvent);
-
         if(this.keyboardSelected && inEvent.keyCode == 13) {
             this.handleTap();  // Treat return as a click/tap
         }
     },
     handleKeyUp: function(inSender, inEvent) {
-        this.log(inSender, inEvent);
+        // this.log(inSender, inEvent);
     },    
     handleKeyPress: function(inSender, inEvent) {
-        this.log(inSender, inEvent);
+        // this.log(inSender, inEvent);
     },
 	clearSelection: function() {
 		this.set('selection', false);
@@ -94,20 +90,14 @@ module.exports = kind({
         if(this.valueTranslate) {
             // Experimental - translating values
             if(!this.valueUntranslated) {
-                // this.log('init valueUntranslated', this.value);
                 this.valueUntranslated = this.value;
             }
-            
-            // this.log('value untranslated', this.valueUntranslated);
-            // this.log('value - current', this.value);
 
             if(this.valueVerses) {
                 this.set('value', this.app.vt(this.valueUntranslated));
             } else {
                 this.set('value', this.app.t(this.valueUntranslated));
             }
-
-            // this.log('value - translated', this.value);
         }
 
         this._internalSet = false;

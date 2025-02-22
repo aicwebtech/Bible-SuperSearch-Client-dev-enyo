@@ -453,7 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'ተጨማሪ ከማከልዎ በፊት እባክዎ አንዳንድ ዕልባቶችን ይሰርዙ።',
     'This bookmark name already exists.': 'ይህ የዕልባት ስም አስቀድሞ አለ።',
-    'Bookmark name is required.': 'የዕልባት ስም ያስፈልጋል።',//check translation // 5.6.20
+    'Bookmark name is required.': 'የዕልባት ስም ያስፈልጋል።', // 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'ፍለጋዎችን መገደብ',

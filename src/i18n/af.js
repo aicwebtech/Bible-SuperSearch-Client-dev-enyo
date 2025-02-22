@@ -323,7 +323,7 @@ module.exports = {
     'Sorrowful': 'Hartseer',
     'Tempted': 'Gelok',
     'Thankful': 'Dankbaar',
-    'Traveling': 'Op reis',//check traveling
+    'Traveling': 'Op reis',
     'Trouble, In': 'Moeilikheid, In',
     'Troubled': 'Ontsteld',
     'Weary': 'Moeg',

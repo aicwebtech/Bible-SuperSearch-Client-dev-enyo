@@ -50,8 +50,8 @@ module.exports = {
     'Remove Bible': 'Bijbel Verwijderen', 
     'Random Chapter': 'Willekeurig Hoofdstuk',
     'Random Verse': 'Willekeurig Vers',
-    'Passages': 'Passages',//check translation
-    'Passage': 'Passage',//check translation
+    'Passages': 'Secties',
+    'Passage': 'Sectie',
     'The book of': 'Het boek van',
     'Look for': 'Zoeken',
     'Look up': 'Opzoeken',
@@ -73,13 +73,13 @@ module.exports = {
     'Show this verse': 'Laat dit vers zien',
     'Show in context': 'Toon in context',
     'Context': 'Context',
-    'In Context': 'In context',//check translation
+    'In Context': 'In context',
 
     'Limit Search To': 'Zoekopdracht Beperken tot',
     'Limit search to': 'Zoekopdracht Beperken tot', // Watch case!
     'Entire Bible': 'Hele Bijbel',
-    'Passage(s) listed below': 'Passage(s) hieronder vermeld',
-    'Passage(s) listed above': 'Passage(s) hierboven vermeld',
+    'Passage(s) listed below': 'Sectie(s) hieronder vermeld',
+    'Passage(s) listed above': 'Sectie(s) hierboven vermeld',
     
     // Shortcuts
     'Old Testament': 'Oude Testament',
@@ -111,8 +111,8 @@ module.exports = {
     'General': 'Algemeen',
     'Last Days': 'Laatste Dagen',
 
-    'Look up Passage(s)': 'Passage(s) opzoeken',
-    'Enter passage(s)' : 'Ga passage(s) binnen',
+    'Look up Passage(s)': 'Sectie(s) opzoeken',
+    'Enter passage(s)' : 'Ga Sectie(s) binnen',
     'Enter word(s), phrase(s) or expression(s)' : 'Voer woorden, zinnen) of uitdrukkingen in)',
     'Example': 'Voorbeeld',
 
@@ -130,12 +130,12 @@ module.exports = {
     'Regular Expression': 'Reguliere Expressie',
     'Select one ...' : 'Kies een ...',
 
-    'Enter search keyword(s) or passage reference(s)': 'Voer zoekwoord(en) of passagereferentie(s) in',
-    'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'Tip: Als u zowel een passage als een zoekopdracht invoert, wordt de zoekopdracht beperkt tot de opgegeven passage(s).',
+    'Enter search keyword(s) or passage reference(s)': 'Voer zoekwoord(en) of sectiereferentie(s) in',
+    'Tip: Entering both a passage and a search query will result in the limitation of the search to the specified passage(s).': 'Tip: Als u zowel een sectie als een zoekopdracht invoert, wordt de zoekopdracht beperkt tot de opgegeven sectie(s).',
     
     // Advanced Search
     'Boolean Search': 'Booleaanse Zoekopdracht',
-    'Passage Retrieval': 'Passage Ophalen',
+    'Passage Retrieval': 'Sectie Ophalen',
     'Find words within': 'Vind woorden binnenin',
     'Proximity Search': 'Nabijheid Zoeken',
     'Power Search': 'Krachtig Zoeken',
@@ -160,22 +160,22 @@ module.exports = {
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
     'Serif' : 'Serif',                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sans-Serif',//check translation                 // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif',                // * Button text, please keep translation short!
     'Monospace': 'Monoruimte',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Vergroot Tekst',
     'Default Text Size': 'Standaard Tekstgrootte',
     'Shrink Text': 'Tekst Verkleinen',
     'Verse Display': 'Versweergave',
     'Paragraph Display': 'Paragraafweergave',
-    'Passage Display': 'Passage-display', 
-    'Verse as Passage Display': 'Vers als Passageweergave', 
+    'Passage Display': 'Sectie Weergave', 
+    'Verse as Passage Display': 'Vers als sectie weergeven', 
     'EZ Copy': 'Gemakkelijk kopiëren',  // 'Easy Copy'
     'Read Display': 'Lees Weergave',
     'Italics': 'Cursief',                    // * Button text, please keep translation short!
     'Disable Italization of Added Words' : 'Schakel italisatie van toegevoegde woorden uit',
     'Enable Italization of Added Words': 'Schakel italisatie van toegevoegde woorden in',
-    'Disable Strong\'s Numbers': 'Schakel Strong\'s Nummers Uit',
-    'Enable Strong\'s Numbers': 'Schakel Strong\'s Numbers In',//check translation
+    'Disable Strong\'s Numbers': 'Schakel de Nummers van Strong Uit',
+    'Enable Strong\'s Numbers': 'Schakel de Nummers van Strong In',
     'Red Letter': 'Rode Brief',
     'Disable Red Letter': 'Schakel de rode letter uit',
     'Enable Red Letter': 'Schakel Rode Letter in',
@@ -219,9 +219,9 @@ module.exports = {
     'Text Only': 'Alleen Tekst', 
     'Separate Line': 'Aparte Lijn', 
 
-    'Multi-verse Passages': 'Passages met meerdere verzen', 
+    'Multi-verse Passages': 'Secties met meerdere verzen', 
     'Reference - Passage': 'Referentie - Doorgang', 
-    'Passage - Reference': 'Passage - Referentie', 
+    'Passage - Reference': 'Sectie - Referentie', 
     'Passage Only': 'Alleen Doorgang', 
     'Show Verse Number': 'Toon Versnummer', 
 
@@ -261,7 +261,7 @@ module.exports = {
 
     // Your search for [attempted keywords] is invalid...
     'Your search for': 'Uw zoektocht naar',
-    'is invalid, and appears to be a passage reference.': 'Het is ongeldig en lijkt een passageverwijzing te zijn.',
+    'is invalid, and appears to be a passage reference.': 'Het is ongeldig en lijkt een sectieverwijzing te zijn.',
     'is invalid.': 'is ongeldig.',
 
     // Your search was limited to [number of] verses
@@ -275,7 +275,7 @@ module.exports = {
     'Error' : 'Fout',
     'Success': 'Succes',
     'Cache not found': 'Cache niet gevonden',
-    'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Er zijn geen zoektermen opgegeven. Specificeer zoekterm(en) en/of passagereferentie(s)',
+    'No query terms provided. Please specify search term(s) and/or passage reference(s).': 'Er zijn geen zoektermen opgegeven. Specificeer zoekterm(en) en/of sectiereferentie(s)',
     'Your search produced no results.' : 'Uw zoekopdracht heeft geen resultaten opgeleverd.',
     'Maximum hits has been reached for today for this domain / IP address': 'Het maximale aantal hits is voor vandaag bereikt voor dit domein/IP-adres',
     'No Bibles are enabled. Please contact site administrator.': 'Er zijn geen Bijbels ingeschakeld. Neem dan contact op met de sitebeheerder.',
@@ -331,7 +331,7 @@ module.exports = {
     'Worried': 'Bezorgd',
 
     // Bible Start dialog
-    'Start': 'Begin',//check translation
+    'Start': 'Begin',
     'Bible Start Guide': 'Bijbel Startgids',
     'New to the Bible?': 'Nieuw bij de Bijbel?',
     'Not Sure Where to Begin?' : 'Weet u niet zeker waar u moet beginnen?',
@@ -364,8 +364,8 @@ module.exports = {
     'Are you sure you want to exit?  This will end the current download.': 'Weet u zeker dat u wilt afsluiten? Hiermee wordt de huidige download beëindigd.',
     'Plain Text' : 'Platte Tekst',
     'Machine-readable Plain Text' : 'Machineleesbare Platte Tekst',
-    'Spreadsheet' : 'Spreadsheet',//check translation
-    'Databases': 'Databases',//check translation
+    'Spreadsheet' : 'Rekenblad',
+    'Databases': 'Databanken',
 
     'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF - Compacte Tekst, Brief, Woorden van Christus in Rood',
     'PDF - Compact Text, A4, Words of Christ in Red': 'PDF - Compacte Tekst, A4, Woorden van Christus in Rood',
@@ -438,7 +438,7 @@ module.exports = {
     'Okay': 'Oké',
     'Old': 'Oud',
     'New': 'Nieuw',
-    'Reset': 'Reset',//check translation // 5.6.20
+    'Reset': 'Opnieuw instellen',// 5.6.20
 
     'Are you sure?': 'Weet je het zeker?',
     'Are you sure you want to delete': 'Weet je zeker dat je wilt verwijderen',
@@ -457,8 +457,8 @@ module.exports = {
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Zoekopdrachten beperken',
-    'Passages': 'Passages',//check translation
-    'Alias': 'Alias',//check translation
+    'Passages': 'Secties',
+    'Alias': 'Alias',
     'You cannot search for these common words': 'U kunt niet zoeken naar deze veel voorkomende woorden',
 
     'Include Link': 'Hyperlink Opnemen',

@@ -51,8 +51,8 @@ module.exports = {
     'Word Search': 'Žodžio Paieška',
     'Clear Form': 'Švari Anketa', 
     'Select Book and Chapter:' : 'Pasirinkite Knyga ir Skyrius',
-    'Select Book, Chapter, Verse:' : 'Pasirinkite knygą, skyrių, eilėraštį:',//check translation 
-
+    'Select Book, Chapter, Verse:' : 'Pasirinkite knygą, skyrių, eilėraštį:',
+    
     // Context Links
     'Show full chapter': 'Rodyti visą skyrių',
     'Chapter': 'skyrius',

@@ -164,10 +164,10 @@ module.exports = {
     'Disable Italization of Added Words' : 'Deaktivieren Sie die Italisierung Hinzugefügter Wörter',
     'Enable Italization of Added Words': 'Aktivieren Sie die Italisierung Hinzugefügter Wörter',
     'Disable Strong\'s Numbers': 'Deaktivieren Sie die Strong-Nummern',
-    'Enable Strong\'s Numbers': 'Aktivieren Sie Strong\'s Numbers',//check translation
+    'Enable Strong\'s Numbers': 'Aktivieren Sie Strongs Nummern',
     'Red Letter': 'Roter Brief',
-    'Disable Red Letter': 'Red Letter Deaktivieren',
-    'Enable Red Letter': 'Red Letter aktivieren',//check translation
+    'Disable Red Letter': 'Roten Text Deaktivieren',
+    'Enable Red Letter': 'Roten Text Aktivieren',
     'Highlight': 'Markieren',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Deaktivieren Sie die Hervorhebung von Schlüsselwörtern',
     'Enable Highlighting of Keywords': 'Aktivieren Sie die Hervorhebung von Schlüsselwörtern',
@@ -214,8 +214,8 @@ module.exports = {
     'Show Verse Number': 'Versnummer Anzeigen', // 5.0
 
     'Other': 'Andere', // 5.0
-    'Include Testament': 'Testament Einschließen',//check translation
-    'Testament': 'Testament',//check translation
+    'Include Testament': 'Testament Einschließen',
+    'Testament': 'Testament',
     'Abbreviate Books': 'Abgekürzte Bücher', // 5.0
     'Omit Extra Line Breaks': 'Lassen Sie Zusätzliche Zeilenumbrüche Weg', // 5.0
 
@@ -403,7 +403,7 @@ module.exports = {
     'joy': 'Freude',
     'preserved' : 'konserviert',
     'preserve' : 'bewahren',
-    'stand' : 'Stand',//check translation
+    'stand' : 'Stand',
     'word': 'Wort',
     'words': 'Wörter',
     'truth': 'Wahrheit',
@@ -447,7 +447,7 @@ module.exports = {
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Einschränken von Suchen',
     'Passages': 'Passagen',
-    'Alias': 'Alias',//check translation
+    'Alias': 'Alias',
     'You cannot search for these common words': 'Sie können nicht nach diesen gebräuchlichen Wörtern suchen',
     // End 5.5 part 2
 

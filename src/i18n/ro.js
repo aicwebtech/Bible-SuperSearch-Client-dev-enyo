@@ -58,8 +58,8 @@ module.exports = {
     'Chapter': 'Capitol',
     'Show this verse': 'Afișați acest verset',
     'Show in context': 'Afișați în context',
-    'Context': 'Context',//check translation
-    'In Context': 'In context',//check translation // ????
+    'Context': 'Context',
+    'In Context': 'În Context',
 
     'Limit Search To': 'Limitați Căutarea',
     'Limit search to': 'Limitați căutarea', // Watch case!
@@ -89,12 +89,12 @@ module.exports = {
     'NT': 'NT',
     'Torah': 'Tora',
     'Wisdom': 'Înţelepciune',
-    'Major': 'Major',//check translation
-    'Minor': 'Minor',//check translation
+    'Major': 'Major',// ??
+    'Minor': 'Minor',// ??
     'Passion': 'Pasiune',
     'Doctrine': 'Doctrină',
-    'Paul': 'Paul',//check translation
-    'General': 'General',//check translation
+    'Paul': 'Paul',// ??
+    'General': 'General',// ??
     'Last Days': 'Ultimele zile',
 
     'Look up Passage(s)': 'Căutați Pasajul(ele)',
@@ -211,7 +211,7 @@ module.exports = {
 
     'Other': 'Altele', // 5.0
     'Include Testament': 'Includeți Testamentul',
-    'Testament': 'Testament', //check translation
+    'Testament': 'Testament', 
     'Abbreviate Books': 'Abreviați Numele Cărților', // 5.0
     'Omit Extra Line Breaks': 'Omite rândurile goale', // 5.0
 

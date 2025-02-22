@@ -145,8 +145,8 @@ module.exports = {
     // Formatting and dialog buttons
     'A': 'UN',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sans-Serif',//check translation                 // * Button text, please keep translation short!
+    'Serif' : 'Serif',                     // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif',                 // * Button text, please keep translation short!
     'Monospace': 'Monospazio',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Ingrandisci il Testo',
     'Default Text Size': 'Dimensione Testo PTredefinita',
@@ -215,7 +215,7 @@ module.exports = {
     'Include Testament': 'Includi Testamento',
     'Testament': 'Testamento',
     'Abbreviate Books': 'Abbreviare i Libri', 
-    'Omit Extra Line Breaks': 'Ometti Interruzioni di Riga Extra',//check translation
+    'Omit Extra Line Breaks': 'Ometti Interruzioni di Riga Extra',
 
     // Settings Dialog
     'Settings' : 'Impostazioni', 
@@ -444,7 +444,7 @@ module.exports = {
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Limitare le ricerche',
     'Passages': 'Passaggi',
-    'Alias': 'Alias',//check translation
+    'Alias': 'Alias',
     'You cannot search for these common words': 'Non è possibile cercare queste parole comuni',
 
     'Include Link': 'Includi Collegamento',

@@ -453,7 +453,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Przed dodaniem kolejnych usuń niektóre zakładki.',
     'This bookmark name already exists.': 'Ta nazwa zakładki już istnieje.',
-    'Bookmark name is required.': 'Wymagana jest nazwa zakładki.',//check translation // 5.6.20
+    'Bookmark name is required.': 'Nazwa zakładki jest wymagana.',// 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Ograniczanie wyszukiwań',

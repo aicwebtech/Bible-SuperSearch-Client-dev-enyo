@@ -182,8 +182,8 @@ module.exports = {
     'Highlight': 'မီးမောင်းထိုးပြပါ။',                  // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'သော့ချက်စာလုံးများကို အသားပေးဖော်ပြခြင်းကို ပိတ်ပါ။',
     'Enable Highlighting of Keywords': 'သော့ချက်စာလုံးများကို အသားပေးဖော်ပြခြင်းကို ဖွင့်ပါ။',
-    'Hide Parallel Search Errors': 'Parallel Search Errors များကို ဝှက်ထားပါ',//check translation // 5.6.20
-    'Show Parallel Search Errors': 'Parallel Search Errors ကိုပြသပါ',//check translation // 5.6.20
+    'Hide Parallel Search Errors': 'မတူညီသောကျမ်းစာများဖြင့် အမှားများကို ဝှက်ထားပါ။', // 5.6.20
+    'Show Parallel Search Errors': 'မတူညီသောကျမ်းစာများဖြင့် အမှားများကိုပြသပါ။', // 5.6.20
     'Print': 'ပုံနှိပ်ပါ။',
     'Printer Friendly': 'အလွယ် ပုံနှိပ်ပါ။',
     'Help': 'ကူညီကြပါ',
@@ -438,7 +438,7 @@ module.exports = {
     'Okay': 'ကောင်းပြီ။',
     'Old': 'အဟောင်း',
     'New': 'အသစ်',
-    'Reset': 'ပြန်ညှိ',//check translation // 5.6.20
+    'Reset': 'ပြန်လည်သတ်မှတ်ပါ။',// 5.6.20
 
     'Are you sure?': 'သေချာလား?',
     'Are you sure you want to delete': 'you want to delete',

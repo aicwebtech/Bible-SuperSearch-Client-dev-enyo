@@ -51,7 +51,7 @@ module.exports = {
     'Word Search': '単語検索',
     'Clear Form': '明確な形', 
     'Select Book and Chapter:' : '本と章を選択してください:',
-    'Select Book, Chapter, Verse:' : 'ブック、章、詩を選択します:',//check translation
+    'Select Book, Chapter, Verse:' : '本、章、または詩を選択してください:',
 
     // Context Links
     'Show full chapter': '章全体を表示',

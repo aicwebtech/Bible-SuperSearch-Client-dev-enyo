@@ -44,7 +44,7 @@ module.exports = {
     'Whole words only': 'Kalmomi gabaɗaya kawai',
     'Whole words': 'Dukkan kalmomi',
     'Exact Case': 'Ainihin Harka',
-    'Parallel Bible #': 'Daidaici Littafi Mai Tsarki #',
+    'Parallel Bible #': 'Littafi Mai Tsarki #',
     'Select a Bible': 'Zaɓi Littafi Mai Tsarki',
     'Add Bible': 'Ƙara Littafi Mai Tsarki',
     'Remove Bible': 'Cire Littafi Mai Tsarki', 
@@ -182,8 +182,8 @@ module.exports = {
     'Highlight': 'Haskakawa',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Kashe Haskakawa na Kalmomi',
     'Enable Highlighting of Keywords': 'Kunna Halayen Mahimman kalmomi',
-    'Hide Parallel Search Errors': 'Ɓoye Kurakurai na Bincike Daidaitacce',//check translation // 5.6.20
-    'Show Parallel Search Errors': 'Nuna Kurakurai Bincike Daidaitacce',//check translation // 5.6.20
+    'Hide Parallel Search Errors': 'Ɓoye Kurakuran Bincike Daidaitacce',// 5.6.20
+    'Show Parallel Search Errors': 'Nuna Kurakurai Bincike Daidaitacce',// 5.6.20
     'Print': 'Buga',
     'Printer Friendly': 'Abokin Bugawa',
     'Help': 'Taimako',

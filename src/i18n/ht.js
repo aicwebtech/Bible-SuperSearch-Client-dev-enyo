@@ -1,4 +1,4 @@
-Skipping language due to translation issues.
+// Skipping language due to translation issues.
 
 // 96 checks
 

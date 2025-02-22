@@ -147,7 +147,7 @@ module.exports = {
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
+    'Serif' : 'Serifa',                    // * Button text, please keep translation short!
     'Sans-Serif': 'Sem Serifa',                 // * Button text, please keep translation short!
     'Monospace': 'Monoespaçado',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Ampliar Texto',
@@ -365,7 +365,7 @@ module.exports = {
     'Copy with Text': 'Copiar com Texto',
     'Share Link': 'Compartilhar Link',
     'Share' : 'Compartilhar',
-    'Link' : 'Link',//check translation // 4.5
+    'Link' : 'Link', // 4.5
     'Copied to clipboard': 'Copiado para a área de transferência', // 5.2.3
     'Failed to copy': 'Falha ao copiar', // 5.2.3
 
@@ -441,7 +441,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Exclua alguns favoritos antes de adicionar mais.',
     'This bookmark name already exists.': 'Este nome de marcador já existe.',
-    'Bookmark name is required.': 'O nome do marcador é necessário.',//check translation // 5.6.20
+    'Bookmark name is required.': 'Nome do marcador é obrigatório.',// 5.6.20
 
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Limitando Pesquisas',

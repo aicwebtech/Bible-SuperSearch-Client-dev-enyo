@@ -162,8 +162,8 @@ module.exports = {
     'Highlight': 'Marke',
     'Disable Highlighting of Keywords': 'Remove ye marke on ye founde treasure',
     'Enable Highlighting of Keywords': 'Showe ye marke on ye founde treasure',
-    'Hide Parallel Search Errors': '', // 5.6.20
-    'Show Parallel Search Errors': '', // 5.6.20
+    'Hide Parallel Search Errors': 'Threw ye extra sworde errors overboarde', // 5.6.20
+    'Show Parallel Search Errors': 'Display ye extra sworde errores', // 5.6.20
     'Print': 'Scrawl',
     'Printer Friendly': 'Scrawl like me first mate',
     'Help': 'Halpp',
@@ -229,7 +229,7 @@ module.exports = {
     'Language' : 'Manre of Speeche', // 5.0
     'Text Display': 'Bootie Showcasee', // 5.0
     'Font Style': 'Scripble Stilen', // 5.0
-    'This will reset the settings to defaults.':'', // 5.6.20
+    'This will reset the settings to defaults.':'Resseth ye pillagin to the orig', // 5.6.20
 
     'User\'s Manual': 'Arr, how me operate this thing?',
     
@@ -417,7 +417,7 @@ module.exports = {
     'Okay': 'Aheade',
     'Old': 'Ye Olde',
     'New': 'Neweth',
-    'Reset': '', // 5.6.20
+    'Reset': 'Resseth', // 5.6.20
 
     'Are you sure?': 'Yar really?',
     'Are you sure you want to delete': 'Yar really drown',
@@ -433,7 +433,7 @@ module.exports = {
 
     'Please delete some bookmarks before adding more.': 'Pleaseth drown shome barkmate before addign new matey.',
     'This bookmark name already exists.': 'Yar barkmate is arready a matey.',
-    'Bookmark name is required.': '', // 5.6.20
+    'Bookmark name is required.': 'Barkmate name is obligatored', // 5.6.20
 
     // Quick start dialog: Limitins searches
     'Limiting Searches': 'Refinin\' yer plunderin\'',

@@ -51,7 +51,7 @@ module.exports = {
     'Word Search': 'Szó keresése',
     'Clear Form': 'Tiszta forma', 
     'Select Book and Chapter:' : 'Válassza a Könyv és fejezet lehetőséget',
-    'Select Book, Chapter, Verse:' : 'Válasszon Könyvet, Fejezetet, Verset:',//check translation 
+    'Select Book, Chapter, Verse:' : 'Válasszon Könyvet, Fejezetet, Verset:',
 
     // Context Links
     'Show full chapter': 'Teljes fejezet megjelenítése',
@@ -147,7 +147,7 @@ module.exports = {
     'Abc': 'ABC',  // First 3 letters in given language, with 1st capitalized
     'Serif' : 'Serif',                     // * Button text, please keep translation short!
     'Sans-Serif': 'Sans Serif',                 // * Button text, please keep translation short!
-    'Monospace': 'Monospace',//check translation                  // * Button text, please keep translation short!
+    'Monospace': 'Monospace',                 // * Button text, please keep translation short!
     'Enlarge Text': 'Szöveg nagyítása',
     'Default Text Size': 'Alapértelmezett Szövegméret',
     'Shrink Text': 'Szöveg Zsugorítása',
@@ -163,8 +163,8 @@ module.exports = {
     'Disable Strong\'s Numbers': 'Az erős számok letiltása',
     'Enable Strong\'s Numbers': 'Engedélyezze a Strong\'s Numbers funkciót',
     'Red Letter': 'Piros levél',
-    'Disable Red Letter': 'A Red Letter letiltása',//check translation
-    'Enable Red Letter': 'Piros Betű Engedélyezése',
+    'Disable Red Letter': 'Piros szöveg letiltása',
+    'Enable Red Letter': 'Piros szöveg engedélyezése',
     'Highlight': 'Kiemel',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'A kulcsszavak kiemelésének letiltása',
     'Enable Highlighting of Keywords': 'Kulcsszavak kiemelésének engedélyezése',
@@ -215,7 +215,7 @@ module.exports = {
     'Include Testament': 'Tartalmazza a Testamentumot',
     'Testament': 'Végrendelet',
     'Abbreviate Books': 'Könyvek Rövidítése', 
-    'Omit Extra Line Breaks': 'Az Extra Sortörések Kihagyása',//check translation 
+    'Omit Extra Line Breaks': 'Az Extra Sortörések Kihagyása',
 
     // Settings Dialog
     'Settings' : 'Beállítások', 
@@ -395,7 +395,7 @@ module.exports = {
     // Keywords for sample searches
     'Jesus': 'Jézus',
     'Christ': 'Krisztus',
-    'Lord': 'Lord',//check translation
+    'Lord': 'Lord',//??
     'faith': 'hit',
     'hope': 'remény',
     'joy': 'öröm',

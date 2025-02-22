@@ -156,7 +156,7 @@ module.exports = {
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
     'Serif' : 'Seif',                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sans-Serif',//check translation                 // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif',                 // * Button text, please keep translation short!
     'Monospace': 'Monoruum',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Suurenda Teksti',
     'Default Text Size': 'Vaiketeksti Suurus',
@@ -226,7 +226,7 @@ module.exports = {
 
     'Other': 'Muu', // 5.0
     'Include Testament': 'Kaasake Testament',
-    'Testament': 'Testament',//check translation
+    'Testament': 'Testament',
     'Abbreviate Books': 'Raamatute Lühend', // 5.0
     'Omit Extra Line Breaks': 'Jäta Väljale Täiendavad Reavahed', // 5.0
 

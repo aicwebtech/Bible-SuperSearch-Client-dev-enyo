@@ -1,4 +1,4 @@
-Skipping language due to translation issues.
+// Skipping language due to translation issues!
 
 module.exports = {
     meta: {

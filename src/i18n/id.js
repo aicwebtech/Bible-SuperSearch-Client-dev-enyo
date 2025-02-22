@@ -101,7 +101,7 @@ module.exports = {
     // Shortcut Aliases
     'OT': 'PL',
     'NT': 'PB',
-    'Torah': 'Torah',//check translation
+    'Torah': 'Torah',
     'Wisdom': 'Kebijaksanaan',
     'Major': 'Besar',
     'Minor': 'Minor',
@@ -365,7 +365,7 @@ module.exports = {
     'Plain Text' : 'Teks Biasa',
     'Machine-readable Plain Text' : 'Teks Biasa yang dapat dibaca mesin',
     'Spreadsheet' : 'Lembar bentang',
-    'Databases': 'Basis Data',//check translation
+    'Databases': 'Basis Data',
 
     'PDF - Compact Text, Letter, Words of Christ in Red': 'PDF - Teks Ringkas, Surat, Kata-kata Kristus Berwarna Merah',
     'PDF - Compact Text, A4, Words of Christ in Red': 'PDF - Teks Ringkas, A4, Kata-kata Kristus Berwarna Merah',
@@ -438,7 +438,7 @@ module.exports = {
     'Okay': 'Oke',
     'Old': 'Tua',
     'New': 'Baru',
-    'Reset': 'Reset',//check translation // 5.6.20
+    'Reset': 'Mengatur ulang', // 5.6.20
 
     'Are you sure?': 'Apa kamu yakin?',
     'Are you sure you want to delete': 'Apakah Anda yakin ingin menghapus',
