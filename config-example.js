@@ -114,6 +114,9 @@ var biblesupersearch_config_options = {
     // (since v 5.6.20)
     'parallelSearchErrorSuppressUserConfig': false, 
 
+    // Enables the parallel Bible limit by width feature
+    'parallelBibleLimitByWidthEnable': false,
+
     // Controls the number of parallel Bibles available based on screen width
     // set to false to completely disable.
     // minWidth and maxBibles must be in ascending order across each config, otherwise the entire config is ignored

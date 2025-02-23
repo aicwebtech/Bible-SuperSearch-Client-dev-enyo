@@ -235,14 +235,14 @@ module.exports = kind({
     }, 
 
     handleResize: function() {
-        this.log();
+        // this.log();
     },
 
     resizeDragStart: function(s, e) {
-        this.log(s, e);
+        // this.log(s, e);
     },
     resizeDragEnd: function(s, e) {
-        this.log(s, e);
+        // this.log(s, e);
     },
     
     scrollToItemDelay: function() {

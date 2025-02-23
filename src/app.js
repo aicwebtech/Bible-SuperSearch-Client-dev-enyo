@@ -351,6 +351,7 @@ var App = Application.kind({
         this.defaultBiblesRaw = utils.clone(this.defaultBibles);
 
         if(
+            (typeof this.configs.parallelBibleLimitByWidthEnable === 'undefined' || this.configs.parallelBibleLimitByWidthEnable) &&
             this.configs.parallelBibleLimitByWidth && 
             Array.isArray(this.configs.parallelBibleLimitByWidth) &&
             this.configs.parallelBibleLimitByWidth.length > 0
