@@ -90,15 +90,34 @@ module.exports = kind({
     handlePrompt: function(inSender, inEvent) {
         this.alert(inEvent.message, inEvent.buttons, inEvent.callback);
     },
+    
+    /*
+    * @param {String} message, pre-translated message
+    * @param {Function} callback
+    * @return {void}
+    **/
     alert: function(message, callback) {
         this.isConfirming = false;
         this._init(message, callback, ['Okay']);
     },
+    
+    /*
+    * @param {String} message, pre-translated message
+    * @param {Function} callback
+    * @return {void}
+    **/
     confirm: function(message, callback) {
         this.isConfirming = true;
         this.callback = callback || null;
         this._init(message, callback, ['Okay', 'Cancel']);
     },
+    
+    /*
+    * @param {String} message, pre-translated message
+    * @param {Array} buttons, array of strings or objects with label and value
+    * @param {Function} callback
+    * @return {void}
+    **/
     prompt: function(message, buttons, callback) {
         this.isConfirming = false;
         buttons = buttons || [];
@@ -132,14 +151,12 @@ module.exports = kind({
             }
 
             if(typeof buttons[i] == 'string') {
-                label = buttons[i];
+                label = this.app.t(buttons[i]);
                 value = buttons[i].toLowerCase();
             } else {
-                label = buttons[i].label;
+                label = this.app.t(buttons[i].label);
                 value = buttons[i].value;
             }
-
-            // this.log(buttons[i], label, value);
 
             components.push({
                 kind: Button, ontap: 'handleButtonTap', owner: this, value: value, components: [
@@ -147,8 +164,6 @@ module.exports = kind({
                 ]
             });
         }
-
-        // this.log(components);
 
         this.$.ButtonBar.createComponents(components);
         this.$.ButtonBar.render();

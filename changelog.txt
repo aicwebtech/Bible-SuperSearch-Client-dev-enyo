@@ -1,5 +1,8 @@
 Bible SuperSearch Universal Client Changelog
 
+= 5.6.21
+* Fixed some text not translating on Bookmarks alert/confirm dialogs
+
 = 5.6.20
 * Different CSS classes for each Bible text
 * Config / User setting to show or hide parallel Bible errors.
