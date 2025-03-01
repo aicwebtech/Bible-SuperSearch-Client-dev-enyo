@@ -156,7 +156,7 @@ module.exports = kind({
         });
 
         if(!model) {
-            this.$.ConfirmDialog.alert('Bookmark not found: pk=' + pk);
+            this.$.ConfirmDialog.alert('Error: Bookmark not found: pk=' + pk);
         }
 
         this.controller.set('model', model);
@@ -170,7 +170,7 @@ module.exports = kind({
         var model = this.app.bookmarks.findByPk(pk);
 
         if(!model) {
-            this.$.ConfirmDialog.alert('Bookmark not found: pk=' + pk);
+            this.$.ConfirmDialog.alert('Error: Bookmark not found: pk=' + pk);
         }
 
         this.controller.set('model', model);
@@ -219,12 +219,12 @@ module.exports = kind({
             });
 
         if(!title) {
-            this.$.ConfirmDialog.alert('Bookmark name is required.');
+            this.$.ConfirmDialog.alert( this.app.t('Bookmark name is required.') );
             return;
         }
 
         if(sameTitle) {
-            this.$.ConfirmDialog.alert('This bookmark name already exists.');
+            this.$.ConfirmDialog.alert( this.app.t('This bookmark name already exists.') );
             return;
         }
 
