@@ -297,8 +297,9 @@ var biblesupersearch_config_options = {
     //      none - do not display at all
     // "extraButtonsSeparate": 'default',                         
     
-    // Whether to show context help inline (relatively-positioned) to the form
-    // Otherwise, context help will be shown in a popup tooltip
+    // Context Help Below Item
+    // Whether to show contextual help below (or inline / relatively-positioned) to the item it's describing.  
+    // Otherwise, it will be shown in a popup tooltip near the item (Default).
     'contextHelpInline': false,
 
     // Which navigation buttons to use?
