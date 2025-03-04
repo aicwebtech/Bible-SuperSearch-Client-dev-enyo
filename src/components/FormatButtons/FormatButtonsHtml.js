@@ -341,6 +341,8 @@ module.exports = kind({
                     {tag: 'span', classes: 'material-icons icon', content: 'clear'}
                 ]
             },
+        ]},
+        {classes: 'bss_button_group', name: 'PrintShareGroup', components: [
             {
                 kind: i18n,
                 classes: 'item print text_only',
@@ -370,7 +372,7 @@ module.exports = kind({
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'link'}
                 ],
-            },            
+            },
             {
                 kind: i18n,
                 classes: 'item link text_only',
@@ -400,10 +402,11 @@ module.exports = kind({
                 components: [
                     {tag: 'span', classes: 'material-icons icon', content: 'bookmarks'}
                 ],
-            },            
+            },
             {
                 kind: i18n,
                 classes: 'item link text_only',
+                showing: false,
                 name: 'settings_reset_button',
                 ontap: 'handleResetSetting',
                 attributes: {title: 'Reset'},
@@ -413,8 +416,8 @@ module.exports = kind({
             },
             {
                 kind: i18n,
-                showing: false,
                 classes: 'item settings text_only',
+                showing: false,
                 name: 'settings_button',
                 ontap: 'handleSettings',
                 attributes: {title: 'Settings'},

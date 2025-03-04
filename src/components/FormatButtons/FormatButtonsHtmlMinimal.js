@@ -17,6 +17,7 @@ module.exports = kind({
     create: function() {
         this.inherited(arguments);
         this.$.settings_button.set('showing', true);
+        this.$.settings_reset_button.set('showing', true);
         this.$.TextEmbGroup1.set('showing', false);
         this.$.TextEmbGroup2.set('showing', false);
         this.$.language_selector.set('showing', false);
