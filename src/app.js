@@ -597,9 +597,16 @@ var App = Application.kind({
         }
         
         this.render();
+    },
+    _handleAppLoaded: function() {
+        if(this.appLoaded) {
+            return;
+        }
+        
         this.appLoaded = true;
         this.$.Router.trigger();
 
+        this.debug && this.log('Sending onAppLoaded');
         this.waterfall('onAppLoaded');
 
         if(this.configs.query_string) {

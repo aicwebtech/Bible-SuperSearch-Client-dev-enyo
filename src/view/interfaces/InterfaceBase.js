@@ -108,6 +108,8 @@ module.exports = kind({
         this.hasNode().addEventListener('scrollend', function(e) {
             t.handleScrollEnd(null, e);
         }); 
+
+        this.app._handleAppLoaded()
     },
     handleTap: function(inSender, inEvent) {
         this.waterfall('onGlobalTap', {sender: inSender, e: inEvent});

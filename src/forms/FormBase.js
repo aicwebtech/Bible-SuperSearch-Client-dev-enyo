@@ -246,6 +246,13 @@ module.exports = kind({
         formData = this.beforeSubmitForm(formData);
         formData = this.processDefaults(formData);
 
+        if(!formData.reference && !formData.request && !formData.search) {
+            this.app.debug && this.log('FORM: No reference, request or search, not submitting form');
+            this.requestPending = false;
+            this.app.set('ajaxLoadingDelay', false);
+            return;
+        }
+
         this.app.debug && this.log('Submitted formData', formData);
 
         ajax.go(formData); // for GET
@@ -578,7 +585,7 @@ module.exports = kind({
         fd.shortcut = fd.shortcut || 0;
         this.setFormDataWithMapping(fd);
 
-        this.app.debug && this.log('just set form data, about to submit form', fd);
+        this.app.debug && this.log('just set form data, about to submit form', this.get('formData'));
 
         if(inEvent.submitAsManual) {
             this.submitFormManual();
@@ -657,8 +664,8 @@ module.exports = kind({
 
         return passage;
     },
-    formDataChanged: function(was, is) {
-        if(!this.$.reference) {
+    formDataChanged: function(was, is) {        
+        if(this.hasNode() && !this.$.reference) {
             this.formData.reference = null; // Fix issues with random on forms with no 'reference' input
         }
     },
