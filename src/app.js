@@ -842,6 +842,8 @@ var App = Application.kind({
         }
 
         if(hash && hash != '') {
+            this.debug && this.log('hash', hash);
+
             hash = decodeURI(hash);
             hash = hash.replace(/\./g, ' ');
             var parts = hash.split('/');
@@ -889,6 +891,7 @@ var App = Application.kind({
         }
     },    
     _hashLocalStorage: function() {
+        this.debug && this.log();
         var formDataJson = localStorage.getItem('BibleSuperSearchFormData');
 
         if(!formDataJson || typeof formDataJson != 'string') {
@@ -908,6 +911,7 @@ var App = Application.kind({
         }
 
         localStorage.removeItem('BibleSuperSearchFormData');
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto', submitAsManual: true});
     },
     _hashCache: function(parts) {
@@ -918,6 +922,7 @@ var App = Application.kind({
     _hashPassage: function(parts) {
         var partsObj = this._explodeHashPassage(parts);
         var formData = this._assembleHashPassage(partsObj);
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
     },    
     _hashSearchLink: function(parts) {
@@ -928,11 +933,13 @@ var App = Application.kind({
         formData.results_list_cache_id = uuid;
         // formData.results_list_page = page;
         // this.set('resultsListPage', page);
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
     },    
     _hashStrongs: function(parts) {
         var strongsNum = parts[0] || null;
         var formData = { search: strongsNum };
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
     },
     _hashContext: function(parts) {
@@ -945,6 +952,7 @@ var App = Application.kind({
 
         var formData = this._assembleHashPassage(partsObj);
         formData.context = true;
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },    
     _hashReference: function(parts) {
@@ -954,6 +962,7 @@ var App = Application.kind({
         partsObj.verse = null;
 
         var formData = this._assembleHashPassage(partsObj);
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },   
     _hashRequest: function(parts) {
@@ -991,13 +1000,16 @@ var App = Application.kind({
             formData.search = search.replace(/%20/g, ' ');
         }
 
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },
     _hashForm: function(parts) {
         var formData = (parts[0]) ? JSON.parse(parts[0]) : {};
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },
     runFormData: function(formData) {
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true, submitAsManual: true});
     },
     _explodeHashPassage: function(parts) {
