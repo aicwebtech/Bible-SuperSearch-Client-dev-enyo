@@ -841,6 +841,8 @@ var App = Application.kind({
             return;
         }
 
+        this.loadingPagePrevent = false;
+
         if(hash && hash != '') {
             this.debug && this.log('hash', hash);
 
@@ -848,7 +850,6 @@ var App = Application.kind({
             hash = hash.replace(/\./g, ' ');
             var parts = hash.split('/');
             var mode  = parts.shift();
-            this.loadingPagePrevent = false;
 
             if(mode == '') {
                 var mode = parts.shift();
@@ -856,21 +857,27 @@ var App = Application.kind({
 
             switch(mode) {
                 case 'c':   // Cache uuid (hash) 
+                    this.loadingPagePrevent = true;
                     return this._hashCache(parts);
                     break;
                 case 'p':   // Passage
+                    this.loadingPagePrevent = true;
                     return this._hashPassage(parts);
                     break;                   
                 case 'r':   // Reference string
+                    this.loadingPagePrevent = true;
                     return this._hashReference(parts);
                     break;                
                 case 'q':   // Request string
+                    this.loadingPagePrevent = true;
                     return this._hashRequest(parts);
                     break;
                 case 's':   // Search string
+                    this.loadingPagePrevent = true;
                     return this._hashSearch(parts);
                     break;                      
                 case 'sl':   // Link to passage within search results list
+                    this.loadingPagePrevent = true;
                     return this._hashSearchLink(parts);
                     break;                
                 case 'context': // Contextual lookup
@@ -878,9 +885,11 @@ var App = Application.kind({
                     return this._hashContext(parts);
                     break;
                 case 'strongs': // Strongs lookup
+                    this.loadingPagePrevent = true;
                     return this._hashSearch(parts);
                     break;
                 case 'f': // JSON-endoded form data
+                    this.loadingPagePrevent = true;    
                     return this._hashForm(parts);
                     break;
             }
@@ -1454,12 +1463,19 @@ var App = Application.kind({
             var book = bookList[key],
                 bookEn = null;
 
+            if(locale == 'en') {
+                // For English, merge data from API with static local book data
+                book.name = Locales.en.bibleBooks[key].name || book.name;
+                book.shortname = Locales.en.bibleBooks[key].shortname || book.shortname;
+                book.matching = Locales.en.bibleBooks[key].matching || null;
+            }
+
             book.fn = this._fmtBookNameMatch(book.name, locale);
             book.sn = this._fmtBookNameMatch(book.shortname, locale);
 
             if(locale != 'en') {
                 bookEn = this.localeBibleBooks.en[key] || null;
-            }
+            } 
 
             if(Array.isArray(book.matching)) {
                 for(mk in book.matching) {
@@ -1668,6 +1684,8 @@ var App = Application.kind({
         var locale = this.get('locale');
         bookName = this._fmtBookNameMatch(bookName, locale);
         var BookList = this.localeBibleBooks[locale] || this.statics.books;
+
+        this.log('Locale', locale, BookList);
 
         // Pass 1: Exact match
         var book = BookList.find(function(bookItem) {
