@@ -22,6 +22,7 @@ module.exports = kind({
     
     published: {
         list: [
+            {label: null, verses: 'Romans 3:10, 23; 6:23; 5:8; 10:9, 13; John 3:16; John 14:6; Acts 4:12; Ephesians 2:8, 9'},
             {label: 'Afraid', verses: 'Psalms 34:4; Matthew 10:28; 2 Timothy 1:7; Hebrews 13:5-6'},
             {label: 'Anxious', verses: 'Psalms 46; Matthew 6:19-34; Philippians 4:6; 1 Peter 5:6-7'},
             {label: 'Backsliding', verses: 'Psalms 51; 1 John 1:4-9'},
@@ -136,7 +137,7 @@ module.exports = kind({
         list.forEach(function(item) {
             var t = this;
             var versesTranslated = this.app.vt(item.verses);
-            var label = item.label + ': ';
+            var label = item.label ? item.label + ': ' : null;
             var url = urlBase + versesTranslated;
             url = url.replace(/\s+/g, '.');
 
@@ -146,18 +147,32 @@ module.exports = kind({
                     classes: 'col'
                 });
             }
-
-            this.$.ListContainer.$[colName].createComponent({
-                verses: item.verses,
-                owner: this,
-                classes: 'item sos_item', components: [
-                    {classes: 'label', content: label},
-                    {classes: 'verses', components: [
-                        {kind: Anchor, href: url, _title: versesTranslated, content: versesTranslated, ontap: 'handleVerseTap'}
-                    ]},
-                    {classes: 'clear-both'}
-                ],
-            });
+            
+            if(label) {
+                this.$.ListContainer.$[colName].createComponent({
+                    verses: item.verses,
+                    owner: this,
+                    classes: 'item sos_item', components: [
+                        {classes: 'label', content: label},
+                        {classes: 'verses', components: [
+                            {kind: Anchor, href: url, _title: versesTranslated, content: versesTranslated, ontap: 'handleVerseTap'}
+                        ]},
+                        {classes: 'clear-both'}
+                    ],
+                });
+            } else {
+                this.$.ListContainer.$[colName].createComponent({
+                    verses: item.verses,
+                    owner: this,
+                    classes: 'item sos_item', components: [
+                        // {classes: 'label', content: label},
+                        {classes: 'verses_wide', components: [
+                            {kind: Anchor, href: url, _title: versesTranslated, content: versesTranslated, ontap: 'handleVerseTap'}
+                        ]},
+                        // {classes: 'clear-both'}
+                    ],
+                });
+            }
         }, this);
     },
     handleVerseTap: function(inSender, inEvent) {

@@ -41,7 +41,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.6.22',
+    applicationVersion: '5.7.0',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},

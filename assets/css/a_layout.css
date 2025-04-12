@@ -630,6 +630,13 @@ div.alert_dialog {
     text-align: end;
 }
 
+.bible_sos .sos_item .verses_wide {
+    cursor: pointer;
+    font-size: 0.9em;
+    text-align: center;
+    padding: 5px;
+}
+
 .bible_start .start_item {
     padding: 5px 2px;
 }
