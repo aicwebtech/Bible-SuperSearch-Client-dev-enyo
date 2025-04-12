@@ -125,11 +125,11 @@ module.exports = kind({
             }
 
             if(typeof buttons[i] == 'string') {
-                label = this.app.t(buttons[i]);
                 value = buttons[i].toLowerCase();
+                label = this.app.t(buttons[i]);
             } else {
-                label = this.app.t(buttons[i].label);
                 value = buttons[i].value;
+                label = this.app.t(buttons[i].label);
             }
 
             components.push({

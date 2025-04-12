@@ -41,7 +41,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '5.6.21',
+    applicationVersion: '5.7.0',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -598,9 +598,16 @@ var App = Application.kind({
         }
         
         this.render();
+    },
+    _handleAppLoaded: function() {
+        if(this.appLoaded) {
+            return;
+        }
+        
         this.appLoaded = true;
         this.$.Router.trigger();
 
+        this.debug && this.log('Sending onAppLoaded');
         this.waterfall('onAppLoaded');
 
         if(this.configs.query_string) {
@@ -835,12 +842,15 @@ var App = Application.kind({
             return;
         }
 
+        this.loadingPagePrevent = false;
+
         if(hash && hash != '') {
+            this.debug && this.log('hash', hash);
+
             hash = decodeURI(hash);
             hash = hash.replace(/\./g, ' ');
             var parts = hash.split('/');
             var mode  = parts.shift();
-            this.loadingPagePrevent = false;
 
             if(mode == '') {
                 var mode = parts.shift();
@@ -848,21 +858,27 @@ var App = Application.kind({
 
             switch(mode) {
                 case 'c':   // Cache uuid (hash) 
+                    this.loadingPagePrevent = true;
                     return this._hashCache(parts);
                     break;
                 case 'p':   // Passage
+                    this.loadingPagePrevent = true;
                     return this._hashPassage(parts);
                     break;                   
                 case 'r':   // Reference string
+                    this.loadingPagePrevent = true;
                     return this._hashReference(parts);
                     break;                
                 case 'q':   // Request string
+                    this.loadingPagePrevent = true;
                     return this._hashRequest(parts);
                     break;
                 case 's':   // Search string
+                    this.loadingPagePrevent = true;
                     return this._hashSearch(parts);
                     break;                      
                 case 'sl':   // Link to passage within search results list
+                    this.loadingPagePrevent = true;
                     return this._hashSearchLink(parts);
                     break;                
                 case 'context': // Contextual lookup
@@ -870,9 +886,11 @@ var App = Application.kind({
                     return this._hashContext(parts);
                     break;
                 case 'strongs': // Strongs lookup
+                    this.loadingPagePrevent = true;
                     return this._hashSearch(parts);
                     break;
                 case 'f': // JSON-endoded form data
+                    this.loadingPagePrevent = true;    
                     return this._hashForm(parts);
                     break;
             }
@@ -883,6 +901,7 @@ var App = Application.kind({
         }
     },    
     _hashLocalStorage: function() {
+        this.debug && this.log();
         var formDataJson = localStorage.getItem('BibleSuperSearchFormData');
 
         if(!formDataJson || typeof formDataJson != 'string') {
@@ -902,6 +921,7 @@ var App = Application.kind({
         }
 
         localStorage.removeItem('BibleSuperSearchFormData');
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto', submitAsManual: true});
     },
     _hashCache: function(parts) {
@@ -912,6 +932,7 @@ var App = Application.kind({
     _hashPassage: function(parts) {
         var partsObj = this._explodeHashPassage(parts);
         var formData = this._assembleHashPassage(partsObj);
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
     },    
     _hashSearchLink: function(parts) {
@@ -922,11 +943,13 @@ var App = Application.kind({
         formData.results_list_cache_id = uuid;
         // formData.results_list_page = page;
         // this.set('resultsListPage', page);
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
     },    
     _hashStrongs: function(parts) {
         var strongsNum = parts[0] || null;
         var formData = { search: strongsNum };
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
     },
     _hashContext: function(parts) {
@@ -939,6 +962,7 @@ var App = Application.kind({
 
         var formData = this._assembleHashPassage(partsObj);
         formData.context = true;
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },    
     _hashReference: function(parts) {
@@ -948,6 +972,7 @@ var App = Application.kind({
         partsObj.verse = null;
 
         var formData = this._assembleHashPassage(partsObj);
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },   
     _hashRequest: function(parts) {
@@ -985,13 +1010,16 @@ var App = Application.kind({
             formData.search = search.replace(/%20/g, ' ');
         }
 
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },
     _hashForm: function(parts) {
         var formData = (parts[0]) ? JSON.parse(parts[0]) : {};
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },
     runFormData: function(formData) {
+        this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true, submitAsManual: true});
     },
     _explodeHashPassage: function(parts) {
@@ -1436,12 +1464,19 @@ var App = Application.kind({
             var book = bookList[key],
                 bookEn = null;
 
+            if(locale == 'en') {
+                // For English, merge data from API with static local book data
+                book.name = Locales.en.bibleBooks[key].name || book.name;
+                book.shortname = Locales.en.bibleBooks[key].shortname || book.shortname;
+                book.matching = Locales.en.bibleBooks[key].matching || null;
+            }
+
             book.fn = this._fmtBookNameMatch(book.name, locale);
             book.sn = this._fmtBookNameMatch(book.shortname, locale);
 
             if(locale != 'en') {
                 bookEn = this.localeBibleBooks.en[key] || null;
-            }
+            } 
 
             if(Array.isArray(book.matching)) {
                 for(mk in book.matching) {

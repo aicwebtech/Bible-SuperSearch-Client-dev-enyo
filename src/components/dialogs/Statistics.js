@@ -40,7 +40,7 @@ module.exports = kind({
             tag: 'table',
         },    
         {
-            name: 'FormBase', kind: FormBase,
+            name: 'FormBase', kind: FormBase, subForm: true
         },
         {
             kind: Signal,

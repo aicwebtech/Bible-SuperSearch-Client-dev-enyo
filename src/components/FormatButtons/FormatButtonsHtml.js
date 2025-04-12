@@ -341,6 +341,8 @@ module.exports = kind({
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'clear'}
                 ]
             },
+        ]},
+        {classes: 'bss_button_group', name: 'PrintShareGroup', components: [
             {
                 kind: i18n,
                 classes: 'bss_item bss_print bss_text_only',
@@ -370,7 +372,7 @@ module.exports = kind({
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'link'}
                 ],
-            },            
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_link bss_text_only',
@@ -400,10 +402,11 @@ module.exports = kind({
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'bookmarks'}
                 ],
-            },            
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_link bss_text_only',
+                showing: false,
                 name: 'settings_reset_button',
                 ontap: 'handleResetSetting',
                 attributes: {title: 'Reset'},
@@ -439,6 +442,7 @@ module.exports = kind({
             },
             {
                 classes: 'bss_item bss_advanced_toggle',
+                showing: false,
                 name: 'advanced_toggle',
                 kind: Toggle,
                 trueTitle: 'Basic',

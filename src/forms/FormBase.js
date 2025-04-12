@@ -26,8 +26,11 @@ module.exports = kind({
     searchField: 'search',
     defaultSearchType: 'and',
     
-    containsSubforms: false, // Indicates the current form instance contains instances of other forms
+    
+    // WARNING: if given FormBase instance is NOT the primary form, you must set subForm to true!
     subForm: false,  // Indicates the current form is one of multiple forms on the interface
+
+    containsSubforms: false, // Indicates the current form instance contains instances of other forms
     defaultForm: false, // If this.subForm, indicates this form instance is the default form.
     submitFormOnReferenceChange: false,
 
@@ -40,6 +43,9 @@ module.exports = kind({
     fieldLastChanged: null,
     shortcutChangeIgnore: false,
     searchChangeIgnore: false,
+
+    hashRunDebounced: false,
+    hashRunDebouncer: null,
 
     Passage: Passage,
 
@@ -239,12 +245,24 @@ module.exports = kind({
             delete formData.results_list_cache_id; // If the list is already stored in memory, don't make API query for it again
         }
 
+        if(!manual && (!formData.reference && !formData.request && !formData.search)) {
+            this.app.debug && this.log('AUTO FORM: No reference, request or search, not submitting form');
+            return;
+        }
+
         this.app.set('_blockAutoScroll', false);
         this.app.set('ajaxLoadingDelay', 100);
         this.requestPending = true;
         
         formData = this.beforeSubmitForm(formData);
         formData = this.processDefaults(formData);
+
+        // if(!manual && (!formData.reference && !formData.request && !formData.search)) {
+        //     this.app.debug && this.log('FORM: No reference, request or search, not submitting form');
+        //     this.requestPending = false;
+        //     this.app.set('ajaxLoadingDelay', false);
+        //     return;
+        // }
 
         this.app.debug && this.log('Submitted formData', formData);
 
@@ -568,17 +586,27 @@ module.exports = kind({
         }
     },
     handleHashRunForm: function(inSender, inEvent) {
-        if(!this._subformSafe()) {
+        if(!this._subformSafe() || this.hashRunDebounced) {
             return;
         }
+
+        // if(!this.setHashRunDebounce()) {
+        //     this.app.debug && this.log('hashRunDebounced, returning');
+        //     return;
+        // }
 
         // this.clearForm();
         this.preventDefaultSubmit = true;
         var fd = utils.clone(inEvent.formData);
         fd.shortcut = fd.shortcut || 0;
+
+        this.app.debug && this.log(arguments)
+
+        this.app.debug && this.log('raw form Data', fd);
+
         this.setFormDataWithMapping(fd);
 
-        this.app.debug && this.log('just set form data, about to submit form', fd);
+        this.app.debug && this.log('just set form data, about to submit form', this.get('formData'));
 
         if(inEvent.submitAsManual) {
             this.submitFormManual();
@@ -586,6 +614,26 @@ module.exports = kind({
         else {
             this.submitFormAuto();
         }
+    },
+    setHashRunDebounce: function() {
+        this.app.debug && this.log(this.get('id'));
+
+        if(this.hashRunDebouncer || this.hasRunDebounced) {
+            return false;
+        }
+
+
+        this.set('hashRunDebounced', true);
+
+        this.hashRunDebouncer = window.setTimeout(utils.bind(this, function() {
+            this.set('hashRunDebounced', false);
+            window.clearTimeout(this.hashRunDebouncer);
+        }), 10000);
+
+        return true;
+    },
+    hashRunDebouncedChanged: function(was, is) {
+        this.log('hashRunDebouncedChanged', is, was);
     },
     _subformSafe: function() {
         return (!this.containsSubforms && (!this.subForm || this.defaultForm));
@@ -657,8 +705,8 @@ module.exports = kind({
 
         return passage;
     },
-    formDataChanged: function(was, is) {
-        if(!this.$.reference) {
+    formDataChanged: function(was, is) {        
+        if(this.hasNode() && !this.$.reference) {
             this.formData.reference = null; // Fix issues with random on forms with no 'reference' input
         }
     },

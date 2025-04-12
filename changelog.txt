@@ -1,5 +1,14 @@
 Bible SuperSearch Universal Client Changelog
 
+= 5.7.0
+* Added: Gospel verses to Bible Help/SOS dialog
+* Fixed: form double submitting
+* Fixed: Book matching not always working in English
+
+= 5.6.22
+* Fixed issues clearing settings / history / bookmarks in English language
+* Cleaned up buttons so that they collapse into (at least) 2 rows on small screens.
+
 = 5.6.21
 * Fixed some text not translating on Bookmarks alert/confirm dialogs
 

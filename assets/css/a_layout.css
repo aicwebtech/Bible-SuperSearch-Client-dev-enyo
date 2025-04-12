@@ -627,7 +627,14 @@ div.bss_alert_dialog {
     text-align: end;
 }
 
-.bss_bible_start .sbss_tart_item {
+.bss_bible_sos .sos_item .verses_wide {
+    cursor: pointer;
+    font-size: 0.9em;
+    text-align: center;
+    padding: 5px;
+}
+
+.bss_bible_start .bss_start_item {
     padding: 5px 2px;
 }
 
