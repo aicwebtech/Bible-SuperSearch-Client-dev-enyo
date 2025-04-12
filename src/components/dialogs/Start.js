@@ -103,7 +103,7 @@ module.exports = kind({
             if(!this.$.ListContainer.$[colName]) {
                 this.$.ListContainer.createComponent({
                     name: colName,
-                    classes: 'col'
+                    classes: 'bss_col'
                 });
             }
 

@@ -157,7 +157,7 @@ module.exports = kind({
                         {classes: 'bss_verses', components: [
                             {kind: Anchor, href: url, _title: versesTranslated, content: versesTranslated, ontap: 'handleVerseTap'}
                         ]},
-                        {classes: 'clear-both'}
+                        {classes: 'bss-clear-both'}
                     ],
                 });
             } else {

@@ -28,7 +28,7 @@ module.exports = kind({
         },
         {
             classes: 'bss_item bss_advanced_toggle',
-            name: 'bss_advanced_toggle',
+            name: 'advanced_toggle',
             kind: Toggle,
             trueTitle: 'Basic',
             falseTitle: 'Advanced',
@@ -58,7 +58,7 @@ module.exports = kind({
             ontap: 'handleDownload',
             attributes: {title: 'Bible Downloads'},
             components: [
-                {tag: 'span', classes: 'material-icons icon', content: 'download'}
+                {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'download'}
             ]
         }
     ],
@@ -75,6 +75,10 @@ module.exports = kind({
 
         if(!this.app.statics.download_enabled) {
             this.$.download_button.set('showing', false);
+        }
+
+        if(!this.app.configs.toggleAdvanced) {
+            this.$.advanced_toggle.set('showing', false);
         }
     },
     rendered: function() {

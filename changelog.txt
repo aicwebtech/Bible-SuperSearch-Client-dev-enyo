@@ -1,5 +1,10 @@
 Bible SuperSearch Universal Client Changelog
 
+= 6.0.0
+** BREAKING CHANGES 
+* All CSS class names have been renamed to start with bss_
+* Only exception are CSS class names already starting with bss_ or biblesupersearch
+
 = 5.7.0
 * Added: Gospel verses to Bible Help/SOS dialog
 * Fixed: form double submitting

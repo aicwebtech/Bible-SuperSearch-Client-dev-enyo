@@ -442,7 +442,6 @@ module.exports = kind({
             },
             {
                 classes: 'bss_item bss_advanced_toggle',
-                showing: false,
                 name: 'advanced_toggle',
                 kind: Toggle,
                 trueTitle: 'Basic',
@@ -581,6 +580,10 @@ module.exports = kind({
             this.$.download_button && this.$.download_button.set('showing', false);
             this.$.advanced_toggle && this.$.advanced_toggle.set('showing', false);
             this.$.help && this.$.help.set('showing', false);
+        }
+
+        if(!this.app.configs.toggleAdvanced || this.app.configs.toggleAdvanced == 'false') {
+            this.$.advanced_toggle && this.$.advanced_toggle.set('showing', false);
         }
     }
 });
