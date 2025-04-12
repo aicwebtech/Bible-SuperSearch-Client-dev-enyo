@@ -1685,8 +1685,6 @@ var App = Application.kind({
         bookName = this._fmtBookNameMatch(bookName, locale);
         var BookList = this.localeBibleBooks[locale] || this.statics.books;
 
-        this.log('Locale', locale, BookList);
-
         // Pass 1: Exact match
         var book = BookList.find(function(bookItem) {
             if(bookName == bookItem.fn || bookName == bookItem.sn) {
