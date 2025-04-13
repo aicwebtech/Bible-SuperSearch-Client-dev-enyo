@@ -121,7 +121,7 @@ module.exports = kind({
             }
 
             var classes = this.getSelectedBibleClasses();
-            html += '<td class=\' txt ' + classes + '\'>' + bhtml + '</td>';
+            html += '<td class=\' bss_txt ' + classes + '\'>' + bhtml + '</td>';
         }, this);
 
         Container.createComponent({

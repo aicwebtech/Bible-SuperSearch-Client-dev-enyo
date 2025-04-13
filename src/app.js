@@ -1915,7 +1915,7 @@ var App = Application.kind({
         var renderStyle = this.UserConfig.get('render_style');
         var passages = this.UserConfig.get('passages') || false;
 
-        if(renderStyle == 'verse' || this.UserConfig.get('single_verses')) {
+        if(renderStyle == 'verse') {
             passages = false;
 
             var responseDataNew = utils.clone(this.get('responseData'));
@@ -1929,7 +1929,7 @@ var App = Application.kind({
                 return false;
             }
         }
-        else if(renderStyle == 'verse_passage' || passages) {
+        else if(renderStyle == 'verse_passage') {
             var responseDataNew = utils.clone(this.get('responseData'));
             
             if(responseDataNew.results) {   

@@ -146,9 +146,9 @@ module.exports = kind({
         var font = this.app.UserConfig.get('font');
 
         if(this.view) {        
-            this.view.addRemoveClass('font_serif', !!(font == 'serif'));
-            this.view.addRemoveClass('font_sans_serif', !!(font == 'sans_serif'));
-            this.view.addRemoveClass('font_monospace', !!(font == 'monospace'));
+            this.view.addRemoveClass('bss_font_serif', !!(font == 'serif'));
+            this.view.addRemoveClass('bss_font_sans_serif', !!(font == 'sans_serif'));
+            this.view.addRemoveClass('bss_font_monospace', !!(font == 'monospace'));
         }
     },
     applyViewTextSize: function() {

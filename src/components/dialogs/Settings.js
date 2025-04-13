@@ -230,25 +230,25 @@ module.exports = kind({
                     kind: Group,
                     name: 'font',
                     onActiveChanged: 'handleActiveChanged',
-                    classes: 'settings_container',
+                    classes: 'bss_settings_container',
                     components: [
                         {classes: 'bss_checkbox_container bss_checkbox_first', components: [
                             {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'serif', id: 'serif', type: 'radio'}
                             ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'serif'}, classes: 'bss_label', content: 'Serif', style: 'font-family: Serif'}
+                            {kind: i18n, tag: 'label', attributes: {for: 'serif'}, classes: 'bss_label bss_font_serif', content: 'Serif'}
                         ]},                
                         {classes: 'bss_checkbox_container bss_checkbox_first', components: [
                             {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'sans-serif', id: 'sans-serif', type: 'radio'}
                             ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'sans-serif'}, classes: 'bss_label', content: 'Sans-Serif', style: 'font-family: Sans-Serif'}
+                            {kind: i18n, tag: 'label', attributes: {for: 'sans-serif'}, classes: 'bss_label bss_font_sans_serif', content: 'Sans-Serif'}
                         ]},                
                         {classes: 'bss_checkbox_container bss_checkbox_first', components: [
                             {classes: 'bss_element', components: [
                                 {kind: Checkbox, name: 'monospace', id: 'monospace', type: 'radio'}
                             ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'monospace'}, classes: 'bss_label', content: 'Monospace', style: 'font-family: monospace'}
+                            {kind: i18n, tag: 'label', attributes: {for: 'monospace'}, classes: 'bss_label bss_font_monospace', content: 'Monospace'}
                         ]},                
                     ]
                 }      

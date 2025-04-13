@@ -50,19 +50,23 @@ module.exports = {
         return resultsNew;
     },
     toMultiversePassages: function(results) {
+        var resultsNew = [];
+        
         for(i in results) {
-            // p = results[i];
+            p = Object.assign({}, results[i]);
 
-            if(results[i].single_verse) {
-                results[i].single_verse = false;
+            if(p.single_verse) {
+                p.single_verse = false;
                 
-                cv = results[i].chapter_verse.split(':');
+                cv = p.chapter_verse.split(':');
                 v = cv[1] || null;
-                results[i].nav = this.generateNav(results[i].book_id, cv[0], v);
+                p.nav = this.generateNav(p.book_id, cv[0], v);
             }
+
+            resultsNew.push(p);
         }
 
-        return results;
+        return resultsNew;
     },
     generateNav: function(book, chapter, verse) {
         var nav = {};

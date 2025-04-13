@@ -234,7 +234,7 @@ module.exports = kind({
 
         if(this.app.statics.access.statistics) {
             var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
-            refContent += '&nbsp; <sup>' + '<a href="' + sl + '" title="' + refContent + '" class="std_link">' + this.app.t('Statistics') + '</a></sup>';
+            refContent += '&nbsp; <sup>' + '<a href="' + sl + '" title="' + refContent + '" class="bss_std_link">' + this.app.t('Statistics') + '</a></sup>';
         }
 
         Container.createComponent({
@@ -398,16 +398,16 @@ module.exports = kind({
             contextText = this.app.t('Context');
 
         var html = '';
-            html += '<a href="' + verseLink + '" title="' + verseTitle + '" class="std_link">' + bookName + ' ' + verse.chapter + ':' + verse.verse + '</a>';
+            html += '<a href="' + verseLink + '" title="' + verseTitle + '" class="bss_std_link">' + bookName + ' ' + verse.chapter + ':' + verse.verse + '</a>';
             
             if(includeContextLinks) {            
-                html += '&nbsp; <sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + contextText + '</a></sup>';           
-                html += '&nbsp; <sup>' + '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a></sup>';
+                html += '&nbsp; <sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="bss_std_link">' + contextText + '</a></sup>';           
+                html += '&nbsp; <sup>' + '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="bss_std_link">' + chapterText + '</a></sup>';
 
 
                 if(this.app.statics.access.statistics) {
                     var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, verse.chapter, verse.verse);
-                    html += '&nbsp; <sup>' + '<a href="' + sl + '" title="' + chapterTitle + '" class="std_link">' + this.app.t('Statistics') + '</a></sup>';
+                    html += '&nbsp; <sup>' + '<a href="' + sl + '" title="' + chapterTitle + '" class="bss_std_link">' + this.app.t('Statistics') + '</a></sup>';
                 }
 
                 // verse.linksHtml += '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a>&nbsp; &nbsp;';

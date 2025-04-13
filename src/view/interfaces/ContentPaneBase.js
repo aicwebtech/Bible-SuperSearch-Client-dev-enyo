@@ -173,12 +173,13 @@ module.exports = kind({
         this.hideExtra();
         this.$.ErrorsContainer.set('showing', false);
         this.$.FormatButtonContainer.set('showing', true);
+        var results = utils.clone(inEvent.results);
 
-        if(inEvent.results.error_level == 4) {
+        if(results.error_level == 4) {
             return this.handleFormError(inSender, inEvent);
         }       
 
-        this.handleResponseExtra(inEvent.results); 
+        this.handleResponseExtra(results); 
 
         // Non-fatal errors
         if(inEvent.results.error_level > 0) {
@@ -186,11 +187,11 @@ module.exports = kind({
             //     inEvent.results.errors.join('<br><br>')
             // );
             
-            this.$.ErrorsContainer.set('errors', inEvent.results.errors);
+            this.$.ErrorsContainer.set('errors', results.errors);
             this.$.ErrorsContainer.set('showing', true);
         }
 
-        this.$.ResultsController.set('resultsData', utils.clone(inEvent.results));
+        this.$.ResultsController.set('resultsData', results);
         this.$.ResultsController.set('formData', inEvent.formData);
         this.$.ResultsController.renderResults();
         this.$.ResultsContainer.set('showing', true);
