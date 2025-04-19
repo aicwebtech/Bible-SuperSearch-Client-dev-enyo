@@ -14,10 +14,11 @@ module.exports = kind({
 
         pk && model.fetch({});
         this.set('model', model);
-        this._updateDefaults();
+        //this._updateDefaults();
     },
     clear: function() {
         this.newModel(0);
+        this._updateDefaults();
     },
     load: function() {
         var userConfigs = localStorage.getItem( this.lsUrl ) || null;
@@ -26,23 +27,24 @@ module.exports = kind({
             try {                
                 var userConfigs = userConfigs ? JSON.parse(userConfigs) : {};
 
-                // this.log('userConfigs', userConfigs);
-
                 if(this.app.configs.omitUserLanguage) {
                     userConfigs.locale = this.app.configs.language;
                 }
 
                 this.model.set(userConfigs);
-                // this.log('render_style', this.model.get('render_style'));
+                this.app.debug && console.log('User config loaded', userConfigs);
             } 
             catch(e) {
-                console.log('error loading configs', e);
+                console.log('error loading user config', e);
                 this.clear();
             }
+        } else {
+            this.clear();
         }
     }, 
     save: function() {
         if(!this.app.configs.saveUserSettings) {
+            this.app.debug && console.log('User config NOT saved, saveUserSettings is false!');
             return;
         }
 
@@ -54,15 +56,15 @@ module.exports = kind({
             configs.read_render_style = configs.render_style;
         }
         
-        // this.log('userConfigs', configs);
         this.set('locale', this.app.get('locale'));
         localStorage.setItem(this.lsUrl, JSON.stringify( configs ));
     },
     /*
+     * Populate the user config model with default values
      * @private
      */
     _updateDefaults: function() {
-        if(this.app.configs.textDisplayDefault && this.app.configs.textDisplayDefault != 'passage') {
+        if(this.app.configs.textDisplayDefault) { 
             this.set('render_style', this.app.configs.textDisplayDefault);
             this.set('read_render_style', this.app.configs.textDisplayDefault);
         }

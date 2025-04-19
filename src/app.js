@@ -809,8 +809,12 @@ var App = Application.kind({
 
                 for(f in item) {
 
-                    if(code == 'en' && f == 'shortcuts') {
-                        continue; // Only exists in EN
+                    if(f == 'shortcuts' || f == 'bibleBooksSource') {
+                        continue; // Array, skipping
+                    }
+
+                    if(t.findBookByName(f, 'en')) {
+                        continue; // Book name, skipping
                     }
 
                     if(
@@ -1656,6 +1660,9 @@ var App = Application.kind({
         var t = this;
 
         var trans = string.replace(/([0-9] )?[A-Za-z][A-Za-z ]*[A-Za-z]/g, function(match) {
+            // var b = t.findBookByName(match, 'en');
+            // return b ? b.name : match;
+            
             return t.t(match);
         });
 
@@ -1680,9 +1687,10 @@ var App = Application.kind({
         
         return trans;
     },
-    findBookByName: function(bookName) {
-        this.debug && this.log(bookName);
-        var locale = this.get('locale');
+    findBookByName: function(bookName, locale) {
+        this.debug && this.log(bookName, locale);
+        
+        locale = locale || this.get('locale');
         bookName = this._fmtBookNameMatch(bookName, locale);
         var BookList = this.localeBibleBooks[locale] || this.statics.books;
 
@@ -2087,6 +2095,7 @@ var App = Application.kind({
         }, this);
     },
     initUserConfig: function() {
+        this.debug && this.log();
         this.UserConfig.newModel(0);
         this.UserConfig.load();
     },
