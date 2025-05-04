@@ -24,6 +24,7 @@ var ResponseCollection = require('./data/collections/ResponseCollection');
 var BookmarkCollection = require('./data/collections/BookmarkCollection');
 var StorageManager = require('./data/LocalStorageManager');
 var ErrorView = require('./view/ErrorView');
+var Passage = require('./components/Passage');
 
 //var MainView = require('./view/Content');
 
@@ -1151,6 +1152,16 @@ var App = Application.kind({
 
         return false;
     },
+    getFormReference: function() {
+        if(this.formHasField('reference')) {
+            return this.getFormFieldValue('reference') || null;
+        } else if(this.formHasField('request')) {
+            var req = this.getFormFieldValue('request') || null;
+            return Passage.isPassage(req) ? req : null;
+        }
+        
+        return false;
+    },
     formIsShortHashable: function() {
         if(this.view && this.view._formIsShortHashable) {
             return this.view._formIsShortHashable();
@@ -1267,7 +1278,7 @@ var App = Application.kind({
     getBook: function(id) {
         return this.statics.books[id - 1] || null;
     },
-    getLocaleBookName: function(id, fallbackName, useShortname) {
+    getLocaleBookName: function(id, fallbackName, useShortname, locale) {
 
         if(this.configs.bibleBooksLanguageSource == 'bible') {
             this.log('bible source, using fallbackName');
@@ -1278,7 +1289,7 @@ var App = Application.kind({
         // Option 1: Display book names in language selected in UI (Reccomended)
         // Option 2: Display book names in language of First selected Bible (Legacy - not fully implemented)
 
-        var locale = this.get('locale');
+        locale = locale || this.get('locale');
 
         if(typeof this.localeDatasets[locale] == 'undefined') {
             // Quick hack to get this working on WordPress for English
@@ -1329,6 +1340,68 @@ var App = Application.kind({
         }
 
         return book ? book.name : fallbackName;
+    },
+    getShortcut: function(reference) {
+        var shortcut = null;
+        var locale = this.get('locale');
+
+        reference = this.standardizeReferences(reference, true);
+
+        if(this.localeDatasets[locale] && this.localeDatasets[locale].shortcuts) {
+            shortcut = this.localeDatasets[locale].shortcuts.find(function(item) {
+                return item.reference == reference;
+            });
+        } 
+        
+        if(!shortcut) {
+            shortcut = this.statics.shortcuts.find(function(item) {
+                return item.reference == reference;
+            });
+        }
+            
+        return shortcut;
+    },
+    standardizeReferences: function(ref, localeName) {
+        var passages = Passage.explodeReferences(ref, true);
+
+        if(passages.length == 0 || !ref) {
+            return ref;
+        }
+
+        var referenceNew = [];
+
+        passages.forEach(function(raw) {
+            item = Passage.parseBook(raw);
+
+            if(item.isBookRange) {
+                var bookSt = this.findBookByName(item.bookSt);
+                var bookEn = this.findBookByName(item.bookEn);
+
+                if(localeName && bookSt && bookEn) {
+                    var bookNameSt = this.getLocaleBookName(bookSt.id, bookSt.name, false, 'en');
+                    var bookNameEn = this.getLocaleBookName(bookEn.id, bookEn.name, false, 'en');
+                } else {
+                    var bookNameSt = bookSt ? bookSt.id + 'B' : item.bookSt;
+                    var bookNameEn = bookEn ? bookEn.id + 'B' : item.bookEn;
+                }
+                
+                var ref = bookNameSt + ' - ' + bookNameEn + ' ' + item.chapter_verse;
+            } else {
+                var book = this.findBookByName(item.book);
+
+                if(localeName && book) {
+                    var bookName = this.getLocaleBookName(book.id, book.name, false, 'en');
+                } else {
+                    var bookName = book ? book.id + 'B' : item.book;
+                }
+                
+                var ref = bookName + ' ' + item.chapter_verse;
+            }
+
+            referenceNew.push(ref.trim());
+        }, this);
+
+        return referenceNew.join('; ');
     },
     getTestamentByBookId: function(bookId) {
         if(bookId >= 1 && bookId <= 39) {

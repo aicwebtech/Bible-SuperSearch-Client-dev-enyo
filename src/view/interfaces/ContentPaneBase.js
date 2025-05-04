@@ -111,6 +111,7 @@ module.exports = kind({
         // Attempts to scroll to top of results
         // Sort-of works, but needs tweaking before we will go live with it.
         var headerHeight = 0;
+        this.log();
 
         if(this.app.get('scrollMode') == 'results_top') {
             var headerItems = [
@@ -183,10 +184,6 @@ module.exports = kind({
 
         // Non-fatal errors
         if(inEvent.results.error_level > 0) {
-            // this.$.ErrorsContainer.set('string', 
-            //     inEvent.results.errors.join('<br><br>')
-            // );
-            
             this.$.ErrorsContainer.set('errors', results.errors);
             this.$.ErrorsContainer.set('showing', true);
         }
@@ -240,12 +237,14 @@ module.exports = kind({
 
         this.$.ResultsContainer.set('showing', false);
         
-        // this.$.ErrorsContainer.set('string', 
-        //     inEvent.response.errors.join('<br><br>')
-        // );
-        
         this.$.ErrorsContainer.set('errors', inEvent.response.errors);
         this.$.ErrorsContainer.set('showing', true);
+
+        var preventScroll = this.app.get('_blockAutoScroll') || inEvent && (inEvent.localeChange || inEvent.configChange);
+
+        if(!preventScroll) {
+            this.autoScroll();
+        }
     },
     watchAdvancedToggle: function(pre, cur, prop) {
         if(cur) {

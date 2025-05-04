@@ -1010,6 +1010,17 @@ module.exports = kind({
 
         return val;
     },
+    getFormReference: function() {
+        if(this.formFieldExists('reference')) {
+            return this.$.reference.get('value') || null;
+        } else if (this.formFieldExists('request')) {
+            var req = this.$.request.get('value') || null;
+
+            return this.Passage.isPassage(req) ? req : null;
+        }
+
+        return false;
+    },
     formFieldChanged: function(field, value, dir) {
         value = (!value || value == '') ? null : value;
 
