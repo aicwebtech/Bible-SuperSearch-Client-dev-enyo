@@ -120,7 +120,7 @@ module.exports = kind({
         this.$.ConfirmDialog.confirm(msg, function(confirm) {
             if(confirm) {
                 t.app.set('_blockAutoScroll', true);
-                t.app.UserConfig.clear();
+                t.app.UserConfig.reset();
             }
         });
     }, 
@@ -156,10 +156,10 @@ module.exports = kind({
         //         this.app.UserConfig.set('paragraph', !!(cur == 'paragraph'));
         // }
 
-        this.$.renderstyle_paragraph && this.$.renderstyle_paragraph.addRemoveClass('selected', cur == 'paragraph');
-        this.$.renderstyle_passage && this.$.renderstyle_passage.addRemoveClass('selected', cur == 'passage');
-        this.$.renderstyle_verse && this.$.renderstyle_verse.addRemoveClass('selected', cur == 'verse');
-        this.$.renderstyle_verse_passage && this.$.renderstyle_verse_passage.addRemoveClass('selected', cur == 'verse_passage');
+        this.$.renderstyle_paragraph && this.$.renderstyle_paragraph.addRemoveClass('bss_selected', cur == 'paragraph');
+        this.$.renderstyle_passage && this.$.renderstyle_passage.addRemoveClass('bss_selected', cur == 'passage');
+        this.$.renderstyle_verse && this.$.renderstyle_verse.addRemoveClass('bss_selected', cur == 'verse');
+        this.$.renderstyle_verse_passage && this.$.renderstyle_verse_passage.addRemoveClass('bss_selected', cur == 'verse_passage');
     },    
     watchStyleFlags: function(pre, cur, prop) {
         this.app.debug && this.log(pre, cur, prop);

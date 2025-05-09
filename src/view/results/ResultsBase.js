@@ -886,7 +886,7 @@ module.exports = kind({
             return; // if no change, do nothing further
         }
 
-        this.$.SideSwipeButtons.addRemoveClass('fadein', !!isfr);
+        this.$.SideSwipeButtons.addRemoveClass('bss_fadein', !!isfr);
     }
 
 });

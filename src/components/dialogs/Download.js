@@ -298,12 +298,12 @@ module.exports = kind({
             if(inResponse.results.success) {
                 var text = this.app.t('Success');
                 StatusControl.set('content', text);
-                StatusControl.addClass('success');
+                StatusControl.addClass('bss_success');
             }
             else {
                 var text = this.app.t('Error');
                 StatusControl.set('content', text);
-                StatusControl.addClass('error');
+                StatusControl.addClass('bss_error');
                 this.hasErrors = true;
             }
 

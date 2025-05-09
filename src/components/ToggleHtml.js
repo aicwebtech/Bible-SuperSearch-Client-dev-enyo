@@ -45,8 +45,8 @@ module.exports = kind({
         var vf = this.createComponent(this.falseComponent);  
         var vt = this.createComponent(this.trueComponent);      
 
-        vf.addClass('false');  
-        vt.addClass('true');  
+        vf.addClass('bss_false');  
+        vt.addClass('bss_true');  
 
         if(this.falseTitle) {
             vf.set('titleString', this.falseTitle);
@@ -97,8 +97,8 @@ module.exports = kind({
     },
 
     valueChanged: function(was, is) {        
-        this.addRemoveClass('is_true', !!is);
-        this.addRemoveClass('is_false', !is);
+        this.addRemoveClass('bss_is_true', !!is);
+        this.addRemoveClass('bss_is_false', !is);
         this.$.ViewTrue && this.$.ViewTrue.set('showing', !!is);
         this.$.ViewFalse && this.$.ViewFalse.set('showing', !is);
         this.$.Help && this.$.Help.set('showing', false);

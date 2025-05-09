@@ -64,7 +64,7 @@ module.exports = kind({
             this.PagerControl = this.app.pagerView;
         }
 
-        this.addRemoveClass('rtl', this.app.isRtl);
+        this.addRemoveClass('bss_rtl', this.app.isRtl);
 
         client = this.app.get('client');
 
@@ -126,11 +126,7 @@ module.exports = kind({
         this.waterfall('onGlobalScrollEnd')
     },
     handleMouseEvent: function(inSender, inEvent) {
-        //this.log(inSender);
-        // this.log(inEvent);
         this.app.set('hasMouse', true)
-
-        //this.addClass('bss_has_mouse');
     },
     ajaxLoadingChanged: function(was, is) {
         if(!this.$.LoadingDialog) {
@@ -224,7 +220,7 @@ module.exports = kind({
         return this._formHasFieldStandard(fieldName);
     },
     getFormFieldValue: function(fieldName) {
-        if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view && this.$.Content.$.FormController.view) {
+        if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view && this.$.Content.$.FormController.view.getFormFieldValue) {
             return this.$.Content.$.FormController.view.getFormFieldValue(fieldName);
         }
 
@@ -251,7 +247,7 @@ module.exports = kind({
         return false;
     },
     _formIsShortHashable: function() {
-        if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view && this.$.Content.$.FormController.view) {
+        if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view && this.$.Content.$.FormController.view.isShortHashable) {
             return this.$.Content.$.FormController.view.isShortHashable();
         }
 
@@ -262,7 +258,7 @@ module.exports = kind({
         this.hasNode().scrollTop = 0;
     },
     handleLocaleChanged: function(inSender, inEvent) {
-        this.addRemoveClass('rtl', this.app.isRtl);
+        this.addRemoveClass('bss_rtl', this.app.isRtl);
     },
     handleFormResponse: function(inSender, inEvent) {
         // this.scrollToTop();
