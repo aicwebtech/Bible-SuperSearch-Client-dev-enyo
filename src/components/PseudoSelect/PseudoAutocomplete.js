@@ -128,10 +128,15 @@ module.exports = kind({
         ) {
             return;
         }
-        
+
+        var maxOpts = this.app.configs.autocompleteMaximumOptions || 2;
         var opts = this.generateAutocompleteOptions(value);
 
         if(opts && opts.length > 0) {
+            if(opts.length > maxOpts) {
+                opts = opts.slice(0, maxOpts);
+            }
+            
             this.createOptionComponents(opts);
             this.$.Toggle.render();
             this.set('toggled', true);

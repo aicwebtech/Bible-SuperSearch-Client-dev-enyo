@@ -1,5 +1,11 @@
 Bible SuperSearch Universal Client Changelog
 
+= 6.0.1
+* Fixed total breakage of side swipe buttons
+* Fixed breakage when toggling from advanced to basic form.
+* Fixed user configs not resetting
+* Fixed max autocompletion options not working
+
 = 6.0.0
 ** BREAKING CHANGES 
 * All CSS class names have been renamed to start with bss_

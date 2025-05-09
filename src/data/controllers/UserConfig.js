@@ -20,6 +20,10 @@ module.exports = kind({
         this.newModel(0);
         this._updateDefaults();
     },
+    reset: function() {
+        this.clear();
+        this.save();
+    },
     load: function() {
         var userConfigs = localStorage.getItem( this.lsUrl ) || null;
 
@@ -47,6 +51,8 @@ module.exports = kind({
             this.app.debug && console.log('User config NOT saved, saveUserSettings is false!');
             return;
         }
+
+        console.log('Saving user config');
 
         var configs = this.model.raw();
 

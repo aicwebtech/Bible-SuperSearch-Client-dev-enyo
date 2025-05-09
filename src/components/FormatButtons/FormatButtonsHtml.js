@@ -541,9 +541,9 @@ module.exports = kind({
         }}, 
         {from: 'app.UserConfig.font', to: 'font', oneWay: true, transform: function(value, dir) {
             // console.log('FormatButtons font', value, dir);
-            this.$.font_serif.addRemoveClass('selected', value == 'serif');
-            this.$.font_sans_serif.addRemoveClass('selected', value == 'sans_serif' || value == 'sans-serif');
-            this.$.font_monospace.addRemoveClass('selected', value == 'monospace');
+            this.$.font_serif.addRemoveClass('bss_selected', value == 'serif');
+            this.$.font_sans_serif.addRemoveClass('bss_selected', value == 'sans_serif' || value == 'sans-serif');
+            this.$.font_monospace.addRemoveClass('bss_selected', value == 'monospace');
             dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
         }}

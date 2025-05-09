@@ -41,7 +41,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '6.0.0',
+    applicationVersion: '6.0.1',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -2109,7 +2109,6 @@ var App = Application.kind({
         window.clearTimeout(this.configSaveDelayTimer);
 
         this.configSaveDelayTimer = window.setTimeout(function() {
-            t.log('user config saving');
             t.UserConfig.save();
         }, 1000);
     }

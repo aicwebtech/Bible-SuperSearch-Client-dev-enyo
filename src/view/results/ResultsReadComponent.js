@@ -135,7 +135,7 @@ module.exports = kind({
         this.scrolling = false;
     },
     handleGenericReposition: function(inSender, inEvent) {
-        var visible = false
+        var visible = false,
             navVisible = false,
             hasPaging = this.owner.hasPaging,
             navVisOffset1 = 30 + parseInt(this.app.configs.sideSwipeNavHideThresholdTop, 10),
@@ -294,14 +294,14 @@ module.exports = kind({
         // this.$.SideSwipeButtons.set('showing', !!is);
         this.owner.set('sideButtons', is);
 
-        // this.owner.$.SideSwipeButtons.addRemoveClass('fadein', !!is);
+        // this.owner.$.SideSwipeButtons.addRemoveClass('bss_fadein', !!is);
         // this.$.SideSwipeButtons.set('showing', is);
 
         // if(is) {
         //     // this.$.SideSwipeButtons.set('showing', true);
-        //     this.$.SideSwipeButtons.hasNode().classList.toggle('fadein');
+        //     this.$.SideSwipeButtons.hasNode().classList.toggle('bss_fadein');
         // } else {
-        //     this.$.SideSwipeButtons.hasNode().classList.toggle('fadein');
+        //     this.$.SideSwipeButtons.hasNode().classList.toggle('bss_fadein');
         //     // this.$.SideSwipeButtons.set('showing', false);
         // }
     }
