@@ -398,7 +398,7 @@ module.exports = kind({
         this.$.ConfirmDialog.confirm(msg, function(confirm) {
             if(confirm) {
                 t.app.set('_blockAutoScroll', true);
-                t.app.UserConfig.clear();
+                t.app.UserConfig.reset();
             }
         });
     },
