@@ -32,6 +32,7 @@ module.exports = kind({
     shareContent: null,
     actuallyShowDialogForce: false,
     populated: false,
+    resultsFilter: null,
 
     titleComponents: [
         {classes: 'bss_header', components: [
@@ -49,6 +50,10 @@ module.exports = kind({
                 _style: 'width: 98%'
             }
         ]},
+        {
+            kind: Signal,
+            onShare: 'handleClickShare'
+        }
     ],
 
     buttonComponents: [
@@ -140,6 +145,8 @@ module.exports = kind({
                 this.populate(); 
                 this.copy();
             }
+        } else {
+            this.resultsFilter = null;
         }
     },
     forceShowing: function() {
@@ -166,6 +173,11 @@ module.exports = kind({
     watchRenderStyle: function(pre, cur, prop) {
         this.populated && this.populate();
     },
+    handleClickShare: function(inSender, inEvent) {
+        this.log('handleClickShare', inSender, inEvent);
+        this.shareFilter = utils.clone(inEvent);
+        this.app.set('shareShowing', true);
+    },
     populate: function() {
         var title = document.title,
             url = window.location.href,
@@ -188,6 +200,17 @@ module.exports = kind({
             mainLoop:
             for(var i in passages) {
                 var p = passages[i];
+
+                if(this.shareFilter) {
+                    if(this.shareFilter.b && this.shareFilter.b != p.book_id) {
+                        continue;
+                    }
+                    if(this.shareFilter.cv != p.chapter_verse) {
+                        continue;
+                    }
+
+                    bible = this.shareFilter.bible.split(',')[0];
+                }
 
                 if(bible == null) {
                     for(var b in p.verses) {

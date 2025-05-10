@@ -25,9 +25,7 @@ module.exports = kind({
         var fe = '\'';
 
         for(i in this.errors) {
-            var nr = this.errors[i].match(/Your search produced no results./);
-            
-            if(nr) {
+            if(this.errors[i] == 'Your search produced no results.') {
                 var e = this.app.t('Your search produced no results.');
                 var search = this.app.getFormSearch();
                 var ref = this.app.getFormReference() || null;

@@ -56,5 +56,26 @@ module.exports = {
         var link = 'javascript: biblesupersearch.app.s(\'' + signal + '\',' + optsStr + ')';
 
         return link;
+    },
+    buildPassageSignalLink: function() {
+        var signal  = arguments[0] || 'p';
+        var bible = arguments[1] || null;
+        var passage  = arguments[2] || '';
+
+        var bible = (bible) ? bible.filter(function(b) {return b != 0 && b != null}).join(',') : '';
+
+        var opts = {
+            bible: bible,
+            book_id: passage.book_id,
+            chapter_verse: passage.chapter_verse,
+        };
+
+
+        // var optsStr = '{bible:' + bible + ',reference:\'' + opts.reference + '\'}';
+        var optsStr = '{bible:\'' + bible + '\',b:\'' + passage.book_id + '\', cv:\'' + passage.chapter_verse + '\'}';
+
+        var link = 'javascript: biblesupersearch.app.s(\'' + signal + '\',' + optsStr + ')';
+
+        return link;
     }
 };
