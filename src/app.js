@@ -2028,6 +2028,7 @@ var App = Application.kind({
 
         this.waterfall('onFormResponseSuccess', responseDataNew);
         Signal.send('onFormResponseSuccess', responseDataNew);
+        this.set('responseDataNew', responseDataNew);
     },
     _copyComponentContent: function(Component, contentField, share, shareContent) {
         if(!Component) {
@@ -2075,8 +2076,7 @@ var App = Application.kind({
             var div = document.body.createTextRange(); // IE only?
             div.moveToElementText(n);
             div.select();
-        }
-        else {                      // All others
+        } else {                    // All others
             var div = document.createRange(); // Supported ALL
             div.setStartBefore(n); // Supported ALL
             div.setEndAfter(n); // Supported ALL
@@ -2089,7 +2089,7 @@ var App = Application.kind({
         if((tag == 'p' || tag == 'div') && navigator && navigator.clipboard && navigator.clipboard.writeText) {
             var selected = window.getSelection().toString();
             var promise = navigator.clipboard.writeText(selected);
-            this.debug && this.log('Using clipboard API');
+            this.debug && this.log('Copy using clipboard API');
 
             promise.then(utils.bind(this, function() {
                 this.alert('Copied to clipboard');
@@ -2105,12 +2105,13 @@ var App = Application.kind({
         }
         else {        
             // Fallback: Use depricated document.execCommand(copy)
-            this.debug && this.log('Using document.execCommand(copy)');
-
+            
             if(!document.execCommand) {
                 this.alert('Unable to copy, please use HTTPS or copy manually.');
                 return;
             }
+            
+            this.debug && this.log('Copy using document.execCommand(copy)');
 
             try {
                 var success = document.execCommand('copy'); // depricated 
@@ -2126,7 +2127,6 @@ var App = Application.kind({
                this.alert('Failed to copy');
             }
         }
-
     },
     initBookmarks: function() {
         this.bookmarks = new BookmarkCollection;

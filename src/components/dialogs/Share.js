@@ -43,8 +43,10 @@ module.exports = kind({
     bodyComponents: [
         {classes: 'bss_link_share_container', components: [
             {
-                kind: TextArea, 
+                // kind: TextArea, 
+                tag: 'p',
                 name: 'CopyArea', 
+                allowHtml: true,
                 classes: 'bss_link_share', 
                 attributes: {dir: 'auto'},
                 _style: 'width: 98%'
@@ -52,7 +54,8 @@ module.exports = kind({
         ]},
         {
             kind: Signal,
-            onShare: 'handleClickShare'
+            onShare: 'handleClickShare',
+            onCopy: 'handleClickCopy',
         }
     ],
 
@@ -123,6 +126,7 @@ module.exports = kind({
         this.inherited(arguments);
     },
     close: function() {
+        this.resultsFilter = null;
         this.app.set('shareShowing', false);
     },
     showingChanged: function(was, is) {
@@ -175,20 +179,30 @@ module.exports = kind({
     },
     handleClickShare: function(inSender, inEvent) {
         this.log('handleClickShare', inSender, inEvent);
-        this.shareFilter = utils.clone(inEvent);
+        this.resultsFilter = utils.clone(inEvent);
         this.app.set('shareShowing', true);
+    },
+    handleClickCopy: function(inSender, inEvent) {
+        this.log('handleClickCopy', inSender, inEvent);
+        this.resultsFilter = utils.clone(inEvent);
+        this.forceShowing();
+        this.populate();
+        this.copyHelper();
+        this.close();
+        this.resultsFilter = null;
     },
     populate: function() {
         var title = document.title,
             url = window.location.href,
-            responseData = this.app.get('responseData'),
+            responseData = this.app.get('responseDataNew'),
             incLink = this.$.inc_link ? this.$.inc_link.get('checked') : true,
             limit = 0, // unlimited
             count = 0,
             content = '',
             bibleName = '',
             singleVerse = false,
-            maxReached = false;
+            maxReached = false,
+            nl = '<br />';
 
         this.shareContent = null;
 
@@ -201,15 +215,15 @@ module.exports = kind({
             for(var i in passages) {
                 var p = passages[i];
 
-                if(this.shareFilter) {
-                    if(this.shareFilter.b && this.shareFilter.b != p.book_id) {
+                if(this.resultsFilter) {
+                    if(this.resultsFilter.b && this.resultsFilter.b != p.book_id) {
                         continue;
                     }
-                    if(this.shareFilter.cv != p.chapter_verse) {
+                    if(this.resultsFilter.cv != p.chapter_verse) {
                         continue;
                     }
 
-                    bible = this.shareFilter.bible.split(',')[0];
+                    bible = this.resultsFilter.bible.split(',')[0];
                 }
 
                 if(bible == null) {
@@ -229,7 +243,7 @@ module.exports = kind({
 
                 var book_name = this.app.getLocaleBookName(p.book_id, p.book_name);
 
-                content += (p.single_verse) ? '' : book_name + ' ' + p.chapter_verse + '\n\n';
+                content += (p.single_verse) ? '' : book_name + ' ' + p.chapter_verse + nl + nl;
 
                 if(!p.single_verse) {
                     references.push(book_name + ' ' + p.chapter_verse);
@@ -241,7 +255,7 @@ module.exports = kind({
                         var v = p.verse_index[c][idx];
                         var verse = p.verses[bible][c][v];
 
-                        content += (p.single_verse) ? book_name + ' ' + p.chapter_verse + '\n' : verse.verse + ' ';
+                        content += (p.single_verse) ? book_name + ' ' + p.chapter_verse + nl : verse.verse + ' ';
 
                         if(p.single_verse) {
                             references.push(book_name + ' ' + p.chapter_verse);
@@ -250,16 +264,16 @@ module.exports = kind({
                         content += this.processText(verse.text);
                         
                         if(limit > 0 && count >= limit) {
-                            content += (p.single_verse) ? '\n\n…' : ' …';
+                            content += (p.single_verse) ? nl + nl +  '…' : ' …';
                             maxReached = true;
                             break mainLoop;
                         }
 
-                        content += (p.single_verse) ? '\n\n' : '\n';
+                        content += (p.single_verse) ? nl + nl : nl;
                     }
                 }
 
-                content += (p.single_verse) ? '' : '\n';
+                content += (p.single_verse) ? '' : nl;
                 singleVerse = p.single_verse;
             }
         }

@@ -620,6 +620,15 @@ div.bss_alert_dialog {
     box-sizing: border-box;
 }
 
+.bss_share_dialog .bss_link_share_container p.bss_link_share {
+    width: 100%;
+    height: 200px;
+    margin: 0 !important;
+    box-sizing: border-box;
+    background-color: white;
+    overflow-y: auto;
+}
+
 .bss_bible_sos .bss_sos_item .bss_verses {
     float: inline-end;
     cursor: pointer;
