@@ -33,6 +33,9 @@ module.exports = kind({
     actuallyShowDialogForce: false,
     populated: false,
     resultsFilter: null,
+    autoCopy: false,
+    autoCopyIncLink: false,
+    autoCopyIncFormat: true,
 
     titleComponents: [
         {classes: 'bss_header', components: [
@@ -184,12 +187,14 @@ module.exports = kind({
     },
     handleClickCopy: function(inSender, inEvent) {
         this.log('handleClickCopy', inSender, inEvent);
+        this.autoCopy = true;
         this.resultsFilter = utils.clone(inEvent);
         this.forceShowing();
-        this.populate();
+        // this.populate();
         this.copyHelper();
         this.close();
-        this.resultsFilter = null;
+        // this.resultsFilter = null;
+        this.autoCopy = false;
     },
     populate: function() {
         var title = document.title,
@@ -203,6 +208,10 @@ module.exports = kind({
             singleVerse = false,
             maxReached = false,
             nl = '<br />';
+
+        if(this.autoCopy) {
+            incLink = this.autoCopyIncLink;
+        }
 
         this.shareContent = null;
 
@@ -241,6 +250,8 @@ module.exports = kind({
                     }
                 }
 
+                this.setCopyAreaClassesByBible(bible);
+
                 var book_name = this.app.getLocaleBookName(p.book_id, p.book_name);
 
                 content += (p.single_verse) ? '' : book_name + ' ' + p.chapter_verse + nl + nl;
@@ -278,20 +289,31 @@ module.exports = kind({
             }
         }
 
-        content += (maxReached) ? '\n\n' : ''; // same regardles of singleVerse
-        //content += '\n' + bibleName + '\n\n\n' + title + '\n' + url;
-        //this.shareContent = content;
-
+        content += (maxReached) ? nl + nl : ''; // same regardles of singleVerse
         content += bibleName;
 
         if(incLink) {
-            content += '\n\n\n' + references.join('; ') + ' - ' + this.app.t('Bible SuperSearch') + '\n' + url;
+            content += nl + nl + nl + references.join('; ') + ' - ' + this.app.t('Bible SuperSearch') + nl + url;
         }
 
         this.$.CopyArea.set('content', content.trim());
         this.populated = true;
     },
+    setCopyAreaClassesByBible: function(bible) {
+        var bibleInfo = (typeof this.app.statics.bibles[bible] == 'undefined') ? null : this.app.statics.bibles[bible];
 
+        if(!bibleInfo) {
+            return ;
+        }
+
+        var classes = ['bss_link_share'];
+
+        classes.push('bss_bible_text');
+        classes.push('bss_bible_' + bibleInfo.module);
+        classes.push(bibleInfo.rtl ? 'bss_rtl' : 'bss_ltr');
+
+        this.$.CopyArea.set('classes', classes.join(' ')); 
+    },
     handleVerseTap: function(inSender, inEvent) {
         this.close();
     },
@@ -338,7 +360,12 @@ module.exports = kind({
     },
     processText: function(text) {
         text = text.replace(/<[^<>]+>/g, ''); // strip HTML
-        var incFormat = this.$.inc_format ? this.$.inc_format.get('checked') : true;
+
+        if(this.autoCopy) {
+            var incFormat = this.autoCopyIncFormat;
+        } else {
+            var incFormat = this.$.inc_format ? this.$.inc_format.get('checked') : true;
+        }
 
         // red letter - ERROR - using <> for red letter will COLLIDE with highlighting which sends back HTML!
         // U+2039, U+203A Single angle quotation marks (NOT <>)

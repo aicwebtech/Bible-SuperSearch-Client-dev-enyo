@@ -21,7 +21,6 @@ module.exports = kind({
         return this.app._copyComponentContent(this.$.CopyText);
     }, 
     handleTriggerCopy: function(inSender, inEvent) {
-        this.log();
         if(this.displayedBible == 1) {
             this.handleCopy(inEvent.inSender, inEvent.inEvent);
         }
