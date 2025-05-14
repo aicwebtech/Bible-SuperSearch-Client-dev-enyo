@@ -199,7 +199,7 @@ module.exports = kind({
     populate: function() {
         var title = document.title,
             url = window.location.href,
-            responseData = this.app.get('responseDataNew'),
+            responseData = this.app.get('responseDataNew') || this.app.get('responseData'),
             incLink = this.$.inc_link ? this.$.inc_link.get('checked') : true,
             limit = 0, // unlimited
             count = 0,

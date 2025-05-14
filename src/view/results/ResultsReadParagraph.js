@@ -52,6 +52,19 @@ module.exports = kind({
             });        
         }
 
+        var bookName = this.app.getLocaleBookName(pd.book_id, pd.book_name);
+        var refContent = bookName + ' ' + pd.chapter_verse;
+
+        var shareLink = this.linkBuilder.buildPassageSignalLink('onShare', this.formData.bible, pd);
+        refContent += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.t('Share') + '</a></sup>';
+        var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', this.formData.bible, pd);
+        refContent += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.t('Copy') + '</a></sup>';
+
+        if(this.app.statics.access.statistics) {
+            var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
+            refContent += '&nbsp; <sup>' + '<a href="' + sl + '" title="' + refContent + '" class="bss_std_link">' + this.app.t('Statistics') + '</a></sup>';
+        }
+
         Container.createComponent({
             name: 'ReferenceRow',
             classes: 'bss_render_reference_row',
@@ -60,7 +73,8 @@ module.exports = kind({
                 {
                     tag: 'th', 
                     attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
-                    content: this.app.getLocaleBookName(pd.book_id, pd.book_name) + ' ' + pd.chapter_verse
+                    content: refContent,
+                    allowHtml: true
                 }
             ]
         });
