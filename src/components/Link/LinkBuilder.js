@@ -66,13 +66,13 @@ module.exports = {
 
         var opts = {
             bible: bible,
-            book_id: passage.book_id,
-            chapter_verse: passage.chapter_verse,
+            b: passage.book_id,
+            cv: passage.chapter_verse,
+            cva: passage.chapter_verse_actual ? ', cva:\'' + passage.chapter_verse_actual + '\'' : '',
         };
 
-
         // var optsStr = '{bible:' + bible + ',reference:\'' + opts.reference + '\'}';
-        var optsStr = '{bible:\'' + bible + '\',b:\'' + passage.book_id + '\', cv:\'' + passage.chapter_verse + '\'}';
+        var optsStr = '{bible:\'' + bible + '\',b:\'' + opts.b + '\', cv:\'' + opts.cv + '\'' + opts.cva + '}';
 
         var link = 'javascript: biblesupersearch.app.s(\'' + signal + '\',' + optsStr + ')';
 

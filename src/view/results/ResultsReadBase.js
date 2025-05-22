@@ -399,6 +399,11 @@ module.exports = kind({
         var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, bookName, verse.chapter, verse.verse);
 
         var includeContextLinks = true;
+        var passage2 = Object.assign({}, passage, {chapter_verse: verse.chapter + ':' + verse.verse});
+
+        if(this.renderStyle == 'verse_passage') {
+            passage.chapter_verse_actual = verse.chapter + ':' + verse.verse;
+        }
 
         if(!passage.single_verse && (passage.nav && !passage.nav.ccc || passage.chapter_verse.indexOf(':') == -1)) {
             includeContextLinks = false;

@@ -199,6 +199,8 @@ module.exports = kind({
     populate: function() {
         var title = document.title,
             url = window.location.href,
+            baseUrl = url.split('#'),
+            baseUrl = baseUrl[0],
             responseData = this.app.get('responseDataNew') || this.app.get('responseData'),
             incLink = this.$.inc_link ? this.$.inc_link.get('checked') : true,
             limit = 0, // unlimited
@@ -219,6 +221,15 @@ module.exports = kind({
             var passages = responseData.results.results,
                 bible = null,
                 references = [];
+
+            var filterChapter = null;
+            var filterVerse = null;
+
+            if(this.resultsFilter && this.resultsFilter.cva) {
+                var sp = this.resultsFilter.cva.split(':');
+                filterChapter = sp[0] || null;
+                filterVerse = sp[1] || null;
+            }
 
             mainLoop:
             for(var i in passages) {
@@ -248,44 +259,57 @@ module.exports = kind({
                             break;
                         } 
                     }
+                } else {
+                    bibleName = this.app.statics.bibles[bible].name;
                 }
 
                 this.setCopyAreaClassesByBible(bible);
 
                 var book_name = this.app.getLocaleBookName(p.book_id, p.book_name);
+                
+                singleVerse = p.single_verse || filterChapter && filterVerse;
+                var chapterVerse = (filterChapter && filterVerse) ? this.resultsFilter.cva : p.chapter_verse;
 
-                content += (p.single_verse) ? '' : book_name + ' ' + p.chapter_verse + nl + nl;
+                content += (singleVerse) ? '' : book_name + ' ' + p.chapter_verse + nl + nl;
 
-                if(!p.single_verse) {
+                if(this.resultsFilter) {
+                    url = baseUrl + '#/r/' + bible + '/' + book_name + '.' + chapterVerse;
+                }
+
+                if(!singleVerse) {
                     references.push(book_name + ' ' + p.chapter_verse);
                 }
 
                 for(var c in p.verse_index) {
                     for(var idx in p.verse_index[c]) {
-                        count ++;
                         var v = p.verse_index[c][idx];
+
+                        if(filterChapter && filterVerse && (filterChapter != c || filterVerse != v)) {
+                            continue;
+                        }
+
                         var verse = p.verses[bible][c][v];
+                        count ++;
 
-                        content += (p.single_verse) ? book_name + ' ' + p.chapter_verse + nl : verse.verse + ' ';
+                        content += (p.single_verse || filterVerse) ? book_name + ' ' + chapterVerse + nl : verse.verse + ' ';
 
-                        if(p.single_verse) {
-                            references.push(book_name + ' ' + p.chapter_verse);
+                        if(singleVerse) {
+                            references.push(book_name + ' ' + chapterVerse);
                         }
 
                         content += this.processText(verse.text);
                         
                         if(limit > 0 && count >= limit) {
-                            content += (p.single_verse) ? nl + nl +  '…' : ' …';
+                            content += (singleVerse) ? nl + nl +  '…' : ' …';
                             maxReached = true;
                             break mainLoop;
                         }
 
-                        content += (p.single_verse) ? nl + nl : nl;
+                        content += (singleVerse) ? nl + nl : nl;
                     }
                 }
 
                 content += (p.single_verse) ? '' : nl;
-                singleVerse = p.single_verse;
             }
         }
 
