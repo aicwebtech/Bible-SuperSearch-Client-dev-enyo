@@ -57,9 +57,9 @@ module.exports = kind({
 
         if(!this.multiBibles) {
             var shareLink = this.linkBuilder.buildPassageSignalLink('onShare', this.formData.bible, pd);
-            refContent += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.t('Share') + '</a></sup>';
+            refContent += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a></sup>';
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', this.formData.bible, pd);
-            refContent += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.t('Copy') + '</a></sup>';
+            refContent += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a></sup>';
         }
 
         if(this.app.statics.access.statistics) {
@@ -103,9 +103,9 @@ module.exports = kind({
                 bibleContent = this._getBibleDisplayName(bible_info);
 
                 shareLink = this.linkBuilder.buildPassageSignalLink('onShare', [module], pd);
-                bibleContent += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.t('Share') + '</a></sup>';
+                bibleContent += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a></sup>';
                 copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [module], pd);
-                bibleContent += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.t('Copy') + '</a></sup>';               
+                bibleContent += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a></sup>';               
 
                 Container.$.BibleRow.createComponent({
                     tag: 'th',

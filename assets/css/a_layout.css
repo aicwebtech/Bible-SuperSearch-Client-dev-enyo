@@ -629,6 +629,7 @@ div.bss_alert_dialog {
     background-color: white;
     text-align: start;
     overflow-y: auto;
+    white-space: pre-wrap;
 }
 
 .bss_bible_sos .bss_sos_item .bss_verses {
@@ -1055,4 +1056,8 @@ a.bss_results_list_item_visited {
 
 .bss_results_list_item_showing {
     font-weight: bold;
+}
+
+sup .bss_std_link .bss-material-icons {
+    font-size: medium;
 }

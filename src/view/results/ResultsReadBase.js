@@ -236,9 +236,9 @@ module.exports = kind({
 
         if(!this.multiBibles) {
             var shareLink = this.linkBuilder.buildPassageSignalLink('onShare', this.formData.bible, pd);
-            refContent += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.t('Share') + '</a></sup>';
+            refContent += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a></sup>';
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', this.formData.bible, pd);
-            refContent += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.t('Copy') + '</a></sup>';
+            refContent += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a></sup>';
         }
 
         if(this.app.statics.access.statistics) {
@@ -281,9 +281,9 @@ module.exports = kind({
                 bibleContent = this._getBibleDisplayName(bible_info);
 
                 shareLink = this.linkBuilder.buildPassageSignalLink('onShare', [mod], pd);
-                bibleContent += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.t('Share') + '</a></sup>';
+                bibleContent += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a></sup>';
                 copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [mod], pd);
-                bibleContent += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.t('Copy') + '</a></sup>';               
+                bibleContent += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a></sup>';               
             
                 Container.$.BibleRow.createComponent({
                     tag: 'th',
@@ -399,10 +399,10 @@ module.exports = kind({
         var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, bookName, verse.chapter, verse.verse);
 
         var includeContextLinks = true;
-        var passage2 = Object.assign({}, passage, {chapter_verse: verse.chapter + ':' + verse.verse});
+        var passageClone = Object.assign({}, passage);
 
         if(this.renderStyle == 'verse_passage') {
-            passage.chapter_verse_actual = verse.chapter + ':' + verse.verse;
+            passageClone.chapter_verse_actual = verse.chapter + ':' + verse.verse;
         }
 
         if(!passage.single_verse && (passage.nav && !passage.nav.ccc || passage.chapter_verse.indexOf(':') == -1)) {
@@ -415,10 +415,12 @@ module.exports = kind({
         // verse.linksHtml = '<br /><small>'; // future use?
 
         var chapterTitle = this.app.t("Show full chapter"),
-            chapterText = this.app.t('Chapter'),
+            chapterText = this.app.it('Chapter'),
             verseTitle = this.app.t('Show this verse'),
             contextTitle = this.app.t('Show in context'),
-            contextText = this.app.t('Context'),
+            contextText = this.app.it('Context'),
+            shareText = this.app.it('Share'),
+            copyText = this.app.it('Copy'),
             shareTitle = this.app.t('Share'),
             copyTitle = this.app.t('Copy');
 
@@ -430,11 +432,11 @@ module.exports = kind({
                 html += '&nbsp; <sup>' + '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="bss_std_link">' + chapterText + '</a></sup>';
             }
 
-            var shareLink = this.linkBuilder.buildPassageSignalLink('onShare', [this.selectedBible.module], passage);
-            html += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + shareTitle + '" class="bss_std_link">' + shareTitle + '</a></sup>';
+            var shareLink = this.linkBuilder.buildPassageSignalLink('onShare', [this.selectedBible.module], passageClone);
+            html += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + shareTitle + '" class="bss_std_link">' + shareText + '</a></sup>';
 
-            var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [this.selectedBible.module], passage);
-            html += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + copyTitle + '" class="bss_std_link">' + copyTitle + '</a></sup>';
+            var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [this.selectedBible.module], passageClone);
+            html += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + copyTitle + '" class="bss_std_link">' + copyText + '</a></sup>';
 
             // Statistics
             if(this.app.statics.access.statistics) {

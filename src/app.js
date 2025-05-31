@@ -1760,6 +1760,22 @@ var App = Application.kind({
         
         return trans;
     },
+    // Translate string to icon
+    it: function(string) {
+        var map = {
+            'Context': 'menu_open',
+            'Chapter': 'expand', // = 'arrow_expand_vertical',
+            'Copy': 'content_copy',
+            'Share': 'share',
+        };
+
+        // somehow, this is breaking link hovering...
+        if(map[string]) {
+            // return "<span class='bss-material-icons bss_icon'>" + map[string] + "</span>";
+        }
+
+        return this.t(string);
+    },
     findBookByName: function(bookName, locale) {
         this.debug && this.log(bookName, locale);
         
@@ -2125,6 +2141,17 @@ var App = Application.kind({
             }
             catch (e) {
                this.alert('Failed to copy');
+            }
+        }
+    },
+    clearSelection: function() {
+        var sel = window.getSelection ? window.getSelection() : document.selection;
+
+        if (sel) {
+            if (sel.removeAllRanges) {
+                sel.removeAllRanges();
+            } else if (sel.empty) {
+                sel.empty();
             }
         }
     },

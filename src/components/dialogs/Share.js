@@ -211,6 +211,8 @@ module.exports = kind({
             maxReached = false,
             nl = '<br />';
 
+        this.app.clearSelection();
+
         if(this.autoCopy) {
             incLink = this.autoCopyIncLink;
         }
@@ -313,7 +315,8 @@ module.exports = kind({
             }
         }
 
-        content += (maxReached) ? nl + nl : ''; // same regardles of singleVerse
+        // content += (maxReached) ? nl + nl : ''; // same regardles of singleVerse
+        //content += (singleVerse) ? '' : nl + nl;
         content += bibleName;
 
         if(incLink) {
@@ -322,6 +325,11 @@ module.exports = kind({
 
         this.$.CopyArea.set('content', content.trim());
         this.populated = true;
+
+        this.$.CopyArea.hasNode() && this.$.CopyArea.hasNode().scrollTo({
+            top: 0, 
+            left: 0
+        });
     },
     setCopyAreaClassesByBible: function(bible) {
         var bibleInfo = (typeof this.app.statics.bibles[bible] == 'undefined') ? null : this.app.statics.bibles[bible];
