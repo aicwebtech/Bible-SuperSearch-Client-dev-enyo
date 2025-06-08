@@ -418,10 +418,10 @@ module.exports = kind({
         this.app.set('cacheId', this.get('cacheHash'));
         this.app.set('shortHashUrl', '#/c/' + this.get('cacheHash'));
         var responseData = {formData: this._formDataAsSubmitted, results: inResponse, success: true};
-        this.app.set('responseData', responseData);
-        this.app.set('altResponseData', null);
         this.app.set('resultsShowing', []);
         this.app.set('altResultsShowing', []);
+        this.app.set('responseData', responseData);
+        this.app.set('altResponseData', null);
         
         var renderStyle = this.app.UserConfig.get('render_style');
         // Certain render styles reformat the responseData, then send these events again

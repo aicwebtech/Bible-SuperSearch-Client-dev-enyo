@@ -1963,9 +1963,7 @@ var App = Application.kind({
     responseDataChanged: function(was, is) {
         var renderStyle = this.UserConfig.get('render_style');
 
-        if(renderStyle == 'verse' || this.UserConfig.get('single_verses') || this.UserConfig.get('passages')) {
-            this._checkRenderStyle();
-        }
+        this._checkRenderStyle(); // always check render style when responseData changes
     },
     watchSingleVerses: function(pre, cur, prop)  {
         //this._checkRenderStyle();

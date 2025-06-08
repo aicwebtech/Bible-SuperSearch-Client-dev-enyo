@@ -241,6 +241,7 @@ module.exports = kind({
                     if(this.resultsFilter.b && this.resultsFilter.b != p.book_id) {
                         continue;
                     }
+                    
                     if(this.resultsFilter.cv != p.chapter_verse) {
                         continue;
                     }
@@ -307,7 +308,7 @@ module.exports = kind({
                             break mainLoop;
                         }
 
-                        content += (singleVerse) ? nl + nl : nl;
+                        content += (singleVerse) ? nl : nl;
                     }
                 }
 
