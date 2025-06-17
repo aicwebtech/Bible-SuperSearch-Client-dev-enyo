@@ -45,14 +45,29 @@ var biblesupersearch_config_options = {
     'bibleBooksLanguageSource': 'ui', 
 
 
-    // Default Bible                        (string)
+    // Default Bible(s)                        (string, comma-separated string, or array of strings)
     //
     //      Automatically selected in first Bible selector
     //      Must be the 'module' of the desired Bible version
     //      See the API documentation for a list of available Bibles
     //          https://api.biblesupersearch.com/documentation
-
-    "defaultBible": "kjv",                              
+    
+    "defaultBible": "kjv",    
+    
+    // Default Bibles by Language            (object of strings, comma-separated strings, or arrays of strings)
+    //     Default Bibles by UI language
+    //     If no Bibles for the selected language, the defaultBible will be used
+    "defaultBiblesByLanguage": {
+        // 'en': ['kjv', 'bishops', 'web', 'net'], // array of strings
+        // 'ru': 'synodal', // string
+        // 'lv': 'lv_gluck_8,kjv', // comma-separated string
+        // 'es': 'rvg',
+        // 'fr': 'martin',
+        // 'de': 'luther',
+        // 'it': 'diodati'
+    },
+    
+    // Default Bible(s)                    (array of strings)
     
     // Enabled Bibles                       (array of strings)
     //

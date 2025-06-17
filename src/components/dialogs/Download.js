@@ -48,8 +48,9 @@ module.exports = kind({
                 onValueChanged: '_formChanged'
             },
         ]},        
+        {tag: 'br'},
+        {kind: i18n, tag: 'small', content: 'Some Bibles may not be available for download due to copyright restrictions.'},
         {kind: i18n, classes: 'biblesupersearch_h5', content: 'Select a Format'},
-        // {tag: 'br'},
         {components: [
             {name: 'FormatSelect', kind: FormatSelector, style: 'width: 100%; max-width: 350px', onchange: '_formChanged'},
         ]},

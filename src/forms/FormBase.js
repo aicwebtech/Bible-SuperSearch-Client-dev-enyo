@@ -272,7 +272,7 @@ module.exports = kind({
     },
     
     processDefaults: function(formData) {
-        var defaultBibles = this.app.defaultBibles;
+        var defaultBibles = utils.clone(this.app.getDefaultBibles());
         formData.bible = (formData.bible && formData.bible != '0' && formData.bible != [] && formData.bible.length != 0) ? formData.bible : defaultBibles;
         
         if(!Array.isArray(formData.bible)) {

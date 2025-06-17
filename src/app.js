@@ -60,6 +60,7 @@ var App = Application.kind({
     maximumBiblesDisplayed: 8,  // The absolute maximum number of parallel bibles that can be possibly displayed
     bibleDisplayLimit: 8,       // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
     defaultBibles: [],
+    defaultBiblesByLanguage: {}, // default Bibles by language
     history: [],
     visited: [],
     bookmarks: null,
@@ -347,6 +348,20 @@ var App = Application.kind({
             this.defaultBibles = (typeof this.configs.defaultBible == 'string') ? this.configs.defaultBible.split(',') : this.configs.defaultBible;
         } else {
             this.defaultBibles = ['kjv'];
+        }
+
+        this.defaultBiblesByLanguage = {}; 
+
+        if(this.configs.defaultBiblesByLanguage && typeof this.configs.defaultBiblesByLanguage == 'object') {
+            for(var lang in this.configs.defaultBiblesByLanguage) {
+                var def = this.configs.defaultBiblesByLanguage[lang];
+
+                if(typeof def == 'string') {
+                    this.defaultBiblesByLanguage[lang] = def.split(',');
+                } else {
+                    this.defaultBiblesByLanguage[lang] = def;
+                }
+            }
         }
 
         this.defaultBiblesRaw = utils.clone(this.defaultBibles);
@@ -1462,6 +1477,15 @@ var App = Application.kind({
     },
     logAnon: function() {
         window.console && console.log(arguments);
+    },
+    getDefaultBibles: function() {
+        var locale = this.get('locale');
+
+        if(this.defaultBiblesByLanguage && this.defaultBiblesByLanguage[locale]) {
+            return utils.clone(this.defaultBiblesByLanguage[locale]);
+        } else {
+            return utils.clone(this.defaultBibles);
+        }
     },
     getLocaleLanguage: function() {
         return this.get('locale').split('_')[0];
