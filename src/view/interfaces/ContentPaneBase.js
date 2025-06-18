@@ -111,7 +111,6 @@ module.exports = kind({
         // Attempts to scroll to top of results
         // Sort-of works, but needs tweaking before we will go live with it.
         var headerHeight = 0;
-        this.log();
 
         if(this.app.get('scrollMode') == 'results_top') {
             var headerItems = [

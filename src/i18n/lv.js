@@ -336,6 +336,7 @@ module.exports = {
     'Bible Downloads': 'Bībeles Lejupielādes',
     'Select Bible(s)' : 'Izvēlieties Bībeli',
     'Select a Format': 'Izvēlieties Formātu',
+    'Some Bibles may not be available for download due to copyright restrictions.': 'Dažu Bībeļu teksti var nebūt pieejami lejupielādei autortiesību ierobežojumu dēļ.', // 6.1
     'Rendering': 'Sagatavošana',
     'Rendering Bibles, this may take some time': 'Tiek sagatavotas Bībeles, šis process var aizņemt kādu laiku',
     'Rendering is Complete': 'Sagatavošana ir Pabeigta',

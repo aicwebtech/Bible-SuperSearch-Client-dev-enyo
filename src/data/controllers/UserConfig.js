@@ -52,7 +52,7 @@ module.exports = kind({
             return;
         }
 
-        console.log('Saving user config');
+        this.app.debug && console.log('Saving user config');
 
         var configs = this.model.raw();
 

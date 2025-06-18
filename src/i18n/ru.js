@@ -338,6 +338,7 @@ module.exports = {
     'Bible Downloads': 'Загрузки Библии на ваше устройство',
     'Select Bible(s)' : 'Выберите Библии',
     'Select a Format': 'Выберите Формат',
+    'Some Bibles may not be available for download due to copyright restrictions.': 'Некоторые Библии могут быть недоступны для загрузки из-за ограничений авторских прав.', // 6.1
     'Rendering': 'Подготовка',
     'Rendering Bibles, this may take some time': 'Идет подготовка Библии, этот процесс может занять некоторое время',
     'Rendering is Complete': 'Подготовка Завершена',

@@ -353,6 +353,7 @@ module.exports = {
     'Bible Downloads': '',
     'Select Bible(s)' : '',
     'Select a Format': '',
+    'Some Bibles may not be available for download due to copyright restrictions.': '', // 6.1
     'Rendering': '',
     'Rendering Bibles, this may take some time': '',
     'Rendering is Complete': '',

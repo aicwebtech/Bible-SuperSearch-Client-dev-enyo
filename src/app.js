@@ -1232,7 +1232,7 @@ var App = Application.kind({
         }
 
         if(!Array.isArray(bibles)) {
-            bibles = [bibles];
+            bibles = bibles.split(',');
         }
 
         if(filter) {
