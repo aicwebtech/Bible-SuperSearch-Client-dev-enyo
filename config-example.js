@@ -54,7 +54,8 @@ var biblesupersearch_config_options = {
     
     "defaultBible": "kjv",    
     
-    // Default Bibles by Language            (object of strings, comma-separated strings, or arrays of strings)
+    // Default Bibles by Language (v6.1)           
+    //    (object of strings, comma-separated strings, or arrays of strings)
     //     Default Bibles by UI language
     //     If no Bibles for the selected language, the defaultBible will be used
     "defaultBiblesByLanguage": {

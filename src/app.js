@@ -1879,9 +1879,23 @@ var App = Application.kind({
     pushHistory: function() {
         var title = this.get('bssTitle'),
             url = document.location.href,
-            limit = this.configs.historyLimit || 50;
+            limit = this.configs.historyLimit || 50,
+            isBaseUrl = (url == this.baseUrl || url == this.baseUrl + '/'),
+            check = this.history.length > 0 ? false : true;
 
-        if(title && (this.history.length == 0 || this.history[0].title != title)) {
+        // If the URL is the base URL, we ignore the title and check against the URL
+        if(!check) {            
+            check = isBaseUrl ? this.history[0].url != url : this.history[0].title != title;
+        }
+
+        this.cleanHistory(); // clean history before adding new item
+        // todo - v 6.2, remove this check
+ 
+        if(title && (check)) {
+            this.history = this.history.filter(function(item) {
+                return item.title != title && item.url != url;
+            });
+
             this.history.unshift({title: title, url: url});
 
             if(this.history.length > limit) {
@@ -1890,6 +1904,28 @@ var App = Application.kind({
 
             localStorage.setItem('BibleSuperSearchHistory', JSON.stringify(this.history));
         }
+    },
+    cleanHistory: function() {
+        if(this.history.length == 0) {
+            return; // nothing to clean
+        }
+        
+        var tracked = {},
+            self = this;
+        
+        this.history = this.history.filter(function(item) {
+            var isBaseUrl = (item.url == self.baseUrl || item.url == self.baseUrl + '/');
+            var track = isBaseUrl ? item.url : item.title;
+
+            if(tracked[track]) {
+                return false; // already tracked, remove this item
+            }
+            
+            tracked[track] = true; // track this item
+            return true;
+        });
+
+        localStorage.setItem('BibleSuperSearchHistory', JSON.stringify(this.history));
     },
     clearHistory: function() {
         this.history = [];
