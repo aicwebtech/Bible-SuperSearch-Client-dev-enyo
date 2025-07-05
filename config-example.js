@@ -367,6 +367,13 @@ var biblesupersearch_config_options = {
 
     'omitUserLanguage': false, // If saving user settings, whether to exclude the user's selected Language
 
+    'saveUserSettingsManual': false, // Whether to require user to save their settings manually (ie via a button)
+                                     // Otherwise, settings will be saved automatically when changed
+
+    'saveUserBibleSelections': false, // Whether to save user's selected Bibles with user settings           
+
+    
+    // Navigation Settings
     // Enable changing chapter and search page via horizontal touchscreen swipe gesture 
     "swipePageChapter": false,
 

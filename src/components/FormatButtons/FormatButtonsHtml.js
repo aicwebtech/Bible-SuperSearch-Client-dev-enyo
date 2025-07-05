@@ -406,12 +406,23 @@ module.exports = kind({
             {
                 kind: i18n,
                 classes: 'bss_item bss_link bss_text_only',
-                showing: false,
+                showing: true,
                 name: 'settings_reset_button',
                 ontap: 'handleResetSetting',
                 attributes: {title: 'Reset'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'restart_alt'}
+                ],
+            },
+            {
+                kind: i18n,
+                classes: 'bss_item bss_link bss_text_only',
+                showing: true,
+                name: 'settings_save_button',
+                ontap: 'handleSaveSetting',
+                attributes: {title: 'Save Settings'},
+                components: [
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'save'}
                 ],
             },
             {
@@ -559,6 +570,15 @@ module.exports = kind({
         if(!this.app.configs.bookmarksEnable || this.app.configs.bookmarksEnable == 'false') {
             this.$.bookmark_add_button.set('showing', false);
             this.$.bookmark_button.set('showing', false);
+        }
+
+        if(
+            !this.app.configs.saveUserSettingsManual || 
+            this.app.configs.saveUserSettingsManual == 'false' ||
+            !this.app.configs.saveUserSettings ||
+            this.app.configs.saveUserSettings == 'false'
+        ) {
+            this.$.settings_save_button.set('showing', false);
         }
 
         // todo - use new selector for locale selector here (needs styling)

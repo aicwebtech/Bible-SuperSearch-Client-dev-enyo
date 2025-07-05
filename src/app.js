@@ -2263,6 +2263,13 @@ var App = Application.kind({
     userConfigChanged: function() {
         var t = this;
 
+        if(
+            !this.configs.saveUserSettings || this.configs.saveUserSettings == 'false'
+            || this.configs.saveUserSettingsManual && this.configs.saveUserSettingsManual != 'false'
+        ) {
+            return; // do not save user config
+        }
+
         this.ajaxLoadingDelay = false;
         window.clearTimeout(this.configSaveDelayTimer);
 

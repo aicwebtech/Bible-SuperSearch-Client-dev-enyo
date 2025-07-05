@@ -34,6 +34,8 @@ var defaultConfig = {
     'changeLanguageClearForm': true,
     'saveUserSettings': false,
     'omitUserLanguage': false,
+    'saveUserSettingsManual': false,                   // Whether to require user to save their settings manually (ie via a button)
+    'saveUserBibleSelections': false,                  // Whether to save user's selected Bibles with user settings
 
     _urlDefaultNotice: function() {
         if(window.console) {

@@ -287,6 +287,10 @@ module.exports = kind({
         ]},
         {tag: 'span', classes: 'bss_spacer'}, 
         {tag: 'span', classes: 'bss_spacer'}, 
+        {name: 'Save', kind: Button, ontap: 'save', components: [
+            {kind: i18n, content: 'Save'},
+        ]},
+        {tag: 'span', classes: 'bss_spacer'}, 
         {tag: 'span', classes: 'bss_spacer'}, 
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'},
@@ -379,6 +383,15 @@ module.exports = kind({
 
         this.inherited(arguments);
 
+        if(
+           !this.app.configs.saveUserSettingsManual || 
+            this.app.configs.saveUserSettingsManual == 'false' ||
+            !this.app.configs.saveUserSettings ||
+            this.app.configs.saveUserSettings == 'false'
+        ) {
+            this.$.Save.hide();
+        }
+
         this.$.parallel_search_error_toggle.set('showing', this.app.configs.parallelSearchErrorSuppressUserConfig);
 
         this.createComponent({
@@ -389,6 +402,17 @@ module.exports = kind({
     },
     close: function() {
         this.app.set('settingsShowing', false);
+    },
+    save: function() {
+        var t = this,
+            msg = this.app.t('This will save the settings to for future page loads.');
+
+        this.$.ConfirmDialog.confirm(msg, function(confirm) {
+            if(confirm) {
+                t.app.set('_blockAutoScroll', true);
+                t.app.UserConfig.save();
+            }
+        });
     },
     reset: function() {
         var t = this,
