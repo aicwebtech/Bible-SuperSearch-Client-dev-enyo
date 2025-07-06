@@ -14,7 +14,6 @@ module.exports = kind({
 
         pk && model.fetch({});
         this.set('model', model);
-        //this._updateDefaults();
     },
     clear: function() {
         this.newModel(0);
@@ -35,6 +34,13 @@ module.exports = kind({
                     userConfigs.locale = this.app.configs.language;
                 }
 
+                if(!this.app.configs.saveUserBibleSelections || this.app.configs.saveUserBibleSelections == 'false') {
+                    console.log('User config NOT loaded, saveUserBibleSelections is false!');
+                    userConfigs.bibles_selected = this.app.getSystemDefaultBibles().slice();
+                }
+
+                console.log('User config loaded', userConfigs);
+
                 this.model.set(userConfigs);
                 this.app.debug && console.log('User config loaded', userConfigs);
             } 
@@ -52,9 +58,9 @@ module.exports = kind({
             return;
         }
 
-        this.app.debug && console.log('Saving user config');
-
         var configs = this.model.raw();
+
+        this.app.debug && console.log('Saving user config', configs);
 
         if(configs.copy) {
             configs.copy_render_style = configs.render_style;
@@ -70,6 +76,8 @@ module.exports = kind({
      * @private
      */
     _updateDefaults: function() {
+        this.app.debug && console.log('UserConfig._updateDefaults()');
+        
         if(this.app.configs.textDisplayDefault) { 
             this.set('render_style', this.app.configs.textDisplayDefault);
             this.set('read_render_style', this.app.configs.textDisplayDefault);
@@ -79,6 +87,7 @@ module.exports = kind({
         this.app.get('appLoaded') && this.app.set('locale', this.app.configs.language);
 
         this.set('parallel_search_error_suppress', this.app.configs.parallelSearchErrorSuppress);
+        this.set('bibles_selected', this.app.getSystemDefaultBibles().slice());
 
         //         if(this.app.parallelSearchErrorSuppressUserConfig) {
         //     var parallelSurpress = this.app.UserConfig.get('parallel_search_error_suppress') || false;

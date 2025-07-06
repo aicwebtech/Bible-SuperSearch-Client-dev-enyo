@@ -360,7 +360,7 @@ module.exports = {
     'Copy': 'Kopēt',
     'Copy Link': 'Kopēt Saiti',
     'Copy with Text': 'Kopēt ar Tekstu',
-    'Share Link': 'Kopīgot saiti',
+    'Share Link': 'Dalīties ar saiti',
     'Share' : 'Dalīties',
     'Link' : 'Saite', // 4.5
     'Copied to clipboard': 'Kopēts starpliktuvē (clipboard)', // 5.2.3

@@ -136,6 +136,11 @@ var App = Application.kind({
             kind: BssRouter,
             triggerOnStart: true,
             routes: [ {handler: 'handleHashGeneric', default: true} ]
+        },
+        {
+            name: 'Signal',
+            kind: Signal,
+            onBibleChange: 'handleBibleChange',
         }
     ],
 
@@ -1479,6 +1484,21 @@ var App = Application.kind({
         window.console && console.log(arguments);
     },
     getDefaultBibles: function() {
+        if(
+            this.configs.saveUserSettings && this.configs.saveUserSettings != 'false' &&
+            this.configs.saveUserBibleSelections && this.configs.saveUserBibleSelections != 'false'
+        ) {
+            var userBibles = this.UserConfig.get('bibles_selected') || null;
+
+            if(userBibles && Array.isArray(userBibles) && userBibles.length > 0) {
+                this.debug && this.log('Using user config selected bibles', userBibles);
+                return utils.clone(userBibles);
+            }
+        }
+
+        return this.getSystemDefaultBibles();
+    },
+    getSystemDefaultBibles: function() {
         var locale = this.get('locale');
 
         if(this.defaultBiblesByLanguage && this.defaultBiblesByLanguage[locale]) {
@@ -2276,6 +2296,15 @@ var App = Application.kind({
         this.configSaveDelayTimer = window.setTimeout(function() {
             t.UserConfig.save();
         }, 1000);
+    },
+    handleBibleChange: function(inSender, inEvent) {
+        var c = this.configs.saveUserBibleSelections;
+        this.log('handleBibleChange', inSender, inEvent, c);
+
+        if(c && c != 'false' && c != false && inEvent.dir == 2) {
+            this.UserConfig.set('bibles_selected', inEvent.bibles || []);
+            // this.UserConfig.save();
+        }
     }
 });
 
