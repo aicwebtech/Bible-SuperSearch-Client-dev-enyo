@@ -1900,8 +1900,11 @@ var App = Application.kind({
         var title = this.get('bssTitle'),
             url = document.location.href,
             limit = this.configs.historyLimit || 50,
-            isBaseUrl = (url == this.baseUrl || url == this.baseUrl + '/'),
+            isBaseUrl = (url == this.baseUrl || url == this.baseUrl + '/' || url == ''),
             check = this.history.length > 0 ? false : true;
+
+        url = this.getRelativeUrl(url);
+        isBaseUrl = (url == '') ? true : isBaseUrl;
 
         // If the URL is the base URL, we ignore the title and check against the URL
         if(!check) {            
@@ -1934,8 +1937,9 @@ var App = Application.kind({
             self = this;
         
         this.history = this.history.filter(function(item) {
-            var isBaseUrl = (item.url == self.baseUrl || item.url == self.baseUrl + '/');
-            var track = isBaseUrl ? item.url : item.title;
+            var url = self.getRelativeUrl(item.url);
+            var isBaseUrl = (item.url == self.baseUrl || item.url == self.baseUrl + '/' || url == '');
+            var track = isBaseUrl ? url : item.title;
 
             if(tracked[track]) {
                 return false; // already tracked, remove this item
@@ -1952,11 +1956,12 @@ var App = Application.kind({
         localStorage.setItem('BibleSuperSearchHistory', '[]');
     },    
     pushVisited: function(url) {
-        var url = url || document.location.href;
-        // var found = this.visited.find((item) => item == url);
+        var url = url || document.location.href,
+            self = this;
+            url = this.getRelativeUrl(url);
 
         var found = this.visited.find(function(item) {
-            return item == url;
+            return self.getRelativeUrl(item) == url;
         });
 
         if(!found) {
@@ -1984,6 +1989,31 @@ var App = Application.kind({
         this.visited = [];
         localStorage.setItem('BibleSuperSearchVisited', '[]');
         Signal.send('onVisitedClear');
+    },
+    getRelativeUrl: function(url) {
+        if(!url || url == '' || url == this.baseUrl || url == this.baseUrl + '/') {
+            return '';
+        }
+
+        if(url.indexOf('#') === -1 && url.indexOf('http://') === -1 && url.indexOf('https://') === -1) {
+            return url; // already relative
+        }
+
+        var parts = url.split('#');
+
+        url = parts[1] || '';
+        return url.trim();
+    },   
+    getAbsoluteUrl: function(url) {        
+        if(!url || url == '' || url == this.baseUrl || url == this.baseUrl + '/') {
+            return this.baseUrl;
+        }   
+
+        if(url.indexOf(this.baseUrl) === 0 || url.indexOf('http://') === 0 || url.indexOf('https://') === 0) {
+            return url; // already absolute
+        }
+
+        return this.baseUrl + '#' + this.getRelativeUrl(url);
     },
     alert: function(string, inSender, inEvent) {
         // todo - make some sort of custom alert dialog here!
@@ -2299,11 +2329,13 @@ var App = Application.kind({
     },
     handleBibleChange: function(inSender, inEvent) {
         var c = this.configs.saveUserBibleSelections;
-        this.log('handleBibleChange', inSender, inEvent, c);
+        this.debug && this.log('handleBibleChange', inEvent, c);
 
-        if(c && c != 'false' && c != false && inEvent.dir == 2) {
+        if(c && c != 'false' && c != false && inEvent.dir == 2 && inEvent.automatic != true) {
             this.UserConfig.set('bibles_selected', inEvent.bibles || []);
-            // this.UserConfig.save();
+            this.debug && this.log('Saving bibles to user config');
+        } else {
+            this.debug && this.log('NOT saving bibles to user config');
         }
     }
 });

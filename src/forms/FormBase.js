@@ -25,6 +25,7 @@ module.exports = kind({
     referenceField: 'reference',
     searchField: 'search',
     defaultSearchType: 'and',
+    _automaticChange: false, // Indicates that the formData change was caused by an automatic change, not user input
     
     
     // WARNING: if given FormBase instance is NOT the primary form, you must set subForm to true!
@@ -144,6 +145,8 @@ module.exports = kind({
                 formData.request = ref;
             }
 
+            formData.bible = utils.clone(this.app.getDefaultBibles());
+
             this.defaultSubmitting = true;
             this.app.set('scrollMode', 'container_top');
             this._submitFormHelper(formData, false);
@@ -153,9 +156,19 @@ module.exports = kind({
         return false;
     },
     clearForm: function() {
+        this.log();
+        var self = this;
+
+        this._automaticChange = true; 
         this.set('formData', {});
+
+        window.setTimeout(function() {
+            self._automaticChange = false;
+        }, 100);
     },
     clearFormManual: function() {
+        this._automaticChange = false;
+        
         this.set('formData', {
             // bible: [this.app.configs.defaultBible]
         });
@@ -445,7 +458,7 @@ module.exports = kind({
         }
 
         if(this.defaultSubmitting) {
-            this.clearFormManual();
+            // this.clearFormManual();
             this.defaultSubmitting = false;
         }
 
@@ -1100,7 +1113,7 @@ module.exports = kind({
             });
         }
 
-        var e = {bibles: value, dir: dir};
+        var e = {bibles: value, dir: dir, automatic: this._automaticChange};
 
         Signal.send('onBibleChange', e);
         this.waterfall('onBibleChange', e);
