@@ -173,6 +173,11 @@ module.exports = kind({
         this.hideExtra();
         this.$.ErrorsContainer.set('showing', false);
         this.$.FormatButtonContainer.set('showing', true);
+
+        if(!inEvent.results) {
+            return;
+        }
+
         var results = utils.clone(inEvent.results);
 
         if(results.error_level == 4) {
