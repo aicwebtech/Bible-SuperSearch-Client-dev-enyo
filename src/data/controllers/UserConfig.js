@@ -20,8 +20,13 @@ module.exports = kind({
         this._updateDefaults();
     },
     reset: function() {
+        this.app.set('localeManual', true); // reset is always manual and since this touches the locale, we need to set it to manual
+        // these may be needed??
+        // this.set('bibles_selected', []);
+        // this.app.set('locale', this.app.configs.language);
         this.clear();
         this.save();
+        this.app.set('localeManual', false);
     },
     load: function() {
         var userConfigs = localStorage.getItem( this.lsUrl ) || null;
@@ -34,9 +39,9 @@ module.exports = kind({
                     userConfigs.locale = this.app.configs.language;
                 }
 
-                if(!this.app.configs.saveUserBibleSelections || this.app.configs.saveUserBibleSelections == 'false') {
+                if(!this.saveBibles()) {
                     console.log('User config NOT loaded, saveUserBibleSelections is false!');
-                    userConfigs.bibles_selected = this.app.getSystemDefaultBibles().slice();
+                    userConfigs.bibles_selected = [];
                 }
 
                 console.log('User config loaded', userConfigs);
@@ -87,12 +92,23 @@ module.exports = kind({
         this.app.get('appLoaded') && this.app.set('locale', this.app.configs.language);
 
         this.set('parallel_search_error_suppress', this.app.configs.parallelSearchErrorSuppress);
-        this.set('bibles_selected', this.app.getSystemDefaultBibles().slice());
+        this.set('bibles_selected', []);
 
         //         if(this.app.parallelSearchErrorSuppressUserConfig) {
         //     var parallelSurpress = this.app.UserConfig.get('parallel_search_error_suppress') || false;
         // } else {
         //     var parallelSurpress = this.app.configs.parallelSearchErrorSuppress || false;
         // }
+    },
+    saveBibles: function() {
+        return this.app.configs.saveUserBibleSelections && this.app.configs.saveUserBibleSelections != 'false';
+    },
+    hasBibles: function() {
+        if(this.saveBibles()) {
+            var bibles = this.get('bibles_selected') || [];
+            return Array.isArray(bibles) && bibles.length > 0;
+        } else {
+            return false;
+        }
     }
 });

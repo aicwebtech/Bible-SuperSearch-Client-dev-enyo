@@ -26,6 +26,7 @@ module.exports = kind({
     searchField: 'search',
     defaultSearchType: 'and',
     _automaticChange: false, // Indicates that the formData change was caused by an automatic change, not user input
+    _dontClearBibles: false, // Indicates that the formData.bible should not be cleared when clearing the form
     
     
     // WARNING: if given FormBase instance is NOT the primary form, you must set subForm to true!
@@ -167,24 +168,40 @@ module.exports = kind({
         }, 100);
     },
     clearFormManual: function() {
+        this.clearFormSemiAutomatic();
+        return;
+        
         this._automaticChange = false;
         
-        this.set('formData', {
-            // bible: [this.app.configs.defaultBible]
-        });
+        this.set('formData', {});
 
         this.waterfall('onClearFormWaterfall');
         this.clearHash();
         this.populateDefaults();
+    },
+    clearFormSemiAutomatic: function() {
+        var self = this;
+
+        if(this.app.UserConfig.hasBibles()) {
+            this._dontClearBibles = true;
+        }
         
+        this.set('formData', {});
+
+        this.waterfall('onClearFormWaterfall');
+        this.clearHash();
+        this.populateDefaults();
+
+        this._dontClearBibles && window.setTimeout(function() {
+            self._dontClearBibles = false;
+        }, 100);
     },
     changeLocaleManual: function() {
         this.app.debug && this.log();
         
         if(this.app.configs.changeLanguageClearForm) {
-            this.clearFormManual();
+            this.clearFormSemiAutomatic();
         }
-        //this.submitDefault();
     },
     populateDefaults: function() {
         //this.$.Bible && this.$.Bible.set('value', ['tr', 'kjv', 'tyndale']);
@@ -1113,7 +1130,7 @@ module.exports = kind({
             });
         }
 
-        var e = {bibles: value, dir: dir, automatic: this._automaticChange};
+        var e = {bibles: value, dir: dir, automatic: this._automaticChange, ignore: this._dontClearBibles};
 
         Signal.send('onBibleChange', e);
         this.waterfall('onBibleChange', e);

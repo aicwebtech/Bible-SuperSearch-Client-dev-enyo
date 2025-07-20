@@ -42,7 +42,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '6.0.1',
+    applicationVersion: '6.1.0.alpha2',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -1489,6 +1489,7 @@ var App = Application.kind({
             this.configs.saveUserBibleSelections && this.configs.saveUserBibleSelections != 'false'
         ) {
             var userBibles = this.UserConfig.get('bibles_selected') || null;
+            this.debug && this.log('User config bibles', userBibles);
 
             if(userBibles && Array.isArray(userBibles) && userBibles.length > 0) {
                 this.debug && this.log('Using user config selected bibles', userBibles);
@@ -1499,6 +1500,7 @@ var App = Application.kind({
         return this.getSystemDefaultBibles();
     },
     getSystemDefaultBibles: function() {
+        this.debug && this.log('Using system default bibles');
         var locale = this.get('locale');
 
         if(this.defaultBiblesByLanguage && this.defaultBiblesByLanguage[locale]) {
@@ -2331,7 +2333,7 @@ var App = Application.kind({
         var c = this.configs.saveUserBibleSelections;
         this.debug && this.log('handleBibleChange', inEvent, c);
 
-        if(c && c != 'false' && c != false && inEvent.dir == 2 && inEvent.automatic != true) {
+        if(c && c != 'false' && c != false && inEvent.dir == 2 && inEvent.automatic != true && inEvent.ignore != true) {
             this.UserConfig.set('bibles_selected', inEvent.bibles || []);
             this.debug && this.log('Saving bibles to user config');
         } else {

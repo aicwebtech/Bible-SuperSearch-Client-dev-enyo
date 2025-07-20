@@ -74,7 +74,6 @@ module.exports = kind({
             components: [{kind: i18n, content: 'Remove Bible'}]
         });
 
-
         for(var i = 1; i <= num; i++) {
             this._addSelectorHelper();
         }
