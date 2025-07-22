@@ -7,6 +7,7 @@ module.exports = kind({
     kind: Controller,
     pk: null, // primary key of the model
     lsUrl: 'BibleSuperSearchUserConfig',
+    _languageCache: null,
 
     newModel: function(pk) {
         this.pk = pk;
@@ -110,5 +111,8 @@ module.exports = kind({
         } else {
             return false;
         }
-    }
+    },
+    _getDefaultLang: function() {
+        return this._languageCache || this.app.configs.language;
+    },
 });

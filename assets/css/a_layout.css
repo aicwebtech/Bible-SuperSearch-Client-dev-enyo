@@ -488,18 +488,11 @@ div.bss_alert_dialog {
 }
 
 .bss_dialog_container .bss_dialog_buttons span.bss_spacer, .bss_hover_dialog .bss_dialog_buttons span.bss_spacer {
-    display: inline-block;
+    /* display: inline-block; */
+    display: none;
     width: 10%;
     max-width: 40px;
 } 
-
-/*.bss_dialog_container .bss_dialog_buttons button, .bss_hover_dialog .bss_dialog_buttons button {
-    display: inline-block;
-    width: 10%;
-    max-width: 40px;
-} 
-*/
-
 
 .bss_help_dialog .bss_dialog_container {
     margin: 10px;
@@ -509,9 +502,12 @@ div.bss_alert_dialog {
     padding-top: 5px;
 }
 
-.bss_help_dialog .bss_dialog_buttons, .bss_hover_dialog .bss_dialog_buttons {
-    /*min-height: 30px;*/
+.biblesupersearch_dialog .bss_dialog_buttons {
     padding: 8px 0 8px;
+}
+
+.biblesupersearch_dialog .bss_dialog_buttons button {
+    margin: 0 10px;
 }
 
 .bss_help_dialog .bss_list {
@@ -521,7 +517,6 @@ div.bss_alert_dialog {
 .bss_help_dialog .bss_list .bss_col {
     padding: 0 15px;
     display: inline-block;
-/*    height: 320px;*/
     overflow-y: auto;
 }
 
@@ -611,6 +606,11 @@ div.bss_alert_dialog {
 
 .bss_share_dialog .bss_link_share_container {
     padding: 5px;
+}
+
+.bss_share_dialog .bss_option_container {
+    white-space: nowrap;
+    display: inline-block;
 }
 
 .bss_share_dialog .bss_link_share_container textarea.bss_link_share {

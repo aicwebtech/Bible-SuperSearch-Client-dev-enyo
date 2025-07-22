@@ -237,6 +237,7 @@ module.exports = {
     'Text Display': '', 
     'Font Style': '', 
     'This will reset the settings to defaults.':'', // 5.6.20
+    'Do you want to save the settings for future use?': '', // 6.1
 
     // Result and error messages
     

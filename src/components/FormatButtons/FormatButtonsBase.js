@@ -126,7 +126,7 @@ module.exports = kind({
     }, 
     handleSaveSetting: function(inSender, inEvent) {
         var t = this,
-            msg = this.app.t('This will save the settings to for future page loads.');
+            msg = this.app.t('Do you want to save the settings for future use?');
 
         this.$.ConfirmDialog.confirm(msg, function(confirm) {
             if(confirm) {

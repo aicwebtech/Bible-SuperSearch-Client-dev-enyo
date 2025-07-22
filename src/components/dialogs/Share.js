@@ -66,31 +66,42 @@ module.exports = kind({
         {
             components: [
                 {
-                    kind: i18n, 
-                    tag: 'label', 
-                    content: 'Include Link',
-                    attributes: {for: 'bss_share_inc_link'}
+                    classes: 'bss_option_container',
+                    components: [
+                        {
+                            kind: i18n, 
+                            tag: 'label', 
+                            content: 'Include Link',
+                            attributes: {for: 'bss_share_inc_link'}
+                        },
+                        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
+                        {
+                            kind: Checkbox, 
+                            name: 'inc_link', 
+                            id: 'bss_share_inc_link',
+                            checked: true
+                        },
+                    ]
                 },
-                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
                 {
-                    kind: Checkbox, 
-                    name: 'inc_link', 
-                    id: 'bss_share_inc_link',
-                    checked: true
-                },            
-                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
-                {
-                    kind: i18n, 
-                    tag: 'label',
-                    content: 'Include Formatting',
-                    attributes: {for: 'bss_share_inc_format'}
+                    classes: 'bss_option_container',
+                    components: [
+                        {
+                            kind: i18n, 
+                            tag: 'label', 
+                            content: 'Include Formatting',
+                            attributes: {for: 'bss_share_inc_format'}
+                        },
+                        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
+                        {
+                            kind: Checkbox, 
+                            name: 'inc_format', 
+                            id: 'bss_share_inc_format',
+                            checked: true
+                        },
+                    ]
                 },
-                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
-                {
-                    kind: Checkbox, 
-                    name: 'inc_format', 
-                    id: 'bss_share_inc_format'
-                },
+                {classes: 'bss_clear_both'}
             ]
         },
 
@@ -100,7 +111,6 @@ module.exports = kind({
             {name: 'Copy', kind: Button, ontap: 'copy', components: [
                 {kind: i18n, content: 'Copy'}
             ]},          
-            {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp; &nbsp; &nbsp;'},
             {name: 'Close', kind: Button, ontap: 'close', components: [
                 {kind: i18n, content: 'Close'},
             ]}

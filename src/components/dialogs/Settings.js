@@ -282,16 +282,16 @@ module.exports = kind({
     ],
 
     buttonComponents: [
-        {name: 'Reset', kind: Button, ontap: 'reset', components: [
+        {name: 'Reset', kind: Button, ontap: 'reset', _classes: 'bss_float_left', components: [
             {kind: i18n, content: 'Reset'},
         ]},
-        {tag: 'span', classes: 'bss_spacer'}, 
-        {tag: 'span', classes: 'bss_spacer'}, 
+        // {tag: 'span', classes: 'bss_spacer'}, 
+        // {tag: 'span', classes: 'bss_spacer'}, 
         {name: 'Save', kind: Button, ontap: 'save', components: [
             {kind: i18n, content: 'Save'},
         ]},
-        {tag: 'span', classes: 'bss_spacer'}, 
-        {tag: 'span', classes: 'bss_spacer'}, 
+        // {tag: 'span', classes: 'bss_spacer'}, 
+        // {tag: 'span', classes: 'bss_spacer'}, 
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'},
         ]}
@@ -405,7 +405,7 @@ module.exports = kind({
     },
     save: function() {
         var t = this,
-            msg = this.app.t('This will save the settings to for future page loads.');
+            msg = this.app.t('Do you want to save the settings for future use?');
 
         this.$.ConfirmDialog.confirm(msg, function(confirm) {
             if(confirm) {

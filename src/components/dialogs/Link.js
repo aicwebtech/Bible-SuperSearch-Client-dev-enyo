@@ -52,7 +52,6 @@ module.exports = kind({
         {name: 'Copy', kind: Button, ontap: 'copy', components: [
             {kind: i18n, content: 'Copy'}
         ]},          
-        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp; &nbsp; &nbsp;'},
         {name: 'Close', kind: Button, ontap: 'close', components: [
             {kind: i18n, content: 'Close'}
         ]}

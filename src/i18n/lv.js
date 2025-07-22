@@ -220,6 +220,7 @@ module.exports = {
     'Text Display': 'Attēlotā Teksta Skats', // 5.0
     'Font Style': 'Fonta Stils', // 5.0
     'This will reset the settings to defaults.':'Iestatījumi tiks atiestatīti uz noklusējuma iestatījumiem.', // 5.6.20
+    'Do you want to save the settings for future use?': 'Vai vēlaties saglabāt iestatījumus turpmākai lietošanai?', // 6.1
 
     // Result and error messages
     

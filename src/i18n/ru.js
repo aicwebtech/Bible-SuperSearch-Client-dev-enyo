@@ -222,7 +222,9 @@ module.exports = {
     'Text Display': 'Вид Отображаемого Текста', // 5.0
     'Font Style': 'Стиль Шрифта', // 5.0
     'This will reset the settings to defaults.':'Это сбросит настройки на значения по умолчанию.', // 5.6.20
+    'Do you want to save the settings for future use?': 'Хотите ли вы сохранить настройки для дальнейшего использования?', // 6.1
 
+  
     // Result and error messages
     
     // Your search produced (number of verses) results
