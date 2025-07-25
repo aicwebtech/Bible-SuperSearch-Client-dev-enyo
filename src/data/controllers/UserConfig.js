@@ -25,6 +25,11 @@ module.exports = kind({
         // these may be needed??
         // this.set('bibles_selected', []);
         // this.app.set('locale', this.app.configs.language);
+        if(!this.saveLanguages()) {
+            this._languageCache = this.app.get('locale') || null;
+            console.log('userconfig saveLanguages is false!', this._languageCache);
+        }
+
         this.clear();
         this.save();
         this.app.set('localeManual', false);
@@ -36,7 +41,7 @@ module.exports = kind({
             try {                
                 var userConfigs = userConfigs ? JSON.parse(userConfigs) : {};
 
-                if(this.app.configs.omitUserLanguage) {
+                if(!this.saveLanguages()) {
                     userConfigs.locale = this.app.configs.language;
                 }
 
@@ -89,8 +94,8 @@ module.exports = kind({
             this.set('read_render_style', this.app.configs.textDisplayDefault);
         }
 
-        this.set('locale', this.app.configs.language);
-        this.app.get('appLoaded') && this.app.set('locale', this.app.configs.language);
+        this.set('locale', this._getDefaultLang());
+        this.app.get('appLoaded') && this.app.set('locale', this._getDefaultLang());
 
         this.set('parallel_search_error_suppress', this.app.configs.parallelSearchErrorSuppress);
         this.set('bibles_selected', []);
@@ -103,6 +108,9 @@ module.exports = kind({
     },
     saveBibles: function() {
         return this.app.configs.saveUserBibleSelections && this.app.configs.saveUserBibleSelections != 'false';
+    },
+    saveLanguages: function() {
+        return !this.app.configs.omitUserLanguage || this.app.configs.omitUserLanguage == 'false';
     },
     hasBibles: function() {
         if(this.saveBibles()) {
