@@ -38,7 +38,7 @@ module.exports = kind({
     ],
 
     bodyComponents: [
-        {components: [
+        {name: 'LanguageSelectorBlock', components: [
             {kind: i18n, tag: 'span', content: 'Language'},
             {tag: 'br'},
             {name: 'Language', kind: LanguageSelector, style: 'width:250px'},
@@ -390,6 +390,10 @@ module.exports = kind({
             this.app.configs.saveUserSettings == 'false'
         ) {
             this.$.Save.hide();
+        }
+
+        if(!this.app.configs.languageSelectionEnable || this.app.configs.languageSelectionEnable == 'false') {
+            this.$.LanguageSelectorBlock.hide();
         }
 
         this.$.parallel_search_error_toggle.set('showing', this.app.configs.parallelSearchErrorSuppressUserConfig);

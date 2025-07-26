@@ -1,5 +1,6 @@
 var kind = require('enyo/kind');
 var Controller = require('enyo/ModelController');
+var Signal = require('enyo/Signals');
 var Model = require('../models/UserConfig');
 
 module.exports = kind({
@@ -32,6 +33,7 @@ module.exports = kind({
 
         this.clear();
         this.save();
+        Signal.send('onClearForm'); // clear the form on reset so the Bibles clear ... maybe a better way to do this?
         this.app.set('localeManual', false);
     },
     load: function() {

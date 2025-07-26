@@ -6,6 +6,7 @@ var defaultConfig = {
     "bibleGrouping": 'language',                        // Default Bible list grouping
     "bibleSorting": 'rank|name',                        // Default Bible list sorting
     "bibleDefaultLanguageTop": false,                   // Default Bible list sorting
+    "languageSelectionEnable": true,                    // Enable Language selection
     "defaultLanguage": "en",                            // (future) Default Language 
     "enabledBibles": [],                                // Order indicates order Bibles will appear
     "interface": "twentytwenty",                        // Bible SuperSearch skin / interface

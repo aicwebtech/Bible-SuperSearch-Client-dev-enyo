@@ -28,11 +28,14 @@ var biblesupersearch_config_options = {
 
     'language' : 'en',
 
-    // Languages available to be selected by user
+    // Languages available to be viewed / selected by user
     // Comment out to show all available languages.
     // See supported languages above
     'languageList': ['en', 'ru', 'lv', 'es'],
 
+    // Enable Language selection
+    // If false, the language will be set to the value above, and not changeable
+    'languageSelectionEnable': true,
 
     // Common words not allowed as search terms for each language.  
     'commonWords': {

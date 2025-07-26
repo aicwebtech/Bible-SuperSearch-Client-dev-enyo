@@ -581,15 +581,22 @@ module.exports = kind({
             this.$.settings_save_button.set('showing', false);
         }
 
-        // todo - use new selector for locale selector here (needs styling)
-        //var LS = this.app.get('useNewSelectors') ? LocaleSelectorNew : LocaleSelectorOld;
-        var LS = LocaleSelectorOld;
+        this.log('lse', this.app.configs.languageSelectionEnable);
 
-        this.$.language_selector.createComponent({
-            name: 'Locale',
-            kind: LS,
-            owner: this
-        });
+        if(this.app.configs.languageSelectionEnable && this.app.configs.languageSelectionEnable != 'false') {
+            var LS = LocaleSelectorOld;
+
+            // todo - use new selector for locale selector here (needs styling)
+            //var LS = this.app.get('useNewSelectors') ? LocaleSelectorNew : LocaleSelectorOld;
+
+            this.$.language_selector.createComponent({
+                name: 'Locale',
+                kind: LS,
+                owner: this
+            });
+        } else {
+            this.$.language_selector.set('showing', false);
+        }
     }, 
     rendered: function() {
         this.inherited(arguments);
