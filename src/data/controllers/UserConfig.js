@@ -28,7 +28,6 @@ module.exports = kind({
         // this.app.set('locale', this.app.configs.language);
         if(!this.saveLanguages()) {
             this._languageCache = this.app.get('locale') || null;
-            console.log('userconfig saveLanguages is false!', this._languageCache);
         }
 
         this.clear();
@@ -48,12 +47,8 @@ module.exports = kind({
                 }
 
                 if(!this.saveBibles()) {
-                    console.log('User config NOT loaded, saveUserBibleSelections is false!');
                     userConfigs.bibles_selected = [];
                 }
-
-                console.log('User config loaded', userConfigs);
-
                 this.model.set(userConfigs);
                 this.app.debug && console.log('User config loaded', userConfigs);
             } 
