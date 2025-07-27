@@ -24,6 +24,7 @@ var ResponseCollection = require('./data/collections/ResponseCollection');
 var BookmarkCollection = require('./data/collections/BookmarkCollection');
 var StorageManager = require('./data/LocalStorageManager');
 var ErrorView = require('./view/ErrorView');
+var Passage = require('./components/Passage');
 
 //var MainView = require('./view/Content');
 
@@ -41,7 +42,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '6.0.1',
+    applicationVersion: '6.1.0.pre',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -59,6 +60,7 @@ var App = Application.kind({
     maximumBiblesDisplayed: 8,  // The absolute maximum number of parallel bibles that can be possibly displayed
     bibleDisplayLimit: 8,       // Maximum number of paralell Bibles that can be displayed, calculated based on screen size
     defaultBibles: [],
+    defaultBiblesByLanguage: {}, // default Bibles by language
     history: [],
     visited: [],
     bookmarks: null,
@@ -134,6 +136,11 @@ var App = Application.kind({
             kind: BssRouter,
             triggerOnStart: true,
             routes: [ {handler: 'handleHashGeneric', default: true} ]
+        },
+        {
+            name: 'Signal',
+            kind: Signal,
+            onBibleChange: 'handleBibleChange',
         }
     ],
 
@@ -346,6 +353,20 @@ var App = Application.kind({
             this.defaultBibles = (typeof this.configs.defaultBible == 'string') ? this.configs.defaultBible.split(',') : this.configs.defaultBible;
         } else {
             this.defaultBibles = ['kjv'];
+        }
+
+        this.defaultBiblesByLanguage = {}; 
+
+        if(this.configs.defaultBiblesByLanguage && typeof this.configs.defaultBiblesByLanguage == 'object') {
+            for(var lang in this.configs.defaultBiblesByLanguage) {
+                var def = this.configs.defaultBiblesByLanguage[lang];
+
+                if(typeof def == 'string') {
+                    this.defaultBiblesByLanguage[lang] = def.split(',');
+                } else {
+                    this.defaultBiblesByLanguage[lang] = def;
+                }
+            }
         }
 
         this.defaultBiblesRaw = utils.clone(this.defaultBibles);
@@ -1151,6 +1172,16 @@ var App = Application.kind({
 
         return false;
     },
+    getFormReference: function() {
+        if(this.formHasField('reference')) {
+            return this.getFormFieldValue('reference') || null;
+        } else if(this.formHasField('request')) {
+            var req = this.getFormFieldValue('request') || null;
+            return Passage.isPassage(req) ? req : null;
+        }
+        
+        return false;
+    },
     formIsShortHashable: function() {
         if(this.view && this.view._formIsShortHashable) {
             return this.view._formIsShortHashable();
@@ -1206,7 +1237,7 @@ var App = Application.kind({
         }
 
         if(!Array.isArray(bibles)) {
-            bibles = [bibles];
+            bibles = bibles.split(',');
         }
 
         if(filter) {
@@ -1267,7 +1298,7 @@ var App = Application.kind({
     getBook: function(id) {
         return this.statics.books[id - 1] || null;
     },
-    getLocaleBookName: function(id, fallbackName, useShortname) {
+    getLocaleBookName: function(id, fallbackName, useShortname, locale) {
 
         if(this.configs.bibleBooksLanguageSource == 'bible') {
             this.log('bible source, using fallbackName');
@@ -1278,7 +1309,7 @@ var App = Application.kind({
         // Option 1: Display book names in language selected in UI (Reccomended)
         // Option 2: Display book names in language of First selected Bible (Legacy - not fully implemented)
 
-        var locale = this.get('locale');
+        locale = locale || this.get('locale');
 
         if(typeof this.localeDatasets[locale] == 'undefined') {
             // Quick hack to get this working on WordPress for English
@@ -1329,6 +1360,68 @@ var App = Application.kind({
         }
 
         return book ? book.name : fallbackName;
+    },
+    getShortcut: function(reference) {
+        var shortcut = null;
+        var locale = this.get('locale');
+
+        reference = this.standardizeReferences(reference, true);
+
+        if(this.localeDatasets[locale] && this.localeDatasets[locale].shortcuts) {
+            shortcut = this.localeDatasets[locale].shortcuts.find(function(item) {
+                return item.reference == reference;
+            });
+        } 
+        
+        if(!shortcut) {
+            shortcut = this.statics.shortcuts.find(function(item) {
+                return item.reference == reference;
+            });
+        }
+            
+        return shortcut;
+    },
+    standardizeReferences: function(ref, localeName) {
+        var passages = Passage.explodeReferences(ref, true);
+
+        if(passages.length == 0 || !ref) {
+            return ref;
+        }
+
+        var referenceNew = [];
+
+        passages.forEach(function(raw) {
+            item = Passage.parseBook(raw);
+
+            if(item.isBookRange) {
+                var bookSt = this.findBookByName(item.bookSt);
+                var bookEn = this.findBookByName(item.bookEn);
+
+                if(localeName && bookSt && bookEn) {
+                    var bookNameSt = this.getLocaleBookName(bookSt.id, bookSt.name, false, 'en');
+                    var bookNameEn = this.getLocaleBookName(bookEn.id, bookEn.name, false, 'en');
+                } else {
+                    var bookNameSt = bookSt ? bookSt.id + 'B' : item.bookSt;
+                    var bookNameEn = bookEn ? bookEn.id + 'B' : item.bookEn;
+                }
+                
+                var ref = bookNameSt + ' - ' + bookNameEn + ' ' + item.chapter_verse;
+            } else {
+                var book = this.findBookByName(item.book);
+
+                if(localeName && book) {
+                    var bookName = this.getLocaleBookName(book.id, book.name, false, 'en');
+                } else {
+                    var bookName = book ? book.id + 'B' : item.book;
+                }
+                
+                var ref = bookName + ' ' + item.chapter_verse;
+            }
+
+            referenceNew.push(ref.trim());
+        }, this);
+
+        return referenceNew.join('; ');
     },
     getTestamentByBookId: function(bookId) {
         if(bookId >= 1 && bookId <= 39) {
@@ -1389,6 +1482,32 @@ var App = Application.kind({
     },
     logAnon: function() {
         window.console && console.log(arguments);
+    },
+    getDefaultBibles: function() {
+        if(
+            this.configs.saveUserSettings && this.configs.saveUserSettings != 'false' &&
+            this.configs.saveUserBibleSelections && this.configs.saveUserBibleSelections != 'false'
+        ) {
+            var userBibles = this.UserConfig.get('bibles_selected') || null;
+            this.debug && this.log('User config bibles', userBibles);
+
+            if(userBibles && Array.isArray(userBibles) && userBibles.length > 0) {
+                this.debug && this.log('Using user config selected bibles', userBibles);
+                return utils.clone(userBibles);
+            }
+        }
+
+        return this.getSystemDefaultBibles();
+    },
+    getSystemDefaultBibles: function() {
+        this.debug && this.log('Using system default bibles');
+        var locale = this.get('locale');
+
+        if(this.defaultBiblesByLanguage && this.defaultBiblesByLanguage[locale]) {
+            return utils.clone(this.defaultBiblesByLanguage[locale]);
+        } else {
+            return utils.clone(this.defaultBibles);
+        }
     },
     getLocaleLanguage: function() {
         return this.get('locale').split('_')[0];
@@ -1687,6 +1806,22 @@ var App = Application.kind({
         
         return trans;
     },
+    // Translate string to icon
+    it: function(string) {
+        var map = {
+            'Context': 'menu_open',
+            'Chapter': 'expand', // = 'arrow_expand_vertical',
+            'Copy': 'content_copy',
+            'Share': 'share',
+        };
+
+        // somehow, this is breaking link hovering...
+        if(map[string]) {
+            // return "<span class='bss-material-icons bss_icon'>" + map[string] + "</span>";
+        }
+
+        return this.t(string);
+    },
     findBookByName: function(bookName, locale) {
         this.debug && this.log(bookName, locale);
         
@@ -1766,9 +1901,26 @@ var App = Application.kind({
     pushHistory: function() {
         var title = this.get('bssTitle'),
             url = document.location.href,
-            limit = this.configs.historyLimit || 50;
+            limit = this.configs.historyLimit || 50,
+            isBaseUrl = (url == this.baseUrl || url == this.baseUrl + '/' || url == ''),
+            check = this.history.length > 0 ? false : true;
 
-        if(title && (this.history.length == 0 || this.history[0].title != title)) {
+        url = this.getRelativeUrl(url);
+        isBaseUrl = (url == '') ? true : isBaseUrl;
+
+        // If the URL is the base URL, we ignore the title and check against the URL
+        if(!check) {            
+            check = isBaseUrl ? this.history[0].url != url : this.history[0].title != title;
+        }
+
+        this.cleanHistory(); // clean history before adding new item
+        // todo - v 6.2, remove this check
+ 
+        if(title && (check)) {
+            this.history = this.history.filter(function(item) {
+                return item.title != title && item.url != url;
+            });
+
             this.history.unshift({title: title, url: url});
 
             if(this.history.length > limit) {
@@ -1778,16 +1930,40 @@ var App = Application.kind({
             localStorage.setItem('BibleSuperSearchHistory', JSON.stringify(this.history));
         }
     },
+    cleanHistory: function() {
+        if(this.history.length == 0) {
+            return; // nothing to clean
+        }
+        
+        var tracked = {},
+            self = this;
+        
+        this.history = this.history.filter(function(item) {
+            var url = self.getRelativeUrl(item.url);
+            var isBaseUrl = (item.url == self.baseUrl || item.url == self.baseUrl + '/' || url == '');
+            var track = isBaseUrl ? url : item.title;
+
+            if(tracked[track]) {
+                return false; // already tracked, remove this item
+            }
+            
+            tracked[track] = true; // track this item
+            return true;
+        });
+
+        localStorage.setItem('BibleSuperSearchHistory', JSON.stringify(this.history));
+    },
     clearHistory: function() {
         this.history = [];
         localStorage.setItem('BibleSuperSearchHistory', '[]');
     },    
     pushVisited: function(url) {
-        var url = url || document.location.href;
-        // var found = this.visited.find((item) => item == url);
+        var url = url || document.location.href,
+            self = this;
+            url = this.getRelativeUrl(url);
 
         var found = this.visited.find(function(item) {
-            return item == url;
+            return self.getRelativeUrl(item) == url;
         });
 
         if(!found) {
@@ -1815,6 +1991,31 @@ var App = Application.kind({
         this.visited = [];
         localStorage.setItem('BibleSuperSearchVisited', '[]');
         Signal.send('onVisitedClear');
+    },
+    getRelativeUrl: function(url) {
+        if(!url || url == '' || url == this.baseUrl || url == this.baseUrl + '/') {
+            return '';
+        }
+
+        if(url.indexOf('#') === -1 && url.indexOf('http://') === -1 && url.indexOf('https://') === -1) {
+            return url; // already relative
+        }
+
+        var parts = url.split('#');
+
+        url = parts[1] || '';
+        return url.trim();
+    },   
+    getAbsoluteUrl: function(url) {        
+        if(!url || url == '' || url == this.baseUrl || url == this.baseUrl + '/') {
+            return this.baseUrl;
+        }   
+
+        if(url.indexOf(this.baseUrl) === 0 || url.indexOf('http://') === 0 || url.indexOf('https://') === 0) {
+            return url; // already absolute
+        }
+
+        return this.baseUrl + '#' + this.getRelativeUrl(url);
     },
     alert: function(string, inSender, inEvent) {
         // todo - make some sort of custom alert dialog here!
@@ -1874,9 +2075,7 @@ var App = Application.kind({
     responseDataChanged: function(was, is) {
         var renderStyle = this.UserConfig.get('render_style');
 
-        if(renderStyle == 'verse' || this.UserConfig.get('single_verses') || this.UserConfig.get('passages')) {
-            this._checkRenderStyle();
-        }
+        this._checkRenderStyle(); // always check render style when responseData changes
     },
     watchSingleVerses: function(pre, cur, prop)  {
         //this._checkRenderStyle();
@@ -1955,6 +2154,7 @@ var App = Application.kind({
 
         this.waterfall('onFormResponseSuccess', responseDataNew);
         Signal.send('onFormResponseSuccess', responseDataNew);
+        this.set('responseDataNew', responseDataNew);
     },
     _copyComponentContent: function(Component, contentField, share, shareContent) {
         if(!Component) {
@@ -2002,8 +2202,7 @@ var App = Application.kind({
             var div = document.body.createTextRange(); // IE only?
             div.moveToElementText(n);
             div.select();
-        }
-        else {                      // All others
+        } else {                    // All others
             var div = document.createRange(); // Supported ALL
             div.setStartBefore(n); // Supported ALL
             div.setEndAfter(n); // Supported ALL
@@ -2016,7 +2215,7 @@ var App = Application.kind({
         if((tag == 'p' || tag == 'div') && navigator && navigator.clipboard && navigator.clipboard.writeText) {
             var selected = window.getSelection().toString();
             var promise = navigator.clipboard.writeText(selected);
-            this.debug && this.log('Using clipboard API');
+            this.debug && this.log('Copy using clipboard API');
 
             promise.then(utils.bind(this, function() {
                 this.alert('Copied to clipboard');
@@ -2032,12 +2231,13 @@ var App = Application.kind({
         }
         else {        
             // Fallback: Use depricated document.execCommand(copy)
-            this.debug && this.log('Using document.execCommand(copy)');
-
+            
             if(!document.execCommand) {
                 this.alert('Unable to copy, please use HTTPS or copy manually.');
                 return;
             }
+            
+            this.debug && this.log('Copy using document.execCommand(copy)');
 
             try {
                 var success = document.execCommand('copy'); // depricated 
@@ -2053,7 +2253,17 @@ var App = Application.kind({
                this.alert('Failed to copy');
             }
         }
+    },
+    clearSelection: function() {
+        var sel = window.getSelection ? window.getSelection() : document.selection;
 
+        if (sel) {
+            if (sel.removeAllRanges) {
+                sel.removeAllRanges();
+            } else if (sel.empty) {
+                sel.empty();
+            }
+        }
     },
     initBookmarks: function() {
         this.bookmarks = new BookmarkCollection;
@@ -2105,12 +2315,30 @@ var App = Application.kind({
     userConfigChanged: function() {
         var t = this;
 
+        if(
+            !this.configs.saveUserSettings || this.configs.saveUserSettings == 'false'
+            || this.configs.saveUserSettingsManual && this.configs.saveUserSettingsManual != 'false'
+        ) {
+            return; // do not save user config
+        }
+
         this.ajaxLoadingDelay = false;
         window.clearTimeout(this.configSaveDelayTimer);
 
         this.configSaveDelayTimer = window.setTimeout(function() {
             t.UserConfig.save();
         }, 1000);
+    },
+    handleBibleChange: function(inSender, inEvent) {
+        var c = this.configs.saveUserBibleSelections;
+        this.debug && this.log('handleBibleChange', inEvent, c);
+
+        if(c && c != 'false' && c != false && inEvent.dir == 2 && inEvent.automatic != true && inEvent.ignore != true) {
+            this.UserConfig.set('bibles_selected', inEvent.bibles || []);
+            this.debug && this.log('Saving bibles to user config');
+        } else {
+            this.debug && this.log('NOT saving bibles to user config');
+        }
     }
 });
 

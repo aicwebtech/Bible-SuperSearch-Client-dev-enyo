@@ -237,6 +237,7 @@ module.exports = {
     'Text Display': '', 
     'Font Style': '', 
     'This will reset the settings to defaults.':'', // 5.6.20
+    'Do you want to save the settings for future use?': '', // 6.1
 
     // Result and error messages
     
@@ -353,6 +354,7 @@ module.exports = {
     'Bible Downloads': '',
     'Select Bible(s)' : '',
     'Select a Format': '',
+    'Some Bibles may not be available for download due to copyright restrictions.': '', // 6.1
     'Rendering': '',
     'Rendering Bibles, this may take some time': '',
     'Rendering is Complete': '',

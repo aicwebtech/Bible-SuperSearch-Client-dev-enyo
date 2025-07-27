@@ -96,7 +96,7 @@ module.exports = kind({
                     {classes: 'verses', components: [
                         {
                             kind: Anchor, 
-                            href: item.url, 
+                            href: this.app.getAbsoluteUrl(item.url), 
                             content: content,
                             title: title, 
                             ontap: 'handleHistoryTap'

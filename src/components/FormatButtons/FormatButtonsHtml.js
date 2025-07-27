@@ -406,12 +406,23 @@ module.exports = kind({
             {
                 kind: i18n,
                 classes: 'bss_item bss_link bss_text_only',
-                showing: false,
+                showing: true,
                 name: 'settings_reset_button',
                 ontap: 'handleResetSetting',
                 attributes: {title: 'Reset'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'restart_alt'}
+                ],
+            },
+            {
+                kind: i18n,
+                classes: 'bss_item bss_link bss_text_only',
+                showing: true,
+                name: 'settings_save_button',
+                ontap: 'handleSaveSetting',
+                attributes: {title: 'Save Settings'},
+                components: [
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'save'}
                 ],
             },
             {
@@ -561,15 +572,29 @@ module.exports = kind({
             this.$.bookmark_button.set('showing', false);
         }
 
-        // todo - use new selector for locale selector here (needs styling)
-        //var LS = this.app.get('useNewSelectors') ? LocaleSelectorNew : LocaleSelectorOld;
-        var LS = LocaleSelectorOld;
+        if(
+            !this.app.configs.saveUserSettingsManual || 
+            this.app.configs.saveUserSettingsManual == 'false' ||
+            !this.app.configs.saveUserSettings ||
+            this.app.configs.saveUserSettings == 'false'
+        ) {
+            this.$.settings_save_button.set('showing', false);
+        }
 
-        this.$.language_selector.createComponent({
-            name: 'Locale',
-            kind: LS,
-            owner: this
-        });
+        if(this.app.configs.languageSelectionEnable && this.app.configs.languageSelectionEnable != 'false') {
+            var LS = LocaleSelectorOld;
+
+            // todo - use new selector for locale selector here (needs styling)
+            //var LS = this.app.get('useNewSelectors') ? LocaleSelectorNew : LocaleSelectorOld;
+
+            this.$.language_selector.createComponent({
+                name: 'Locale',
+                kind: LS,
+                owner: this
+            });
+        } else {
+            this.$.language_selector.set('showing', false);
+        }
     }, 
     rendered: function() {
         this.inherited(arguments);

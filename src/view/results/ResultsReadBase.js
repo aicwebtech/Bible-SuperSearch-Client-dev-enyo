@@ -206,7 +206,9 @@ module.exports = kind({
             addBibleHeader = true;
         }
 
-        if(this.multiBibles && (this.singleVerseBibleHeaderNext || this.singleVerseCount >= this.singleVerseBibleHeaderThreshold)) {
+        if(this.multiBibles && (
+            this.renderStyle == 'passage' || this.singleVerseBibleHeaderNext || this.singleVerseCount >= this.singleVerseBibleHeaderThreshold
+        )) {
             addBibleHeader = true;
             this.singleVerseBibleHeaderNext = false;
             this.singleVerseCount = 0;
@@ -231,6 +233,13 @@ module.exports = kind({
 
         var bookName = this.app.getLocaleBookName(pd.book_id, pd.book_name);
         var refContent = bookName + ' ' + pd.chapter_verse;
+
+        if(!this.multiBibles) {
+            var shareLink = this.linkBuilder.buildPassageSignalLink('onShare', this.formData.bible, pd);
+            refContent += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a></sup>';
+            var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', this.formData.bible, pd);
+            refContent += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a></sup>';
+        }
 
         if(this.app.statics.access.statistics) {
             var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
@@ -259,19 +268,28 @@ module.exports = kind({
                 tag: 'tr'
             });
 
+            var bibleContent = '';
+
             for(i in this.bibles) {
                 var mod = this.bibles[i];
 
                 if(typeof this.app.statics.bibles[mod] == 'undefined') {
                     continue;
                 }
-                
-                var bible_info = this.app.statics.bibles[mod];
 
+                var bible_info = this.app.statics.bibles[mod];
+                bibleContent = this._getBibleDisplayName(bible_info);
+
+                shareLink = this.linkBuilder.buildPassageSignalLink('onShare', [mod], pd);
+                bibleContent += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a></sup>';
+                copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [mod], pd);
+                bibleContent += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a></sup>';               
+            
                 Container.$.BibleRow.createComponent({
                     tag: 'th',
                     attributes: {colspan: this.passageColumnsPerBible},
-                    content: this._getBibleDisplayName(bible_info)
+                    allowHtml: true,
+                    content: bibleContent
                 });
             }
         }
@@ -381,6 +399,11 @@ module.exports = kind({
         var contextLink = this.linkBuilder.buildReferenceLink('context', this.formData.bible, bookName, verse.chapter, verse.verse);
 
         var includeContextLinks = true;
+        var passageClone = Object.assign({}, passage);
+
+        if(this.renderStyle == 'verse_passage') {
+            passageClone.chapter_verse_actual = verse.chapter + ':' + verse.verse;
+        }
 
         if(!passage.single_verse && (passage.nav && !passage.nav.ccc || passage.chapter_verse.indexOf(':') == -1)) {
             includeContextLinks = false;
@@ -392,31 +415,34 @@ module.exports = kind({
         // verse.linksHtml = '<br /><small>'; // future use?
 
         var chapterTitle = this.app.t("Show full chapter"),
-            chapterText = this.app.t('Chapter'),
+            chapterText = this.app.it('Chapter'),
             verseTitle = this.app.t('Show this verse'),
             contextTitle = this.app.t('Show in context'),
-            contextText = this.app.t('Context');
+            contextText = this.app.it('Context'),
+            shareText = this.app.it('Share'),
+            copyText = this.app.it('Copy'),
+            shareTitle = this.app.t('Share'),
+            copyTitle = this.app.t('Copy');
 
         var html = '';
-            html += '<a href="' + verseLink + '" title="' + verseTitle + '" class="bss_std_link">' + bookName + ' ' + verse.chapter + ':' + verse.verse + '</a>';
+            html += '<a href="' + verseLink + '" title="' + verseTitle + '" class="bss_std_link bobo">' + bookName + ' ' + verse.chapter + ':' + verse.verse + '</a>';
             
             if(includeContextLinks) {            
                 html += '&nbsp; <sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="bss_std_link">' + contextText + '</a></sup>';           
                 html += '&nbsp; <sup>' + '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="bss_std_link">' + chapterText + '</a></sup>';
-
-
-                if(this.app.statics.access.statistics) {
-                    var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, verse.chapter, verse.verse);
-                    html += '&nbsp; <sup>' + '<a href="' + sl + '" title="' + chapterTitle + '" class="bss_std_link">' + this.app.t('Statistics') + '</a></sup>';
-                }
-
-                // verse.linksHtml += '<a href="' + chapterLink + '" title="' + chapterTitle + '" class="std_link">' + chapterText + '</a>&nbsp; &nbsp;';
-                // verse.linksHtml += '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + contextText + '</a>';
-                // future? 
-                // html += '&nbsp;&nbsp;<sup>' + '<a href="' + contextLink + '" title="' + contextTitle + '" class="std_link">' + 'Statistics' + '</a></sup>';
             }
 
-        // verse.linksHtml += '</small>';
+            var shareLink = this.linkBuilder.buildPassageSignalLink('onShare', [this.selectedBible.module], passageClone);
+            html += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + shareTitle + '" class="bss_std_link">' + shareText + '</a></sup>';
+
+            var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [this.selectedBible.module], passageClone);
+            html += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + copyTitle + '" class="bss_std_link">' + copyText + '</a></sup>';
+
+            // Statistics
+            if(this.app.statics.access.statistics) {
+                var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, verse.chapter, verse.verse);
+                html += '&nbsp; <sup>' + '<a href="' + sl + '" title="' + chapterTitle + '" class="bss_std_link">' + this.app.t('Statistics') + '</a></sup>';
+            }
 
         return html;
     },   

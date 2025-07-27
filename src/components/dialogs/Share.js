@@ -32,6 +32,10 @@ module.exports = kind({
     shareContent: null,
     actuallyShowDialogForce: false,
     populated: false,
+    resultsFilter: null,
+    autoCopy: false,
+    autoCopyIncLink: false,
+    autoCopyIncFormat: true,
 
     titleComponents: [
         {classes: 'bss_header', components: [
@@ -42,44 +46,62 @@ module.exports = kind({
     bodyComponents: [
         {classes: 'bss_link_share_container', components: [
             {
-                kind: TextArea, 
+                // kind: TextArea, 
+                tag: 'p',
                 name: 'CopyArea', 
+                allowHtml: true,
                 classes: 'bss_link_share', 
                 attributes: {dir: 'auto'},
                 _style: 'width: 98%'
             }
         ]},
+        {
+            kind: Signal,
+            onShare: 'handleClickShare',
+            onCopy: 'handleClickCopy',
+        }
     ],
 
     buttonComponents: [
         {
             components: [
                 {
-                    kind: i18n, 
-                    tag: 'label', 
-                    content: 'Include Link',
-                    attributes: {for: 'bss_share_inc_link'}
+                    classes: 'bss_option_container',
+                    components: [
+                        {
+                            kind: i18n, 
+                            tag: 'label', 
+                            content: 'Include Link',
+                            attributes: {for: 'bss_share_inc_link'}
+                        },
+                        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
+                        {
+                            kind: Checkbox, 
+                            name: 'inc_link', 
+                            id: 'bss_share_inc_link',
+                            checked: true
+                        },
+                    ]
                 },
-                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
                 {
-                    kind: Checkbox, 
-                    name: 'inc_link', 
-                    id: 'bss_share_inc_link',
-                    checked: true
-                },            
-                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
-                {
-                    kind: i18n, 
-                    tag: 'label',
-                    content: 'Include Formatting',
-                    attributes: {for: 'bss_share_inc_format'}
+                    classes: 'bss_option_container',
+                    components: [
+                        {
+                            kind: i18n, 
+                            tag: 'label', 
+                            content: 'Include Formatting',
+                            attributes: {for: 'bss_share_inc_format'}
+                        },
+                        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
+                        {
+                            kind: Checkbox, 
+                            name: 'inc_format', 
+                            id: 'bss_share_inc_format',
+                            checked: true
+                        },
+                    ]
                 },
-                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
-                {
-                    kind: Checkbox, 
-                    name: 'inc_format', 
-                    id: 'bss_share_inc_format'
-                },
+                {classes: 'bss_clear_both'}
             ]
         },
 
@@ -89,7 +111,6 @@ module.exports = kind({
             {name: 'Copy', kind: Button, ontap: 'copy', components: [
                 {kind: i18n, content: 'Copy'}
             ]},          
-            {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp; &nbsp; &nbsp;'},
             {name: 'Close', kind: Button, ontap: 'close', components: [
                 {kind: i18n, content: 'Close'},
             ]}
@@ -118,6 +139,7 @@ module.exports = kind({
         this.inherited(arguments);
     },
     close: function() {
+        this.resultsFilter = null;
         this.app.set('shareShowing', false);
     },
     showingChanged: function(was, is) {
@@ -140,6 +162,8 @@ module.exports = kind({
                 this.populate(); 
                 this.copy();
             }
+        } else {
+            this.resultsFilter = null;
         }
     },
     forceShowing: function() {
@@ -166,17 +190,42 @@ module.exports = kind({
     watchRenderStyle: function(pre, cur, prop) {
         this.populated && this.populate();
     },
+    handleClickShare: function(inSender, inEvent) {
+        this.log('handleClickShare', inSender, inEvent);
+        this.resultsFilter = utils.clone(inEvent);
+        this.app.set('shareShowing', true);
+    },
+    handleClickCopy: function(inSender, inEvent) {
+        this.log('handleClickCopy', inSender, inEvent);
+        this.autoCopy = true;
+        this.resultsFilter = utils.clone(inEvent);
+        this.forceShowing();
+        // this.populate();
+        this.copyHelper();
+        this.close();
+        // this.resultsFilter = null;
+        this.autoCopy = false;
+    },
     populate: function() {
         var title = document.title,
             url = window.location.href,
-            responseData = this.app.get('responseData'),
+            baseUrl = url.split('#'),
+            baseUrl = baseUrl[0],
+            responseData = this.app.get('responseDataNew') || this.app.get('responseData'),
             incLink = this.$.inc_link ? this.$.inc_link.get('checked') : true,
             limit = 0, // unlimited
             count = 0,
             content = '',
             bibleName = '',
             singleVerse = false,
-            maxReached = false;
+            maxReached = false,
+            nl = '<br />';
+
+        this.app.clearSelection();
+
+        if(this.autoCopy) {
+            incLink = this.autoCopyIncLink;
+        }
 
         this.shareContent = null;
 
@@ -185,9 +234,30 @@ module.exports = kind({
                 bible = null,
                 references = [];
 
+            var filterChapter = null;
+            var filterVerse = null;
+
+            if(this.resultsFilter && this.resultsFilter.cva) {
+                var sp = this.resultsFilter.cva.split(':');
+                filterChapter = sp[0] || null;
+                filterVerse = sp[1] || null;
+            }
+
             mainLoop:
             for(var i in passages) {
                 var p = passages[i];
+
+                if(this.resultsFilter) {
+                    if(this.resultsFilter.b && this.resultsFilter.b != p.book_id) {
+                        continue;
+                    }
+                    
+                    if(this.resultsFilter.cv != p.chapter_verse) {
+                        continue;
+                    }
+
+                    bible = this.resultsFilter.bible.split(',')[0];
+                }
 
                 if(bible == null) {
                     for(var b in p.verses) {
@@ -202,59 +272,91 @@ module.exports = kind({
                             break;
                         } 
                     }
+                } else {
+                    bibleName = this.app.statics.bibles[bible].name;
                 }
 
+                this.setCopyAreaClassesByBible(bible);
+
                 var book_name = this.app.getLocaleBookName(p.book_id, p.book_name);
+                
+                singleVerse = p.single_verse || filterChapter && filterVerse;
+                var chapterVerse = (filterChapter && filterVerse) ? this.resultsFilter.cva : p.chapter_verse;
 
-                content += (p.single_verse) ? '' : book_name + ' ' + p.chapter_verse + '\n\n';
+                content += (singleVerse) ? '' : book_name + ' ' + p.chapter_verse + nl + nl;
 
-                if(!p.single_verse) {
+                if(this.resultsFilter) {
+                    url = baseUrl + '#/r/' + bible + '/' + book_name + '.' + chapterVerse;
+                }
+
+                if(!singleVerse) {
                     references.push(book_name + ' ' + p.chapter_verse);
                 }
 
                 for(var c in p.verse_index) {
                     for(var idx in p.verse_index[c]) {
-                        count ++;
                         var v = p.verse_index[c][idx];
+
+                        if(filterChapter && filterVerse && (filterChapter != c || filterVerse != v)) {
+                            continue;
+                        }
+
                         var verse = p.verses[bible][c][v];
+                        count ++;
 
-                        content += (p.single_verse) ? book_name + ' ' + p.chapter_verse + '\n' : verse.verse + ' ';
+                        content += (p.single_verse || filterVerse) ? book_name + ' ' + chapterVerse + nl : verse.verse + ' ';
 
-                        if(p.single_verse) {
-                            references.push(book_name + ' ' + p.chapter_verse);
+                        if(singleVerse) {
+                            references.push(book_name + ' ' + chapterVerse);
                         }
 
                         content += this.processText(verse.text);
                         
                         if(limit > 0 && count >= limit) {
-                            content += (p.single_verse) ? '\n\n…' : ' …';
+                            content += (singleVerse) ? nl + nl +  '…' : ' …';
                             maxReached = true;
                             break mainLoop;
                         }
 
-                        content += (p.single_verse) ? '\n\n' : '\n';
+                        content += (singleVerse) ? nl : nl;
                     }
                 }
 
-                content += (p.single_verse) ? '' : '\n';
-                singleVerse = p.single_verse;
+                content += (p.single_verse) ? '' : nl;
             }
         }
 
-        content += (maxReached) ? '\n\n' : ''; // same regardles of singleVerse
-        //content += '\n' + bibleName + '\n\n\n' + title + '\n' + url;
-        //this.shareContent = content;
-
+        // content += (maxReached) ? nl + nl : ''; // same regardles of singleVerse
+        //content += (singleVerse) ? '' : nl + nl;
         content += bibleName;
 
         if(incLink) {
-            content += '\n\n\n' + references.join('; ') + ' - ' + this.app.t('Bible SuperSearch') + '\n' + url;
+            content += nl + nl + nl + references.join('; ') + ' - ' + this.app.t('Bible SuperSearch') + nl + url;
         }
 
         this.$.CopyArea.set('content', content.trim());
         this.populated = true;
-    },
 
+        this.$.CopyArea.hasNode() && this.$.CopyArea.hasNode().scrollTo({
+            top: 0, 
+            left: 0
+        });
+    },
+    setCopyAreaClassesByBible: function(bible) {
+        var bibleInfo = (typeof this.app.statics.bibles[bible] == 'undefined') ? null : this.app.statics.bibles[bible];
+
+        if(!bibleInfo) {
+            return ;
+        }
+
+        var classes = ['bss_link_share'];
+
+        classes.push('bss_bible_text');
+        classes.push('bss_bible_' + bibleInfo.module);
+        classes.push(bibleInfo.rtl ? 'bss_rtl' : 'bss_ltr');
+
+        this.$.CopyArea.set('classes', classes.join(' ')); 
+    },
     handleVerseTap: function(inSender, inEvent) {
         this.close();
     },
@@ -301,7 +403,12 @@ module.exports = kind({
     },
     processText: function(text) {
         text = text.replace(/<[^<>]+>/g, ''); // strip HTML
-        var incFormat = this.$.inc_format ? this.$.inc_format.get('checked') : true;
+
+        if(this.autoCopy) {
+            var incFormat = this.autoCopyIncFormat;
+        } else {
+            var incFormat = this.$.inc_format ? this.$.inc_format.get('checked') : true;
+        }
 
         // red letter - ERROR - using <> for red letter will COLLIDE with highlighting which sends back HTML!
         // U+2039, U+203A Single angle quotation marks (NOT <>)

@@ -25,6 +25,8 @@ module.exports = kind({
     referenceField: 'reference',
     searchField: 'search',
     defaultSearchType: 'and',
+    _automaticChange: false, // Indicates that the formData change was caused by an automatic change, not user input
+    _dontClearBibles: false, // Indicates that the formData.bible should not be cleared when clearing the form
     
     
     // WARNING: if given FormBase instance is NOT the primary form, you must set subForm to true!
@@ -144,6 +146,8 @@ module.exports = kind({
                 formData.request = ref;
             }
 
+            formData.bible = utils.clone(this.app.getDefaultBibles());
+
             this.defaultSubmitting = true;
             this.app.set('scrollMode', 'container_top');
             this._submitFormHelper(formData, false);
@@ -153,25 +157,50 @@ module.exports = kind({
         return false;
     },
     clearForm: function() {
+        var self = this;
+
+        this._automaticChange = true; 
         this.set('formData', {});
+
+        window.setTimeout(function() {
+            self._automaticChange = false;
+        }, 100);
     },
     clearFormManual: function() {
-        this.set('formData', {
-            // bible: [this.app.configs.defaultBible]
-        });
+        this.clearFormSemiAutomatic();
+        return;
+        
+        this._automaticChange = false;
+        
+        this.set('formData', {});
 
         this.waterfall('onClearFormWaterfall');
         this.clearHash();
         this.populateDefaults();
+    },
+    clearFormSemiAutomatic: function() {
+        var self = this;
+
+        if(this.app.UserConfig.hasBibles()) {
+            this._dontClearBibles = true;
+        }
         
+        this.set('formData', {});
+
+        this.waterfall('onClearFormWaterfall');
+        this.clearHash();
+        this.populateDefaults();
+
+        this._dontClearBibles && window.setTimeout(function() {
+            self._dontClearBibles = false;
+        }, 100);
     },
     changeLocaleManual: function() {
         this.app.debug && this.log();
         
         if(this.app.configs.changeLanguageClearForm) {
-            this.clearFormManual();
+            this.clearFormSemiAutomatic();
         }
-        //this.submitDefault();
     },
     populateDefaults: function() {
         //this.$.Bible && this.$.Bible.set('value', ['tr', 'kjv', 'tyndale']);
@@ -272,7 +301,7 @@ module.exports = kind({
     },
     
     processDefaults: function(formData) {
-        var defaultBibles = this.app.defaultBibles;
+        var defaultBibles = utils.clone(this.app.getDefaultBibles());
         formData.bible = (formData.bible && formData.bible != '0' && formData.bible != [] && formData.bible.length != 0) ? formData.bible : defaultBibles;
         
         if(!Array.isArray(formData.bible)) {
@@ -418,10 +447,10 @@ module.exports = kind({
         this.app.set('cacheId', this.get('cacheHash'));
         this.app.set('shortHashUrl', '#/c/' + this.get('cacheHash'));
         var responseData = {formData: this._formDataAsSubmitted, results: inResponse, success: true};
-        this.app.set('responseData', responseData);
-        this.app.set('altResponseData', null);
         this.app.set('resultsShowing', []);
         this.app.set('altResultsShowing', []);
+        this.app.set('responseData', responseData);
+        this.app.set('altResponseData', null);
         
         var renderStyle = this.app.UserConfig.get('render_style');
         // Certain render styles reformat the responseData, then send these events again
@@ -445,7 +474,7 @@ module.exports = kind({
         }
 
         if(this.defaultSubmitting) {
-            this.clearFormManual();
+            // this.clearFormManual();
             this.defaultSubmitting = false;
         }
 
@@ -1010,6 +1039,17 @@ module.exports = kind({
 
         return val;
     },
+    getFormReference: function() {
+        if(this.formFieldExists('reference')) {
+            return this.$.reference.get('value') || null;
+        } else if (this.formFieldExists('request')) {
+            var req = this.$.request.get('value') || null;
+
+            return this.Passage.isPassage(req) ? req : null;
+        }
+
+        return false;
+    },
     formFieldChanged: function(field, value, dir) {
         value = (!value || value == '') ? null : value;
 
@@ -1089,7 +1129,7 @@ module.exports = kind({
             });
         }
 
-        var e = {bibles: value, dir: dir};
+        var e = {bibles: value, dir: dir, automatic: this._automaticChange, ignore: this._dontClearBibles};
 
         Signal.send('onBibleChange', e);
         this.waterfall('onBibleChange', e);

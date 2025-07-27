@@ -30,12 +30,10 @@ module.exports = kind({
 
     bindings: [
         {from: 'controller.title', to: '$.Title.value', oneWay: false, transform: function(value, dir) {
-            // console.log('Bookmark title', value, dir);
             return value || null;
         }},                
 
         {from: 'controller.pageTitle', to: '$.PageTitle.value', oneWay: true, transform: function(value, dir) {
-            // console.log('Bookmark pageTitle', value, dir);
             return value || null;
         }}
     ],
@@ -124,7 +122,7 @@ module.exports = kind({
         this.setTitle('Add');
 
         var title = this.app.get('bssTitle'),
-            url = document.location.href,
+            url = this.app.getRelativeUrl(document.location.href),
             limit = this.app.configs.bookmarkLimit || 20;
 
         this.app.bookmarks.limitReached();
@@ -255,7 +253,7 @@ module.exports = kind({
     },
     moveToCurrent: function() {
         var title = this.app.get('bssTitle'),
-            url = document.location.href;
+            url = this.app.getRelativeUrl(document.location.href);
 
         this.controller.set('pageTitle', title);
         this.controller.set('link', url);

@@ -41,7 +41,8 @@ module.exports = kind({
         copy_passage_format: 'reference_passage',
         copy_passage_verse_number: true,
         copy_preset: 'word_processor',
-        copy_testament: false
+        copy_testament: false,
+        bibles_selected: [], // Array of selected Bibles
     },
 
     getUrl: function() {

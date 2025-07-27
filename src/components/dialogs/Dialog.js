@@ -57,9 +57,13 @@ module.exports = kind({
             this.$.ButtonBar.set('showing', true);
         }
     }, 
-    // showingChanged: function(was, is) {
-    //     this.inherited(arguments);
-    // },
+    showingChanged: function(was, is) {
+        this.inherited(arguments);
+
+        if(this.$.Body.hasNode()) {
+            this.$.Body.hasNode().scrollTop = 0; // reset scroll position
+        }
+    },
     close: function() {
         if(!this._safeToClose()) {
             return;

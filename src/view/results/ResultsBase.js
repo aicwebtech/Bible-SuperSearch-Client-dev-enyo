@@ -222,6 +222,21 @@ module.exports = kind({
 
     },
     renderPassage: function(passage) {        
+        
+        var resultsFilter = this.app.get('_resultsFilter') || null;
+
+        if(resultsFilter) {
+            this.log('resultsFilter', resultsFilter, passage);
+            
+            if(resultsFilter.b && resultsFilter.b != passage.book_id) {
+                return;
+            }
+            
+            if(resultsFilter.cv != passage.chapter_verse) {
+                return;
+            }
+        }
+        
         this.showingCopyrightBottom = false;
 
         if(passage.single_verse && this.multiBibles) {

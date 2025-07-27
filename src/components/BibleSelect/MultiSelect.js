@@ -74,7 +74,6 @@ module.exports = kind({
             components: [{kind: i18n, content: 'Remove Bible'}]
         });
 
-
         for(var i = 1; i <= num; i++) {
             this._addSelectorHelper();
         }
@@ -88,23 +87,16 @@ module.exports = kind({
     },
     resetValue: function() {
         this.setValue([]);
-        // this.parallelCleanup();
         this._resetSelectors();
 
-        var defaultBibles = utils.clone(this.app.defaultBiblesRaw);
+        var defaultBibles = utils.clone(this.app.getDefaultBibles());
 
         if(this.app.configs.parallelBibleStartSuperceedsDefaultBibles && defaultBibles.length > this.parallelStart) {
             defaultBibles = defaultBibles.slice(0, this.parallelStart);
         }
 
-        this.app.defaultBibles = defaultBibles;
-        // this.app.debug && this.log('default', defaultBibles);
         this.bubble('onSpecialBibleChange', {value: defaultBibles});
         this.setValue(defaultBibles);        
-
-        // this.app.debug && this.log('default', this.app.defaultBibles);
-        // this.bubble('onSpecialBibleChange', {value: this.app.defaultBibles});
-        // this.setValue(this.app.defaultBibles);
     },
     addSelector: function() {
         this.doAddSelectorTapped();

@@ -28,11 +28,14 @@ var biblesupersearch_config_options = {
 
     'language' : 'en',
 
-    // Languages available to be selected by user
+    // Languages available to be viewed / selected by user
     // Comment out to show all available languages.
     // See supported languages above
     'languageList': ['en', 'ru', 'lv', 'es'],
 
+    // Enable Language selection
+    // If false, the language will be set to the value above, and not changeable
+    'languageSelectionEnable': true,
 
     // Common words not allowed as search terms for each language.  
     'commonWords': {
@@ -45,14 +48,30 @@ var biblesupersearch_config_options = {
     'bibleBooksLanguageSource': 'ui', 
 
 
-    // Default Bible                        (string)
+    // Default Bible(s)                        (string, comma-separated string, or array of strings)
     //
     //      Automatically selected in first Bible selector
     //      Must be the 'module' of the desired Bible version
     //      See the API documentation for a list of available Bibles
     //          https://api.biblesupersearch.com/documentation
-
-    "defaultBible": "kjv",                              
+    
+    "defaultBible": "kjv",    
+    
+    // Default Bibles by Language (v6.1)           
+    //    (object of strings, comma-separated strings, or arrays of strings)
+    //     Default Bibles by UI language
+    //     If no Bibles for the selected language, the defaultBible will be used
+    "defaultBiblesByLanguage": {
+        // 'en': ['kjv', 'bishops', 'web', 'net'], // array of strings
+        // 'ru': 'synodal', // string
+        // 'lv': 'lv_gluck_8,kjv', // comma-separated string
+        // 'es': 'rvg',
+        // 'fr': 'martin',
+        // 'de': 'luther',
+        // 'it': 'diodati'
+    },
+    
+    // Default Bible(s)                    (array of strings)
     
     // Enabled Bibles                       (array of strings)
     //
@@ -351,6 +370,13 @@ var biblesupersearch_config_options = {
 
     'omitUserLanguage': false, // If saving user settings, whether to exclude the user's selected Language
 
+    'saveUserSettingsManual': false, // Whether to require user to save their settings manually (ie via a button)
+                                     // Otherwise, settings will be saved automatically when changed
+
+    'saveUserBibleSelections': false, // Whether to save user's selected Bibles with user settings           
+
+    
+    // Navigation Settings
     // Enable changing chapter and search page via horizontal touchscreen swipe gesture 
     "swipePageChapter": false,
 

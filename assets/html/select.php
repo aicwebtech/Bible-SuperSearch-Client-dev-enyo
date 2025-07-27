@@ -19,17 +19,11 @@
     }
 
     $config = file_get_contents('config.js');
-    // $config = substr($config, 38);
-    //$config = json_decode(trim($config));
-    // var_dump(json_last_error());
-    //$config['interface'] = $interface;
-
-    // $config = str_replace('"interface": "Expanding"', '"interface":"' . $interface . '"', $config);
-    // $config = str_replace('"interface":', '"interface":"' . $interface . '", //', $config);
 
     $test = isset($_REQUEST['test']) ? (bool) $_REQUEST['test'] : false;
     $testVerbose = isset($_REQUEST['test_verbose']) ? (bool) $_REQUEST['test_verbose'] : false;
     $testSkin = isset($_REQUEST['test_skin']) ? (bool) $_REQUEST['test_skin'] : false;
+    $apiUrl = isset($_REQUEST['api_url']) ? $_REQUEST['api_url'] : null;
 ?>
 
 <html>
@@ -54,34 +48,6 @@
             #selector select {
                 width: calc(100% - 100px);
             }
-
-            /* Temporary demonstratoins */
-            
-            /* Style the text for JUST the Latvian Gluck 8 Bible */
-            .bss_bible_lv_gluck_8 .bss_txt  {
-                color: green; /* Note: If red-letter text, the red letter will override your color here */
-                font-family: Arial Black;
-            }
-
-            /* Style the references for JUST the Latvian Gluck 8 Bible */
-            .bss_bible_lv_gluck_8 .bss_ver  {
-                color: orange; /* Note: if the reference is a link, the link colors will override your colors here */
-                text-decoration: overline underline;
-                font-weight: bold;
-            }
-
-            /* Style the text for JUST the Russian Synodal Bible */
-            .bss_bible_synodal .bss_txt  {
-                color: purple; /* Note: If red-letter text, the red letter will override your color here */
-                font-family: Courier New;
-            }
-
-            /* Style the references for JUST the Russian Synodal Bible */
-            .bss_bible_synodal .bss_ver  {
-                color: white; /* Note: if the reference is a link, the link colors will override your colors here */
-                font-weight: bold;
-                background-color: grey;
-            }
         </style>
         <script>
             var firstInterface = '<?php echo $first_interface ?>';
@@ -90,6 +56,10 @@
             biblesupersearch_config_options.interface = '<?php echo $interface; ?>';
             biblesupersearch_config_options.testOnLoad = <?php echo $test ? 'true' : 'false'; ?>;
             biblesupersearch_config_options.testVerbose = <?php echo $testVerbose ? 'true' : 'false'; ?>;
+
+            <?php if($apiUrl): ?>
+                biblesupersearch_config_options.apiUrl = '<?php echo $apiUrl; ?>';
+            <?php endif; ?>
 
             <?php if($test): ?>
                 biblesupersearch_config_options.landingReference = null; // disable landing reference if testing
@@ -144,6 +114,11 @@
             <label for='test_skin'><small>Test all Skins</small></label>            
             <input type='checkbox' name='test_verbose' id='test_verbose' value='1' <?php if($testVerbose) echo "checked=checked" ?> />
             <label for='test_verbose'><small>Verbose Tests</small></label>
+
+            <div>
+                <label for='api_url'>API URL: </label>
+                <input type='text' name='api_url' id='api_url' value='<?php echo $apiUrl ?>' />
+            </div>
         </form>
 
         <div id="qunit" style='position: relative;'></div>
