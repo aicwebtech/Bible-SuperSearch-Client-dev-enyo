@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'Zobrazení Textu', 
     'Font Style': 'Styl Fontu',
     'This will reset the settings to defaults.':'Tím se nastavení obnoví na výchozí.', // 5.6.20
+    'Do you want to save the settings for future use?':'Chcete uložit nastavení pro budoucí použití?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Některé Bible nemusí být dostupné ke stažení z důvodu autorských práv.',
 
     // Result and error messages
     

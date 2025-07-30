@@ -236,7 +236,9 @@ module.exports = {
     'Language' : 'Bahasa', 
     'Text Display': 'Tampilan Teks', 
     'Font Style': 'Gaya tulisan',
-    'This will reset the settings to defaults.':'Ini akan mengatur ulang pengaturan ke default.', // 5.6.20 
+    'This will reset the settings to defaults.':'Ini akan mengatur ulang pengaturan ke default.', // 5.6.20
+    'Do you want to save the settings for future use?' :'Apakah Anda ingin menyimpan pengaturan untuk penggunaan di masa mendatang?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Beberapa Alkitab mungkin tidak tersedia untuk diunduh karena batasan hak cipta.',
 
     // Result and error messages
     

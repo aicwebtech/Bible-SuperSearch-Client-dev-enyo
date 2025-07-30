@@ -236,7 +236,9 @@ module.exports = {
     'Language' : 'భాష', 
     'Text Display': 'టెక్స్ట్ డిస్ప్లే', 
     'Font Style': 'ఫాంట్ శైలి',
-    'This will reset the settings to defaults.':'ఇది డిఫాల్ట్ లకు సెట్టింగ్ లను రీసెట్ చేస్తుంది.', // 5.6.20 
+    'This will reset the settings to defaults.':'ఇది డిఫాల్ట్ లకు సెట్టింగ్ లను రీసెట్ చేస్తుంది.', // 5.6.20
+    'Do you want to save the settings for future use?':'భవిష్యత్తులో ఉపయోగం కోసం మీరు సెట్టింగులను సేవ్ చేయాలనుకుంటున్నారా?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'కాపీరైట్ పరిమితుల కారణంగా కొన్ని బైబిళ్లు డౌన్లోడ్ చేసుకోవడానికి అందుబాటులో ఉండకపోవచ్చు.',
 
     // Result and error messages
     

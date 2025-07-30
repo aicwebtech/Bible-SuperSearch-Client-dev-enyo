@@ -239,6 +239,8 @@ module.exports = {
     'Text Display': '', 
     'Font Style': '',
     'This will reset the settings to defaults.':'', // 5.6.20
+    'Do you want to save the settings for future use?':'',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'',
 
     // Result and error messages
     

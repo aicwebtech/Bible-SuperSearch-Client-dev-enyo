@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'የጽሑፍ ማሳያ', 
     'Font Style': 'የፊደል አጻጻፍ ስልት',
     'This will reset the settings to defaults.':'ይህ ቅንብሮቹን ወደ ነባሪዎች ዳግም ያስጀምራል።', // 5.6.20
+    'Do you want to save the settings for future use?':'ለወደፊት ጥቅም ላይ የሚውሉ ቅንብሮችን ማስቀመጥ ይፈልጋሉ?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'በቅጂ መብት ገደቦች ምክንያት አንዳንድ መጽሐፍ ቅዱሶች ለማውረድ ላይገኙ ይችላሉ።',
 
     // Result and error messages
     

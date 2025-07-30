@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'Nuni Rubutu', 
     'Font Style': 'Salon Rubutu',
     'This will reset the settings to defaults.':'Wannan zai sake saita saitunan zuwa tsoho.', // 5.6.20
+    'Do you want to save the settings for future use?':'Kuna son adana saitunan don amfani na gaba?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Wasu Littafi Mai-Tsarki bazai samuwa don saukewa ba saboda haƙƙin haƙƙin mallaka.',
 
     // Result and error messages
     

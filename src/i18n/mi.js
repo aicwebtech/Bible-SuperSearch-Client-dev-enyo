@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'Whakaatu Kuputuhi', 
     'Font Style': 'Kāhua Momotuhi',
     'This will reset the settings to defaults.':'Ma tenei ka tautuhi ano i nga tautuhinga ki nga taunoa', // 5.6.20
+    'Do you want to save the settings for future use?':'Kei te pirangi koe ki te tiaki i nga tautuhinga hei whakamahi a meake nei?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Ko etahi o nga Paipera kaore pea i te waatea ki te tango na te mea kua herea te mana pupuri.',
 
     // Result and error messages
     

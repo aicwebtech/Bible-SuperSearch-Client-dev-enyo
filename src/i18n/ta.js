@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'உரை காட்சி', 
     'Font Style': 'எழுத்துரு நடை',
     'This will reset the settings to defaults.':'இது அமைப்புகளை இயல்புநிலையாக மீட்டமைக்கும்.', // 5.6.20
+    'Do you want to save the settings for future use?':'எதிர்கால பயன்பாட்டிற்காக அமைப்புகளைச் சேமிக்க விரும்புகிறீர்களா?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'பதிப்புரிமை கட்டுப்பாடுகள் காரணமாக சில பைபிள்கள் பதிவிறக்கம் செய்ய கிடைக்காமல் போகலாம்.',
 
     // Result and error messages
     

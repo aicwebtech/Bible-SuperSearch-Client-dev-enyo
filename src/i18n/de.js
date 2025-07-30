@@ -225,6 +225,8 @@ module.exports = {
     'Text Display': 'Textanzeige', // 5.0
     'Font Style': 'Schriftstil', // 5.0
     'This will reset the settings to defaults.':'Dadurch werden die Einstellungen auf Standardeinstellungen zurückgesetzt.', // 5.6.20
+    'Do you want to save the settings for future use?':'Möchten Sie die Einstellungen für die zukünftige Verwendung speichern?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Aus urheberrechtlichen Gründen stehen einige Bibeln möglicherweise nicht zum Download zur Verfügung.',
 
     // Result and error messages
     

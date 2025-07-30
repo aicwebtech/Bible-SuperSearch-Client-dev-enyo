@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'نمایش متن', 
     'Font Style': 'نوع قلم',
     'This will reset the settings to defaults.':'با این کار تنظیمات به حالت پیش فرض بازنشانی می شود.', // 5.6.20
+    'آیا میخواهید تنظیمات را برای استفادههای بعدی ذخیره کنید؟':'',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'ممکن است به دلیل محدودیتهای حق نشر، برخی از کتابهای مقدس برای دانلود در دسترس نباشند.',//check translation
 
     // Result and error messages
     

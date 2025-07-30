@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'Ekrani i Tekstit', 
     'Font Style': 'Stili i Fontit',
     'This will reset the settings to defaults.':'Kjo do të rivendosë cilësimet në parazgjedhje.', // 5.6.20
+    'Do you want to save the settings for future use?':'Dëshironi t\'i ruani cilësimet për përdorim në të ardhmen?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Disa Bibla mund të mos jenë të disponueshme për shkarkim për shkak të kufizimeve të të drejtave të autorit.',
 
     // Result and error messages
     

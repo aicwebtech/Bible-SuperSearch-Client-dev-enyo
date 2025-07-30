@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'Wyświetlanie Tekstu', 
     'Font Style': 'Styl Czcionki',
     'This will reset the settings to defaults.':'Spowoduje to zresetowanie ustawień do ustawień domyślnych.', // 5.6.20
+    'Do you want to save the settings for future use?':'Czy chcesz zapisać ustawienia do wykorzystania w przyszłości?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Niektóre Biblie mogą być niedostępne do pobrania ze względu na ograniczenia praw autorskich.',
 
     // Result and error messages
     
