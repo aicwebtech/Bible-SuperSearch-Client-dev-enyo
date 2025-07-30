@@ -215,6 +215,8 @@ module.exports = {
     'Text Display': 'Style de texte', // 5.0
     'Font Style': 'Le style de police', // 5.0
     'This will reset the settings to defaults.':'Cela réinitialisera les paramètres aux valeurs par défaut.', // 5.6.20
+    'Do you want to save the settings for future use?':'Voulez-vous enregistrer les paramètres pour une utilisation ultérieure?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Certaines Bibles peuvent ne pas être disponibles au téléchargement en raison de restrictions de droits d\'auteur.',
     
     // Result and error messages
     

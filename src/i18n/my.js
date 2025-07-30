@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'စာသားပြသမှု', 
     'Font Style': 'ဖောင့်ပုံစံ',
     'This will reset the settings to defaults.':'၎င်းသည် ဆက်တင်များကို ပုံသေအဖြစ် ပြန်လည်သတ်မှတ်ပါမည်။', // 5.6.20
+    'Do you want to save the settings for future use?':'နောင်အသုံးပြုရန်အတွက် ဆက်တင်များကို သိမ်းဆည်းလိုပါသလား။',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'မူပိုင်ခွင့်ကန့်သတ်ချက်များကြောင့် အချို့ကျမ်းစာများကို ဒေါင်းလုဒ်လုပ်၍မရနိုင်ပါ။',
 
     // Result and error messages
     

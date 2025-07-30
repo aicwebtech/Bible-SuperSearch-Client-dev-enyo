@@ -215,6 +215,8 @@ module.exports = {
     'Text Display': '文字顯示',   // 5.0
     'Font Style': '字體',   // 5.0
     'This will reset the settings to defaults.':'這會將設定重設為預設值。', // 5.6.20
+    'Do you want to save the settings for future use?': '您想保存設定以供將來使用嗎？',
+    'Some Bibles may not be available for download due to copyright restrictions.' : '由於版權限制，某些聖經可能無法下載。',
 
       // Result and error messages    
      // Your search produced (number of verses) results

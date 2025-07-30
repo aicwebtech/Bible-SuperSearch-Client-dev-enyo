@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'Onyesho la Maandishi', 
     'Font Style': 'Mtindo wa Fonti',
     'This will reset the settings to defaults.':'Hii itaweka upya mipangilio kwa chaguo-msingi.', // 5.6.20
+    'Do you want to save the settings for future use?':'Je, ungependa kuhifadhi mipangilio kwa matumizi ya baadaye?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Huenda baadhi ya Biblia zisipatikane kwa kupakuliwa kwa sababu ya vikwazo vya hakimiliki.',
 
     // Result and error messages
     

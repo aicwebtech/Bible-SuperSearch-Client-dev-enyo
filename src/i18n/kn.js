@@ -229,14 +229,16 @@ module.exports = {
     'Abbreviate Books': 'ಪುಸ್ತಕಗಳನ್ನು ಸಂಕ್ಷೇಪಿಸಿ', 
     'Include Testament': 'ಒಡಂಬಡಿಕೆಯನ್ನು ಸೇರಿಸಿ', // v5.6.0
     'Testament': 'ಒಡಂಬಡಿಕೆ', // v5.6.0
-    'Omit Extra Line Breaks': 'ಹೆಚ್ಚುವರಿ ಲೈನ್ ಬ್ರೇಕ್‌ಗಳನ್ನು ಬಿಟ್ಟುಬಿಡಿ', 
+    'Omit Extra Line Breaks': 'ಹೆಚ್ಚುವರಿ ಲೈನ್ ಬ್ರೇಕ್ಗಳನ್ನು ಬಿಟ್ಟುಬಿಡಿ', 
 
     // Settings Dialog
     'Settings' : 'ಸಂಯೋಜನೆಗಳು', 
     'Language' : 'ಭಾಷೆ', 
     'Text Display': 'ಪಠ್ಯ ಪ್ರದರ್ಶನ', 
     'Font Style': 'ಅಕ್ಷರ ವಿನ್ಯಾಸ',
-    'This will reset the settings to defaults.':'ಇದು ಸೆಟ್ಟಿಂಗ್ಗಳನ್ನು ಡೀಫಾಲ್ಟ್ಗಳಿಗೆ ಮರುಹೊಂದಿಸುತ್ತದೆ.', // 5.6.20 
+    'This will reset the settings to defaults.':'ಇದು ಸೆಟ್ಟಿಂಗ್ಗಳನ್ನು ಡೀಫಾಲ್ಟ್ಗಳಿಗೆ ಮರುಹೊಂದಿಸುತ್ತದೆ.', // 5.6.20
+    'Do you want to save the settings for future use?' :'ಭವಿಷ್ಯದ ಬಳಕೆಗಾಗಿ ನೀವು ಸೆಟ್ಟಿಂಗ್ಗಳನ್ನು ಉಳಿಸಲು ಬಯಸುವಿರಾ?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'ಹಕ್ಕುಸ್ವಾಮ್ಯ ನಿರ್ಬಂಧಗಳಿಂದಾಗಿ ಕೆಲವು ಬೈಬಲ್ಗಳು ಡೌನ್ಲೋಡ್ಗೆ ಲಭ್ಯವಿಲ್ಲದಿರಬಹುದು.',
 
     // Result and error messages
     

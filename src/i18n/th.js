@@ -222,7 +222,9 @@ module.exports = {
     'Language' : 'ภาษา', 
     'Text Display': 'การแสดงข้อความ', 
     'Font Style': 'รูปแบบตัวอักษร',
-    'This will reset the settings to defaults.':'การดําเนินการนี้จะรีเซ็ตการตั้งค่าเป็นค่าเริ่มต้น', // 5.6.20 
+    'This will reset the settings to defaults.':'การดําเนินการนี้จะรีเซ็ตการตั้งค่าเป็นค่าเริ่มต้น', // 5.6.20
+    'Do you want to save the settings for future use?':'คุณต้องการบันทึกการตั้งค่าเพื่อใช้ในอนาคตหรือไม่?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'พระคัมภีร์บางเล่มอาจไม่สามารถดาวน์โหลดได้เนื่องจากข้อจำกัดด้านลิขสิทธิ์',
 
     // Result and error messages
     

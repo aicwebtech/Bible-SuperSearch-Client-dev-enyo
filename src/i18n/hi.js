@@ -222,6 +222,8 @@ module.exports = {
     'Text Display': 'पाठ प्रदर्शन', // 5.0
     'Font Style': 'लिपि शैली', // 5.0
     'This will reset the settings to defaults.':'यह सेटिंग्स को डिफ़ॉल्ट पर रीसेट कर देगा।', // 5.6.20
+    'Do you want to save the settings for future use?':'क्या आप भविष्य में उपयोग के लिए सेटिंग्स को सहेजना चाहते हैं?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'कॉपीराइट प्रतिबंधों के कारण कुछ बाइबलें डाउनलोड के लिए उपलब्ध नहीं हो सकती हैं।',
 
     // Result and error messages
     

@@ -230,6 +230,8 @@ module.exports = {
     'Text Display': 'Bootie Showcasee', // 5.0
     'Font Style': 'Scripble Stilen', // 5.0
     'This will reset the settings to defaults.':'Resseth ye pillagin to the orig', // 5.6.20
+    'Do you want to save the settings for future use?':'Caste ye pillage for later findin',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Arr, some Bible are locked deep in the chest, and hard to retrieve',
 
     'User\'s Manual': 'Arr, how me operate this thing?',
     

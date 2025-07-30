@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'Hiển thị văn bản', 
     'Font Style': 'Kiểu phông chữ',
     'This will reset the settings to defaults.':'Điều này sẽ đặt lại cài đặt về mặc định.', // 5.6.20
+    'Do you want to save the settings for future use?': 'Bạn có muốn lưu cài đặt để sử dụng sau này không?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Một số bản Kinh Thánh có thể không tải xuống được do hạn chế về bản quyền.',
 
     // Result and error messages
     

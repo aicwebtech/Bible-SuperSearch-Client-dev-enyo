@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'मजकूर प्रदर्शन', 
     'Font Style': 'फॉन्ट शैली',
     'This will reset the settings to defaults.':'हे सेटिंग्ज डीफॉल्टवर रीसेट करेल.', // 5.6.20
+    'Do you want to save the settings for future use?':'तुम्हाला भविष्यातील वापरासाठी सेटिंग्ज सेव्ह करायच्या आहेत का?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'कॉपीराइट निर्बंधांमुळे काही बायबल डाउनलोड करण्यासाठी उपलब्ध नसतील.',
 
     // Result and error messages
     

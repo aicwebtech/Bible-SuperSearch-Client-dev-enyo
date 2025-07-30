@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': '텍스트 표시', 
     'Font Style': '글꼴 스타일',
     'This will reset the settings to defaults.':'그러면 설정이 기본값으로 재설정됩니다.', // 5.6.20
+    'Do you want to save the settings for future use?':'나중에 사용할 수 있도록 설정을 저장하시겠습니까?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'일부 성경은 저작권 제한으로 인해 다운로드가 불가능할 수 있습니다.',
 
     // Result and error messages
     
