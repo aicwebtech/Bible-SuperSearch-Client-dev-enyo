@@ -8,7 +8,9 @@ module.exports = {
         name: 'ਪੰਜਾਬੀ',    
 
         // English name of language, ie 'Spanish'
-        nameEn: 'Punjabi',       
+        nameEn: 'Punjabi',     
+        
+        // note: Gurmukhi dialect is used for this translation
 
         // Whether language is read Right-to-left
         isRtl: false,           
@@ -237,6 +239,8 @@ module.exports = {
     'Text Display': 'ਟੈਕਸਟ ਡਿਸਪਲੇ', 
     'Font Style': 'ਫੌਂਟ ਸ਼ੈਲੀ',
     'This will reset the settings to defaults.':'ਇਹ ਸੈਟਿੰਗਾਂ ਨੂੰ ਡਿਫਾਲਟ ਵਿੱਚ ਰੀਸੈਟ ਕਰੇਗਾ।.', // 5.6.20
+    'Do you want to save the settings for future use?':'ਕੀ ਤੁਸੀਂ ਭਵਿੱਖ ਵਿੱਚ ਵਰਤੋਂ ਲਈ ਸੈਟਿੰਗਾਂ ਨੂੰ ਸੁਰੱਖਿਅਤ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?', // 6.1
+    'Some Bibles may not be available for download due to copyright restrictions.' :'ਕਾਪੀਰਾਈਟ ਪਾਬੰਦੀਆਂ ਕਾਰਨ ਕੁਝ ਬਾਈਬਲਾਂ ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ ਉਪਲਬਧ ਨਹੀਂ ਹੋ ਸਕਦੀਆਂ।', // 6.1
 
     // Result and error messages
     

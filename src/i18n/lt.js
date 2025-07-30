@@ -222,7 +222,9 @@ module.exports = {
     'Language' : 'Kalba', 
     'Text Display': 'Teksto Ekranas', 
     'Font Style': 'Šrifto Stilius',
-    'This will reset the settings to defaults.':'Taip nustatymai bus nustatyti iš naujo į numatytuosius.', // 5.6.20 
+    'This will reset the settings to defaults.':'Taip nustatymai bus nustatyti iš naujo į numatytuosius.', // 5.6.20
+    'Do you want to save the settings for future use?':'Ar norite išsaugoti nustatymus, kad galėtumėte juos naudoti ateityje?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Kai kurių Biblijų gali būti neįmanoma atsisiųsti dėl autorių teisių apribojimų.',
 
     // Result and error messages
     

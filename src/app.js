@@ -2334,7 +2334,19 @@ var App = Application.kind({
         this.debug && this.log('handleBibleChange', inEvent, c);
 
         if(c && c != 'false' && c != false && inEvent.dir == 2 && inEvent.automatic != true && inEvent.ignore != true) {
-            this.UserConfig.set('bibles_selected', inEvent.bibles || []);
+            var bibles = inEvent.bibles || [];
+            var sysDef = this.getSystemDefaultBibles();
+
+            // IF the language is saved to the user config, checking the Bibles against the default IS safe.
+            // IF the language is NOT being saved, checking against the default is potentially unsafe??
+            // If langauge is not saving, and user hasn't set/saved Bibles, Bibles will default based on the default language.
+
+            if(!Array.isArray(bibles) || JSON.stringify(bibles) == JSON.stringify(sysDef)) {
+                this.debug && this.log('No bibles selected / bibles match defaults, clearing user config bibles');
+                bibles = [];
+            } 
+            
+            this.UserConfig.set('bibles_selected', bibles);
             this.debug && this.log('Saving bibles to user config');
         } else {
             this.debug && this.log('NOT saving bibles to user config');

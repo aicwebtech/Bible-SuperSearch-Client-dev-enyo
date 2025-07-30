@@ -3,6 +3,7 @@ module.exports = {
         code: 'pt',
         name: 'Português',      // Native name of language (endonymn)
         nameEn: 'Portuguese',   // Name of language, in English
+        // Note: using Brazilian Portuguese dialect for this translation
         isRtl: false,       // Whether language is read Right-to-left
         isFluent: false,     
         translatedBy: 'Google Translate', 
@@ -224,6 +225,8 @@ module.exports = {
     'Text Display': 'Exibição de Texto', // 5.0
     'Font Style': 'Estilo de Fonte', // 5.0
     'This will reset the settings to defaults.':'Isso redefinirá as configurações para os padrões.', // 5.6.20
+    'Do you want to save the settings for future use?':'Deseja salvar as configurações para uso futuro?', // 6.1
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Algumas Bíblias podem não estar disponíveis para download devido a restrições de direitos autorais.', // 6.1
 
     // Result and error messages
     
@@ -301,7 +304,7 @@ module.exports = {
     'Leaving Home': 'Deixando o lar',
     'Lonely': 'Sozinho',
     'Needing God\'s protection': 'Precisando da Proteção de Deus',
-    'Needing Guidance': 'Needing Guidance',//check translation
+    'Needing Guidance': 'Precisando de orientação',
     'Needing Peace': 'Precisando de paz',
     'Needing Rules for Living': 'Precisando de Regras Para Viver', 
     'Overcome': 'Superar',
@@ -320,7 +323,7 @@ module.exports = {
     // Bible Start dialog
     'Start': 'Começar',
     'Bible Start Guide': 'Guia de Início da Bíblia',
-    'New to the Bible?': 'New to the Bible?',//check translation
+    'New to the Bible?': 'Novo na Bíblia?',
     'Not Sure Where to Begin?' : 'Não Sabe por Onde Começar?',
     'Life and Teachings of Jesus Christ': 'Vida e Ensinamentos de Jesus Cristo',
     'Basic Christian Beliefs': 'Crenças Cristãs Básicas',
@@ -336,8 +339,8 @@ module.exports = {
     'Christ\'s crucifixion foretold': 'A crucificação de Cristo predita',
 
     // Bible downloads dialog
-    'Download': 'Download',//check translation
-    'Bible Downloads': 'Downloads da Bíblia',//check translation
+    'Download': 'Download',
+    'Bible Downloads': 'Downloads da Bíblia',
     'Select Bible(s)' : 'Selecione Bíblia(s)',
     'Select a Format': 'Selecione um Formato',
     'Rendering': 'Renderização',
@@ -345,7 +348,7 @@ module.exports = {
     'Rendering is Complete': 'A Renderização está Concluída',
     'Your download should begin shortly': 'Seu download deve começar em breve',
     'If not, please click on the below link': 'Caso contrário, clique no link abaixo',
-    'Manual Download': 'Download Manual',//check translation
+    'Manual Download': 'Download Manual',
     'Please select at least one Bible': 'Selecione pelo menos uma Bíblia',
     'Please select a format': 'Selecione um formato',
     'Are you sure you want to exit?  This will end the current download.': 'Você tem certeza que quer sair? Isso encerrará o download atual.',
@@ -446,7 +449,7 @@ module.exports = {
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Limitando Pesquisas',
     'Passages': 'Passagens',
-    'Alias': 'Alias',//check translation
+    'Alias': 'Pseudônimo',
     'You cannot search for these common words': 'Você não pode pesquisar essas palavras comuns',
     // End 5.5 part 2
 

@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'Tekstikuva', // 5.0
     'Font Style': 'Kirjavstiil', // 5.0
     'This will reset the settings to defaults.':'See lähtestab seaded vaikeväärtustele.', // 5.6.20
+    'Do you want to save the settings for future use?':'Kas soovite seaded edaspidiseks kasutamiseks salvestada?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Mõned Piiblid ei pruugi autoriõiguse piirangute tõttu allalaadimiseks saadaval olla.',
 
 
     // Result and error messages

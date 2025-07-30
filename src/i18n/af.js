@@ -236,6 +236,8 @@ module.exports = {
     'Text Display': 'Teks Vertoon', 
     'Font Style': 'Font Styl',
     'This will reset the settings to defaults.':'Dit sal die instellings terugstel na verstek.', // 5.6.20
+    'Do you want to save the settings for future use?' :'Wil jy die instellings stoor vir toekomstige gebruik?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Sommige Bybels is dalk nie beskikbaar vir aflaai nie as gevolg van kopieregbeperkings.',
 
     // Result and error messages
     

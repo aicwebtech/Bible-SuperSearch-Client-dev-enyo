@@ -223,6 +223,8 @@ module.exports = {
     'Text Display': 'Szöveg Megjelenítése', 
     'Font Style': 'Betű Stílus',
     'This will reset the settings to defaults.':'Ezzel visszaállítja a beállításokat az alapértelmezett értékekre.', // 5.6.20
+    'Do you want to save the settings for future use?':'Szeretnéd menteni a beállításokat későbbi használatra?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Előfordulhat, hogy egyes Bibliák szerzői jogi korlátozások miatt nem tölthetők le.',
 
     // Result and error messages
     

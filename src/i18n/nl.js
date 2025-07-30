@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'Tekstweergave', 
     'Font Style': 'Lettertype',
     'This will reset the settings to defaults.':'Hierdoor worden de instellingen teruggezet naar standaardinstellingen.', // 5.6.20
+    'Do you want to save the settings for future use?':'Wilt u de instellingen opslaan voor toekomstig gebruik?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Sommige Bijbels zijn mogelijk niet beschikbaar om te downloaden vanwege auteursrechtelijke beperkingen.',
 
     // Result and error messages
     
