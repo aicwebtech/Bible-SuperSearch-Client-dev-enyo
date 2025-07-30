@@ -581,8 +581,6 @@ module.exports = kind({
             this.$.settings_save_button.set('showing', false);
         }
 
-        this.log('lse', this.app.configs.languageSelectionEnable);
-
         if(this.app.configs.languageSelectionEnable && this.app.configs.languageSelectionEnable != 'false') {
             var LS = LocaleSelectorOld;
 

@@ -157,7 +157,6 @@ module.exports = kind({
         return false;
     },
     clearForm: function() {
-        this.log();
         var self = this;
 
         this._automaticChange = true; 
