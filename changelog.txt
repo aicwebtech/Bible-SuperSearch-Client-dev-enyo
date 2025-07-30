@@ -1,7 +1,5 @@
 Bible SuperSearch Universal Client Changelog
 
-<<<<<<< HEAD
-=======
 = 6.1.0 (tentatively Aug 9, 2025)
 * Auto Scroll to Error message when No Results
 * One-click Copy/share Bible verses
@@ -14,7 +12,6 @@ Bible SuperSearch Universal Client Changelog
 * Fixed history / book mark links when having the software on mutiple pages on a website.
 * Cleaned up dialog buttons to position the same regardless of language.
 
->>>>>>> develop
 = 6.0.1
 * Fixed total breakage of side swipe buttons
 * Fixed breakage when toggling from advanced to basic form.
