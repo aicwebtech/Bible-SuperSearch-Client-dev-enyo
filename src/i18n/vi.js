@@ -159,7 +159,7 @@ module.exports = {
     // Formatting and dialog buttons
     'A': 'MỘT',     // First letter in given language
     'Abc': 'ABC',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
+    'Serif' : 'Serif',                     // * Button text, please keep translation short!
     'Sans-Serif': 'Sans serif',                 // * Button text, please keep translation short!
     'Monospace': 'Không gian đơn',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Phóng to văn bản',

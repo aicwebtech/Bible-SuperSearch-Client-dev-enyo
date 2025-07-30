@@ -440,7 +440,7 @@ module.exports = {
     'Okay': 'సరే',
     'Old': 'పాతది',
     'New': 'కొత్తది',
-    'Reset': 'రీసెట్',//check translation // 5.6.20
+    'Reset': 'తిరిగి నిర్దారించు', // 5.6.20
 
     'Are you sure?': 'మీరు ఖచ్చితంగా ఉన్నారా?',
     'Are you sure you want to delete': 'మీరు ఖచ్చితంగా తొలగించాలనుకుంటున్నారా',

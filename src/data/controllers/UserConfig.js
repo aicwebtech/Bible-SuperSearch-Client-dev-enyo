@@ -49,6 +49,7 @@ module.exports = kind({
                 if(!this.saveBibles()) {
                     userConfigs.bibles_selected = [];
                 }
+                
                 this.model.set(userConfigs);
                 this.app.debug && console.log('User config loaded', userConfigs);
             } 

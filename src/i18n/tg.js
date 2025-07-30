@@ -442,7 +442,7 @@ module.exports = {
     'Okay': 'Хуб',
     'Old': 'Кӯҳна',
     'New': 'Нав',
-    'Reset': 'Баргардонидан',//check translation // 5.6.20
+    'Reset': 'Баргардонидан', // 5.6.20
 
     'Are you sure?': 'Оё шумо боварӣ доред?',
     'Are you sure you want to delete': 'Оё шумо боварӣ доред, ки шумо мехоҳед нест кунед',

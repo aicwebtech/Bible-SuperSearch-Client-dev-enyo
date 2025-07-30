@@ -460,7 +460,7 @@ module.exports = {
     // Quick start dialog: Limiting searches
     'Limiting Searches': 'Ograniczanie wyszukiwań',
     'Passages': 'Intymny stosunek dwojga ludzi',
-    'Alias': 'Alias',//check translation
+    'Alias': 'Alias', //Correct!
     'You cannot search for these common words': 'Nie możesz wyszukiwać tych popularnych słów',
 
     'Include Link': 'Dołącz Hiperłącze',

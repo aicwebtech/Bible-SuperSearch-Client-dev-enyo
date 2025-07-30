@@ -159,8 +159,8 @@ module.exports = {
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sans-Serif',//check translation                 // * Button text, please keep translation short!
+    'Serif' : 'Serif',                   // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif',                 // * Button text, please keep translation short!
     'Monospace': 'Nafasi moja',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Panua Maandishi',
     'Default Text Size': 'Ukubwa wa Maandishi Chaguomsingi',

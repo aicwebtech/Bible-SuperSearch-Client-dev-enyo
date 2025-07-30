@@ -182,8 +182,8 @@ module.exports = {
     'Highlight': 'Iftiimin',                   // * Button text, please keep translation short!
     'Disable Highlighting of Keywords': 'Dami Iftiiminta Ereyada Furaha',
     'Enable Highlighting of Keywords': 'Dari Iftiiminta Ereyada Furaha',
-    'Hide Parallel Search Errors': 'Qari Khaladaadka Raadinta Baybalka ee Badan',//check translation // 5.6.20
-    'Show Parallel Search Errors': 'Muuji Khaladaadka Raadinta Baybalka ee Badan',//check translation // 5.6.20
+    'Hide Parallel Search Errors': 'Qari Khaladaadka Raadinta Barbar Socda', // 5.6.20
+    'Show Parallel Search Errors': 'Muuji Khaladaadka Raadinta Barbar Socda',  // 5.6.20
     'Print': 'Daabac',
     'Printer Friendly': 'Daabacaadda saaxiibtinimo',
     'Help': 'Caawin',
@@ -236,7 +236,7 @@ module.exports = {
     'Language' : 'Luuqad', 
     'Text Display': 'Bandhiga Qoraalka', 
     'Font Style': 'Habka Xarafka',
-    'This will reset the settings to defaults.':'Tani waxay dib u dejin doontaa dejinta si ay u noqoto mid aan caadi ahayn.',//check translation // 5.6.20
+    'This will reset the settings to defaults.':'Tani waxay dib u dejin doontaa dejinta si ay u noqoto mid aan caadi ahayn.', // 5.6.20
     'Do you want to save the settings for future use?':'Doriți să salvați setările pentru utilizare ulterioară?',
     'Some Bibles may not be available for download due to copyright restrictions.' :'Este posibil ca unele Biblii să nu fie disponibile pentru descărcare din cauza restricțiilor privind drepturile de autor.',
 
@@ -440,7 +440,7 @@ module.exports = {
     'Okay': 'Hagaag',
     'Old': 'Duq',
     'New': 'Cusub',
-    'Reset': 'Default',//check translation // 5.6.20
+    'Reset': 'Dib u dajin', // 5.6.20
 
     'Are you sure?': 'Ma hubtaa?',
     'Are you sure you want to delete': 'Ma hubtaa inaad doonayso inaad tirtirto',

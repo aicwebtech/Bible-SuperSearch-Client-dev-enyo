@@ -51,7 +51,7 @@ module.exports = {
     'Word Search': 'ค้นหาคำ',
     'Clear Form': 'ล้างแบบฟอร์ม', 
     'Select Book and Chapter:' : 'เลือกหนังสือและบท',
-    'Select Book, Chapter, Verse:' : 'เลือกหนังสือ บท ข้อพระคัมภีร์:',//check translation
+    'Select Book, Chapter, Verse:' : 'เลือกหนังสือ บท ข้อพระคัมภีร์:',
 
     // Context Links
     'Show full chapter': 'แสดงบทเต็ม',
