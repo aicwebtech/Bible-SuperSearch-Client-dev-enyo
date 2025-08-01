@@ -88,6 +88,7 @@ module.exports = kind({
     resetValue: function() {
         this.setValue([]);
         this._resetSelectors();
+        this.app.biblesChanged = false; // Reset the biblesChanged flag when resetting the selectors
 
         var defaultBibles = utils.clone(this.app.getDefaultBibles());
 
@@ -99,6 +100,7 @@ module.exports = kind({
         this.setValue(defaultBibles);        
     },
     addSelector: function() {
+        // We DON'T flag as changed here, because we are just adding a selector with no value
         this.doAddSelectorTapped();
         this._addSelectorHelper();
         this.$.Container.render();
@@ -177,6 +179,7 @@ module.exports = kind({
         this.$.Remove && this.$.Remove.set('showing', remShowing);
     },
     removeSelector: function() {
+        this.app.biblesChanged = true; 
         this.doRemoveSelectorTapped();
         this._removeSelectorHelper();
         this.$.Container.render();
@@ -220,6 +223,8 @@ module.exports = kind({
         this.$.Container.render();
     },
     selectorChanged: function(inSender, inEvent) {
+        this.app.biblesChanged = true; // User has changed the displayed Bibles
+        
         var components = this.$.Container.getClientControls(),
             value = [];
 

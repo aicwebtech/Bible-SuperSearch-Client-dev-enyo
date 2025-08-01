@@ -91,6 +91,7 @@ var App = Application.kind({
     resultsShowing: null,
     altResultsShowing: null,
     biblesDisplayed: [],
+    biblesChanged: false, // whether the user has changed the displayed Bibles since last reset
     locale: 'en',
     defaultLocale: 'en', // hardcoded
     localeManual: false, // whether locale has been manually changed
@@ -2333,7 +2334,7 @@ var App = Application.kind({
         var c = this.configs.saveUserBibleSelections;
         this.debug && this.log('handleBibleChange', inEvent, c);
 
-        if(c && c != 'false' && c != false && inEvent.dir == 2 && inEvent.automatic != true && inEvent.ignore != true) {
+        if(c && c != 'false' && c != false && this.biblesChanged && inEvent.dir == 2 && inEvent.automatic != true && inEvent.ignore != true) {
             var bibles = inEvent.bibles || [];
             var sysDef = this.getSystemDefaultBibles();
 
