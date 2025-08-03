@@ -110,6 +110,10 @@ module.exports = kind({
         return this.app.configs.saveUserBibleSelections && this.app.configs.saveUserBibleSelections != 'false';
     },
     saveLanguages: function() {
+        if(this.app.configs.languageSelectionEnable || this.app.configs.languageSelectionEnable == 'false') {
+            return false;
+        }
+
         return !this.app.configs.omitUserLanguage || this.app.configs.omitUserLanguage == 'false';
     },
     hasBibles: function() {

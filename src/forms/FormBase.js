@@ -184,7 +184,7 @@ module.exports = kind({
         if(this.app.UserConfig.hasBibles()) {
             this._dontClearBibles = true;
         }
-        
+
         this.set('formData', {});
 
         this.waterfall('onClearFormWaterfall');
@@ -274,7 +274,7 @@ module.exports = kind({
             delete formData.results_list_cache_id; // If the list is already stored in memory, don't make API query for it again
         }
 
-        if(!manual && (!formData.reference && !formData.request && !formData.search)) {
+        if(!manual && this.formDataEmpty(formData)) {
             this.app.debug && this.log('AUTO FORM: No reference, request or search, not submitting form');
             return;
         }
@@ -298,6 +298,22 @@ module.exports = kind({
         ajax.go(formData); // for GET
         ajax.response(this, 'handleResponse');
         ajax.error(this, 'handleError');
+    },
+
+    formDataEmpty: function(formData) {
+        if(!formData) {
+            return true;
+        }
+        
+        var fields = ['reference', 'request', 'search', 'search_all', 'search_any', 'search_one', 'search_none', 'search_phrase'];
+
+        for(var i = 0; i < fields.length; i++) {
+            if(formData[fields[i]] && formData[fields[i]] != '') {
+                return false;
+            }
+        }
+
+        return true;
     },
     
     processDefaults: function(formData) {

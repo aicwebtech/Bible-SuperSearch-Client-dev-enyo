@@ -10,6 +10,7 @@ Bible SuperSearch Universal Client Changelog
 * Fixed issues with "Suppress Parallel Search"
 * Fixed history dialog to not show repeats, but only show the most recent.
 * Fixed history / book mark links when having the software on mutiple pages on a website.
+* Fixed pagination breakage on advanced search form.
 * Cleaned up dialog buttons to position the same regardless of language.
 
 = 6.0.1
