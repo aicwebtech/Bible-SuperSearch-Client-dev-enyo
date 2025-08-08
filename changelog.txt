@@ -1,6 +1,6 @@
 Bible SuperSearch Universal Client Changelog
 
-= 6.1.0 (tentatively Aug 9, 2025)
+= 6.1.0 (tentatively Aug 16, 2025)
 * Auto Scroll to Error message when No Results
 * One-click Copy/share Bible verses
 * Config to set Default Bibles by UI Language
