@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'Tekstinäyttö', 
     'Font Style': 'Fonttityyli',
     'This will reset the settings to defaults.':'Tämä palauttaa asetukset oletusarvoiksi.', // 5.6.20
+    'Do you want to save the settings for future use?':'Haluatko tallentaa asetukset myöhempää käyttöä varten?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Jotkin Raamatut eivät välttämättä ole ladattavissa tekijänoikeusrajoitusten vuoksi.',
 
     // Result and error messages
     

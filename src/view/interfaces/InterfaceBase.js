@@ -78,6 +78,7 @@ module.exports = kind({
         this.createComponent({kind: FreeSansStyle});
 
         this._dialogCreateHelper(SettingsDialog, 'SettingsDialog');
+        this._dialogCreateHelper(ShareDialog, 'ShareDialog');
         this._dialogCreateHelper(Dialogs.BibleInfo, 'BibleInfo');
         this._dialogCreateHelper(Dialogs.Statistics, 'Statistics');
     },

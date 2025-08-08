@@ -223,6 +223,8 @@ module.exports = {
     'Text Display': 'テキスト表示', 
     'Font Style': 'フォントスタイル',
     'This will reset the settings to defaults.':'これにより、設定がデフォルトにリセットされます。', // 5.6.20
+    'Do you want to save the settings for future use?' :'将来使用するために設定を保存しますか?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'一部の聖書は著作権の制限によりダウンロードできない場合があります。',
 
     // Result and error messages
     

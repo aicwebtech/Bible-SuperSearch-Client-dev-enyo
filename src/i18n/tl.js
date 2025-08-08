@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'Pagpapakita ng Teksto', 
     'Font Style': 'Estilo ng Font',
     'This will reset the settings to defaults.':'Ire-reset nito ang mga setting sa mga default.', // 5.6.20
+    'Do you want to save the settings for future use?':'Gusto mo bang i-save ang mga setting para magamit sa hinaharap?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Maaaring hindi ma-download ang ilang Bibliya dahil sa mga paghihigpit sa copyright.',
 
     // Result and error messages
     
@@ -438,7 +440,7 @@ module.exports = {
     'Okay': 'Sige',
     'Old': 'Luma',
     'New': 'Bago',
-    'Reset': 'I-reset',//check translation // 5.6.20
+    'Reset': 'I-reset', // 5.6.20
 
     'Are you sure?': 'Sigurado ka ba?',
     'Are you sure you want to delete': 'Sigurado ka bang gusto mong tanggalin',

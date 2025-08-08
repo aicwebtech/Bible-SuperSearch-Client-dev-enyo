@@ -221,6 +221,8 @@ module.exports = {
     'Text Display': 'Afișare Text', // 5.0
     'Font Style': 'Stilul Fontului', // 5.0
     'This will reset the settings to defaults.':'Aceasta va reseta setările la valorile implicite.', // 5.6.20
+    'Do you want to save the settings for future use?':'Doriți să salvați setările pentru utilizare ulterioară?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Este posibil ca unele Biblii să nu fie disponibile pentru descărcare din cauza restricțiilor privind drepturile de autor.',
 
     // Result and error messages
     

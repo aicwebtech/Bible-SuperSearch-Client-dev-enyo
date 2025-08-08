@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'Metin görüntüleme', 
     'Font Style': 'Yazı Stili',
     'This will reset the settings to defaults.':'Bu, ayarları varsayılanlara sıfırlayacaktır.', // 5.6.20
+    'Do you want to save the settings for future use?':'Ayarlarınızı ileride kullanmak üzere kaydetmek ister misiniz?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Bazı İnciller telif hakkı kısıtlamaları nedeniyle indirilemeyebilir.',
 
     // Result and error messages
     

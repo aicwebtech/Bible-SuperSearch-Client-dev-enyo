@@ -222,6 +222,9 @@ module.exports = {
     'Text Display': '文字显示', // 5.0
     'Font Style': '字体', // 5.0
     'This will reset the settings to defaults.':'这会将设置重置为默认设置。', // 5.6.20
+    'Do you want to save the settings for future use?': '您想保存设置以供将来使用吗？',
+    'Some Bibles may not be available for download due to copyright restrictions.' : '由于版权限制，某些圣经可能无法下载。',
+    
     // Result and error messages
     
     // Your search produced (number of verses) results

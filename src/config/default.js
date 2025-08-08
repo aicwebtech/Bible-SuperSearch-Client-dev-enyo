@@ -6,6 +6,7 @@ var defaultConfig = {
     "bibleGrouping": 'language',                        // Default Bible list grouping
     "bibleSorting": 'rank|name',                        // Default Bible list sorting
     "bibleDefaultLanguageTop": false,                   // Default Bible list sorting
+    "languageSelectionEnable": true,                    // Enable Language selection
     "defaultLanguage": "en",                            // (future) Default Language 
     "enabledBibles": [],                                // Order indicates order Bibles will appear
     "interface": "twentytwenty",                        // Bible SuperSearch skin / interface
@@ -34,6 +35,8 @@ var defaultConfig = {
     'changeLanguageClearForm': true,
     'saveUserSettings': false,
     'omitUserLanguage': false,
+    'saveUserSettingsManual': false,                   // Whether to require user to save their settings manually (ie via a button)
+    'saveUserBibleSelections': false,                  // Whether to save user's selected Bibles with user settings
 
     _urlDefaultNotice: function() {
         if(window.console) {

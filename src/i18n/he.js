@@ -237,6 +237,9 @@ module.exports = {
     'Text Display': 'תצוגת טקסט', 
     'Font Style': 'סיגנון גופן',
     'This will reset the settings to defaults.':'פעולה זו תאפס את ההגדרות לברירות מחדל.', // 5.6.20
+    'Do you want to save the settings for future use?':'האם ברצונך לשמור את ההגדרות לשימוש עתידי?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'ייתכן שחלק מספרי התנ"ך לא יהיו זמינים להורדה עקב הגבלות זכויות יוצרים.',
+    
 
     // Result and error messages
     

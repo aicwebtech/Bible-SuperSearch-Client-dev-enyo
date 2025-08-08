@@ -220,6 +220,7 @@ module.exports = {
     'Text Display': 'Attēlotā Teksta Skats', // 5.0
     'Font Style': 'Fonta Stils', // 5.0
     'This will reset the settings to defaults.':'Iestatījumi tiks atiestatīti uz noklusējuma iestatījumiem.', // 5.6.20
+    'Do you want to save the settings for future use?': 'Vai vēlaties saglabāt iestatījumus turpmākai lietošanai?', // 6.1
 
     // Result and error messages
     
@@ -336,6 +337,7 @@ module.exports = {
     'Bible Downloads': 'Bībeles Lejupielādes',
     'Select Bible(s)' : 'Izvēlieties Bībeli',
     'Select a Format': 'Izvēlieties Formātu',
+    'Some Bibles may not be available for download due to copyright restrictions.': 'Dažu Bībeļu teksti var nebūt pieejami lejupielādei autortiesību ierobežojumu dēļ.', // 6.1
     'Rendering': 'Sagatavošana',
     'Rendering Bibles, this may take some time': 'Tiek sagatavotas Bībeles, šis process var aizņemt kādu laiku',
     'Rendering is Complete': 'Sagatavošana ir Pabeigta',
@@ -359,8 +361,8 @@ module.exports = {
     'Copy': 'Kopēt',
     'Copy Link': 'Kopēt Saiti',
     'Copy with Text': 'Kopēt ar Tekstu',
-    'Share Link': 'Kopīgot saiti',
-    'Share' : 'Kopīgot',
+    'Share Link': 'Dalīties ar saiti',
+    'Share' : 'Dalīties',
     'Link' : 'Saite', // 4.5
     'Copied to clipboard': 'Kopēts starpliktuvē (clipboard)', // 5.2.3
     'Failed to copy': 'Neizdevās kopēt', // 5.2.3

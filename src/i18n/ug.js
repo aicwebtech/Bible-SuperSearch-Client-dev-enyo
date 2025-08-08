@@ -239,6 +239,8 @@ module.exports = {
     'Text Display': 'تېكىست كۆرسىتىش', 
     'Font Style': 'خەت ئۇسلۇبى',
     'This will reset the settings to defaults.':'بۇ تەڭشەكلەرنى سۈكۈتتىكى ھالەتكە قايتۇرىدۇ.', // 5.6.20
+    'Do you want to save the settings for future use?' :'كەلگۈسىدىكى ئىشلىتىش ئۈچۈن تەڭشەكلەرنى ساقلىماقچىمۇ؟',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'نەشر ھوقۇقى چەكلىمىسى سەۋەبىدىن بەزى ئىنجىللارنى چۈشۈرگىلى بولمايدۇ.',
 
     // Result and error messages
     

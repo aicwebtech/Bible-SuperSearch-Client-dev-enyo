@@ -1,5 +1,6 @@
 var kind = require('enyo/kind');
 var Controller = require('enyo/ModelController');
+var Signal = require('enyo/Signals');
 var Model = require('../models/UserConfig');
 
 module.exports = kind({
@@ -7,6 +8,7 @@ module.exports = kind({
     kind: Controller,
     pk: null, // primary key of the model
     lsUrl: 'BibleSuperSearchUserConfig',
+    _languageCache: null,
 
     newModel: function(pk) {
         this.pk = pk;
@@ -14,15 +16,24 @@ module.exports = kind({
 
         pk && model.fetch({});
         this.set('model', model);
-        //this._updateDefaults();
     },
     clear: function() {
         this.newModel(0);
         this._updateDefaults();
     },
     reset: function() {
+        this.app.set('localeManual', true); // reset is always manual and since this touches the locale, we need to set it to manual
+        // these may be needed??
+        // this.set('bibles_selected', []);
+        // this.app.set('locale', this.app.configs.language);
+        if(!this.saveLanguages()) {
+            this._languageCache = this.app.get('locale') || null;
+        }
+
         this.clear();
         this.save();
+        Signal.send('onClearForm'); // clear the form on reset so the Bibles clear ... maybe a better way to do this?
+        this.app.set('localeManual', false);
     },
     load: function() {
         var userConfigs = localStorage.getItem( this.lsUrl ) || null;
@@ -31,10 +42,14 @@ module.exports = kind({
             try {                
                 var userConfigs = userConfigs ? JSON.parse(userConfigs) : {};
 
-                if(this.app.configs.omitUserLanguage) {
+                if(!this.saveLanguages()) {
                     userConfigs.locale = this.app.configs.language;
                 }
 
+                if(!this.saveBibles()) {
+                    userConfigs.bibles_selected = [];
+                }
+                
                 this.model.set(userConfigs);
                 this.app.debug && console.log('User config loaded', userConfigs);
             } 
@@ -56,6 +71,8 @@ module.exports = kind({
 
         var configs = this.model.raw();
 
+        this.app.debug && console.log('Saving user config', configs);
+
         if(configs.copy) {
             configs.copy_render_style = configs.render_style;
         } else {
@@ -70,20 +87,44 @@ module.exports = kind({
      * @private
      */
     _updateDefaults: function() {
+        this.app.debug && console.log('UserConfig._updateDefaults()');
+        
         if(this.app.configs.textDisplayDefault) { 
             this.set('render_style', this.app.configs.textDisplayDefault);
             this.set('read_render_style', this.app.configs.textDisplayDefault);
         }
 
-        this.set('locale', this.app.configs.language);
-        this.app.get('appLoaded') && this.app.set('locale', this.app.configs.language);
+        this.set('locale', this._getDefaultLang());
+        this.app.get('appLoaded') && this.app.set('locale', this._getDefaultLang());
 
         this.set('parallel_search_error_suppress', this.app.configs.parallelSearchErrorSuppress);
+        this.set('bibles_selected', []);
 
         //         if(this.app.parallelSearchErrorSuppressUserConfig) {
         //     var parallelSurpress = this.app.UserConfig.get('parallel_search_error_suppress') || false;
         // } else {
         //     var parallelSurpress = this.app.configs.parallelSearchErrorSuppress || false;
         // }
-    }
+    },
+    saveBibles: function() {
+        return this.app.configs.saveUserBibleSelections && this.app.configs.saveUserBibleSelections != 'false';
+    },
+    saveLanguages: function() {
+        if(this.app.configs.languageSelectionEnable || this.app.configs.languageSelectionEnable == 'false') {
+            return false;
+        }
+
+        return !this.app.configs.omitUserLanguage || this.app.configs.omitUserLanguage == 'false';
+    },
+    hasBibles: function() {
+        if(this.saveBibles()) {
+            var bibles = this.get('bibles_selected') || [];
+            return Array.isArray(bibles) && bibles.length > 0;
+        } else {
+            return false;
+        }
+    },
+    _getDefaultLang: function() {
+        return this._languageCache || this.app.configs.language;
+    },
 });

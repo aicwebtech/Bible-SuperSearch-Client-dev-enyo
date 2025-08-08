@@ -238,7 +238,9 @@ module.exports = {
     'Language' : 'Забон', 
     'Text Display': 'Намоиши матн', 
     'Font Style': 'Услуби шрифт',
-    'This will reset the settings to defaults.':'Ин танзимотро ба пешфарзҳо барқарор мекунад.', // 5.6.20 
+    'This will reset the settings to defaults.':'Ин танзимотро ба пешфарзҳо барқарор мекунад.', // 5.6.20
+    'Do you want to save the settings for future use?':'Мехоҳед танзимотро барои истифодаи оянда захира кунед?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Баъзе Китобҳои Муқаддас метавонанд бо сабаби маҳдудиятҳои ҳуқуқи муаллиф барои зеркашӣ дастрас набошанд.',
 
     // Result and error messages
     
@@ -440,7 +442,7 @@ module.exports = {
     'Okay': 'Хуб',
     'Old': 'Кӯҳна',
     'New': 'Нав',
-    'Reset': 'Баргардонидан',//check translation // 5.6.20
+    'Reset': 'Баргардонидан', // 5.6.20
 
     'Are you sure?': 'Оё шумо боварӣ доред?',
     'Are you sure you want to delete': 'Оё шумо боварӣ доред, ки шумо мехоҳед нест кунед',

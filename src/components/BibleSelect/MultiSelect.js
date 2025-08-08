@@ -74,7 +74,6 @@ module.exports = kind({
             components: [{kind: i18n, content: 'Remove Bible'}]
         });
 
-
         for(var i = 1; i <= num; i++) {
             this._addSelectorHelper();
         }
@@ -88,25 +87,20 @@ module.exports = kind({
     },
     resetValue: function() {
         this.setValue([]);
-        // this.parallelCleanup();
         this._resetSelectors();
+        this.app.biblesChanged = false; // Reset the biblesChanged flag when resetting the selectors
 
-        var defaultBibles = utils.clone(this.app.defaultBiblesRaw);
+        var defaultBibles = utils.clone(this.app.getDefaultBibles());
 
         if(this.app.configs.parallelBibleStartSuperceedsDefaultBibles && defaultBibles.length > this.parallelStart) {
             defaultBibles = defaultBibles.slice(0, this.parallelStart);
         }
 
-        this.app.defaultBibles = defaultBibles;
-        // this.app.debug && this.log('default', defaultBibles);
         this.bubble('onSpecialBibleChange', {value: defaultBibles});
         this.setValue(defaultBibles);        
-
-        // this.app.debug && this.log('default', this.app.defaultBibles);
-        // this.bubble('onSpecialBibleChange', {value: this.app.defaultBibles});
-        // this.setValue(this.app.defaultBibles);
     },
     addSelector: function() {
+        // We DON'T flag as changed here, because we are just adding a selector with no value
         this.doAddSelectorTapped();
         this._addSelectorHelper();
         this.$.Container.render();
@@ -185,6 +179,7 @@ module.exports = kind({
         this.$.Remove && this.$.Remove.set('showing', remShowing);
     },
     removeSelector: function() {
+        this.app.biblesChanged = true; 
         this.doRemoveSelectorTapped();
         this._removeSelectorHelper();
         this.$.Container.render();
@@ -228,6 +223,8 @@ module.exports = kind({
         this.$.Container.render();
     },
     selectorChanged: function(inSender, inEvent) {
+        this.app.biblesChanged = true; // User has changed the displayed Bibles
+        
         var components = this.$.Container.getClientControls(),
             value = [];
 

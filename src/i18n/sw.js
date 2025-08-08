@@ -159,8 +159,8 @@ module.exports = {
     // Formatting and dialog buttons
     'A': 'A',     // First letter in given language
     'Abc': 'Abc',  // First 3 letters in given language, with 1st capitalized
-    'Serif' : 'Serif',//check translation                     // * Button text, please keep translation short!
-    'Sans-Serif': 'Sans-Serif',//check translation                 // * Button text, please keep translation short!
+    'Serif' : 'Serif',                   // * Button text, please keep translation short!
+    'Sans-Serif': 'Sans-Serif',                 // * Button text, please keep translation short!
     'Monospace': 'Nafasi moja',                  // * Button text, please keep translation short!
     'Enlarge Text': 'Panua Maandishi',
     'Default Text Size': 'Ukubwa wa Maandishi Chaguomsingi',
@@ -237,6 +237,8 @@ module.exports = {
     'Text Display': 'Onyesho la Maandishi', 
     'Font Style': 'Mtindo wa Fonti',
     'This will reset the settings to defaults.':'Hii itaweka upya mipangilio kwa chaguo-msingi.', // 5.6.20
+    'Do you want to save the settings for future use?':'Je, ungependa kuhifadhi mipangilio kwa matumizi ya baadaye?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'Huenda baadhi ya Biblia zisipatikane kwa kupakuliwa kwa sababu ya vikwazo vya hakimiliki.',
 
     // Result and error messages
     

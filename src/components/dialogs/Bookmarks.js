@@ -128,7 +128,7 @@ module.exports = kind({
                     {classes: 'verses', components: [
                         {
                             kind: Anchor, 
-                            href: item.get('link'), 
+                            href: this.app.getAbsoluteUrl(item.get('link')), 
                             content: content,
                             title: title, 
                             pk: item.get('pk'),

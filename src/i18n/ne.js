@@ -236,7 +236,9 @@ module.exports = {
     'Language' : 'भाषा', 
     'Text Display': 'पाठ प्रदर्शन', 
     'Font Style': 'फन्ट शैली',
-    'This will reset the settings to defaults.':'यसले सेटिङहरूलाई पूर्वनिर्धारितहरूमा रिसेट गर्नेछ।', // 5.6.20 
+    'This will reset the settings to defaults.':'यसले सेटिङहरूलाई पूर्वनिर्धारितहरूमा रिसेट गर्नेछ।', // 5.6.20
+    'Do you want to save the settings for future use?':'के तपाईं भविष्यको प्रयोगको लागि सेटिङहरू बचत गर्न चाहनुहुन्छ?',
+    'Some Bibles may not be available for download due to copyright restrictions.' :'प्रतिलिपि अधिकार प्रतिबन्धका कारण केही बाइबलहरू डाउनलोडको लागि उपलब्ध नहुन सक्छन्।',
 
     // Result and error messages
     

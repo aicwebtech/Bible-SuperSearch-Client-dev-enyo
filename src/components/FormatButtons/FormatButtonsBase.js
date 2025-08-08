@@ -124,6 +124,17 @@ module.exports = kind({
             }
         });
     }, 
+    handleSaveSetting: function(inSender, inEvent) {
+        var t = this,
+            msg = this.app.t('Do you want to save the settings for future use?');
+
+        this.$.ConfirmDialog.confirm(msg, function(confirm) {
+            if(confirm) {
+                t.app.set('_blockAutoScroll', true);
+                t.app.UserConfig.save();
+            }
+        });
+    }, 
     handleSettings: function(inSender, inEvent) {
         this.app.set('settingsShowing', true);
     },
