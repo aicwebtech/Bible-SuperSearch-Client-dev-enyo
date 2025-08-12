@@ -286,13 +286,6 @@ module.exports = kind({
         formData = this.beforeSubmitForm(formData);
         formData = this.processDefaults(formData);
 
-        // if(!manual && (!formData.reference && !formData.request && !formData.search)) {
-        //     this.app.debug && this.log('FORM: No reference, request or search, not submitting form');
-        //     this.requestPending = false;
-        //     this.app.set('ajaxLoadingDelay', false);
-        //     return;
-        // }
-
         this.app.debug && this.log('Submitted formData', formData);
 
         ajax.go(formData); // for GET
@@ -951,6 +944,13 @@ module.exports = kind({
         if(pasSubmit == 'Random Chapter' || pasSubmit == 'Random Verse') {
             // :todo actual_random make this a config?
             pas = this.getActualRandomPassage();
+
+            // temp hack before Jerhico walls fall down ... 
+            if(this.$.request) {
+                this.$.request.set('value', pas);
+            } else if(this.$.reference) {
+                this.$.reference.set('value', pas);
+            }
         }
 
         var passages = this.Passage.explodeReferences(pas, true);
