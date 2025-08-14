@@ -66,6 +66,14 @@ module.exports = kind({
         onClearForm: 'clearFormManual'
     },
 
+    // bindings: [
+    //     {from: 'app.UserConfig.text_size', to: 'textSize', oneWay: true, transform: function(value, dir) {
+    //         console.log('FormatButtons text_size', value, dir);
+    //         this.applyTextSize();
+    //         return value;
+    //     }}
+    // ],
+
     create: function() {
         this.inherited(arguments);
         this.createComponent(this.signalComponent);
@@ -1304,5 +1312,11 @@ module.exports = kind({
         for(i in this.formNames) {
             this.$[ this.formNames[i] ] && this.$[ this.formNames[i] ].testInit();
         }
-    }
+    },
+    applyTextSize: function() {
+        // experiment, not working
+        // var size = this.app.UserConfig.get('text_size') || 0;
+        // var styleSize = size * .05 + 1;
+        // this.applyStyle('font-size', styleSize.toString() + 'em');
+    },
  });

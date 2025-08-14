@@ -49,11 +49,11 @@ module.exports = kind({
                         {kind: Shortcuts, name: 'shortcut', style: 'width: 100%; max-width: 200px', selectedPassagesLabel: 'Passage(s) listed below'}
                     ]},
                     {tag: 'br'},
-                    {components: [
+                    {classes: 'bss_checkbox_container', components: [
                         {kind: Checkbox, name: 'whole_words', id: 'whole_words'},
                         {tag: 'span', content: ' '},
                         {kind: i18nContent, tag: 'label', content: 'Whole words only', attributes: {for: 'whole_words'}},
-                        {tag: 'span', content: '&nbsp; &nbsp;', allowHtml: true},
+                        {tag: 'br'},
                         {kind: Checkbox, name: 'exact_case', id: 'exact_case'},
                         {tag: 'span', content: ' '},
                         {kind: i18nContent, tag: 'label', content: 'Exact Case', attributes: {for: 'exact_case'}}

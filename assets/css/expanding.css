@@ -25,7 +25,7 @@
     text-align: end;
     margin-inline-end: 5px;
     padding: 0;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 
 .biblesupersearch_expanding_form .bss_input_row .bss_element {
@@ -101,9 +101,10 @@
 }
 
 .biblesupersearch_expanding_form  .bss_input_row_checkbox .bss_checkbox_container {
-    display: inline-block;
-    width: 49%;
-    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    text-align: right;
+    margin: 6px auto 0;
 }
 
 .biblesupersearch_expanding_form  .bss_input_row_checkbox .bss_checkbox_container .bss_label {
@@ -113,6 +114,7 @@
     /*background-color: yellow;*/
     text-align: end;
 }
+
 .biblesupersearch_expanding_form  .bss_input_row_checkbox .bss_checkbox_container .bss_element {
     display: inline-block;
 }
@@ -122,7 +124,7 @@
 }
 
 .bss_interface_expanding .bss_bible button {
-    font-size: .bss_7em;
+    font-size: .7em;
 }
 
 .bss_interface_expanding button.bss_random {

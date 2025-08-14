@@ -16,6 +16,7 @@ module.exports = kind({
     kind: Base,
     classes: 'bss_format_buttons_html',
     font: null,
+    textSize: null,
     
     components: [
         {classes: 'bss_button_group', name: 'TextSizeGroup', components: [
@@ -557,7 +558,12 @@ module.exports = kind({
             this.$.font_monospace.addRemoveClass('bss_selected', value == 'monospace');
             dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
             return value;
-        }}
+        }},
+        // {from: 'app.UserConfig.text_size', to: 'textSize', oneWay: true, transform: function(value, dir) {
+        //     // console.log('FormatButtons text_size', value, dir);
+        //     this.applyTextSize();
+        //     return value;
+        // }}
     ],
 
     create: function() {
@@ -610,5 +616,11 @@ module.exports = kind({
         if(!this.app.configs.toggleAdvanced || this.app.configs.toggleAdvanced == 'false') {
             this.$.advanced_toggle && this.$.advanced_toggle.set('showing', false);
         }
-    }
+    },
+    applyTextSize: function() {
+        // experiment, not working
+        // var size = this.app.UserConfig.get('text_size') || 0;
+        // var styleSize = size * .05 + 1;
+        // this.applyStyle('font-size', styleSize.toString() + 'em');
+    },
 });

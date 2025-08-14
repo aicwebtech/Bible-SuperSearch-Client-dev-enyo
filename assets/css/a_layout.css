@@ -761,7 +761,11 @@ div.bss_alert_dialog {
 }
 
 /* Print dialog specific formatting */
-.biblesupersearch_print .biblesupersearch_nav_buttons, .biblesupersearch_print .bss_html_nav_buttons {
+.biblesupersearch_print .biblesupersearch_nav_buttons, 
+.biblesupersearch_print .bss_html_nav_buttons,
+.biblesupersearch_print .biblesupersearch_pager,
+.biblesupersearch_print .bss_results_list
+{
     display:none;
 }
 

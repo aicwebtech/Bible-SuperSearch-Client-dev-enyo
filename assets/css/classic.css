@@ -19,6 +19,12 @@
     max-width: 400px;
 }
 
+.biblesupersearch_classic_form.bss_user_friendly .bss_checkbox_container {
+    text-align: start;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+}
 
 .biblesupersearch_classic_form.bss_advanced {
     max-width: 400px;
