@@ -1,6 +1,6 @@
 Bible SuperSearch Universal Client Changelog
 
-= 6.1.0 (tentatively Aug 16, 2025)
+= 6.1.0 
 * Auto Scroll to Error message when No Results
 * One-click Copy/share Bible verses
 * Config to set Default Bibles by UI Language
@@ -11,6 +11,9 @@ Bible SuperSearch Universal Client Changelog
 * Fixed history dialog to not show repeats, but only show the most recent.
 * Fixed history / book mark links when having the software on mutiple pages on a website.
 * Fixed pagination breakage on advanced search form.
+* Fixed random chapter / verse actual references not populating into form.
+* Fixed results list / results count / pager showing in print mode.
+* Fixed text labels on some skins not showing properly for long translation strings. 
 * Cleaned up dialog buttons to position the same regardless of language.
 
 = 6.0.1
