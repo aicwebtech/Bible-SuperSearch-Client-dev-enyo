@@ -46,7 +46,7 @@ module.exports = kind({
                     {content: 'preserve words', link: 'search', search: 'preserve words', searchType: 'xor'},
                 {tag: 'h4', kind: i18n, content: 'Wildcard'},         
                 {tag: 'div', components: [
-                    {tag: 'span', content: '<b>*</b> &nbsp;', allowHtml: true},
+                    {tag: 'span', content: '<b>*</b> &nbsp;', allowHtml: true}, // Ok
                     {kind: i18n, content: 'Matches unlimited characters'}
                 ]},
             {tag: 'br'},

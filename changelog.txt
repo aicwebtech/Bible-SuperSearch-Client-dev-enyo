@@ -1,5 +1,8 @@
 Bible SuperSearch Universal Client Changelog
 
+= 6.1.1
+* Fixed some security issues
+
 = 6.1.0 
 * Auto Scroll to Error message when No Results
 * One-click Copy/share Bible verses

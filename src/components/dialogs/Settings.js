@@ -164,14 +164,14 @@ module.exports = kind({
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'check_box'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},
-                    {tag: 'small', kind: i18n, content: 'Hide Parallel Search Errors', allowHtml: true}
+                    {tag: 'small', kind: i18n, content: 'Hide Parallel Search Errors', _allowHtml: true} // unnecessary
                 ]
             },        
             falseComponent: {
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'check_box_outline_blank'},
                     {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;'},       
-                    {tag: 'small', kind: i18n, content: 'Hide Parallel Search Errors', allowHtml: true}         
+                    {tag: 'small', kind: i18n, content: 'Hide Parallel Search Errors', _allowHtml: true} // unnecessary
                 ]
             },
             help: true,

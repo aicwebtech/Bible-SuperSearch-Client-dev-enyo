@@ -15,7 +15,7 @@ module.exports = kind({
 
         this.createComponent({
             content: 'Select one ...',
-            allowHtml: true,
+            // allowHtml: true, // unnessessary?
             value: '0'
         });
 
@@ -28,7 +28,7 @@ module.exports = kind({
             var optgroup = this.createComponent({
                 kind: i18n,
                 tag: 'optgroup',
-                allowHtml: true,
+                //allowHtml: true, // unnecessary?
                 attributes: {label: labelNoHtml}
             });
 

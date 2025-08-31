@@ -40,7 +40,7 @@ module.exports = kind({
                     components: [
                         {name: 'Link', kind: Button, ontap: 'followLink', components: [
                             {kind: i18n, content: 'Search for'},
-                            {tag: 'span', content: '&nbsp;', allowHtml: true},
+                            {tag: 'span', content: '&nbsp;', allowHtml: true}, // OK
                             {tag: 'span', name: 'SearchFor'}
                         ]},
                         {name: 'LinkSpacer', tag: 'span', classes: 'bss_spacer'},

@@ -49,7 +49,7 @@ module.exports = kind({
                 // kind: TextArea, 
                 tag: 'p',
                 name: 'CopyArea', 
-                allowHtml: true,
+                allowHtml: true, // unsave? unavoidable?
                 classes: 'bss_link_share', 
                 attributes: {dir: 'auto'},
                 _style: 'width: 98%'
@@ -74,7 +74,7 @@ module.exports = kind({
                             content: 'Include Link',
                             attributes: {for: 'bss_share_inc_link'}
                         },
-                        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
+                        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'}, // ok
                         {
                             kind: Checkbox, 
                             name: 'inc_link', 
@@ -92,7 +92,7 @@ module.exports = kind({
                             content: 'Include Formatting',
                             attributes: {for: 'bss_share_inc_format'}
                         },
-                        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'},
+                        {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;'}, // ok
                         {
                             kind: Checkbox, 
                             name: 'inc_format', 

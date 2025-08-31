@@ -113,7 +113,7 @@ module.exports = kind({
             this.$.ListContainer.createComponent({
                 owner: this,
                 content: '&nbsp;',
-                allowHtml: true,
+                allowHtml: true, // Ok
                 classes: 'bss_list_item bss_history_item'
             });
 

@@ -4,9 +4,7 @@ var i18n = require('../../components/Locale/i18nComponent');
 
 module.exports = kind({
     name: 'ErrorView',
-    // kind: i18n,
     classes: 'biblesupersearch_error_view',
-    allowHtml: true,
     errors: [],
 
     handlers: {
@@ -57,7 +55,23 @@ module.exports = kind({
             errorsTranslated.push( this.app.t(this.errors[i]) );
         }        
 
-        this.set('content', errorsTranslated.join('<br /><br />'));
+        this.destroyClientControls();
+
+        for(var i in errorsTranslated) {
+            this.createComponent({
+                tag: 'div',
+                content: errorsTranslated[i],
+                classes: 'bss_error_item'
+            });
+
+            if(i < (errorsTranslated.length - 1)) {
+                this.createComponent({
+                    tag: 'br'
+                });
+            }
+        }
+
+        this.render();
     }
 
 });

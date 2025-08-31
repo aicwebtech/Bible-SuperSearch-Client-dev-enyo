@@ -32,7 +32,7 @@ module.exports = kind({
             name: 'container',
             style: 'text-align: justify',
             classes: 'bss_bible_info_container',
-            allowHtml: true,
+            allowHtml: true, // UNSAFE? Unavoidable?
             attributes: {dir: 'auto'},
         },    
         {

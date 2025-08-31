@@ -19,7 +19,7 @@ module.exports = kind({
 
     bodyComponents: [
         {kind: Signal, onAlert: 'openAlert', onPositionedAlert: 'openPositionedAlert'},
-        {name: 'AlertContainer', allowHtml: true, tag: 'span', classes: 'bss_alert_dialog_container'}
+        {name: 'AlertContainer', allowHtml: true, tag: 'span', classes: 'bss_alert_dialog_container'} // UNSAFE?
     ],
 
     bindings: [

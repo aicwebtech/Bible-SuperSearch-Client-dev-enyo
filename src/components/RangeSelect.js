@@ -27,7 +27,7 @@ module.exports = kind({
             var label = '± ' + item.toString() + ' ' + unit;
 
             this.createComponent({
-                allowHtml: true,
+                allowHtml: true, // Ok
                 content: label,
                 value: item
             });
@@ -35,7 +35,7 @@ module.exports = kind({
 
         this.postOptions.forEach(function(item) {
             this.createComponent({
-                allowHtml: true,
+                allowHtml: true, // Ok 
                 content: item.label,
                 value: item.value
             });

@@ -34,7 +34,7 @@ module.exports = kind({
             name: 'container',
             style: 'text-align: justify',
             classes: 'bss_bible_info_container',
-            allowHtml: true,
+            allowHtml: true, // unnecessary?
             attributes: {dir: 'auto'},
             // attributes: {border: 1}
             tag: 'table',
@@ -115,7 +115,7 @@ module.exports = kind({
             var header = '<th colspan=\'2\'>' + bibleHeader[0] + '</th>';
         }
         
-        this.$.container.createComponent({tag: 'tr', content: header, allowHtml: true});
+        this.$.container.createComponent({tag: 'tr', content: header, allowHtml: true}); // unsafe
 
         this._renderResultsHelper('passage', 'Passage', results, bibleHeader.length, compact);
         this._renderResultsHelper('chapter', 'Chapter', results, bibleHeader.length, compact);
@@ -211,7 +211,7 @@ module.exports = kind({
         }
 
         for(i in rows) {
-            this.$.container.createComponent({tag: 'tr', content: rows[i], allowHtml: true});
+            this.$.container.createComponent({tag: 'tr', content: rows[i], allowHtml: true}); // unsafe
         }
     },
 

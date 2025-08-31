@@ -25,7 +25,7 @@ module.exports = kind({
         {tag: 'br'},
         {tag: 'br'},
 
-        {name: 'Content', allowHtml: true},
+        {name: 'Content', allowHtml: true}, // UNSAFE?
 
         {tag: 'br'},
         {tag: 'br'},

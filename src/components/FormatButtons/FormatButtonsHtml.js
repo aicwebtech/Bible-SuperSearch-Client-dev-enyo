@@ -46,9 +46,9 @@ module.exports = kind({
                     title: 'Default Text Size',
                 },
                 components: [
-                    {tag: 'span', content: '&nbsp;', allowHtml: true},
+                    {tag: 'span', content: '&nbsp;', allowHtml: true}, // OK
                     {kind: i18n, content: 'A'},
-                    {tag: 'span', content: '&nbsp;', allowHtml: true},
+                    {tag: 'span', content: '&nbsp;', allowHtml: true}, // OK
                 ]
             },  
             {
@@ -302,31 +302,12 @@ module.exports = kind({
                 falseTitle: 'EZ Copy',
                 trueComponent: {
                     components: [
-                        // {tag: 'span', classes: 'bss_buttons', content: '<< < = > >>', allowHtml: true},
-                        // {tag: 'span', content: '', allowHtml: true},
-                        // {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true},
-                        // {tag: 'span', content: '- &ndash;&mdash;&ndash;', allowHtml: true}
-
                         {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'book'}
                         // {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'bookvisibility'}
                     ]
                 },
                 falseComponent: {
                     components: [
-                        /*
-                        {tag: 'span', content: '- ------', allowHtml: true},
-                        {tag: 'span', content: '- ------', allowHtml: true},
-                        {tag: 'span', content: '- ------', allowHtml: true},
-                        {tag: 'span', content: '- ------', allowHtml: true},
-                        // {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
-                        // {tag: 'span', content: '- &mdash;&ndash;-&ndash;', allowHtml: true},
-                        // {tag: 'span', content: '- -&ndash;&mdash;&ndash;', allowHtml: true},
-                        // {tag: 'span', content: '- &ndash;&ndash;&mdash;-', allowHtml: true},
-                        {tag: 'span', content: ''},
-                        {tag: 'span', content: ''},
-                        {tag: 'span', content: ''},
-                        */
-
                         {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'content_copypageview'}
                     ]
                 },

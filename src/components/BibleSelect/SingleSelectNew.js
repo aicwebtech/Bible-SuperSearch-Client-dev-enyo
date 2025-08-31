@@ -64,7 +64,7 @@ module.exports = kind({
                 //kind: i18n,
                 kind: Opt,
                 content: noSelectLabel,
-                allowHtml: true,
+                allowHtml: true, // OK
                 value: 0,
                 attributes: {value: '0'}
             });

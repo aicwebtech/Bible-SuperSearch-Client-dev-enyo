@@ -64,7 +64,7 @@ module.exports = kind({
                 this.createComponent({
                     tag: 'span',
                     content: '&nbsp;&nbsp;',
-                    allowHtml: true,
+                    allowHtml: true, // Ok 
                     noTap: true
                 });
             }
@@ -82,7 +82,7 @@ module.exports = kind({
                 this.createComponent({
                     tag: 'span',
                     content: '&nbsp;&nbsp;',
-                    allowHtml: true,
+                    allowHtml: true, // Ok 
                     helpTap: true
                 });
             }

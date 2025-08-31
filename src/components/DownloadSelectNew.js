@@ -17,7 +17,7 @@ module.exports = kind({
 
         this.createOptionComponent({
             content: 'Select one ...',
-            allowHtml: true,
+            //allowHtml: true, // unnessessary?
             value: '0'
         });
 
@@ -28,21 +28,10 @@ module.exports = kind({
             var labelNoHtml = label.replace(/(<([^>]+)>)/gi, "");
 
             this.$.Toggle.createComponent({
-                // tag: 'optgroup',
                 kind: OptGroup,
                 label: labelNoHtml,
                 attributes: {label: labelNoHtml},
-                // name: compName,
             });
-
-            // var optgroup = this.createOptionComponent({
-            //     // kind: i18n,
-            //     // tag: 'optgroup',
-            //     kind: OptGroup,
-            //     allowHtml: true,
-            //     // attributes: {label: labelNoHtml}
-            //     content: labelNoHtml
-            // });
 
             item.formats.forEach(function(fm) {
                 var info = item.renderers[fm];
@@ -53,21 +42,8 @@ module.exports = kind({
                     kind: Opt,
                     content: content, 
                     value: fm,
-                    // attributes: {value: bible.module, selected: selected},
-                    // titleString: content,
-                    // contentShort: contentShort,
-                    // contentLong: contentLong,
                     grouped: true
-                    // owner: this
                 });
-
-                // this.createOptionComponent({
-                //     // kind: i18n,
-                //     // tag: 'option',
-                //     attributes: {value: fm},
-                //     content: content,
-                //     value: fm
-                // });
             }, this);
         }, this);        
 
