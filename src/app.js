@@ -202,6 +202,7 @@ var App = Application.kind({
             
             this.rootDir = dir;
         }
+        
 
         var urlParts = window.location.href.split('#');
         this.baseUrl = urlParts[0];
