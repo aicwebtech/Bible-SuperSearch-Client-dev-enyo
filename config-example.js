@@ -365,6 +365,9 @@ var biblesupersearch_config_options = {
     // Options: paragraph, passage, verse, verse_passage
     'textDisplayDefault': 'passage',
 
+    // Audio Bible settings
+    'audioBible': false,     // Enables audio Bible
+
     // User Config settings
     'saveUserSettings': false, // Whether to save user's settings to appear on next page load (saves to LocalStorage, not cookie)
 

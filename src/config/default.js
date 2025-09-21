@@ -37,6 +37,7 @@ var defaultConfig = {
     'omitUserLanguage': false,
     'saveUserSettingsManual': false,                   // Whether to require user to save their settings manually (ie via a button)
     'saveUserBibleSelections': false,                  // Whether to save user's selected Bibles with user settings
+    'audioBible': false,                               // Enables audio Bible features
 
     _urlDefaultNotice: function() {
         if(window.console) {

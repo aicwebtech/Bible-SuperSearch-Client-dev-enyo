@@ -749,6 +749,10 @@ div.bss_alert_dialog {
     text-align: center;
 }
 
+.bss_top_align {
+    vertical-align: top;
+}
+
 .biblesupersearch_bible_selector option.bss_label {
     background-color: transparent;
     font-weight: bold;
