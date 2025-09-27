@@ -753,6 +753,13 @@ div.bss_alert_dialog {
     vertical-align: top;
 }
 
+.bss_audio {
+    width: 90%;
+    height: 30px;
+    display: block;
+    margin: 10px auto;
+}
+
 .biblesupersearch_bible_selector option.bss_label {
     background-color: transparent;
     font-weight: bold;

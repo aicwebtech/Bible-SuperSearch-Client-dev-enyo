@@ -9,9 +9,14 @@ module.exports = kind({
 
     components: [
         {kind: Signal, onListen: 'handleListenSignal'},
-        {content: 'HERE'},
+        //{content: 'HERE'},
         {name: 'Container', showing: false, components: [
-            {name: 'Audio', tag: 'audio', attributes: { src: 'http://192.168.111.8/test_music.mp3', type: 'audio/mpeg', controls: true}}
+            {
+                name: 'Audio', 
+                tag: 'audio', 
+                classes: 'bss_audio',
+                attributes: { src: 'http://192.168.111.8/test_music.mp3', type: 'audio/mpeg', controls: true}
+            }
         ]}
     ],
     handleListenSignal: function(inSender, inEvent) {
@@ -20,16 +25,20 @@ module.exports = kind({
             return;
         }
 
-        //this.log('Signal', inEvent);
+        this.log('Signal', inEvent);
 
         if(Array.isArray(this.bible)) {
             this.bible = this.bible[0];
         }
 
-        //this.log('Internal', this.bible, this.passage);
+        this.log('Internal', this.bible, this.passage);
 
         if(inEvent.cva || this.passage.chapter_verse_actual) {
-            if(this.bible !== inEvent.bible || this.passage.book_id != inEvent.b || this.passage.chapter_verse_actual != inEvent.cva) {
+            if(this.bible !== inEvent.bible || this.passage.book_id != inEvent.b || 
+                this.passage.chapter_verse_actual != inEvent.cva && 
+                this.passage.chapter_verse != inEvent.cva && 
+                this.passage.chapter_verse_actual != inEvent.cv
+            ) {
                 return;
             }
         } else {
