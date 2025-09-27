@@ -1,11 +1,13 @@
 var kind = require('enyo/kind');
 var Signal = require('../../components/Signal');
+var Ajax = require('enyo/Ajax');
 
 module.exports = kind({
     name: 'AudioContainer',
     enabled: true,
     bible: null,
     passage: null,
+    text: null,
 
     components: [
         {kind: Signal, onListen: 'handleListenSignal'},
@@ -25,13 +27,13 @@ module.exports = kind({
             return;
         }
 
-        this.log('Signal', inEvent);
+        // this.log('Signal', inEvent);
 
         if(Array.isArray(this.bible)) {
             this.bible = this.bible[0];
         }
 
-        this.log('Internal', this.bible, this.passage);
+        // this.log('Internal', this.bible, this.passage);
 
         if(inEvent.cva || this.passage.chapter_verse_actual) {
             if(this.bible !== inEvent.bible || this.passage.book_id != inEvent.b || 
@@ -74,8 +76,98 @@ module.exports = kind({
         }
 
         // load audio file ... 
+        this.buildRequest();
+    },
+    buildRequest: function() {
+        //sk_9575226ba5fb3018e27a7f3ca3880cc9a1c5b6c7e6d84067
+
+        // var url = 'https://api.elevenlabs.io/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb';
+
+        if(this.bible == 'kjv') {
+            var url = 'http://ui-dev.bss.plsv/assets/extras/test_text.mp3';
+        } else {
+            var url = 'http://ui-dev.bss.plsv/assets/extras/test_music.mp3';
+        }
+
+        const headers = {
+            // 'Content-Type': 'application/json',
+            // 'xi-api-key': 'sk_9575226ba5fb3018e27a7f3ca3880cc9a1c5b6c7e6d84067'
+            // 'Content=Security-Policy': "default-src 'self'; script-src 'self' https://api.elevenlabs.io; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.elevenlabs.io",
+            // allow CORS
+            'Access-Control-Allow-Origin': '*',
+            // 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            // 'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+        };
+
+        const body = {
+            text: 'In the beginning',
+            model_id: 'eleven_multilingual_v2', // Example voice
+            output_format: 'mp3_44100_128'
+        }
+
+        var ajax = new Ajax({
+            url: url,
+            // method: 'POST',
+            // postBody: JSON.stringify(body),
+            headers: headers,
+            handleAs: 'binary'
+        });
+
+
+        ajax.go(); // for GET
+        // ajax.go(body); // for GET
+        ajax.response(this, function(inSender, inResponse) {
+            this.log('Sender', inSender);
+            this.log('Response', inResponse);
+
+            var audioEl = this.$.Audio.hasNode();
+
+            if(audioEl) {
+                // Set source to new audio file
+                // audioEl.src = inResponse.audio_url; // Example response field
+                // audioEl.src = URL.createObjectURL(inResponse); // Example response field
+                // const mediaSource = new MediaSource();
+                // const Stream = new MediaStream(inResponse);
+
+                // play audio from binary data
+                // Create media stream from binary data
+                const stream = new MediaStream();
+                const audioTrack = new MediaStreamTrack(inResponse);
+                stream.addTrack(audioTrack); 
+                //
+
+
+
+
+                audioEl.srcObject = stream;
+
+
+                const blob = new Blob([inResponse], { type: 'audio/mpeg' });
+                const url = URL.createObjectURL(blob);
+
+                this.log('A-Blob', blob);
+                this.log('A-URL', url);
+
+                audioEl.srcObject = stream;
+                // audioEl.srcObject = blob;
+                audioEl.src = null;
+                // audioEl.src = url;
+
+                audioEl.currentTime = 0;
+                // audioEl.play();
+            }
+
+        });
+
+        ajax.error(this, function(inSender, inError) {
+            this.log('Error', inError);
+        });
     },
     getText: function() {
+        if(this.text) {
+            return this.text;
+        }
+        
         var text = '';
         var chapter = null;
         var verse = null;
@@ -105,6 +197,8 @@ module.exports = kind({
                 }
             }
         }
+
+        this.text = text.trim();
 
         return text;
     }
