@@ -1,6 +1,6 @@
 var kind = require('enyo/kind');
 var Signal = require('../../components/Signal');
-var Ajax = require('enyo/Ajax');
+var i18n = require('../../components/Locale/i18nComponent');
 
 module.exports = kind({
     name: 'AudioContainer',
@@ -8,16 +8,23 @@ module.exports = kind({
     bible: null,
     passage: null,
     text: null,
+    loaded: false,
 
     components: [
         {kind: Signal, onListen: 'handleListenSignal'},
         //{content: 'HERE'},
-        {name: 'Container', showing: false, components: [
+        {name: 'Container', showing: false, classes: 'bss_audio', components: [
             {
                 name: 'Audio', 
                 tag: 'audio', 
-                classes: 'bss_audio',
-                attributes: { src: 'http://192.168.111.8/test_music.mp3', type: 'audio/mpeg', controls: true}
+                attributes: { type: 'audio/mpeg', controls: true},
+            },
+            {
+                name: 'Loading', 
+                kind: i18n,
+                titleString: 'Loading, please wait', 
+                showing: true, 
+                classes: 'bss_audio_loading'
             }
         ]}
     ],
@@ -76,92 +83,134 @@ module.exports = kind({
         }
 
         // load audio file ... 
-        this.buildRequest();
+        this.fetchRequest();
     },
-    buildRequest: function() {
-        //sk_9575226ba5fb3018e27a7f3ca3880cc9a1c5b6c7e6d84067
+    fetchRequest: function() {
+        var audioEl = this.$.Audio.hasNode();
 
-        // var url = 'https://api.elevenlabs.io/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb';
-
-        if(this.bible == 'kjv') {
-            var url = 'http://ui-dev.bss.plsv/assets/extras/test_text.mp3';
-        } else {
-            var url = 'http://ui-dev.bss.plsv/assets/extras/test_music.mp3';
+        if(!audioEl) {
+            return;
+        }
+        
+        if(this.loaded) {
+            audioEl.play();
+            return;
         }
 
+        // return;
+        
+        var self = this;
+        
+
+        var type = 'elevenlabs';
+        // var type = 'murfai';
+        // var type = 'test';
+
+        var request = this.buildRequest(type);
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open('post', request.url, true);
+        xhr.responseType = request.responseType; // Load the data directly as a Blob.
+
+        for(var h in request.headers) {
+            xhr.setRequestHeader(h, request.headers[h]);
+        }
+
+        xhr.onload = function() {
+            if(request.returnType == 'blob') {
+                audioEl.src = URL.createObjectURL(this.response);
+                audioEl.play();
+                self.loaded = true;
+                self.$.Loading.setShowing(false);
+            } else if(request.returnType == 'url') {
+                var resp = JSON.parse(this.responseText);
+                audioEl.src = resp.audioFile;
+                audioEl.play();
+                self.loaded = true;
+                self.$.Loading.setShowing(false);
+            }
+        };
+
+        xhr.send(JSON.stringify(request.body)); 
+    },
+    buildRequest: function(type) {
+        var request = {
+            url: null,
+            returnType: 'blob',
+            responseType: 'blob',
+            method: 'POST',
+            body: {},
+            headers: {}
+        };
+
+        if(type == 'elevenlabs') {
+            request.url = 'https://api.elevenlabs.io/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb';
+            request.headers = { 
+                'Content-Type': 'application/json',
+                'xi-api-key': 'sk_9575226ba5fb3018e27a7f3ca3880cc9a1c5b6c7e6d84067'
+            };
+            request.body = {
+                text: this.getText(),
+                model_id: 'eleven_multilingual_v2', // Example voice
+                output_format: 'mp3_44100_128'
+            };
+        } else if(type == 'murfai') {
+            request.url = 'https://api.murf.ai/v1/speech/generate';
+            request.returnType = 'url';
+            request.responseType = 'text';
+            request.headers = { 
+                'Content-Type': 'application/json',
+                'api-key': 'ap2_71dafa1c-31d0-41e1-8025-d8c63b3e276b'
+            };  
+            request.body = {
+                "text": this.getText(),
+                "voiceId": "en-US-natalie",
+                // 'voiceId': 'en-US-charles'
+            };
+        } else {
+            request.url = '/assets/extras/test_music.mp3';
+            request.method = 'GET';
+        }
+
+        return request;
+
+        if(this.bible == 'kjv') {
+            var url = 'assets/extras/test_text.mp3';
+        } else {
+            var url = 'assets/extras/test_music.mp3';
+        }
+
+        var audioEl = this.$.Audio.hasNode();
+        
+        // murf.ad
+        var murfAIKey = 'ap2_71dafa1c-31d0-41e1-8025-d8c63b3e276b';
+
+        //sk_9575226ba5fb3018e27a7f3ca3880cc9a1c5b6c7e6d84067   // elevenlabs
+
+        var url = 'https://api.elevenlabs.io/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb';
+
         const headers = {
-            // 'Content-Type': 'application/json',
-            // 'xi-api-key': 'sk_9575226ba5fb3018e27a7f3ca3880cc9a1c5b6c7e6d84067'
+            //'api-key': murfAIKey,
+            'Content-Type': 'application/json',
+            'xi-api-key': 'sk_9575226ba5fb3018e27a7f3ca3880cc9a1c5b6c7e6d84067'
             // 'Content=Security-Policy': "default-src 'self'; script-src 'self' https://api.elevenlabs.io; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.elevenlabs.io",
             // allow CORS
-            'Access-Control-Allow-Origin': '*',
+            // 'Access-Control-Allow-Origin': '*',
             // 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
             // 'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+            // 'Accept': 'application/json',
+            // 'Content-Type': 'application/json',
         };
 
         const body = {
-            text: 'In the beginning',
+            text: this.getText(),
             model_id: 'eleven_multilingual_v2', // Example voice
             output_format: 'mp3_44100_128'
-        }
+            // "voiceId": "en-US-natalie",
+            // 'voiceId': 'en-US-charles'
 
-        var ajax = new Ajax({
-            url: url,
-            // method: 'POST',
-            // postBody: JSON.stringify(body),
-            headers: headers,
-            handleAs: 'binary'
-        });
+        };
 
-
-        ajax.go(); // for GET
-        // ajax.go(body); // for GET
-        ajax.response(this, function(inSender, inResponse) {
-            this.log('Sender', inSender);
-            this.log('Response', inResponse);
-
-            var audioEl = this.$.Audio.hasNode();
-
-            if(audioEl) {
-                // Set source to new audio file
-                // audioEl.src = inResponse.audio_url; // Example response field
-                // audioEl.src = URL.createObjectURL(inResponse); // Example response field
-                // const mediaSource = new MediaSource();
-                // const Stream = new MediaStream(inResponse);
-
-                // play audio from binary data
-                // Create media stream from binary data
-                const stream = new MediaStream();
-                const audioTrack = new MediaStreamTrack(inResponse);
-                stream.addTrack(audioTrack); 
-                //
-
-
-
-
-                audioEl.srcObject = stream;
-
-
-                const blob = new Blob([inResponse], { type: 'audio/mpeg' });
-                const url = URL.createObjectURL(blob);
-
-                this.log('A-Blob', blob);
-                this.log('A-URL', url);
-
-                audioEl.srcObject = stream;
-                // audioEl.srcObject = blob;
-                audioEl.src = null;
-                // audioEl.src = url;
-
-                audioEl.currentTime = 0;
-                // audioEl.play();
-            }
-
-        });
-
-        ajax.error(this, function(inSender, inError) {
-            this.log('Error', inError);
-        });
     },
     getText: function() {
         if(this.text) {
@@ -193,13 +242,23 @@ module.exports = kind({
                         continue;
                     }
                     
-                    text += this.passage.verses[this.bible][c][v].text + ' ';
+                    text += this.processVerseText(this.passage.verses[this.bible][c][v].text);
                 }
             }
         }
 
-        this.text = text.trim();
+        this.text = '        ' + text.trim();
 
         return text;
+    },
+    processVerseText: function(text) {
+        text = text.replace(/[‹›]/g, ''); // remove red letter markers
+        text = text.replace(/[\[\]{}]/g, ''); // remove brackets (italic markers)
+        text = text.replace(/\} \{/g, ''); // remove Strongs numbers
+        text = text.replace(/\{[^\}]+\}/g, ''); // remove Strongs numbers
+        text = text.replace('¶', ''); // remove paragraph markers
+        text = text.replace(/<[^>]*>/g, ''); // remove HTML tags
+
+        return text.trim() + ' ';
     }
 });
