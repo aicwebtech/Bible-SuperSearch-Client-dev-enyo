@@ -365,8 +365,11 @@ var biblesupersearch_config_options = {
     // Options: paragraph, passage, verse, verse_passage
     'textDisplayDefault': 'passage',
 
-    // Audio Bible settings
+    // Audio Bible settings (subject to change)
     'audioBible': false,     // Enables audio Bible
+    'audioBibleApi': null, // Audio Bible API to use, default is 'biblesupersearch' (proxies to other TTS services but stores audio on our servers)
+     // note: Main Bible SuperSearch API does not provide audio at this time.  You will need to install our API on your own server to use audio Bible feature.
+    'audioBibleApiKey': null,
 
     // User Config settings
     'saveUserSettings': false, // Whether to save user's settings to appear on next page load (saves to LocalStorage, not cookie)

@@ -6,6 +6,8 @@ module.exports = kind({
     name: 'AudioContainer',
     enabled: true,
     bible: null,
+    bibleInfo: null,
+    language: null,
     passage: null,
     text: null,
     loaded: false,
@@ -40,6 +42,17 @@ module.exports = kind({
             this.bible = this.bible[0];
         }
 
+        if(!this.language) {
+            var bibleInfo = this.app.statics.bibles[this.bible];
+
+            if(bibleInfo) {
+                this.bibleInfo = bibleInfo;
+                this.language = bibleInfo.lang_short;
+            } else {
+                return;
+            }
+        }
+
         // this.log('Internal', this.bible, this.passage);
 
         if(inEvent.cva || this.passage.chapter_verse_actual) {
@@ -56,9 +69,6 @@ module.exports = kind({
             }
         }
 
-        this.log('Play audio for', this.bible, this.passage);
-
-
         var audioEl = this.$.Audio.hasNode();
 
         if(this.$.Container.getShowing()) {
@@ -72,18 +82,20 @@ module.exports = kind({
             return;
         }
 
-        this.log(this.getText())
-
         this.$.Container.setShowing(true);
 
         // Set audio to start
         if(audioEl) {
             audioEl.currentTime = 0;
-            // audioEl.play();
         }
 
-        // load audio file ... 
-        this.fetchRequest();
+        var api = this.app.configs.audioBibleApi || 'biblesupersearch';
+
+        if(api == null || api == '' || api == 'biblesupersearch') {
+            this.fetchRequest();
+        } else {
+            this.fetchThirdPartyRequest();
+        }
     },
     fetchRequest: function() {
         var audioEl = this.$.Audio.hasNode();
@@ -97,19 +109,54 @@ module.exports = kind({
             return;
         }
 
-        // return;
+        var self = this;
+        var url = this.app.configs.apiUrl + '/v2/audio_check';
+
+        var query  = '?bible=' + encodeURIComponent(this.bible);
+            query += '&book=' + encodeURIComponent(this.passage.book_id) + 'B';
+            query += '&chapter_verse=' + encodeURIComponent(this.passage.chapter_verse_actual || this.passage.chapter_verse);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url + query, true);
+        xhr.responseType = 'text';
+
+        xhr.onload = function() {
+            var resp = JSON.parse(this.responseText);
+
+            console.log('BSS Audio response parsed', resp);
+
+            if(resp.results.has_audio) {
+                var audioUrl = self.app.configs.apiUrl + '/v2/audio' + query;
+                audioEl.src = audioUrl;
+                audioEl.play();
+                self.loaded = true;
+                self.$.Loading.setShowing(false);
+            }
+        };
+
+        xhr.send(); 
+    },
+    // Experimental third party TTS service integration
+    fetchThirdPartyRequest: function() {
+        var audioEl = this.$.Audio.hasNode();
+
+        if(!audioEl) {
+            return;
+        }
         
+        if(this.loaded) {
+            audioEl.play();
+            return;
+        }
+
         var self = this;
         
+        var request = this.buildRequest(this.app.configs.audioBibleApi);
 
-        var type = 'elevenlabs';
-        // var type = 'murfai';
-        // var type = 'test';
-
-        var request = this.buildRequest(type);
+        this.log('Request', request);
         
         var xhr = new XMLHttpRequest();
-        xhr.open('post', request.url, true);
+        xhr.open(request.method, request.url, true);
         xhr.responseType = request.responseType; // Load the data directly as a Blob.
 
         for(var h in request.headers) {
@@ -122,9 +169,23 @@ module.exports = kind({
                 audioEl.play();
                 self.loaded = true;
                 self.$.Loading.setShowing(false);
+            } else if(request.returnType == 'stream') {
+                // This is experimental and does NOT work yet ....
+
+                console.log('Stream response', this.response);
+
+                // resp = new Response(this.response.data);
+                // blob = resp.blob();
+
+                // audioEl.srcObject = this.response;
+                
+                audioEl.src = URL.createObjectURL(this.response);
+                audioEl.play();
+                self.loaded = true;
+                self.$.Loading.setShowing(false);
             } else if(request.returnType == 'url') {
                 var resp = JSON.parse(this.responseText);
-                audioEl.src = resp.audioFile;
+                audioEl.src = resp.audioFile; // :todo make a config
                 audioEl.play();
                 self.loaded = true;
                 self.$.Loading.setShowing(false);
@@ -134,6 +195,8 @@ module.exports = kind({
         xhr.send(JSON.stringify(request.body)); 
     },
     buildRequest: function(type) {
+        this.log('Build request for', type);
+        
         var request = {
             url: null,
             returnType: 'blob',
@@ -147,12 +210,29 @@ module.exports = kind({
             request.url = 'https://api.elevenlabs.io/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb';
             request.headers = { 
                 'Content-Type': 'application/json',
-                'xi-api-key': 'sk_9575226ba5fb3018e27a7f3ca3880cc9a1c5b6c7e6d84067'
+                'xi-api-key': this.app.configs.audioBibleApiKey
             };
             request.body = {
                 text: this.getText(),
                 model_id: 'eleven_multilingual_v2', // Example voice
-                output_format: 'mp3_44100_128'
+                output_format: 'mp3_44100_128',
+                language_code: this.language
+            };
+        
+        } else if (type == 'openai') {
+            request.url = 'https://api.openai.com/v1/audio/speech';
+            request.headers = {
+                'Content-Type': 'application/json',
+                //'Transfer-Encoding': 'chunked', // for streaming?? (namual use not allowed by browser policy?)
+                'Authorization': 'Bearer ' + this.app.configs.audioBibleApiKey
+            };
+            request.body = {   
+                model: 'gpt-4o-mini-tts',
+                // model: 'tts-1',
+                voice: 'alloy', // or 'sophia'
+                instructions: 'Text is in the language of ' + this.bibleInfo.lang,
+                input: this.getText(),  
+                response_format: 'wav',
             };
         } else if(type == 'murfai') {
             request.url = 'https://api.murf.ai/v1/speech/generate';
@@ -160,7 +240,22 @@ module.exports = kind({
             request.responseType = 'text';
             request.headers = { 
                 'Content-Type': 'application/json',
-                'api-key': 'ap2_71dafa1c-31d0-41e1-8025-d8c63b3e276b'
+                'api-key': this.app.configs.audioBibleApiKey
+            };  
+            request.body = {
+                "text": this.getText(),
+                // "voiceId": "en-US-natalie",
+                'voiceId': 'en-US-charles'
+            };
+
+        } else if(type == 'murfai_stream') {
+            request.url = 'https://api.murf.ai/v1/speech/stream';
+            request.returnType = 'stream';
+            request.responseType = 'blob';
+            request.headers = { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/octet-stream',
+                'api-key': this.app.configs.audioBibleApiKey
             };  
             request.body = {
                 "text": this.getText(),
@@ -173,44 +268,6 @@ module.exports = kind({
         }
 
         return request;
-
-        if(this.bible == 'kjv') {
-            var url = 'assets/extras/test_text.mp3';
-        } else {
-            var url = 'assets/extras/test_music.mp3';
-        }
-
-        var audioEl = this.$.Audio.hasNode();
-        
-        // murf.ad
-        var murfAIKey = 'ap2_71dafa1c-31d0-41e1-8025-d8c63b3e276b';
-
-        //sk_9575226ba5fb3018e27a7f3ca3880cc9a1c5b6c7e6d84067   // elevenlabs
-
-        var url = 'https://api.elevenlabs.io/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb';
-
-        const headers = {
-            //'api-key': murfAIKey,
-            'Content-Type': 'application/json',
-            'xi-api-key': 'sk_9575226ba5fb3018e27a7f3ca3880cc9a1c5b6c7e6d84067'
-            // 'Content=Security-Policy': "default-src 'self'; script-src 'self' https://api.elevenlabs.io; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.elevenlabs.io",
-            // allow CORS
-            // 'Access-Control-Allow-Origin': '*',
-            // 'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-            // 'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-            // 'Accept': 'application/json',
-            // 'Content-Type': 'application/json',
-        };
-
-        const body = {
-            text: this.getText(),
-            model_id: 'eleven_multilingual_v2', // Example voice
-            output_format: 'mp3_44100_128'
-            // "voiceId": "en-US-natalie",
-            // 'voiceId': 'en-US-charles'
-
-        };
-
     },
     getText: function() {
         if(this.text) {
@@ -258,6 +315,7 @@ module.exports = kind({
         text = text.replace(/\{[^\}]+\}/g, ''); // remove Strongs numbers
         text = text.replace('¶', ''); // remove paragraph markers
         text = text.replace(/<[^>]*>/g, ''); // remove HTML tags
+        text = text.replace(/\s+/g, ' '); // normalize whitespace
 
         return text.trim() + ' ';
     }

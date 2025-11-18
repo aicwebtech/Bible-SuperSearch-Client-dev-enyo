@@ -38,6 +38,8 @@ var defaultConfig = {
     'saveUserSettingsManual': false,                   // Whether to require user to save their settings manually (ie via a button)
     'saveUserBibleSelections': false,                  // Whether to save user's selected Bibles with user settings
     'audioBible': false,                               // Enables audio Bible features
+    'audioBibleApi': null,                             // Audio Bible API to use
+    'audioBibleApiKey': null,                          // Audio Bible API key
 
     _urlDefaultNotice: function() {
         if(window.console) {
