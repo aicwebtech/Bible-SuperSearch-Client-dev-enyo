@@ -588,6 +588,16 @@ var App = Application.kind({
             defaultConfig._downloadDisabledNotice();
         }
 
+        if(!statics.audio_enabled && this.configs.audioBible && this.configs.audioBibleApi == 'biblesupersearch') {
+            var msg  = 'CONFIG ERROR: Audio Bible is enabled with\n';
+                msg += '"biblesupersearch" as the "audioBibleApi",\n'; 
+                msg += 'however, the current Bible SuperSearch API\ndoes NOT support audio Bible ...\n\n';
+                msg += 'Audio Bible has been disabled ...';
+            
+            alert(msg);
+            this.configs.audioBible = false;
+        }
+
         //this.localeBibleBooks.en = statics.books; // prepopulate the English book list
 
         var localeData = {}; // empty like my mind

@@ -904,9 +904,21 @@ module.exports = kind({
         this.$.SideSwipeButtons.addRemoveClass('bss_fadein', !!isfr);
     },
     audioBibleEnabled: function(bible, passage) {
+        var bible_info = this.app.statics.bibles[bible];
+        
         // :todo future chack Bible / passage for audio availability (via API)
 
-        return this.app.configs.audioBible && this.app.configs.audioBible != 'false';
+        if(!this.app.configs.audioBible || this.app.configs.audioBible == 'false') {
+            return false;
+        }
+
+        if(this.app.configs.audioBibleApi == 'biblesupersearch') {
+            //return true;  // debugging bypass
+            return bible_info.audio_enable;
+        } else {
+            return true;
+            //: todo - UI config to enable / disable audio per Bible
+        }
     }
 
 });

@@ -125,6 +125,11 @@ module.exports = kind({
 
             console.log('BSS Audio response parsed', resp);
 
+            if(!resp.results.success) {
+                alert(resp.errors.join('\n'));
+                return;
+            }
+
             if(resp.results.has_audio) {
                 var audioUrl = self.app.configs.apiUrl + '/v2/audio' + query;
                 audioEl.src = audioUrl;
@@ -133,6 +138,11 @@ module.exports = kind({
                 self.$.Loading.setShowing(false);
             }
         };
+
+        xhr.onerror = function() {
+            var resp = JSON.parse(this.responseText);
+            alert(resp.errors.join('\n'));
+        }
 
         xhr.send(); 
     },
