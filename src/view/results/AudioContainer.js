@@ -16,6 +16,9 @@ module.exports = kind({
         {kind: Signal, onListen: 'handleListenSignal'},
         //{content: 'HERE'},
         {name: 'Container', showing: false, classes: 'bss_audio', components: [
+            // {
+            //     name: 'BibleLabel'
+            // },
             {
                 name: 'Audio', 
                 tag: 'audio', 
@@ -49,7 +52,7 @@ module.exports = kind({
                 this.bibleInfo = bibleInfo;
                 this.language = bibleInfo.lang_short;
             } else {
-                return;
+                return this.exitNoShow();
             }
         }
 
@@ -61,28 +64,30 @@ module.exports = kind({
                 this.passage.chapter_verse != inEvent.cva && 
                 this.passage.chapter_verse_actual != inEvent.cv
             ) {
-                return;
+                return this.exitNoShow();
             }
         } else {
             if(this.bible !== inEvent.bible || this.passage.book_id != inEvent.b || this.passage.chapter_verse != inEvent.cv) {
-                return;
+                return this.exitNoShow();
             }
         }
 
         var audioEl = this.$.Audio.hasNode();
 
-        if(this.$.Container.getShowing()) {
-            this.$.Container.setShowing(false);
-            
-            // Stop audio if playing
-            if(audioEl && !audioEl.paused) {
-                audioEl.pause();
-            }
+        if(inEvent.claimed) {
+            return this.exitNoShow(); // already claimed by another audio container (multiple instance of same Bible!)
+        } else {
+            inEvent.claimed = true;
+        }
 
-            return;
+        if(this.$.Container.getShowing()) {
+            // already showing, so toggle off
+            return this.exitNoShow();
         }
 
         this.$.Container.setShowing(true);
+
+        //this.$.BibleLabel.setContent(this.bibleInfo.name + ' - ' + this.passage.book_name + ' ' + (this.passage.chapter_verse_actual || this.passage.chapter_verse));
 
         // Set audio to start
         if(audioEl) {
@@ -95,6 +100,16 @@ module.exports = kind({
             this.fetchRequest();
         } else {
             this.fetchThirdPartyRequest();
+        }
+    },
+    exitNoShow: function() {
+        var audioEl = this.$.Audio.hasNode();
+        
+        this.$.Container.setShowing(false);
+
+        // Stop audio if playing
+        if(audioEl && !audioEl.paused) {
+            audioEl.pause();
         }
     },
     fetchRequest: function() {
