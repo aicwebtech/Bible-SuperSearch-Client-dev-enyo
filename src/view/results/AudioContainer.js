@@ -5,8 +5,10 @@ var i18n = require('../../components/Locale/i18nComponent');
 module.exports = kind({
     name: 'AudioContainer',
     enabled: true,
-    bible: null,
+    bible: null, // set to 'all' to respond to any Bible
+    bibleAny: false,
     bibleInfo: null,
+    bibleQueried: null,
     language: null,
     passage: null,
     text: null,
@@ -39,11 +41,21 @@ module.exports = kind({
             return;
         }
 
+        if(this.bible == 'all') {
+            this.bibleAny = true;
+        }
+
+        if(this.bibleAny) {
+            this.bible = inEvent.bible;
+        }
+
         // this.log('Signal', inEvent);
 
         if(Array.isArray(this.bible)) {
             this.bible = this.bible[0];
         }
+
+        
 
         if(!this.language) {
             var bibleInfo = this.app.statics.bibles[this.bible];
@@ -80,10 +92,14 @@ module.exports = kind({
             inEvent.claimed = true;
         }
 
-        if(this.$.Container.getShowing()) {
+        if(this.bibleQueried == this.bible && this.$.Container.getShowing()) {
             // already showing, so toggle off
             return this.exitNoShow();
         }
+
+        this.bibleQueried = this.bible;
+
+        this.log('Listen for bible ', this.bible);
 
         this.$.Container.setShowing(true);
 
@@ -127,7 +143,7 @@ module.exports = kind({
         var self = this;
         var url = this.app.configs.apiUrl + '/v2/audio_check';
 
-        var query  = '?bible=' + encodeURIComponent(this.bible);
+        var query  = '?bible=' + encodeURIComponent(this.bibleQueried);
             query += '&book=' + encodeURIComponent(this.passage.book_id) + 'B';
             query += '&chapter_verse=' + encodeURIComponent(this.passage.chapter_verse_actual || this.passage.chapter_verse);
 
@@ -149,7 +165,11 @@ module.exports = kind({
                 var audioUrl = self.app.configs.apiUrl + '/v2/audio' + query;
                 audioEl.src = audioUrl;
                 audioEl.play();
-                self.loaded = true;
+
+                if(!self.bibleAny) {
+                    self.loaded = true;
+                }
+                
                 self.$.Loading.setShowing(false);
             }
         };
@@ -189,10 +209,13 @@ module.exports = kind({
         }
 
         xhr.onload = function() {
+            if(!self.bibleAny) {
+                self.loaded = true;
+            }
+            
             if(request.returnType == 'blob') {
                 audioEl.src = URL.createObjectURL(this.response);
                 audioEl.play();
-                self.loaded = true;
                 self.$.Loading.setShowing(false);
             } else if(request.returnType == 'stream') {
                 // This is experimental and does NOT work yet ....
@@ -206,13 +229,11 @@ module.exports = kind({
                 
                 audioEl.src = URL.createObjectURL(this.response);
                 audioEl.play();
-                self.loaded = true;
                 self.$.Loading.setShowing(false);
             } else if(request.returnType == 'url') {
                 var resp = JSON.parse(this.responseText);
                 audioEl.src = resp.audioFile; // :todo make a config
                 audioEl.play();
-                self.loaded = true;
                 self.$.Loading.setShowing(false);
             }
         };
@@ -309,8 +330,6 @@ module.exports = kind({
                 chapter = cva[0];
                 verse = cva[1];
             }
-
-            this.log('Get text for', this.bible, chapter, verse);
             
             for(var c in this.passage.verse_index) {
                 if(chapter && c != chapter) {
@@ -324,7 +343,7 @@ module.exports = kind({
                         continue;
                     }
                     
-                    text += this.processVerseText(this.passage.verses[this.bible][c][v].text);
+                    text += this.processVerseText(this.passage.verses[this.bibleQueried][c][v].text);
                 }
             }
         }

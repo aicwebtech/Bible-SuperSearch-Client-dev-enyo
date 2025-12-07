@@ -40,6 +40,9 @@ var defaultConfig = {
     'audioBible': false,                               // Enables audio Bible features
     'audioBibleApi': 'biblesupersearch',               // Audio Bible API to use
     'audioBibleApiKey': null,                          // Audio Bible API key
+    'audioBibleDisplay': 'threshold',                  // Audio Bible display style: 'narrow' or 'wide' or 'threshold'
+    'audioBibleDisplayThreshold': 3,                   // Width threshold for audioBibleDisplay 'threshold' option
+    'audioBibleAutoPlay': false,                       // Whether to auto-play audio Bible when loaded
 
     _urlDefaultNotice: function() {
         if(window.console) {

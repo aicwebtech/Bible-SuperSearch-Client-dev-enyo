@@ -904,8 +904,6 @@ module.exports = kind({
         this.$.SideSwipeButtons.addRemoveClass('bss_fadein', !!isfr);
     },
     audioBibleEnabled: function(bible, passage) {
-        var bible_info = this.app.statics.bibles[bible];
-        
         // :todo future chack Bible / passage for audio availability (via API)
 
         if(!this.app.configs.audioBible || this.app.configs.audioBible == 'false') {
@@ -913,12 +911,64 @@ module.exports = kind({
         }
 
         if(this.app.configs.audioBibleApi == 'biblesupersearch') {
-            //return true;  // debugging bypass
-            return bible_info.audio_enable;
+            if(bible == 'all') {
+                return true;
+            } else {
+                var bible_info = this.app.statics.bibles[bible];
+                return bible_info ? bible_info.audio_enable : false;
+            }
         } else {
             return true;
             //: todo - UI config to enable / disable audio per Bible
         }
-    }
+    },
+    audioBibleEnabledWide: function(bible, passage) {
+        if(!this.audioBibleEnabled(bible, passage)) {
+            return false;
+        }
 
+        var config = this.audioBibleDisplayConfigs();
+
+        if(config.display == 'wide') {
+            return true;
+        }
+
+        if(config.display != 'threshold') {
+            return false;
+        }
+
+        return (this.bibleCount >= config.threshold) ? true : false;
+    },
+    audioBibleEnabledNarrow: function(bible, passage) {
+        if(!this.audioBibleEnabled(bible, passage)) {
+            return false;
+        }
+
+        var config = this.audioBibleDisplayConfigs();
+
+        if(config.display == 'narrow') {
+            return true;
+        }
+
+        if(config.display != 'threshold') {
+            return false;
+        }
+
+        return (this.bibleCount < config.threshold) ? true : false;
+    },
+    audioBibleDisplayConfigs: function() {
+        switch(this.app.configs.audioBibleDisplay) {
+            case 'narrow':
+            case 'wide':
+            case 'threshold':
+                var display = this.app.configs.audioBibleDisplay;
+                break;
+            default:
+                var display = 'threshold';
+        }
+        
+        var threshold = parseInt(this.app.configs.audioBibleDisplayThreshold) || 3;
+
+        return {display: display, threshold: threshold};
+    }
 });

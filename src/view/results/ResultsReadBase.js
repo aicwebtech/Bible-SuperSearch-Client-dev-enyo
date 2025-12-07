@@ -151,12 +151,19 @@ module.exports = kind({
                         classes: 'bss_top_align ' + this.getSelectedBibleClasses(),
                         components: [
                             {allowHtml: true, content: content},
-                            {kind: AudioContainer, enabled: true, bible: mod, passage: pd}
+                            {
+                                kind: AudioContainer, 
+                                enabled: this.audioBibleEnabledNarrow(mod, pd),
+                                bible: mod, 
+                                passage: pd
+                            }
                         ]
                     });
                 }
             }, this);
         }
+
+        this._addWideAudioContainer(Container, pd);
 
         if(haveText) {            
             for(i in this.bibles) {
@@ -269,7 +276,12 @@ module.exports = kind({
                         {components: [
                             {tag: 'sup', content: refContent, allowHtml: true},
                         ]},
-                        {kind: AudioContainer, enabled: audioBibleEnabled, bible: this.formData.bible, passage: pd}
+                        {
+                            kind: AudioContainer, 
+                            enabled: this.audioBibleEnabledNarrow(this.formData.bible, pd),
+                            bible: this.formData.bible, 
+                            passage: pd
+                        }
                     ]
                 }
             ]
@@ -318,11 +330,18 @@ module.exports = kind({
                         {components: [
                             {tag: 'sup', content: bibleContent, allowHtml: true},
                         ]},
-                        {kind: AudioContainer, enabled: audioBibleEnabled, bible: mod, passage: pd}
+                        {
+                            kind: AudioContainer, 
+                            enabled: this.audioBibleEnabledNarrow(mod, pd),
+                            bible: mod, 
+                            passage: pd
+                        }
                     ]
                 });
             }
         }
+
+        this._addWideAudioContainer(Container, pd);
 
         var VerseContainer = Container.createComponent({
             tag: 'tbody',
@@ -361,7 +380,12 @@ module.exports = kind({
 
                             components.push({tag: 'td', classes: classes, components: [
                                 {allowHtml: true, content: processed},
-                                {kind: AudioContainer, enabled: true, bible: mod, passage: passageClone}
+                                {
+                                    kind: AudioContainer, 
+                                    enabled: this.audioBibleEnabledNarrow(mod, passageClone),
+                                    bible: mod, 
+                                    passage: passageClone
+                                }
                             ]});
                         } else {
                             var processed = this.processPassageVerseContent(pd, pd.verses[mod][chapter][verse]);
@@ -382,6 +406,8 @@ module.exports = kind({
                         tag: 'tr',
                         components: components,
                     });
+
+                    this._addWideAudioContainer(VerseContainer, passageClone);
                 } else {
                     VerseContainer.createComponent({
                         tag: 'tr',
@@ -501,6 +527,21 @@ module.exports = kind({
     },   
     _processSingleVerseLinks: function(passage, verse) {
 
+    },
+    _addWideAudioContainer: function(Container, passage) {
+        if(!this.audioBibleEnabledWide('all', passage)) {
+            return;
+        }
+
+        Container.createComponent({
+            tag: 'tr', 
+            components: [
+                {tag: 'td', attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
+                components: [
+                    {kind: AudioContainer, enabled: true, bible: 'all', passage: passage}
+                ]}
+            ]
+        });
     },
     _addNavButtons: function(Container, passage) {
         if(typeof passage.nav == 'object') {

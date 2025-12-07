@@ -88,7 +88,12 @@ module.exports = kind({
                         {components: [
                             {tag: 'sup', content: refContent, allowHtml: true},
                         ]},
-                        {kind: AudioContainer, enabled: audioBibleEnabled, bible: this.formData.bible, passage: pd}
+                        {
+                            kind: AudioContainer, 
+                            enabled: this.audioBibleEnabledNarrow(this.formData.bible, pd),
+                            bible: this.formData.bible, 
+                            passage: pd
+                        }
                     ]
                 }
             ]
@@ -134,11 +139,18 @@ module.exports = kind({
                         {components: [
                             {tag: 'sup', content: bibleContent, allowHtml: true}
                         ]},
-                        {kind: AudioContainer, bible:  module, passage: pd}
+                        {
+                            kind: AudioContainer, 
+                            enabled: this.audioBibleEnabledNarrow(module, pd),
+                            bible:  module, 
+                            passage: pd
+                        }
                     ]
                 });
             }
         }
+
+        this._addWideAudioContainer(Container, pd);
 
         for(chapter in pd.verse_index) {
             pd.verse_index[chapter].forEach(function(verse) {
