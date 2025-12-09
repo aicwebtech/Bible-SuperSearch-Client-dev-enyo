@@ -365,11 +365,14 @@ var biblesupersearch_config_options = {
     // Options: paragraph, passage, verse, verse_passage
     'textDisplayDefault': 'passage',
 
+    // Audio Bible setting
+    'audioBible': true,     // Enables audio Bible (default: false)
+
     // Audio Bible API to use (default: 'biblesupersearch')
     //      Options: 'biblesupersearch', 'murfai_stream', 'murfai', 'elevenlabs', 'openai'
-    //      Note: APIs other than "biblesupersearch" 
+    //      Note: For APIs other than "biblesupersearch" 
     //          1) require an API key
-    //          2) are experimental and subject to change or removal
+    //          2) are experimental, not supported, and subject to change or removal
     'audioBibleApi': 'biblesupersearch', 
     'audioBibleApiKey': null, // Audio Bible API key (default: null, not needed for 'biblesupersearch' API)
     
