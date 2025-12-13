@@ -141,6 +141,7 @@ module.exports = kind({
         }
 
         var self = this;
+        var useBlob = true;
         var url = this.app.configs.apiUrl + '/v2/audio_check';
 
         var query  = '?bible=' + encodeURIComponent(this.bibleQueried);
@@ -151,7 +152,7 @@ module.exports = kind({
         xhr.open('GET', url + query, true);
         xhr.responseType = 'text';
 
-        xhr.onload = function() {
+        xhr.onload = function() {            
             var resp = JSON.parse(this.responseText);
 
             console.log('BSS Audio response parsed', resp);
@@ -163,14 +164,39 @@ module.exports = kind({
 
             if(resp.results.has_audio) {
                 var audioUrl = self.app.configs.apiUrl + '/v2/audio' + query;
-                audioEl.src = audioUrl;
-                audioEl.play();
-
-                if(!self.bibleAny) {
-                    self.loaded = true;
-                }
                 
-                self.$.Loading.setShowing(false);
+                if(useBlob) {
+                    xhrBlob = new XMLHttpRequest();
+                    xhrBlob.open('GET', audioUrl, true);
+                    xhrBlob.responseType = 'blob';
+
+                    xhrBlob.onload = function() {
+                        audioEl.src = URL.createObjectURL(this.response);
+                        audioEl.play();
+                        
+                        if(!self.bibleAny) {
+                            self.loaded = true;
+                        }
+                        
+                        self.$.Loading.setShowing(false);
+                    };
+                    
+                    xhrBlob.error = function() {
+                        var resp = JSON.parse(this.responseText);
+                        alert(resp.errors.join('\n'));
+                    };
+
+                    xhrBlob.send();
+                } else {
+                    audioEl.src = audioUrl;
+                    audioEl.play();
+
+                    if(!self.bibleAny) {
+                        self.loaded = true;
+                    }
+                    
+                    self.$.Loading.setShowing(false);
+                }
             }
         };
 
