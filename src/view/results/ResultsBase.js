@@ -475,7 +475,7 @@ module.exports = kind({
         // red letter - ERROR - using <> for red letter will COLLIDE with highlighting which sends back HTML!
         // U+2039, U+203A Single angle quotation marks (NOT <>)
         if(this.app.UserConfig.get('red_letter')) {
-            text = text.replace(/‹/g, '<span class="red_letter">');
+            text = text.replace(/‹/g, '<span class="bss_red_letter">');
             text = text.replace(/›/g, "</span>");
         }
         else {

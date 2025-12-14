@@ -1,6 +1,7 @@
 var kind = require('enyo/kind');
 var Signal = require('../../components/Signal');
 var i18n = require('../../components/Locale/i18nComponent');
+var i18nContent = require('../../components/Locale/i18nContent');
 
 module.exports = kind({
     name: 'AudioContainer',
@@ -17,19 +18,32 @@ module.exports = kind({
     components: [
         {kind: Signal, onListen: 'handleListenSignal'},
         //{content: 'HERE'},
+
+        {name: 'LabelContainer', showing: false,  classes: 'bss_audio_label', components: [
+            {
+                name: 'BibleLabel',
+                classes: 'bss_audio_bible_label',
+                showing: false
+            },
+        ]},
+
         {name: 'Container', showing: false, classes: 'bss_audio', components: [
-            // {
-            //     name: 'BibleLabel'
-            // },
             {
                 name: 'Audio', 
                 tag: 'audio', 
-                attributes: { type: 'audio/mpeg', controls: true},
+                attributes: { type: 'audio/mpeg', controls: true, _preload: 'metadata'},
             },
             {
                 name: 'Loading', 
-                kind: i18n,
-                titleString: 'Loading, please wait', 
+                //kind: i18n,
+                // titleString: 'Loading, please wait', 
+                // content: 'Loading, please wait...',
+                components: [
+                    {
+                        kind: i18nContent, 
+                        content: 'Loading, please wait'
+                    }
+                ],
                 showing: true, 
                 classes: 'bss_audio_loading'
             }
@@ -43,6 +57,7 @@ module.exports = kind({
 
         if(this.bible == 'all') {
             this.bibleAny = true;
+            this.$.BibleLabel.set('showing', true);
         }
 
         if(this.bibleAny) {
@@ -99,9 +114,14 @@ module.exports = kind({
 
         this.bibleQueried = this.bible;
 
+        var bib = this.app.statics.bibles[this.bibleQueried];
+
+        this.$.BibleLabel.set('content', bib.name);
+
         this.log('Listen for bible ', this.bible);
 
         this.$.Container.setShowing(true);
+        this.$.LabelContainer.setShowing(true);
 
         //this.$.BibleLabel.setContent(this.bibleInfo.name + ' - ' + this.passage.book_name + ' ' + (this.passage.chapter_verse_actual || this.passage.chapter_verse));
 
@@ -122,6 +142,7 @@ module.exports = kind({
         var audioEl = this.$.Audio.hasNode();
         
         this.$.Container.setShowing(false);
+        this.$.LabelContainer.setShowing(false);
 
         // Stop audio if playing
         if(audioEl && !audioEl.paused) {
@@ -141,8 +162,9 @@ module.exports = kind({
         }
 
         var self = this;
-        var useBlob = true;
+        var useBlob = true; // required for even single file!
         var url = this.app.configs.apiUrl + '/v2/audio_check';
+        this.$.Loading.setShowing(true);
 
         var query  = '?bible=' + encodeURIComponent(this.bibleQueried);
             query += '&book=' + encodeURIComponent(this.passage.book_id) + 'B';
