@@ -49,6 +49,16 @@ module.exports = kind({
             }
         ]}
     ],
+
+    // rendered: function() {
+    //     this.inherited(arguments);
+
+    //     var audioEl = this.$.Audio.hasNode();
+
+    //     audioEl.addEventListener('seeked', function(e) {
+    //         console.log('Audio seek ended', e, e.timeStamp, audioEl.currentTime);
+    //     });
+    // },
     handleListenSignal: function(inSender, inEvent) {
         
         if(!this.enabled || !this.bible || !this.passage) {

@@ -115,6 +115,9 @@ module.exports = kind({
     handleAppLoaded: function() {
         this.submitDefault();
     },
+    hasFormElements: function() {
+        return (this.$.reference || this.$.request || this.$.search);
+    },
     applyDefaultReference: function(formData) {
         this.app.debug && this.log();
         var ref = this.app.configs.landingReference || null;
@@ -143,7 +146,12 @@ module.exports = kind({
         //     return;
         // }
 
+        if(!this.hasFormElements()) {
+            return false;
+        }
+
         if(!this.preventDefaultSubmit && !this.app.get('loadingPagePrevent') && ref && ref != '') {
+            this.app.debug && this.log('Submitting ...');
             var formData = {};
 
             ref = this.app.vt(ref);
@@ -154,7 +162,7 @@ module.exports = kind({
                 formData.request = ref;
             }
 
-            formData.bible = utils.clone(this.app.getDefaultBibles());
+            formData.bible = this.$.bible ? utils.clone(this.$.bible.get('value')) : utils.clone(this.app.getDefaultBibles());
 
             this.defaultSubmitting = true;
             this.app.set('scrollMode', 'container_top');
