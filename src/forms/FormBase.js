@@ -271,6 +271,7 @@ module.exports = kind({
 
         var destUrl = this.app.configs.destinationUrl || null;
 
+        // Landing page redirect handling
         if(!this.app.get('preventRedirect') && destUrl && this.app.get('baseUrl') != destUrl) {
             formData.redirected = true;
             localStorage.setItem('BibleSuperSearchFormData', JSON.stringify(formData));
