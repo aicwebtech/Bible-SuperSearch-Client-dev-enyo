@@ -40,6 +40,7 @@ module.exports = kind({
                 // content: 'Loading, please wait...',
                 components: [
                     {
+                        name: 'LoadingContent',
                         kind: i18nContent, 
                         content: 'Loading, please wait'
                     }
@@ -229,6 +230,8 @@ module.exports = kind({
                     
                     self.$.Loading.setShowing(false);
                 }
+            } else {
+                self.$.LoadingContent.set('string', 'Audio not available for this passage.');
             }
         };
 
