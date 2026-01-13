@@ -965,6 +965,32 @@ module.exports = kind({
 
         return (this.bibleCount < config.threshold) ? true : false;
     },
+    audioBibleEnabledVerse: function(bible, passage, verse) {
+        if(!this.audioBibleEnabled(bible, passage)) {
+            return false;
+        }
+
+        var bible_info = this.app.statics.bibles[bible];
+
+        if(bible_info && (bible_info.audio_structure == 'both' || bible_info.audio_structure == 'verses')) {
+            return true;
+        }
+
+        return false;
+    },
+    audioBibleEnabledChapter: function(bible, passage) {
+        if(!this.audioBibleEnabled(bible, passage)) {
+            return false;
+        }
+
+        var bible_info = this.app.statics.bibles[bible];
+
+        if(bible_info && (bible_info.audio_structure == 'both' || bible_info.audio_structure == 'chapters')) {
+            return true;
+        }
+
+        return false;
+    },
     audioBibleDisplayConfigs: function() {
         switch(this.app.configs.audioBibleDisplay) {
             case 'narrow':
