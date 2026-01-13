@@ -512,7 +512,7 @@ module.exports = kind({
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [this.selectedBible.module], passageClone);
             html += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + copyTitle + '" class="bss_std_link">' + copyText + '</a></sup>';
 
-            if(this.audioBibleEnabled(this.selectedBible.module, passageClone)) {
+            if(passage.single_verse && this.audioBibleEnabled(this.selectedBible) || this.audioBibleEnabledVerse(this.selectedBible.module, passageClone)) {
                 var audioLink = this.linkBuilder.buildPassageSignalLink('onListen', [this.selectedBible.module], passageClone);
                 html += '&nbsp; <sup>' + '<a href="' + audioLink + '" title="' + listenText + '" class="bss_std_link">' + listenText + '</a></sup>';
             }

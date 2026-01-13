@@ -965,7 +965,7 @@ module.exports = kind({
 
         return (this.bibleCount < config.threshold) ? true : false;
     },
-    audioBibleEnabledVerse: function(bible, passage, verse) {
+    audioBibleEnabledVerse: function(bible, passage) {
         if(!this.audioBibleEnabled(bible, passage)) {
             return false;
         }
