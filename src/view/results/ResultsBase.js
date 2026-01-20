@@ -100,34 +100,9 @@ module.exports = kind({
         }
     ],
 
-    // observers: [
-    //     // {method: 'watchRenderable', path: ['app.UserConfig.copy', 'app.UserConfig.paragraph']}
-    //     {method: 'watchRenderable', path: ['app.UserConfig.copy']}
-    // ],
-
-    // // observers not working?  why?
-    // bindings: [
-    //     {from: 'app.UserConfig.copy', to: 'uc.copy', transform: function(value, dir) {
-    //         console.log('the here');
-    //         this.renderResults();
-    //     }},
-    //     {from: 'app.UserConfig.paragraph', to: 'uc.paragraph', transform: function(value, dir) {
-    //         console.log('the par');
-    //         this.renderResults();
-    //     }}
-    // ],
-
     create: function() {
         this.inherited(arguments);
-        // this.formViewProcess(this.formView);
-
         this.pagerView = this.app.getSubControl('Pager');
-
-        // if(this.app.pagerView) {
-        //     this.pagerView = this.app.pagerView;
-        // }
-
-        // this.navigationButtonsView = this.app.getSubControl('');
     },
     rendered: function() {
         this.inherited(arguments);
@@ -164,7 +139,6 @@ module.exports = kind({
         this.hasPaging = false;
         this.paging = null;
 
-        // if(is && is.paging && is.paging.last_page && is.paging.last_page > 1) {
         if(is && is.paging && is.paging.last_page) {
             this.hasPaging = true;
             this.paging = is.paging;
@@ -261,9 +235,6 @@ module.exports = kind({
 
     signalVerseShowing: function(book, chapter, verse) {
         this.app.get('resultsShowing').push({book: book, chapter: chapter, verse: verse, showing: true});
-
-        // this.log('showme', this.app.get('resultsShowing'));
-
         Signal.send('onShowingChange', {book: book, chapter: chapter, verse: verse, showing: true});
     },
 
@@ -744,7 +715,7 @@ module.exports = kind({
         var strongsOpenClick = this.getStrongsOpenClick();
         target = inEvent.target;
 
-        if(target.tagName == 'A' && target.className == 'top_placeholder_hide') {
+        if(target.tagName == 'A' && target.className == 'bss_top_placeholder_hide') {
             this.hideTopPlaceholder();
         }
 
@@ -981,6 +952,10 @@ module.exports = kind({
     audioBibleEnabledChapter: function(bible, passage) {
         if(!this.audioBibleEnabled(bible, passage)) {
             return false;
+        }
+
+        if(this.renderStyle == 'passage') {
+            return true;
         }
 
         var bible_info = this.app.statics.bibles[bible];

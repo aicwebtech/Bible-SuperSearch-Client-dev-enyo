@@ -126,6 +126,7 @@ module.exports = kind({
         }
 
         this.set('showing', !!e.showing);
+        this.waterfall('onParentShowingChange', {showing: !!e.showing});
     },
     handleGlobalScroll: function(inSender, inEvent) {
         this.scrolling = true;

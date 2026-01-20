@@ -30,6 +30,8 @@ module.exports = kind({
             return;
         }
 
+        Signal.send('onSilence'); // stop any audio playing
+
         var Container = this.$['TopPlaceholder'];
         Container.destroyClientControls();
 
@@ -58,6 +60,7 @@ module.exports = kind({
     hideTopPlaceholder: function() {
         this.app.set('altResponseData', null);
         Signal.send('onShowingReset');
+        Signal.send('onSilence'); // stop any audio playing
         this.waterfall('onResultsComponentShowingChange', {type: 'top_placeholder', showing: false});
         this.waterfall('onResultsComponentShowingChange', {type: 'normal', showing: true});
     },
@@ -198,12 +201,10 @@ module.exports = kind({
     },
     // NOTA Multi verse, single Bible
     renderPassageSingleBible: function(pd) {
-        // this.log();
         this.renderPassageParallelBible(pd);
     },
     // Multi verse, single Bible
     renderPassageParallelBible: function(pd) {
-        // this.log();
         var Container = this._createContainer(pd);
         // this.singleVerseCount = 0;
         // this.singleVerseBibleHeaderNext = true;
@@ -313,11 +314,13 @@ module.exports = kind({
                 copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [mod], pd);
                 bibleContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp;';               
             
-                if(this.audioBibleEnabled(mod, pd)) {
+                if(this.audioBibleEnabledChapter(mod, pd)) {
                     audioBibleEnabled = true;
                     listenLink = this.linkBuilder.buildPassageSignalLink('onListen', [mod], pd);
                     bibleContent += '<a href="' + listenLink + '" title="' + this.app.t('Listen') + '" class="bss_std_link">' + this.app.it('Listen') + '</a> &nbsp;';
                 }
+
+                var showbibleContent = !pd.single_verse && pd.verses_count > 1;
 
                 Container.$.BibleRow.createComponent({
                     tag: 'th',
@@ -328,7 +331,7 @@ module.exports = kind({
                     components: [
                         {content: this._getBibleDisplayName(bible_info)},
                         {components: [
-                            {tag: 'sup', content: bibleContent, allowHtml: true},
+                            {tag: 'sup', content: bibleContent, allowHtml: true, showing: showbibleContent},
                         ]},
                         {
                             kind: AudioContainer, 
@@ -443,11 +446,6 @@ module.exports = kind({
     },
     processAssembleSingleVerse: function(reference, verse) {
         return '<div class="bss_ver">' + reference + '</div><div class="bss_txt">' + this.processText(verse.text) + '</div>';
-
-
-
-        return reference + '<br />' + this.processText(verse.text);
-        // return reference + '<br />' + this.processText(verse.text) + verse.linksHtml;
     },
     processAssemblePassageVerse: function(reference, verse) {
         var processed = this.processAssembleVerse(reference, verse);
@@ -512,7 +510,10 @@ module.exports = kind({
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [this.selectedBible.module], passageClone);
             html += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + copyTitle + '" class="bss_std_link">' + copyText + '</a></sup>';
 
-            if(passage.single_verse && this.audioBibleEnabled(this.selectedBible) || this.audioBibleEnabledVerse(this.selectedBible.module, passageClone)) {
+            if(
+                (passage.single_verse || passage.verses_count == 1) && this.audioBibleEnabled(this.selectedBible.module, passageClone) 
+                || this.audioBibleEnabledVerse(this.selectedBible.module, passageClone)
+            ) {
                 var audioLink = this.linkBuilder.buildPassageSignalLink('onListen', [this.selectedBible.module], passageClone);
                 html += '&nbsp; <sup>' + '<a href="' + audioLink + '" title="' + listenText + '" class="bss_std_link">' + listenText + '</a></sup>';
             }

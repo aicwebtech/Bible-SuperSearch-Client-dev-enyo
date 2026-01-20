@@ -42,7 +42,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '6.1.1',
+    applicationVersion: '6.2.0.alpha3',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -1735,8 +1735,6 @@ var App = Application.kind({
     },
     // Sends signal into app
     s: function(onSignal, onEvent) {
-        this.log(onSignal, onEvent);
-
         Signal.send(onSignal, onEvent);
     },
     // Translate

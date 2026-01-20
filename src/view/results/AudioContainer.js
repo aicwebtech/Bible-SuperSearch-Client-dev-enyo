@@ -14,10 +14,14 @@ module.exports = kind({
     passage: null,
     text: null,
     loaded: false,
+    parentShowing: true,
+
+    handlers: {
+        onParentShowingChange: 'handleParentShowingChange'
+    },
 
     components: [
-        {kind: Signal, onListen: 'handleListenSignal'},
-        //{content: 'HERE'},
+        {kind: Signal, onListen: 'handleListenSignal', onSilence: 'exitNoShow', isChrome: true},
 
         {name: 'LabelContainer', showing: false,  classes: 'bss_audio_label', components: [
             {
@@ -35,9 +39,6 @@ module.exports = kind({
             },
             {
                 name: 'Loading', 
-                //kind: i18n,
-                // titleString: 'Loading, please wait', 
-                // content: 'Loading, please wait...',
                 components: [
                     {
                         name: 'LoadingContent',
@@ -50,19 +51,10 @@ module.exports = kind({
             }
         ]}
     ],
-
-    // rendered: function() {
-    //     this.inherited(arguments);
-
-    //     var audioEl = this.$.Audio.hasNode();
-
-    //     audioEl.addEventListener('seeked', function(e) {
-    //         console.log('Audio seek ended', e, e.timeStamp, audioEl.currentTime);
-    //     });
-    // },
     handleListenSignal: function(inSender, inEvent) {
-        
-        if(!this.enabled || !this.bible || !this.passage) {
+        this.stopAudio();
+
+        if(!this.enabled || !this.bible || !this.passage || !this.parentShowing) {
             return;
         }
 
@@ -75,13 +67,9 @@ module.exports = kind({
             this.bible = inEvent.bible;
         }
 
-        // this.log('Signal', inEvent);
-
         if(Array.isArray(this.bible)) {
             this.bible = this.bible[0];
         }
-
-        
 
         if(!this.language) {
             var bibleInfo = this.app.statics.bibles[this.bible];
@@ -93,8 +81,6 @@ module.exports = kind({
                 return this.exitNoShow();
             }
         }
-
-        // this.log('Internal', this.bible, this.passage);
 
         if(inEvent.cva || this.passage.chapter_verse_actual) {
             if(this.bible !== inEvent.bible || this.passage.book_id != inEvent.b || 
@@ -120,6 +106,7 @@ module.exports = kind({
 
         if(this.bibleQueried == this.bible && this.$.Container.getShowing()) {
             // already showing, so toggle off
+            this.scrollToAudio();
             return this.exitNoShow();
         }
 
@@ -129,16 +116,13 @@ module.exports = kind({
 
         this.$.BibleLabel.set('content', bib.name);
 
-        this.log('Listen for bible ', this.bible);
-
         this.$.Container.setShowing(true);
         this.$.LabelContainer.setShowing(true);
-
-        //this.$.BibleLabel.setContent(this.bibleInfo.name + ' - ' + this.passage.book_name + ' ' + (this.passage.chapter_verse_actual || this.passage.chapter_verse));
 
         // Set audio to start
         if(audioEl) {
             audioEl.currentTime = 0;
+            this.scrollToAudio();
         }
 
         var api = this.app.configs.audioBibleApi || 'biblesupersearch';
@@ -149,16 +133,25 @@ module.exports = kind({
             this.fetchThirdPartyRequest();
         }
     },
-    exitNoShow: function() {
-        var audioEl = this.$.Audio.hasNode();
-        
+    exitNoShow: function() {        
         this.$.Container.setShowing(false);
         this.$.LabelContainer.setShowing(false);
 
+        this.stopAudio();
+    },
+    stopAudio: function() {
+        var audioEl = this.$.Audio.hasNode();
         // Stop audio if playing
         if(audioEl && !audioEl.paused) {
             audioEl.pause();
         }
+    },
+    handleParentShowingChange: function(inSender, inEvent) {        
+        this.parentShowing = inEvent.showing;
+    },
+    scrollToAudio: function() {
+        var audioEl = this.$.Audio.hasNode();
+        audioEl && audioEl.scrollIntoView({behavior: 'smooth', block: 'center'});
     },
     fetchRequest: function() {
         var audioEl = this.$.Audio.hasNode();
@@ -175,7 +168,7 @@ module.exports = kind({
         var self = this;
         var useBlob = true; // required for even single file!
         var url = this.app.configs.apiUrl + '/v2/audio_check';
-        this.$.Loading.setShowing(true);
+        this.showLoading();
 
         var query  = '?bible=' + encodeURIComponent(this.bibleQueried);
             query += '&book=' + encodeURIComponent(this.passage.book_id) + 'B';
@@ -188,9 +181,8 @@ module.exports = kind({
         xhr.onload = function() {            
             var resp = JSON.parse(this.responseText);
 
-            console.log('BSS Audio response parsed', resp);
-
             if(!resp.results.success) {
+                self.showLoadingError();
                 alert(resp.errors.join('\n'));
                 return;
             }
@@ -211,10 +203,11 @@ module.exports = kind({
                             self.loaded = true;
                         }
                         
-                        self.$.Loading.setShowing(false);
+                        self.hideLoading();
                     };
                     
                     xhrBlob.error = function() {
+                        self.showLoadingError();
                         var resp = JSON.parse(this.responseText);
                         alert(resp.errors.join('\n'));
                     };
@@ -231,7 +224,7 @@ module.exports = kind({
                     self.$.Loading.setShowing(false);
                 }
             } else {
-                self.$.LoadingContent.set('string', 'Audio not available for this passage.');
+                self.showLoadingError();
             }
         };
 
@@ -259,7 +252,6 @@ module.exports = kind({
         
         var request = this.buildRequest(this.app.configs.audioBibleApi);
 
-        this.log('Request', request);
         
         var xhr = new XMLHttpRequest();
         xhr.open(request.method, request.url, true);
@@ -301,8 +293,19 @@ module.exports = kind({
 
         xhr.send(JSON.stringify(request.body)); 
     },
+    showLoading: function() {
+        this.$.LoadingContent.set('string', 'Loading, please wait');
+        this.$.Loading.setShowing(true);
+    },
+    hideLoading: function() {
+        this.$.Loading.setShowing(false);
+    },
+    showLoadingError: function() {
+        this.$.LoadingContent.set('string', 'Audio not available for this passage.');
+        this.$.Loading.setShowing(true);
+        this.stopAudio();
+    },
     buildRequest: function(type) {
-        this.log('Build request for', type);
         
         var request = {
             url: null,
