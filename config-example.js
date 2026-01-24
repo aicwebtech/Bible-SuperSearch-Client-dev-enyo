@@ -370,10 +370,13 @@ var biblesupersearch_config_options = {
 
     // Audio Bible API to use (default: 'biblesupersearch')
     //      Options: 'biblesupersearch', 'murfai_stream', 'murfai', 'elevenlabs', 'openai'
+    // 
     //      Note: For APIs other than "biblesupersearch" 
     //          1) require an API key
     //          2) are experimental, not supported, and subject to change or removal
+    //          3) Are NOT reccommended as the API key will be sent through the request and can be seen by users!
     'audioBibleApi': 'biblesupersearch', 
+    
     'audioBibleApiKey': null, // Audio Bible API key (default: null, not needed for 'biblesupersearch' API)
     
     // How to display audio Bible controls

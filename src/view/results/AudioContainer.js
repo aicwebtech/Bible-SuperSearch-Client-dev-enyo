@@ -147,10 +147,6 @@ module.exports = kind({
         // Stop audio if playing
         if(audioEl && !audioEl.paused) {
             audioEl.pause();
-
-            if(audioEl.src.startsWith('blob:')) {
-                URL.revokeObjectURL(audioEl.src);
-            }
         }
     },
     handleParentShowingChange: function(inSender, inEvent) {        
@@ -186,7 +182,13 @@ module.exports = kind({
         xhr.responseType = 'text';
 
         xhr.onload = function() {            
-            var resp = JSON.parse(this.responseText);
+            try {
+                var resp = JSON.parse(this.responseText);
+            } catch(e) {
+                self.showLoadingError();
+                alert(self.app.t('An unknown error has occurred.'));
+                return;
+            }
 
             if(!resp.results.success) {
                 self.showLoadingError();
@@ -224,7 +226,7 @@ module.exports = kind({
                             var resp = JSON.parse(this.responseText);
                             alert(resp.errors.join('\n'));
                         } catch(e) {
-                            alert('An error occurred while loading the audio.');
+                            alert(this.app.t('An unknown error has occurred.'));
                         }
                     };
 
@@ -237,7 +239,7 @@ module.exports = kind({
                         self.loaded = true;
                     }
                     
-                    self.$.Loading.setShowing(false);
+                    self.hideLoading();
                 }
             } else {
                 self.showLoadingError();
@@ -245,9 +247,15 @@ module.exports = kind({
         };
 
         xhr.onerror = function() {
-            var resp = JSON.parse(this.responseText);
-            alert(resp.errors.join('\n'));
-        }
+            try {
+                var resp = JSON.parse(this.responseText);
+                alert(resp.errors.join('\n'));
+            } catch(e) {
+                alert(this.app.t('An unknown error has occurred.'));
+            }
+
+            self.showLoadingError();
+        };
 
         xhr.send(); 
     },
@@ -268,7 +276,6 @@ module.exports = kind({
         
         var request = this.buildRequest(this.app.configs.audioBibleApi);
 
-        
         var xhr = new XMLHttpRequest();
         xhr.open(request.method, request.url, true);
         xhr.responseType = request.responseType; // Load the data directly as a Blob.
@@ -285,7 +292,7 @@ module.exports = kind({
             if(request.returnType == 'blob') {
                 audioEl.src = URL.createObjectURL(this.response);
                 audioEl.play();
-                self.$.Loading.setShowing(false);
+                self.hideLoading();
             } else if(request.returnType == 'stream') {
                 // This is experimental and does NOT work yet ....
 
@@ -298,12 +305,30 @@ module.exports = kind({
                 
                 audioEl.src = URL.createObjectURL(this.response);
                 audioEl.play();
-                self.$.Loading.setShowing(false);
+                self.hideLoading();
             } else if(request.returnType == 'url') {
-                var resp = JSON.parse(this.responseText);
+                try {
+                    var resp = JSON.parse(this.responseText);
+                } catch(e) {
+                    self.showLoadingError();
+                    alert(self.app.t('An unknown error has occurred.'));
+                    return;
+                }
+
                 audioEl.src = resp.audioFile; // :todo make a config
                 audioEl.play();
-                self.$.Loading.setShowing(false);
+                self.hideLoading();
+            }
+        };
+
+        xhr.onerror = function() {
+            self.loading = false;
+            
+            try {
+                var resp = JSON.parse(this.responseText);   
+                alert(resp.errors.join('\n'));
+            } catch(e) {
+                alert(self.app.t('An unknown error has occurred.'));
             }
         };
 

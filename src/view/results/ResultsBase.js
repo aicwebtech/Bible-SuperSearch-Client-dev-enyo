@@ -20,6 +20,7 @@ module.exports = kind({
     bibles: [],
     biblesStr: null,
     multiBibles: false,
+    firstBible: null,
     bibleCount: 1,
     isParagraphView: false,  // Indicates if render is a parargraph view
     newLine: '<br />',
@@ -120,12 +121,21 @@ module.exports = kind({
     },
     formDataChanged: function(was, is) {
         this.bibles = [];
+        this.firstBible = null;
 
         for(i in this.formData.bible) {
             var mod = this.formData.bible[i];
 
+            if(mod == 0 || mod == '0' || mod == null) {
+                continue;
+            }
+
             if(typeof this.app.statics.bibles[mod] == 'undefined') {
                 continue;
+            }
+
+            if(this.firstBible === null) {
+                this.firstBible = mod;
             }
 
             this.bibles.push(mod);

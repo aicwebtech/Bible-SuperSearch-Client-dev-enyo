@@ -248,7 +248,7 @@ module.exports = kind({
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', this.formData.bible, pd);
             refContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp;';
             
-            if(this.audioBibleEnabled(this.formData.bible, pd)) {
+            if(this.audioBibleEnabled(this.firstBible, pd)) {
                 var listenLink = this.linkBuilder.buildPassageSignalLink('onListen', this.formData.bible, pd);
                 refContent += '<a href="' + listenLink + '" title="' + this.app.t('Listen') + '" class="bss_std_link">' + this.app.it('Listen') + '</a> &nbsp;';  
             }
@@ -274,8 +274,8 @@ module.exports = kind({
                         ]},
                         {
                             kind: AudioContainer, 
-                            enabled: this.audioBibleEnabledNarrow(this.formData.bible, pd),
-                            bible: this.formData.bible, 
+                            enabled: this.audioBibleEnabledNarrow(this.firstBible, pd),
+                            bible: this.firstBible, 
                             passage: pd
                         }
                     ]
@@ -518,9 +518,6 @@ module.exports = kind({
 
         return html;
     },   
-    _processSingleVerseLinks: function(passage, verse) {
-
-    },
     _addWideAudioContainer: function(Container, passage) {
         if(!this.audioBibleEnabledWide('all', passage)) {
             return;
