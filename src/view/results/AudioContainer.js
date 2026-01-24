@@ -1,6 +1,5 @@
 var kind = require('enyo/kind');
 var Signal = require('../../components/Signal');
-var i18n = require('../../components/Locale/i18nComponent');
 var i18nContent = require('../../components/Locale/i18nContent');
 
 module.exports = kind({
@@ -35,7 +34,7 @@ module.exports = kind({
             {
                 name: 'Audio', 
                 tag: 'audio', 
-                attributes: { type: 'audio/mpeg', controls: true, _preload: 'metadata'},
+                attributes: { type: 'audio/mpeg', controls: true},
             },
             {
                 name: 'Loading', 
@@ -110,6 +109,10 @@ module.exports = kind({
             return this.exitNoShow();
         }
 
+        if(this.bibleQueried != this.bible) {
+            this.text = null;
+        }
+
         this.bibleQueried = this.bible;
 
         var bib = this.app.statics.bibles[this.bibleQueried];
@@ -144,6 +147,10 @@ module.exports = kind({
         // Stop audio if playing
         if(audioEl && !audioEl.paused) {
             audioEl.pause();
+
+            if(audioEl.src.startsWith('blob:')) {
+                URL.revokeObjectURL(audioEl.src);
+            }
         }
     },
     handleParentShowingChange: function(inSender, inEvent) {        
@@ -191,7 +198,11 @@ module.exports = kind({
                 var audioUrl = self.app.configs.apiUrl + '/v2/audio' + query;
                 
                 if(useBlob) {
-                    xhrBlob = new XMLHttpRequest();
+                    if(audioEl.src) {
+                        URL.revokeObjectURL(audioEl.src); // release previous object URL
+                    }
+
+                    var xhrBlob = new XMLHttpRequest();
                     xhrBlob.open('GET', audioUrl, true);
                     xhrBlob.responseType = 'blob';
 
@@ -206,10 +217,15 @@ module.exports = kind({
                         self.hideLoading();
                     };
                     
-                    xhrBlob.error = function() {
+                    xhrBlob.onerror = function() {
                         self.showLoadingError();
-                        var resp = JSON.parse(this.responseText);
-                        alert(resp.errors.join('\n'));
+
+                        try {
+                            var resp = JSON.parse(this.responseText);
+                            alert(resp.errors.join('\n'));
+                        } catch(e) {
+                            alert('An error occurred while loading the audio.');
+                        }
                     };
 
                     xhrBlob.send();
@@ -290,6 +306,11 @@ module.exports = kind({
                 self.$.Loading.setShowing(false);
             }
         };
+
+        if(request.method == 'GET') {
+            xhr.send();
+            return;
+        }
 
         xhr.send(JSON.stringify(request.body)); 
     },
@@ -412,15 +433,15 @@ module.exports = kind({
             }
         }
 
-        this.text = '        ' + text.trim();
+        this.text = text.trim();
 
-        return text;
+        return this.text;
     },
     processVerseText: function(text) {
         text = text.replace(/[‹›]/g, ''); // remove red letter markers
-        text = text.replace(/[\[\]{}]/g, ''); // remove brackets (italic markers)
         text = text.replace(/\} \{/g, ''); // remove Strongs numbers
         text = text.replace(/\{[^\}]+\}/g, ''); // remove Strongs numbers
+        text = text.replace(/[\[\]{}]/g, ''); // remove brackets (italic markers)
         text = text.replace('¶', ''); // remove paragraph markers
         text = text.replace(/<[^>]*>/g, ''); // remove HTML tags
         text = text.replace(/\s+/g, ' '); // normalize whitespace

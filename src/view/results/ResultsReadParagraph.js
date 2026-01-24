@@ -55,7 +55,6 @@ module.exports = kind({
 
         var bookName = this.app.getLocaleBookName(pd.book_id, pd.book_name);
         var refContent = ''; 
-        var audioBibleEnabled = false;
 
         if(!this.multiBibles) {
             var shareLink = this.linkBuilder.buildPassageSignalLink('onShare', this.formData.bible, pd);
@@ -64,7 +63,6 @@ module.exports = kind({
             refContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp; ';
             
             if(this.audioBibleEnabled(this.formData.bible, pd)) {
-                audioBibleEnabled = true;
                 var listenLink = this.linkBuilder.buildPassageSignalLink('onListen', this.formData.bible, pd);
                 refContent += '<a href="' + listenLink + '" title="' + this.app.t('Listen') + '" class="bss_std_link">' + this.app.it('Listen') + '</a> &nbsp;';  
             }
@@ -72,7 +70,7 @@ module.exports = kind({
 
         if(this.app.statics.access.statistics) {
             var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
-            refContent += '<a href="' + sl + '" title="' + refContent + '" class="bss_std_link">' + this.app.t('Statistics') + '</a> &nbsp;';
+            refContent += '<a href="' + sl + '" title="' + this.app.t('Statistics') + '" class="bss_std_link">' + this.app.t('Statistics') + '</a> &nbsp;';
         }
 
         Container.createComponent({

@@ -884,7 +884,7 @@ module.exports = kind({
         this.$.SideSwipeButtons.addRemoveClass('bss_fadein', !!isfr);
     },
     audioBibleEnabled: function(bible, passage) {
-        // :todo future chack Bible / passage for audio availability (via API)
+        // :todo future check Bible / passage for audio availability (via API)
 
         if(!this.app.configs.audioBible || this.app.configs.audioBible == 'false') {
             return false;

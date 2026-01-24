@@ -1,5 +1,9 @@
 Bible SuperSearch Universal Client Changelog
 
+= 6.2.0
+* Added links and controls for playback of Audio Bibles
+* Misc bug fixes
+
 = 6.1.1
 * Fixed some security issues
 

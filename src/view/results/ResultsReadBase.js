@@ -206,9 +206,6 @@ module.exports = kind({
     // Multi verse, single Bible
     renderPassageParallelBible: function(pd) {
         var Container = this._createContainer(pd);
-        // this.singleVerseCount = 0;
-        // this.singleVerseBibleHeaderNext = true;
-        var passageClone = Object.assign({}, pd);
 
         var addBibleHeader = false,
             renderStyle = this.renderStyle;
@@ -244,7 +241,6 @@ module.exports = kind({
 
         var bookName = this.app.getLocaleBookName(pd.book_id, pd.book_name);
         var refContent = ''; 
-        var audioBibleEnabled = false;
 
         if(!this.multiBibles) {
             var shareLink = this.linkBuilder.buildPassageSignalLink('onShare', this.formData.bible, pd);
@@ -253,7 +249,6 @@ module.exports = kind({
             refContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp;';
             
             if(this.audioBibleEnabled(this.formData.bible, pd)) {
-                audioBibleEnabled = true;
                 var listenLink = this.linkBuilder.buildPassageSignalLink('onListen', this.formData.bible, pd);
                 refContent += '<a href="' + listenLink + '" title="' + this.app.t('Listen') + '" class="bss_std_link">' + this.app.it('Listen') + '</a> &nbsp;';  
             }
@@ -261,7 +256,7 @@ module.exports = kind({
 
         if(this.app.statics.access.statistics) {
             var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
-            refContent += '<a href="' + sl + '" title="' + refContent + '" class="bss_std_link">' + this.app.t('Statistics') + '</a> &nbsp;';
+            refContent += '<a href="' + sl + '" title="' + this.app.t('Statistics') + '" class="bss_std_link">' + this.app.t('Statistics') + '</a> &nbsp;';
         }
 
         Container.createComponent({
@@ -306,7 +301,6 @@ module.exports = kind({
                 }
 
                 var bible_info = this.app.statics.bibles[mod];
-                audioBiudleEnabled = false;
                 bibleContent = ''; //this._getBibleDisplayName(bible_info);
 
                 shareLink = this.linkBuilder.buildPassageSignalLink('onShare', [mod], pd);
@@ -315,7 +309,6 @@ module.exports = kind({
                 bibleContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp;';               
             
                 if(this.audioBibleEnabledChapter(mod, pd)) {
-                    audioBibleEnabled = true;
                     listenLink = this.linkBuilder.buildPassageSignalLink('onListen', [mod], pd);
                     bibleContent += '<a href="' + listenLink + '" title="' + this.app.t('Listen') + '" class="bss_std_link">' + this.app.it('Listen') + '</a> &nbsp;';
                 }
@@ -327,7 +320,6 @@ module.exports = kind({
                     classes: 'bss_top_align',
                     attributes: {colspan: this.passageColumnsPerBible},
                     allowHtml: true,
-                    content: bibleContent,
                     components: [
                         {content: this._getBibleDisplayName(bible_info)},
                         {components: [
@@ -359,6 +351,8 @@ module.exports = kind({
 
                 var addBibleHeader = (this.singleVerseCount > 1 && this.singleVerseCount % 10 == 1);
                 var verseShowing = false;
+                var passageClone = Object.assign({}, pd);
+                passageClone.chapter_verse_actual = chapter + ':' + verse;
 
                 if(addBibleHeader && renderStyle == 'verse_passage') {
                     this._addBibleHeader(VerseContainer);
@@ -378,8 +372,6 @@ module.exports = kind({
                             var classes = this.getSelectedBibleClasses();
                             //var processed = '<td class="' + classes + '">' + this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]) + '</td>';
                             var processed = this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]);
-                            var passageClone = Object.assign({}, pd);
-                            passageClone.chapter_verse_actual = chapter + ':' + verse;
 
                             components.push({tag: 'td', classes: classes, components: [
                                 {allowHtml: true, content: processed},
