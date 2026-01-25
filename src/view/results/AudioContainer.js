@@ -226,7 +226,7 @@ module.exports = kind({
                             var resp = JSON.parse(this.responseText);
                             alert(resp.errors.join('\n'));
                         } catch(e) {
-                            alert(this.app.t('An unknown error has occurred.'));
+                            alert(self.app.t('An unknown error has occurred.'));
                         }
                     };
 
@@ -251,7 +251,7 @@ module.exports = kind({
                 var resp = JSON.parse(this.responseText);
                 alert(resp.errors.join('\n'));
             } catch(e) {
-                alert(this.app.t('An unknown error has occurred.'));
+                alert(self.app.t('An unknown error has occurred.'));
             }
 
             self.showLoadingError();
@@ -321,8 +321,8 @@ module.exports = kind({
             }
         };
 
-        xhr.onerror = function() {
-            self.loading = false;
+        xhr.onerror = function() {            
+            self.hideLoading();
             
             try {
                 var resp = JSON.parse(this.responseText);   
@@ -379,7 +379,7 @@ module.exports = kind({
             request.url = 'https://api.openai.com/v1/audio/speech';
             request.headers = {
                 'Content-Type': 'application/json',
-                //'Transfer-Encoding': 'chunked', // for streaming?? (namual use not allowed by browser policy?)
+                //'Transfer-Encoding': 'chunked', // for streaming?? (mamual use not allowed by browser policy?)
                 'Authorization': 'Bearer ' + this.app.configs.audioBibleApiKey
             };
             request.body = {   

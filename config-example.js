@@ -374,10 +374,12 @@ var biblesupersearch_config_options = {
     //      Note: For APIs other than "biblesupersearch" 
     //          1) require an API key
     //          2) are experimental, not supported, and subject to change or removal
-    //          3) Are NOT reccommended as the API key will be sent through the request and can be seen by users!
+    //          3) Are NOT recommended as the API key will be sent through the request and can be seen by users!
     'audioBibleApi': 'biblesupersearch', 
     
     'audioBibleApiKey': null, // Audio Bible API key (default: null, not needed for 'biblesupersearch' API)
+                              // Warning: For APIs other than 'biblesupersearch', your API key will be visible to users!
+                              // We recommend using the 'biblesupersearch' API whenever possible.
     
     // How to display audio Bible controls
     // Options:  (default: 'threshold')
