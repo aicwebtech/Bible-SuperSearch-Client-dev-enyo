@@ -274,7 +274,7 @@ module.exports = kind({
                         ]},
                         {
                             kind: AudioContainer, 
-                            enabled: this.audioBibleEnabledNarrow(this.firstBible, pd),
+                            enabled: this.audioBibleEnabledWide(this.firstBible, pd),
                             bible: this.firstBible, 
                             passage: pd
                         }
