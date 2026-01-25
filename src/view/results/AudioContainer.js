@@ -14,6 +14,7 @@ module.exports = kind({
     text: null,
     loaded: false,
     parentShowing: true,
+    audioShowing: false,
 
     handlers: {
         onParentShowingChange: 'handleParentShowingChange'
@@ -70,17 +71,6 @@ module.exports = kind({
             this.bible = this.bible[0];
         }
 
-        if(!this.language) {
-            var bibleInfo = this.app.statics.bibles[this.bible];
-
-            if(bibleInfo) {
-                this.bibleInfo = bibleInfo;
-                this.language = bibleInfo.lang_short;
-            } else {
-                return this.exitNoShow();
-            }
-        }
-
         if(inEvent.cva || this.passage.chapter_verse_actual) {
             if(this.bible !== inEvent.bible || this.passage.book_id != inEvent.b || 
                 this.passage.chapter_verse_actual != inEvent.cva && 
@@ -115,12 +105,7 @@ module.exports = kind({
 
         this.bibleQueried = this.bible;
 
-        var bib = this.app.statics.bibles[this.bibleQueried];
-
-        this.$.BibleLabel.set('content', bib.name);
-
-        this.$.Container.setShowing(true);
-        this.$.LabelContainer.setShowing(true);
+        this.showAudio();
 
         // Set audio to start
         if(audioEl) {
@@ -136,10 +121,18 @@ module.exports = kind({
             this.fetchThirdPartyRequest();
         }
     },
+    showAudio: function() {
+        var bib = this.app.statics.bibles[this.bibleQueried];
+
+        this.$.BibleLabel.set('content', bib.name);
+        this.$.Container.setShowing(true);
+        this.$.LabelContainer.setShowing(true);
+        this.audioShowing = true;
+    },
     exitNoShow: function() {        
         this.$.Container.setShowing(false);
         this.$.LabelContainer.setShowing(false);
-
+        this.audioShowing = false;
         this.stopAudio();
     },
     stopAudio: function() {
@@ -209,6 +202,10 @@ module.exports = kind({
                     xhrBlob.responseType = 'blob';
 
                     xhrBlob.onload = function() {
+                        if(!self.audioShowing) {
+                            return;
+                        }
+                        
                         audioEl.src = URL.createObjectURL(this.response);
                         audioEl.play();
                         
@@ -300,7 +297,6 @@ module.exports = kind({
 
                 // resp = new Response(this.response.data);
                 // blob = resp.blob();
-
                 // audioEl.srcObject = this.response;
                 
                 audioEl.src = URL.createObjectURL(this.response);
@@ -351,6 +347,8 @@ module.exports = kind({
         this.$.Loading.setShowing(true);
         this.stopAudio();
     },
+    
+    // experimental third party TTS service integration
     buildRequest: function(type) {
         
         var request = {
@@ -362,6 +360,9 @@ module.exports = kind({
             headers: {}
         };
 
+        var bibleInfo = this.app.statics.bibles[this.bibleQueried];
+        var language = bibleInfo ? bibleInfo.lang_short : 'en';
+
         if(type == 'elevenlabs') {
             request.url = 'https://api.elevenlabs.io/v1/text-to-speech/JBFqnCBsd6RMkjVDRZzb';
             request.headers = { 
@@ -372,7 +373,7 @@ module.exports = kind({
                 text: this.getText(),
                 model_id: 'eleven_multilingual_v2', // Example voice
                 output_format: 'mp3_44100_128',
-                language_code: this.language
+                language_code: language
             };
         
         } else if (type == 'openai') {
@@ -386,7 +387,7 @@ module.exports = kind({
                 model: 'gpt-4o-mini-tts',
                 // model: 'tts-1',
                 voice: 'alloy', // or 'sophia'
-                instructions: 'Text is in the language of ' + this.bibleInfo.lang,
+                instructions: 'Text is in the language of ' + language + '. Please read it clearly and naturally.',
                 input: this.getText(),  
                 response_format: 'wav',
             };
