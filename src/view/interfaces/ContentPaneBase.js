@@ -140,7 +140,7 @@ module.exports = kind({
 
         this.app.debug && this.log('ResultsContainer scroll', headerHeight);
         this.app.setScroll(headerHeight);
-        this.app.resetScrollMode();
+        // this.app.resetScrollMode();
     },
     formViewProcess: function(formView) {
         this.app.debug && this.log('formView', formView);

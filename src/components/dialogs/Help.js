@@ -88,7 +88,7 @@ module.exports = kind({
             {tag: 'h4', content: 'Red Letter'},
             {tag: 'div', components: [
                 {tag: 'span', kind: i18n, content: 'red_letter_description'},
-                {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;('},
+                {tag: 'span', allowHtml: true, content: '&nbsp;&nbsp;('}, // OK
                 {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
                 {tag: 'span', content: '.)'}
             ]},            
@@ -96,7 +96,7 @@ module.exports = kind({
             {tag: 'h4', content: 'Italics'},
             {tag: 'div', components: [
                 {tag: 'span', kind: i18n, content: 'italics_description'},
-                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;('},
+                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;('}, // OK
                 {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
                 {tag: 'span', content: '.)'}
             ]},            
@@ -104,7 +104,7 @@ module.exports = kind({
             {tag: 'h4', content: 'Strong\'s'},
             {tag: 'div', components: [
                 {tag: 'span', kind: i18n, content: 'strongs_numbers_description'},
-                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;('},
+                {tag: 'span', allowHtml: true, content: '&nbsp; &nbsp;('}, // OK
                 {tag: 'span', kind: i18n, content: 'Supported Bibles Only'},
                 {tag: 'span', content: '.)'}
             ]},

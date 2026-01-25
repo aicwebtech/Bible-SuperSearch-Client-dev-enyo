@@ -37,6 +37,11 @@ var defaultConfig = {
     'omitUserLanguage': false,
     'saveUserSettingsManual': false,                   // Whether to require user to save their settings manually (ie via a button)
     'saveUserBibleSelections': false,                  // Whether to save user's selected Bibles with user settings
+    'audioBible': false,                               // Enables audio Bible features
+    'audioBibleApi': 'biblesupersearch',               // Audio Bible API to use
+    'audioBibleApiKey': null,                          // Audio Bible API key
+    'audioBibleDisplay': 'threshold',                  // Audio Bible display style: 'narrow' or 'wide' or 'threshold'
+    'audioBibleDisplayThreshold': 3,                   // Width threshold for audioBibleDisplay 'threshold' option
 
     _urlDefaultNotice: function() {
         if(window.console) {

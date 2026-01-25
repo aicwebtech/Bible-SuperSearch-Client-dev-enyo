@@ -749,6 +749,53 @@ div.bss_alert_dialog {
     text-align: center;
 }
 
+.bss_top_align {
+    vertical-align: top;
+}
+
+.bss_audio {
+    position: relative;
+    width: 90%;
+    height: 30px;
+    display: block;
+    margin: 5px auto 10px;
+}
+
+.bss_audio_label {
+    margin: 10px auto 0;
+    width: 90%;
+    display: block;
+}
+
+.bss_audio audio {
+    width: 100%;
+    height: 100%;
+}
+
+.bss_audio_bible_label {
+    text-align: center;
+    font-weight: bold;
+}
+
+.bss_audio_loading {
+    position: absolute;
+    top: 0;
+    color: white;
+    background-color: rgba(100, 100, 100, 0.5);
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+
+.bss_audio_loading span {
+    padding-top: 5px;
+    display: inline-block;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black;
+}
+
+
 .biblesupersearch_bible_selector option.bss_label {
     background-color: transparent;
     font-weight: bold;
