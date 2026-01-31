@@ -122,7 +122,11 @@ module.exports = kind({
         }
     },
     showAudio: function() {
-        var bib = this.app.statics.bibles[this.bibleQueried];
+        var bib = this.app.statics.bibles[this.bibleQueried] || null;
+
+        if(!bib) {
+            return this.exitNoShow();
+        }
 
         this.$.BibleLabel.set('content', bib.name);
         this.$.Container.setShowing(true);
@@ -448,9 +452,9 @@ module.exports = kind({
                 }
                 
                 for(var vi in this.passage.verse_index[c]) {
-                    var v = this.passage.verse_index[c][vi];
+                    var v = this.passage.verse_index[c][vi] || null;
 
-                    if(verse && v != verse) {
+                    if(!v || verse && v != verse) {
                         continue;
                     }
                     

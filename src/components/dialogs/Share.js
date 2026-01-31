@@ -191,19 +191,15 @@ module.exports = kind({
         this.populated && this.populate();
     },
     handleClickShare: function(inSender, inEvent) {
-        this.log('handleClickShare', inSender, inEvent);
         this.resultsFilter = utils.clone(inEvent);
         this.app.set('shareShowing', true);
     },
     handleClickCopy: function(inSender, inEvent) {
-        this.log('handleClickCopy', inSender, inEvent);
         this.autoCopy = true;
         this.resultsFilter = utils.clone(inEvent);
         this.forceShowing();
-        // this.populate();
         this.copyHelper();
         this.close();
-        // this.resultsFilter = null;
         this.autoCopy = false;
     },
     populate: function() {
