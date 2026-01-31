@@ -55,7 +55,7 @@ module.exports = kind({
         if(this.includeBlankValue) {
             this.$.Book.createOptionComponent({
                 content: '&nbsp;',
-                allowHtml: true,
+                allowHtml: true, //OK
                 value: '0',
             });
         }  

@@ -365,6 +365,33 @@ var biblesupersearch_config_options = {
     // Options: paragraph, passage, verse, verse_passage
     'textDisplayDefault': 'passage',
 
+    // Audio Bible setting
+    'audioBible': true,     // Enables audio Bible (default: false)
+
+    // Audio Bible API to use (default: 'biblesupersearch')
+    //      Options: 'biblesupersearch', 'murfai_stream', 'murfai', 'elevenlabs', 'openai'
+    // 
+    //      Note: For APIs other than "biblesupersearch" 
+    //          1) require an API key
+    //          2) are experimental, not supported, and subject to change or removal
+    //          3) Are NOT recommended as the API key will be sent through the request and can be seen by users!
+    'audioBibleApi': 'biblesupersearch', 
+    
+    'audioBibleApiKey': null, // Audio Bible API key (default: null, not needed for 'biblesupersearch' API)
+                              // Warning: For APIs other than 'biblesupersearch', your API key will be visible to users!
+                              // We recommend using the 'biblesupersearch' API whenever possible.
+    
+    // How to display audio Bible controls
+    // Options:  (default: 'threshold')
+    //  'narrow' - Narrow: In Bible column only - Always show audio Bible controls in Bible column (may have display issues if many parallel Bibles selected)
+    //  'wide' - Wide:  show audio Bible controls across the entire passage section
+    //  'threshold' - Narrow when number of parallel Bibles is below threshold, otherwise show wide across passage
+    'audioBibleDisplay': 'threshold', // How to display audio Bible controls
+    
+    // Parallel Bible Threshold for audioBibleDisplay = 'threshold'.  
+    // When threshold is met or exceeded, display wide audio controls
+    'audioBibleDisplayThreshold': 3, 
+
     // User Config settings
     'saveUserSettings': false, // Whether to save user's settings to appear on next page load (saves to LocalStorage, not cookie)
 

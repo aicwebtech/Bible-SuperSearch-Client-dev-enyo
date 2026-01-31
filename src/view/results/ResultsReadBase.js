@@ -2,6 +2,7 @@ var kind = require('enyo/kind');
 var ResultsBase = require('./ResultsBase');
 var Link = require('../../components/Link/Link');
 var Signal = require('enyo/Signals');
+var AudioContainer = require('./AudioContainer');
 
 module.exports = kind({
     name: 'ResultsReadBase',
@@ -28,6 +29,8 @@ module.exports = kind({
         if(!r) {
             return;
         }
+
+        Signal.send('onSilence'); // stop any audio playing
 
         var Container = this.$['TopPlaceholder'];
         Container.destroyClientControls();
@@ -57,6 +60,7 @@ module.exports = kind({
     hideTopPlaceholder: function() {
         this.app.set('altResponseData', null);
         Signal.send('onShowingReset');
+        Signal.send('onSilence'); // stop any audio playing
         this.waterfall('onResultsComponentShowingChange', {type: 'top_placeholder', showing: false});
         this.waterfall('onResultsComponentShowingChange', {type: 'normal', showing: true});
     },
@@ -147,14 +151,22 @@ module.exports = kind({
 
                     Container.$.VerseRow.createComponent({
                         tag: 'td',
-                        content: content,
-                        attributes: {valign: 'top'},
-                        allowHtml: true,
-                        classes: this.getSelectedBibleClasses()
+                        classes: 'bss_top_align ' + this.getSelectedBibleClasses(),
+                        components: [
+                            {allowHtml: true, content: content},
+                            {
+                                kind: AudioContainer, 
+                                enabled: this.audioBibleEnabledNarrow(mod, pd),
+                                bible: mod, 
+                                passage: pd
+                            }
+                        ]
                     });
                 }
             }, this);
         }
+
+        this._addWideAudioContainer(Container, pd);
 
         if(haveText) {            
             for(i in this.bibles) {
@@ -189,15 +201,11 @@ module.exports = kind({
     },
     // NOTA Multi verse, single Bible
     renderPassageSingleBible: function(pd) {
-        // this.log();
         this.renderPassageParallelBible(pd);
     },
     // Multi verse, single Bible
     renderPassageParallelBible: function(pd) {
-        // this.log();
         var Container = this._createContainer(pd);
-        // this.singleVerseCount = 0;
-        // this.singleVerseBibleHeaderNext = true;
 
         var addBibleHeader = false,
             renderStyle = this.renderStyle;
@@ -232,18 +240,23 @@ module.exports = kind({
         }
 
         var bookName = this.app.getLocaleBookName(pd.book_id, pd.book_name);
-        var refContent = bookName + ' ' + pd.chapter_verse;
+        var refContent = ''; 
 
         if(!this.multiBibles) {
             var shareLink = this.linkBuilder.buildPassageSignalLink('onShare', this.formData.bible, pd);
-            refContent += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a></sup>';
+            refContent += '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a> &nbsp;';
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', this.formData.bible, pd);
-            refContent += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a></sup>';
+            refContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp;';
+            
+            if(this.audioBibleEnabled(this.firstBible, pd)) {
+                var listenLink = this.linkBuilder.buildPassageSignalLink('onListen', this.formData.bible, pd);
+                refContent += '<a href="' + listenLink + '" title="' + this.app.t('Listen') + '" class="bss_std_link">' + this.app.it('Listen') + '</a> &nbsp;';  
+            }
         }
 
         if(this.app.statics.access.statistics) {
             var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
-            refContent += '&nbsp; <sup>' + '<a href="' + sl + '" title="' + refContent + '" class="bss_std_link">' + this.app.t('Statistics') + '</a></sup>';
+            refContent += '<a href="' + sl + '" title="' + this.app.t('Statistics') + '" class="bss_std_link">' + this.app.t('Statistics') + '</a> &nbsp;';
         }
 
         Container.createComponent({
@@ -254,8 +267,18 @@ module.exports = kind({
                 {
                     tag: 'th', 
                     attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
-                    content: refContent,
-                    allowHtml: true
+                    components: [
+                        {content: bookName + ' ' + pd.chapter_verse},
+                        {components: [
+                            {tag: 'sup', content: refContent, allowHtml: true},
+                        ]},
+                        {
+                            kind: AudioContainer, 
+                            enabled: this.audioBibleEnabledWide(this.firstBible, pd),
+                            bible: this.firstBible, 
+                            passage: pd
+                        }
+                    ]
                 }
             ]
         });
@@ -278,21 +301,42 @@ module.exports = kind({
                 }
 
                 var bible_info = this.app.statics.bibles[mod];
-                bibleContent = this._getBibleDisplayName(bible_info);
+                bibleContent = ''; //this._getBibleDisplayName(bible_info);
 
                 shareLink = this.linkBuilder.buildPassageSignalLink('onShare', [mod], pd);
-                bibleContent += '&nbsp; <sup>' + '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a></sup>';
+                bibleContent += '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a> &nbsp;';
                 copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [mod], pd);
-                bibleContent += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a></sup>';               
+                bibleContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp;';               
             
+                if(this.audioBibleEnabledChapter(mod, pd)) {
+                    listenLink = this.linkBuilder.buildPassageSignalLink('onListen', [mod], pd);
+                    bibleContent += '<a href="' + listenLink + '" title="' + this.app.t('Listen') + '" class="bss_std_link">' + this.app.it('Listen') + '</a> &nbsp;';
+                }
+
+                var showbibleContent = !pd.single_verse && pd.verses_count > 1;
+
                 Container.$.BibleRow.createComponent({
                     tag: 'th',
+                    classes: 'bss_top_align',
                     attributes: {colspan: this.passageColumnsPerBible},
                     allowHtml: true,
-                    content: bibleContent
+                    components: [
+                        {content: this._getBibleDisplayName(bible_info)},
+                        {components: [
+                            {tag: 'sup', content: bibleContent, allowHtml: true, showing: showbibleContent},
+                        ]},
+                        {
+                            kind: AudioContainer, 
+                            enabled: this.audioBibleEnabledNarrow(mod, pd),
+                            bible: mod, 
+                            passage: pd
+                        }
+                    ]
                 });
             }
         }
+
+        this._addWideAudioContainer(Container, pd);
 
         var VerseContainer = Container.createComponent({
             tag: 'tbody',
@@ -302,10 +346,13 @@ module.exports = kind({
         for(chapter in pd.verse_index) {
             pd.verse_index[chapter].forEach(function(verse) {
                 var html = '';
+                var components = [];
                 this.singleVerseCount ++;
 
                 var addBibleHeader = (this.singleVerseCount > 1 && this.singleVerseCount % 10 == 1);
                 var verseShowing = false;
+                var passageClone = Object.assign({}, pd);
+                passageClone.chapter_verse_actual = chapter + ':' + verse;
 
                 if(addBibleHeader && renderStyle == 'verse_passage') {
                     this._addBibleHeader(VerseContainer);
@@ -323,7 +370,18 @@ module.exports = kind({
                     if(pd.verses[mod] && pd.verses[mod][chapter] && pd.verses[mod][chapter][verse]) {
                         if(renderStyle == 'verse_passage') {
                             var classes = this.getSelectedBibleClasses();
-                            var processed = '<td class="' + classes + '">' + this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]) + '</td>';
+                            //var processed = '<td class="' + classes + '">' + this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]) + '</td>';
+                            var processed = this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]);
+
+                            components.push({tag: 'td', classes: classes, components: [
+                                {allowHtml: true, content: processed},
+                                {
+                                    kind: AudioContainer, 
+                                    enabled: this.audioBibleEnabledNarrow(mod, passageClone),
+                                    bible: mod, 
+                                    passage: passageClone
+                                }
+                            ]});
                         } else {
                             var processed = this.processPassageVerseContent(pd, pd.verses[mod][chapter][verse]);
                         }
@@ -338,11 +396,21 @@ module.exports = kind({
                 
                 verseShowing && this.signalVerseShowing(pd.book_id, chapter, verse);
 
-                VerseContainer.createComponent({
-                    tag: 'tr',
-                    allowHtml: true,
-                    content: html
-                });
+                if(renderStyle == 'verse_passage') {
+                    VerseContainer.createComponent({
+                        tag: 'tr',
+                        components: components,
+                    });
+
+                    this._addWideAudioContainer(VerseContainer, passageClone);
+                } else {
+                    VerseContainer.createComponent({
+                        tag: 'tr',
+                        allowHtml: true,
+                        content: html
+                    });
+                }
+
             }, this);
         }
 
@@ -370,11 +438,6 @@ module.exports = kind({
     },
     processAssembleSingleVerse: function(reference, verse) {
         return '<div class="bss_ver">' + reference + '</div><div class="bss_txt">' + this.processText(verse.text) + '</div>';
-
-
-
-        return reference + '<br />' + this.processText(verse.text);
-        // return reference + '<br />' + this.processText(verse.text) + verse.linksHtml;
     },
     processAssemblePassageVerse: function(reference, verse) {
         var processed = this.processAssembleVerse(reference, verse);
@@ -422,7 +485,8 @@ module.exports = kind({
             shareText = this.app.it('Share'),
             copyText = this.app.it('Copy'),
             shareTitle = this.app.t('Share'),
-            copyTitle = this.app.t('Copy');
+            copyTitle = this.app.t('Copy'),
+            listenText = this.app.it('Listen');
 
         var html = '';
             html += '<a href="' + verseLink + '" title="' + verseTitle + '" class="bss_std_link bobo">' + bookName + ' ' + verse.chapter + ':' + verse.verse + '</a>';
@@ -438,6 +502,14 @@ module.exports = kind({
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [this.selectedBible.module], passageClone);
             html += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + copyTitle + '" class="bss_std_link">' + copyText + '</a></sup>';
 
+            if(
+                (passage.single_verse || passage.verses_count == 1) && this.audioBibleEnabled(this.selectedBible.module, passageClone) 
+                || this.audioBibleEnabledVerse(this.selectedBible.module, passageClone)
+            ) {
+                var audioLink = this.linkBuilder.buildPassageSignalLink('onListen', [this.selectedBible.module], passageClone);
+                html += '&nbsp; <sup>' + '<a href="' + audioLink + '" title="' + listenText + '" class="bss_std_link">' + listenText + '</a></sup>';
+            }
+
             // Statistics
             if(this.app.statics.access.statistics) {
                 var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, verse.chapter, verse.verse);
@@ -446,8 +518,20 @@ module.exports = kind({
 
         return html;
     },   
-    _processSingleVerseLinks: function(passage, verse) {
+    _addWideAudioContainer: function(Container, passage) {
+        if(!this.audioBibleEnabledWide('all', passage)) {
+            return;
+        }
 
+        Container.createComponent({
+            tag: 'tr', 
+            components: [
+                {tag: 'td', attributes: {colspan: this.bibleCount * this.passageColumnsPerBible}, 
+                components: [
+                    {kind: AudioContainer, enabled: true, bible: 'all', passage: passage}
+                ]}
+            ]
+        });
     },
     _addNavButtons: function(Container, passage) {
         if(typeof passage.nav == 'object') {

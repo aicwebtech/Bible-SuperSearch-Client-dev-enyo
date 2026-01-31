@@ -26,8 +26,6 @@ var StorageManager = require('./data/LocalStorageManager');
 var ErrorView = require('./view/ErrorView');
 var Passage = require('./components/Passage');
 
-//var MainView = require('./view/Content');
-
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
 var Signal = require('enyo/Signals');
@@ -42,7 +40,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '6.1.1',
+    applicationVersion: '6.2.0',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
@@ -202,6 +200,7 @@ var App = Application.kind({
             
             this.rootDir = dir;
         }
+        
 
         var urlParts = window.location.href.split('#');
         this.baseUrl = urlParts[0];
@@ -585,6 +584,16 @@ var App = Application.kind({
 
         if(!statics.download_enabled) {
             defaultConfig._downloadDisabledNotice();
+        }
+
+        if(!statics.audio_enabled && this.configs.audioBible && this.configs.audioBibleApi == 'biblesupersearch') {
+            var msg  = 'CONFIG ERROR: Audio Bible is enabled with\n';
+                msg += '"biblesupersearch" as the "audioBibleApi",\n'; 
+                msg += 'however, the current Bible SuperSearch API\ndoes NOT support audio Bible ...\n\n';
+                msg += 'Audio Bible has been disabled ...';
+            
+            alert(msg);
+            this.configs.audioBible = false;
         }
 
         //this.localeBibleBooks.en = statics.books; // prepopulate the English book list
@@ -1724,8 +1733,6 @@ var App = Application.kind({
     },
     // Sends signal into app
     s: function(onSignal, onEvent) {
-        this.log(onSignal, onEvent);
-
         Signal.send(onSignal, onEvent);
     },
     // Translate
