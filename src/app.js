@@ -26,8 +26,6 @@ var StorageManager = require('./data/LocalStorageManager');
 var ErrorView = require('./view/ErrorView');
 var Passage = require('./components/Passage');
 
-//var MainView = require('./view/Content');
-
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
 var Signal = require('enyo/Signals');
@@ -42,7 +40,7 @@ var BssRouter = kind({
 
 var App = Application.kind({
     name: 'BibleSuperSearch',
-    applicationVersion: '6.2.0.pre1',
+    applicationVersion: '6.2.0',
     defaultView: DefaultInterface,
     // renderTarget: 'biblesupersearch_container',
     configs: {},
