@@ -110,7 +110,13 @@ module.exports = kind({
         }
     },
     handleKey: function(inSender, inEvent) {
-        if(this.app.configs.arrowKeysPageChapter) {            
+        if(this.app.configs.arrowKeysPageChapter) {
+            var tag = document.activeElement && document.activeElement.tagName.toLowerCase();
+
+            if(tag === 'input' || tag === 'textarea' || tag === 'select') {
+                return;
+            }
+
             if(inEvent.key == 'ArrowRight') {
                 this.clickNext();
             }
