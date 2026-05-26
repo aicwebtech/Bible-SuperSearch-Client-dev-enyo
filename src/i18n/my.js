@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'ဆက်စပ်ဖော်ပြပါ။',
     'Context': 'စကားစပ်',
     'In Context': 'စကားစပ်',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'ရှာဖွေမှုကို ကန့်သတ်ပါ။',
     'Limit search to': 'ရှာဖွေမှုကို ကန့်သတ်ပါ။', // Watch case!

@@ -76,6 +76,10 @@ module.exports = {
     'Show in context': 'Дар контекст нишон диҳед',
     'Context': 'Контекст',
     'In Context': 'Дар контекст',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'Ҷустуҷӯро маҳдуд кунед',
     'Limit search to': 'Ҷустуҷӯро маҳдуд кунед', // Watch case!

@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'ಸನ್ನಿವೇಶದಲ್ಲಿ ತೋರಿಸಿ',
     'Context': 'ಸಂದರ್ಭ',
     'In Context': 'ಸನ್ನಿವೇಶದಲ್ಲಿ',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'ಹುಡುಕಾಟವನ್ನು ಮಿತಿಗೊಳಿಸಿ',
     'Limit search to': 'ಹುಡುಕಾಟವನ್ನು ಮಿತಿಗೊಳಿಸಿ', // Watch case!

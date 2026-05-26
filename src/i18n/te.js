@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'సందర్భానుసారంగా చూపించు',
     'Context': 'సందర్భం',
     'In Context': 'సందర్భంలో',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'శోధనను పరిమితం చేయండి',
     'Limit search to': 'శోధనను పరిమితం చేయండి', // Watch case!

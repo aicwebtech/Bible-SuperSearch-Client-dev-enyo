@@ -991,5 +991,8 @@ module.exports = kind({
         var threshold = parseInt(this.app.configs.audioBibleDisplayThreshold) || 3;
 
         return {display: display, threshold: threshold};
+    },
+    handleCrossReferencesSignal: function(s, e) {
+        // do nothing
     }
 });

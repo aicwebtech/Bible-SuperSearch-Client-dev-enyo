@@ -158,7 +158,7 @@ See `.github/instructions/forms.instructions.md`.
 
 ### Internationalization
 
-All user-visible strings must be wrapped with `$L()` (Enyo i18n) so they can be translated.  
+All user-visible strings must be wrapped with `this.app.t()` (or a variant thereof) so they can be translated.  
 See `.github/instructions/i18n.instructions.md`.
 
 ## API Integration

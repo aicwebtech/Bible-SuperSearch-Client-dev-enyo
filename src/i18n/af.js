@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'Wys in konteks',
     'Context': 'Konteks',
     'In Context': 'In Konteks',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'Beperk Soek Na',
     'Limit search to': 'Beperk soektog na', // Watch case!

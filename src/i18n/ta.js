@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'சூழலில் காட்டு',
     'Context': 'சூழல்',
     'In Context': 'சூழலில்',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'தேடலை வரம்பிடவும்',
     'Limit search to': 'தேடலை வரம்பிடவும்', // Watch case!

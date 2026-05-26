@@ -60,6 +60,10 @@ module.exports = {
     'Show in context': 'Rodyti kontekste',
     'Context': 'Kontekstas',
     'In Context': 'Kontekste',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'Apriboti Paiešką Iki',
     'Limit search to': 'Apriboti paiešką iki', // Watch case!

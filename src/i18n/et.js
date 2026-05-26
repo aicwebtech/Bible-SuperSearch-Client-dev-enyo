@@ -64,6 +64,10 @@ module.exports = {
     'Show in context': 'Näita konteksti',
     'Context': 'Kontekst',
     'In Context': 'Kontekstis',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
 
     'Limit Search To': 'Piira Otsingut',

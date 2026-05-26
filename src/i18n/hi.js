@@ -62,6 +62,10 @@ module.exports = {
     'Show in context': 'संदर्भ में दिखाएँ',
     'Context': 'प्रसंग',
     'In Context': 'संदर्भ में',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'खोज को यहीं तक सीमित करें',
     'Limit search to': 'खोज को यहीं तक सीमित करें', // Watch case!

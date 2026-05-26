@@ -767,8 +767,7 @@ module.exports = kind({
                 var cr = item.cross_references[i];
                     
                 var localeBook = this.app.getLocaleBookName(cr.to_book);
-
-                reference = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start;
+                var reference = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start;
 
                 if(cr.to_chapter_end && cr.to_verse_end && (cr.to_chapter_end != cr.to_chapter_start || cr.to_verse_end != cr.to_verse_start)) {
                     reference += '-' + (cr.to_chapter_end != cr.to_chapter_start ? cr.to_chapter_end + ':' : '') + cr.to_verse_end;

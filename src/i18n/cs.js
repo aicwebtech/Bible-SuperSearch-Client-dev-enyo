@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'Zobrazit v kontextu',
     'Context': 'Kontext',
     'In Context': 'V Souvislosti s',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'Omezit Vyhledávání Na',
     'Limit search to': 'Omezit vyhledávání na', // Watch case!

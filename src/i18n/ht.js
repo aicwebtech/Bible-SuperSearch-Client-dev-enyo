@@ -78,6 +78,10 @@ module.exports = {
     'Show in context': 'Montre nan kontèks',
     'Context': 'Kontèks',
     'In Context': 'Nan Kontèks',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'Limite rechèch pou',
     'Limit search to': 'Limite rechèch la', // Watch case!

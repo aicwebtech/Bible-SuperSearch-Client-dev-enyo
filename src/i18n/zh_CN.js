@@ -61,6 +61,10 @@ module.exports = {
     'Show in context': '在上下文中显示',
     'Context': '上下文',
     'In Context': '在上下文中',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': '限制搜索于',
     'Limit search to': '搜索限于, 注意大小写 !', // 注意大小写 !

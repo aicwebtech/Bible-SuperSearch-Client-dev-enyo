@@ -21,7 +21,7 @@ module.exports = {
 
         if(hasChaptRange && !hasVerseRange) {
             // unprocessable link
-            this.log('Error building reference link: chapter range with verse specified', arguments);
+            console.log('Error building reference link: chapter range with verse specified', arguments);
             return null;
         }
 

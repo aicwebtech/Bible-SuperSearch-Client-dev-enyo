@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'Nuna cikin mahallin',
     'Context': 'Magana',
     'In Context': 'A cikin Magana',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'Iyakance Bincike Zuwa',
     'Limit search to': 'Iyakance bincike zuwa', // Watch case!

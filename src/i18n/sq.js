@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'Trego në kontekst',
     'Context': 'Kontekst',
     'In Context': 'Në Kontekst',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'Kufizoni Kërkimin Në',
     'Limit search to': 'Kufizoni kërkimin në', // Watch case!
