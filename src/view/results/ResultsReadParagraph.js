@@ -16,7 +16,7 @@ module.exports = kind({
         // No special RTL formatting needed - direction: rtl will display it correctly!
         return reference + '  ' + this.processText(verse.text);
     },
-    processAssemblePassageVerse: function(reference, verse) {
+    processAssemblePassageVerse: function(reference, verse, passage) {
         // No special RTL formatting needed - direction: rtl will display it correctly!
         var processed = '<sup class="bss_ver">' + reference + '</sup><span class="bss_txt">' + this.processText(verse.text) + '</span>  ';
 
@@ -24,7 +24,7 @@ module.exports = kind({
             processed = this.newLine + this.newLine + processed;
         }
 
-        return processed;
+        return this._addInlineCrossReferences(processed, passage, verse);
     },
 
     // Multi verse, multi Bible
@@ -162,7 +162,8 @@ module.exports = kind({
                     }
 
                     if(pd.verses[module] && pd.verses[module][chapter] && pd.verses[module][chapter][verse]) {
-                        var processed = this.processPassageVerseContent(pd, pd.verses[module][chapter][verse]);
+                        var verseData = this._withVerseMeta(pd.verses[module][chapter][verse], chapter, verse);
+                        var processed = this.processPassageVerseContent(pd, verseData);
                         bibleHtml[i] += processed;
                     }
                 }

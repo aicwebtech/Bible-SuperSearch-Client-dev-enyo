@@ -70,6 +70,7 @@ module.exports = kind({
             onFormResponseSuccess: 'handleFormResponse', 
             onFormResponseError: 'handleFormError', 
             onResultsPrint: 'handlePrint',
+            onCrossReferences: 'handleCrossReferencesSignal',
             onkeyup: 'handleKey', // Keyboard events need to be handled by Signal per docs
             isChrome: true
         },

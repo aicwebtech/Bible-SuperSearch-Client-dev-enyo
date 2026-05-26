@@ -180,7 +180,40 @@ module.exports = kind({
                 {tag: 'span', kind: i18n, content: 'However, verses from this Bible have been included for comparison.'},
                 {tag: 'span', content: '"'}
             ]
-        },       
+        },
+        {
+            classes: 'bss_section',
+            name: 'CrossReferencesContainer',
+            components: [
+                {kind: inc, content: 'Cross References', classes: 'bss_header'},
+                {
+                    kind: Group,
+                    name: 'cross_references_mode_group',
+                    onActiveChanged: 'handleActiveChanged',
+                    classes: 'bss_settings_container',
+                    components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
+                                {kind: Checkbox, name: 'cross_references_hidden', id: 'cross_references_hidden', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_hidden'}, classes: 'bss_label', content: 'Hidden'}
+                        ]},
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
+                                {kind: Checkbox, name: 'cross_references_toggle', id: 'cross_references_toggle', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_toggle'}, classes: 'bss_label', content: 'Toggle'}
+                        ]},
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
+                                {kind: Checkbox, name: 'cross_references_show', id: 'cross_references_show', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_show'}, classes: 'bss_label', content: 'Show'}
+                        ]},
+                    ]
+                }
+            ]
+        },
         {tag: 'br'},
         {
             classes: 'bss_section', 
@@ -365,7 +398,22 @@ module.exports = kind({
             dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
 
             return value;
-        }},  
+        }},
+        {from: 'app.UserConfig.crossReferencesShow', to: 'crossReferencesShow', oneWay: false, transform: function(value, dir) {
+            value = this.app.normalizeCrossReferencesShow(value);
+
+            if(dir == 1) {
+                var selected = 'cross_references_' + value;
+
+                if(this.$[selected]) {
+                    this.$.cross_references_mode_group.set('active', this.$[selected]);
+                    this.$[selected].set('checked', true);
+                }
+            }
+
+            dir == 2 && this.app.userConfigChanged();
+            return value;
+        }},
     ],
 
     handlers: {
@@ -397,6 +445,7 @@ module.exports = kind({
         }
 
         this.$.parallel_search_error_toggle.set('showing', this.app.configs.parallelSearchErrorSuppressUserConfig);
+        this.$.CrossReferencesContainer.set('showing', this.app.crossReferencesEnabled());
 
         this.createComponent({
             name: 'ConfirmDialog',
@@ -463,6 +512,21 @@ module.exports = kind({
 
         if(inEvent.originator.name == 'font') {
             this.set('font', value);
-        }        
+        }
+
+        if(inEvent.originator.name == 'cross_references_mode_group') {
+            switch(value) {
+                case 'cross_references_hidden':
+                    this.set('crossReferencesShow', 'hidden');
+                    break;
+                case 'cross_references_show':
+                    this.set('crossReferencesShow', 'show');
+                    break;
+                case 'cross_references_toggle':
+                default:
+                    this.set('crossReferencesShow', 'toggle');
+                    break;
+            }
+        }
     },
 });

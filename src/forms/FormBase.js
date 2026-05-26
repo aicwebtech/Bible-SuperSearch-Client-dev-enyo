@@ -406,6 +406,12 @@ module.exports = kind({
 
         formData.parallel_search_error_suppress = parallelSurpress;
         formData.results_list = this.app.configs.resultsList;
+
+        if(this.app.crossReferencesEnabled()) {
+            formData.cross_references = 1;
+        } else {
+            delete formData.cross_references;
+        }
         
         //formData.group_passage_search_results = true; // experimental
         

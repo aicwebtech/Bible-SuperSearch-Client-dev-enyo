@@ -392,6 +392,15 @@ var biblesupersearch_config_options = {
     // When threshold is met or exceeded, display wide audio controls
     'audioBibleDisplayThreshold': 3, 
 
+    // Cross references feature (BSS-158)
+    // When false, cross references are fully disabled and no cross_references query parameter is sent.
+    // When true, cross references are available if enabled by the API statics feature flag.
+    'crossReferenceEnable': false,
+
+    // Default user display mode for cross references.
+    // Options: 'hidden' | 'toggle' | 'show'
+    'crossReferenceShowDefault': 'toggle',
+
     // User Config settings
     'saveUserSettings': false, // Whether to save user's settings to appear on next page load (saves to LocalStorage, not cookie)
 
