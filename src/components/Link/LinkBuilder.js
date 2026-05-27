@@ -19,42 +19,40 @@ module.exports = {
         var hasChaptRange = chapt && chaptEnd && chapt != chaptEnd;
         var hasVerseRange = verse && verseEnd && verse != verseEnd;
 
-        if(hasChaptRange && !hasVerseRange) {
-            // unprocessable link
-            console.log('Error building reference link: chapter range with verse specified', arguments);
-            return null;
+        if(hasChaptRange && !hasVerseRange && verse) {
+            // unprocessable link, remove verse, fallback to chapter range link
+            verse = null;
         }
 
         // Determine if we need a generic link (for ranges)
         if(hasChaptRange && hasVerseRange) {
-            // pull mode based on whether form has a request 'q' or 'passage' 'q', link to passage view
+            // pull mode based on whether form has a request 'q' or 'reference' 'r'
             mode = 'r';
         }
 
         var link = '#/' + mode + '/' + bible + '/' + book;
 
         if(hasChaptRange && hasVerseRange) {
-            link += ' ' + chapt + '-' + chaptEnd + ':' + verse + '-' + verseEnd;
-        }
+            link += ' ' + chapt + ':' + verse + '-' + chaptEnd + ':' + verseEnd;
+        } else {
+            if(chapt) {
+                link += '/' + chapt;
 
-        if(chapt) {
-            link += '/' + chapt;
+                if(hasChaptRange) {
+                    link += '-' + chaptEnd;
+                }
+            }        
 
-            if(hasChaptRange) {
-                link += '-' + chaptEnd;
-            }
-        }        
+            if(verse) {
+                link += '/' + verse;
 
-        if(verse) {
-            link += '/' + verse;
-
-            if(hasVerseRange) {
-                link += '-' + verseEnd;
+                if(hasVerseRange) {
+                    link += '-' + verseEnd;
+                }
             }
         }
 
         link = link.replace(/\s+/g, '.');
-
         return link;
     },    
     buildSignalLink: function() {

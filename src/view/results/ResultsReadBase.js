@@ -638,6 +638,54 @@ module.exports = kind({
 
         return '<a href="' + link + '" class="bss_std_link">' + title + '</a>';
     },
+    // Builds a footnote-style cross-references block for use in multi-Bible paragraph view.
+    // Each verse's CRs are shown on their own line, prefixed with chapter:verse.
+    // In toggle mode, the block is hidden and the ID is registered in crossReferencesPassageToggleMap
+    // so the passage-level signal link can show/hide it.
+    _buildPassageCrossReferencesFootnote: function(passage) {
+        if(!this.app.crossReferencesEnabled()) {
+            return '';
+        }
+
+        var mode = this.app.normalizeCrossReferencesShow(this.app.UserConfig.get('crossReferencesShow'));
+
+        if(mode == 'hidden') {
+            return '';
+        }
+
+        var cv  = passage.chapter_verse || '';
+        var cva = passage.chapter_verse_actual || '';
+        var footnoteLines = [];
+
+        for(var chapter in passage.verse_index) {
+            passage.verse_index[chapter].forEach(function(verse) {
+                var refs = this._getCrossReferences(passage.book_id, chapter, verse);
+
+                if(refs.length) {
+                    footnoteLines.push('<b>' + chapter + ':' + verse + '</b> ' + refs.join('; '));
+                }
+            }, this);
+        }
+
+        if(!footnoteLines.length) {
+            return '';
+        }
+
+        var body = footnoteLines.join('<br />');
+
+        if(mode == 'toggle') {
+            var id = this.getId ? this.getId() : 'bss';
+            var sanitizedCv = (cv || '').toString().replace(/[^A-Za-z0-9_\-]/g, '_');
+            var toggleId = 'bss_cross_refs_fn_' + id + '_' + passage.book_id + '_' + sanitizedCv;
+            var refKey = this._getCrossReferencesSignalKey(passage.book_id, cv, cva);
+
+            this.crossReferencesPassageToggleMap[refKey] = [toggleId];
+
+            return '<div class="bss_cross_references bss_cross_references_footnote" id="' + toggleId + '" style="display:none">' + body + '</div>';
+        }
+
+        return '<div class="bss_cross_references bss_cross_references_footnote">' + body + '</div>';
+    },
     _getCrossReferencesReferenceKey: function(bookName, chapter, verse) {
         var ref = bookName || '';
 
@@ -675,9 +723,7 @@ module.exports = kind({
             }
         }
     },
-    handleCrossReferencesSignal: function(inSender, inEvent) {
-        this.log(inEvent);
-        
+    handleCrossReferencesSignal: function(inSender, inEvent) {        
         var b = inEvent && inEvent.b ? inEvent.b : null;
         var cv = inEvent && inEvent.cv ? inEvent.cv : '';
         var cva = inEvent && inEvent.cva ? inEvent.cva : '';
@@ -775,7 +821,9 @@ module.exports = kind({
 
                 var href = this.linkBuilder.buildReferenceLink('p', this.formData.bible, localeBook, cr.to_chapter_start, cr.to_verse_start, cr.to_chapter_end, cr.to_verse_end);
 
-                references.push('<a href="' + href + '" class="bss_std_link" target="_new">' + reference + '</a>');
+                references.push(
+                    '<a href="' + href + '" class="bss_std_link" target="_blank" rel="noopener noreferrer">' 
+                    + reference + '</a>');
             }
         } else {
             return '';

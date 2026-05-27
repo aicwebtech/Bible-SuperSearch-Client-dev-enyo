@@ -24,7 +24,7 @@ module.exports = kind({
             processed = this.newLine + this.newLine + processed;
         }
 
-        return this._addInlineCrossReferences(processed, passage, verse);
+        return processed; // this._addInlineCrossReferences(processed, passage, verse);
     },
 
     // Multi verse, multi Bible
@@ -72,6 +72,38 @@ module.exports = kind({
             var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
             refContent += '<a href="' + sl + '" title="' + this.app.t('Statistics') + '" class="bss_std_link">' + this.app.t('Statistics') + '</a> &nbsp;';
         }
+
+        var crFootnoteHtml = '';
+
+        crFootnoteHtml = this._buildPassageCrossReferencesFootnote(pd);
+
+        if(crFootnoteHtml) {
+            var crMode = this.app.normalizeCrossReferencesShow(this.app.UserConfig.get('crossReferencesShow'));
+
+            if(crMode == 'toggle') {
+                var crLinkHref = this.linkBuilder.buildPassageSignalLink('onCrossReferences', this.formData.bible, pd);
+                refContent += '<a href="' + crLinkHref + '" class="bss_std_link">' + this.app.t('Cross References') + '</a> &nbsp;';
+            }
+        }
+
+            // if(this.multiBibles) {
+            //     crFootnoteHtml = this._buildPassageCrossReferencesFootnote(pd);
+
+            //     if(crFootnoteHtml) {
+            //         var crMode = this.app.normalizeCrossReferencesShow(this.app.UserConfig.get('crossReferencesShow'));
+
+            //         if(crMode == 'toggle') {
+            //             var crLinkHref = this.linkBuilder.buildPassageSignalLink('onCrossReferences', this.formData.bible, pd);
+            //             refContent += '<a href="' + crLinkHref + '" class="bss_std_link">' + this.app.t('Cross References') + '</a> &nbsp;';
+            //         }
+            //     }
+            // } else {
+            //     var passageCrossReferencesLink = this._buildPassageCrossReferencesToggleLink(pd);
+
+            //     if(passageCrossReferencesLink) {
+            //         refContent += passageCrossReferencesLink + ' &nbsp;';
+            //     }
+            // }
 
         Container.createComponent({
             name: 'ReferenceRow',
@@ -190,6 +222,19 @@ module.exports = kind({
             content: html,
             allowHtml: true
         });
+
+        if(crFootnoteHtml) {
+            Container.createComponent({
+                tag: 'tr',
+                classes: 'bss_cross_references_row',
+                components: [{
+                    tag: 'td',
+                    attributes: {colspan: this.bibleCount * this.passageColumnsPerBible},
+                    allowHtml: true,
+                    content: crFootnoteHtml
+                }]
+            });
+        }
 
         this._addNavButtons(Container, pd);
     },
