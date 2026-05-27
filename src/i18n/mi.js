@@ -74,10 +74,10 @@ module.exports = {
     'Show in context': 'Whakaatu ki te horopaki',
     'Context': 'Horopaki',
     'In Context': 'I te Horopaki',
-    'Cross References': '',
-    'Hidden': '',
-    'Toggle': '',
-    'Show': '',
+    'Cross References': 'Tohutoro whakawhiti',
+    'Hidden': 'Huna',
+    'Toggle': 'Takahuri',
+    'Show': 'Whakaatu',
 
     'Limit Search To': 'Tepe Rapu Ki',
     'Limit search to': 'Whakawhāitihia te rapu ki', // Watch case!

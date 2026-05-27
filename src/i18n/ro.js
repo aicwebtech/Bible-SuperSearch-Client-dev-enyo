@@ -60,10 +60,10 @@ module.exports = {
     'Show in context': 'Afișați în context',
     'Context': 'Context',
     'In Context': 'În Context',
-    'Cross References': '',
-    'Hidden': '',
-    'Toggle': '',
-    'Show': '',
+    'Cross References': 'Referințe încrucișate',
+    'Hidden': 'Ascuns',
+    'Toggle': 'Comută',
+    'Show': 'Arată',
 
     'Limit Search To': 'Limitați Căutarea',
     'Limit search to': 'Limitați căutarea', // Watch case!

@@ -74,10 +74,10 @@ module.exports = {
     'Show in context': 'Onyesha katika muktadha',
     'Context': 'Muktadha',
     'In Context': 'Katika Muktadha',
-    'Cross References': '',
-    'Hidden': '',
-    'Toggle': '',
-    'Show': '',
+    'Cross References': 'Marejeo ya msalaba',
+    'Hidden': 'Imefichwa',
+    'Toggle': 'Badilisha',
+    'Show': 'Onyesha',
 
     'Limit Search To': 'Punguza Utafutaji Kwa',
     'Limit search to': 'Punguza utafutaji kwa', // Watch case!
