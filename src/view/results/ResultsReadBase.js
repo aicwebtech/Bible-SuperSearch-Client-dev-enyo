@@ -686,19 +686,6 @@ module.exports = kind({
 
         return '<div class="bss_cross_references bss_cross_references_footnote">' + body + '</div>';
     },
-    _getCrossReferencesReferenceKey: function(bookName, chapter, verse) {
-        var ref = bookName || '';
-
-        if(chapter) {
-            ref += ' ' + chapter;
-        }
-
-        if(verse) {
-            ref += ':' + verse;
-        }
-
-        return ref;
-    },
     _toggleCrossReferencesIds: function(ids) {
         if(!ids || !ids.length) {
             return;
