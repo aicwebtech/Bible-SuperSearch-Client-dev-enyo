@@ -74,10 +74,10 @@ module.exports = {
     'Show in context': 'Bağlamda göster',
     'Context': 'Bağlam',
     'In Context': 'Bağlamda',
-    'Cross References': 'Çapraz referanslar',
-    'Hidden': 'Gizli',
-    'Toggle': 'Değiştir',
-    'Show': 'Göster',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'Aramayı Sınırla',
     'Limit search to': 'Aramayı şu şekilde sınırlandır:', // Watch case!

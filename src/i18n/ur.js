@@ -74,10 +74,10 @@ module.exports = {
     'Show in context': 'سیاق و سباق میں دکھائیں۔',
     'Context': 'خیال، سیاق',
     'In Context': 'سیاق و سباق میں',
-    'Cross References': 'متقاطع حوالہ جات',
-    'Hidden': 'چھپا ہوا',
-    'Toggle': 'ٹوگل',
-    'Show': 'دکھائیں',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'تلاش کو محدود کریں۔',
     'Limit search to': 'تلاش کو محدود کریں۔', // Watch case!

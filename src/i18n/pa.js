@@ -76,10 +76,10 @@ module.exports = {
     'Show in context': 'ਸੰਦਰਭ ਵਿੱਚ ਦਿਖਾਓ',
     'Context': 'ਸੰਦਰਭ',
     'In Context': 'ਸੰਦਰਭ ਵਿੱਚ',
-    'Cross References': 'ਕਰਾਸ ਹਵਾਲੇ',
-    'Hidden': 'ਲੁਕਾਇਆ',
-    'Toggle': 'ਟੌਗਲ',
-    'Show': 'ਦਿਖਾਓ',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'ਖੋਜ ਨੂੰ ਸੀਮਿਤ ਕਰੋ',
     'Limit search to': 'ਖੋਜ ਨੂੰ ਸੀਮਿਤ ਕਰੋ', // Watch case!

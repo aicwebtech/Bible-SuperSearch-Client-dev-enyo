@@ -74,10 +74,10 @@ module.exports = {
     'Show in context': 'প্রসঙ্গে দেখান',
     'Context': 'প্রসঙ্গ',
     'In Context': 'প্রসঙ্গে',
-    'Cross References': 'ক্রস রেফারেন্স',
-    'Hidden': 'লুকানো',
-    'Toggle': 'টগল',
-    'Show': 'দেখান',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'অনুসন্ধান সীমাবদ্ধ করুন',
     'Limit search to': 'অনুসন্ধান সীমাবদ্ধ করুন', // Watch case!

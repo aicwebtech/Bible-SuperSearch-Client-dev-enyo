@@ -53,10 +53,10 @@ module.exports = {
     'Show in context': 'Mostrar en contexto',
     'Context': 'Contexto',
     'In Context': 'En Contexto',
-    'Cross References': 'Referencias cruzadas',
-    'Hidden': 'Oculto',
-    'Toggle': 'Alternar',
-    'Show': 'Mostrar',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'Busca En',
     'Limit search to': 'Busca en', // Is this duplication needed?

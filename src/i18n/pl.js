@@ -74,10 +74,10 @@ module.exports = {
     'Show in context': 'Pokaż w kontekście',
     'Context': 'Kontekst',
     'In Context': 'W Kontekście',
-    'Cross References': 'Odnośniki krzyżowe',
-    'Hidden': 'Ukryte',
-    'Toggle': 'Przełącz',
-    'Show': 'Pokaż',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'Zawęź Wyszukiwanie Do',
     'Limit search to': 'Zawęź wyszukiwanie do', // Watch case!

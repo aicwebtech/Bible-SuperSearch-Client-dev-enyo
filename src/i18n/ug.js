@@ -77,10 +77,10 @@ module.exports = {
     'Show in context': 'مەزمۇندا كۆرسىتىڭ',
     'Context': 'مەزمۇن',
     'In Context': 'مەزمۇندا',
-    'Cross References': 'ئۆزئارا پايدىلانما',
-    'Hidden': 'يوشۇرۇن',
-    'Toggle': 'ئالماشتۇرۇش',
-    'Show': 'كۆرسەت',
+    'Cross References': '',
+    'Hidden': '',
+    'Toggle': '',
+    'Show': '',
 
     'Limit Search To': 'ئىزدەشنى چەكلەڭ',
     'Limit search to': 'ئىزدەشنى چەكلەڭ', // Watch case!

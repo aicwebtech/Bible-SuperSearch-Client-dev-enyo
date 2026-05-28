@@ -24,7 +24,7 @@ module.exports = kind({
             processed = this.newLine + this.newLine + processed;
         }
 
-        return processed;
+        return processed; // this._addInlineCrossReferences(processed, passage, verse);
     },
 
     // Multi verse, multi Bible
@@ -85,6 +85,25 @@ module.exports = kind({
                 refContent += '<a href="' + crLinkHref + '" class="bss_std_link">' + this.app.t('Cross References') + '</a> &nbsp;';
             }
         }
+
+            // if(this.multiBibles) {
+            //     crFootnoteHtml = this._buildPassageCrossReferencesFootnote(pd);
+
+            //     if(crFootnoteHtml) {
+            //         var crMode = this.app.normalizeCrossReferencesShow(this.app.UserConfig.get('crossReferencesShow'));
+
+            //         if(crMode == 'toggle') {
+            //             var crLinkHref = this.linkBuilder.buildPassageSignalLink('onCrossReferences', this.formData.bible, pd);
+            //             refContent += '<a href="' + crLinkHref + '" class="bss_std_link">' + this.app.t('Cross References') + '</a> &nbsp;';
+            //         }
+            //     }
+            // } else {
+            //     var passageCrossReferencesLink = this._buildPassageCrossReferencesToggleLink(pd);
+
+            //     if(passageCrossReferencesLink) {
+            //         refContent += passageCrossReferencesLink + ' &nbsp;';
+            //     }
+            // }
 
         Container.createComponent({
             name: 'ReferenceRow',
