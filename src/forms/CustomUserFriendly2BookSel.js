@@ -88,8 +88,8 @@ module.exports = kind({
                         }
                     ]},
                     {tag: 'hr'},
-                    {kind: i18n, content: 'Enter word(s), phrase(s) or expression(s):'},
-                    {name: 'search', kind: Input, style: 'width: 100%; max-width: 300px'},
+                    {kind: i18n, content: 'Enter search keyword(s) or passage reference(s):'},
+                    {name: 'request', kind: Autocomplete, style: 'width: 100%; max-width: 300px', isComponent: true},
                     {tag: 'br'},
                     {tag: 'br'},
                     {components: [
