@@ -17,7 +17,7 @@ module.exports = kind({
         var crossReferences = '';
 
         if(!this.multiBibles) {
-            crossReferences = this._buildCrossReferencesHtml(passage.book_id, verse.chapter, verse.verse, false, passage);
+            crossReferences = this._buildCrossReferencesHtml(passage.book_id, verse.chapter, verse.verse, passage);
 
             if(crossReferences) {
                 if(this.app.normalizeCrossReferencesShow(this.app.UserConfig.get('crossReferencesShow')) == 'toggle') {

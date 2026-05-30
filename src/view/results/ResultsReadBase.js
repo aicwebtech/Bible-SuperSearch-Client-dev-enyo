@@ -491,7 +491,7 @@ module.exports = kind({
             return content;
         }
 
-        var html = this._buildCrossReferencesHtml(passage.book_id, verse.chapter, verse.verse, false, passage);
+        var html = this._buildCrossReferencesHtml(passage.book_id, verse.chapter, verse.verse, passage);
 
         if(!html) {
             return content;
@@ -528,7 +528,7 @@ module.exports = kind({
             return;
         }
 
-        var html = this._buildCrossReferencesHtml(passage.book_id, chapter, verse, false, passage);
+        var html = this._buildCrossReferencesHtml(passage.book_id, chapter, verse, passage);
 
         if(!html) {
             return;
@@ -565,8 +565,8 @@ module.exports = kind({
             var chapter = passage.chapter_verse_actual.split(':')[0];
             var verse = passage.chapter_verse_actual.split(':')[1] || null;
         } else {
-            var chapter = passage.chapter_verse.split(':')[0];
-            var verse = passage.chapter_verse.split(':')[1] || null;
+            var chapter = (passage.chapter_verse || '').split(':')[0];
+            var verse = (passage.chapter_verse || '').split(':')[1] || null;
         }
         
         if(!this.app.crossReferencesEnabled()) {
@@ -726,7 +726,7 @@ module.exports = kind({
 
         return true;
     },
-    _buildCrossReferencesHtml: function(bookId, chapter, verse, includeToggleSummary, passage) {
+    _buildCrossReferencesHtml: function(bookId, chapter, verse, passage) {
         if(!this.app.crossReferencesEnabled()) {
             return '';
         }
@@ -751,10 +751,6 @@ module.exports = kind({
             var cva = passage && passage.chapter_verse_actual ? passage.chapter_verse_actual : '';
             var toggleId = this._getCrossReferencesToggleId(bookId, chapter, verse, cv, cva);
 
-            if(includeToggleSummary) {
-                return '<div class="bss_cross_references"><details><summary>' + title + '</summary>' + body + '</details></div>';
-            }
-
             return '<div class="bss_cross_references" id="' + toggleId + '" style="display:none">' + body + '</div>';
         }
 
@@ -765,6 +761,18 @@ module.exports = kind({
         var crossReferences = data.cross_references || [];
         var found = [];
 
+        if(!bookId || !chapter || !verse) { 
+            return found;   
+        }
+
+        var idx = bookId + '_' + chapter + '_' + verse;
+
+        // Check if crossReferennce is an object - preferred
+        if(typeof crossReferences == 'object' && crossReferences !== null && !Array.isArray(crossReferences)) {
+            return crossReferences[idx] ? [this._formatCrossReference(crossReferences[idx])] : [];
+        }
+
+        // Fallback for older array-based format - loop through all and find matches
         if(!Array.isArray(crossReferences)) {
             return found;
         }
