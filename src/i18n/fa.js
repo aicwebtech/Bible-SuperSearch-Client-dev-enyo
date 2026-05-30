@@ -74,10 +74,10 @@ module.exports = {
     'Show in context': 'نمایش در زمینه',
     'Context': 'متن نوشته',
     'In Context': 'در متن',
-    'Cross References': '',
-    'Hidden': '',
-    'Toggle': '',
-    'Show': '',
+    'Cross References': 'ارجاعات متقاطع',
+    'Hidden': 'مخفی',
+    'Toggle': 'تغییر',
+    'Show': 'نمایش',
 
     'Limit Search To': 'محدود کردن جستجو به',
     'Limit search to': 'محدود کردن جستجو به', // Watch case!

@@ -74,10 +74,10 @@ module.exports = {
     'Show in context': 'Näytä kontekstissa',
     'Context': 'Konteksti',
     'In Context': 'Asiayhteydessä; kontekstissa',
-    'Cross References': '',
-    'Hidden': '',
-    'Toggle': '',
-    'Show': '',
+    'Cross References': 'Ristiviitteet',
+    'Hidden': 'Piilotettu',
+    'Toggle': 'Vaihda',
+    'Show': 'Näytä',
 
     'Limit Search To': 'Rajoita Haku Kohteeseen',
     'Limit search to': 'Rajoita haku kohteeseen', // Watch case!

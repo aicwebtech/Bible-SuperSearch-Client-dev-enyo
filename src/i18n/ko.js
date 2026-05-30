@@ -74,10 +74,10 @@ module.exports = {
     'Show in context': '상황에 맞게 표시',
     'Context': '문맥',
     'In Context': '문맥',
-    'Cross References': '',
-    'Hidden': '',
-    'Toggle': '',
-    'Show': '',
+    'Cross References': '상호 참조',
+    'Hidden': '숨김',
+    'Toggle': '전환',
+    'Show': '표시',
 
     'Limit Search To': '다음으로 검색 제한',
     'Limit search to': '다음으로 검색 제한', // Watch case!

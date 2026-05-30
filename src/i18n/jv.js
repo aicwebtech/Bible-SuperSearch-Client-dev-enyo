@@ -76,10 +76,10 @@ module.exports = {
     'Show in context': 'Tampilake ing konteks',
     'Context': 'Tampilake ing konteks',
     'In Context': 'Ing Konteks',
-    'Cross References': '',
-    'Hidden': '',
-    'Toggle': '',
-    'Show': '',
+    'Cross References': 'Referensi silang',
+    'Hidden': 'Didhelikake',
+    'Toggle': 'Ganti',
+    'Show': 'Tampilake',
 
     'Limit Search To': '',
     'Limit search to': '', // Watch case!
