@@ -60,6 +60,10 @@ module.exports = {
     'Show in context': 'Mostra nel contesto',
     'Context': 'Contesto',
     'In Context': 'Nel Contesto',
+    'Cross References': 'Riferimenti incrociati',
+    'Hidden': 'Nascosto',
+    'Toggle': 'Attiva/Disattiva',
+    'Show': 'Mostra',
 
     'Limit Search To': 'Limita la Ricerca a',
     'Limit search to': 'Limita la ricerca a', // Watch case!

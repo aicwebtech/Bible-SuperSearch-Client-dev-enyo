@@ -16,7 +16,7 @@ module.exports = kind({
         // No special RTL formatting needed - direction: rtl will display it correctly!
         return reference + '  ' + this.processText(verse.text);
     },
-    processAssemblePassageVerse: function(reference, verse) {
+    processAssemblePassageVerse: function(reference, verse, passage) {
         // No special RTL formatting needed - direction: rtl will display it correctly!
         var processed = '<sup class="bss_ver">' + reference + '</sup><span class="bss_txt">' + this.processText(verse.text) + '</span>  ';
 
@@ -71,6 +71,19 @@ module.exports = kind({
         if(this.app.statics.access.statistics) {
             var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
             refContent += '<a href="' + sl + '" title="' + this.app.t('Statistics') + '" class="bss_std_link">' + this.app.t('Statistics') + '</a> &nbsp;';
+        }
+
+        var crFootnoteHtml = '';
+
+        crFootnoteHtml = this._buildPassageCrossReferencesFootnote(pd);
+
+        if(crFootnoteHtml) {
+            var crMode = this.app.normalizeCrossReferencesShow(this.app.UserConfig.get('crossReferencesShow'));
+
+            if(crMode == 'toggle') {
+                var crLinkHref = this.linkBuilder.buildPassageSignalLink('onCrossReferences', this.formData.bible, pd);
+                refContent += '<a href="' + crLinkHref + '" class="bss_std_link">' + this.app.t('Cross References') + '</a> &nbsp;';
+            }
         }
 
         Container.createComponent({
@@ -162,7 +175,8 @@ module.exports = kind({
                     }
 
                     if(pd.verses[module] && pd.verses[module][chapter] && pd.verses[module][chapter][verse]) {
-                        var processed = this.processPassageVerseContent(pd, pd.verses[module][chapter][verse]);
+                        var verseData = this._withVerseMeta(pd.verses[module][chapter][verse], chapter, verse);
+                        var processed = this.processPassageVerseContent(pd, verseData);
                         bibleHtml[i] += processed;
                     }
                 }
@@ -189,6 +203,19 @@ module.exports = kind({
             content: html,
             allowHtml: true
         });
+
+        if(crFootnoteHtml) {
+            Container.createComponent({
+                tag: 'tr',
+                classes: 'bss_cross_references_row',
+                components: [{
+                    tag: 'td',
+                    attributes: {colspan: this.bibleCount * this.passageColumnsPerBible},
+                    allowHtml: true,
+                    content: crFootnoteHtml
+                }]
+            });
+        }
 
         this._addNavButtons(Container, pd);
     },

@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'Muuji macnaha guud',
     'Context': 'Dulucda',
     'In Context': 'Marka la Eego',
+    'Cross References': 'Tixraacyo isdhaafsan',
+    'Hidden': 'Qarsoon',
+    'Toggle': 'Beddel',
+    'Show': 'Muuji',
 
     'Limit Search To': 'Ku Xaddid Raadinta',
     'Limit search to': 'Ku xaddid raadinta', // Watch case!

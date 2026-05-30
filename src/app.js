@@ -120,7 +120,7 @@ var App = Application.kind({
     pagerView: null,
 
     accessible: [
-        'diff', 'statistics'
+        'diff', 'statistics', 'cross_references'
     ],
 
     published: {
@@ -315,6 +315,9 @@ var App = Application.kind({
         if(this.configs.target) {
             this.renderTarget = this.configs.target;
         }
+
+        this.configs.crossReferenceEnable = this._isTrue(this.configs.crossReferenceEnable);
+        this.configs.crossReferenceShowDefault = this.normalizeCrossReferencesShow(this.configs.crossReferenceShowDefault);
 
         var view = null;
         this.initUserConfig();
@@ -547,6 +550,24 @@ var App = Application.kind({
 
         return (groupOrder) ? groupOrder + '|' + this.configs.bibleSorting : this.configs.bibleSorting;
     },
+    _isTrue: function(value) {
+        return !(value === false || value === 'false' || value === 0 || value === '0' || value === null || typeof value == 'undefined');
+    },
+    normalizeCrossReferencesShow: function(value) {
+        if(value != 'hidden' && value != 'show' && value != 'toggle') {
+            return 'toggle';
+        }
+
+        return value;
+    },
+    crossReferencesEnabled: function() {
+        if(!this._isTrue(this.configs.crossReferenceEnable)) {
+            return false;
+        }
+
+        var staticsEnabled = this.statics && this.statics.access && this._isTrue(this.statics.access.cross_references);
+        return !!staticsEnabled;
+    },
     _validateStatics: function(statics) {
         var strings = ['name', 'version', 'environment'];
             arrays = ['books', 'search_types', 'shortcuts', 'download_formats'];
@@ -581,6 +602,14 @@ var App = Application.kind({
     _handleStaticsLoad: function(statics, view) {
         this.set('statics', statics);
         this.processBiblesDisplayed();
+
+        if(!this.statics.access || typeof this.statics.access != 'object') {
+            this.statics.access = {};
+        }
+
+        if(this.statics.features_enabled && typeof this.statics.features_enabled.cross_references != 'undefined') {
+            this.statics.access.cross_references = this._isTrue(this.statics.features_enabled.cross_references);
+        }
 
         if(!statics.download_enabled) {
             defaultConfig._downloadDisabledNotice();

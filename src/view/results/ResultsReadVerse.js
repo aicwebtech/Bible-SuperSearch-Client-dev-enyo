@@ -11,9 +11,22 @@ module.exports = kind({
     processAssembleVerse: function(reference, verse) {
         return reference + '  ' + this.processText(verse.text);
     },
-    processAssemblePassageVerse: function(reference, verse) {
+    processAssemblePassageVerse: function(reference, verse, passage) {
         var classes = this.getSelectedBibleClasses();
         var text = this.processText(verse.text);
+        var crossReferences = '';
+
+        if(!this.multiBibles) {
+            crossReferences = this._buildCrossReferencesHtml(passage.book_id, verse.chapter, verse.verse, passage);
+
+            if(crossReferences) {
+                if(this.app.normalizeCrossReferencesShow(this.app.UserConfig.get('crossReferencesShow')) == 'toggle') {
+                    text += crossReferences;
+                } else {
+                    text += '<br />' + crossReferences;
+                }
+            }
+        }
 
         // Note: ver, txt classes are depricated
         

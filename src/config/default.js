@@ -42,6 +42,8 @@ var defaultConfig = {
     'audioBibleApiKey': null,                          // Audio Bible API key
     'audioBibleDisplay': 'threshold',                  // Audio Bible display style: 'narrow' or 'wide' or 'threshold'
     'audioBibleDisplayThreshold': 3,                   // Width threshold for audioBibleDisplay 'threshold' option
+    'crossReferenceEnable': false,                     // Enables cross references globally when API feature is available
+    'crossReferenceShowDefault': 'toggle',             // Default user setting: hidden | toggle | show
 
     _urlDefaultNotice: function() {
         if(window.console) {

@@ -60,6 +60,10 @@ module.exports = {
     'Show in context': 'Mutasd kontextusban',
     'Context': 'Kontextus',
     'In Context': 'Szövegkörnyezetben',
+    'Cross References': 'Kereszthivatkozások',
+    'Hidden': 'Rejtett',
+    'Toggle': 'Váltás',
+    'Show': 'Megjelenítés',
 
     'Limit Search To': 'Keresés Korlátozása Erre',
     'Limit search to': 'Keresés szűkítése erre:', // Watch case!

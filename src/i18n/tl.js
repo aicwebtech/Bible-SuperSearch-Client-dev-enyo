@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'Ipakita sa konteksto',
     'Context': 'Konteksto',
     'In Context': 'Sa konteksto',
+    'Cross References': 'Mga cross reference',
+    'Hidden': 'Nakatago',
+    'Toggle': 'I-toggle',
+    'Show': 'Ipakita',
 
     'Limit Search To': 'Limitahan ang Paghahanap Sa',
     'Limit search to': 'Limitahan ang paghahanap sa', // Watch case!

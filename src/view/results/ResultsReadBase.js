@@ -13,10 +13,18 @@ module.exports = kind({
     singleVerseCount: 0,
     singleVerseBibleHeaderThreshold: 10,
     singleVerseBibleHeaderNext: true,
+    crossReferencesToggleMap: null,
+    crossReferencesPassageToggleMap: null,
+
+    handlers: {
+        onCrossReferences: 'handleCrossReferencesSignal'
+    },
 
     beforeRender: function() {
         this.inherited(arguments);
         this.singleVerseCount = 0;
+        this.crossReferencesToggleMap = {};
+        this.crossReferencesPassageToggleMap = {};
     },
     renderTopPlaceholder: function() {
         var Container = this._createContainer(null, 'TopPlaceholder');
@@ -143,9 +151,10 @@ module.exports = kind({
                     }
 
                     if(pd.verses[mod] && pd.verses[mod][chapter] && pd.verses[mod][chapter][verse]) {
-                        content = pd.verses[mod][chapter][verse].text || '';
+                        var verseData = this._withVerseMeta(pd.verses[mod][chapter][verse], chapter, verse);
+                        content = verseData.text || '';
                         haveText = (content != '') ? true : haveText;
-                        content = this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]);
+                        content = this.processSingleVerseContent(pd, verseData);
                         // this.signalVerseShowing(pd.book_id, chapter, verse);
                     }
 
@@ -163,6 +172,8 @@ module.exports = kind({
                         ]
                     });
                 }
+
+                this._addCrossReferencesRow(Container, pd, chapter, verse);
             }, this);
         }
 
@@ -257,6 +268,12 @@ module.exports = kind({
         if(this.app.statics.access.statistics) {
             var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
             refContent += '<a href="' + sl + '" title="' + this.app.t('Statistics') + '" class="bss_std_link">' + this.app.t('Statistics') + '</a> &nbsp;';
+        }
+
+        var passageCrossReferencesLink = this._buildPassageCrossReferencesToggleLink(pd);
+
+        if(passageCrossReferencesLink) {
+            refContent += passageCrossReferencesLink + ' &nbsp;';
         }
 
         Container.createComponent({
@@ -368,10 +385,12 @@ module.exports = kind({
                     }
 
                     if(pd.verses[mod] && pd.verses[mod][chapter] && pd.verses[mod][chapter][verse]) {
+                        var verseData = this._withVerseMeta(pd.verses[mod][chapter][verse], chapter, verse);
+
                         if(renderStyle == 'verse_passage') {
                             var classes = this.getSelectedBibleClasses();
                             //var processed = '<td class="' + classes + '">' + this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]) + '</td>';
-                            var processed = this.processSingleVerseContent(pd, pd.verses[mod][chapter][verse]);
+                            var processed = this.processSingleVerseContent(pd, verseData);
 
                             components.push({tag: 'td', classes: classes, components: [
                                 {allowHtml: true, content: processed},
@@ -383,7 +402,7 @@ module.exports = kind({
                                 }
                             ]});
                         } else {
-                            var processed = this.processPassageVerseContent(pd, pd.verses[mod][chapter][verse]);
+                            var processed = this.processPassageVerseContent(pd, verseData);
                         }
 
                         html += processed;
@@ -402,6 +421,7 @@ module.exports = kind({
                         components: components,
                     });
 
+                    this._addCrossReferencesRow(VerseContainer, pd, chapter, verse);
                     this._addWideAudioContainer(VerseContainer, passageClone);
                 } else {
                     VerseContainer.createComponent({
@@ -409,6 +429,8 @@ module.exports = kind({
                         allowHtml: true,
                         content: html
                     });
+
+                    this._addCrossReferencesRow(VerseContainer, pd, chapter, verse);
                 }
 
             }, this);
@@ -424,6 +446,14 @@ module.exports = kind({
         // this._renderCopyRightBottomHelper(Row);
     },
 
+    processSingleVerseContent: function(passage, verse) {
+        var ref = this.proccessSingleVerseReference(passage, verse);
+        return this.processAssembleSingleVerse(ref, verse, passage);
+    },
+    processPassageVerseContent: function(passage, verse) {
+        var ref = this.proccessPassageVerseReference(passage, verse);
+        return this.processAssemblePassageVerse(ref, verse, passage);
+    },
     processAssembleVerse: function(reference, verse) {
         if(!this.selectedBible) {
             return '';
@@ -436,10 +466,11 @@ module.exports = kind({
             return reference + '  ' + this.processText(verse.text);
         }
     },
-    processAssembleSingleVerse: function(reference, verse) {
-        return '<div class="bss_ver">' + reference + '</div><div class="bss_txt">' + this.processText(verse.text) + '</div>';
+    processAssembleSingleVerse: function(reference, verse, passage) {
+        var text = '<div class="bss_ver">' + reference + '</div><div class="bss_txt">' + this.processText(verse.text) + '</div>';
+        return this._addInlineCrossReferences(text, passage, verse);
     },
-    processAssemblePassageVerse: function(reference, verse) {
+    processAssemblePassageVerse: function(reference, verse, passage) {
         var processed = this.processAssembleVerse(reference, verse);
 
         if(this.isParagraphView) {
@@ -453,7 +484,347 @@ module.exports = kind({
             processed += this.newLine;
         }
 
-        return processed;
+        return this._addInlineCrossReferences(processed, passage, verse);
+    },
+    _addInlineCrossReferences: function(content, passage, verse) {
+        if(this.multiBibles) {
+            return content;
+        }
+
+        var html = this._buildCrossReferencesHtml(passage.book_id, verse.chapter, verse.verse, passage);
+
+        if(!html) {
+            return content;
+        }
+
+        if(this.app.normalizeCrossReferencesShow(this.app.UserConfig.get('crossReferencesShow')) == 'toggle') {
+            return content + html;
+        }
+
+        return content + '<br />' + html;
+    },
+    _withVerseMeta: function(verseData, chapter, verse) {
+        var chapterNum = parseInt(chapter, 10),
+            verseNum = parseInt(verse, 10);
+
+        if(verseData.chapter == chapterNum && verseData.verse == verseNum) {
+            return verseData;
+        }
+
+        var v = Object.assign({}, verseData);
+
+        if(typeof v.chapter == 'undefined' || v.chapter === null || v.chapter === '') {
+            v.chapter = chapterNum;
+        }
+
+        if(typeof v.verse == 'undefined' || v.verse === null || v.verse === '') {
+            v.verse = verseNum;
+        }
+
+        return v;
+    },
+    _addCrossReferencesRow: function(Container, passage, chapter, verse) {
+        if(!this.multiBibles) {
+            return;
+        }
+
+        var html = this._buildCrossReferencesHtml(passage.book_id, chapter, verse, passage);
+
+        if(!html) {
+            return;
+        }
+
+        Container.createComponent({
+            tag: 'tr',
+            classes: 'bss_cross_references_row',
+            components: [
+                {
+                    tag: 'td',
+                    attributes: {colspan: this.bibleCount * this.passageColumnsPerBible},
+                    allowHtml: true,
+                    content: html
+                }
+            ]
+        });
+    },
+    _getCrossReferencesToggleId: function(bookId, chapter, verse, cv, cva) {
+        var id = this.getId ? this.getId() : 'bss';
+        cv = (cv || '').toString().replace(/[^A-Za-z0-9_\-:.]/g, '_');
+        cva = (cva || '').toString().replace(/[^A-Za-z0-9_\-:.]/g, '_');
+        return 'bss_cross_refs_' + id + '_' + bookId + '_' + chapter + '_' + verse + '_' + cv + '_' + cva;
+    },
+    _getCrossReferencesSignalKey: function(bookId, cv, cva) {
+        return [bookId || '', cv || '', cva || ''].join('|');
+    },
+    _buildCrossReferencesToggleLink: function(passage) {
+        var bookId = passage.book_id;
+        var cv = passage.chapter_verse || '';
+        var cva = passage.chapter_verse_actual || '';
+
+        if(passage.chapter_verse_actual) {
+            var chapter = passage.chapter_verse_actual.split(':')[0];
+            var verse = passage.chapter_verse_actual.split(':')[1] || null;
+        } else {
+            var chapter = (passage.chapter_verse || '').split(':')[0];
+            var verse = (passage.chapter_verse || '').split(':')[1] || null;
+        }
+        
+        if(!this.app.crossReferencesEnabled()) {
+            return '';
+        }
+
+        var mode = this.app.normalizeCrossReferencesShow(this.app.UserConfig.get('crossReferencesShow'));
+
+        if(mode != 'toggle') {
+            return '';
+        }
+
+        var refs = this._getCrossReferences(bookId, chapter, verse);
+
+        if(!refs.length) {
+            return '';
+        }
+
+        var toggleId = this._getCrossReferencesToggleId(bookId, chapter, verse, cv, cva);
+        var signalKey = this._getCrossReferencesSignalKey(bookId, cv, cva);
+        var title = this.app.t('Cross References');
+
+        if(!Array.isArray(this.crossReferencesToggleMap[signalKey])) {
+            this.crossReferencesToggleMap[signalKey] = [];
+        }
+
+        if(this.crossReferencesToggleMap[signalKey].indexOf(toggleId) === -1) {
+            this.crossReferencesToggleMap[signalKey].push(toggleId);
+        }
+
+        var link = this.linkBuilder.buildPassageSignalLink('onCrossReferences', this.formData.bible, passage);
+
+        return '<a href="' + link + '" class="bss_std_link">' + title + '</a>';
+    },
+    _buildPassageCrossReferencesToggleLink: function(passage) {
+        if(!this.app.crossReferencesEnabled()) {
+            return '';
+        }
+
+        var mode = this.app.normalizeCrossReferencesShow(this.app.UserConfig.get('crossReferencesShow'));
+
+        if(mode != 'toggle') {
+            return '';
+        }
+
+        var toggleIds = [];
+        var cv = passage.chapter_verse || '';
+        var cva = passage.chapter_verse_actual || '';
+        for(var chapter in passage.verse_index) {
+            passage.verse_index[chapter].forEach(function(verse) {
+                var refs = this._getCrossReferences(passage.book_id, chapter, verse);
+
+                if(refs.length) {
+                    toggleIds.push(this._getCrossReferencesToggleId(passage.book_id, chapter, verse, cv, cva));
+                }
+            }, this);
+        }
+
+        if(!toggleIds.length) {
+            return '';
+        }
+
+        var refKey = this._getCrossReferencesSignalKey(passage.book_id, cv, cva);
+        var link = this.linkBuilder.buildPassageSignalLink('onCrossReferences', this.formData.bible, passage);
+
+        this.crossReferencesPassageToggleMap[refKey] = toggleIds;
+
+        var title = this.app.t('Cross References');
+
+        return '<a href="' + link + '" class="bss_std_link">' + title + '</a>';
+    },
+    // Builds a footnote-style cross-references block for use in multi-Bible paragraph view.
+    // Each verse's CRs are shown on their own line, prefixed with chapter:verse.
+    // In toggle mode, the block is hidden and the ID is registered in crossReferencesPassageToggleMap
+    // so the passage-level signal link can show/hide it.
+    _buildPassageCrossReferencesFootnote: function(passage) {
+        if(!this.app.crossReferencesEnabled()) {
+            return '';
+        }
+
+        var mode = this.app.normalizeCrossReferencesShow(this.app.UserConfig.get('crossReferencesShow'));
+
+        if(mode == 'hidden') {
+            return '';
+        }
+
+        var cv  = passage.chapter_verse || '';
+        var cva = passage.chapter_verse_actual || '';
+        var footnoteLines = [];
+
+        for(var chapter in passage.verse_index) {
+            passage.verse_index[chapter].forEach(function(verse) {
+                var refs = this._getCrossReferences(passage.book_id, chapter, verse);
+
+                if(refs.length) {
+                    footnoteLines.push('<b>' + chapter + ':' + verse + '</b> ' + refs.join('; '));
+                }
+            }, this);
+        }
+
+        if(!footnoteLines.length) {
+            return '';
+        }
+
+        var body = footnoteLines.join('<br />');
+
+        if(mode == 'toggle') {
+            var id = this.getId ? this.getId() : 'bss';
+            var sanitizedCv = (cv || '').toString().replace(/[^A-Za-z0-9_\-]/g, '_');
+            var toggleId = 'bss_cross_refs_fn_' + id + '_' + passage.book_id + '_' + sanitizedCv;
+            var refKey = this._getCrossReferencesSignalKey(passage.book_id, cv, cva);
+
+            this.crossReferencesPassageToggleMap[refKey] = [toggleId];
+
+            return '<div class="bss_cross_references bss_cross_references_footnote" id="' + toggleId + '" style="display:none">' + body + '</div>';
+        }
+
+        return '<div class="bss_cross_references bss_cross_references_footnote">' + body + '</div>';
+    },
+    _toggleCrossReferencesIds: function(ids) {
+        if(!ids || !ids.length) {
+            return;
+        }
+
+        var show = true;
+
+        for(var i = 0; i < ids.length; i++) {
+            var e = document.getElementById(ids[i]);
+
+            if(e && e.style.display !== 'none' && e.style.display !== '') {
+                show = false;
+                break;
+            }
+        }
+
+        for(var j = 0; j < ids.length; j++) {
+            var el = document.getElementById(ids[j]);
+
+            if(el) {
+                el.style.display = show ? 'block' : 'none';
+            }
+        }
+    },
+    handleCrossReferencesSignal: function(inSender, inEvent) {        
+        var b = inEvent && inEvent.b ? inEvent.b : null;
+        var cv = inEvent && inEvent.cv ? inEvent.cv : '';
+        var cva = inEvent && inEvent.cva ? inEvent.cva : '';
+        var signalKey = this._getCrossReferencesSignalKey(b, cv, cva);
+
+        if(this.crossReferencesPassageToggleMap[signalKey]) {
+            this._toggleCrossReferencesIds(this.crossReferencesPassageToggleMap[signalKey]);
+            return true;
+        } else if(this.crossReferencesToggleMap[signalKey]) {
+            this._toggleCrossReferencesIds(this.crossReferencesToggleMap[signalKey]);
+            return true;
+        }
+
+        return true;
+    },
+    _buildCrossReferencesHtml: function(bookId, chapter, verse, passage) {
+        if(!this.app.crossReferencesEnabled()) {
+            return '';
+        }
+
+        var mode = this.app.normalizeCrossReferencesShow(this.app.UserConfig.get('crossReferencesShow'));
+
+        if(mode == 'hidden') {
+            return '';
+        }
+
+        var refs = this._getCrossReferences(bookId, chapter, verse);
+
+        if(!refs.length) {
+            return '';
+        }
+
+        var body = refs.join('; ');
+        var title = this.app.t('Cross References');
+
+        if(mode == 'toggle') {
+            var cv = passage && passage.chapter_verse ? passage.chapter_verse : '';
+            var cva = passage && passage.chapter_verse_actual ? passage.chapter_verse_actual : '';
+            var toggleId = this._getCrossReferencesToggleId(bookId, chapter, verse, cv, cva);
+
+            return '<div class="bss_cross_references" id="' + toggleId + '" style="display:none">' + body + '</div>';
+        }
+
+        return '<div class="bss_cross_references">' + title + ': ' + body + '</div>';
+    },
+    _getCrossReferences: function(bookId, chapter, verse) {
+        var data = this.app.get('altResponseData') || this.get('resultsData') || {};
+        var crossReferences = data.cross_references || [];
+        var found = [];
+
+        if(!bookId || !chapter || !verse) { 
+            return found;   
+        }
+
+        var idx = bookId + '_' + chapter + '_' + verse;
+
+        // Check if crossReferennce is an object - preferred
+        if(typeof crossReferences == 'object' && crossReferences !== null && !Array.isArray(crossReferences)) {
+            return crossReferences[idx] ? [this._formatCrossReference(crossReferences[idx])] : [];
+        }
+
+        // Fallback for older array-based format - loop through all and find matches
+        if(!Array.isArray(crossReferences)) {
+            return found;
+        }
+
+        for(var i = 0; i < crossReferences.length; i++) {
+            var item = crossReferences[i];
+            var fromBook = parseInt(item.from_book, 10);
+            var fromChapter = parseInt(item.from_chapter, 10);
+            var fromVerse = parseInt(item.from_verse, 10);
+
+            if(fromBook !== parseInt(bookId, 10)) {
+                continue;
+            }
+
+            if(fromChapter !== parseInt(chapter, 10) || fromVerse !== parseInt(verse, 10)) {
+                continue;
+            }
+
+            var label = this._formatCrossReference(item);
+
+            if(label) {
+                found.push(label);
+            }
+        }
+
+        return found;
+    },
+    _formatCrossReference: function(item) {
+        var references = [];
+
+        if(Array.isArray(item.cross_references)) {
+            for(var i = 0; i < item.cross_references.length; i++) {
+                var cr = item.cross_references[i];
+                    
+                var localeBook = this.app.getLocaleBookName(cr.to_book);
+                var reference = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start;
+
+                if(cr.to_chapter_end && cr.to_verse_end && (cr.to_chapter_end != cr.to_chapter_start || cr.to_verse_end != cr.to_verse_start)) {
+                    reference += '-' + (cr.to_chapter_end != cr.to_chapter_start ? cr.to_chapter_end + ':' : '') + cr.to_verse_end;
+                }
+
+                var href = this.linkBuilder.buildReferenceLink('p', this.formData.bible, localeBook, cr.to_chapter_start, cr.to_verse_start, cr.to_chapter_end, cr.to_verse_end);
+
+                references.push(
+                    '<a href="' + href + '" class="bss_std_link" target="_blank" rel="noopener noreferrer">' 
+                    + reference + '</a>');
+            }
+        } else {
+            return '';
+        }
+        
+        return references.join('; ');
     },
     proccessSingleVerseReference: function(passage, verse) {
         var bookName = this.app.getLocaleBookName(passage.book_id, passage.book_name);
@@ -471,6 +842,8 @@ module.exports = kind({
         if(!passage.single_verse && (passage.nav && !passage.nav.ccc || passage.chapter_verse.indexOf(':') == -1)) {
             includeContextLinks = false;
         }
+
+        var crossReferencesLink = this._buildCrossReferencesToggleLink(passageClone);
 
         var html =  '<a href="' + chapterLink + '" title="Show this Chapter" class="std_link">' + bookName + ' ' + verse.chapter + '</a>:';
             html += '<a href="' + contextLink + '" title="Show in Context" class="std_link">' + verse.verse + '</a>';
@@ -514,6 +887,10 @@ module.exports = kind({
             if(this.app.statics.access.statistics) {
                 var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, verse.chapter, verse.verse);
                 html += '&nbsp; <sup>' + '<a href="' + sl + '" title="' + chapterTitle + '" class="bss_std_link">' + this.app.t('Statistics') + '</a></sup>';
+            }
+
+            if(crossReferencesLink) {
+                html += '&nbsp; <sup>' + crossReferencesLink + '</sup>';
             }
 
         return html;

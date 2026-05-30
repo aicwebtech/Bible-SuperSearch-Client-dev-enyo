@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'הצג בהקשר',
     'Context': 'הֶקשֵׁר',
     'In Context': 'בהקשר',
+    'Cross References': 'הפניות צולבות',
+    'Hidden': 'מוסתר',
+    'Toggle': 'החלף',
+    'Show': 'הצג',
 
     'Limit Search To': 'הגבל את החיפוש ל',
     'Limit search to': 'הגבל את החיפוש ל', // Watch case!

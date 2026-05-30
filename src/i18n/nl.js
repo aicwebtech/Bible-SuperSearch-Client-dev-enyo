@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'Toon in context',
     'Context': 'Context',
     'In Context': 'In context',
+    'Cross References': 'Kruisverwijzingen',
+    'Hidden': 'Verborgen',
+    'Toggle': 'Omschakelen',
+    'Show': 'Tonen',
 
     'Limit Search To': 'Zoekopdracht Beperken tot',
     'Limit search to': 'Zoekopdracht Beperken tot', // Watch case!

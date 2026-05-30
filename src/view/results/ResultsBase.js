@@ -70,6 +70,7 @@ module.exports = kind({
             onFormResponseSuccess: 'handleFormResponse', 
             onFormResponseError: 'handleFormError', 
             onResultsPrint: 'handlePrint',
+            onCrossReferences: 'handleCrossReferencesSignal',
             onkeyup: 'handleKey', // Keyboard events need to be handled by Signal per docs
             isChrome: true
         },
@@ -990,5 +991,8 @@ module.exports = kind({
         var threshold = parseInt(this.app.configs.audioBibleDisplayThreshold) || 3;
 
         return {display: display, threshold: threshold};
+    },
+    handleCrossReferencesSignal: function(s, e) {
+        // do nothing
     }
 });

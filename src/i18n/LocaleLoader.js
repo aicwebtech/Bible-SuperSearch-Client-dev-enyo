@@ -5,7 +5,7 @@ module.exports = {
     ar: require('./ar'), 
     bn: require('./bn'), // 5.7 
     de: require('./de'),
-    en: require('./en'),
+    en: require('./en'), // Special case
     es: require('./es'),
     et: require('./et'),
     fa: require('./fa'),

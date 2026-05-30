@@ -60,6 +60,10 @@ module.exports = {
     'Show in context': 'Parādīt kontekstā',
     'Context': 'Konteksts',
     'In Context': 'Kontekstā',
+    'Cross References': 'Savstarpējās atsauces',
+    'Hidden': 'Paslēpts',
+    'Toggle': 'Pārslēgt',
+    'Show': 'Rādīt',
 
     'Limit Search To': 'Attiecināt Meklēšanu Uz Apgabalu',
     'Limit search to': 'Attiecināt meklēšanu uz apgabalu', // Watch case!

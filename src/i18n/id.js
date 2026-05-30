@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'Tunjukkan dalam konteks',
     'Context': 'Konteks',
     'In Context': 'Dalam konteks',
+    'Cross References': 'Referensi silang',
+    'Hidden': 'Tersembunyi',
+    'Toggle': 'Alihkan',
+    'Show': 'Tampilkan',
 
     'Limit Search To': 'Batasi Pencarian Untuk',
     'Limit search to': 'Batasi pencarian pada', // Watch case!

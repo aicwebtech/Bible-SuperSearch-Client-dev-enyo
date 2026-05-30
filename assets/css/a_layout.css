@@ -1041,6 +1041,15 @@ tr.bss_render_reference_row th {
     resize: both;
 }
 
+.bss_cross_references {
+    padding: 15px;
+    font-size: smaller;
+}
+
+.bss_cross_references_row td {
+    padding: 3px;
+}
+
 .bss_is_mobile .bss_results_list {
     scrollbar-color: black transparent;
 }

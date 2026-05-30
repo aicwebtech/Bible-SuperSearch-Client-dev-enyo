@@ -8,24 +8,51 @@ module.exports = {
         var book  = arguments[2] || '';
         var chapt = arguments[3] || null;
         var verse = arguments[4] || null;
+        var chaptEnd = arguments[5] || null;
+        var verseEnd = arguments[6] || null;
 
         // The arrow function here is valid JavaScript, but compiler doesn't think so ... 
         //var bible = (bible) ? bible.filter((b) => b != 0 && b != null).join(',') : '';
         
         var bible = (bible) ? bible.filter(function(b) {return b != 0 && b != null}).join(',') : '';
 
+        var hasChaptRange = chapt && chaptEnd && chapt != chaptEnd;
+        var hasVerseRange = verse && verseEnd && verse != verseEnd;
+
+        if(hasChaptRange && !hasVerseRange && verse) {
+            // unprocessable link, remove verse, fallback to chapter range link
+            verse = null;
+        }
+
+        // Determine if we need a generic link (for ranges)
+        if(hasChaptRange && hasVerseRange) {
+            // pull mode based on whether form has a request 'q' or 'reference' 'r'
+            mode = 'r';
+        }
+
         var link = '#/' + mode + '/' + bible + '/' + book;
 
-        if(chapt) {
-            link += '/' + chapt;
-        }        
+        if(hasChaptRange && hasVerseRange) {
+            link += ' ' + chapt + ':' + verse + '-' + chaptEnd + ':' + verseEnd;
+        } else {
+            if(chapt) {
+                link += '/' + chapt;
 
-        if(verse) {
-            link += '/' + verse;
+                if(hasChaptRange) {
+                    link += '-' + chaptEnd;
+                }
+            }        
+
+            if(verse) {
+                link += '/' + verse;
+
+                if(hasVerseRange) {
+                    link += '-' + verseEnd;
+                }
+            }
         }
 
         link = link.replace(/\s+/g, '.');
-
         return link;
     },    
     buildSignalLink: function() {

@@ -49,6 +49,8 @@ module.exports = kind({
                 if(!this.saveBibles()) {
                     userConfigs.bibles_selected = [];
                 }
+
+                userConfigs.crossReferencesShow = this.app.normalizeCrossReferencesShow(userConfigs.crossReferencesShow);
                 
                 this.model.set(userConfigs);
                 this.app.debug && console.log('User config loaded', userConfigs);
@@ -98,6 +100,7 @@ module.exports = kind({
         this.app.get('appLoaded') && this.app.set('locale', this._getDefaultLang());
 
         this.set('parallel_search_error_suppress', this.app.configs.parallelSearchErrorSuppress);
+        this.set('crossReferencesShow', this.app.configs.crossReferenceShowDefault);
         this.set('bibles_selected', []);
 
         //         if(this.app.parallelSearchErrorSuppressUserConfig) {

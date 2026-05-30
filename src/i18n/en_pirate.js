@@ -54,6 +54,10 @@ module.exports = {
     'Show in context': 'Reveale jewewell with its mateys',
     'Context': 'Jewwel Mateys',
     'In Context': 'Withe Jewwel Mateys',
+    'Cross References': 'Crosse Referrrences',
+    'Hidden': 'Hardden',
+    'Toggle': 'Floppe',
+    'Show': 'Ye Vue',
 
     'Limit Search To': 'Plunder in',
     'Limit search to': 'Plunder in',

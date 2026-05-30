@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'በአውድ ውስጥ አሳይ',
     'Context': 'አውድ',
     'In Context': 'በዐውደ-ጽሑፉ',
+    'Cross References': 'መስቀል ማጣቀሻዎች',
+    'Hidden': 'ተደብቋል',
+    'Toggle': 'መቀያየር',
+    'Show': 'አሳይ',
 
     'Limit Search To': 'ፍለጋን ገድብ ወደ',
     'Limit search to': 'ፍለጋን ገድብ', // Watch case!

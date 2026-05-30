@@ -59,6 +59,10 @@ module.exports = {
     'Show in context': '在上下文中顯示',
     'Context': '上下文',
     'In Context': '在上下文中',
+    'Cross References': '交叉參照',
+    'Hidden': '隱藏',
+    'Toggle': '切換',
+    'Show': '顯示',
     'Limit Search To': '限制搜索於',
     'Limit search to': '搜索限於, 注意大小寫!', // 注意大小寫 ！
     'Entire Bible': '整本聖經',

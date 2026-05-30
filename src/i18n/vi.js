@@ -74,6 +74,10 @@ module.exports = {
     'Show in context': 'Hiển thị trong ngữ cảnh',
     'Context': 'Bối cảnh',
     'In Context': 'Trong ngữ cảnh',
+    'Cross References': 'Tham chiếu chéo',
+    'Hidden': 'Ẩn',
+    'Toggle': 'Chuyển đổi',
+    'Show': 'Hiển thị',
 
     'Limit Search To': 'Giới hạn tìm kiếm ở',
     'Limit search to': 'Giới hạn tìm kiếm ở', // Watch case!
