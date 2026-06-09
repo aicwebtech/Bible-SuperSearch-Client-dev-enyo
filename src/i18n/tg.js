@@ -459,10 +459,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Ин тамоми таърихро нест мекунад.',
     'This will delete all bookmarks.': 'Ин ҳама хатчӯбҳоро нест мекунад.',
+    'This will clear everything from the verse list.': 'Ин ҳама чизро аз рӯйхати оятҳо тоза мекунад.',
     'Move to Current': 'Гузариш ба ҷорӣ',
+    'Move up': 'Боло ҷойивазкунӣ',
+    'Move down': 'Поён ҷойивазкунӣ',
 
     'Bookmark': 'Хатчӯб',
     'Bookmarks': 'Хатчӯбҳои',
+    'Verse List': 'Рӯйхати Оятҳо',
+    'Verse list empty': 'Рӯйхати оятҳо холист',
+    'Add duplicate verse?': 'Оятро такрор иловa кунед?',
 
     'Please delete some bookmarks before adding more.': 'Лутфан пеш аз илова кардани бештар баъзе хатчӯбҳоро нест кунед.',
     'This bookmark name already exists.': 'Ин номи хатчӯб аллакай вуҷуд дорад.',

@@ -457,10 +457,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'ఇది మొత్తం చరిత్రను తొలగిస్తుంది.',
     'This will delete all bookmarks.': 'ఇది అన్ని బుక్మార్క్లను తొలగిస్తుంది.',
+    'This will clear everything from the verse list.': 'ఇది వచన జాబితా నుండి అన్నింటినీ తొలగిస్తుంది.',
     'Move to Current': 'ప్రస్తుతానికి తరలించండి',
+    'Move up': 'పైకి తరలించు',
+    'Move down': 'కిందికి తరలించు',
 
     'Bookmark': 'బుక్మార్క్',
     'Bookmarks': 'బుక్మార్క్లు',
+    'Verse List': 'వచన జాబితా',
+    'Verse list empty': 'వచన జాబితా ఖాళీగా ఉంది',
+    'Add duplicate verse?': 'నకిలీ వచనాన్ని జోడించాలా?',
 
     'Please delete some bookmarks before adding more.': 'దయచేసి మరిన్ని జోడించే ముందు కొన్ని బుక్మార్క్లను తొలగించండి.',
     'This bookmark name already exists.': 'ఈ బుక్మార్క్ పేరు ఇప్పటికే ఉంది.',

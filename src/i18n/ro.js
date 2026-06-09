@@ -441,10 +441,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Aceasta va șterge tot istoricul',
     'This will delete all bookmarks.': 'Aceasta va șterge toate marcajele',
+    'This will clear everything from the verse list.': 'Aceasta va șterge totul din lista de versete.',
     'Move to Current': 'Mutați la Actual',
+    'Move up': 'Mută în sus',
+    'Move down': 'Mută în jos',
 
     'Bookmark': 'Marcaj',
     'Bookmarks': 'Marcaje',
+    'Verse List': 'Lista de Versete',
+    'Verse list empty': 'Lista de versete este goală',
+    'Add duplicate verse?': 'Adăugați verset duplicat?',
 
     'Please delete some bookmarks before adding more.': 'Vă rugăm să ștergeți câteva marcaje înainte de a adăuga altele',
     'This bookmark name already exists.': 'Acest nume de marcaj există deja',

@@ -456,10 +456,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Dit sal alle geskiedenis verwyder.',
     'This will delete all bookmarks.': 'Dit sal alle boekmerke verwyder.',
+    'This will clear everything from the verse list.': 'Dit sal alles uit die verslys verwyder.',
     'Move to Current': 'Skuif na Huidig',
+    'Move up': 'Skuif op',
+    'Move down': 'Skuif af',
 
     'Bookmark': 'Boekmerk',
     'Bookmarks': 'Boekmerke',
+    'Verse List': 'Verslys',
+    'Verse list empty': 'Verslys leeg',
+    'Add duplicate verse?': 'Voeg duplikaatvers by?',
 
     'Please delete some bookmarks before adding more.': 'Verwyder asseblief \'n paar boekmerke voordat u meer byvoeg.',
     'This bookmark name already exists.': 'Hierdie boekmerknaam bestaan reeds.',

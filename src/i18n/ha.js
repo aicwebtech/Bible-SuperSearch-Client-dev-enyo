@@ -457,10 +457,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Wannan zai share duk tarihi.',
     'This will delete all bookmarks.': 'Wannan zai share duk alamomin.',
+    'This will clear everything from the verse list.': 'Wannan zai share duk abin da ke cikin jerin ayoyi.',
     'Move to Current': 'Matsar zuwa Yanzu',
+    'Move up': 'Matsa sama',
+    'Move down': 'Matsa ƙasa',
 
     'Bookmark': 'Alamar alama',
     'Bookmarks': 'Alamomi',
+    'Verse List': 'Jerin Ayoyi',
+    'Verse list empty': 'Jerin ayoyi ya ƙaranta',
+    'Add duplicate verse?': 'Ƙara aya mai maimaitawa?',
 
     'Please delete some bookmarks before adding more.': 'Da fatan za a share wasu alamomi kafin ƙara ƙari.',
     'This bookmark name already exists.': 'Wannan sunan alamar ya riga ya wanzu.',

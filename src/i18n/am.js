@@ -457,10 +457,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'ይህ ሁሉንም ታሪክ ይሰርዛል።',
     'This will delete all bookmarks.': 'ይህ ሁሉንም ዕልባቶችን ይሰርዛል።',
+    'This will clear everything from the verse list.': 'ይህ ሁሉንም ነገር ከቁጥር ዝርዝር ያጸዳል።',
     'Move to Current': 'ወደ የአሁኑ ውሰድ',
+    'Move up': 'ወደ ላይ ውሰድ',
+    'Move down': 'ወደ ታች ውሰድ',
 
     'Bookmark': 'ዕልባት',
     'Bookmarks': 'ዕልባቶች',
+    'Verse List': 'የቁጥር ዝርዝር',
+    'Verse list empty': 'የቁጥር ዝርዝር ባዶ ነው',
+    'Add duplicate verse?': 'የተባዛ ቁጥር ይጨምሩ?',
 
     'Please delete some bookmarks before adding more.': 'ተጨማሪ ከማከልዎ በፊት እባክዎ አንዳንድ ዕልባቶችን ይሰርዙ።',
     'This bookmark name already exists.': 'ይህ የዕልባት ስም አስቀድሞ አለ።',

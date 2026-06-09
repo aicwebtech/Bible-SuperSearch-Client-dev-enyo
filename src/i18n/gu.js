@@ -457,10 +457,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'આ બધો ઇતિહાસ કાઢી નાખશે.',
     'This will delete all bookmarks.': 'આ બધા બુકમાર્ક્સને કાઢી નાખશે.',
+    'This will clear everything from the verse list.': 'આ કલમ સૂચિ માંથી બધું સાફ કરશે.',
     'Move to Current': 'વર્તમાન પર ખસેડો',
+    'Move up': 'ઉપર ખસેડો',
+    'Move down': 'નીચે ખસેડો',
 
     'Bookmark': 'બુકમાર્ક',
     'Bookmarks': 'બુકમાર્ક્સ',
+    'Verse List': 'કલમ સૂચિ',
+    'Verse list empty': 'કલમ સૂચિ ખાલી છે',
+    'Add duplicate verse?': 'ડુપ્લિકેટ કલમ ઉમેરો?',
 
     'Please delete some bookmarks before adding more.': 'વધુ ઉમેરતા પહેલા કૃપા કરીને કેટલાક બુકમાર્ક્સ કાઢી નાખો.',
     'This bookmark name already exists.': 'આ બુકમાર્ક નામ પહેલેથી જ અસ્તિત્વમાં છે.',

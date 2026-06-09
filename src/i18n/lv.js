@@ -440,10 +440,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Visa vēsture tiks izdzēsta.',
     'This will delete all bookmarks.': 'Visas grāmatzīmes tiks izdzēstas.',
+    'This will clear everything from the verse list.': 'Tas iztīrīs visu no pantu saraksta.',
     'Move to Current': 'Mainīt uz Atvērto',
+    'Move up': 'Pārvietot augšup',
+    'Move down': 'Pārvietot lejup',
 
     'Bookmark': 'Izveidot grāmatzīmi',
     'Bookmarks': 'Grāmatzīmes',
+    'Verse List': 'Pantu Saraksts',
+    'Verse list empty': 'Pantu saraksts ir tukšs',
+    'Add duplicate verse?': 'Pievienot dublētu pantu?',
 
     'Please delete some bookmarks before adding more.': 'Lai pievienotu jaunu, lūdzu izdzēsiet kādu no vecajām grāmatzīmēm.',
     'This bookmark name already exists.': 'Šāds grāmatzīmes nosaukums jau eksistē.',

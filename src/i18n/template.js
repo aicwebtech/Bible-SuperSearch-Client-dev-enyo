@@ -466,6 +466,7 @@ module.exports = {
     'Bookmarks': '',
     'Verse List': '',
     'Verse list empty': '',
+    'Add duplicate verse?': '',
 
     'Please delete some bookmarks before adding more.': '',
     'This bookmark name already exists.': '',

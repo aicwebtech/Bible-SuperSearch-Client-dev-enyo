@@ -436,10 +436,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Esto eliminará todo el historial.',
     'This will delete all bookmarks.': 'Esto eliminará todos los marcadores.',
+    'This will clear everything from the verse list.': 'Esto borrará todo de la lista de versículos.',
     'Move to Current': 'Mover a Actual',
+    'Move up': 'Mover arriba',
+    'Move down': 'Mover abajo',
 
     'Bookmark': 'Marcador',
     'Bookmarks': 'Marcadores',
+    'Verse List': 'Lista de Versículos',
+    'Verse list empty': 'Lista de versículos vacía',
+    'Add duplicate verse?': '¿Agregar versículo duplicado?',
 
     'Please delete some bookmarks before adding more.': 'Elimina algunos marcadores antes de agregar más.',
     'This bookmark name already exists.': 'El nombre de este marcador ya existe',

@@ -446,10 +446,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Dadurch wird der gesamte Verlauf gelöscht.',
     'This will delete all bookmarks.': 'Dadurch werden alle Lesezeichen gelöscht.',
-    'Move to Current': 'Zu „Aktuell“ wechseln',
+    'This will clear everything from the verse list.': 'Dadurch wird alles aus der Versliste gelöscht.',
+    'Move to Current': 'Zu „Aktuell” wechseln',
+    'Move up': 'Nach oben verschieben',
+    'Move down': 'Nach unten verschieben',
 
     'Bookmark': 'Lesezeichen',
     'Bookmarks': 'Merkliste',
+    'Verse List': 'Versliste',
+    'Verse list empty': 'Versliste leer',
+    'Add duplicate verse?': 'Duplizierten Vers hinzufügen?',
 
     'Please delete some bookmarks before adding more.': 'Bitte löschen Sie einige Lesezeichen, bevor Sie weitere hinzufügen.',
     'This bookmark name already exists.': 'Dieser Lesezeichenname existiert bereits.',

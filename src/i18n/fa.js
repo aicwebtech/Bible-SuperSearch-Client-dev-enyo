@@ -458,10 +458,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'با این کار تمام تاریخچه حذف می شود.',
     'This will delete all bookmarks.': 'با این کار همه نشانک ها حذف می شوند.',
+    'This will clear everything from the verse list.': 'این همه چیز را از فهرست آیات پاک می‌کند.',
     'Move to Current': 'حرکت به جریان',
+    'Move up': 'انتقال به بالا',
+    'Move down': 'انتقال به پایین',
 
     'Bookmark': 'نشانک',
     'Bookmarks': 'نشانک ها',
+    'Verse List': 'فهرست آیات',
+    'Verse list empty': 'فهرست آیات خالی است',
+    'Add duplicate verse?': 'آیه تکراری اضافه شود؟',
 
     'Please delete some bookmarks before adding more.': 'لطفاً قبل از افزودن موارد دیگر، برخی از نشانکها را حذف کنید.',
     'This bookmark name already exists.': 'این نام نشانک از قبل وجود دارد.',

@@ -443,10 +443,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Ezzel törli az összes előzményt.',
     'This will delete all bookmarks.': 'Ezzel törli az összes könyvjelzőt.',
+    'This will clear everything from the verse list.': 'Ez mindent töröl a verslistáról.',
     'Move to Current': 'Ugrás az Aktuálisra',
+    'Move up': 'Felfelé mozgatás',
+    'Move down': 'Lefelé mozgatás',
 
     'Bookmark': 'Könyvjelző',
     'Bookmarks': 'Könyvjelzők',
+    'Verse List': 'Verslista',
+    'Verse list empty': 'A verslista üres',
+    'Add duplicate verse?': 'Ismétlődő verset ad hozzá?',
 
     'Please delete some bookmarks before adding more.': 'Kérjük, töröljön néhány könyvjelzőt, mielőtt továbbiakat adna hozzá.',
     'This bookmark name already exists.': 'Ez a könyvjelzőnév már létezik.',

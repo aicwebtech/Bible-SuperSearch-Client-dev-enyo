@@ -446,10 +446,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'سيؤدي هذا إلى حذف كل التاريخ.',
     'This will delete all bookmarks.': 'سيؤدي هذا إلى حذف جميع الإشارات المرجعية.',
+    'This will clear everything from the verse list.': 'سيؤدي هذا إلى مسح كل شيء من قائمة الآيات.',
     'Move to Current': 'الانتقال إلى الحالي',
+    'Move up': 'تحريك للأعلى',
+    'Move down': 'تحريك للأسفل',
 
     'Bookmark': 'إشارة مرجعية',
     'Bookmarks': 'إشارات مرجعية',
+    'Verse List': 'قائمة الآيات',
+    'Verse list empty': 'قائمة الآيات فارغة',
+    'Add duplicate verse?': 'إضافة آية مكررة؟',
 
     'Please delete some bookmarks before adding more.': 'يرجى حذف بعض الإشارات المرجعية قبل إضافة المزيد.',
     'This bookmark name already exists.': 'اسم الإشارة المرجعية هذا موجود بالفعل.',

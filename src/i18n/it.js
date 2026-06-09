@@ -443,10 +443,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Ciò eliminerà tutta la cronologia.',
     'This will delete all bookmarks.': 'Questo eliminerà tutti i segnalibri.',
+    'This will clear everything from the verse list.': 'Questo cancellerà tutto dall\'elenco dei versetti.',
     'Move to Current': 'Passa a Corrente',
+    'Move up': 'Sposta su',
+    'Move down': 'Sposta giù',
 
     'Bookmark': 'Segnalibro',
     'Bookmarks': 'Segnalibri',
+    'Verse List': 'Elenco Versetti',
+    'Verse list empty': 'Elenco versetti vuoto',
+    'Add duplicate verse?': 'Aggiungere versetto duplicato?',
 
     'Please delete some bookmarks before adding more.': 'Elimina alcuni segnalibri prima di aggiungerne altri.',
     'This bookmark name already exists.': 'Il nome di questo segnalibro esiste già.',

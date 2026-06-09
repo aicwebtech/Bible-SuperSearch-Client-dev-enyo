@@ -436,11 +436,17 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Drowneth all historey?',
     'This will delete all bookmarks.': 'Drowneth all barkmates?',
+    'This will clear everything from the verse list.': 'This will clear all the plunder from ye verse chest, arrr!',
     'Move to Current': 'Marke yer bearin\'',
+    'Move up': 'Hoist up',
+    'Move down': 'Lower down',
 
     // 'Viewing History': 'Spyin\' Herstrty',
     'Bookmark': 'Barkmate',
     'Bookmarks': 'Barkmates',
+    'Verse List': 'Verse Chest',
+    'Verse list empty': 'Verse chest be empty',
+    'Add duplicate verse?': 'Add ye duplicate verse, arrr?',
 
     'Please delete some bookmarks before adding more.': 'Pleaseth drown shome barkmate before addign new matey.',
     'This bookmark name already exists.': 'Yar barkmate is arready a matey.',

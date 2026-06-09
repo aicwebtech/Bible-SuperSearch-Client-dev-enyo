@@ -2006,6 +2006,7 @@ var App = Application.kind({
         }
 
         var bookId = parseInt(item.b, 10);
+        var t = this;
 
         if(!bookId) {
             return false;
@@ -2017,7 +2018,20 @@ var App = Application.kind({
         });
 
         if(exists) {    
-            if(!confirm('Add duplicate?')) {
+            // this.confirm('Add duplicate verse?', function(confirmed) {
+            //     if(confirmed) {
+            //         t.sessionVerseList.push({    
+            //             b: bookId,
+            //             cv: item.cv,
+            //             cva: item.cva || null
+            //         });
+            //     }
+
+            //     t.saveSessionVerseList();
+            //     Signal.send('onSessionVerseListChanged');
+            // });
+            
+            if(!confirm(this.t('Add duplicate verse?'))) {
                 return false;
             }   
         }

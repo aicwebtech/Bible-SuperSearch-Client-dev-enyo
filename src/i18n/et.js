@@ -475,10 +475,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'See kustutab kogu ajaloo',
     'This will delete all bookmarks.': 'See kustutab kõik järjehoidjad',
+    'This will clear everything from the verse list.': 'See kustutab kõik salmiloendist.',
     'Move to Current': 'Teisalda praegusesse',
+    'Move up': 'Liigu üles',
+    'Move down': 'Liigu alla',
 
     'Bookmark': 'Järjehoidja',
     'Bookmarks': 'Järjehoidjad',
+    'Verse List': 'Salmiloend',
+    'Verse list empty': 'Salmiloend on tühi',
+    'Add duplicate verse?': 'Lisa duplikaatslm?',
 
     'Please delete some bookmarks before adding more.': 'Enne järjehoidjate lisamist kustutage mõned järjehoidjad',
     'This bookmark name already exists.': 'See järjehoidja nimi on juba olemas',

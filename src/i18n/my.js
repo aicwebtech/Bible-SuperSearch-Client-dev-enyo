@@ -457,10 +457,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': '၎င်းသည် မှတ်တမ်းအားလုံးကို ဖျက်ပါမည်။',
     'This will delete all bookmarks.': '၎င်းသည် စာညှပ်များအားလုံးကို ဖျက်ပါမည်။',
+    'This will clear everything from the verse list.': 'ဤသည် ကျမ်းချက်စာရင်းမှ အရာအားလုံးကို ဖယ်ရှားမည်။',
     'Move to Current': 'လက်ရှိတည်နေရာသို့ ရွှေ့ပါ။',
+    'Move up': 'အပေါ်ရွှေ့',
+    'Move down': 'အောက်ရွှေ့',
 
     'Bookmark': 'စာညှပ်များ',
     'Bookmarks': 'စာညှပ်များ',
+    'Verse List': 'ကျမ်းချက်စာရင်း',
+    'Verse list empty': 'ကျမ်းချက်စာရင်း ဗလာ',
+    'Add duplicate verse?': 'ထပ်တူကျမ်းချက် ထည့်မလား?',
 
     'Please delete some bookmarks before adding more.': 'နောက်ထပ်မထည့်မီ စာညှပ်အချို့ကို ဖျက်ပါ။',
     'This bookmark name already exists.': 'ဤစာညှပ်အမည် ရှိနှင့်ပြီးဖြစ်သည်။',
