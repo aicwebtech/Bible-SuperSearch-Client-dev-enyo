@@ -364,7 +364,17 @@ module.exports = kind({
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'history'}
                 ],
-            },            
+            },
+            {
+                kind: i18n,
+                classes: 'bss_item bss_link bss_text_only',
+                name: 'session_verse_list_button',
+                ontap: 'handleSessionVerseList',
+                attributes: {title: 'List'},
+                components: [
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'playlist_add'}
+                ]
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_link bss_text_only',

@@ -258,6 +258,8 @@ module.exports = kind({
             refContent += '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a> &nbsp;';
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', this.formData.bible, pd);
             refContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp;';
+            var addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', this.formData.bible, pd);
+            refContent += '<a href="' + addLink + '" title="' + this.app.t('Add') + '" class="bss_std_link">' + this.app.t('Add') + '</a> &nbsp;';
             
             if(this.audioBibleEnabled(this.firstBible, pd)) {
                 var listenLink = this.linkBuilder.buildPassageSignalLink('onListen', this.formData.bible, pd);
@@ -323,7 +325,9 @@ module.exports = kind({
                 shareLink = this.linkBuilder.buildPassageSignalLink('onShare', [mod], pd);
                 bibleContent += '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a> &nbsp;';
                 copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [mod], pd);
-                bibleContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp;';               
+                bibleContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp;';
+                addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', [mod], pd);
+                bibleContent += '<a href="' + addLink + '" title="' + this.app.t('Add') + '" class="bss_std_link">' + this.app.t('Add') + '</a> &nbsp;';
             
                 if(this.audioBibleEnabledChapter(mod, pd)) {
                     listenLink = this.linkBuilder.buildPassageSignalLink('onListen', [mod], pd);
@@ -857,8 +861,10 @@ module.exports = kind({
             contextText = this.app.it('Context'),
             shareText = this.app.it('Share'),
             copyText = this.app.it('Copy'),
+            addText = this.app.t('Add'),
             shareTitle = this.app.t('Share'),
             copyTitle = this.app.t('Copy'),
+            addTitle = this.app.t('Add to List'),
             listenText = this.app.it('Listen');
 
         var html = '';
@@ -874,6 +880,9 @@ module.exports = kind({
 
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [this.selectedBible.module], passageClone);
             html += '&nbsp; <sup>' + '<a href="' + copyLink + '" title="' + copyTitle + '" class="bss_std_link">' + copyText + '</a></sup>';
+
+            var addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', [this.selectedBible.module], passageClone);
+            html += '&nbsp; <sup>' + '<a href="' + addLink + '" title="' + addTitle + '" class="bss_std_link">' + addText + '</a></sup>';
 
             if(
                 (passage.single_verse || passage.verses_count == 1) && this.audioBibleEnabled(this.selectedBible.module, passageClone) 

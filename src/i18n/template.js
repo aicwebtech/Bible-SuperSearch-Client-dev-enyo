@@ -457,10 +457,15 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': '',
     'This will delete all bookmarks.': '',
+    'This will clear everything from the verse list.': '',
     'Move to Current': '',
+    'Move up': '',
+    'Move down': '',
 
     'Bookmark': '',
     'Bookmarks': '',
+    'Verse List': '',
+    'Verse list empty': '',
 
     'Please delete some bookmarks before adding more.': '',
     'This bookmark name already exists.': '',

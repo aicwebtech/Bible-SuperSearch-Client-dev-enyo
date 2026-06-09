@@ -106,6 +106,9 @@ module.exports = kind({
     handleHistory: function(inSender, inEvent) {
         this.app.setDialogShowing('HistoryDialog', true);
     },        
+    handleSessionVerseList: function(inSender, inEvent) {
+        this.app.setDialogShowing('SessionVerseListDialog', true);
+    },
     handleBookmark: function(inSender, inEvent) {
         this.app.setDialogShowing('BookmarkDialog', true);
     },       

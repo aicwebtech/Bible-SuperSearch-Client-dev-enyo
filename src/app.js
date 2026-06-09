@@ -61,6 +61,8 @@ var App = Application.kind({
     defaultBiblesByLanguage: {}, // default Bibles by language
     history: [],
     visited: [],
+    sessionVerseList: [],
+    sessionVerseListStorageKey: 'BibleSuperSearchSessionVerseList',
     bookmarks: null,
     resetView: true,
     appLoaded: false,
@@ -1762,6 +1764,10 @@ var App = Application.kind({
     },
     // Sends signal into app
     s: function(onSignal, onEvent) {
+        if(onSignal == 'onSessionVerseListAdd') {
+            this.addSessionVerseListItem(onEvent);
+        }
+
         Signal.send(onSignal, onEvent);
     },
     // Translate
@@ -1994,6 +2000,118 @@ var App = Application.kind({
         this.history = [];
         localStorage.setItem('BibleSuperSearchHistory', '[]');
     },    
+    addSessionVerseListItem: function(item) {
+        if(!item || !item.b || !item.cv) {
+            return false;
+        }
+
+        var bookId = parseInt(item.b, 10);
+
+        if(!bookId) {
+            return false;
+        }
+
+        // Confirm add if passage already exists in list
+        var exists = this.sessionVerseList.find(function(v) {
+            return v.b == bookId && v.cv == item.cv && v.cva == (item.cva || null);
+        });
+
+        if(exists) {    
+            if(!confirm('Add duplicate?')) {
+                return false;
+            }   
+        }
+
+        this.sessionVerseList.push({
+            b: bookId,
+            cv: item.cv,
+            cva: item.cva || null
+        });
+
+        this.saveSessionVerseList();
+        Signal.send('onSessionVerseListChanged');
+        return true;
+    },
+    deleteSessionVerseListItem: function(index) {
+        index = parseInt(index, 10);
+
+        if(index < 0 || index >= this.sessionVerseList.length) {
+            return false;
+        }
+
+        this.sessionVerseList.splice(index, 1);
+        this.saveSessionVerseList();
+        Signal.send('onSessionVerseListChanged');
+        return true;
+    },
+    moveSessionVerseListItem: function(fromIndex, toIndex) {
+        fromIndex = parseInt(fromIndex, 10);
+        toIndex = parseInt(toIndex, 10);
+
+        if(
+            fromIndex < 0 ||
+            toIndex < 0 ||
+            fromIndex >= this.sessionVerseList.length ||
+            toIndex >= this.sessionVerseList.length ||
+            fromIndex == toIndex
+        ) {
+            return false;
+        }
+
+        var item = this.sessionVerseList.splice(fromIndex, 1);
+        this.sessionVerseList.splice(toIndex, 0, item[0]);
+        this.saveSessionVerseList();
+        Signal.send('onSessionVerseListChanged');
+        return true;
+    },
+    clearSessionVerseList: function() {
+        this.sessionVerseList = [];
+        localStorage.setItem(this.sessionVerseListStorageKey, '[]');
+        Signal.send('onSessionVerseListChanged');
+    },
+    saveSessionVerseList: function() {
+        localStorage.setItem(this.sessionVerseListStorageKey, JSON.stringify(this.sessionVerseList));
+    },
+    getSessionVerseListReference: function() {
+        var references = [];
+
+        this.sessionVerseList.forEach(function(item) {
+            var cv = item.cva || item.cv;
+            var bookId = parseInt(item.b, 10);
+
+            if(!bookId || !cv) {
+                return;
+            }
+
+            var bookName = this.getLocaleBookName(bookId, bookId + 'B');
+            references.push(bookName + ' ' + cv);
+        }, this);
+
+        return references.join('; ');
+    },
+    showSessionVerseList: function() {
+        var reference = this.getSessionVerseListReference();
+
+        if(!reference) {
+            this.alert(this.t('Verse list empty.'));
+            return false;
+        }
+
+        var useRequestField = this.formHasField('request');
+        var formData = {
+            bible: this.getSelectedBibles(true)
+        };
+
+        if(useRequestField) {
+            formData.request = reference;
+        }
+        else {
+            formData.reference = reference;
+        }
+
+        this.runFormData(formData);
+        return true;
+    },
     pushVisited: function(url) {
         var url = url || document.location.href,
             self = this;
@@ -2309,6 +2427,7 @@ var App = Application.kind({
 
         var hist = localStorage.getItem('BibleSuperSearchHistory') || null;
         var visited = localStorage.getItem('BibleSuperSearchVisited') || null;
+        var sessionVerseList = localStorage.getItem(this.sessionVerseListStorageKey) || null;
 
         try {            
             this.history = hist ? JSON.parse(hist) : [];
@@ -2332,6 +2451,18 @@ var App = Application.kind({
         catch(e) {
             this.log('error initing visited');
             this.clearVisited();
+        }
+
+        try {
+            this.sessionVerseList = sessionVerseList ? JSON.parse(sessionVerseList) : [];
+
+            if(!Array.isArray(this.sessionVerseList)) {
+                this.clearSessionVerseList();
+            }
+        }
+        catch(e) {
+            this.log('error initing list');
+            this.clearSessionVerseList();
         }
     },
     copyHistoryToBookmarks: function() {

@@ -61,6 +61,8 @@ module.exports = kind({
             refContent += '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a> &nbsp;';
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', this.formData.bible, pd);
             refContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp; ';
+            var addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', this.formData.bible, pd);
+            refContent += '<a href="' + addLink + '" title="' + this.app.t('Add to List') + '" class="bss_std_link">' + this.app.t('Add to List') + '</a> &nbsp; ';
             
             if(this.audioBibleEnabled(this.firstBible, pd)) {
                 var listenLink = this.linkBuilder.buildPassageSignalLink('onListen', this.formData.bible, pd);
@@ -134,7 +136,9 @@ module.exports = kind({
                 shareLink = this.linkBuilder.buildPassageSignalLink('onShare', [module], pd);
                 bibleContent += '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a> &nbsp;';
                 copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [module], pd);
-                bibleContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp;';   
+                bibleContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp;';
+                addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', [module], pd);
+                bibleContent += '<a href="' + addLink + '" title="' + this.app.t('Add to List') + '" class="bss_std_link">' + this.app.t('Add to List') + '</a> &nbsp;';
                 
                 if(this.audioBibleEnabled(module, pd)) {
                     listenLink = this.linkBuilder.buildPassageSignalLink('onListen', [module], pd);
