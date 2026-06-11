@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'متن نوشته',
     'In Context': 'در متن',
     'Cross References': 'ارجاعات متقاطع',
+    'Open All': 'باز کردن همه',
     'Hidden': 'مخفی',
     'Toggle': 'تغییر',
     'Show': 'نمایش',

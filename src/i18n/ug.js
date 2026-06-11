@@ -78,6 +78,7 @@ module.exports = {
     'Context': 'مەزمۇن',
     'In Context': 'مەزمۇندا',
     'Cross References': 'ئۆزئارا پايدىلانما',
+    'Open All': 'ھەممىسىنى ئاچ',
     'Hidden': 'يوشۇرۇن',
     'Toggle': 'ئالماشتۇرۇش',
     'Show': 'كۆرسەت',

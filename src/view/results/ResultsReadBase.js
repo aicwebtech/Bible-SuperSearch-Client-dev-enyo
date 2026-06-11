@@ -585,7 +585,7 @@ module.exports = kind({
             return '';
         }
 
-        var toggleId = this._getCrossReferencesToggleId(bookId, chapter, verse, cv, cva);
+        var toggleId = this._getCrossReferencesToggleId(bookId, chapter, verse, cv, chapter + ':' + verse);
         var signalKey = this._getCrossReferencesSignalKey(bookId, cv, cva);
         var title = this.app.t('Cross References');
 
@@ -620,7 +620,7 @@ module.exports = kind({
                 var refs = this._getCrossReferences(passage.book_id, chapter, verse);
 
                 if(refs.length) {
-                    toggleIds.push(this._getCrossReferencesToggleId(passage.book_id, chapter, verse, cv, cva));
+                    toggleIds.push(this._getCrossReferencesToggleId(passage.book_id, chapter, verse, cv, chapter + ':' + verse));
                 }
             }, this);
         }
@@ -662,7 +662,9 @@ module.exports = kind({
                 var refs = this._getCrossReferences(passage.book_id, chapter, verse);
 
                 if(refs.length) {
-                    footnoteLines.push('<b>' + chapter + ':' + verse + '</b> ' + refs.join('; '));
+                    var openAllLink = this._buildOpenAllCrossReferencesLink(passage.book_id, chapter, verse);
+                    var footnoteBody = refs.join(';&nbsp; &nbsp;') + (openAllLink ? '<br />' + openAllLink : '');
+                    footnoteLines.push('<b>' + chapter + ':' + verse + '</b> ' + footnoteBody);
                 }
             }, this);
         }
@@ -743,18 +745,20 @@ module.exports = kind({
             return '';
         }
 
-        var body = refs.join('; ');
+        var body = refs.join(';&nbsp; &nbsp;');
+        var openAllLink = this._buildOpenAllCrossReferencesLink(bookId, chapter, verse);
         var title = this.app.t('Cross References');
 
         if(mode == 'toggle') {
             var cv = passage && passage.chapter_verse ? passage.chapter_verse : '';
-            var cva = passage && passage.chapter_verse_actual ? passage.chapter_verse_actual : '';
-            var toggleId = this._getCrossReferencesToggleId(bookId, chapter, verse, cv, cva);
+            var toggleId = this._getCrossReferencesToggleId(bookId, chapter, verse, cv, chapter + ':' + verse);
+            var inner = body + (openAllLink ? '<br />' + openAllLink : '');
 
-            return '<div class="bss_cross_references" id="' + toggleId + '" style="display:none">' + body + '</div>';
+            return '<div class="bss_cross_references" id="' + toggleId + '" style="display:none">' + inner + '</div>';
         }
 
-        return '<div class="bss_cross_references">' + title + ': ' + body + '</div>';
+        var inner = body + (openAllLink ? '<br />' + openAllLink : '');
+        return '<div class="bss_cross_references">' + title + ': ' + inner + '</div>';
     },
     _getCrossReferences: function(bookId, chapter, verse) {
         var data = this.app.get('altResponseData') || this.get('resultsData') || {};
@@ -824,7 +828,43 @@ module.exports = kind({
             return '';
         }
         
-        return references.join('; ');
+        return references.join(';&nbsp; &nbsp;');
+    },
+    _buildOpenAllCrossReferencesLink: function(bookId, chapter, verse) {
+        var data = this.app.get('altResponseData') || this.get('resultsData') || {};
+        var crossReferences = data.cross_references || {};
+
+        if(typeof crossReferences != 'object' || Array.isArray(crossReferences)) {
+            return '';
+        }
+
+        var idx = bookId + '_' + chapter + '_' + verse;
+        var item = crossReferences[idx] || null;
+
+        if(!item || !Array.isArray(item.cross_references) || item.cross_references.length < 2) {
+            return '';
+        }
+
+        var rawRefs = [];
+
+        for(var i = 0; i < item.cross_references.length; i++) {
+            var cr = item.cross_references[i];
+            var localeBook = this.app.getLocaleBookName(cr.to_book);
+            var ref = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start;
+
+            if(cr.to_chapter_end && cr.to_verse_end && (cr.to_chapter_end != cr.to_chapter_start || cr.to_verse_end != cr.to_verse_start)) {
+                ref += '-' + (cr.to_chapter_end != cr.to_chapter_start ? cr.to_chapter_end + ':' : '') + cr.to_verse_end;
+            }
+
+            rawRefs.push(ref);
+        }
+
+        var bible = this.formData.bible ? this.formData.bible.filter(function(b) { return b != 0 && b != null; }).join(',') : '';
+        var combinedRef = rawRefs.join('; ').replace(/\s+/g, '.');
+        var href = '#/r/' + bible + '/' + combinedRef;
+        var label = this.app.t('Open All');
+
+        return '<a href="' + href + '" class="bss_std_link" target="_blank" rel="noopener noreferrer">' + label + '</a>';
     },
     proccessSingleVerseReference: function(passage, verse) {
         var bookName = this.app.getLocaleBookName(passage.book_id, passage.book_name);

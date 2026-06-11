@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'Context',
     'In Context': 'In context',
     'Cross References': 'Kruisverwijzingen',
+    'Open All': 'Alles openen',
     'Hidden': 'Verborgen',
     'Toggle': 'Omschakelen',
     'Show': 'Tonen',

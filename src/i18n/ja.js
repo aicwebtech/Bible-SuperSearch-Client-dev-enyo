@@ -61,6 +61,7 @@ module.exports = {
     'Context': 'コンテクスト',
     'In Context': 'コンテキスト内で',
     'Cross References': '相互参照',
+    'Open All': 'すべて開く',
     'Hidden': '非表示',
     'Toggle': '切り替え',
     'Show': '表示',

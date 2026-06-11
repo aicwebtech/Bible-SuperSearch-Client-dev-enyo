@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'Konteks',
     'In Context': 'In Konteks',
     'Cross References': 'Kruisverwysings',
+    'Open All': 'Maak Alles Oop',
     'Hidden': 'Versteek',
     'Toggle': 'Wissel',
     'Show': 'Wys',

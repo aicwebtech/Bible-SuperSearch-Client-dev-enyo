@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'Dulucda',
     'In Context': 'Marka la Eego',
     'Cross References': 'Tixraacyo isdhaafsan',
+    'Open All': 'Fur Dhammaan',
     'Hidden': 'Qarsoon',
     'Toggle': 'Beddel',
     'Show': 'Muuji',

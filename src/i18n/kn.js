@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'ಸಂದರ್ಭ',
     'In Context': 'ಸನ್ನಿವೇಶದಲ್ಲಿ',
     'Cross References': 'ಅಡ್ಡ ಉಲ್ಲೇಖಗಳು',
+    'Open All': 'ಎಲ್ಲವನ್ನೂ ತೆರೆಯಿರಿ',
     'Hidden': 'ಮರೆಮಾಡಲಾಗಿದೆ',
     'Toggle': 'ಟಾಗಲ್',
     'Show': 'ತೋರಿಸಿ',

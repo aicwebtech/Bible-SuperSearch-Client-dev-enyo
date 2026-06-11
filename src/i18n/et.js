@@ -65,6 +65,7 @@ module.exports = {
     'Context': 'Kontekst',
     'In Context': 'Kontekstis',
     'Cross References': 'Ristviited',
+    'Open All': 'Ava kõik',
     'Hidden': 'Peidetud',
     'Toggle': 'Lülita',
     'Show': 'Näita',

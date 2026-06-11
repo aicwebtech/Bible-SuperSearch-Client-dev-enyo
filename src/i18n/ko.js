@@ -75,6 +75,7 @@ module.exports = {
     'Context': '문맥',
     'In Context': '문맥',
     'Cross References': '상호 참조',
+    'Open All': '모두 열기',
     'Hidden': '숨김',
     'Toggle': '전환',
     'Show': '표시',

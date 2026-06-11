@@ -61,6 +61,7 @@ module.exports = {
     'Context': 'Contexto',
     'In Context': 'No Contexto',
     'Cross References': 'Referências cruzadas',
+    'Open All': 'Abrir tudo',
     'Hidden': 'Oculto',
     'Toggle': 'Alternar',
     'Show': 'Mostrar',

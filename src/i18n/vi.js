@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'Bối cảnh',
     'In Context': 'Trong ngữ cảnh',
     'Cross References': 'Tham chiếu chéo',
+    'Open All': 'Mở Tất Cả',
     'Hidden': 'Ẩn',
     'Toggle': 'Chuyển đổi',
     'Show': 'Hiển thị',

@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'خیال، سیاق',
     'In Context': 'سیاق و سباق میں',
     'Cross References': 'متقاطع حوالہ جات',
+    'Open All': 'سب کھولیں',
     'Hidden': 'چھپا ہوا',
     'Toggle': 'ٹوگل',
     'Show': 'دکھائیں',

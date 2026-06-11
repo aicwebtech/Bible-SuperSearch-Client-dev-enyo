@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'הֶקשֵׁר',
     'In Context': 'בהקשר',
     'Cross References': 'הפניות צולבות',
+    'Open All': 'פתח הכל',
     'Hidden': 'מוסתר',
     'Toggle': 'החלף',
     'Show': 'הצג',

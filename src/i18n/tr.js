@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'Bağlam',
     'In Context': 'Bağlamda',
     'Cross References': 'Çapraz referanslar',
+    'Open All': 'Hepsini Aç',
     'Hidden': 'Gizli',
     'Toggle': 'Değiştir',
     'Show': 'Göster',

@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'Konteksti',
     'In Context': 'Asiayhteydessä; kontekstissa',
     'Cross References': 'Ristiviitteet',
+    'Open All': 'Avaa kaikki',
     'Hidden': 'Piilotettu',
     'Toggle': 'Vaihda',
     'Show': 'Näytä',

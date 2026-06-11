@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'Horopaki',
     'In Context': 'I te Horopaki',
     'Cross References': 'Tohutoro whakawhiti',
+    'Open All': 'Huakina Katoa',
     'Hidden': 'Huna',
     'Toggle': 'Takahuri',
     'Show': 'Whakaatu',

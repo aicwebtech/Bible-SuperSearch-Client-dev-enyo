@@ -61,6 +61,7 @@ module.exports = {
     'Context': 'Context',
     'In Context': 'În Context',
     'Cross References': 'Referințe încrucișate',
+    'Open All': 'Deschide tot',
     'Hidden': 'Ascuns',
     'Toggle': 'Comută',
     'Show': 'Arată',

@@ -61,6 +61,7 @@ module.exports = {
     'Context': 'บริบท',
     'In Context': 'ในบริบท',
     'Cross References': 'การอ้างอิงไขว้',
+    'Open All': 'เปิดทั้งหมด',
     'Hidden': 'ซ่อนอยู่',
     'Toggle': 'สลับ',
     'Show': 'แสดง',
