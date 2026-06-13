@@ -662,8 +662,7 @@ module.exports = kind({
                 var refs = this._getCrossReferences(passage.book_id, chapter, verse);
 
                 if(refs.length) {
-                    var openAllLink = this._buildOpenAllCrossReferencesLink(passage.book_id, chapter, verse);
-                    var footnoteBody = refs.join('') + (openAllLink ? '<br />' + openAllLink : '');
+                    var footnoteBody = refs.join('');
                     footnoteLines.push('<b>' + chapter + ':' + verse + '</b> ' + footnoteBody);
                 }
             }, this);
@@ -801,15 +800,18 @@ module.exports = kind({
 
         return found;
     },
+    _formatCrossRefRange: function(cr) {
+        if(cr.to_chapter_end && cr.to_verse_end && (cr.to_chapter_end != cr.to_chapter_start || cr.to_verse_end != cr.to_verse_start)) {
+            return '-' + (cr.to_chapter_end != cr.to_chapter_start ? cr.to_chapter_end + ':' : '') + cr.to_verse_end;
+        }
+        return '';
+    },
     _formatCrossReference: function(item) {
         if(!Array.isArray(item.cross_references)) {
             return '';
         }
 
-        var longList = item.cross_references.length > 7;
-        var openAllLink = this._buildOpenAllCrossReferencesLink(item.from_book, item.from_chapter, item.from_verse);
-
-        if(longList) {
+        if(item.cross_references.length > 7) {
             var bookRows = [];
             var lastBook = null;
             var currentRefs = null;
@@ -824,18 +826,15 @@ module.exports = kind({
                     lastBook = localeBook;
                 }
 
-                var reference = cr.to_chapter_start + ':' + cr.to_verse_start;
-
-                if(cr.to_chapter_end && cr.to_verse_end && (cr.to_chapter_end != cr.to_chapter_start || cr.to_verse_end != cr.to_verse_start)) {
-                    reference += '-' + (cr.to_chapter_end != cr.to_chapter_start ? cr.to_chapter_end + ':' : '') + cr.to_verse_end;
-                }
-
+                var reference = cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr);
                 var href = this.linkBuilder.buildReferenceLink('p', this.formData.bible, localeBook, cr.to_chapter_start, cr.to_verse_start, cr.to_chapter_end, cr.to_verse_end);
                 currentRefs.push('<a href="' + href + '" class="bss_std_link" target="_blank" rel="noopener noreferrer">' + reference + ';</a>');
             }
 
+            var openAllLink = this._buildOpenAllCrossReferencesLink(item.from_book, item.from_chapter, item.from_verse, item);
+
             var rows = bookRows.map(function(entry, index) {
-                // add open all links to last row
+                // add open all link to last row
                 if(index === bookRows.length - 1 && openAllLink) {
                     entry.refs.push(openAllLink);
                 }
@@ -851,30 +850,31 @@ module.exports = kind({
         for(var i = 0; i < item.cross_references.length; i++) {
             var cr = item.cross_references[i];
             var localeBook = this.app.getLocaleBookName(cr.to_book);
-            var reference = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start;
-
-            if(cr.to_chapter_end && cr.to_verse_end && (cr.to_chapter_end != cr.to_chapter_start || cr.to_verse_end != cr.to_verse_start)) {
-                reference += '-' + (cr.to_chapter_end != cr.to_chapter_start ? cr.to_chapter_end + ':' : '') + cr.to_verse_end;
-            }
-
+            var reference = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr);
             var href = this.linkBuilder.buildReferenceLink('p', this.formData.bible, localeBook, cr.to_chapter_start, cr.to_verse_start, cr.to_chapter_end, cr.to_verse_end);
             references.push('<a href="' + href + '" class="bss_std_link" target="_blank" rel="noopener noreferrer">' + reference + ';</a>');
         }
 
-        references.push(openAllLink ? openAllLink : '');
+        var openAllLink = this._buildOpenAllCrossReferencesLink(item.from_book, item.from_chapter, item.from_verse, item);
+
+        if(openAllLink) {
+            references.push(openAllLink);
+        }
 
         return references.join('');
     },
-    _buildOpenAllCrossReferencesLink: function(bookId, chapter, verse) {
-        var data = this.app.get('altResponseData') || this.get('resultsData') || {};
-        var crossReferences = data.cross_references || {};
+    _buildOpenAllCrossReferencesLink: function(bookId, chapter, verse, item) {
+        if(!item) {
+            var data = this.app.get('altResponseData') || this.get('resultsData') || {};
+            var crossReferences = data.cross_references || {};
 
-        if(typeof crossReferences != 'object' || Array.isArray(crossReferences)) {
-            return '';
+            if(typeof crossReferences != 'object' || Array.isArray(crossReferences)) {
+                return '';
+            }
+
+            var idx = bookId + '_' + chapter + '_' + verse;
+            item = crossReferences[idx] || null;
         }
-
-        var idx = bookId + '_' + chapter + '_' + verse;
-        var item = crossReferences[idx] || null;
 
         if(!item || !Array.isArray(item.cross_references) || item.cross_references.length < 2) {
             return '';
@@ -885,18 +885,10 @@ module.exports = kind({
         for(var i = 0; i < item.cross_references.length; i++) {
             var cr = item.cross_references[i];
             var localeBook = this.app.getLocaleBookName(cr.to_book);
-            var ref = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start;
-
-            if(cr.to_chapter_end && cr.to_verse_end && (cr.to_chapter_end != cr.to_chapter_start || cr.to_verse_end != cr.to_verse_start)) {
-                ref += '-' + (cr.to_chapter_end != cr.to_chapter_start ? cr.to_chapter_end + ':' : '') + cr.to_verse_end;
-            }
-
-            rawRefs.push(ref);
+            rawRefs.push(localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr));
         }
 
-        var bible = this.formData.bible ? this.formData.bible.filter(function(b) { return b != 0 && b != null; }).join(',') : '';
-        var combinedRef = rawRefs.join('; ').replace(/\s+/g, '.');
-        var href = '#/r/' + bible + '/' + combinedRef;
+        var href = this.linkBuilder.buildReferenceLink('r', this.formData.bible, rawRefs.join('; '));
         var label = this.app.t('Open All');
 
         return '<a href="' + href + '" class="bss_std_link bss_open_all" target="_blank" rel="noopener noreferrer">' + label + '</a>';

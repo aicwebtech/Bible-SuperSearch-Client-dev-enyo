@@ -60,6 +60,7 @@ module.exports = {
     'Context': '上下文',
     'In Context': '在上下文中',
     'Cross References': '交叉參照',
+    'Open All': '全部開啟',
     'Hidden': '隱藏',
     'Toggle': '切換',
     'Show': '顯示',
