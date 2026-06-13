@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'စကားစပ်',
     'In Context': 'စကားစပ်',
     'Cross References': 'အပြန်အလှန် ကိုးကားချက်များ',
+    'Open All': 'အားလုံးဖွင့်ရန်',
     'Hidden': 'ဝှက်ထားသည်',
     'Toggle': 'ပြောင်းရန်',
     'Show': 'ပြပါ',

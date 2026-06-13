@@ -79,6 +79,7 @@ module.exports = {
     'Context': 'Kontèks',
     'In Context': 'Nan Kontèks',
     'Cross References': 'Referans kwaze',
+    'Open All': 'Ouvri Tout',
     'Hidden': 'Kache',
     'Toggle': 'Chanje',
     'Show': 'Montre',

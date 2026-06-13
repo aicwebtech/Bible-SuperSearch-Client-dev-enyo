@@ -61,6 +61,7 @@ module.exports = {
     'Context': 'Kontextus',
     'In Context': 'Szövegkörnyezetben',
     'Cross References': 'Kereszthivatkozások',
+    'Open All': 'Összes megnyitása',
     'Hidden': 'Rejtett',
     'Toggle': 'Váltás',
     'Show': 'Megjelenítés',

@@ -77,6 +77,7 @@ module.exports = {
     'Context': 'Контекст',
     'In Context': 'Дар контекст',
     'Cross References': 'Истинодҳои байниҳамдигарӣ',
+    'Open All': 'Ҳамаро кушодан',
     'Hidden': 'Пинҳон',
     'Toggle': 'Гузариш',
     'Show': 'Намоиш',

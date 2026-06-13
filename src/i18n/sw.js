@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'Muktadha',
     'In Context': 'Katika Muktadha',
     'Cross References': 'Marejeo ya msalaba',
+    'Open All': 'Fungua Zote',
     'Hidden': 'Imefichwa',
     'Toggle': 'Badilisha',
     'Show': 'Onyesha',

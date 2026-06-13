@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'Magana',
     'In Context': 'A cikin Magana',
     'Cross References': 'Nassoshin giciye',
+    'Open All': 'Buɗe Duka',
     'Hidden': 'Boye',
     'Toggle': 'Canjawa',
     'Show': 'Nuna',

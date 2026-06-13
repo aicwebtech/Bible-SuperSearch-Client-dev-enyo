@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'સંદર્ભ',
     'In Context': 'સંદર્ભમાં',
     'Cross References': 'ક્રોસ સંદર્ભો',
+    'Open All': 'બધું ખોલો',
     'Hidden': 'છુપાયેલ',
     'Toggle': 'ટૉગલ',
     'Show': 'બતાવો',

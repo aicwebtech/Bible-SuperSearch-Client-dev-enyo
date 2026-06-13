@@ -63,6 +63,7 @@ module.exports = {
     'Context': 'प्रसंग',
     'In Context': 'संदर्भ में',
     'Cross References': 'क्रॉस संदर्भ',
+    'Open All': 'सभी खोलें',
     'Hidden': 'छिपा हुआ',
     'Toggle': 'टॉगल',
     'Show': 'दिखाएँ',

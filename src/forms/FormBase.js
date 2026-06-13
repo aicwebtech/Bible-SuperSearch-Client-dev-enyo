@@ -79,6 +79,8 @@ module.exports = kind({
         this.createComponent(this.signalComponent);
         // this.formData.bible = [this.app.configs.defaultBible];
 
+        this.Passage.setApp(this.app);
+
         if(this.autoApplyStandardBindings) {
             this.applyStandardBindings();
         }

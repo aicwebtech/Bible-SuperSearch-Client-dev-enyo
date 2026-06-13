@@ -75,6 +75,7 @@ module.exports = {
     'Context': 'संदर्भ',
     'In Context': 'संदर्भात',
     'Cross References': 'क्रॉस संदर्भ',
+    'Open All': 'सर्व उघडा',
     'Hidden': 'लपविलेले',
     'Toggle': 'टॉगल',
     'Show': 'दाखवा',

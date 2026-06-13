@@ -61,6 +61,7 @@ module.exports = {
     'Context': 'Kontekstas',
     'In Context': 'Kontekste',
     'Cross References': 'Kryžminės nuorodos',
+    'Open All': 'Atidaryti visus',
     'Hidden': 'Paslėpta',
     'Toggle': 'Perjungti',
     'Show': 'Rodyti',

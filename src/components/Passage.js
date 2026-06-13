@@ -1,8 +1,13 @@
 module.exports = {
+    app: null,
+    setApp: function(app) {
+        this.app = app;
+    },
     routeRequest: function(value) {
         var field = false,
             nonPassageChars = this._containsNonPassageCharacters(value),
-            passages = this.explodeReferences(value, true);
+            passages = this.explodeReferences(value, true),
+            book = (this.app && passages.length >= 1 && passages[0] && passages[0].book) ? this.app.findBookByName(passages[0].book) : null;
 
         // todo - migrate full logic here!
 
@@ -13,13 +18,14 @@ module.exports = {
         // * either
         //      1) It contains numbers but no (parentheses) or
         //      2) It resolves to multiple (possible) passages
+        //      3) The book of the first passage resolves to an existing book AND a chapter (at least) is specified
         // Note: This passage-checking logic is specific to this method
 
         if(
             passages.length >= 1 &&
             !nonPassageChars && 
             !value.match(/[GHgh][0-9]+/) && 
-            (value.match(/[0-9]/) && !value.match(/\(\)/) || passages.length >= 2) 
+            (value.match(/[0-9]/) && !value.match(/[()]/) || passages.length >= 2 || (book && passages[0].chapter_verse)) 
         ) {
             field = 'reference';
         }
