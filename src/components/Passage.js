@@ -6,8 +6,8 @@ module.exports = {
     routeRequest: function(value) {
         var field = false,
             nonPassageChars = this._containsNonPassageCharacters(value),
-            passages = this.explodeReferences(value, true);
-            book = this.app.findBookByName(passages[0].book);
+            passages = this.explodeReferences(value, true),
+            book = (this.app && passages.length >= 1 && passages[0] && passages[0].book) ? this.app.findBookByName(passages[0].book) : null;
 
         // todo - migrate full logic here!
 
