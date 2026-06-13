@@ -1064,6 +1064,12 @@ tr.bss_render_reference_row th {
     max-width: 150px;
 }
 
+.bss_cross_references_title {
+    display: inline-block;
+    margin-inline-start: -15px;
+    font-weight: bold;
+}
+
 .bss_cross_references .bss_std_link.bss_open_all {
     float: inline-end;
 }
@@ -1079,11 +1085,13 @@ tr.bss_render_reference_row th {
 }
 
 .bss_cross_references_table .bss_cr_book_name {
-    white-space: nowrap;
-    font-weight: bold;
     width: 20%;
     max-width: 150px;
     padding-inline-end: 10px;
+    white-space: nowrap;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .bss_cross_references_table tr:nth-child(odd) {

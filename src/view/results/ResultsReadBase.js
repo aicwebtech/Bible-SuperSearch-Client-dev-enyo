@@ -746,19 +746,16 @@ module.exports = kind({
         }
 
         var body = refs.join('');
-        var openAllLink = this._buildOpenAllCrossReferencesLink(bookId, chapter, verse);
-        var title = this.app.t('Cross References');
+        var title = "<span class='bss_cross_references_title'>" + this.app.t('Cross References') + "</span>";
 
         if(mode == 'toggle') {
             var cv = passage && passage.chapter_verse ? passage.chapter_verse : '';
             var toggleId = this._getCrossReferencesToggleId(bookId, chapter, verse, cv, chapter + ':' + verse);
-            var inner = body + (openAllLink ? '<br />' + openAllLink : '');
 
-            return '<div class="bss_cross_references" id="' + toggleId + '" style="display:none">' + inner + '</div>';
+            return '<div class="bss_cross_references" id="' + toggleId + '" style="display:none">' + body + '</div>';
         }
 
-        var inner = body + (openAllLink ? '<br />' + openAllLink : '');
-        return '<div class="bss_cross_references">' + title + ': ' + inner + '</div>';
+        return '<div class="bss_cross_references">' + title + ': ' + body + '</div>';
     },
     _getCrossReferences: function(bookId, chapter, verse) {
         var data = this.app.get('altResponseData') || this.get('resultsData') || {};
@@ -810,6 +807,7 @@ module.exports = kind({
         }
 
         var longList = item.cross_references.length > 7;
+        var openAllLink = this._buildOpenAllCrossReferencesLink(item.from_book, item.from_chapter, item.from_verse);
 
         if(longList) {
             var bookRows = [];
@@ -836,7 +834,12 @@ module.exports = kind({
                 currentRefs.push('<a href="' + href + '" class="bss_std_link" target="_blank" rel="noopener noreferrer">' + reference + ';</a>');
             }
 
-            var rows = bookRows.map(function(entry) {
+            var rows = bookRows.map(function(entry, index) {
+                // add open all links to last row
+                if(index === bookRows.length - 1 && openAllLink) {
+                    entry.refs.push(openAllLink);
+                }
+
                 return '<tr><td class="bss_cr_book_name">' + entry.book + '</td><td>' + entry.refs.join('') + '</td></tr>';
             });
 
@@ -857,6 +860,8 @@ module.exports = kind({
             var href = this.linkBuilder.buildReferenceLink('p', this.formData.bible, localeBook, cr.to_chapter_start, cr.to_verse_start, cr.to_chapter_end, cr.to_verse_end);
             references.push('<a href="' + href + '" class="bss_std_link" target="_blank" rel="noopener noreferrer">' + reference + ';</a>');
         }
+
+        references.push(openAllLink ? openAllLink : '');
 
         return references.join('');
     },

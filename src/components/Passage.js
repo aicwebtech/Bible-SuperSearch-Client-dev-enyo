@@ -19,7 +19,7 @@ module.exports = {
             passages.length >= 1 &&
             !nonPassageChars && 
             !value.match(/[GHgh][0-9]+/) && 
-            (value.match(/[0-9]/) && !value.match(/\(\)/) || passages.length >= 2) 
+            (value.match(/[0-9]/)  || passages.length >= 2) 
         ) {
             field = 'reference';
         }
