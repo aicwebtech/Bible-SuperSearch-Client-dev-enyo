@@ -172,17 +172,11 @@ module.exports = {
                 ref.isValid      = true;
                 ref.bookSt    = Book_St.name;
                 ref.bookEn = Book_En.name;
-                console.log('ref', JSON.stringify(ref));
                 return ref;
             }
         }
 
-        // books = bookNormalized.split('-');
-        // ref.bookSt = books[0].trim();
-        // ref.bookEn = books[1].trim();
         ref.isBookRange = false;
-
-        console.log('ref', JSON.stringify(ref));
         return ref;
     },
     normalizeDashes: function(str) {
