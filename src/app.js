@@ -818,12 +818,19 @@ var App = Application.kind({
 
                 var bookNameNoMatchEn = 0;
 
+                Passage.setApp(t);
+
                 // Check Bible Books
                 for(b in t.localeDatasetsRaw._template.bibleBooks) {
                     var bookNameEn = t.localeDatasetsRaw._template.bibleBooks[b].name;
 
                     if(item.bibleBooks[b].name != bookNameEn) {
                         bookNameNoMatchEn ++;
+                    }
+
+                    if(item.bibleBooks[b] && item.bibleBooks[b].name) {
+                        var testRef = item.bibleBooks[b].name + ' 1';
+                        assert.true(Passage.isPassage(testRef), ll + ' Passage.isPassage should be true for "' + testRef + '"');
                     }
 
                     if(!t.testVerbose && item.bibleBooks[b] && item.bibleBooks[b].name) {

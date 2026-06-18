@@ -25,7 +25,11 @@ module.exports = {
             passages.length >= 1 &&
             !nonPassageChars && 
             !value.match(/[GHgh][0-9]+/) && 
-            (value.match(/[0-9]/) && !value.match(/[()]/) || passages.length >= 2 || (book && passages[0].chapter_verse)) 
+            (
+                value.match(/[0-9]/) && !value.match(/[()]/) || 
+                passages.length >= 2 || 
+                (book && passages[0].chapter_verse)
+            ) 
         ) {
             field = 'reference';
         }
@@ -113,16 +117,77 @@ module.exports = {
             return ref;
         }
 
-        if(ref.book.indexOf('-') == -1) {
-            ref.isBookRange = false;
-            return ref;
+        var bookNormalized = this.normalizeDashes(ref.book);
+
+        if(bookNormalized.indexOf('-') !== -1) {
+            // Some book names contain hyphens (e.g. Russian "1-Я Царств"), so try a direct
+            // lookup first before treating the hyphen as a book-range separator.
+            var Book = this.app.findBookByName(bookNormalized);
+
+            if(Book) {
+                ref.isBookRange = false;
+                ref.Book = Book;
+                ref.isValid = true;
+                return ref;
+            }
+
+            // Book ranges are separated by '-', but some book names themselves contain
+            // hyphens (e.g. Russian "1-Я Царств"). Try each hyphen as the split point and
+            // use the first one where both sides resolve to a book, so ranges of hyphenated
+            // book names (e.g. "1-Я Царств-2-Я Царств") are parsed correctly.
+            var Book_St = null;
+            var Book_En = null;
+
+            for(var offset = bookNormalized.indexOf('-'); offset !== -1; offset = bookNormalized.indexOf('-', offset + 1)) {
+                var left  = bookNormalized.substring(0, offset).trim();
+                var right = bookNormalized.substring(offset + 1).trim();
+
+                if(left === '' || right === '') {
+                    continue;
+                }
+
+                var St = this.app.findBookByName(left);
+                var En = this.app.findBookByName(right);
+
+                if(St && En) {
+                    Book_St = St;
+                    Book_En = En;
+                    break;
+                }
+            }
+
+            // Fallback to the original first/last segment behaviour for inputs the smart
+            // split could not resolve (e.g. a trailing hyphen "Genesis-").
+            if(!(Book_St && Book_En)) {
+                var books = bookNormalized.split('-');
+                var book_st = books.shift();
+                var book_en = books.pop();
+                book_en = (book_en) ? book_en : book_st;
+                Book_St = this.app.findBookByName(book_st);
+                Book_En = this.app.findBookByName(book_en);
+            }
+
+            if(Book_St && Book_En) {
+                ref.isBookRange = true;
+                ref.isValid      = true;
+                ref.bookSt    = Book_St.name;
+                ref.bookEn = Book_En.name;
+                console.log('ref', JSON.stringify(ref));
+                return ref;
+            }
         }
 
-        books = ref.book.split('-');
-        ref.bookSt = books[0].trim();
-        ref.bookEn = books[1].trim();
-        ref.isBookRange = true;
+        // books = bookNormalized.split('-');
+        // ref.bookSt = books[0].trim();
+        // ref.bookEn = books[1].trim();
+        ref.isBookRange = false;
+
+        console.log('ref', JSON.stringify(ref));
         return ref;
+    },
+    normalizeDashes: function(str) {
+        // replaces all dashes (En dash, Em dash, etc.) with a hyphen.
+        return str.replace(/[\u2012\u2013\u2014\u2015]/g, '-');
     },
     _substr: function(str, offset, len) {
         return str.substring(offset, offset + len);
