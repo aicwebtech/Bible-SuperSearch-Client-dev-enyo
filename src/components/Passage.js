@@ -4,6 +4,7 @@ module.exports = {
         this.app = app;
     },
     routeRequest: function(value) {
+        value = this.normalizeDashes(value);
         var field = false,
             nonPassageChars = this._containsNonPassageCharacters(value),
             passages = this.explodeReferences(value, true),
@@ -119,15 +120,13 @@ module.exports = {
 
         var bookNormalized = this.normalizeDashes(ref.book);
 
-        if(bookNormalized.indexOf('-') !== -1) {
+        if(bookNormalized.indexOf('-') !== -1 && this.app) {
             // Some book names contain hyphens (e.g. Russian "1-Я Царств"), so try a direct
             // lookup first before treating the hyphen as a book-range separator.
             var Book = this.app.findBookByName(bookNormalized);
 
             if(Book) {
                 ref.isBookRange = false;
-                ref.Book = Book;
-                ref.isValid = true;
                 return ref;
             }
 
@@ -169,8 +168,7 @@ module.exports = {
 
             if(Book_St && Book_En) {
                 ref.isBookRange = true;
-                ref.isValid      = true;
-                ref.bookSt    = Book_St.name;
+                ref.bookSt = Book_St.name;
                 ref.bookEn = Book_En.name;
                 return ref;
             }
@@ -180,8 +178,9 @@ module.exports = {
         return ref;
     },
     normalizeDashes: function(str) {
-        // replaces all dashes (En dash, Em dash, etc.) with a hyphen.
-        return str.replace(/[\u2012\u2013\u2014\u2015]/g, '-');
+        // replaces all dashes (hyphen, non-breaking hyphen, figure/en/em dash,
+        // horizontal bar, minus sign, etc.) with a plain ASCII hyphen.
+        return str.replace(/[\u2010\u2011\u2012\u2013\u2014\u2015\u2212]/g, '-');
     },
     _substr: function(str, offset, len) {
         return str.substring(offset, offset + len);
