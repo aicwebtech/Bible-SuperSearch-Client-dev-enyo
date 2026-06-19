@@ -177,11 +177,15 @@ module.exports = {
         ref.isBookRange = false;
         return ref;
     },
-    normalizeDashes: function(str) {
+normalizeDashes: function(str) {
         // replaces all dashes (hyphen, non-breaking hyphen, figure/en/em dash,
         // horizontal bar, minus sign, etc.) with a plain ASCII hyphen.
+        if(str === null || typeof str === 'undefined') {
+            return '';
+        }
+        str = String(str);
         return str.replace(/[\u2010\u2011\u2012\u2013\u2014\u2015\u2212]/g, '-');
-    },
+    }
     _substr: function(str, offset, len) {
         return str.substring(offset, offset + len);
     },
