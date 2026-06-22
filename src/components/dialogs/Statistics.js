@@ -62,6 +62,7 @@ module.exports = kind({
 
         var ajax = new Ajax({
             url: this.app.configs.apiUrl + '/statistics',
+            cacheBust: this.app.configs.disableCache,
             method: 'GET'
         });
         

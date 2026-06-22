@@ -44,6 +44,7 @@ var defaultConfig = {
     'audioBibleDisplayThreshold': 3,                   // Width threshold for audioBibleDisplay 'threshold' option
     'crossReferenceEnable': false,                     // Enables cross references globally when API feature is available
     'crossReferenceShowDefault': 'toggle',             // Default user setting: hidden | toggle | show
+    'disableCache': false,                             // When TRUE, breaks cache on API calls (appends random param); FALSE allows caching
 
     _urlDefaultNotice: function() {
         if(window.console) {
