@@ -171,6 +171,7 @@ module.exports = kind({
 
         var ajax = new Ajax({
             url: this.app.configs.apiUrl + '/render_needed',
+            cacheBust: this.app.configs.disableCache,
             method: 'GET'
         });
 
@@ -286,6 +287,7 @@ module.exports = kind({
 
         var ajax = new Ajax({
             url: this.app.configs.apiUrl + '/render',
+            cacheBust: this.app.configs.disableCache,
             method: 'GET'
         });
 

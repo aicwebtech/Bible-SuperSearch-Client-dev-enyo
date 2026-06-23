@@ -282,8 +282,12 @@ module.exports = kind({
             return;
         }
 
+        // Random chapter/verse must always break cache, otherwise the same passage is returned each time
+        var cacheBust = this._isRandomRequest(formData) ? true : this.app.configs.disableCache;
+
         var ajax = new Ajax({
             url: this.app.configs.apiUrl,
+            cacheBust: cacheBust,
             method: 'GET'
         });
 
@@ -566,6 +570,19 @@ module.exports = kind({
 
         return this._submitFormHelper(submitData, true);
     },
+    _isRandomRequest: function(formData) {
+        var fields = Array('reference', 'request');
+
+        for(var i = 0; i < fields.length; i++) {
+            var value = formData[fields[i]];
+
+            if(value == 'Random Chapter' || value == 'Random Verse') {
+                return true;
+            }
+        }
+
+        return false;
+    },
     setFormDataWithMapping: function(formData) {
         var combined = formData.search && formData.reference;
 
@@ -601,6 +618,7 @@ module.exports = kind({
 
         var ajax = new Ajax({
             url: url,
+            cacheBust: this.app.configs.disableCache,
             method: 'GET'
         });
 

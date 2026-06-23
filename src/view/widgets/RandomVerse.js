@@ -29,6 +29,7 @@ var RandomVerse = kind({
 
         var ajax = new Ajax({
             url: this.app.configs.apiUrl,
+            cacheBust: true, // Always break cache; a cached random verse would always return the same verse
             method: 'GET'
         });
 

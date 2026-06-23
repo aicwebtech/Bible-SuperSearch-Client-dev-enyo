@@ -401,6 +401,12 @@ var biblesupersearch_config_options = {
     // Options: 'hidden' | 'toggle' | 'show'
     'crossReferenceShowDefault': 'toggle',
 
+    // Cache breaking on API calls (BSS-271)
+    // When true, a random parameter is appended to API GET requests to force a fresh fetch (bypasses browser/proxy cache).
+    // When false (default), responses may be cached, improving performance for repeated identical requests.
+    // Note: the random verse widget always breaks cache regardless of this setting.
+    'disableCache': false,
+
     // User Config settings
     'saveUserSettings': false, // Whether to save user's settings to appear on next page load (saves to LocalStorage, not cookie)
 
