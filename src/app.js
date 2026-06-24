@@ -511,6 +511,7 @@ var App = Application.kind({
         // Load Static Data (Bibles, Books, ect)
         var ajax = new Ajax({
             url: this.configs.apiUrl + '/statics?language=en' + this.configs.apiKeyStr,
+            cacheBust: this.configs.disableCache,
             method: 'GET'
         });
 
@@ -1656,6 +1657,7 @@ var App = Application.kind({
             // Load Bible book list
             var ajax = new Ajax({
                 url: this.configs.apiUrl + '/books?language=' + language + this.configs.apiKeyStr,
+                cacheBust: this.configs.disableCache,
                 method: 'GET'
             });
 
