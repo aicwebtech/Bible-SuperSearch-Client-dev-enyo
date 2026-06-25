@@ -75,6 +75,11 @@ module.exports = {
             return [];
         }
 
+        // Normalize all dash variants (en/em dash, etc.) to a plain ASCII hyphen before
+        // parsing, so book/chapter splitting and the chapter_verse sent to the API are
+        // correct regardless of which dash the user typed (BSS-270).
+        reference = this.normalizeDashes(reference);
+
         if(this._containsNonPassageCharacters(reference)) {
             return [];
         }
