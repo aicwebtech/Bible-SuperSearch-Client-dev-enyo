@@ -20,6 +20,7 @@ module.exports = {
     ja: require('./ja'),
     kn: require('./kn'),
     ko: require('./ko'),
+    lue: require('./lue'), // Luvale
     lv: require('./lv'),
     lt: require('./lt'), 
     mi: require('./mi'), 
