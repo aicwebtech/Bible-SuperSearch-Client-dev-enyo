@@ -789,6 +789,8 @@ var App = Application.kind({
 
         var t = this;
 
+        Passage.setApp(t);
+
         QUnit.module("Basic Tests", function() {
             QUnit.test( "Post Rendering", function( assert ) {
                 assert.ok( t.viewReady, "The view should be rendered by the time we get here" );
