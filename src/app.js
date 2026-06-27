@@ -978,7 +978,16 @@ var App = Application.kind({
             }
         }
         else {
-            var formData = JSON.parse(formDataJson);
+            // Stored form data may be corrupt or tampered with - fall back to defaults on
+            // a parse failure rather than throwing out of init (per the localStorage rule).
+            try {
+                var formData = JSON.parse(formDataJson);
+            }
+            catch(e) {
+                this.debug && this.log('ignoring invalid stored form data');
+                localStorage.removeItem('BibleSuperSearchFormData');
+                return;
+            }
         }
 
         if(formData.redirected) {
@@ -1079,7 +1088,20 @@ var App = Application.kind({
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },
     _hashForm: function(parts) {
-        var formData = (parts[0]) ? JSON.parse(parts[0]) : {};
+        var formData = {};
+
+        // parts[0] comes straight from the URL hash (attacker-controllable). Don't let
+        // malformed JSON throw out of the route handler - just ignore an invalid payload.
+        if(parts[0]) {
+            try {
+                formData = JSON.parse(parts[0]);
+            }
+            catch(e) {
+                this.debug && this.log('ignoring invalid hash form data');
+                return;
+            }
+        }
+
         this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },
@@ -2050,8 +2072,12 @@ var App = Application.kind({
             return this.baseUrl;
         }   
 
-        if(url.indexOf(this.baseUrl) === 0 || url.indexOf('http://') === 0 || url.indexOf('https://') === 0) {
-            return url; // already absolute
+        // Only treat a value as already-absolute when it points back at our own base URL.
+        // History entries come from localStorage and could be tampered with; any other
+        // absolute (external) or unexpected-scheme URL is rebuilt below as a same-origin
+        // fragment link so a poisoned entry can't become an external/javascript: href.
+        if(url.indexOf(this.baseUrl) === 0) {
+            return url; // already absolute, same origin
         }
 
         return this.baseUrl + '#' + this.getRelativeUrl(url);
