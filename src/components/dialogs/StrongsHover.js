@@ -64,9 +64,19 @@ module.exports = kind({
     },
     displayPosition: function(top, left, content, parentWidth, parentHeight, showButtons) {
         this.inherited(arguments);
-        this.set('strongsRaw', content);
 
-        if(this._loadFromCache(content)) {
+        // 'content' is the innerHTML of the hovered Strong's link - untrusted markup, not a
+        // vetted token. Constrain it to the canonical Strong's number ([GHgh][0-9]+) before it
+        // flows into the cache key, the API request, and the navigation URL in followLink().
+        var strongs = this._sanitizeStrongs(content);
+
+        if(!strongs) {
+            return;
+        }
+
+        this.set('strongsRaw', strongs);
+
+        if(this._loadFromCache(strongs)) {
             this.showContent();
             return;
         }
@@ -75,7 +85,7 @@ module.exports = kind({
         this.showLoading();
 
         var postBody = {
-            strongs: content,
+            strongs: strongs,
             key: this.app.configs.apiKey || null
         };
 
@@ -109,6 +119,16 @@ module.exports = kind({
     handleError: function(inSender, inResponse) {
         this.showContent();
         this.$.ContentContainer.set('content', 'An error has occurred');
+    },
+    // Extracts the canonical Strong's token from untrusted input. Returns '' when no valid
+    // token is present, so callers can bail rather than build URLs/requests from junk.
+    _sanitizeStrongs: function(content) {
+        if(content === null || typeof content == 'undefined') {
+            return '';
+        }
+
+        var match = String(content).match(/[GHgh][0-9]+/);
+        return match ? match[0].toUpperCase() : '';
     },
     _loadFromCache: function(strongs) {
         if(typeof this.strongsCache[strongs] == 'undefined') {

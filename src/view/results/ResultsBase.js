@@ -11,6 +11,7 @@ var Nav = require('../../components/NavButtons/NavHtml');
 var HoverDialog = require('../../components/dialogs/Hover');
 var StrongsHoverDialog = require('../../components/dialogs/StrongsHover');
 var utils = require('enyo/utils');
+var bssUtils = require('../../lib/Utils');
 var Ajax = require('enyo/Ajax');
 var i18n = require('../../components/Locale/i18nComponent');
 
@@ -439,8 +440,9 @@ module.exports = kind({
     },
     proccessSingleVerseReference: function(passage, verse) {
         var bookName = this.app.getLocaleBookName(passage.book_id, passage.book_name);
-        return bookName + ' ' + verse.chapter + ':' + verse.verse;
-    },    
+        // Reference is concatenated into allowHtml content downstream, so escape the API-derived parts.
+        return bssUtils.escapeHtml(bookName + ' ' + verse.chapter + ':' + verse.verse);
+    },
     processPassageVerseContent: function(passage, verse) {
         var ref = this.proccessPassageVerseReference(passage, verse);
         return this.processAssemblePassageVerse(ref, verse);
@@ -450,7 +452,7 @@ module.exports = kind({
             return this.proccessSingleVerseReference(passage, verse);
         }
 
-        return verse.verse;
+        return bssUtils.escapeHtml(verse.verse);
     },
     processAssembleSingleVerse: function(reference, verse) {
         return this.processAssembleVerse(reference, verse);
@@ -809,13 +811,21 @@ module.exports = kind({
             title = this.app.get('bssTitle'),
             curURL = window.location.href;
 
+        // bssTitle and the URL are derived from user-supplied search input, so they must be
+        // escaped for their respective contexts before being written into the print document.
+        // safeCssPath is emitted as a double-quoted HTML attribute (<link href="...">), which is
+        // the correct context for escapeHtml - do not place it in a CSS url('...') string.
+        var safeTitle = bssUtils.escapeHtml(title),
+            safeCssPath = bssUtils.escapeHtml(cssPath),
+            // JSON.stringify yields a safely-quoted/escaped JS string literal; additionally escape
+            // '<' so a '</script>' sequence in the URL cannot prematurely terminate the script tag.
+            safeUrl = JSON.stringify(curURL).replace(/</g, '\\u003c');
+
         var html = '';
             html += '<html>\n';
             html +=     '<head>\n';
-            html +=         '<title>' + title + '</title>\n';
-            html +=         '<style>\n';
-            html +=             "@import url('" + cssPath + "');\n";
-            html +=         '</style>\n';
+            html +=         '<title>' + safeTitle + '</title>\n';
+            html +=         '<link rel="stylesheet" type="text/css" href="' + safeCssPath + '">\n';
             html +=     '</head>\n';
             html +=     '<body>\n';
             html +=         '<div class="biblesupersearch_print">\n';
@@ -823,7 +833,7 @@ module.exports = kind({
             html +=         '</div>\n';
             html +=     '</body>\n';
             html +=     '<script>\n';
-            html +=         'history.replaceState(history.state, "", "' + curURL + '");\n'; // Force the displayed URL to that of the parent page
+            html +=         'history.replaceState(history.state, "", ' + safeUrl + ');\n'; // Force the displayed URL to that of the parent page
             html +=         'window.print();\n';                                            // After html is rendered, this triggers the print dialog
             html +=     '</script>\n';
             html += '</html>\n';

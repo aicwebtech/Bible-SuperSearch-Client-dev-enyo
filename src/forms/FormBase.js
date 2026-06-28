@@ -634,7 +634,16 @@ module.exports = kind({
         this.set('cacheHash', inResponse.results.hash);
         this.requestPending = false;
         var formData = utils.clone(inResponse.results.form_data);
-        formData.bible = JSON.parse(formData.bible);
+
+        try {
+            formData.bible = JSON.parse(formData.bible);
+        }
+        catch(e) {
+            this.app.displayInitError();
+            this.errorHandle && this.errorHandle();
+            return;
+        }
+
         formData.shortcut = formData.shortcut || 0;
         this.setFormDataWithMapping(formData);
         // this.set('formData', {});
@@ -644,7 +653,17 @@ module.exports = kind({
     },
     handleCacheError: function(inSender, inResponse) {
         this.requestPending = false;
-        var response = JSON.parse(inSender.xhrResponse.body);
+
+        if(this.app && this.app.debug && inSender && inSender.xhrResponse && inSender.xhrResponse.body) {
+            // Response body is only inspected for logging; don't let a non-JSON body throw.
+            try {
+                var response = JSON.parse(inSender.xhrResponse.body);
+                this.log('Cache error response', response);
+            }
+            catch(e) {
+                // malformed error body - nothing further to extract
+            }
+        }
         this.log('An error has occurred');
     },
     // Handles cache change and page change
