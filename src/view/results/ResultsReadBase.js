@@ -256,19 +256,19 @@ module.exports = kind({
 
         if(!this.multiBibles) {
             var shareLink = this.linkBuilder.buildPassageSignalLink('onShare', this.formData.bible, pd);
-            refContent += '<a href="' + bssUtils.escapeHtml(shareLink) + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a> &nbsp;';
+            refContent += '<a href="' + bssUtils.escapeHtml(shareLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Share')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Share')) + '</a> &nbsp;';
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', this.formData.bible, pd);
-            refContent += '<a href="' + bssUtils.escapeHtml(copyLink) + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp;';
+            refContent += '<a href="' + bssUtils.escapeHtml(copyLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Copy')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Copy')) + '</a> &nbsp;';
 
             if(this.audioBibleEnabled(this.firstBible, pd)) {
                 var listenLink = this.linkBuilder.buildPassageSignalLink('onListen', this.formData.bible, pd);
-                refContent += '<a href="' + bssUtils.escapeHtml(listenLink) + '" title="' + this.app.t('Listen') + '" class="bss_std_link">' + this.app.it('Listen') + '</a> &nbsp;';
+                refContent += '<a href="' + bssUtils.escapeHtml(listenLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Listen')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Listen')) + '</a> &nbsp;';
             }
         }
 
         if(this.app.statics.access.statistics) {
             var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
-            refContent += '<a href="' + bssUtils.escapeHtml(sl) + '" title="' + this.app.t('Statistics') + '" class="bss_std_link">' + this.app.t('Statistics') + '</a> &nbsp;';
+            refContent += '<a href="' + bssUtils.escapeHtml(sl) + '" title="' + bssUtils.escapeHtml(this.app.t('Statistics')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.t('Statistics')) + '</a> &nbsp;';
         }
 
         var passageCrossReferencesLink = this._buildPassageCrossReferencesToggleLink(pd);
@@ -322,13 +322,13 @@ module.exports = kind({
                 bibleContent = ''; //this._getBibleDisplayName(bible_info);
 
                 shareLink = this.linkBuilder.buildPassageSignalLink('onShare', [mod], pd);
-                bibleContent += '<a href="' + bssUtils.escapeHtml(shareLink) + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a> &nbsp;';
+                bibleContent += '<a href="' + bssUtils.escapeHtml(shareLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Share')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Share')) + '</a> &nbsp;';
                 copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [mod], pd);
-                bibleContent += '<a href="' + bssUtils.escapeHtml(copyLink) + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp;';
+                bibleContent += '<a href="' + bssUtils.escapeHtml(copyLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Copy')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Copy')) + '</a> &nbsp;';
 
                 if(this.audioBibleEnabledChapter(mod, pd)) {
                     listenLink = this.linkBuilder.buildPassageSignalLink('onListen', [mod], pd);
-                    bibleContent += '<a href="' + bssUtils.escapeHtml(listenLink) + '" title="' + this.app.t('Listen') + '" class="bss_std_link">' + this.app.it('Listen') + '</a> &nbsp;';
+                    bibleContent += '<a href="' + bssUtils.escapeHtml(listenLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Listen')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Listen')) + '</a> &nbsp;';
                 }
 
                 var showbibleContent = !pd.single_verse && pd.verses_count > 1;
@@ -918,16 +918,18 @@ module.exports = kind({
 
         // verse.linksHtml = '<br /><small>'; // future use?
 
-        var chapterTitle = this.app.t("Show full chapter"),
-            chapterText = this.app.it('Chapter'),
-            verseTitle = this.app.t('Show this verse'),
-            contextTitle = this.app.t('Show in context'),
-            contextText = this.app.it('Context'),
-            shareText = this.app.it('Share'),
-            copyText = this.app.it('Copy'),
-            shareTitle = this.app.t('Share'),
-            copyTitle = this.app.t('Copy'),
-            listenText = this.app.it('Listen');
+        // These are translation strings (developer/translator-controlled) concatenated into
+        // allowHtml markup below as title attributes and link text, so escape them here once.
+        var chapterTitle = bssUtils.escapeHtml(this.app.t("Show full chapter")),
+            chapterText = bssUtils.escapeHtml(this.app.it('Chapter')),
+            verseTitle = bssUtils.escapeHtml(this.app.t('Show this verse')),
+            contextTitle = bssUtils.escapeHtml(this.app.t('Show in context')),
+            contextText = bssUtils.escapeHtml(this.app.it('Context')),
+            shareText = bssUtils.escapeHtml(this.app.it('Share')),
+            copyText = bssUtils.escapeHtml(this.app.it('Copy')),
+            shareTitle = bssUtils.escapeHtml(this.app.t('Share')),
+            copyTitle = bssUtils.escapeHtml(this.app.t('Copy')),
+            listenText = bssUtils.escapeHtml(this.app.it('Listen'));
 
         var html = '';
             html += '<a href="' + bssUtils.escapeHtml(verseLink) + '" title="' + verseTitle + '" class="bss_std_link bobo">' + bssUtils.escapeHtml(bookName + ' ' + verse.chapter + ':' + verse.verse) + '</a>';
@@ -954,7 +956,7 @@ module.exports = kind({
             // Statistics
             if(this.app.statics.access.statistics) {
                 var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, verse.chapter, verse.verse);
-                html += '&nbsp; <sup>' + '<a href="' + bssUtils.escapeHtml(sl) + '" title="' + chapterTitle + '" class="bss_std_link">' + this.app.t('Statistics') + '</a></sup>';
+                html += '&nbsp; <sup>' + '<a href="' + bssUtils.escapeHtml(sl) + '" title="' + chapterTitle + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.t('Statistics')) + '</a></sup>';
             }
 
             if(crossReferencesLink) {

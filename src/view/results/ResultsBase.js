@@ -813,6 +813,8 @@ module.exports = kind({
 
         // bssTitle and the URL are derived from user-supplied search input, so they must be
         // escaped for their respective contexts before being written into the print document.
+        // safeCssPath is emitted as a double-quoted HTML attribute (<link href="...">), which is
+        // the correct context for escapeHtml - do not place it in a CSS url('...') string.
         var safeTitle = bssUtils.escapeHtml(title),
             safeCssPath = bssUtils.escapeHtml(cssPath),
             // JSON.stringify yields a safely-quoted/escaped JS string literal; additionally escape
@@ -823,9 +825,7 @@ module.exports = kind({
             html += '<html>\n';
             html +=     '<head>\n';
             html +=         '<title>' + safeTitle + '</title>\n';
-            html +=         '<style>\n';
-            html +=             "@import url('" + safeCssPath + "');\n";
-            html +=         '</style>\n';
+            html +=         '<link rel="stylesheet" type="text/css" href="' + safeCssPath + '">\n';
             html +=     '</head>\n';
             html +=     '<body>\n';
             html +=         '<div class="biblesupersearch_print">\n';
