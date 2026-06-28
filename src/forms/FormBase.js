@@ -654,14 +654,16 @@ module.exports = kind({
     handleCacheError: function(inSender, inResponse) {
         this.requestPending = false;
 
-        // Response body is only inspected for logging; don't let a non-JSON body throw.
-        try {
-            var response = JSON.parse(inSender.xhrResponse.body);
+        if(this.app && this.app.debug && inSender && inSender.xhrResponse && inSender.xhrResponse.body) {
+            // Response body is only inspected for logging; don't let a non-JSON body throw.
+            try {
+                var response = JSON.parse(inSender.xhrResponse.body);
+                this.log('Cache error response', response);
+            }
+            catch(e) {
+                // malformed error body - nothing further to extract
+            }
         }
-        catch(e) {
-            // malformed error body - nothing further to extract
-        }
-
         this.log('An error has occurred');
     },
     // Handles cache change and page change
