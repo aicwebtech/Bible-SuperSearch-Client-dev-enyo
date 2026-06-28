@@ -128,7 +128,7 @@ module.exports = kind({
         }
 
         var match = String(content).match(/[GHgh][0-9]+/);
-        return match ? match[0] : '';
+        return match ? match[0].toUpperCase() : '';
     },
     _loadFromCache: function(strongs) {
         if(typeof this.strongsCache[strongs] == 'undefined') {

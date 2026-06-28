@@ -913,8 +913,6 @@ module.exports = kind({
 
         var crossReferencesLink = this._buildCrossReferencesToggleLink(passageClone);
 
-        var html =  '<a href="' + bssUtils.escapeHtml(chapterLink) + '" title="Show this Chapter" class="std_link">' + bssUtils.escapeHtml(bookName + ' ' + verse.chapter) + '</a>:';
-            html += '<a href="' + bssUtils.escapeHtml(contextLink) + '" title="Show in Context" class="std_link">' + bssUtils.escapeHtml(verse.verse) + '</a>';
 
         // verse.linksHtml = '<br /><small>'; // future use?
 
