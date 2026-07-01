@@ -452,6 +452,10 @@ module.exports = {
     'Passages': 'Ye posyten',
     'Alias': 'Alylias',
     'You cannot search for these common words': 'Yarr, no searcheyt for scurvey dog wordes',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Clue to the treasures: To rouse the chosen Bible versions, seek out a passage, turn to a chapter, or set sail on a search.',
+
     // End 5.5 part 2
 
     // 5.7

@@ -459,6 +459,9 @@ module.exports = {
     'Alias': 'Alias',
     'You cannot search for these common words': 'Non è possibile cercare queste parole comuni',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Suggerimento: per attivare le versioni della Bibbia scelte, cerca un passaggio, apri un capitolo o esegui una ricerca.',
+
     'Include Link': 'Includi Collegamento',
     'Include Formatting': 'Includi Formattazione',
     'Resume Search': 'Riprendi ricerca',

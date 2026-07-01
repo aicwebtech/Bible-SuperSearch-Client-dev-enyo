@@ -458,6 +458,9 @@ module.exports = {
     'Alias': '别名',
     'You cannot search for these common words': '这些常用词你无法搜索',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': '提示：要激活所选的圣经版本，请查找段落、切换章节或执行搜索。',
+
     'Include Link': '包括链接',
     'Include Formatting': '包括格式化',
     'Resume Search': '简历搜索',

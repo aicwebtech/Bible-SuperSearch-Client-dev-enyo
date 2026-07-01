@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'Bí danh',
     'You cannot search for these common words': 'Bạn không thể tìm kiếm những từ thông dụng này',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Mẹo: Để kích hoạt các phiên bản Kinh Thánh đã chọn, hãy tra đoạn văn, chuyển chương hoặc thực hiện tìm kiếm.',
+
     'Include Link': 'Bao gồm liên kết',
     'Include Formatting': 'Bao gồm Định dạng',
     'Resume Search': 'Tìm kiếm sơ yếu lý lịch',

@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'alyas',
     'You cannot search for these common words': 'Hindi mo maaaring hanapin ang mga karaniwang salitang ito',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Tip: Upang i-activate ang piniling mga bersyon ng Bibliya, hanapin ang sipi, palitan ang kabanata, o magsagawa ng paghahanap.',
+
     'Include Link': 'Isama ang Link',
     'Include Formatting': 'Isama ang Pag-format',
     'Resume Search': 'Ipagpatuloy ang Paghahanap',

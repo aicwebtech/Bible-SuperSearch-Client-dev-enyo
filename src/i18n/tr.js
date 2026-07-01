@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'Takma ad',
     'You cannot search for these common words': 'Bu yaygın kelimeleri arayamazsınız',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'İpucu: Seçilen İncil sürümlerini etkinleştirmek için bir pasaj arayın, bir bölüme geçin veya arama yapın.',
+
     'Include Link': 'Bağlantıyı Dahil Et',
     'Include Formatting': 'Biçimlendirmeyi Dahil Et',
     'Resume Search': 'Aramaya Devam Et',

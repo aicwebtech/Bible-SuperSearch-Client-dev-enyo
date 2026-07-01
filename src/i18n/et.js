@@ -491,6 +491,9 @@ module.exports = {
     'Alias': 'Teise nimega',
     'You cannot search for these common words': 'Te ei saa neid levinud sõnu otsida',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Näpunäide. Valitud Piibli versioonide aktiveerimiseks otsige lõik, avage peatükk või käivitage otsing.',
+
     'Include Link': 'Kaasa Hüperlink',
     'Include Formatting': 'Kaasa Vormindamine',
     'Resume Search': 'Jätka Otsingut',

@@ -474,6 +474,9 @@ module.exports = {
     'Alias': 'نام مستعار',
     'You cannot search for these common words': 'شما نمی توانید این کلمات رایج را جستجو کنید',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'نکته: برای فعال کردن نسخه‌های انتخابی کتاب مقدس، بخشی را جستجو کنید، فصلی را ورق بزنید یا جستجو را اجرا کنید.',
+
     'Include Link': 'شامل پیوند',
     'Include Formatting': 'شامل قالببندی',
     'Resume Search': 'جستجوی رزومه',

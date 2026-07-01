@@ -459,6 +459,9 @@ module.exports = {
     'Alias': 'Álnév',
     'You cannot search for these common words': 'Nem lehet keresni ezekre a gyakori szavakra',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Tipp: A kiválasztott Biblia-verziók aktiválásához keressen egy részt, lapozzon egy fejezetre, vagy indítson keresést.',
+
     'Include Link': 'Hiperhivatkozás Felvétele',
     'Include Formatting': 'Formázás Belefoglalása',
     'Resume Search': 'Önéletrajz Keresés',

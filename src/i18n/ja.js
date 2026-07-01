@@ -459,6 +459,9 @@ module.exports = {
     'Alias': 'エイリアス',
     'You cannot search for these common words': 'これらの一般的な単語は検索できません',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'ヒント: 選択した聖書バージョンを有効にするには、パッセージを検索するか、章を開くか、検索を実行してください。',
+
     'Include Link': 'リンクを含める',
     'Include Formatting': 'フォーマットを含めます',
     'Resume Search': '検索を再開します',

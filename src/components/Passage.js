@@ -48,6 +48,24 @@ module.exports = {
         return this.routeRequest(str) == 'reference' ? true : false;
     },
 
+    disambiguateRequest: function(str) {
+        var field = this.routeRequest(str);
+
+        if(field == 'reference') {
+            return null; // It's already a passage, no need to disambiguate
+        }
+
+        // Attempt to check for single book matches, and if so, return the book id as the disambiguation
+        // All other passage parsing, ect has already been attempted in routeRequest, so we don't need to do that here.
+        var book = this.app.findBookByName(str);
+
+        if(book) {
+            return book.id;
+        }
+        
+        return null;
+    },
+
     _containsNonPassageCharacters: function(str) {
         if(!str) {
             return false;

@@ -473,6 +473,9 @@ module.exports = {
     'Alias': '별명',
     'You cannot search for these common words': '이러한 일반적인 단어는 검색할 수 없습니다.',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': '팁: 선택한 성경 버전을 활성화하려면 구절을 검색하거나 장을 넘기거나 검색을 실행하세요.',
+
     'Include Link': '링크 포함',
     'Include Formatting': '포맷 포함',
     'Resume Search': '검색을 재개합니다',

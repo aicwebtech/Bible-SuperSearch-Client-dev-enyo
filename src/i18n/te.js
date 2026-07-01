@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'మారుపేరు',
     'You cannot search for these common words': 'మీరు ఈ సాధారణ పదాల కోసం వెతకలేరు',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'చిట్కా: ఎంచుకున్న బైబిల్ వెర్షన్‌లను సక్రియం చేయడానికి, ప్రకరణను శోధించండి, అధ్యాయాన్ని మార్చండి లేదా శోధనను అమలు చేయండి.',
+
     'Include Link': 'లింక్ చేర్చండి',
     'Include Formatting': 'ఫార్మాటింగ్ ను చేర్చండి',
     'Resume Search': 'శోధనను పునఃప్రారంభించండి',

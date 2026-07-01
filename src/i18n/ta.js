@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'மாற்றுப்பெயர்',
     'You cannot search for these common words': 'இந்த பொதுவான வார்த்தைகளை நீங்கள் தேட முடியாது',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'உதவிக்குறிப்பு: தேர்ந்தெடுக்கப்பட்ட பைபிள் பதிப்புகளை செயல்படுத்த, ஒரு பத்தியைத் தேடுங்கள், ஒரு அதிகாரத்தை மாற்றுங்கள் அல்லது தேடலை இயக்குங்கள்.',
+
     'Include Link': 'இணைப்பைச் சேர்க்கவும்',
     'Include Formatting': 'வடிவமைத்தல் அடங்கும்',
     'Resume Search': 'தேடலை மீண்டும் தொடரவும்',
