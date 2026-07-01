@@ -376,7 +376,12 @@ module.exports = kind({
             formData.request = this.mapPassages(formData.request, true);
         }
 
-        formData.disamb_book = formData.request ? this.Passage.disambiguateRequest(formData.request) : null;
+        var disambBook = formData.request ? this.Passage.disambiguateRequest(formData.request) : null;
+        if(disambBook !== null) {
+            formData.disamb_book = disambBook;
+        } else {
+            delete formData.disamb_book;
+        }
 
         if(isSearch && this.app.configs.limitSearchManual) {
             switch(formData.shortcut) {
