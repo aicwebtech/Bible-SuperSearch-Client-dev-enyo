@@ -141,9 +141,16 @@ module.exports = {
             return ref;
         }
 
+        // parseBook resolves book ranges via findBookByName, so an app must be set.
+        // this.app should always be set (Passage.setApp) by the time we get here; fail
+        // loudly rather than silently mis-splitting hyphenated book names (BSS-270).
+        if(!this.app) {
+            throw new Error('Passage.parseBook requires an app - call Passage.setApp() first.');
+        }
+
         var bookNormalized = this.normalizeDashes(ref.book);
 
-        if(bookNormalized.indexOf('-') !== -1 && this.app) {
+        if(bookNormalized.indexOf('-') !== -1) {
             // Some book names contain hyphens (e.g. Russian "1-Я Царств"), so try a direct
             // lookup first before treating the hyphen as a book-range separator.
             var Book = this.app.findBookByName(bookNormalized);
@@ -178,31 +185,29 @@ module.exports = {
                 }
             }
 
-            // Fallback to the original first/last segment behaviour for inputs the smart
-            // split could not resolve (e.g. a trailing hyphen "Genesis-").
-            if(!(Book_St && Book_En)) {
-                var books = bookNormalized.split('-');
-                var book_st = books.shift();
-                var book_en = books.pop();
-                book_en = (book_en) ? book_en : book_st;
-                Book_St = this.app.findBookByName(book_st);
-                Book_En = this.app.findBookByName(book_en);
-            }
-
             if(Book_St && Book_En) {
                 ref.isBookRange = true;
                 ref.bookSt = Book_St.name;
                 ref.bookEn = Book_En.name;
                 return ref;
             }
-        }
 
-        // Fallback in case this.app is not set
-        if(bookNormalized.indexOf('-') !== -1 && !this.app) {
+            // Fallback for inputs the smart split could not fully resolve: keep treating
+            // this as a range using the first/last segment, resolving each side to a
+            // canonical book name where possible and preserving the raw text otherwise.
+            // This keeps a partially-valid range (e.g. "Genesis-Foo") from collapsing and
+            // dropping the endpoint that DID resolve.
+            var books   = bookNormalized.split('-');
+            var book_st = books.shift().trim();
+            var book_en = books.pop();
+            book_en = (book_en) ? book_en.trim() : book_st;
+
+            var Book_St_fb = this.app.findBookByName(book_st);
+            var Book_En_fb = this.app.findBookByName(book_en);
+
             ref.isBookRange = true;
-            var books = bookNormalized.split('-');
-            ref.bookSt = books.shift();
-            ref.bookEn = books.pop();
+            ref.bookSt = Book_St_fb ? Book_St_fb.name : book_st;
+            ref.bookEn = Book_En_fb ? Book_En_fb.name : book_en;
             return ref;
         }
 

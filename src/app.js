@@ -831,9 +831,14 @@ var App = Application.kind({
                 // instead, so t.locale must be set to the target locale BEFORE building the list.
                 var localeCode = item.meta.code;
                 var savedLocale = t.locale;
+                var hadBookList = !!t.localeBibleBooks[localeCode];
+
+                // Swap in the target locale + a temporary book list, and ALWAYS restore them
+                // in the finally below - otherwise a throw mid-loop would leave t.locale
+                // pinned and leak the temp list, corrupting every subsequent locale iteration.
+                try {
                 t.locale = localeCode;
 
-                var hadBookList = !!t.localeBibleBooks[localeCode];
                 if(!hadBookList) {
                     var tempBooks = [];
                     for(var bi = 0; bi < item.bibleBooks.length; bi++) {
@@ -866,14 +871,22 @@ var App = Application.kind({
                     }
 
                     if(item.bibleBooks[b] && item.bibleBooks[b].name) {
-                        var testRef = item.bibleBooks[b].name + ' 1';
+                        var bookName = item.bibleBooks[b].name;
+                        var testRef = bookName + ' 1';
                         assert.true(Passage.isPassage(testRef), ll + ' Passage.isPassage should be true for "' + testRef + '"');
+
+                        // isPassage above passes trivially for any "<name> 1" (it contains a
+                        // digit), so also assert the localized name actually RESOLVES to a book.
+                        // This is what genuinely exercises the locale book list built above.
+                        assert.ok(t.findBookByName(bookName), ll + ' findBookByName should resolve "' + bookName + '"');
 
                         // Also test matching (alternative user-typed) names.
                         if(item.bibleBooks[b].matching && item.bibleBooks[b].matching.length) {
                             for(var mi = 0; mi < item.bibleBooks[b].matching.length; mi++) {
-                                var matchRef = item.bibleBooks[b].matching[mi] + ' 1';
+                                var matchName = item.bibleBooks[b].matching[mi];
+                                var matchRef = matchName + ' 1';
                                 assert.true(Passage.isPassage(matchRef), ll + ' Passage.isPassage should be true for matching "' + matchRef + '"');
+                                assert.ok(t.findBookByName(matchName), ll + ' findBookByName should resolve matching "' + matchName + '"');
                             }
                         }
                     }
@@ -886,9 +899,12 @@ var App = Application.kind({
                     assert.ok(item.bibleBooks[b].name, 'Book name must not be empty');
                 }
 
-                t.locale = savedLocale;
-                if(!hadBookList) {
-                    delete t.localeBibleBooks[localeCode];
+                }
+                finally {
+                    t.locale = savedLocale;
+                    if(!hadBookList) {
+                        delete t.localeBibleBooks[localeCode];
+                    }
                 }
 
                 // We check book names against English ones, at least ONE must not match
