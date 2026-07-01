@@ -157,6 +157,8 @@ var App = Application.kind({
         this.set('baseTitle', document.title);
         var t = this;
 
+        Passage.setApp(t);
+
         if(typeof QUnit != 'undefined') {
             QUnit.config.autostart = false;
             QUnit.config.hidepassed = true;
@@ -788,8 +790,6 @@ var App = Application.kind({
         }
 
         var t = this;
-
-        Passage.setApp(t);
 
         QUnit.module("Basic Tests", function() {
             QUnit.test( "Post Rendering", function( assert ) {
