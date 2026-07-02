@@ -1790,6 +1790,9 @@ var App = Application.kind({
                 var fmt = name.toLocaleLowerCase(localeFmt);
         }
 
+        // Normalize dashes to hyphens
+        fmt = Passage.normalizeDashes(fmt);
+
         switch(locale) {
             case 'lv':
                 fmt = fmt.replace(/ā/g, 'a');

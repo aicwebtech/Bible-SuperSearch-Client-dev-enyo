@@ -29,13 +29,13 @@ module.exports = {
             (
                 value.match(/[0-9]/) && !value.match(/[()]/) || 
                 passages.length >= 2 || 
-                (book && passages[0].chapter_verse)
+                (book && passages[0].chapter_verse && passages[0].chapter_verse != '')
             ) 
         ) {
             field = 'reference';
         }
         else {
-            // Todo, check for SINGLE PASSAGE here. 
+            // see this.disambiguateRequest for the logic that determines if a request is a book name or not 
             field = 'search';
         }
 
@@ -49,6 +49,14 @@ module.exports = {
     },
 
     disambiguateRequest: function(str) {
+        if(!this.app) {
+            throw new Error('Passage.disambiguateRequest requires an app - call Passage.setApp() first.');
+        }
+        
+        if(!str) {
+            return null;
+        }
+
         var field = this.routeRequest(str);
 
         if(field == 'reference') {
@@ -57,7 +65,8 @@ module.exports = {
 
         // Attempt to check for single book matches, and if so, return the book id as the disambiguation
         // All other passage parsing, ect has already been attempted in routeRequest, so we don't need to do that here.
-        var book = this.app.findBookByName(str);
+        var norm = this.normalizeDashes(str).trim();
+        var book = this.app.findBookByName(norm);
 
         if(book) {
             return book.id;
