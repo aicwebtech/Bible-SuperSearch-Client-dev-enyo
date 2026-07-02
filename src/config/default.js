@@ -44,6 +44,8 @@ var defaultConfig = {
     'audioBibleDisplayThreshold': 3,                   // Width threshold for audioBibleDisplay 'threshold' option
     'crossReferenceEnable': false,                     // Enables cross references globally when API feature is available
     'crossReferenceShowDefault': 'toggle',             // Default user setting: hidden | toggle | show
+    'crossReferenceFormatDefault': 'auto',             // Default user setting for cross reference list layout: compact | auto | expand
+    'crossReferenceLinkIncludeParent': false,          // When true, prepend the "from" (parent) reference first to each cross reference link and "Open All" link
     'disableCache': false,                             // When TRUE, breaks cache on API calls (appends random param); FALSE allows caching
 
     _urlDefaultNotice: function() {

@@ -65,6 +65,10 @@ module.exports = {
     'Hidden': 'Paslēpts',
     'Toggle': 'Pārslēgt',
     'Show': 'Rādīt',
+    'Cross Reference Format': 'Paralēlo rakstvietu formāts',
+    'Compact': 'Kompakts',
+    'Auto': 'Automātiski',
+    'Expand': 'Izvērsts',
 
     'Limit Search To': 'Attiecināt Meklēšanu Uz Apgabalu',
     'Limit search to': 'Attiecināt meklēšanu uz apgabalu', // Watch case!

@@ -81,6 +81,10 @@ module.exports = {
     'Hidden': 'ਲੁਕਾਇਆ',
     'Toggle': 'ਟੌਗਲ',
     'Show': 'ਦਿਖਾਓ',
+    'Cross Reference Format': 'ਕਰਾਸ ਹਵਾਲਾ ਫਾਰਮੈਟ',
+    'Compact': 'ਸੰਖੇਪ',
+    'Auto': 'ਆਟੋਮੈਟਿਕ',
+    'Expand': 'ਵਿਸਤ੍ਰਿਤ',
 
     'Limit Search To': 'ਖੋਜ ਨੂੰ ਸੀਮਿਤ ਕਰੋ',
     'Limit search to': 'ਖੋਜ ਨੂੰ ਸੀਮਿਤ ਕਰੋ', // Watch case!

@@ -81,6 +81,10 @@ module.exports = {
     'Hidden': 'Didhelikake',
     'Toggle': 'Ganti',
     'Show': 'Tampilake',
+    'Cross Reference Format': '',
+    'Compact': '',
+    'Auto': '',
+    'Expand': '',
 
     'Limit Search To': '',
     'Limit search to': '', // Watch case!

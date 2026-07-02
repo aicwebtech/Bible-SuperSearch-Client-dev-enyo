@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'Imefichwa',
     'Toggle': 'Badilisha',
     'Show': 'Onyesha',
+    'Cross Reference Format': 'Mpangilio wa marejeo ya msalaba',
+    'Compact': 'Mfupi',
+    'Auto': 'Kiotomatiki',
+    'Expand': 'Panua',
 
     'Limit Search To': 'Punguza Utafutaji Kwa',
     'Limit search to': 'Punguza utafutaji kwa', // Watch case!

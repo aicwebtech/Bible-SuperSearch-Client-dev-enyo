@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'Fshehur',
     'Toggle': 'Ndrysho',
     'Show': 'Shfaq',
+    'Cross Reference Format': 'Formati i referencave të kryqëzuara',
+    'Compact': 'Kompakt',
+    'Auto': 'Automatik',
+    'Expand': 'I zgjeruar',
 
     'Limit Search To': 'Kufizoni Kërkimin Në',
     'Limit search to': 'Kufizoni kërkimin në', // Watch case!

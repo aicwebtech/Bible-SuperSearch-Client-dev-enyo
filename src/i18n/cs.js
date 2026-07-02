@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'Skryté',
     'Toggle': 'Přepnout',
     'Show': 'Zobrazit',
+    'Cross Reference Format': 'Formát křížových odkazů',
+    'Compact': 'Kompaktní',
+    'Auto': 'Automaticky',
+    'Expand': 'Rozšířený',
 
     'Limit Search To': 'Omezit Vyhledávání Na',
     'Limit search to': 'Omezit vyhledávání na', // Watch case!

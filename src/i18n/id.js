@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'Tersembunyi',
     'Toggle': 'Alihkan',
     'Show': 'Tampilkan',
+    'Cross Reference Format': 'Format referensi silang',
+    'Compact': 'Ringkas',
+    'Auto': 'Otomatis',
+    'Expand': 'Diperluas',
 
     'Limit Search To': 'Batasi Pencarian Untuk',
     'Limit search to': 'Batasi pencarian pada', // Watch case!

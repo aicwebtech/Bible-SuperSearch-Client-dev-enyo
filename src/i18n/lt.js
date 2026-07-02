@@ -65,6 +65,10 @@ module.exports = {
     'Hidden': 'Paslėpta',
     'Toggle': 'Perjungti',
     'Show': 'Rodyti',
+    'Cross Reference Format': 'Kryžminių nuorodų formatas',
+    'Compact': 'Kompaktiškas',
+    'Auto': 'Automatinis',
+    'Expand': 'Išplėstas',
 
     'Limit Search To': 'Apriboti Paiešką Iki',
     'Limit search to': 'Apriboti paiešką iki', // Watch case!

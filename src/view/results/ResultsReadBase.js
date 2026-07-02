@@ -660,7 +660,8 @@ module.exports = kind({
 
         for(var chapter in passage.verse_index) {
             passage.verse_index[chapter].forEach(function(verse) {
-                var refs = this._getCrossReferences(passage.book_id, chapter, verse);
+                // Paragraph-mode footnotes always render in expanded (book-grouped) layout.
+                var refs = this._getCrossReferences(passage.book_id, chapter, verse, 'expand');
 
                 if(refs.length) {
                     var footnoteBody = refs.join('');
@@ -757,20 +758,20 @@ module.exports = kind({
 
         return '<div class="bss_cross_references">' + title + ': ' + body + '</div>';
     },
-    _getCrossReferences: function(bookId, chapter, verse) {
+    _getCrossReferences: function(bookId, chapter, verse, format) {
         var data = this.app.get('altResponseData') || this.get('resultsData') || {};
         var crossReferences = data.cross_references || [];
         var found = [];
 
-        if(!bookId || !chapter || !verse) { 
-            return found;   
+        if(!bookId || !chapter || !verse) {
+            return found;
         }
 
         var idx = bookId + '_' + chapter + '_' + verse;
 
         // Check if crossReferennce is an object - preferred
         if(typeof crossReferences == 'object' && crossReferences !== null && !Array.isArray(crossReferences)) {
-            return crossReferences[idx] ? [this._formatCrossReference(crossReferences[idx])] : [];
+            return crossReferences[idx] ? [this._formatCrossReference(crossReferences[idx], format)] : [];
         }
 
         // Fallback for older array-based format - loop through all and find matches
@@ -792,7 +793,7 @@ module.exports = kind({
                 continue;
             }
 
-            var label = this._formatCrossReference(item);
+            var label = this._formatCrossReference(item, format);
 
             if(label) {
                 found.push(label);
@@ -807,12 +808,30 @@ module.exports = kind({
         }
         return '';
     },
-    _formatCrossReference: function(item) {
+    // Builds the href for a single cross reference link via the LinkBuilder. When
+    // crossReferenceLinkIncludeParent is enabled, the originating ("from" / parent) reference is
+    // prepended so the link pulls both the parent verse and the cross reference (as a combined
+    // reference); the link's display text is unchanged either way.
+    _crossReferenceTargetHref: function(item, cr, localeBook) {
+        if(this.app._isTrue(this.app.configs.crossReferenceLinkIncludeParent)) {
+            var parentRef = this.app.getLocaleBookName(item.from_book) + ' ' + item.from_chapter + ':' + item.from_verse;
+            var targetRef = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr);
+
+            return this.linkBuilder.buildReferenceLink('r', this.formData.bible, parentRef + '; ' + targetRef);
+        }
+
+        return this.linkBuilder.buildReferenceLink('p', this.formData.bible, localeBook, cr.to_chapter_start, cr.to_verse_start, cr.to_chapter_end, cr.to_verse_end);
+    },
+    _formatCrossReference: function(item, format) {
         if(!Array.isArray(item.cross_references)) {
             return '';
         }
 
-        if(item.cross_references.length > 7) {
+        // format overrides the user setting (paragraph footnotes force 'expand'); otherwise use the user's choice.
+        var mode = format || this.app.normalizeCrossReferenceFormat(this.app.UserConfig.get('crossReferenceFormat'));
+        var expand = (mode == 'expand') || (mode == 'auto' && item.cross_references.length > 7);
+
+        if(expand) {
             var bookRows = [];
             var lastBook = null;
             var currentRefs = null;
@@ -828,7 +847,7 @@ module.exports = kind({
                 }
 
                 var reference = cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr);
-                var href = this.linkBuilder.buildReferenceLink('p', this.formData.bible, localeBook, cr.to_chapter_start, cr.to_verse_start, cr.to_chapter_end, cr.to_verse_end);
+                var href = this._crossReferenceTargetHref(item, cr, localeBook);
                 currentRefs.push('<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link" target="_blank" rel="noopener noreferrer">' + bssUtils.escapeHtml(reference) + ';</a>');
             }
 
@@ -852,7 +871,7 @@ module.exports = kind({
             var cr = item.cross_references[i];
             var localeBook = this.app.getLocaleBookName(cr.to_book);
             var reference = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr);
-            var href = this.linkBuilder.buildReferenceLink('p', this.formData.bible, localeBook, cr.to_chapter_start, cr.to_verse_start, cr.to_chapter_end, cr.to_verse_end);
+            var href = this._crossReferenceTargetHref(item, cr, localeBook);
             references.push('<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link" target="_blank" rel="noopener noreferrer">' + bssUtils.escapeHtml(reference) + ';</a>');
         }
 
@@ -882,6 +901,11 @@ module.exports = kind({
         }
 
         var rawRefs = [];
+
+        // Include the originating ("from" / parent) reference first when enabled.
+        if(this.app._isTrue(this.app.configs.crossReferenceLinkIncludeParent)) {
+            rawRefs.push(this.app.getLocaleBookName(item.from_book) + ' ' + item.from_chapter + ':' + item.from_verse);
+        }
 
         for(var i = 0; i < item.cross_references.length; i++) {
             var cr = item.cross_references[i];

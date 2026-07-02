@@ -67,6 +67,10 @@ module.exports = {
     'Hidden': 'छिपा हुआ',
     'Toggle': 'टॉगल',
     'Show': 'दिखाएँ',
+    'Cross Reference Format': 'क्रॉस संदर्भ प्रारूप',
+    'Compact': 'संक्षिप्त',
+    'Auto': 'स्वचालित',
+    'Expand': 'विस्तृत',
 
     'Limit Search To': 'खोज को यहीं तक सीमित करें',
     'Limit search to': 'खोज को यहीं तक सीमित करें', // Watch case!

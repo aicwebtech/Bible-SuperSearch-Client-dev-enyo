@@ -82,6 +82,10 @@ module.exports = {
     'Hidden': 'يوشۇرۇن',
     'Toggle': 'ئالماشتۇرۇش',
     'Show': 'كۆرسەت',
+    'Cross Reference Format': 'ئۆزئارا پايدىلىنىش فورماتى',
+    'Compact': 'ئىخچام',
+    'Auto': 'ئاپتوماتىك',
+    'Expand': 'كېڭەيتىلگەن',
 
     'Limit Search To': 'ئىزدەشنى چەكلەڭ',
     'Limit search to': 'ئىزدەشنى چەكلەڭ', // Watch case!

@@ -81,6 +81,10 @@ module.exports = {
     'Hidden': 'Пинҳон',
     'Toggle': 'Гузариш',
     'Show': 'Намоиш',
+    'Cross Reference Format': 'Формати истинодҳои байниҳамдигарӣ',
+    'Compact': 'Фишурда',
+    'Auto': 'Худкор',
+    'Expand': 'Васеъ',
 
     'Limit Search To': 'Ҷустуҷӯро маҳдуд кунед',
     'Limit search to': 'Ҷустуҷӯро маҳдуд кунед', // Watch case!

@@ -65,6 +65,10 @@ module.exports = {
     'Hidden': 'Rejtett',
     'Toggle': 'Váltás',
     'Show': 'Megjelenítés',
+    'Cross Reference Format': 'Kereszthivatkozás formátuma',
+    'Compact': 'Tömör',
+    'Auto': 'Automatikus',
+    'Expand': 'Kibontott',
 
     'Limit Search To': 'Keresés Korlátozása Erre',
     'Limit search to': 'Keresés szűkítése erre:', // Watch case!

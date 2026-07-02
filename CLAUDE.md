@@ -155,6 +155,8 @@ All user-visible strings must be wrapped in `$L('string')`.
 - Only update existing translations when explicitly requested — never modify existing translation strings while adding new ones
 - Use targeted file edits only; avoid bulk rewrites
 
+**Pitfall languages — do NOT translate:** `bo` (Tibetan), `jv` (Javanese), `lue` (Luvale). When adding new keys to locale files, leave these three untranslated (do not fill in values / skip them). Do not attempt to machine-translate or hand-translate strings for these locales.
+
 Language files use BCP 47 codes; filename must exactly match `meta.code`. When adding a new language: copy `template.js`, register in `LocaleLoader.js` (alphabetical order), and add to `languageList` in `default.js`.
 
 ## Data Layer

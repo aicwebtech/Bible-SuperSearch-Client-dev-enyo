@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'ဝှက်ထားသည်',
     'Toggle': 'ပြောင်းရန်',
     'Show': 'ပြပါ',
+    'Cross Reference Format': 'အပြန်အလှန် ကိုးကားချက် ဖော်မတ်',
+    'Compact': 'ကျစ်လစ်',
+    'Auto': 'အလိုအလျောက်',
+    'Expand': 'ချဲ့ထွင်',
 
     'Limit Search To': 'ရှာဖွေမှုကို ကန့်သတ်ပါ။',
     'Limit search to': 'ရှာဖွေမှုကို ကန့်သတ်ပါ။', // Watch case!

@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'Gizli',
     'Toggle': 'Değiştir',
     'Show': 'Göster',
+    'Cross Reference Format': 'Çapraz referans biçimi',
+    'Compact': 'Kompakt',
+    'Auto': 'Otomatik',
+    'Expand': 'Genişletilmiş',
 
     'Limit Search To': 'Aramayı Sınırla',
     'Limit search to': 'Aramayı şu şekilde sınırlandır:', // Watch case!

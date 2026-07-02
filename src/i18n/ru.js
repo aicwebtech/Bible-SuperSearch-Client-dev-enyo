@@ -65,6 +65,10 @@ module.exports = {
     'Hidden': 'Скрыто',
     'Toggle': 'Переключить',
     'Show': 'Показать',
+    'Cross Reference Format': 'Формат перекрестных ссылок',
+    'Compact': 'Компактно',
+    'Auto': 'Автоматически',
+    'Expand': 'Развернуто',
 
     'Limit Search To': 'Ограничить Поиск до',
     'Limit search to': 'Ограничить поиск до', // Watch case!

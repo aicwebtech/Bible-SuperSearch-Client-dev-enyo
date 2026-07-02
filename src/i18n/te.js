@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'దాచినది',
     'Toggle': 'టాగుల్',
     'Show': 'చూపించు',
+    'Cross Reference Format': 'క్రాస్ సూచన ఆకృతి',
+    'Compact': 'సంక్షిప్త',
+    'Auto': 'స్వయంచాలక',
+    'Expand': 'విస్తృత',
 
     'Limit Search To': 'శోధనను పరిమితం చేయండి',
     'Limit search to': 'శోధనను పరిమితం చేయండి', // Watch case!

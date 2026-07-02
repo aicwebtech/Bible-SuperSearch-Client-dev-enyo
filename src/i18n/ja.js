@@ -65,6 +65,10 @@ module.exports = {
     'Hidden': '非表示',
     'Toggle': '切り替え',
     'Show': '表示',
+    'Cross Reference Format': '相互参照の形式',
+    'Compact': 'コンパクト',
+    'Auto': '自動',
+    'Expand': '展開',
 
     'Limit Search To': '検索を制限する',
     'Limit search to': '検索を制限する', // Watch case!

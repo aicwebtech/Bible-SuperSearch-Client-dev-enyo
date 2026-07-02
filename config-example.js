@@ -401,6 +401,16 @@ var biblesupersearch_config_options = {
     // Options: 'hidden' | 'toggle' | 'show'
     'crossReferenceShowDefault': 'toggle',
 
+    // Default user setting for the cross reference list layout.
+    // 'compact': always a compact horizontal list
+    // 'auto':    horizontal or vertical (book-grouped) list based on a threshold (default behavior)
+    // 'expand':  always a vertical list grouped by book name
+    'crossReferenceFormatDefault': 'auto',
+
+    // When true, the originating ("from" / parent) reference is prepended, first, to each cross
+    // reference link (single verse and "Open All"). When false, only the target references are shown.
+    'crossReferenceLinkIncludeParent': false,
+
     // Cache breaking on API calls (BSS-271)
     // When true, a random parameter is appended to API GET requests to force a fresh fetch (bypasses browser/proxy cache).
     // When false (default), responses may be cached, improving performance for repeated identical requests.

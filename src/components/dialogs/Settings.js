@@ -211,6 +211,33 @@ module.exports = kind({
                             {kind: i18n, tag: 'label', attributes: {for: 'cross_references_show'}, classes: 'bss_label', content: 'Show'}
                         ]},
                     ]
+                },
+                {kind: inc, content: 'Cross Reference Format', classes: 'bss_header'},
+                {
+                    kind: Group,
+                    name: 'cross_references_format_group',
+                    onActiveChanged: 'handleActiveChanged',
+                    classes: 'bss_settings_container',
+                    components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
+                                {kind: Checkbox, name: 'cross_references_format_compact', id: 'cross_references_format_compact', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_format_compact'}, classes: 'bss_label', content: 'Compact'}
+                        ]},
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
+                                {kind: Checkbox, name: 'cross_references_format_auto', id: 'cross_references_format_auto', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_format_auto'}, classes: 'bss_label', content: 'Auto'}
+                        ]},
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
+                                {kind: Checkbox, name: 'cross_references_format_expand', id: 'cross_references_format_expand', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_format_expand'}, classes: 'bss_label', content: 'Expand'}
+                        ]},
+                    ]
                 }
             ]
         },
@@ -414,6 +441,21 @@ module.exports = kind({
             dir == 2 && this.app.userConfigChanged();
             return value;
         }},
+        {from: 'app.UserConfig.crossReferenceFormat', to: 'crossReferenceFormat', oneWay: false, transform: function(value, dir) {
+            value = this.app.normalizeCrossReferenceFormat(value);
+
+            if(dir == 1) {
+                var selected = 'cross_references_format_' + value;
+
+                if(this.$[selected]) {
+                    this.$.cross_references_format_group.set('active', this.$[selected]);
+                    this.$[selected].set('checked', true);
+                }
+            }
+
+            dir == 2 && this.app.userConfigChanged();
+            return value;
+        }},
     ],
 
     handlers: {
@@ -512,6 +554,21 @@ module.exports = kind({
 
         if(inEvent.originator.name == 'font') {
             this.set('font', value);
+        }
+
+        if(inEvent.originator.name == 'cross_references_format_group') {
+            switch(value) {
+                case 'cross_references_format_compact':
+                    this.set('crossReferenceFormat', 'compact');
+                    break;
+                case 'cross_references_format_expand':
+                    this.set('crossReferenceFormat', 'expand');
+                    break;
+                case 'cross_references_format_auto':
+                default:
+                    this.set('crossReferenceFormat', 'auto');
+                    break;
+            }
         }
 
         if(inEvent.originator.name == 'cross_references_mode_group') {
