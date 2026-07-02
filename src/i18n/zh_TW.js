@@ -451,6 +451,9 @@ module.exports = {
     'Alias': '別名',
     'You cannot search for these common words': '這些常用詞你無法搜尋',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': '提示:要啟用所選的聖經版本,請查詢段落、切換章節或執行搜尋。',
+
     'Include Link': '包括連結',
     'Include Formatting': '包括格式化',
     'Resume Search': '繼續搜尋',

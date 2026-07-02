@@ -29,6 +29,7 @@ var RandomVerse = kind({
 
         var ajax = new Ajax({
             url: this.app.configs.apiUrl,
+            cacheBust: true, // Always break cache; a cached random verse would always return the same verse
             method: 'GET'
         });
 
@@ -40,7 +41,13 @@ var RandomVerse = kind({
         this.showResults(inResponse.results);
     },
     handleError: function(inSender, inResponse) {
-        var response = JSON.parse(inSender.xhrResponse.body);
+        try {
+            var response = JSON.parse(inSender.xhrResponse.body);
+        }
+        catch(e) {
+            this.$.Container.setContent('An error has occurred');
+            return;
+        }
 
         if(response.error_level == 5) {
             this.$.Container.setContent('An error has occurred');

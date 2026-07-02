@@ -475,6 +475,9 @@ module.exports = {
     'Alias': 'ਉਪਨਾਮ',
     'You cannot search for these common words': 'ਤੁਸੀਂ ਇਹਨਾਂ ਆਮ ਸ਼ਬਦਾਂ ਦੀ ਖੋਜ ਨਹੀਂ ਕਰ ਸਕਦੇ',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'ਸੰਕੇਤ: ਚੁਣੇ ਗਏ ਬਾਈਬਲ ਸੰਸਕਰਣਾਂ ਨੂੰ ਕਿਰਿਆਸ਼ੀਲ ਕਰਨ ਲਈ, ਪੈਸਜ ਲੱਭੋ, ਅਧਿਆਇ ਬਦਲੋ ਜਾਂ ਖੋਜ ਚਲਾਓ।',
+
     'Include Link': 'ਲਿੰਕ ਸ਼ਾਮਲ ਕਰੋ',
     'Include Formatting': 'ਫਾਰਮੈਟਿੰਗ ਸ਼ਾਮਲ ਕਰੋ।',
     'Resume Search': 'ਖੋਜ ਮੁੜ ਸ਼ੁਰੂ ਕਰੋ',

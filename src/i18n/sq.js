@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'Pseudonimi',
     'You cannot search for these common words': 'Ju nuk mund të kërkoni për këto fjalë të zakonshme',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Këshillë: Për të aktivizuar versionet e Biblës të zgjedhura, kërkoni një pasazh, hapni një kapitull ose ekzekutoni një kërkim.',
+
     'Include Link': 'Përfshini lidhjen',
     'Include Formatting': 'Përfshini formatimin',
     'Resume Search': 'Rifilloni kërkimin',

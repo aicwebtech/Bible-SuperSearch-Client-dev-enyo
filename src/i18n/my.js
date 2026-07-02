@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'နာမည်များ',
     'You cannot search for these common words': 'ဤအသုံးများသောစကားလုံးများကို သင်ရှာဖွေ၍မရပါ။',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'အကြံပြုချက်- ရွေးချယ်ထားသော သမ္မာကျမ်းစာ ဗားရှင်းများကို စတင်အသုံးပြုရန်၊ ကျမ်းပိုဒ်ကို ရှာဖွေပါ၊ အခန်းကို ပြောင်းပါ သို့မဟုတ် ရှာဖွေမှုကို လုပ်ဆောင်ပါ။',
+
     'Include Link': 'လင့်ခ်ကို ထည့်သွင်းပါ',
     'Include Formatting': 'ဖော်မတ်ထည့်သွင်းခြင်း',
     'Resume Search': 'ရှာဖွေမှုကို ပြန်လည်စတင်ပါ',

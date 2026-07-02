@@ -457,6 +457,9 @@ module.exports = {
     'Alias': 'Alias',
     'You cannot search for these common words': 'Nu puteți căuta aceste cuvinte comune',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Info: Pentru a activa versiunile Bibliei alese, căutați un pasaj, deschideți un capitol sau executați o căutare.',
+
     'Include Link': 'Includeți Linkul',
     'Include Formatting': 'Includeți Formatarea',
     'Resume Search': 'Reluați Sear',

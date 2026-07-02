@@ -46,7 +46,13 @@ module.exports = kind({
         var col = localStorage.getItem(this.url) || null;
 
         if(col) {
-            this.add(JSON.parse(col));
+            // Corrupt/tampered bookmark data shouldn't throw out of init - skip it on failure.
+            try {
+                this.add(JSON.parse(col));
+            }
+            catch(e) {
+                this.app && this.app.debug && this.app.log('ignoring invalid bookmark data');
+            }
         }
     },
     limitReached: function() {

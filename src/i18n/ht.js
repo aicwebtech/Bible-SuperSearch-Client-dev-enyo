@@ -472,6 +472,9 @@ module.exports = {
     'Alias': 'Alyas',
     'You cannot search for these common words': 'Ou pa ka chèche mo komen sa yo',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Ide: Pou aktive vèsyon Bib ou chwazi yo, chèche yon pasaj, vire yon chapit, oswa fè yon rechèch.',
+
     'Include Link': 'Mete Hyperlink',
     'Include Formatting': 'Mete Fòma',
     'Resume Search': 'Rechèch Rezime',

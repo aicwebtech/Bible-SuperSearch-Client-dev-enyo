@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'כינוי',
     'You cannot search for these common words': 'אתה לא יכול לחפש את המילים הנפוצות האלה',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'טיפ: כדי להפעיל את גרסאות המקרא הנבחרות, חפש קטע, עבור לפרק או הפעל חיפוש.',
+
     'Include Link': 'כלול קישור',
     'Include Formatting': 'כלול עיצוב',
     'Resume Search': 'המשך חיפוש',

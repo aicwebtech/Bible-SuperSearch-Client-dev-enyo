@@ -471,6 +471,10 @@ module.exports = {
     'Passages': 'Passasies',
     'Alias': 'Alias',
     'You cannot search for these common words': 'Jy kan nie vir hierdie algemene woorde soek nie',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Wenk: Om die gekose Bybelvertalings te aktiveer, soek \'n gedeelte op, blaai na \'n hoofstuk of voer \'n soektog uit.',
+
     // 5.7:
     'Include Link': 'Sluit skakel in',
     'Include Formatting': 'Sluit Formatering in',

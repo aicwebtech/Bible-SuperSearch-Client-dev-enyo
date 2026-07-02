@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'Alias',
     'You cannot search for these common words': 'Anda tidak dapat mencari kata-kata umum ini',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Tip: Untuk mengaktifkan versi Alkitab yang dipilih, cari bagian, buka bab, atau jalankan pencarian.',
+
     'Include Link': 'Sertakan Tautan',
     'Include Formatting': 'Sertakan Pemformatan',
     'Resume Search': 'Lanjutkan Pencarian',

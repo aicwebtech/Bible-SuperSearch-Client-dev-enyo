@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'ተለዋጭ ስም',
     'You cannot search for these common words': 'You cannot search for these common words',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'ጠቃሚ ምክር፡ የተመረጡትን የመጽሐፍ ቅዱስ ስሪቶች ለማንቀሳቀስ፣ ምንባብ ይፈልጉ፣ ምዕራፍ ይቀያይሩ ወይም ፍለጋ ያካሂዱ።',
+
     'Include Link': 'አገናኝን ያካትቱ።',
     'Include Formatting': 'ቅርጸት መስራትን ያካትቱ።',
     'Resume Search': 'የቀጠለ ፍለጋ',

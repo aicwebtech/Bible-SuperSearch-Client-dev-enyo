@@ -2,6 +2,7 @@
 
 // This renders individual passages
 var kind = require('enyo/kind');
+var bssUtils = require('../../lib/Utils');
 
 module.exports = kind({
     name: 'ResultsView',
@@ -84,7 +85,7 @@ module.exports = kind({
                     var content = '';
 
                     if(pd.verses[module] && pd.verses[module][chapter] && pd.verses[module][chapter][verse]) {
-                        var content = pd.book_name + ' ' + pd.chapter_verse + ' &nbsp;' + pd.verses[module][chapter][verse].text;
+                        var content = bssUtils.escapeHtml(pd.book_name + ' ' + pd.chapter_verse) + ' &nbsp;' + pd.verses[module][chapter][verse].text;
                     }
 
                     this.$.Container.$.VerseRow.createComponent({
@@ -186,7 +187,7 @@ module.exports = kind({
                     var content = '';
 
                     if(pd.verses[module][chapter][verse]) {
-                        var content = verse + '. ' + pd.verses[module][chapter][verse].text;
+                        var content = bssUtils.escapeHtml(verse) + '. ' + pd.verses[module][chapter][verse].text;
                     }
 
                     components.push({
@@ -253,7 +254,7 @@ module.exports = kind({
                     }
 
                     if(pd.verses[module] && pd.verses[module][chapter] && pd.verses[module][chapter][verse]) {
-                        var content = verse + '. ' + pd.verses[module][chapter][verse].text;
+                        var content = bssUtils.escapeHtml(verse) + '. ' + pd.verses[module][chapter][verse].text;
                     }
 
                     components.push({

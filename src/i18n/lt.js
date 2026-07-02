@@ -459,6 +459,9 @@ module.exports = {
     'Alias': 'Pseudonimas',
     'You cannot search for these common words': 'Negalite ieškoti šių bendrų žodžių',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Patarimas: norėdami aktyvuoti pasirinktas Biblijos versijas, ieškokite ištraukos, atverskite skyrių arba paleiskite paiešką.',
+
     'Include Link': 'Įtraukti Nuorodą',
     'Include Formatting': 'Įtraukti Formatavimą',
     'Resume Search': 'Tęsti Paiešką',

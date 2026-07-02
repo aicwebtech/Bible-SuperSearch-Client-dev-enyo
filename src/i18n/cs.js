@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'Přezdívka',
     'You cannot search for these common words': 'Tato běžná slova nemůžete hledat',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Tip: Chcete-li aktivovat vybrané verze Bible, vyhledejte pasáž, otevřete kapitolu nebo spusťte hledání.',
+
     'Include Link': 'Zahrnout Odkaz',
     'Include Formatting': 'Zahrnout Formátování',
     'Resume Search': 'Obnovit Hledání',

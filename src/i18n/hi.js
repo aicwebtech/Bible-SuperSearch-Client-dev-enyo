@@ -458,6 +458,9 @@ module.exports = {
     'Alias': 'उपनाम',
     'You cannot search for these common words': 'आप इन सामान्य शब्दों को नहीं खोज सकते',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'युक्ति: चयनित बाइबल संस्करणों को सक्रिय करने के लिए, अनुच्छेद खोजें, अध्याय बदलें या खोज चलाएँ।',
+
     'Include Link': 'लिंक शामिल करें',
     'Include Formatting': 'फ़ॉर्मेटिंग शामिल करें',
     'Resume Search': 'खोज फिर से शुरू करें',

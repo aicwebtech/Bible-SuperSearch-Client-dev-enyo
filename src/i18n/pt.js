@@ -461,6 +461,10 @@ module.exports = {
     'Passages': 'Passagens',
     'Alias': 'Pseudônimo',
     'You cannot search for these common words': 'Você não pode pesquisar essas palavras comuns',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Dica: para ativar as versões da Bíblia escolhidas, procure uma passagem, abra um capítulo ou execute uma pesquisa.',
+
     // End 5.5 part 2
 
     'Include Link': 'Incluir Hiperlink',
