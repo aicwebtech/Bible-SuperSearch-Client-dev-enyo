@@ -29,7 +29,7 @@ module.exports = {
             (
                 value.match(/[0-9]/) && !value.match(/[()]/) || 
                 passages.length >= 2 || 
-                (book && passages[0].chapter_verse && passages[0].chapter_verse != '')
+                (book && passages[0].chapter_verse)
             ) 
         ) {
             field = 'reference';
