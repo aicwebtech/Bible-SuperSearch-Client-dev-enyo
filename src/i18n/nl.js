@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'Alias',
     'You cannot search for these common words': 'U kunt niet zoeken naar deze veel voorkomende woorden',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Tip: Om de gekozen Bijbelversies te activeren, zoek een sectie op, blader naar een hoofdstuk of voer een zoekopdracht uit.',
+
     'Include Link': 'Hyperlink Opnemen',
     'Include Formatting': 'Opmaak Opnemen',
     'Resume Search': 'Hervat Zoeken',

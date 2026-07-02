@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'উপনাম',
     'You cannot search for these common words': 'আপনি এই সাধারণ শব্দগুলির জন্য অনুসন্ধান করতে পারবেন না',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'টিপ: নির্বাচিত বাইবেল সংস্করণগুলি সক্রিয় করতে, একটি প্যাসেজ খুঁজুন, একটি অধ্যায় পরিবর্তন করুন বা অনুসন্ধান চালান।',
+
     'Include Link': 'লিঙ্ক অন্তর্ভুক্ত করুন',
     'Include Formatting': 'বিন্যাস অন্তর্ভুক্ত',
     'Resume Search': 'অনুসন্ধান পুনরায় শুরু করুন',

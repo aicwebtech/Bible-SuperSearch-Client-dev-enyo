@@ -474,6 +474,9 @@ module.exports = {
     'Alias': 'Alias',
     'You cannot search for these common words': 'Et voi etsiä näitä yleisiä sanoja',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Vihje: Aktivoi valitut Raamatun versiot etsimällä kohta, siirtymällä lukuun tai suorittamalla haku.',
+
     'Include Link': 'Sisällytä Linkki',
     'Include Formatting': 'Sisällytä Muotoilu',
     'Resume Search': 'Jatka Hakua',

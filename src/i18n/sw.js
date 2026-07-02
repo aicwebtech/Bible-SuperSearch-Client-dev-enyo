@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'Lakabu',
     'You cannot search for these common words': 'Huwezi kutafuta maneno haya ya kawaida',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Kidokezo: Ili kuwezesha matoleo ya Biblia uliyochagua, tafuta kifungu, badilisha sura, au fanya utafutaji.',
+
     'Include Link': 'Jumuisha Kiungo',
     'Include Formatting': 'Jumuisha Uumbizaji',
     'Resume Search': 'Rejesha Utafutaji',

@@ -461,6 +461,10 @@ module.exports = {
     'Passages': 'فقرات',
     'Alias': 'الاسم المستعار',
     'You cannot search for these common words': 'لا يمكنك البحث عن هذه الكلمات المتداولة',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'نصيحة: لتنشيط إصدارات الكتاب المقدس المختارة، ابحث عن مقطع، أو انتقل إلى فصل، أو نفّذ بحثًا.',
+
     // End 5.5 part 2
 
     'Include Link': 'تضمين الرابط',

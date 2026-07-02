@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'Ingoa ingoa',
     'You cannot search for these common words': 'Kaore e taea e koe te rapu mo enei kupu noa',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Aki: Ki te whakahohe i nga putanga Paipera kua tohua, rapua te waahanga, hurihia te upoko, hurihia te rapu.',
+
     'Include Link': 'Whakauru Hononga',
     'Include Formatting': 'Whakauruhia te Whakahōputu',
     'Resume Search': 'Rapu Anō',

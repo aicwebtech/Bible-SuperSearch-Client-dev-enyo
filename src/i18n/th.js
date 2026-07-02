@@ -459,6 +459,9 @@ module.exports = {
     'Alias': 'นามแฝง',
     'You cannot search for these common words': 'คุณไม่สามารถค้นหาคำทั่วไปเหล่านี้ได้',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'เคล็ดลับ: หากต้องการเปิดใช้งานพระคัมภีร์ฉบับที่เลือก ให้ค้นหาข้อความ เปลี่ยนบท หรือดำเนินการค้นหา',
+
     'Include Link': 'รวมลิงค์',
     'Include Formatting': 'รวมการจัดรูปแบบ',
     'Resume Search': 'ค้นหาต่อ',

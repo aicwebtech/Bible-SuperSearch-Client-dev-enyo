@@ -473,6 +473,9 @@ module.exports = {
     'Alias': 'عرف',
     'You cannot search for these common words': 'آپ ان عام الفاظ کو تلاش نہیں کر سکتے',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'ٹپ: منتخب بائبل ورژنز کو فعال کرنے کے لیے، حوالہ تلاش کریں، باب تبدیل کریں یا تلاش چلائیں۔',
+
     'Include Link': 'لنک شامل کریں',
     'Include Formatting': 'فارمیٹنگ شامل کریں',
     'Resume Search': 'تلاش دوبارہ شروع کریں۔',

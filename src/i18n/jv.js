@@ -475,6 +475,9 @@ module.exports = {
     'Alias': '',
     'You cannot search for these common words': 'Sampeyan ora bisa nggoleki tembung umum iki',
 
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': '',
+
     // 5.7:
 
     'Include Link': 'Kalebu Hyperlink',
