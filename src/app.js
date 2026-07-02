@@ -320,6 +320,8 @@ var App = Application.kind({
 
         this.configs.crossReferenceEnable = this._isTrue(this.configs.crossReferenceEnable);
         this.configs.crossReferenceShowDefault = this.normalizeCrossReferencesShow(this.configs.crossReferenceShowDefault);
+        this.configs.crossReferenceFormatDefault = this.normalizeCrossReferenceFormat(this.configs.crossReferenceFormatDefault);
+        this.configs.crossReferenceLinkIncludeParent = this._isTrue(this.configs.crossReferenceLinkIncludeParent);
 
         var view = null;
         this.initUserConfig();
@@ -559,6 +561,13 @@ var App = Application.kind({
     normalizeCrossReferencesShow: function(value) {
         if(value != 'hidden' && value != 'show' && value != 'toggle') {
             return 'toggle';
+        }
+
+        return value;
+    },
+    normalizeCrossReferenceFormat: function(value) {
+        if(value != 'compact' && value != 'auto' && value != 'expand') {
+            return 'auto';
         }
 
         return value;

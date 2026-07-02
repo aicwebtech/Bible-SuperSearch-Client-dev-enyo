@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'Versteek',
     'Toggle': 'Wissel',
     'Show': 'Wys',
+    'Cross Reference Format': 'Kruisverwysingsformaat',
+    'Compact': 'Kompak',
+    'Auto': 'Outomaties',
+    'Expand': 'Uitgebrei',
 
     'Limit Search To': 'Beperk Soek Na',
     'Limit search to': 'Beperk soektog na', // Watch case!

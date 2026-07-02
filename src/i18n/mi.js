@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'Huna',
     'Toggle': 'Takahuri',
     'Show': 'Whakaatu',
+    'Cross Reference Format': 'Whakatakotoranga tohutoro whakawhiti',
+    'Compact': 'Kiato',
+    'Auto': 'Aunoa',
+    'Expand': 'Whakawhānui',
 
     'Limit Search To': 'Tepe Rapu Ki',
     'Limit search to': 'Whakawhāitihia te rapu ki', // Watch case!

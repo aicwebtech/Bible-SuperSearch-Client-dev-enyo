@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'Ukryte',
     'Toggle': 'Przełącz',
     'Show': 'Pokaż',
+    'Cross Reference Format': 'Format odnośników krzyżowych',
+    'Compact': 'Kompaktowy',
+    'Auto': 'Automatycznie',
+    'Expand': 'Rozwinięty',
 
     'Limit Search To': 'Zawęź Wyszukiwanie Do',
     'Limit search to': 'Zawęź wyszukiwanie do', // Watch case!

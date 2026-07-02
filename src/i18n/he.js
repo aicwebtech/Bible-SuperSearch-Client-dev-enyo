@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'מוסתר',
     'Toggle': 'החלף',
     'Show': 'הצג',
+    'Cross Reference Format': 'תבנית הפניות צולבות',
+    'Compact': 'קומפקטי',
+    'Auto': 'אוטומטי',
+    'Expand': 'מורחב',
 
     'Limit Search To': 'הגבל את החיפוש ל',
     'Limit search to': 'הגבל את החיפוש ל', // Watch case!

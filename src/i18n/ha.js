@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'Boye',
     'Toggle': 'Canjawa',
     'Show': 'Nuna',
+    'Cross Reference Format': 'Tsarin nassoshin giciye',
+    'Compact': 'Matse',
+    'Auto': 'Ta atomatik',
+    'Expand': 'Fadada',
 
     'Limit Search To': 'Iyakance Bincike Zuwa',
     'Limit search to': 'Iyakance bincike zuwa', // Watch case!

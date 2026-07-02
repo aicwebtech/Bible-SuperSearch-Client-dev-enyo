@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'மறைக்கப்பட்டது',
     'Toggle': 'மாற்று',
     'Show': 'காட்டு',
+    'Cross Reference Format': 'குறுக்கு குறிப்பு வடிவம்',
+    'Compact': 'சுருக்கம்',
+    'Auto': 'தானியங்கி',
+    'Expand': 'விரிவு',
 
     'Limit Search To': 'தேடலை வரம்பிடவும்',
     'Limit search to': 'தேடலை வரம்பிடவும்', // Watch case!

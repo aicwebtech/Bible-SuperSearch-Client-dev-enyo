@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'Ẩn',
     'Toggle': 'Chuyển đổi',
     'Show': 'Hiển thị',
+    'Cross Reference Format': 'Định dạng tham chiếu chéo',
+    'Compact': 'Gọn',
+    'Auto': 'Tự động',
+    'Expand': 'Mở rộng',
 
     'Limit Search To': 'Giới hạn tìm kiếm ở',
     'Limit search to': 'Giới hạn tìm kiếm ở', // Watch case!

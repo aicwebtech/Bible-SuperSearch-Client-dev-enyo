@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'مخفی',
     'Toggle': 'تغییر',
     'Show': 'نمایش',
+    'Cross Reference Format': 'قالب ارجاعات متقاطع',
+    'Compact': 'فشرده',
+    'Auto': 'خودکار',
+    'Expand': 'گسترده',
 
     'Limit Search To': 'محدود کردن جستجو به',
     'Limit search to': 'محدود کردن جستجو به', // Watch case!

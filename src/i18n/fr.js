@@ -60,6 +60,10 @@ module.exports = {
     'Hidden': 'Masqué',
     'Toggle': 'Basculer',
     'Show': 'Afficher',
+    'Cross Reference Format': 'Format des références croisées',
+    'Compact': 'Compact',
+    'Auto': 'Automatique',
+    'Expand': 'Étendu',
 
     'Limit Search To': 'Limitez La Recherche à',
     'Limit search to': 'Limitez la recherche à', // Watch case!

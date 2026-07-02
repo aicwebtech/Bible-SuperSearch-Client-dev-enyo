@@ -65,6 +65,10 @@ module.exports = {
     'Hidden': 'Ascuns',
     'Toggle': 'Comută',
     'Show': 'Arată',
+    'Cross Reference Format': 'Formatul referințelor încrucișate',
+    'Compact': 'Compact',
+    'Auto': 'Automat',
+    'Expand': 'Extins',
 
     'Limit Search To': 'Limitați Căutarea',
     'Limit search to': 'Limitați căutarea', // Watch case!

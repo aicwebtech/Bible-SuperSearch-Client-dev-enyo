@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'Piilotettu',
     'Toggle': 'Vaihda',
     'Show': 'Näytä',
+    'Cross Reference Format': 'Ristiviitteiden muoto',
+    'Compact': 'Tiivis',
+    'Auto': 'Automaattinen',
+    'Expand': 'Laajennettu',
 
     'Limit Search To': 'Rajoita Haku Kohteeseen',
     'Limit search to': 'Rajoita haku kohteeseen', // Watch case!

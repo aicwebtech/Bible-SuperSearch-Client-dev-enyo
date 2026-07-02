@@ -69,6 +69,10 @@ module.exports = {
     'Hidden': 'Peidetud',
     'Toggle': 'Lülita',
     'Show': 'Näita',
+    'Cross Reference Format': 'Ristviidete vorming',
+    'Compact': 'Kompaktne',
+    'Auto': 'Automaatne',
+    'Expand': 'Laiendatud',
 
 
     'Limit Search To': 'Piira Otsingut',

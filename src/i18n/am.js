@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'ተደብቋል',
     'Toggle': 'መቀያየር',
     'Show': 'አሳይ',
+    'Cross Reference Format': 'የመስቀል ማጣቀሻ ቅርጸት',
+    'Compact': 'የተጨመቀ',
+    'Auto': 'ራስ-ሰር',
+    'Expand': 'የተስፋፋ',
 
     'Limit Search To': 'ፍለጋን ገድብ ወደ',
     'Limit search to': 'ፍለጋን ገድብ', // Watch case!

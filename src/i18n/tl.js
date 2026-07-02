@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'Nakatago',
     'Toggle': 'I-toggle',
     'Show': 'Ipakita',
+    'Cross Reference Format': 'Format ng cross reference',
+    'Compact': 'Maigsi',
+    'Auto': 'Awtomatiko',
+    'Expand': 'Palawakin',
 
     'Limit Search To': 'Limitahan ang Paghahanap Sa',
     'Limit search to': 'Limitahan ang paghahanap sa', // Watch case!

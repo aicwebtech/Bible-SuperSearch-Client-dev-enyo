@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'Verborgen',
     'Toggle': 'Omschakelen',
     'Show': 'Tonen',
+    'Cross Reference Format': 'Kruisverwijzingsindeling',
+    'Compact': 'Compact',
+    'Auto': 'Automatisch',
+    'Expand': 'Uitgebreid',
 
     'Limit Search To': 'Zoekopdracht Beperken tot',
     'Limit search to': 'Zoekopdracht Beperken tot', // Watch case!

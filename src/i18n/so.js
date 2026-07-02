@@ -79,6 +79,10 @@ module.exports = {
     'Hidden': 'Qarsoon',
     'Toggle': 'Beddel',
     'Show': 'Muuji',
+    'Cross Reference Format': 'Qaabka tixraacyada isdhaafsan',
+    'Compact': 'Kooban',
+    'Auto': 'Otomaatig',
+    'Expand': 'Ballaaran',
 
     'Limit Search To': 'Ku Xaddid Raadinta',
     'Limit search to': 'Ku xaddid raadinta', // Watch case!

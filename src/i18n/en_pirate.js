@@ -59,6 +59,10 @@ module.exports = {
     'Hidden': 'Hardden',
     'Toggle': 'Floppe',
     'Show': 'Ye Vue',
+    'Cross Reference Format': 'Crosse Referrrence Format',
+    'Compact': 'Compact',
+    'Auto': 'Auto',
+    'Expand': 'Expand',
 
     'Limit Search To': 'Plunder in',
     'Limit search to': 'Plunder in',

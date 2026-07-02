@@ -58,6 +58,10 @@ module.exports = {
     'Hidden': 'Oculto',
     'Toggle': 'Alternar',
     'Show': 'Mostrar',
+    'Cross Reference Format': 'Formato de referencias cruzadas',
+    'Compact': 'Compacto',
+    'Auto': 'Automático',
+    'Expand': 'Expandido',
 
     'Limit Search To': 'Busca En',
     'Limit search to': 'Busca en', // Is this duplication needed?

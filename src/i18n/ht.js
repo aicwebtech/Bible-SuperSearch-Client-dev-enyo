@@ -83,6 +83,10 @@ module.exports = {
     'Hidden': 'Kache',
     'Toggle': 'Chanje',
     'Show': 'Montre',
+    'Cross Reference Format': 'Fòma referans kwaze',
+    'Compact': 'Konpak',
+    'Auto': 'Otomatik',
+    'Expand': 'Elaji',
 
     'Limit Search To': 'Limite rechèch pou',
     'Limit search to': 'Limite rechèch la', // Watch case!

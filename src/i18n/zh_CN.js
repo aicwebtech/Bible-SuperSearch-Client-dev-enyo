@@ -66,6 +66,10 @@ module.exports = {
     'Hidden': '隐藏',
     'Toggle': '切换',
     'Show': '显示',
+    'Cross Reference Format': '交叉引用格式',
+    'Compact': '紧凑',
+    'Auto': '自动',
+    'Expand': '展开',
 
     'Limit Search To': '限制搜索于',
     'Limit search to': '搜索限于, 注意大小写 !', // 注意大小写 !

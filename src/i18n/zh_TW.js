@@ -64,6 +64,10 @@ module.exports = {
     'Hidden': '隱藏',
     'Toggle': '切換',
     'Show': '顯示',
+    'Cross Reference Format': '交叉參照格式',
+    'Compact': '精簡',
+    'Auto': '自動',
+    'Expand': '展開',
     'Limit Search To': '限制搜索於',
     'Limit search to': '搜索限於, 注意大小寫!', // 注意大小寫 ！
     'Entire Bible': '整本聖經',
