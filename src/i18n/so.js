@@ -75,9 +75,14 @@ module.exports = {
     'Context': 'Dulucda',
     'In Context': 'Marka la Eego',
     'Cross References': 'Tixraacyo isdhaafsan',
+    'Open All': 'Fur Dhammaan',
     'Hidden': 'Qarsoon',
     'Toggle': 'Beddel',
     'Show': 'Muuji',
+    'Cross Reference Format': 'Qaabka tixraacyada isdhaafsan',
+    'Compact': 'Kooban',
+    'Auto': 'Otomaatig',
+    'Expand': 'Ballaaran',
 
     'Limit Search To': 'Ku Xaddid Raadinta',
     'Limit search to': 'Ku xaddid raadinta', // Watch case!
@@ -477,6 +482,9 @@ module.exports = {
     'Passages': 'Maraqyada',
     'Alias': 'Magac loo yaqaan',
     'You cannot search for these common words': 'Ma raadin kartid erayadan caadiga ah',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Talo: Si aad u dalbato noocyada Kitaabka Quduuska ah ee la doortay, raadi marin, beddel cutub, ama fuli raadinta.',
 
     'Include Link': 'Ku dar Xiriiriye',
     'Include Formatting': 'Ku dar Qaabaynta',

@@ -79,6 +79,8 @@ module.exports = kind({
         this.createComponent(this.signalComponent);
         // this.formData.bible = [this.app.configs.defaultBible];
 
+        this.Passage.setApp(this.app);
+
         if(this.autoApplyStandardBindings) {
             this.applyStandardBindings();
         }
@@ -280,8 +282,12 @@ module.exports = kind({
             return;
         }
 
+        // Random chapter/verse must always break cache, otherwise the same passage is returned each time
+        var cacheBust = this._isRandomRequest(formData) ? true : this.app.configs.disableCache;
+
         var ajax = new Ajax({
             url: this.app.configs.apiUrl,
+            cacheBust: cacheBust,
             method: 'GET'
         });
 
@@ -368,6 +374,13 @@ module.exports = kind({
 
         if(formData.request) {
             formData.request = this.mapPassages(formData.request, true);
+        }
+
+        var disambBook = formData.request ? this.Passage.disambiguateRequest(formData.request) : null;
+        if(disambBook !== null) {
+            formData.disamb_book = disambBook;
+        } else {
+            delete formData.disamb_book;
         }
 
         if(isSearch && this.app.configs.limitSearchManual) {
@@ -564,6 +577,19 @@ module.exports = kind({
 
         return this._submitFormHelper(submitData, true);
     },
+    _isRandomRequest: function(formData) {
+        var fields = Array('reference', 'request');
+
+        for(var i = 0; i < fields.length; i++) {
+            var value = formData[fields[i]];
+
+            if(value == 'Random Chapter' || value == 'Random Verse') {
+                return true;
+            }
+        }
+
+        return false;
+    },
     setFormDataWithMapping: function(formData) {
         var combined = formData.search && formData.reference;
 
@@ -599,6 +625,7 @@ module.exports = kind({
 
         var ajax = new Ajax({
             url: url,
+            cacheBust: this.app.configs.disableCache,
             method: 'GET'
         });
 
@@ -614,7 +641,16 @@ module.exports = kind({
         this.set('cacheHash', inResponse.results.hash);
         this.requestPending = false;
         var formData = utils.clone(inResponse.results.form_data);
-        formData.bible = JSON.parse(formData.bible);
+
+        try {
+            formData.bible = JSON.parse(formData.bible);
+        }
+        catch(e) {
+            this.app.displayInitError();
+            this.errorHandle && this.errorHandle();
+            return;
+        }
+
         formData.shortcut = formData.shortcut || 0;
         this.setFormDataWithMapping(formData);
         // this.set('formData', {});
@@ -624,7 +660,17 @@ module.exports = kind({
     },
     handleCacheError: function(inSender, inResponse) {
         this.requestPending = false;
-        var response = JSON.parse(inSender.xhrResponse.body);
+
+        if(this.app && this.app.debug && inSender && inSender.xhrResponse && inSender.xhrResponse.body) {
+            // Response body is only inspected for logging; don't let a non-JSON body throw.
+            try {
+                var response = JSON.parse(inSender.xhrResponse.body);
+                this.log('Cache error response', response);
+            }
+            catch(e) {
+                // malformed error body - nothing further to extract
+            }
+        }
         this.log('An error has occurred');
     },
     // Handles cache change and page change

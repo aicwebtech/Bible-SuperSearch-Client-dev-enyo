@@ -61,9 +61,14 @@ module.exports = {
     'Context': 'Kontekstas',
     'In Context': 'Kontekste',
     'Cross References': 'Kryžminės nuorodos',
+    'Open All': 'Atidaryti visus',
     'Hidden': 'Paslėpta',
     'Toggle': 'Perjungti',
     'Show': 'Rodyti',
+    'Cross Reference Format': 'Kryžminių nuorodų formatas',
+    'Compact': 'Kompaktiškas',
+    'Auto': 'Automatinis',
+    'Expand': 'Išplėstas',
 
     'Limit Search To': 'Apriboti Paiešką Iki',
     'Limit search to': 'Apriboti paiešką iki', // Watch case!
@@ -463,6 +468,9 @@ module.exports = {
     'Passages': 'Ištraukos',
     'Alias': 'Pseudonimas',
     'You cannot search for these common words': 'Negalite ieškoti šių bendrų žodžių',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Patarimas: norėdami aktyvuoti pasirinktas Biblijos versijas, ieškokite ištraukos, atverskite skyrių arba paleiskite paiešką.',
 
     'Include Link': 'Įtraukti Nuorodą',
     'Include Formatting': 'Įtraukti Formatavimą',

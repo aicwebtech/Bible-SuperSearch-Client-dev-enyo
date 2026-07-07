@@ -75,9 +75,14 @@ module.exports = {
     'Context': '문맥',
     'In Context': '문맥',
     'Cross References': '상호 참조',
+    'Open All': '모두 열기',
     'Hidden': '숨김',
     'Toggle': '전환',
     'Show': '표시',
+    'Cross Reference Format': '상호 참조 형식',
+    'Compact': '간략',
+    'Auto': '자동',
+    'Expand': '확장',
 
     'Limit Search To': '다음으로 검색 제한',
     'Limit search to': '다음으로 검색 제한', // Watch case!
@@ -477,6 +482,9 @@ module.exports = {
     'Passages': '구절',
     'Alias': '별명',
     'You cannot search for these common words': '이러한 일반적인 단어는 검색할 수 없습니다.',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': '팁: 선택한 성경 버전을 활성화하려면 구절을 검색하거나 장을 넘기거나 검색을 실행하세요.',
 
     'Include Link': '링크 포함',
     'Include Formatting': '포맷 포함',

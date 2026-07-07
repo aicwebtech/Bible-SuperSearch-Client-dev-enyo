@@ -65,9 +65,14 @@ module.exports = {
     'Context': 'Kontekst',
     'In Context': 'Kontekstis',
     'Cross References': 'Ristviited',
+    'Open All': 'Ava kõik',
     'Hidden': 'Peidetud',
     'Toggle': 'Lülita',
     'Show': 'Näita',
+    'Cross Reference Format': 'Ristviidete vorming',
+    'Compact': 'Kompaktne',
+    'Auto': 'Automaatne',
+    'Expand': 'Laiendatud',
 
 
     'Limit Search To': 'Piira Otsingut',
@@ -495,6 +500,9 @@ module.exports = {
     'Passages': 'Lõigud',
     'Alias': 'Teise nimega',
     'You cannot search for these common words': 'Te ei saa neid levinud sõnu otsida',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Näpunäide. Valitud Piibli versioonide aktiveerimiseks otsige lõik, avage peatükk või käivitage otsing.',
 
     'Include Link': 'Kaasa Hüperlink',
     'Include Formatting': 'Kaasa Vormindamine',

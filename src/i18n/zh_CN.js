@@ -62,9 +62,14 @@ module.exports = {
     'Context': '上下文',
     'In Context': '在上下文中',
     'Cross References': '交叉引用',
+    'Open All': '打开全部',
     'Hidden': '隐藏',
     'Toggle': '切换',
     'Show': '显示',
+    'Cross Reference Format': '交叉引用格式',
+    'Compact': '紧凑',
+    'Auto': '自动',
+    'Expand': '展开',
 
     'Limit Search To': '限制搜索于',
     'Limit search to': '搜索限于, 注意大小写 !', // 注意大小写 !
@@ -462,6 +467,9 @@ module.exports = {
     'Passages': '段落',
     'Alias': '别名',
     'You cannot search for these common words': '这些常用词你无法搜索',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': '提示：要激活所选的圣经版本，请查找段落、切换章节或执行搜索。',
 
     'Include Link': '包括链接',
     'Include Formatting': '包括格式化',

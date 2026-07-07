@@ -60,9 +60,14 @@ module.exports = {
     'Context': '上下文',
     'In Context': '在上下文中',
     'Cross References': '交叉參照',
+    'Open All': '全部開啟',
     'Hidden': '隱藏',
     'Toggle': '切換',
     'Show': '顯示',
+    'Cross Reference Format': '交叉參照格式',
+    'Compact': '精簡',
+    'Auto': '自動',
+    'Expand': '展開',
     'Limit Search To': '限制搜索於',
     'Limit search to': '搜索限於, 注意大小寫!', // 注意大小寫 ！
     'Entire Bible': '整本聖經',
@@ -455,6 +460,9 @@ module.exports = {
     'Passages': '段落',
     'Alias': '別名',
     'You cannot search for these common words': '這些常用詞你無法搜尋',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': '提示:要啟用所選的聖經版本,請查詢段落、切換章節或執行搜尋。',
 
     'Include Link': '包括連結',
     'Include Formatting': '包括格式化',

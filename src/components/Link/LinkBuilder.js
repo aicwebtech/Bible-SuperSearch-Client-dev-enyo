@@ -1,5 +1,7 @@
 // var kind = require('enyo/kind');
 
+var bssUtils = require('../../lib/Utils');
+
 // Generic JavaScript object, not an enyo kind
 module.exports = {
     buildReferenceLink: function() {
@@ -78,9 +80,11 @@ module.exports = {
         }
 
         // var optsStr = '{bible:' + bible + ',reference:\'' + opts.reference + '\'}';
-        var optsStr = '{bible:\'' + bible + '\',reference:\'' + opts.reference + '\'}';
+        // Values are interpolated into single-quoted JS string literals inside a javascript: URL,
+        // so escape them to prevent breaking out of the string context.
+        var optsStr = '{bible:\'' + bssUtils.escapeJsString(bible) + '\',reference:\'' + bssUtils.escapeJsString(opts.reference) + '\'}';
 
-        var link = 'javascript: biblesupersearch.app.s(\'' + signal + '\',' + optsStr + ')';
+        var link = 'javascript: biblesupersearch.app.s(\'' + bssUtils.escapeJsString(signal) + '\',' + optsStr + ')';
 
         return link;
     },
@@ -95,13 +99,15 @@ module.exports = {
             bible: bible,
             b: passage.book_id,
             cv: passage.chapter_verse,
-            cva: passage.chapter_verse_actual ? ', cva:\'' + passage.chapter_verse_actual + '\'' : '',
+            cva: passage.chapter_verse_actual ? ', cva:\'' + bssUtils.escapeJsString(passage.chapter_verse_actual) + '\'' : '',
         };
 
         // var optsStr = '{bible:' + bible + ',reference:\'' + opts.reference + '\'}';
-        var optsStr = '{bible:\'' + bible + '\',b:\'' + opts.b + '\', cv:\'' + opts.cv + '\'' + opts.cva + '}';
+        // Values are interpolated into single-quoted JS string literals inside a javascript: URL,
+        // so escape them to prevent breaking out of the string context.
+        var optsStr = '{bible:\'' + bssUtils.escapeJsString(opts.bible) + '\',b:\'' + bssUtils.escapeJsString(opts.b) + '\', cv:\'' + bssUtils.escapeJsString(opts.cv) + '\'' + opts.cva + '}';
 
-        var link = 'javascript: biblesupersearch.app.s(\'' + signal + '\',' + optsStr + ')';
+        var link = 'javascript: biblesupersearch.app.s(\'' + bssUtils.escapeJsString(signal) + '\',' + optsStr + ')';
 
         return link;
     }

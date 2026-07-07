@@ -61,9 +61,14 @@ module.exports = {
     'Context': 'Kontextus',
     'In Context': 'Szövegkörnyezetben',
     'Cross References': 'Kereszthivatkozások',
+    'Open All': 'Összes megnyitása',
     'Hidden': 'Rejtett',
     'Toggle': 'Váltás',
     'Show': 'Megjelenítés',
+    'Cross Reference Format': 'Kereszthivatkozás formátuma',
+    'Compact': 'Tömör',
+    'Auto': 'Automatikus',
+    'Expand': 'Kibontott',
 
     'Limit Search To': 'Keresés Korlátozása Erre',
     'Limit search to': 'Keresés szűkítése erre:', // Watch case!
@@ -463,6 +468,9 @@ module.exports = {
     'Passages': 'Átjárók',
     'Alias': 'Álnév',
     'You cannot search for these common words': 'Nem lehet keresni ezekre a gyakori szavakra',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Tipp: A kiválasztott Biblia-verziók aktiválásához keressen egy részt, lapozzon egy fejezetre, vagy indítson keresést.',
 
     'Include Link': 'Hiperhivatkozás Felvétele',
     'Include Formatting': 'Formázás Belefoglalása',

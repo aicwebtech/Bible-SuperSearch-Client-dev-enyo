@@ -75,9 +75,14 @@ module.exports = {
     'Context': 'Muktadha',
     'In Context': 'Katika Muktadha',
     'Cross References': 'Marejeo ya msalaba',
+    'Open All': 'Fungua Zote',
     'Hidden': 'Imefichwa',
     'Toggle': 'Badilisha',
     'Show': 'Onyesha',
+    'Cross Reference Format': 'Mpangilio wa marejeo ya msalaba',
+    'Compact': 'Mfupi',
+    'Auto': 'Kiotomatiki',
+    'Expand': 'Panua',
 
     'Limit Search To': 'Punguza Utafutaji Kwa',
     'Limit search to': 'Punguza utafutaji kwa', // Watch case!
@@ -477,6 +482,9 @@ module.exports = {
     'Passages': 'Vifungu',
     'Alias': 'Lakabu',
     'You cannot search for these common words': 'Huwezi kutafuta maneno haya ya kawaida',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Kidokezo: Ili kuwezesha matoleo ya Biblia uliyochagua, tafuta kifungu, badilisha sura, au fanya utafutaji.',
 
     'Include Link': 'Jumuisha Kiungo',
     'Include Formatting': 'Jumuisha Uumbizaji',

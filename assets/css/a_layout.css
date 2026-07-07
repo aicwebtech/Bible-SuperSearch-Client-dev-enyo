@@ -1043,11 +1043,59 @@ tr.bss_render_reference_row th {
 
 .bss_cross_references {
     padding: 15px;
-    font-size: smaller;
+    font-size: small;
 }
 
 .bss_cross_references_row td {
     padding: 3px;
+}
+
+.bss_cross_references .bss_std_link {
+    display: inline-block;
+    margin: 3px;
+    white-space: nowrap;
+    min-width: 60px;
+}
+
+.bss_cross_references .bss_book_name {
+    margin-inline-start: 15px;
+    display: inline-block;
+    width: 40%;
+    max-width: 150px;
+}
+
+.bss_cross_references_title {
+    display: inline-block;
+    margin-inline-start: -15px;
+    font-weight: bold;
+}
+
+.bss_cross_references .bss_std_link.bss_open_all {
+    float: inline-end;
+}
+
+.bss_cross_references_table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.bss_cross_references_table td {
+    padding: 2px 6px;
+    vertical-align: top;
+}
+
+.bss_cross_references_table .bss_cr_book_name {
+    width: 20%;
+    max-width: 150px;
+    padding-inline-end: 10px;
+    white-space: nowrap;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bss_cross_references_table tr:nth-child(odd) {
+    background-color: #eee;
 }
 
 .bss_is_mobile .bss_results_list {

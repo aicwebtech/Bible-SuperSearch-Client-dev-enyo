@@ -43,6 +43,7 @@ module.exports = kind({
         copy_preset: 'word_processor',
         copy_testament: false,
         crossReferencesShow: 'toggle',
+        crossReferenceFormat: 'auto',
         bibles_selected: [], // Array of selected Bibles
     },
 

@@ -78,9 +78,14 @@ module.exports = {
     'Context': 'مەزمۇن',
     'In Context': 'مەزمۇندا',
     'Cross References': 'ئۆزئارا پايدىلانما',
+    'Open All': 'ھەممىسىنى ئاچ',
     'Hidden': 'يوشۇرۇن',
     'Toggle': 'ئالماشتۇرۇش',
     'Show': 'كۆرسەت',
+    'Cross Reference Format': 'ئۆزئارا پايدىلىنىش فورماتى',
+    'Compact': 'ئىخچام',
+    'Auto': 'ئاپتوماتىك',
+    'Expand': 'كېڭەيتىلگەن',
 
     'Limit Search To': 'ئىزدەشنى چەكلەڭ',
     'Limit search to': 'ئىزدەشنى چەكلەڭ', // Watch case!
@@ -479,6 +484,9 @@ module.exports = {
     'Passages': 'بۆلەكلەر',
     'Alias': 'لەقەم',
     'You cannot search for these common words': 'بۇ ئورتاق سۆزلەرنى ئىزدىمەيسىز',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'تەكلىپ: تاللانغان مۇقەددەس كىتاب نەشرىلىرىنى ئاكتىپلاش ئۈچۈن بۆلەكنى ئىزدەڭ، بابنى ئالماشتۇرۇڭ ياكى ئىزدەشنى ئىجرا قىلىڭ.',
 
     // 5.7:
     'Include Link': 'ئۇلىنىشنى ئۆز ئىچىگە ئالىدۇ',

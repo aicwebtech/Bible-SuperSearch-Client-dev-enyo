@@ -1,6 +1,7 @@
 var kind = require('enyo/kind');
 var ResultsBase = require('./ResultsReadBase');
 var AudioContainer = require('./AudioContainer');
+var bssUtils = require('../../lib/Utils');
 
 module.exports = kind({
     name: 'ResultsReadParagraph',
@@ -58,21 +59,21 @@ module.exports = kind({
 
         if(!this.multiBibles) {
             var shareLink = this.linkBuilder.buildPassageSignalLink('onShare', this.formData.bible, pd);
-            refContent += '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a> &nbsp;';
+            refContent += '<a href="' + bssUtils.escapeHtml(shareLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Share')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Share')) + '</a> &nbsp;';
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', this.formData.bible, pd);
-            refContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp; ';
+            refContent += '<a href="' + bssUtils.escapeHtml(copyLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Copy')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Copy')) + '</a> &nbsp; ';
             var addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', this.formData.bible, pd);
-            refContent += '<a href="' + addLink + '" title="' + this.app.t('Add to List') + '" class="bss_std_link">' + this.app.t('Add to List') + '</a> &nbsp; ';
+            refContent += '<a href="' + bssUtils.escapeHtml(addLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Add to List')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.t('Add to List')) + '</a> &nbsp; ';
             
             if(this.audioBibleEnabled(this.firstBible, pd)) {
                 var listenLink = this.linkBuilder.buildPassageSignalLink('onListen', this.formData.bible, pd);
-                refContent += '<a href="' + listenLink + '" title="' + this.app.t('Listen') + '" class="bss_std_link">' + this.app.it('Listen') + '</a> &nbsp;';  
+                refContent += '<a href="' + bssUtils.escapeHtml(listenLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Listen')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Listen')) + '</a> &nbsp;';
             }
         }
 
         if(this.app.statics.access.statistics) {
             var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
-            refContent += '<a href="' + sl + '" title="' + this.app.t('Statistics') + '" class="bss_std_link">' + this.app.t('Statistics') + '</a> &nbsp;';
+            refContent += '<a href="' + bssUtils.escapeHtml(sl) + '" title="' + bssUtils.escapeHtml(this.app.t('Statistics')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.t('Statistics')) + '</a> &nbsp;';
         }
 
         var crFootnoteHtml = '';
@@ -84,7 +85,7 @@ module.exports = kind({
 
             if(crMode == 'toggle') {
                 var crLinkHref = this.linkBuilder.buildPassageSignalLink('onCrossReferences', this.formData.bible, pd);
-                refContent += '<a href="' + crLinkHref + '" class="bss_std_link">' + this.app.t('Cross References') + '</a> &nbsp;';
+                refContent += '<a href="' + bssUtils.escapeHtml(crLinkHref) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.t('Cross References')) + '</a> &nbsp;';
             }
         }
 
@@ -134,15 +135,15 @@ module.exports = kind({
                 bibleContent = '';              
                 
                 shareLink = this.linkBuilder.buildPassageSignalLink('onShare', [module], pd);
-                bibleContent += '<a href="' + shareLink + '" title="' + this.app.t('Share') + '" class="bss_std_link">' + this.app.it('Share') + '</a> &nbsp;';
+                bibleContent += '<a href="' + bssUtils.escapeHtml(shareLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Share')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Share')) + '</a> &nbsp;';
                 copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [module], pd);
-                bibleContent += '<a href="' + copyLink + '" title="' + this.app.t('Copy') + '" class="bss_std_link">' + this.app.it('Copy') + '</a> &nbsp;';
+                bibleContent += '<a href="' + bssUtils.escapeHtml(copyLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Copy')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Copy')) + '</a> &nbsp;';
                 addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', [module], pd);
-                bibleContent += '<a href="' + addLink + '" title="' + this.app.t('Add to List') + '" class="bss_std_link">' + this.app.t('Add to List') + '</a> &nbsp;';
+                bibleContent += '<a href="' + bssUtils.escapeHtml(addLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Add to List')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.t('Add to List')) + '</a> &nbsp;';
                 
                 if(this.audioBibleEnabled(module, pd)) {
                     listenLink = this.linkBuilder.buildPassageSignalLink('onListen', [module], pd);
-                    bibleContent += '<a href="' + listenLink + '" title="' + this.app.t('Listen') + '" class="bss_std_link">' + this.app.it('Listen') + '</a> &nbsp;';  
+                    bibleContent += '<a href="' + bssUtils.escapeHtml(listenLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Listen')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Listen')) + '</a> &nbsp;';
                 }
                 
                 Container.$.BibleRow.createComponent({

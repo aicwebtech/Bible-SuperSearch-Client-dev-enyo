@@ -75,9 +75,14 @@ module.exports = {
     'Context': 'Kontext',
     'In Context': 'V Souvislosti s',
     'Cross References': 'Křížové odkazy',
+    'Open All': 'Otevřít vše',
     'Hidden': 'Skryté',
     'Toggle': 'Přepnout',
     'Show': 'Zobrazit',
+    'Cross Reference Format': 'Formát křížových odkazů',
+    'Compact': 'Kompaktní',
+    'Auto': 'Automaticky',
+    'Expand': 'Rozšířený',
 
     'Limit Search To': 'Omezit Vyhledávání Na',
     'Limit search to': 'Omezit vyhledávání na', // Watch case!
@@ -477,6 +482,9 @@ module.exports = {
     'Passages': 'Průchody',
     'Alias': 'Přezdívka',
     'You cannot search for these common words': 'Tato běžná slova nemůžete hledat',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Tip: Chcete-li aktivovat vybrané verze Bible, vyhledejte pasáž, otevřete kapitolu nebo spusťte hledání.',
 
     'Include Link': 'Zahrnout Odkaz',
     'Include Formatting': 'Zahrnout Formátování',

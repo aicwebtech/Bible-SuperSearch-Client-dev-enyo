@@ -75,9 +75,14 @@ module.exports = {
     'Context': 'Bối cảnh',
     'In Context': 'Trong ngữ cảnh',
     'Cross References': 'Tham chiếu chéo',
+    'Open All': 'Mở Tất Cả',
     'Hidden': 'Ẩn',
     'Toggle': 'Chuyển đổi',
     'Show': 'Hiển thị',
+    'Cross Reference Format': 'Định dạng tham chiếu chéo',
+    'Compact': 'Gọn',
+    'Auto': 'Tự động',
+    'Expand': 'Mở rộng',
 
     'Limit Search To': 'Giới hạn tìm kiếm ở',
     'Limit search to': 'Giới hạn tìm kiếm ở', // Watch case!
@@ -477,6 +482,9 @@ module.exports = {
     'Passages': 'Đoạn văn',
     'Alias': 'Bí danh',
     'You cannot search for these common words': 'Bạn không thể tìm kiếm những từ thông dụng này',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Mẹo: Để kích hoạt các phiên bản Kinh Thánh đã chọn, hãy tra đoạn văn, chuyển chương hoặc thực hiện tìm kiếm.',
 
     'Include Link': 'Bao gồm liên kết',
     'Include Formatting': 'Bao gồm Định dạng',

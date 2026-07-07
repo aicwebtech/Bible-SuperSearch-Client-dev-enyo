@@ -75,9 +75,14 @@ module.exports = {
     'Context': 'خیال، سیاق',
     'In Context': 'سیاق و سباق میں',
     'Cross References': 'متقاطع حوالہ جات',
+    'Open All': 'سب کھولیں',
     'Hidden': 'چھپا ہوا',
     'Toggle': 'ٹوگل',
     'Show': 'دکھائیں',
+    'Cross Reference Format': 'متقاطع حوالہ جات کی شکل',
+    'Compact': 'مختصر',
+    'Auto': 'خودکار',
+    'Expand': 'وسیع',
 
     'Limit Search To': 'تلاش کو محدود کریں۔',
     'Limit search to': 'تلاش کو محدود کریں۔', // Watch case!
@@ -477,6 +482,9 @@ module.exports = {
     'Passages': 'حوالے',
     'Alias': 'عرف',
     'You cannot search for these common words': 'آپ ان عام الفاظ کو تلاش نہیں کر سکتے',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'ٹپ: منتخب بائبل ورژنز کو فعال کرنے کے لیے، حوالہ تلاش کریں، باب تبدیل کریں یا تلاش چلائیں۔',
 
     'Include Link': 'لنک شامل کریں',
     'Include Formatting': 'فارمیٹنگ شامل کریں',

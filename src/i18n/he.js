@@ -75,9 +75,14 @@ module.exports = {
     'Context': 'הֶקשֵׁר',
     'In Context': 'בהקשר',
     'Cross References': 'הפניות צולבות',
+    'Open All': 'פתח הכל',
     'Hidden': 'מוסתר',
     'Toggle': 'החלף',
     'Show': 'הצג',
+    'Cross Reference Format': 'תבנית הפניות צולבות',
+    'Compact': 'קומפקטי',
+    'Auto': 'אוטומטי',
+    'Expand': 'מורחב',
 
     'Limit Search To': 'הגבל את החיפוש ל',
     'Limit search to': 'הגבל את החיפוש ל', // Watch case!
@@ -477,6 +482,9 @@ module.exports = {
     'Passages': 'מעברים',
     'Alias': 'כינוי',
     'You cannot search for these common words': 'אתה לא יכול לחפש את המילים הנפוצות האלה',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'טיפ: כדי להפעיל את גרסאות המקרא הנבחרות, חפש קטע, עבור לפרק או הפעל חיפוש.',
 
     'Include Link': 'כלול קישור',
     'Include Formatting': 'כלול עיצוב',
