@@ -181,8 +181,8 @@ module.exports = kind({
         this.renderHeader();
         this.renderTopPlaceholder();
 
-        resultsData.results.forEach(function(passage) {
-            this.renderPassage(passage);
+        resultsData.results.forEach(function(passage, idx, arr) {
+            this.renderPassage(passage, idx, arr);
         }, this);
 
         this.renderFooter();
@@ -207,7 +207,7 @@ module.exports = kind({
     afterRender: function() {
 
     },
-    renderPassage: function(passage) {        
+    renderPassage: function(passage, idx, arr) {
         
         var resultsFilter = this.app.get('_resultsFilter') || null;
 
@@ -224,6 +224,20 @@ module.exports = kind({
         }
         
         this.showingCopyrightBottom = false;
+
+        if(idx == 0) {
+            this.createComponent({
+                kind: i18n,
+                content: 'Original Verse',
+                classes: 'biblesupersearch_h5'
+            });
+        } else if(idx == 1) {
+             this.createComponent({
+                kind: i18n,
+                content: arr.length > 2 ? 'Cross References' : 'Cross Reference',
+                classes: 'biblesupersearch_h5'
+            });
+        }
 
         if(passage.single_verse && this.multiBibles) {
             this.renderSingleVerseParallelBible(passage);
