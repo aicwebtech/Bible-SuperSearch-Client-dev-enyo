@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'প্রসঙ্গ',
     'In Context': 'প্রসঙ্গে',
     'Cross References': 'ক্রস রেফারেন্স',
+    'Cross Reference': 'ক্রস রেফারেন্স',
+    'Original Verse': 'মূল আয়াত',
     'Open All': 'সব খুলুন',
     'Hidden': 'লুকানো',
     'Toggle': 'টগল',

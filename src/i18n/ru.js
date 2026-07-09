@@ -61,6 +61,8 @@ module.exports = {
     'Context': 'Контекст',
     'In Context': 'В Контексте',
     'Cross References': 'Перекрестные ссылки',
+    'Cross Reference': 'Перекрестная ссылка',
+    'Original Verse': 'Исходный стих',
     'Open All': 'Открыть все',
     'Hidden': 'Скрыто',
     'Toggle': 'Переключить',

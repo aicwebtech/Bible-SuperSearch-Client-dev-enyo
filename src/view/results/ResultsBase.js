@@ -225,18 +225,22 @@ module.exports = kind({
         
         this.showingCopyrightBottom = false;
 
-        if(idx == 0) {
-            this.createComponent({
-                kind: i18n,
-                content: 'Original Verse',
-                classes: 'biblesupersearch_h5'
-            });
-        } else if(idx == 1) {
-             this.createComponent({
-                kind: i18n,
-                content: arr.length > 2 ? 'Cross References' : 'Cross Reference',
-                classes: 'biblesupersearch_h5'
-            });
+        var firstPage = !this.paging || this.paging.current_page == 1;
+
+        if(this.app._crossReferenceView && firstPage && !this.app.UserConfig.get('copy')) {
+            if(idx == 0) {
+                this.createComponent({
+                    kind: i18n,
+                    tag: 'h3',
+                    content: 'Original Verse'
+                });
+            } else if(idx == 1) {
+                this.createComponent({
+                    kind: i18n,
+                    tag: 'h3',
+                    content: arr.length > 2 ? 'Cross References' : 'Cross Reference'
+                });
+            }
         }
 
         if(passage.single_verse && this.multiBibles) {

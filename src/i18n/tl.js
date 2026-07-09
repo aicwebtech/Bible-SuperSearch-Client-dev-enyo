@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Konteksto',
     'In Context': 'Sa konteksto',
     'Cross References': 'Mga cross reference',
+    'Cross Reference': 'Cross reference',
+    'Original Verse': 'Orihinal na talata',
     'Open All': 'Buksan Lahat',
     'Hidden': 'Nakatago',
     'Toggle': 'I-toggle',

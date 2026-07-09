@@ -430,7 +430,7 @@ module.exports = kind({
                 ontap: 'handleHelp',
                 attributes: {title: 'Help'},
                 components: [
-                    {tag: 'b', content: '?'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'help_outline'}
                 ]
             },
             {
@@ -448,7 +448,10 @@ module.exports = kind({
                 name: 'sos_button',
                 content: 'Bible SOS',
                 ontap: 'handleSos',
-                attributes: {title: 'Emergency Help from the Bible'}
+                attributes: {title: 'Emergency Help from the Bible'},
+                components: [
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'emergency'}
+                ]
             },        
             {
                 kind: i18n,
@@ -456,7 +459,10 @@ module.exports = kind({
                 name: 'start_button',
                 content: 'Start',
                 ontap: 'handleStart',
-                attributes: {title: 'Bible Start Guide'}
+                attributes: {title: 'Bible Start Guide'},
+                components: [
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'info'}
+                ]
             },        
             {
                 kind: i18n,

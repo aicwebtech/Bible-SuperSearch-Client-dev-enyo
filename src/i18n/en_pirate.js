@@ -55,6 +55,8 @@ module.exports = {
     'Context': 'Jewwel Mateys',
     'In Context': 'Withe Jewwel Mateys',
     'Cross References': 'Crosse Referrrences',
+    'Cross Reference': 'Crosse Referrrence',
+    'Original Verse': 'Original Verrrse',
     'Open All': 'Plunder All',
     'Hidden': 'Hardden',
     'Toggle': 'Floppe',

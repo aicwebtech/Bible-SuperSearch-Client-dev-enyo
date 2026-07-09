@@ -77,6 +77,8 @@ module.exports = {
     'Context': '',
     'In Context': '',
     'Cross References': '',
+    'Cross Reference': '',
+    'Original Verse': '',
     'Open All': 'ཚང་མ་ཁ་ཕྱེ',
     'Hidden': '',
     'Toggle': '',

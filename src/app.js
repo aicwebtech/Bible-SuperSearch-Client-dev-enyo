@@ -106,6 +106,7 @@ var App = Application.kind({
     loadingPagePrevent: false,
     hasAjaxSuccess: false,
     _blockAutoScroll: false,
+    _crossReferenceView: false,
     hasMouse: false, // use mouse events to detect
 
     useNewSelectors: false,
@@ -1007,6 +1008,10 @@ var App = Application.kind({
                     this.loadingPagePrevent = true;
                     return this._hashCache(parts);
                     break;
+                case 'cr':   // Cross reference
+                    this.loadingPagePrevent = true;
+                    return this._hashReference(parts, true);
+                    break;
                 case 'p':   // Passage
                     this.loadingPagePrevent = true;
                     return this._hashPassage(parts);
@@ -1120,7 +1125,7 @@ var App = Application.kind({
         this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },    
-    _hashReference: function(parts) {
+    _hashReference: function(parts, isCrossReference) {
         var partsObj = this._explodeHashPassage(parts);
 
         partsObj.chap  = null;
@@ -1128,8 +1133,8 @@ var App = Application.kind({
 
         var formData = this._assembleHashPassage(partsObj);
         this.debug && this.log('sending onHashRunForm');
-        this.waterfall('onHashRunForm', {formData: formData, newTab: true});
-    },   
+        this.waterfall('onHashRunForm', {formData: formData, newTab: true, crossReference: !!isCrossReference});
+    },
     _hashRequest: function(parts) {
         this._hashSearch(parts, true);
     },

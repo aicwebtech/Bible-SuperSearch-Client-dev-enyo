@@ -61,6 +61,8 @@ module.exports = {
     'Context': 'Context',
     'In Context': 'În Context',
     'Cross References': 'Referințe încrucișate',
+    'Cross Reference': 'Referință încrucișată',
+    'Original Verse': 'Versetul original',
     'Open All': 'Deschide tot',
     'Hidden': 'Ascuns',
     'Toggle': 'Comută',

@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'አውድ',
     'In Context': 'በዐውደ-ጽሑፉ',
     'Cross References': 'መስቀል ማጣቀሻዎች',
+    'Cross Reference': 'መስቀል ማጣቀሻ',
+    'Original Verse': 'ዋናው ጥቅስ',
     'Open All': 'ሁሉንም ክፈት',
     'Hidden': 'ተደብቋል',
     'Toggle': 'መቀያየር',

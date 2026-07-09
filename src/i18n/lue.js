@@ -73,6 +73,8 @@ module.exports = {
     'Show in context': 'Solola vesi namazu alihatako',
     'Context': 'Mazu alihatako',
     'In Context': 'Muze mwalihachila mazu',
+    'Cross Reference': '',
+    'Original Verse': '',
 
     'Limit Search To': 'Tondela Kaha',
     'Limit search to': 'Tondela kaha', // Watch case!

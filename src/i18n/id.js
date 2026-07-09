@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Konteks',
     'In Context': 'Dalam konteks',
     'Cross References': 'Referensi silang',
+    'Cross Reference': 'Referensi silang',
+    'Original Verse': 'Ayat asli',
     'Open All': 'Buka Semua',
     'Hidden': 'Tersembunyi',
     'Toggle': 'Alihkan',

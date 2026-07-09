@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Context',
     'In Context': 'In context',
     'Cross References': 'Kruisverwijzingen',
+    'Cross Reference': 'Kruisverwijzing',
+    'Original Verse': 'Oorspronkelijk vers',
     'Open All': 'Alles openen',
     'Hidden': 'Verborgen',
     'Toggle': 'Omschakelen',

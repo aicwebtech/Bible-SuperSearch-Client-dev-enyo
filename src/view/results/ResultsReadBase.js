@@ -817,7 +817,7 @@ module.exports = kind({
             var parentRef = this.app.getLocaleBookName(item.from_book) + ' ' + item.from_chapter + ':' + item.from_verse;
             var targetRef = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr);
 
-            return this.linkBuilder.buildReferenceLink('r', this.formData.bible, parentRef + '; ' + targetRef);
+            return this.linkBuilder.buildReferenceLink('cr', this.formData.bible, parentRef + '; ' + targetRef);
         }
 
         return this.linkBuilder.buildReferenceLink('p', this.formData.bible, localeBook, cr.to_chapter_start, cr.to_verse_start, cr.to_chapter_end, cr.to_verse_end);
@@ -848,7 +848,7 @@ module.exports = kind({
 
                 var reference = cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr);
                 var href = this._crossReferenceTargetHref(item, cr, localeBook);
-                currentRefs.push('<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link" target="_blank" rel="noopener noreferrer">' + bssUtils.escapeHtml(reference) + ';</a>');
+                currentRefs.push('<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link" rel="noopener noreferrer">' + bssUtils.escapeHtml(reference) + ';</a>');
             }
 
             var openAllLink = this._buildOpenAllCrossReferencesLink(item.from_book, item.from_chapter, item.from_verse, item);
@@ -872,7 +872,7 @@ module.exports = kind({
             var localeBook = this.app.getLocaleBookName(cr.to_book);
             var reference = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr);
             var href = this._crossReferenceTargetHref(item, cr, localeBook);
-            references.push('<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link" target="_blank" rel="noopener noreferrer">' + bssUtils.escapeHtml(reference) + ';</a>');
+            references.push('<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link" rel="noopener noreferrer">' + bssUtils.escapeHtml(reference) + ';</a>');
         }
 
         var openAllLink = this._buildOpenAllCrossReferencesLink(item.from_book, item.from_chapter, item.from_verse, item);
@@ -913,10 +913,10 @@ module.exports = kind({
             rawRefs.push(localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr));
         }
 
-        var href = this.linkBuilder.buildReferenceLink('r', this.formData.bible, rawRefs.join('; '));
+        var href = this.linkBuilder.buildReferenceLink('cr', this.formData.bible, rawRefs.join('; '));
         var label = this.app.t('Open All');
 
-        return '<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link bss_open_all" target="_blank" rel="noopener noreferrer">' + bssUtils.escapeHtml(label) + '</a>';
+        return '<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link bss_open_all" rel="noopener noreferrer">' + bssUtils.escapeHtml(label) + '</a>';
     },
     proccessSingleVerseReference: function(passage, verse) {
         var bookName = this.app.getLocaleBookName(passage.book_id, passage.book_name);

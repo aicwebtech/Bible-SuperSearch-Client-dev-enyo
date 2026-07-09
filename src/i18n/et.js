@@ -65,6 +65,8 @@ module.exports = {
     'Context': 'Kontekst',
     'In Context': 'Kontekstis',
     'Cross References': 'Ristviited',
+    'Cross Reference': 'Ristviide',
+    'Original Verse': 'Algne salm',
     'Open All': 'Ava kõik',
     'Hidden': 'Peidetud',
     'Toggle': 'Lülita',

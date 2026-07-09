@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Kontekst',
     'In Context': 'Në Kontekst',
     'Cross References': 'Referenca të kryqëzuara',
+    'Cross Reference': 'Referencë e kryqëzuar',
+    'Original Verse': 'Vargu origjinal',
     'Open All': 'Hap të gjitha',
     'Hidden': 'Fshehur',
     'Toggle': 'Ndrysho',

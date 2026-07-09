@@ -61,6 +61,8 @@ module.exports = {
     'Context': 'บริบท',
     'In Context': 'ในบริบท',
     'Cross References': 'การอ้างอิงไขว้',
+    'Cross Reference': 'การอ้างอิงไขว้',
+    'Original Verse': 'ข้อพระคัมภีร์ต้นฉบับ',
     'Open All': 'เปิดทั้งหมด',
     'Hidden': 'ซ่อนอยู่',
     'Toggle': 'สลับ',

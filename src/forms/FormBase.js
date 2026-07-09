@@ -42,6 +42,7 @@ module.exports = kind({
 
     successHandle: null,
     errorHandle: null,
+    _crossReferenceRun: false,
     fieldLastChanged: null,
     shortcutChangeIgnore: false,
     searchChangeIgnore: false,
@@ -492,6 +493,8 @@ module.exports = kind({
         this.app.set('cacheId', this.get('cacheHash'));
         this.app.set('shortHashUrl', '#/c/' + this.get('cacheHash'));
         var responseData = {formData: this._formDataAsSubmitted, results: inResponse, success: true};
+        this.app.set('_crossReferenceView', !!this._crossReferenceRun);
+        this._crossReferenceRun = false;
         this.app.set('resultsShowing', []);
         this.app.set('altResultsShowing', []);
         this.app.set('responseData', responseData);
@@ -530,6 +533,7 @@ module.exports = kind({
         this.successHandle && this.successHandle(responseData);
     },
     handleError: function(inSender, inResponse) {
+        this._crossReferenceRun = false;
         // this.app.set('ajaxLoading', false);
         this.app.set('ajaxLoadingDelay', false);
         this.requestPending = false;
@@ -703,6 +707,7 @@ module.exports = kind({
         // }
 
         // this.clearForm();
+        this._crossReferenceRun = !!inEvent.crossReference;
         this.preventDefaultSubmit = true;
         var fd = utils.clone(inEvent.formData);
         fd.shortcut = fd.shortcut || 0;

@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'சூழல்',
     'In Context': 'சூழலில்',
     'Cross References': 'குறுக்கு குறிப்புகள்',
+    'Cross Reference': 'குறுக்கு குறிப்பு',
+    'Original Verse': 'மூல வசனம்',
     'Open All': 'அனைத்தையும் திற',
     'Hidden': 'மறைக்கப்பட்டது',
     'Toggle': 'மாற்று',

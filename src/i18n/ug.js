@@ -78,6 +78,8 @@ module.exports = {
     'Context': 'مەزمۇن',
     'In Context': 'مەزمۇندا',
     'Cross References': 'ئۆزئارا پايدىلانما',
+    'Cross Reference': 'ئۆزئارا پايدىلانما',
+    'Original Verse': 'ئەسلى ئايەت',
     'Open All': 'ھەممىسىنى ئاچ',
     'Hidden': 'يوشۇرۇن',
     'Toggle': 'ئالماشتۇرۇش',

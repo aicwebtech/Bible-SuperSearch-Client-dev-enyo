@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Dulucda',
     'In Context': 'Marka la Eego',
     'Cross References': 'Tixraacyo isdhaafsan',
+    'Cross Reference': 'Tixraac isdhaafsan',
+    'Original Verse': 'Aayadda asalka ah',
     'Open All': 'Fur Dhammaan',
     'Hidden': 'Qarsoon',
     'Toggle': 'Beddel',

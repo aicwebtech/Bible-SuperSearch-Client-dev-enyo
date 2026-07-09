@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'सन्दर्भ',
     'In Context': 'सन्दर्भमा',
     'Cross References': 'क्रस सन्दर्भहरू',
+    'Cross Reference': 'क्रस सन्दर्भ',
+    'Original Verse': 'मूल पद',
     'Open All': 'सबै खोल्नुहोस्',
     'Hidden': 'लुकाइएको',
     'Toggle': 'टगल',

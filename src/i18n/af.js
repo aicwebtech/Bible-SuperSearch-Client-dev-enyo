@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Konteks',
     'In Context': 'In Konteks',
     'Cross References': 'Kruisverwysings',
+    'Cross Reference': 'Kruisverwysing',
+    'Original Verse': 'Oorspronklike vers',
     'Open All': 'Maak Alles Oop',
     'Hidden': 'Versteek',
     'Toggle': 'Wissel',

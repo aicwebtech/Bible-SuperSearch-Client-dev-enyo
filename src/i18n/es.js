@@ -54,6 +54,8 @@ module.exports = {
     'Context': 'Contexto',
     'In Context': 'En Contexto',
     'Cross References': 'Referencias cruzadas',
+    'Cross Reference': 'Referencia cruzada',
+    'Original Verse': 'Versículo original',
     'Open All': 'Abrir todo',
     'Hidden': 'Oculto',
     'Toggle': 'Alternar',
