@@ -19,7 +19,8 @@ module.exports = kind({
 
     handlers: {
         onLocaleChange: 'localeChanged',
-        onClearFormWaterfall: 'clear'
+        onClearFormWaterfall: 'clear',
+        onBibleChange: 'handleBibleChange'
     },
 
     defaultBook: 1,
@@ -61,16 +62,23 @@ module.exports = kind({
             });
         }  
 
-        var tgroup = this.$.Book.createOptionComponent({
-            kind: OptGroup,
-            label: this.app.t('Old Testament')
-        });
+        // BSS-266: create each testament optgroup lazily, only when a book of that testament
+        // survives filtering, so a hidden Old Testament leaves no empty group / stray divider.
+        var currentTestament = null;
 
         BookList.forEach(function(item) {
-            if(item.id == '40') {
-                tgroup = this.$.Book.createOptionComponent({
+            if(!this.app.bookShowingInSelectors(item.id)) {
+                return;
+            }
+
+            var testament = (item.id >= 40) ? 'nt' : 'ot';
+
+            if(testament != currentTestament) {
+                currentTestament = testament;
+
+                this.$.Book.createOptionComponent({
                     kind: OptGroup,
-                    label: this.app.t('New Testament')
+                    label: this.app.t(testament == 'nt' ? 'New Testament' : 'Old Testament')
                 });
             }
 
@@ -300,6 +308,88 @@ module.exports = kind({
     clear: function() {
         this._initDefault();
     },
+    // BSS-266: when the selected Bible(s) change, rebuild the (filtered) book list and keep the
+    // current selection if its book is still available, otherwise fall back to the first available book.
+    handleBibleChange: function(inSender, inEvent) {
+        if(!this.app.hideUnavailableBooksEnabled()) {
+            return;
+        }
+
+        var value = this.get('value');
+        var bookId = this._bookIdFromValue(value);
+
+        this.bookId = null;
+        this._createBookList();
+
+        if(bookId && !this.app.bookShowingInSelectors(bookId)) {
+            // A selected book is no longer available -> fall back to the first available book.
+            this._selectFirstAvailableBook();
+        } else {
+            // Keep the current selection (or blank/default) against the rebuilt list.
+            this.render();
+            this._populateFromValueHelper(value);
+        }
+    },
+    _bookIdFromValue: function(value) {
+        if(!value) {
+            return null;
+        }
+
+        var Passages = this.Passage.explodeReferences(value, true);
+
+        if(!Passages || Passages.length != 1 || !Passages[0] || !Passages[0].book) {
+            return null;
+        }
+
+        var Book = this.app.findBookByName(Passages[0].book);
+
+        return Book ? Book.id : null;
+    },
+    _firstAvailableBook: function() {
+        var BookList = this._getBookList();
+
+        for(var i = 0; i < BookList.length; i++) {
+            if(this.app.bookShowingInSelectors(BookList[i].id)) {
+                return BookList[i];
+            }
+        }
+
+        return null;
+    },
+    _selectFirstAvailableBook: function() {
+        var Book = this._firstAvailableBook();
+
+        if(!Book) {
+            return this._selectNoneRender();
+        }
+
+        var defaultChapter = this.defaultChapter || 1;
+        var defaultVerse = this.includeAllVerses ? '' : ':1';
+
+        this.bookId = null;
+        this.$.Book.setSelectedByValue(Book.id);
+        this._createChapterList(defaultChapter);
+        this._createVerseList(this.includeAllVerses ? '' : '1');
+
+        this._internalSet = true;
+        this.set('value', Book.name + ' ' + defaultChapter + defaultVerse);
+        this._internalSet = false;
+
+        this.render();
+    },
+    _effectiveDefaultBook: function() {
+        if(!this.defaultBook) {
+            return null;
+        }
+
+        if(this.app.bookShowingInSelectors(this.defaultBook)) {
+            return this.defaultBook;
+        }
+
+        var Book = this._firstAvailableBook();
+
+        return Book ? Book.id : this.defaultBook;
+    },
     _getBookList: function() {
         var locale = this.app.get('locale');
         var BookList = this.app.localeBibleBooks[locale] || this.app.statics.books;
@@ -315,13 +405,17 @@ module.exports = kind({
         return Book;
     },
     _initDefault: function() {
-        if(this.defaultBook) {
+        // BSS-266: if the configured default book is hidden for the selected Bible(s), start on the
+        // first available book (e.g. Matthew when only NT-only Bibles are selected).
+        var defaultBook = this._effectiveDefaultBook();
+
+        if(defaultBook) {
             defaultChapter = this.defaultChapter || 1;
             defaultVerse = this.includeAllVerses ? '' : ':1';
-            this.$.Book.setSelectedByValue(this.defaultBook);
+            this.$.Book.setSelectedByValue(defaultBook);
             this._createChapterList(defaultChapter);
             this._createVerseList(this.includeAllVerses ? '' : '1');
-            var Book = this._getBookById(this.defaultBook);
+            var Book = this._getBookById(defaultBook);
             var val = Book.name + ' ' + defaultChapter + defaultVerse;
         } else {
             var val = '';

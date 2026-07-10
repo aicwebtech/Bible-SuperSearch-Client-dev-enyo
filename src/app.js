@@ -97,6 +97,8 @@ var App = Application.kind({
     localeDatasetsRaw: Locales,
     localeDatasets: {},
     localeBibleBooks: {},
+    _availableBookIds: null, // BSS-266: cached map {bookId: true} of books available in the selected Bible(s); null = all books
+    _bibleBookIdsCache: null, // BSS-266: per-module parsed book_list cache
     isRtl: false,
     validate: Validators,
     AlertDialog: AlertDialog,
@@ -1577,6 +1579,115 @@ var App = Application.kind({
 
         return false;
     },
+    // BSS-266: Parse a Bible's `book_list` string into a map {bookId: true}.
+    // Tokens: 'entire' => 1..66, 'ot' => 1..39, 'nt' => 40..66, numeric => that book id.
+    // A null/blank list is treated as 'entire' (backward compatible with older APIs).
+    parseBookList: function(bookList) {
+        var books = {};
+        var i;
+
+        if(bookList == null || bookList === '' || typeof bookList == 'undefined') {
+            for(i = 1; i <= 66; i++) {
+                books[i] = true;
+            }
+
+            return books;
+        }
+
+        var tokens = ('' + bookList).split(',');
+
+        for(var t = 0; t < tokens.length; t++) {
+            var token = tokens[t].replace(/^\s+|\s+$/g, '');
+
+            if(token === '') {
+                continue;
+            }
+
+            if(token == 'entire') {
+                for(i = 1; i <= 66; i++) { books[i] = true; }
+            } else if(token == 'ot') {
+                for(i = 1; i <= 39; i++) { books[i] = true; }
+            } else if(token == 'nt') {
+                for(i = 40; i <= 66; i++) { books[i] = true; }
+            } else {
+                var id = parseInt(token, 10);
+
+                if(!isNaN(id) && id >= 1 && id <= 66) {
+                    books[id] = true;
+                }
+            }
+        }
+
+        return books;
+    },
+    // BSS-266: Book-id map for a single Bible module, memoized per module.
+    getBibleBookIds: function(module) {
+        if(!this._bibleBookIdsCache) {
+            this._bibleBookIdsCache = {};
+        }
+
+        if(this._bibleBookIdsCache[module]) {
+            return this._bibleBookIdsCache[module];
+        }
+
+        var bible = this.statics.bibles ? this.statics.bibles[module] : null;
+        var books = this.parseBookList(bible ? bible.book_list : null);
+
+        this._bibleBookIdsCache[module] = books;
+
+        return books;
+    },
+    // BSS-266: Union of available books across the given Bible modules.
+    // Returns null when no Bibles are given (meaning: no filtering, all books).
+    getAvailableBookIds: function(bibles) {
+        if(!bibles || !bibles.length) {
+            return null;
+        }
+
+        var available = {};
+        var any = false;
+
+        for(var i = 0; i < bibles.length; i++) {
+            var module = bibles[i];
+
+            if(!module || module == '0') {
+                continue;
+            }
+
+            var books = this.getBibleBookIds(module);
+
+            for(var id in books) {
+                available[id] = true;
+            }
+
+            any = true;
+        }
+
+        return any ? available : null;
+    },
+    // BSS-266: Whether a book id is available in the currently selected Bible(s).
+    // Returns true when there is no active availability set (feature off / no selection).
+    isBookAvailable: function(bookId) {
+        if(!this._availableBookIds) {
+            return true;
+        }
+
+        return !!this._availableBookIds[bookId];
+    },
+    // BSS-266: Whether the hide-unavailable-books feature is enabled via config.
+    hideUnavailableBooksEnabled: function() {
+        var c = this.configs.hideUnavailableBooks;
+
+        return !(c == null || c === false || c === 'false');
+    },
+    // BSS-266: Whether a book should be shown in the book selectors / autocomplete.
+    bookShowingInSelectors: function(bookId) {
+        if(!this.hideUnavailableBooksEnabled()) {
+            return true;
+        }
+
+        return this.isBookAvailable(bookId);
+    },
     getNumberOfEnabledBibles: function() {
         if(this.numberOfEnabledBibles) {
             return this.numberOfEnabledBibles;
@@ -1608,6 +1719,8 @@ var App = Application.kind({
         return (this.getNumberOfEnabledBibles() == 1) ? true : false;
     },
     staticsChanged: function(was, is) {
+        this._bibleBookIdsCache = null; // BSS-266: statics (Bibles) reloaded, drop parsed book_list cache
+
         for(i in is.bibles) {
             if(typeof is.bibles[i].rtl == 'undefined') {
                 is.bibles[i].rtl = this._isRtl(is.bibles[i].lang_short);
@@ -2481,6 +2594,9 @@ var App = Application.kind({
     handleBibleChange: function(inSender, inEvent) {
         var c = this.configs.saveUserBibleSelections;
         this.debug && this.log('handleBibleChange', inEvent, c);
+
+        // BSS-266: refresh the available-book set for the newly selected Bible(s).
+        this._availableBookIds = this.getAvailableBookIds(inEvent.bibles);
 
         if(c && c != 'false' && c != false && this.biblesChanged && inEvent.dir == 2 && inEvent.automatic != true && inEvent.ignore != true) {
             var bibles = inEvent.bibles || [];

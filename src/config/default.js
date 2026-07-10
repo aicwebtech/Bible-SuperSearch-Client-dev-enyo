@@ -47,6 +47,7 @@ var defaultConfig = {
     'crossReferenceFormatDefault': 'auto',             // Default user setting for cross reference list layout: compact | auto | expand
     'crossReferenceLinkIncludeParent': false,          // When true, prepend the "from" (parent) reference first to each cross reference link and "Open All" link
     'disableCache': false,                             // When TRUE, breaks cache on API calls (appends random param); FALSE allows caching
+    'hideUnavailableBooks': true,                      // Hide books not contained in the selected Bible(s) from book dropdowns and reference autocomplete (e.g. hide OT books when only NT-only Bibles are selected)
 
     _urlDefaultNotice: function() {
         if(window.console) {

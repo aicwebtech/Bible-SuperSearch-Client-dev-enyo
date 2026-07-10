@@ -45,6 +45,13 @@ module.exports = kind({
         bookName = this.app._fmtBookNameMatch(bookName, locale);
         var BookList = this.app.localeBibleBooks[locale] || this.app.statics.books;
 
+        // BSS-266: only suggest books available in the currently selected Bible(s).
+        if(this.app.hideUnavailableBooksEnabled()) {
+            BookList = BookList.filter(function(bookItem) {
+                return this.app.isBookAvailable(bookItem.id);
+            }, this);
+        }
+
         var matchAnywhere = (!this.app.configs.autocompleteMatchAnywhere || this.app.configs.autocompleteMatchAnywhere == 'false') ? false : true;
         var matchOn = 'fn'; // fn or sn
 
