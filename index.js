@@ -66,6 +66,35 @@ ready(function () {
             BSS._bibleBookIdsCache = null;
         });
 
+        QUnit.test("getAvailableBookIds: string selection is not iterated char-by-char", function( assert ) {
+            var savedBibles = BSS.statics.bibles;
+            BSS.statics.bibles = { tr: {book_list: 'nt'}, wlc: {book_list: 'ot'} };
+            BSS._bibleBookIdsCache = null;
+
+            assert.equal(bookCount(BSS.getAvailableBookIds('tr')), 27, "single string module => 27 (NT), not treated as chars");
+            assert.equal(bookCount(BSS.getAvailableBookIds('tr,wlc')), 66, "comma-joined string => union of 66");
+
+            BSS.statics.bibles = savedBibles;
+            BSS._bibleBookIdsCache = null;
+        });
+
+        QUnit.test("getAvailableBookIds: unknown module fails open (null)", function( assert ) {
+            var savedBibles = BSS.statics.bibles;
+            BSS.statics.bibles = { tr: {book_list: 'nt'} };
+            BSS._bibleBookIdsCache = null;
+
+            assert.equal(BSS.getAvailableBookIds(['nope']), null, "unknown module => null (show all books)");
+            assert.equal(BSS.getAvailableBookIds(['tr', 'nope']), null, "any unknown module => null (can't safely filter)");
+
+            BSS.statics.bibles = savedBibles;
+            BSS._bibleBookIdsCache = null;
+        });
+
+        QUnit.test("parseBookList: unparseable list fails open to all 66", function( assert ) {
+            assert.equal(bookCount(BSS.parseBookList('xyz')), 66, "garbage => all 66, not empty");
+            assert.equal(bookCount(BSS.parseBookList('0')), 66, "out-of-range only => all 66, not empty");
+        });
+
         // BSS.set('testing', true);
     }
 }); 
