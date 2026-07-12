@@ -913,7 +913,8 @@ module.exports = kind({
             rawRefs.push(localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr));
         }
 
-        var href = this.linkBuilder.buildReferenceLink('cr', this.formData.bible, rawRefs.join('; '));
+        var mode = this.app._isTrue(this.app.configs.crossReferenceLinkIncludeParent) ? 'cr' : 'r';
+        var href = this.linkBuilder.buildReferenceLink(mode, this.formData.bible, rawRefs.join('; '));
         var label = this.app.t('Open All');
 
         return '<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link bss_open_all" rel="noopener noreferrer">' + bssUtils.escapeHtml(label) + '</a>';
