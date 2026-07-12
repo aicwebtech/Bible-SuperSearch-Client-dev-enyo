@@ -77,6 +77,8 @@ module.exports = {
     'Context': 'ਸੰਦਰਭ',
     'In Context': 'ਸੰਦਰਭ ਵਿੱਚ',
     'Cross References': 'ਕਰਾਸ ਹਵਾਲੇ',
+    'Cross Reference': 'ਕਰਾਸ ਹਵਾਲਾ',
+    'Original Verse': 'ਮੂਲ ਆਇਤ',
     'Open All': 'ਸਭ ਖੋਲ੍ਹੋ',
     'Hidden': 'ਲੁਕਾਇਆ',
     'Toggle': 'ਟੌਗਲ',

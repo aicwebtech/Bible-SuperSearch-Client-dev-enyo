@@ -60,6 +60,8 @@ module.exports = {
     'Context': '上下文',
     'In Context': '在上下文中',
     'Cross References': '交叉參照',
+    'Cross Reference': '交叉參照',
+    'Original Verse': '原始經文',
     'Open All': '全部開啟',
     'Hidden': '隱藏',
     'Toggle': '切換',

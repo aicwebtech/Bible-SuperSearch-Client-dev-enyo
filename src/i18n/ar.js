@@ -61,6 +61,8 @@ module.exports = {
     'Context': 'سياق',
     'In Context': 'في سياق',
     'Cross References': 'المراجع المتقاطعة',
+    'Cross Reference': 'المرجع المتقاطع',
+    'Original Verse': 'الآية الأصلية',
     'Open All': 'فتح الكل',
     'Hidden': 'مخفي',
     'Toggle': 'تبديل',

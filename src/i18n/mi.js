@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Horopaki',
     'In Context': 'I te Horopaki',
     'Cross References': 'Tohutoro whakawhiti',
+    'Cross Reference': 'Tohutoro whakawhiti',
+    'Original Verse': 'Irava taketake',
     'Open All': 'Huakina Katoa',
     'Hidden': 'Huna',
     'Toggle': 'Takahuri',

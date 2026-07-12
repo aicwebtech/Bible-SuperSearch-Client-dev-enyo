@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Muktadha',
     'In Context': 'Katika Muktadha',
     'Cross References': 'Marejeo ya msalaba',
+    'Cross Reference': 'Marejeo ya msalaba',
+    'Original Verse': 'Mstari asilia',
     'Open All': 'Fungua Zote',
     'Hidden': 'Imefichwa',
     'Toggle': 'Badilisha',

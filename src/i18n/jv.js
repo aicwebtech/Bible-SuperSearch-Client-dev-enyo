@@ -77,6 +77,8 @@ module.exports = {
     'Context': 'Tampilake ing konteks',
     'In Context': 'Ing Konteks',
     'Cross References': 'Referensi silang',
+    'Cross Reference': '',
+    'Original Verse': '',
     'Open All': 'Mbukak Kabeh',
     'Hidden': 'Didhelikake',
     'Toggle': 'Ganti',

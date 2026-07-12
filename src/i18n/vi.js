@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Bối cảnh',
     'In Context': 'Trong ngữ cảnh',
     'Cross References': 'Tham chiếu chéo',
+    'Cross Reference': 'Tham chiếu chéo',
+    'Original Verse': 'Câu gốc',
     'Open All': 'Mở Tất Cả',
     'Hidden': 'Ẩn',
     'Toggle': 'Chuyển đổi',

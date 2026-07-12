@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Kontext',
     'In Context': 'V Souvislosti s',
     'Cross References': 'Křížové odkazy',
+    'Cross Reference': 'Křížový odkaz',
+    'Original Verse': 'Původní verš',
     'Open All': 'Otevřít vše',
     'Hidden': 'Skryté',
     'Toggle': 'Přepnout',

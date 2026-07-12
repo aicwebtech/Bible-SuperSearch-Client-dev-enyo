@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Magana',
     'In Context': 'A cikin Magana',
     'Cross References': 'Nassoshin giciye',
+    'Cross Reference': 'Nassin giciye',
+    'Original Verse': 'Ayar asali',
     'Open All': 'Buɗe Duka',
     'Hidden': 'Boye',
     'Toggle': 'Canjawa',

@@ -61,6 +61,8 @@ module.exports = {
     'Context': 'Konteksts',
     'In Context': 'Kontekstā',
     'Cross References': 'Paralēlās rakstvietas',
+    'Cross Reference': 'Paralēlā rakstvieta',
+    'Original Verse': 'Sākotnējais pants',
     'Open All': 'Atvērt visu',
     'Hidden': 'Paslēpts',
     'Toggle': 'Pārslēgt',

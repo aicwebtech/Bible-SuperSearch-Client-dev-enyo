@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'సందర్భం',
     'In Context': 'సందర్భంలో',
     'Cross References': 'క్రాస్ సూచనలు',
+    'Cross Reference': 'క్రాస్ సూచన',
+    'Original Verse': 'అసలు వచనం',
     'Open All': 'అన్నింటినీ తెరవండి',
     'Hidden': 'దాచినది',
     'Toggle': 'టాగుల్',
