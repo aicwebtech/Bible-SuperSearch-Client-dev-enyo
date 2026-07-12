@@ -17,7 +17,7 @@ module.exports = kind({
     classes: 'bss_format_buttons_html',
     font: null,
     textSize: null,
-    
+
     components: [
         {classes: 'bss_button_group', name: 'TextSizeGroup', components: [
             {
@@ -34,7 +34,7 @@ module.exports = kind({
                 attributes: {
                     title: 'Enlarge Text'
                 }
-            },      
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_size bss_size_reg',
@@ -43,14 +43,14 @@ module.exports = kind({
                 ontap: 'handleSizeChange',
                 tag: 'span',
                 attributes: {
-                    title: 'Default Text Size',
+                    title: 'Default Text Size'
                 },
                 components: [
                     {tag: 'span', content: '&nbsp;', allowHtml: true}, // OK
                     {kind: i18n, content: 'A'},
                     {tag: 'span', content: '&nbsp;', allowHtml: true}, // OK
                 ]
-            },  
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_size bss_size_minus',
@@ -82,7 +82,7 @@ module.exports = kind({
                 components: [
                     {kind: i18n,  content: 'Abc'}
                 ]
-            },        
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_font bss_font_sans_serif',
@@ -91,7 +91,7 @@ module.exports = kind({
                 val: 'sans_serif',
                 tag: 'span',
                 attributes: {
-                    title: 'Sans-Serif',
+                    title: 'Sans-Serif'
                 },
                 components: [
                     {kind: i18n, content: 'Abc'}
@@ -105,7 +105,7 @@ module.exports = kind({
                 val: 'monospace',
                 tag: 'span',
                 attributes: {
-                    title: 'Monospace',
+                    title: 'Monospace'
                 },
                 components: [
                     {kind: i18n, content: 'Abc'}
@@ -126,7 +126,7 @@ module.exports = kind({
                 attributes: {
                     title: 'Paragraph Display'
                 }
-            },        
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_renderstyle bss_passage',
@@ -145,7 +145,7 @@ module.exports = kind({
                 attributes: {
                     title: 'Passage Display'
                 }
-            },        
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_renderstyle bss_verse',
@@ -165,7 +165,7 @@ module.exports = kind({
                 attributes: {
                     title: 'Verse Display'
                 }
-            },            
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_renderstyle bss_verse_passage',
@@ -188,12 +188,12 @@ module.exports = kind({
             },
 
         ]},
-        
+
         {classes: 'bss_button_group', name: 'TextEmbGroup1', components: [
             {
                 classes: 'bss_item bss_italics_toggle',
                 name: 'italics_toggle',
-                kind: Toggle,         
+                kind: Toggle,
                 trueTitle: 'Disable Italization of Added Words',
                 falseTitle: 'Enable Italization of Added Words',
                 trueComponent: {
@@ -201,18 +201,18 @@ module.exports = kind({
                         {tag: 'span', classes: 'bss_block_enabled', content: '&#10003;', allowHtml: true},
                         {kind: i18n, tag: 'span', content: 'Italics'}
                     ]
-                },        
+                },
                 falseComponent: {
                     components: [
                         {tag: 'span', classes: 'bss_block_disabled', allowHtml: true},
                         {kind: i18n, tag: 'span', content: 'Italics'}
                     ]
                 }
-            },        
+            },
             {
                 classes: 'bss_item bss_strongs_toggle',
                 name: 'strongs_toggle',
-                kind: Toggle,        
+                kind: Toggle,
                 trueTitle: 'Disable Strong\'s Numbers',
                 falseTitle: 'Enable Strong\'s Numbers',
                 trueComponent: {
@@ -220,28 +220,28 @@ module.exports = kind({
                         {tag: 'span', classes: 'bss_block_enabled', content: '&#10003;', allowHtml: true},
                         {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
                     ]
-                },        
+                },
                 falseComponent: {
                     components: [
                         {tag: 'span', classes: 'bss_block_disabled', allowHtml: true},
                         {tag: 'span', content: 'Strong&rsquo;s', allowHtml: true}
                     ]
                 }
-            },   
+            },
         ]},
-        {classes: 'bss_button_group', name: 'TextEmbGroup2', components: [     
+        {classes: 'bss_button_group', name: 'TextEmbGroup2', components: [
             {
                 classes: 'bss_item bss_redletter_toggle',
                 name: 'redletter_toggle',
-                kind: Toggle,         
+                kind: Toggle,
                 trueTitle: 'Disable Red Letter',
-                falseTitle: 'Enable Red Letter', 
+                falseTitle: 'Enable Red Letter',
                 trueComponent: {
                     components: [
                         {tag: 'span', classes: 'bss_block_enabled', content: '&#10003;', allowHtml: true},
                         {kind: i18n, tag: 'span', content: 'Red Letter'}
                     ]
-                },        
+                },
                 falseComponent: {
                     components: [
                         {tag: 'span', classes: 'bss_block_disabled', allowHtml: true},
@@ -252,7 +252,7 @@ module.exports = kind({
             {
                 classes: 'bss_item bss_highlight_toggle',
                 name: 'highlight_toggle',
-                kind: Toggle,         
+                kind: Toggle,
                 trueTitle: 'Disable Highlighting of Keywords',
                 falseTitle: 'Enable Highlighting of Keywords',
                 trueComponent: {
@@ -261,7 +261,7 @@ module.exports = kind({
                         // {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'highlight'}
                         {kind: i18n, tag: 'span', content: 'Highlight'}
                     ]
-                },        
+                },
                 falseComponent: {
                     components: [
                         {tag: 'span', classes: 'bss_block_disabled', allowHtml: true},
@@ -269,7 +269,7 @@ module.exports = kind({
                         {kind: i18n, tag: 'span', content: 'Highlight'}
                     ]
                 }
-            },    
+            },
         ]},
         {classes: 'bss_button_group', name: 'SmallButtonsGroup1', components: [
             // copy instantly button
@@ -281,14 +281,15 @@ module.exports = kind({
                     content: 'Copy',
                     ontap: 'handleCopyInstant',
                     style: 'position: relative',
-                    // title: 'Copy with given copy settings', 
+                    // title: 'Copy with given copy settings',
                     attributes: {title: 'Copy'},
                     components: [
                         {
-                            kind: i18n, 
-                            tag: 'span', 
-                            classes: 'bss-material-icons bss_icon', 
+                            kind: i18n,
+                            tag: 'span',
+                            classes: 'bss-material-icons bss_icon',
                             content: 'content_copy',
+                            attributes: {'aria-hidden': 'true'}
                             // title: 'Copy'
                         }
                     ]
@@ -297,21 +298,21 @@ module.exports = kind({
             {
                 classes: 'bss_item bss_copy_toggle_new',
                 name: 'copy_toggle',
-                kind: Toggle,            
+                kind: Toggle,
                 trueTitle: 'Read Display',
                 falseTitle: 'EZ Copy',
                 trueComponent: {
                     components: [
-                        {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'book'}
+                        {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'book', attributes: {'aria-hidden': 'true'}}
                         // {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'bookvisibility'}
                     ]
                 },
                 falseComponent: {
                     components: [
-                        {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'content_copypageview'}
+                        {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'content_copypageview', attributes: {'aria-hidden': 'true'}}
                     ]
                 },
-            },  
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_clear_form',
@@ -320,7 +321,7 @@ module.exports = kind({
                 ontap: 'handleClearForm',
                 attributes: {title: 'Clear Form'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'clear'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'clear', attributes: {'aria-hidden': 'true'}}
                 ]
             },
         ]},
@@ -332,9 +333,9 @@ module.exports = kind({
                 ontap: 'handlePrint',
                 attributes: {title: 'Print'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'print'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'print', attributes: {'aria-hidden': 'true'}}
                 ],
-            },        
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_share bss_text_only',
@@ -342,9 +343,9 @@ module.exports = kind({
                 ontap: 'handleShare',
                 attributes: {title: 'Share'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'share'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'share', attributes: {'aria-hidden': 'true'}}
                 ],
-            },        
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_link bss_text_only',
@@ -352,7 +353,7 @@ module.exports = kind({
                 ontap: 'handleLink',
                 attributes: {title: 'Link'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'link'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'link', attributes: {'aria-hidden': 'true'}}
                 ],
             },
             {
@@ -362,9 +363,9 @@ module.exports = kind({
                 ontap: 'handleHistory',
                 attributes: {title: 'History'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'history'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'history', attributes: {'aria-hidden': 'true'}}
                 ],
-            },            
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_link bss_text_only',
@@ -372,9 +373,9 @@ module.exports = kind({
                 ontap: 'handleBookmarkCurrent',
                 attributes: {title: 'Bookmark'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'bookmark_add'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'bookmark_add', attributes: {'aria-hidden': 'true'}}
                 ],
-            },            
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_link bss_text_only',
@@ -382,7 +383,7 @@ module.exports = kind({
                 ontap: 'handleBookmark',
                 attributes: {title: 'Bookmarks'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'bookmarks'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'bookmarks', attributes: {'aria-hidden': 'true'}}
                 ],
             },
             {
@@ -393,7 +394,7 @@ module.exports = kind({
                 ontap: 'handleResetSetting',
                 attributes: {title: 'Reset'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'restart_alt'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'restart_alt', attributes: {'aria-hidden': 'true'}}
                 ],
             },
             {
@@ -404,7 +405,7 @@ module.exports = kind({
                 ontap: 'handleSaveSetting',
                 attributes: {title: 'Save Settings'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'save'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'save', attributes: {'aria-hidden': 'true'}}
                 ],
             },
             {
@@ -415,9 +416,9 @@ module.exports = kind({
                 ontap: 'handleSettings',
                 attributes: {title: 'Settings'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'settings'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'settings', attributes: {'aria-hidden': 'true'}}
                 ],
-            },      
+            },
         ]},
 
         {classes: 'bss_button_group', components: [
@@ -430,7 +431,7 @@ module.exports = kind({
                 ontap: 'handleHelp',
                 attributes: {title: 'Help'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'help_outline'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'help_outline', attributes: {'aria-hidden': 'true'}}
                 ]
             },
             {
@@ -450,9 +451,9 @@ module.exports = kind({
                 ontap: 'handleSos',
                 attributes: {title: 'Emergency Help from the Bible'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'emergency'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'emergency', attributes: {'aria-hidden': 'true'}}
                 ]
-            },        
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_start',
@@ -461,9 +462,9 @@ module.exports = kind({
                 ontap: 'handleStart',
                 attributes: {title: 'Bible Start Guide'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'info'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'info', attributes: {'aria-hidden': 'true'}}
                 ]
-            },        
+            },
             {
                 kind: i18n,
                 classes: 'bss_item bss_download',
@@ -471,11 +472,11 @@ module.exports = kind({
                 ontap: 'handleDownload',
                 attributes: {title: 'Bible Downloads'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'download'}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'download', attributes: {'aria-hidden': 'true'}}
                 ]
-            },        
+            },
             // End Extra buttons
-        ]}, 
+        ]},
         {
             classes: 'bss_item bss_language',
             name: 'language_selector',
@@ -488,12 +489,12 @@ module.exports = kind({
         // ]}
     ],
 
-    bindings: [    
+    bindings: [
         {from: 'app.UserConfig.paragraph', to: '$.paragraph_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons paragraph_toggle', value, dir);
             return value;
             // return (value && value != 0 && value != false) ? true : false;
-        }},         
+        }},
         {from: 'app.UserConfig.copy', to: '$.copy_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons copy_toggle', value, dir);
 
@@ -503,47 +504,47 @@ module.exports = kind({
                 this.app.UserConfig.set(rscache, rs);
             }
 
-            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ...
 
             return value;
             // return (value && value != 0 && value != false) ? true : false;
-        }},        
+        }},
         {from: 'app.UserConfig.single_verses', to: '$.single_verse_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons copy_toggle', value, dir);
             return value;
             // return (value && value != 0 && value != false) ? true : false;
-        }},             
+        }},
         {from: 'app.UserConfig.advanced_toggle', to: '$.advanced_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons advanced_toggle', value, dir);
             return value;
             // return (value && value != 0 && value != false) ? true : false;
-        }},           
+        }},
         {from: 'app.UserConfig.italics', to: '$.italics_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons italics', value, dir);
-            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ...
             return value;
-        }},         
+        }},
         {from: 'app.UserConfig.strongs', to: '$.strongs_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons strongs', value, dir);
-            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ...
             return value;
-        }},             
+        }},
         {from: 'app.UserConfig.red_letter', to: '$.redletter_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons red_letter', value, dir);
-            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ...
             return value;
         }},
         {from: 'app.UserConfig.highlight', to: '$.highlight_toggle.value', oneWay: false, transform: function(value, dir) {
             // console.log('FormatButtons red_letter', value, dir);
-            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ...
             return value;
-        }}, 
+        }},
         {from: 'app.UserConfig.font', to: 'font', oneWay: true, transform: function(value, dir) {
             // console.log('FormatButtons font', value, dir);
             this.$.font_serif.addRemoveClass('bss_selected', value == 'serif');
             this.$.font_sans_serif.addRemoveClass('bss_selected', value == 'sans_serif' || value == 'sans-serif');
             this.$.font_monospace.addRemoveClass('bss_selected', value == 'monospace');
-            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ...
             return value;
         }},
         // {from: 'app.UserConfig.text_size', to: 'textSize', oneWay: true, transform: function(value, dir) {
@@ -566,7 +567,7 @@ module.exports = kind({
         }
 
         if(
-            !this.app.configs.saveUserSettingsManual || 
+            !this.app.configs.saveUserSettingsManual ||
             this.app.configs.saveUserSettingsManual == 'false' ||
             !this.app.configs.saveUserSettings ||
             this.app.configs.saveUserSettings == 'false'
@@ -588,7 +589,7 @@ module.exports = kind({
         } else {
             this.$.language_selector.set('showing', false);
         }
-    }, 
+    },
     rendered: function() {
         this.inherited(arguments);
 
