@@ -1207,7 +1207,7 @@ var App = Application.kind({
 
         // A form may opt to prefer its reference field (and book/chapter/verse selector)
         // over the combined request field when populating a passage from the URL hash.
-        var useRequestField = this.formHasField('request') && !this.formPrefersReferenceField();
+        var useRequestField = this.formHasField('request') && !(this.formPrefersReferenceField() && this.formHasField('reference'));
         var ref = partsObj.book.replace(/%20/g, ' ');
 
         if(partsObj.chap) {
