@@ -20,6 +20,11 @@ module.exports = kind({
     name: 'CustomUserFriendly2BookSel',
     kind: FormBase,
 
+    // This form has a combined request field as well as a dedicated reference field and
+    // book/chapter/verse selector. Prefer the reference field when populating a passage
+    // (e.g. #/p/tyndale/Deuteronomy/5/32) from the URL hash instead of the request field.
+    preferReferenceFieldFromHash: true,
+
     components: [
         {kind: i18n, classes: 'bss_center', content: 'Bible SuperSearch', classes: 'biblesupersearch_classic_title'},
         {
