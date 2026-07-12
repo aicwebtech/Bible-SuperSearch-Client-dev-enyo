@@ -247,6 +247,13 @@ module.exports = kind({
 
         return false;
     },
+    formPrefersReferenceField: function() {
+        if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view) {
+            return this.$.Content.$.FormController.view.preferReferenceFieldFromHash ? true : false;
+        }
+
+        return false;
+    },
     _formIsShortHashable: function() {
         if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view && this.$.Content.$.FormController.view.isShortHashable) {
             return this.$.Content.$.FormController.view.isShortHashable();
