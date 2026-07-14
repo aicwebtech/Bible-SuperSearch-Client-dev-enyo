@@ -747,7 +747,7 @@ module.exports = kind({
     },
     handleClick: function(inSender, inEvent) {
         var strongsOpenClick = this.getStrongsOpenClick();
-        target = inEvent.target;
+        var target = inEvent.target;
 
         if(target.tagName == 'A' && target.className == 'bss_top_placeholder_hide') {
             this.hideTopPlaceholder();
