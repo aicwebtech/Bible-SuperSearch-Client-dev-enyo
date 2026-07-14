@@ -750,7 +750,9 @@ module.exports = kind({
     _subformSafe: function() {
         return (!this.containsSubforms && (!this.subForm || this.defaultForm));
     },
-    updateHash: function() {
+    updateHash: function() { this._writeHash(false); },   // pushState — adds a history entry
+    syncHash: function() { this._writeHash(true); },       // replaceState — keeps the current entry reconstructable
+    _writeHash: function(replace) {
         var hash = this._generateHashFromData(),
             shortHash = '#/c/' + this.get('cacheHash');
 
@@ -762,7 +764,14 @@ module.exports = kind({
 
         hash = (hash) ? hash : shortHash;
 
-        history.pushState(null, null, document.location.pathname + hash);
+        var url = document.location.pathname + hash;
+
+        if(replace) {
+            history.replaceState(null, null, url);
+        }
+        else {
+            history.pushState(null, null, url);
+        }
     },
     clearHash: function() {
         history.pushState(null, null, document.location.pathname);

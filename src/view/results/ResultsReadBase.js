@@ -830,6 +830,7 @@ module.exports = kind({
         // format overrides the user setting (paragraph footnotes force 'expand'); otherwise use the user's choice.
         var mode = format || this.app.normalizeCrossReferenceFormat(this.app.UserConfig.get('crossReferenceFormat'));
         var expand = (mode == 'expand') || (mode == 'auto' && item.cross_references.length > 7);
+        var targetAttr = this.app._isTrue(this.app.configs.crossReferenceLinkNewTab) ? ' target="_blank"' : '';
 
         if(expand) {
             var bookRows = [];
@@ -848,7 +849,7 @@ module.exports = kind({
 
                 var reference = cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr);
                 var href = this._crossReferenceTargetHref(item, cr, localeBook);
-                currentRefs.push('<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link" rel="noopener noreferrer">' + bssUtils.escapeHtml(reference) + ';</a>');
+                currentRefs.push('<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link bss_cross_reference_link" rel="noopener noreferrer"' + targetAttr + '>' + bssUtils.escapeHtml(reference) + ';</a>');
             }
 
             var openAllLink = this._buildOpenAllCrossReferencesLink(item.from_book, item.from_chapter, item.from_verse, item);
@@ -872,7 +873,7 @@ module.exports = kind({
             var localeBook = this.app.getLocaleBookName(cr.to_book);
             var reference = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr);
             var href = this._crossReferenceTargetHref(item, cr, localeBook);
-            references.push('<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link" rel="noopener noreferrer">' + bssUtils.escapeHtml(reference) + ';</a>');
+            references.push('<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link bss_cross_reference_link" rel="noopener noreferrer"' + targetAttr + '>' + bssUtils.escapeHtml(reference) + ';</a>');
         }
 
         var openAllLink = this._buildOpenAllCrossReferencesLink(item.from_book, item.from_chapter, item.from_verse, item);
@@ -916,8 +917,9 @@ module.exports = kind({
         var mode = this.app._isTrue(this.app.configs.crossReferenceLinkIncludeParent) ? 'cr' : 'r';
         var href = this.linkBuilder.buildReferenceLink(mode, this.formData.bible, rawRefs.join('; '));
         var label = this.app.t('Open All');
+        var targetAttr = this.app._isTrue(this.app.configs.crossReferenceLinkNewTab) ? ' target="_blank"' : '';
 
-        return '<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link bss_open_all" rel="noopener noreferrer">' + bssUtils.escapeHtml(label) + '</a>';
+        return '<a href="' + bssUtils.escapeHtml(href) + '" class="bss_std_link bss_open_all bss_cross_reference_link" rel="noopener noreferrer"' + targetAttr + '>' + bssUtils.escapeHtml(label) + '</a>';
     },
     proccessSingleVerseReference: function(passage, verse) {
         var bookName = this.app.getLocaleBookName(passage.book_id, passage.book_name);
