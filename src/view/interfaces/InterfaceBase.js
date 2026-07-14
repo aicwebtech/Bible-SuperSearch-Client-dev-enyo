@@ -227,6 +227,13 @@ module.exports = kind({
 
         return false;
     },
+    getActiveForm: function() {
+        if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view) {
+            return this.$.Content.$.FormController.view;
+        }
+
+        return null;
+    },
     _formHasFieldStandard: function(fieldName) {
         if(fieldName == 'search_and_reference') {
             var has = 0;

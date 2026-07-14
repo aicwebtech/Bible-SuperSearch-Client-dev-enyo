@@ -323,6 +323,7 @@ var App = Application.kind({
         this.configs.crossReferenceShowDefault = this.normalizeCrossReferencesShow(this.configs.crossReferenceShowDefault);
         this.configs.crossReferenceFormatDefault = this.normalizeCrossReferenceFormat(this.configs.crossReferenceFormatDefault);
         this.configs.crossReferenceLinkIncludeParent = this._isTrue(this.configs.crossReferenceLinkIncludeParent);
+        this.configs.crossReferenceLinkNewTab = this._isTrue(this.configs.crossReferenceLinkNewTab);
 
         var view = null;
         this.initUserConfig();
@@ -1318,9 +1319,13 @@ var App = Application.kind({
         if(this.view && this.view.getFormFieldValue) {
             return this.view.getFormFieldValue(fieldName);
         }
-        
+
         return false;
-    },    
+    },
+    getActiveForm: function() {
+        return (this.view && this.view.getActiveForm) ? this.view.getActiveForm() : null;
+    },
+
     getFormSearch: function() {
         if(this.formHasField('search')) {
             return this.getFormFieldValue('search');

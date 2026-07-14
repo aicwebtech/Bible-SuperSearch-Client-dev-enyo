@@ -232,12 +232,14 @@ module.exports = kind({
                 this.createComponent({
                     kind: i18n,
                     tag: 'h3',
+                    classes: 'bss_original_verse_heading',
                     content: 'Original Verse'
                 });
             } else if(idx == 1) {
                 this.createComponent({
                     kind: i18n,
                     tag: 'h3',
+                    classes: 'bss_cross_references_heading',
                     content: arr.length > 2 ? 'Cross References' : 'Cross Reference'
                 });
             }
@@ -749,6 +751,19 @@ module.exports = kind({
 
         if(target.tagName == 'A' && target.className == 'bss_top_placeholder_hide') {
             this.hideTopPlaceholder();
+        }
+
+        if(target.tagName == 'A' && target.className && target.className.indexOf('bss_cross_reference_link') !== -1) {
+            var src = inEvent.srcEvent || inEvent;   // srcEvent is the raw DOM event (also used by the strongs branch)
+            var newTab = this.app._isTrue(this.app.configs.crossReferenceLinkNewTab);
+            var modified = !!(src.ctrlKey || src.metaKey || src.shiftKey || src.button === 1);
+
+            if(!newTab && !modified) {
+                // Same-window open: stamp the current view's hash onto the entry we're leaving
+                // (before the browser follows the fragment link) so Back can restore it.
+                var form = this.app.getActiveForm();
+                form && form.syncHash && form.syncHash();
+            }
         }
 
         if(strongsOpenClick && target.tagName == 'A' && target.className == 'strongs') {
