@@ -1166,6 +1166,6 @@ a.bss_results_list_item_visited {
     font-weight: bold;
 }
 
-sup .bss_std_link .bss-material-icons {
+.bss_std_link.bss-material-icons {
     font-size: medium;
 }

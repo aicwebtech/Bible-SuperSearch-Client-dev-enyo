@@ -17,6 +17,7 @@ var defaultConfig = {
     "arrowKeysPageChapter": false,
     "textDisplayDefault": 'passage',
     "parallelBibleStartSuperceedsDefaultBibles": false,
+    'contextLinksAsButtons': true,                      // Whether to show context links as buttons (ie Copy, Share, Context, Cross References) (default: true)
     'landingReferenceDefault': false,
     'hoverDelayThreshold': 500,
     'strongsDialogSearchLink': false,

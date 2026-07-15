@@ -324,6 +324,7 @@ var App = Application.kind({
         this.configs.crossReferenceFormatDefault = this.normalizeCrossReferenceFormat(this.configs.crossReferenceFormatDefault);
         this.configs.crossReferenceLinkIncludeParent = this._isTrue(this.configs.crossReferenceLinkIncludeParent);
         this.configs.crossReferenceLinkNewTab = this._isTrue(this.configs.crossReferenceLinkNewTab);
+        this.configs.contextLinksAsButtons = this._isTrue(this.configs.contextLinksAsButtons);
 
         var view = null;
         this.initUserConfig();
@@ -1978,11 +1979,14 @@ var App = Application.kind({
             'Chapter': 'expand', // = 'arrow_expand_vertical',
             'Copy': 'content_copy',
             'Share': 'share',
+            'Cross References': 'article',
+            // "Listen": 'speaker',
         };
 
         // somehow, this is breaking link hovering...
         if(map[string]) {
             // return "<span class='bss-material-icons bss_icon'>" + map[string] + "</span>";
+            return map[string];
         }
 
         return this.t(string);

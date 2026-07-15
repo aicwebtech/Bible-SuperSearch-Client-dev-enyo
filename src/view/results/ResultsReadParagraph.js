@@ -113,6 +113,9 @@ module.exports = kind({
 
         this._addNavButtons(Container, pd);
 
+        var useIcons = this.app.configs.contextLinksAsButtons;
+        var buttonClasses = useIcons ? 'bss_std_link bss-material-icons bss_icon' : 'bss_std_link';
+
         if(this.multiBibles) {        
             Container.createComponent({
                 name: 'BibleRow',
@@ -133,13 +136,13 @@ module.exports = kind({
                 bibleContent = '';              
                 
                 shareLink = this.linkBuilder.buildPassageSignalLink('onShare', [module], pd);
-                bibleContent += '<a href="' + bssUtils.escapeHtml(shareLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Share')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Share')) + '</a> &nbsp;';
+                bibleContent += '<a href="' + bssUtils.escapeHtml(shareLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Share')) + '" class="' + buttonClasses + '">' + bssUtils.escapeHtml(this.app.it('Share')) + '</a> &nbsp;';
                 copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [module], pd);
-                bibleContent += '<a href="' + bssUtils.escapeHtml(copyLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Copy')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Copy')) + '</a> &nbsp;';
+                bibleContent += '<a href="' + bssUtils.escapeHtml(copyLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Copy')) + '" class="' + buttonClasses + '">' + bssUtils.escapeHtml(this.app.it('Copy')) + '</a> &nbsp;';
 
                 if(this.audioBibleEnabled(module, pd)) {
                     listenLink = this.linkBuilder.buildPassageSignalLink('onListen', [module], pd);
-                    bibleContent += '<a href="' + bssUtils.escapeHtml(listenLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Listen')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Listen')) + '</a> &nbsp;';
+                    bibleContent += '<a href="' + bssUtils.escapeHtml(listenLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Listen')) + '" class="' + buttonClasses + '">' + bssUtils.escapeHtml(this.app.it('Listen')) + '</a> &nbsp;';
                 }
                 
                 Container.$.BibleRow.createComponent({
