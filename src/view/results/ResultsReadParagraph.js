@@ -32,6 +32,9 @@ module.exports = kind({
     renderPassageParallelBible: function(pd) {
         var Container = this._createContainer();
         var bibleHtml = [];
+        var useIcons = this.app.configs.contextLinksAsButtons;
+        var buttonClasses = useIcons ? 'bss_std_link bss-material-icons bss_icon' : 'bss_std_link';
+        var buttonContainer = useIcons ? 'span' : 'sup';
 
         for(i in this.bibles) {
             bibleHtml[i] = '';
@@ -59,19 +62,19 @@ module.exports = kind({
 
         if(!this.multiBibles) {
             var shareLink = this.linkBuilder.buildPassageSignalLink('onShare', this.formData.bible, pd);
-            refContent += '<a href="' + bssUtils.escapeHtml(shareLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Share')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Share')) + '</a> &nbsp;';
+            refContent += '<a href="' + bssUtils.escapeHtml(shareLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Share')) + '" class="' + buttonClasses + '">' + bssUtils.escapeHtml(this.app.it('Share')) + '</a> &nbsp;';
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', this.formData.bible, pd);
-            refContent += '<a href="' + bssUtils.escapeHtml(copyLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Copy')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Copy')) + '</a> &nbsp; ';
+            refContent += '<a href="' + bssUtils.escapeHtml(copyLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Copy')) + '" class="' + buttonClasses + '">' + bssUtils.escapeHtml(this.app.it('Copy')) + '</a> &nbsp; ';
 
             if(this.audioBibleEnabled(this.firstBible, pd)) {
                 var listenLink = this.linkBuilder.buildPassageSignalLink('onListen', this.formData.bible, pd);
-                refContent += '<a href="' + bssUtils.escapeHtml(listenLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Listen')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.it('Listen')) + '</a> &nbsp;';
+                refContent += '<a href="' + bssUtils.escapeHtml(listenLink) + '" title="' + bssUtils.escapeHtml(this.app.t('Listen')) + '" class="' + buttonClasses + '">' + bssUtils.escapeHtml(this.app.it('Listen')) + '</a> &nbsp;';
             }
         }
 
         if(this.app.statics.access.statistics) {
             var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
-            refContent += '<a href="' + bssUtils.escapeHtml(sl) + '" title="' + bssUtils.escapeHtml(this.app.t('Statistics')) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.t('Statistics')) + '</a> &nbsp;';
+            refContent += '<a href="' + bssUtils.escapeHtml(sl) + '" title="' + bssUtils.escapeHtml(this.app.t('Statistics')) + '" class="' + buttonClasses + '">' + bssUtils.escapeHtml(this.app.t('Statistics')) + '</a> &nbsp;';
         }
 
         var crFootnoteHtml = '';
@@ -83,7 +86,7 @@ module.exports = kind({
 
             if(crMode == 'toggle') {
                 var crLinkHref = this.linkBuilder.buildPassageSignalLink('onCrossReferences', this.formData.bible, pd);
-                refContent += '<a href="' + bssUtils.escapeHtml(crLinkHref) + '" class="bss_std_link">' + bssUtils.escapeHtml(this.app.t('Cross References')) + '</a> &nbsp;';
+                refContent += '<a href="' + bssUtils.escapeHtml(crLinkHref) + '" class="' + buttonClasses + '" title="' + bssUtils.escapeHtml(this.app.t('Cross References')) + '">' + bssUtils.escapeHtml(this.app.it('Cross References')) + '</a> &nbsp;';
             }
         }
 
@@ -98,7 +101,7 @@ module.exports = kind({
                     components: [
                         {content: bookName + ' ' + pd.chapter_verse},
                         {components: [
-                            {tag: 'sup', content: refContent, allowHtml: true},
+                            {tag: buttonContainer, content: refContent, allowHtml: true},
                         ]},
                         {
                             kind: AudioContainer, 

@@ -1980,7 +1980,7 @@ var App = Application.kind({
             'Copy': 'content_copy',
             'Share': 'share',
             'Cross References': 'article',
-            // "Listen": 'speaker',
+            "Listen": 'volume_up',
         };
 
         // somehow, this is breaking link hovering...
