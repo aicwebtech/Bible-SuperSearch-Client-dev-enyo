@@ -349,6 +349,17 @@
     margin-inline-start: 7px;
 }
 
+.bss_std_link.bss-material-icons {
+    font-size: medium;
+    border: 1px solid transparent;
+}
+
+.bss_std_link.bss-material-icons:hover {
+    text-decoration: none;
+    background-color: #eae99f;
+    border: 1px solid #d1cf45;
+}
+
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     div.bss_copy_toggle span.bss_false {
         padding-top: 6px;

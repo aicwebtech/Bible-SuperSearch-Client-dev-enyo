@@ -1974,6 +1974,10 @@ var App = Application.kind({
     },
     // Translate string to icon
     it: function(string) {
+        if(!this.configs.contextLinksAsButtons) {
+            return this.t(string);
+        }
+        
         var map = {
             'Context': 'menu_open',
             'Chapter': 'expand', // = 'arrow_expand_vertical',
@@ -1981,6 +1985,7 @@ var App = Application.kind({
             'Share': 'share',
             'Cross References': 'article',
             "Listen": 'volume_up',
+            'Statistics': 'bar_chart',
         };
 
         // somehow, this is breaking link hovering...

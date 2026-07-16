@@ -271,7 +271,7 @@ module.exports = kind({
 
         if(this.app.statics.access.statistics) {
             var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
-            refContent += '<a href="' + bssUtils.escapeHtml(sl) + '" title="' + bssUtils.escapeHtml(this.app.t('Statistics')) + '" class="' + buttonClasses + '">' + bssUtils.escapeHtml(this.app.t('Statistics')) + '</a> &nbsp;';
+            refContent += '<a href="' + bssUtils.escapeHtml(sl) + '" title="' + bssUtils.escapeHtml(this.app.t('Statistics')) + '" class="' + buttonClasses + '">' + bssUtils.escapeHtml(this.app.it('Statistics')) + '</a> &nbsp;';
         }
 
         var passageCrossReferencesLink = this._buildPassageCrossReferencesToggleLink(pd);
@@ -294,9 +294,9 @@ module.exports = kind({
                             {tag: buttonContainer, content: refContent, allowHtml: true},
                         ]},
                         {
-                            kind: AudioContainer, 
-                            enabled: this.audioBibleEnabledWide(this.firstBible, pd),
-                            bible: this.firstBible, 
+                            kind: AudioContainer,
+                            enabled: !this.multiBibles && this.audioBibleEnabled(this.firstBible, pd),
+                            bible: this.firstBible,
                             passage: pd
                         }
                     ]
@@ -344,11 +344,11 @@ module.exports = kind({
                     components: [
                         {content: this._getBibleDisplayName(bible_info)},
                         {components: [
-                            {tag: 'sup', content: bibleContent, allowHtml: true, showing: showbibleContent},
+                            {tag: buttonContainer, content: bibleContent, allowHtml: true, showing: showbibleContent},
                         ]},
                         {
                             kind: AudioContainer, 
-                            enabled: this.audioBibleEnabledNarrow(mod, pd),
+                            enabled: this.multiBibles && this.audioBibleEnabledNarrow(mod, pd),
                             bible: mod, 
                             passage: pd
                         }
@@ -357,7 +357,7 @@ module.exports = kind({
             }
         }
 
-        this._addWideAudioContainer(Container, pd);
+        this.multiBibles && this._addWideAudioContainer(Container, pd);
 
         var VerseContainer = Container.createComponent({
             tag: 'tbody',
@@ -969,7 +969,8 @@ module.exports = kind({
             copyText = bssUtils.escapeHtml(this.app.it('Copy')),
             shareTitle = bssUtils.escapeHtml(this.app.t('Share')),
             copyTitle = bssUtils.escapeHtml(this.app.t('Copy')),
-            listenText = bssUtils.escapeHtml(this.app.it('Listen'));
+            listenText = bssUtils.escapeHtml(this.app.it('Listen')),
+            listenTitle = bssUtils.escapeHtml(this.app.t('Listen'));
 
         var html = '';
             html += '<a href="' + bssUtils.escapeHtml(verseLink) + '" title="' + verseTitle + '" class="bss_std_link">' + bssUtils.escapeHtml(bookName + ' ' + verse.chapter + ':' + verse.verse) + '</a>';
@@ -990,13 +991,13 @@ module.exports = kind({
                 || this.audioBibleEnabledVerse(this.selectedBible.module, passageClone)
             ) {
                 var audioLink = this.linkBuilder.buildPassageSignalLink('onListen', [this.selectedBible.module], passageClone);
-                html += '&nbsp; <' + wrapper + '>' + '<a href="' + bssUtils.escapeHtml(audioLink) + '" title="' + listenText + '" class="' + classes + '">' + listenText + '</a></' + wrapper + '>';
+                html += '&nbsp; <' + wrapper + '>' + '<a href="' + bssUtils.escapeHtml(audioLink) + '" title="' + listenTitle + '" class="' + classes + '">' + listenText + '</a></' + wrapper + '>';
             }
 
             // Statistics
             if(this.app.statics.access.statistics) {
                 var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, verse.chapter, verse.verse);
-                html += '&nbsp; <' + wrapper + '>' + '<a href="' + bssUtils.escapeHtml(sl) + '" title="' + chapterTitle + '" class="' + classes + '">' + bssUtils.escapeHtml(this.app.t('Statistics')) + '</a></' + wrapper + '>';
+                html += '&nbsp; <' + wrapper + '>' + '<a href="' + bssUtils.escapeHtml(sl) + '" title="' + bssUtils.escapeHtml(this.app.t('Statistics')) + '" class="' + classes + '">' + bssUtils.escapeHtml(this.app.it('Statistics')) + '</a></' + wrapper + '>';
             }
 
             if(crossReferencesLink) {

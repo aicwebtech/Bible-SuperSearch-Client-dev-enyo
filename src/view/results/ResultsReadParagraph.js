@@ -74,7 +74,7 @@ module.exports = kind({
 
         if(this.app.statics.access.statistics) {
             var sl = this.linkBuilder.buildSignalLink('onStatistics', this.formData.bible, bookName, pd.chapter_verse);
-            refContent += '<a href="' + bssUtils.escapeHtml(sl) + '" title="' + bssUtils.escapeHtml(this.app.t('Statistics')) + '" class="' + buttonClasses + '">' + bssUtils.escapeHtml(this.app.t('Statistics')) + '</a> &nbsp;';
+            refContent += '<a href="' + bssUtils.escapeHtml(sl) + '" title="' + bssUtils.escapeHtml(this.app.t('Statistics')) + '" class="' + buttonClasses + '">' + bssUtils.escapeHtml(this.app.it('Statistics')) + '</a> &nbsp;';
         }
 
         var crFootnoteHtml = '';
@@ -105,7 +105,7 @@ module.exports = kind({
                         ]},
                         {
                             kind: AudioContainer, 
-                            enabled: this.audioBibleEnabledNarrow(this.firstBible, pd),
+                            enabled: !this.multiBibles && this.audioBibleEnabled(this.firstBible, pd),
                             bible: this.firstBible, 
                             passage: pd
                         }
@@ -116,10 +116,7 @@ module.exports = kind({
 
         this._addNavButtons(Container, pd);
 
-        var useIcons = this.app.configs.contextLinksAsButtons;
-        var buttonClasses = useIcons ? 'bss_std_link bss-material-icons bss_icon' : 'bss_std_link';
-
-        if(this.multiBibles) {        
+        if(this.multiBibles) {
             Container.createComponent({
                 name: 'BibleRow',
                 classes: 'bss_render_bible_row',
@@ -155,7 +152,7 @@ module.exports = kind({
                     components: [
                         {content: this._getBibleDisplayName(bible_info)},
                         {components: [
-                            {tag: 'sup', content: bibleContent, allowHtml: true}
+                            {tag: buttonContainer, content: bibleContent, allowHtml: true}
                         ]},
                         {
                             kind: AudioContainer, 
@@ -166,9 +163,9 @@ module.exports = kind({
                     ]
                 });
             }
-        }
 
-        this._addWideAudioContainer(Container, pd);
+            this._addWideAudioContainer(Container, pd);
+        }
 
         for(chapter in pd.verse_index) {
             pd.verse_index[chapter].forEach(function(verse) {
