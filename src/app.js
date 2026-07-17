@@ -1972,12 +1972,13 @@ var App = Application.kind({
         
         return trans;
     },
-    // Translate string to icon
-    it: function(string) {
+    // Material Icons ligature for a context link label, or null if the label
+    // has no icon or contextLinksAsButtons is disabled
+    contextLinkIcon: function(string) {
         if(!this.configs.contextLinksAsButtons) {
-            return this.t(string);
+            return null;
         }
-        
+
         var map = {
             'Context': 'menu_open',
             'Chapter': 'expand', // = 'arrow_expand_vertical',
@@ -1988,13 +1989,11 @@ var App = Application.kind({
             'Statistics': 'bar_chart',
         };
 
-        // somehow, this is breaking link hovering...
-        if(map[string]) {
-            // return "<span class='bss-material-icons bss_icon'>" + map[string] + "</span>";
-            return map[string];
-        }
-
-        return this.t(string);
+        return map[string] || null;
+    },
+    // Translate string to icon
+    it: function(string) {
+        return this.contextLinkIcon(string) || this.t(string);
     },
     findBookByName: function(bookName, locale) {
         this.debug && this.log(bookName, locale);

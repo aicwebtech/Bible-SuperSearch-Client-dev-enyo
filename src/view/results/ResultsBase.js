@@ -938,6 +938,23 @@ module.exports = kind({
 
         this.$.SideSwipeButtons.addRemoveClass('bss_fadein', !!isfr);
     },
+    // Builds a context link (Copy, Share, Listen, etc) anchor, rendered as an
+    // icon button when contextLinksAsButtons is enabled and the label has an icon.
+    // label is the translation key; title (optional) is a different translation
+    // key for the title/aria-label attributes (defaults to label).
+    _buildContextLinkHtml: function(href, label, title) {
+        var icon = this.app.contextLinkIcon(label);
+        var classes = icon ? 'bss_std_link bss-material-icons bss_icon' : 'bss_std_link';
+        var titleText = bssUtils.escapeHtml(this.app.t(title || label));
+        var text = bssUtils.escapeHtml(icon || this.app.t(label));
+
+        return '<a href="' + bssUtils.escapeHtml(href) + '" title="' + titleText + '" aria-label="' + titleText + '" class="' + classes + '">' + text + '</a>';
+    },
+    // Tag wrapping context links: plain inline when shown as icon buttons,
+    // superscript when shown as text links
+    _contextLinkWrapperTag: function() {
+        return this.app.configs.contextLinksAsButtons ? 'span' : 'sup';
+    },
     audioBibleEnabled: function(bible, passage) {
         // :todo future check Bible / passage for audio availability (via API)
 
