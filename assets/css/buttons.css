@@ -352,12 +352,12 @@
 .bss_std_link.bss-material-icons {
     font-size: medium;
     border: 1px solid transparent;
+    padding: 1px;
 }
 
 .bss_std_link.bss-material-icons:hover {
     text-decoration: none;
-    background-color: #eae99f;
-    border: 1px solid #d1cf45;
+    border: 1px solid #444444;
 }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {

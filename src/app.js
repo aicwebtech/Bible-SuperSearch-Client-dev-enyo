@@ -1991,10 +1991,6 @@ var App = Application.kind({
 
         return map[string] || null;
     },
-    // Translate string to icon
-    it: function(string) {
-        return this.contextLinkIcon(string) || this.t(string);
-    },
     findBookByName: function(bookName, locale) {
         this.debug && this.log(bookName, locale);
         
