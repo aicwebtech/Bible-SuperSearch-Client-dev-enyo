@@ -355,9 +355,11 @@
     padding: 1px;
 }
 
-.bss_std_link.bss-material-icons:hover {
+.bss_std_link.bss-material-icons:hover,
+.bss_std_link.bss-material-icons:focus,
+.bss_std_link.bss-material-icons:focus-visible {
     text-decoration: none;
-    border: 1px solid #444444;
+    border: 1px solid #222222;
 }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
