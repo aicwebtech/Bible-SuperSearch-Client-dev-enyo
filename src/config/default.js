@@ -17,6 +17,7 @@ var defaultConfig = {
     "arrowKeysPageChapter": false,
     "textDisplayDefault": 'passage',
     "parallelBibleStartSuperceedsDefaultBibles": false,
+    'contextLinksAsButtons': true,                      // Whether to show context links as buttons (ie Copy, Share, Context, Cross References) (default: true)
     'landingReferenceDefault': false,
     'hoverDelayThreshold': 500,
     'strongsDialogSearchLink': false,
@@ -46,6 +47,7 @@ var defaultConfig = {
     'crossReferenceShowDefault': 'toggle',             // Default user setting: hidden | toggle | show
     'crossReferenceFormatDefault': 'auto',             // Default user setting for cross reference list layout: compact | auto | expand
     'crossReferenceLinkIncludeParent': false,          // When true, prepend the "from" (parent) reference first to each cross reference link and "Open All" link
+    'crossReferenceLinkNewTab': false,                 // When true, open cross reference links in a new browser tab
     'disableCache': false,                             // When TRUE, breaks cache on API calls (appends random param); FALSE allows caching
 
     _urlDefaultNotice: function() {

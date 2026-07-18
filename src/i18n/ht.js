@@ -79,6 +79,8 @@ module.exports = {
     'Context': 'Kontèks',
     'In Context': 'Nan Kontèks',
     'Cross References': 'Referans kwaze',
+    'Cross Reference': 'Referans kwaze',
+    'Original Verse': 'Vèsè orijinal',
     'Open All': 'Ouvri Tout',
     'Hidden': 'Kache',
     'Toggle': 'Chanje',
@@ -450,6 +452,7 @@ module.exports = {
     'Clear': 'Klè',
     'Restore': 'Restore',//check translation
     'Add': 'Ajoute',
+    'Add to List': 'Ajoute nan lis',
     'Okay': 'Oke',
     'Old': 'Ansyen',
     'New': 'Nouvo',

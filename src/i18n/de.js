@@ -61,6 +61,8 @@ module.exports = {
     'Context': 'Kontext',
     'In Context': 'Im Zusammenhang',
     'Cross References': 'Querverweise',
+    'Cross Reference': 'Querverweis',
+    'Original Verse': 'Ursprünglicher Vers',
     'Open All': 'Alle öffnen',
     'Hidden': 'Ausgeblendet',
     'Toggle': 'Umschalten',
@@ -440,6 +442,7 @@ module.exports = {
     'Clear': 'Klar',
     'Restore': 'Wiederherstellen',
     'Add': 'Hinzufügen',
+    'Add to List': 'Zur Liste hinzufügen',
     'Okay': 'Okay',//apparently correct translation
     'Old': 'Alt',
     'New': 'Neu',

@@ -336,6 +336,9 @@ var biblesupersearch_config_options = {
     //      Clean
     "pager": 'default',      
 
+    // Whether to show context links as buttons (ie Copy, Share, Context, Cross References) (default: true)
+    'contextLinksAsButtons': true,  
+
     // Whether to show a list of all results (5.7)
     'resultsList': false,   
 
@@ -410,6 +413,10 @@ var biblesupersearch_config_options = {
     // When true, the originating ("from" / parent) reference is prepended, first, to each cross
     // reference link (single verse and "Open All"). When false, only the target references are shown.
     'crossReferenceLinkIncludeParent': false,
+
+    // When true, cross reference links (individual and "Open All") open in a new browser tab.
+    // When false (default), they open in the same window.
+    'crossReferenceLinkNewTab': false,
 
     // Cache breaking on API calls (BSS-271)
     // When true, a random parameter is appended to API GET requests to force a fresh fetch (bypasses browser/proxy cache).

@@ -108,6 +108,7 @@ var App = Application.kind({
     loadingPagePrevent: false,
     hasAjaxSuccess: false,
     _blockAutoScroll: false,
+    _crossReferenceView: false,
     hasMouse: false, // use mouse events to detect
 
     useNewSelectors: false,
@@ -324,6 +325,8 @@ var App = Application.kind({
         this.configs.crossReferenceShowDefault = this.normalizeCrossReferencesShow(this.configs.crossReferenceShowDefault);
         this.configs.crossReferenceFormatDefault = this.normalizeCrossReferenceFormat(this.configs.crossReferenceFormatDefault);
         this.configs.crossReferenceLinkIncludeParent = this._isTrue(this.configs.crossReferenceLinkIncludeParent);
+        this.configs.crossReferenceLinkNewTab = this._isTrue(this.configs.crossReferenceLinkNewTab);
+        this.configs.contextLinksAsButtons = this._isTrue(this.configs.contextLinksAsButtons);
 
         var view = null;
         this.initUserConfig();
@@ -1009,6 +1012,10 @@ var App = Application.kind({
                     this.loadingPagePrevent = true;
                     return this._hashCache(parts);
                     break;
+                case 'cr':   // Cross reference
+                    this.loadingPagePrevent = true;
+                    return this._hashReference(parts, true);
+                    break;
                 case 'p':   // Passage
                     this.loadingPagePrevent = true;
                     return this._hashPassage(parts);
@@ -1122,7 +1129,7 @@ var App = Application.kind({
         this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },    
-    _hashReference: function(parts) {
+    _hashReference: function(parts, isCrossReference) {
         var partsObj = this._explodeHashPassage(parts);
 
         partsObj.chap  = null;
@@ -1130,8 +1137,8 @@ var App = Application.kind({
 
         var formData = this._assembleHashPassage(partsObj);
         this.debug && this.log('sending onHashRunForm');
-        this.waterfall('onHashRunForm', {formData: formData, newTab: true});
-    },   
+        this.waterfall('onHashRunForm', {formData: formData, newTab: true, crossReference: !!isCrossReference});
+    },
     _hashRequest: function(parts) {
         this._hashSearch(parts, true);
     },
@@ -1207,7 +1214,10 @@ var App = Application.kind({
             return {};
         }
 
-        var useRequestField = this.formHasField('request');
+        // A form may opt to prefer its reference field (and book/chapter/verse selector)
+        // over the combined request field when populating a passage from the URL hash.
+        var useRequestField = this.formHasField('request') && !(this.formPrefersReferenceField() && this.formHasField('reference'));
+
         var ref = partsObj.book.replace(/%20/g, ' ');
 
         if(partsObj.chap) {
@@ -1301,13 +1311,24 @@ var App = Application.kind({
 
         return false;
     },
+    formPrefersReferenceField: function() {
+        if(this.view && this.view.formPrefersReferenceField) {
+            return this.view.formPrefersReferenceField();
+        }
+
+        return false;
+    },
     getFormFieldValue: function(fieldName) {
         if(this.view && this.view.getFormFieldValue) {
             return this.view.getFormFieldValue(fieldName);
         }
-        
+
         return false;
-    },    
+    },
+    getActiveForm: function() {
+        return (this.view && this.view.getActiveForm) ? this.view.getActiveForm() : null;
+    },
+
     getFormSearch: function() {
         if(this.formHasField('search')) {
             return this.getFormFieldValue('search');
@@ -1957,21 +1978,25 @@ var App = Application.kind({
         
         return trans;
     },
-    // Translate string to icon
-    it: function(string) {
+    // Material Icons ligature for a context link label, or null if the label
+    // has no icon or contextLinksAsButtons is disabled
+    contextLinkIcon: function(string) {
+        if(!this.configs.contextLinksAsButtons) {
+            return null;
+        }
+
         var map = {
             'Context': 'menu_open',
             'Chapter': 'expand', // = 'arrow_expand_vertical',
             'Copy': 'content_copy',
             'Share': 'share',
+            'Cross References': 'article',
+            "Listen": 'volume_up',
+            'Statistics': 'bar_chart',
+            'Add to List': 'playlist_add',
         };
 
-        // somehow, this is breaking link hovering...
-        if(map[string]) {
-            // return "<span class='bss-material-icons bss_icon'>" + map[string] + "</span>";
-        }
-
-        return this.t(string);
+        return map[string] || null;
     },
     findBookByName: function(bookName, locale) {
         this.debug && this.log(bookName, locale);

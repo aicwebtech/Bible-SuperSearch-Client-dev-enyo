@@ -73,6 +73,8 @@ module.exports = {
     'Show in context': 'Solola vesi namazu alihatako',
     'Context': 'Mazu alihatako',
     'In Context': 'Muze mwalihachila mazu',
+    'Cross Reference': '',
+    'Original Verse': '',
 
     'Limit Search To': 'Tondela Kaha',
     'Limit search to': 'Tondela kaha', // Watch case!
@@ -432,6 +434,7 @@ module.exports = {
     'Clear': 'Echa kusakula',
     'Restore': 'Hilwisa',
     'Add': 'Hakilaho',
+    'Add to List': '',
     'Okay': 'Mukiko',
     'Old': 'Chamwaka',
     'New': 'Chachihya',
