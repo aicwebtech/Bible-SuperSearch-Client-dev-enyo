@@ -336,6 +336,9 @@ var biblesupersearch_config_options = {
     //      Clean
     "pager": 'default',      
 
+    // Whether to show context links as buttons (ie Copy, Share, Context, Cross References) (default: true)
+    'contextLinksAsButtons': true,  
+
     // Whether to show a list of all results (5.7)
     'resultsList': false,   
 

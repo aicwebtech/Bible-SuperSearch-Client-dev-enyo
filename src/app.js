@@ -324,6 +324,7 @@ var App = Application.kind({
         this.configs.crossReferenceFormatDefault = this.normalizeCrossReferenceFormat(this.configs.crossReferenceFormatDefault);
         this.configs.crossReferenceLinkIncludeParent = this._isTrue(this.configs.crossReferenceLinkIncludeParent);
         this.configs.crossReferenceLinkNewTab = this._isTrue(this.configs.crossReferenceLinkNewTab);
+        this.configs.contextLinksAsButtons = this._isTrue(this.configs.contextLinksAsButtons);
 
         var view = null;
         this.initUserConfig();
@@ -1971,21 +1972,24 @@ var App = Application.kind({
         
         return trans;
     },
-    // Translate string to icon
-    it: function(string) {
+    // Material Icons ligature for a context link label, or null if the label
+    // has no icon or contextLinksAsButtons is disabled
+    contextLinkIcon: function(string) {
+        if(!this.configs.contextLinksAsButtons) {
+            return null;
+        }
+
         var map = {
             'Context': 'menu_open',
             'Chapter': 'expand', // = 'arrow_expand_vertical',
             'Copy': 'content_copy',
             'Share': 'share',
+            'Cross References': 'article',
+            "Listen": 'volume_up',
+            'Statistics': 'bar_chart',
         };
 
-        // somehow, this is breaking link hovering...
-        if(map[string]) {
-            // return "<span class='bss-material-icons bss_icon'>" + map[string] + "</span>";
-        }
-
-        return this.t(string);
+        return map[string] || null;
     },
     findBookByName: function(bookName, locale) {
         this.debug && this.log(bookName, locale);

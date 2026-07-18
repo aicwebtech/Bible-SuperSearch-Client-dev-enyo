@@ -349,6 +349,19 @@
     margin-inline-start: 7px;
 }
 
+.bss_std_link.bss-material-icons {
+    font-size: medium;
+    border: 1px solid transparent;
+    padding: 1px;
+}
+
+.bss_std_link.bss-material-icons:hover,
+.bss_std_link.bss-material-icons:focus,
+.bss_std_link.bss-material-icons:focus-visible {
+    text-decoration: none;
+    border: 1px solid #222222;
+}
+
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     div.bss_copy_toggle span.bss_false {
         padding-top: 6px;
