@@ -75,10 +75,16 @@ module.exports = {
     'Context': 'Mazu alihatako',
     'In Context': 'Muze mwalihachila mazu',
     'Cross References': '',
+    'Cross Reference': '',
+    'Original Verse': '',
     'Open All': '',
     'Hidden': '',
     'Toggle': '',
     'Show': '',
+    'Cross Reference Format': '',
+    'Compact': '',
+    'Auto': '',
+    'Expand': '',
 
     'Limit Search To': 'Tondela Kaha',
     'Limit search to': 'Tondela kaha', // Watch case!

@@ -56,10 +56,16 @@ module.exports = {
     'Context': 'Contexte',
     'In Context': 'Dans le Contexte',
     'Cross References': 'Références croisées',
+    'Cross Reference': 'Référence croisée',
+    'Original Verse': 'Verset original',
     'Open All': 'Ouvrir tout',
     'Hidden': 'Masqué',
     'Toggle': 'Basculer',
     'Show': 'Afficher',
+    'Cross Reference Format': 'Format des références croisées',
+    'Compact': 'Compact',
+    'Auto': 'Automatique',
+    'Expand': 'Étendu',
 
     'Limit Search To': 'Limitez La Recherche à',
     'Limit search to': 'Limitez la recherche à', // Watch case!
@@ -451,6 +457,9 @@ module.exports = {
      'Passages': 'Passages',
      'Alias': 'Alias',
      'You cannot search for these common words': 'Vous ne pouvez pas rechercher ces mots courants',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Indice: Pour activer les versions de la Bible choisies, recherchez un passage, ouvrez un chapitre ou effectuez une recherche.',
 
     // 5.7:
     'Include Link': 'Inclure le lien',

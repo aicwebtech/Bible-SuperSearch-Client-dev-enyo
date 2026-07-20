@@ -42,6 +42,7 @@ module.exports = kind({
 
     successHandle: null,
     errorHandle: null,
+    _crossReferenceRun: false,
     fieldLastChanged: null,
     shortcutChangeIgnore: false,
     searchChangeIgnore: false,
@@ -376,6 +377,13 @@ module.exports = kind({
             formData.request = this.mapPassages(formData.request, true);
         }
 
+        var disambBook = formData.request ? this.Passage.disambiguateRequest(formData.request) : null;
+        if(disambBook !== null) {
+            formData.disamb_book = disambBook;
+        } else {
+            delete formData.disamb_book;
+        }
+
         if(isSearch && this.app.configs.limitSearchManual) {
             switch(formData.shortcut) {
             case 0:
@@ -485,6 +493,8 @@ module.exports = kind({
         this.app.set('cacheId', this.get('cacheHash'));
         this.app.set('shortHashUrl', '#/c/' + this.get('cacheHash'));
         var responseData = {formData: this._formDataAsSubmitted, results: inResponse, success: true};
+        this.app.set('_crossReferenceView', !!this._crossReferenceRun);
+        this._crossReferenceRun = false;
         this.app.set('resultsShowing', []);
         this.app.set('altResultsShowing', []);
         this.app.set('responseData', responseData);
@@ -523,6 +533,7 @@ module.exports = kind({
         this.successHandle && this.successHandle(responseData);
     },
     handleError: function(inSender, inResponse) {
+        this._crossReferenceRun = false;
         // this.app.set('ajaxLoading', false);
         this.app.set('ajaxLoadingDelay', false);
         this.requestPending = false;
@@ -634,7 +645,16 @@ module.exports = kind({
         this.set('cacheHash', inResponse.results.hash);
         this.requestPending = false;
         var formData = utils.clone(inResponse.results.form_data);
-        formData.bible = JSON.parse(formData.bible);
+
+        try {
+            formData.bible = JSON.parse(formData.bible);
+        }
+        catch(e) {
+            this.app.displayInitError();
+            this.errorHandle && this.errorHandle();
+            return;
+        }
+
         formData.shortcut = formData.shortcut || 0;
         this.setFormDataWithMapping(formData);
         // this.set('formData', {});
@@ -644,7 +664,17 @@ module.exports = kind({
     },
     handleCacheError: function(inSender, inResponse) {
         this.requestPending = false;
-        var response = JSON.parse(inSender.xhrResponse.body);
+
+        if(this.app && this.app.debug && inSender && inSender.xhrResponse && inSender.xhrResponse.body) {
+            // Response body is only inspected for logging; don't let a non-JSON body throw.
+            try {
+                var response = JSON.parse(inSender.xhrResponse.body);
+                this.log('Cache error response', response);
+            }
+            catch(e) {
+                // malformed error body - nothing further to extract
+            }
+        }
         this.log('An error has occurred');
     },
     // Handles cache change and page change
@@ -677,6 +707,7 @@ module.exports = kind({
         // }
 
         // this.clearForm();
+        this._crossReferenceRun = !!inEvent.crossReference;
         this.preventDefaultSubmit = true;
         var fd = utils.clone(inEvent.formData);
         fd.shortcut = fd.shortcut || 0;
@@ -719,7 +750,9 @@ module.exports = kind({
     _subformSafe: function() {
         return (!this.containsSubforms && (!this.subForm || this.defaultForm));
     },
-    updateHash: function() {
+    updateHash: function() { this._writeHash(false); },   // pushState — adds a history entry
+    syncHash: function() { this._writeHash(true); },       // replaceState — keeps the current entry reconstructable
+    _writeHash: function(replace) {
         var hash = this._generateHashFromData(),
             shortHash = '#/c/' + this.get('cacheHash');
 
@@ -731,7 +764,14 @@ module.exports = kind({
 
         hash = (hash) ? hash : shortHash;
 
-        history.pushState(null, null, document.location.pathname + hash);
+        var url = document.location.pathname + hash;
+
+        if(replace) {
+            history.replaceState(null, null, url);
+        }
+        else {
+            history.pushState(null, null, url);
+        }
     },
     clearHash: function() {
         history.pushState(null, null, document.location.pathname);

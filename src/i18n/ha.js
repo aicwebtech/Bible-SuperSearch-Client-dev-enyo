@@ -75,10 +75,16 @@ module.exports = {
     'Context': 'Magana',
     'In Context': 'A cikin Magana',
     'Cross References': 'Nassoshin giciye',
+    'Cross Reference': 'Nassin giciye',
+    'Original Verse': 'Ayar asali',
     'Open All': 'Buɗe Duka',
     'Hidden': 'Boye',
     'Toggle': 'Canjawa',
     'Show': 'Nuna',
+    'Cross Reference Format': 'Tsarin nassoshin giciye',
+    'Compact': 'Matse',
+    'Auto': 'Ta atomatik',
+    'Expand': 'Fadada',
 
     'Limit Search To': 'Iyakance Bincike Zuwa',
     'Limit search to': 'Iyakance bincike zuwa', // Watch case!
@@ -472,6 +478,9 @@ module.exports = {
     'Passages': 'Wuta',
     'Alias': 'Laƙabi',
     'You cannot search for these common words': 'Ba za ku iya bincika waɗannan kalmomin gama gari ba',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Tukwici: Don kunna fassarorin Littafi Mai Tsarki da aka zaɓa, nemo nassi, juya babi, ko gudanar da bincike.',
 
     'Include Link': 'Saka Hanyar Haɗi',
     'Include Formatting': 'Haɗa Tsara',

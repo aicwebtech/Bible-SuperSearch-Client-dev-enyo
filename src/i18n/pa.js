@@ -77,10 +77,16 @@ module.exports = {
     'Context': 'ਸੰਦਰਭ',
     'In Context': 'ਸੰਦਰਭ ਵਿੱਚ',
     'Cross References': 'ਕਰਾਸ ਹਵਾਲੇ',
+    'Cross Reference': 'ਕਰਾਸ ਹਵਾਲਾ',
+    'Original Verse': 'ਮੂਲ ਆਇਤ',
     'Open All': 'ਸਭ ਖੋਲ੍ਹੋ',
     'Hidden': 'ਲੁਕਾਇਆ',
     'Toggle': 'ਟੌਗਲ',
     'Show': 'ਦਿਖਾਓ',
+    'Cross Reference Format': 'ਕਰਾਸ ਹਵਾਲਾ ਫਾਰਮੈਟ',
+    'Compact': 'ਸੰਖੇਪ',
+    'Auto': 'ਆਟੋਮੈਟਿਕ',
+    'Expand': 'ਵਿਸਤ੍ਰਿਤ',
 
     'Limit Search To': 'ਖੋਜ ਨੂੰ ਸੀਮਿਤ ਕਰੋ',
     'Limit search to': 'ਖੋਜ ਨੂੰ ਸੀਮਿਤ ਕਰੋ', // Watch case!
@@ -474,6 +480,9 @@ module.exports = {
     'Passages': 'ਰਾਹ',
     'Alias': 'ਉਪਨਾਮ',
     'You cannot search for these common words': 'ਤੁਸੀਂ ਇਹਨਾਂ ਆਮ ਸ਼ਬਦਾਂ ਦੀ ਖੋਜ ਨਹੀਂ ਕਰ ਸਕਦੇ',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'ਸੰਕੇਤ: ਚੁਣੇ ਗਏ ਬਾਈਬਲ ਸੰਸਕਰਣਾਂ ਨੂੰ ਕਿਰਿਆਸ਼ੀਲ ਕਰਨ ਲਈ, ਪੈਸਜ ਲੱਭੋ, ਅਧਿਆਇ ਬਦਲੋ ਜਾਂ ਖੋਜ ਚਲਾਓ।',
 
     'Include Link': 'ਲਿੰਕ ਸ਼ਾਮਲ ਕਰੋ',
     'Include Formatting': 'ਫਾਰਮੈਟਿੰਗ ਸ਼ਾਮਲ ਕਰੋ।',

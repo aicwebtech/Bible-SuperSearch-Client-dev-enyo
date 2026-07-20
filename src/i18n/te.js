@@ -75,10 +75,16 @@ module.exports = {
     'Context': 'సందర్భం',
     'In Context': 'సందర్భంలో',
     'Cross References': 'క్రాస్ సూచనలు',
+    'Cross Reference': 'క్రాస్ సూచన',
+    'Original Verse': 'అసలు వచనం',
     'Open All': 'అన్నింటినీ తెరవండి',
     'Hidden': 'దాచినది',
     'Toggle': 'టాగుల్',
     'Show': 'చూపించు',
+    'Cross Reference Format': 'క్రాస్ సూచన ఆకృతి',
+    'Compact': 'సంక్షిప్త',
+    'Auto': 'స్వయంచాలక',
+    'Expand': 'విస్తృత',
 
     'Limit Search To': 'శోధనను పరిమితం చేయండి',
     'Limit search to': 'శోధనను పరిమితం చేయండి', // Watch case!
@@ -472,6 +478,9 @@ module.exports = {
     'Passages': 'గద్యాలై',
     'Alias': 'మారుపేరు',
     'You cannot search for these common words': 'మీరు ఈ సాధారణ పదాల కోసం వెతకలేరు',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'చిట్కా: ఎంచుకున్న బైబిల్ వెర్షన్‌లను సక్రియం చేయడానికి, ప్రకరణను శోధించండి, అధ్యాయాన్ని మార్చండి లేదా శోధనను అమలు చేయండి.',
 
     'Include Link': 'లింక్ చేర్చండి',
     'Include Formatting': 'ఫార్మాటింగ్ ను చేర్చండి',

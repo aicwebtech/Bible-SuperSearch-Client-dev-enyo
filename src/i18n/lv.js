@@ -61,10 +61,16 @@ module.exports = {
     'Context': 'Konteksts',
     'In Context': 'Kontekstā',
     'Cross References': 'Paralēlās rakstvietas',
+    'Cross Reference': 'Paralēlā rakstvieta',
+    'Original Verse': 'Sākotnējais pants',
     'Open All': 'Atvērt visu',
     'Hidden': 'Paslēpts',
     'Toggle': 'Pārslēgt',
     'Show': 'Rādīt',
+    'Cross Reference Format': 'Paralēlo rakstvietu formāts',
+    'Compact': 'Kompakts',
+    'Auto': 'Automātiski',
+    'Expand': 'Izvērsts',
 
     'Limit Search To': 'Attiecināt Meklēšanu Uz Apgabalu',
     'Limit search to': 'Attiecināt meklēšanu uz apgabalu', // Watch case!

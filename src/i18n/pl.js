@@ -75,10 +75,16 @@ module.exports = {
     'Context': 'Kontekst',
     'In Context': 'W Kontekście',
     'Cross References': 'Odnośniki krzyżowe',
+    'Cross Reference': 'Odnośnik krzyżowy',
+    'Original Verse': 'Oryginalny werset',
     'Open All': 'Otwórz wszystkie',
     'Hidden': 'Ukryte',
     'Toggle': 'Przełącz',
     'Show': 'Pokaż',
+    'Cross Reference Format': 'Format odnośników krzyżowych',
+    'Compact': 'Kompaktowy',
+    'Auto': 'Automatycznie',
+    'Expand': 'Rozwinięty',
 
     'Limit Search To': 'Zawęź Wyszukiwanie Do',
     'Limit search to': 'Zawęź wyszukiwanie do', // Watch case!
@@ -472,6 +478,9 @@ module.exports = {
     'Passages': 'Intymny stosunek dwojga ludzi',
     'Alias': 'Alias', //Correct!
     'You cannot search for these common words': 'Nie możesz wyszukiwać tych popularnych słów',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Wskazówka: Aby aktywować wybrane wersje Biblii, wyszukaj fragment, przejdź do rozdziału lub wykonaj wyszukiwanie.',
 
     'Include Link': 'Dołącz Hiperłącze',
     'Include Formatting': 'Dołącz Formatowanie',

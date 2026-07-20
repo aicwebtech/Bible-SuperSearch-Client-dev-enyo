@@ -75,10 +75,16 @@ module.exports = {
     'Context': 'Horopaki',
     'In Context': 'I te Horopaki',
     'Cross References': 'Tohutoro whakawhiti',
+    'Cross Reference': 'Tohutoro whakawhiti',
+    'Original Verse': 'Irava taketake',
     'Open All': 'Huakina Katoa',
     'Hidden': 'Huna',
     'Toggle': 'Takahuri',
     'Show': 'Whakaatu',
+    'Cross Reference Format': 'Whakatakotoranga tohutoro whakawhiti',
+    'Compact': 'Kiato',
+    'Auto': 'Aunoa',
+    'Expand': 'Whakawhānui',
 
     'Limit Search To': 'Tepe Rapu Ki',
     'Limit search to': 'Whakawhāitihia te rapu ki', // Watch case!
@@ -472,6 +478,9 @@ module.exports = {
     'Passages': 'Nga waahi',
     'Alias': 'Ingoa ingoa',
     'You cannot search for these common words': 'Kaore e taea e koe te rapu mo enei kupu noa',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Aki: Ki te whakahohe i nga putanga Paipera kua tohua, rapua te waahanga, hurihia te upoko, hurihia te rapu.',
 
     'Include Link': 'Whakauru Hononga',
     'Include Formatting': 'Whakauruhia te Whakahōputu',

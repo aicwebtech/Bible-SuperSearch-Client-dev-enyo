@@ -75,10 +75,16 @@ module.exports = {
     'Context': 'Kontekst',
     'In Context': 'Në Kontekst',
     'Cross References': 'Referenca të kryqëzuara',
+    'Cross Reference': 'Referencë e kryqëzuar',
+    'Original Verse': 'Vargu origjinal',
     'Open All': 'Hap të gjitha',
     'Hidden': 'Fshehur',
     'Toggle': 'Ndrysho',
     'Show': 'Shfaq',
+    'Cross Reference Format': 'Formati i referencave të kryqëzuara',
+    'Compact': 'Kompakt',
+    'Auto': 'Automatik',
+    'Expand': 'I zgjeruar',
 
     'Limit Search To': 'Kufizoni Kërkimin Në',
     'Limit search to': 'Kufizoni kërkimin në', // Watch case!
@@ -472,6 +478,9 @@ module.exports = {
     'Passages': 'Pasazhe',
     'Alias': 'Pseudonimi',
     'You cannot search for these common words': 'Ju nuk mund të kërkoni për këto fjalë të zakonshme',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Këshillë: Për të aktivizuar versionet e Biblës të zgjedhura, kërkoni një pasazh, hapni një kapitull ose ekzekutoni një kërkim.',
 
     'Include Link': 'Përfshini lidhjen',
     'Include Formatting': 'Përfshini formatimin',

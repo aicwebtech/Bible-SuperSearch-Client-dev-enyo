@@ -75,10 +75,16 @@ module.exports = {
     'Context': 'စကားစပ်',
     'In Context': 'စကားစပ်',
     'Cross References': 'အပြန်အလှန် ကိုးကားချက်များ',
+    'Cross Reference': 'အပြန်အလှန် ကိုးကားချက်',
+    'Original Verse': 'မူရင်း အခန်းငယ်',
     'Open All': 'အားလုံးဖွင့်ရန်',
     'Hidden': 'ဝှက်ထားသည်',
     'Toggle': 'ပြောင်းရန်',
     'Show': 'ပြပါ',
+    'Cross Reference Format': 'အပြန်အလှန် ကိုးကားချက် ဖော်မတ်',
+    'Compact': 'ကျစ်လစ်',
+    'Auto': 'အလိုအလျောက်',
+    'Expand': 'ချဲ့ထွင်',
 
     'Limit Search To': 'ရှာဖွေမှုကို ကန့်သတ်ပါ။',
     'Limit search to': 'ရှာဖွေမှုကို ကန့်သတ်ပါ။', // Watch case!
@@ -472,6 +478,9 @@ module.exports = {
     'Passages': 'ကိုးကား',
     'Alias': 'နာမည်များ',
     'You cannot search for these common words': 'ဤအသုံးများသောစကားလုံးများကို သင်ရှာဖွေ၍မရပါ။',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'အကြံပြုချက်- ရွေးချယ်ထားသော သမ္မာကျမ်းစာ ဗားရှင်းများကို စတင်အသုံးပြုရန်၊ ကျမ်းပိုဒ်ကို ရှာဖွေပါ၊ အခန်းကို ပြောင်းပါ သို့မဟုတ် ရှာဖွေမှုကို လုပ်ဆောင်ပါ။',
 
     'Include Link': 'လင့်ခ်ကို ထည့်သွင်းပါ',
     'Include Formatting': 'ဖော်မတ်ထည့်သွင်းခြင်း',

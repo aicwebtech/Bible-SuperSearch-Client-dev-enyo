@@ -75,10 +75,16 @@ module.exports = {
     'Context': 'Konteksto',
     'In Context': 'Sa konteksto',
     'Cross References': 'Mga cross reference',
+    'Cross Reference': 'Cross reference',
+    'Original Verse': 'Orihinal na talata',
     'Open All': 'Buksan Lahat',
     'Hidden': 'Nakatago',
     'Toggle': 'I-toggle',
     'Show': 'Ipakita',
+    'Cross Reference Format': 'Format ng cross reference',
+    'Compact': 'Maigsi',
+    'Auto': 'Awtomatiko',
+    'Expand': 'Palawakin',
 
     'Limit Search To': 'Limitahan ang Paghahanap Sa',
     'Limit search to': 'Limitahan ang paghahanap sa', // Watch case!
@@ -472,6 +478,9 @@ module.exports = {
     'Passages': 'Mga sipi',
     'Alias': 'alyas',
     'You cannot search for these common words': 'Hindi mo maaaring hanapin ang mga karaniwang salitang ito',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Tip: Upang i-activate ang piniling mga bersyon ng Bibliya, hanapin ang sipi, palitan ang kabanata, o magsagawa ng paghahanap.',
 
     'Include Link': 'Isama ang Link',
     'Include Formatting': 'Isama ang Pag-format',

@@ -75,10 +75,16 @@ module.exports = {
     'Context': 'প্রসঙ্গ',
     'In Context': 'প্রসঙ্গে',
     'Cross References': 'ক্রস রেফারেন্স',
+    'Cross Reference': 'ক্রস রেফারেন্স',
+    'Original Verse': 'মূল আয়াত',
     'Open All': 'সব খুলুন',
     'Hidden': 'লুকানো',
     'Toggle': 'টগল',
     'Show': 'দেখান',
+    'Cross Reference Format': 'ক্রস রেফারেন্স ফরম্যাট',
+    'Compact': 'সংক্ষিপ্ত',
+    'Auto': 'স্বয়ংক্রিয়',
+    'Expand': 'বিস্তৃত',
 
     'Limit Search To': 'অনুসন্ধান সীমাবদ্ধ করুন',
     'Limit search to': 'অনুসন্ধান সীমাবদ্ধ করুন', // Watch case!
@@ -472,6 +478,9 @@ module.exports = {
     'Passages': 'প্যাসেজ',
     'Alias': 'উপনাম',
     'You cannot search for these common words': 'আপনি এই সাধারণ শব্দগুলির জন্য অনুসন্ধান করতে পারবেন না',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'টিপ: নির্বাচিত বাইবেল সংস্করণগুলি সক্রিয় করতে, একটি প্যাসেজ খুঁজুন, একটি অধ্যায় পরিবর্তন করুন বা অনুসন্ধান চালান।',
 
     'Include Link': 'লিঙ্ক অন্তর্ভুক্ত করুন',
     'Include Formatting': 'বিন্যাস অন্তর্ভুক্ত',

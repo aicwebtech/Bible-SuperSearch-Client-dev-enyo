@@ -61,10 +61,16 @@ module.exports = {
     'Context': 'Context',
     'In Context': 'În Context',
     'Cross References': 'Referințe încrucișate',
+    'Cross Reference': 'Referință încrucișată',
+    'Original Verse': 'Versetul original',
     'Open All': 'Deschide tot',
     'Hidden': 'Ascuns',
     'Toggle': 'Comută',
     'Show': 'Arată',
+    'Cross Reference Format': 'Formatul referințelor încrucișate',
+    'Compact': 'Compact',
+    'Auto': 'Automat',
+    'Expand': 'Extins',
 
     'Limit Search To': 'Limitați Căutarea',
     'Limit search to': 'Limitați căutarea', // Watch case!
@@ -456,6 +462,9 @@ module.exports = {
     'Passages': 'pasaje',
     'Alias': 'Alias',
     'You cannot search for these common words': 'Nu puteți căuta aceste cuvinte comune',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Info: Pentru a activa versiunile Bibliei alese, căutați un pasaj, deschideți un capitol sau executați o căutare.',
 
     'Include Link': 'Includeți Linkul',
     'Include Formatting': 'Includeți Formatarea',

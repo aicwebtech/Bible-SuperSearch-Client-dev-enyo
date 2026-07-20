@@ -4,6 +4,7 @@ module.exports = {
         this.app = app;
     },
     routeRequest: function(value) {
+        value = this.normalizeDashes(value);
         var field = false,
             nonPassageChars = this._containsNonPassageCharacters(value),
             passages = this.explodeReferences(value, true),
@@ -25,12 +26,16 @@ module.exports = {
             passages.length >= 1 &&
             !nonPassageChars && 
             !value.match(/[GHgh][0-9]+/) && 
-            (value.match(/[0-9]/) && !value.match(/[()]/) || passages.length >= 2 || (book && passages[0].chapter_verse)) 
+            (
+                value.match(/[0-9]/) && !value.match(/[()]/) || 
+                passages.length >= 2 || 
+                (book && passages[0].chapter_verse)
+            ) 
         ) {
             field = 'reference';
         }
         else {
-            // Todo, check for SINGLE PASSAGE here. 
+            // see this.disambiguateRequest for the logic that determines if a request is a book name or not 
             field = 'search';
         }
 
@@ -41,6 +46,33 @@ module.exports = {
     // Logic here needs to be replaced withe the actual "isPassage" logic from the API.
     isPassage: function(str) {
         return this.routeRequest(str) == 'reference' ? true : false;
+    },
+
+    disambiguateRequest: function(str) {
+        if(!this.app) {
+            throw new Error('Passage.disambiguateRequest requires an app - call Passage.setApp() first.');
+        }
+        
+        if(!str) {
+            return null;
+        }
+
+        var field = this.routeRequest(str);
+
+        if(field == 'reference') {
+            return null; // It's already a passage, no need to disambiguate
+        }
+
+        // Attempt to check for single book matches, and if so, return the book id as the disambiguation
+        // All other passage parsing, ect has already been attempted in routeRequest, so we don't need to do that here.
+        var norm = this.normalizeDashes(str).trim();
+        var book = this.app.findBookByName(norm);
+
+        if(book) {
+            return book.id;
+        }
+        
+        return null;
     },
 
     _containsNonPassageCharacters: function(str) {
@@ -69,6 +101,11 @@ module.exports = {
         if(!reference) {
             return [];
         }
+
+        // Normalize all dash variants (en/em dash, etc.) to a plain ASCII hyphen before
+        // parsing, so book/chapter splitting and the chapter_verse sent to the API are
+        // correct regardless of which dash the user typed (BSS-270).
+        reference = this.normalizeDashes(reference);
 
         if(this._containsNonPassageCharacters(reference)) {
             return [];
@@ -113,16 +150,87 @@ module.exports = {
             return ref;
         }
 
-        if(ref.book.indexOf('-') == -1) {
-            ref.isBookRange = false;
+        // parseBook resolves book ranges via findBookByName, so an app must be set.
+        // this.app should always be set (Passage.setApp) by the time we get here; fail
+        // loudly rather than silently mis-splitting hyphenated book names (BSS-270).
+        if(!this.app) {
+            throw new Error('Passage.parseBook requires an app - call Passage.setApp() first.');
+        }
+
+        var bookNormalized = this.normalizeDashes(ref.book);
+
+        if(bookNormalized.indexOf('-') !== -1) {
+            // Some book names contain hyphens (e.g. Russian "1-Я Царств"), so try a direct
+            // lookup first before treating the hyphen as a book-range separator.
+            var Book = this.app.findBookByName(bookNormalized);
+
+            if(Book) {
+                ref.isBookRange = false;
+                return ref;
+            }
+
+            // Book ranges are separated by '-', but some book names themselves contain
+            // hyphens (e.g. Russian "1-Я Царств"). Try each hyphen as the split point and
+            // use the first one where both sides resolve to a book, so ranges of hyphenated
+            // book names (e.g. "1-Я Царств-2-Я Царств") are parsed correctly.
+            var Book_St = null;
+            var Book_En = null;
+
+            for(var offset = bookNormalized.indexOf('-'); offset !== -1; offset = bookNormalized.indexOf('-', offset + 1)) {
+                var left  = bookNormalized.substring(0, offset).trim();
+                var right = bookNormalized.substring(offset + 1).trim();
+
+                if(left === '' || right === '') {
+                    continue;
+                }
+
+                var St = this.app.findBookByName(left);
+                var En = this.app.findBookByName(right);
+
+                if(St && En) {
+                    Book_St = St;
+                    Book_En = En;
+                    break;
+                }
+            }
+
+            if(Book_St && Book_En) {
+                ref.isBookRange = true;
+                ref.bookSt = Book_St.name;
+                ref.bookEn = Book_En.name;
+                return ref;
+            }
+
+            // Fallback for inputs the smart split could not fully resolve: keep treating
+            // this as a range using the first/last segment, resolving each side to a
+            // canonical book name where possible and preserving the raw text otherwise.
+            // This keeps a partially-valid range (e.g. "Genesis-Foo") from collapsing and
+            // dropping the endpoint that DID resolve.
+            var books   = bookNormalized.split('-');
+            var book_st = books.shift().trim();
+            var book_en = books.pop();
+            book_en = (book_en) ? book_en.trim() : book_st;
+
+            var Book_St_fb = this.app.findBookByName(book_st);
+            var Book_En_fb = this.app.findBookByName(book_en);
+
+            ref.isBookRange = true;
+            ref.bookSt = Book_St_fb ? Book_St_fb.name : book_st;
+            ref.bookEn = Book_En_fb ? Book_En_fb.name : book_en;
             return ref;
         }
 
-        books = ref.book.split('-');
-        ref.bookSt = books[0].trim();
-        ref.bookEn = books[1].trim();
-        ref.isBookRange = true;
+        ref.isBookRange = false;
         return ref;
+    },
+    normalizeDashes: function(str) {
+        // replaces all dashes (hyphen, non-breaking hyphen, figure/en/em dash,
+        // horizontal bar, minus sign, etc.) with a plain ASCII hyphen.
+        if(str === null || typeof str === 'undefined') {
+            return '';
+        }
+        str = String(str);
+        return str.replace(/[\u2010\u2011\u2012\u2013\u2014\u2015\u2212]/g, '-');
     },
     _substr: function(str, offset, len) {
         return str.substring(offset, offset + len);

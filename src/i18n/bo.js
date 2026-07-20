@@ -77,10 +77,16 @@ module.exports = {
     'Context': '',
     'In Context': '',
     'Cross References': '',
+    'Cross Reference': '',
+    'Original Verse': '',
     'Open All': 'ཚང་མ་ཁ་ཕྱེ',
     'Hidden': '',
     'Toggle': '',
     'Show': '',
+    'Cross Reference Format': '',
+    'Compact': '',
+    'Auto': '',
+    'Expand': '',
 
     'Limit Search To': '',
     'Limit search to': '', // Watch case!
@@ -474,6 +480,9 @@ module.exports = {
     'Passages': '',
     'Alias': '',
     'You cannot search for these common words': '',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': '',
 
     // 5.7:
     'Include Link': '',

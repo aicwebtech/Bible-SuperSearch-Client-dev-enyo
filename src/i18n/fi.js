@@ -75,10 +75,16 @@ module.exports = {
     'Context': 'Konteksti',
     'In Context': 'Asiayhteydessä; kontekstissa',
     'Cross References': 'Ristiviitteet',
+    'Cross Reference': 'Ristiviite',
+    'Original Verse': 'Alkuperäinen jae',
     'Open All': 'Avaa kaikki',
     'Hidden': 'Piilotettu',
     'Toggle': 'Vaihda',
     'Show': 'Näytä',
+    'Cross Reference Format': 'Ristiviitteiden muoto',
+    'Compact': 'Tiivis',
+    'Auto': 'Automaattinen',
+    'Expand': 'Laajennettu',
 
     'Limit Search To': 'Rajoita Haku Kohteeseen',
     'Limit search to': 'Rajoita haku kohteeseen', // Watch case!
@@ -473,6 +479,9 @@ module.exports = {
     'Passages': 'Kohdat',
     'Alias': 'Alias',
     'You cannot search for these common words': 'Et voi etsiä näitä yleisiä sanoja',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Vihje: Aktivoi valitut Raamatun versiot etsimällä kohta, siirtymällä lukuun tai suorittamalla haku.',
 
     'Include Link': 'Sisällytä Linkki',
     'Include Formatting': 'Sisällytä Muotoilu',

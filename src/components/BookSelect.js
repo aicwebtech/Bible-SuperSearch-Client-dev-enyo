@@ -29,6 +29,7 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+        this.Passage.setApp(this.app);
         this._createBookList();
         this._initDefault();
     },

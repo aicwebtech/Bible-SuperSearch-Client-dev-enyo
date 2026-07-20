@@ -75,10 +75,16 @@ module.exports = {
     'Context': 'አውድ',
     'In Context': 'በዐውደ-ጽሑፉ',
     'Cross References': 'መስቀል ማጣቀሻዎች',
+    'Cross Reference': 'መስቀል ማጣቀሻ',
+    'Original Verse': 'ዋናው ጥቅስ',
     'Open All': 'ሁሉንም ክፈት',
     'Hidden': 'ተደብቋል',
     'Toggle': 'መቀያየር',
     'Show': 'አሳይ',
+    'Cross Reference Format': 'የመስቀል ማጣቀሻ ቅርጸት',
+    'Compact': 'የተጨመቀ',
+    'Auto': 'ራስ-ሰር',
+    'Expand': 'የተስፋፋ',
 
     'Limit Search To': 'ፍለጋን ገድብ ወደ',
     'Limit search to': 'ፍለጋን ገድብ', // Watch case!
@@ -472,6 +478,9 @@ module.exports = {
     'Passages': 'ምንባቦች',
     'Alias': 'ተለዋጭ ስም',
     'You cannot search for these common words': 'You cannot search for these common words',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'ጠቃሚ ምክር፡ የተመረጡትን የመጽሐፍ ቅዱስ ስሪቶች ለማንቀሳቀስ፣ ምንባብ ይፈልጉ፣ ምዕራፍ ይቀያይሩ ወይም ፍለጋ ያካሂዱ።',
 
     'Include Link': 'አገናኝን ያካትቱ።',
     'Include Formatting': 'ቅርጸት መስራትን ያካትቱ።',

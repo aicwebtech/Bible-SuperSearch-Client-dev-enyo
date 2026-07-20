@@ -61,10 +61,16 @@ module.exports = {
     'Context': 'سياق',
     'In Context': 'في سياق',
     'Cross References': 'المراجع المتقاطعة',
+    'Cross Reference': 'المرجع المتقاطع',
+    'Original Verse': 'الآية الأصلية',
     'Open All': 'فتح الكل',
     'Hidden': 'مخفي',
     'Toggle': 'تبديل',
     'Show': 'إظهار',
+    'Cross Reference Format': 'تنسيق المراجع المتقاطعة',
+    'Compact': 'مضغوط',
+    'Auto': 'تلقائي',
+    'Expand': 'موسّع',
 
     'Limit Search To': 'تقييد البحث على',
     'Limit search to': 'تقييد البحث على', // Watch case!
@@ -461,6 +467,10 @@ module.exports = {
     'Passages': 'فقرات',
     'Alias': 'الاسم المستعار',
     'You cannot search for these common words': 'لا يمكنك البحث عن هذه الكلمات المتداولة',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'نصيحة: لتنشيط إصدارات الكتاب المقدس المختارة، ابحث عن مقطع، أو انتقل إلى فصل، أو نفّذ بحثًا.',
+
     // End 5.5 part 2
 
     'Include Link': 'تضمين الرابط',

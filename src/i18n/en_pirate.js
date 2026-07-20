@@ -55,10 +55,16 @@ module.exports = {
     'Context': 'Jewwel Mateys',
     'In Context': 'Withe Jewwel Mateys',
     'Cross References': 'Crosse Referrrences',
+    'Cross Reference': 'Crosse Referrrence',
+    'Original Verse': 'Original Verrrse',
     'Open All': 'Plunder All',
     'Hidden': 'Hardden',
     'Toggle': 'Floppe',
     'Show': 'Ye Vue',
+    'Cross Reference Format': 'Crosse Referrrence Format',
+    'Compact': 'Compact',
+    'Auto': 'Auto',
+    'Expand': 'Expand',
 
     'Limit Search To': 'Plunder in',
     'Limit search to': 'Plunder in',
@@ -452,6 +458,10 @@ module.exports = {
     'Passages': 'Ye posyten',
     'Alias': 'Alylias',
     'You cannot search for these common words': 'Yarr, no searcheyt for scurvey dog wordes',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Clue to the treasures: To rouse the chosen Bible versions, seek out a passage, turn to a chapter, or set sail on a search.',
+
     // End 5.5 part 2
 
     // 5.7

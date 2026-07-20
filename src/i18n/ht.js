@@ -79,10 +79,16 @@ module.exports = {
     'Context': 'Kontèks',
     'In Context': 'Nan Kontèks',
     'Cross References': 'Referans kwaze',
+    'Cross Reference': 'Referans kwaze',
+    'Original Verse': 'Vèsè orijinal',
     'Open All': 'Ouvri Tout',
     'Hidden': 'Kache',
     'Toggle': 'Chanje',
     'Show': 'Montre',
+    'Cross Reference Format': 'Fòma referans kwaze',
+    'Compact': 'Konpak',
+    'Auto': 'Otomatik',
+    'Expand': 'Elaji',
 
     'Limit Search To': 'Limite rechèch pou',
     'Limit search to': 'Limite rechèch la', // Watch case!
@@ -471,6 +477,9 @@ module.exports = {
     'Passages': 'Pasaj',//check translation
     'Alias': 'Alyas',
     'You cannot search for these common words': 'Ou pa ka chèche mo komen sa yo',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Ide: Pou aktive vèsyon Bib ou chwazi yo, chèche yon pasaj, vire yon chapit, oswa fè yon rechèch.',
 
     'Include Link': 'Mete Hyperlink',
     'Include Formatting': 'Mete Fòma',

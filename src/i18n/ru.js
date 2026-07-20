@@ -61,10 +61,16 @@ module.exports = {
     'Context': 'Контекст',
     'In Context': 'В Контексте',
     'Cross References': 'Перекрестные ссылки',
+    'Cross Reference': 'Перекрестная ссылка',
+    'Original Verse': 'Исходный стих',
     'Open All': 'Открыть все',
     'Hidden': 'Скрыто',
     'Toggle': 'Переключить',
     'Show': 'Показать',
+    'Cross Reference Format': 'Формат перекрестных ссылок',
+    'Compact': 'Компактно',
+    'Auto': 'Автоматически',
+    'Expand': 'Развернуто',
 
     'Limit Search To': 'Ограничить Поиск до',
     'Limit search to': 'Ограничить поиск до', // Watch case!
@@ -501,332 +507,398 @@ module.exports = {
         {
           "id": 1,
           "name": "Книга Бытие (Первая книга Моисея)",
-          "shortname": "Быт."
+          "shortname": "Быт.",
+          "matching": ["бытие"]
         },
         {
           "id": 2,
           "name": "Книга Исход (Вторая книга Моисея)",
-          "shortname": "Исх."
+          "shortname": "Исх.",
+          "matching": ["Исход"]
         },
         {
           "id": 3,
           "name": "Книга Левит (Третья книга Моисея)",
-          "shortname": "Лев."
+          "shortname": "Лев.",
+          "matching": ["Левит"]
         },
         {
           "id": 4,
           "name": "Книга Числа (Четвертая книга Моисея)",
-          "shortname": "Чис."
+          "shortname": "Чис.",
+          "matching": ["Числа"]
         },
         {
           "id": 5,
           "name": "Второзаконие (Пятая книга Моисея)",
-          "shortname": "Втор."
+          "shortname": "Втор.",
+          "matching": ["Второзаконие"]
         },
         {
           "id": 6,
           "name": "Книга Иисуса Навина",
-          "shortname": "Нав."
+          "shortname": "Нав.",
+          "matching": ["Иисус Навин"]
         },
         {
           "id": 7,
           "name": "Книга Судей Израилевых",
-          "shortname": "Суд."
+          "shortname": "Суд.",
+          "matching": ["Книга Судей"]
         },
         {
           "id": 8,
           "name": "Книга Руфи",
-          "shortname": "Руф."
+          "shortname": "Руф.",
+          "matching": ["Руфь"]
         },
         {
           "id": 9,
           "name": "Первая книга Царств (Первая книга Самуила)",
-          "shortname": "1Цар."
+          "shortname": "1Цар.",
+          "matching": ["1-Я Царств"]
         },
         {
           "id": 10,
           "name": "Вторая книга Царств (Вторая книга Самуила)",
-          "shortname": "2Цар."
+          "shortname": "2Цар.",
+          "matching": ["2-Я Царств"]
         },
         {
           "id": 11,
           "name": "Третья книга Царств (Первая книга Царей)",
-          "shortname": "3Цар."
+          "shortname": "3Цар.",
+          "matching": ["3-Я Царств"]
         },
         {
           "id": 12,
           "name": "Четвёртая книга Царств (Вторая книга Царей)",
-          "shortname": "4Цар."
+          "shortname": "4Цар.",
+          "matching": ["4-Я Царств"]
         },
         {
           "id": 13,
           "name": "Первая книга Паралипоменон (Первая книга Хроник, Первая Летопись)",
-          "shortname": "1Пар."
+          "shortname": "1Пар.",
+          "matching": ["1-Я Паралипоменон"]
         },
         {
           "id": 14,
           "name": "Вторая книга Паралипоменон (Вторая книга Хроник, Вторая Летопись)",
-          "shortname": "2Пар."
+          "shortname": "2Пар.",
+          "matching": ["2-Я Паралипоменон"]
         },
         {
           "id": 15,
           "name": "Книга Ездры (Эзры)",
-          "shortname": "Езд."
+          "shortname": "Езд.",
+          "matching": ["Ездра"]
         },
         {
           "id": 16,
           "name": "Книга Неемии (Нехемии)",
-          "shortname": "Неем."
+          "shortname": "Неем.",
+          "matching": ["Неемия"]
         },
         {
           "id": 17,
           "name": "Книга Есфири",
-          "shortname": "Есф."
+          "shortname": "Есф.",
+          "matching": ["Есфирь"]
         },
         {
           "id": 18,
           "name": "Книга Иова",
-          "shortname": "Иов."
+          "shortname": "Иов.",
+          "matching": ["Иов"]
         },
         {
           "id": 19,
           "name": "Псалтирь",
-          "shortname": "Псал."
+          "shortname": "Псал.",
+          "matching": ["Псалтирь"]
         },
         {
           "id": 20,
           "name": "Книга Притчей Соломоновых",
-          "shortname": "Прит."
+          "shortname": "Прит.",
+          "matching": ["Притчи"]
         },
         {
           "id": 21,
           "name": "Книга Екклезиаста (Книга Проповедника)",
-          "shortname": "Еккл."
+          "shortname": "Еккл.",
+          "matching": ["Екклесиаст"]
         },
         {
           "id": 22,
           "name": "Песнь песней Соломона",
-          "shortname": "Песн."
+          "shortname": "Песн.",
+          "matching": ["Песни Песней"]
         },
         {
           "id": 23,
           "name": "Книга пророка Исаии (Исайи)",
-          "shortname": "Исаи."
+          "shortname": "Исаи.",
+          "matching": ["Исаия"]
         },
         {
           "id": 24,
           "name": "Книга пророка Иеремии",
-          "shortname": "Иер."
+          "shortname": "Иер.",
+          "matching": ["Иеремия"]
         },
         {
           "id": 25,
           "name": "Книга Плач Иеремии",
-          "shortname": "Плач"
+          "shortname": "Плач",
+          "matching": ["Плач Иеремии"]
         },
         {
           "id": 26,
           "name": "Книга пророка Иезекииля",
-          "shortname": "Иез."
+          "shortname": "Иез.",
+          "matching": ["Иезекииль"]
         },
         {
           "id": 27,
           "name": "Книга пророка Даниила",
-          "shortname": "Дан."
+          "shortname": "Дан.",
+          "matching": ["Даниил"]
         },
         {
           "id": 28,
           "name": "Книга пророка Осии",
-          "shortname": "Осия"
+          "shortname": "Осия",
+          "matching": ["Осия"]
         },
         {
           "id": 29,
           "name": "Книга пророка Иоиля",
-          "shortname": "Иоил"
+          "shortname": "Иоил",
+          "matching": ["Иоиль"]
         },
         {
           "id": 30,
           "name": "Книга пророка Амоса",
-          "shortname": "Амос"
+          "shortname": "Амос",
+          "matching": ["Амос"]
         },
         {
           "id": 31,
           "name": "Книга пророка Авдия",
-          "shortname": "Авд."
+          "shortname": "Авд.",
+          "matching": ["Авдия"]
         },
         {
           "id": 32,
           "name": "Книга пророка Ионы",
-          "shortname": "Ион."
+          "shortname": "Ион.",
+          "matching": ["Иона"]
         },
         {
           "id": 33,
           "name": "Книга пророка Михея",
-          "shortname": "Мих."
+          "shortname": "Мих.",
+          "matching": ["Михей"]
         },
         {
           "id": 34,
           "name": "Книга пророка Наума",
-          "shortname": "Наум"
+          "shortname": "Наум",
+          "matching": ["Наум"]
         },
         {
           "id": 35,
           "name": "Книга пророка Аввакума",
-          "shortname": "Авв."
+          "shortname": "Авв.",
+          "matching": ["Аввакум"]
         },
         {
           "id": 36,
           "name": "Книга пророка Софонии",
-          "shortname": "Соф."
+          "shortname": "Соф.",
+          "matching": ["Софония"]
         },
         {
           "id": 37,
           "name": "Книга пророка Аггея",
-          "shortname": "Агг."
+          "shortname": "Агг.",
+          "matching": ["Аггей"]
         },
         {
           "id": 38,
           "name": "Книга пророка Захарии",
-          "shortname": "Зах."
+          "shortname": "Зах.",
+          "matching": ["Захария"]
         },
         {
           "id": 39,
           "name": "Книга пророка Малахии",
-          "shortname": "Мал."
+          "shortname": "Мал.",
+          "matching": ["Малахия"]
         },
         {
           "id": 40,
           "name": "Евангелие от Матфея",
-          "shortname": "Мат."
+          "shortname": "Мат.",
+          "matching": ["От Матфея"]
         },
         {
           "id": 41,
           "name": "Евангелие от Марка",
-          "shortname": "Мр."
+          "shortname": "Мр.",
+          "matching": ["От Марка"]
         },
         {
           "id": 42,
           "name": "Евангелие от Луки",
-          "shortname": "Лук."
+          "shortname": "Лук.",
+          "matching": ["От Луки"]
         },
         {
           "id": 43,
           "name": "Евангелие от Иоанна",
-          "shortname": "Иоан."
+          "shortname": "Иоан.",
+          "matching": ["От Иоанна"]
         },
         {
           "id": 44,
           "name": "Деяния святых Апостолов",
-          "shortname": "Деян."
+          "shortname": "Деян.",
+          "matching": ["Деяния"]
         },
         {
           "id": 45,
           "name": "Послание к Римлянам",
-          "shortname": "Рим."
+          "shortname": "Рим.",
+          "matching": ["К Римлянам"]
         },
         {
           "id": 46,
           "name": "Первое послание к Коринфянам",
-          "shortname": "1Кор."
+          "shortname": "1Кор.",
+          "matching": ["1-Е Коринфянам"]
         },
         {
           "id": 47,
           "name": "Второе послание к Коринфянам",
-          "shortname": "2Кор."
+          "shortname": "2Кор.",
+          "matching": ["2-Е Коринфянам"]
         },
         {
           "id": 48,
           "name": "Послание к Галатам",
-          "shortname": "Гал."
+          "shortname": "Гал.",
+          "matching": ["К Галатам"]
         },
         {
           "id": 49,
           "name": "Послание к Ефесянам",
-          "shortname": "Ефес."
+          "shortname": "Ефес.",
+          "matching": ["К Ефесянам"]
         },
         {
           "id": 50,
           "name": "Послание к Филиппийцам",
-          "shortname": "Фил."
+          "shortname": "Фил.",
+          "matching": ["К Филиппийцам"]
         },
         {
           "id": 51,
           "name": "Послание к Колоссянам",
-          "shortname": "Кол."
+          "shortname": "Кол.",
+          "matching": ["К Колоссянам"]
         },
         {
           "id": 52,
           "name": "Первое послание к Фессалоникийцам (Солунянам)",
-          "shortname": "1Фес."
+          "shortname": "1Фес.",
+          "matching": ["1-Е Фессалоникийцам"]
         },
         {
           "id": 53,
           "name": "Второе послание к Фессалоникийцам (Солунянам)",
-          "shortname": "2Фес."
+          "shortname": "2Фес.",
+          "matching": ["2-Е Фессалоникийцам"]
         },
         {
           "id": 54,
           "name": "Первое послание к Тимофею",
-          "shortname": "1Тим."
+          "shortname": "1Тим.",
+          "matching": ["1-Е Тимофею"]
         },
         {
           "id": 55,
           "name": "Второе послание к Тимофею",
-          "shortname": "2Тим."
+          "shortname": "2Тим.",
+          "matching": ["2-Е Тимофею"]
         },
         {
           "id": 56,
           "name": "Послание к Титу",
-          "shortname": "Тит."
+          "shortname": "Тит.",
+          "matching": ["К Титу"]
         },
         {
           "id": 57,
           "name": "Послание к Филимону",
-          "shortname": "Флм."
+          "shortname": "Флм.",
+          "matching": ["К Филимону"]
         },
         {
           "id": 58,
           "name": "Послание к Евреям",
-          "shortname": "Евр."
+          "shortname": "Евр.",
+          "matching": ["К Евреям"]
         },
         {
           "id": 59,
           "name": "Послание Иакова",
-          "shortname": "Иак."
+          "shortname": "Иак.",
+          "matching": ["Иакова"]
         },
         {
           "id": 60,
           "name": "Первое послание Петра",
-          "shortname": "1Пет."
+          "shortname": "1Пет.",
+          "matching": ["1-E Петра", "1-Е Петра"]
         },
         {
           "id": 61,
           "name": "Второе послание Петра",
-          "shortname": "2Пет."
+          "shortname": "2Пет.",
+          "matching": ["2-E Петра", "2-Е Петра"]
         },
         {
           "id": 62,
           "name": "Первое послание Иоанна",
-          "shortname": "1Ин."
+          "shortname": "1Ин.",
+          "matching": ["1-E Иоанна", "1-Е Иоанна"]
         },
         {
           "id": 63,
           "name": "Второе послание Иоанна",
-          "shortname": "2Ин."
+          "shortname": "2Ин.",
+          "matching": ["2-E Иоанна", "2-Е Иоанна"]
         },
         {
           "id": 64,
           "name": "Третье послание Иоанна",
-          "shortname": "3Ин."
+          "shortname": "3Ин.",
+          "matching": ["3-E Иоанна", "3-Е Иоанна"]
         },
         {
           "id": 65,
           "name": "Послание Иуды (Йоды)",
-          "shortname": "Иуд."
+          "shortname": "Иуд.",
+          "matching": ["Иуда"]
         },
         {
           "id": 66,
           "name": "Откровение Иоанна Богослова (Апокалипсис Иоанна Богослова)",
-          "shortname": "Откр."
+          "shortname": "Откр.",
+          "matching": ["Откровение"]
         }
     ],
 };

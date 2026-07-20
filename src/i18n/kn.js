@@ -75,10 +75,16 @@ module.exports = {
     'Context': 'ಸಂದರ್ಭ',
     'In Context': 'ಸನ್ನಿವೇಶದಲ್ಲಿ',
     'Cross References': 'ಅಡ್ಡ ಉಲ್ಲೇಖಗಳು',
+    'Cross Reference': 'ಅಡ್ಡ ಉಲ್ಲೇಖ',
+    'Original Verse': 'ಮೂಲ ವಚನ',
     'Open All': 'ಎಲ್ಲವನ್ನೂ ತೆರೆಯಿರಿ',
     'Hidden': 'ಮರೆಮಾಡಲಾಗಿದೆ',
     'Toggle': 'ಟಾಗಲ್',
     'Show': 'ತೋರಿಸಿ',
+    'Cross Reference Format': 'ಅಡ್ಡ ಉಲ್ಲೇಖ ಸ್ವರೂಪ',
+    'Compact': 'ಸಾಂದ್ರ',
+    'Auto': 'ಸ್ವಯಂಚಾಲಿತ',
+    'Expand': 'ವಿಸ್ತೃತ',
 
     'Limit Search To': 'ಹುಡುಕಾಟವನ್ನು ಮಿತಿಗೊಳಿಸಿ',
     'Limit search to': 'ಹುಡುಕಾಟವನ್ನು ಮಿತಿಗೊಳಿಸಿ', // Watch case!
@@ -472,6 +478,9 @@ module.exports = {
     'Passages': 'ಹಾದಿಗಳು',
     'Alias': 'ಅಲಿಯಾಸ್',
     'You cannot search for these common words': 'ಈ ಸಾಮಾನ್ಯ ಪದಗಳನ್ನು ನೀವು ಹುಡುಕಲು ಸಾಧ್ಯವಿಲ್ಲ',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'ಸಲಹೆ: ಆಯ್ಕೆ ಮಾಡಿದ ಬೈಬಲ್ ಆವೃತ್ತಿಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು, ಅಂಗೀಕಾರವನ್ನು ಹುಡುಕಿ, ಅಧ್ಯಾಯವನ್ನು ಬದಲಿಸಿ ಅಥವಾ ಹುಡುಕಾಟವನ್ನು ಚಲಾಯಿಸಿ.',
 
     'Include Link': 'ಲಿಂಕ್ ಸೇರಿಸಿ',
     'Include Formatting': 'ಫಾರ್ಮ್ಯಾಟಿಂಗ್ ಅನ್ನು ಸೇರಿಸಿ',

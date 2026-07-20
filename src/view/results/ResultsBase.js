@@ -11,6 +11,7 @@ var Nav = require('../../components/NavButtons/NavHtml');
 var HoverDialog = require('../../components/dialogs/Hover');
 var StrongsHoverDialog = require('../../components/dialogs/StrongsHover');
 var utils = require('enyo/utils');
+var bssUtils = require('../../lib/Utils');
 var Ajax = require('enyo/Ajax');
 var i18n = require('../../components/Locale/i18nComponent');
 
@@ -180,8 +181,8 @@ module.exports = kind({
         this.renderHeader();
         this.renderTopPlaceholder();
 
-        resultsData.results.forEach(function(passage) {
-            this.renderPassage(passage);
+        resultsData.results.forEach(function(passage, idx, arr) {
+            this.renderPassage(passage, idx, arr);
         }, this);
 
         this.renderFooter();
@@ -206,7 +207,7 @@ module.exports = kind({
     afterRender: function() {
 
     },
-    renderPassage: function(passage) {        
+    renderPassage: function(passage, idx, arr) {
         
         var resultsFilter = this.app.get('_resultsFilter') || null;
 
@@ -223,6 +224,26 @@ module.exports = kind({
         }
         
         this.showingCopyrightBottom = false;
+
+        var firstPage = !this.paging || this.paging.current_page == 1;
+
+        if(this.app._crossReferenceView && firstPage && !this.app.UserConfig.get('copy')) {
+            if(idx == 0) {
+                this.createComponent({
+                    kind: i18n,
+                    tag: 'h3',
+                    classes: 'bss_original_verse_heading',
+                    content: 'Original Verse'
+                });
+            } else if(idx == 1) {
+                this.createComponent({
+                    kind: i18n,
+                    tag: 'h3',
+                    classes: 'bss_cross_references_heading',
+                    content: arr.length > 2 ? 'Cross References' : 'Cross Reference'
+                });
+            }
+        }
 
         if(passage.single_verse && this.multiBibles) {
             this.renderSingleVerseParallelBible(passage);
@@ -439,8 +460,9 @@ module.exports = kind({
     },
     proccessSingleVerseReference: function(passage, verse) {
         var bookName = this.app.getLocaleBookName(passage.book_id, passage.book_name);
-        return bookName + ' ' + verse.chapter + ':' + verse.verse;
-    },    
+        // Reference is concatenated into allowHtml content downstream, so escape the API-derived parts.
+        return bssUtils.escapeHtml(bookName + ' ' + verse.chapter + ':' + verse.verse);
+    },
     processPassageVerseContent: function(passage, verse) {
         var ref = this.proccessPassageVerseReference(passage, verse);
         return this.processAssemblePassageVerse(ref, verse);
@@ -450,7 +472,7 @@ module.exports = kind({
             return this.proccessSingleVerseReference(passage, verse);
         }
 
-        return verse.verse;
+        return bssUtils.escapeHtml(verse.verse);
     },
     processAssembleSingleVerse: function(reference, verse) {
         return this.processAssembleVerse(reference, verse);
@@ -725,10 +747,23 @@ module.exports = kind({
     },
     handleClick: function(inSender, inEvent) {
         var strongsOpenClick = this.getStrongsOpenClick();
-        target = inEvent.target;
+        var target = inEvent.target;
 
         if(target.tagName == 'A' && target.className == 'bss_top_placeholder_hide') {
             this.hideTopPlaceholder();
+        }
+
+        if(target.tagName == 'A' && target.className && target.className.indexOf('bss_cross_reference_link') !== -1) {
+            var src = inEvent.srcEvent || inEvent;   // srcEvent is the raw DOM event (also used by the strongs branch)
+            var newTab = this.app._isTrue(this.app.configs.crossReferenceLinkNewTab);
+            var modified = !!(src.ctrlKey || src.metaKey || src.shiftKey || src.button === 1);
+
+            if(!newTab && !modified) {
+                // Same-window open: stamp the current view's hash onto the entry we're leaving
+                // (before the browser follows the fragment link) so Back can restore it.
+                var form = this.app.getActiveForm();
+                form && form.syncHash && form.syncHash();
+            }
         }
 
         if(strongsOpenClick && target.tagName == 'A' && target.className == 'strongs') {
@@ -809,13 +844,21 @@ module.exports = kind({
             title = this.app.get('bssTitle'),
             curURL = window.location.href;
 
+        // bssTitle and the URL are derived from user-supplied search input, so they must be
+        // escaped for their respective contexts before being written into the print document.
+        // safeCssPath is emitted as a double-quoted HTML attribute (<link href="...">), which is
+        // the correct context for escapeHtml - do not place it in a CSS url('...') string.
+        var safeTitle = bssUtils.escapeHtml(title),
+            safeCssPath = bssUtils.escapeHtml(cssPath),
+            // JSON.stringify yields a safely-quoted/escaped JS string literal; additionally escape
+            // '<' so a '</script>' sequence in the URL cannot prematurely terminate the script tag.
+            safeUrl = JSON.stringify(curURL).replace(/</g, '\\u003c');
+
         var html = '';
             html += '<html>\n';
             html +=     '<head>\n';
-            html +=         '<title>' + title + '</title>\n';
-            html +=         '<style>\n';
-            html +=             "@import url('" + cssPath + "');\n";
-            html +=         '</style>\n';
+            html +=         '<title>' + safeTitle + '</title>\n';
+            html +=         '<link rel="stylesheet" type="text/css" href="' + safeCssPath + '">\n';
             html +=     '</head>\n';
             html +=     '<body>\n';
             html +=         '<div class="biblesupersearch_print">\n';
@@ -823,7 +866,7 @@ module.exports = kind({
             html +=         '</div>\n';
             html +=     '</body>\n';
             html +=     '<script>\n';
-            html +=         'history.replaceState(history.state, "", "' + curURL + '");\n'; // Force the displayed URL to that of the parent page
+            html +=         'history.replaceState(history.state, "", ' + safeUrl + ');\n'; // Force the displayed URL to that of the parent page
             html +=         'window.print();\n';                                            // After html is rendered, this triggers the print dialog
             html +=     '</script>\n';
             html += '</html>\n';
@@ -894,6 +937,23 @@ module.exports = kind({
         }
 
         this.$.SideSwipeButtons.addRemoveClass('bss_fadein', !!isfr);
+    },
+    // Builds a context link (Copy, Share, Listen, etc) anchor, rendered as an
+    // icon button when contextLinksAsButtons is enabled and the label has an icon.
+    // label is the translation key; title (optional) is a different translation
+    // key for the title/aria-label attributes (defaults to label).
+    _buildContextLinkHtml: function(href, label, title) {
+        var icon = this.app.contextLinkIcon(label);
+        var classes = icon ? 'bss_std_link bss-material-icons bss_icon' : 'bss_std_link';
+        var titleText = bssUtils.escapeHtml(this.app.t(title || label));
+        var text = bssUtils.escapeHtml(icon || this.app.t(label));
+
+        return '<a href="' + bssUtils.escapeHtml(href) + '" title="' + titleText + '" aria-label="' + titleText + '" class="' + classes + '">' + text + '</a>';
+    },
+    // Tag wrapping context links: plain inline when shown as icon buttons,
+    // superscript when shown as text links
+    _contextLinkWrapperTag: function() {
+        return this.app.configs.contextLinksAsButtons ? 'span' : 'sup';
     },
     audioBibleEnabled: function(bible, passage) {
         // :todo future check Bible / passage for audio availability (via API)

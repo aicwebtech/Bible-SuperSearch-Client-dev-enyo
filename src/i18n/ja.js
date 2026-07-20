@@ -61,10 +61,16 @@ module.exports = {
     'Context': 'コンテクスト',
     'In Context': 'コンテキスト内で',
     'Cross References': '相互参照',
+    'Cross Reference': '相互参照',
+    'Original Verse': '元の節',
     'Open All': 'すべて開く',
     'Hidden': '非表示',
     'Toggle': '切り替え',
     'Show': '表示',
+    'Cross Reference Format': '相互参照の形式',
+    'Compact': 'コンパクト',
+    'Auto': '自動',
+    'Expand': '展開',
 
     'Limit Search To': '検索を制限する',
     'Limit search to': '検索を制限する', // Watch case!
@@ -458,6 +464,9 @@ module.exports = {
     'Passages': '通路',
     'Alias': 'エイリアス',
     'You cannot search for these common words': 'これらの一般的な単語は検索できません',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'ヒント: 選択した聖書バージョンを有効にするには、パッセージを検索するか、章を開くか、検索を実行してください。',
 
     'Include Link': 'リンクを含める',
     'Include Formatting': 'フォーマットを含めます',

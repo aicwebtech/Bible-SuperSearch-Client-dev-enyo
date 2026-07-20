@@ -77,10 +77,16 @@ module.exports = {
     'Context': 'Tampilake ing konteks',
     'In Context': 'Ing Konteks',
     'Cross References': 'Referensi silang',
+    'Cross Reference': '',
+    'Original Verse': '',
     'Open All': 'Mbukak Kabeh',
     'Hidden': 'Didhelikake',
     'Toggle': 'Ganti',
     'Show': 'Tampilake',
+    'Cross Reference Format': '',
+    'Compact': '',
+    'Auto': '',
+    'Expand': '',
 
     'Limit Search To': '',
     'Limit search to': '', // Watch case!
@@ -474,6 +480,9 @@ module.exports = {
     'Passages': '',
     'Alias': '',
     'You cannot search for these common words': 'Sampeyan ora bisa nggoleki tembung umum iki',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': '',
 
     // 5.7:
 

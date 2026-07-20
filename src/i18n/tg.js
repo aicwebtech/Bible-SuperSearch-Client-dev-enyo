@@ -77,10 +77,16 @@ module.exports = {
     'Context': 'Контекст',
     'In Context': 'Дар контекст',
     'Cross References': 'Истинодҳои байниҳамдигарӣ',
+    'Cross Reference': 'Истиноди байниҳамдигарӣ',
+    'Original Verse': 'Ояти аслӣ',
     'Open All': 'Ҳамаро кушодан',
     'Hidden': 'Пинҳон',
     'Toggle': 'Гузариш',
     'Show': 'Намоиш',
+    'Cross Reference Format': 'Формати истинодҳои байниҳамдигарӣ',
+    'Compact': 'Фишурда',
+    'Auto': 'Худкор',
+    'Expand': 'Васеъ',
 
     'Limit Search To': 'Ҷустуҷӯро маҳдуд кунед',
     'Limit search to': 'Ҷустуҷӯро маҳдуд кунед', // Watch case!
@@ -474,6 +480,9 @@ module.exports = {
     'Passages': 'Гузаргоҳҳо',
     'Alias': 'Тахаллус',
     'You cannot search for these common words': 'Шумо наметавонед ин калимаҳои маъмулро ҷустуҷӯ кунед',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'Маслиҳат: Барои фаъол кардани нусхаҳои интихобшудаи Китоби Муқаддас, порчаро ҷустуҷӯ кунед, бобро иваз кунед ё ҷустуҷӯро иҷро кунед.',
 
     // 5.7:
     'Include Link': 'Истинодро дохил кунед',

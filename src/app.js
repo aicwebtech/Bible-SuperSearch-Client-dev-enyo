@@ -106,6 +106,7 @@ var App = Application.kind({
     loadingPagePrevent: false,
     hasAjaxSuccess: false,
     _blockAutoScroll: false,
+    _crossReferenceView: false,
     hasMouse: false, // use mouse events to detect
 
     useNewSelectors: false,
@@ -156,6 +157,8 @@ var App = Application.kind({
         this.system = systemConfig;
         this.set('baseTitle', document.title);
         var t = this;
+
+        Passage.setApp(t);
 
         if(typeof QUnit != 'undefined') {
             QUnit.config.autostart = false;
@@ -318,6 +321,10 @@ var App = Application.kind({
 
         this.configs.crossReferenceEnable = this._isTrue(this.configs.crossReferenceEnable);
         this.configs.crossReferenceShowDefault = this.normalizeCrossReferencesShow(this.configs.crossReferenceShowDefault);
+        this.configs.crossReferenceFormatDefault = this.normalizeCrossReferenceFormat(this.configs.crossReferenceFormatDefault);
+        this.configs.crossReferenceLinkIncludeParent = this._isTrue(this.configs.crossReferenceLinkIncludeParent);
+        this.configs.crossReferenceLinkNewTab = this._isTrue(this.configs.crossReferenceLinkNewTab);
+        this.configs.contextLinksAsButtons = this._isTrue(this.configs.contextLinksAsButtons);
 
         var view = null;
         this.initUserConfig();
@@ -557,6 +564,13 @@ var App = Application.kind({
     normalizeCrossReferencesShow: function(value) {
         if(value != 'hidden' && value != 'show' && value != 'toggle') {
             return 'toggle';
+        }
+
+        return value;
+    },
+    normalizeCrossReferenceFormat: function(value) {
+        if(value != 'compact' && value != 'auto' && value != 'expand') {
+            return 'auto';
         }
 
         return value;
@@ -819,6 +833,47 @@ var App = Application.kind({
 
                 var bookNameNoMatchEn = 0;
 
+                Passage.setApp(t);
+
+                // Build a lightweight book list for this locale so isPassage can resolve books
+                // by name via findBookByName.  We do this manually rather than calling
+                // _initLocaleBibleBooks because that method fires signals and updates userConfig
+                // (not appropriate during tests).
+                // NOTE: _fmtBookNameMatch ignores its locale parameter and reads this.get('locale')
+                // instead, so t.locale must be set to the target locale BEFORE building the list.
+                var localeCode = item.meta.code;
+                var savedLocale = t.locale;
+                var hadBookList = !!t.localeBibleBooks[localeCode];
+
+                // Swap in the target locale + a temporary book list, and ALWAYS restore them
+                // in the finally below - otherwise a throw mid-loop would leave t.locale
+                // pinned and leak the temp list, corrupting every subsequent locale iteration.
+                try {
+                t.locale = localeCode;
+
+                if(!hadBookList) {
+                    var tempBooks = [];
+                    for(var bi = 0; bi < item.bibleBooks.length; bi++) {
+                        var bdata = item.bibleBooks[bi];
+                        var tempBook = {
+                            id:        bdata.id,
+                            name:      bdata.name,
+                            shortname: bdata.shortname,
+                            chapters:  bdata.chapters || null,
+                            fn: t._fmtBookNameMatch(bdata.name, localeCode),
+                            sn: t._fmtBookNameMatch(bdata.shortname, localeCode)
+                        };
+                        if(Array.isArray(bdata.matching)) {
+                            tempBook.matching = [];
+                            for(var tmi = 0; tmi < bdata.matching.length; tmi++) {
+                                tempBook.matching.push(t._fmtBookNameMatch(bdata.matching[tmi], localeCode));
+                            }
+                        }
+                        tempBooks.push(tempBook);
+                    }
+                    t.localeBibleBooks[localeCode] = tempBooks;
+                }
+
                 // Check Bible Books
                 for(b in t.localeDatasetsRaw._template.bibleBooks) {
                     var bookNameEn = t.localeDatasetsRaw._template.bibleBooks[b].name;
@@ -827,12 +882,41 @@ var App = Application.kind({
                         bookNameNoMatchEn ++;
                     }
 
+                    if(item.bibleBooks[b] && item.bibleBooks[b].name) {
+                        var bookName = item.bibleBooks[b].name;
+                        var testRef = bookName + ' 1';
+                        assert.true(Passage.isPassage(testRef), ll + ' Passage.isPassage should be true for "' + testRef + '"');
+
+                        // isPassage above passes trivially for any "<name> 1" (it contains a
+                        // digit), so also assert the localized name actually RESOLVES to a book.
+                        // This is what genuinely exercises the locale book list built above.
+                        assert.ok(t.findBookByName(bookName), ll + ' findBookByName should resolve "' + bookName + '"');
+
+                        // Also test matching (alternative user-typed) names.
+                        if(item.bibleBooks[b].matching && item.bibleBooks[b].matching.length) {
+                            for(var mi = 0; mi < item.bibleBooks[b].matching.length; mi++) {
+                                var matchName = item.bibleBooks[b].matching[mi];
+                                var matchRef = matchName + ' 1';
+                                assert.true(Passage.isPassage(matchRef), ll + ' Passage.isPassage should be true for matching "' + matchRef + '"');
+                                assert.ok(t.findBookByName(matchName), ll + ' findBookByName should resolve matching "' + matchName + '"');
+                            }
+                        }
+                    }
+
                     if(!t.testVerbose && item.bibleBooks[b] && item.bibleBooks[b].name) {
                         continue; // non verbose skip
                     }
 
                     assert.ok(item.bibleBooks[b], 'Must have Bible book: ' + bookNameEn);
                     assert.ok(item.bibleBooks[b].name, 'Book name must not be empty');
+                }
+
+                }
+                finally {
+                    t.locale = savedLocale;
+                    if(!hadBookList) {
+                        delete t.localeBibleBooks[localeCode];
+                    }
                 }
 
                 // We check book names against English ones, at least ONE must not match
@@ -926,6 +1010,10 @@ var App = Application.kind({
                     this.loadingPagePrevent = true;
                     return this._hashCache(parts);
                     break;
+                case 'cr':   // Cross reference
+                    this.loadingPagePrevent = true;
+                    return this._hashReference(parts, true);
+                    break;
                 case 'p':   // Passage
                     this.loadingPagePrevent = true;
                     return this._hashPassage(parts);
@@ -978,7 +1066,16 @@ var App = Application.kind({
             }
         }
         else {
-            var formData = JSON.parse(formDataJson);
+            // Stored form data may be corrupt or tampered with - fall back to defaults on
+            // a parse failure rather than throwing out of init (per the localStorage rule).
+            try {
+                var formData = JSON.parse(formDataJson);
+            }
+            catch(e) {
+                this.debug && this.log('ignoring invalid stored form data');
+                localStorage.removeItem('BibleSuperSearchFormData');
+                return;
+            }
         }
 
         if(formData.redirected) {
@@ -1030,7 +1127,7 @@ var App = Application.kind({
         this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },    
-    _hashReference: function(parts) {
+    _hashReference: function(parts, isCrossReference) {
         var partsObj = this._explodeHashPassage(parts);
 
         partsObj.chap  = null;
@@ -1038,8 +1135,8 @@ var App = Application.kind({
 
         var formData = this._assembleHashPassage(partsObj);
         this.debug && this.log('sending onHashRunForm');
-        this.waterfall('onHashRunForm', {formData: formData, newTab: true});
-    },   
+        this.waterfall('onHashRunForm', {formData: formData, newTab: true, crossReference: !!isCrossReference});
+    },
     _hashRequest: function(parts) {
         this._hashSearch(parts, true);
     },
@@ -1079,7 +1176,20 @@ var App = Application.kind({
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },
     _hashForm: function(parts) {
-        var formData = (parts[0]) ? JSON.parse(parts[0]) : {};
+        var formData = {};
+
+        // parts[0] comes straight from the URL hash (attacker-controllable). Don't let
+        // malformed JSON throw out of the route handler - just ignore an invalid payload.
+        if(parts[0]) {
+            try {
+                formData = JSON.parse(parts[0]);
+            }
+            catch(e) {
+                this.debug && this.log('ignoring invalid hash form data');
+                return;
+            }
+        }
+
         this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },
@@ -1102,7 +1212,10 @@ var App = Application.kind({
             return {};
         }
 
-        var useRequestField = this.formHasField('request');
+        // A form may opt to prefer its reference field (and book/chapter/verse selector)
+        // over the combined request field when populating a passage from the URL hash.
+        var useRequestField = this.formHasField('request') && !(this.formPrefersReferenceField() && this.formHasField('reference'));
+
         var ref = partsObj.book.replace(/%20/g, ' ');
 
         if(partsObj.chap) {
@@ -1196,13 +1309,24 @@ var App = Application.kind({
 
         return false;
     },
+    formPrefersReferenceField: function() {
+        if(this.view && this.view.formPrefersReferenceField) {
+            return this.view.formPrefersReferenceField();
+        }
+
+        return false;
+    },
     getFormFieldValue: function(fieldName) {
         if(this.view && this.view.getFormFieldValue) {
             return this.view.getFormFieldValue(fieldName);
         }
-        
+
         return false;
-    },    
+    },
+    getActiveForm: function() {
+        return (this.view && this.view.getActiveForm) ? this.view.getActiveForm() : null;
+    },
+
     getFormSearch: function() {
         if(this.formHasField('search')) {
             return this.getFormFieldValue('search');
@@ -1718,6 +1842,9 @@ var App = Application.kind({
                 var fmt = name.toLocaleLowerCase(localeFmt);
         }
 
+        // Normalize dashes to hyphens
+        fmt = Passage.normalizeDashes(fmt);
+
         switch(locale) {
             case 'lv':
                 fmt = fmt.replace(/ā/g, 'a');
@@ -1845,21 +1972,24 @@ var App = Application.kind({
         
         return trans;
     },
-    // Translate string to icon
-    it: function(string) {
+    // Material Icons ligature for a context link label, or null if the label
+    // has no icon or contextLinksAsButtons is disabled
+    contextLinkIcon: function(string) {
+        if(!this.configs.contextLinksAsButtons) {
+            return null;
+        }
+
         var map = {
             'Context': 'menu_open',
             'Chapter': 'expand', // = 'arrow_expand_vertical',
             'Copy': 'content_copy',
             'Share': 'share',
+            'Cross References': 'article',
+            "Listen": 'volume_up',
+            'Statistics': 'bar_chart',
         };
 
-        // somehow, this is breaking link hovering...
-        if(map[string]) {
-            // return "<span class='bss-material-icons bss_icon'>" + map[string] + "</span>";
-        }
-
-        return this.t(string);
+        return map[string] || null;
     },
     findBookByName: function(bookName, locale) {
         this.debug && this.log(bookName, locale);
@@ -2050,8 +2180,12 @@ var App = Application.kind({
             return this.baseUrl;
         }   
 
-        if(url.indexOf(this.baseUrl) === 0 || url.indexOf('http://') === 0 || url.indexOf('https://') === 0) {
-            return url; // already absolute
+        // Only treat a value as already-absolute when it points back at our own base URL.
+        // History entries come from localStorage and could be tampered with; any other
+        // absolute (external) or unexpected-scheme URL is rebuilt below as a same-origin
+        // fragment link so a poisoned entry can't become an external/javascript: href.
+        if(url.indexOf(this.baseUrl) === 0) {
+            return url; // already absolute, same origin
         }
 
         return this.baseUrl + '#' + this.getRelativeUrl(url);

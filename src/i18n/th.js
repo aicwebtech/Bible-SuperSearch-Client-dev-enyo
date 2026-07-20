@@ -61,10 +61,16 @@ module.exports = {
     'Context': 'บริบท',
     'In Context': 'ในบริบท',
     'Cross References': 'การอ้างอิงไขว้',
+    'Cross Reference': 'การอ้างอิงไขว้',
+    'Original Verse': 'ข้อพระคัมภีร์ต้นฉบับ',
     'Open All': 'เปิดทั้งหมด',
     'Hidden': 'ซ่อนอยู่',
     'Toggle': 'สลับ',
     'Show': 'แสดง',
+    'Cross Reference Format': 'รูปแบบการอ้างอิงไขว้',
+    'Compact': 'กะทัดรัด',
+    'Auto': 'อัตโนมัติ',
+    'Expand': 'ขยาย',
 
     'Limit Search To': 'จำกัดการค้นหาไว้ที่',
     'Limit search to': 'จำกัดการค้นหาที่', // Watch case!
@@ -458,6 +464,9 @@ module.exports = {
     'Passages': 'ข้อความ',
     'Alias': 'นามแฝง',
     'You cannot search for these common words': 'คุณไม่สามารถค้นหาคำทั่วไปเหล่านี้ได้',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'เคล็ดลับ: หากต้องการเปิดใช้งานพระคัมภีร์ฉบับที่เลือก ให้ค้นหาข้อความ เปลี่ยนบท หรือดำเนินการค้นหา',
 
     'Include Link': 'รวมลิงค์',
     'Include Formatting': 'รวมการจัดรูปแบบ',

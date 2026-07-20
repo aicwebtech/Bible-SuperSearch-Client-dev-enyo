@@ -75,10 +75,16 @@ module.exports = {
     'Context': 'Bağlam',
     'In Context': 'Bağlamda',
     'Cross References': 'Çapraz referanslar',
+    'Cross Reference': 'Çapraz referans',
+    'Original Verse': 'Orijinal ayet',
     'Open All': 'Hepsini Aç',
     'Hidden': 'Gizli',
     'Toggle': 'Değiştir',
     'Show': 'Göster',
+    'Cross Reference Format': 'Çapraz referans biçimi',
+    'Compact': 'Kompakt',
+    'Auto': 'Otomatik',
+    'Expand': 'Genişletilmiş',
 
     'Limit Search To': 'Aramayı Sınırla',
     'Limit search to': 'Aramayı şu şekilde sınırlandır:', // Watch case!
@@ -472,6 +478,9 @@ module.exports = {
     'Passages': 'Pasajlar',
     'Alias': 'Takma ad',
     'You cannot search for these common words': 'Bu yaygın kelimeleri arayamazsınız',
+
+    // Custom
+    'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.': 'İpucu: Seçilen İncil sürümlerini etkinleştirmek için bir pasaj arayın, bir bölüme geçin veya arama yapın.',
 
     'Include Link': 'Bağlantıyı Dahil Et',
     'Include Formatting': 'Biçimlendirmeyi Dahil Et',
