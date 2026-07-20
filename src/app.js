@@ -825,11 +825,11 @@ var App = Application.kind({
                     return; // most strings for EN not defined ... 
                 }
 
+                if(item.meta.incomplete) {
+                    return; // skip incomplete locales
+                }
+
                 var ll = item.meta.code.toUpperCase() + ' ' + item.meta.nameEn;
-                // assert.ok(item);
-                // assert.ok(item.meta);
-                // assert.ok(item.meta.nameEn);
-                // assert.true(true, item.meta.nameEn);
 
                 var bookNameNoMatchEn = 0;
 
@@ -962,12 +962,12 @@ var App = Application.kind({
                         continue; // Book name, skipping
                     }
 
-                    if(
-                        (code == 'lv' || code == 'ru') && 
-                        f == 'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.') 
-                    {
-                        continue; // only exists in RU/LV, for now
-                    }
+                    // if(
+                    //     (code == 'lv' || code == 'ru') && 
+                    //     f == 'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.') 
+                    // {
+                    //     continue; // only exists in RU/LV, for now
+                    // }
 
                     if(!t.testVerbose && typeof t.localeDatasetsRaw._template[f] != 'undefined') {
                         continue; // Until I figure out how to assert quietly for passing assertions, skipping items that will pass

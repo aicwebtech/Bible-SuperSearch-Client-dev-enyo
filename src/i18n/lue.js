@@ -21,6 +21,8 @@ module.exports = {
         
         // Email address of translator, if fluent (not software)
         translatedEmail: 'paulpoid@gmail.com; gilgesben@gmail.com', 
+
+        incomplete: true, // true if translation is incomplete, false if complete
     },
     
     // The actual translation data
