@@ -2132,7 +2132,6 @@ var App = Application.kind({
         }
 
         var bookId = parseInt(item.b, 10);
-        var t = this;
 
         if(!bookId) {
             return false;

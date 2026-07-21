@@ -7,8 +7,7 @@ var ConfirmDialog = require('./Confirm');
 var LinkBuilder = require('../Link/LinkBuilder');
 
 // If the global enyo.Signals is available, use it. This is needed to allow
-// bi-directional communitation with Apps of older Enyo versions
-var Signal = require('enyo/Signals');
+// bi-directional communication with Apps of older Enyo versions
 Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 
 module.exports = kind({
