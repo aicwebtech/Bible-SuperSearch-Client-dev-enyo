@@ -439,6 +439,7 @@ module.exports = {
     'Clear': 'Aišku',
     'Restore': 'Atkurti',
     'Add': 'Papildyti',
+    'Add to List': 'Įtraukti į sąrašą',
     'Okay': 'Gerai',
     'Old': 'Senas',
     'New': 'Nauja',
@@ -450,10 +451,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Tai ištrins visą istoriją.',
     'This will delete all bookmarks.': 'Tai ištrins visas žymes.',
+    'This will clear everything from the verse list.': 'Tai išvalys viską iš eilučių sąrašo.',
     'Move to Current': 'Perkelti į Dabartinį',
+    'Move up': 'Perkelti aukštyn',
+    'Move down': 'Perkelti žemyn',
 
     'Bookmark': 'Skirtukas',
     'Bookmarks': 'Žymės',
+    'Verse List': 'Eilučių Sąrašas',
+    'Verse list empty': 'Eilučių sąrašas tuščias',
+    'Add duplicate verse?': 'Pridėti pasikartojančią eilutę?',
 
     'Please delete some bookmarks before adding more.': 'Prieš pridėdami daugiau, ištrinkite kai kurias žymes.',
     'This bookmark name already exists.': 'Šis žymės pavadinimas jau yra.',

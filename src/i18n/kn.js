@@ -453,6 +453,7 @@ module.exports = {
     'Clear': 'ಸ್ಪಷ್ಟ',
     'Restore': 'ಮರುಸ್ಥಾಪಿಸಿ',
     'Add': 'ಸೇರಿಸಿ',
+    'Add to List': 'ಪಟ್ಟಿಗೆ ಸೇರಿಸಿ',
     'Okay': 'ಸರಿ',
     'Old': 'ಹಳೆಯದು',
     'New': 'ಹೊಸದು',
@@ -464,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'ಇದು ಎಲ್ಲಾ ಇತಿಹಾಸವನ್ನು ಅಳಿಸುತ್ತದೆ.',
     'This will delete all bookmarks.': 'ಇದು ಎಲ್ಲಾ ಬುಕ್ಮಾರ್ಕ್ಗಳನ್ನು ಅಳಿಸುತ್ತದೆ.',
+    'This will clear everything from the verse list.': 'ಇದು ವಚನ ಪಟ್ಟಿಯಿಂದ ಎಲ್ಲವನ್ನೂ ತೆರವುಗೊಳಿಸುತ್ತದೆ.',
     'Move to Current': 'ಪ್ರಸ್ತುತಕ್ಕೆ ಸರಿಸಿ',
+    'Move up': 'ಮೇಲಕ್ಕೆ ಸರಿಸಿ',
+    'Move down': 'ಕೆಳಕ್ಕೆ ಸರಿಸಿ',
 
     'Bookmark': 'ಬುಕ್ಮಾರ್ಕ್',
     'Bookmarks': 'ಬುಕ್ಮಾರ್ಕ್ಗಳು',
+    'Verse List': 'ವಚನ ಪಟ್ಟಿ',
+    'Verse list empty': 'ವಚನ ಪಟ್ಟಿ ಖಾಲಿಯಾಗಿದೆ',
+    'Add duplicate verse?': 'ನಕಲು ವಚನ ಸೇರಿಸಬೇಕೇ?',
 
     'Please delete some bookmarks before adding more.': 'ಹೆಚ್ಚಿನದನ್ನು ಸೇರಿಸುವ ಮೊದಲು ದಯವಿಟ್ಟು ಕೆಲವು ಬುಕ್ಮಾರ್ಕ್ಗಳನ್ನು ಅಳಿಸಿ.',
     'This bookmark name already exists.': 'ಈ ಬುಕ್ಮಾರ್ಕ್ ಹೆಸರು ಈಗಾಗಲೇ ಅಸ್ತಿತ್ವದಲ್ಲಿದೆ.',

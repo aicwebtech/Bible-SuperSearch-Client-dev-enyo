@@ -453,6 +453,7 @@ module.exports = {
     'Clear': '분명한',
     'Restore': '복원하다',
     'Add': '추가하다',
+    'Add to List': '목록에 추가',
     'Okay': '좋아요',
     'Old': '오래된',
     'New': '새로운',
@@ -464,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': '모든 기록이 삭제됩니다.',
     'This will delete all bookmarks.': '모든 북마크가 삭제됩니다.',
+    'This will clear everything from the verse list.': '이것은 구절 목록에서 모든 것을 지웁니다.',
     'Move to Current': '현재로 이동',
+    'Move up': '위로 이동',
+    'Move down': '아래로 이동',
 
     'Bookmark': '서표',
     'Bookmarks': '북마크',
+    'Verse List': '구절 목록',
+    'Verse list empty': '구절 목록이 비어 있습니다',
+    'Add duplicate verse?': '중복 구절을 추가하시겠습니까?',
 
     'Please delete some bookmarks before adding more.': '북마크를 추가하기 전에 일부 북마크를 삭제하세요.',
     'This bookmark name already exists.': '이 북마크 이름은 이미 존재합니다.',

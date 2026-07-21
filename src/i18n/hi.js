@@ -438,6 +438,7 @@ module.exports = {
     'Clear': 'स्पष्ट',
     'Restore': 'पुनर्स्थापित करना',
     'Add': 'जोड़ना',
+    'Add to List': 'सूची में जोड़ें',
     'Okay': 'ठीक है',
     'Old': 'पुराना',
     'New': 'नया',
@@ -449,10 +450,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'इससे सारा इतिहास मिट जाएगा',
     'This will delete all bookmarks.': 'इससे सभी बुकमार्क हट जाएंगे',
+    'This will clear everything from the verse list.': 'यह श्लोक सूची से सब कुछ साफ़ कर देगा।',
     'Move to Current': 'वर्तमान में ले जाएँ',
+    'Move up': 'ऊपर ले जाएं',
+    'Move down': 'नीचे ले जाएं',
 
     'Bookmark': 'बुकमार्क',
     'Bookmarks': 'बुकमार्क',
+    'Verse List': 'श्लोक सूची',
+    'Verse list empty': 'श्लोक सूची खाली है',
+    'Add duplicate verse?': 'डुप्लीकेट श्लोक जोड़ें?',
 
     'Please delete some bookmarks before adding more.': 'कृपया और जोड़ने से पहले कुछ बुकमार्क हटा दें',
     'This bookmark name already exists.': 'यह बुकमार्क नाम पहले से मौजूद है',

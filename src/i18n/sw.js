@@ -453,6 +453,7 @@ module.exports = {
     'Clear': 'Wazi',
     'Restore': 'Rejesha',
     'Add': 'Ongeza',
+    'Add to List': 'Ongeza kwenye orodha',
     'Okay': 'Sawa',
     'Old': 'Mzee',
     'New': 'Mpya',
@@ -464,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Hii itafuta historia yote.',
     'This will delete all bookmarks.': 'Hii itafuta alamisho zote.',
+    'This will clear everything from the verse list.': 'Hii itafuta kila kitu kutoka kwenye orodha ya mistari.',
     'Move to Current': 'Hamisha hadi Sasa',
+    'Move up': 'Hamia juu',
+    'Move down': 'Hamia chini',
 
     'Bookmark': 'Alamisho',
     'Bookmarks': 'Alamisho',
+    'Verse List': 'Orodha ya Mistari',
+    'Verse list empty': 'Orodha ya mistari iko tupu',
+    'Add duplicate verse?': 'Ongeza mstari wa nakala?',
 
     'Please delete some bookmarks before adding more.': 'Tafadhali futa baadhi ya vialamisho kabla ya kuongeza zaidi.',
     'This bookmark name already exists.': 'Jina la alamisho hili tayari lipo.',

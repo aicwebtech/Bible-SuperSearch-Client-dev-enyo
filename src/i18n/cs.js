@@ -453,6 +453,7 @@ module.exports = {
     'Clear': 'Průhledná',
     'Restore': 'Obnovit',
     'Add': 'Přidat',
+    'Add to List': 'Přidat do seznamu',
     'Okay': 'Dobře',
     'Old': 'Starý',
     'New': 'Nový',
@@ -464,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Tím smažete veškerou historii.',
     'This will delete all bookmarks.': 'Tímto smažete všechny záložky.',
+    'This will clear everything from the verse list.': 'Tímto se vymaže vše ze seznamu veršů.',
     'Move to Current': 'Přesunout na Aktuální',
+    'Move up': 'Posunout nahoru',
+    'Move down': 'Posunout dolů',
 
     'Bookmark': 'Záložka do knihy',
     'Bookmarks': 'Záložky',
+    'Verse List': 'Seznam veršů',
+    'Verse list empty': 'Seznam veršů je prázdný',
+    'Add duplicate verse?': 'Přidat duplicitní verš?',
 
     'Please delete some bookmarks before adding more.': 'Před přidáním dalších prosím odstraňte některé záložky.',
     'This bookmark name already exists.': 'Tento název záložky již existuje.',

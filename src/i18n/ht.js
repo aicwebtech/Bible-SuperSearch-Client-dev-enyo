@@ -452,6 +452,7 @@ module.exports = {
     'Clear': 'Klè',
     'Restore': 'Restore',//check translation
     'Add': 'Ajoute',
+    'Add to List': 'Ajoute nan lis',
     'Okay': 'Oke',
     'Old': 'Ansyen',
     'New': 'Nouvo',
@@ -463,10 +464,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Sa a pral efase tout istwa.',
     'This will delete all bookmarks.': 'Sa a pral efase tout Signets.',//check translation
+    'This will clear everything from the verse list.': 'Sa a pral efase tout bagay soti nan lis vèsè a.',
     'Move to Current': 'Deplase nan Kouran',
+    'Move up': 'Monte',
+    'Move down': 'Desann',
 
     'Bookmark': 'Signet',//check translation
     'Bookmarks': 'Signets',//check translation
+    'Verse List': 'Lis Vèsè',
+    'Verse list empty': 'Lis vèsè vid',
+    'Add duplicate verse?': 'Ajoute vèsè double?',
 
     'Please delete some bookmarks before adding more.': 'Tanpri efase kèk signets anvan ou ajoute plis.',//check translation
     'This bookmark name already exists.': 'Non signets sa a deja egziste.',

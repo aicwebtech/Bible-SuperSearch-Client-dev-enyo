@@ -260,6 +260,8 @@ module.exports = kind({
             refContent += this._buildContextLinkHtml(shareLink, 'Share') + ' &nbsp;';
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', this.formData.bible, pd);
             refContent += this._buildContextLinkHtml(copyLink, 'Copy') + ' &nbsp;';
+            var addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', this.formData.bible, pd);
+            refContent += this._buildContextLinkHtml(addLink, 'Add to List') + ' &nbsp;';
 
             if(this.audioBibleEnabled(this.firstBible, pd)) {
                 var listenLink = this.linkBuilder.buildPassageSignalLink('onListen', this.formData.bible, pd);
@@ -326,6 +328,8 @@ module.exports = kind({
                 bibleContent += this._buildContextLinkHtml(shareLink, 'Share') + ' &nbsp;';
                 copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [mod], pd);
                 bibleContent += this._buildContextLinkHtml(copyLink, 'Copy') + ' &nbsp;';
+                addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', [mod], pd);
+                bibleContent += this._buildContextLinkHtml(addLink, 'Add to List') + ' &nbsp;';
 
                 if(this.audioBibleEnabledChapter(mod, pd)) {
                     listenLink = this.linkBuilder.buildPassageSignalLink('onListen', [mod], pd);
@@ -957,6 +961,9 @@ module.exports = kind({
 
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [this.selectedBible.module], passageClone);
             html += '&nbsp; <' + wrapper + '>' + this._buildContextLinkHtml(copyLink, 'Copy') + '</' + wrapper + '>';
+
+            var addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', [this.selectedBible.module], passageClone);
+            html += '&nbsp; <' + wrapper + '>' + this._buildContextLinkHtml(addLink, 'Add to List') + '</' + wrapper + '>';
 
             if(
                 (passage.single_verse || passage.verses_count == 1) && this.audioBibleEnabled(this.selectedBible.module, passageClone)

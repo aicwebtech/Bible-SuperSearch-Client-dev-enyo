@@ -439,6 +439,7 @@ module.exports = {
     'Clear': 'ชัดเจน',
     'Restore': 'คืนค่า',
     'Add': 'เพิ่ม',
+    'Add to List': 'เพิ่มลงในรายการ',
     'Okay': 'ตกลง',
     'Old': 'เก่า',
     'New': 'New',
@@ -450,10 +451,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'การดำเนินการนี้จะลบประวัติทั้งหมด',
     'This will delete all bookmarks.': 'การดำเนินการนี้จะลบบุ๊กมาร์กทั้งหมด',
+    'This will clear everything from the verse list.': 'นี่จะล้างทุกอย่างออกจากรายการข้อพระคัมภีร์',
     'Move to Current': 'ย้ายไปที่ปัจจุบัน',
+    'Move up': 'เลื่อนขึ้น',
+    'Move down': 'เลื่อนลง',
 
     'Bookmark': 'บุ๊กมาร์ก',
     'Bookmarks': 'บุ๊กมาร์ก',
+    'Verse List': 'รายการข้อพระคัมภีร์',
+    'Verse list empty': 'รายการข้อพระคัมภีร์ว่างเปล่า',
+    'Add duplicate verse?': 'เพิ่มข้อพระคัมภีร์ที่ซ้ำกัน?',
 
     'Please delete some bookmarks before adding more.': 'โปรดลบบุ๊กมาร์กบางส่วนก่อนที่จะเพิ่มอีก',
     'This bookmark name already exists.': 'มีชื่อบุ๊กมาร์กนี้อยู่แล้ว',

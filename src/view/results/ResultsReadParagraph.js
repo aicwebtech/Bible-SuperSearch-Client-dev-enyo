@@ -62,6 +62,8 @@ module.exports = kind({
             refContent += this._buildContextLinkHtml(shareLink, 'Share') + ' &nbsp;';
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', this.formData.bible, pd);
             refContent += this._buildContextLinkHtml(copyLink, 'Copy') + ' &nbsp; ';
+            var addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', this.formData.bible, pd);
+            refContent += this._buildContextLinkHtml(addLink, 'Add to List') + ' &nbsp; ';
 
             if(this.audioBibleEnabled(this.firstBible, pd)) {
                 var listenLink = this.linkBuilder.buildPassageSignalLink('onListen', this.formData.bible, pd);
@@ -136,6 +138,8 @@ module.exports = kind({
                 bibleContent += this._buildContextLinkHtml(shareLink, 'Share') + ' &nbsp;';
                 copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [module], pd);
                 bibleContent += this._buildContextLinkHtml(copyLink, 'Copy') + ' &nbsp;';
+                addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', [module], pd);
+                bibleContent += this._buildContextLinkHtml(addLink, 'Add to List') + ' &nbsp;';
 
                 if(this.audioBibleEnabled(module, pd)) {
                     listenLink = this.linkBuilder.buildPassageSignalLink('onListen', [module], pd);

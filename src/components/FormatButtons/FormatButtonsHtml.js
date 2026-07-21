@@ -369,6 +369,15 @@ module.exports = kind({
             {
                 kind: i18n,
                 classes: 'bss_item bss_link bss_text_only',
+                name: 'session_verse_list_button',
+                ontap: 'handleSessionVerseList',
+                attributes: {title: 'Verse List'},
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'playlist_add', attributes: {'aria-hidden': 'true'}}
+                ]
+            },
+            {
+                kind: i18n,
+                classes: 'bss_item bss_link bss_text_only',
                 name: 'bookmark_add_button',
                 ontap: 'handleBookmarkCurrent',
                 attributes: {title: 'Bookmark'},

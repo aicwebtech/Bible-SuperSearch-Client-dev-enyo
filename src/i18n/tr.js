@@ -453,6 +453,7 @@ module.exports = {
     'Clear': 'Temizlemek',
     'Restore': 'Eski haline getirmek',
     'Add': 'Eklemek',
+    'Add to List': 'Listeye ekle',
     'Okay': 'Tamam',
     'Old': 'Eskimiş',
     'New': 'Yeni',
@@ -464,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Bu, tüm geçmişi silecektir.',
     'This will delete all bookmarks.': 'Bu, tüm yer işaretlerini siler.',
+    'This will clear everything from the verse list.': 'Bu, ayet listesindeki her şeyi temizleyecektir.',
     'Move to Current': 'Mevcut duruma geç',
+    'Move up': 'Yukarı taşı',
+    'Move down': 'Aşağı taşı',
 
     'Bookmark': 'Yer imi',
     'Bookmarks': 'Yer imleri',
+    'Verse List': 'Ayet Listesi',
+    'Verse list empty': 'Ayet listesi boş',
+    'Add duplicate verse?': 'Yinelenen ayet eklensin mi?',
 
     'Please delete some bookmarks before adding more.': 'Lütfen daha fazlasını eklemeden önce bazı yer işaretlerini silin.',
     'This bookmark name already exists.': 'Bu yer imi adı zaten mevcut.',

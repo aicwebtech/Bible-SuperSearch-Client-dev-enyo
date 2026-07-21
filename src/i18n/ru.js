@@ -466,6 +466,7 @@ module.exports = {
     'Clear': 'Очистить',
     'Restore': 'Восстановить',
     'Add': 'Добавить',
+    'Add to List': 'Добавить в список',
     'Okay': 'Да',
     'Old': 'Предыдущий',
     'New': 'Новый',
@@ -477,10 +478,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Вся история будет удалена.',
     'This will delete all bookmarks.': 'Все закладки будут удалены.',
+    'This will clear everything from the verse list.': 'Это очистит всё из списка стихов.',
     'Move to Current': 'Изменить на Открытое',
+    'Move up': 'Переместить вверх',
+    'Move down': 'Переместить вниз',
 
     'Bookmark': 'Создать закладку',
     'Bookmarks': 'Закладки',
+    'Verse List': 'Список Стихов',
+    'Verse list empty': 'Список стихов пуст',
+    'Add duplicate verse?': 'Добавить дублирующий стих?',
 
     'Please delete some bookmarks before adding more.': 'Чтобы добавить новую, удалите одну из старых закладок.',
     'This bookmark name already exists.': 'Такое название закладки уже существует.',

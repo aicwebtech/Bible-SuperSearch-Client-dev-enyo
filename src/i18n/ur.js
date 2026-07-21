@@ -453,6 +453,7 @@ module.exports = {
     'Clear': 'صاف',
     'Restore': 'بحال کریں۔',
     'Add': 'شامل کریں۔',
+    'Add to List': 'فہرست میں شامل کریں۔',
     'Okay': 'ٹھیک ہے',
     'Old': 'پرانا',
     'New': 'نئی',
@@ -464,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'یہ تمام تاریخ کو حذف کر دے گا۔',
     'This will delete all bookmarks.': 'یہ تمام بک مارکس کو حذف کر دے گا۔',
+    'This will clear everything from the verse list.': 'یہ آیت فہرست سے سب کچھ صاف کر دے گا۔',
     'Move to Current': 'کرنٹ میں منتقل کریں۔',
+    'Move up': 'اوپر منتقل کریں',
+    'Move down': 'نیچے منتقل کریں',
 
     'Bookmark': 'کرنٹ میں منتقل کریں۔',
     'Bookmarks': 'بک مارکس',
+    'Verse List': 'آیت فہرست',
+    'Verse list empty': 'آیت فہرست خالی ہے',
+    'Add duplicate verse?': 'ڈپلیکیٹ آیت شامل کریں؟',
 
     'Please delete some bookmarks before adding more.': 'مزید شامل کرنے سے پہلے براہ کرم کچھ بک مارکس کو حذف کر دیں۔',
     'This bookmark name already exists.': 'یہ بک مارک نام پہلے سے موجود ہے۔',

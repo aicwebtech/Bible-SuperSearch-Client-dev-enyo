@@ -12,6 +12,7 @@ var SettingsDialog = require('../../components/dialogs/Settings');
 
 var Dialogs = {
     'HistoryDialog': require('../../components/dialogs/History'),
+    'SessionVerseListDialog': require('../../components/dialogs/SessionVerseList'),
     'BibleInfo': require('../../components/dialogs/BibleInfo'),
     'Statistics': require('../../components/dialogs/Statistics'),
     'BookmarkDialog': require('../../components/dialogs/Bookmarks'),

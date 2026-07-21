@@ -432,6 +432,7 @@ module.exports = {
      'Clear': 'Clair',
      'Restore': 'Restaurer',
      'Add': 'Ajouter',
+     'Add to List': 'Ajouter à la liste',
      'Okay': 'D\'accord',
      'Old': 'Vieux',
      'New': 'Nouveau',
@@ -443,10 +444,16 @@ module.exports = {
      // Bookmarks/History
      'This will delete all history.': 'Cela supprimera tout l\'historique',
      'This will delete all bookmarks.': 'Cela supprimera tous les favoris',
+     'This will clear everything from the verse list.': 'Cela effacera tout de la liste de versets.',
      'Move to Current': 'Passer à l\'actuel',
+     'Move up': 'Monter',
+     'Move down': 'Descendre',
 
      'Bookmark': 'Signet',
      'Bookmarks': 'Signets',
+     'Verse List': 'Liste de Versets',
+     'Verse list empty': 'Liste de versets vide',
+     'Add duplicate verse?': 'Ajouter un verset en double?',
 
      'Please delete some bookmarks before adding more.': 'Veuillez supprimer certains favoris avant d\'en ajouter d\'autres.',
      'This bookmark name already exists.': 'Ce nom de favori existe déjà',

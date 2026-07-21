@@ -454,6 +454,7 @@ module.exports = {
     'Clear': 'Asia selvä',
     'Restore': 'Palauttaa',
     'Add': 'Lisätä',
+    'Add to List': 'Lisää luetteloon',
     'Okay': 'Okei',
     'Old': 'Vanha',
     'New': 'Uusi',
@@ -465,10 +466,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Tämä poistaa kaiken historian.',
     'This will delete all bookmarks.': 'Tämä poistaa kaikki kirjanmerkit.',
+    'This will clear everything from the verse list.': 'Tämä tyhjentää kaiken jaelistan.',
     'Move to Current': 'Siirrä Nykyiseen',
+    'Move up': 'Siirrä ylös',
+    'Move down': 'Siirrä alas',
 
     'Bookmark': 'Kirjanmerkki',
     'Bookmarks': 'Kirjanmerkit',
+    'Verse List': 'Jaelista',
+    'Verse list empty': 'Jaelista on tyhjä',
+    'Add duplicate verse?': 'Lisätäänkö kaksoiskappale jae?',
 
     'Please delete some bookmarks before adding more.': 'Poista joitakin kirjanmerkkejä ennen kuin lisäät niitä.',
     'This bookmark name already exists.': 'Tämä kirjanmerkin nimi on jo olemassa.',

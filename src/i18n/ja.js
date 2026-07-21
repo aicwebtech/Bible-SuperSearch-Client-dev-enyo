@@ -439,6 +439,7 @@ module.exports = {
     'Clear': 'クリア',
     'Restore': '復元する',
     'Add': '追加',
+    'Add to List': 'リストに追加',
     'Okay': 'わかった',
     'Old': '古い',
     'New': '新しい',
@@ -450,10 +451,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'これにより、すべての履歴が削除されます。',
     'This will delete all bookmarks.': 'これにより、すべてのブックマークが削除されます。',
+    'This will clear everything from the verse list.': '節リストからすべてを削除します。',
     'Move to Current': '現在に移動',
+    'Move up': '上へ移動',
+    'Move down': '下へ移動',
 
     'Bookmark': 'ブックマーク',
     'Bookmarks': 'ブックマーク',
+    'Verse List': '節リスト',
+    'Verse list empty': '節リストは空です',
+    'Add duplicate verse?': '重複する節を追加しますか？',
 
     'Please delete some bookmarks before adding more.': 'さらにブックマークを追加する前に、いくつかのブックマークを削除してください。',
     'This bookmark name already exists.': 'このブックマーク名はすでに存在します。',

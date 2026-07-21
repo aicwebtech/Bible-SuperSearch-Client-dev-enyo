@@ -455,6 +455,7 @@ module.exports = {
     'Clear': 'ਸਾਫ਼',
     'Restore': 'ਰੀਸਟੋਰ ਕਰੋ',
     'Add': 'ਸ਼ਾਮਲ ਕਰੋ',
+    'Add to List': 'ਸੂਚੀ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰੋ',
     'Okay': 'ਠੀਕ ਹੈ',
     'Old': 'ਪੁਰਾਣਾ',
     'New': 'ਨਵਾਂ',
@@ -466,10 +467,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'ਇਹ ਸਾਰਾ ਇਤਿਹਾਸ ਮਿਟਾ ਦੇਵੇਗਾ।',
     'This will delete all bookmarks.': 'ਇਹ ਸਾਰੇ ਬੁੱਕਮਾਰਕਸ ਨੂੰ ਮਿਟਾ ਦੇਵੇਗਾ।',
+    'This will clear everything from the verse list.': 'ਇਹ ਆਇਤ ਸੂਚੀ ਤੋਂ ਸਭ ਕੁਝ ਸਾਫ਼ ਕਰ ਦੇਵੇਗਾ।',
     'Move to Current': 'ਵਰਤਮਾਨ ਵਿੱਚ ਭੇਜੋ',
+    'Move up': 'ਉੱਪਰ ਜਾਓ',
+    'Move down': 'ਹੇਠਾਂ ਜਾਓ',
 
     'Bookmark': 'ਬੁੱਕਮਾਰਕ',
     'Bookmarks': 'ਬੁੱਕਮਾਰਕਸ',
+    'Verse List': 'ਆਇਤ ਸੂਚੀ',
+    'Verse list empty': 'ਆਇਤ ਸੂਚੀ ਖਾਲੀ ਹੈ',
+    'Add duplicate verse?': 'ਡੁਪਲੀਕੇਟ ਆਇਤ ਸ਼ਾਮਲ ਕਰਨੀ ਹੈ?',
 
     'Please delete some bookmarks before adding more.': 'ਕਿਰਪਾ ਕਰਕੇ ਹੋਰ ਜੋੜਨ ਤੋਂ ਪਹਿਲਾਂ ਕੁਝ ਬੁੱਕਮਾਰਕਸ ਨੂੰ ਮਿਟਾਓ।',
     'This bookmark name already exists.': 'ਇਹ ਬੁੱਕਮਾਰਕ ਨਾਮ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ।',

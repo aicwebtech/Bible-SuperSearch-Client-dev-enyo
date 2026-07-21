@@ -438,6 +438,7 @@ module.exports = {
     'Clear': '清除',
     'Restore': '恢复',
     'Add': '添加',
+    'Add to List': '添加到列表',
     'Okay': '好的',
     'Old': '老的',
     'New': '新的',
@@ -449,10 +450,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': '这将删除所有历史记录。',
     'This will delete all bookmarks.': '这将删除所有书签',
+    'This will clear everything from the verse list.': '这将清除经文列表中的所有内容。',
     'Move to Current': '移至当前',
+    'Move up': '上移',
+    'Move down': '下移',
 
     'Bookmark': '书签',
     'Bookmarks': '书签',
+    'Verse List': '经文列表',
+    'Verse list empty': '经文列表为空',
+    'Add duplicate verse?': '添加重复经文？',
 
     'Please delete some bookmarks before adding more.': '请先删除一些书签，然后再添加更多书签',
     'This bookmark name already exists.': '该书签名称已存在',

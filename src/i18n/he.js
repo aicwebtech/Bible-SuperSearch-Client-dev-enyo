@@ -453,6 +453,7 @@ module.exports = {
     'Clear': 'ברור',
     'Restore': 'לשחזר',
     'Add': 'לְהוֹסִיף',
+    'Add to List': 'הוסף לרשימה',
     'Okay': 'בסדר',
     'Old': 'ישן',
     'New': 'חָדָשׁ',
@@ -464,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'פעולה זו תמחק את כל ההיסטוריה.',
     'This will delete all bookmarks.': 'פעולה זו תמחק את כל הסימניות.',
+    'This will clear everything from the verse list.': 'פעולה זו תמחק הכל מרשימת הפסוקים.',
     'Move to Current': 'העבר אל נוכחי',
+    'Move up': 'הזז למעלה',
+    'Move down': 'הזז למטה',
 
     'Bookmark': 'סימניה',
     'Bookmarks': 'סימניות',
+    'Verse List': 'רשימת פסוקים',
+    'Verse list empty': 'רשימת פסוקים ריקה',
+    'Add duplicate verse?': 'להוסיף פסוק כפול?',
 
     'Please delete some bookmarks before adding more.': 'אנא מחק כמה סימניות לפני הוספת עוד.',
     'This bookmark name already exists.': 'שם הסימנייה הזה כבר קיים.',

@@ -453,6 +453,7 @@ module.exports = {
     'Clear': 'தெளிவு',
     'Restore': 'மீட்டமை',
     'Add': 'சேர்',
+    'Add to List': 'பட்டியலில் சேர்',
     'Okay': 'சரி',
     'Old': 'பழையது',
     'New': 'புதியது',
@@ -464,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'இது அனைத்து வரலாற்றையும் நீக்கும்.',
     'This will delete all bookmarks.': 'இது அனைத்து புக்மார்க்குகளையும் நீக்கும்.',
+    'This will clear everything from the verse list.': 'இது வசன பட்டியலில் இருந்து எல்லாவற்றையும் அழிக்கும்.',
     'Move to Current': 'தற்போதைய நிலைக்கு நகர்த்தவும்',
+    'Move up': 'மேலே நகர்த்து',
+    'Move down': 'கீழே நகர்த்து',
 
     'Bookmark': 'புக்மார்க்',
     'Bookmarks': 'புக்மார்க்குகள்',
+    'Verse List': 'வசன பட்டியல்',
+    'Verse list empty': 'வசன பட்டியல் காலியாக உள்ளது',
+    'Add duplicate verse?': 'நகல் வசனத்தை சேர்க்கவா?',
 
     'Please delete some bookmarks before adding more.': 'மேலும் சேர்ப்பதற்கு முன் சில புக்மார்க்குகளை நீக்கவும்.',
     'This bookmark name already exists.': 'இந்த புக்மார்க் பெயர் ஏற்கனவே உள்ளது.',
