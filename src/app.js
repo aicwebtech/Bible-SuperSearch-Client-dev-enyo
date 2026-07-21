@@ -825,11 +825,11 @@ var App = Application.kind({
                     return; // most strings for EN not defined ... 
                 }
 
+                if(item.meta.incomplete) {
+                    return; // skip incomplete locales
+                }
+
                 var ll = item.meta.code.toUpperCase() + ' ' + item.meta.nameEn;
-                // assert.ok(item);
-                // assert.ok(item.meta);
-                // assert.ok(item.meta.nameEn);
-                // assert.true(true, item.meta.nameEn);
 
                 var bookNameNoMatchEn = 0;
 
@@ -878,7 +878,7 @@ var App = Application.kind({
                 for(b in t.localeDatasetsRaw._template.bibleBooks) {
                     var bookNameEn = t.localeDatasetsRaw._template.bibleBooks[b].name;
 
-                    if(item.bibleBooks[b].name != bookNameEn) {
+                    if(item.bibleBooks[b] && item.bibleBooks[b].name != bookNameEn) {
                         bookNameNoMatchEn ++;
                     }
 
@@ -928,7 +928,7 @@ var App = Application.kind({
                         continue;
                     }
 
-                    var en = t.localeDatasetsRaw._template[en];
+                    var en = t.localeDatasetsRaw._template[f];
                     var ff = ' ' + ll + ' "' + f + '"';
 
                     if(!t.testVerbose && typeof item[f] != 'undefined' && item[f] && item[f] != '' && item[f] != en) {
@@ -960,13 +960,6 @@ var App = Application.kind({
 
                     if(t.findBookByName(f, 'en')) {
                         continue; // Book name, skipping
-                    }
-
-                    if(
-                        (code == 'lv' || code == 'ru') && 
-                        f == 'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.') 
-                    {
-                        continue; // only exists in RU/LV, for now
                     }
 
                     if(!t.testVerbose && typeof t.localeDatasetsRaw._template[f] != 'undefined') {
