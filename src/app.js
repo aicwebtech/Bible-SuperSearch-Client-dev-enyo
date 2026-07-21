@@ -143,6 +143,7 @@ var App = Application.kind({
             name: 'Signal',
             kind: Signal,
             onBibleChange: 'handleBibleChange',
+            onSessionVerseListAdd: 'handleSessionVerseListAdd',
         }
     ],
 
@@ -1886,10 +1887,6 @@ var App = Application.kind({
     },
     // Sends signal into app
     s: function(onSignal, onEvent) {
-        if(onSignal == 'onSessionVerseListAdd') {
-            this.addSessionVerseListItem(onEvent);
-        }
-
         Signal.send(onSignal, onEvent);
     },
     // Translate
@@ -2126,6 +2123,9 @@ var App = Application.kind({
         this.history = [];
         localStorage.setItem('BibleSuperSearchHistory', '[]');
     },    
+    handleSessionVerseListAdd: function(inSender, inEvent) {
+        this.addSessionVerseListItem(inEvent);
+    },
     addSessionVerseListItem: function(item) {
         if(!item || !item.b || !item.cv) {
             return false;

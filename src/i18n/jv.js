@@ -467,16 +467,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': '',
     'This will delete all bookmarks.': '',
-    'This will clear everything from the verse list.': 'Iki bakal mbusak kabeh saka dhaptar ayat.',
+    'This will clear everything from the verse list.': '',
     'Move to Current': '',
-    'Move up': 'Minggah',
-    'Move down': 'Mudhun',
+    'Move up': '',
+    'Move down': '',
 
     'Bookmark': '',
     'Bookmarks': '',
-    'Verse List': 'Dhaptar Ayat',
-    'Verse list empty': 'Dhaptar ayat kosong',
-    'Add duplicate verse?': 'Tambah ayat duplikat?',
+    'Verse List': '',
+    'Verse list empty': '',
+    'Add duplicate verse?': '',
 
     'Please delete some bookmarks before adding more.': '',
     'This bookmark name already exists.': '',

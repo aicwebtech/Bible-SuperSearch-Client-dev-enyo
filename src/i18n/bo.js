@@ -467,16 +467,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': '',
     'This will delete all bookmarks.': '',
-    'This will clear everything from the verse list.': 'དེས་ཤ་ལོག་ཐོ་གཞུང་ནས་ཚང་མ་སུབ་བཤིག་གཏང་གི་རེད།',
+    'This will clear everything from the verse list.': '',
     'Move to Current': '',
-    'Move up': 'ཡར་སྤོ་བ',
-    'Move down': 'མར་སྤོ་བ',
+    'Move up': '',
+    'Move down': '',
 
     'Bookmark': '',
     'Bookmarks': '',
-    'Verse List': 'ཤ་ལོག་ཐོ་གཞུང',
-    'Verse list empty': 'ཤ་ལོག་ཐོ་གཞུང་སྟོང་པ་ཡིན',
-    'Add duplicate verse?': 'གཞན་དང་འདྲ་བའི་ཤ་ལོག་འཐེམས་སམ?',
+    'Verse List': '',
+    'Verse list empty': '',
+    'Add duplicate verse?': '',
 
     'Please delete some bookmarks before adding more.': '',
     'This bookmark name already exists.': '',

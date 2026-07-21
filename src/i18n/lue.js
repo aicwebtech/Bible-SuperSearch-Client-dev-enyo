@@ -467,10 +467,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Hakulinga ngana, naujima vyosena wasakulanga',
     'This will delete all bookmarks.': 'Hakulinga ngana, naujima vinjikizo vyakutalilaho vyosena',
+    'This will clear everything from the verse list.': '',
     'Move to Current': 'Yako kuvize vyakalinwaha',
+    'Move up': '',
+    'Move down': '',
 
     'Bookmark': 'Chinjikizo chakutalilaho',
     'Bookmarks': 'Vinjikizo vyakutalilaho',
+    'Verse List': '',
+    'Verse list empty': '',
+    'Add duplicate verse?': '',
 
     'Please delete some bookmarks before adding more.': 'Jima Vinjikizo vimwe vyakutalilaho shimbu kanda uhakileko vikwavo',
     'This bookmark name already exists.': 'Eli lijina lyaChinjikizo chakutalilaho kulili lyehi',

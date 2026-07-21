@@ -455,7 +455,7 @@ module.exports = {
     'This will delete all history.': 'Dadurch wird der gesamte Verlauf gelöscht.',
     'This will delete all bookmarks.': 'Dadurch werden alle Lesezeichen gelöscht.',
     'This will clear everything from the verse list.': 'Dadurch wird alles aus der Versliste gelöscht.',
-    'Move to Current': 'Zu „Aktuell” wechseln',
+    'Move to Current': 'Zu „Aktuell“ wechseln',
     'Move up': 'Nach oben verschieben',
     'Move down': 'Nach unten verschieben',
 

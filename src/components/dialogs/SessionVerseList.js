@@ -160,8 +160,8 @@ module.exports = kind({
             return;
         }
 
+        // onSessionVerseListChanged signal triggers refreshList via the Signals component
         this.app.moveSessionVerseListItem(idx, idx - 1);
-        this.refreshList();
     },
     moveDown: function(inSender) {
         var idx = parseInt(inSender.get('idx'), 10);
@@ -170,13 +170,13 @@ module.exports = kind({
             return;
         }
 
+        // onSessionVerseListChanged signal triggers refreshList via the Signals component
         this.app.moveSessionVerseListItem(idx, idx + 1);
-        this.refreshList();
     },
     deleteItem: function(inSender) {
         var idx = parseInt(inSender.get('idx'), 10);
+        // onSessionVerseListChanged signal triggers refreshList via the Signals component
         this.app.deleteSessionVerseListItem(idx);
-        this.refreshList();
     },
     clearList: function() {
         var t = this,
@@ -185,8 +185,8 @@ module.exports = kind({
 
         this.$.ConfirmDialog.confirm(msg, function(confirm) {
             if(confirm) {
+                // onSessionVerseListChanged signal triggers refreshList via the Signals component
                 t.app.clearSessionVerseList();
-                t.refreshList();
             }
         });
     },
