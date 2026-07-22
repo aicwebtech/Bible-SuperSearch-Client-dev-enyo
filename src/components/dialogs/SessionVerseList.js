@@ -5,10 +5,12 @@ var i18n = require('../Locale/i18nContent');
 var Dialog = require('./Dialog');
 var ConfirmDialog = require('./Confirm');
 var LinkBuilder = require('../Link/LinkBuilder');
+var Signal = require('enyo/Signals');
 
 // If the global enyo.Signals is available, use it. This is needed to allow
-// bi-directional communication with Apps of older Enyo versions
-Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
+// bi-directional communication with Apps of older Enyo versions
+
+var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 
 module.exports = kind({
     name: 'SessionVerseListDialog',

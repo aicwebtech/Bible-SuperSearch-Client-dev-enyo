@@ -944,7 +944,7 @@ module.exports = kind({
     // key for the title/aria-label attributes (defaults to label).
     _buildContextLinkHtml: function(href, label, title) {
         var icon = this.app.contextLinkIcon(label);
-        var classes = icon ? 'bss_std_link bss-material-icons bss_icon' : 'bss_std_link';
+        var classes = icon ? 'bss_std_link bss-material-icons bss_icon bss_context_icon' : 'bss_std_link';
         var titleText = bssUtils.escapeHtml(this.app.t(title || label));
         var text = bssUtils.escapeHtml(icon || this.app.t(label));
 
