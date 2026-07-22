@@ -10,7 +10,7 @@ var Signal = require('enyo/Signals');
 // If the global enyo.Signals is available, use it. This is needed to allow
 // bi-directional communication with Apps of older Enyo versions
 
-Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
+var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
 
 module.exports = kind({
     name: 'SessionVerseListDialog',

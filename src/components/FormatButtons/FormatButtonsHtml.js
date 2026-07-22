@@ -374,7 +374,7 @@ module.exports = kind({
                 attributes: {title: 'Verse List'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'playlist_add', attributes: {'aria-hidden': 'true'}}
-                ]
+                ],
             },
             {
                 kind: i18n,
