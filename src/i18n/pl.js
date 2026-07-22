@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Kontekst',
     'In Context': 'W Kontekście',
     'Cross References': 'Odnośniki krzyżowe',
+    'Cross Reference': 'Odnośnik krzyżowy',
+    'Original Verse': 'Oryginalny werset',
     'Open All': 'Otwórz wszystkie',
     'Hidden': 'Ukryte',
     'Toggle': 'Przełącz',
@@ -451,6 +453,7 @@ module.exports = {
     'Clear': 'Jasne',
     'Restore': 'Przywrócić',
     'Add': 'Dodać',
+    'Add to List': 'Dodaj do listy',
     'Okay': 'Dobra',
     'Old': 'Stary',
     'New': 'Nowy',
@@ -462,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Spowoduje to usunięcie całej historii.',
     'This will delete all bookmarks.': 'Spowoduje to usunięcie wszystkich zakładek.',
+    'This will clear everything from the verse list.': 'Spowoduje to wyczyszczenie wszystkiego z listy wersetów.',
     'Move to Current': 'Przejdź do bieżącego',
+    'Move up': 'Przesuń w górę',
+    'Move down': 'Przesuń w dół',
 
     'Bookmark': 'Zakładka',
     'Bookmarks': 'Zakładki',
+    'Verse List': 'Lista Wersetów',
+    'Verse list empty': 'Lista wersetów jest pusta',
+    'Add duplicate verse?': 'Dodać zduplikowany werset?',
 
     'Please delete some bookmarks before adding more.': 'Przed dodaniem kolejnych usuń niektóre zakładki.',
     'This bookmark name already exists.': 'Ta nazwa zakładki już istnieje.',

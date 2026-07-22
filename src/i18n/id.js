@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Konteks',
     'In Context': 'Dalam konteks',
     'Cross References': 'Referensi silang',
+    'Cross Reference': 'Referensi silang',
+    'Original Verse': 'Ayat asli',
     'Open All': 'Buka Semua',
     'Hidden': 'Tersembunyi',
     'Toggle': 'Alihkan',
@@ -451,6 +453,7 @@ module.exports = {
     'Clear': 'Jernih',
     'Restore': 'Memulihkan',
     'Add': 'Menambahkan',
+    'Add to List': 'Tambahkan ke daftar',
     'Okay': 'Oke',
     'Old': 'Tua',
     'New': 'Baru',
@@ -462,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Ini akan menghapus semua riwayat.',
     'This will delete all bookmarks.': 'Ini akan menghapus semua bookmark.',
+    'This will clear everything from the verse list.': 'Ini akan menghapus semua dari daftar ayat.',
     'Move to Current': 'Pindah ke Saat Ini',
+    'Move up': 'Pindah ke atas',
+    'Move down': 'Pindah ke bawah',
 
     'Bookmark': 'Penanda buku',
     'Bookmarks': 'Penanda buku',
+    'Verse List': 'Daftar Ayat',
+    'Verse list empty': 'Daftar ayat kosong',
+    'Add duplicate verse?': 'Tambahkan ayat duplikat?',
 
     'Please delete some bookmarks before adding more.': 'Harap hapus beberapa bookmark sebelum menambahkan lebih banyak.',
     'This bookmark name already exists.': 'Nama penanda ini sudah ada.',

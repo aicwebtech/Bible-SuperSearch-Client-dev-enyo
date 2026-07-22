@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'প্রসঙ্গ',
     'In Context': 'প্রসঙ্গে',
     'Cross References': 'ক্রস রেফারেন্স',
+    'Cross Reference': 'ক্রস রেফারেন্স',
+    'Original Verse': 'মূল আয়াত',
     'Open All': 'সব খুলুন',
     'Hidden': 'লুকানো',
     'Toggle': 'টগল',
@@ -451,6 +453,7 @@ module.exports = {
     'Clear': 'পরিষ্কার',
     'Restore': 'পুনরুদ্ধার করুন',
     'Add': 'যোগ করুন',
+    'Add to List': 'তালিকায় যোগ করুন',
     'Okay': 'ঠিক আছে',
     'Old': 'পুরাতন',
     'New': 'যোগ করুন',
@@ -462,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'এটি সমস্ত ইতিহাস মুছে ফেলবে।',
     'This will delete all bookmarks.': 'এটি সমস্ত বুকমার্ক মুছে ফেলবে৷',
+    'This will clear everything from the verse list.': 'এটি আয়াত তালিকা থেকে সব কিছু পরিষ্কার করবে।',
     'Move to Current': 'কারেন্টে সরান',
+    'Move up': 'উপরে সরান',
+    'Move down': 'নীচে সরান',
 
     'Bookmark': 'বুকমার্ক',
     'Bookmarks': 'বুকমার্ক',
+    'Verse List': 'আয়াত তালিকা',
+    'Verse list empty': 'আয়াত তালিকা খালি',
+    'Add duplicate verse?': 'ডুপ্লিকেট আয়াত যোগ করবেন?',
 
     'Please delete some bookmarks before adding more.': 'আরো যোগ করার আগে কিছু বুকমার্ক মুছে দিন.',
     'This bookmark name already exists.': 'এই বুকমার্ক নামটি ইতিমধ্যেই বিদ্যমান৷',

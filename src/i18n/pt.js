@@ -61,6 +61,8 @@ module.exports = {
     'Context': 'Contexto',
     'In Context': 'No Contexto',
     'Cross References': 'Referências cruzadas',
+    'Cross Reference': 'Referência cruzada',
+    'Original Verse': 'Versículo original',
     'Open All': 'Abrir tudo',
     'Hidden': 'Oculto',
     'Toggle': 'Alternar',
@@ -440,6 +442,7 @@ module.exports = {
     'Clear': 'Claro',
     'Restore': 'Restaurar',
     'Add': 'Adicionar',
+    'Add to List': 'Adicionar à lista',
     'Okay': 'OK',
     'Old': 'Velho',
     'New': 'Novo',
@@ -451,10 +454,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Isso excluirá todo o histórico.',
     'This will delete all bookmarks.': 'Isso excluirá todos os favoritos.',
+    'This will clear everything from the verse list.': 'Isso limpará tudo da lista de versículos.',
     'Move to Current': 'Mover para o atual',
+    'Move up': 'Mover para cima',
+    'Move down': 'Mover para baixo',
 
     'Bookmark': 'marca páginas',
     'Bookmarks': 'Favoritos',
+    'Verse List': 'Lista de Versículos',
+    'Verse list empty': 'Lista de versículos vazia',
+    'Add duplicate verse?': 'Adicionar versículo duplicado?',
 
     'Please delete some bookmarks before adding more.': 'Exclua alguns favoritos antes de adicionar mais.',
     'This bookmark name already exists.': 'Este nome de marcador já existe.',

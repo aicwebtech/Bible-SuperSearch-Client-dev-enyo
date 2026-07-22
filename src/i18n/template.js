@@ -75,6 +75,8 @@ module.exports = {
     'Context': '',
     'In Context': '',
     'Cross References': '',
+    'Cross Reference': '',
+    'Original Verse': '',
     'Open All': '',
     'Hidden': '',
     'Toggle': '',
@@ -451,6 +453,7 @@ module.exports = {
     'Clear': '',
     'Restore': '',
     'Add': '',
+    'Add to List': '',
     'Okay': '',
     'Old': '',
     'New': '',
@@ -462,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': '',
     'This will delete all bookmarks.': '',
+    'This will clear everything from the verse list.': '',
     'Move to Current': '',
+    'Move up': '',
+    'Move down': '',
 
     'Bookmark': '',
     'Bookmarks': '',
+    'Verse List': '',
+    'Verse list empty': '',
+    'Add duplicate verse?': '',
 
     'Please delete some bookmarks before adding more.': '',
     'This bookmark name already exists.': '',

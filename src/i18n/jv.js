@@ -77,6 +77,8 @@ module.exports = {
     'Context': 'Tampilake ing konteks',
     'In Context': 'Ing Konteks',
     'Cross References': 'Referensi silang',
+    'Cross Reference': '',
+    'Original Verse': '',
     'Open All': 'Mbukak Kabeh',
     'Hidden': 'Didhelikake',
     'Toggle': 'Ganti',
@@ -453,6 +455,7 @@ module.exports = {
     'Clear': '',
     'Restore': '',
     'Add': '',
+    'Add to List': '',
     'Okay': '',
     'Old': '',
     'New': '',
@@ -464,10 +467,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': '',
     'This will delete all bookmarks.': '',
+    'This will clear everything from the verse list.': '',
     'Move to Current': '',
+    'Move up': '',
+    'Move down': '',
 
     'Bookmark': '',
     'Bookmarks': '',
+    'Verse List': '',
+    'Verse list empty': '',
+    'Add duplicate verse?': '',
 
     'Please delete some bookmarks before adding more.': '',
     'This bookmark name already exists.': '',

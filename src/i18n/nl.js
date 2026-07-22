@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Context',
     'In Context': 'In context',
     'Cross References': 'Kruisverwijzingen',
+    'Cross Reference': 'Kruisverwijzing',
+    'Original Verse': 'Oorspronkelijk vers',
     'Open All': 'Alles openen',
     'Hidden': 'Verborgen',
     'Toggle': 'Omschakelen',
@@ -451,6 +453,7 @@ module.exports = {
     'Clear': 'Duidelijk',
     'Restore': 'Herstellen',
     'Add': 'Toevoegen',
+    'Add to List': 'Toevoegen aan lijst',
     'Okay': 'Oké',
     'Old': 'Oud',
     'New': 'Nieuw',
@@ -462,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Hiermee wordt de hele geschiedenis verwijderd.',
     'This will delete all bookmarks.': 'Hiermee worden alle bladwijzers verwijderd.',
+    'This will clear everything from the verse list.': 'Dit verwijdert alles uit de verzenlijst.',
     'Move to Current': 'Ga naar Huidig',
+    'Move up': 'Omhoog verplaatsen',
+    'Move down': 'Omlaag verplaatsen',
 
     'Bookmark': 'Bladwijzer',
     'Bookmarks': 'Bladwijzers',
+    'Verse List': 'Verzenlijst',
+    'Verse list empty': 'Verzenlijst is leeg',
+    'Add duplicate verse?': 'Dubbele vers toevoegen?',
 
     'Please delete some bookmarks before adding more.': 'Verwijder enkele bladwijzers voordat u er meer toevoegt.',
     'This bookmark name already exists.': 'Deze bladwijzernaam bestaat al.',

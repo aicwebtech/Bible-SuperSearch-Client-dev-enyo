@@ -61,6 +61,8 @@ module.exports = {
     'Context': 'Kontext',
     'In Context': 'Im Zusammenhang',
     'Cross References': 'Querverweise',
+    'Cross Reference': 'Querverweis',
+    'Original Verse': 'Ursprünglicher Vers',
     'Open All': 'Alle öffnen',
     'Hidden': 'Ausgeblendet',
     'Toggle': 'Umschalten',
@@ -440,6 +442,7 @@ module.exports = {
     'Clear': 'Klar',
     'Restore': 'Wiederherstellen',
     'Add': 'Hinzufügen',
+    'Add to List': 'Zur Liste hinzufügen',
     'Okay': 'Okay',//apparently correct translation
     'Old': 'Alt',
     'New': 'Neu',
@@ -451,10 +454,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Dadurch wird der gesamte Verlauf gelöscht.',
     'This will delete all bookmarks.': 'Dadurch werden alle Lesezeichen gelöscht.',
+    'This will clear everything from the verse list.': 'Dadurch wird alles aus der Versliste gelöscht.',
     'Move to Current': 'Zu „Aktuell“ wechseln',
+    'Move up': 'Nach oben verschieben',
+    'Move down': 'Nach unten verschieben',
 
     'Bookmark': 'Lesezeichen',
     'Bookmarks': 'Merkliste',
+    'Verse List': 'Versliste',
+    'Verse list empty': 'Versliste leer',
+    'Add duplicate verse?': 'Duplizierten Vers hinzufügen?',
 
     'Please delete some bookmarks before adding more.': 'Bitte löschen Sie einige Lesezeichen, bevor Sie weitere hinzufügen.',
     'This bookmark name already exists.': 'Dieser Lesezeichenname existiert bereits.',

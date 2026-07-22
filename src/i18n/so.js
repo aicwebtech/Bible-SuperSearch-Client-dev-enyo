@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Dulucda',
     'In Context': 'Marka la Eego',
     'Cross References': 'Tixraacyo isdhaafsan',
+    'Cross Reference': 'Tixraac isdhaafsan',
+    'Original Verse': 'Aayadda asalka ah',
     'Open All': 'Fur Dhammaan',
     'Hidden': 'Qarsoon',
     'Toggle': 'Beddel',
@@ -451,6 +453,7 @@ module.exports = {
     'Clear': 'Cad',
     'Restore': 'Soo celi',
     'Add': 'Ku dar',
+    'Add to List': 'Ku dar liiska',
     'Okay': 'Hagaag',
     'Old': 'Duq',
     'New': 'Cusub',
@@ -462,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Tani waxay tirtiri doontaa dhammaan taariikhda.',
     'This will delete all bookmarks.': 'Tani waxay tirtiri doontaa dhammaan bookmarks.',
+    'This will clear everything from the verse list.': 'Tani waxay nadiifin doontaa wax kasta oo ka mid ah liiska aayadaha.',
     'Move to Current': 'U Guuri Hadda',
+    'Move up': 'Kor u geli',
+    'Move down': 'Hoos u geli',
 
     'Bookmark': 'Bookmark',
     'Bookmarks': 'Bookmarks',
+    'Verse List': 'Liiska Aayadaha',
+    'Verse list empty': 'Liiska aayadaha waa madhan yahay',
+    'Add duplicate verse?': 'Ku dar aayad laba jibbaaran?',
 
     'Please delete some bookmarks before adding more.': 'Fadlan tirtir bookmarks ka hor intaadan wax badan ku darin.',
     'This bookmark name already exists.': 'Magaca bookmark waa horeba u jiray.',

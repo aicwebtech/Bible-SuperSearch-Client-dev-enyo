@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Konteksto',
     'In Context': 'Sa konteksto',
     'Cross References': 'Mga cross reference',
+    'Cross Reference': 'Cross reference',
+    'Original Verse': 'Orihinal na talata',
     'Open All': 'Buksan Lahat',
     'Hidden': 'Nakatago',
     'Toggle': 'I-toggle',
@@ -451,6 +453,7 @@ module.exports = {
     'Clear': 'Maaliwalas',
     'Restore': 'Ibalik',
     'Add': 'Idagdag',
+    'Add to List': 'Idagdag sa listahan',
     'Okay': 'Sige',
     'Old': 'Luma',
     'New': 'Bago',
@@ -462,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Tatanggalin nito ang lahat ng kasaysayan.',
     'This will delete all bookmarks.': 'Tatanggalin nito ang lahat ng mga bookmark.',
+    'This will clear everything from the verse list.': 'Ito ay maglilinis ng lahat mula sa listahan ng talata.',
     'Move to Current': 'Ilipat sa Kasalukuyan',
+    'Move up': 'Ilipat pataas',
+    'Move down': 'Ilipat pababa',
 
     'Bookmark': 'Bookmark',
     'Bookmarks': 'Mga bookmark',
+    'Verse List': 'Listahan ng Talata',
+    'Verse list empty': 'Listahan ng talata ay walang laman',
+    'Add duplicate verse?': 'Idagdag ang duplicate na talata?',
 
     'Please delete some bookmarks before adding more.': 'Mangyaring tanggalin ang ilang mga bookmark bago magdagdag ng higit pa.',
     'This bookmark name already exists.': 'Umiiral na ang pangalan ng bookmark na ito.',

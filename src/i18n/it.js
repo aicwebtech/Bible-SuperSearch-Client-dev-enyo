@@ -61,6 +61,8 @@ module.exports = {
     'Context': 'Contesto',
     'In Context': 'Nel Contesto',
     'Cross References': 'Riferimenti incrociati',
+    'Cross Reference': 'Riferimento incrociato',
+    'Original Verse': 'Versetto originale',
     'Open All': 'Apri tutto',
     'Hidden': 'Nascosto',
     'Toggle': 'Attiva/Disattiva',
@@ -437,6 +439,7 @@ module.exports = {
     'Clear': 'Chiaro',
     'Restore': 'Ristabilire',
     'Add': 'Aggiungere',
+    'Add to List': 'Aggiungi all\'elenco',
     'Okay': 'Va bene',
     'Old': 'Vecchio',
     'New': 'Nuovo',
@@ -448,10 +451,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Ciò eliminerà tutta la cronologia.',
     'This will delete all bookmarks.': 'Questo eliminerà tutti i segnalibri.',
+    'This will clear everything from the verse list.': 'Questo cancellerà tutto dall\'elenco dei versetti.',
     'Move to Current': 'Passa a Corrente',
+    'Move up': 'Sposta su',
+    'Move down': 'Sposta giù',
 
     'Bookmark': 'Segnalibro',
     'Bookmarks': 'Segnalibri',
+    'Verse List': 'Elenco Versetti',
+    'Verse list empty': 'Elenco versetti vuoto',
+    'Add duplicate verse?': 'Aggiungere versetto duplicato?',
 
     'Please delete some bookmarks before adding more.': 'Elimina alcuni segnalibri prima di aggiungerne altri.',
     'This bookmark name already exists.': 'Il nome di questo segnalibro esiste già.',

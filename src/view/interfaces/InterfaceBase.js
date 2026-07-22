@@ -12,6 +12,7 @@ var SettingsDialog = require('../../components/dialogs/Settings');
 
 var Dialogs = {
     'HistoryDialog': require('../../components/dialogs/History'),
+    'SessionVerseListDialog': require('../../components/dialogs/SessionVerseList'),
     'BibleInfo': require('../../components/dialogs/BibleInfo'),
     'Statistics': require('../../components/dialogs/Statistics'),
     'BookmarkDialog': require('../../components/dialogs/Bookmarks'),
@@ -227,6 +228,13 @@ module.exports = kind({
 
         return false;
     },
+    getActiveForm: function() {
+        if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view) {
+            return this.$.Content.$.FormController.view;
+        }
+
+        return null;
+    },
     _formHasFieldStandard: function(fieldName) {
         if(fieldName == 'search_and_reference') {
             var has = 0;
@@ -243,6 +251,13 @@ module.exports = kind({
 
         if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view && this.$.Content.$.FormController.view.$) {
             return (this.$.Content.$.FormController.view.$[fieldName]) ? true : false;
+        }
+
+        return false;
+    },
+    formPrefersReferenceField: function() {
+        if(this.$.Content && this.$.Content.$.FormController && this.$.Content.$.FormController.view) {
+            return this.$.Content.$.FormController.view.preferReferenceFieldFromHash ? true : false;
         }
 
         return false;

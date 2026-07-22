@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Horopaki',
     'In Context': 'I te Horopaki',
     'Cross References': 'Tohutoro whakawhiti',
+    'Cross Reference': 'Tohutoro whakawhiti',
+    'Original Verse': 'Irava taketake',
     'Open All': 'Huakina Katoa',
     'Hidden': 'Huna',
     'Toggle': 'Takahuri',
@@ -451,6 +453,7 @@ module.exports = {
     'Clear': 'Maamaa',
     'Restore': 'Whakaora',
     'Add': 'Tāpiri',
+    'Add to List': 'Tāpiri ki te rārangi',
     'Okay': 'Ka pai',
     'Old': 'Tawhito',
     'New': 'Hou',
@@ -462,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Ma tenei ka whakakore i nga hitori katoa.',
     'This will delete all bookmarks.': 'Ma tenei ka mukua nga tohuwāhi katoa.',
+    'This will clear everything from the verse list.': 'Ka mukua tēnei i ngā mea katoa mai i te rārangi kupu.',
     'Move to Current': 'Nuku ki Onāianei',
+    'Move up': 'Neke ake',
+    'Move down': 'Neke iho',
 
     'Bookmark': 'Tohuwāhi',
     'Bookmarks': 'Tohuwāhi',
+    'Verse List': 'Rārangi Kupu',
+    'Verse list empty': 'Kua ngaro te rārangi kupu',
+    'Add duplicate verse?': 'Tāpiri kupu tārua?',
 
     'Please delete some bookmarks before adding more.': 'Please delete some bookmarks before adding more.',
     'This bookmark name already exists.': 'Kei te noho kē tenei ingoa tohuwāhi.',

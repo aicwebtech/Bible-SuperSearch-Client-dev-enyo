@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'संदर्भ',
     'In Context': 'संदर्भात',
     'Cross References': 'क्रॉस संदर्भ',
+    'Cross Reference': 'क्रॉस संदर्भ',
+    'Original Verse': 'मूळ वचन',
     'Open All': 'सर्व उघडा',
     'Hidden': 'लपविलेले',
     'Toggle': 'टॉगल',
@@ -451,6 +453,7 @@ module.exports = {
     'Clear': 'साफ',
     'Restore': 'पुनर्संचयित करा',
     'Add': 'ॲड',
+    'Add to List': 'सूचीमध्ये जोडा',
     'Okay': 'ठीक आहे',
     'Old': 'जुने',
     'New': 'नवीन',
@@ -462,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'हे सर्व इतिहास हटवेल',
     'This will delete all bookmarks.': 'हे सर्व बुकमार्क हटवेल',
+    'This will clear everything from the verse list.': 'हे श्लोक यादीतून सर्व काही साफ करेल.',
     'Move to Current': 'वर्तमान वर हलवा',
+    'Move up': 'वर हलवा',
+    'Move down': 'खाली हलवा',
 
     'Bookmark': 'बुकमार्क करा',
     'Bookmarks': 'बुकमार्क',
+    'Verse List': 'श्लोक यादी',
+    'Verse list empty': 'श्लोक यादी रिकामी आहे',
+    'Add duplicate verse?': 'डुप्लिकेट श्लोक जोडायचे?',
 
     'Please delete some bookmarks before adding more.': 'कृपया अधिक जोडण्यापूर्वी काही बुकमार्क हटवा.',
     'This bookmark name already exists.': 'हे बुकमार्क नाव आधीपासून अस्तित्वात आहे.',

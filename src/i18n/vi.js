@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Bối cảnh',
     'In Context': 'Trong ngữ cảnh',
     'Cross References': 'Tham chiếu chéo',
+    'Cross Reference': 'Tham chiếu chéo',
+    'Original Verse': 'Câu gốc',
     'Open All': 'Mở Tất Cả',
     'Hidden': 'Ẩn',
     'Toggle': 'Chuyển đổi',
@@ -451,6 +453,7 @@ module.exports = {
     'Clear': 'Thông thoáng',
     'Restore': 'Khôi phục',
     'Add': 'Thêm vào',
+    'Add to List': 'Thêm vào danh sách',
     'Okay': 'Đồng ý',
     'Old': 'Cũ',
     'New': 'Mới',
@@ -462,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Điều này sẽ xóa tất cả lịch sử.',
     'This will delete all bookmarks.': 'Thao tác này sẽ xóa tất cả dấu trang.',
+    'This will clear everything from the verse list.': 'Thao tác này sẽ xóa tất cả mọi thứ khỏi danh sách câu.',
     'Move to Current': 'Di chuyển đến hiện tại',
+    'Move up': 'Di chuyển lên',
+    'Move down': 'Di chuyển xuống',
 
     'Bookmark': 'Đánh dấu',
     'Bookmarks': 'Dấu trang',
+    'Verse List': 'Danh Sách Câu',
+    'Verse list empty': 'Danh sách câu trống',
+    'Add duplicate verse?': 'Thêm câu trùng lặp?',
 
     'Please delete some bookmarks before adding more.': 'Vui lòng xóa một số dấu trang trước khi thêm nhiều dấu trang hơn.',
     'This bookmark name already exists.': 'Tên dấu trang này đã tồn tại.',

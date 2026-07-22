@@ -78,6 +78,8 @@ module.exports = {
     'Context': 'مەزمۇن',
     'In Context': 'مەزمۇندا',
     'Cross References': 'ئۆزئارا پايدىلانما',
+    'Cross Reference': 'ئۆزئارا پايدىلانما',
+    'Original Verse': 'ئەسلى ئايەت',
     'Open All': 'ھەممىسىنى ئاچ',
     'Hidden': 'يوشۇرۇن',
     'Toggle': 'ئالماشتۇرۇش',
@@ -453,6 +455,7 @@ module.exports = {
     'Clear': 'ئېنىق',
     'Restore': 'ئەسلىگە كەلتۈرۈش',
     'Add': 'قوش',
+    'Add to List': 'تىزىملىككە قوش',
     'Okay': 'ماقۇل',
     'Old': 'كونا',
     'New': 'يېڭى',
@@ -464,10 +467,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'بۇ بارلىق تارىخنى ئۆچۈرۈۋېتىدۇ.',
     'This will delete all bookmarks.': 'بۇ بارلىق خەتكۈچلەرنى ئۆچۈرۈۋېتىدۇ.',
+    'This will clear everything from the verse list.': 'بۇ ئايەت تىزىملىكىدىن ھەممە نەرسىنى تازىلايدۇ.',
     'Move to Current': 'نۆۋەتتىكىگە يۆتكىڭ',
+    'Move up': 'يۇقىرى يۆتكە',
+    'Move down': 'تۆۋەن يۆتكە',
 
     'Bookmark': 'خەتكۈچ',
     'Bookmarks': 'خەتكۈچ',
+    'Verse List': 'ئايەت تىزىملىكى',
+    'Verse list empty': 'ئايەت تىزىملىكى بوش',
+    'Add duplicate verse?': 'قايتالانغان ئايەت قوشامسىز؟',
 
     'Please delete some bookmarks before adding more.': 'تېخىمۇ كۆپ قوشۇشتىن بۇرۇن بەزى خەتكۈچلەرنى ئۆچۈرۈڭ.',
     'This bookmark name already exists.': 'بۇ خەتكۈچ ئىسمى ئاللىبۇرۇن مەۋجۇت.',

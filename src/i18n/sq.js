@@ -75,6 +75,8 @@ module.exports = {
     'Context': 'Kontekst',
     'In Context': 'Në Kontekst',
     'Cross References': 'Referenca të kryqëzuara',
+    'Cross Reference': 'Referencë e kryqëzuar',
+    'Original Verse': 'Vargu origjinal',
     'Open All': 'Hap të gjitha',
     'Hidden': 'Fshehur',
     'Toggle': 'Ndrysho',
@@ -451,6 +453,7 @@ module.exports = {
     'Clear': 'Qartë',
     'Restore': 'Rivendos',
     'Add': 'Shtoni',
+    'Add to List': 'Shto në listë',
     'Okay': 'Mirë',
     'Old': 'I vjetër',
     'New': 'I ri',
@@ -462,10 +465,16 @@ module.exports = {
     // Bookmarks/History
     'This will delete all history.': 'Kjo do të fshijë të gjithë historinë.',
     'This will delete all bookmarks.': 'Kjo do të fshijë të gjithë faqeshënuesit.',
+    'This will clear everything from the verse list.': 'Kjo do të fshijë gjithçka nga lista e vargjeve.',
     'Move to Current': 'Kaloni te Aktuale',
+    'Move up': 'Lëviz lart',
+    'Move down': 'Lëviz poshtë',
 
     'Bookmark': 'Shënoni faqeshënues',
     'Bookmarks': 'Faqerojtësit',
+    'Verse List': 'Lista e Vargjeve',
+    'Verse list empty': 'Lista e vargjeve është bosh',
+    'Add duplicate verse?': 'Shto varg të kopjuar?',
 
     'Please delete some bookmarks before adding more.': 'Ju lutemi fshini disa faqeshënues përpara se të shtoni më shumë.',
     'This bookmark name already exists.': 'Ky emër faqeshënuesi ekziston tashmë.',

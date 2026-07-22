@@ -23,7 +23,7 @@ module.exports = kind({
             ontap: 'handleHelp',
             attributes: {title: 'Help'},
             components: [
-                {tag: 'b', content: '?'}
+                {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'help_outline', attributes: {'aria-hidden': 'true'}}
             ]
         },
         {
@@ -41,16 +41,22 @@ module.exports = kind({
             name: 'sos_button',
             content: 'Bible SOS',
             ontap: 'handleSos',
-            attributes: {title: 'Emergency Help from the Bible'}
-        },        
+            attributes: {title: 'Emergency Help from the Bible'},
+            components: [
+                {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'emergency', attributes: {'aria-hidden': 'true'}}
+            ]
+        },
         {
             kind: i18n,
             classes: 'bss_item bss_start',
             name: 'start_button',
             content: 'Start',
             ontap: 'handleStart',
-            attributes: {title: 'Bible Start Guide'}
-        },        
+            attributes: {title: 'Bible Start Guide'},
+            components: [
+                {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'info', attributes: {'aria-hidden': 'true'}}
+            ]
+        },
         {
             kind: i18n,
             classes: 'bss_item bss_download',
@@ -58,7 +64,7 @@ module.exports = kind({
             ontap: 'handleDownload',
             attributes: {title: 'Bible Downloads'},
             components: [
-                {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'download'}
+                {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'download', attributes: {'aria-hidden': 'true'}}
             ]
         }
     ],

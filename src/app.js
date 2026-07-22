@@ -61,6 +61,8 @@ var App = Application.kind({
     defaultBiblesByLanguage: {}, // default Bibles by language
     history: [],
     visited: [],
+    sessionVerseList: [],
+    sessionVerseListStorageKey: 'BibleSuperSearchSessionVerseList',
     bookmarks: null,
     resetView: true,
     appLoaded: false,
@@ -109,6 +111,7 @@ var App = Application.kind({
     loadingPagePrevent: false,
     hasAjaxSuccess: false,
     _blockAutoScroll: false,
+    _crossReferenceView: false,
     hasMouse: false, // use mouse events to detect
 
     useNewSelectors: false,
@@ -143,6 +146,7 @@ var App = Application.kind({
             name: 'Signal',
             kind: Signal,
             onBibleChange: 'handleBibleChange',
+            onSessionVerseListAdd: 'handleSessionVerseListAdd',
         }
     ],
 
@@ -325,6 +329,8 @@ var App = Application.kind({
         this.configs.crossReferenceShowDefault = this.normalizeCrossReferencesShow(this.configs.crossReferenceShowDefault);
         this.configs.crossReferenceFormatDefault = this.normalizeCrossReferenceFormat(this.configs.crossReferenceFormatDefault);
         this.configs.crossReferenceLinkIncludeParent = this._isTrue(this.configs.crossReferenceLinkIncludeParent);
+        this.configs.crossReferenceLinkNewTab = this._isTrue(this.configs.crossReferenceLinkNewTab);
+        this.configs.contextLinksAsButtons = this._isTrue(this.configs.contextLinksAsButtons);
 
         var view = null;
         this.initUserConfig();
@@ -825,11 +831,11 @@ var App = Application.kind({
                     return; // most strings for EN not defined ... 
                 }
 
+                if(item.meta.incomplete) {
+                    return; // skip incomplete locales
+                }
+
                 var ll = item.meta.code.toUpperCase() + ' ' + item.meta.nameEn;
-                // assert.ok(item);
-                // assert.ok(item.meta);
-                // assert.ok(item.meta.nameEn);
-                // assert.true(true, item.meta.nameEn);
 
                 var bookNameNoMatchEn = 0;
 
@@ -878,7 +884,7 @@ var App = Application.kind({
                 for(b in t.localeDatasetsRaw._template.bibleBooks) {
                     var bookNameEn = t.localeDatasetsRaw._template.bibleBooks[b].name;
 
-                    if(item.bibleBooks[b].name != bookNameEn) {
+                    if(item.bibleBooks[b] && item.bibleBooks[b].name != bookNameEn) {
                         bookNameNoMatchEn ++;
                     }
 
@@ -928,7 +934,7 @@ var App = Application.kind({
                         continue;
                     }
 
-                    var en = t.localeDatasetsRaw._template[en];
+                    var en = t.localeDatasetsRaw._template[f];
                     var ff = ' ' + ll + ' "' + f + '"';
 
                     if(!t.testVerbose && typeof item[f] != 'undefined' && item[f] && item[f] != '' && item[f] != en) {
@@ -960,13 +966,6 @@ var App = Application.kind({
 
                     if(t.findBookByName(f, 'en')) {
                         continue; // Book name, skipping
-                    }
-
-                    if(
-                        (code == 'lv' || code == 'ru') && 
-                        f == 'Tip: To activate chosen Bible versions, look up passage, turn a chapter or execute search.') 
-                    {
-                        continue; // only exists in RU/LV, for now
                     }
 
                     if(!t.testVerbose && typeof t.localeDatasetsRaw._template[f] != 'undefined') {
@@ -1009,6 +1008,10 @@ var App = Application.kind({
                 case 'c':   // Cache uuid (hash) 
                     this.loadingPagePrevent = true;
                     return this._hashCache(parts);
+                    break;
+                case 'cr':   // Cross reference
+                    this.loadingPagePrevent = true;
+                    return this._hashReference(parts, true);
                     break;
                 case 'p':   // Passage
                     this.loadingPagePrevent = true;
@@ -1123,7 +1126,7 @@ var App = Application.kind({
         this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
     },    
-    _hashReference: function(parts) {
+    _hashReference: function(parts, isCrossReference) {
         var partsObj = this._explodeHashPassage(parts);
 
         partsObj.chap  = null;
@@ -1131,8 +1134,8 @@ var App = Application.kind({
 
         var formData = this._assembleHashPassage(partsObj);
         this.debug && this.log('sending onHashRunForm');
-        this.waterfall('onHashRunForm', {formData: formData, newTab: true});
-    },   
+        this.waterfall('onHashRunForm', {formData: formData, newTab: true, crossReference: !!isCrossReference});
+    },
     _hashRequest: function(parts) {
         this._hashSearch(parts, true);
     },
@@ -1208,7 +1211,10 @@ var App = Application.kind({
             return {};
         }
 
-        var useRequestField = this.formHasField('request');
+        // A form may opt to prefer its reference field (and book/chapter/verse selector)
+        // over the combined request field when populating a passage from the URL hash.
+        var useRequestField = this.formHasField('request') && !(this.formPrefersReferenceField() && this.formHasField('reference'));
+
         var ref = partsObj.book.replace(/%20/g, ' ');
 
         if(partsObj.chap) {
@@ -1302,13 +1308,24 @@ var App = Application.kind({
 
         return false;
     },
+    formPrefersReferenceField: function() {
+        if(this.view && this.view.formPrefersReferenceField) {
+            return this.view.formPrefersReferenceField();
+        }
+
+        return false;
+    },
     getFormFieldValue: function(fieldName) {
         if(this.view && this.view.getFormFieldValue) {
             return this.view.getFormFieldValue(fieldName);
         }
-        
+
         return false;
-    },    
+    },
+    getActiveForm: function() {
+        return (this.view && this.view.getActiveForm) ? this.view.getActiveForm() : null;
+    },
+
     getFormSearch: function() {
         if(this.formHasField('search')) {
             return this.getFormFieldValue('search');
@@ -2115,21 +2132,25 @@ var App = Application.kind({
         
         return trans;
     },
-    // Translate string to icon
-    it: function(string) {
+    // Material Icons ligature for a context link label, or null if the label
+    // has no icon or contextLinksAsButtons is disabled
+    contextLinkIcon: function(string) {
+        if(!this.configs.contextLinksAsButtons) {
+            return null;
+        }
+
         var map = {
             'Context': 'menu_open',
             'Chapter': 'expand', // = 'arrow_expand_vertical',
             'Copy': 'content_copy',
             'Share': 'share',
+            'Cross References': 'article',
+            "Listen": 'volume_up',
+            'Statistics': 'bar_chart',
+            'Add to List': 'playlist_add',
         };
 
-        // somehow, this is breaking link hovering...
-        if(map[string]) {
-            // return "<span class='bss-material-icons bss_icon'>" + map[string] + "</span>";
-        }
-
-        return this.t(string);
+        return map[string] || null;
     },
     findBookByName: function(bookName, locale) {
         this.debug && this.log(bookName, locale);
@@ -2266,6 +2287,134 @@ var App = Application.kind({
         this.history = [];
         localStorage.setItem('BibleSuperSearchHistory', '[]');
     },    
+    handleSessionVerseListAdd: function(inSender, inEvent) {
+        this.addSessionVerseListItem(inEvent);
+    },
+    addSessionVerseListItem: function(item) {
+        if(!item || !item.b || !item.cv) {
+            return false;
+        }
+
+        var bookId = parseInt(item.b, 10);
+
+        if(!bookId) {
+            return false;
+        }
+
+        // Confirm add if passage already exists in list
+        var exists = this.sessionVerseList.find(function(v) {
+            return v.b == bookId && v.cv == item.cv && v.cva == (item.cva || null);
+        });
+
+        if(exists) {    
+            // this.confirm('Add duplicate verse?', function(confirmed) {
+            //     if(confirmed) {
+            //         t.sessionVerseList.push({    
+            //             b: bookId,
+            //             cv: item.cv,
+            //             cva: item.cva || null
+            //         });
+            //     }
+
+            //     t.saveSessionVerseList();
+            //     Signal.send('onSessionVerseListChanged');
+            // });
+            
+            if(!confirm(this.t('Add duplicate verse?'))) {
+                return false;
+            }   
+        }
+
+        this.sessionVerseList.push({
+            b: bookId,
+            cv: item.cv,
+            cva: item.cva || null
+        });
+
+        this.saveSessionVerseList();
+        Signal.send('onSessionVerseListChanged');
+        return true;
+    },
+    deleteSessionVerseListItem: function(index) {
+        index = parseInt(index, 10);
+
+        if(index < 0 || index >= this.sessionVerseList.length) {
+            return false;
+        }
+
+        this.sessionVerseList.splice(index, 1);
+        this.saveSessionVerseList();
+        Signal.send('onSessionVerseListChanged');
+        return true;
+    },
+    moveSessionVerseListItem: function(fromIndex, toIndex) {
+        fromIndex = parseInt(fromIndex, 10);
+        toIndex = parseInt(toIndex, 10);
+
+        if(
+            fromIndex < 0 ||
+            toIndex < 0 ||
+            fromIndex >= this.sessionVerseList.length ||
+            toIndex >= this.sessionVerseList.length ||
+            fromIndex == toIndex
+        ) {
+            return false;
+        }
+
+        var item = this.sessionVerseList.splice(fromIndex, 1);
+        this.sessionVerseList.splice(toIndex, 0, item[0]);
+        this.saveSessionVerseList();
+        Signal.send('onSessionVerseListChanged');
+        return true;
+    },
+    clearSessionVerseList: function() {
+        this.sessionVerseList = [];
+        localStorage.setItem(this.sessionVerseListStorageKey, '[]');
+        Signal.send('onSessionVerseListChanged');
+    },
+    saveSessionVerseList: function() {
+        localStorage.setItem(this.sessionVerseListStorageKey, JSON.stringify(this.sessionVerseList));
+    },
+    getSessionVerseListReference: function() {
+        var references = [];
+
+        this.sessionVerseList.forEach(function(item) {
+            var cv = item.cva || item.cv;
+            var bookId = parseInt(item.b, 10);
+
+            if(!bookId || !cv) {
+                return;
+            }
+
+            var bookName = this.getLocaleBookName(bookId, bookId + 'B');
+            references.push(bookName + ' ' + cv);
+        }, this);
+
+        return references.join('; ');
+    },
+    showSessionVerseList: function() {
+        var reference = this.getSessionVerseListReference();
+
+        if(!reference) {
+            this.alert(this.t('Verse list empty.'));
+            return false;
+        }
+
+        var useRequestField = this.formHasField('request');
+        var formData = {
+            bible: this.getSelectedBibles(true)
+        };
+
+        if(useRequestField) {
+            formData.request = reference;
+        }
+        else {
+            formData.reference = reference;
+        }
+
+        this.runFormData(formData);
+        return true;
+    },
     pushVisited: function(url) {
         var url = url || document.location.href,
             self = this;
@@ -2585,6 +2734,7 @@ var App = Application.kind({
 
         var hist = localStorage.getItem('BibleSuperSearchHistory') || null;
         var visited = localStorage.getItem('BibleSuperSearchVisited') || null;
+        var sessionVerseList = localStorage.getItem(this.sessionVerseListStorageKey) || null;
 
         try {            
             this.history = hist ? JSON.parse(hist) : [];
@@ -2608,6 +2758,18 @@ var App = Application.kind({
         catch(e) {
             this.log('error initing visited');
             this.clearVisited();
+        }
+
+        try {
+            this.sessionVerseList = sessionVerseList ? JSON.parse(sessionVerseList) : [];
+
+            if(!Array.isArray(this.sessionVerseList)) {
+                this.clearSessionVerseList();
+            }
+        }
+        catch(e) {
+            this.log('error initing list');
+            this.clearSessionVerseList();
         }
     },
     copyHistoryToBookmarks: function() {
