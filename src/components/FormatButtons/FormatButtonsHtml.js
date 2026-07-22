@@ -372,6 +372,7 @@ module.exports = kind({
                 name: 'session_verse_list_button',
                 ontap: 'handleSessionVerseList',
                 attributes: {title: 'Verse List'},
+                components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'playlist_add', attributes: {'aria-hidden': 'true'}}
                 ]
             },
