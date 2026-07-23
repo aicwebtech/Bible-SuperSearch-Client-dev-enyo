@@ -294,7 +294,7 @@ module.exports = kind({
         var defaultBook = this._effectiveDefaultBook();
 
         if(defaultBook) {
-            defaultChapter = this.defaultChapter || 1;
+            var defaultChapter = this.defaultChapter || 1;
             this.$.Book.setSelectedByValue(defaultBook);
             this._createChapterList(defaultChapter);
             var Book = this._getBookById(defaultBook);

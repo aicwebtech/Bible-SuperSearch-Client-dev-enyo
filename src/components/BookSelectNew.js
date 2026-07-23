@@ -411,8 +411,8 @@ module.exports = kind({
         var defaultBook = this._effectiveDefaultBook();
 
         if(defaultBook) {
-            defaultChapter = this.defaultChapter || 1;
-            defaultVerse = this.includeAllVerses ? '' : ':1';
+            var defaultChapter = this.defaultChapter || 1;
+            var defaultVerse = this.includeAllVerses ? '' : ':1';
             this.$.Book.setSelectedByValue(defaultBook);
             this._createChapterList(defaultChapter);
             this._createVerseList(this.includeAllVerses ? '' : '1');
