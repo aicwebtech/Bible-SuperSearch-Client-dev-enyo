@@ -8,9 +8,11 @@ var LinkBuilder = require('../Link/LinkBuilder');
 var Signal = require('enyo/Signals');
 
 // If the global enyo.Signals is available, use it. This is needed to allow
-// bi-directional communication with Apps of older Enyo versions
-
-var Signal = (enyo && enyo.Signals) ? enyo.Signals : Signal;
+// bi-directional communication with Apps of older Enyo versions. Guard the
+// `enyo` reference with typeof so builds without the global don't throw.
+if(typeof enyo != 'undefined' && enyo && enyo.Signals) {
+    Signal = enyo.Signals;
+}
 
 module.exports = kind({
     name: 'SessionVerseListDialog',

@@ -89,6 +89,14 @@ var biblesupersearch_config_options = {
     // Otherwise, the navication will not update until the search or look up is performed.
     "bibleChangeUpdateNavigation": false,
 
+    // Hide Unavailable Books (v6.2)
+    // When TRUE, books that are not contained in the currently selected Bible(s) are hidden from the
+    // book dropdowns and the reference autocomplete. For example, if only New-Testament-only Bibles
+    // are selected, the Old Testament books are hidden (Matthew becomes the first book). When multiple
+    // Bibles are selected, a book is shown if ANY selected Bible contains it.
+    // Set to FALSE to always show all 66 books regardless of the selected Bible(s).
+    'hideUnavailableBooks': true,
+
     // Clear the form if the user changes the language
     'changeLanguageClearForm': true,
 

@@ -16,7 +16,9 @@ module.exports = kind({
 
     handlers: {
         onLocaleChange: 'localeChanged',
-        onClearFormWaterfall: 'clear'
+        onClearFormWaterfall: 'clear',
+        onBibleChange: 'handleBibleChange',
+        onAvailableBooksChange: 'handleBibleChange'
     },
 
     defaultBook: 1,
@@ -55,37 +57,37 @@ module.exports = kind({
             });
         }
 
-        // var tgroup = this.$.Book.createComponent({
-        //     tag: 'optgroup',
-        //     attributes: {
-        //         label: this.app.t('Old Testament')
-        //     }
-        // });
+        // BSS-266: the OT/NT divider is drawn under the last shown Old Testament book, and only
+        // when both testaments are visible (so a hidden OT leaves no stray divider).
+        var lastOtShown = null;
+        var anyNtShown = false;
 
         BookList.forEach(function(item) {
-            // if(item.id == '40') {
-            //     tgroup = this.$.Book.createComponent({
-            //         tag: 'optgroup',
-            //         attributes: {
-            //             label: this.app.t('New Testament')
-            //         }
-            //     });
-            // }
+            if(!this.app.bookShowingInSelectors(item.id)) {
+                return;
+            }
 
-            // tgroup.createComponent({
-            //     kind: Option,
-            //     content: item.name,
-            //     value: item.id,
-            //     owner: this.$.Book
-            // });
+            if(item.id <= 39) {
+                lastOtShown = item.id;
+            } else {
+                anyNtShown = true;
+            }
+        }, this);
+
+        var dividerId = anyNtShown ? lastOtShown : null;
+
+        BookList.forEach(function(item) {
+            if(!this.app.bookShowingInSelectors(item.id)) {
+                return;
+            }
 
             this.$.Book.createComponent({
                 content: item.name,
                 value: item.id,
-                style: item.id == 39 ? 'border-bottom: 2px solid black' : null
+                style: item.id == dividerId ? 'border-bottom: 2px solid black' : null
             });
         }, this);
-    }, 
+    },
 
     _createChapterList: function(selected) {
         var bookId = this.$.Book.get('value');
@@ -193,7 +195,86 @@ module.exports = kind({
     clear: function() {
         this._initDefault();
     },
-    
+    // BSS-266: rebuild the filtered book list when the selected Bible(s) change; keep the current
+    // selection if still available, else fall back to the first available book.
+    handleBibleChange: function(inSender, inEvent) {
+        if(!this.app.hideUnavailableBooksEnabled()) {
+            return;
+        }
+
+        var value = this.get('value');
+        var bookId = this._bookIdFromValue(value);
+
+        this.bookId = null;
+        this._createBookList();
+
+        if(bookId && !this.app.bookShowingInSelectors(bookId)) {
+            // A selected book is no longer available -> fall back to the first available book.
+            this._selectFirstAvailableBook();
+        } else {
+            // Keep the current selection (or blank/default) against the rebuilt list.
+            this.render();
+            this._populateFromValueHelper(value);
+        }
+    },
+    _bookIdFromValue: function(value) {
+        if(!value) {
+            return null;
+        }
+
+        var Passages = this.Passage.explodeReferences(value, true);
+
+        if(!Passages || Passages.length != 1 || !Passages[0] || !Passages[0].book) {
+            return null;
+        }
+
+        var Book = this.app.findBookByName(Passages[0].book);
+
+        return Book ? Book.id : null;
+    },
+    _firstAvailableBook: function() {
+        var BookList = this._getBookList();
+
+        for(var i = 0; i < BookList.length; i++) {
+            if(this.app.bookShowingInSelectors(BookList[i].id)) {
+                return BookList[i];
+            }
+        }
+
+        return null;
+    },
+    _selectFirstAvailableBook: function() {
+        var Book = this._firstAvailableBook();
+
+        if(!Book) {
+            return this._selectNoneRender();
+        }
+
+        var defaultChapter = this.defaultChapter || 1;
+
+        this.bookId = null;
+        this.$.Book.setSelectedByValue(Book.id);
+        this._createChapterList(defaultChapter);
+
+        this._internalSet = true;
+        this.set('value', Book.name + ' ' + defaultChapter);
+        this._internalSet = false;
+
+        this.render();
+    },
+    _effectiveDefaultBook: function() {
+        if(!this.defaultBook) {
+            return null;
+        }
+
+        if(this.app.bookShowingInSelectors(this.defaultBook)) {
+            return this.defaultBook;
+        }
+
+        var Book = this._firstAvailableBook();
+
+        return Book ? Book.id : this.defaultBook;
+    },
     _getBookList: function() {
         var locale = this.app.get('locale');
         var BookList = this.app.localeBibleBooks[locale] || this.app.statics.books;
@@ -209,11 +290,14 @@ module.exports = kind({
         return Book;
     },
     _initDefault: function() {
-        if(this.defaultBook) {
-            defaultChapter = this.defaultChapter || 1;
-            this.$.Book.setSelectedByValue(this.defaultBook);
+        // BSS-266: start on the first available book when the default (e.g. Genesis) is hidden.
+        var defaultBook = this._effectiveDefaultBook();
+
+        if(defaultBook) {
+            var defaultChapter = this.defaultChapter || 1;
+            this.$.Book.setSelectedByValue(defaultBook);
             this._createChapterList(defaultChapter);
-            var Book = this._getBookById(this.defaultBook);
+            var Book = this._getBookById(defaultBook);
             var val = Book.name + ' ' + defaultChapter;
         } else {
             var val = '';
