@@ -1743,7 +1743,9 @@ var App = Application.kind({
     hideUnavailableBooksEnabled: function() {
         var c = this.configs.hideUnavailableBooks;
 
-        return !(c == null || c === false || c === 'false');
+        // BSS-266: disable on any of the falsy/false-ish conventions used elsewhere for config flags
+        // (false, 'false', 0, '0', '', null, undefined).
+        return !!(c && c !== 'false' && c !== '0');
     },
     // BSS-266: Whether a book should be shown in the book selectors / autocomplete.
     bookShowingInSelectors: function(bookId) {
@@ -1788,6 +1790,12 @@ var App = Application.kind({
         // available-book set for the current selection so filtering never runs against stale data.
         this._bibleBookIdsCache = null;
         this._availableBookIds = this.getAvailableBookIds(this._selectedBibles);
+
+        // BSS-266: statics can reload without a following bible/locale change, so proactively tell
+        // the book selectors to rebuild their (filtered) option lists. Otherwise the always-live
+        // reference autocomplete and the pre-rendered dropdowns would show different book sets.
+        Signal.send('onAvailableBooksChange');
+        this.waterfall('onAvailableBooksChange');
 
         for(i in is.bibles) {
             if(typeof is.bibles[i].rtl == 'undefined') {

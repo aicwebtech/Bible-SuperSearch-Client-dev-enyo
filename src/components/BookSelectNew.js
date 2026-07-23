@@ -20,7 +20,8 @@ module.exports = kind({
     handlers: {
         onLocaleChange: 'localeChanged',
         onClearFormWaterfall: 'clear',
-        onBibleChange: 'handleBibleChange'
+        onBibleChange: 'handleBibleChange',
+        onAvailableBooksChange: 'handleBibleChange'
     },
 
     defaultBook: 1,
