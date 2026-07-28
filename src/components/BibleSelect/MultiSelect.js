@@ -411,11 +411,11 @@ module.exports = kind({
         if(thr != false) {
             // var width = window.innerWidth,
             var width = document.documentElement.clientWidth,
-                pLim = thr[0].maxBibles || 1;
-                pMin = thr[0].minBibles || 1;
+                pLim = thr[0].maxBibles || 1,
+                pMin = thr[0].minBibles || 1,
                 pStart = thr[0].startBibles || 1;
 
-            for(i in thr) {
+            for(var i in thr) {
                 if(thr[i].minWidth > width) {
                     break;
                 } else {

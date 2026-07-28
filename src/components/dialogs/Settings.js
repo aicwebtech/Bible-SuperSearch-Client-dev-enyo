@@ -181,69 +181,9 @@ module.exports = kind({
                 {tag: 'span', content: '"'}
             ]
         },
-        {
-            classes: 'bss_section',
-            name: 'CrossReferencesContainer',
-            components: [
-                {kind: inc, content: 'Cross References', classes: 'bss_header'},
-                {
-                    kind: Group,
-                    name: 'cross_references_mode_group',
-                    onActiveChanged: 'handleActiveChanged',
-                    classes: 'bss_settings_container',
-                    components: [
-                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
-                            {classes: 'bss_element', components: [
-                                {kind: Checkbox, name: 'cross_references_hidden', id: 'cross_references_hidden', type: 'radio'}
-                            ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_hidden'}, classes: 'bss_label', content: 'Hidden'}
-                        ]},
-                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
-                            {classes: 'bss_element', components: [
-                                {kind: Checkbox, name: 'cross_references_toggle', id: 'cross_references_toggle', type: 'radio'}
-                            ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_toggle'}, classes: 'bss_label', content: 'Toggle'}
-                        ]},
-                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
-                            {classes: 'bss_element', components: [
-                                {kind: Checkbox, name: 'cross_references_show', id: 'cross_references_show', type: 'radio'}
-                            ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_show'}, classes: 'bss_label', content: 'Show'}
-                        ]},
-                    ]
-                },
-                {kind: inc, content: 'Cross Reference Format', classes: 'bss_header'},
-                {
-                    kind: Group,
-                    name: 'cross_references_format_group',
-                    onActiveChanged: 'handleActiveChanged',
-                    classes: 'bss_settings_container',
-                    components: [
-                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
-                            {classes: 'bss_element', components: [
-                                {kind: Checkbox, name: 'cross_references_format_compact', id: 'cross_references_format_compact', type: 'radio'}
-                            ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_format_compact'}, classes: 'bss_label', content: 'Compact'}
-                        ]},
-                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
-                            {classes: 'bss_element', components: [
-                                {kind: Checkbox, name: 'cross_references_format_auto', id: 'cross_references_format_auto', type: 'radio'}
-                            ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_format_auto'}, classes: 'bss_label', content: 'Auto'}
-                        ]},
-                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
-                            {classes: 'bss_element', components: [
-                                {kind: Checkbox, name: 'cross_references_format_expand', id: 'cross_references_format_expand', type: 'radio'}
-                            ]},
-                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_format_expand'}, classes: 'bss_label', content: 'Expand'}
-                        ]},
-                    ]
-                }
-            ]
-        },
         {tag: 'br'},
         {
-            classes: 'bss_section', 
+            classes: 'bss_section',
             name: 'RenderStyleContainer',
             components: [
                 {kind: inc, content: 'Text Display', classes: 'bss_header'},
@@ -309,9 +249,70 @@ module.exports = kind({
                                 {kind: Checkbox, name: 'monospace', id: 'monospace', type: 'radio'}
                             ]},
                             {kind: i18n, tag: 'label', attributes: {for: 'monospace'}, classes: 'bss_label bss_font_monospace', content: 'Monospace'}
-                        ]},                
+                        ]},
                     ]
-                }      
+                }
+            ]
+        },
+        {tag: 'br'},
+        {
+            classes: 'bss_section',
+            name: 'CrossReferencesContainer',
+            components: [
+                {kind: inc, content: 'Cross References', classes: 'bss_header'},
+                {
+                    kind: Group,
+                    name: 'cross_references_mode_group',
+                    onActiveChanged: 'handleActiveChanged',
+                    classes: 'bss_settings_container',
+                    components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
+                                {kind: Checkbox, name: 'cross_references_hidden', id: 'cross_references_hidden', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_hidden'}, classes: 'bss_label', content: 'Hidden'}
+                        ]},
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
+                                {kind: Checkbox, name: 'cross_references_toggle', id: 'cross_references_toggle', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_toggle'}, classes: 'bss_label', content: 'Toggle'}
+                        ]},
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
+                                {kind: Checkbox, name: 'cross_references_show', id: 'cross_references_show', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_show'}, classes: 'bss_label', content: 'Show'}
+                        ]},
+                    ]
+                },
+                {kind: inc, content: 'Cross Reference Format', classes: 'bss_header'},
+                {
+                    kind: Group,
+                    name: 'cross_references_format_group',
+                    onActiveChanged: 'handleActiveChanged',
+                    classes: 'bss_settings_container',
+                    components: [
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
+                                {kind: Checkbox, name: 'cross_references_format_compact', id: 'cross_references_format_compact', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_format_compact'}, classes: 'bss_label', content: 'Compact'}
+                        ]},
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
+                                {kind: Checkbox, name: 'cross_references_format_auto', id: 'cross_references_format_auto', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_format_auto'}, classes: 'bss_label', content: 'Auto'}
+                        ]},
+                        {classes: 'bss_checkbox_container bss_checkbox_first', components: [
+                            {classes: 'bss_element', components: [
+                                {kind: Checkbox, name: 'cross_references_format_expand', id: 'cross_references_format_expand', type: 'radio'}
+                            ]},
+                            {kind: i18n, tag: 'label', attributes: {for: 'cross_references_format_expand'}, classes: 'bss_label', content: 'Expand'}
+                        ]},
+                    ]
+                }
             ]
         },
 

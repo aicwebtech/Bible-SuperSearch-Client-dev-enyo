@@ -387,9 +387,13 @@ var App = Application.kind({
 
         this.defaultBiblesRaw = utils.clone(this.defaultBibles);
 
+        this.configs.parallelBibleLimitByWidthEnable = this._isTrue(this.configs.parallelBibleLimitByWidthEnable);
+        this.configs.parallelBibleStartSuperceedsDefaultBibles = this._isTrue(this.configs.parallelBibleStartSuperceedsDefaultBibles);
+        this.configs.parallelBibleCleanUpForce = this._isTrue(this.configs.parallelBibleCleanUpForce);
+
         if(
-            (typeof this.configs.parallelBibleLimitByWidthEnable === 'undefined' || this.configs.parallelBibleLimitByWidthEnable) &&
-            this.configs.parallelBibleLimitByWidth && 
+            this.configs.parallelBibleLimitByWidthEnable &&
+            this.configs.parallelBibleLimitByWidth &&
             Array.isArray(this.configs.parallelBibleLimitByWidth) &&
             this.configs.parallelBibleLimitByWidth.length > 0
         ) {
