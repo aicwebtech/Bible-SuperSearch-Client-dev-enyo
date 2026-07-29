@@ -128,10 +128,6 @@ var biblesupersearch_config_options = {
     // should we remove Bible selections above the new limit?
     'parallelBibleCleanUpForce': false,
 
-    // If true, the number of parallel Bible selectors displayed initially ALWAYS equals the start Bibles number
-    // Regardless to the number of Bibles selected as default
-    'parallelBibleStartSuperceedsDefaultBibles': false,
-
     // When true, the "verses from this Bible have been included for comparison" errors won\'t show. 
     // (since v 5.6.20)
     'parallelSearchErrorSuppress': false,
@@ -180,6 +176,10 @@ var biblesupersearch_config_options = {
         // },
     ],
 
+    // If true, the number of parallel Bible selectors displayed initially ALWAYS equals the start Bibles number
+    // Regardless to the number of Bibles selected as default
+    // parallelBibleLimitByWidthEnable must be true for this to have any effect
+    'parallelBibleStartSuperceedsDefaultBibles': false,
 
     // Include Testament ("Old Testament" or "New Testament") in some references
     "includeTestament": false,  // true or false   

@@ -92,7 +92,11 @@ module.exports = kind({
 
         var defaultBibles = utils.clone(this.app.getDefaultBibles());
 
-        if(this.app.configs.parallelBibleStartSuperceedsDefaultBibles && defaultBibles.length > this.parallelStart) {
+        if( 
+            this.app.configs.parallelBibleLimitByWidthEnable 
+            && this.app.configs.parallelBibleStartSuperceedsDefaultBibles 
+            && defaultBibles.length > this.parallelStart
+        ) {
             defaultBibles = defaultBibles.slice(0, this.parallelStart);
         }
 

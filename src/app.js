@@ -321,6 +321,11 @@ var App = Application.kind({
         this.handleConfigFinal();
     },
     handleConfigFinal: function() {
+        // Must be set before anything else here, the debug logging below depends on it
+        if(this.configs.debug) {
+            this.debug = this.configs.debug;
+        }
+
         if(this.configs.target) {
             this.renderTarget = this.configs.target;
         }
@@ -403,9 +408,10 @@ var App = Application.kind({
                 bLast = 0,
                 gMaxReached = false,
                 hasError = false,
-                hasZeroPixel = false;
+                hasZeroPixel = false,
+                pLimit, pLim, bLim, bMin, bStart;
 
-            for(i in this.configs.parallelBibleLimitByWidth) {
+            for(var i in this.configs.parallelBibleLimitByWidth) {
                 if(gMaxReached) {
                     this.log('Error: parallelBibleLimitByWidth has values past the global maximum');
                     hasError = true;
@@ -414,10 +420,15 @@ var App = Application.kind({
 
                 pLimit = this.configs.parallelBibleLimitByWidth[i];
 
-                pLim = parseInt(pLimit.minWidth, 10);
-                bLim = parseInt(pLimit.maxBibles, 10);
-                bMin = parseInt(pLimit.minBibles, 10);
-                bStart = parseInt(pLimit.startBibles, 10);
+                // Omitted values fall back to their documented defaults, see config-example.js
+                pLim = parseInt(pLimit.minWidth, 10) || 0;
+                bLim = (pLimit.maxBibles == 'max') ? 9999 : (parseInt(pLimit.maxBibles, 10) || 1);
+                bMin = parseInt(pLimit.minBibles, 10) || 1;
+                bStart = parseInt(pLimit.startBibles, 10) || 1;
+
+                if(pLimit.maxBibles == 'max') {
+                    gMaxReached = true;
+                }
 
                 if(bStart < bMin) {
                     this.log('Error: parallelBibleLimitByWidth: startBibles must be equal or greater than minBibles!');
@@ -431,18 +442,9 @@ var App = Application.kind({
 
                 this.debug && this.log('parallel', pLimit, pLim, bLim);
 
-                if(!this.configs.parallelBibleLimitByWidth[i].minBibles) {
-                    this.configs.parallelBibleLimitByWidth[i].minBibles = 1;
-                }
-
                 if(i == 0 && pLim == 0) {
                     hasZeroPixel = true;
                 }
-
-                if(pLimit.maxBibles == 'max') {
-                    this.configs.parallelBibleLimitByWidth[i].maxBibles = bLim = 9999;
-                    gMaxReached = true;
-                } 
 
                 // if(pLim < pMax || bLim < bMax) {
                 if(pLim < pMax) {
@@ -468,6 +470,14 @@ var App = Application.kind({
                 }
             }
         } else {
+            if(
+                !this.configs.parallelBibleLimitByWidthEnable &&
+                Array.isArray(this.configs.parallelBibleLimitByWidth) &&
+                this.configs.parallelBibleLimitByWidth.length > 0
+            ) {
+                this.log('Warning: parallelBibleLimitByWidth is configured but ignored, parallelBibleLimitByWidthEnable is not set to true');
+            }
+
             this.configs.parallelBibleLimitByWidth = false;
         }
 
@@ -480,12 +490,8 @@ var App = Application.kind({
 
         this.configs.apiUrl = this.configs.apiUrl.replace(/\/+$/, '') + '/api';
         this.configs.apiKeyStr = (this.configs.apiKey && this.configs.apiKey != '') ? '&key=' + this.configs.apiKey : '';
-        
-        if(this.configs.debug) {
-            this.debug = this.configs.debug;
-        }
 
-        if(typeof QUnit == 'object') {            
+        if(typeof QUnit == 'object') {
             this.testInit = true;
 
             if(this.configs.testOnLoad) {
@@ -569,7 +575,8 @@ var App = Application.kind({
         return (groupOrder) ? groupOrder + '|' + this.configs.bibleSorting : this.configs.bibleSorting;
     },
     _isTrue: function(value) {
-        return !(value === false || value === 'false' || value === 0 || value === '0' || value === null || typeof value == 'undefined');
+        // An empty string is falsey here, some hosts (ie the WordPress plugin) serialize an unchecked option as ''
+        return !(value === false || value === 'false' || value === 0 || value === '0' || value === '' || value === null || typeof value == 'undefined');
     },
     normalizeCrossReferencesShow: function(value) {
         if(value != 'hidden' && value != 'show' && value != 'toggle') {
