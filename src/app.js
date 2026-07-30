@@ -322,9 +322,9 @@ var App = Application.kind({
     },
     handleConfigFinal: function() {
         // Must be set before anything else here, the debug logging below depends on it
-        if(this.configs.debug) {
-            this.debug = this.configs.debug;
-        }
+        // _isTrue, because some hosts (ie the WordPress plugin) serialize booleans as strings, ie 'false'
+        this.configs.debug = this._isTrue(this.configs.debug);
+        this.debug = this.configs.debug;
 
         if(this.configs.target) {
             this.renderTarget = this.configs.target;
@@ -420,11 +420,11 @@ var App = Application.kind({
 
                 pLimit = this.configs.parallelBibleLimitByWidth[i];
 
-                // Omitted values fall back to their documented defaults, see config-example.js
-                pLim = parseInt(pLimit.minWidth, 10) || 0;
-                bLim = (pLimit.maxBibles == 'max') ? 9999 : (parseInt(pLimit.maxBibles, 10) || 1);
-                bMin = parseInt(pLimit.minBibles, 10) || 1;
-                bStart = parseInt(pLimit.startBibles, 10) || 1;
+                // Omitted values parse to NaN by design, MultiSelect inherits them from the previous breakpoint
+                pLim = parseInt(pLimit.minWidth, 10);
+                bLim = (pLimit.maxBibles == 'max') ? 9999 : parseInt(pLimit.maxBibles, 10);
+                bMin = parseInt(pLimit.minBibles, 10);
+                bStart = parseInt(pLimit.startBibles, 10);
 
                 if(pLimit.maxBibles == 'max') {
                     gMaxReached = true;
