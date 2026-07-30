@@ -411,7 +411,7 @@ var App = Application.kind({
                 hasZeroPixel = false,
                 pLimit, pLim, bLim, bMin, bStart;
 
-            for(var i in this.configs.parallelBibleLimitByWidth) {
+            for(var i = 0; i < this.configs.parallelBibleLimitByWidth.length; i++) {
                 if(gMaxReached) {
                     this.log('Error: parallelBibleLimitByWidth has values past the global maximum');
                     hasError = true;

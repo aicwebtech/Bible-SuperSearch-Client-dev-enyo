@@ -419,7 +419,7 @@ module.exports = kind({
                 pMin = thr[0].minBibles || 1,
                 pStart = thr[0].startBibles || 1;
 
-            for(var i in thr) {
+            for(var i = 0; i < thr.length; i++) {
                 if(thr[i].minWidth > width) {
                     break;
                 } else {
