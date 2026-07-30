@@ -55,20 +55,28 @@ module.exports = kind({
         }
 
         var bookName = this.app.getLocaleBookName(pd.book_id, pd.book_name);
-        var refContent = ''; 
+        var refContent = '';
+        var addLink;
+        // 'Add to List' does the same thing regardless of Bible, so it belongs with the reference, not the Bible headers
+        var addToListWithReference = this.multiBibles && !pd.single_verse && pd.verses_count > 1;
 
         if(!this.multiBibles) {
             var shareLink = this.linkBuilder.buildPassageSignalLink('onShare', this.formData.bible, pd);
             refContent += this._buildContextLinkHtml(shareLink, 'Share') + ' &nbsp;';
             var copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', this.formData.bible, pd);
             refContent += this._buildContextLinkHtml(copyLink, 'Copy') + ' &nbsp; ';
-            var addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', this.formData.bible, pd);
+            addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', this.formData.bible, pd);
             refContent += this._buildContextLinkHtml(addLink, 'Add to List') + ' &nbsp; ';
 
             if(this.audioBibleEnabled(this.firstBible, pd)) {
                 var listenLink = this.linkBuilder.buildPassageSignalLink('onListen', this.formData.bible, pd);
                 refContent += this._buildContextLinkHtml(listenLink, 'Listen') + ' &nbsp;';
             }
+        }
+
+        if(addToListWithReference) {
+            addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', this.formData.bible, pd);
+            refContent += this._buildContextLinkHtml(addLink, 'Add to List') + ' &nbsp; ';
         }
 
         if(this.app.statics.access.statistics) {
@@ -138,8 +146,10 @@ module.exports = kind({
                 bibleContent += this._buildContextLinkHtml(shareLink, 'Share') + ' &nbsp;';
                 copyLink = this.linkBuilder.buildPassageSignalLink('onCopy', [module], pd);
                 bibleContent += this._buildContextLinkHtml(copyLink, 'Copy') + ' &nbsp;';
-                addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', [module], pd);
-                bibleContent += this._buildContextLinkHtml(addLink, 'Add to List') + ' &nbsp;';
+                if(!addToListWithReference) {
+                    addLink = this.linkBuilder.buildPassageSignalLink('onSessionVerseListAdd', [module], pd);
+                    bibleContent += this._buildContextLinkHtml(addLink, 'Add to List') + ' &nbsp;';
+                }
 
                 if(this.audioBibleEnabled(module, pd)) {
                     listenLink = this.linkBuilder.buildPassageSignalLink('onListen', [module], pd);

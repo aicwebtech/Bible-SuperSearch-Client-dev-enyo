@@ -17,6 +17,9 @@ var defaultConfig = {
     "arrowKeysPageChapter": false,
     "textDisplayDefault": 'passage',
     "parallelBibleStartSuperceedsDefaultBibles": false,
+    "parallelBibleCleanUpForce": false,                 // Whether to remove Bible selections above the limit when the parallel Bible limit is dynamically lowered
+    "parallelBibleLimitByWidthEnable": false,            // Enables the parallel Bible limit by width feature (parallelBibleLimitByWidth is ignored unless this is true)
+    "parallelBibleLimitByWidth": false,                 // Parallel Bible limits by screen width; see config-example.js.  Requires parallelBibleLimitByWidthEnable
     'contextLinksAsButtons': true,                      // Whether to show context links as buttons (ie Copy, Share, Context, Cross References) (default: true)
     'landingReferenceDefault': false,
     'hoverDelayThreshold': 500,
