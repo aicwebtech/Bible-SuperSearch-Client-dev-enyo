@@ -227,7 +227,14 @@ module.exports = kind({
 
         var firstPage = !this.paging || this.paging.current_page == 1;
 
-        if(this.app._crossReferenceView && firstPage && !this.app.UserConfig.get('copy')) {
+        // The 'Original Verse' / 'Cross References' headings only describe the results when the
+        // originating verse was actually pulled in alongside the cross reference(s).  With
+        // crossReferenceLinkIncludeParent disabled the results are cross references only, so the
+        // headings are omitted (the view is still flagged as a cross reference view so that it
+        // scrolls to the top of the Bible text).
+        var crossReferenceHeadings = this.app._crossReferenceView && this.app._isTrue(this.app.configs.crossReferenceLinkIncludeParent);
+
+        if(crossReferenceHeadings && firstPage && !this.app.UserConfig.get('copy')) {
             if(idx == 0) {
                 this.createComponent({
                     kind: i18n,
