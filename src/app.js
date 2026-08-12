@@ -1022,6 +1022,12 @@ var App = Application.kind({
                     break;
                 case 'cr':   // Cross reference
                     this.loadingPagePrevent = true;
+                    // BSS-158: A cross reference link is a brand new lookup, so it must scroll the
+                    // same way the navigation buttons do - to the top of the Bible text, not to the
+                    // top of the site.  Without this, the initial 'container_top' mode (which exists
+                    // only for the no-hash landing page) sticks, sending the cross reference - in a
+                    // new tab, or in this window after a hash-loaded page - to the very top.
+                    this.resetScrollMode();
                     return this._hashReference(parts, true);
                     break;
                 case 'p':   // Passage

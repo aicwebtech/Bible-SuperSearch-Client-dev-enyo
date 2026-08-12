@@ -825,15 +825,19 @@ module.exports = kind({
     // crossReferenceLinkIncludeParent is enabled, the originating ("from" / parent) reference is
     // prepended so the link pulls both the parent verse and the cross reference (as a combined
     // reference); the link's display text is unchanged either way.
+    // Both variants use the 'cr' hash so the destination knows it came from a cross reference and
+    // scrolls to the top of the Bible text - a plain 'p' link is indistinguishable from any other
+    // passage link, which must keep scrolling to the top of the page.
     _crossReferenceTargetHref: function(item, cr, localeBook) {
+        var targetRef = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr);
+
         if(this.app._isTrue(this.app.configs.crossReferenceLinkIncludeParent)) {
             var parentRef = this.app.getLocaleBookName(item.from_book) + ' ' + item.from_chapter + ':' + item.from_verse;
-            var targetRef = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr);
 
             return this.linkBuilder.buildReferenceLink('cr', this.formData.bible, parentRef + '; ' + targetRef);
         }
 
-        return this.linkBuilder.buildReferenceLink('p', this.formData.bible, localeBook, cr.to_chapter_start, cr.to_verse_start, cr.to_chapter_end, cr.to_verse_end);
+        return this.linkBuilder.buildReferenceLink('cr', this.formData.bible, targetRef);
     },
     _formatCrossReference: function(item, format) {
         if(!Array.isArray(item.cross_references)) {
@@ -927,8 +931,8 @@ module.exports = kind({
             rawRefs.push(localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr));
         }
 
-        var mode = this.app._isTrue(this.app.configs.crossReferenceLinkIncludeParent) ? 'cr' : 'r';
-        var href = this.linkBuilder.buildReferenceLink(mode, this.formData.bible, rawRefs.join('; '));
+        // Always 'cr', with or without the parent reference - see _crossReferenceTargetHref().
+        var href = this.linkBuilder.buildReferenceLink('cr', this.formData.bible, rawRefs.join('; '));
         var label = this.app.t('Open All');
         var targetAttr = this.app._isTrue(this.app.configs.crossReferenceLinkNewTab) ? ' target="_blank"' : '';
 
