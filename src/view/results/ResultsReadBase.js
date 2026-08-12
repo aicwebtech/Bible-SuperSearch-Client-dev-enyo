@@ -826,8 +826,8 @@ module.exports = kind({
     // prepended so the link pulls both the parent verse and the cross reference (as a combined
     // reference); the link's display text is unchanged either way.
     // Both variants use the 'cr' hash so the destination knows it came from a cross reference and
-    // scrolls to the top of the Bible text - a plain 'p' link is indistinguishable from any other
-    // passage link, which must keep scrolling to the top of the page.
+    // can reset scroll mode to the top of the Bible text (not the top of the site). A plain 'p'
+    // link is indistinguishable from any other passage link and won't trigger cross-reference scrolling.
     _crossReferenceTargetHref: function(item, cr, localeBook) {
         var targetRef = localeBook + ' ' + cr.to_chapter_start + ':' + cr.to_verse_start + this._formatCrossRefRange(cr);
 
