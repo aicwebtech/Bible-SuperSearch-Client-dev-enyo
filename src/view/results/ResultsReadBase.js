@@ -88,7 +88,8 @@ module.exports = kind({
         Container.set('singleVerse', true);
 
         if(renderStyle == 'verse_passage') {
-            addBibleHeader = true;
+            // With only one Bible selected, the Bible header is redundant
+            addBibleHeader = this.multiBibles;
             addReferenceRow = true;
         }
 
@@ -126,14 +127,14 @@ module.exports = kind({
         if(addBibleHeader) {        
             Container.createComponent({
                 name: 'BibleRow',
-                class: 'bss_render_bible_row bss_bacon',
+                classes: 'bss_render_bible_row',
                 tag: 'tr'
             });
         }
 
         Container.createComponent({
             name: 'VerseRow',
-            class: 'bss_render_verse_row',
+            classes: 'bss_render_verse_row',
             tag: 'tr'
         });
 
@@ -223,7 +224,8 @@ module.exports = kind({
         var addBibleHeader = false,
             renderStyle = this.renderStyle;
 
-        if(this.renderStyle == 'verse_passage') {
+        // With only one Bible selected, the Bible header and its buttons duplicate the reference row
+        if(this.renderStyle == 'verse_passage' && this.multiBibles) {
             addBibleHeader = true;
         }
 
@@ -387,7 +389,7 @@ module.exports = kind({
                 var passageClone = Object.assign({}, pd);
                 passageClone.chapter_verse_actual = chapter + ':' + verse;
 
-                if(addBibleHeader && renderStyle == 'verse_passage') {
+                if(addBibleHeader && renderStyle == 'verse_passage' && this.multiBibles) {
                     this._addBibleHeader(VerseContainer);
                 }
 
