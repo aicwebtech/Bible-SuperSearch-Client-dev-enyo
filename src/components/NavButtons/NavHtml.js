@@ -163,7 +163,7 @@ module.exports = kind({
         this.render();
     },
     handleAutoClick: function(inSender, inEvent) {
-        button = inEvent.button || null;
+        var button = inEvent.button || null;
 
         // Handle special cases.
         switch(button) {
@@ -175,7 +175,7 @@ module.exports = kind({
                 break;
         }
 
-        this.log(button);
+        this.app.debug && this.log(button);
 
         button && this.$[button] && this.$[button].hasNode().click();
     }

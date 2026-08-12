@@ -158,7 +158,7 @@ module.exports = kind({
         }
     },
     handleAutoClick: function(inSender, inEvent) {
-        button = inEvent.button || null;
+        var button = inEvent.button || null;
         
         // Handle special cases.
         switch(button) {
