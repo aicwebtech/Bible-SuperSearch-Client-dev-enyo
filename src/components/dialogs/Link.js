@@ -78,6 +78,12 @@ module.exports = kind({
         var title = document.title,
             url = window.location.href;
 
+        if(this.app.configs.baseShareUrl && this.app.configs.baseShareUrl != '') {
+            var parts = url.split('#'),
+                hash = parts[1] || '',
+                url = this.app.configs.baseShareUrl + hash; // # NEEDS to be included in baseShareUrl if you want it to be preserved in the short URL
+        }
+
         this.$.FullUrl.set('value', url);
         this.$.FullUrlContainer.set('showing', true);
         this.$.ShortUrlContainer.set('showing', false);

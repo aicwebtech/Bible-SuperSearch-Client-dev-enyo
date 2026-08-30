@@ -337,6 +337,10 @@ var App = Application.kind({
         this.configs.crossReferenceLinkNewTab = this._isTrue(this.configs.crossReferenceLinkNewTab);
         this.configs.contextLinksAsButtons = this._isTrue(this.configs.contextLinksAsButtons);
 
+        if(this.configs.baseTitle && this.configs.baseTitle != '') {    
+            this.set('baseTitle', this.configs.baseTitle);
+        }
+
         var view = null;
         this.initUserConfig();
         this.initBookmarks();
@@ -411,7 +415,8 @@ var App = Application.kind({
                 hasZeroPixel = false,
                 pLimit, pLim, bLim, bMin, bStart;
 
-            for(var i = 0; i < this.configs.parallelBibleLimitByWidth.length; i++) {
+            for(var i = 0; i < this.configs.parallelBibleLimitByWidth.length; i++) {
+
                 if(gMaxReached) {
                     this.log('Error: parallelBibleLimitByWidth has values past the global maximum');
                     hasError = true;
@@ -702,9 +707,9 @@ var App = Application.kind({
         this.debug && this.log('Sending onAppLoaded');
         this.waterfall('onAppLoaded');
 
-        if(this.configs.query_string) {
-            this.handleHashGeneric(this.configs.query_string);
-        }
+        // if(this.configs.landingQueryString) {
+        //     this.handleHashGeneric(this.configs.landingQueryString);
+        // }
 
         if(this.testInit) {
             this.initTests();
@@ -1002,6 +1007,8 @@ var App = Application.kind({
         }
 
         this.loadingPagePrevent = false;
+
+        this.debug && this.log('handleHashGeneric', hash);
 
         if(hash && hash != '') {
             this.debug && this.log('hash', hash);

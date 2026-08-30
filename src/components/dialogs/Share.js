@@ -207,6 +207,7 @@ module.exports = kind({
             url = window.location.href,
             baseUrl = url.split('#'),
             baseUrl = baseUrl[0],
+            hashUrl = url.split('#')[1] || '',
             responseData = this.app.get('responseDataNew') || this.app.get('responseData'),
             incLink = this.$.inc_link ? this.$.inc_link.get('checked') : true,
             limit = 0, // unlimited
@@ -216,6 +217,13 @@ module.exports = kind({
             singleVerse = false,
             maxReached = false,
             nl = '<br />';
+
+        if(this.app.configs.baseShareUrl && this.app.configs.baseShareUrl != '') {
+            baseUrl = this.app.configs.baseShareUrl; // # NEEDS to be included in baseShareUrl if you want it to be preserved in the short URL
+        
+            var parts = url.split('#'),
+                url = baseUrl + hashUrl; 
+        }
 
         this.app.clearSelection();
 

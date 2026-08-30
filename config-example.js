@@ -193,6 +193,10 @@ var biblesupersearch_config_options = {
     // If a search is executed with no search keywords or references, should we use the landing passage?
     'landingReferenceDefault': false,
 
+    'landingQueryString': '', // Default query string to use when the form is first loaded, overrides "landingReference"  (Default: '')
+    'baseTitle': null, // Base title for the page, shown in browser title bar.  (Default is current title of the page.)
+    'baseShareUrl': null, // Base URL for the page, used for sharing links.  (Default is current URL of the page.)
+    
     // Autocomplete Settings
 
     // Whether to enable auto-complete

@@ -157,6 +157,13 @@ module.exports = kind({
             this.app.debug && this.log('Submitting ...');
             var formData = {};
 
+            if(this.app.configs.landingQueryString) {
+                this.app.handleHashGeneric(this.app.configs.landingQueryString);
+                // todo: only use landingQuerySTring once, if no hash is present, 
+                // then clear it so it doesn't override the hash on subsequent page loads
+                return true;
+            }
+
             ref = this.app.vt(ref);
 
             if(this.$.reference) {
@@ -334,6 +341,8 @@ module.exports = kind({
     },
     
     processDefaults: function(formData) {
+        this.app.debug && this.log('processDefaults', formData);
+        
         var defaultBibles = utils.clone(this.app.getDefaultBibles());
         formData.bible = (formData.bible && formData.bible != '0' && formData.bible != [] && formData.bible.length != 0) ? formData.bible : defaultBibles;
         
@@ -355,7 +364,11 @@ module.exports = kind({
         
         this._formDataAsSubmitted = utils.clone(formData);
 
-        if(!this.defaultSubmitting && this.app.configs.landingReferenceDefault && this.app.configs.landingReferenceDefault != 'false' &&
+        if(
+            !this.defaultSubmitting && 
+            this.app.configs.landingReferenceDefault && 
+            this.app.configs.landingReferenceDefault != 'false' &&
+            this.app.configs.landingQueryString == '' &&
             (!formData.reference || formData.reference == '') && 
             (!formData.request || formData.request == '') && 
             (!formData.search || formData.search == '')
