@@ -1018,7 +1018,11 @@ var App = Application.kind({
             var parts = hash.split('/');
             var mode  = parts.shift();
 
-            if(mode == '') {
+            // Our routes are always '/mode/...'.  This is the router's default handler,
+            // so it also sees every unrelated anchor on the host page.
+            var isRoute = (mode == '');
+
+            if(isRoute) {
                 var mode = parts.shift();
             }
 
@@ -1069,6 +1073,14 @@ var App = Application.kind({
                     this.loadingPagePrevent = true;    
                     return this._hashForm(parts);
                     break;
+                default:
+                    // Report a route-shaped hash we can't dispatch; stay quiet about a
+                    // plain anchor, which belongs to the host page and not to us.
+                    if(isRoute) {
+                        this.error('Unrecognized route mode "' + mode + '" in "' + hash + '"');
+                    }
+
+                    return false;
             }
         }
         else {
@@ -2649,6 +2661,59 @@ var App = Application.kind({
         this.waterfall('onFormResponseSuccess', responseDataNew);
         Signal.send('onFormResponseSuccess', responseDataNew);
         this.set('responseDataNew', responseDataNew);
+    },
+    // A base ending in '=' carries the route as a query parameter value (the WordPress
+    // plugin's '?q='); any other base carries it in the URL fragment.
+    _shareBaseIsQuery: function(base) {
+        return base.charAt(base.length - 1) == '=';
+    },
+    // Base URL for the Link / Share dialogs, always terminated with its own separator
+    // so a route can be appended directly.
+    getShareBaseUrl: function() {
+        var base = this.configs.baseShareUrl;
+
+        if(base && base != '') {
+            if(base.indexOf('#') == -1 && !this._shareBaseIsQuery(base)) {
+                base += '#';
+            }
+
+            return base;
+        }
+
+        return window.location.href.split('#')[0] + '#';
+    },
+    // Builds a full shareable URL from a route, with or without its leading '#'.
+    // A fragment base takes the route as-is - that is what decodeURI() reads back in
+    // handleHashGeneric.  After '?q=' the route is a query parameter value instead,
+    // where '&', '+', '=' and '#' are delimiters, so it has to be escaped - but
+    // exactly once.
+    buildShareUrl: function(route) {
+        route = route || '';
+
+        if(route.charAt(0) == '#') {
+            route = route.substr(1);
+        }
+
+        var base = this.getShareBaseUrl();
+
+        if(!this._shareBaseIsQuery(base)) {
+            return base + route;
+        }
+
+        // The fragment may already be percent-encoded - the '/f/' route encodes its
+        // JSON payload (Help.js), and browsers escape some characters on their own -
+        // so normalize first rather than encoding on top of that.  decodeURIComponent
+        // throws on a lone '%', which a visitor can type into a search box.
+        var decoded = route;
+
+        try {
+            decoded = decodeURIComponent(route);
+        }
+        catch(e) {
+            this.debug && this.log('could not decode route, encoding as-is', route);
+        }
+
+        return base + encodeURIComponent(decoded);
     },
     _copyComponentContent: function(Component, contentField, share, shareContent) {
         if(!Component) {

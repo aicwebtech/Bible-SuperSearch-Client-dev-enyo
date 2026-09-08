@@ -76,13 +76,7 @@ module.exports = kind({
     },
     populate: function() {
         var title = document.title,
-            url = window.location.href;
-
-        if(this.app.configs.baseShareUrl && this.app.configs.baseShareUrl != '') {
-            var parts = url.split('#'),
-                hash = parts[1] || '',
-                url = this.app.configs.baseShareUrl + hash; // # NEEDS to be included in baseShareUrl if you want it to be preserved in the short URL
-        }
+            url = this.app.buildShareUrl(window.location.hash);
 
         this.$.FullUrl.set('value', url);
         this.$.FullUrlContainer.set('showing', true);
@@ -92,10 +86,10 @@ module.exports = kind({
         var title = document.title,
             url = window.location.href,
             shortHash = this.app.get('shortHashUrl'),
-            parts = url.split('#'),
-            baseUrl = parts[0],
-            longHash = parts[1],
-            shortHashUrl = baseUrl + shortHash;
+            longHash = window.location.hash.substr(1),
+            shortHashUrl = this.app.buildShareUrl(shortHash);
+
+        url = this.app.buildShareUrl(longHash);
 
         this.app.debug && this.log('url', url, 'shortHash', shortHash);
 
@@ -144,7 +138,7 @@ module.exports = kind({
         if(navigator.share) {
             var promise = navigator.share({
                 title: document.title,
-                url: window.location.href
+                url: this.$.FullUrl.get('value')
             });
 
             promise.then(utils.bind(this, function() {

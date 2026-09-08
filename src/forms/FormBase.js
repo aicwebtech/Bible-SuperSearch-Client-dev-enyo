@@ -141,7 +141,8 @@ module.exports = kind({
     },
     submitDefault: function() {
         this.app.debug && this.log();
-        var ref = this.app.configs.landingReference || null;
+        var ref = this.app.configs.landingReference || null,
+            lqs = this.app.configs.landingQueryString || null;
 
         // :todo BSS-195
         // if(this.app.history[0]) {
@@ -153,16 +154,22 @@ module.exports = kind({
             return false;
         }
 
+        if(!this.preventDefaultSubmit && !this.app.get('loadingPagePrevent') && lqs && lqs != '') {
+            // handleHashGeneric returns false only when it could not dispatch the
+            // route.  Fall through to landingReference in that case rather than
+            // leaving the page blank.
+            // todo: only use landingQuerySTring once, if no hash is present, 
+            // then clear it so it doesn't override the hash on subsequent page loads
+            if(this.app.handleHashGeneric(lqs) !== false) {
+                return true;
+            }
+
+            this.error('landingQueryString "' + lqs + '" is not a valid route; using landingReference instead');
+        }
+
         if(!this.preventDefaultSubmit && !this.app.get('loadingPagePrevent') && ref && ref != '') {
             this.app.debug && this.log('Submitting ...');
             var formData = {};
-
-            if(this.app.configs.landingQueryString) {
-                this.app.handleHashGeneric(this.app.configs.landingQueryString);
-                // todo: only use landingQuerySTring once, if no hash is present, 
-                // then clear it so it doesn't override the hash on subsequent page loads
-                return true;
-            }
 
             ref = this.app.vt(ref);
 
@@ -368,7 +375,7 @@ module.exports = kind({
             !this.defaultSubmitting && 
             this.app.configs.landingReferenceDefault && 
             this.app.configs.landingReferenceDefault != 'false' &&
-            this.app.configs.landingQueryString == '' &&
+            !this.app.configs.landingQueryString &&
             (!formData.reference || formData.reference == '') && 
             (!formData.request || formData.request == '') && 
             (!formData.search || formData.search == '')

@@ -24,7 +24,7 @@ var defaultConfig = {
     'landingReferenceDefault': false,
     'landingQueryString': null,                         // Default query string to use when the form is first loaded, overrides "landingReference"  (Default: '')
     'baseTitle': null,                                  // Base title for the page, shown in browser title bar.  (Default is current title of the page.)
-    'baseShareUrl': null,                               // Base URL for the page, used for sharing links.  (Default is current URL of the page.)
+    'baseShareUrl': null,                               // Base URL for the page, used for sharing links.  The route is appended directly, so a '#' is added if the URL carries no separator of its own.  (Default is current URL of the page.)
     'hoverDelayThreshold': 500,
     'strongsDialogSearchLink': false,
     'limitSearchManual': false,
