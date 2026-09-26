@@ -1019,7 +1019,16 @@ var App = Application.kind({
                 hash = hash.substr(1);
             }
 
-            hash = decodeURI(hash);
+            // decodeURI throws on a lone '%'.  A '?q=' share link reaches us via
+            // landingQueryString already decoded by the server, so a search for '50%'
+            // arrives here as a raw '%'.  Keep the hash as-is rather than abort the load.
+            try {
+                hash = decodeURI(hash);
+            }
+            catch(e) {
+                this.debug && this.log('could not decode hash, using as-is', hash);
+            }
+
             hash = hash.replace(/\./g, ' ');
             var parts = hash.split('/');
             var mode  = parts.shift();
@@ -2757,7 +2766,7 @@ var App = Application.kind({
     // A fragment base takes the route as-is - that is what decodeURI() reads back in
     // handleHashGeneric.  After '?q=' the route is a query parameter value instead,
     // where '&', '+', '=' and '#' are delimiters, so it has to be escaped - but
-    // exactly once.
+    // exactly once, and leaving '/' and ',' unescaped.
     buildShareUrl: function(route) {
         route = route || '';
 
@@ -2790,7 +2799,9 @@ var App = Application.kind({
             this.debug && this.log('could not decode route, encoding as-is', route);
         }
 
-        return base + encodeURIComponent(decoded);
+        // '/' and ',' (the Bible separator) need no escaping inside a query value,
+        // and leaving them bare keeps the route readable.
+        return base + encodeURIComponent(decoded).replace(/%2F/gi, '/').replace(/%2C/gi, ',');
     },
     _copyComponentContent: function(Component, contentField, share, shareContent) {
         if(!Component) {

@@ -169,6 +169,10 @@ module.exports = kind({
                 return true;
             }
 
+            // handleHashGeneric raises loadingPagePrevent as soon as it recognizes the
+            // route, before knowing whether the route is usable.  Lower it again, or it
+            // would block the landingReference fallback below.
+            this.app.set('loadingPagePrevent', false);
             this.error('landingQueryString "' + lqs + '" is not a valid route; using landingReference instead');
         }
 
