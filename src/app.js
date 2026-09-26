@@ -707,10 +707,6 @@ var App = Application.kind({
         this.debug && this.log('Sending onAppLoaded');
         this.waterfall('onAppLoaded');
 
-        // if(this.configs.landingQueryString) {
-        //     this.handleHashGeneric(this.configs.landingQueryString);
-        // }
-
         if(this.testInit) {
             this.initTests();
         }
@@ -1001,9 +997,12 @@ var App = Application.kind({
         // Test AJAX calls
 
     },
+    // Dispatches a route, returning whether it could actually be dispatched.  Every
+    // _hash* handler below reports the same way, so a caller that supplies the route
+    // itself (FormBase's landingQueryString) can fall back when it is not usable.
     handleHashGeneric: function(hash) {
         if(!this.appLoaded) {
-            return;
+            return false;
         }
 
         this.loadingPagePrevent = false;
@@ -1012,6 +1011,13 @@ var App = Application.kind({
 
         if(hash && hash != '') {
             this.debug && this.log('hash', hash);
+
+            // The router hands us the fragment without its '#', but every link we emit
+            // carries one (window.location.hash, _generateHashFromData, buildShareUrl),
+            // and landingQueryString is configured by copying such a link.  Accept both.
+            if(hash.charAt(0) == '#') {
+                hash = hash.substr(1);
+            }
 
             hash = decodeURI(hash);
             hash = hash.replace(/\./g, ' ');
@@ -1085,7 +1091,7 @@ var App = Application.kind({
         }
         else {
             this.debug && this.log('no hash');
-            this._hashLocalStorage();
+            return this._hashLocalStorage();
         }
     },    
     _hashLocalStorage: function() {
@@ -1097,7 +1103,7 @@ var App = Application.kind({
                 var formData = utils.clone(biblesupersearch_form_data);
             }
             else {
-                return;
+                return false;
             }
         }
         else {
@@ -1109,7 +1115,7 @@ var App = Application.kind({
             catch(e) {
                 this.debug && this.log('ignoring invalid stored form data');
                 localStorage.removeItem('BibleSuperSearchFormData');
-                return;
+                return false;
             }
         }
 
@@ -1120,47 +1126,83 @@ var App = Application.kind({
         localStorage.removeItem('BibleSuperSearchFormData');
         this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto', submitAsManual: true});
+        return true;
     },
     _hashCache: function(parts) {
         var hash = parts[0] || null;
         var page = parts[1] || null;
+
+        if(!hash) {
+            this.debug && this.log('no cache hash');
+            return false;
+        }
+
         this.waterfall('onCacheChange', {cacheHash: hash, page: page});
+        return true;
     },
     _hashPassage: function(parts) {
         var partsObj = this._explodeHashPassage(parts);
         var formData = this._assembleHashPassage(partsObj);
+
+        if(!formData.reference && !formData.request) {
+            this.debug && this.log('invalid passage');
+            return false;
+        }
+
         this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
+        return true;
     },    
     _hashSearchLink: function(parts) {
         var uuid = parts.shift();
         // var page = parts.shift();
         var partsObj = this._explodeHashPassage(parts);
         var formData = this._assembleHashPassage(partsObj);
+
+        if(!formData.reference && !formData.request) {
+            this.debug && this.log('invalid search link');
+            return false;
+        }
+
         formData.results_list_cache_id = uuid;
         // formData.results_list_page = page;
         // this.set('resultsListPage', page);
         this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
+        return true;
     },    
     _hashStrongs: function(parts) {
         var strongsNum = parts[0] || null;
+
+        if(!strongsNum) {
+            this.debug && this.log('no strongs number');
+            return false;
+        }
+
         var formData = { search: strongsNum };
         this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: 'auto'});
+        return true;
     },
     _hashContext: function(parts) {
         var partsObj = this._explodeHashPassage(parts);
 
         if(!partsObj.chap || !partsObj.verse || partsObj.chap.indexOf('-') != -1 || partsObj.verse.indexOf('-') != -1) {
             this.log('invalid context');
-            return;
+            return false;
         }
 
         var formData = this._assembleHashPassage(partsObj);
+
+        if(!formData.reference && !formData.request) {
+            this.debug && this.log('invalid context passage');
+            return false;
+        }
+
         formData.context = true;
         this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
+        return true;
     },    
     _hashReference: function(parts, isCrossReference) {
         var partsObj = this._explodeHashPassage(parts);
@@ -1169,11 +1211,18 @@ var App = Application.kind({
         partsObj.verse = null;
 
         var formData = this._assembleHashPassage(partsObj);
+
+        if(!formData.reference && !formData.request) {
+            this.debug && this.log('invalid reference');
+            return false;
+        }
+
         this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true, crossReference: !!isCrossReference});
+        return true;
     },
     _hashRequest: function(parts) {
-        this._hashSearch(parts, true);
+        return this._hashSearch(parts, true);
     },
     _hashSearch: function(parts, forceUseRequestField) {
         //OLD format: '#/s/<Bible(s)>/<SearchOrRequest>/<SearchType>/<Reference>/page/'
@@ -1192,6 +1241,11 @@ var App = Application.kind({
         var reference = parts[4] || null;
         var useRequestField = (forceUseRequestField || this.formHasField('request')) ? true : false;
 
+        if(!search) {
+            this.debug && this.log('no search string');
+            return false;
+        }
+
         var formData = {
             // search: search.replace(/%20/g, ' '),
             bible: bible ? bible.split(',') : null,
@@ -1209,24 +1263,29 @@ var App = Application.kind({
 
         this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
+        return true;
     },
     _hashForm: function(parts) {
         var formData = {};
 
         // parts[0] comes straight from the URL hash (attacker-controllable). Don't let
         // malformed JSON throw out of the route handler - just ignore an invalid payload.
-        if(parts[0]) {
-            try {
-                formData = JSON.parse(parts[0]);
-            }
-            catch(e) {
-                this.debug && this.log('ignoring invalid hash form data');
-                return;
-            }
+        if(!parts[0]) {
+            this.debug && this.log('no hash form data');
+            return false;
+        }
+
+        try {
+            formData = JSON.parse(parts[0]);
+        }
+        catch(e) {
+            this.debug && this.log('ignoring invalid hash form data');
+            return false;
         }
 
         this.debug && this.log('sending onHashRunForm');
         this.waterfall('onHashRunForm', {formData: formData, newTab: true});
+        return true;
     },
     runFormData: function(formData) {
         this.debug && this.log('sending onHashRunForm');
@@ -2673,14 +2732,26 @@ var App = Application.kind({
         var base = this.configs.baseShareUrl;
 
         if(base && base != '') {
-            if(base.indexOf('#') == -1 && !this._shareBaseIsQuery(base)) {
-                base += '#';
+            if(this._shareBaseIsQuery(base)) {
+                return base;
             }
 
-            return base;
+            // A fragment base has to end AT its '#'.  The route carries its own leading
+            // '/', so anything already past the '#' - a configured '.../#/', or a plain
+            // '.../page#top' anchor - would otherwise be stranded mid-route.
+            return base.split('#')[0] + '#';
         }
 
         return window.location.href.split('#')[0] + '#';
+    },
+    // Drops the trailing separator from a share base: the '#' of a fragment base, or the
+    // whole empty parameter ('?q=' / '&q=') of a query base.
+    _stripShareSeparator: function(base) {
+        if(this._shareBaseIsQuery(base)) {
+            return base.replace(/[?&][^?&]*=$/, '');
+        }
+
+        return base.replace(/#$/, '');
     },
     // Builds a full shareable URL from a route, with or without its leading '#'.
     // A fragment base takes the route as-is - that is what decodeURI() reads back in
@@ -2695,6 +2766,12 @@ var App = Application.kind({
         }
 
         var base = this.getShareBaseUrl();
+
+        // Nothing to share but the page itself - hand back a clean URL rather than one
+        // trailing a bare separator ('#', or an empty '?q=').
+        if(route == '') {
+            return this._stripShareSeparator(base);
+        }
 
         if(!this._shareBaseIsQuery(base)) {
             return base + route;

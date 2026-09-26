@@ -82,39 +82,6 @@ module.exports = kind({
         this.$.FullUrlContainer.set('showing', true);
         this.$.ShortUrlContainer.set('showing', false);
     },
-    populateOld: function() {
-        var title = document.title,
-            url = window.location.href,
-            shortHash = this.app.get('shortHashUrl'),
-            longHash = window.location.hash.substr(1),
-            shortHashUrl = this.app.buildShareUrl(shortHash);
-
-        url = this.app.buildShareUrl(longHash);
-
-        this.app.debug && this.log('url', url, 'shortHash', shortHash);
-
-        if(shortHash && !longHash) {
-            this.$.FullUrlContainer.set('showing', false);
-        }
-        else {
-            this.$.FullUrlContainer.set('showing', true);
-            this.$.FullUrl.set('value', url);
-        }
-
-        if(!shortHash && longHash) {
-            this.app.debug && this.log('Needs short hash');
-            this.$.ShortUrlContainer.set('showing', false);
-        }
-        else if(shortHashUrl == url) {
-            this.app.debug && this.log('Doesnt need long hash');
-            this.$.ShortUrlContainer.set('showing', false);
-        }
-        else {
-            this.$.ShortUrlContainer.set('showing', true);
-            this.$.ShortUrl.set('value', shortHashUrl);
-        }
-
-    },
     localeChanged: function(inSender, inEvent) {
 
     },

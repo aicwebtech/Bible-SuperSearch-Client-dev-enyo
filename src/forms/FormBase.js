@@ -155,12 +155,17 @@ module.exports = kind({
         }
 
         if(!this.preventDefaultSubmit && !this.app.get('loadingPagePrevent') && lqs && lqs != '') {
-            // handleHashGeneric returns false only when it could not dispatch the
-            // route.  Fall through to landingReference in that case rather than
-            // leaving the page blank.
-            // todo: only use landingQuerySTring once, if no hash is present, 
-            // then clear it so it doesn't override the hash on subsequent page loads
-            if(this.app.handleHashGeneric(lqs) !== false) {
+            // handleHashGeneric reports whether it could dispatch the route.  Fall
+            // through to landingReference when it could not, rather than leaving the
+            // page blank.
+            var dispatched = this.app.handleHashGeneric(lqs);
+
+            // landingQueryString stands in for a hash on this load only.  Clear it once
+            // it has been used, so it can neither override a real hash nor keep
+            // suppressing landingReferenceDefault (processDefaults) on later submits.
+            this.app.configs.landingQueryString = null;
+
+            if(dispatched) {
                 return true;
             }
 

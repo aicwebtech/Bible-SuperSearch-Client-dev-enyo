@@ -22,9 +22,9 @@ var defaultConfig = {
     "parallelBibleLimitByWidth": false,                 // Parallel Bible limits by screen width; see config-example.js.  Requires parallelBibleLimitByWidthEnable
     'contextLinksAsButtons': true,                      // Whether to show context links as buttons (ie Copy, Share, Context, Cross References) (default: true)
     'landingReferenceDefault': false,
-    'landingQueryString': null,                         // Default query string to use when the form is first loaded, overrides "landingReference"  (Default: '')
+    'landingQueryString': null,                         // Default query string to use when the form is first loaded, overrides "landingReference".  Used on the initial load only; a leading '#' is optional.  (Default: '')
     'baseTitle': null,                                  // Base title for the page, shown in browser title bar.  (Default is current title of the page.)
-    'baseShareUrl': null,                               // Base URL for the page, used for sharing links.  The route is appended directly, so a '#' is added if the URL carries no separator of its own.  (Default is current URL of the page.)
+    'baseShareUrl': null,                               // Base URL for the page, used for sharing links.  The route is appended after the URL's '#' (added, and anything already past it dropped, as needed) or after a trailing '?q=' parameter.  (Default is current URL of the page.)
     'hoverDelayThreshold': 500,
     'strongsDialogSearchLink': false,
     'limitSearchManual': false,
