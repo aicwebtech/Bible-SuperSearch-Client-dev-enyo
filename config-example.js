@@ -195,7 +195,9 @@ var biblesupersearch_config_options = {
 
     'landingQueryString': '', // Default query string to use when the form is first loaded, overrides "landingReference".
                               // Used on the initial load only; a leading '#' is optional.  (Default: '')
+
     'baseTitle': null, // Base title for the page, shown in browser title bar.  (Default is current title of the page.)
+    
     'baseShareUrl': null, // Base URL for the page, used for sharing links.  The route is appended after the URL's '#'
                           // (added, and anything already past it dropped, as needed) or after a trailing '?q='
                           // parameter.  (Default is current URL of the page.)
