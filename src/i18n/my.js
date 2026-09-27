@@ -313,6 +313,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'ကျမ်းစာအရေးပေါ်',
     'Emergency Help from the Bible': 'သမ္မာကျမ်းစာမှ အရေးပေါ်အကူအညီ',
+    'Gospel': 'ဧဝံဂေလိ',
     'Where to go When ...': 'ဘယ်အချိန်အတွက် ကိုးကားချက်များ...',
     'Afraid': 'ကြောက်တယ်။',
     'Anxious': 'စိတ်စောတယ်။',

@@ -312,6 +312,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Ijans nan Bib la',
     'Emergency Help from the Bible': 'Èd ijans nan Bib la',
+    'Gospel': 'Levanjil',
     'Where to go When ...': 'Ki kote pou ale Lè...',
     'Afraid': 'Pè',
     'Anxious': 'Enkyete',

@@ -299,6 +299,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'เหตุฉุกเฉินในพระคัมภีร์',
     'Emergency Help from the Bible': 'ความช่วยเหลือฉุกเฉินจากพระคัมภีร์',
+    'Gospel': 'ข่าวประเสริฐ',
     'Where to go When ...': 'จะไปที่ไหน เมื่อไร...',
     'Afraid': 'เกรงกลัว',
     'Anxious': 'กังวล',

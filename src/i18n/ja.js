@@ -299,6 +299,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': '聖書の緊急事態',
     'Emergency Help from the Bible': '聖書からの緊急時の助け',
+    'Gospel': '福音',
     'Where to go When ...': 'どこに行くか いつ...',
     'Afraid': '恐れている',
     'Anxious': '心配している',

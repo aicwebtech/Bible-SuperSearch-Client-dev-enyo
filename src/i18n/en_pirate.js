@@ -302,6 +302,7 @@ module.exports = {
 
     // Bible SOS dialog
     'Emergency Help from the Bible': 'Fast Yelp from thee Goode Booke',
+    'Gospel': 'Ye Goode News',
     'Where to go When ...': 'Ware to set ye course when',
     'Afraid': 'Yefeareful',
     'Anxious': 'Xantious',

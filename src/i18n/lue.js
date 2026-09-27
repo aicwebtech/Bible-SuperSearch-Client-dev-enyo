@@ -314,6 +314,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Kutonda kukafwa chamumukanda waKalunga haze nauwana ukalu',
     'Emergency Help from the Bible': 'Kukafwa chamumukanda waKalunga hahaze vene unawane ukalu',
+    'Gospel': '',
     'Where to go When ...': 'Kwakutondela omu',
     'Afraid': 'nawivwa woma',
     'Anxious': 'naulizakamina',

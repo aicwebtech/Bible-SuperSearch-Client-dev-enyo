@@ -19,6 +19,20 @@ module.exports = kind({
     textSize: null,
 
     components: [
+        {classes: 'bss_button_group', name: 'GospelGroup', components: [
+            // 'Extra' (non-formatting) button, configured via gospelButton
+            {
+                kind: i18n,
+                classes: 'bss_item bss_gospel',
+                name: 'gospel_button',
+                content: 'Gospel',
+                ontap: 'handleGospel',
+                attributes: {title: 'Gospel'},
+                components: [
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'volunteer_activism', attributes: {'aria-hidden': 'true'}}
+                ]
+            },
+        ]},
         {classes: 'bss_button_group', name: 'TextSizeGroup', components: [
             {
                 kind: i18n,
@@ -566,6 +580,7 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+        this._initGospelButton();
 
         if(!this.app.statics.download_enabled) {
             this.$.download_button.set('showing', false);
@@ -604,12 +619,15 @@ module.exports = kind({
         this.inherited(arguments);
 
         if(this._hideExtras()) {
+            this.$.gospel_button && this.$.gospel_button.set('showing', false);
             this.$.sos_button && this.$.sos_button.set('showing', false);
             this.$.start_button && this.$.start_button.set('showing', false);
             this.$.download_button && this.$.download_button.set('showing', false);
             this.$.advanced_toggle && this.$.advanced_toggle.set('showing', false);
             this.$.help && this.$.help.set('showing', false);
         }
+
+        this.$.GospelGroup.set('showing', this._gospelButtonShowing());
 
         if(!this.app.configs.toggleAdvanced || this.app.configs.toggleAdvanced == 'false') {
             this.$.advanced_toggle && this.$.advanced_toggle.set('showing', false);

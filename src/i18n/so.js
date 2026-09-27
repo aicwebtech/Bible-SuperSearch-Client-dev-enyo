@@ -313,6 +313,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Gurmadka Baybalka',
     'Emergency Help from the Bible': 'Caawinta degdega ah ee Kitaabka Quduuska ah',
+    'Gospel': 'Injiilka',
     'Where to go When ...': 'Xaggee aadaysaa Marka...',
     'Afraid': 'Cabsida',
     'Anxious': 'Walaac',

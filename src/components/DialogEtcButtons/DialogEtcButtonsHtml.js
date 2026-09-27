@@ -17,6 +17,17 @@ module.exports = kind({
     components: [
         {
             kind: i18n,
+            classes: 'bss_item bss_gospel',
+            name: 'gospel_button',
+            content: 'Gospel',
+            ontap: 'handleGospel',
+            attributes: {title: 'Gospel'},
+            components: [
+                {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'volunteer_activism', attributes: {'aria-hidden': 'true'}}
+            ]
+        },
+        {
+            kind: i18n,
             classes: 'bss_item bss_help',
             name: 'help',
             tag: 'span',
@@ -78,6 +89,7 @@ module.exports = kind({
     create: function() {
         this.inherited(arguments);
         this.$.Dialogs.set('showing', false);
+        this._initGospelButton();
 
         if(!this.app.statics.download_enabled) {
             this.$.download_button.set('showing', false);

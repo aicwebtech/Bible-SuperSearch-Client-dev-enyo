@@ -313,6 +313,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Biblická Nouze',
     'Emergency Help from the Bible': 'Nouzová pomoc z Bible',
+    'Gospel': 'Evangelium',
     'Where to go When ...': 'Kam jít Když...',
     'Afraid': 'Strach',
     'Anxious': 'Úzkostlivý',

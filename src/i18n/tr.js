@@ -313,6 +313,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'İncil Acil Durumu',
     'Emergency Help from the Bible': 'Kutsal Kitaptan Acil Yardım',
+    'Gospel': 'Müjde',
     'Where to go When ...': 'Nereye gitmeli Ne zaman...',
     'Afraid': 'Korkmuş',
     'Anxious': 'Endişeli',

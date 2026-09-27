@@ -313,6 +313,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Kinh Thánh Khẩn Cấp',
     'Emergency Help from the Bible': 'Sự trợ giúp khẩn cấp từ Kinh Thánh',
+    'Gospel': 'Phúc Âm',
     'Where to go When ...': 'Đi đâu Khi...',
     'Afraid': 'Sợ',
     'Anxious': 'Lo lắng',

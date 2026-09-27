@@ -314,6 +314,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'اورژانس کتاب مقدس',
     'Emergency Help from the Bible': 'کمک اضطراری از کتاب مقدس',
+    'Gospel': 'انجیل',
     'Where to go When ...': 'کجا بریم وقتی ...',
     'Afraid': 'می ترسد',
     'Anxious': 'مشتاق',
