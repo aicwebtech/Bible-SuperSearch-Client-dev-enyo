@@ -144,6 +144,11 @@ module.exports = kind({
         var ref = this.app.configs.landingReference || null,
             lqs = this.app.configs.landingQueryString || null;
 
+        // landingQueryString stands in for a hash on this load only.  Clear it once
+        // it has been used, so it can neither override a real hash nor keep
+        // suppressing landingReferenceDefault (processDefaults) on later submits.
+        this.app.configs.landingQueryString = null;
+
         // :todo BSS-195
         // if(this.app.history[0]) {
         //     window.location.href = this.app.history[0].url;
@@ -159,11 +164,6 @@ module.exports = kind({
             // through to landingReference when it could not, rather than leaving the
             // page blank.
             var dispatched = this.app.handleHashGeneric(lqs);
-
-            // landingQueryString stands in for a hash on this load only.  Clear it once
-            // it has been used, so it can neither override a real hash nor keep
-            // suppressing landingReferenceDefault (processDefaults) on later submits.
-            this.app.configs.landingQueryString = null;
 
             if(dispatched) {
                 return true;
