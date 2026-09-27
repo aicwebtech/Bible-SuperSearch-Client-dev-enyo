@@ -313,6 +313,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Gaggawa Littafi Mai Tsarki',
     'Emergency Help from the Bible': 'Taimakon Gaggawa Daga Littafi Mai Tsarki',
+    'Gospel': 'Bishara',
     'Where to go When ...': 'Inda zan je Lokacin...',
     'Afraid': 'Tsoro',
     'Anxious': 'Damuwa',

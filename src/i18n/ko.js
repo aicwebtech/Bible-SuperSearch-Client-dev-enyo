@@ -313,6 +313,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': '성경 비상사태',
     'Emergency Help from the Bible': '성경의 긴급 도움',
+    'Gospel': '복음',
     'Where to go When ...': '어디로 갈까 언제 ...',
     'Afraid': '두려워하는',
     'Anxious': '불안해하는',

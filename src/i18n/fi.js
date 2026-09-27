@@ -314,6 +314,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Raamatun Hätätila',
     'Emergency Help from the Bible': 'Hätäapu Raamatusta',
+    'Gospel': 'Evankeliumi',
     'Where to go When ...': 'Minne mennä Milloin...',
     'Afraid': 'Peloissaan',
     'Anxious': 'Ahdistunut',

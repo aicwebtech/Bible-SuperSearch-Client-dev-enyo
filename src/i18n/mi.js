@@ -313,6 +313,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Paipera ohorere',
     'Emergency Help from the Bible': 'Tauturu ru no roto mai i te Bibilia',
+    'Gospel': 'Rongopai',
     'Where to go When ...': 'Me haere ki hea Ina ...',
     'Afraid': 'Te mataku',
     'Anxious': 'Maharahara',

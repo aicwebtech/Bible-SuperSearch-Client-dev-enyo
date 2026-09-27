@@ -312,6 +312,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Bybel Nood',
     'Emergency Help from the Bible': 'Noodhulp uit die Bybel',
+    'Gospel': 'Evangelie',
     'Where to go When ...': 'Waarheen om te gaan Wanneer...',
     'Afraid': 'Bang',
     'Anxious': 'Angstig',

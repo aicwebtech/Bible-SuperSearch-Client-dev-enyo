@@ -56,6 +56,9 @@ var defaultConfig = {
     'crossReferenceLinkNewTab': false,                 // When true, open cross reference links in a new browser tab
     'disableCache': false,                             // When TRUE, breaks cache on API calls (appends random param); FALSE allows caching
     'hideUnavailableBooks': true,                      // Hide books not contained in the selected Bible(s) from book dropdowns and reference autocomplete (e.g. hide OT books when only NT-only Bibles are selected)
+    'gospelButton': 'none',                            // Gospel button mode: none (hidden) | verses (load gospelVerses in selected Bible(s)) | url (link to gospelButtonUrl)
+    'gospelVerses': 'Romans 3:23; 6:23; 5:8; 10:13',   // Passages loaded by the Gospel button when gospelButton = 'verses'
+    'gospelButtonUrl': null,                           // Outside URL the Gospel button links to when gospelButton = 'url'
 
     _urlDefaultNotice: function() {
         if(window.console) {

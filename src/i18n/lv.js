@@ -295,6 +295,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Palīdzība, Meklējot Atbildes Bībelē',
     'Emergency Help from the Bible': 'Šīs Bībeles rakstvietas jums sniegs palīdzību un atbalstu',
+    'Gospel': 'Evaņģēlijs',
     'Where to go When ...': 'Tās noderēs par garīgu stiprinājumu, dzīvē nonākot kādā no šīm situācijām',
     'Afraid': 'Bailēs',
     'Anxious': 'Satraukumā',

@@ -144,6 +144,33 @@ module.exports = kind({
     handleClearForm: function() {
         Signal.send('onClearForm');
     },
+    handleGospel: function(inSender, inEvent) {
+        Signal.send('onGospelSubmit');
+    },
+    // Configures the Gospel button (if present) per the gospelButton config: none | verses | url
+    _initGospelButton: function() {
+        var button = this.$.gospel_button,
+            mode = this.app.configs.gospelButton,
+            url = this.app.configs.gospelButtonUrl;
+
+        if(!button) {
+            return;
+        }
+
+        if(mode == 'url' && url) {
+            button.set('tag', 'a');
+            button.set('ontap', null);
+            button.setAttribute('href', url);
+            button.setAttribute('target', '_blank');
+            button.setAttribute('rel', 'noopener');
+        }
+        else if(mode != 'verses' || !this.app.configs.gospelVerses) {
+            button.set('showing', false);
+        }
+    },
+    _gospelButtonShowing: function() {
+        return !!(this.$.gospel_button && this.$.gospel_button.get('showing'));
+    },
     handleCopyInstant: function(inSender, inEvent) {
         var copy = this.app.UserConfig.get('copy');
 

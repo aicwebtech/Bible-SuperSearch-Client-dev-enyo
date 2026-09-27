@@ -313,6 +313,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Dharura ya Biblia',
     'Emergency Help from the Bible': 'Msaada wa Dharura kutoka kwa Biblia',
+    'Gospel': 'Injili',
     'Where to go When ...': 'Mahali pa kwenda Wakati ...',
     'Afraid': 'Hofu',
     'Anxious': 'Wasiwasi',

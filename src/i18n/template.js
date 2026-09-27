@@ -312,6 +312,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': '',
     'Emergency Help from the Bible': '',
+    'Gospel': '',
     'Where to go When ...': '',
     'Afraid': '',
     'Anxious': '',

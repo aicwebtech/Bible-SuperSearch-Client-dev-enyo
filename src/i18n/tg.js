@@ -315,6 +315,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Ҳолати фавқулоддаи Библия',
     'Emergency Help from the Bible': 'Кӯмаки фавқулодда аз Библия',
+    'Gospel': 'Инҷил',
     'Where to go When ...': 'Ба куҷо рафтан, Вақте ки...',
     'Afraid': 'Метарсанд',
     'Anxious': 'Ташвишовар',

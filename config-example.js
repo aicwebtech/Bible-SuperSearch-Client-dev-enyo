@@ -335,6 +335,19 @@ var biblesupersearch_config_options = {
     //      false
     //      none - do not display at all
     // "extraButtonsSeparate": 'default',                         
+
+    // Gospel button
+    // Displayed as the first of the extra buttons
+    //      none - button hidden
+    //      verses - loads the passages in gospelVerses (below) in the currently selected Bible(s)
+    //      url - button is a link to the outside URL given in gospelButtonUrl (below)
+    "gospelButton": 'verses',
+
+    // Passages loaded by the Gospel button when gospelButton = 'verses'
+    "gospelVerses": 'Romans 3:23; 6:23; 5:8; 10:13',
+
+    // Outside URL the Gospel button links to when gospelButton = 'url'  (Opens in a new tab)
+    "gospelButtonUrl": null,
     
     // Context Help Below Item
     // Whether to show contextual help below (or inline / relatively-positioned) to the item it's describing.  
