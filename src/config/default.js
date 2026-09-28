@@ -57,7 +57,35 @@ var defaultConfig = {
     'disableCache': false,                             // When TRUE, breaks cache on API calls (appends random param); FALSE allows caching
     'hideUnavailableBooks': true,                      // Hide books not contained in the selected Bible(s) from book dropdowns and reference autocomplete (e.g. hide OT books when only NT-only Bibles are selected)
     'gospelButton': 'none',                            // Gospel button mode: none (hidden) | verses (load gospelVerses in selected Bible(s)) | url (link to gospelButtonUrl)
-    'gospelVerses': 'Romans 3:23; 6:23; 5:8; 10:13',   // Passages loaded by the Gospel button when gospelButton = 'verses'
+    'gospelVerses': [                                  // Passages loaded by the Gospel button when gospelButton = 'verses'
+        'Romans 3:23', 
+        'Isaiah 59:2',
+        'Matthew 5:28',
+        '1 John 3:15', 
+        'Isaiah 64:6',
+        '2 Thessalonians 1:8',
+        'Revelation 20:15',
+        'Romans 6:23', 
+        'Romans 5:8', 
+        'John 3:16 - 18',
+        'John 10:17 - 18',
+        'Isaiah 1:18',
+        '2 Peter 3:9',
+        'Titus 1:2',
+        '1 Thessalonians 5:9',
+        'John 8:12',
+        'Ephesians 2:8 - 9',
+        'Romans 3:27 - 28',
+        '1 John 5:13',
+        'Acts 3:19',
+        'Romans 10:9, 13',
+        'John 3:36',
+        'John 6:47',
+        'John 8:31 - 32',
+        'Acts 4:12',
+        'John 14:6',
+        'John 10:9'
+    ].join('; '),   
     'gospelButtonUrl': null,                           // Outside URL the Gospel button links to when gospelButton = 'url'
 
     _urlDefaultNotice: function() {

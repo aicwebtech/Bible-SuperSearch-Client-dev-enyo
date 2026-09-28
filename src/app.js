@@ -400,6 +400,8 @@ var App = Application.kind({
         this.configs.parallelBibleStartSuperceedsDefaultBibles = this._isTrue(this.configs.parallelBibleStartSuperceedsDefaultBibles);
         this.configs.parallelBibleCleanUpForce = this._isTrue(this.configs.parallelBibleCleanUpForce);
 
+        this.configs.gospelVerses = this._isTrue(this.configs.gospelVerses) ? this.configs.gospelVerses : defaultConfig.gospelVerses;
+
         if(
             this.configs.parallelBibleLimitByWidthEnable &&
             this.configs.parallelBibleLimitByWidth &&

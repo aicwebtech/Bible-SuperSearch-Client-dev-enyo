@@ -344,7 +344,8 @@ var biblesupersearch_config_options = {
     "gospelButton": 'verses',
 
     // Passages loaded by the Gospel button when gospelButton = 'verses'
-    "gospelVerses": 'Romans 3:23; 6:23; 5:8; 10:13',
+    // Set to null or '' for a default long set of verses.
+    "gospelVerses": null,
 
     // Outside URL the Gospel button links to when gospelButton = 'url'  (Opens in a new tab)
     "gospelButtonUrl": null,
