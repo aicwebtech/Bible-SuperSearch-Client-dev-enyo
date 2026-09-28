@@ -37,6 +37,18 @@
     background-color: #d1cf45;
 }
 
+/* Buttons rendered as links (ie Gospel button in 'url' mode): suppress default / theme link styling */
+.bss_format_buttons_html a.bss_item,
+.bss_format_buttons_html a.bss_item:link,
+.bss_format_buttons_html a.bss_item:visited,
+.bss_format_buttons_html a.bss_item:hover,
+.bss_format_buttons_html a.bss_item:active,
+.bss_format_buttons_html a.bss_item:focus {
+    color: inherit;
+    text-decoration: none;
+    box-shadow: none;
+}
+
 .bss_format_buttons_html .bss_item.bss_size_reg span {
     text-decoration: underline;
     text-decoration-thickness: 2px;
