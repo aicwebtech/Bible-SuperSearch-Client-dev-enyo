@@ -29,7 +29,7 @@ module.exports = kind({
                 ontap: 'handleGospel',
                 attributes: {title: 'Gospel'},
                 components: [
-                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'volunteer_activism', attributes: {'aria-hidden': 'true'}}
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'error_outline', attributes: {'aria-hidden': 'true'}}
                 ]
             },
         ]},
