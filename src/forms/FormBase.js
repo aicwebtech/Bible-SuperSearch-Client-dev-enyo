@@ -141,7 +141,8 @@ module.exports = kind({
     },
     submitDefault: function() {
         this.app.debug && this.log();
-        var ref = this.app.configs.landingReference || null;
+        var ref = this.app.configs.landingReference || null,
+            lqs = this.app.configs.landingQueryString || null;
 
         // :todo BSS-195
         // if(this.app.history[0]) {
@@ -149,8 +150,34 @@ module.exports = kind({
         //     return;
         // }
 
+        // Every FormBase handles onAppLoaded, including input-less subforms (such as
+        // the Statistics dialog).  Bail before touching the shared landingQueryString,
+        // or one of those could consume it before the primary form gets to dispatch it.
         if(!this.hasFormElements()) {
             return false;
+        }
+
+        // landingQueryString stands in for a hash on this load only.  Clear it once
+        // it has been used, so it can neither override a real hash nor keep
+        // suppressing landingReferenceDefault (processDefaults) on later submits.
+        this.app.configs.landingQueryString = null;
+
+        if(!this.preventDefaultSubmit && !this.app.get('loadingPagePrevent') && lqs && lqs != '') {
+            // handleHashGeneric reports whether it could dispatch the route.  Fall
+            // through to landingReference when it could not, rather than leaving the
+            // page blank.
+            var dispatched = this.app.handleHashGeneric(lqs);
+
+            if(dispatched) {
+                this.app.moveLandingRouteToHash(lqs);
+                return true;
+            }
+
+            // handleHashGeneric raises loadingPagePrevent as soon as it recognizes the
+            // route, before knowing whether the route is usable.  Lower it again, or it
+            // would block the landingReference fallback below.
+            this.app.set('loadingPagePrevent', false);
+            this.error('landingQueryString "' + lqs + '" is not a valid route; using landingReference instead');
         }
 
         if(!this.preventDefaultSubmit && !this.app.get('loadingPagePrevent') && ref && ref != '') {
@@ -334,6 +361,8 @@ module.exports = kind({
     },
     
     processDefaults: function(formData) {
+        this.app.debug && this.log('processDefaults', formData);
+        
         var defaultBibles = utils.clone(this.app.getDefaultBibles());
         formData.bible = (formData.bible && formData.bible != '0' && formData.bible != [] && formData.bible.length != 0) ? formData.bible : defaultBibles;
         
@@ -355,7 +384,11 @@ module.exports = kind({
         
         this._formDataAsSubmitted = utils.clone(formData);
 
-        if(!this.defaultSubmitting && this.app.configs.landingReferenceDefault && this.app.configs.landingReferenceDefault != 'false' &&
+        if(
+            !this.defaultSubmitting && 
+            this.app.configs.landingReferenceDefault && 
+            this.app.configs.landingReferenceDefault != 'false' &&
+            !this.app.configs.landingQueryString &&
             (!formData.reference || formData.reference == '') && 
             (!formData.request || formData.request == '') && 
             (!formData.search || formData.search == '')
@@ -764,7 +797,10 @@ module.exports = kind({
 
         hash = (hash) ? hash : shortHash;
 
-        var url = document.location.pathname + hash;
+        var url = this.app.getPageUrl() + hash;
+
+        // The URL now carries its own route; the landing route no longer applies.
+        this.app.set('landingRoute', null);
 
         if(replace) {
             history.replaceState(null, null, url);
@@ -774,7 +810,8 @@ module.exports = kind({
         }
     },
     clearHash: function() {
-        history.pushState(null, null, document.location.pathname);
+        this.app.set('landingRoute', null);
+        history.pushState(null, null, this.app.getPageUrl());
     },
     updateTitle: function() {
         var mainSep = ' - ',
