@@ -76,7 +76,7 @@ module.exports = kind({
     },
     populate: function() {
         var title = document.title,
-            url = this.app.buildShareUrl(window.location.hash);
+            url = this.app.buildShareUrl(this.app.getCurrentRoute());
 
         this.$.FullUrl.set('value', url);
         this.$.FullUrlContainer.set('showing', true);

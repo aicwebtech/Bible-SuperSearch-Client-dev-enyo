@@ -71,6 +71,7 @@ var App = Application.kind({
     baseTitle: null,
     bssTitle: null,
     baseUrl: null,
+    landingRoute: null,     // Route dispatched from landingQueryString, while the URL has no hash of its own
     clientBrowser: 'unknown', // legacy
     client: {
         os: 'unknown',
@@ -2761,6 +2762,82 @@ var App = Application.kind({
         }
 
         return base.replace(/#$/, '');
+    },
+    // The route of the result currently displayed, without its leading '#'.  Normally
+    // that is the hash; landingRoute covers a landing route that could not be moved
+    // into the hash (see moveLandingRouteToHash).
+    getCurrentRoute: function() {
+        var hash = window.location.hash.substr(1);
+        return (hash != '') ? hash : (this.get('landingRoute') || '');
+    },
+    // Name of the query parameter that delivered landingQueryString ('q' for the
+    // WordPress plugin), or null if unknown.  A '?q=' style baseShareUrl names it too.
+    _landingQueryParam: function() {
+        var param = this.configs.landingQueryParam,
+            base = this.configs.baseShareUrl,
+            matches = null;
+
+        if(param && param != '') {
+            return param;
+        }
+
+        if(base && base != '' && this._shareBaseIsQuery(base)) {
+            matches = base.match(/[?&]([^?&=]+)=$/);
+            return matches ? matches[1] : null;
+        }
+
+        return null;
+    },
+    // The page's own URL, without its hash or the landing route's query parameter,
+    // for the form to append a route to.  Other parameters (WordPress' ?page_id=N on
+    // plain permalinks) are kept.
+    getPageUrl: function() {
+        var param = this._landingQueryParam(),
+            search = window.location.search.replace(/^\?/, ''),
+            kept = [];
+
+        if(param && search != '') {
+            search.split('&').forEach(function(pair) {
+                var name = pair.split('=')[0];
+
+                try {
+                    name = decodeURIComponent(name.replace(/\+/g, ' '));
+                }
+                catch(e) {}
+
+                if(pair != '' && name != param) {
+                    kept.push(pair);
+                }
+            });
+
+            search = kept.join('&');
+        }
+
+        return window.location.pathname + (search != '' ? '?' + search : '');
+    },
+    // A landing route delivered as '?q=<route>' leaves the URL without a hash.  Every
+    // in-app link is a relative '#/...' href, which would then resolve to
+    // '?q=<old route>#/<new route>', and Back to this entry would find no hash to
+    // restore.  So swap the parameter for the equivalent hash, in place.
+    moveLandingRouteToHash: function(route) {
+        route = route || '';
+
+        if(route.charAt(0) == '#') {
+            route = route.substr(1);
+        }
+
+        if(route == '' || window.location.hash.substr(1) != '') {
+            return;
+        }
+
+        if(!this._landingQueryParam() || !window.history || !history.replaceState) {
+            // Can't rewrite the URL; at least let the Link / Share dialogs see the route.
+            this.set('landingRoute', route);
+            return;
+        }
+
+        // replaceState fires no hashchange, so the route is not dispatched a second time.
+        history.replaceState(null, null, this.getPageUrl() + '#' + route);
     },
     // Builds a full shareable URL from a route, with or without its leading '#'.
     // A fragment base takes the route as-is - that is what decodeURI() reads back in

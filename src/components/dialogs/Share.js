@@ -204,7 +204,7 @@ module.exports = kind({
     },
     populate: function() {
         var title = document.title,
-            hashUrl = window.location.hash.substr(1),
+            hashUrl = this.app.getCurrentRoute(),
             url = this.app.buildShareUrl(hashUrl),
             responseData = this.app.get('responseDataNew') || this.app.get('responseData'),
             incLink = this.$.inc_link ? this.$.inc_link.get('checked') : true,

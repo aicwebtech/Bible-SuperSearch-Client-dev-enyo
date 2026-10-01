@@ -144,20 +144,23 @@ module.exports = kind({
         var ref = this.app.configs.landingReference || null,
             lqs = this.app.configs.landingQueryString || null;
 
-        // landingQueryString stands in for a hash on this load only.  Clear it once
-        // it has been used, so it can neither override a real hash nor keep
-        // suppressing landingReferenceDefault (processDefaults) on later submits.
-        this.app.configs.landingQueryString = null;
-
         // :todo BSS-195
         // if(this.app.history[0]) {
         //     window.location.href = this.app.history[0].url;
         //     return;
         // }
 
+        // Every FormBase handles onAppLoaded, including input-less subforms (such as
+        // the Statistics dialog).  Bail before touching the shared landingQueryString,
+        // or one of those could consume it before the primary form gets to dispatch it.
         if(!this.hasFormElements()) {
             return false;
         }
+
+        // landingQueryString stands in for a hash on this load only.  Clear it once
+        // it has been used, so it can neither override a real hash nor keep
+        // suppressing landingReferenceDefault (processDefaults) on later submits.
+        this.app.configs.landingQueryString = null;
 
         if(!this.preventDefaultSubmit && !this.app.get('loadingPagePrevent') && lqs && lqs != '') {
             // handleHashGeneric reports whether it could dispatch the route.  Fall
@@ -166,6 +169,7 @@ module.exports = kind({
             var dispatched = this.app.handleHashGeneric(lqs);
 
             if(dispatched) {
+                this.app.moveLandingRouteToHash(lqs);
                 return true;
             }
 
@@ -793,7 +797,10 @@ module.exports = kind({
 
         hash = (hash) ? hash : shortHash;
 
-        var url = document.location.pathname + hash;
+        var url = this.app.getPageUrl() + hash;
+
+        // The URL now carries its own route; the landing route no longer applies.
+        this.app.set('landingRoute', null);
 
         if(replace) {
             history.replaceState(null, null, url);
@@ -803,7 +810,8 @@ module.exports = kind({
         }
     },
     clearHash: function() {
-        history.pushState(null, null, document.location.pathname);
+        this.app.set('landingRoute', null);
+        history.pushState(null, null, this.app.getPageUrl());
     },
     updateTitle: function() {
         var mainSep = ' - ',
