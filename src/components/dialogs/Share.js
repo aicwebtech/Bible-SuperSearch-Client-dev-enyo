@@ -204,9 +204,8 @@ module.exports = kind({
     },
     populate: function() {
         var title = document.title,
-            url = window.location.href,
-            baseUrl = url.split('#'),
-            baseUrl = baseUrl[0],
+            hashUrl = this.app.getCurrentRoute(),
+            url = this.app.buildShareUrl(hashUrl),
             responseData = this.app.get('responseDataNew') || this.app.get('responseData'),
             incLink = this.$.inc_link ? this.$.inc_link.get('checked') : true,
             limit = 0, // unlimited
@@ -282,7 +281,7 @@ module.exports = kind({
                 content += (singleVerse) ? '' : book_name + ' ' + p.chapter_verse + nl + nl;
 
                 if(this.resultsFilter) {
-                    url = baseUrl + '#/r/' + bible + '/' + book_name + '.' + chapterVerse;
+                    url = this.app.buildShareUrl('/r/' + bible + '/' + book_name + '.' + chapterVerse);
                 }
 
                 if(!singleVerse) {
