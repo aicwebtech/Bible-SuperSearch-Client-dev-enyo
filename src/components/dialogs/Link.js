@@ -76,44 +76,11 @@ module.exports = kind({
     },
     populate: function() {
         var title = document.title,
-            url = window.location.href;
+            url = this.app.buildShareUrl(this.app.getCurrentRoute());
 
         this.$.FullUrl.set('value', url);
         this.$.FullUrlContainer.set('showing', true);
         this.$.ShortUrlContainer.set('showing', false);
-    },
-    populateOld: function() {
-        var title = document.title,
-            url = window.location.href,
-            shortHash = this.app.get('shortHashUrl'),
-            parts = url.split('#'),
-            baseUrl = parts[0],
-            longHash = parts[1],
-            shortHashUrl = baseUrl + shortHash;
-
-        this.app.debug && this.log('url', url, 'shortHash', shortHash);
-
-        if(shortHash && !longHash) {
-            this.$.FullUrlContainer.set('showing', false);
-        }
-        else {
-            this.$.FullUrlContainer.set('showing', true);
-            this.$.FullUrl.set('value', url);
-        }
-
-        if(!shortHash && longHash) {
-            this.app.debug && this.log('Needs short hash');
-            this.$.ShortUrlContainer.set('showing', false);
-        }
-        else if(shortHashUrl == url) {
-            this.app.debug && this.log('Doesnt need long hash');
-            this.$.ShortUrlContainer.set('showing', false);
-        }
-        else {
-            this.$.ShortUrlContainer.set('showing', true);
-            this.$.ShortUrl.set('value', shortHashUrl);
-        }
-
     },
     localeChanged: function(inSender, inEvent) {
 
@@ -138,7 +105,7 @@ module.exports = kind({
         if(navigator.share) {
             var promise = navigator.share({
                 title: document.title,
-                url: window.location.href
+                url: this.$.FullUrl.get('value')
             });
 
             promise.then(utils.bind(this, function() {
