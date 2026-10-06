@@ -313,6 +313,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'બાઇબલ કટોકટી',
     'Emergency Help from the Bible': 'બાઇબલમાંથી કટોકટીની મદદ',
+    'Gospel': 'સુવાર્તા',
     'Where to go When ...': 'ક્યાં જવું ક્યારે...',
     'Afraid': 'ભયભીત',
     'Anxious': 'બેચેન',

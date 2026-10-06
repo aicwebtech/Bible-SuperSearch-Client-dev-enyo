@@ -299,6 +299,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Biblia Vészhelyzet',
     'Emergency Help from the Bible': 'Sürgősségi Segítség a Bibliából',
+    'Gospel': 'Evangélium',
     'Where to go When ...': 'Hova menjen Mikor...',
     'Afraid': 'Félek',
     'Anxious': 'Aggódó',

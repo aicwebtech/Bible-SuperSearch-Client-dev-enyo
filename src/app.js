@@ -401,6 +401,8 @@ var App = Application.kind({
         this.configs.parallelBibleStartSuperceedsDefaultBibles = this._isTrue(this.configs.parallelBibleStartSuperceedsDefaultBibles);
         this.configs.parallelBibleCleanUpForce = this._isTrue(this.configs.parallelBibleCleanUpForce);
 
+        this.configs.gospelVerses = this.normalizeGospelVerses(this.configs.gospelVerses);
+
         if(
             this.configs.parallelBibleLimitByWidthEnable &&
             this.configs.parallelBibleLimitByWidth &&
@@ -583,6 +585,16 @@ var App = Application.kind({
     _isTrue: function(value) {
         // An empty string is falsey here, some hosts (ie the WordPress plugin) serialize an unchecked option as ''
         return !(value === false || value === 'false' || value === 0 || value === '0' || value === '' || value === null || typeof value == 'undefined');
+    },
+    // Accepts a string or an array of passages; falls back to the default list if empty
+    normalizeGospelVerses: function(value) {
+        if(Array.isArray(value)) {
+            value = value.join('; ');
+        }
+
+        value = (this._isTrue(value) && typeof value == 'string') ? value.trim() : '';
+
+        return value || defaultConfig.gospelVerses;
     },
     normalizeCrossReferencesShow: function(value) {
         if(value != 'hidden' && value != 'show' && value != 'toggle') {

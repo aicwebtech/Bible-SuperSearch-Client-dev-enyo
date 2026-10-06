@@ -297,6 +297,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Urgență Biblică',
     'Emergency Help from the Bible': 'Ajutor De Urgență din Biblie',
+    'Gospel': 'Evanghelia',
     'Where to go When ...': 'Unde să deschizi Când ...',
     'Afraid': 'Ești Speriat',
     'Anxious': 'Ești Anxios',

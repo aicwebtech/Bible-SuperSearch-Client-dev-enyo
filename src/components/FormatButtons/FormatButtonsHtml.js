@@ -19,12 +19,27 @@ module.exports = kind({
     textSize: null,
 
     components: [
+        {classes: 'bss_button_group', name: 'GospelGroup', components: [
+            // 'Extra' (non-formatting) button, configured via gospelButton
+            {
+                kind: i18n,
+                classes: 'bss_item bss_gospel',
+                name: 'gospel_button',
+                tag: 'button',
+                content: 'Gospel',
+                ontap: 'handleGospel',
+                attributes: {title: 'Gospel', type: 'button'},
+                components: [
+                    {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'error_outline', attributes: {'aria-hidden': 'true'}}
+                ]
+            },
+        ]},
         {classes: 'bss_button_group', name: 'TextSizeGroup', components: [
             {
                 kind: i18n,
                 classes: 'bss_item bss_size bss_size_plus',
                 name: 'size_plus',
-                tag: 'span',
+                tag: 'button',
                 val: 'plus',
                 ontap: 'handleSizeChange',
                 components: [
@@ -32,7 +47,8 @@ module.exports = kind({
                     {tag: 'span', content: '+'},
                 ],
                 attributes: {
-                    title: 'Enlarge Text'
+                    title: 'Enlarge Text',
+                    type: 'button'
                 }
             },
             {
@@ -41,9 +57,10 @@ module.exports = kind({
                 name: 'size_reg',
                 val: 'reg',
                 ontap: 'handleSizeChange',
-                tag: 'span',
+                tag: 'button',
                 attributes: {
-                    title: 'Default Text Size'
+                    title: 'Default Text Size',
+                    type: 'button'
                 },
                 components: [
                     {tag: 'span', content: '&nbsp;', allowHtml: true}, // OK
@@ -57,13 +74,14 @@ module.exports = kind({
                 name: 'size_minus',
                 val: 'minus',
                 ontap: 'handleSizeChange',
-                tag: 'span',
+                tag: 'button',
                 components: [
                     {kind: i18n, content: 'A'},
                     {tag: 'span', content: '-'},
                 ],
                 attributes: {
-                    title: 'Shrink Text'
+                    title: 'Shrink Text',
+                    type: 'button'
                 }
             },
         ]},
@@ -75,9 +93,10 @@ module.exports = kind({
                 name: 'font_serif',
                 ontap: 'handleFontChange',
                 val: 'serif',
-                tag: 'span',
+                tag: 'button',
                 attributes: {
-                    title: 'Serif'
+                    title: 'Serif',
+                    type: 'button'
                 },
                 components: [
                     {kind: i18n,  content: 'Abc'}
@@ -89,9 +108,10 @@ module.exports = kind({
                 name: 'font_sans_serif',
                 ontap: 'handleFontChange',
                 val: 'sans_serif',
-                tag: 'span',
+                tag: 'button',
                 attributes: {
-                    title: 'Sans-Serif'
+                    title: 'Sans-Serif',
+                    type: 'button'
                 },
                 components: [
                     {kind: i18n, content: 'Abc'}
@@ -103,9 +123,10 @@ module.exports = kind({
                 name: 'font_monospace',
                 ontap: 'handleFontChange',
                 val: 'monospace',
-                tag: 'span',
+                tag: 'button',
                 attributes: {
-                    title: 'Monospace'
+                    title: 'Monospace',
+                    type: 'button'
                 },
                 components: [
                     {kind: i18n, content: 'Abc'}
@@ -119,12 +140,13 @@ module.exports = kind({
                 classes: 'bss_item bss_renderstyle bss_paragraph',
                 name: 'renderstyle_paragraph',
                 val: 'paragraph',
-                tag: 'span',
+                tag: 'button',
                 content: '&para;',
                 allowHtml: true,
                 ontap: 'handleRenderStyle',
                 attributes: {
-                    title: 'Paragraph Display'
+                    title: 'Paragraph Display',
+                    type: 'button'
                 }
             },
             {
@@ -132,7 +154,7 @@ module.exports = kind({
                 classes: 'bss_item bss_renderstyle bss_passage',
                 name: 'renderstyle_passage',
                 val: 'passage',
-                tag: 'span',
+                tag: 'button',
                 ontap: 'handleRenderStyle',
                 components: [
                     {tag: 'span', content: '&nbsp;&nbsp;---- -', allowHtml: true},
@@ -143,7 +165,8 @@ module.exports = kind({
                     {tag: 'span', content: '- -------', allowHtml: true},
                 ],
                 attributes: {
-                    title: 'Passage Display'
+                    title: 'Passage Display',
+                    type: 'button'
                 }
             },
             {
@@ -151,7 +174,7 @@ module.exports = kind({
                 classes: 'bss_item bss_renderstyle bss_verse',
                 name: 'renderstyle_verse',
                 val: 'verse',
-                tag: 'span',
+                tag: 'button',
                 ontap: 'handleRenderStyle',
                 components: [
                     {tag: 'span', content: '- -.- -----', allowHtml: true},
@@ -163,7 +186,8 @@ module.exports = kind({
                     {tag: 'span', content: ''}
                 ],
                 attributes: {
-                    title: 'Verse Display'
+                    title: 'Verse Display',
+                    type: 'button'
                 }
             },
             {
@@ -171,7 +195,7 @@ module.exports = kind({
                 classes: 'bss_item bss_renderstyle bss_verse_passage',
                 name: 'renderstyle_verse_passage',
                 val: 'verse_passage',
-                tag: 'span',
+                tag: 'button',
                 ontap: 'handleRenderStyle',
                 components: [
                     {tag: 'span', content: '&nbsp; &nbsp;---- -', allowHtml: true},
@@ -183,7 +207,8 @@ module.exports = kind({
                     {tag: 'span', content: '', allowHtml: true},
                 ],
                 attributes: {
-                    title: 'Verse as Passage Display'
+                    title: 'Verse as Passage Display',
+                    type: 'button'
                 }
             },
 
@@ -193,6 +218,8 @@ module.exports = kind({
             {
                 classes: 'bss_item bss_italics_toggle',
                 name: 'italics_toggle',
+                tag: 'button',
+                attributes: {type: 'button'},
                 kind: Toggle,
                 trueTitle: 'Disable Italization of Added Words',
                 falseTitle: 'Enable Italization of Added Words',
@@ -212,6 +239,8 @@ module.exports = kind({
             {
                 classes: 'bss_item bss_strongs_toggle',
                 name: 'strongs_toggle',
+                tag: 'button',
+                attributes: {type: 'button'},
                 kind: Toggle,
                 trueTitle: 'Disable Strong\'s Numbers',
                 falseTitle: 'Enable Strong\'s Numbers',
@@ -233,6 +262,8 @@ module.exports = kind({
             {
                 classes: 'bss_item bss_redletter_toggle',
                 name: 'redletter_toggle',
+                tag: 'button',
+                attributes: {type: 'button'},
                 kind: Toggle,
                 trueTitle: 'Disable Red Letter',
                 falseTitle: 'Enable Red Letter',
@@ -252,6 +283,8 @@ module.exports = kind({
             {
                 classes: 'bss_item bss_highlight_toggle',
                 name: 'highlight_toggle',
+                tag: 'button',
+                attributes: {type: 'button'},
                 kind: Toggle,
                 trueTitle: 'Disable Highlighting of Keywords',
                 falseTitle: 'Enable Highlighting of Keywords',
@@ -277,12 +310,13 @@ module.exports = kind({
                 {
                     classes: 'bss_item',
                     name: 'copy_instant',
+                    tag: 'button',
                     kind: i18n,
                     content: 'Copy',
                     ontap: 'handleCopyInstant',
                     style: 'position: relative',
                     // title: 'Copy with given copy settings',
-                    attributes: {title: 'Copy'},
+                    attributes: {title: 'Copy', type: 'button'},
                     components: [
                         {
                             kind: i18n,
@@ -298,6 +332,8 @@ module.exports = kind({
             {
                 classes: 'bss_item bss_copy_toggle_new',
                 name: 'copy_toggle',
+                tag: 'button',
+                attributes: {type: 'button'},
                 kind: Toggle,
                 trueTitle: 'Read Display',
                 falseTitle: 'EZ Copy',
@@ -317,9 +353,9 @@ module.exports = kind({
                 kind: i18n,
                 classes: 'bss_item bss_clear_form',
                 name: 'clear',
-                tag: 'span',
+                tag: 'button',
                 ontap: 'handleClearForm',
-                attributes: {title: 'Clear Form'},
+                attributes: {title: 'Clear Form', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'clear', attributes: {'aria-hidden': 'true'}}
                 ]
@@ -330,8 +366,9 @@ module.exports = kind({
                 kind: i18n,
                 classes: 'bss_item bss_print bss_text_only',
                 name: 'print_button',
+                tag: 'button',
                 ontap: 'handlePrint',
-                attributes: {title: 'Print'},
+                attributes: {title: 'Print', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'print', attributes: {'aria-hidden': 'true'}}
                 ],
@@ -340,8 +377,9 @@ module.exports = kind({
                 kind: i18n,
                 classes: 'bss_item bss_share bss_text_only',
                 name: 'share_button',
+                tag: 'button',
                 ontap: 'handleShare',
-                attributes: {title: 'Share'},
+                attributes: {title: 'Share', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'share', attributes: {'aria-hidden': 'true'}}
                 ],
@@ -350,8 +388,9 @@ module.exports = kind({
                 kind: i18n,
                 classes: 'bss_item bss_link bss_text_only',
                 name: 'link_button',
+                tag: 'button',
                 ontap: 'handleLink',
-                attributes: {title: 'Link'},
+                attributes: {title: 'Link', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'link', attributes: {'aria-hidden': 'true'}}
                 ],
@@ -360,8 +399,9 @@ module.exports = kind({
                 kind: i18n,
                 classes: 'bss_item bss_link bss_text_only',
                 name: 'history_button',
+                tag: 'button',
                 ontap: 'handleHistory',
-                attributes: {title: 'History'},
+                attributes: {title: 'History', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'history', attributes: {'aria-hidden': 'true'}}
                 ],
@@ -370,8 +410,9 @@ module.exports = kind({
                 kind: i18n,
                 classes: 'bss_item bss_link bss_text_only',
                 name: 'session_verse_list_button',
+                tag: 'button',
                 ontap: 'handleSessionVerseList',
-                attributes: {title: 'Verse List'},
+                attributes: {title: 'Verse List', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'playlist_add', attributes: {'aria-hidden': 'true'}}
                 ],
@@ -380,8 +421,9 @@ module.exports = kind({
                 kind: i18n,
                 classes: 'bss_item bss_link bss_text_only',
                 name: 'bookmark_add_button',
+                tag: 'button',
                 ontap: 'handleBookmarkCurrent',
-                attributes: {title: 'Bookmark'},
+                attributes: {title: 'Bookmark', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'bookmark_add', attributes: {'aria-hidden': 'true'}}
                 ],
@@ -390,8 +432,9 @@ module.exports = kind({
                 kind: i18n,
                 classes: 'bss_item bss_link bss_text_only',
                 name: 'bookmark_button',
+                tag: 'button',
                 ontap: 'handleBookmark',
-                attributes: {title: 'Bookmarks'},
+                attributes: {title: 'Bookmarks', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'bookmarks', attributes: {'aria-hidden': 'true'}}
                 ],
@@ -401,8 +444,9 @@ module.exports = kind({
                 classes: 'bss_item bss_link bss_text_only',
                 showing: true,
                 name: 'settings_reset_button',
+                tag: 'button',
                 ontap: 'handleResetSetting',
-                attributes: {title: 'Reset'},
+                attributes: {title: 'Reset', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'restart_alt', attributes: {'aria-hidden': 'true'}}
                 ],
@@ -412,8 +456,9 @@ module.exports = kind({
                 classes: 'bss_item bss_link bss_text_only',
                 showing: true,
                 name: 'settings_save_button',
+                tag: 'button',
                 ontap: 'handleSaveSetting',
-                attributes: {title: 'Save Settings'},
+                attributes: {title: 'Save Settings', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'save', attributes: {'aria-hidden': 'true'}}
                 ],
@@ -423,8 +468,9 @@ module.exports = kind({
                 showing: false,
                 classes: 'bss_item bss_settings bss_text_only',
                 name: 'settings_button',
+                tag: 'button',
                 ontap: 'handleSettings',
-                attributes: {title: 'Settings'},
+                attributes: {title: 'Settings', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'settings', attributes: {'aria-hidden': 'true'}}
                 ],
@@ -437,9 +483,9 @@ module.exports = kind({
                 kind: i18n,
                 classes: 'bss_item bss_help',
                 name: 'help',
-                tag: 'span',
+                tag: 'button',
                 ontap: 'handleHelp',
-                attributes: {title: 'Help'},
+                attributes: {title: 'Help', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'help_outline', attributes: {'aria-hidden': 'true'}}
                 ]
@@ -447,6 +493,8 @@ module.exports = kind({
             {
                 classes: 'bss_item bss_advanced_toggle',
                 name: 'advanced_toggle',
+                tag: 'button',
+                attributes: {type: 'button'},
                 kind: Toggle,
                 trueTitle: 'Basic',
                 falseTitle: 'Advanced',
@@ -457,9 +505,10 @@ module.exports = kind({
                 kind: i18n,
                 classes: 'bss_item bss_sos',
                 name: 'sos_button',
+                tag: 'button',
                 content: 'Bible SOS',
                 ontap: 'handleSos',
-                attributes: {title: 'Emergency Help from the Bible'},
+                attributes: {title: 'Emergency Help from the Bible', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'emergency', attributes: {'aria-hidden': 'true'}}
                 ]
@@ -468,9 +517,10 @@ module.exports = kind({
                 kind: i18n,
                 classes: 'bss_item bss_start',
                 name: 'start_button',
+                tag: 'button',
                 content: 'Start',
                 ontap: 'handleStart',
-                attributes: {title: 'Bible Start Guide'},
+                attributes: {title: 'Bible Start Guide', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'info', attributes: {'aria-hidden': 'true'}}
                 ]
@@ -479,8 +529,9 @@ module.exports = kind({
                 kind: i18n,
                 classes: 'bss_item bss_download',
                 name: 'download_button',
+                tag: 'button',
                 ontap: 'handleDownload',
-                attributes: {title: 'Bible Downloads'},
+                attributes: {title: 'Bible Downloads', type: 'button'},
                 components: [
                     {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'download', attributes: {'aria-hidden': 'true'}}
                 ]
@@ -566,6 +617,7 @@ module.exports = kind({
 
     create: function() {
         this.inherited(arguments);
+        this._initGospelButton();
 
         if(!this.app.statics.download_enabled) {
             this.$.download_button.set('showing', false);
@@ -604,12 +656,15 @@ module.exports = kind({
         this.inherited(arguments);
 
         if(this._hideExtras()) {
+            this.$.gospel_button && this.$.gospel_button.set('showing', false);
             this.$.sos_button && this.$.sos_button.set('showing', false);
             this.$.start_button && this.$.start_button.set('showing', false);
             this.$.download_button && this.$.download_button.set('showing', false);
             this.$.advanced_toggle && this.$.advanced_toggle.set('showing', false);
             this.$.help && this.$.help.set('showing', false);
         }
+
+        this.$.GospelGroup.set('showing', this._gospelButtonShowing());
 
         if(!this.app.configs.toggleAdvanced || this.app.configs.toggleAdvanced == 'false') {
             this.$.advanced_toggle && this.$.advanced_toggle.set('showing', false);

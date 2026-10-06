@@ -299,6 +299,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Biblijos Nepaprastoji Padėtis',
     'Emergency Help from the Bible': 'Skubi pagalba iš Biblijos',
+    'Gospel': 'Evangelija',
     'Where to go When ...': 'Kur eiti Kada...',
     'Afraid': 'Išsigandęs',
     'Anxious': 'Nerimastingas',

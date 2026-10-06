@@ -315,6 +315,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'ئىنجىل جىددىي',
     'Emergency Help from the Bible': 'ئىنجىلدىن جىددىي ياردەم',
+    'Gospel': 'خۇش خەۋەر',
     'Where to go When ...': 'نەگە بېرىش...',
     'Afraid': 'قورقىدۇ',
     'Anxious': 'تەشۋىش',

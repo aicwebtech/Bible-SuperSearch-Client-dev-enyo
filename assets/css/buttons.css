@@ -37,6 +37,59 @@
     background-color: #d1cf45;
 }
 
+/* Buttons are native <button> elements (for keyboard access):
+   suppress default UA / theme button styling so they look like the former span based buttons */
+.bss_format_buttons_html button.bss_item {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: inherit;
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    word-spacing: inherit;
+    text-transform: inherit;
+    text-indent: inherit;
+    text-shadow: inherit;
+    box-shadow: none;
+    min-width: 0;
+    min-height: 0;
+}
+
+/* Font buttons: re-apply .bss_font_serif / .bss_font_monospace, which lose to the .biblesupersearch_main button font rule */
+.bss_format_buttons_html button.bss_item.bss_font_serif {
+    font-family: serif;
+}
+
+.bss_format_buttons_html button.bss_item.bss_font_monospace {
+    font-family: monospace;
+}
+
+/* <button> vertically centers its content, where the span based buttons top-aligned it.
+   For buttons with 16px tall content in an 18px box, move the top padding to the bottom
+   so the content sits where it did before (total height is unchanged).
+   The serif button is excluded: its taller content (padded span) already lands in place */
+.bss_format_buttons_html button.bss_item.bss_size,
+.bss_format_buttons_html button.bss_item.bss_renderstyle.bss_paragraph,
+.bss_format_buttons_html button.bss_item.bss_font:not(.bss_font_serif),
+.bss_format_buttons_html button.bss_item.bss_toggle:not(.bss_copy_toggle_new) {
+    padding-top: 0;
+    padding-bottom: 2px;
+}
+
+/* Buttons rendered as links (ie Gospel button in 'url' mode): suppress default / theme link styling */
+.bss_format_buttons_html a.bss_item,
+.bss_format_buttons_html a.bss_item:link,
+.bss_format_buttons_html a.bss_item:visited,
+.bss_format_buttons_html a.bss_item:hover,
+.bss_format_buttons_html a.bss_item:active,
+.bss_format_buttons_html a.bss_item:focus {
+    color: inherit;
+    text-decoration: none;
+    box-shadow: none;
+}
+
 .bss_format_buttons_html .bss_item.bss_size_reg span {
     text-decoration: underline;
     text-decoration-thickness: 2px;

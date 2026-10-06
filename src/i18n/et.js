@@ -325,6 +325,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Piibli Hädaolukord',
     'Emergency Help from the Bible': 'Hädaabi Piiblist',
+    'Gospel': 'Evangeelium',
     'Where to go When ...': 'Kuhu Minna Kui ...',
     'Afraid': 'Sa Kardad',
     'Anxious': 'Sa Oled Mures',
