@@ -19,9 +19,10 @@ module.exports = kind({
             kind: i18n,
             classes: 'bss_item bss_gospel',
             name: 'gospel_button',
+            tag: 'button',
             content: 'Gospel',
             ontap: 'handleGospel',
-            attributes: {title: 'Gospel'},
+            attributes: {title: 'Gospel', type: 'button'},
             components: [
                 {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'error_outline', attributes: {'aria-hidden': 'true'}}
             ]
@@ -30,9 +31,9 @@ module.exports = kind({
             kind: i18n,
             classes: 'bss_item bss_help',
             name: 'help',
-            tag: 'span',
+            tag: 'button',
             ontap: 'handleHelp',
-            attributes: {title: 'Help'},
+            attributes: {title: 'Help', type: 'button'},
             components: [
                 {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'help_outline', attributes: {'aria-hidden': 'true'}}
             ]
@@ -40,6 +41,8 @@ module.exports = kind({
         {
             classes: 'bss_item bss_advanced_toggle',
             name: 'advanced_toggle',
+            tag: 'button',
+            attributes: {type: 'button'},
             kind: Toggle,
             trueTitle: 'Basic',
             falseTitle: 'Advanced',
@@ -50,9 +53,10 @@ module.exports = kind({
             kind: i18n,
             classes: 'bss_item bss_sos',
             name: 'sos_button',
+            tag: 'button',
             content: 'Bible SOS',
             ontap: 'handleSos',
-            attributes: {title: 'Emergency Help from the Bible'},
+            attributes: {title: 'Emergency Help from the Bible', type: 'button'},
             components: [
                 {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'emergency', attributes: {'aria-hidden': 'true'}}
             ]
@@ -61,9 +65,10 @@ module.exports = kind({
             kind: i18n,
             classes: 'bss_item bss_start',
             name: 'start_button',
+            tag: 'button',
             content: 'Start',
             ontap: 'handleStart',
-            attributes: {title: 'Bible Start Guide'},
+            attributes: {title: 'Bible Start Guide', type: 'button'},
             components: [
                 {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'info', attributes: {'aria-hidden': 'true'}}
             ]
@@ -72,8 +77,9 @@ module.exports = kind({
             kind: i18n,
             classes: 'bss_item bss_download',
             name: 'download_button',
+            tag: 'button',
             ontap: 'handleDownload',
-            attributes: {title: 'Bible Downloads'},
+            attributes: {title: 'Bible Downloads', type: 'button'},
             components: [
                 {tag: 'span', classes: 'bss-material-icons bss_icon', content: 'download', attributes: {'aria-hidden': 'true'}}
             ]

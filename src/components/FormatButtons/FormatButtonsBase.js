@@ -160,6 +160,7 @@ module.exports = kind({
         if(mode == 'url' && this._isSafeUrl(url)) {
             button.set('tag', 'a');
             button.set('ontap', null);
+            button.setAttribute('type', null);
             button.setAttribute('href', url);
             button.setAttribute('target', '_blank');
             button.setAttribute('rel', 'noopener');
