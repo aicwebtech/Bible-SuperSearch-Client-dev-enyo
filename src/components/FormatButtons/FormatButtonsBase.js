@@ -157,7 +157,7 @@ module.exports = kind({
             return;
         }
 
-        if(mode == 'url' && url) {
+        if(mode == 'url' && this._isSafeUrl(url)) {
             button.set('tag', 'a');
             button.set('ontap', null);
             button.setAttribute('href', url);
@@ -167,6 +167,21 @@ module.exports = kind({
         else if(mode != 'verses' || !this.app.configs.gospelVerses) {
             button.set('showing', false);
         }
+    },
+    // Only allow http(s), protocol relative or relative URLs (blocks javascript:, data:, etc)
+    _isSafeUrl: function(url) {
+        if(!url || typeof url != 'string') {
+            return false;
+        }
+
+        // Browsers ignore whitespace and control characters within the scheme, ie 'java\tscript:'
+        var stripped = url.replace(/[\s\x00-\x1f]/g, '');
+
+        if(stripped == '') {
+            return false;
+        }
+
+        return /^https?:/i.test(stripped) || !/^[a-z][a-z0-9+.\-]*:/i.test(stripped);
     },
     _gospelButtonShowing: function() {
         return !!(this.$.gospel_button && this.$.gospel_button.get('showing'));

@@ -623,20 +623,31 @@ module.exports = kind({
             return;
         }
 
+        // Don't touch the form if the request can't be submitted
+        if(this.requestPending) {
+            return;
+        }
+
+        var self = this;
         var formData = utils.clone(this.get('formData'));
         var field = this.$.request ? 'request' : 'reference';
-
-        // Show the verses in the form without triggering reference change side effects (auto submit, book selector sync)
-        this._referenceChangeHelperIgnore = true;
-        this.$.search && this.$.search.set('value', '');
-        this.$[field] && this.$[field].set('value', verses);
-        this._referenceChangeHelperIgnore = false;
 
         var submitData = {
             bible: formData.bible
         };
 
         submitData[field] = verses;
+
+        // Reset all other fields (search, book selector, limit, search type, etc) so the form matches the request
+        // Done without triggering reference change side effects (auto submit, book selector sync)
+        this._dontClearBibles = true;
+        this._referenceChangeHelperIgnore = true;
+        this.set('formData', utils.clone(submitData));
+        this._referenceChangeHelperIgnore = false;
+
+        window.setTimeout(function() {
+            self._dontClearBibles = false;
+        }, 100);
 
         return this._submitFormHelper(submitData, true);
     },
