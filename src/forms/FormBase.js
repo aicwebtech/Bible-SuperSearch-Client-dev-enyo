@@ -64,7 +64,8 @@ module.exports = kind({
         onClickReference: 'handleReferenceClick',
         onPageChange: 'handlePageChange',
         onChangeLocaleManual: 'changeLocaleManual',
-        onClearForm: 'clearFormManual'
+        onClearForm: 'clearFormManual',
+        onGospelSubmit: 'submitGospel'
     },
 
     // bindings: [
@@ -611,6 +612,42 @@ module.exports = kind({
             bible: formData.bible,
             reference: randomType
         };
+
+        return this._submitFormHelper(submitData, true);
+    },
+    // Loads the configured Gospel verses (gospelVerses) in the currently selected Bible(s)
+    submitGospel: function(inSender, inEvent) {
+        var verses = this.app.configs.gospelVerses;
+
+        if(this.app.configs.gospelButton != 'verses' || !verses || !this._subformSafe()) {
+            return;
+        }
+
+        // Don't touch the form if the request can't be submitted
+        if(this.requestPending) {
+            return;
+        }
+
+        var self = this;
+        var formData = utils.clone(this.get('formData'));
+        var field = this.$.request ? 'request' : 'reference';
+
+        var submitData = {
+            bible: formData.bible
+        };
+
+        submitData[field] = verses;
+
+        // Reset all other fields (search, book selector, limit, search type, etc) so the form matches the request
+        // Done without triggering reference change side effects (auto submit, book selector sync)
+        this._dontClearBibles = true;
+        this._referenceChangeHelperIgnore = true;
+        this.set('formData', utils.clone(submitData));
+        this._referenceChangeHelperIgnore = false;
+
+        window.setTimeout(function() {
+            self._dontClearBibles = false;
+        }, 100);
 
         return this._submitFormHelper(submitData, true);
     },

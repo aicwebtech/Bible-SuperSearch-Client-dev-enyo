@@ -291,6 +291,7 @@ module.exports = {
      // Bible SOS dialog
     'Bible SOS': '聖經緊急求救',
     'Emergency Help from the Bible': '來自聖經的緊急救援',
+    'Gospel': '福音',
     'Where to go When ...': '當...時到哪去?',   
     'Afraid': '害怕',
     'Anxious': '焦慮',

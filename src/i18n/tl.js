@@ -313,6 +313,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'Emerhensiya ng Bibliya',
     'Emergency Help from the Bible': 'Emergency na Tulong mula sa Bibliya',
+    'Gospel': 'Ebanghelyo',
     'Where to go When ...': 'Saan pupunta Kapag...',
     'Afraid': 'Takot',
     'Anxious': 'Balisa',

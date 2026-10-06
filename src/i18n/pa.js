@@ -315,6 +315,7 @@ module.exports = {
     // Bible SOS dialog
     'Bible SOS': 'ਬਾਈਬਲ ਦੀ ਐਮਰਜੈਂਸੀ',
     'Emergency Help from the Bible': 'ਬਾਈਬਲ ਤੋਂ ਐਮਰਜੈਂਸੀ ਮਦਦ',
+    'Gospel': 'ਖੁਸ਼ਖਬਰੀ',
     'Where to go When ...': 'ਕਿੱਥੇ ਜਾਣਾ ਹੈ ਜਦੋਂ...',
     'Afraid': 'ਡਰਦੇ ਹਨ',
     'Anxious': 'ਚਿੰਤਾਜਨਕ',
