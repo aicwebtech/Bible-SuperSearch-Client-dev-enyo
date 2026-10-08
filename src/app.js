@@ -1091,6 +1091,9 @@ var App = Application.kind({
                     break;                
                 case 'context': // Contextual lookup
                     this.loadingPagePrevent = true;
+                    // Like 'cr' above, 'Show in context' is a brand new lookup and must
+                    // scroll to the top of the Bible text, not to the top of the site.
+                    this.resetScrollMode();
                     return this._hashContext(parts);
                     break;
                 case 'strongs': // Strongs lookup
