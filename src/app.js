@@ -1050,6 +1050,9 @@ var App = Application.kind({
             // so it also sees every unrelated anchor on the host page.
             var isRoute = (mode == '');
 
+            var dispatched = false,
+                scrollModeWas = this.get('scrollMode');
+
             if(isRoute) {
                 var mode = parts.shift();
             }
@@ -1057,52 +1060,50 @@ var App = Application.kind({
             switch(mode) {
                 case 'c':   // Cache uuid (hash) 
                     this.loadingPagePrevent = true;
-                    return this._hashCache(parts);
+                    dispatched = this._hashCache(parts);
                     break;
                 case 'cr':   // Cross reference
                     this.loadingPagePrevent = true;
-                    // BSS-158: A cross reference link is a brand new lookup, so it must scroll the
-                    // same way the navigation buttons do - to the top of the Bible text, not to the
-                    // top of the site.  Without this, the initial 'container_top' mode (which exists
-                    // only for the no-hash landing page) sticks, sending the cross reference - in a
-                    // new tab, or in this window after a hash-loaded page - to the very top.
+                    // A cross reference link is a brand new lookup, so it must scroll the same way
+                    // the navigation buttons do - to the top of the Bible text, not to the top of
+                    // the site.  Without this, the initial 'container_top' mode sticks.
                     this.resetScrollMode();
-                    return this._hashReference(parts, true);
+                    dispatched = this._hashReference(parts, true);
                     break;
                 case 'p':   // Passage
                     this.loadingPagePrevent = true;
-                    return this._hashPassage(parts);
+                    dispatched = this._hashPassage(parts);
                     break;                   
                 case 'r':   // Reference string
                     this.loadingPagePrevent = true;
-                    return this._hashReference(parts);
+                    dispatched = this._hashReference(parts);
                     break;                
                 case 'q':   // Request string
                     this.loadingPagePrevent = true;
-                    return this._hashRequest(parts);
+                    dispatched = this._hashRequest(parts);
                     break;
                 case 's':   // Search string
                     this.loadingPagePrevent = true;
-                    return this._hashSearch(parts);
+                    dispatched = this._hashSearch(parts);
                     break;                      
                 case 'sl':   // Link to passage within search results list
                     this.loadingPagePrevent = true;
-                    return this._hashSearchLink(parts);
+                    dispatched = this._hashSearchLink(parts);
                     break;                
                 case 'context': // Contextual lookup
                     this.loadingPagePrevent = true;
                     // Like 'cr' above, 'Show in context' is a brand new lookup and must
                     // scroll to the top of the Bible text, not to the top of the site.
                     this.resetScrollMode();
-                    return this._hashContext(parts);
+                    dispatched = this._hashContext(parts);
                     break;
                 case 'strongs': // Strongs lookup
                     this.loadingPagePrevent = true;
-                    return this._hashSearch(parts);
+                    dispatched = this._hashSearch(parts);
                     break;
                 case 'f': // JSON-endoded form data
                     this.loadingPagePrevent = true;    
-                    return this._hashForm(parts);
+                    dispatched = this._hashForm(parts);
                     break;
                 default:
                     // Report a route-shaped hash we can't dispatch; stay quiet about a
@@ -1111,8 +1112,16 @@ var App = Application.kind({
                         this.error('Unrecognized route mode "' + mode + '" in "' + hash + '"');
                     }
 
-                    return false;
+                    dispatched = false;
             }
+
+            // Undo any scroll mode reset made above if the route could not be dispatched,
+            // so whatever loads instead (ie the landing page) keeps its own scroll mode.
+            if(!dispatched) {
+                this.set('scrollMode', scrollModeWas);
+            }
+
+            return dispatched;
         }
         else {
             this.debug && this.log('no hash');
@@ -1483,7 +1492,7 @@ var App = Application.kind({
         this.debug && this.log('requested scroll', scroll);
         this.debug && this.log('pad', pad);
 
-        if(this.view.hasNode() && this.view.hasClass('bss_no_global_scrollbar')) {
+        if(this.view.hasNode() && (this.view.hasClass('bss_no_global_scrollbar') || !this._viewIsScrollable())) {
             // In this case, if scroll == 0, we assume we want to scroll to the very top of the page
             // Therefore, we don't add to the scroll
             if(scroll != 0) {
@@ -1507,6 +1516,23 @@ var App = Application.kind({
         }
 
         this.debug && this.log('delivered scroll', scroll);
+    },
+    _viewIsScrollable: function() {
+        // Host page CSS (ie a WordPress theme) may remove the container's height limit,
+        // in which case the container cannot scroll and the window must be scrolled instead
+        var node = this.view.hasNode();
+
+        if(!node) {
+            return false;
+        }
+
+        var overflowY = window.getComputedStyle(node).overflowY;
+
+        if(overflowY == 'visible' || overflowY == 'clip') {
+            return false;
+        }
+
+        return node.scrollHeight > node.clientHeight;
     },
     resetScrollMode: function() {
         this.set('scrollMode', this.get('scrollModeDefault'));
