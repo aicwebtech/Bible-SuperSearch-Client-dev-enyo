@@ -1528,7 +1528,7 @@ var App = Application.kind({
 
         var overflowY = window.getComputedStyle(node).overflowY;
 
-        if(overflowY == 'visible' || overflowY == 'hidden' || overflowY == 'clip') {
+        if(overflowY == 'visible' || overflowY == 'clip') {
             return false;
         }
 
