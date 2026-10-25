@@ -20,6 +20,8 @@ module.exports = kind({
 
     strongsCache: {},
     strongsRaw: null,
+    strongsDictionary: null,
+    _pendingCacheKey: null,
 
     components: [
         {classes: 'bss_inner', components: [
@@ -54,7 +56,8 @@ module.exports = kind({
     ],
 
     bindings: [
-        {from: 'strongsRaw', to: '$.SearchFor.content'}
+        {from: 'strongsRaw', to: '$.SearchFor.content'},
+        {from: 'app.UserConfig.strongs_dictionary', to: 'strongsDictionary'}
     ],
 
     create: function() {
@@ -76,7 +79,13 @@ module.exports = kind({
 
         this.set('strongsRaw', strongs);
 
-        if(this._loadFromCache(strongs)) {
+        var dictionary = this.app.getStrongsDictionary(),
+            language = this.app.getLocaleLanguage(),
+            cacheKey = (dictionary || '') + '|' + language + '|' + strongs;
+
+        this._pendingCacheKey = cacheKey;
+
+        if(this._loadFromCache(cacheKey)) {
             this.showContent();
             return;
         }
@@ -86,8 +95,17 @@ module.exports = kind({
 
         var postBody = {
             strongs: strongs,
+            language: language,
             key: this.app.configs.apiKey || null
         };
+
+        if(this.app.strongsModernEnabled()) {
+            postBody.version = 'modern';
+        }
+
+        if(dictionary) {
+            postBody.dictionary = dictionary;
+        }
 
         var ajax = new Ajax({
             url: this.app.configs.apiUrl + '/strongs',
@@ -96,10 +114,21 @@ module.exports = kind({
         });
 
         ajax.go(postBody); // for GET
-        ajax.response(this, 'handleResponse');
+        ajax.response(this, function(inSender, inResponse) {
+            this.handleResponse(inSender, inResponse, cacheKey);
+        });
         ajax.error(this, 'handleError');
     },
-    handleResponse: function(inSender, inResponse) {
+    // cacheKey reflects the dictionary / language the request was made with
+    handleResponse: function(inSender, inResponse, cacheKey) {
+        // Cached under the requested Strong's number, as the API may format the number differently
+        this.strongsCache[cacheKey] = inResponse.results;
+
+        // A newer hover has superseded this request
+        if(cacheKey != this._pendingCacheKey) {
+            return;
+        }
+
         this.set('showing', true);
 
         if(!this.get('showing')) {
@@ -109,7 +138,6 @@ module.exports = kind({
 
         this.$.ContentContainer.destroyClientControls();
         inResponse.results.forEach(utils.bind(this, function(strong) {
-            this.strongsCache[strong.number] = strong;
             this.$.ContentContainer._addStrongs(strong);
         }));
         
@@ -130,15 +158,21 @@ module.exports = kind({
         var match = String(content).match(/[GHgh][0-9]+/);
         return match ? match[0].toUpperCase() : '';
     },
-    _loadFromCache: function(strongs) {
-        if(typeof this.strongsCache[strongs] == 'undefined') {
+    // Definitions depend on the dictionary and language, so both are part of the key
+    _loadFromCache: function(cacheKey) {
+        if(typeof this.strongsCache[cacheKey] == 'undefined') {
             return false;
         }
 
         this.$.ContentContainer.destroyClientControls();
-        this.$.ContentContainer._addStrongs(this.strongsCache[strongs]);
+        this.strongsCache[cacheKey].forEach(utils.bind(this, function(strong) {
+            this.$.ContentContainer._addStrongs(strong);
+        }));
         this.$.ContentContainer.render();
         return true;
+    },
+    strongsDictionaryChanged: function(was, is) {
+        this.strongsCache = {};
     },
     followLink: function() {
         //http://ui-dev.bss.plsv/#/strongs/kjv_strongs/H5612

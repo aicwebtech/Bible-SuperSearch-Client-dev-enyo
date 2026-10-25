@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Daar Ku Dhejinta Kelmadaha Lagu Daray',
     'Disable Strong\'s Numbers': 'Dami Nambarada Xoogan',
     'Enable Strong\'s Numbers': 'Daar Nambarada Xoogan',
+    'Strong\'s Dictionary': 'Qaamuuska Strong',
+    'Use Language Default': 'Isticmaal Caadiga Luqadda',
     'Red Letter': 'Warqad Cas',
     'Disable Red Letter': 'Dami Warqadda Cas',
     'Enable Red Letter': 'Daar Warqadda Cas',

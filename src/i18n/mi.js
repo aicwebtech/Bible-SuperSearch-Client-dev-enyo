@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Whakahohehia te Whakaritea o nga Kupu Taapiri',
     'Disable Strong\'s Numbers': 'Monokia nga Nama a Strong',
     'Enable Strong\'s Numbers': 'Whakahohehia nga Nama a Strong',
+    'Strong\'s Dictionary': 'Papakupu a Strong',
+    'Use Language Default': 'Whakamahia te Taunoa o te Reo',
     'Red Letter': 'Reta Whero',
     'Disable Red Letter': 'Monokia te Reta Whero',
     'Enable Red Letter': 'Whakahohe Reta Whero',

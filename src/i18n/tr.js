@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Eklenen Kelimelerin Italizasyonunu Etkinleştir',
     'Disable Strong\'s Numbers': 'Güçlü\'nün Numaralarını Devre Dışı Bırak',
     'Enable Strong\'s Numbers': 'Güçlü Numaraları Etkinleştir',
+    'Strong\'s Dictionary': 'Strong Sözlüğü',
+    'Use Language Default': 'Dil Varsayılanını Kullan',
     'Red Letter': 'Kırmızı Harf',
     'Disable Red Letter': 'Kırmızı Harfi Devre Dışı Bırak',
     'Enable Red Letter': 'Kırmızı Harfi Etkinleştir',

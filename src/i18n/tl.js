@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'I-enable ang Italization ng mga Idinagdag na Salita',
     'Disable Strong\'s Numbers': 'Huwag paganahin ang Mga Numero ng Keyword',
     'Enable Strong\'s Numbers': 'Paganahin ang Mga Numero ng Keyword',
+    'Strong\'s Dictionary': 'Diksiyonaryo ni Strong',
+    'Use Language Default': 'Gamitin ang Default ng Wika',
     'Red Letter': 'Pulang Liham',
     'Disable Red Letter': 'Huwag paganahin ang Mga Salita sa Pula',
     'Enable Red Letter': 'Paganahin ang Mga Salita sa Pula',

@@ -13,6 +13,9 @@ var inc = require('../../components/Locale/i18nComponent');
 var Toggle = require('../ToggleHtml');
 var ContextHelp = require('../ContextHelp');
 var ConfirmDialog = require('./Confirm');
+var Select = require('../Select');
+var i18nOption = require('../Locale/i18nSelectOption');
+var OptionGroup = require('enyo/OptionGroup');
 
 // If the global enyo.Signals is available, use it. This is needed to allow 
 // bi-directional communitation with Apps of older Enyo versions
@@ -181,6 +184,11 @@ module.exports = kind({
                 {tag: 'span', content: '"'}
             ]
         },
+        {name: 'StrongsDictionaryBlock', showing: false, classes: 'bss_strongs_dictionary', components: [
+            {kind: i18n, tag: 'span', content: 'Strong\'s Dictionary'},
+            {tag: 'br'},
+            {name: 'StrongsDictionary', kind: Select, autoTranslate: false, onchange: 'handleStrongsDictionaryChange', style: 'width:250px'}
+        ]},
         {tag: 'br'},
         {
             classes: 'bss_section',
@@ -427,6 +435,12 @@ module.exports = kind({
 
             return value;
         }},
+        {from: 'app.UserConfig.strongs_dictionary', to: 'strongsDictionary', oneWay: false, transform: function(value, dir) {
+            dir == 1 && this._syncStrongsDictionary();
+
+            dir == 2 && this.app.userConfigChanged(); // Shouldn't have to do this, but model change event NOT working on WP ... 
+            return value || null;
+        }},
         {from: 'app.UserConfig.crossReferencesShow', to: 'crossReferencesShow', oneWay: false, transform: function(value, dir) {
             value = this.app.normalizeCrossReferencesShow(value);
 
@@ -489,12 +503,68 @@ module.exports = kind({
 
         this.$.parallel_search_error_toggle.set('showing', this.app.configs.parallelSearchErrorSuppressUserConfig);
         this.$.CrossReferencesContainer.set('showing', this.app.crossReferencesEnabled());
+        this._populateStrongsDictionaries();
 
         this.createComponent({
             name: 'ConfirmDialog',
             kind: ConfirmDialog,
             showing: false
         });
+    },
+    // The selector is only offered when the API has modern Strong's dictionaries
+    _populateStrongsDictionaries: function() {
+        var dictionaries = this.app.getStrongsDictionaries(),
+            modules = Object.keys(dictionaries),
+            selected = this.app.getStrongsDictionary(),
+            select = this.$.StrongsDictionary;
+
+        if(!this.app.strongsModernEnabled() || modules.length == 0) {
+            return;
+        }
+
+        // Non-empty value: an option with an empty value is matched by its content instead
+        select.createComponent({kind: i18nOption, value: '0', content: 'Use Language Default', selected: !selected});
+
+        // Grouped by language, in the order the API lists them
+        modules.forEach(function(module) {
+            var dictionary = dictionaries[module];
+
+            if(!dictionary || typeof dictionary != 'object') {
+                return;
+            }
+
+            var lang = typeof dictionary.lang_short == 'string' ? dictionary.lang_short : '',
+                option = {value: module, content: dictionary.name || module, selected: module == selected};
+
+            // Dictionaries without a language are listed outside of any group
+            if(!lang) {
+                select.createComponent(option);
+                return;
+            }
+
+            var groupName = 'group_' + lang,
+                groupLabel = (dictionary.lang_native || dictionary.lang || lang) + ' - (' + lang.toUpperCase() + ')';
+
+            if(!select.$[groupName]) {
+                select.createComponent({kind: OptionGroup, name: groupName, label: groupLabel});
+            }
+
+            select.$[groupName].createComponent(option);
+        }, this);
+
+        this.$.StrongsDictionaryBlock.set('showing', true);
+    },
+    // Selects the current dictionary once the selector is rendered
+    _syncStrongsDictionary: function() {
+        var select = this.$.StrongsDictionary;
+
+        if(select && select.hasNode()) {
+            select.set('value', this.app.getStrongsDictionary() || '0');
+        }
+    },
+    handleStrongsDictionaryChange: function(inSender, inEvent) {
+        var value = this.$.StrongsDictionary.get('value');
+        this.set('strongsDictionary', value && value != '0' ? value : null);
     },
     close: function() {
         this.app.set('settingsShowing', false);
@@ -527,6 +597,7 @@ module.exports = kind({
 
         if(is) {
             this.$.Language.handleLocaleChange();
+            this._syncStrongsDictionary();
             //this.$.render_style.render(); // :X
         }
     },

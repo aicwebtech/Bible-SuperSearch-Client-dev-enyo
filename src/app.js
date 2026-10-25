@@ -618,6 +618,32 @@ var App = Application.kind({
         var staticsEnabled = this.statics && this.statics.access && this._isTrue(this.statics.access.cross_references);
         return !!staticsEnabled;
     },
+    strongsModernEnabled: function() {
+        var features = this.statics && this.statics.features;
+        return !!(features && features.strongs && features.strongs.modern && this._isTrue(features.strongs.modern.enabled));
+    },
+    // Strong's dictionaries offered by the API, keyed by module
+    getStrongsDictionaries: function() {
+        var volumes = this.statics && this.statics.volumes;
+        var dictionaries = volumes && volumes.strongs;
+
+        if(!dictionaries || typeof dictionaries != 'object' || Array.isArray(dictionaries)) {
+            return {};
+        }
+
+        return dictionaries;
+    },
+    // The user's Strong's dictionary, or null to use the language / global default.
+    // A saved dictionary the API no longer offers is ignored, as the API rejects it.
+    getStrongsDictionary: function() {
+        var dictionary = this.UserConfig.get('strongs_dictionary');
+
+        if(!dictionary || !this.strongsModernEnabled()) {
+            return null;
+        }
+
+        return Object.prototype.hasOwnProperty.call(this.getStrongsDictionaries(), dictionary) ? dictionary : null;
+    },
     _validateStatics: function(statics) {
         var strings = ['name', 'version', 'environment'];
             arrays = ['books', 'search_types', 'shortcuts', 'download_formats'];
@@ -657,8 +683,10 @@ var App = Application.kind({
             this.statics.access = {};
         }
 
-        if(this.statics.features_enabled && typeof this.statics.features_enabled.cross_references != 'undefined') {
-            this.statics.access.cross_references = this._isTrue(this.statics.features_enabled.cross_references);
+        var features = this.statics.features;
+
+        if(features && features.cross_references && typeof features.cross_references.enabled != 'undefined') {
+            this.statics.access.cross_references = this._isTrue(features.cross_references.enabled);
         }
 
         if(!statics.download_enabled) {
