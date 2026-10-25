@@ -527,20 +527,29 @@ module.exports = kind({
 
         // Grouped by language, in the order the API lists them
         modules.forEach(function(module) {
-            var dictionary = dictionaries[module],
-                lang = dictionary.lang_short || '',
-                groupName = 'group_' + lang,
+            var dictionary = dictionaries[module];
+
+            if(!dictionary || typeof dictionary != 'object') {
+                return;
+            }
+
+            var lang = typeof dictionary.lang_short == 'string' ? dictionary.lang_short : '',
+                option = {value: module, content: dictionary.name || module, selected: module == selected};
+
+            // Dictionaries without a language are listed outside of any group
+            if(!lang) {
+                select.createComponent(option);
+                return;
+            }
+
+            var groupName = 'group_' + lang,
                 groupLabel = (dictionary.lang_native || dictionary.lang || lang) + ' - (' + lang.toUpperCase() + ')';
 
             if(!select.$[groupName]) {
                 select.createComponent({kind: OptionGroup, name: groupName, label: groupLabel});
             }
 
-            select.$[groupName].createComponent({
-                value: module,
-                content: dictionary.name || module,
-                selected: module == selected
-            });
+            select.$[groupName].createComponent(option);
         }, this);
 
         this.$.StrongsDictionaryBlock.set('showing', true);

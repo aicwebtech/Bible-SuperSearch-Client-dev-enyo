@@ -462,7 +462,12 @@ module.exports = kind({
         }
 
         var strongsDictionary = this.app.getStrongsDictionary();
-        formData.strongs_version = 'modern';
+
+        if(this.app.strongsModernEnabled()) {
+            formData.strongs_version = 'modern';
+        } else {
+            delete formData.strongs_version;
+        }
 
         if(strongsDictionary) {
             formData.strongs_dictionary = strongsDictionary;
