@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'జోడించిన పదాల ఇటలైజేషన్ని ప్రారంభించండి',
     'Disable Strong\'s Numbers': 'బలమైన సంఖ్యలను నిలిపివేయండి',
     'Enable Strong\'s Numbers': 'బలమైన సంఖ్యలను ప్రారంభించండి',
+    'Strong\'s Dictionary': 'స్ట్రాంగ్ నిఘంటువు',
+    'Use Language Default': 'భాష డిఫాల్ట్‌ను ఉపయోగించు',
     'Red Letter': 'రెడ్ లెటర్',
     'Disable Red Letter': 'రెడ్ లెటర్ని డిసేబుల్ చేయండి',
     'Enable Red Letter': 'రెడ్ లెటర్ని ఎనేబుల్ చేయండి',

@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Ota Lisättyjen Sanojen Kursointi Käyttöön',
     'Disable Strong\'s Numbers': 'Poista Strongin Numerot Käytöstä',
     'Enable Strong\'s Numbers': 'Ota Strongin Numerot Käyttöön',
+    'Strong\'s Dictionary': 'Strongin sanakirja',
+    'Use Language Default': 'Käytä kielen oletusta',
     'Red Letter': 'Punainen Kirjain',
     'Disable Red Letter': 'Poista Punainen Kirjain Käytöstä',
     'Enable Red Letter': 'Ota Punainen Kirjain Käyttöön',

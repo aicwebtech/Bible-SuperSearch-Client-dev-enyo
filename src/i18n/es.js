@@ -165,6 +165,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Habilitar La Cursiva de Las Palabras Agregadas',
     'Disable Strong\'s Numbers': 'Deshabilitar Los Números de Strong',
     'Enable Strong\'s Numbers': 'Habilitar Los Números de Strong',
+    'Strong\'s Dictionary': 'Diccionario de Strong',
+    'Use Language Default': 'Usar el predeterminado del idioma',
     'Red Letter': 'Carta Roja',
     'Disable Red Letter': 'Desactivar Letra Roja',
     'Enable Red Letter': 'Habilitar Letra Roja',

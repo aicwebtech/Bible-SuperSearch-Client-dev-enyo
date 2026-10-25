@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'אפשר איטוח של מילים שנוספו',
     'Disable Strong\'s Numbers': 'השבת מספרי מילות מפתח',
     'Enable Strong\'s Numbers': 'הפעל מספרי מילות מפתח',
+    'Strong\'s Dictionary': 'המילון של סטרונג',
+    'Use Language Default': 'השתמש בברירת המחדל של השפה',
     'Red Letter': 'מכתב אדום',
     'Disable Red Letter': 'השבת אות אדום',
     'Enable Red Letter': 'אפשר אותיות אדום',

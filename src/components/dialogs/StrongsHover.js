@@ -86,8 +86,16 @@ module.exports = kind({
 
         var postBody = {
             strongs: strongs,
+            version: 'modern',
+            language: this.app.getLocaleLanguage(),
             key: this.app.configs.apiKey || null
         };
+
+        var dictionary = this.app.getStrongsDictionary();
+
+        if(dictionary) {
+            postBody.dictionary = dictionary;
+        }
 
         var ajax = new Ajax({
             url: this.app.configs.apiUrl + '/strongs',
@@ -109,7 +117,7 @@ module.exports = kind({
 
         this.$.ContentContainer.destroyClientControls();
         inResponse.results.forEach(utils.bind(this, function(strong) {
-            this.strongsCache[strong.number] = strong;
+            this.strongsCache[this._cacheKey(strong.number)] = strong;
             this.$.ContentContainer._addStrongs(strong);
         }));
         
@@ -130,13 +138,19 @@ module.exports = kind({
         var match = String(content).match(/[GHgh][0-9]+/);
         return match ? match[0].toUpperCase() : '';
     },
+    // Definitions depend on the dictionary and language, so both are part of the key
+    _cacheKey: function(strongs) {
+        return (this.app.getStrongsDictionary() || '') + '|' + this.app.getLocaleLanguage() + '|' + strongs;
+    },
     _loadFromCache: function(strongs) {
-        if(typeof this.strongsCache[strongs] == 'undefined') {
+        var key = this._cacheKey(strongs);
+
+        if(typeof this.strongsCache[key] == 'undefined') {
             return false;
         }
 
         this.$.ContentContainer.destroyClientControls();
-        this.$.ContentContainer._addStrongs(this.strongsCache[strongs]);
+        this.$.ContentContainer._addStrongs(this.strongsCache[key]);
         this.$.ContentContainer.render();
         return true;
     },

@@ -176,6 +176,8 @@ module.exports = {
     'Enable Italization of Added Words': 'تمكين الكتابة المائلة للكلمات المضافة',
     'Disable Strong\'s Numbers': 'تعطيل الأرقام القوية',
     'Enable Strong\'s Numbers': 'تمكين أرقام قوية',
+    'Strong\'s Dictionary': 'قاموس سترونج',
+    'Use Language Default': 'استخدام الافتراضي للغة',
     'Red Letter': 'رسالة حمراء',
     'Disable Red Letter': 'تعطيل الرسالة الحمراء',
     'Enable Red Letter': 'تمكين الرسالة الحمراء',

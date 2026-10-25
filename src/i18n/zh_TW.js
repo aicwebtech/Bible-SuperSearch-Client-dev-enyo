@@ -168,6 +168,8 @@ module.exports = {
     'Enable Italization of Added Words': '啟用所加字詞的斜體化',
     'Disable Strong\'s Numbers': '啟用史特朗原文編號',
     'Enable Strong\'s Numbers': '禁用史特朗原文編號',
+    'Strong\'s Dictionary': '史特朗詞典',
+    'Use Language Default': '使用語言預設設定',
     'Red Letter': '紅字',
     'Disable Red Letter': '禁用紅字經文',
     'Enable Red Letter': '啟用紅字經文',

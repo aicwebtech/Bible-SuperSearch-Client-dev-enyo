@@ -460,6 +460,15 @@ module.exports = kind({
         } else {
             delete formData.cross_references;
         }
+
+        var strongsDictionary = this.app.getStrongsDictionary();
+        formData.strongs_version = 'modern';
+
+        if(strongsDictionary) {
+            formData.strongs_dictionary = strongsDictionary;
+        } else {
+            delete formData.strongs_dictionary;
+        }
         
         //formData.group_passage_search_results = true; // experimental
         

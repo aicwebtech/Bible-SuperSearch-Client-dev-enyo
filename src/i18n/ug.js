@@ -189,6 +189,8 @@ module.exports = {
     'Enable Italization of Added Words': 'قوشۇلغان سۆزلەرنى ئىتالىيەلەشتۈرۈش',
     'Disable Strong\'s Numbers': 'چەكلەش كۈچلۈك \ نىڭ سانى',
     'Enable Strong\'s Numbers': 'كۈچلۈك \ نىڭ سانلىرىنى قوزغىتىڭ',
+    'Strong\'s Dictionary': 'سترونگ لۇغىتى',
+    'Use Language Default': 'تىلنىڭ كۆڭۈلدىكىسىنى ئىشلىتىش',
     'Red Letter': 'قىزىل خەت',
     'Disable Red Letter': 'چەكلەنگەن قىزىل خەت',
     'Enable Red Letter': 'قىزىل خەت قوزغىتىڭ',

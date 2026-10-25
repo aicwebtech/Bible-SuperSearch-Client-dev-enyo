@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'சேர்க்கப்பட்ட சொற்களின் சாய்வை இயக்கவும்',
     'Disable Strong\'s Numbers': 'வலுவான எண்களை முடக்கு',
     'Enable Strong\'s Numbers': 'வலுவான எண்களை இயக்கவும்',
+    'Strong\'s Dictionary': 'ஸ்ட்ராங்கின் அகராதி',
+    'Use Language Default': 'மொழியின் இயல்புநிலையைப் பயன்படுத்து',
     'Red Letter': 'சிவப்பு கடிதம்',
     'Disable Red Letter': 'சிவப்பு எழுத்தை முடக்கு',
     'Enable Red Letter': 'சிவப்பு எழுத்தை இயக்கு',

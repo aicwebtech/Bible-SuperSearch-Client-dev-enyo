@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Schakel italisatie van toegevoegde woorden in',
     'Disable Strong\'s Numbers': 'Schakel de Nummers van Strong Uit',
     'Enable Strong\'s Numbers': 'Schakel de Nummers van Strong In',
+    'Strong\'s Dictionary': 'Strong\'s woordenboek',
+    'Use Language Default': 'Standaard van de taal gebruiken',
     'Red Letter': 'Rode Brief',
     'Disable Red Letter': 'Schakel de rode letter uit',
     'Enable Red Letter': 'Schakel Rode Letter in',
