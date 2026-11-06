@@ -174,6 +174,8 @@ module.exports = {
     'Enable Italization of Added Words': '启用所加字词的斜体化',
     'Disable Strong\'s Numbers': '启用史特朗原文编号',
     'Enable Strong\'s Numbers': '禁用史特朗原文编号',
+    'Strong\'s Dictionary': '史特朗词典',
+    'Use Language Default': '使用语言默认设置',
     'Red Letter': '红字',
     'Disable Red Letter': '禁用红字经文',
     'Enable Red Letter': '启用红字经文',

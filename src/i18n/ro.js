@@ -173,6 +173,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Activați Textul Cursiv pentru Cuvintele Adăugate',
     'Disable Strong\'s Numbers': 'Dezactivați Concordanța Exhaustivă',
     'Enable Strong\'s Numbers': 'Activați Concordanța Exhaustivă',
+    'Strong\'s Dictionary': 'Dicționarul Strong',
+    'Use Language Default': 'Folosește implicitul limbii',
     'Red Letter': 'Litere Roșii',
     'Disable Red Letter': 'Dezactivați Literele Roșii',
     'Enable Red Letter': 'Activați Literele Roșii',

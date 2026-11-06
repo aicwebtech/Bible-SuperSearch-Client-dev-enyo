@@ -189,6 +189,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Sendeleka mazu anakaveho',
     'Disable Strong\'s Numbers': 'Honesa vasona vakulavisa azachisa mukulwane Strong',
     'Enable Strong\'s Numbers': 'Solola vasona vakulavisa azachisa mukulwane Strong',
+    'Strong\'s Dictionary': '',
+    'Use Language Default': '',
     'Red Letter': 'Vasona vachila vaMazu ahanjikile Mwata Yesu',
     'Disable Red Letter': 'Honesa Vasona vachila vaMazu ahanjikile Mwata Yesu',
     'Enable Red Letter': 'Solola Vasona vachila vaMazu ahanjikile Mwata Yesu',

@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Kunna Ƙirƙirar Ƙarfafa Kalmomi',
     'Disable Strong\'s Numbers': 'Kashe Ƙarfafan Lambobi',
     'Enable Strong\'s Numbers': 'Kunna Ƙarfafan Lambobi',
+    'Strong\'s Dictionary': 'Kamus na Strong',
+    'Use Language Default': 'Yi amfani da tsohon saitin harshe',
     'Red Letter': 'Jan Harafi',
     'Disable Red Letter': 'Kashe Jajayen Harafi',
     'Enable Red Letter': 'Kunna Jajayen Harafi',

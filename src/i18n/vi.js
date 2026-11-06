@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Bật in nghiêng các từ đã thêm',
     'Disable Strong\'s Numbers': 'Tắt số mạnh',
     'Enable Strong\'s Numbers': 'Kích hoạt số mạnh',
+    'Strong\'s Dictionary': 'Từ điển Strong',
+    'Use Language Default': 'Dùng mặc định của ngôn ngữ',
     'Red Letter': 'Lá thư đỏ',
     'Disable Red Letter': 'Tắt chữ đỏ',
     'Enable Red Letter': 'Kích hoạt chữ đỏ',

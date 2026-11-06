@@ -189,6 +189,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Иҷозат додан ба курсив калимаҳои иловашуда',
     'Disable Strong\'s Numbers': 'Рақамҳои Strong\-ро хомӯш кунед',
     'Enable Strong\'s Numbers': 'Рақамҳои Strong\-ро фаъол созед',
+    'Strong\'s Dictionary': 'Луғати Стронг',
+    'Use Language Default': 'Истифодаи пешфарзи забон',
     'Red Letter': 'Номаи сурхs',
     'Disable Red Letter': 'Мактуби сурхи маъюб',
     'Enable Red Letter': 'Номаи сурхро фаъол созед',

@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'የታከሉ ቃላትን ኢታላይዜሽን አንቃ',
     'Disable Strong\'s Numbers': 'የጠንካራ ቁጥሮችን አሰናክል',
     'Enable Strong\'s Numbers': 'የጠንካራ ቁጥሮችን አንቃ',
+    'Strong\'s Dictionary': 'የስትሮንግ መዝገበ ቃላት',
+    'Use Language Default': 'የቋንቋ ነባሪን ተጠቀም',
     'Red Letter': 'ቀይ ደብዳቤ',
     'Disable Red Letter': 'ቀይ ደብዳቤን አሰናክል',
     'Enable Red Letter': 'ቀይ ደብዳቤን አንቃ',

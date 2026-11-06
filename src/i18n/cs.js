@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Povolit Italizaci Přidaných Slov',
     'Disable Strong\'s Numbers': 'Zakázat Čísla Klíčových Slov',
     'Enable Strong\'s Numbers': 'Povolit Čísla Klíčových Slov',
+    'Strong\'s Dictionary': 'Strongův slovník',
+    'Use Language Default': 'Použít výchozí pro jazyk',
     'Red Letter': 'Červené Písmeno',
     'Disable Red Letter': 'Zakázat Červené Písmeno',
     'Enable Red Letter': 'Povolit Červené Písmeno',

@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': '추가된 단어의 이탤릭체 활성화',
     'Disable Strong\'s Numbers': 'Strong\의 번호 비활성화',
     'Enable Strong\'s Numbers': 'Strong\의 번호 활성화',
+    'Strong\'s Dictionary': '스트롱 사전',
+    'Use Language Default': '언어 기본값 사용',
     'Red Letter': '빨간색 글자',
     'Disable Red Letter': '빨간색 글자 비활성화',
     'Enable Red Letter': '빨간색 글자 활성화',

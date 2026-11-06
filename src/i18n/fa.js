@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'ایتالیز کردن کلمات اضافه شده را فعال کنید',
     'Disable Strong\'s Numbers': 'اعداد Strong را غیرفعال کنید',
     'Enable Strong\'s Numbers': 'اعداد Strong را فعال کنید',
+    'Strong\'s Dictionary': 'فرهنگ لغت استرانگ',
+    'Use Language Default': 'استفاده از پیش‌فرض زبان',
     'Red Letter': 'نامه قرمز',
     'Disable Red Letter': 'حروف قرمز را غیرفعال کنید',
     'Enable Red Letter': 'حروف قرمز را فعال کنید',

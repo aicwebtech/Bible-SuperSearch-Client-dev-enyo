@@ -20,6 +20,8 @@ module.exports = kind({
 
     strongsCache: {},
     strongsRaw: null,
+    strongsDictionary: null,
+    _pendingCacheKey: null,
 
     components: [
         {classes: 'bss_inner', components: [
@@ -54,11 +56,13 @@ module.exports = kind({
     ],
 
     bindings: [
-        {from: 'strongsRaw', to: '$.SearchFor.content'}
+        {from: 'strongsRaw', to: '$.SearchFor.content'},
+        {from: 'app.UserConfig.strongs_dictionary', to: 'strongsDictionary'}
     ],
 
     create: function() {
         this.inherited(arguments);
+        this.strongsCache = {}; // per instance, not shared via the prototype
         this.$.Link.set('showing', this.app.configs.strongsDialogSearchLink);
         this.$.LinkSpacer.set('showing', this.app.configs.strongsDialogSearchLink);
     },
@@ -76,7 +80,15 @@ module.exports = kind({
 
         this.set('strongsRaw', strongs);
 
-        if(this._loadFromCache(strongs)) {
+        // The legacy endpoint ignores dictionary and language, so they only apply to modern
+        var modern = this.app.strongsModernEnabled(),
+            dictionary = modern ? this.app.getStrongsDictionary() : null,
+            language = modern ? this.app.getLocaleLanguage() : null,
+            cacheKey = (dictionary || '') + '|' + (language || '') + '|' + strongs;
+
+        this._pendingCacheKey = cacheKey;
+
+        if(this._loadFromCache(cacheKey)) {
             this.showContent();
             return;
         }
@@ -89,6 +101,15 @@ module.exports = kind({
             key: this.app.configs.apiKey || null
         };
 
+        if(modern) {
+            postBody.version = 'modern';
+            postBody.language = language;
+        }
+
+        if(dictionary) {
+            postBody.dictionary = dictionary;
+        }
+
         var ajax = new Ajax({
             url: this.app.configs.apiUrl + '/strongs',
             cacheBust: false,
@@ -96,10 +117,28 @@ module.exports = kind({
         });
 
         ajax.go(postBody); // for GET
-        ajax.response(this, 'handleResponse');
-        ajax.error(this, 'handleError');
+        ajax.response(this, function(inSender, inResponse) {
+            this.handleResponse(inSender, inResponse, cacheKey);
+        });
+        ajax.error(this, function(inSender, inResponse) {
+            this.handleError(inSender, inResponse, cacheKey);
+        });
     },
-    handleResponse: function(inSender, inResponse) {
+    // cacheKey reflects the dictionary / language the request was made with
+    handleResponse: function(inSender, inResponse, cacheKey) {
+        if(!inResponse || !Array.isArray(inResponse.results)) {
+            this.handleError(inSender, inResponse, cacheKey);
+            return;
+        }
+
+        // Cached under the requested Strong's number, as the API may format the number differently
+        this.strongsCache[cacheKey] = inResponse.results;
+
+        // A newer hover has superseded this request
+        if(cacheKey != this._pendingCacheKey) {
+            return;
+        }
+
         this.set('showing', true);
 
         if(!this.get('showing')) {
@@ -109,14 +148,18 @@ module.exports = kind({
 
         this.$.ContentContainer.destroyClientControls();
         inResponse.results.forEach(utils.bind(this, function(strong) {
-            this.strongsCache[strong.number] = strong;
             this.$.ContentContainer._addStrongs(strong);
         }));
         
         this.$.ContentContainer.render();
         this.showContent();
     },
-    handleError: function(inSender, inResponse) {
+    handleError: function(inSender, inResponse, cacheKey) {
+        // A newer hover has superseded this request
+        if(cacheKey != this._pendingCacheKey) {
+            return;
+        }
+
         this.showContent();
         this.$.ContentContainer.set('content', 'An error has occurred');
     },
@@ -130,15 +173,25 @@ module.exports = kind({
         var match = String(content).match(/[GHgh][0-9]+/);
         return match ? match[0].toUpperCase() : '';
     },
-    _loadFromCache: function(strongs) {
-        if(typeof this.strongsCache[strongs] == 'undefined') {
+    // Definitions depend on the dictionary and language, so both are part of the key
+    _loadFromCache: function(cacheKey) {
+        if(typeof this.strongsCache[cacheKey] == 'undefined') {
             return false;
         }
 
         this.$.ContentContainer.destroyClientControls();
-        this.$.ContentContainer._addStrongs(this.strongsCache[strongs]);
+        this.strongsCache[cacheKey].forEach(utils.bind(this, function(strong) {
+            this.$.ContentContainer._addStrongs(strong);
+        }));
         this.$.ContentContainer.render();
         return true;
+    },
+    strongsDictionaryChanged: function(was, is) {
+        this.strongsCache = {};
+
+        // Drop any in-flight request and the displayed definition, both from the old dictionary
+        this._pendingCacheKey = null;
+        this.get('showing') && this.close();
     },
     followLink: function() {
         //http://ui-dev.bss.plsv/#/strongs/kjv_strongs/H5612

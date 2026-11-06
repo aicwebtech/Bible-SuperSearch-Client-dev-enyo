@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'ထည့်ထားသော စကားလုံးများ၏ ညွှန်ပြမှုကို ဖွင့်ပါ။',
     'Disable Strong\'s Numbers': 'ညီညွတ်သောနံပါတ်များကို ပိတ်ပါ။',
     'Enable Strong\'s Numbers': 'ကိုက်ညီသောနံပါတ်များကိုဖွင့်ပါ။',
+    'Strong\'s Dictionary': 'Strong ၏ အဘိဓာန်',
+    'Use Language Default': 'ဘာသာစကား၏ မူလသတ်မှတ်ချက်ကို သုံးပါ',
     'Red Letter': 'အနီရောင်စာ',
     'Disable Red Letter': 'အနီရောင်စာလုံးကို ပိတ်ပါ။',
     'Enable Red Letter': 'အနီရောင်ကိုဖွင့်ပါ။', // "turn on the red"

@@ -191,6 +191,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Pèmèt Italizasyon mo ki ajoute yo',
     'Disable Strong\'s Numbers': 'Enfim nimewo Strong\'s',
     'Enable Strong\'s Numbers': 'Pèmèt nimewo Strong yo',//check translation
+    'Strong\'s Dictionary': 'Diksyonè Strong',
+    'Use Language Default': 'Sèvi ak paramèt default lang lan',
     'Red Letter': 'Lèt Wouj',
     'Disable Red Letter': 'Enfim Lèt Wouj',
     'Enable Red Letter': 'Pèmèt Lèt Wouj',

@@ -173,6 +173,8 @@ module.exports = {
     'Enable Italization of Added Words': 'जोड़े गए शब्दों का इटैलाइज़ेशन सक्षम करें',
     'Disable Strong\'s Numbers': 'स्ट्रांग नंबरों को अक्षम करें',
     'Enable Strong\'s Numbers': 'स्ट्रांग नंबर सक्षम करें',
+    'Strong\'s Dictionary': 'स्ट्रॉन्ग का शब्दकोश',
+    'Use Language Default': 'भाषा का डिफ़ॉल्ट उपयोग करें',
     'Red Letter': 'लाल अक्षर',
     'Disable Red Letter': 'लाल पत्र अक्षम करें',
     'Enable Red Letter': 'लाल अक्षर सक्षम करें',

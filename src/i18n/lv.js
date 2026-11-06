@@ -171,6 +171,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Iespējot Tulkojumā Papildu Pievienoto Vārdu Attēlošanu Slīprakstā (Italics)',
     'Disable Strong\'s Numbers': 'Atspējot Teksta Attēlošanu ar Papildu Vārdu Izcelsmes Konkordances Skaidrojumiem (Strong\'s)',
     'Enable Strong\'s Numbers': 'Iespējot Teksta Attēlošanu ar Papildu Vārdu Izcelsmes Konkordances Skaidrojumiem (Strong\'s)',
+    'Strong\'s Dictionary': 'Stronga vārdnīca',
+    'Use Language Default': 'Izmantot valodas noklusējumu',
     'Red Letter': 'Sarkans Teksts',
     'Disable Red Letter': 'Atspējot Jēzus Kristus Sacīto Vārdu Izcelšanu Sarkanā Krāsā',
     'Enable Red Letter': 'Iespējot Jēzus Kristus Sacīto Vārdu Izcelšanu Sarkanā Krāsā',

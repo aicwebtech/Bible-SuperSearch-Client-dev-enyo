@@ -173,6 +173,8 @@ module.exports = {
     'Enable Italization of Added Words': 'A Hozzáadott szavak Dőlésszögének Engedélyezése',
     'Disable Strong\'s Numbers': 'Az erős számok letiltása',
     'Enable Strong\'s Numbers': 'Engedélyezze a Strong\'s Numbers funkciót',
+    'Strong\'s Dictionary': 'Strong-szótár',
+    'Use Language Default': 'A nyelv alapértelmezésének használata',
     'Red Letter': 'Piros levél',
     'Disable Red Letter': 'Piros szöveg letiltása',
     'Enable Red Letter': 'Piros szöveg engedélyezése',

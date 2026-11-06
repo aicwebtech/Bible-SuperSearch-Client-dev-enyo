@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'شامل کردہ الفاظ کی اٹالائزیشن کو فعال کریں۔',
     'Disable Strong\'s Numbers': 'مضبوط نمبروں کو غیر فعال کریں۔',
     'Enable Strong\'s Numbers': 'مضبوط نمبروں کو فعال کریں۔',
+    'Strong\'s Dictionary': 'سٹرانگ کی لغت',
+    'Use Language Default': 'زبان کا ڈیفالٹ استعمال کریں',
     'Red Letter': 'سرخ خط',
     'Disable Red Letter': 'سرخ خط کو غیر فعال کریں۔',
     'Enable Red Letter': 'ریڈ لیٹر کو فعال کریں۔',

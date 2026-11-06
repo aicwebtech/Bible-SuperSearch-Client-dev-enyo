@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Aktivizo Italizimin e Fjalëve të Shtuara',
     'Disable Strong\'s Numbers': 'Çaktivizo Numrat e Strong',
     'Enable Strong\'s Numbers': 'Aktivizo Numrat e Strong',
+    'Strong\'s Dictionary': 'Fjalori i Strongut',
+    'Use Language Default': 'Përdor parazgjedhjen e gjuhës',
     'Red Letter': 'Letër e Kuqe',
     'Disable Red Letter': 'Çaktivizo Letrën e Kuqe',
     'Enable Red Letter': 'Aktivizo Letrën e Kuqe',

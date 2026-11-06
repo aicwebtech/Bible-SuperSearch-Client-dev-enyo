@@ -167,6 +167,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Slante ye added wordes',
     'Disable Strong\'s Numbers': 'Remove ye matey Mr Strong\'s Numbers',
     'Enable Strong\'s Numbers': 'Add ye matey Mr Strong\'s Numbers',
+    'Strong\'s Dictionary': 'Mr Strong\'s Book o\' Words',
+    'Use Language Default': 'Use th\' Tongue\'s Default',
     'Red Letter': 'Blood Letter',
     'Disable Red Letter': 'Remove ye olde Blood Letter',
     'Enable Red Letter': 'Stain blood letter',

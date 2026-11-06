@@ -173,6 +173,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Įgalinti pridėtų žodžių kursyvą',
     'Disable Strong\'s Numbers': 'Išjungti Strongo numerius',
     'Enable Strong\'s Numbers': 'Įgalinti pridėtų žodžių kursyvą',
+    'Strong\'s Dictionary': 'Strongo žodynas',
+    'Use Language Default': 'Naudoti kalbos numatytąjį',
     'Red Letter': 'Raudona Raidė',
     'Disable Red Letter': 'Išjungti Raudoną Raidę',
     'Enable Red Letter': 'Įgalinti Raudoną Raidę',

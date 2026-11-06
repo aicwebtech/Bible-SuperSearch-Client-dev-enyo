@@ -173,6 +173,8 @@ module.exports = {
     'Enable Italization of Added Words': 'เปิดใช้งานการทำให้คำที่เพิ่มเป็นตัวเอียง',
     'Disable Strong\'s Numbers': 'ปิดการใช้งานหมายเลขของ Strong',
     'Enable Strong\'s Numbers': 'เปิดใช้งานหมายเลขของ Strong',
+    'Strong\'s Dictionary': 'พจนานุกรมสตรอง',
+    'Use Language Default': 'ใช้ค่าเริ่มต้นของภาษา',
     'Red Letter': 'จดหมายสีแดง',
     'Disable Red Letter': 'ปิดการใช้งานตัวอักษรสีแดง',
     'Enable Red Letter': 'เปิดใช้งานตัวอักษรสีแดง',

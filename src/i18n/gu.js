@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'ઉમેરાયેલા શબ્દોનું ઇટાલાઇઝેશન સક્ષમ કરો',
     'Disable Strong\'s Numbers': 'સ્ટ્રોંગ નંબર્સને અક્ષમ કરો',
     'Enable Strong\'s Numbers': 'સ્ટ્રોંગ નંબર્સ સક્ષમ કરો',
+    'Strong\'s Dictionary': 'સ્ટ્રોંગનો શબ્દકોશ',
+    'Use Language Default': 'ભાષાનું ડિફોલ્ટ વાપરો',
     'Red Letter': 'લાલ પત્ર',
     'Disable Red Letter': 'લાલ પત્ર અક્ષમ કરો',
     'Enable Red Letter': 'લાલ પત્ર સક્ષમ કરો',

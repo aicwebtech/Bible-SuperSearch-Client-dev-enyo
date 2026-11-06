@@ -183,6 +183,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Lisatud Sõnade Kaldkirja Lubamine',
     'Disable Strong\'s Numbers': 'Keela Strong\'i Numbrid',
     'Enable Strong\'s Numbers': 'Luba Strong\'i Numbrid',
+    'Strong\'s Dictionary': 'Strongi sõnaraamat',
+    'Use Language Default': 'Kasuta keele vaikesätet',
     'Red Letter': 'Punased Tähed',
     'Disable Red Letter': 'Keela Puased Tähed',
     'Enable Red Letter': 'Luba Punased Tähed',

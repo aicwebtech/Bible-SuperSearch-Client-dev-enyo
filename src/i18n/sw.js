@@ -187,6 +187,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Wezesha Uboreshaji wa Maneno Yaliyoongezwa',
     'Disable Strong\'s Numbers': 'Zima Nambari za Nguvu',
     'Enable Strong\'s Numbers': 'Washa Nambari Zenye Nguvu',
+    'Strong\'s Dictionary': 'Kamusi ya Strong',
+    'Use Language Default': 'Tumia Chaguo-msingi la Lugha',
     'Red Letter': 'Barua Nyekundu',
     'Disable Red Letter': 'Lemaza Barua Nyekundu',
     'Enable Red Letter': 'Washa Herufi Nyekundu',

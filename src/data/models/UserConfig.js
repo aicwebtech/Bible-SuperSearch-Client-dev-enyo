@@ -30,6 +30,7 @@ module.exports = kind({
         read_render_style: 'paragraph', // Cache of render style from read view
         italics: true,
         strongs: true,
+        strongs_dictionary: null, // Strong's dictionary module; null = language / global default
         red_letter: true,
         highlight: true,
         context_range: 5,

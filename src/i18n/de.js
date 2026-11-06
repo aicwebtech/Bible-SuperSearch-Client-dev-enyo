@@ -176,6 +176,8 @@ module.exports = {
     'Enable Italization of Added Words': 'Aktivieren Sie die Italisierung Hinzugefügter Wörter',
     'Disable Strong\'s Numbers': 'Deaktivieren Sie die Strong-Nummern',
     'Enable Strong\'s Numbers': 'Aktivieren Sie Strongs Nummern',
+    'Strong\'s Dictionary': 'Strong-Wörterbuch',
+    'Use Language Default': 'Sprachstandard verwenden',
     'Red Letter': 'Roter Brief',
     'Disable Red Letter': 'Roten Text Deaktivieren',
     'Enable Red Letter': 'Roten Text Aktivieren',
