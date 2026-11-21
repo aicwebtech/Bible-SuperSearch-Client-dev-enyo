@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'مضبوط نمبروں کو فعال کریں۔',
     'Strong\'s Dictionary': 'سٹرانگ کی لغت',
     'Use Language Default': 'زبان کا ڈیفالٹ استعمال کریں',
+    'Use Bible Default': 'بائبل کا ڈیفالٹ استعمال کریں',
     'Red Letter': 'سرخ خط',
     'Disable Red Letter': 'سرخ خط کو غیر فعال کریں۔',
     'Enable Red Letter': 'ریڈ لیٹر کو فعال کریں۔',

@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Paganahin ang Mga Numero ng Keyword',
     'Strong\'s Dictionary': 'Diksiyonaryo ni Strong',
     'Use Language Default': 'Gamitin ang Default ng Wika',
+    'Use Bible Default': 'Gamitin ang Default ng Bibliya',
     'Red Letter': 'Pulang Liham',
     'Disable Red Letter': 'Huwag paganahin ang Mga Salita sa Pula',
     'Enable Red Letter': 'Paganahin ang Mga Salita sa Pula',

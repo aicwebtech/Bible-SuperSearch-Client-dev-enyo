@@ -175,6 +175,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Activați Concordanța Exhaustivă',
     'Strong\'s Dictionary': 'Dicționarul Strong',
     'Use Language Default': 'Folosește implicitul limbii',
+    'Use Bible Default': 'Folosește implicitul Bibliei',
     'Red Letter': 'Litere Roșii',
     'Disable Red Letter': 'Dezactivați Literele Roșii',
     'Enable Red Letter': 'Activați Literele Roșii',

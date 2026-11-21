@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Aktifkan Nomor Kuat',
     'Strong\'s Dictionary': 'Kamus Strong',
     'Use Language Default': 'Gunakan Bawaan Bahasa',
+    'Use Bible Default': 'Gunakan Bawaan Alkitab',
     'Red Letter': 'Surat Merah',
     'Disable Red Letter': 'Nonaktifkan Huruf Merah',
     'Enable Red Letter': 'Aktifkan Huruf Merah',

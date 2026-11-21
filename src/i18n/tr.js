@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Güçlü Numaraları Etkinleştir',
     'Strong\'s Dictionary': 'Strong Sözlüğü',
     'Use Language Default': 'Dil Varsayılanını Kullan',
+    'Use Bible Default': 'Kutsal Kitap Varsayılanını Kullan',
     'Red Letter': 'Kırmızı Harf',
     'Disable Red Letter': 'Kırmızı Harfi Devre Dışı Bırak',
     'Enable Red Letter': 'Kırmızı Harfi Etkinleştir',

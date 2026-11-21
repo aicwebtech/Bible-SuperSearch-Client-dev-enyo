@@ -191,6 +191,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Рақамҳои Strong\-ро фаъол созед',
     'Strong\'s Dictionary': 'Луғати Стронг',
     'Use Language Default': 'Истифодаи пешфарзи забон',
+    'Use Bible Default': 'Истифодаи пешфарзи Китоби Муқаддас',
     'Red Letter': 'Номаи сурхs',
     'Disable Red Letter': 'Мактуби сурхи маъюб',
     'Enable Red Letter': 'Номаи сурхро фаъол созед',

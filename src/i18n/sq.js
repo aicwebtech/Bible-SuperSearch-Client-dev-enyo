@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Aktivizo Numrat e Strong',
     'Strong\'s Dictionary': 'Fjalori i Strongut',
     'Use Language Default': 'Përdor parazgjedhjen e gjuhës',
+    'Use Bible Default': 'Përdor parazgjedhjen e Biblës',
     'Red Letter': 'Letër e Kuqe',
     'Disable Red Letter': 'Çaktivizo Letrën e Kuqe',
     'Enable Red Letter': 'Aktivizo Letrën e Kuqe',

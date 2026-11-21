@@ -66,7 +66,7 @@ module.exports = kind({
         this.$.Link.set('showing', this.app.configs.strongsDialogSearchLink);
         this.$.LinkSpacer.set('showing', this.app.configs.strongsDialogSearchLink);
     },
-    displayPosition: function(top, left, content, parentWidth, parentHeight, showButtons) {
+    displayPosition: function(top, left, content, parentWidth, parentHeight, showButtons, bible) {
         this.inherited(arguments);
 
         // 'content' is the innerHTML of the hovered Strong's link - untrusted markup, not a
@@ -84,7 +84,9 @@ module.exports = kind({
         var modern = this.app.strongsModernEnabled(),
             dictionary = modern ? this.app.getStrongsDictionary() : null,
             language = modern ? this.app.getLocaleLanguage() : null,
-            cacheKey = (dictionary || '') + '|' + (language || '') + '|' + strongs;
+            // 'Bible Default': the dictionary follows the Bible of the hovered verse
+            module = modern && this.app.strongsUseBible() ? this._resolveBible(bible) : null,
+            cacheKey = (dictionary || '') + '|' + (language || '') + '|' + (module || '') + '|' + strongs;
 
         this._pendingCacheKey = cacheKey;
 
@@ -108,6 +110,10 @@ module.exports = kind({
 
         if(dictionary) {
             postBody.dictionary = dictionary;
+        }
+
+        if(module) {
+            postBody.bible = module;
         }
 
         var ajax = new Ajax({
@@ -173,7 +179,23 @@ module.exports = kind({
         var match = String(content).match(/[GHgh][0-9]+/);
         return match ? match[0].toUpperCase() : '';
     },
-    // Definitions depend on the dictionary and language, so both are part of the key
+    // The hovered verse's Bible module, falling back to the first selected Bible.
+    // 'bible' comes from a DOM attribute, so it must be a known module before it is sent.
+    _resolveBible: function(bible) {
+        var bibles = this.app.statics && this.app.statics.bibles || {},
+            candidates = [bible, this.app.getSelectedBibles(true)[0]];
+
+        for(var i = 0; i < candidates.length; i++) {
+            var mod = candidates[i];
+
+            if(typeof mod == 'string' && /^[A-Za-z0-9_]+$/.test(mod) && Object.prototype.hasOwnProperty.call(bibles, mod)) {
+                return mod;
+            }
+        }
+
+        return null;
+    },
+    // Definitions depend on the dictionary, language and Bible, so all are part of the key
     _loadFromCache: function(cacheKey) {
         if(typeof this.strongsCache[cacheKey] == 'undefined') {
             return false;

@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Strong\의 번호 활성화',
     'Strong\'s Dictionary': '스트롱 사전',
     'Use Language Default': '언어 기본값 사용',
+    'Use Bible Default': '성경 기본값 사용',
     'Red Letter': '빨간색 글자',
     'Disable Red Letter': '빨간색 글자 비활성화',
     'Enable Red Letter': '빨간색 글자 활성화',

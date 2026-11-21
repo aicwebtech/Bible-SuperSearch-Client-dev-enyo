@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Washa Nambari Zenye Nguvu',
     'Strong\'s Dictionary': 'Kamusi ya Strong',
     'Use Language Default': 'Tumia Chaguo-msingi la Lugha',
+    'Use Bible Default': 'Tumia Chaguo-msingi la Biblia',
     'Red Letter': 'Barua Nyekundu',
     'Disable Red Letter': 'Lemaza Barua Nyekundu',
     'Enable Red Letter': 'Washa Herufi Nyekundu',

@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Povolit Čísla Klíčových Slov',
     'Strong\'s Dictionary': 'Strongův slovník',
     'Use Language Default': 'Použít výchozí pro jazyk',
+    'Use Bible Default': 'Použít výchozí pro Bibli',
     'Red Letter': 'Červené Písmeno',
     'Disable Red Letter': 'Zakázat Červené Písmeno',
     'Enable Red Letter': 'Povolit Červené Písmeno',

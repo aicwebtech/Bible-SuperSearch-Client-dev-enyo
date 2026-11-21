@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Włącz Silne Liczby',
     'Strong\'s Dictionary': 'Słownik Stronga',
     'Use Language Default': 'Użyj domyślnego dla języka',
+    'Use Bible Default': 'Użyj domyślnego dla Biblii',
     'Red Letter': 'Czerwony List',
     'Disable Red Letter': 'Wyłącz Czerwoną Literę',
     'Enable Red Letter': 'Włącz Czerwoną Literę',

@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Whakahohehia nga Nama a Strong',
     'Strong\'s Dictionary': 'Papakupu a Strong',
     'Use Language Default': 'Whakamahia te Taunoa o te Reo',
+    'Use Bible Default': 'Whakamahia te Taunoa o te Paipera',
     'Red Letter': 'Reta Whero',
     'Disable Red Letter': 'Monokia te Reta Whero',
     'Enable Red Letter': 'Whakahohe Reta Whero',

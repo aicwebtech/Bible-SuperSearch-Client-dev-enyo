@@ -635,6 +635,7 @@ var App = Application.kind({
     },
     // The user's Strong's dictionary, or null to use the language / global default.
     // A saved dictionary the API no longer offers is ignored, as the API rejects it.
+    // Also null when 'Bible Default' is selected, as '_bible' is not a dictionary module.
     getStrongsDictionary: function() {
         var dictionary = this.UserConfig.get('strongs_dictionary');
 
@@ -643,6 +644,10 @@ var App = Application.kind({
         }
 
         return Object.prototype.hasOwnProperty.call(this.getStrongsDictionaries(), dictionary) ? dictionary : null;
+    },
+    // Whether the user chose 'Bible Default': the API picks the dictionary for the Bible being read
+    strongsUseBible: function() {
+        return this.strongsModernEnabled() && this.UserConfig.get('strongs_dictionary') === '_bible';
     },
     _validateStatics: function(statics) {
         var strings = ['name', 'version', 'environment'];

@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'הפעל מספרי מילות מפתח',
     'Strong\'s Dictionary': 'המילון של סטרונג',
     'Use Language Default': 'השתמש בברירת המחדל של השפה',
+    'Use Bible Default': 'השתמש בברירת המחדל של התנ"ך',
     'Red Letter': 'מכתב אדום',
     'Disable Red Letter': 'השבת אות אדום',
     'Enable Red Letter': 'אפשר אותיות אדום',

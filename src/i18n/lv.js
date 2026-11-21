@@ -173,6 +173,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Iespējot Teksta Attēlošanu ar Papildu Vārdu Izcelsmes Konkordances Skaidrojumiem (Strong\'s)',
     'Strong\'s Dictionary': 'Stronga vārdnīca',
     'Use Language Default': 'Izmantot valodas noklusējumu',
+    'Use Bible Default': 'Izmantot Bībeles noklusējumu',
     'Red Letter': 'Sarkans Teksts',
     'Disable Red Letter': 'Atspējot Jēzus Kristus Sacīto Vārdu Izcelšanu Sarkanā Krāsā',
     'Enable Red Letter': 'Iespējot Jēzus Kristus Sacīto Vārdu Izcelšanu Sarkanā Krāsā',

@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Kunna Ƙarfafan Lambobi',
     'Strong\'s Dictionary': 'Kamus na Strong',
     'Use Language Default': 'Yi amfani da tsohon saitin harshe',
+    'Use Bible Default': 'Yi amfani da tsohon saitin Littafi Mai Tsarki',
     'Red Letter': 'Jan Harafi',
     'Disable Red Letter': 'Kashe Jajayen Harafi',
     'Enable Red Letter': 'Kunna Jajayen Harafi',
