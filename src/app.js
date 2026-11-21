@@ -645,9 +645,12 @@ var App = Application.kind({
 
         return Object.prototype.hasOwnProperty.call(this.getStrongsDictionaries(), dictionary) ? dictionary : null;
     },
-    // Whether the user chose 'Bible Default': the API picks the dictionary for the Bible being read
+    // Whether the user chose 'Bible Default': the API picks the dictionary for the Bible being read.
+    // Requires offered dictionaries, as the selector (the only way to change it) is hidden without them.
     strongsUseBible: function() {
-        return this.strongsModernEnabled() && this.UserConfig.get('strongs_dictionary') === '_bible';
+        return this.strongsModernEnabled() &&
+            Object.keys(this.getStrongsDictionaries()).length > 0 &&
+            this.UserConfig.get('strongs_dictionary') === '_bible';
     },
     _validateStatics: function(statics) {
         var strings = ['name', 'version', 'environment'];
