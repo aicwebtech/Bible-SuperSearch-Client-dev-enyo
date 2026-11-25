@@ -193,6 +193,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Pèmèt nimewo Strong yo',//check translation
     'Strong\'s Dictionary': 'Diksyonè Strong',
     'Use Language Default': 'Sèvi ak paramèt default lang lan',
+    'Use Bible Default': 'Sèvi ak paramèt default Bib la',
     'Red Letter': 'Lèt Wouj',
     'Disable Red Letter': 'Enfim Lèt Wouj',
     'Enable Red Letter': 'Pèmèt Lèt Wouj',

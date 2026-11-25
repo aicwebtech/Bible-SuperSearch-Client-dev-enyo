@@ -474,6 +474,12 @@ module.exports = kind({
         } else {
             delete formData.strongs_dictionary;
         }
+
+        if(this.app.strongsUseBible()) {
+            formData.strongs_use_bible = true;
+        } else {
+            delete formData.strongs_use_bible;
+        }
         
         //formData.group_passage_search_results = true; // experimental
         

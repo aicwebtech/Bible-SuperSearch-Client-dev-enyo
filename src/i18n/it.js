@@ -175,6 +175,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Abilita i numeri forti',
     'Strong\'s Dictionary': 'Dizionario di Strong',
     'Use Language Default': 'Usa predefinito della lingua',
+    'Use Bible Default': 'Usa predefinito della Bibbia',
     'Red Letter': 'Lettera Rossa',
     'Disable Red Letter': 'Disabilita la Lettera Rossa',
     'Enable Red Letter': 'Abilita la Lettera Rossa',

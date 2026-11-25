@@ -170,6 +170,7 @@ module.exports = {
     'Enable Strong\'s Numbers': '禁用史特朗原文編號',
     'Strong\'s Dictionary': '史特朗詞典',
     'Use Language Default': '使用語言預設設定',
+    'Use Bible Default': '使用聖經預設設定',
     'Red Letter': '紅字',
     'Disable Red Letter': '禁用紅字經文',
     'Enable Red Letter': '啟用紅字經文',

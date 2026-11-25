@@ -175,6 +175,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Įgalinti pridėtų žodžių kursyvą',
     'Strong\'s Dictionary': 'Strongo žodynas',
     'Use Language Default': 'Naudoti kalbos numatytąjį',
+    'Use Bible Default': 'Naudoti Biblijos numatytąjį',
     'Red Letter': 'Raudona Raidė',
     'Disable Red Letter': 'Išjungti Raudoną Raidę',
     'Enable Red Letter': 'Įgalinti Raudoną Raidę',

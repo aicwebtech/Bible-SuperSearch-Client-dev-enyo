@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'ကိုက်ညီသောနံပါတ်များကိုဖွင့်ပါ။',
     'Strong\'s Dictionary': 'Strong ၏ အဘိဓာန်',
     'Use Language Default': 'ဘာသာစကား၏ မူလသတ်မှတ်ချက်ကို သုံးပါ',
+    'Use Bible Default': 'သမ္မာကျမ်းစာ၏ မူလသတ်မှတ်ချက်ကို သုံးပါ',
     'Red Letter': 'အနီရောင်စာ',
     'Disable Red Letter': 'အနီရောင်စာလုံးကို ပိတ်ပါ။',
     'Enable Red Letter': 'အနီရောင်ကိုဖွင့်ပါ။', // "turn on the red"

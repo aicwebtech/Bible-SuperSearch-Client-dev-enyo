@@ -191,6 +191,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'كۈچلۈك \ نىڭ سانلىرىنى قوزغىتىڭ',
     'Strong\'s Dictionary': 'سترونگ لۇغىتى',
     'Use Language Default': 'تىلنىڭ كۆڭۈلدىكىسىنى ئىشلىتىش',
+    'Use Bible Default': 'مۇقەددەس كىتابنىڭ كۆڭۈلدىكىسىنى ئىشلىتىش',
     'Red Letter': 'قىزىل خەت',
     'Disable Red Letter': 'چەكلەنگەن قىزىل خەت',
     'Enable Red Letter': 'قىزىل خەت قوزغىتىڭ',

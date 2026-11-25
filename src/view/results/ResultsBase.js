@@ -517,10 +517,14 @@ module.exports = kind({
                 // This link not working for a URL that ends in a file (ie biblesupersearch.html)
                 var url = '#/strongs/' + this.biblesStr + '/' + match;
 
+                // The Bible this verse belongs to, for 'Bible Default' Strong's definitions
+                var module = this.selectedBible && this.selectedBible.module ? String(this.selectedBible.module) : '',
+                    bibleAttr = /^[A-Za-z0-9_]+$/.test(module) ? ' data-bible="' + module + '"' : '';
+
                 if(this.getStrongsOpenClick()) {
-                    return '<a class="strongs" href="' + url + '" onclick="return false;">' + match + '</a>';
+                    return '<a class="strongs" href="' + url + '"' + bibleAttr + ' onclick="return false;">' + match + '</a>';
                 } else {
-                    return '<a class="strongs" href="' + url + '">' + match + '</a>';
+                    return '<a class="strongs" href="' + url + '"' + bibleAttr + '>' + match + '</a>';
                 }
             }));
         }
@@ -742,7 +746,7 @@ module.exports = kind({
                     // t.log('parentHeight', parentHeight);
 
                     // this.hideHoverDialogs(); // uncomment in production
-                    t.$.StrongsHover && t.$.StrongsHover.displayPosition(mouseX, mouseY, target.innerHTML, parentWidth, parentHeight, false);
+                    t.$.StrongsHover && t.$.StrongsHover.displayPosition(mouseX, mouseY, target.innerHTML, parentWidth, parentHeight, false, target.getAttribute('data-bible'));
                 }
             }, hoverIntentThres);
         }
@@ -809,7 +813,7 @@ module.exports = kind({
             // this.log('parentHeight', parentHeight);
 
             // this.hideHoverDialogs(); // uncomment in production
-            this.$.StrongsHover && this.$.StrongsHover.displayPosition(mouseX, mouseY, target.innerHTML, parentWidth, parentHeight, true);
+            this.$.StrongsHover && this.$.StrongsHover.displayPosition(mouseX, mouseY, target.innerHTML, parentWidth, parentHeight, true, target.getAttribute('data-bible'));
             this.app.debug && this.$.StrongsHover && this.log('displaying Strongs dialog');
             return true;
         }

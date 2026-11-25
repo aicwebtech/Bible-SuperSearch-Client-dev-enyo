@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Ota Strongin Numerot Käyttöön',
     'Strong\'s Dictionary': 'Strongin sanakirja',
     'Use Language Default': 'Käytä kielen oletusta',
+    'Use Bible Default': 'Käytä Raamatun oletusta',
     'Red Letter': 'Punainen Kirjain',
     'Disable Red Letter': 'Poista Punainen Kirjain Käytöstä',
     'Enable Red Letter': 'Ota Punainen Kirjain Käyttöön',

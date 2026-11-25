@@ -191,6 +191,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Solola vasona vakulavisa azachisa mukulwane Strong',
     'Strong\'s Dictionary': '',
     'Use Language Default': '',
+    'Use Bible Default': '',
     'Red Letter': 'Vasona vachila vaMazu ahanjikile Mwata Yesu',
     'Disable Red Letter': 'Honesa Vasona vachila vaMazu ahanjikile Mwata Yesu',
     'Enable Red Letter': 'Solola Vasona vachila vaMazu ahanjikile Mwata Yesu',

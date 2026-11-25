@@ -191,6 +191,7 @@ module.exports = {
     'Enable Strong\'s Numbers': '',
     'Strong\'s Dictionary': '',
     'Use Language Default': '',
+    'Use Bible Default': '',
     'Red Letter': '',
     'Disable Red Letter': '',
     'Enable Red Letter': '',

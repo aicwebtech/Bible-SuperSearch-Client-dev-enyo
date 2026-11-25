@@ -175,6 +175,7 @@ module.exports = {
     'Enable Strong\'s Numbers': '強い数値を有効にする',
     'Strong\'s Dictionary': 'ストロング辞書',
     'Use Language Default': '言語の既定を使用',
+    'Use Bible Default': '聖書の既定を使用',
     'Red Letter': '赤文字',
     'Disable Red Letter': '赤文字を無効にする',
     'Enable Red Letter': '赤文字を有効にする',

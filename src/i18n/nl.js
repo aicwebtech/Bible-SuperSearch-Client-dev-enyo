@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Schakel de Nummers van Strong In',
     'Strong\'s Dictionary': 'Strong\'s woordenboek',
     'Use Language Default': 'Standaard van de taal gebruiken',
+    'Use Bible Default': 'Standaard van de Bijbel gebruiken',
     'Red Letter': 'Rode Brief',
     'Disable Red Letter': 'Schakel de rode letter uit',
     'Enable Red Letter': 'Schakel Rode Letter in',

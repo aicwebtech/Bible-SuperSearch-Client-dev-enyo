@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'اعداد Strong را فعال کنید',
     'Strong\'s Dictionary': 'فرهنگ لغت استرانگ',
     'Use Language Default': 'استفاده از پیش‌فرض زبان',
+    'Use Bible Default': 'استفاده از پیش‌فرض کتاب مقدس',
     'Red Letter': 'نامه قرمز',
     'Disable Red Letter': 'حروف قرمز را غیرفعال کنید',
     'Enable Red Letter': 'حروف قرمز را فعال کنید',

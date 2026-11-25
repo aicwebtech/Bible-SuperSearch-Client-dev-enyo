@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Kích hoạt số mạnh',
     'Strong\'s Dictionary': 'Từ điển Strong',
     'Use Language Default': 'Dùng mặc định của ngôn ngữ',
+    'Use Bible Default': 'Dùng mặc định của Kinh Thánh',
     'Red Letter': 'Lá thư đỏ',
     'Disable Red Letter': 'Tắt chữ đỏ',
     'Enable Red Letter': 'Kích hoạt chữ đỏ',

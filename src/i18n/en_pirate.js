@@ -169,6 +169,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Add ye matey Mr Strong\'s Numbers',
     'Strong\'s Dictionary': 'Mr Strong\'s Book o\' Words',
     'Use Language Default': 'Use th\' Tongue\'s Default',
+    'Use Bible Default': 'Use th\' Good Book\'s Default',
     'Red Letter': 'Blood Letter',
     'Disable Red Letter': 'Remove ye olde Blood Letter',
     'Enable Red Letter': 'Stain blood letter',

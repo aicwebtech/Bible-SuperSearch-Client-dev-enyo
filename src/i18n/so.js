@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Daar Nambarada Xoogan',
     'Strong\'s Dictionary': 'Qaamuuska Strong',
     'Use Language Default': 'Isticmaal Caadiga Luqadda',
+    'Use Bible Default': 'Isticmaal Caadiga Kitaabka Quduuska ah',
     'Red Letter': 'Warqad Cas',
     'Disable Red Letter': 'Dami Warqadda Cas',
     'Enable Red Letter': 'Daar Warqadda Cas',

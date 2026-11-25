@@ -519,6 +519,7 @@ module.exports = kind({
         var dictionaries = this.app.getStrongsDictionaries(),
             modules = Object.keys(dictionaries),
             selected = this.app.getStrongsDictionary(),
+            useBible = this.app.strongsUseBible(),
             select = this.$.StrongsDictionary;
 
         if(!this.app.strongsModernEnabled() || modules.length == 0) {
@@ -526,7 +527,8 @@ module.exports = kind({
         }
 
         // Non-empty value: an option with an empty value is matched by its content instead
-        select.createComponent({kind: i18nOption, value: '0', content: 'Use Language Default', selected: !selected});
+        select.createComponent({kind: i18nOption, value: '0', content: 'Use Language Default', selected: !selected && !useBible});
+        select.createComponent({kind: i18nOption, value: '_bible', content: 'Use Bible Default', selected: useBible});
 
         // Grouped by language, in the order the API lists them
         modules.forEach(function(module) {
@@ -562,7 +564,7 @@ module.exports = kind({
         var select = this.$.StrongsDictionary;
 
         if(select && select.hasNode()) {
-            select.set('value', this.app.getStrongsDictionary() || '0');
+            select.set('value', this.app.strongsUseBible() ? '_bible' : (this.app.getStrongsDictionary() || '0'));
         }
     },
     handleStrongsDictionaryChange: function(inSender, inEvent) {

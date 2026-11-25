@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'የጠንካራ ቁጥሮችን አንቃ',
     'Strong\'s Dictionary': 'የስትሮንግ መዝገበ ቃላት',
     'Use Language Default': 'የቋንቋ ነባሪን ተጠቀም',
+    'Use Bible Default': 'የመጽሐፍ ቅዱስ ነባሪን ተጠቀም',
     'Red Letter': 'ቀይ ደብዳቤ',
     'Disable Red Letter': 'ቀይ ደብዳቤን አሰናክል',
     'Enable Red Letter': 'ቀይ ደብዳቤን አንቃ',

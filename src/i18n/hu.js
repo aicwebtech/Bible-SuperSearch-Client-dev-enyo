@@ -175,6 +175,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'Engedélyezze a Strong\'s Numbers funkciót',
     'Strong\'s Dictionary': 'Strong-szótár',
     'Use Language Default': 'A nyelv alapértelmezésének használata',
+    'Use Bible Default': 'A Biblia alapértelmezésének használata',
     'Red Letter': 'Piros levél',
     'Disable Red Letter': 'Piros szöveg letiltása',
     'Enable Red Letter': 'Piros szöveg engedélyezése',

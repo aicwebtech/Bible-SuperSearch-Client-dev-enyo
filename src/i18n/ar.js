@@ -178,6 +178,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'تمكين أرقام قوية',
     'Strong\'s Dictionary': 'قاموس سترونج',
     'Use Language Default': 'استخدام الافتراضي للغة',
+    'Use Bible Default': 'استخدام الافتراضي للكتاب المقدس',
     'Red Letter': 'رسالة حمراء',
     'Disable Red Letter': 'تعطيل الرسالة الحمراء',
     'Enable Red Letter': 'تمكين الرسالة الحمراء',

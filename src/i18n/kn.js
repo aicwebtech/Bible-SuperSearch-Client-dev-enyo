@@ -189,6 +189,7 @@ module.exports = {
     'Enable Strong\'s Numbers': 'ಪ್ರಬಲ ಸಂಖ್ಯೆಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ',
     'Strong\'s Dictionary': 'ಸ್ಟ್ರಾಂಗ್‌ನ ನಿಘಂಟು',
     'Use Language Default': 'ಭಾಷೆಯ ಡೀಫಾಲ್ಟ್ ಬಳಸಿ',
+    'Use Bible Default': 'ಬೈಬಲ್‌ನ ಡೀಫಾಲ್ಟ್ ಬಳಸಿ',
     'Red Letter': 'ಕೆಂಪು ಪತ್ರ',
     'Disable Red Letter': 'ಕೆಂಪು ಅಕ್ಷರವನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ',
     'Enable Red Letter': 'ಕೆಂಪು ಅಕ್ಷರವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ',
